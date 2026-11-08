@@ -1,0 +1,288 @@
+{
+  "status": "PENDING_OWNER_APPROVAL_NOT_IN_ZIPS",
+  "references": [
+    {
+      "reference": "1_0_1_13_65_1_300000_0_0_0",
+      "identity": "SIS Racing (SISSP)",
+      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "prior_qc": {
+        "black": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 46.7% materially low-contrast pixels on BLACK",
+          "changed_pixels": 0,
+          "protected_pixels": 9792
+        },
+        "white": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 51.0% materially low-contrast pixels on WHITE",
+          "changed_pixels": 0,
+          "protected_pixels": 9792
+        }
+      },
+      "source_sha256": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430",
+      "nine_outputs_identical_to_frozen_index": true,
+      "outputs": [
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-transparent.png",
+          "sha256": "b8d78773931451c81575d026a3e7d721588a6159b0e7956315939ef20afc38be",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-white.png",
+          "sha256": "80c65515903cd730aab47feed4b0292948654649937874080f681c4c6ef0538e",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-black.png",
+          "sha256": "4795c93f6ee3e452b4434f9000ccf8c186825e73d33046c8270f3ffd5bd7fe69",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-transparent.png",
+          "sha256": "f0849d251e1460c76a5c7e0329e26831f3cc3f98ebb35e68cc944bf28b915895",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-white.png",
+          "sha256": "a9c006852a507cb810690416a115cec10f1eb9247e3af09911e2116e763cf6b8",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-black.png",
+          "sha256": "d3a7fef62560249f40d11b90ec71605e1605c15d3151993b5a5a692d93ba1b03",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-transparent.png",
+          "sha256": "be70225bda22fce5957dd3ecc0faad0f159f829e35c1077c4ab6c2e853de3c76",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-white.png",
+          "sha256": "413f65a48f5f5c4bc043559e60f67a3cf807cce38aaaf511f165a50c5b64ef93",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-black.png",
+          "sha256": "a8ace3c694019c049c140ecf7c38df2c67b07f613bff4cc98d133b2d0f26f728",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        }
+      ],
+      "production_package_changes": 0
+    },
+    {
+      "reference": "1_0_1_14_65_1_300000_0_0_0",
+      "identity": "BETFRED TV1",
+      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "prior_qc": {
+        "black": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 66.0% materially low-contrast pixels on BLACK",
+          "changed_pixels": 0,
+          "protected_pixels": 7956
+        },
+        "white": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 31.6% materially low-contrast pixels on WHITE",
+          "changed_pixels": 0,
+          "protected_pixels": 7956
+        }
+      },
+      "source_sha256": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15",
+      "nine_outputs_identical_to_frozen_index": true,
+      "outputs": [
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-transparent.png",
+          "sha256": "33ea8cf3693ba12dd8e61735afc53b47d03d3cbccbb5e39b80a6e554cea3778b",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-white.png",
+          "sha256": "9856eb4379a1e1110fc852cf4bdbd2462f2f6f6354851c6ae7d062a3c59112c4",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-black.png",
+          "sha256": "c223365b993d998fd0456851245d90907fdbe6a1531fe40cb514d13441fc64a5",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-transparent.png",
+          "sha256": "7f45a657341d37a2b728385a654f8e52d611ad00ff01c34ec194d111fa537f96",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-white.png",
+          "sha256": "d06f583a8b0674161e8b3ea7b7c04412a9f9233e5084f652f5d2924e82762dbb",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-black.png",
+          "sha256": "8fa6e0bf16a6f64301d9edc9f51b2e925913f2560cf548f50b2bb560bdc92156",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-transparent.png",
+          "sha256": "7e154a430c4a573e9fa63ce111f926036ca520a2259fdea293c654e27392f5c1",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-white.png",
+          "sha256": "dd30a274a09e7341cd17261d95ef0df7f32228640124d64fb103059c7a593e80",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-black.png",
+          "sha256": "244ed4693dc5a13da5517e636385a9d34185aa06aa8010d3bf483a96fd3ff961",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        }
+      ],
+      "production_package_changes": 0
+    },
+    {
+      "reference": "1_0_1_15_65_1_300000_0_0_0",
+      "identity": "BETFRED TV2",
+      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "prior_qc": {
+        "black": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 65.4% materially low-contrast pixels on BLACK",
+          "changed_pixels": 0,
+          "protected_pixels": 7956
+        },
+        "white": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 32.2% materially low-contrast pixels on WHITE",
+          "changed_pixels": 0,
+          "protected_pixels": 7956
+        }
+      },
+      "source_sha256": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a",
+      "nine_outputs_identical_to_frozen_index": true,
+      "outputs": [
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-transparent.png",
+          "sha256": "20bccdfd8212bc325cbb0ced16fb5e7d2cc7699dbba5b2e54d5d6e15a29672a7",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-white.png",
+          "sha256": "41db3813aa692b5ff1851add608bee54e46f3e86eb35ce352502b1e2097f5554",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-black.png",
+          "sha256": "20d368918abdccbf0463c4f1b56c8ee250e4f3c47e88fa0e75ac02bb3f4c8d4e",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-transparent.png",
+          "sha256": "fe7da23e7eaac6454e29682438c87cf71ef68b41a0d5ac2874443f63a1c0ff86",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-white.png",
+          "sha256": "af8770ed06033cd6aa5cf373a054d6c48531a6a851992038f1b29da37d44f016",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-black.png",
+          "sha256": "fce19b9fc12b060c205fc9f097cbf54dc13d1668171eb68897d461bdc0757321",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-transparent.png",
+          "sha256": "6d974d2a86590a7faf3564f13376ea697d76c31d6514c492c9f51dc9f4a67633",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-white.png",
+          "sha256": "db0c37927bf53daf0c4f6b37f74870fa9ac96c1c2e1c8a757e30772ac9753b6c",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-black.png",
+          "sha256": "eb4234dbbce68b050cf8abc3a00108553bc5b300375875023ec76b5eac7bfd49",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        }
+      ],
+      "production_package_changes": 0
+    },
+    {
+      "reference": "1_0_1_16_65_1_300000_0_0_0",
+      "identity": "BETFRED TV3",
+      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "prior_qc": {
+        "black": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 65.5% materially low-contrast pixels on BLACK",
+          "changed_pixels": 0,
+          "protected_pixels": 7956
+        },
+        "white": {
+          "status": "REVIEW",
+          "reason": "two-tone achromatic component 1 has 32.1% materially low-contrast pixels on WHITE",
+          "changed_pixels": 0,
+          "protected_pixels": 7956
+        }
+      },
+      "source_sha256": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0",
+      "nine_outputs_identical_to_frozen_index": true,
+      "outputs": [
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-transparent.png",
+          "sha256": "b1f21ad51559a2abe116c269bad7b49eb10d4c1d0293d6451b8c9bdad7becc5f",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-white.png",
+          "sha256": "f763043adf90dd7de047a7f9951485322bc7a20946540f76dfe9d4c60fcfbd82",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-black.png",
+          "sha256": "c8e36d61733d619e8b799254dd52b6cd0e4aad43b0e33fe299e6ba5a024359c6",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-transparent.png",
+          "sha256": "295d3d0fccf1d6ef98fe3b7c2fdf5cd5de4bf10716fc0fcc39dd30af950c4c2f",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-white.png",
+          "sha256": "4c46b5bded3e67a2622820c37c3e879539d828a30796095a3832a20a6fac071e",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-black.png",
+          "sha256": "36d19ef7e91dfdc7739fb6bc66e6d2457ba0dc533fcd9180fa304744a86dba6e",
+          "source": "existing-native-00 artifact13499302234"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-transparent.png",
+          "sha256": "dfe681150464f759cd26c0f49cc97390aa7591b0449e49b83c6c3c86aa3fbec9",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-white.png",
+          "sha256": "7d3aec72f4a9e4ba7432f2ce85fc5432e180142c28791f0d103f79a8977076a8",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        },
+        {
+          "file": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-black.png",
+          "sha256": "c9f725966b2101af1b928c78bdebf561bc0f70f20021e1ea6e28937680372d8e",
+          "source": "Fresh frozen original, exact previous index output SHA reproduced"
+        }
+      ],
+      "production_package_changes": 0
+    }
+  ],
+  "original_full_artifact_download_error": "2227856648>536870912 byte limit; no retry",
+  "smaller_artifact_id": 13499302234,
+  "smaller_artifact_sha256": "26e2448a32e8637eb803cc13fd5844357360654af0924a634200bd35a6d37658",
+  "reused_pngs": 24,
+  "reproduced_missing_400_outputs_matching_existing_sha": 12,
+  "all_36_outputs_match_existing_review_index": true,
+  "no_qc_review_promoted_to_approved": true
+}

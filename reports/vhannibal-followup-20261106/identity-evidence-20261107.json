@@ -692,6 +692,1705 @@
       "reused_existing_smaller_id": 13499302234,
       "sha256": "26e2448a32e8637eb803cc13fd5844357360654af0924a634200bd35a6d37658",
       "method": "Existing authorized download_workflow_artifact; no new authentication."
+    },
+    "source_delta": {
+      "source_sha256": "c3d3d239f950ce426edfc5b61169deb37ced47ea5826a8434f19e9adb6193f23",
+      "lamedb_member": "Vhannibal Motor Dtt Italia 08 nov 2026/lamedb",
+      "lamedb_sha256": "5efb702c56799e9a22af7d0bbe8642ff4aac276552b2b791f3a2491998fdbf6e",
+      "new_references": [
+        {
+          "reference": "1_0_16_1E5A_D160_77E_DCA0000_0_0_0",
+          "name": "AmharaSat TV",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            7770,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "0fc5d7db8bb2fea0bf6c4044510dfe122fd1aa78d49fc0afb9dfb7bb99788a6c",
+          "pixel_digest": "bfed4f27d6b3fcf67bd646c8f75a2fde285527bd5aeea9c39d61711cd5ab1f73",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_16_1E5A_759E_77E_DC00000_0_0_0",
+              "name": "AmharaSat TV",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_16_1E5A_759E_77E_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_16_1E8C_D160_77E_DCA0000_0_0_0",
+          "name": "EL JUMHURIA TV",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            7820,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "91248959f2971d5f055d3e4fbf41cadb4f0cd6ecdeea4599e88b32501338f524",
+          "pixel_digest": "a751a52d90aa407dfb4cd092d701c908c3d1dbb23f8d46bebda629d2f9f3d41a",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork."
+        },
+        {
+          "reference": "1_0_16_1E96_D160_77E_DCA0000_0_0_0",
+          "name": "Al-Shahed TV HD",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            7830,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "02763a8759f694b850cf6ce5a0d1710881ef59641cb3e0c16f4deea4b84caf52",
+          "pixel_digest": "dafc9e7f6b1f8bddd1451cc991b523f1470c462ca05d7d0f968ff81651ac3899",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_1E96_759E_77E_DC00000_0_0_0",
+              "name": "Al-Shahed TV HD",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_1E96_759E_77E_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_16_1_A_16E_1860000_0_0_0",
+          "name": "Antena1",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            1,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "f706eb8c63e173518b4ba5dd841689672d5cecec80a87c76edbf8a8254f79601",
+          "pixel_digest": "1561ae6d2e0d5e2e9c36bf1d236381b9891226fa4279f655ad623f8127153644",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_1_0_16E_1860000_0_0_0",
+              "name": "Antena1",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_65_E_1C_1860000_0_0_0",
+              "name": "Antena 1",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_76CC_2C0_600_E080000_0_0_0",
+              "name": "Antena 1",
+              "selector": "08W"
+            },
+            {
+              "reference": "1_0_1_76D5_2C0_600_E080000_0_0_0",
+              "name": "Antena 1.",
+              "selector": "08W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_16_2_A_16E_1860000_0_0_0",
+          "name": "AntenaStars",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            2,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "debe950505d2f709a785d8dfdb1ea733daf8a2e2273aea71e01eb6fa52b829de",
+          "pixel_digest": "cc1cebb003ca247e9d4698f49c8d5535643a6e342050d9994c19da6d91168ec5",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_2_0_16E_1860000_0_0_0",
+              "name": "Antena Stars",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_66_E_1C_1860000_0_0_0",
+              "name": "Antena Stars",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_76D2_2C0_600_E080000_0_0_0",
+              "name": "Antena Stars",
+              "selector": "08W"
+            },
+            {
+              "reference": "1_0_1_76D7_2C0_600_E080000_0_0_0",
+              "name": "Antena Stars.",
+              "selector": "08W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_16_3_A_16E_1860000_0_0_0",
+          "name": "Antena3",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            3,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "5771ee2791a0be0ef4a8e79a5137bd33354f865727ec4974b553e58c3d039ee5",
+          "pixel_digest": "4b3ad32ff8dcad406370141a12810093271f47e10d27c8fe763f3534ab17d84d",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_16_13A6_2710_D5_820000_0_0_0",
+              "name": "Antena 3",
+              "selector": "130E"
+            },
+            {
+              "reference": "1_0_19_2BD_146C_A7_1860000_0_0_0",
+              "name": "Antena 3 HD",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1F_2BC0_40C_1_C00000_0_0_0",
+              "name": "Antena 3",
+              "selector": "192E"
+            },
+            {
+              "reference": "1_0_1_3_0_16E_1860000_0_0_0",
+              "name": "Antena3",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_67_E_1C_1860000_0_0_0",
+              "name": "Antena 3",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_76C1_2C0_600_E080000_0_0_0",
+              "name": "Antena 3",
+              "selector": "08W"
+            },
+            {
+              "reference": "1_0_1_76D6_2C0_600_E080000_0_0_0",
+              "name": "Antena 3.",
+              "selector": "08W"
+            },
+            {
+              "reference": "1_0_1_772C_416_1_C00000_0_0_0",
+              "name": "ANTENA 3",
+              "selector": "192E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_16_4_A_16E_1860000_0_0_0",
+          "name": "Happy Channel",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            4,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "3a1234c3aa341724c7c78b769aff5fb3e4ff083b017d9d787464ed11c56d7703",
+          "pixel_digest": "ad0d447b12e79aeca0bd5893abf019fa6db058152497889ef802363bef37dddb",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_4_0_16E_1860000_0_0_0",
+              "name": "Happy Channel",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_68_D_1C_1860000_0_0_0",
+              "name": "Happy Channel",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_76CE_2C0_600_E080000_0_0_0",
+              "name": "Happy Channel",
+              "selector": "08W"
+            },
+            {
+              "reference": "1_0_1_76D8_2C0_600_E080000_0_0_0",
+              "name": "Happy Channel.",
+              "selector": "08W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_16_5_A_16E_1860000_0_0_0",
+          "name": "Chefi.ro",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            5,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "4ba4a4076374660e1c6a335f65bd1b6ab2e1ed292935617ea7a5918ef1e4335d",
+          "pixel_digest": "bb60f6f86f24c1107fb912f278d5a1373c3ea79a3e62fcd8ca2c86badcf05253",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_11E_D_1C_1860000_0_0_0",
+              "name": "Chefi.ro",
+              "selector": "390E"
+            },
+            {
+              "reference": "1_0_1_76C7_2C0_600_E080000_0_0_0",
+              "name": "Zu TV",
+              "selector": "08W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_16_6_A_16E_1860000_0_0_0",
+          "name": "Antena International",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 22,
+          "uid": [
+            6,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "ffdfe9c4c73dc65b953599802b64d8dcebf424edb1a77454877d3a26aef7051a",
+          "pixel_digest": "77ff504dfce84bed8850e367d7a49ff736dad5c0898afcfab39ad964c51a8546",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_6_0_16E_1860000_0_0_0",
+              "name": "Antena International",
+              "selector": "390E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_19_1E00_D160_77E_DCA0000_0_0_0",
+          "name": "ALMERGAB TV",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            7680,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "2306afe116d0688ac1b74e32c79e7f3a2e444b5d4df8e6b224e05d05b14e602d",
+          "pixel_digest": "ef043eb11a2b502773e272c9ac430c236b9b6583075e5837ca08f4217db369df",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_1E00_759E_77E_DC00000_0_0_0",
+              "name": "ALMERGAB TV",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_1E00_759E_77E_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_1E0A_D160_77E_DCA0000_0_0_0",
+          "name": "LIBYA HASAD TV",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            7690,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "5f74cee6f8d40d3d422e33cecdf147cde566e72b4f8835b0d17bdd89227fdeb7",
+          "pixel_digest": "2917ae21acf9fdd6fe86fdb8f259e38daa204ae2a634417f171b5b7f453230c0",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_1E0A_759E_77E_DC00000_0_0_0",
+              "name": "LIBYA HASAD TV",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_1E0A_759E_77E_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+          "name": "AL-KAFEL TV",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            7700,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "673b4ee05d9cb95f88070276f2bcea2aff19e5b13c2f24f0033724f705e3a1aa",
+          "pixel_digest": "5318fce53555f0894cee8e3e3d2b2500e4638d4633755969c3f6c224fef096b3",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork."
+        },
+        {
+          "reference": "1_0_19_1E3C_D160_77E_DCA0000_0_0_0",
+          "name": "Libya Alkarama",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            7740,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "4d5be19fecf63da47535e985db1355223a468150c8d9c89a19dcfa2da853b4fd",
+          "pixel_digest": "29575cc4bfbb25c3ccab72ac0fee3c406579a262bdd604c033bb24e982039cc1",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_1E3C_759E_77E_DC00000_0_0_0",
+              "name": "Libya Alkarama",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_1E3C_759E_77E_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_1E50_D160_77E_DCA0000_0_0_0",
+          "name": "ANA DEJLAH",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            7760,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "41f911f974372292cc0ee796eecd819f042177a4df710ddd188fd820a9d7fcf0",
+          "pixel_digest": "0e00173d146708879fcd88cab68039af8de70a86ccf0f1f0a8e2d4bbf605f43c",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_1E50_759E_77E_DC00000_0_0_0",
+              "name": "ANA DEJLAH",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_1E50_759E_77E_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_1_0_1_1042D78_0_0_0",
+          "name": "Alsumaria TV",
+          "provider": "Alsumaria TV",
+          "namespace": 17051000,
+          "position": "26.0e",
+          "transponder": [
+            "s 11640000:2140000:0:3:260:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            1,
+            0,
+            1,
+            17051000
+          ],
+          "source_sha256": "6d48bf1c2a61aa4b3e52bc15e10fb242e2bfbc5790281662bfffe485ce119a2e",
+          "pixel_digest": "32425687df31f4a4d2d38cbef7500dcf22ae239542b3e6f6cc777619a258d8f9",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_1_0_1_1862CFA_0_0_0",
+              "name": "Alsumaria TV",
+              "selector": "390E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_1_0_1_1862CFA_0_0_0",
+            "selector": "390E"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_40B_7E8_2_11A0000_0_0_0",
+          "name": "SkySpBoxOffHD",
+          "provider": "BSkyB",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 12168000:27500000:1:2:282:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            1035,
+            2024,
+            2,
+            18481152
+          ],
+          "source_sha256": "da318f13598a8c0106f749361dcc53bc8dc09b550983d23b2453a35f1354ed66",
+          "pixel_digest": "da9f2c5d8cd96751021fb015a7fcac8467ffcb625e1b25f190a1533bf0b9e58e",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review."
+        },
+        {
+          "reference": "1_0_19_40C_7E8_2_11A0000_0_0_0",
+          "name": "TNTSBoxOffHD",
+          "provider": "BSkyB",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 12168000:27500000:1:2:282:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            1036,
+            2024,
+            2,
+            18481152
+          ],
+          "source_sha256": "bb91ad173ad397ca04a85557b168351d6605c3bdb01fdec77c57683bcfac0482",
+          "pixel_digest": "f954a1254b699545ace46ad33d6bf07177e54d512b4ad4e5d0a39d807f1dab12",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_C5BC_831_2_11A0000_0_0_0",
+              "name": "TNTSBoxOffHD",
+              "selector": "282E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_C5BC_831_2_11A0000_0_0_0",
+            "selector": "282E"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_6AC_1FB5_2BE_1040000_0_0_0",
+          "name": "StarzPlay-Movies",
+          "provider": "Hellas Sat",
+          "namespace": 17039360,
+          "position": "26.0e",
+          "transponder": [
+            "s 12034000:27500000:0:3:260:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            1708,
+            8117,
+            702,
+            17039360
+          ],
+          "source_sha256": "644a525f59e41515ede785534a85d61f586ea4fd5ee85da1b49de662d0a5d34c",
+          "pixel_digest": "4f2b811c7c135923c285032744d39eaa22c92874bcb01994ae2a6bb96355a3b9",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review."
+        },
+        {
+          "reference": "1_0_19_7A77_410_1_C00000_0_0_0",
+          "name": "Daystar",
+          "provider": "TSA",
+          "namespace": 12582912,
+          "position": "19.2e",
+          "transponder": [
+            "s 11068000:22000000:1:4:192:2:0"
+          ],
+          "service_type": 25,
+          "uid": [
+            31351,
+            1040,
+            1,
+            12582912
+          ],
+          "source_sha256": "cae9f2ed81be16e199ac0b6fa74658f29b52b7a33abd261f9cefefaabce4ac1b",
+          "pixel_digest": "2491526da875dab45540dd678276afc3c74a1d9a96516ea98cd16fb113c122c5",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_7A4E_410_1_C00000_0_0_0",
+              "name": "Daystar",
+              "selector": "192E"
+            },
+            {
+              "reference": "1_0_1_18F7_3F4_1_C00000_0_0_0",
+              "name": "Daystar",
+              "selector": "192E"
+            },
+            {
+              "reference": "1_0_1_1C85_332C_13E_820000_0_0_0",
+              "name": "Daystar SD",
+              "selector": "130E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_1_30D_C94_3_EB0000_0_0_0",
+            "selector": "CANALPLUS_SK"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_7A78_410_1_C00000_0_0_0",
+          "name": "Telesur English",
+          "provider": "TSA",
+          "namespace": 12582912,
+          "position": "19.2e",
+          "transponder": [
+            "s 11068000:22000000:1:4:192:2:0"
+          ],
+          "service_type": 25,
+          "uid": [
+            31352,
+            1040,
+            1,
+            12582912
+          ],
+          "source_sha256": "ab9aaf134dd8a817301f78f846bb400c92e3746dddb0ea8baf8e8b7bf9118efc",
+          "pixel_digest": "4780727ebecbe74fb7cf758ae5ecfbcbdf08a5b7872c54111b8f2e402468cb0e",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_18F9_3F4_1_C00000_0_0_0",
+              "name": "Telesur English",
+              "selector": "192E"
+            },
+            {
+              "reference": "1_0_19_7A4B_410_1_C00000_0_0_0",
+              "name": "Telesur English",
+              "selector": "192E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_18F9_3F4_1_C00000_0_0_0",
+            "selector": "192E"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_19_7_A_16E_1860000_0_0_0",
+          "name": "Antena HD",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            7,
+            10,
+            366,
+            25559040
+          ],
+          "source_sha256": "9dce59144ec66c64f5bee9c9417bfba0a9997eb63bbb03c5dbc1f40245738c41",
+          "pixel_digest": "042327edc3adf985b8ea480dcd9df90af003f2c8c74d713f6a8f1860aac1c9e8",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_7_0_16E_1860000_0_0_0",
+              "name": "Antena HD",
+              "selector": "390E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+        },
+        {
+          "reference": "1_0_19_C782_83D_2_11A0000_0_0_0",
+          "name": "2117",
+          "provider": "BSkyB",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11305000:27500000:0:2:282:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            51074,
+            2109,
+            2,
+            18481152
+          ],
+          "source_sha256": "04314cbf61ba3da8d07df35c78b1e92d402991a35a61d3fa1221fcc8c3c3510b",
+          "pixel_digest": "ee8212b2c08f400b97c71a8fd89564fb0010bbaa4c0d1a8ca809c6d168df06fa",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_13B7_7ED_2_11A0000_0_0_0",
+              "name": "5047",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_2330_7E0_2_11A0000_0_0_0",
+              "name": "H1Test",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_669_7E5_2_11A0000_0_0_0",
+              "name": "Sky RB",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5E6_831_2_11A0000_0_0_0",
+              "name": "50662",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5E7_831_2_11A0000_0_0_0",
+              "name": "50663",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5FA_831_2_11A0000_0_0_0",
+              "name": "50682",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5FB_831_2_11A0000_0_0_0",
+              "name": "50683",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_105D_7D4_2_11A0000_0_0_0",
+              "name": "IEPG data 1",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_41D_7D4_2_11A0000_0_0_0",
+              "name": "ETBG",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_41E_7E4_2_11A0000_0_0_0",
+              "name": "ETFG",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_CD5F_844_2_11A0000_0_0_0",
+              "name": "52575",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_D7BE_840_2_11A0000_0_0_0",
+              "name": "55230",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_1F54_7EB_2_11A0000_0_0_0",
+              "name": "Program Your Remote",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_1FBF_7EB_2_11A0000_0_0_0",
+              "name": "My Account",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_204A_7EB_2_11A0000_0_0_0",
+              "name": "My Account",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_208B_7EB_2_11A0000_0_0_0",
+              "name": "Help and Support",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_2099_7EB_2_11A0000_0_0_0",
+              "name": "Reset TV PIN",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_209A_7EB_2_11A0000_0_0_0",
+              "name": "Reset your PIN",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_210B_7EB_2_11A0000_0_0_0",
+              "name": "Get Sky Products",
+              "selector": "282E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity."
+        },
+        {
+          "reference": "1_0_19_C786_83D_2_11A0000_0_0_0",
+          "name": "2118",
+          "provider": "BSkyB",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11305000:27500000:0:2:282:2:0:1:2:0:2"
+          ],
+          "service_type": 25,
+          "uid": [
+            51078,
+            2109,
+            2,
+            18481152
+          ],
+          "source_sha256": "04314cbf61ba3da8d07df35c78b1e92d402991a35a61d3fa1221fcc8c3c3510b",
+          "pixel_digest": "ee8212b2c08f400b97c71a8fd89564fb0010bbaa4c0d1a8ca809c6d168df06fa",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_13B7_7ED_2_11A0000_0_0_0",
+              "name": "5047",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_2330_7E0_2_11A0000_0_0_0",
+              "name": "H1Test",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_669_7E5_2_11A0000_0_0_0",
+              "name": "Sky RB",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5E6_831_2_11A0000_0_0_0",
+              "name": "50662",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5E7_831_2_11A0000_0_0_0",
+              "name": "50663",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5FA_831_2_11A0000_0_0_0",
+              "name": "50682",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_19_C5FB_831_2_11A0000_0_0_0",
+              "name": "50683",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_105D_7D4_2_11A0000_0_0_0",
+              "name": "IEPG data 1",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_41D_7D4_2_11A0000_0_0_0",
+              "name": "ETBG",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_41E_7E4_2_11A0000_0_0_0",
+              "name": "ETFG",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_CD5F_844_2_11A0000_0_0_0",
+              "name": "52575",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_1_D7BE_840_2_11A0000_0_0_0",
+              "name": "55230",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_1F54_7EB_2_11A0000_0_0_0",
+              "name": "Program Your Remote",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_1FBF_7EB_2_11A0000_0_0_0",
+              "name": "My Account",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_204A_7EB_2_11A0000_0_0_0",
+              "name": "My Account",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_208B_7EB_2_11A0000_0_0_0",
+              "name": "Help and Support",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_2099_7EB_2_11A0000_0_0_0",
+              "name": "Reset TV PIN",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_209A_7EB_2_11A0000_0_0_0",
+              "name": "Reset your PIN",
+              "selector": "282E"
+            },
+            {
+              "reference": "1_0_82_210B_7EB_2_11A0000_0_0_0",
+              "name": "Get Sky Products",
+              "selector": "282E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity."
+        },
+        {
+          "reference": "1_0_1_1C2A_D160_77E_DCA0000_0_0_0",
+          "name": "Eutelsat 1",
+          "provider": "EUTELSAT",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            7210,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854",
+          "pixel_digest": "c34914b1eaa5d14efea4c07c05c00cfbe1f3efcadb47b9b4ac8926f6c6d35eec",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_1C2A_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 1",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C34_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 2",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C3E_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 3",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C48_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 4",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_50A_A0F0_396_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_636_A21C_77E_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_AEF_1_2A_DC00000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+        },
+        {
+          "reference": "1_0_1_1C34_D160_77E_DCA0000_0_0_0",
+          "name": "Eutelsat 2",
+          "provider": "EUTELSAT",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            7220,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854",
+          "pixel_digest": "c34914b1eaa5d14efea4c07c05c00cfbe1f3efcadb47b9b4ac8926f6c6d35eec",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_1C2A_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 1",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C34_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 2",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C3E_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 3",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C48_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 4",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_50A_A0F0_396_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_636_A21C_77E_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_AEF_1_2A_DC00000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+        },
+        {
+          "reference": "1_0_1_1C3E_D160_77E_DCA0000_0_0_0",
+          "name": "Eutelsat 3",
+          "provider": "EUTELSAT",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            7230,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854",
+          "pixel_digest": "c34914b1eaa5d14efea4c07c05c00cfbe1f3efcadb47b9b4ac8926f6c6d35eec",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_1C2A_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 1",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C34_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 2",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C3E_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 3",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C48_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 4",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_50A_A0F0_396_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_636_A21C_77E_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_AEF_1_2A_DC00000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+        },
+        {
+          "reference": "1_0_1_1C48_D160_77E_DCA0000_0_0_0",
+          "name": "Eutelsat 4",
+          "provider": "EUTELSAT",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            7240,
+            53600,
+            1918,
+            231342080
+          ],
+          "source_sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854",
+          "pixel_digest": "c34914b1eaa5d14efea4c07c05c00cfbe1f3efcadb47b9b4ac8926f6c6d35eec",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_1C2A_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 1",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C34_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 2",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C3E_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 3",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_1C48_759E_77E_DC00000_0_0_0",
+              "name": "Eutelsat 4",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_1_50A_A0F0_396_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_636_A21C_77E_DCA0000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "70W"
+            },
+            {
+              "reference": "1_0_1_AEF_1_2A_DC00000_0_0_0",
+              "name": "Eutelsat Data 1",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+        },
+        {
+          "reference": "1_0_1_1_1_FFFF_104AB59_0_0_0",
+          "name": "1TV IRAQ",
+          "provider": "",
+          "namespace": 17083225,
+          "position": "26.0e",
+          "transponder": [
+            "s 11097000:1740000:1:4:260:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            1,
+            1,
+            65535,
+            17083225
+          ],
+          "source_sha256": "ebf75598b2259fd979b9cb0a65d9e69b1b66f70bcf605f25151f9541b3b7848c",
+          "pixel_digest": "c7aeaddd941a92b16b83bf7fc7342fddbf734db4f88bc67028bc57f81f4efae2",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review."
+        },
+        {
+          "reference": "1_0_1_1_1_FFFF_104AB5E_0_0_0",
+          "name": "IMAM ALI HD",
+          "provider": "IMAM ALI HD",
+          "namespace": 17083230,
+          "position": "26.0e",
+          "transponder": [
+            "s 11102000:2500000:1:3:260:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            1,
+            1,
+            65535,
+            17083230
+          ],
+          "source_sha256": "2451a02046705b4946769f105a95055e42490e6931c7e82768d3afc311af171f",
+          "pixel_digest": "16458b44072c49043b17c77e2af16a4546f05f954c55bd4b04486a8c6efe9652",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_19_166C_320_5000_DC00000_0_0_0",
+              "name": "Imam Ali TV",
+              "selector": "80W"
+            },
+            {
+              "reference": "1_0_19_17D4_190_5000_DC00000_0_0_0",
+              "name": "Imam Ali TV",
+              "selector": "80W"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_19_166C_320_5000_DC00000_0_0_0",
+            "selector": "80W"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+          "name": "UNKNOWN RUSSIA",
+          "provider": "TURKSAT",
+          "namespace": 27525120,
+          "position": "42.0e",
+          "transponder": [
+            "s 11727000:27500000:1:3:420:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            17318,
+            60101,
+            1070,
+            27525120
+          ],
+          "source_sha256": "20d0e2cc3679a6ceba4a1329536b08de04e15c5cccbacded654eb80ae893df03",
+          "pixel_digest": "d94df609396e952ee364491c7945927eac93a2f5324ac3dadfb888921c866a8d",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor."
+        },
+        {
+          "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
+          "name": "UNKNOWN RUSSIA",
+          "provider": "TURKSAT",
+          "namespace": 27525120,
+          "position": "42.0e",
+          "transponder": [
+            "s 11012000:30000000:0:3:420:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            17368,
+            32108,
+            1070,
+            27525120
+          ],
+          "source_sha256": "20d0e2cc3679a6ceba4a1329536b08de04e15c5cccbacded654eb80ae893df03",
+          "pixel_digest": "d94df609396e952ee364491c7945927eac93a2f5324ac3dadfb888921c866a8d",
+          "reuse_candidates": [],
+          "existing_valid_slots": [],
+          "action": "HOLD_NO_SAFE_COPY",
+          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor."
+        },
+        {
+          "reference": "1_0_1_7A76_410_1_C00000_0_0_0",
+          "name": "CNBC Europe",
+          "provider": "TSA",
+          "namespace": 12582912,
+          "position": "19.2e",
+          "transponder": [
+            "s 11068000:22000000:1:4:192:2:0"
+          ],
+          "service_type": 1,
+          "uid": [
+            31350,
+            1040,
+            1,
+            12582912
+          ],
+          "source_sha256": "c76535006544949770e9fc72308618a3b5b25443ea1cbcf5824f957bb863944c",
+          "pixel_digest": "7c240d391bdc4f0c5173d5d6996e30cbf7e7a46e042a1379a57305e024b04383",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_18F5_3F4_1_C00000_0_0_0",
+              "name": "CNBC HD",
+              "selector": "192E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_1_18F5_3F4_1_C00000_0_0_0",
+            "selector": "CANALPLUS_SK"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_1_89_A_1_D7A0000_0_0_0",
+          "name": "RTP INTERNATIONAL",
+          "provider": "",
+          "namespace": 226099200,
+          "position": "15.0w",
+          "transponder": [
+            "s 12667000:30000000:0:3:-150:2:0:1:2:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            137,
+            10,
+            1,
+            226099200
+          ],
+          "source_sha256": "13e0c8337f60f6ad1a4faede7fa81e849ae9da62dd77c6bbfbe284821cd4b6d3",
+          "pixel_digest": "d3dc267c6a3b84f86ecb686732fb534f22b9ece6e8166c03d8750cb435512d0c",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_1B8_A_2_130000_0_0_0",
+              "name": "RTP Internacional",
+              "selector": "19E"
+            }
+          ],
+          "existing_valid_slots": [],
+          "candidate_donor": {
+            "reference": "1_0_1_1B8_A_2_130000_0_0_0",
+            "selector": "19E"
+          },
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Official broadcaster confirms TV Internacional is now RTP Mundo. TV and radio share this name; the approved TV RTP Mundo donor is valid. No changes to radio files.",
+          "official_sources": [
+            "https://distribuicao.rtp.pt/rtp-mundo/",
+            "https://www.rtp.pt/noticias/economia/canais-da-rtp-vao-ter-nova-imagem-a-partir-de-amanha_v1730098"
+          ],
+          "physical_valid_slots_after_candidate": 9
+        },
+        {
+          "reference": "1_0_1_CD5C_844_2_11A0000_0_0_0",
+          "name": "TNTSports10 HD",
+          "provider": "BSkyB",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:29500000:1:6:282:2:0:1:1:0:2"
+          ],
+          "service_type": 1,
+          "uid": [
+            52572,
+            2116,
+            2,
+            18481152
+          ],
+          "source_sha256": "4e5d691a612371248ca2da70f20a65291131f6bb83023295973048d0d3748902",
+          "pixel_digest": "46b15d9289db7fbc255ef428ba8a301f3cf6ee6e7282e67b6bee7da1f8713338",
+          "reuse_candidates": [
+            {
+              "reference": "1_0_1_D016_832_2_11A0000_0_0_0",
+              "name": "TNT Sports 10",
+              "selector": "282E"
+            }
+          ],
+          "existing_valid_slots": [
+            "50x30|channel-transparent",
+            "50x30|channel-white",
+            "50x30|channel-black",
+            "220x132|channel-transparent",
+            "220x132|channel-white",
+            "220x132|channel-black",
+            "400x240|channel-transparent",
+            "400x240|channel-white",
+            "400x240|channel-black"
+          ],
+          "action": "ALREADY_COVERED_9_NO_CHANGE"
+        },
+        {
+          "reference": "1_0_2_2904_90B_3B_11A0000_0_0_0",
+          "name": "FreesatHome",
+          "provider": "FREESAT",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10500,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_2905_90B_3B_11A0000_0_0_0",
+          "name": "FreesatCommonC",
+          "provider": "FREESAT",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10501,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_2906_90B_3B_11A0000_0_0_0",
+          "name": "FreesatSSU",
+          "provider": "FREESAT",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10502,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_2920_90B_3B_11A0000_0_0_0",
+          "name": "FreesatInformation",
+          "provider": "FREESAT",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10528,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_2954_90B_3B_11A0000_0_0_0",
+          "name": "BBC NDRA",
+          "provider": "ARQIVA",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10580,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_2959_90B_3B_11A0000_0_0_0",
+          "name": "D1 DAB",
+          "provider": "ARQIVA",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10585,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_295A_90B_3B_11A0000_0_0_0",
+          "name": "D1 Scotland",
+          "provider": "ARQIVA",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10586,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_295E_90B_3B_11A0000_0_0_0",
+          "name": "SDL nATL",
+          "provider": "ARQIVA",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10590,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_2963_90B_3B_11A0000_0_0_0",
+          "name": "talkSPORT Dist",
+          "provider": "ARQIVA",
+          "namespace": 18481152,
+          "position": "28.2e",
+          "transponder": [
+            "s 11426000:27500000:0:2:282:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            10595,
+            2315,
+            59,
+            18481152
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_34F_8_800_DCA0000_0_0_0",
+          "name": "Quran Kareem Jarash",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 11958000:27500000:0:4:-70:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            847,
+            8,
+            2048,
+            231342080
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_37_A_16E_1860000_0_0_0",
+          "name": "Radio ZU",
+          "provider": "Ericsson TV",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 2,
+          "uid": [
+            55,
+            10,
+            366,
+            25559040
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_38_A_16E_1860000_0_0_0",
+          "name": "Radio Romantic",
+          "provider": "",
+          "namespace": 25559040,
+          "position": "39.0e",
+          "transponder": [
+            "s 12656000:15155000:0:3:390:2:0:1:2:0:2"
+          ],
+          "service_type": 2,
+          "uid": [
+            56,
+            10,
+            366,
+            25559040
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_2_7A79_410_1_C00000_0_0_0",
+          "name": "NAIZ irratia",
+          "provider": "TSA",
+          "namespace": 12582912,
+          "position": "19.2e",
+          "transponder": [
+            "s 11068000:22000000:1:4:192:2:0"
+          ],
+          "service_type": 2,
+          "uid": [
+            31353,
+            1040,
+            1,
+            12582912
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        },
+        {
+          "reference": "1_0_A_1E46_D160_77E_DCA0000_0_0_0",
+          "name": "Watan Palestine Radio",
+          "provider": "",
+          "namespace": 231342080,
+          "position": "7.0w",
+          "transponder": [
+            "s 12399000:27500000:1:4:-70:2:0:1:2:0:2"
+          ],
+          "service_type": 10,
+          "uid": [
+            7750,
+            53600,
+            1918,
+            231342080
+          ],
+          "action": "RADIO_OUT_OF_SCOPE_NO_PNG_WORK"
+        }
+      ]
+    },
+    "expanded_source_counts": {
+      "source_union": 14856,
+      "current_tv_in_source_cohort": 10460,
+      "covered_9_valid_candidate": 10336,
+      "technical_open": 124,
+      "original_cohort_open": 104,
+      "new_delta_technical_open": 20,
+      "out_of_scope_including14new_radio": 2722,
+      "dated_exact_departures": 5,
+      "historical_without_exact_match": 1669
+    },
+    "delta_counts": {
+      "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK": 13,
+      "HOLD_NO_SAFE_COPY": 20,
+      "ALREADY_COVERED_9_NO_CHANGE": 1,
+      "RADIO_OUT_OF_SCOPE_NO_PNG_WORK": 14
+    },
+    "limitations": "Counts refer to technical nine-variant coverage. They do not certify every existing logo in the whole catalogue as graphically correct or close the wider MASTER V9 review. No radio PNG changed. New data-services are not counted as picon repairs.",
+    "current_settings_check": {
+      "source_archive_sha256": "c3d3d239f950ce426edfc5b61169deb37ced47ea5826a8434f19e9adb6193f23",
+      "lamedb_sha256": "5efb702c56799e9a22af7d0bbe8642ff4aac276552b2b791f3a2491998fdbf6e",
+      "current104open_exact_rows": 101,
+      "open_rows_absent_not_declared_departed": 3,
+      "changed_programme_names_in_exact_rows": 0
     }
   }
 }

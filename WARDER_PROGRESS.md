@@ -2,6 +2,17 @@
 
 **Aktualizované 8. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
 
+### Najnovší satelitný checkpoint –8.11.2026, PR50 bez produkčného merge
+
+- Posledná skutočne uložená prvá dávka: [`20aa8c68c8e9c4b55a6ce1a9a3d1b441d4d464c9`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/20aa8c68c8e9c4b55a6ce1a9a3d1b441d4d464c9). Jej556ciest a18nových binárnych častí boli vzdialene overené. Nová druhá dávka sa nachádza na tej istej vetve `work/vhannibal-mezzo-sd-20261106`; aktuálny presný HEAD over v [PR50](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/50).
+- Tento beh:16nových fyzických opráv/144PNG/63ZIPov,126295pôvodných členov bitovo zachovaných. PR50celkom22referencií/195PNG/99ZIPov. Stabilný main `12247acc20f699606f6d40f3783e4162b92674b9` so skinom1.0.72 aaktualizátorom zachovaný. Žiadne zmeny18chránenýchCANAL+balíkov a žiadne úpravy rádia.
+- Pôvodný front120:9opravených v kandidátovi,3odchody,4presne doložené dátové služby mimoTV,104otvorených. Nový8Nov rozdiel48:13TVopravených,1už pokrytáTV,14rádiových mimo práce,20ďalších blokovanýchTV. Spolu124technicky otvorených v známom zdrojovom súbore14856; nie je to schválenie všetkých grafík širšieho V9katalógu.
+- AktuálnyMotor lamedb potvrdzuje101zo104otvorených pôvodných presných referencií;3neprítomné sa bez ďalších dôkazov nevyhlasujú za odchody. Nové7Antena tuple majú nevyriešený TSID10vs0. AL-KAFEL aEL JUMHURIA majú konfliktné podklady; nepreberajú sa podľa názvu. RTP TVInternacional je oficiálneRTP Mundo a dostalo existujúcu správnu schválenú grafiku. MesačnýKuukauden naTSID72 treba znovu preveriť pred merge.
+- [Grafiky na samostatné schválenie](reports/vhannibal-followup-20261106/ARTWORK_APPROVAL.md):45jedinečných kontrolnýchPNG pre6referencií, všetky mimoZIPov. BloombergHT oficiálneSVG sú stále hashovo zhodné;36SIS/BetfredV9návrhov je obnovených bez zmeny pôvodných hashov. Žiadny REVIEW sa automaticky neschválil.
+- Testy:63aktuálnych archívov/144PNG cez skutočnú inštalačnú funkciu1.0.72 s platným používateľskýmPNG sentinelom PASS; manifest,SHA256,CRC,rozmery a zachovanie starých členov PASS;18CANAL+SHA256/CRC PASS;regresie publikácie PASS. Hardvér netestovaný. Dôkazy a presné nové referencie sú v existujúcom `reports/vhannibal-followup-20261106`.
+- Ďalší krok: schválenie konkrétnych návrhov v prehľade, potom ich zapracovanie na existujúcej vetve; nezávisle vyriešiť technické/identitné blokácie. Produkčné zlúčeniePR50,publikácia aIPK vyžadujú nový výslovný súhlas.
+
+
 
 ### 7. 11. 2026 – Channel Selection: dlhé EPG názvy a voliteľný Prime Time (pracovný kandidát, draft PR #51)
 

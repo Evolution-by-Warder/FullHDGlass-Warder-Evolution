@@ -20,7 +20,24 @@
       "namespace": 27525120,
       "service_type": 17
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_11_3CB5_C5A8_2A_1A40000_0_0_0",
+      "name": "DMDU_T",
+      "provider": "Digital Platform",
+      "namespace": 27525120,
+      "position": "42.0e",
+      "transponder": [
+        "s 11345000:29750000:1:4:420:2:0"
+      ],
+      "service_type": 17,
+      "uid": [
+        15541,
+        50600,
+        42,
+        27525120
+      ]
+    }
   },
   {
     "reference": "1_0_16_189D_C97_3_EB0000_0_0_0",
@@ -50,7 +67,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_189D_C97_3_EB0000_0_0_0",
+      "name": "Test 1",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6301,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_189E_C97_3_EB0000_0_0_0",
@@ -80,7 +114,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_189E_C97_3_EB0000_0_0_0",
+      "name": "Test 2",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6302,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_189F_C97_3_EB0000_0_0_0",
@@ -110,7 +161,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_189F_C97_3_EB0000_0_0_0",
+      "name": "Test 3",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6303,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_18A1_C97_3_EB0000_0_0_0",
@@ -140,7 +208,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_18A1_C97_3_EB0000_0_0_0",
+      "name": "Test 5",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6305,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_18A2_C97_3_EB0000_0_0_0",
@@ -170,7 +255,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_18A2_C97_3_EB0000_0_0_0",
+      "name": "Test 6",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6306,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_18A3_C97_3_EB0000_0_0_0",
@@ -200,7 +302,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_18A3_C97_3_EB0000_0_0_0",
+      "name": "Test 7",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6307,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_18AB_C97_3_EB0000_0_0_0",
@@ -230,7 +349,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_18AB_C97_3_EB0000_0_0_0",
+      "name": "Test 15",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6315,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_18AC_C97_3_EB0000_0_0_0",
@@ -260,7 +396,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_18AC_C97_3_EB0000_0_0_0",
+      "name": "Test 16",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        6316,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_1F50_1_10_640000_0_0_0",
@@ -289,7 +442,24 @@
       "namespace": 6553600,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1F50_1_10_640000_0_0_0",
+      "name": "12",
+      "provider": "BFBS",
+      "namespace": 6553600,
+      "position": "10.0e",
+      "transponder": [
+        "s 11222000:24760000:1:4:100:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8016,
+        1,
+        16,
+        6553600
+      ]
+    }
   },
   {
     "reference": "1_0_16_1F53_1_10_640000_0_0_0",
@@ -318,7 +488,24 @@
       "namespace": 6553600,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1F53_1_10_640000_0_0_0",
+      "name": "16",
+      "provider": "BFBS",
+      "namespace": 6553600,
+      "position": "10.0e",
+      "transponder": [
+        "s 11222000:24760000:1:4:100:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8019,
+        1,
+        16,
+        6553600
+      ]
+    }
   },
   {
     "reference": "1_0_16_1F54_1_10_640000_0_0_0",
@@ -347,7 +534,24 @@
       "namespace": 6553600,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1F54_1_10_640000_0_0_0",
+      "name": "14",
+      "provider": "BFBS",
+      "namespace": 6553600,
+      "position": "10.0e",
+      "transponder": [
+        "s 11222000:24760000:1:4:100:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8020,
+        1,
+        16,
+        6553600
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FAF_3_11_2EE0000_0_0_0",
@@ -376,7 +580,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+      "name": "08",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8111,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB0_3_11_2EE0000_0_0_0",
@@ -405,7 +626,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+      "name": "09",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8112,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB1_3_11_2EE0000_0_0_0",
@@ -434,7 +672,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+      "name": "10",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8113,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB2_3_11_2EE0000_0_0_0",
@@ -463,7 +718,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+      "name": "13",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8114,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB3_3_11_2EE0000_0_0_0",
@@ -492,7 +764,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+      "name": "11",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8115,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB4_3_11_2EE0000_0_0_0",
@@ -521,7 +810,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+      "name": "12",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8116,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB7_3_11_2EE0000_0_0_0",
@@ -550,7 +856,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+      "name": "16",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8119,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1FB8_3_11_2EE0000_0_0_0",
@@ -579,7 +902,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+      "name": "14",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8120,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_1_C_2C_300000_0_0_0",
@@ -602,7 +942,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        1,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_1_C_2C_EB0000_0_0_0",
@@ -626,7 +983,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_1_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        1,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_2218_3_11_2EE0000_0_0_0",
@@ -649,7 +1023,24 @@
       "namespace": 49152000,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_2218_3_11_2EE0000_0_0_0",
+      "name": "Quadrille Data",
+      "provider": "BFBS",
+      "namespace": 49152000,
+      "position": "75.0e",
+      "transponder": [
+        "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8728,
+        3,
+        17,
+        49152000
+      ]
+    }
   },
   {
     "reference": "1_0_16_2C0_20B_73_2080000_0_0_0",
@@ -721,7 +1112,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_2_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        2,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_2_C_2C_EB0000_0_0_0",
@@ -745,7 +1153,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_2_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        2,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_384_20D_73_2080000_0_0_0",
@@ -774,7 +1199,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_384_20D_73_2080000_0_0_0",
+      "name": "Service-900",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        900,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_38F_20D_73_2080000_0_0_0",
@@ -803,7 +1245,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_38F_20D_73_2080000_0_0_0",
+      "name": "Service-911",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        911,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_390_20D_73_2080000_0_0_0",
@@ -832,7 +1291,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_390_20D_73_2080000_0_0_0",
+      "name": "Service-912",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        912,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_391_20D_73_2080000_0_0_0",
@@ -861,7 +1337,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_391_20D_73_2080000_0_0_0",
+      "name": "Service-913",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        913,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_392_20D_73_2080000_0_0_0",
@@ -890,7 +1383,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_392_20D_73_2080000_0_0_0",
+      "name": "Service-914",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        914,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_394_20D_73_2080000_0_0_0",
@@ -919,7 +1429,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_394_20D_73_2080000_0_0_0",
+      "name": "Service-916",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        916,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_395_20D_73_2080000_0_0_0",
@@ -948,7 +1475,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_395_20D_73_2080000_0_0_0",
+      "name": "Service-917",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        917,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_396_20D_73_2080000_0_0_0",
@@ -977,7 +1521,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_396_20D_73_2080000_0_0_0",
+      "name": "Service-918",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        918,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_398_20D_73_2080000_0_0_0",
@@ -1006,7 +1567,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_398_20D_73_2080000_0_0_0",
+      "name": "Service-920",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        920,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_399_20D_73_2080000_0_0_0",
@@ -1035,7 +1613,24 @@
       "namespace": 34078720,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_399_20D_73_2080000_0_0_0",
+      "name": "Service-921",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        921,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_16_3_C_2C_EB0000_0_0_0",
@@ -1059,7 +1654,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_3_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        3,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_42BC_48_46_E080000_0_0_0",
@@ -1137,7 +1749,10 @@
       "namespace": 235405312,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+    }
   },
   {
     "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
@@ -1166,7 +1781,24 @@
       "namespace": 5898240,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
+      "name": "RADIO CLASSICA TV",
+      "provider": "Persidera",
+      "namespace": 5898240,
+      "position": "9.0e",
+      "transponder": [
+        "s 12341000:31400000:1:2:90:2:0:1:4:0:2:33:0:1"
+      ],
+      "service_type": 22,
+      "uid": [
+        67,
+        516,
+        29,
+        5898240
+      ]
+    }
   },
   {
     "reference": "1_0_16_4_C_2C_300000_0_0_0",
@@ -1189,7 +1821,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_4_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        4,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_4_C_2C_EB0000_0_0_0",
@@ -1213,7 +1862,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_4_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        4,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_5_C_2C_300000_0_0_0",
@@ -1236,7 +1902,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_5_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        5,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_5_C_2C_EB0000_0_0_0",
@@ -1260,7 +1943,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_5_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        5,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_6_C_2C_300000_0_0_0",
@@ -1283,7 +1983,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_6_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        6,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_6_C_2C_EB0000_0_0_0",
@@ -1307,7 +2024,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_6_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        6,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_7_C_2C_300000_0_0_0",
@@ -1330,7 +2064,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_7_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        7,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_7_C_2C_EB0000_0_0_0",
@@ -1354,7 +2105,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_7_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        7,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
@@ -1383,7 +2151,24 @@
       "namespace": 213319680,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
+      "name": "Service 11-13",
+      "provider": "SMTD DTH",
+      "namespace": 213319680,
+      "position": "34.5w",
+      "transponder": [
+        "s 11525000:12333000:1:3:-345:2:0:1:2:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        8,
+        1,
+        8080,
+        213319680
+      ]
+    }
   },
   {
     "reference": "1_0_16_8_C_2C_300000_0_0_0",
@@ -1406,7 +2191,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_8_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        8,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_8_C_2C_EB0000_0_0_0",
@@ -1430,7 +2232,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_8_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        8,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_9_C_2C_300000_0_0_0",
@@ -1453,7 +2272,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_9_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        9,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_9_C_2C_EB0000_0_0_0",
@@ -1477,7 +2313,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_9_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        9,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_A_C_2C_300000_0_0_0",
@@ -1500,7 +2353,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_A_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        10,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_A_C_2C_EB0000_0_0_0",
@@ -1524,7 +2394,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_A_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        10,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_B72_1D_1800_2AD0000_0_0_0",
@@ -1553,7 +2440,24 @@
       "namespace": 44892160,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_B72_1D_1800_2AD0000_0_0_0",
+      "name": "F2930",
+      "provider": "MCK",
+      "namespace": 44892160,
+      "position": "68.5e",
+      "transponder": [
+        "s 12722000:30000000:0:3:685:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        2930,
+        29,
+        6144,
+        44892160
+      ]
+    }
   },
   {
     "reference": "1_0_16_B77_1D_1800_2AD0000_0_0_0",
@@ -1582,7 +2486,24 @@
       "namespace": 44892160,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_B77_1D_1800_2AD0000_0_0_0",
+      "name": "F2935",
+      "provider": "MCK",
+      "namespace": 44892160,
+      "position": "68.5e",
+      "transponder": [
+        "s 12722000:30000000:0:3:685:2:0:1:1:0:2"
+      ],
+      "service_type": 22,
+      "uid": [
+        2935,
+        29,
+        6144,
+        44892160
+      ]
+    }
   },
   {
     "reference": "1_0_16_B_C_2C_300000_0_0_0",
@@ -1605,7 +2526,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_B_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        11,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_B_C_2C_EB0000_0_0_0",
@@ -1629,7 +2567,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_B_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        11,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_C_C_2C_300000_0_0_0",
@@ -1652,7 +2607,24 @@
       "namespace": 3145728,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_C_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        12,
+        12,
+        44,
+        3145728
+      ]
+    }
   },
   {
     "reference": "1_0_16_C_C_2C_EB0000_0_0_0",
@@ -1676,7 +2648,24 @@
       "namespace": 15400960,
       "service_type": 22
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_16_C_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "provider": "BRT",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+      ],
+      "service_type": 22,
+      "uid": [
+        12,
+        12,
+        44,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_16_DA79_22F_70_2250000_0_0_0",
@@ -1753,7 +2742,24 @@
       "namespace": 231342080,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_11A3_2D_800_DCA0000_0_0_0",
+      "name": "Spare 4515",
+      "provider": "",
+      "namespace": 231342080,
+      "position": "7.0w",
+      "transponder": [
+        "s 12073000:30000000:0:3:-70:2:0:1:2:2:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        4515,
+        45,
+        2048,
+        231342080
+      ]
+    }
   },
   {
     "reference": "1_0_19_18A0_C97_3_EB0000_0_0_0",
@@ -1783,7 +2789,24 @@
       "namespace": 15400960,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_18A0_C97_3_EB0000_0_0_0",
+      "name": "Test 4",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        6304,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_19_18A9_C97_3_EB0000_0_0_0",
@@ -1813,7 +2836,24 @@
       "namespace": 15400960,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_18A9_C97_3_EB0000_0_0_0",
+      "name": "Test 13",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        6313,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_19_18AA_C97_3_EB0000_0_0_0",
@@ -1843,7 +2883,24 @@
       "namespace": 15400960,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_18AA_C97_3_EB0000_0_0_0",
+      "name": "Test 14",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        6314,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
@@ -1872,7 +2929,24 @@
       "namespace": 231342080,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+      "name": "TEST_CB",
+      "provider": "DU",
+      "namespace": 231342080,
+      "position": "7.0w",
+      "transponder": [
+        "s 11277000:27500000:1:4:-70:2:0"
+      ],
+      "service_type": 25,
+      "uid": [
+        25,
+        40040,
+        1918,
+        231342080
+      ]
+    }
   },
   {
     "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
@@ -1901,7 +2975,24 @@
       "namespace": 231342080,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+      "name": "Test 1",
+      "provider": "",
+      "namespace": 231342080,
+      "position": "7.0w",
+      "transponder": [
+        "s 11258000:27500000:0:4:-70:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        459,
+        16,
+        110,
+        231342080
+      ]
+    }
   },
   {
     "reference": "1_0_19_1_4321_EB_820000_0_0_0",
@@ -1924,7 +3015,24 @@
       "namespace": 8519680,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_1_4321_EB_820000_0_0_0",
+      "name": "EBU 1 ENC",
+      "provider": "CM5000",
+      "namespace": 8519680,
+      "position": "13.0e",
+      "transponder": [
+        "s 11039000:4937000:0:3:130:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        1,
+        17185,
+        235,
+        8519680
+      ]
+    }
   },
   {
     "reference": "1_0_19_23A4_44A_1_C00000_0_0_0",
@@ -1947,7 +3055,24 @@
       "namespace": 12582912,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_23A4_44A_1_C00000_0_0_0",
+      "name": "ASSOCIATION MATERIEL",
+      "provider": "CSAT",
+      "namespace": 12582912,
+      "position": "19.2e",
+      "transponder": [
+        "s 12363000:27500000:1:3:192:2:0"
+      ],
+      "service_type": 25,
+      "uid": [
+        9124,
+        1098,
+        1,
+        12582912
+      ]
+    }
   },
   {
     "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
@@ -1966,7 +3091,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "PENDING_OWNER_ARTWORK_APPROVAL_GRAPHIC_CHECKED",
     "identity_review_20261107": {
       "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
       "name": "BloombergHT HD",
@@ -1993,7 +3118,7 @@
     },
     "remaining_current_technical": true,
     "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
-    "artwork_review": "bloomberght-review/review.json",
+    "artwork_review": "bloomberght-review/check-20261108.json",
     "technical_uid": {
       "sid": 10702,
       "tsid": 41704,
@@ -2001,7 +3126,24 @@
       "namespace": 27525120,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
+      "name": "BLOOMBERGHT HD",
+      "provider": "BLOOMBERGHT HD",
+      "namespace": 27525120,
+      "position": "42.0e",
+      "transponder": [
+        "s 12303000:27500000:1:3:420:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        10702,
+        41704,
+        1070,
+        27525120
+      ]
+    }
   },
   {
     "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
@@ -2020,7 +3162,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "PENDING_OWNER_ARTWORK_APPROVAL_GRAPHIC_CHECKED",
     "identity_review_20261107": {
       "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
       "name": "BloombergHT HD",
@@ -2046,7 +3188,7 @@
     },
     "remaining_current_technical": true,
     "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
-    "artwork_review": "bloomberght-review/review.json",
+    "artwork_review": "bloomberght-review/check-20261108.json",
     "technical_uid": {
       "sid": 11002,
       "tsid": 43307,
@@ -2054,7 +3196,24 @@
       "namespace": 27525120,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
+      "name": "BLOOMBERGHT HD",
+      "provider": "BLOOMBERGHT HD",
+      "namespace": 27525120,
+      "position": "42.0e",
+      "transponder": [
+        "s 11845000:10830000:1:2:420:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        11002,
+        43307,
+        1070,
+        27525120
+      ]
+    }
   },
   {
     "reference": "1_0_19_32_14_6E_DCA0000_0_0_0",
@@ -2131,7 +3290,24 @@
       "namespace": 25559040,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_6_1_20C4_1860000_0_0_0",
+      "name": "HS1",
+      "provider": "HellasSat",
+      "namespace": 25559040,
+      "position": "39.0e",
+      "transponder": [
+        "s 11761000:16515000:0:4:390:2:0:1:2:0:2:0:242133:1:0:0"
+      ],
+      "service_type": 25,
+      "uid": [
+        6,
+        1,
+        8388,
+        25559040
+      ]
+    }
   },
   {
     "reference": "1_0_19_7BD_9_42_1A40000_0_0_0",
@@ -2227,7 +3403,7 @@
       "reason": "Exact tuple confirmed. Current named alternatives areFunBoxUHD andFastandFunBoxHD, distinct channels; cannot assign theirlogos merely byname."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact SID7/TSID8135/ONID702 confirmed. Upstream picon is explicitly FUNBOX UHD, while another same-transponder service is Fast&FunBox: reject both wrong editions; no approved plain HD donor found.",
+    "resolution_reason": "The transport label is HD but original artwork says FUNBOX UHD. Same-edition identity has not been proved; do not copy either UHD or Fast&FunBox without that evidence.",
     "technical_uid": {
       "sid": 7,
       "tsid": 8135,
@@ -2235,7 +3411,24 @@
       "namespace": 17039360,
       "service_type": 25
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_19_7_1FC7_2BE_1040000_0_0_0",
+      "name": "FUNBOX HD",
+      "provider": "Hellas SAT",
+      "namespace": 17039360,
+      "position": "26.0e",
+      "transponder": [
+        "s 12380000:27500000:0:3:260:2:0:1:2:0:2"
+      ],
+      "service_type": 25,
+      "uid": [
+        7,
+        8135,
+        702,
+        17039360
+      ]
+    }
   },
   {
     "reference": "1_0_19_D7A3_228_70_2250000_0_0_0",
@@ -2311,7 +3504,24 @@
       "namespace": 4631439,
       "service_type": 31
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1F_1_0_1_46AB8F_0_0_0",
+      "name": "ITA 99 A",
+      "provider": "",
+      "namespace": 4631439,
+      "position": "7.0e",
+      "transponder": [
+        "s 11151000:7200000:1:3:70:1:0:1:2:2:1"
+      ],
+      "service_type": 31,
+      "uid": [
+        1,
+        0,
+        1,
+        4631439
+      ]
+    }
   },
   {
     "reference": "1_0_1F_32B_20C_73_2080000_0_0_0",
@@ -2340,7 +3550,24 @@
       "namespace": 34078720,
       "service_type": 31
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1F_32B_20C_73_2080000_0_0_0",
+      "name": "Service-811",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10845000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 31,
+      "uid": [
+        811,
+        524,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_1_11A4_2D_800_DCA0000_0_0_0",
@@ -2369,7 +3596,24 @@
       "namespace": 231342080,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_11A4_2D_800_DCA0000_0_0_0",
+      "name": "Spare 4516",
+      "provider": "",
+      "namespace": 231342080,
+      "position": "7.0w",
+      "transponder": [
+        "s 12073000:30000000:0:3:-70:2:0:1:2:2:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        4516,
+        45,
+        2048,
+        231342080
+      ]
+    }
   },
   {
     "reference": "1_0_1_13_65_1_300000_0_0_0",
@@ -2388,7 +3632,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
     "identity_review_20261107": {
       "reference": "1_0_1_13_65_1_300000_0_0_0",
       "name": "SISSP",
@@ -2430,7 +3674,25 @@
       "namespace": 3145728,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_13_65_1_300000_0_0_0",
+      "name": "SISSP",
+      "provider": "SIS",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12418000:27500000:0:3:48:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        19,
+        101,
+        1,
+        3145728
+      ]
+    },
+    "artwork_review": "sis-betfred-review/review.json"
   },
   {
     "reference": "1_0_1_14_65_1_300000_0_0_0",
@@ -2449,7 +3711,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
     "identity_review_20261107": {
       "reference": "1_0_1_14_65_1_300000_0_0_0",
       "name": "BF1",
@@ -2491,7 +3753,25 @@
       "namespace": 3145728,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_14_65_1_300000_0_0_0",
+      "name": "BF1",
+      "provider": "SIS",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12418000:27500000:0:3:48:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        20,
+        101,
+        1,
+        3145728
+      ]
+    },
+    "artwork_review": "sis-betfred-review/review.json"
   },
   {
     "reference": "1_0_1_15_65_1_300000_0_0_0",
@@ -2510,7 +3790,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
     "identity_review_20261107": {
       "reference": "1_0_1_15_65_1_300000_0_0_0",
       "name": "BF2",
@@ -2552,7 +3832,25 @@
       "namespace": 3145728,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_15_65_1_300000_0_0_0",
+      "name": "BF2",
+      "provider": "SIS",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12418000:27500000:0:3:48:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        21,
+        101,
+        1,
+        3145728
+      ]
+    },
+    "artwork_review": "sis-betfred-review/review.json"
   },
   {
     "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
@@ -2581,7 +3879,24 @@
       "namespace": 231342080,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
+      "name": "Spare 5677",
+      "provider": "",
+      "namespace": 231342080,
+      "position": "7.0w",
+      "transponder": [
+        "s 11727000:30000000:0:3:-70:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        5677,
+        566,
+        2048,
+        231342080
+      ]
+    }
   },
   {
     "reference": "1_0_1_162E_236_800_DCA0000_0_0_0",
@@ -2610,7 +3925,24 @@
       "namespace": 231342080,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_162E_236_800_DCA0000_0_0_0",
+      "name": "Spare 5678",
+      "provider": "",
+      "namespace": 231342080,
+      "position": "7.0w",
+      "transponder": [
+        "s 11727000:30000000:0:3:-70:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        5678,
+        566,
+        2048,
+        231342080
+      ]
+    }
   },
   {
     "reference": "1_0_1_167_C9_800_DCA0000_0_0_0",
@@ -2673,7 +4005,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
     "identity_review_20261107": {
       "reference": "1_0_1_16_65_1_300000_0_0_0",
       "name": "BF3",
@@ -2715,7 +4047,25 @@
       "namespace": 3145728,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_16_65_1_300000_0_0_0",
+      "name": "BF3",
+      "provider": "SIS",
+      "namespace": 3145728,
+      "position": "4.8e",
+      "transponder": [
+        "s 12418000:27500000:0:3:48:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        22,
+        101,
+        1,
+        3145728
+      ]
+    },
+    "artwork_review": "sis-betfred-review/review.json"
   },
   {
     "reference": "1_0_1_17_65_1_300000_0_0_0",
@@ -2806,7 +4156,24 @@
       "namespace": 15400960,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_18A4_C97_3_EB0000_0_0_0",
+      "name": "Test 8",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        6308,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_1_18A5_C97_3_EB0000_0_0_0",
@@ -2836,7 +4203,24 @@
       "namespace": 15400960,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_18A5_C97_3_EB0000_0_0_0",
+      "name": "Test 9",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        6309,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_1_18A6_C97_3_EB0000_0_0_0",
@@ -2866,7 +4250,24 @@
       "namespace": 15400960,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_18A6_C97_3_EB0000_0_0_0",
+      "name": "Test 10",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        6310,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_1_18A7_C97_3_EB0000_0_0_0",
@@ -2896,7 +4297,24 @@
       "namespace": 15400960,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_18A7_C97_3_EB0000_0_0_0",
+      "name": "Test 11",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        6311,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_1_18A8_C97_3_EB0000_0_0_0",
@@ -2926,7 +4344,24 @@
       "namespace": 15400960,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_18A8_C97_3_EB0000_0_0_0",
+      "name": "Test 12",
+      "provider": "",
+      "namespace": 15400960,
+      "position": "23.5e",
+      "transponder": [
+        "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        6312,
+        3223,
+        3,
+        15400960
+      ]
+    }
   },
   {
     "reference": "1_0_1_18_65_1_300000_0_0_0",
@@ -3008,7 +4443,24 @@
       "namespace": 12582912,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1B03_3FE_1_C00000_0_0_0",
+      "name": "TV5 MONDE EUROPE HD",
+      "provider": "Globecast",
+      "namespace": 12582912,
+      "position": "19.2e",
+      "transponder": [
+        "s 11538000:22000000:1:4:192:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        6915,
+        1022,
+        1,
+        12582912
+      ]
+    }
   },
   {
     "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
@@ -3037,7 +4489,24 @@
       "namespace": 230686720,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+      "name": "Test HD",
+      "provider": "",
+      "namespace": 230686720,
+      "position": "8.0w",
+      "transponder": [
+        "s 12563000:27500000:0:4:-80:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        7213,
+        72,
+        1,
+        230686720
+      ]
+    }
   },
   {
     "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
@@ -3066,7 +4535,24 @@
       "namespace": 230686720,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
+      "name": "Test",
+      "provider": "",
+      "namespace": 230686720,
+      "position": "8.0w",
+      "transponder": [
+        "s 11179000:27500000:1:4:-80:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        7411,
+        74,
+        2048,
+        230686720
+      ]
+    }
   },
   {
     "reference": "1_0_1_1_1000_0_46ADAF_0_0_0",
@@ -3089,7 +4575,24 @@
       "namespace": 4631983,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1_1000_0_46ADAF_0_0_0",
+      "name": "11695V SID 0x01",
+      "provider": "DVB-S2 8PSK 11695V 7.0Â°E",
+      "namespace": 4631983,
+      "position": "7.0e",
+      "transponder": [
+        "s 11695000:3333000:1:4:70:1:0:1:2:0:1"
+      ],
+      "service_type": 1,
+      "uid": [
+        1,
+        4096,
+        0,
+        4631983
+      ]
+    }
   },
   {
     "reference": "1_0_1_1_1_1_1C2AD49_0_0_0",
@@ -3112,7 +4615,24 @@
       "namespace": 29535561,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1_1_1_1C2AD49_0_0_0",
+      "name": "11593V SID 0x01",
+      "provider": "DVB-S2 QPSK 11593V 45.0Â°E",
+      "namespace": 29535561,
+      "position": "45.0e",
+      "transponder": [
+        "s 11593000:23333000:1:1:450:2:0:1:1:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        1,
+        1,
+        1,
+        29535561
+      ]
+    }
   },
   {
     "reference": "1_0_1_1_1_1_1C2B0E8_0_0_0",
@@ -3135,7 +4655,24 @@
       "namespace": 29536488,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1_1_1_1C2B0E8_0_0_0",
+      "name": "12520V SID 0x01",
+      "provider": "DVB-S QPSK 12520V 45.0Â°E",
+      "namespace": 29536488,
+      "position": "45.0e",
+      "transponder": [
+        "s 12520000:30000000:1:1:450:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        1,
+        1,
+        1,
+        29536488
+      ]
+    }
   },
   {
     "reference": "1_0_1_1_1_1_294AB51_0_0_0",
@@ -3158,7 +4695,24 @@
       "namespace": 43297617,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+      "name": "11089V SID 0x01",
+      "provider": "DVB-S QPSK 11089V 66.0Â°E",
+      "namespace": 43297617,
+      "position": "66.0e",
+      "transponder": [
+        "s 11089000:36000000:1:1:660:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        1,
+        1,
+        1,
+        43297617
+      ]
+    }
   },
   {
     "reference": "1_0_1_1_1_1_D72B76_0_0_0",
@@ -3247,7 +4801,10 @@
       "namespace": 1977753,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+    }
   },
   {
     "reference": "1_0_1_206C_146C_A7_1860000_0_0_0",
@@ -3352,7 +4909,10 @@
       "namespace": 17039360,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+    }
   },
   {
     "reference": "1_0_1_320_3E9_2_820000_0_0_0",
@@ -3477,7 +5037,24 @@
       "namespace": 34078720,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_38A_20D_73_2080000_0_0_0",
+      "name": "Service-906",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        906,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_1_38B_20D_73_2080000_0_0_0",
@@ -3506,7 +5083,24 @@
       "namespace": 34078720,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_38B_20D_73_2080000_0_0_0",
+      "name": "Service-907",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        907,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_1_38C_20D_73_2080000_0_0_0",
@@ -3535,7 +5129,24 @@
       "namespace": 34078720,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_38C_20D_73_2080000_0_0_0",
+      "name": "Service-908",
+      "provider": "AREF",
+      "namespace": 34078720,
+      "position": "52.0e",
+      "transponder": [
+        "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        908,
+        525,
+        115,
+        34078720
+      ]
+    }
   },
   {
     "reference": "1_0_1_412_519_2_E080000_0_0_0",
@@ -3556,7 +5167,24 @@
       "namespace": 235405312,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_412_519_2_E080000_0_0_0",
+      "name": "TV5MONDE EUROPE HD",
+      "provider": "",
+      "namespace": 235405312,
+      "position": "0.8w",
+      "transponder": [
+        "s 12643000:28800000:1:3:-8:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        1042,
+        1305,
+        2,
+        235405312
+      ]
+    }
   },
   {
     "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
@@ -3585,7 +5213,24 @@
       "namespace": 226099200,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
+      "name": "TEMP 1",
+      "provider": "",
+      "namespace": 226099200,
+      "position": "15.0w",
+      "transponder": [
+        "s 12667000:30000000:0:3:-150:2:0:1:2:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        105,
+        10,
+        1,
+        226099200
+      ]
+    }
   },
   {
     "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
@@ -3614,7 +5259,24 @@
       "namespace": 44892160,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
+      "name": "F2835",
+      "provider": "MCK",
+      "namespace": 44892160,
+      "position": "68.5e",
+      "transponder": [
+        "s 12602000:30000000:1:3:685:2:0:1:1:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        2835,
+        28,
+        6144,
+        44892160
+      ]
+    }
   },
   {
     "reference": "1_0_1_B18_1C_1800_2AD0000_0_0_0",
@@ -3643,7 +5305,24 @@
       "namespace": 44892160,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_B18_1C_1800_2AD0000_0_0_0",
+      "name": "F2840",
+      "provider": "MCK",
+      "namespace": 44892160,
+      "position": "68.5e",
+      "transponder": [
+        "s 12602000:30000000:1:3:685:2:0:1:1:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        2840,
+        28,
+        6144,
+        44892160
+      ]
+    }
   },
   {
     "reference": "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
@@ -3672,7 +5351,24 @@
       "namespace": 44892160,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
+      "name": "F2845",
+      "provider": "MCK",
+      "namespace": 44892160,
+      "position": "68.5e",
+      "transponder": [
+        "s 12602000:30000000:1:3:685:2:0:1:1:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        2845,
+        28,
+        6144,
+        44892160
+      ]
+    }
   },
   {
     "reference": "1_0_1_B7C_1D_1800_2AD0000_0_0_0",
@@ -3701,7 +5397,24 @@
       "namespace": 44892160,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_B7C_1D_1800_2AD0000_0_0_0",
+      "name": "F2940",
+      "provider": "MCK",
+      "namespace": 44892160,
+      "position": "68.5e",
+      "transponder": [
+        "s 12722000:30000000:0:3:685:2:0:1:1:0:2"
+      ],
+      "service_type": 1,
+      "uid": [
+        2940,
+        29,
+        6144,
+        44892160
+      ]
+    }
   },
   {
     "reference": "1_0_1_C672_A477_42E_1A40000_0_0_0",
@@ -3794,6 +5507,23 @@
       "namespace": 235405312,
       "service_type": 1
     },
-    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "latest_settings_evidence_20261108": {
+      "reference": "1_0_1_FFFE_14_46_E080000_0_0_0",
+      "name": "12418V SID 0xfffe",
+      "provider": "DVB-S QPSK 12418V 359.2Â°E",
+      "namespace": 235405312,
+      "position": "0.8w",
+      "transponder": [
+        "s 12418000:28000000:1:5:-8:2:0"
+      ],
+      "service_type": 1,
+      "uid": [
+        65534,
+        20,
+        70,
+        235405312
+      ]
+    }
   }
 ]

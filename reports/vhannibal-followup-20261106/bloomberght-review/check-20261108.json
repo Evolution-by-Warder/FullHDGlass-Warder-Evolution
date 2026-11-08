@@ -1,0 +1,91 @@
+{
+  "status": "GRAPHIC_REVIEW_READY_OWNER_APPROVAL_PENDING",
+  "checked_date": "2026-11-08",
+  "files_unchanged_from_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+  "official_live_svg_hashes_still_match": true,
+  "checks": [
+    {
+      "file": "50x30-transparent.png",
+      "sha256": "d93d8eabe68fa7941f0ca7c8ecb30bf03ed4348de85c4e8f630c88e9e2f18054",
+      "dimensions": [
+        50,
+        30
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "220x132-transparent.png",
+      "sha256": "7646d0efd5d3652f0f12d85b40334c70c2bc8ac13733ead58cc276740cd6623e",
+      "dimensions": [
+        220,
+        132
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "400x240-transparent.png",
+      "sha256": "cfa1f4b395dcc1df6b97951be02c824702060b985a76e1f956cee65ddb893051",
+      "dimensions": [
+        400,
+        240
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "50x30-white.png",
+      "sha256": "07e9bf1621f16ff1306b886bc5f4db3987da29e85e8eadf94a2af52ec6386794",
+      "dimensions": [
+        50,
+        30
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "220x132-white.png",
+      "sha256": "0031a42a6ae22a530d3bd2bd630760e174ff15b917252c134e4d2591d9e34cca",
+      "dimensions": [
+        220,
+        132
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "400x240-white.png",
+      "sha256": "eda7d65e84871fd0453b666172f406bfe518880e0cbb3c083f3bea7736a18ad1",
+      "dimensions": [
+        400,
+        240
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "50x30-black.png",
+      "sha256": "47adaccc7e646fe9e71512e5edf1cc59b29440fa1ef8caa162e5a1c21fe4ad04",
+      "dimensions": [
+        50,
+        30
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "220x132-black.png",
+      "sha256": "94573514ad3a4aa0cb5917799ceb48d3d31e4cfde3f16ad1c564ccea48186992",
+      "dimensions": [
+        220,
+        132
+      ],
+      "nonempty_alpha": true
+    },
+    {
+      "file": "400x240-black.png",
+      "sha256": "a4999f1c1fbd56f16994cd6de7f22ac7ebdd131859874360c3571ff6bbeea0bc",
+      "dimensions": [
+        400,
+        240
+      ],
+      "nonempty_alpha": true
+    }
+  ],
+  "visual_review": "Logo is BloombergHT circular HT brand, not global Bloomberg. Red element, letter geometry and immutable MASTER frames checked at all three sizes;50x30 is naturally small. The24 chromatic edge guard pixels are disclosed in review.json.",
+  "production_zip_changes": 0
+}
