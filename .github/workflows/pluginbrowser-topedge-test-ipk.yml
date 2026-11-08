@@ -48,7 +48,7 @@ jobs:
           import tempfile
           import tarfile
           root=Path.cwd()
-          version='1.0.74-test1'
+          version='1.0.74-test2'
           name='enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk'
           out=root/'receiver-candidate'
           out.mkdir(exist_ok=True)
@@ -85,7 +85,7 @@ jobs:
           sha256sum -c *.sha256
       - uses: actions/upload-artifact@v4
         with:
-          name: Warder-PluginBrowser-1.0.74-test1
+          name: Warder-PluginBrowser-1.0.74-test2
           path: receiver-candidate/*
           retention-days: 14
           if-no-files-found: error
