@@ -4587,8 +4587,8 @@ class ExtraInfo17(Screen):
 		# eLabel measures actual glyph widths; do not guess a character limit.
 		try:
 			label = self["ecmLineInfo"].instance
-			self._warderCaidScrollNeeded = (label is not None and
-				label.calculateSize().width() > label.size().width())
+			self._warderCaidScrollNeeded = (label.calculateSize().width() > label.size().width()
+				if label is not None else len(text) > 80)
 		except (AttributeError, TypeError, RuntimeError):
 			self._warderCaidScrollNeeded = len(text) > 80
 		if self._warderCaidScrollNeeded:
