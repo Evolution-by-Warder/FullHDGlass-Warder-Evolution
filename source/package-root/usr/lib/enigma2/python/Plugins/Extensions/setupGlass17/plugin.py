@@ -557,6 +557,9 @@ def chckVersion(ff="ViX"):
 	except: pass
 	return what
 isATV = chckVersion("openATV")
+# OpenPLi uses its own service-list painter and eCanvas composition.
+# Never apply OpenATV-only fullscreen-over-list EPG canvas on OpenPLi.
+isOpenPLi = chckVersion("openpli") or chckVersion("OpenPLi")
 HDDTMP = "/media/hdd/hdg_tmp"
 SEVENZIP = os.path.join(PLUGINPATH, "bin", "7z_g")
 NO_TUN = _("No tuner data")
@@ -2879,6 +2882,9 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		list_tag = re.search(r'<widget\s+name="list"[^>]*>', channel_xml)
 		epg_tag = re.search(r'<widget\b[^>]*render="g17ShowExtraEpg"[^>]*>', channel_xml)
 		desc_tag = re.search(r'<widget\b[^>]*render="g17MetrixHDRunningText"[^>]*>', channel_xml)
+		# This additional canvas is verified on OpenATV, not OpenPLi 9.2.
+		# Test12 falls back to the native PLI list instead of covering it.
+		openpli_runtime = bool(globals().get('isOpenPLi', False))
 		default_geometry = bool(
 			list_tag and 'position="60,96"' in list_tag.group(0)
 			and 'size="1065,842"' in list_tag.group(0)
@@ -2932,6 +2938,10 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
+				if openpli_runtime:
+					# Remove a persisted TEST11 canvas from the generated runtime
+					# XML. The PLI native list must remain visible on every boot.
+					continue
 				has_clipped_events = True
 			# Strip the TEST74 static line: it remains visible after
 			# turning Prime Time off without rebuilding ChannelSelection.
@@ -2946,7 +2956,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
 				if not has_prime_time:
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
-				if not has_clipped_events:
+				if not has_clipped_events and not openpli_runtime:
 					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
 				in_default_channel_screen = None
 			if in_any_channel_screen and '</screen>' in line:

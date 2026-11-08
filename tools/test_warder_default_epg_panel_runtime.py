@@ -87,6 +87,68 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             self.assertEqual(screen2.count('render="WarderChannelEpgClip"'), 1)
             self.assertEqual(BASE.read_text(encoding="utf-8"), original)
 
+    def test_openpli_92_restores_native_list_and_removes_existing_canvas(self):
+        # OpenPLi 9.2 has its own eListboxServiceContent implementation and
+        # the OpenATV eCanvas above the list blacked out the entire list.
+        # Simulate upgrading from TEST11 and running the skin customizer twice.
+        original = BASE.read_text(encoding="utf-8")
+        xml = (
+            '    <widget source="ServiceEvent" render="WarderChannelEpgClip" '
+            'position="60,96" size="1065,842" zPosition="4" '
+            'warderProgressWidth="90" alphaTest="blend" transparent="1" />\\n'
+        )
+        end = original.find("</screen>", original.index('<screen name="ChannelSelection"'))
+        seeded = original[:end] + xml + original[end:]
+        tree = ast.parse(PLUGIN.read_text(encoding="utf-8"))
+        fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "cChannelsel")
+        def setting(value):
+            return SimpleNamespace(value=value)
+        config = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(
+            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+            par111=setting("#6cbcf0"), par117=setting("#dddddd"))))
+        with TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / "skin.xml"
+            runtime.write_text(seeded, encoding="utf-8")
+            scope = dict(config=config, SKINXML=str(runtime), ENA_P_CH=False,
+                         isOpenPLi=True,
+                         _atomicWriteText=lambda path, content: Path(path).write_text(content, encoding="utf-8"),
+                         re=re)
+            exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), scope)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            changed = runtime.read_text(encoding="utf-8")
+            screen = changed.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
+            self.assertIn('<widget name="list"', screen)
+            self.assertNotIn('render="WarderChannelEpgClip"', screen)
+            self.assertIn('picServiceEventProgressbar=', screen)
+            self.assertIn('serviceInfoFont=', screen)
+            self.assertIn('render="WarderPrimeTime"', screen)
+            self.assertIn('render="WarderPrimeTimeDivider"', screen)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            self.assertEqual(runtime.read_text(encoding="utf-8"), changed)
+            self.assertEqual(BASE.read_text(encoding="utf-8"), original)
+
+    def test_openatv_keeps_approved_test11_event_overlay(self):
+        original = BASE.read_text(encoding="utf-8")
+        tree = ast.parse(PLUGIN.read_text(encoding="utf-8"))
+        fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "cChannelsel")
+        def setting(value):
+            return SimpleNamespace(value=value)
+        config = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(
+            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+            par111=setting("#6cbcf0"), par117=setting("#dddddd"))))
+        with TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / "skin.xml"
+            runtime.write_text(original, encoding="utf-8")
+            scope = dict(config=config, SKINXML=str(runtime), ENA_P_CH=False,
+                         isOpenPLi=False,
+                         _atomicWriteText=lambda path, content: Path(path).write_text(content, encoding="utf-8"),
+                         re=re)
+            exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), scope)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            screen = runtime.read_text(encoding="utf-8").split(
+                '<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
+            self.assertEqual(screen.count('render="WarderChannelEpgClip"'), 1)
+
     def test_description_and_event_rows_have_a_gap_and_other_screens_untouched(self):
         source = PLUGIN.read_text(encoding="utf-8")
         tree = ast.parse(source)
