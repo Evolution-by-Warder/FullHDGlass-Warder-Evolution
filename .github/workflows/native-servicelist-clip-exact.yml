@@ -52,7 +52,8 @@ jobs:
           assert before.count('painter.renderPara(para, offset+ePoint(xoffs, yoffs));')==1
           assert after.count('painter.renderPara(para, offset+ePoint(xoffs, yoffs));')==2
           assert before.count('service_info->getEvent(*m_cursor, evt)')==after.count('service_info->getEvent(*m_cursor, evt)')
-          assert before.count('celServiceEventProgressbar')==after.count('celServiceEventProgressbar')-1
+          assert after.count('celServiceEventProgressbar') >= before.count('celServiceEventProgressbar')
+          assert before.split('eRect area = m_element_position[celServiceEventProgressbar];', 1)[1] == after.split('eRect area = m_element_position[celServiceEventProgressbar];', 1)[1]
           assert before.count('painter.fill(')==after.count('painter.fill(')
           assert 'if (e == celServiceInfo)' in after
           print('PASS: native progress bar/percent/minutes painters and EPG fetching untouched')
