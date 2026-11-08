@@ -4565,14 +4565,13 @@ class ExtraInfo17(Screen):
 		text = self._warderCaidScrollText
 		if not text:
 			return
-		self._warderCaidScrollOffset += 1
-		if self._warderCaidScrollOffset >= len(text):
-			self._warderCaidScrollOffset = 0
-			self["ecmLineInfo"].setText(text)
-			self.warderCaidScrollTimer.start(2500, True)
-		else:
-			self["ecmLineInfo"].setText(text[self._warderCaidScrollOffset:])
-			self.warderCaidScrollTimer.start(250, True)
+		# Repeat the original text after a short separator. Keep the full
+		# tail and next head in the same label, without a blank end phase.
+		loop = text + "    "
+		self._warderCaidScrollOffset = (self._warderCaidScrollOffset + 1) % len(loop)
+		offset = self._warderCaidScrollOffset
+		self["ecmLineInfo"].setText(loop[offset:] + loop[:offset])
+		self.warderCaidScrollTimer.start(220, True)
 
 	def __warderSetEcmLineText(self, text):
 		if str(config.plugins.setupGlass17.par6.value) != "76":
