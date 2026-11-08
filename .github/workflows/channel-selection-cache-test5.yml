@@ -9,6 +9,7 @@ on:
       - tools/test_channel_selection_epg_performance.py
       - tools/test_channel_selection_snapshot_cache.py
       - tools/test_channel_selection_text_measure_cache.py
+      - tools/test_warder_channel_epg_clip.py
   workflow_dispatch:
 permissions:
   contents: read
