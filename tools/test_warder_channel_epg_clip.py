@@ -225,6 +225,24 @@ class ClippedEventTests(unittest.TestCase):
         self.assertIsNone(target._last)
         self.assertEqual(target._scroll_started, started)
 
+    def test_marquee_moves_after_initial_wait_without_extra_three_seconds(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_mode = "barright"
+        self.renderer._scroll_identity = (self.refs[0].name, self.refs[0].title)
+        self.renderer._scroll_started = time() - 2.5
+        self.assertTrue(self.draw())
+        displayed = [call[-1] for call in self.renderer.instance.calls
+                     if call[0] == "write"]
+        measure = lambda value: len(value) * 10
+        # A 2.5s-old selection must already have moved: 1.2s initial wait,
+        # not 1.2s plus a second artificial ~3s delay.
+        start = scroll_title_window(
+            self.refs[0].title, len(displayed[0]) * 10, measure, 0)
+        self.assertNotEqual(displayed[0], start)
+        self.assertFalse(displayed[0].endswith("…"))
+
     def test_same_station_new_event_restarts_marquee_once(self):
         from time import time
         self.component.selected = 0
