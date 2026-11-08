@@ -3070,9 +3070,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity",
+    "action": "EXCLUDE_VERIFIED_PROFESSIONAL_CONTRIBUTION_FEED",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact tuple and CM5000 label match independent receiver scan. Satindex classifies this exact frequency/name as a feed. EBU describes EBU1 as a professional News Exchange output for member newsrooms. Excluded from consumer-TV artwork queue; AV transmission is not classified as Data. Existing reference and all assets preserved.",
     "technical_uid": {
       "sid": 1,
       "tsid": 17185,
@@ -3097,6 +3097,27 @@
         235,
         8519680
       ]
+    },
+    "scope_evidence_20261108_04": {
+      "reference": "1_0_19_1_4321_EB_820000_0_0_0",
+      "name": "EBU 1 ENC",
+      "sid": 1,
+      "tsid": 17185,
+      "onid": 235,
+      "position": "13.0E",
+      "frequency": "11039H",
+      "classification": "PROFESSIONAL_NEWS_CONTRIBUTION_FEED_OUTSIDE_TV_LOGO_SCOPE",
+      "not_data_service": true,
+      "reason": "Exact tuple and CM5000 label match independent receiver scan. Satindex classifies this exact frequency/name as a feed. EBU describes EBU1 as a professional News Exchange output for member newsrooms. Excluded from consumer-TV artwork queue; AV transmission is not classified as Data. Existing reference and all assets preserved.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=13",
+        "https://www.satindex.de/sat/hotbird-feeds/",
+        "https://www.ebu.ch/news/2019/10/eurovision-news-exchange-creates-new-output-channels-to-prioritize-live-news-for-members",
+        "https://eurovisionnews.ebu.ch/news-exchange/"
+      ],
+      "scan_row": "11039H 4938 3/4 DVB-S2 8PSK; ONID235 TSID17185; namespace00822B1F; SID1 type25; EBU 1 ENC; CM5000",
+      "namespace_note": "Receiver scan frequency-derived namespace vs Vhannibal orbital namespace; same orbit, frequency, exact SID/TSID/ONID. No rewrite of source reference.",
+      "checked": "2026-11-08"
     }
   },
   {

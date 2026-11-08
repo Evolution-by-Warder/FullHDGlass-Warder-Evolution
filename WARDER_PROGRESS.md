@@ -1,5 +1,12 @@
 # Warder Evolution – stav projektu
 
+### Dávka 04 – preukázaný profesionálny feed EBU – 8. 11. 2026
+
+- EBU 1 ENC, presný SID1/TSID17185/ONID235 na13°E/11039H, vyradený z fronty spotrebiteľských TV grafík ako profesionálny spravodajský prenos. Podklad: zhodný prijímačový scan, Satindex feed a oficiálny opis služby EBU. Nie je označený ako dátová služba.
+- **0 nových TV piconov / 0 PNG / 0 ZIPov / 1 technická výnimka**. Pôvodná referencia, chýbajúce varianty a všetky archívy zachované.
+- Zostáva **107 otvorených = 88 pôvodných + 19 delta**. Kandidát spolu **36 opravených referencií / 321 PNG / 99 jedinečných ZIPov**. Dávka03 spätne overená v `569c9c3e00b71bb3e84114e9c24af6f7e4c195e7`.
+- Dôkaz `reports/vhannibal-followup-20261106/scope-batch-20261108-04.json`. Žiadna zmena produkcie ani rádia.
+
 ### Dávka 03 – sedem presne identifikovaných AREF TV služieb – 8. 11. 2026
 
 - **7 opravených TV referencií / 63 nových PNG / 9 ZIPov / 0 dátových výnimiek**. Zostáva **108 otvorených: 89 pôvodných + 19 delta**. PR spolu **36 opravených / 321 PNG / 99 jedinečných ZIPov**.
