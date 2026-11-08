@@ -1,0 +1,53 @@
+name: ChannelSelection latency source audit
+on:
+  push:
+    branches:
+      - diagnostics/channelselection-latency-20261108
+    paths:
+      - tools/audit-channel-selection-hotpath.py
+      - .github/workflows/channel-selection-latency-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-hotpath:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compare exact shipped renderer code from the last three stable releases
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p diagnostics/renderer
+          FILE=source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          for version in 1.0.70 1.0.71 1.0.72; do
+            git show "v${version}:${FILE}" > "/tmp/warder-channel-${version}.py"
+            python3 tools/audit-channel-selection-hotpath.py \
+              --source "/tmp/warder-channel-${version}.py" \
+              --visible-rows 14 \
+              --output "diagnostics/renderer/${version}.json"
+          done
+          python3 tools/audit-channel-selection-hotpath.py \
+            --visible-rows 14 --output diagnostics/renderer/current.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data={p.stem:json.loads(p.read_text()) for p in Path('diagnostics/renderer').glob('*.json')}
+          assert len(data)==4, data.keys()
+          for name, item in data.items():
+              assert item['scheduled_refreshes_per_second']>0
+              assert item['requires_receiver_timing_to_confirm_cause']
+          print('PASS: Four source audit reports generated')
+          print('NOTE: reported potential operations are estimated upper bounds, not live receiver measurements.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ChannelSelection-hotpath-static-audit
+          path: diagnostics/renderer/*.json
+          retention-days: 30
+          if-no-files-found: error
