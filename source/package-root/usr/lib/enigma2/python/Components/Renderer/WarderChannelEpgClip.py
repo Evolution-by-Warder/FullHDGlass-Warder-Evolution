@@ -6,7 +6,7 @@ repaint those titles inside the reserved field. Service names, picons, progress
 bars, selection and fonts remain owned by the image. On unsupported images the
 native renderer is left completely unchanged.
 """
-from time import time
+from time import time, monotonic
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
@@ -88,6 +88,16 @@ class WarderChannelEpgClip(Renderer):
         # Optional receiver-QA dimensions; absent in production XML.
         self._warder_bar_width = None
         self._warder_test_marker = False
+        # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
+        self._perf_since = monotonic()
+        self._perf_ticks = 0
+        self._perf_elapsed_ms = 0.0
+        self._perf_worst_ms = 0.0
+        self._perf_over_20ms = 0
+        self._perf_row_changes = 0
+        self._perf_last_row = None
+        self._perf_name_calls = 0
+        self._perf_progress_calls = 0
 
     def _diag(self, key, details=""):
         # TEST59 only: bounded, local status events; never include EPG titles.
@@ -98,6 +108,35 @@ class WarderChannelEpgClip(Renderer):
             self._diag_seen.add(key)
             with open("/tmp/warder-epg-clip-test59.log", "a") as output:
                 output.write("%s %s\n" % (key, details))
+        except (OSError, AttributeError, TypeError, ValueError):
+            pass
+
+    def _perf_tick(self, elapsed_ms):
+        try:
+            self._perf_ticks += 1
+            self._perf_elapsed_ms += elapsed_ms
+            self._perf_worst_ms = max(self._perf_worst_ms, elapsed_ms)
+            if elapsed_ms >= 20.0:
+                self._perf_over_20ms += 1
+            now = monotonic()
+            if now - self._perf_since < 5.0:
+                return
+            count = self._perf_ticks
+            if count > 0:
+                with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d mode=%s\n' % (
+                        now - self._perf_since, count, self._perf_elapsed_ms / count,
+                        self._perf_worst_ms, self._perf_over_20ms,
+                        self._perf_row_changes, self._perf_name_calls,
+                        self._perf_progress_calls, str(self._progress_mode())))
+            self._perf_since = now
+            self._perf_ticks = 0
+            self._perf_elapsed_ms = 0.0
+            self._perf_worst_ms = 0.0
+            self._perf_over_20ms = 0
+            self._perf_row_changes = 0
+            self._perf_name_calls = 0
+            self._perf_progress_calls = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -191,6 +230,7 @@ class WarderChannelEpgClip(Renderer):
             return None
 
     def _name_and_event(self, center, ref):
+        self._perf_name_calls += 1
         try:
             if ref.flags & 7:  # marker/directory and non-service entries
                 return "", ""
@@ -204,6 +244,7 @@ class WarderChannelEpgClip(Renderer):
             return "", ""
 
     def _progress_fraction(self, center, ref):
+        self._perf_progress_calls += 1
         try:
             event = center.info(ref).getEvent(ref)
             if event is None:
@@ -246,6 +287,9 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
+        if self._perf_last_row is not None and selected != self._perf_last_row:
+            self._perf_row_changes += 1
+        self._perf_last_row = selected
         # A new focused service starts its own scroll at the beginning.
         if (selected != getattr(self, "_scroll_selected", None)
                 or mode != getattr(self, "_scroll_mode", None)):
@@ -416,6 +460,7 @@ class WarderChannelEpgClip(Renderer):
         return True
 
     def refresh(self):
+        started = monotonic()
         try:
             if not self.instance or not self._label:
                 return
@@ -498,5 +543,6 @@ class WarderChannelEpgClip(Renderer):
             if self.instance:
                 self.instance.clear(self._transparent)
         finally:
+            self._perf_tick((monotonic() - started) * 1000.0)
             if self.instance:
                 self._timer.start(55, True)
