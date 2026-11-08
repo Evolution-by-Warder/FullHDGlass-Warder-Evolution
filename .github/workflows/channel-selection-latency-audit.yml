@@ -15,7 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
+          sparse-checkout: |
+            tools/audit-channel-selection-hotpath.py
+            source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -26,7 +30,9 @@ jobs:
           mkdir -p diagnostics/renderer
           FILE=source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
           for version in 1.0.70 1.0.71 1.0.72; do
-            git show "v${version}:${FILE}" > "/tmp/warder-channel-${version}.py"
+            curl --fail --location --silent --show-error --retry 2 --max-time 60 \
+              "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/v${version}/${FILE}" \
+              -o "/tmp/warder-channel-${version}.py"
             python3 tools/audit-channel-selection-hotpath.py \
               --source "/tmp/warder-channel-${version}.py" \
               --visible-rows 14 \
