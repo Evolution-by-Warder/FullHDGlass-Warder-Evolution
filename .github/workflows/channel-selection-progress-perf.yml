@@ -23,6 +23,7 @@ jobs:
             tools/test_channel_selection_epg_performance.py
             source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+            source/package-root/usr/share/enigma2/hd_glass17/skin.xml
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
