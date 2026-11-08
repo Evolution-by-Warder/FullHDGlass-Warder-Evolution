@@ -1,0 +1,81 @@
+name: Plugin Browser top-edge TEST IPK (artifact only)
+on:
+  push:
+    branches:
+      - fix/pluginbrowser-top-edge-20261108
+    paths:
+      - '.github/workflows/plugin-browser-top-edge-test.yml'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml'
+      - 'tools/test-pluginbrowser-top-edge.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-ipk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+          sparse-checkout-cone-mode: true
+      - name: Validate OpenATV template and isolate the change
+        run: |
+          set -euo pipefail
+          python3 tools/test-pluginbrowser-top-edge.py
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml')
+          ET.fromstring('<skin>\n'+p.read_text()+'\n</skin>')
+          print('XML fragment: PASS')
+          PY
+      - name: Stage uniquely numbered receiver TEST (never production)
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version')
+          assert p.read_text().strip()=='1.0.72'
+          p.write_text('1.0.73-test1\n')
+          ctl=Path('source/control/control')
+          text=ctl.read_text()
+          assert text.count('Version: 1.0.72-1')==1
+          ctl.write_text(text.replace('Version: 1.0.72-1','Version: 1.0.73-test1-1'))
+          PY
+          python3 tools/sync_header_version.py
+          python3 tools/sync_header_version.py --check
+      - name: Package unchanged payload plus isolated top-edge mask
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import importlib.util, pathlib, subprocess, tempfile, hashlib
+          root=pathlib.Path.cwd()
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(builder)
+          name='enigma2-plugin-skins-fullhdglass_1.0.73-test1_all.ipk'
+          output=root/'packages/test'/name
+          output.parent.mkdir(parents=True,exist_ok=True)
+          with tempfile.TemporaryDirectory() as folder:
+              work=pathlib.Path(folder)
+              (work/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(root/'source/control',work/'control.tar.gz')
+              builder.archive(root/'source/package-root',work/'data.tar.gz',payload=True)
+              subprocess.run(['ar','rcsD',str(output),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
+          sha=hashlib.sha256(output.read_bytes()).hexdigest()
+          (output.parent/(name+'.sha256')).write_text(sha+'  '+name+'\n')
+          print('TEST IPK:',name, 'bytes:',output.stat().st_size,'SHA256:',sha)
+          PY
+          test "$(ar t packages/test/enigma2-plugin-skins-fullhdglass_1.0.73-test1_all.ipk | paste -sd' ' -)" = "debian-binary control.tar.gz data.tar.gz"
+          cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.73-test1_all.ipk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-PluginBrowser-top-edge-1.0.73-test1
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.73-test1_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.73-test1_all.ipk.sha256
+          retention-days: 14
+          if-no-files-found: error
