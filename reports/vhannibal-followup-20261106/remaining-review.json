@@ -37,6 +37,13 @@
         42,
         27525120
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NO_EXPLICIT_CLASSIFICATION",
+      "finding": "No AV evidence and PCR8191 insufficient to close a service as Data. Exact current SID15541/TSID50600/ONID42 must be classified independently.",
+      "sources": [
+        "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=89&mux=11180"
+      ]
     }
   },
   {
@@ -83,6 +90,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -131,6 +145,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -177,6 +198,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -225,6 +253,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -271,6 +306,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -319,6 +361,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -366,6 +415,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -412,6 +468,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -1084,6 +1147,11 @@
         17,
         49152000
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_EXACT_75E_EVIDENCE_MISSING",
+      "finding": "Evidence for Quadrille on57E/10E does not identify SID8728/TSID3/ONID17 at75E; absence from a scan is not departure proof.",
+      "sources": []
     }
   },
   {
@@ -1260,6 +1328,14 @@
         115,
         34078720
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_CONFLICTING_PROGRAMME_IDENTITY",
+      "finding": "Exact SID900/TSID525/ONID115: LyngSat NOW since2026-10-16 PID2850/2950; Morpheus/KingOfSat Zor TV PID208/308. Quarantined payload is not active or completed.",
+      "sources": [
+        "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+      ]
     }
   },
   {
@@ -1306,6 +1382,13 @@
         115,
         34078720
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+      "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+      ]
     }
   },
   {
@@ -1351,6 +1434,15 @@
         525,
         115,
         34078720
+      ]
+    },
+    "followup_20261108": {
+      "decision": "IDENTITY_CONFIRMED_ARTWORK_HOLD",
+      "finding": "TV8 Turkey SID912/525/115 PID4300/4400 confirmed. Published donor3BC4/9CAA is a conflicting red-circle8 graphic;2C29/3 is TV8 International. Neither copied. Need approved domestic TV8 artwork; no request to reapprove unrelated finished artwork.",
+      "sources": [
+        "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+        "https://www.tv8.com.tr/sayfa-frekans-bilgileri",
+        "https://www.tv8.com.tr/sayfa-tv8-international"
       ]
     }
   },
@@ -1863,6 +1955,14 @@
         29,
         5898240
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_TRANSPORT_ID_CONFLICT",
+      "finding": "Target SID67/TSID516/ONID29. Older data listing uses29/516, fresh KingOfSat listing gives0/512 for stream33. No AV in receiver scan alone cannot prove exact tuple is Data. No radio artwork changed.",
+      "sources": [
+        "https://en.kingofsat.net/data-9E",
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=9"
+      ]
     }
   },
   {
@@ -2233,6 +2333,14 @@
         8080,
         213319680
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
+      ]
     }
   },
   {
@@ -2522,6 +2630,14 @@
         6144,
         44892160
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
+      ]
     }
   },
   {
@@ -2567,6 +2683,14 @@
         29,
         6144,
         44892160
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
       ]
     }
   },
@@ -2871,6 +2995,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -2918,6 +3049,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -2964,6 +3102,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -3157,6 +3302,13 @@
         1098,
         1,
         12582912
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_CONFLICTING_DEPARTURE",
+      "finding": "Historical departure conflicts with current receiver AV listing for12363V. Do not remove or classify as Data.",
+      "sources": [
+        "https://www.digitalbitrate.com/dtv.php?lang=fr&liste=1&live=61&mux=12363"
       ]
     }
   },
@@ -3496,6 +3648,11 @@
         702,
         17039360
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_HD_UHD_EDITION",
+      "finding": "FUNBOX HD tuple7/8135/702 cannot borrow original FUNBOX UHD or Fast&FunBox solely by similar name.",
+      "sources": []
     }
   },
   {
@@ -3634,6 +3791,13 @@
         524,
         115,
         34078720
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+      "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
       ]
     }
   },
@@ -4205,6 +4369,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -4251,6 +4422,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -4299,6 +4477,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -4346,6 +4531,13 @@
         3,
         15400960
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+      ]
     }
   },
   {
@@ -4392,6 +4584,13 @@
         3223,
         3,
         15400960
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
       ]
     }
   },
@@ -4944,6 +5143,13 @@
     "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
     "latest_settings_evidence_20261108": {
       "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+    },
+    "followup_20261108": {
+      "decision": "HOLD_COUNTRY_AND_DONOR_IDENTITY",
+      "finding": "OracleTV Nigeria42.5E and SouthAfrican channel listings must not be conflated with target26E SID764/TSID8229/ONID702. No unambiguous approved donor.",
+      "sources": [
+        "https://www.lyngsat.com/tvchannels/ng/Oracle-TV.html"
+      ]
     }
   },
   {
@@ -5086,6 +5292,13 @@
         115,
         34078720
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+      "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+      ]
     }
   },
   {
@@ -5132,6 +5345,13 @@
         115,
         34078720
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+      "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+      ]
     }
   },
   {
@@ -5177,6 +5397,13 @@
         525,
         115,
         34078720
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+      "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+      "sources": [
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
       ]
     }
   },
@@ -5308,6 +5535,14 @@
         6144,
         44892160
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
+      ]
     }
   },
   {
@@ -5353,6 +5588,14 @@
         28,
         6144,
         44892160
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
       ]
     }
   },
@@ -5400,6 +5643,14 @@
         6144,
         44892160
       ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
+      ]
     }
   },
   {
@@ -5445,6 +5696,14 @@
         29,
         6144,
         44892160
+      ]
+    },
+    "followup_20261108": {
+      "decision": "HOLD_NUMBERED_AV_SERVICES",
+      "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+      "sources": [
+        "https://en.kingofsat.fr/sat-is20",
+        "https://en.kingofsat.eu/tp11791"
       ]
     }
   },

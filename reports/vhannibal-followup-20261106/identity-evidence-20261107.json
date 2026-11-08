@@ -2592,6 +2592,156 @@
       "verified_technical_feed_exceptions": 1,
       "data_exceptions": 0,
       "remaining_open": 107
+    },
+    "followup_after_batch03": {
+      "checked_date": "2026-11-08",
+      "groups": [
+        {
+          "names": [
+            "Service-900"
+          ],
+          "decision": "HOLD_CONFLICTING_PROGRAMME_IDENTITY",
+          "finding": "Exact SID900/TSID525/ONID115: LyngSat NOW since2026-10-16 PID2850/2950; Morpheus/KingOfSat Zor TV PID208/308. Quarantined payload is not active or completed.",
+          "sources": [
+            "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        },
+        {
+          "names": [
+            "Service-912"
+          ],
+          "decision": "IDENTITY_CONFIRMED_ARTWORK_HOLD",
+          "finding": "TV8 Turkey SID912/525/115 PID4300/4400 confirmed. Published donor3BC4/9CAA is a conflicting red-circle8 graphic;2C29/3 is TV8 International. Neither copied. Need approved domestic TV8 artwork; no request to reapprove unrelated finished artwork.",
+          "sources": [
+            "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+            "https://www.tv8.com.tr/sayfa-frekans-bilgileri",
+            "https://www.tv8.com.tr/sayfa-tv8-international"
+          ]
+        },
+        {
+          "names": [
+            "RADIO CLASSICA TV"
+          ],
+          "decision": "HOLD_TRANSPORT_ID_CONFLICT",
+          "finding": "Target SID67/TSID516/ONID29. Older data listing uses29/516, fresh KingOfSat listing gives0/512 for stream33. No AV in receiver scan alone cannot prove exact tuple is Data. No radio artwork changed.",
+          "sources": [
+            "https://en.kingofsat.net/data-9E",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=9"
+          ]
+        },
+        {
+          "names": [
+            "DMDU_T"
+          ],
+          "decision": "HOLD_NO_EXPLICIT_CLASSIFICATION",
+          "finding": "No AV evidence and PCR8191 insufficient to close a service as Data. Exact current SID15541/TSID50600/ONID42 must be classified independently.",
+          "sources": [
+            "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=89&mux=11180"
+          ]
+        },
+        {
+          "names": [
+            "Quadrille Data"
+          ],
+          "decision": "HOLD_EXACT_75E_EVIDENCE_MISSING",
+          "finding": "Evidence for Quadrille on57E/10E does not identify SID8728/TSID3/ONID17 at75E; absence from a scan is not departure proof.",
+          "sources": []
+        },
+        {
+          "names": [
+            "ASSOCIATION MATERIEL"
+          ],
+          "decision": "HOLD_CONFLICTING_DEPARTURE",
+          "finding": "Historical departure conflicts with current receiver AV listing for12363V. Do not remove or classify as Data.",
+          "sources": [
+            "https://www.digitalbitrate.com/dtv.php?lang=fr&liste=1&live=61&mux=12363"
+          ]
+        },
+        {
+          "names": [
+            "FUNBOX HD"
+          ],
+          "decision": "HOLD_HD_UHD_EDITION",
+          "finding": "FUNBOX HD tuple7/8135/702 cannot borrow original FUNBOX UHD or Fast&FunBox solely by similar name.",
+          "sources": []
+        },
+        {
+          "names": [
+            "Service-811",
+            "Service-911",
+            "Service-906",
+            "Service-907",
+            "Service-908"
+          ],
+          "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+          "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        },
+        {
+          "names": [
+            "Test 1",
+            "Test 2",
+            "Test 3",
+            "Test 4",
+            "Test 5",
+            "Test 6",
+            "Test 7",
+            "Test 8",
+            "Test 9",
+            "Test 10",
+            "Test 11",
+            "Test 12",
+            "Test 13",
+            "Test 14",
+            "Test 15",
+            "Test 16"
+          ],
+          "selector": "235E",
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        },
+        {
+          "names": [
+            "F2835",
+            "F2840",
+            "F2845",
+            "F2930",
+            "F2935",
+            "F2940",
+            "Service 11-13"
+          ],
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        },
+        {
+          "names": [
+            "Oracle TV"
+          ],
+          "decision": "HOLD_COUNTRY_AND_DONOR_IDENTITY",
+          "finding": "OracleTV Nigeria42.5E and SouthAfrican channel listings must not be conflated with target26E SID764/TSID8229/ONID702. No unambiguous approved donor.",
+          "sources": [
+            "https://www.lyngsat.com/tvchannels/ng/Oracle-TV.html"
+          ]
+        }
+      ],
+      "antena": {
+        "references": 6,
+        "decision": "HOLD_TSID10_VS0",
+        "finding": "Latest Vhannibal retainsTSID10; independently fetched Morpheus39E12656H15155 stillONID366/TSID0. Approved donors exist but binding unresolved.",
+        "source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=39"
+      },
+      "remaining": 107,
+      "next_safe_work": "TV8 Turkey approved donor search by verified brand across historical MASTER sources; fresh raw transport evidence for52E SID900 conflict and39E AntenaTSID. New artwork remains outside candidate until owner approval."
     }
   }
 }

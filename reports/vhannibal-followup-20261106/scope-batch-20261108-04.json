@@ -44,5 +44,33 @@
     "remaining_flags": 88,
     "asset_paths_changed": 0,
     "missing_arrays_preserved": true
+  },
+  "remote_readback": {
+    "status": "PASS",
+    "payload_commit": "c4afef5db19391f1fe273c7dab58d0d9f4a39ef4",
+    "files": [
+      {
+        "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+        "match": true,
+        "sha": "2885f7ae3dc4804c1c744aa5d027290de60d7efc"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+        "match": true,
+        "sha": "ba1962ec8351bf82a86fc07544be811be0da33d3"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/scope-batch-20261108-04.json",
+        "match": true,
+        "sha": "d9c579a07970a31da46b7914e132c3a265ba6016"
+      },
+      {
+        "path": "WARDER_PROGRESS.md",
+        "match": true,
+        "sha": "a17276dfd64348c3f0bb299a45e6a00bce0bfc5c"
+      }
+    ],
+    "asset_paths_changed": 0,
+    "production_main_unchanged": "63489718287327be969fa36e24dd384736776720"
   }
 }

@@ -5,7 +5,7 @@
 - EBU 1 ENC, presný SID1/TSID17185/ONID235 na13°E/11039H, vyradený z fronty spotrebiteľských TV grafík ako profesionálny spravodajský prenos. Podklad: zhodný prijímačový scan, Satindex feed a oficiálny opis služby EBU. Nie je označený ako dátová služba.
 - **0 nových TV piconov / 0 PNG / 0 ZIPov / 1 technická výnimka**. Pôvodná referencia, chýbajúce varianty a všetky archívy zachované.
 - Zostáva **107 otvorených = 88 pôvodných + 19 delta**. Kandidát spolu **36 opravených referencií / 321 PNG / 99 jedinečných ZIPov**. Dávka03 spätne overená v `569c9c3e00b71bb3e84114e9c24af6f7e4c195e7`.
-- Dôkaz `reports/vhannibal-followup-20261106/scope-batch-20261108-04.json`. Žiadna zmena produkcie ani rádia.
+- Commit `c4afef5db19391f1fe273c7dab58d0d9f4a39ef4`; spätné načítanie všetkých štyroch zmenených dokumentov PASS, asset paths0. Dôkaz `reports/vhannibal-followup-20261106/scope-batch-20261108-04.json`. Žiadna zmena produkcie ani rádia.
 
 ### Dávka 03 – sedem presne identifikovaných AREF TV služieb – 8. 11. 2026
 
@@ -200,3 +200,8 @@ Kontrola živých vetiev po uložení: FullHDGlass main stále `12247acc20f69960
 - Nové V9 návrhy majú [úspešné zostavenie](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42206982364): 5 485 grafík, 49 365 PNG, 8 962 referencií. QC PASS má 125 referencií; 8 837 má REVIEW, ďalších 1 428 je pozastavených. Tieto počty nie sú schválením grafík. Osem konkrétnych konfliktov identity je evidovaných samostatne bez vymyslených log.
 - Kandidát prešiel produkčným validátorom a skutočnou inštalačnou metódou prijímača na 69 archívoch / 198 PNG; kontrolované boli SHA256, CRC, plné referencie, rozmery a zachovanie nesúvisiacich používateľských súborov. Nové grafiky, merge aj publikovanie stále čakajú na schválenie. Warder Radio a rádiové picony sa nemenili.
 - Ďalší krok: revízia uložených V9 hárkov, explicitných konfliktov a kanonického TV5MONDE; až potom vlastníkom schválený produkčný merge. Zdrojový checkpoint je zachovaný súkromne aj pre opakovanie po zmene upstreamu.
+
+### Ďalší presný krok po dávke04
+
+- 107 zostávajúcich prípadov ostáva blokovaných dôkazom identity, schváleným donorom alebo presnou klasifikáciou. Nové zistenia uložené v `identity-evidence-20261107.json` → `continuation_20261108.followup_after_batch03` a v príslušných riadkoch `remaining-review.json`.
+- Priorita: schválený domáci TV8 Turkey donor; overenie konfliktu SID900 Zor/NOW; aktuálna transportná tabuľka Antena TSID10/0. Neopakovať dávky03/04 ani uzavretú záchranu šiestich schválených referencií. TV5MONDE a18 CANAL+ balíkov chránené. Nové artworky vyžadujú schválenie.
