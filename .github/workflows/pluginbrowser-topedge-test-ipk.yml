@@ -1,0 +1,91 @@
+name: PluginBrowser top-edge receiver test IPK
+on:
+  push:
+    branches:
+      - fix/pluginbrowser-top-edge-1073
+    paths:
+      - .github/workflows/pluginbrowser-topedge-test-ipk.yml
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml
+      - tools/test-pluginbrowser-top-edge.py
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools/build-release-ipk.py
+            tools/test-pluginbrowser-top-edge.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate targeted XML and geometry
+        run: |
+          set -euo pipefail
+          python3 tools/test-pluginbrowser-top-edge.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml')
+          ET.fromstring('<skin>\n'+p.read_text(encoding='utf-8')+'\n</skin>')
+          assert Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()=='1.0.73'
+          assert 'Version: 1.0.73-1' in Path('source/control/control').read_text()
+          print('Receiver candidate XML and baseline PASS')
+          PY
+      - name: Build isolated test package
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import importlib.util
+          import hashlib
+          import shutil
+          import subprocess
+          import tempfile
+          import tarfile
+          root=Path.cwd()
+          version='1.0.74-test1'
+          name='enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk'
+          out=root/'receiver-candidate'
+          out.mkdir(exist_ok=True)
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(builder)
+          with tempfile.TemporaryDirectory() as t:
+              work=Path(t)
+              payload=work/'package-root'
+              control=work/'control'
+              shutil.copytree(root/'source/package-root',payload,symlinks=True)
+              shutil.copytree(root/'source/control',control,symlinks=True)
+              v=payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version'
+              v.write_text(version+'\n')
+              c=control/'control'
+              metadata=c.read_text()
+              assert metadata.count('Version: 1.0.73-1')==1
+              c.write_text(metadata.replace('Version: 1.0.73-1','Version: '+version+'-1'))
+              (work/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(control,work/'control.tar.gz')
+              builder.archive(payload,work/'data.tar.gz',payload=True)
+              package=out/name
+              subprocess.run(['ar','rcsD',str(package),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
+              assert subprocess.check_output(['ar','t',str(package)],text=True).splitlines()==['debian-binary','control.tar.gz','data.tar.gz']
+              with tarfile.open(work/'data.tar.gz','r:gz') as tar:
+                  src=tar.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml').read().decode()
+                  assert '<eLabel position="0,0" size="1920,32" backgroundColor="#00000000" zPosition="10" transparent="0" />' in src
+                  assert tar.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read().decode().strip()==version
+              digest=hashlib.sha256(package.read_bytes()).hexdigest()
+              (out/(name+'.sha256')).write_text(digest+'  '+name+'\n')
+              print('CANDIDATE:',package.name,'bytes=',package.stat().st_size,'sha256=',digest)
+          PY
+          cd receiver-candidate
+          sha256sum -c *.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Warder-PluginBrowser-1.0.74-test1
+          path: receiver-candidate/*
+          retention-days: 14
+          if-no-files-found: error
