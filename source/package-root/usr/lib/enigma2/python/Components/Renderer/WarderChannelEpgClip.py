@@ -80,6 +80,12 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        # TEST7: while nothing scrolls, avoid rebuilding 14 unchanged rows
+        # every 55ms. Check current selection/mode on every tick so remote
+        # navigation remains immediate. Selected long titles still use 55ms.
+        self._idle_draw_key = None
+        self._idle_draw_at = 0.0
+        self._selected_title_scrollable = False
         # Never fake native EPG suppression with a tiny font. The C++ list
         # skips elements whose font pointer is null; where the image's SWIG
         # binding rejects None, leave its native list untouched.
@@ -193,6 +199,8 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        self._idle_draw_key = None
+        self._selected_title_scrollable = False
         if hasattr(self, '_row_fit_cache'):
             self._row_fit_cache.clear()
         if hasattr(self, '_glyph_width_cache'):
@@ -215,6 +223,7 @@ class WarderChannelEpgClip(Renderer):
     def changed(self, what):
         if self.instance:
             self._last = None
+            self._idle_draw_key = None
             self._scroll_started = time()
             # Selection notifications must NOT wipe the other visible rows.
             # Their snapshots expire naturally after at most one second.
@@ -341,6 +350,9 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
+        # This is set even when text is unchanged and the frame signature
+        # avoids painting. Long focused titles must never be idle-throttled.
+        selected_scrollable = False
         if getattr(self, '_perf_last_row', None) is not None and selected != self._perf_last_row:
             self._perf_row_changes = getattr(self, '_perf_row_changes', 0) + 1
         self._perf_last_row = selected
@@ -472,6 +484,8 @@ class WarderChannelEpgClip(Renderer):
             # Pause at both ends; replay the whole title from its beginning.
             # 2px per 55ms virtual motion, with safe glyph-aligned painting.
             journey = overflow + 220
+            if index == selected and overflow > 0:
+                selected_scrollable = True
             # Only the focused row animates; every other event remains
             # ellipsized and stable even while the timer refreshes the canvas.
             position = (min(overflow, max(0, (pixel_clock % journey) - 110))
@@ -507,6 +521,7 @@ class WarderChannelEpgClip(Renderer):
         self._diag("native_rows_ready", "mode=%s visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
                    (mode, available_rows, len(drawing), width, bar_left, bar_width))
         signature = (mode, top, selected, row_height, width, height, tuple(drawing), tuple(progress_bars))
+        self._selected_title_scrollable = selected_scrollable
         if signature == self._last:
             return True
         normal = parseColor(config.plugins.setupGlass17.par109.value)
@@ -651,6 +666,26 @@ class WarderChannelEpgClip(Renderer):
                     component.instance.invalidate()
                 except (AttributeError, TypeError, RuntimeError):
                     pass
+            # Check all navigation-sensitive state on EVERY 55ms tick. A
+            # stable list without a scrolling focused title only needs a
+            # periodic data/progress refresh; the native font is still
+            # reasserted above each tick. No delay after any selection move.
+            skip_draw = False
+            if (self._native_hidden and self._last is not None
+                    and not getattr(self, '_selected_title_scrollable', False)):
+                try:
+                    view_key = (id(component), current_mode,
+                                component.instance.getTopIndex(),
+                                component.instance.getCurrentIndex(),
+                                component.instance.size().width(),
+                                component.instance.size().height())
+                    skip_draw = (view_key == getattr(self, '_idle_draw_key', None)
+                                 and monotonic() - getattr(self, '_idle_draw_at', 0.0) < .25)
+                except (AttributeError, RuntimeError, TypeError, ValueError):
+                    skip_draw = False
+            if skip_draw:
+                return
+            # Preserve the original fail-open path for unsupported views.
             if not self._draw_rows(component):
                 self._diag("draw_rows_declined")
                 # Mode can change while ChannelSelection stays open.
@@ -668,6 +703,15 @@ class WarderChannelEpgClip(Renderer):
                     except (AttributeError, TypeError, RuntimeError):
                         pass
                 return
+            try:
+                self._idle_draw_key = (id(component), current_mode,
+                                      component.instance.getTopIndex(),
+                                      component.instance.getCurrentIndex(),
+                                      component.instance.size().width(),
+                                      component.instance.size().height())
+                self._idle_draw_at = monotonic()
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                self._idle_draw_key = None
         except (AttributeError, RuntimeError, TypeError, ValueError, IndexError) as exc:
             self._diag("refresh_exception", type(exc).__name__)
             self._restore_native()
