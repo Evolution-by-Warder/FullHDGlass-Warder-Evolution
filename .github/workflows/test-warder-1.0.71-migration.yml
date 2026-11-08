@@ -1,0 +1,101 @@
+name: Test FullHDGlass 1.0.71 legacy 9.50 migration candidate
+on:
+  push:
+    branches: [fix/legacy-950-r12-migration-20261107]
+    paths:
+      - '.github/workflows/test-warder-1.0.71-migration.yml'
+      - 'source/control/preinst'
+      - 'tools/test-legacy-950-upgrade.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: test-warder-1.0.71-migration
+  cancel-in-progress: true
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /docs/
+            /reports/
+            /update*.json
+            /.github/workflows/publish-warder-1.0.71.yml
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original reproducible build dependencies
+        run: |
+          python -m pip install --quiet 'Pillow==11.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Validate published source, version and excluded geometry experiment
+        run: |
+          set -euo pipefail
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = '1.0.71'
+          grep -qx 'Version: 1.0.71-1' source/control/control
+          python3 tools/sync_header_version.py --check
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py').read_text()
+          assert '_warderIptvReference' in p
+          assert 'warderEvolutionPrimeTime.enabled' in p
+          assert 'pig28 = (' not in p
+          assert 'WarderPrimeTimeDivider' in p
+          PY
+          for name in preinst postinst postrm prerm; do sh -n "source/control/$name"; done
+      - name: Build unchanged reviewed payload and verify every packaged file
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          # Recreate only the build-time verification reports from the pinned
+          # receiver-approved test5 proof. Never rewrite shipped binaries.
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('tools').resolve()))
+          from bitrate_package import validate_helpers
+          proof=json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
+          out=Path('packages/test')
+          out.mkdir(parents=True, exist_ok=True)
+          assert len(proof['builds']) == 3
+          for name,report in zip(('arm','mipsel','aarch64'),proof['builds']):
+              filename='bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json'
+              (out/filename).write_text(json.dumps(report,indent=2)+'\n')
+          validate_helpers(Path.cwd())
+          PY
+          python3 tools/test-legacy-950-upgrade.py -q
+          python3 tools/test-package-transition.py -q
+          python3 tools/build-setup-style-test.py
+          python3 tools/verify-setup-style-ipk.py
+          python3 tools/test-release-bytecode.py
+          PACKAGE='packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk'
+          test -s "$PACKAGE"
+          ar t "$PACKAGE" | grep -qx 'data.tar.gz'
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256)
+      - name: Stage candidate package and compare exact bytes
+        run: |
+          set -euo pipefail
+          mkdir -p packages
+          cp packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk packages/
+          cp packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256 packages/
+          cmp packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-Warder-Evolution-1.0.71-migration-test
+          path: |
+            packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk
+            packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256
+          if-no-files-found: error
+          retention-days: 90

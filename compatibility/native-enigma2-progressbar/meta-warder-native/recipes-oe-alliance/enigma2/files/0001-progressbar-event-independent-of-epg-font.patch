@@ -1,0 +1,21 @@
+From: Warder Evolution <noreply@local.invalid>
+Subject: [PATCH] listboxservice: keep native progressbars independent of EPG font
+
+When celServiceInfo's font is null, the normal text-rendering loop does not
+fetch evt. Preserve the native progressbar painter, but let it fetch the event
+when needed even when event text is rendered by the skin's independent renderer.
+
+---
+diff --git a/lib/service/listboxservice.cpp b/lib/service/listboxservice.cpp
+--- a/lib/service/listboxservice.cpp
++++ b/lib/service/listboxservice.cpp
+@@ -1178,6 +1178,9 @@ void eListboxServiceContent::paint(gPainter &painter, eWindowStyle &style, const
+ 			style.drawFrame(painter, eRect(offset, m_itemsize), eWindowStyle::frameListboxEntry);
+ 
+ 		eRect area = m_element_position[celServiceEventProgressbar];
++		// Progress event lookup must not depend on the EPG text font.
++		if (area.width() > 0 && !evt && isPlayable && service_info)
++			service_info->getEvent(*m_cursor, evt);
+ 		if (area.width() > 0 && evt && (!m_element_font[celServiceEventProgressbar] || (m_show_two_lines && m_progress_view_mode%10)))
+ 		{
+ 			int correction = (m_show_two_lines && m_progress_view_mode == 2) ? area.height() : 0;

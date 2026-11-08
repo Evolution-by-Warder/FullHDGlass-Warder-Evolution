@@ -1,0 +1,607 @@
+{
+  "checked_date": "2026-11-07",
+  "review": {
+    "checked_date": "2026-11-07",
+    "scope": "Read-only identity and donor research for eight REVIEW references. Donor identity candidates are not a substitute for PNG visual inspection and nine-variant verification.",
+    "cases": [
+      {
+        "reference": "1_0_16_2C0_20B_73_2080000_0_0_0",
+        "name": "Eurosport 2 HD",
+        "identity": "CONFIRMED",
+        "technical": {
+          "position": "52.0E",
+          "frequency_mhz": 12380,
+          "polarisation": "V",
+          "sr": 28000,
+          "sid": 704,
+          "tsid": 523,
+          "onid": 115,
+          "vpid": 601,
+          "apids": [
+            602,
+            603
+          ]
+        },
+        "sources": [
+          "https://www.satindex.de/channel/32527/",
+          "https://www.frocus.net/main.php?id=24672&lng=ru&pag=tp&rzd=tvkanal&sp=52&tp_id=2115"
+        ],
+        "donor_candidates": [
+          "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "1_0_19_7E0_AF2_BB_E080000_0_0_0"
+        ],
+        "reason": "Existing full-nine Eurosport2 donor editions are available. The original target source is wrong Eurosport1. Use generic Eurosport2 artwork only after visual edition check; do not reuse target original."
+      },
+      {
+        "reference": "1_0_16_DA79_22F_70_2250000_0_0_0",
+        "name": "Dom Kino Premium SD",
+        "identity": "CONFIRMED",
+        "technical": {
+          "position": "54.9E",
+          "frequency_mhz": 11425,
+          "polarisation": "H",
+          "sr": 27500,
+          "sid": 55929,
+          "tsid": 559,
+          "onid": 112,
+          "vpid": 229,
+          "apids": [
+            329
+          ]
+        },
+        "sources": [
+          "https://www.lyngsat.com/muxes/Yamal-402_Russia_11425-H.html",
+          "https://en.kingofsat.net/pos-55E"
+        ],
+        "donor_candidates": [
+          "1_0_16_87_251C_D5_820000_0_0_0",
+          "1_0_1_248_19_3_130000_0_0_0"
+        ],
+        "reason": "Premium identity is established. 13E and1.9E donors have distinct original pixel digests and nine valid production slots; inspect actual branding before copy. 52E2C9 and54.9EDA78 sources must not be used because baseDomKino logo was already flagged."
+      },
+      {
+        "reference": "1_0_19_D7A3_228_70_2250000_0_0_0",
+        "name": "Dom Kino Premium HD",
+        "identity": "CONFIRMED",
+        "technical": {
+          "position": "54.9E",
+          "frequency_mhz": 12620,
+          "polarisation": "H",
+          "sr": 27500,
+          "sid": 55203,
+          "tsid": 552,
+          "onid": 112,
+          "vpid": 203,
+          "apids": [
+            303
+          ]
+        },
+        "sources": [
+          "https://en.kingofsat.net/pos-55E"
+        ],
+        "donor_candidates": [
+          "1_0_1_248_19_3_130000_0_0_0",
+          "1_0_16_87_251C_D5_820000_0_0_0"
+        ],
+        "reason": "Exact current tuple established by KingOfSat update10Oct2026; older LyngSat pages still show56203/562 on10925H and must not override current55203/552."
+      },
+      {
+        "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
+        "name": "BloombergHT HD",
+        "identity": "CONFIRMED_SID_AND_PROGRAMME",
+        "technical": {
+          "position": "42E",
+          "frequency_mhz": 12303,
+          "polarisation": "V",
+          "sr": 27500,
+          "sid": 10702,
+          "tsid_from_pinned_settings": 41704,
+          "onid_from_pinned_settings": 1070,
+          "vpid": 1802,
+          "apids": [
+            1902
+          ]
+        },
+        "sources": [
+          "https://www.bloomberght.com/bloomberg-ht-frekans-bilgileri-16-agustos-ta-degisiyor-3785636",
+          "https://satbeams.com/news/transponder-news-1-nov-26"
+        ],
+        "donor_candidates": [],
+        "reason": "Official broadcaster confirms SID10702 and12303V. GenericBloomberg, BloombergBG andAdria artwork are wrong editions. PriorPR48checkpoint records officialHTSVG obtained; recover it before any render."
+      },
+      {
+        "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
+        "name": "BloombergHT HD",
+        "identity": "CONFIRMED",
+        "technical": {
+          "position": "42E",
+          "frequency_mhz": 11845,
+          "polarisation": "V",
+          "sr": 10832,
+          "sid": 11002,
+          "tsid": 43307,
+          "onid": 1070,
+          "vpid": 2002,
+          "apids": [
+            2102
+          ]
+        },
+        "sources": [
+          "https://www.satindex.de/channel/13247/"
+        ],
+        "donor_candidates": [],
+        "reason": "Exact tuple established by liveSatindex. SameHTedition asSID10702, but no approvedHTdonor in current referenceledger."
+      },
+      {
+        "reference": "1_0_19_7BD_9_42_1A40000_0_0_0",
+        "name": "SPORSMART",
+        "identity": "CONFIRMED_SAME_ELEMENTARY_STREAM_ALIAS",
+        "technical": {
+          "position": "42E",
+          "frequency_mhz": 12188,
+          "polarisation": "V",
+          "sr": 27500,
+          "sid": 1981,
+          "tsid": 9,
+          "onid": 66,
+          "vpid": 103,
+          "apids": [
+            203,
+            303
+          ]
+        },
+        "sources": [
+          "https://en.kingofsat.tv/freqs.php?aff=zap&b=299&lim=70&ordre=freq&pos=42E&standard=All",
+          "https://satbeams.com/news/transponder-news-1-nov-26",
+          "https://www.satindex.de/channel/40700/",
+          "https://www.satindex.de/channeleng/13160/",
+          "https://turksat.com.tr/en/satellite/turksat-frequency-list?page=5"
+        ],
+        "donor_candidates": [
+          "1_0_19_76F_9_42_1A40000_0_0_0"
+        ],
+        "reason": "Both Satindex pages explicitly cross-link as identical videoPID forSID1981and1903,TID9,ONID66,VPID103,APIDs203+303. PrimaryoperatorTürksat identifiesSPORSMARTon12188VwithVPID103APID203. KoShumanlabelSporsmart2doesnotmatchtheelementary-streamproof; use1903donoraftervisualcheck."
+      },
+      {
+        "reference": "1_0_19_7_1FC7_2BE_1040000_0_0_0",
+        "name": "FUNBOX HD",
+        "identity": "CONFIRMED",
+        "technical": {
+          "position": "26E",
+          "frequency_mhz": 12379.4,
+          "polarisation": "H",
+          "sr": 27500,
+          "sid": 7,
+          "tsid": 8135,
+          "onid": 702,
+          "vpid": 1007,
+          "apids": [
+            2007
+          ]
+        },
+        "sources": [
+          "https://ru.kingofsat.info/detail-funbox-hd",
+          "https://en.kingofsat.tv/freqs.php?aff=zap&filtre=no&lim=230&ordre=freq&sat=214&standard=All"
+        ],
+        "donor_candidates": [],
+        "reason": "Exact tuple confirmed. Current named alternatives areFunBoxUHD andFastandFunBoxHD, distinct channels; cannot assign theirlogos merely byname."
+      },
+      {
+        "reference": "1_0_16_42BC_A_46_E080000_0_0_0",
+        "name": "Kuukauden kanava",
+        "identity": "SERVICE_CONFIRMED_PROGRAMME_VARIABLE",
+        "technical": {
+          "position": "0.8W",
+          "frequency_mhz": 10934.6,
+          "polarisation": "V",
+          "sr": 25000,
+          "sid": 17084,
+          "tsid": 10,
+          "onid": 70
+        },
+        "sources": [
+          "https://hu.kingofsat.tv/detail-kuukaudenkanava",
+          "https://www.satelitnatv.sk/frekvencie/program/kuukauden-kanava/"
+        ],
+        "donor_candidates": [],
+        "reason": "Monthlychannelservice is current; secondSID17084onTSID72alsoexists. Staticprogrammeidentity and currentmonthlylogo requireoperatorconfirmation. Genericplaceholder must not be deployed."
+      }
+    ],
+    "existing_donor_metadata": {
+      "1_0_16_87_251C_D5_820000_0_0_0": {
+        "name": "Dom Kino Premium",
+        "selector": "130E",
+        "status": "COVERED_9_VALID",
+        "original_pixel_digest": "1776d55125b623457bffa7614ec38543238c15e5165fc02b7e21e3815fff2b14"
+      },
+      "1_0_1_248_19_3_130000_0_0_0": {
+        "name": "Dom Kino Premium HD",
+        "selector": "19E",
+        "status": "COVERED_9_VALID",
+        "original_pixel_digest": "c4945074fbe2444a12b2761e796659db377232715ab091d26f5d919d5d5bcd32"
+      }
+    },
+    "changes_to_github": 0,
+    "changes_to_artwork": 0
+  },
+  "partial": {
+    "checked_at": "2026-11-07",
+    "scope": "Satellite identities only; no radio or GitHub modifications",
+    "cases": [
+      {
+        "reference": "1_0_1_C672_A477_42E_1A40000_0_0_0",
+        "name": "GUNEYDOGU TV",
+        "identity_status": "EXACT_TUPLE_VERIFIED_PRIMARY_FREQUENCY_SUPPORT",
+        "tuple": {
+          "sid": 50802,
+          "tid": 42103,
+          "onid": 1070,
+          "frequency_mhz": 12422.8,
+          "polarization": "V",
+          "sr": 27500,
+          "fec": "2/3",
+          "vpid": 5802,
+          "apid": 5902
+        },
+        "donor": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+        "donor_tuple": {
+          "sid": 50561,
+          "tid": 60401,
+          "onid": 1070,
+          "frequency_mhz": 12111.3,
+          "polarization": "V",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 5561,
+          "apid": 5661
+        },
+        "sources": [
+          {
+            "url": "https://en.kingofsat.tv/detail-guneydogu",
+            "kind": "current listing",
+            "assertion": "Both exact tuples listed; transport stream updated2026-11-07"
+          },
+          {
+            "url": "https://www.turksat.com.tr/uydu/yayincilik-hizmetleri/turksat-frekans-listesi?page=8",
+            "kind": "primary satellite operator",
+            "assertion": "GUNEYDOGU TV12423V275002/3VPID5802APID5902"
+          },
+          {
+            "url": "https://www.turksat.com.tr/uydu/yayincilik-hizmetleri/turksat-frekans-listesi?page=13",
+            "kind": "primary satellite operator",
+            "assertion": "GUNEYDOGU TV12111V275003/4VPID5561APID5661"
+          },
+          {
+            "url": "https://guneydogutv.com/haber/guneydogu-tv-frekansini-guncelliyor-kesintisiz-yayin-icin-yeni-ayarlar-72100",
+            "kind": "primary broadcaster",
+            "event_date": "2026-09-17",
+            "assertion": "GTV announces12111V27500"
+          }
+        ],
+        "artwork_decision": "Donor is same programme identity. Actual PNG and all variant quality still require parent inspection; name match alone not artwork approval."
+      },
+      {
+        "reference": "1_0_19_32_14_6E_DCA0000_0_0_0",
+        "name": "Dijlah TV HD",
+        "identity_status": "DEPARTED_EXACT_REFERENCE",
+        "event_date": "2026-11-03",
+        "tuple": {
+          "sid": 50,
+          "tid": 20,
+          "onid": 110,
+          "frequency_mhz": 10891.8,
+          "polarization": "H",
+          "vpid": 5001,
+          "apid": 5002
+        },
+        "sources": [
+          {
+            "url": "https://en.kingofsat.net/channelhistory.php?ch=16461",
+            "assertion": "Left10891.8H SID50on2026-11-03; replacement11315.2V SID15started2026-10-17"
+          },
+          {
+            "url": "https://en.kingofsat.tv/removed.php?filtre=Clear&lim=0&ordre=date_maj&pos=7W&standard=All",
+            "assertion": "SID50listedremoved2026-11-03"
+          }
+        ],
+        "replacement_ref_already_covered": "1_0_19_F_9C7C_77E_DCA0000_0_0_0",
+        "replacement_tuple": {
+          "sid": 15,
+          "frequency_mhz": 11315.2,
+          "polarization": "V",
+          "sr": 27500,
+          "fec": "5/6",
+          "vpid": 2851,
+          "apid": 2852
+        },
+        "artwork_decision": "Do not extend departed exactref as current. Existing historical PNG must remain preserved."
+      },
+      {
+        "reference": "1_0_1_167_C9_800_DCA0000_0_0_0",
+        "name": "ALMAWQEF TV",
+        "identity_status": "DEPARTED_EXACT_REFERENCE",
+        "event_date": "2026-11-03",
+        "tuple": {
+          "sid": 359,
+          "tid": 201,
+          "onid": 2048,
+          "frequency_mhz": 11372.7,
+          "polarization": "H",
+          "vpid": 3591,
+          "apid": 3592
+        },
+        "sources": [
+          {
+            "url": "https://en.kingofsat.net/removed.php?aff=zap&filtre=no&lim=20&ordre=freq&pos=7W&standard=All",
+            "assertion": "ALMAWQEF35911372.7Hremoved2026-11-0306:55:29"
+          },
+          {
+            "url": "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=76&mux=11372",
+            "assertion": "Historical scanner provides exactTID201ONID2048SID359VPID3591"
+          }
+        ],
+        "artwork_decision": "Do not extend departed exactref as current. Existing historical PNG must remain preserved."
+      },
+      {
+        "reference": "1_0_1_1_1_1_D72B76_0_0_0",
+        "name": "2STV",
+        "identity_status": "DEPARTED_SAME_DAY_AS_START_NEEDS_RECONFIRMATION",
+        "event_date": "2026-11-05",
+        "tuple": {
+          "sid": 1,
+          "tid": 1,
+          "onid": 1,
+          "frequency_mhz": 11126.3,
+          "polarization": "H",
+          "sr": 1100,
+          "fec": "2/3",
+          "vpid": 100,
+          "apid": 200,
+          "pmt": 309
+        },
+        "sources": [
+          {
+            "url": "https://fr.kingofsat.eu/channelhistory.php?ch=4603",
+            "assertion": "Current opened history lists both start and later departure on2026-11-05"
+          },
+          {
+            "url": "https://en.kingofsat.tv/tvremoved.php?aff=zap&filtre=no&lim=49&ordre=nom_ch&standard=All",
+            "assertion": "ExactSID1removed2026-11-0522:34:38"
+          },
+          {
+            "url": "https://en.kingofsat.net/new.php?aff=zap&filtre=Clear&lim=120&ordre=nom_ch&standard=All",
+            "assertion": "Earlier same-daystart00:46:45"
+          },
+          {
+            "url": "https://en.kingofsat.net/freqs.php?filtre=no&ordre=freq&pos=21.6E&standard=All",
+            "assertion": "Cachedpositive suppliesNID1TID1; olderthandeparture"
+          },
+          {
+            "url": "https://www.2stv.net/",
+            "kind": "primary broadcaster",
+            "assertion": "Confirms Senegal2STVprogramme, not satellite tuple"
+          }
+        ],
+        "artwork_decision": "Holdcurrentstatus; do not mark latestpositive solely fromcachedstart. Need independent receiver/operator confirmation."
+      },
+      {
+        "reference": "1_0_1_13_65_1_300000_0_0_0",
+        "name": "SISSP",
+        "identity_status": "TECHNICAL_TUPLE_CONFIRMED_PROGRAMME_DONOR_MAPPING_UNPROVEN",
+        "tuple": {
+          "sid": 19,
+          "tid": 101,
+          "onid": 1,
+          "frequency_mhz": 12418,
+          "polarization": "H",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 2101,
+          "apid": 1102,
+          "pmt": 266,
+          "provider": "SIS",
+          "encryption": "Irdeto2"
+        },
+        "sources": [
+          {
+            "url": "https://ru.kingofsat.net/new-4.8E",
+            "assertion": "Added2026-10-28; transportstreamlisted2026-11-04 with exactSID/TID/NIDandPIDs"
+          },
+          {
+            "url": "https://en.kingofsat.net/pos-4.8E",
+            "assertion": "Currentlistingcontainsbothold11727.5Handnew12418Hservices"
+          }
+        ],
+        "candidate_existing_donor": "1_0_1_5F_C9_1_300000_0_0_0",
+        "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
+        "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
+      },
+      {
+        "reference": "1_0_1_14_65_1_300000_0_0_0",
+        "name": "BF1",
+        "identity_status": "TECHNICAL_TUPLE_CONFIRMED_PROGRAMME_DONOR_MAPPING_UNPROVEN",
+        "tuple": {
+          "sid": 20,
+          "tid": 101,
+          "onid": 1,
+          "frequency_mhz": 12418,
+          "polarization": "H",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 1601,
+          "apid": 601,
+          "pmt": 261,
+          "provider": "SIS",
+          "encryption": "Irdeto2"
+        },
+        "sources": [
+          {
+            "url": "https://ru.kingofsat.net/new-4.8E",
+            "assertion": "Added2026-10-28; transportstreamlisted2026-11-04 with exactSID/TID/NIDandPIDs"
+          },
+          {
+            "url": "https://en.kingofsat.net/pos-4.8E",
+            "assertion": "Currentlistingcontainsbothold11727.5Handnew12418Hservices"
+          }
+        ],
+        "candidate_existing_donor": "1_0_1_A0_C9_1_300000_0_0_0",
+        "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
+        "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
+      },
+      {
+        "reference": "1_0_1_15_65_1_300000_0_0_0",
+        "name": "BF2",
+        "identity_status": "TECHNICAL_TUPLE_CONFIRMED_PROGRAMME_DONOR_MAPPING_UNPROVEN",
+        "tuple": {
+          "sid": 21,
+          "tid": 101,
+          "onid": 1,
+          "frequency_mhz": 12418,
+          "polarization": "H",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 1701,
+          "apid": null,
+          "pmt": 262,
+          "provider": "SIS",
+          "encryption": "Irdeto2"
+        },
+        "sources": [
+          {
+            "url": "https://ru.kingofsat.net/new-4.8E",
+            "assertion": "Added2026-10-28; transportstreamlisted2026-11-04 with exactSID/TID/NIDandPIDs"
+          },
+          {
+            "url": "https://en.kingofsat.net/pos-4.8E",
+            "assertion": "Currentlistingcontainsbothold11727.5Handnew12418Hservices"
+          }
+        ],
+        "candidate_existing_donor": "1_0_1_A2_C9_1_300000_0_0_0",
+        "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
+        "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
+      },
+      {
+        "reference": "1_0_1_16_65_1_300000_0_0_0",
+        "name": "BF3",
+        "identity_status": "TECHNICAL_TUPLE_CONFIRMED_PROGRAMME_DONOR_MAPPING_UNPROVEN",
+        "tuple": {
+          "sid": 22,
+          "tid": 101,
+          "onid": 1,
+          "frequency_mhz": 12418,
+          "polarization": "H",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 1801,
+          "apid": null,
+          "pmt": 263,
+          "provider": "SIS",
+          "encryption": "Irdeto2"
+        },
+        "sources": [
+          {
+            "url": "https://ru.kingofsat.net/new-4.8E",
+            "assertion": "Added2026-10-28; transportstreamlisted2026-11-04 with exactSID/TID/NIDandPIDs"
+          },
+          {
+            "url": "https://en.kingofsat.net/pos-4.8E",
+            "assertion": "Currentlistingcontainsbothold11727.5Handnew12418Hservices"
+          }
+        ],
+        "candidate_existing_donor": "1_0_1_A3_C9_1_300000_0_0_0",
+        "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
+        "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
+      },
+      {
+        "reference": "1_0_1_17_65_1_300000_0_0_0",
+        "name": "SIS1",
+        "identity_status": "TECHNICAL_TUPLE_CONFIRMED_PROGRAMME_DONOR_MAPPING_UNPROVEN",
+        "tuple": {
+          "sid": 23,
+          "tid": 101,
+          "onid": 1,
+          "frequency_mhz": 12418,
+          "polarization": "H",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 1901,
+          "apid": 901,
+          "pmt": 264,
+          "provider": "SIS",
+          "encryption": "Irdeto2"
+        },
+        "sources": [
+          {
+            "url": "https://ru.kingofsat.net/new-4.8E",
+            "assertion": "Added2026-10-28; transportstreamlisted2026-11-04 with exactSID/TID/NIDandPIDs"
+          },
+          {
+            "url": "https://en.kingofsat.net/pos-4.8E",
+            "assertion": "Currentlistingcontainsbothold11727.5Handnew12418Hservices"
+          }
+        ],
+        "candidate_existing_donor": "1_0_1_7_C9_1_300000_0_0_0",
+        "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
+        "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
+      },
+      {
+        "reference": "1_0_1_18_65_1_300000_0_0_0",
+        "name": "SIS2",
+        "identity_status": "TECHNICAL_TUPLE_CONFIRMED_PROGRAMME_DONOR_MAPPING_UNPROVEN",
+        "tuple": {
+          "sid": 24,
+          "tid": 101,
+          "onid": 1,
+          "frequency_mhz": 12418,
+          "polarization": "H",
+          "sr": 27500,
+          "fec": "3/4",
+          "vpid": 2001,
+          "apid": 1001,
+          "pmt": 265,
+          "provider": "SIS",
+          "encryption": "Irdeto2"
+        },
+        "sources": [
+          {
+            "url": "https://ru.kingofsat.net/new-4.8E",
+            "assertion": "Added2026-10-28; transportstreamlisted2026-11-04 with exactSID/TID/NIDandPIDs"
+          },
+          {
+            "url": "https://en.kingofsat.net/pos-4.8E",
+            "assertion": "Currentlistingcontainsbothold11727.5Handnew12418Hservices"
+          }
+        ],
+        "candidate_existing_donor": "1_0_1_8_C9_1_300000_0_0_0",
+        "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
+        "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
+      }
+    ],
+    "provider_context": {
+      "url": "https://www.sis.tv/sis-signs-long-term-agreement-with-betfred-to-upgrade-racing-production-in-uk/",
+      "date": "2025-02-18",
+      "primary": true,
+      "assertion": "SIS broadcasts Betfred in-houseTVandupgradesHD. This doesnotprove BF1..3exacttuples and donor alias."
+    }
+  },
+  "canonical_exact_check": "All 28 held 23.5E references compared against actual names in all 18 protected packages: zero exact matches; all holds retained.",
+  "cohort_counts": {
+    "source_unique_snapshot": 14808,
+    "current_tv_snapshot_reconciled": 10430,
+    "source_out_of_scope": 2704,
+    "dated_exact_departures_total": 5,
+    "historical_without_current_exact_match": 1669,
+    "production_covered": 10313,
+    "candidate_covered": 10319,
+    "production_current_technical_open": 117,
+    "candidate_current_technical_open": 111,
+    "original_open_cohort": 120,
+    "candidate_repairs_total": 6,
+    "new_repairs_this_run": 5,
+    "additional_departures_this_run": 3,
+    "physically_incomplete_original_cohort_after_candidate": 114,
+    "remaining_prior_review": 10,
+    "remaining_prior_held": 101
+  },
+  "count_limits": "Reconciles existing 14808-reference source snapshot with new evidence for the 120-item queue. Not a new full upstream crawl. Departure is not counted as an artwork repair. Production unchanged."
+}
