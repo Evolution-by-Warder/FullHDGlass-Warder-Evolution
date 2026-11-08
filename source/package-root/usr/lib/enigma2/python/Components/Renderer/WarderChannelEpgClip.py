@@ -86,6 +86,7 @@ class WarderChannelEpgClip(Renderer):
         self._idle_draw_key = None
         self._idle_draw_at = 0.0
         self._selected_title_scrollable = False
+        self._perf_idle_skips = 0
         # Never fake native EPG suppression with a tiny font. The C++ list
         # skips elements whose font pointer is null; where the image's SWIG
         # binding rejects None, leave its native list untouched.
@@ -136,14 +137,15 @@ class WarderChannelEpgClip(Renderer):
             count = self._perf_ticks
             if count > 0:
                 with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
-                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d bar_plan_hits=%d bar_plan_misses=%d mode=%s\n' % (
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d bar_plan_hits=%d bar_plan_misses=%d idle_skips=%d mode=%s\n' % (
                         now - self._perf_since, count, self._perf_elapsed_ms / count,
                         self._perf_worst_ms, self._perf_over_20ms,
                         self._perf_row_changes, self._perf_name_calls,
                         self._perf_progress_calls, self._epg_cache_hits,
                         self._epg_cache_misses, self._perf_text_measure_calls,
                         self._perf_text_cache_hits, self._perf_bar_plan_hits,
-                        self._perf_bar_plan_misses, str(self._progress_mode())))
+                        self._perf_bar_plan_misses, self._perf_idle_skips,
+                        str(self._progress_mode())))
             self._perf_since = now
             self._perf_ticks = 0
             self._perf_elapsed_ms = 0.0
@@ -158,6 +160,7 @@ class WarderChannelEpgClip(Renderer):
             self._perf_text_cache_hits = 0
             self._perf_bar_plan_hits = 0
             self._perf_bar_plan_misses = 0
+            self._perf_idle_skips = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -684,6 +687,8 @@ class WarderChannelEpgClip(Renderer):
                 except (AttributeError, RuntimeError, TypeError, ValueError):
                     skip_draw = False
             if skip_draw:
+                if hasattr(self, '_perf_idle_skips'):
+                    self._perf_idle_skips += 1
                 return
             # Preserve the original fail-open path for unsupported views.
             if not self._draw_rows(component):
