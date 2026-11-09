@@ -1781,6 +1781,13 @@
         "https://img.tv8.com.tr/s/template/v2/img/tv8-logo.png"
       ],
       "checked": "2026-11-08"
+    },
+    "artwork_followup_20261109_07": {
+      "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+      "new_draft_png": 9,
+      "review": "reports/vhannibal-followup-20261106/tv8-official-review/review/review.json",
+      "source": "https://www.acunmedya.com/media/slfbdm2f/content-tv8-logo.png",
+      "note": "Domestic TV8 official original. Nine variants staged; not approved or installed."
     }
   },
   {
@@ -6074,6 +6081,10 @@
       "decision": "HOLD_EXISTING_UHD_ARTWORK_DOES_NOT_PROVE_HD_DONOR",
       "finding": "Pinned candidate660E220x132 WHITE existing exact-reference PNG visually says SES UHD Demo Channel. Target is SES Demo HD2025. Existing PNG preserved; no inference of matching HD artwork. All three220x132 archives downloaded and SHA256/CRC checked; transparent target absent.",
       "checked_commit": "7c25d892ed494f36e553be79f140ddc04d9ee020"
+    },
+    "artwork_followup_20261109_07": {
+      "status": "BLOCKED_CORPORATE_VS_DEMO_BRAND",
+      "evidence": "reports/vhannibal-followup-20261106/ses-official-review/official-source-manifest.json"
     }
   },
   {

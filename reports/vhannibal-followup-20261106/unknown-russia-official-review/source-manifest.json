@@ -1,0 +1,219 @@
+{
+  "status": "NEW_SOURCE_REVIEW_ONLY_NOT_APPROVED",
+  "retrieved_utc": "2026-11-09",
+  "channel": "Неизвестная Россия / UNKNOWN RUSSIA",
+  "assets": [
+    {
+      "file": "ntv.html",
+      "url": "https://www.ntv.ru/air/unknown_russia",
+      "sha256": "0cfa21c7f1a6b4093b0c1cbe715ea383143f0200f87ffa3b8ace9e9bcf0233b5",
+      "bytes": 268929
+    },
+    {
+      "file": "channel-logo.css",
+      "url": "https://static2.ntv.ru/assets/css/channel-logo-DHIP3zJy.css",
+      "sha256": "4c80c319012cb6bc105652cf3e913613c5dd5750ee1fbdd24024df8e421d7108",
+      "bytes": 2721
+    },
+    {
+      "file": "active.png",
+      "url": "https://static2.ntv.ru/static/images/channels/active.png",
+      "sha256": "05297ed68aaab1a232c3577ce61f259b0feeea572f653ca5b9e3522d8c8b23e8",
+      "bytes": 22095,
+      "dimensions": [
+        160,
+        2600
+      ],
+      "mode": "P",
+      "alpha_bbox": [
+        0,
+        0,
+        160,
+        2600
+      ]
+    },
+    {
+      "file": "not-active.png",
+      "url": "https://static2.ntv.ru/static/images/channels/not-active.png",
+      "sha256": "f7f52bd7503b06224638b49d37af5281b4194de8ebab53915c30e018b8528948",
+      "bytes": 19722,
+      "dimensions": [
+        160,
+        2600
+      ],
+      "mode": "P",
+      "alpha_bbox": [
+        0,
+        0,
+        160,
+        2600
+      ]
+    },
+    {
+      "file": "not-active-dark.png",
+      "url": "https://static2.ntv.ru/static/images/channels/not-active-dark.png",
+      "sha256": "857a9a14250009ed78189871a83c892863225003fdc7cf19f8ccb7fd444f56fa",
+      "bytes": 19702,
+      "dimensions": [
+        160,
+        2600
+      ],
+      "mode": "P",
+      "alpha_bbox": [
+        0,
+        0,
+        160,
+        2600
+      ]
+    },
+    {
+      "file": "cableman.html",
+      "url": "https://www.cableman.ru/channel/neizvestnaya-rossiya",
+      "sha256": "f352777abd1c6a2c1a014fd045d09755bd2f635cbd6694e1651c0e11892ddc54",
+      "bytes": 47913
+    },
+    {
+      "file": "cableman-logo.png",
+      "url": "https://www.cableman.ru/sites/default/files/1920-1080.png",
+      "sha256": "9c9f4690b4183012129f260d12d22b1791f87e520f1f22a1a332b6c138265758",
+      "bytes": 3847,
+      "dimensions": [
+        450,
+        253
+      ],
+      "mode": "RGBA",
+      "alpha_bbox": [
+        145,
+        101,
+        305,
+        152
+      ]
+    },
+    {
+      "file": "cableman-current-logo.png",
+      "url": "https://www.cableman.ru/sites/default/files/%D0%9D%D0%95%D0%98%D0%97%D0%92%D0%95%D0%A1%D0%A2%D0%9D%D0%90%D0%AF%20%D0%A0%D0%9E%D0%A1%D0%A1%D0%98%D0%AF.png",
+      "sha256": "8a98e5e6a79e0cddcb5e7695a914e1bae4d81851033a6d33cfb5d347e26c7e52",
+      "bytes": 9556,
+      "dimensions": [
+        450,
+        118
+      ],
+      "mode": "RGBA",
+      "alpha_bbox": [
+        29,
+        32,
+        432,
+        97
+      ]
+    },
+    {
+      "file": "premier.html",
+      "url": "https://premier.one/tv/neizvestnaya_rossiya",
+      "sha256": "3c5ad786bc4a07e755cf92515915250bd46495fb1d57765c2011b14808260c54",
+      "bytes": 770760
+    },
+    {
+      "file": "premier-channel.jpg",
+      "url": "https://uma-static.rtbcdn.ru/pic/channellivetv/2a/5f/2a5f20df466ca450cb7be28b04bdd633.jpg",
+      "sha256": "003a0d6c0e7095c871c921cc9752984d9c3b69e94f51a204a4fb75209d5ee544",
+      "bytes": 15100,
+      "dimensions": [
+        600,
+        600
+      ]
+    },
+    {
+      "file": "premier-card.jpg",
+      "url": "https://uma-static.rtbcdn.ru/pic/cardimage/fa/26/fa26d80b1a0de964b1a70c536153c8e3.jpg",
+      "sha256": "003a0d6c0e7095c871c921cc9752984d9c3b69e94f51a204a4fb75209d5ee544",
+      "bytes": 15100,
+      "dimensions": [
+        600,
+        600
+      ]
+    }
+  ],
+  "sprite_extraction": {
+    "source": "active.png",
+    "official_page_css": "background-position:0 -200px; width:80; height:50",
+    "sprite_dimensions": [
+      160,
+      2600
+    ],
+    "crop_pixels": [
+      0,
+      400,
+      160,
+      500
+    ],
+    "output": "unknown-russia-official.png",
+    "warning": "Official tile contains white opaque UI background and border. No transparency fabricated; not suitable as transparent picon artwork."
+  },
+  "artwork_conflict": "Official NTV page sprite has legacy blue-green icon and dark text; current Cableman channel page points to larger NTV-branded white-text mark. Cached Cableman image points to old legacy mark. No evidence establishes switch date or correct on-air mark for these exact SD services. No logo recolored, redrawn, or promoted. No picon variants generated.",
+  "services": [
+    {
+      "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+      "frequency": "11727 V",
+      "sid": 17318,
+      "tsid": 60101,
+      "onid": 1070,
+      "vpid": 1218,
+      "apid": 1318,
+      "status": "Identity supported by fresh KingOfSat 2026-11-07 plus Satworld alias mapping; new artwork approval remains blocked"
+    },
+    {
+      "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
+      "frequency": "11012 H",
+      "sid": 17368,
+      "tsid": 32108,
+      "onid": 1070,
+      "vpid": 1268,
+      "apid": 1368,
+      "status": "Fresh Satbeams/Frocus Nov7 confirms SID and PIDs SD; historical/current Morpheus chart supports NID/TID; current complete tuple should be captured before candidate application"
+    }
+  ],
+  "identity_evidence": [
+    {
+      "url": "https://en.kingofsat.net/index.php/arabic/detail-unknownrussia",
+      "retrieval": "web open",
+      "facts": "11727.70 V 42E, NID1070 TSID60101, SID17318 VPID1218 APID1318; last channel update2026-11-07; transport2026-11-09"
+    },
+    {
+      "url": "https://satworld.ru/news/54-channels/12525-rossijskij-telekanal-neizvestnaya-rossiya-vernulsya-na-42-gradus.html",
+      "retrieval": "web open",
+      "facts": "2026-11-07: UNKNOWN RUSSIA alias of NTV documentarychannel Neizvestnaya Rossiya; same programs11727V/11012H"
+    },
+    {
+      "url": "https://satbeams.com/news/transponder-news-7-nov-26",
+      "retrieval": "search result; direct open inaccessible",
+      "facts": "2026-11-07 new UNKNOWN RUSSIA Неизвестная Россия SD 11012H SID17368 VPID1268/APID1368"
+    },
+    {
+      "url": "https://frocus.net/main.php?id=24615&lng=en&pag=tp&rzd=tvkanal&sp=42&tp_id=1838",
+      "retrieval": "fresh search result; other direct Frocus requests returned older cached content, so note cache difference",
+      "facts": "UNKNOWN RUSSIA SID17368 VPID1268/APID1368 updated2026-11-07; returned11012H"
+    },
+    {
+      "url": "https://morpheus883.altervista.org/cat_srv.php/?chart=124",
+      "retrieval": "search result",
+      "facts": "Unknown Russia(E),11012H SID17368,NID1070,TID32108,namespace01A40000; no current PID on record"
+    }
+  ],
+  "counts": {
+    "new_approved_references": 0,
+    "new_picon_png": 0,
+    "modified_zip": 0,
+    "technical_closures": 0
+  },
+  "next_step": "Obtain clean transparent/vector official NTV current channel brand asset or reconcile newer NTV-branded mark with broadcaster proof; render nine variants only then, staging for owner review.",
+  "branding_update": "Current official distributor PREMIER page names НТВ Неизвестная Россия and its associated 600x600 channel/card JPG shows NTV+bluegreen icon on white background, corroborating NTV addition in Cableman current transparent wordmark. NTV broadcaster live site sprite remains legacy. No broadcaster-native transparent current mark or dark-text current mark located; no graphic fabricated.",
+  "retained_in_this_checkpoint": [
+    "source-manifest.json",
+    "channel-logo.css",
+    "active.png",
+    "unknown-russia-official.png",
+    "cableman-current-logo.png",
+    "premier-channel.jpg"
+  ],
+  "retention_note": "Only retained_in_this_checkpoint files are saved in this checkpoint; other retrieved pages/assets listed for provenance."
+}

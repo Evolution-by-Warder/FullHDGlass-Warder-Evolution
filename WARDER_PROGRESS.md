@@ -1,5 +1,14 @@
 # Warder Evolution – stav projektu
 
+### Dávka07 – nové oficiálne podklady a TV8 návrhy – 9.11.2026
+
+- TV8 Turkey: **9 nových návrhov PNG**, 3 rozmery × TRANSPARENT/WHITE/BLACK, z oficiálneho originálu ACUNMEDYA; čakajú na grafické schválenie. Náhľad a SHA256: `reports/vhannibal-followup-20261106/tv8-official-review/review/`.
+- **0 schválených TV referencií / 0 vložených PNG / 0 upravených ZIPov / 0 technických uzavretí**. Zostáva **105 otvorených**. Kandidát zostáva37 TV/330 PNG/99 ZIPov. Návrhy nie sú súčasťou kandidátnych balíkov.
+- Uložené nové oficiálne SES originály a NTV/PREMIER podklady s presnou provenienciou. SES corporate2025 vs HD demo branding a NTV legacy vs current marka zostávajú explicitne blokované; žiadne vymyslené aliasy.
+- TV8 rozmery a alfy overené; farby originálu zachované, každý rozmer vytvorený priamo z originálu. Geometria návrhu 204×116 na220×132 je označená na kontrolu; nejde o tvrdenie zmrazeného V9 schválenia. Zdroj216×195 znamená zväčšenie pri400×240.
+- Zmenené iba reportové/staging súbory a tento register. Produkcia, rádio, manifesty a všetkých18 CANAL+ archívov bez zmeny. Spätné vzdialené overenie bude zapísané po vytvorení payload commitu.
+
+
 ### Dávka06 – technická služba ASSOCIATION MATERIEL – 9.11.2026
 
 - **0 nových TV referencií / 0 PNG / 0 ZIPov / 1 technická výnimka / 0 dátových výnimiek**. Zostáva **105 otvorených = 86 pôvodných + 19 delta**; kandidát spolu37 TV/330 PNG/99 jedinečných ZIPov.
