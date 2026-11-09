@@ -1,0 +1,32 @@
+name: Quick lossless PNG optimization
+on:
+  push:
+    branches: [fix/reset-icons-weather-and-storage-label]
+    paths:
+      - '.github/workflows/quick-optimize-png.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install fast PNG optimizer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq optipng
+          python3 -m pip install --break-system-packages pillow
+      - name: Optimize at most 25 largest bundled PNG files
+        run: bash tools/optimize_large_png.sh
+      - name: Commit smaller pixel-identical PNGs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'source/package-root'
+          if ! git diff --cached --quiet; then
+            git commit -m 'Optimize large bundled PNGs losslessly (fast pass)'
+            git push
+          fi
