@@ -2,7 +2,7 @@ name: Publish FullHDGlass Warder Evolution 1.0.75
 # Official stable: optional EPG-title marquee; native channel list by default.
 on:
   push:
-    branches: [release/warder-1.0.75-20261108]
+    branches: [main]
     paths:
       - '.github/workflows/publish-warder-1.0.75.yml'
   workflow_dispatch:
