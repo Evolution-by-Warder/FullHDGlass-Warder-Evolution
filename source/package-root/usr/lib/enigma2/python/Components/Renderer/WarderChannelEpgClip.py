@@ -96,6 +96,12 @@ class WarderChannelEpgClip(Renderer):
         self._warder_test_marker = False
         # Performance logging is a receiver QA opt-in, not a production hot path.
         self._perf_enabled = exists('/tmp/warder-epg-perf-enable')
+        # Optional lightweight native navigation probe for fallback images.
+        # No EPG lookups, drawing, or periodic disk writes in production.
+        self._navigation_probe = (not self._overlay_allowed and
+                                  exists('/tmp/warder-epg-navigation-enable'))
+        self._navigation_last = None
+        self._navigation_last_tick = None
         # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
         self._perf_since = monotonic()
         self._perf_ticks = 0
@@ -210,6 +216,8 @@ class WarderChannelEpgClip(Renderer):
             self._epg_snapshots.clear()
         if getattr(self, '_overlay_allowed', True):
             self._timer.start(55, True)
+        elif getattr(self, '_navigation_probe', False):
+            self._timer.start(50, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
@@ -605,9 +613,41 @@ class WarderChannelEpgClip(Renderer):
         self._diag("canvas_painted")
         return True
 
+    def _native_navigation_tick(self):
+        """Opt-in sampling only: detects page and selection changes, not keydown.
+
+        Timestamps come from the sampling callback.  A physical key-to-paint
+        latency cannot be inferred from the interval between two samples.
+        """
+        now = monotonic()
+        previous_tick = getattr(self, '_navigation_last_tick', None)
+        self._navigation_last_tick = now
+        try:
+            component = self._find_component()
+            if component is None or component.instance is None:
+                return
+            top = int(component.instance.getTopIndex())
+            selected = int(component.instance.getCurrentIndex())
+            previous = getattr(self, '_navigation_last', None)
+            if previous is not None and (top, selected) != previous[0]:
+                old_top, old_selected = previous[0]
+                kind = 'page' if top != old_top else 'row'
+                # Append only for actual changes, never every 50ms.
+                with open('/tmp/warder-channel-navigation-test3.log', 'a') as output:
+                    output.write('t=%.3f kind=%s top=%d previous_top=%d selected=%d previous_selected=%d sampling_gap_ms=%.1f\n' %
+                                 (now, kind, top, old_top, selected, old_selected,
+                                  (now - previous_tick) * 1000.0 if previous_tick is not None else -1.0))
+            self._navigation_last = ((top, selected), now)
+        except (OSError, AttributeError, RuntimeError, TypeError, ValueError):
+            pass
+
     def refresh(self):
-        # Old images use native ChannelSelection; no repeating 55/130ms timer.
+        # Native fallback has no render loop. A separate opt-in probe samples
+        # row/page changes without querying EPG or repainting the canvas.
         if not getattr(self, '_overlay_allowed', True):
+            if getattr(self, '_navigation_probe', False):
+                self._native_navigation_tick()
+                self._timer.start(50, True)
             return
         # Local import also supports isolated AST-method regression tests.
         from time import monotonic
