@@ -136,8 +136,6 @@ jobs:
           fi
           gh release view "$TAG" --json isDraft,isPrerelease,assets --jq '.isDraft == false and .isPrerelease == false and (.assets | length >= 2)' | grep -qx true
       - name: Update production feed only after immutable Release verification
-        env:
-          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
