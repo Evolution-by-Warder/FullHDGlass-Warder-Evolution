@@ -205,7 +205,7 @@ class WarderChannelEpgClip(Renderer):
             self._glyph_width_cache.clear()
         if hasattr(self, '_epg_snapshots'):
             self._epg_snapshots.clear()
-        if self._overlay_allowed:
+        if getattr(self, '_overlay_allowed', True):
             self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
