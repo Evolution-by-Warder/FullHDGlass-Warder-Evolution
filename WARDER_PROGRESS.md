@@ -1,3 +1,9 @@
+## 2026-11-09 — PackageAction TEST 4 (full-width white description)
+
+- Owner requested restoring second-row description to x95 width1335, independent from first-row name and version columns, and displaying the description white while retaining the selected plugin name's existing blue highlighting.
+- Candidate PR #84 branch: name x95 width690; version x800 width630; description x95 width1335 with `color=0x00ffffff`; all original fonts and icon positions unchanged. CI guard allows only the exact three approved template edits; focused test updated. Latest code commit `3263cdf38eaf6046448b1fc6f28f3d9a76a1a0ae`.
+- Receiver test ZIP `warder_packageaction_columns_test4.zip` created; XML parsed and ZIP integrity verified. Receiver visual confirmation pending; no release/merge/feed change.
+
 ## 2026-11-09 — PackageAction TEST 2: restrict descriptions to left column
 
 - User's receiver confirmed full right-column versions after TEST 1 but very long descriptions overlapped them. On branch `fix/packageaction-version-columns-20261109` (draft PR #84), description `text=4` x95 width1335 -> width650; name remains width650 and version x760 width670, gap 15. Original fonts and icons retained. Test case and exact-diff guard updated through commit `f663f8137c99ea47b94f19212cb2b8a26cbe9b74`. Created receiver ZIP `warder_packageaction_columns_test2.zip` based on prior tested XML. Receiver validation remains pending; no production changes.
