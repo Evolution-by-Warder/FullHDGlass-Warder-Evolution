@@ -2334,6 +2334,21 @@
         "https://en.kingofsat.net/data-9E",
         "https://ftp.morpheus883.altervista.org/srv.php/?chart=9"
       ]
+    },
+    "followup_20261109": {
+      "checked": "2026-11-09",
+      "decision": "HOLD_ONID_CONFLICT",
+      "finding": "Fresh raw KingOfSat9E: Stream33 ONID0 TSID516, RADIO CLASSICA TV SID67 explicitData PMT6007 PCR8191. Fresh Morpheus9E: Stream33 ONID29 TSID516 SID67 name matches but empty AV columns. Target requires ONID29. Search index has inconsistent0/512 and29/516 versions; do not cherry-pick cached matching tuple.",
+      "sources": [
+        {
+          "url": "https://kingofsat.tv/pos-9E",
+          "sha256": "ae62a149bf1a9926d620a3b627f2096eccc0ca89fcb18f051a81c51ca964ede5"
+        },
+        {
+          "url": "https://ftp.morpheus883.altervista.org/srv.php/?chart=9",
+          "sha256": "c55742a424951b896d0be21e88a0d89e4f1e4bc5afb8c82c6f21050cc59a5053"
+        }
+      ]
     }
   },
   {

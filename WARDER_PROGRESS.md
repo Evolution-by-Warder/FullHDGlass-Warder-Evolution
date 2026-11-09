@@ -4,7 +4,7 @@
 
 - **0 nových TV referencií / 0 PNG / 0 ZIPov / 1 technická výnimka / 0 dátových výnimiek**. Zostáva **105 otvorených = 86 pôvodných + 19 delta**; kandidát spolu37 TV/330 PNG/99 jedinečných ZIPov.
 - Presný SID9124/TSID1098/ONID1 na19,2°E12363V, VPID2410/APID2421. Technický účel doložený priamym pozorovaním SatExpat a still-image záznamom Satindex; aktuálny Morpheus scan potvrdzuje identitu a AV PID. Nejde o tvrdenie zániku ani dátovej služby. Pôvodné referencie, chýbajúce varianty a všetky balíky zachované.
-- Report `reports/vhannibal-followup-20261106/scope-batch-20261109-06.json`; vzdialená kontrola nasleduje po commite. Menia sa iba registre, žiadne asset cesty.18 CANAL+ archívov zostáva identických.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261109-06.json`; payload commit `d03aadfd4bb4b93484e84639283f1ac2692a5781`; všetky4 zmenené dokumenty spätne načítané a bajtovo zhodné. GitHub compare potvrdil0 asset zmien, manifest aj18 CANAL+ archívov zachované. Menia sa iba registre, žiadne asset cesty.18 CANAL+ archívov zostáva identických.
 - SES Demo66°E: fyzicky overený existujúci biely220×132 PNG má nápis UHD Demo Channel; nepoužiť ako dôkaz HD donora. Presný konflikt uložený v registri.
 - Živý main FullHDGlass `a711c7940f8137eaa69331a1a4b511f617edad47` už obsahuje stabilnú1.0.76; PiconHub `481e9b9154a510c64c743de72c1a73ed808307bf`. Produkčný stav sa neprepisuje starším kandidátom. Rádio bez zásahu.
 
@@ -230,3 +230,5 @@ Kontrola živých vetiev po uložení: FullHDGlass main stále `12247acc20f69960
 - SES Demo na66°E má už presnejší identifikačný podklad; potrebuje schváleného donora rovnakej edície. Dve45°E referencie majú ONID1/0 konflikt. DSNS historické testy nepreukazujú aktuálnu dátovú klasifikáciu. BFBS oficiálny zoznam čísel kanálov nie je tabuľka SID; Quadrille57°E nemožno preniesť na75°E.
 - UNKNOWN RUSSIA sa podľa čerstvých záznamov7.11. vrátila; staršie oznámenie o odchode nepoužiť na vyradenie. AntenaTSID10/0, Zor/NOW, TV5MONDE a ďalšie blokácie ostávajú chránené.
 - Ďalší konkrétny krok: získať schválený domáci TV8 alebo SES Demo HD donor; presnú aktuálnu transportnú tabuľku Antena a BFBS75°E. Nové grafiky pripraviť oddelene na schválenie, žiadne domyslené aliasy. Produkčný merge nie je povolený.
+
+- Následná kontrola RADIO CLASSICA TV9°E: čerstvý KingOfSat má ONID0/TSID516, Morpheus ONID29/TSID516. Sporný ONID pretrváva; neuzavreté. SHA256 oboch čerstvých stránok uložené v registri. Zostáva105.

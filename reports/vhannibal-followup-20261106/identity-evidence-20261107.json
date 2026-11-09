@@ -2986,7 +2986,38 @@
         "piconhub_main": "481e9b9154a510c64c743de72c1a73ed808307bf"
       },
       "remote_readback": {
-        "status": "PENDING_COMMIT"
+        "status": "PASS",
+        "payload_commit": "d03aadfd4bb4b93484e84639283f1ac2692a5781",
+        "files": [
+          {
+            "path": "WARDER_PROGRESS.md",
+            "sha": "2f7732ed6b4fb6a848f6196ecc60f4ea42ebe9ff",
+            "match": true
+          },
+          {
+            "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+            "sha": "2bf66a1c38895ac6b224013dbb2b9960f0747832",
+            "match": true
+          },
+          {
+            "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+            "sha": "3b51a9d25ec960aac3e1e656660451a1193a69c9",
+            "match": true
+          },
+          {
+            "path": "reports/vhannibal-followup-20261106/scope-batch-20261109-06.json",
+            "sha": "e2b7fe4bb99a111ea8c27508590bb8f407cb3fa0",
+            "match": true
+          }
+        ],
+        "github_compare_files": [
+          "WARDER_PROGRESS.md",
+          "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+          "reports/vhannibal-followup-20261106/remaining-review.json",
+          "reports/vhannibal-followup-20261106/scope-batch-20261109-06.json"
+        ],
+        "asset_paths_changed": 0,
+        "protected_canal_archives_unchanged_by_git_diff": 18
       }
     },
     "ses_donor_check": {
@@ -2994,6 +3025,21 @@
       "finding": "Pinned candidate660E220x132 WHITE existing exact-reference PNG visually says SES UHD Demo Channel. Target is SES Demo HD2025. Existing PNG preserved; no inference of matching HD artwork. All three220x132 archives downloaded and SHA256/CRC checked; transparent target absent.",
       "checked_commit": "7c25d892ed494f36e553be79f140ddc04d9ee020"
     },
-    "next_step": "Resolve exact HD donor for SES Demo without reusing UHD artwork; Antena TSID10/0 remains disputed. Do not recreate completed batches."
+    "next_step": "Resolve exact HD donor for SES Demo without reusing UHD artwork; Antena TSID10/0 remains disputed. Do not recreate completed batches.",
+    "radio_classica_followup": {
+      "checked": "2026-11-09",
+      "decision": "HOLD_ONID_CONFLICT",
+      "finding": "Fresh raw KingOfSat9E: Stream33 ONID0 TSID516, RADIO CLASSICA TV SID67 explicitData PMT6007 PCR8191. Fresh Morpheus9E: Stream33 ONID29 TSID516 SID67 name matches but empty AV columns. Target requires ONID29. Search index has inconsistent0/512 and29/516 versions; do not cherry-pick cached matching tuple.",
+      "sources": [
+        {
+          "url": "https://kingofsat.tv/pos-9E",
+          "sha256": "ae62a149bf1a9926d620a3b627f2096eccc0ca89fcb18f051a81c51ca964ede5"
+        },
+        {
+          "url": "https://ftp.morpheus883.altervista.org/srv.php/?chart=9",
+          "sha256": "c55742a424951b896d0be21e88a0d89e4f1e4bc5afb8c82c6f21050cc59a5053"
+        }
+      ]
+    }
   }
 }
