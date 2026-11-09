@@ -13,7 +13,7 @@ spec.loader.exec_module(policy)
 
 class Info:
     def __init__(self, distro="openatv", version="8.1", e2egl=True):
-        self.data = {"distro": distro, "imgversion": version, "e2egl": e2egl}
+        self.data = {"distro": distro, "imgversion": version, "HasEGLRenderer": e2egl}
 
     def getItem(self, key):
         return self.data.get(key)
@@ -29,7 +29,7 @@ class PolicyTests(unittest.TestCase):
         os.unlink(self.temp.name)
 
     def allowed(self, **kwargs):
-        return policy.allow_channel_epg_overlay(self.temp.name, Info(**kwargs))
+        return policy.allow_channel_epg_overlay(self.temp.name, Info(**kwargs), {"backend": "e2egl"})
 
     def test_active_e2egl(self):
         self.assertTrue(self.allowed())
@@ -43,11 +43,19 @@ class PolicyTests(unittest.TestCase):
         for backend in (None, False, 0, "off", "disabled", "", "unknown"):
             self.assertFalse(self.allowed(e2egl=backend))
 
+    def test_native_framebuffer_disables_overlay(self):
+        self.assertFalse(policy.allow_channel_epg_overlay(self.temp.name, Info(),
+                                                          {"backend": "framebuffer"}))
+
+    def test_unknown_backend_disables_overlay(self):
+        self.assertFalse(policy.allow_channel_epg_overlay(self.temp.name, Info(),
+                                                          {"backend": ""}))
+
     def test_active_string_backend(self):
         self.assertTrue(self.allowed(e2egl="active"))
 
     def test_unknown_image_fails_closed(self):
-        self.assertFalse(policy.allow_channel_epg_overlay("/no/such/path", Info(distro="", version="", e2egl=True)))
+        self.assertFalse(policy.allow_channel_epg_overlay("/no/such/path", Info(distro="", version="", e2egl=True), {"backend": "e2egl"}))
 
 
 if __name__ == "__main__":
