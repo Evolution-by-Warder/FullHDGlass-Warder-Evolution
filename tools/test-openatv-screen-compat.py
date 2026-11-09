@@ -27,6 +27,23 @@ class ScreenCompatTests(unittest.TestCase):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
   from openatv81_skin import revert_skin
   text=revert_skin(ROOT,text)
+  # Restore the receiver-approved PackageAction TEST5 selection geometry
+  # before replaying historical OpenATV baselines. Keep the old ledger intact.
+  start=text.index('<screen name="PackageAction"')
+  end=text.index('</screen>',start)+len('</screen>')
+  section=text[start:end]
+  approved_to_legacy=(
+   ('MultiContentEntryText(pos=(95, 2), size=(690, 34), font=1, flags=RT_VALIGN_CENTER, text=3, color_sel=0x006cbcf0)',
+    'MultiContentEntryText(pos=(95, 2), size=(930, 34), font=1, flags=RT_VALIGN_CENTER, text=3)'),
+   ('MultiContentEntryText(pos=(800, 2), size=(630, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5, color_sel=0x006cbcf0)',
+    'MultiContentEntryText(pos=(1040, 2), size=(390, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)'),
+   ('MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff, color_sel=0x00ffff00)',
+    'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0)'),
+  )
+  for approved, legacy in approved_to_legacy:
+   self.assertEqual(section.count(approved),1,"Unexpected approved PackageAction TEST5 layout")
+   section=section.replace(approved,legacy,1)
+  text=text[:start]+section+text[end:]
   cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
   if cover_layout.exists():
       for edit in json.loads(cover_layout.read_text())['edits']:
