@@ -1,3 +1,10 @@
+## 2026-11-09 — PR #82 follow-up, native backend authority
+
+- Candidate branch `fix/epg-gles-runtime-gate-20261109`; native `getGraphicsInfo().get("backend") == "e2egl"` now solely governs GLES activation, paired with strict OpenATV 8.1 family recognition. Removed requirement for optional `BoxInfo.HasEGLRenderer`: its absence must not reject a verifiably active backend. Date/build numbers do not affect selection.
+- Dedicated test fixtures cover OpenATV 8.1 beta/daily versions, classic framebuffer and unknown backend; added static integration checks for setup default, menu visibility and skin runtime gating. Latest change commit `acd384704b349412d1b9525e349c047cd878b2fe`.
+- The earlier base branch `1de30b4f...` already had failing CI. New branch fixed Prime Time fixture assumptions; earlier verification showed Prime Time and OpenATV compatibility success, but legacy setup-style fingerprint and old navigation probe tests still fail in combined suite. Preserve guard tests; review fingerprint exception explicitly instead of blindly blessing controller changes.
+- Physical acceptance still outstanding: execute `getGraphicsInfo()` within real Enigma2 process on GigaBlue GLES and SF8008 classic. PR remains draft, no merge/IPK/feed publication.
+
 ## 2026-11-09 — Continued CI verification of GLES runtime gating
 
 - PR #82 working branch `fix/epg-gles-runtime-gate-20261109`. Runtime policy uses OpenATV 8.1 version family, `HasEGLRenderer` capability, and native `getGraphicsInfo()['backend'] == 'e2egl'`; does not use build date or loaded-library heuristics.
