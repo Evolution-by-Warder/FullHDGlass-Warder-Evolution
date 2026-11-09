@@ -99,6 +99,7 @@ def method(name):
                 par110=types.SimpleNamespace(value="#62aaff")))),
         "fit_title_to_width": fit_title_to_width,
         "scroll_title_window": scroll_title_window,
+        "exists": lambda path: False,
         "time": __import__("time").time,
         "parseColor": lambda value: value,
         "eRect": lambda *args: args,
@@ -409,6 +410,30 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(self.draw())
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
+
+    def test_gles_native_only_probe_restores_native_and_disables_canvas(self):
+        events = []
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2),
+            instance=types.SimpleNamespace(invalidate=lambda: events.append("invalidate")))
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=component,
+            _native_hidden=True, _native_disable_unsupported=False,
+            _last=("cached",), _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _warder_probe_native_active=False,
+            _restore_native=lambda: events.append("restore"),
+            _draw_rows=lambda c: self.fail("Probe must never paint Warder text"))
+        fn = method("refresh")
+        fn.__globals__["exists"] = lambda path: path == "/tmp/warder-epg-native-only"
+        fn(target)
+        self.assertEqual(events, ["restore", "invalidate"])
+        self.assertTrue(target._warder_probe_native_active)
+        self.assertIsNone(target._last)
+        self.assertEqual(target.instance.calls, [("clear", "clear")])
+        fn(target)
+        self.assertEqual(events, ["restore", "invalidate", "restore"])
 
     def test_refresh_disables_native_event_at_cpp_boundary_before_paint(self):
         events = []
