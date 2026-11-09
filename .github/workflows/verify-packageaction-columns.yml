@@ -1,0 +1,23 @@
+name: Verify PackageAction name and version columns
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml'
+      - 'tools/test_packageaction_version_columns.py'
+      - '.github/workflows/verify-packageaction-columns.yml'
+  workflow_dispatch:
+jobs:
+  check-columns:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source/package-root/usr/share/enigma2/hd_glass17
+            tools/test_packageaction_version_columns.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PackageAction geometry
+        run: python -m unittest discover -s tools -p 'test_packageaction_version_columns.py' -v
