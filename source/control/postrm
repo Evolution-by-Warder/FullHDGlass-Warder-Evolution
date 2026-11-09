@@ -47,7 +47,7 @@ rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
 warder_remove_install_dir() {
     dir="$1"
     case "$dir" in
-        /usr/share/enigma2/hd_glass17|/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17) ;;
+        /usr/share/enigma2/hd_glass17|/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17|/var/lib/fullhdglass17) ;;
         *) return 1 ;;
     esac
     [ -e "$dir" ] || [ -L "$dir" ] || return 0
@@ -90,6 +90,7 @@ case "${1:-}" in
     remove|purge)
         warder_remove_install_dir /usr/share/enigma2/hd_glass17 || exit 1
         warder_remove_install_dir /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17 || exit 1
+        warder_remove_install_dir /var/lib/fullhdglass17 || exit 1
         ;;
 esac
 
