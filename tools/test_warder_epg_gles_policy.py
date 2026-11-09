@@ -60,6 +60,15 @@ class PolicyTests(unittest.TestCase):
     def test_active_string_backend(self):
         self.assertTrue(self.allowed(e2egl="active"))
 
+    def test_plugin_wires_gate_into_default_menu_and_runtime_skin(self):
+        plugin_path = os.path.join(ROOT,
+            "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py")
+        with open(plugin_path, encoding="utf-8") as stream:
+            source = stream.read()
+        self.assertIn("ConfigYesNo(default=allow_channel_epg_overlay())", source)
+        self.assertIn("epg_scroll_enabled = (allow_channel_epg_overlay()", source)
+        self.assertIn("if allow_channel_epg_overlay():", source)
+
     def test_unknown_image_fails_closed(self):
         self.assertFalse(policy.allow_channel_epg_overlay("/no/such/path", Info(distro="", version="", e2egl=True), {"backend": "e2egl"}))
 
