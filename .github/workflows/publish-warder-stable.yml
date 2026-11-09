@@ -81,6 +81,7 @@ jobs:
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
           find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
           python3 tools/test-package-transition.py -q
+          python3 tools/test_uninstall_cleanup.py
           python3 tools/test_warder_channel_epg_clip.py -q
           python3 tools/test_channel_selection_epg_performance.py -q
           python3 tools/test-legacy-950-upgrade.py -q
