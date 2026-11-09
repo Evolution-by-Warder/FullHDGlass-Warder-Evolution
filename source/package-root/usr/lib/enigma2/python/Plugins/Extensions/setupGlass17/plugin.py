@@ -7865,7 +7865,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				else:
 					self["selected_item"].setText("")
 				self["help_pict"].hide()
-				self["help_txt"].setText(helpTxt.get(filename))
+				if filename == "39-1-0":
+					self["help_txt"].setText(ui_text("Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."))
+				else:
+					self["help_txt"].setText(helpTxt.get(filename))
 			else:
 				filename = config.plugins.setupGlass17.par39.value+"/g17_setup_pict/"+filename+".png"
 				if filename:  # All disk access and preparation are delegated to the preview worker.
