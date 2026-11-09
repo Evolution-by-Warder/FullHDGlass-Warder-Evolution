@@ -1,3 +1,7 @@
+## 2026-11-09 — PackageAction TEST 2: restrict descriptions to left column
+
+- User's receiver confirmed full right-column versions after TEST 1 but very long descriptions overlapped them. On branch `fix/packageaction-version-columns-20261109` (draft PR #84), description `text=4` x95 width1335 -> width650; name remains width650 and version x760 width670, gap 15. Original fonts and icons retained. Test case and exact-diff guard updated through commit `f663f8137c99ea47b94f19212cb2b8a26cbe9b74`. Created receiver ZIP `warder_packageaction_columns_test2.zip` based on prior tested XML. Receiver validation remains pending; no production changes.
+
 ## 2026-11-09 — PackageAction plugin install/remove version clipping (PR #84)
 
 - Owner supplied Python 3.14 `PluginBrowser.pyc`; embedded screen for `PackageAction` is confirmed. Shaman 9.50 and Warder 9.50-r12.2 have no `PackageAction` override; modern Warder `skin.xml` does, which is used for plugin install/remove lists.
