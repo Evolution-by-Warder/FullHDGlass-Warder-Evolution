@@ -202,7 +202,7 @@
 		<alias name="ServiceInfo" font="Prive4" size="32" height="50" />
     <alias name="SelectionList" font="Prive4" size="32" height="50"/>
     <alias name="HelpMenuList" font="Prive4" size="32" height="50"/>
-		<alias name="PluginBrowser0" font="Prive4" size="26" height="60" />
+		<alias name="PluginBrowser0" font="Prive4" size="32" height="60" />
 		<alias name="PluginBrowser1" font="Prive4" size="24" />
 		<alias name="FileList" font="Prive4" size="32" height="50" />
 		<alias name="FileListMulti" font="Prive4" size="32" height="50" />
