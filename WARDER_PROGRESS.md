@@ -4,6 +4,7 @@
 - Receiver evidence: user's GigaBlue OpenATV 8.1 GLES install/remove plugin list screenshots show long package versions clipped on the left. User supplied Python 3.14 `Components/PluginList.pyc`; its string constants identify `PluginDownloadComponent` and the `PluginBrowserDownloadName/Descr/Icon` skin parameters. Exact Python 3.14 bytecode disassembly not established, so no unsupported claim about internal function geometry.
 - Candidate one-line skin.xml change: `PluginBrowser0` main list font Prive4 32 → 26. Shared `PluginDownloadBrowser` geometry 1920×1080 and native list 190,200/1540×720, descriptions, icons, layout and all Enigma2 system files unchanged. Since this alias could affect other native list screens, receiver regression testing is mandatory.
 - Added `tools/test_plugin_download_font_fit.py` and `.github/workflows/verify-plugin-download-text-fit.yml` for XML/layout regression. CI status pending as of candidate commit `b06ad60d06a87e60cb80cd6b5d4269b00b5fe656`.
+- The shared Prime Time CI originally required byte-identical skin.xml; PR adds a narrow integrity exception requiring the *entire* candidate file to equal main plus exactly one approved font-size replacement. Any other XML edit still fails. Some legacy unrelated OpenATV tests fail on current main; do not claim complete CI success.
 - BLOCKED: verify actual version text is fully readable on GigaBlue OpenATV 8.1, and ensure OpenATV 8.0 / OpenPLi older layouts unchanged; no merge, release, IPK or updater changes approved.
 
 # Warder Evolution – stav projektu
