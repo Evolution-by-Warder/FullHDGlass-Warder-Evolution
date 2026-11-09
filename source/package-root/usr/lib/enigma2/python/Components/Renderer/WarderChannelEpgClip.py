@@ -12,6 +12,7 @@ from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
 from skin import parseColor
 from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+from Plugins.Extensions.setupGlass17.warderEpgRenderPolicy import allow_channel_epg_overlay
 
 
 def scroll_title_window(title, width, measure, pixel_offset):
@@ -66,6 +67,9 @@ class WarderChannelEpgClip(Renderer):
 
     def __init__(self):
         Renderer.__init__(self)
+        # Disable expensive repeated canvas painting on OpenATV 8.0.x.
+        # Older images keep the native responsive channel list.
+        self._overlay_allowed = allow_channel_epg_overlay()
         self._timer = eTimer()
         self._connection = None
         try:
@@ -201,7 +205,8 @@ class WarderChannelEpgClip(Renderer):
             self._glyph_width_cache.clear()
         if hasattr(self, '_epg_snapshots'):
             self._epg_snapshots.clear()
-        self._timer.start(55, True)
+        if self._overlay_allowed:
+            self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
@@ -598,6 +603,9 @@ class WarderChannelEpgClip(Renderer):
         return True
 
     def refresh(self):
+        # Old images use native ChannelSelection; no repeating 55/130ms timer.
+        if not getattr(self, '_overlay_allowed', True):
+            return
         # Local import also supports isolated AST-method regression tests.
         from time import monotonic
         started = monotonic()
