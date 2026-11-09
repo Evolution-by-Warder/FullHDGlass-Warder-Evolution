@@ -7253,7 +7253,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"C"), config.plugins.setupGlass17.par97)) 
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"F"), config.plugins.setupGlass17.par150))
 			elif tt == 24:
-				self.list.append(getConfigListEntry(S0 % ui_text("Picons and data storage"), config.plugins.setupGlass17.par125))
+				self.list.append(getConfigListEntry(S0 % ui_text("Storage for graphics sets, picons and data"), config.plugins.setupGlass17.par125))
 				if config.plugins.setupGlass17.par125.value == "0":
 					self.list.append(getConfigListEntry(S0 % _("User defined path"), config.plugins.setupGlass17.par124))
 				self.list.append(getConfigListEntry(S0 % _("FHDG Configuration file"), config.plugins.setupGlass17.par144))
