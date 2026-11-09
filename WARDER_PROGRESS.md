@@ -1,3 +1,12 @@
+## 2026-11-09 — PackageAction plugin install/remove version clipping (PR #84)
+
+- Owner supplied Python 3.14 `PluginBrowser.pyc`; embedded screen for `PackageAction` is confirmed. Shaman 9.50 and Warder 9.50-r12.2 have no `PackageAction` override; modern Warder `skin.xml` does, which is used for plugin install/remove lists.
+- Original PackageAction template: category name `text=2` is wide but independent; plugin name `text=3` is x95 width930, version `text=5` is right-aligned x1040 width390. Long 8.1 package versions are left-truncated within that narrow field. **Do not change PluginDownloadBrowser**, which is not this screenshot.
+- Draft candidate `fix/packageaction-version-columns-20261109`, PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/84. Exactly two template fields changed: plugin name width650, version x760 width670; gap15; right icon stays x1450. Original typography and unrelated widgets unchanged. Added `tools/test_packageaction_version_columns.py`, focused GitHub workflow and exact-two-edits approved-skin guard.
+- Created local receiver test ZIP from owner's installed `skin.xml` archive containing only revised skin.xml and Slovak instructions. XML parses and bytewise change confined to two template entries.
+- Previous font-only PR #83 closed unmerged and font restored; no production update or official IPK changed.
+- Pending GitHub CI and **GigaBlue OpenATV 8.1 receiver visual acceptance** of install and uninstall screens, followed by regression on older image/other layouts. No merge/release authorization.
+
 # Warder Evolution – stav projektu
 
 **Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
