@@ -473,7 +473,8 @@ class WarderChannelEpgClip(Renderer):
                     row_cache[row_key] = (start, remaining, overflow, first_frame)
             position = 0
             if index == selected:
-                self._focused_title_overflow = overflow > 0
+                # SF8008 TEST1: keep clipping, suppress only focused-title marquee.
+                self._focused_title_overflow = False
                 current_identity = (name, title)
                 previous_identity = getattr(self, '_scroll_identity', None)
                 if previous_identity is not None and previous_identity != current_identity:
@@ -481,7 +482,8 @@ class WarderChannelEpgClip(Renderer):
                     # at the same row index: restart from the beginning.
                     self._scroll_started = time()
                 self._scroll_identity = current_identity
-                if overflow:
+                if False and overflow:
+                    # SF8008 TEST1: deliberately disable animation only.
                     # Show the beginning for 1.2s, then scroll at a
                     # glyph-aligned 2px/55ms clock. Pause on the complete
                     # suffix before returning to the start. Avoid the old
