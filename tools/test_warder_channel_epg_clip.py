@@ -433,7 +433,20 @@ class ClippedEventTests(unittest.TestCase):
         self.assertIsNone(target._last)
         self.assertEqual(target.instance.calls, [("clear", "clear")])
         fn(target)
-        self.assertEqual(events, ["restore", "invalidate", "restore"])
+        self.assertEqual(events, ["restore", "invalidate"])
+        self.assertEqual(target.instance.calls, [("clear", "clear")])
+        # Removing the marker returns to the normal path. The next
+        # refresh must reattach the component and disable native EPG.
+        fn.__globals__["exists"] = lambda path: False
+        target._progress_mode = lambda: "barright"
+        target._scroll_mode = "barright"
+        target._restore_native = lambda: events.append("restore")
+        component.l.setElementFont = lambda *args: events.append(("font", args))
+        target._draw_rows = lambda c: events.append("draw") or True
+        fn(target)
+        self.assertFalse(target._warder_probe_native_active)
+        self.assertIn(("font", (2, None)), events)
+        self.assertIn("draw", events)
 
     def test_refresh_disables_native_event_at_cpp_boundary_before_paint(self):
         events = []
