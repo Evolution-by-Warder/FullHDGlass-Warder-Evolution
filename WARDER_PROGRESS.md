@@ -1,3 +1,8 @@
+## 2026-11-09 — PackageAction TEST 5 selected-row contrast
+
+- Approved request: only active row gets cyan name/version `color_sel=0x006cbcf0` and yellow description `color_sel=0x00ffff00`; normal rows keep their original colors and description white. Geometry remains name 690, version 630, description 1335. No changes to plugin logic or other screen styles.
+- Candidate implemented on draft PR #84, latest source/test commit `eb523fb307f6283ad26612c32c36c8cb6398d20e`; the exact-change skin guard was updated. Receiver ZIP `/mnt/data/warder_packageaction_columns_test5.zip` prepared and XML verified. Hardware acceptance and CI confirmation pending; production 1.0.75 unchanged.
+
 ## 2026-11-09 — PackageAction TEST 4 (full-width white description)
 
 - Owner requested restoring second-row description to x95 width1335, independent from first-row name and version columns, and displaying the description white while retaining the selected plugin name's existing blue highlighting.
