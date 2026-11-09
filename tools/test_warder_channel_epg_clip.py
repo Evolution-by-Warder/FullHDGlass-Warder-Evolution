@@ -410,6 +410,24 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
+    def test_navigation_probe_accepts_native_list_without_painter_apis(self):
+        native = types.SimpleNamespace(
+            instance=types.SimpleNamespace(getTopIndex=lambda: 12,
+                                           getCurrentIndex=lambda: 14))
+        class ServiceScreen(dict):
+            pass
+        service = ServiceScreen({"list": native})
+        fake_infobar = types.ModuleType("Screens.InfoBar")
+        fake_infobar.InfoBar = types.SimpleNamespace(
+            instance=types.SimpleNamespace(servicelist=service))
+        fake_screens = types.ModuleType("Screens")
+        with patch.dict(sys.modules, {"Screens": fake_screens,
+                                      "Screens.InfoBar": fake_infobar}):
+            result = method("_find_navigation_component")(types.SimpleNamespace())
+        self.assertIs(result, native)
+        # The painting code may still correctly decline this unsupported list.
+        self.assertFalse(hasattr(native, "ServiceInfoFont"))
+
     def test_opt_in_native_navigation_probe_samples_without_paint(self):
         events = []
         target = types.SimpleNamespace(
