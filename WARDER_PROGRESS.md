@@ -2,7 +2,7 @@
 
 - Branch `fix/epg-gles-runtime-gate-20261109`, commit `88d10d43bd6f09553749a05078af77639b446ea8`, draft PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/82, based on `fix/epg-openatv80-performance-fallback`.
 - Added fail-closed policy requiring OpenATV 8.1 and affirmative `BoxInfo.e2egl`, integrated with default scroll config and conditional visibility in Channel Selection settings. All other images fall back to native renderer; unknown backend never qualifies. Added `tools/test_warder_epg_gles_policy.py`.
-- **BLOCKED before merge/release:** must prove that the `BoxInfo.e2egl` flag actually reflects the *active* EGL/GLES backend in OpenATV 8.1, not merely capability/build availability. Physical OpenATV 8.1 GLES and OpenATV 8.0/non-GLES receiver validation and tests not yet confirmed. No production feed or IPK changed.
+- **UPDATE 2026-11-09:** Source verification found `getGraphicsInfo().get('backend') == 'e2egl'` as the authoritative native runtime graphics state, distinct from `HasEGLRenderer` capability. Policy now checks both; test cases include framebuffer and unknown backend. Receiver-side confirmation and CI still pending. Production untouched.
 
 # Warder Evolution – stav projektu
 
