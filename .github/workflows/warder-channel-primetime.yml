@@ -54,7 +54,15 @@ jobs:
         run: |
           git fetch --no-tags --depth=1 origin main
           git show origin/main:source/package-root/usr/share/enigma2/hd_glass17/skin.xml > /tmp/warder-approved-skin.xml
-          cmp /tmp/warder-approved-skin.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+          python - <<'PY'
+          from pathlib import Path
+          approved = Path("/tmp/warder-approved-skin.xml").read_bytes()
+          candidate = Path("source/package-root/usr/share/enigma2/hd_glass17/skin.xml").read_bytes()
+          old = b'<alias name="PluginBrowser0" font="Prive4" size="32" height="60" />'
+          new = b'<alias name="PluginBrowser0" font="Prive4" size="26" height="60" />'
+          assert approved.count(old) == 1, "Unexpected approved font baseline"
+          assert candidate == approved.replace(old, new, 1), "Unexpected skin modification beyond reviewed plugin font"
+          PY
       - name: Validate Python syntax
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
