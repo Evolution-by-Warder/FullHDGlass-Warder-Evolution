@@ -272,3 +272,28 @@ for _lang, _text in {
     "zh": "选择配置备份文件 hdg17.conf 的保存文件夹。默认位置：/usr/share/enigma2/hd_glass17/。按 OK 选择其他文件夹，再按 SAVE 保存备份。",
 }.items():
     TEXT.setdefault(_lang, {})["Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."] = _text
+
+# Factory icon restore failure, translated for active OSD language.
+for _lang, _text in {
+    "sk": "Nepodarilo sa obnoviť základné ikony. Preinštalujte skin.",
+    "cs": "Nepodařilo se obnovit základní ikony. Přeinstalujte skin.",
+    "en": "Unable to restore bundled default icons. Please reinstall the skin.",
+    "de": "Die Standard-Icons konnten nicht wiederhergestellt werden. Bitte den Skin neu installieren.",
+    "pl": "Nie udało się przywrócić domyślnych ikon. Zainstaluj skórkę ponownie.",
+    "hu": "Az alapértelmezett ikonok visszaállítása sikertelen. Telepítse újra a skint.",
+    "ru": "Не удалось восстановить стандартные значки. Переустановите скин.",
+    "fr": "Impossible de restaurer les icônes d'origine. Réinstallez le skin.",
+    "it": "Impossibile ripristinare le icone predefinite. Reinstalla la skin.",
+    "es": "No se pudieron restaurar los iconos originales. Reinstala el skin.",
+    "pt": "Não foi possível restaurar os ícones padrão. Reinstale a skin.",
+    "nl": "Standaardpictogrammen konden niet worden hersteld. Installeer de skin opnieuw.",
+    "ro": "Pictogramele implicite nu au putut fi restaurate. Reinstalați skinul.",
+    "uk": "Не вдалося відновити стандартні значки. Перевстановіть скін.",
+    "lt": "Nepavyko atkurti numatytųjų piktogramų. Įdiekite apvalkalą iš naujo.",
+    "et": "Vaikimisi ikoonide taastamine ebaõnnestus. Paigaldage kujundus uuesti.",
+    "al": "Ikonat e parazgjedhura nuk u rikthyen. Riinstaloni skin-in.",
+    "tr": "Varsayılan simgeler geri yüklenemedi. Temayı yeniden yükleyin.",
+    "fa": "بازیابی نمادهای پیش‌فرض ممکن نشد. پوسته را دوباره نصب کنید.",
+    "zh": "无法恢复默认图标，请重新安装皮肤。",
+}.items():
+    TEXT.setdefault(_lang, {})["Unable to restore bundled default icons. Please reinstall the skin."] = _text
