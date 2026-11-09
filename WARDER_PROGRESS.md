@@ -1,3 +1,27 @@
+## 2026-11-09 — PackageAction TEST 5 selected-row contrast
+
+- Approved request: only active row gets cyan name/version `color_sel=0x006cbcf0` and yellow description `color_sel=0x00ffff00`; normal rows keep their original colors and description white. Geometry remains name 690, version 630, description 1335. No changes to plugin logic or other screen styles.
+- Candidate implemented on draft PR #84, latest source/test commit `eb523fb307f6283ad26612c32c36c8cb6398d20e`; the exact-change skin guard was updated. Receiver ZIP `/mnt/data/warder_packageaction_columns_test5.zip` prepared and XML verified. Hardware acceptance and CI confirmation pending; production 1.0.75 unchanged.
+
+## 2026-11-09 — PackageAction TEST 4 (full-width white description)
+
+- Owner requested restoring second-row description to x95 width1335, independent from first-row name and version columns, and displaying the description white while retaining the selected plugin name's existing blue highlighting.
+- Candidate PR #84 branch: name x95 width690; version x800 width630; description x95 width1335 with `color=0x00ffffff`; all original fonts and icon positions unchanged. CI guard allows only the exact three approved template edits; focused test updated. Latest code commit `3263cdf38eaf6046448b1fc6f28f3d9a76a1a0ae`.
+- Receiver test ZIP `warder_packageaction_columns_test4.zip` created; XML parsed and ZIP integrity verified. Receiver visual confirmation pending; no release/merge/feed change.
+
+## 2026-11-09 — PackageAction TEST 2: restrict descriptions to left column
+
+- User's receiver confirmed full right-column versions after TEST 1 but very long descriptions overlapped them. On branch `fix/packageaction-version-columns-20261109` (draft PR #84), description `text=4` x95 width1335 -> width650; name remains width650 and version x760 width670, gap 15. Original fonts and icons retained. Test case and exact-diff guard updated through commit `f663f8137c99ea47b94f19212cb2b8a26cbe9b74`. Created receiver ZIP `warder_packageaction_columns_test2.zip` based on prior tested XML. Receiver validation remains pending; no production changes.
+
+## 2026-11-09 — PackageAction plugin install/remove version clipping (PR #84)
+
+- Owner supplied Python 3.14 `PluginBrowser.pyc`; embedded screen for `PackageAction` is confirmed. Shaman 9.50 and Warder 9.50-r12.2 have no `PackageAction` override; modern Warder `skin.xml` does, which is used for plugin install/remove lists.
+- Original PackageAction template: category name `text=2` is wide but independent; plugin name `text=3` is x95 width930, version `text=5` is right-aligned x1040 width390. Long 8.1 package versions are left-truncated within that narrow field. **Do not change PluginDownloadBrowser**, which is not this screenshot.
+- Draft candidate `fix/packageaction-version-columns-20261109`, PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/84. Exactly two template fields changed: plugin name width650, version x760 width670; gap15; right icon stays x1450. Original typography and unrelated widgets unchanged. Added `tools/test_packageaction_version_columns.py`, focused GitHub workflow and exact-two-edits approved-skin guard.
+- Created local receiver test ZIP from owner's installed `skin.xml` archive containing only revised skin.xml and Slovak instructions. XML parses and bytewise change confined to two template entries.
+- Previous font-only PR #83 closed unmerged and font restored; no production update or official IPK changed.
+- Pending GitHub CI and **GigaBlue OpenATV 8.1 receiver visual acceptance** of install and uninstall screens, followed by regression on older image/other layouts. No merge/release authorization.
+
 # Warder Evolution – stav projektu
 
 **Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
