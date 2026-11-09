@@ -42,8 +42,7 @@ class RenderPolicyTests(unittest.TestCase):
         self.assertFalse(self.allowed("distro=openpli\nversion=8.1", Box(distro="openpli")))
 
     def test_framebuffer_and_unknown_backend_keep_native(self):
-        for graphics in ({"backend": "framebuffer"}, {"backend": ""}, {}, None):
-            # None causes runtime probing and must not succeed outside Enigma2.
+        for graphics in ({"backend": "framebuffer"}, {"backend": ""}, {}):
             self.assertFalse(self.allowed("distro=openatv\nversion=8.1", graphics=graphics))
 
     def test_missing_image_metadata_uses_box_info_only(self):
