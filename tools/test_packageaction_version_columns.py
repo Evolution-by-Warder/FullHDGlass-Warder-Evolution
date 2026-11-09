@@ -26,11 +26,11 @@ class PackageActionColumns(unittest.TestCase):
     def test_name_and_version_are_disjoint(self):
         name = re.search(
             r'MultiContentEntryText\(pos=\((\d+),\s*2\),\s*size=\((\d+),\s*34\),'
-            r'\s*font=1,\s*flags=RT_VALIGN_CENTER,\s*text=3\)',
+            r'\s*font=1,\s*flags=RT_VALIGN_CENTER,\s*text=3,\s*color_sel=0x006cbcf0\)',
             self.template)
         version = re.search(
             r'MultiContentEntryText\(pos=\((\d+),\s*2\),\s*size=\((\d+),\s*34\),'
-            r'\s*font=1,\s*flags=RT_VALIGN_CENTER\s*\|\s*RT_HALIGN_RIGHT,\s*text=5\)',
+            r'\s*font=1,\s*flags=RT_VALIGN_CENTER\s*\|\s*RT_HALIGN_RIGHT,\s*text=5,\s*color_sel=0x006cbcf0\)',
             self.template)
         self.assertIsNotNone(name)
         self.assertIsNotNone(version)
@@ -43,7 +43,7 @@ class PackageActionColumns(unittest.TestCase):
 
     def test_item_geometry_and_font_are_preserved(self):
         self.assertIn('MultiContentEntryText(pos=(95, 0), size=(1430, 70), font=0', self.template)
-        self.assertIn('MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff)', self.template)
+        self.assertIn('MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff, color_sel=0x00ffff00)', self.template)
         self.assertIn('MultiContentEntryPixmapAlphaBlend(pos=(1450, 5), size=(60, 60), png=7', self.template)
         self.assertIn('gFont("Prive3", 33)', self.template)
         self.assertIn('gFont("Prive3", 27)', self.template)
