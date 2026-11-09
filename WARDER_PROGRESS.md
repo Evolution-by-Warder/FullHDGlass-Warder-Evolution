@@ -1,5 +1,16 @@
 ## 2026-11-09 — PackageAction TEST 5 selected-row contrast
 
+## 9. 11. 2026 – oficiálna 1.0.76, reprodukovateľné vydávanie
+
+- **Oficiálny Release [v1.0.76](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.76) je publikovaný**. IPK `enigma2-plugin-skins-fullhdglass_1.0.76_all.ipk` (18 230 904 B), SHA-256 v `update-production.json`: `e5eb84dd8c5eaeeae09de055fa862857c4ff508ddef73f91bcb6cd89084b7f9a`, 10 jazykov aktualizátora. Produkčný zápis a IPK na `main` commit `29fb0706`.
+- Integrácia: PR #85 (úplné odstránenie vlastných adresárov pri skutočnom odinštalovaní, release pipeline a integrity guard), PR #84 (fyzicky schválený PackageAction TEST5), PR #81 (natívny EPG fallback), PR #86 (OpenATV 8.1 aktívny GLES, schválené čierne/biele/transparentné picony, `prev.png`, lokálne testy a verziovanie).
+- Všetkých päť grafík má byte-identické Git blob SHA voči schváleným súborom: `picon_default.png` aj `picon_default-def.png` `7cd7354e75f2658fb5e933c8c5038c0e59dc6606`, `picon_default-wdef.png` `486b587e139b19cd6072fd08dd573e59398acdc8`, `picon220_default.png` `faf96e4b810d802833faeb9fdd1b9d6dfe08d2c1`, `prev.png` `110fd855d2de670bb3e2de500ac0d0685c762ae9`.
+- Jediný generický vydávací workflow `.github/workflows/publish-warder-stable.yml` reaguje na zmenu čísla verzie, robí preflight, regresie, deterministický IPK, immutable GitHub Release, až potom aktualizuje produkčný feed, a nakoniec overí celý reťazec. Pri opakovanom zostavení neprepíše existujúci Release. Opravený bol sparse-checkout posledného kroku a jeho idempotencia. **Overený úspešný opakovaný GitHub Actions run [42659693345](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42659693345)**.
+- `.github/workflows/verify-production-release-state.yml` a `tools/verify-production-release-state.py` denne alebo po zmene produkčného balíka/feedu kontrolujú zhodu verzie, IPK, SHA-256, URL a Release assetov. Overovací run [42659622888](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42659622888) **success**. Staré per-version publikačné workflow ponechané ako historické záznamy, nie sú už potrebné pre ďalšie vydanie.
+- Release notes obsahujú technický opis GLES, EPG, PackageAction a grafík. Podľa výslovného želania používateľa **neobsahujú informáciu o úprave odinštalovania**.
+- Stav: oficiálna 1.0.76 publikovaná, aktualizačný kanál aktivovaný, automatická reprodukcia a kontrola úspešné. Na fyzickom GigaBlue/SF8008 ešte treba overiť celé nové IPK. Cleanup starých Releases v ďalších projektoch rieši samostatná inventúra; nič nemaž bez auditu existujúcich závislostí.
+
+
 - Approved request: only active row gets cyan name/version `color_sel=0x006cbcf0` and yellow description `color_sel=0x00ffff00`; normal rows keep their original colors and description white. Geometry remains name 690, version 630, description 1335. No changes to plugin logic or other screen styles.
 - Candidate implemented on draft PR #84, latest source/test commit `eb523fb307f6283ad26612c32c36c8cb6398d20e`; the exact-change skin guard was updated. Receiver ZIP `/mnt/data/warder_packageaction_columns_test5.zip` prepared and XML verified. Hardware acceptance and CI confirmation pending; production 1.0.75 unchanged.
 
