@@ -410,6 +410,15 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
+    def test_legacy_image_skips_expensive_renderer_refresh(self):
+        target = types.SimpleNamespace(
+            _overlay_allowed=False,
+            _find_component=lambda: self.fail("Legacy fast path must not inspect service list"),
+            instance=Canvas(),
+            _timer=types.SimpleNamespace(start=lambda *args: self.fail("No refresh timer")))
+        method("refresh")(target)
+        self.assertEqual(target.instance.calls, [])
+
     def test_refresh_disables_native_event_at_cpp_boundary_before_paint(self):
         events = []
         component = types.SimpleNamespace(
