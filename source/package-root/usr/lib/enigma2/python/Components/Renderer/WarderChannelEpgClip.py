@@ -7,6 +7,7 @@ bars, selection and fonts remain owned by the image. On unsupported images the
 native renderer is left completely unchanged.
 """
 from time import time, monotonic
+from os.path import exists
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
@@ -93,6 +94,8 @@ class WarderChannelEpgClip(Renderer):
         # Optional receiver-QA dimensions; absent in production XML.
         self._warder_bar_width = None
         self._warder_test_marker = False
+        # Performance logging is a receiver QA opt-in, not a production hot path.
+        self._perf_enabled = exists('/tmp/warder-epg-perf-enable')
         # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
         self._perf_since = monotonic()
         self._perf_ticks = 0
@@ -697,7 +700,7 @@ class WarderChannelEpgClip(Renderer):
             if self.instance:
                 self.instance.clear(self._transparent)
         finally:
-            if hasattr(self, '_perf_tick'):
+            if getattr(self, '_perf_enabled', False) and hasattr(self, '_perf_tick'):
                 self._perf_tick((monotonic() - started) * 1000.0)
             if self.instance:
                 # TEST10: retain the original 55 ms motion during active
