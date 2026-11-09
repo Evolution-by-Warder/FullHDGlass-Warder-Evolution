@@ -26,17 +26,22 @@ def _read_image_version(path):
         return {}
 
 
-def allow_channel_epg_overlay(image_version_path="/etc/image-version", box_info=None):
-    """Return True only for verified OpenATV 8.1 and active e2egl.
+def allow_channel_epg_overlay(image_version_path="/etc/image-version", box_info=None, graphics_info=None):
+    """Require OpenATV 8.1, EGL capability, and the active e2egl backend.
 
-    box_info may be supplied by a unit test. On a receiver we query
-    Enigma2's BoxInfo; no library filenames or version guesses.
+    Test injections are optional; production reads the Enigma2 runtime.
     """
     if box_info is None:
         try:
             from Components.SystemInfo import BoxInfo
             box_info = BoxInfo
         except (ImportError, AttributeError):
+            return False
+    if graphics_info is None:
+        try:
+            from enigma import getGraphicsInfo
+            graphics_info = getGraphicsInfo()
+        except (ImportError, AttributeError, RuntimeError):
             return False
     try:
         data = _read_image_version(image_version_path)
@@ -46,8 +51,10 @@ def allow_channel_epg_overlay(image_version_path="/etc/image-version", box_info=
             return False
         if version != "8.1" and not version.startswith("8.1."):
             return False
-        # e2egl is the actual Enigma2 backend feature, not generic GLES
-        # library availability. Unknown/missing flag means native fallback.
-        return _enabled(box_info.getItem("e2egl"))
+        # HasEGLRenderer reports capability; getGraphicsInfo reports
+        # the active native graphics device. Unknown means fallback.
+        return (_enabled(box_info.getItem("HasEGLRenderer"))
+                and isinstance(graphics_info, dict)
+                and graphics_info.get("backend") == "e2egl")
     except (AttributeError, RuntimeError, TypeError, ValueError):
         return False
