@@ -410,25 +410,13 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
-    def test_navigation_probe_accepts_native_list_without_painter_apis(self):
-        native = types.SimpleNamespace(
-            instance=types.SimpleNamespace(getTopIndex=lambda: 12,
-                                           getCurrentIndex=lambda: 14))
-        class ServiceScreen(dict):
-            pass
-        service = ServiceScreen({"list": native})
-        fake_infobar = types.ModuleType("Screens.InfoBar")
-        fake_infobar.InfoBar = types.SimpleNamespace(
-            instance=types.SimpleNamespace(servicelist=service))
-        fake_screens = types.ModuleType("Screens")
-        with patch.dict(sys.modules, {"Screens": fake_screens,
-                                      "Screens.InfoBar": fake_infobar}):
-            result = method("_find_navigation_component")(types.SimpleNamespace())
-        self.assertIs(result, native)
-        # The painting code may still correctly decline this unsupported list.
-        self.assertFalse(hasattr(native, "ServiceInfoFont"))
+    def test_removed_navigation_probe_is_not_reintroduced(self):
+        # Ineligible backends never sample the native list or schedule an
+        # overlay timer. The old diagnostic probing helper was retired.
+        with self.assertRaises(StopIteration):
+            method("_find_navigation_component")
 
-    def test_opt_in_native_navigation_probe_samples_without_paint(self):
+    def test_ineligible_backend_skips_native_probe_and_paint(self):
         events = []
         target = types.SimpleNamespace(
             _overlay_allowed=False, _navigation_probe=True,
@@ -437,7 +425,7 @@ class ClippedEventTests(unittest.TestCase):
             instance=Canvas(),
             _find_component=lambda: self.fail("Refresh must not start EPG draw"))
         method("refresh")(target)
-        self.assertEqual(events, ["sample", ("timer", (50, True))])
+        self.assertEqual(events, [])
         self.assertEqual(target.instance.calls, [])
 
     def test_legacy_image_skips_expensive_renderer_refresh(self):
