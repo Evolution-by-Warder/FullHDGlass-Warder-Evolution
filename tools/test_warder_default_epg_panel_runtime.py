@@ -67,7 +67,8 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
                               lambda m: key + str(new), line, count=1)
 
             scope = dict(config=SimpleNamespace(plugins=SimpleNamespace(
-                setupGlass17=plugin_config)), SKINXML=str(runtime),
+                setupGlass17=plugin_config,
+                warderEpgListScroll=SimpleNamespace(enabled=setting(True)))), SKINXML=str(runtime),
                 ENA_P_CH=False, _atomicWriteText=write_text, calc=calc, re=re)
             exec(compile(ast.Module(body=nodes, type_ignores=[]),
                          str(PLUGIN), "exec"), scope)
@@ -87,6 +88,38 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             self.assertEqual(screen2.count('render="WarderChannelEpgClip"'), 1)
             self.assertEqual(BASE.read_text(encoding="utf-8"), original)
 
+    def test_native_default_removes_persisted_overlay(self):
+        original = BASE.read_text(encoding="utf-8")
+        overlay = ('    <widget source="ServiceEvent" render="WarderChannelEpgClip" '
+                   'position="60,96" size="1065,842" zPosition="4" '
+                   'warderProgressWidth="90" alphaTest="blend" transparent="1" />\\n')
+        end = original.index("</screen>", original.index('<screen name="ChannelSelection"'))
+        original = original[:end] + overlay + original[end:]
+        tree = ast.parse(PLUGIN.read_text(encoding="utf-8"))
+        fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "cChannelsel")
+        def setting(value):
+            return SimpleNamespace(value=value)
+        conf = SimpleNamespace(
+            setupGlass17=SimpleNamespace(
+                par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+                par111=setting("#6cbcf0"), par117=setting("#dddddd")),
+            warderEpgListScroll=SimpleNamespace(enabled=setting(False)))
+        with TemporaryDirectory() as td:
+            runtime = Path(td) / "skin.xml"
+            runtime.write_text(original, encoding="utf-8")
+            scope = dict(config=SimpleNamespace(plugins=conf), SKINXML=str(runtime),
+                         ENA_P_CH=False, isOpenPLi=False, re=re,
+                         _atomicWriteText=lambda p, content: Path(p).write_text(content, encoding="utf-8"))
+            exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), scope)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            result = runtime.read_text(encoding="utf-8")
+            screen = result.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
+            self.assertNotIn('render="WarderChannelEpgClip"', screen)
+            self.assertIn('picServiceEventProgressbar=', screen)
+            self.assertIn('render="WarderPrimeTime"', screen)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            self.assertEqual(runtime.read_text(encoding="utf-8"), result)
+
     def test_openpli_92_restores_native_list_and_removes_existing_canvas(self):
         # OpenPLi 9.2 has its own eListboxServiceContent implementation and
         # the OpenATV eCanvas above the list blacked out the entire list.
@@ -103,9 +136,11 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "cChannelsel")
         def setting(value):
             return SimpleNamespace(value=value)
-        config = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(
-            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
-            par111=setting("#6cbcf0"), par117=setting("#dddddd"))))
+        config = SimpleNamespace(plugins=SimpleNamespace(
+            setupGlass17=SimpleNamespace(
+                par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+                par111=setting("#6cbcf0"), par117=setting("#dddddd")),
+            warderEpgListScroll=SimpleNamespace(enabled=setting(False))))
         with TemporaryDirectory() as tmp:
             runtime = Path(tmp) / "skin.xml"
             runtime.write_text(seeded, encoding="utf-8")
@@ -133,9 +168,11 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "cChannelsel")
         def setting(value):
             return SimpleNamespace(value=value)
-        config = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(
-            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
-            par111=setting("#6cbcf0"), par117=setting("#dddddd"))))
+        config = SimpleNamespace(plugins=SimpleNamespace(
+            setupGlass17=SimpleNamespace(
+                par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+                par111=setting("#6cbcf0"), par117=setting("#dddddd")),
+            warderEpgListScroll=SimpleNamespace(enabled=setting(True))))
         with TemporaryDirectory() as tmp:
             runtime = Path(tmp) / "skin.xml"
             runtime.write_text(original, encoding="utf-8")
@@ -159,9 +196,11 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         def setting(value):
             return SimpleNamespace(value=value)
 
-        config = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(
-            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
-            par111=setting("#6cbcf0"), par117=setting("#dddddd"))))
+        config = SimpleNamespace(plugins=SimpleNamespace(
+            setupGlass17=SimpleNamespace(
+                par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+                par111=setting("#6cbcf0"), par117=setting("#dddddd")),
+            warderEpgListScroll=SimpleNamespace(enabled=setting(True))))
         with TemporaryDirectory() as tmp:
             runtime = Path(tmp) / "skin.xml"
             runtime.write_text(original, encoding="utf-8")
