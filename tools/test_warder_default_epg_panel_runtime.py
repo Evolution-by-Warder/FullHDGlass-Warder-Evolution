@@ -69,7 +69,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             scope = dict(config=SimpleNamespace(plugins=SimpleNamespace(
                 setupGlass17=plugin_config,
                 warderEpgListScroll=SimpleNamespace(enabled=setting(True)))), SKINXML=str(runtime),
-                ENA_P_CH=False, _atomicWriteText=write_text, calc=calc, re=re, allow_channel_epg_overlay=lambda: True, allow_channel_epg_overlay=lambda: True)
+                ENA_P_CH=False, _atomicWriteText=write_text, calc=calc, re=re, allow_channel_epg_overlay=lambda: True)
             exec(compile(ast.Module(body=nodes, type_ignores=[]),
                          str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
@@ -147,7 +147,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             scope = dict(config=config, SKINXML=str(runtime), ENA_P_CH=False,
                          isOpenPLi=True,
                          _atomicWriteText=lambda path, content: Path(path).write_text(content, encoding="utf-8"),
-                         re=re, allow_channel_epg_overlay=lambda: True, allow_channel_epg_overlay=lambda: True)
+                         re=re, allow_channel_epg_overlay=lambda: True)
             exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
             changed = runtime.read_text(encoding="utf-8")
@@ -179,7 +179,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             scope = dict(config=config, SKINXML=str(runtime), ENA_P_CH=False,
                          isOpenPLi=False,
                          _atomicWriteText=lambda path, content: Path(path).write_text(content, encoding="utf-8"),
-                         re=re, allow_channel_epg_overlay=lambda: True, allow_channel_epg_overlay=lambda: True)
+                         re=re, allow_channel_epg_overlay=lambda: True)
             exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
             screen = runtime.read_text(encoding="utf-8").split(
@@ -212,7 +212,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
                 runtime.write_text(text, encoding="utf-8")
 
             scope = dict(config=config, SKINXML=str(runtime),
-                         ENA_P_CH=False, _atomicWriteText=write_text, re=re, allow_channel_epg_overlay=lambda: True, allow_channel_epg_overlay=lambda: True)
+                         ENA_P_CH=False, _atomicWriteText=write_text, re=re, allow_channel_epg_overlay=lambda: True)
             exec(compile(ast.Module(body=[fn], type_ignores=[]),
                          str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
