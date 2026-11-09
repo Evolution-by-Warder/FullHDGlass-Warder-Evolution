@@ -1,16 +1,9 @@
 """Fail-closed ChannelSelection EPG canvas policy.
 
-Only OpenATV 8.1 with an explicitly active e2egl feature may use the
-extra canvas. Merely having GLES libraries installed is insufficient.
-If the current image does not expose a trustworthy runtime feature flag,
-keep the native renderer and hide its optional setting.
+Only OpenATV 8.1 with an actively initialized e2egl graphics backend may
+use the extra canvas. Installed GLES libraries or image build capability
+alone are insufficient. Unknown runtime state falls back to native drawing.
 """
-
-
-def _enabled(value):
-    if value is True or value == 1:
-        return True
-    return isinstance(value, str) and value.strip().lower() in ("true", "yes", "on", "1", "enabled", "active")
 
 
 def _read_image_version(path):
