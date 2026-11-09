@@ -176,6 +176,24 @@ class Tests(unittest.TestCase):
   record=json.loads((ROOT/'design/openpli-graph-epg/layout.json').read_text());text=(PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml').read_text()
   for item in record['additions']:
    self.assertEqual(text.count(item['inserted_text']),1);text=text.replace(item['inserted_text'],'',1)
+  # This historical hash predates the receiver-approved PackageAction TEST5.
+  # Undo only its three reviewed entries before comparing to the immutable
+  # OpenPLi baseline; all unrelated skin bytes must still match.
+  start=text.index('<screen name="PackageAction"')
+  end=text.index('</screen>',start)+len('</screen>')
+  section=text[start:end]
+  replacements=(
+   ('MultiContentEntryText(pos=(95, 2), size=(690, 34), font=1, flags=RT_VALIGN_CENTER, text=3, color_sel=0x006cbcf0)',
+    'MultiContentEntryText(pos=(95, 2), size=(930, 34), font=1, flags=RT_VALIGN_CENTER, text=3)'),
+   ('MultiContentEntryText(pos=(800, 2), size=(630, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5, color_sel=0x006cbcf0)',
+    'MultiContentEntryText(pos=(1040, 2), size=(390, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)'),
+   ('MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff, color_sel=0x00ffff00)',
+    'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0)'),
+  )
+  for reviewed, legacy in replacements:
+   self.assertEqual(section.count(reviewed),1)
+   section=section.replace(reviewed,legacy,1)
+  text=text[:start]+section+text[end:]
   self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['stable_skin_sha256'])
   changed=text.replace('FullHDGlass Graphical Guide','unexpected OpenATV change',1)
   self.assertNotEqual(hashlib.sha256(changed.encode()).hexdigest(),record['stable_skin_sha256'])
