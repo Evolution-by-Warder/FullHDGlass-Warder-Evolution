@@ -197,3 +197,29 @@ for _lang, (_dove, _help, _error) in {
 for _lang, _values in {'sk': ['Načítavam zoznam spinnerov…', 'Online zoznam je nedostupný. Nainštalované spinnery sú k dispozícii.', 'Sťahujem vybraný spinner…', 'Spinner sa nepodarilo stiahnuť. Skúste znova.'], 'cs': ['Načítám seznam spinnerů…', 'Online seznam je nedostupný. Nainstalované spinnery jsou k dispozici.', 'Stahuji vybraný spinner…', 'Spinner se nepodařilo stáhnout. Zkuste znovu.'], 'de': ['Spinner-Liste wird geladen…', 'Online-Liste nicht verfügbar. Installierte Spinner sind verfügbar.', 'Gewählter Spinner wird geladen…', 'Spinner konnte nicht geladen werden. Erneut versuchen.'], 'en': ['Loading spinner list...', 'Online list unavailable. Installed spinners are available.', 'Downloading selected spinner...', 'Spinner download failed. Try again.'], 'pl': ['Wczytywanie listy animacji…', 'Lista online jest niedostępna. Zainstalowane animacje są dostępne.', 'Pobieranie wybranej animacji…', 'Nie udało się pobrać animacji. Spróbuj ponownie.'], 'hu': ['Animációlista betöltése…', 'Az online lista nem érhető el. A telepített animációk elérhetők.', 'A kiválasztott animáció letöltése…', 'Az animáció letöltése sikertelen. Próbálja újra.'], 'ru': ['Загрузка списка анимаций…', 'Онлайн-список недоступен. Установленные анимации доступны.', 'Загрузка выбранной анимации…', 'Не удалось загрузить анимацию. Повторите попытку.'], 'fr': ['Chargement des animations…', 'Liste en ligne indisponible. Les animations installées restent disponibles.', 'Téléchargement de l’animation choisie…', 'Échec du téléchargement. Réessayez.'], 'it': ['Caricamento delle animazioni…', 'Elenco online non disponibile. Le animazioni installate sono disponibili.', 'Download dell’animazione selezionata…', 'Download non riuscito. Riprova.'], 'es': ['Cargando animaciones…', 'Lista en línea no disponible. Las animaciones instaladas están disponibles.', 'Descargando la animación seleccionada…', 'No se pudo descargar. Inténtalo de nuevo.'], 'pt': ['A carregar animações…', 'Lista online indisponível. As animações instaladas estão disponíveis.', 'A transferir a animação selecionada…', 'Não foi possível transferir. Tente novamente.'], 'nl': ['Animatielijst laden…', 'Onlinelijst niet beschikbaar. Geïnstalleerde animaties zijn beschikbaar.', 'Geselecteerde animatie downloaden…', 'Download mislukt. Probeer opnieuw.'], 'ro': ['Se încarcă animațiile…', 'Lista online nu este disponibilă. Animațiile instalate sunt disponibile.', 'Se descarcă animația aleasă…', 'Descărcarea a eșuat. Încercați din nou.'], 'uk': ['Завантаження списку анімацій…', 'Онлайн-список недоступний. Установлені анімації доступні.', 'Завантаження вибраної анімації…', 'Не вдалося завантажити. Спробуйте ще раз.'], 'lt': ['Įkeliamas animacijų sąrašas…', 'Internetinis sąrašas nepasiekiamas. Įdiegtos animacijos pasiekiamos.', 'Atsisiunčiama pasirinkta animacija…', 'Atsisiųsti nepavyko. Bandykite dar kartą.'], 'et': ['Animatsioonide loendi laadimine…', 'Veebiloend pole saadaval. Paigaldatud animatsioonid on saadaval.', 'Valitud animatsiooni allalaadimine…', 'Allalaadimine ebaõnnestus. Proovige uuesti.'], 'al': ['Duke ngarkuar animacionet…', 'Lista në internet nuk është e disponueshme. Animacionet e instaluara janë të disponueshme.', 'Duke shkarkuar animacionin e zgjedhur…', 'Shkarkimi dështoi. Provo sërish.'], 'tr': ['Animasyon listesi yükleniyor…', 'Çevrimiçi liste kullanılamıyor. Yüklü animasyonlar kullanılabilir.', 'Seçilen animasyon indiriliyor…', 'İndirme başarısız. Yeniden deneyin.'], 'fa': ['در حال بارگیری فهرست پویانمایی\u200cها…', 'فهرست آنلاین در دسترس نیست. پویانمایی\u200cهای نصب\u200cشده در دسترس هستند.', 'در حال دریافت پویانمایی انتخاب\u200cشده…', 'دریافت ناموفق بود. دوباره تلاش کنید.'], 'zh': ['正在加载动画列表…', '在线列表不可用。仍可使用已安装的动画。', '正在下载所选动画…', '下载失败，请重试。']}.items():
     TEXT.setdefault(_lang, {}).update(dict(zip(['Loading spinner list...', 'Online list unavailable. Installed spinners are available.', 'Downloading selected spinner...', 'Spinner download failed. Try again.'], _values)))
 
+
+# Storage location includes picons, icons, posters and other downloaded skin data.
+# Resolve this label at runtime so compiled legacy .mo catalogs need no rebuild.
+for _lang, _label in {
+    "sk": "Úložisko piconov a dát",
+    "cs": "Úložiště piconů a dat",
+    "de": "Speicherort für Picons und Daten",
+    "hu": "Piconok és adatok tárhelye",
+    "ru": "Хранилище пиконов и данных",
+    "fr": "Stockage des picons et données",
+    "it": "Archivio picon e dati",
+    "es": "Almacenamiento de picons y datos",
+    "pl": "Magazyn pikonów i danych",
+    "en": "Picons and data storage",
+    "pt": "Armazenamento de picons e dados",
+    "nl": "Opslag voor picons en gegevens",
+    "ro": "Stocare piconuri și date",
+    "uk": "Сховище піконів і даних",
+    "lt": "Pikonų ir duomenų saugykla",
+    "et": "Pikonite ja andmete salvestus",
+    "al": "Ruajtja e pikonëve dhe të dhënave",
+    "tr": "Picon ve veri depolama",
+    "fa": "محل ذخیره پیکون‌ها و داده‌ها",
+    "zh": "台标和数据存储位置",
+}.items():
+    TEXT.setdefault(_lang, {})["Picons and data storage"] = _label
