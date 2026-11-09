@@ -4259,9 +4259,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "action": "EXCLUDE_VERIFIED_TECHNICAL_SERVICE_OUTSIDE_TV_ARTWORK_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Technical service classification: SatExpat's firsthand reception statement identifies ASSOCIATION MATERIEL as a technical Canal service on the same12363V/ONID1/TSID1098 multiplex; Satindex's reception record identifies the exact SID9124 and AV PID tuple as a still-image service. Fresh Morpheus scan independently matches the full tuple and AV PIDs. AV carriage does not convert a receiver technical service into an editorial TV programme. Historical departure is not used. Existing reference, PNGs and archives remain intact.",
     "technical_uid": {
       "sid": 9124,
       "tsid": 1098,
@@ -4293,6 +4293,38 @@
       "sources": [
         "https://www.digitalbitrate.com/dtv.php?lang=fr&liste=1&live=61&mux=12363"
       ]
+    },
+    "scope_batch_20261109_06": {
+      "reference": "1_0_19_23A4_44A_1_C00000_0_0_0",
+      "name": "ASSOCIATION MATERIEL",
+      "sid": 9124,
+      "tsid": 1098,
+      "onid": 1,
+      "position": "19.2E",
+      "frequency_mhz": 12363,
+      "polarisation": "V",
+      "symbol_rate": 27500,
+      "vpid": 2410,
+      "apid": 2421,
+      "pmt": 2400,
+      "pcr": 2410,
+      "classification": "TECHNICAL_RECEIVER_SERVICE_OUTSIDE_TV_ARTWORK_SCOPE",
+      "not_data_service": true,
+      "not_departure": true,
+      "reason": "Technical service classification: SatExpat's firsthand reception statement identifies ASSOCIATION MATERIEL as a technical Canal service on the same12363V/ONID1/TSID1098 multiplex; Satindex's reception record identifies the exact SID9124 and AV PID tuple as a still-image service. Fresh Morpheus scan independently matches the full tuple and AV PIDs. AV carriage does not convert a receiver technical service into an editorial TV programme. Historical departure is not used. Existing reference, PNGs and archives remain intact.",
+      "sources": [
+        "https://www.satexpat.com/tp/19.2e/12363V",
+        "https://www.satindex.de/channel/25496/",
+        "https://ftp.morpheus883.altervista.org/srv.php/?chart=19.2",
+        "https://ro.kingofsat.tv/tp98"
+      ],
+      "limitations": [
+        "SatExpat technical-purpose observation is dated2021; current scan confirms continuing same name and tuple, not a new live visual capture.",
+        "Satindex historical departure conflicts with current AV scan; no departure or Data classification claimed.",
+        "Official2026 service-plan PDF returned403; not used as evidence."
+      ],
+      "checked": "2026-11-09",
+      "scan_sha256": "2119a1d6396d5de25d98da23bdffec16ffbafa346a00d4f41e7b649a203a7998"
     }
   },
   {
@@ -6022,6 +6054,11 @@
         "https://ftp.morpheus883.altervista.org/srv.php/?chart=66"
       ],
       "checked": "2026-11-08"
+    },
+    "followup_20261109": {
+      "decision": "HOLD_EXISTING_UHD_ARTWORK_DOES_NOT_PROVE_HD_DONOR",
+      "finding": "Pinned candidate660E220x132 WHITE existing exact-reference PNG visually says SES UHD Demo Channel. Target is SES Demo HD2025. Existing PNG preserved; no inference of matching HD artwork. All three220x132 archives downloaded and SHA256/CRC checked; transparent target absent.",
+      "checked_commit": "7c25d892ed494f36e553be79f140ddc04d9ee020"
     }
   },
   {

@@ -2916,5 +2916,84 @@
         "Keep TV5MONDE, Zor/NOW and disputed identities protected."
       ]
     }
+  },
+  "continuation_20261109": {
+    "scope_batch_06": {
+      "batch": "scope-batch-20261109-06",
+      "base_commit": "7c25d892ed494f36e553be79f140ddc04d9ee020",
+      "status": "VERIFIED_TECHNICAL_SCOPE_DECISION",
+      "decisions": [
+        {
+          "reference": "1_0_19_23A4_44A_1_C00000_0_0_0",
+          "name": "ASSOCIATION MATERIEL",
+          "sid": 9124,
+          "tsid": 1098,
+          "onid": 1,
+          "position": "19.2E",
+          "frequency_mhz": 12363,
+          "polarisation": "V",
+          "symbol_rate": 27500,
+          "vpid": 2410,
+          "apid": 2421,
+          "pmt": 2400,
+          "pcr": 2410,
+          "classification": "TECHNICAL_RECEIVER_SERVICE_OUTSIDE_TV_ARTWORK_SCOPE",
+          "not_data_service": true,
+          "not_departure": true,
+          "reason": "Technical service classification: SatExpat's firsthand reception statement identifies ASSOCIATION MATERIEL as a technical Canal service on the same12363V/ONID1/TSID1098 multiplex; Satindex's reception record identifies the exact SID9124 and AV PID tuple as a still-image service. Fresh Morpheus scan independently matches the full tuple and AV PIDs. AV carriage does not convert a receiver technical service into an editorial TV programme. Historical departure is not used. Existing reference, PNGs and archives remain intact.",
+          "sources": [
+            "https://www.satexpat.com/tp/19.2e/12363V",
+            "https://www.satindex.de/channel/25496/",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=19.2",
+            "https://ro.kingofsat.tv/tp98"
+          ],
+          "limitations": [
+            "SatExpat technical-purpose observation is dated2021; current scan confirms continuing same name and tuple, not a new live visual capture.",
+            "Satindex historical departure conflicts with current AV scan; no departure or Data classification claimed.",
+            "Official2026 service-plan PDF returned403; not used as evidence."
+          ],
+          "checked": "2026-11-09",
+          "scan_sha256": "2119a1d6396d5de25d98da23bdffec16ffbafa346a00d4f41e7b649a203a7998"
+        }
+      ],
+      "counts": {
+        "before": 106,
+        "after": 105,
+        "original_open": 86,
+        "delta_open": 19,
+        "new_tv_references": 0,
+        "new_png": 0,
+        "changed_zips": 0,
+        "technical_exceptions": 1,
+        "data_exceptions": 0,
+        "pr_tv_total": 37,
+        "pr_png_total": 330,
+        "pr_unique_zip_total": 99
+      },
+      "validation": {
+        "original_rows_preserved": 120,
+        "remaining_flags": 86,
+        "asset_paths_changed": 0,
+        "zip_crc_retest": "NOT_APPLICABLE_NO_ARCHIVE_MUTATION",
+        "all_existing_archives_preserved": "SAME_GIT_TREE_ENTRIES",
+        "protected_canal_archives": 18,
+        "manifest_changed": false,
+        "missing_arrays_preserved": true
+      },
+      "production_observed": {
+        "fullhdglass_main": "a711c7940f8137eaa69331a1a4b511f617edad47",
+        "stable": "1.0.76",
+        "piconhub_main": "481e9b9154a510c64c743de72c1a73ed808307bf"
+      },
+      "remote_readback": {
+        "status": "PENDING_COMMIT"
+      }
+    },
+    "ses_donor_check": {
+      "decision": "HOLD_EXISTING_UHD_ARTWORK_DOES_NOT_PROVE_HD_DONOR",
+      "finding": "Pinned candidate660E220x132 WHITE existing exact-reference PNG visually says SES UHD Demo Channel. Target is SES Demo HD2025. Existing PNG preserved; no inference of matching HD artwork. All three220x132 archives downloaded and SHA256/CRC checked; transparent target absent.",
+      "checked_commit": "7c25d892ed494f36e553be79f140ddc04d9ee020"
+    },
+    "next_step": "Resolve exact HD donor for SES Demo without reusing UHD artwork; Antena TSID10/0 remains disputed. Do not recreate completed batches."
   }
 }

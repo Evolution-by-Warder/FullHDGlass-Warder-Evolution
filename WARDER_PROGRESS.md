@@ -1,5 +1,14 @@
 # Warder Evolution – stav projektu
 
+### Dávka06 – technická služba ASSOCIATION MATERIEL – 9.11.2026
+
+- **0 nových TV referencií / 0 PNG / 0 ZIPov / 1 technická výnimka / 0 dátových výnimiek**. Zostáva **105 otvorených = 86 pôvodných + 19 delta**; kandidát spolu37 TV/330 PNG/99 jedinečných ZIPov.
+- Presný SID9124/TSID1098/ONID1 na19,2°E12363V, VPID2410/APID2421. Technický účel doložený priamym pozorovaním SatExpat a still-image záznamom Satindex; aktuálny Morpheus scan potvrdzuje identitu a AV PID. Nejde o tvrdenie zániku ani dátovej služby. Pôvodné referencie, chýbajúce varianty a všetky balíky zachované.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261109-06.json`; vzdialená kontrola nasleduje po commite. Menia sa iba registre, žiadne asset cesty.18 CANAL+ archívov zostáva identických.
+- SES Demo66°E: fyzicky overený existujúci biely220×132 PNG má nápis UHD Demo Channel; nepoužiť ako dôkaz HD donora. Presný konflikt uložený v registri.
+- Živý main FullHDGlass `a711c7940f8137eaa69331a1a4b511f617edad47` už obsahuje stabilnú1.0.76; PiconHub `481e9b9154a510c64c743de72c1a73ed808307bf`. Produkčný stav sa neprepisuje starším kandidátom. Rádio bez zásahu.
+
+
 ### Dávka05 – FUNBOX presná identita potvrdená – 8.11.2026
 
 - **1 TV referencia / 9 PNG / 9 ZIPov / 0 technických výnimiek**. Zostáva **106 = 87 pôvodných + 19 delta**. PR spolu **37 TV referencií / 330 PNG / 99 jedinečných ZIPov**.
