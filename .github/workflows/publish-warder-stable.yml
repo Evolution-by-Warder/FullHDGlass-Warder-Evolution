@@ -1,0 +1,177 @@
+name: Publish Warder stable from source version
+
+# Replaces per-version publish workflows. A version bump in main is the single
+# trigger. The updater is never advanced before its immutable Release exists.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source/control/control'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version'
+  workflow_dispatch:
+    inputs:
+      expected_version:
+        description: 'Expected stable version (for example 1.0.76)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: warder-stable-publish
+  cancel-in-progress: false
+
+jobs:
+  build-verify-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /docs/
+            /reports/
+            /update-production.json
+            /.github/workflows/publish-warder-stable.yml
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate version and complete release source
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          test "$(sed -n 's/^Version: //p' source/control/control)" = "$VERSION-1"
+          if [ -n "${{ inputs.expected_version || '' }}" ]; then
+            test "$VERSION" = "${{ inputs.expected_version }}"
+          fi
+          test -s "docs/warder-$VERSION-release-notes.md"
+          test -s "docs/warder-$VERSION-update-text.json"
+          for name in prev.png picon_default.png picon_default-def.png picon_default-wdef.png picon220_default.png; do
+            test -s "source/package-root/usr/share/enigma2/hd_glass17/$name"
+          done
+          grep -q 'MultiContentEntryText(pos=(800, 2), size=(630, 34)' source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+          test -s source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "package=enigma2-plugin-skins-fullhdglass_${VERSION}_all.ipk" >> "$GITHUB_OUTPUT"
+      - name: Install pinned reproducible packaging dependencies
+        shell: bash
+        run: |
+          python -m pip install --quiet 'Pillow==11.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Validate source and regression suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/sync_header_version.py --check
+          for script in preinst postinst prerm postrm; do sh -n "source/control/$script"; done
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          python3 tools/test-package-transition.py -q
+          python3 tools/test_uninstall_cleanup.py
+          python3 tools/test_warder_channel_epg_clip.py -q
+          python3 tools/test_channel_selection_epg_performance.py -q
+          python3 tools/test-legacy-950-upgrade.py -q
+          python3 - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0,str(Path('tools').resolve()))
+          from bitrate_package import validate_helpers
+          proof=json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
+          out=Path('packages/test')
+          out.mkdir(parents=True,exist_ok=True)
+          assert len(proof['builds'])==3
+          for name,report in zip(('arm','mipsel','aarch64'),proof['builds']):
+              filename='bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json'
+              (out/filename).write_text(json.dumps(report,indent=2)+'\n')
+          validate_helpers(Path.cwd())
+          PY
+      - name: Build verified IPK from the actual tagged source
+        id: build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/build-release-ipk.py
+          PKG="packages/${{ steps.version.outputs.package }}"
+          test -s "$PKG"
+          ar t "$PKG" | grep -qx 'control.tar.gz'
+          ar t "$PKG" | grep -qx 'data.tar.gz'
+          (cd packages && sha256sum -c "${{ steps.version.outputs.package }}.sha256")
+          test "$(tar -xzOf <(ar p "$PKG" control.tar.gz) ./control 2>/dev/null | sed -n 's/^Version: //p')" = "${{ steps.version.outputs.version }}-1"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Warder-stable-${{ steps.version.outputs.version }}
+          path: |
+            packages/${{ steps.version.outputs.package }}
+            packages/${{ steps.version.outputs.package }}.sha256
+          if-no-files-found: error
+          retention-days: 90
+      - name: Publish immutable GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.version.outputs.version }}"
+          PACKAGE="packages/${{ steps.version.outputs.package }}"
+          TAG="v$VERSION"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/warder-existing
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/warder-existing
+            cmp "$PACKAGE" "/tmp/warder-existing/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest --title "FullHDGlass – Warder Evolution $VERSION" --notes-file "docs/warder-$VERSION-release-notes.md"
+          fi
+          gh release view "$TAG" --json isDraft,isPrerelease,assets --jq '.isDraft == false and .isPrerelease == false and (.assets | length >= 2)' | grep -qx true
+      - name: Update production feed only after immutable Release verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          version=os.environ['RELEASE_VERSION']
+          p=Path('packages/enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk')
+          changelog=json.loads(Path('docs/warder-'+version+'-update-text.json').read_text(encoding='utf-8'))
+          assert set(('en','sk','cs','de','pl','hu','ru','fr','it','es')).issubset(changelog)
+          record={'version':version,
+             'package_url':'https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/'+p.name,
+             'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+             'changelog':changelog['en'],'changelog_i18n':changelog}
+          Path('update-production.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse -f "packages/${{ steps.version.outputs.package }}" "packages/${{ steps.version.outputs.package }}.sha256" update-production.json
+          git fetch origin main:refs/remotes/origin/main
+          git merge-base --is-ancestor origin/main HEAD
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish official ${{ steps.version.outputs.version }} package and production feed [skip ci]"
+            git push origin HEAD:main
+          fi
+        env:
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          GH_TOKEN: ${{ github.token }}
+      - name: Verify actual published end-to-end state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout --detach origin/main
+          python3 tools/verify-production-release-state.py

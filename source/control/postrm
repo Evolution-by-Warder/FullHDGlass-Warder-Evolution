@@ -4,9 +4,8 @@ set -u
 # During a package upgrade the old package's postrm may be called after the
 # new files are unpacked. Never run removal cleanup in that case.
 case "${1:-}" in
-    upgrade|failed-upgrade|abort-upgrade|disappear)
-        exit 0
-        ;;
+    remove|purge) ;;
+    *) exit 0 ;;
 esac
 
 SCREENPATH=/usr/lib/enigma2/python/Screens
@@ -33,7 +32,66 @@ restore_backup "$MENU"-orig17.pyo "$MENU".pyo
 # A full removal clears only Warder's migration state; upgrades exit above.
 WARDER_EPG_STATE_DIR=/var/lib/fullhdglass17
 rm -f "$WARDER_EPG_STATE_DIR/epg-default-v1.state" "$WARDER_EPG_STATE_DIR/epg-default-v1.state.tmp."* 2>/dev/null || true
+# Transition snapshots created by prerm are private package state, not
+# user configuration. Restore of receiver-owned files is handled above.
+WARDER_TRANSITION="$WARDER_EPG_STATE_DIR/package-transition-v1"
+if [ -d "$WARDER_TRANSITION" ] && [ ! -L "$WARDER_TRANSITION" ]; then
+    rm -rf -- "$WARDER_TRANSITION"
+fi
 rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
+
+# Remove all remaining data under package-exclusive installation directories.
+# opkg normally removes tracked files but leaves untracked/generated files.
+# This runs ONLY on genuine remove/purge (never on upgrade, see guard above).
+# Never follow a symlink or cross a nested mount: that could delete a user's HDD.
+warder_remove_install_dir() {
+    dir="$1"
+    case "$dir" in
+        /usr/share/enigma2/hd_glass17|/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17) ;;
+        *) return 1 ;;
+    esac
+    [ -e "$dir" ] || [ -L "$dir" ] || return 0
+    if [ -L "$dir" ]; then
+        # Only remove the link, never its target.
+        rm -f -- "$dir" || return 1
+        return 0
+    fi
+    [ -d "$dir" ] || return 1
+    # Avoid deleting data behind bind mounts or mounted external media.
+    if [ -r /proc/self/mountinfo ] && awk -v d="$dir" '
+        {
+            mount = $5
+            gsub(/\\040/, " ", mount)
+            if (mount == d || index(mount, d "/") == 1) found = 1
+        }
+        END { exit !found }
+    ' /proc/self/mountinfo; then
+        echo "ERROR: mounted data under $dir; refusing recursive removal" >&2
+        return 1
+    fi
+    # Guard every ancestor: a symlinked parent could redirect the removal.
+    parent="$dir"
+    while [ "$parent" != "/" ]; do
+        parent=${parent%/*}
+        [ -n "$parent" ] || parent=/
+        if [ -L "$parent" ]; then
+            echo "ERROR: symlinked parent $parent; refusing deletion" >&2
+            return 1
+        fi
+    done
+    rm -rf -- "$dir" || return 1
+    if [ -e "$dir" ] || [ -L "$dir" ]; then
+        echo "ERROR: installation directory still exists: $dir" >&2
+        return 1
+    fi
+}
+
+case "${1:-}" in
+    remove|purge)
+        warder_remove_install_dir /usr/share/enigma2/hd_glass17 || exit 1
+        warder_remove_install_dir /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17 || exit 1
+        ;;
+esac
 
 # Do not remove /etc/enigma2/settings. Saved Enigma2 and FullHDGlass17
 # preferences remain user data even when the skin package is removed.
