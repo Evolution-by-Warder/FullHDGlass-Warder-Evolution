@@ -4,9 +4,8 @@ set -u
 # During a package upgrade the old package's postrm may be called after the
 # new files are unpacked. Never run removal cleanup in that case.
 case "${1:-}" in
-    upgrade|failed-upgrade|abort-upgrade|disappear)
-        exit 0
-        ;;
+    remove|purge) ;;
+    *) exit 0 ;;
 esac
 
 SCREENPATH=/usr/lib/enigma2/python/Screens
@@ -33,6 +32,12 @@ restore_backup "$MENU"-orig17.pyo "$MENU".pyo
 # A full removal clears only Warder's migration state; upgrades exit above.
 WARDER_EPG_STATE_DIR=/var/lib/fullhdglass17
 rm -f "$WARDER_EPG_STATE_DIR/epg-default-v1.state" "$WARDER_EPG_STATE_DIR/epg-default-v1.state.tmp."* 2>/dev/null || true
+# Transition snapshots created by prerm are private package state, not
+# user configuration. Restore of receiver-owned files is handled above.
+WARDER_TRANSITION="$WARDER_EPG_STATE_DIR/package-transition-v1"
+if [ -d "$WARDER_TRANSITION" ] && [ ! -L "$WARDER_TRANSITION" ]; then
+    rm -rf -- "$WARDER_TRANSITION"
+fi
 rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
 
 # Remove all remaining data under package-exclusive installation directories.
