@@ -22,7 +22,7 @@ class Info:
 class PolicyTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.NamedTemporaryFile(mode="w", delete=False)
-        self.temp.write("distro=openatv\\nversion=8.1\\n")
+        self.temp.write("distro=openatv\nversion=8.1\n")
         self.temp.close()
 
     def tearDown(self):
@@ -30,6 +30,10 @@ class PolicyTests(unittest.TestCase):
 
     def allowed(self, **kwargs):
         return policy.allow_channel_epg_overlay(self.temp.name, Info(**kwargs), {"backend": "e2egl"})
+
+    def test_beta_and_daily_builds(self):
+        for version in ("8.1.0~beta", "8.1.1", "8.1.25"):
+            self.assertTrue(self.allowed(version=version))
 
     def test_active_e2egl(self):
         self.assertTrue(self.allowed())
