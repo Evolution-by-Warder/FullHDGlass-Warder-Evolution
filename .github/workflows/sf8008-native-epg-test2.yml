@@ -1,0 +1,100 @@
+name: SF8008 1.0.75-test2 native default EPG (artifact only)
+on:
+  push:
+    branches:
+      - test/sf8008-native-epg-1075-test2
+    paths:
+      - '.github/workflows/sf8008-native-epg-test2.yml'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools/build-release-ipk.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify only marquee is disabled in this candidate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py')
+          s=p.read_text()
+          ast.parse(s)
+          assert s.count('if in_default_channel_screen and \'render="WarderChannelEpgClip"\' in line:') == 1
+          assert 'SF8008 TEST2: remove any persisted overlay' in s
+          assert 'SF8008 TEST2: intentionally do not inject WarderChannelEpgClip.' in s
+          assert 'allLines += \'    <widget source="ServiceEvent" render="WarderChannelEpgClip"' not in s
+          assert 'render="WarderPrimeTime"' in s
+          assert Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()=='1.0.74'
+          assert 'Version: 1.0.74-1' in Path('source/control/control').read_text()
+          print('SF8008 marquee-only source gate: PASS')
+          PY
+      - name: Build isolated 1.0.75-test2 package
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import importlib.util,hashlib,shutil,subprocess,tarfile,tempfile
+          root=Path.cwd()
+          version='1.0.75-test2'
+          filename='enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk'
+          out=root/'receiver-candidate'
+          out.mkdir(exist_ok=True)
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(builder)
+          with tempfile.TemporaryDirectory() as t:
+              work=Path(t)
+              payload=work/'payload'
+              control=work/'control'
+              shutil.copytree(root/'source/package-root',payload,symlinks=True)
+              shutil.copytree(root/'source/control',control,symlinks=True)
+              (payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').write_text(version+'\n')
+              c=control/'control'
+              s=c.read_text()
+              assert s.count('Version: 1.0.74-1')==1
+              c.write_text(s.replace('Version: 1.0.74-1','Version: '+version+'-1'))
+              # Stage the visible version header in both established skin sources.
+              import re
+              for n in ('plugin.py','warderDialogSkins.py'):
+                  p=payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'/n
+                  original=p.read_text()
+                  pattern=re.compile(r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")1\.0\.74(")')
+                  replacement,count=pattern.subn(lambda m:m.group(1)+version+m.group(2),original)
+                  assert count>0,n
+                  p.write_text(replacement)
+              (work/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(control,work/'control.tar.gz')
+              builder.archive(payload,work/'data.tar.gz',payload=True)
+              target=out/filename
+              subprocess.run(['ar','rcsD',str(target),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
+              assert subprocess.check_output(['ar','t',str(target)],text=True).splitlines()==['debian-binary','control.tar.gz','data.tar.gz']
+              with tarfile.open(work/'data.tar.gz','r:gz') as tar:
+                  plugin=tar.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py').read().decode()
+                  assert 'SF8008 TEST2: remove any persisted overlay' in plugin
+                  assert 'SF8008 TEST2: intentionally do not inject WarderChannelEpgClip.' in plugin
+                  assert 'allLines += \'    <widget source="ServiceEvent" render="WarderChannelEpgClip"' not in plugin
+                  v=tar.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read().decode().strip()
+                  assert v==version
+              digest=hashlib.sha256(target.read_bytes()).hexdigest()
+              (out/(filename+'.sha256')).write_text(digest+'  '+filename+'\n')
+              print('SF8008 TEST:',filename,'size:',target.stat().st_size,'sha256:',digest)
+          PY
+          cd receiver-candidate
+          sha256sum -c *.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-SF8008-1.0.75-test2-native-epg
+          path: receiver-candidate/*
+          if-no-files-found: error
+          retention-days: 14
