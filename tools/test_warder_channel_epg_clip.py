@@ -410,6 +410,18 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
+    def test_opt_in_native_navigation_probe_samples_without_paint(self):
+        events = []
+        target = types.SimpleNamespace(
+            _overlay_allowed=False, _navigation_probe=True,
+            _native_navigation_tick=lambda: events.append("sample"),
+            _timer=types.SimpleNamespace(start=lambda *args: events.append(("timer", args))),
+            instance=Canvas(),
+            _find_component=lambda: self.fail("Refresh must not start EPG draw"))
+        method("refresh")(target)
+        self.assertEqual(events, ["sample", ("timer", (50, True))])
+        self.assertEqual(target.instance.calls, [])
+
     def test_legacy_image_skips_expensive_renderer_refresh(self):
         target = types.SimpleNamespace(
             _overlay_allowed=False,
