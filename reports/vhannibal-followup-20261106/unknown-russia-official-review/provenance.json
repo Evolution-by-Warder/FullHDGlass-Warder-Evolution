@@ -1,0 +1,52 @@
+{
+  "status": "NEW_REBRAND_PROOF_AND_NINE_UNAPPROVED_DRAFTS",
+  "retrieved": "2026-11-09",
+  "new_material_evidence": [
+    {
+      "url": "https://www.gazprom-media.com/ru/business/partner/tematicheskie-kanaly-ntv",
+      "kind": "official owner current channel catalogue",
+      "finding": "Owner explicitly states thematic channels rebranded into NTV Tematika with retained programme schedules; names NTV Neizvestnaya Rossiya. This resolves old broadcaster sprite vs current branding discrepancy.",
+      "retrieval": "web open succeeded; directHTTP403"
+    },
+    {
+      "url": "https://www.ntv.ru/novosti/3013679/",
+      "kind": "official broadcaster rebrand announcement",
+      "date": "2026-09-28",
+      "html_sha256": "a8bc129af3215f43037587aea2d0e121c067394ac96259a686f11f62fc2a3394",
+      "finding": "Official current rebrand announcement and embedded promotional image confirms NTV green tile plus blue-green UnknownRussia symbol and white wordmark.",
+      "retained": "Source HTML not included in minimal checkpoint; SHA retained. Full image retained unchanged."
+    },
+    {
+      "url": "https://cdn2-static.ntv.ru/home/news/2026/20260928/pr_io.jpg",
+      "file": "ntv-rebrand.jpg",
+      "sha256": "3ee965793b26e03615ca724d224fa06c6257d7c6318e3771fd1c05745721fac2",
+      "bytes": 150277,
+      "role": "Official visual corroboration only; not cropped into picons"
+    }
+  ],
+  "artwork_source": {
+    "file": "cableman-current-logo.png",
+    "url": "https://www.cableman.ru/sites/default/files/%D0%9D%D0%95%D0%98%D0%97%D0%92%D0%95%D0%A1%D0%A2%D0%9D%D0%90%D0%AF%20%D0%A0%D0%9E%D0%A1%D0%A1%D0%98%D0%AF.png",
+    "sha256": "8a98e5e6a79e0cddcb5e7695a914e1bae4d81851033a6d33cfb5d347e26c7e52",
+    "bytes": 9556,
+    "dimensions": [
+      450,
+      118
+    ],
+    "mode": "RGBA",
+    "alpha_bbox": [
+      29,
+      32,
+      432,
+      97
+    ]
+  },
+  "source_assessment": "Cableman transparent current logo is trusted trade-source artwork corroborated by official broadcaster rebrand image and current owner catalogue; no claim it was downloaded from broadcaster CDN.",
+  "white_variant_limitation": "White text preserved; white Warder variant low-contrast and needs owner decision/official dark alternative. No recolouring.",
+  "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+  "identity": "Existing exact11727V SID17318/TSID60101/ONID1070 evidence inherited from checkpointcafe68c4837c3e44c3566266c7aa0b834a5eef90; this batch improves brand evidence, not DVB re-audit.",
+  "other_reference_hold": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0 fresh complete tuple still needed before integration.",
+  "new_draft_png": 9,
+  "closed_references": 0,
+  "modified_zip": 0
+}

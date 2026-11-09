@@ -4162,6 +4162,34 @@
         1918,
         231342080
       ]
+    },
+    "followup_batch09": {
+      "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+      "name": "TEST_CB",
+      "decision": "HOLD_DISTINCT_TRANSPORT_AND_CONTENT_BINDING",
+      "new_evidence": "Direct Digitalbitrate scanner listing binds TEST_CB SID25/ONID1918 to TSID40060 at11315V, not target TSID40040 at11277V. It has MPEG4 VPID2825/APID2826 and cannot be closed as Data. Informal AlSharqiya claims apply to11315V and do not prove target programme.",
+      "source": "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=82&mux=11315",
+      "retrieval": "search result raw scanner table, last measured2026-06-28; direct site challenge",
+      "source_facts": {
+        "sid": 25,
+        "tsid": 40060,
+        "onid": 1918,
+        "frequency": "11315 V",
+        "vpid": 2825,
+        "apid": 2826,
+        "pmt": 2820,
+        "video": "MPEG4",
+        "provider": "DU"
+      },
+      "target": {
+        "sid": 25,
+        "tsid": 40040,
+        "onid": 1918,
+        "frequency": "11277 V"
+      },
+      "missing": "current exact target PMT/SDT or operator confirmation of programme/purpose; no transfer from otherTSID",
+      "new_png": 0,
+      "closed_cases": 0
     }
   },
   {
@@ -6086,6 +6114,43 @@
     "artwork_followup_20261109_07": {
       "status": "BLOCKED_CORPORATE_VS_DEMO_BRAND",
       "evidence": "reports/vhannibal-followup-20261106/ses-official-review/official-source-manifest.json"
+    },
+    "followup_batch09": {
+      "status": "HOLD_NEW_NETWORK_ID_CONFLICT_AND_ARTWORK_BINDING",
+      "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+      "target": {
+        "position": "66E",
+        "sid": 1,
+        "tsid": 1,
+        "onid": 1,
+        "frequency": "11089V"
+      },
+      "new_evidence": {
+        "url": "https://en.kingofsat.net/hdtv-66E",
+        "retrieved": "2026-11-09",
+        "transport_date": "2026-11-09",
+        "frequency": "11088.70V",
+        "sr": 36000,
+        "sid": 1,
+        "tsid": 1,
+        "nid": 0,
+        "vpid": 2064,
+        "apid": 2068,
+        "pmt": 480,
+        "file": "kingofsat-66e-20261109.html",
+        "sha256": "eaf119a7551788fa60712b48fd0d5310e4a3fcc9e71c77bfdfa1446ecd4d3e1d"
+      },
+      "old_evidence": "Older KoS cachedvariants reportNID1; preservedMorpheus registryreportsONID1. NIDvsONID semanticdifference itself requiresrawNIT/SDT confirmation; do notsilentlyrewrite source reference.",
+      "artwork": "No precise66E on-air brandasset obtained. OfficialSES2025corporate vs45E oldSES/ASTRAdemo discrepancy remains. Newcorporatelogo cannotbeassumed programmegraphic.",
+      "next_evidence_needed": [
+        "Current PAT/PMT/SDT/NIT for66E11089V confirms original_network_id andnetwork_id distinction",
+        "Direct66Eprogramme screenshot oroperatorofficialdemoasset binding currentedition"
+      ],
+      "counts": {
+        "new_png": 0,
+        "modified_zip": 0,
+        "closed_cases": 0
+      }
     }
   },
   {

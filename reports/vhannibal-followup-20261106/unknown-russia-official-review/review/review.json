@@ -1,0 +1,150 @@
+{
+  "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+  "station": "NTV Neizvestnaya Rossiya / UNKNOWN RUSSIA",
+  "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+  "secondary_reference_hold": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0 requires fresh full tuple confirmation before integration",
+  "source_file": "../cableman-current-logo.png",
+  "source_sha256": "8a98e5e6a79e0cddcb5e7695a914e1bae4d81851033a6d33cfb5d347e26c7e52",
+  "source_size": [
+    450,
+    118
+  ],
+  "source_alpha_bbox": [
+    29,
+    32,
+    432,
+    97
+  ],
+  "source_colours_preserved": true,
+  "no_recolour_or_redraw": true,
+  "templates_immutable": {
+    "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+    "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+  },
+  "geometry": "Each size directly from original cropped alpha bounds; proportionate204x116 fit at220x132, scaled for other sizes. Premultiplied LANCZOS. No previous output as source.",
+  "output_count": 9,
+  "new_approved_references": 0,
+  "production_package_changes": 0,
+  "does_not_reduce_open_count": true,
+  "audit": "PASS technical: dimensions, alpha, hashes. OWNER REVIEW REQUIRED; WHITE variants have low-contrast white lettering preserved from original. Not ready for automatic integration.",
+  "white_variant_warning": "White text preserved exactly; low contrast on Warder WHITE. Need official dark-text alternative or explicit owner-approved contrast treatment before integration. No unapproved recolouring performed.",
+  "outputs": [
+    {
+      "file": "50x30-transparent.png",
+      "sha256": "412faaacb9442fa8e7f45143f5c726e9c5ab46425ae71c5a0a4760bbfa4eb844",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "220x132-transparent.png",
+      "sha256": "45ac1cd6394ea0d0e868d003053813d8b91b4ac53572d7c13d9a41e8e1817978",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-transparent.png",
+      "sha256": "3bf41d176513364e763ba6a94a0cf7438a715d7402856ec4b66ee98f5070f4a9",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-white.png",
+      "sha256": "2ad35234d44701dd5a8bfdfd4b9029b34af7a27325862ab3f39f098da7d8561d",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        25,
+        255
+      ]
+    },
+    {
+      "file": "220x132-white.png",
+      "sha256": "2f7f3d7a75ac07036b2907518f440dca9b86051ca603041cd0d11606fb10e92d",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-white.png",
+      "sha256": "5460f672a44a0dcc2b41f896e60ed5269c5f7bc7cababd3e436fd9c023e225a6",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-black.png",
+      "sha256": "7a8f66c10425a5583e85635a8b6110de4e5ea6e8fb8c5a4ee8d93aaee5a93d70",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        9,
+        255
+      ]
+    },
+    {
+      "file": "220x132-black.png",
+      "sha256": "25ba5865e327b884e628eaf27813674c9359642d75e644df8350348056787606",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-black.png",
+      "sha256": "e1a90ee3704b78133b5f94870830888dffdcaa37b1da868fdbbb76296ead607b",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

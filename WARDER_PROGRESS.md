@@ -1,5 +1,14 @@
 # Warder Evolution – stav projektu
 
+### Dávka09 – nové NTV návrhy a oficiálne podklady – 9.11.2026
+
+- **9 nových návrhov PNG** pre NTV Неизвестная Россия / UNKNOWN RUSSIA, všetky3 rozmery ×3 pozadia. Nové oficiálne oznámenie NTV a katalóg vlastníka potvrdzujú rebranding; transparentný originál pochádza z Cableman a je potvrdený oficiálnym vizuálom. `reports/vhannibal-followup-20261106/unknown-russia-official-review/review/`.
+- Návrhy čakajú na schválenie. **WHITE má nízky kontrast pôvodného bieleho textu**; bez nepovoleného prefarbenia. Žiadny návrh vložený do balíkov. Prvý11727V tuple už doložený; druhý11012H stále potrebuje aktuálny úplný tuple.
+- **0 dokončených TV referencií /0 vložených PNG /0 ZIP zmien /0 technických uzavretí;104 otvorených.** Kandidát zostáva38 TV/339 PNG/99 ZIPov.18 CANAL+ archívov, produkcia a rádio nezmenené.
+- AL-KAFEL: uložený nový oficiálny emblém a dôkaz7W12399V; transparentné Studio logo je nesprávny donor. StarzPlay Movies: potvrdený cieľový transport a oficiálny Live katalóg, samostatný obrázok edície nezískaný. TEST_CB:11315V/TSID40060 nemožno zameniť za11277V/40040. SES: nový NID0 záznam vyžaduje rozlíšiť NID/ONID rawtabuľkami; nejde o automatický dôkaz zmeny ONID.
+- Lokálna kontrola9 návrhov SHA256/rozmery/alfa PASS, grafická kvalita WHITE vyžaduje rozhodnutie. Payload commit a spätný audit budú doplnené po uložení.
+
+
 ### Dávka08 – TV8 Turkey schválené a zapracované – 9.11.2026
 
 - Vlastník schválil všetkých9 pripravených variantov. Presné schválené PNG bez prerenderovania vložené pod `1_0_16_390_20D_73_2080000_0_0_0` do9 pracovných520E balíkov. TV8 Turkey, nie International.
@@ -249,3 +258,4 @@ Kontrola živých vetiev po uložení: FullHDGlass main stále `12247acc20f69960
 - Ďalší konkrétny krok: získať schválený domáci TV8 alebo SES Demo HD donor; presnú aktuálnu transportnú tabuľku Antena a BFBS75°E. Nové grafiky pripraviť oddelene na schválenie, žiadne domyslené aliasy. Produkčný merge nie je povolený.
 
 - Následná kontrola RADIO CLASSICA TV9°E: čerstvý KingOfSat má ONID0/TSID516, Morpheus ONID29/TSID516. Sporný ONID pretrváva; neuzavreté. SHA256 oboch čerstvých stránok uložené v registri. Zostáva105.
+

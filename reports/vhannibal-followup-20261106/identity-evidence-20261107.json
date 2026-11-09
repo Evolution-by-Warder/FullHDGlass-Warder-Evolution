@@ -1177,7 +1177,11 @@
           "reuse_candidates": [],
           "existing_valid_slots": [],
           "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork."
+          "reason": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+          "followup_batch09": {
+            "evidence": "reports/vhannibal-followup-20261106/al-kafel-official-review/source-manifest.json",
+            "status": "NEW_OFFICIAL_SOURCE_NOT_USABLE_AS_TRANSPARENT_CHANNEL_LOGO_AND_TRANSPORT_DISCREPANCY"
+          }
         },
         {
           "reference": "1_0_19_1E3C_D160_77E_DCA0000_0_0_0",
@@ -1357,7 +1361,49 @@
           "reuse_candidates": [],
           "existing_valid_slots": [],
           "action": "HOLD_NO_SAFE_COPY",
-          "reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review."
+          "reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+          "followup_batch09": {
+            "date": "2026-11-09",
+            "reference": "1_0_19_6AC_1FB5_2BE_1040000_0_0_0",
+            "station": "StarzPlay-Movies",
+            "status": "HOLD_NO_EDITION_SPECIFIC_OFFICIAL_ARTWORK",
+            "new_findings": [
+              {
+                "source": "https://en.kingofsat.tv/freqs.php?aff=zap&filtre=no&lim=110&ordre=freq&sat=214&standard=All",
+                "retrieval": "search engine1 result",
+                "facts": {
+                  "satellite": "Badr8 26.0E",
+                  "frequency": "12034H",
+                  "sr": 27500,
+                  "fec": "3/4",
+                  "sid": 1708,
+                  "onid": 702,
+                  "tsid": 8117,
+                  "vpid": 108,
+                  "apid": 208,
+                  "pmt": 1108,
+                  "pcr": 108,
+                  "update": "2026-11-06"
+                },
+                "cache_warning": "Some KingOfSat locale/detail caches showed incompatible ASTRA3 NID3/TSID3217; fresh full satellite listing matches target702/8117. Do not use wrong cached transport."
+              },
+              {
+                "source": "https://starzplay.com/en/movies/starzplay-movie/770559016379",
+                "retrieval": "official page indexed in both search engines; direct HTTP403",
+                "facts": "Official STARZPLAY catalog has distinct 2026 Live entry StarzPlay Movie, described as continuous Hollywood film stream. Confirms official linear brand/edition exists, but page alone does not bind logo/pixels to satellite service."
+              }
+            ],
+            "artwork_result": "No edition-specific official image retrieved. Broadcaster page, www alternate and Arabic route returned HTTP403; generic STARZPLAY app/service logos rejected. No API endpoint invented, no logo redrawn.",
+            "missing_evidence": [
+              "Accessible official StarzPlay Movie graphic or live-channel media package",
+              "Logo/edition association with exact satellite service; indexed official Live title is relevant but not sufficient visual proof"
+            ],
+            "counts": {
+              "new_png": 0,
+              "changed_zip": 0,
+              "closed": 0
+            }
+          }
         },
         {
           "reference": "1_0_19_7A77_410_1_C00000_0_0_0",
@@ -2039,6 +2085,11 @@
               "https://www.lyngsat.com/muxes/Turksat-3A_East_11012-H.html"
             ],
             "checked": "2026-11-08"
+          },
+          "artwork_review_batch09": {
+            "status": "NINE_DRAFTS_OWNER_REVIEW_WHITE_CONTRAST_HOLD",
+            "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/review/review.json",
+            "new_branding_provenance": "reports/vhannibal-followup-20261106/unknown-russia-official-review/provenance.json"
           }
         },
         {
@@ -3054,5 +3105,177 @@
     "pr_total_repaired": 38,
     "pr_total_png": 339,
     "pr_total_unique_changed_zips": 99
+  },
+  "continuation_20261109_batch09": {
+    "unknown_russia": {
+      "status": "NEW_REBRAND_PROOF_AND_NINE_UNAPPROVED_DRAFTS",
+      "retrieved": "2026-11-09",
+      "new_material_evidence": [
+        {
+          "url": "https://www.gazprom-media.com/ru/business/partner/tematicheskie-kanaly-ntv",
+          "kind": "official owner current channel catalogue",
+          "finding": "Owner explicitly states thematic channels rebranded into NTV Tematika with retained programme schedules; names NTV Neizvestnaya Rossiya. This resolves old broadcaster sprite vs current branding discrepancy.",
+          "retrieval": "web open succeeded; directHTTP403"
+        },
+        {
+          "url": "https://www.ntv.ru/novosti/3013679/",
+          "kind": "official broadcaster rebrand announcement",
+          "date": "2026-09-28",
+          "html_sha256": "a8bc129af3215f43037587aea2d0e121c067394ac96259a686f11f62fc2a3394",
+          "finding": "Official current rebrand announcement and embedded promotional image confirms NTV green tile plus blue-green UnknownRussia symbol and white wordmark.",
+          "retained": "Source HTML not included in minimal checkpoint; SHA retained. Full image retained unchanged."
+        },
+        {
+          "url": "https://cdn2-static.ntv.ru/home/news/2026/20260928/pr_io.jpg",
+          "file": "ntv-rebrand.jpg",
+          "sha256": "3ee965793b26e03615ca724d224fa06c6257d7c6318e3771fd1c05745721fac2",
+          "bytes": 150277,
+          "role": "Official visual corroboration only; not cropped into picons"
+        }
+      ],
+      "artwork_source": {
+        "file": "cableman-current-logo.png",
+        "url": "https://www.cableman.ru/sites/default/files/%D0%9D%D0%95%D0%98%D0%97%D0%92%D0%95%D0%A1%D0%A2%D0%9D%D0%90%D0%AF%20%D0%A0%D0%9E%D0%A1%D0%A1%D0%98%D0%AF.png",
+        "sha256": "8a98e5e6a79e0cddcb5e7695a914e1bae4d81851033a6d33cfb5d347e26c7e52",
+        "bytes": 9556,
+        "dimensions": [
+          450,
+          118
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          29,
+          32,
+          432,
+          97
+        ]
+      },
+      "source_assessment": "Cableman transparent current logo is trusted trade-source artwork corroborated by official broadcaster rebrand image and current owner catalogue; no claim it was downloaded from broadcaster CDN.",
+      "white_variant_limitation": "White text preserved; white Warder variant low-contrast and needs owner decision/official dark alternative. No recolouring.",
+      "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+      "identity": "Existing exact11727V SID17318/TSID60101/ONID1070 evidence inherited from checkpointcafe68c4837c3e44c3566266c7aa0b834a5eef90; this batch improves brand evidence, not DVB re-audit.",
+      "other_reference_hold": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0 fresh complete tuple still needed before integration.",
+      "new_draft_png": 9,
+      "closed_references": 0,
+      "modified_zip": 0
+    },
+    "starzplay_movies": {
+      "date": "2026-11-09",
+      "reference": "1_0_19_6AC_1FB5_2BE_1040000_0_0_0",
+      "station": "StarzPlay-Movies",
+      "status": "HOLD_NO_EDITION_SPECIFIC_OFFICIAL_ARTWORK",
+      "new_findings": [
+        {
+          "source": "https://en.kingofsat.tv/freqs.php?aff=zap&filtre=no&lim=110&ordre=freq&sat=214&standard=All",
+          "retrieval": "search engine1 result",
+          "facts": {
+            "satellite": "Badr8 26.0E",
+            "frequency": "12034H",
+            "sr": 27500,
+            "fec": "3/4",
+            "sid": 1708,
+            "onid": 702,
+            "tsid": 8117,
+            "vpid": 108,
+            "apid": 208,
+            "pmt": 1108,
+            "pcr": 108,
+            "update": "2026-11-06"
+          },
+          "cache_warning": "Some KingOfSat locale/detail caches showed incompatible ASTRA3 NID3/TSID3217; fresh full satellite listing matches target702/8117. Do not use wrong cached transport."
+        },
+        {
+          "source": "https://starzplay.com/en/movies/starzplay-movie/770559016379",
+          "retrieval": "official page indexed in both search engines; direct HTTP403",
+          "facts": "Official STARZPLAY catalog has distinct 2026 Live entry StarzPlay Movie, described as continuous Hollywood film stream. Confirms official linear brand/edition exists, but page alone does not bind logo/pixels to satellite service."
+        }
+      ],
+      "artwork_result": "No edition-specific official image retrieved. Broadcaster page, www alternate and Arabic route returned HTTP403; generic STARZPLAY app/service logos rejected. No API endpoint invented, no logo redrawn.",
+      "missing_evidence": [
+        "Accessible official StarzPlay Movie graphic or live-channel media package",
+        "Logo/edition association with exact satellite service; indexed official Live title is relevant but not sufficient visual proof"
+      ],
+      "counts": {
+        "new_png": 0,
+        "changed_zip": 0,
+        "closed": 0
+      }
+    },
+    "ses_demo": {
+      "status": "HOLD_NEW_NETWORK_ID_CONFLICT_AND_ARTWORK_BINDING",
+      "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+      "target": {
+        "position": "66E",
+        "sid": 1,
+        "tsid": 1,
+        "onid": 1,
+        "frequency": "11089V"
+      },
+      "new_evidence": {
+        "url": "https://en.kingofsat.net/hdtv-66E",
+        "retrieved": "2026-11-09",
+        "transport_date": "2026-11-09",
+        "frequency": "11088.70V",
+        "sr": 36000,
+        "sid": 1,
+        "tsid": 1,
+        "nid": 0,
+        "vpid": 2064,
+        "apid": 2068,
+        "pmt": 480,
+        "file": "kingofsat-66e-20261109.html",
+        "sha256": "eaf119a7551788fa60712b48fd0d5310e4a3fcc9e71c77bfdfa1446ecd4d3e1d"
+      },
+      "old_evidence": "Older KoS cachedvariants reportNID1; preservedMorpheus registryreportsONID1. NIDvsONID semanticdifference itself requiresrawNIT/SDT confirmation; do notsilentlyrewrite source reference.",
+      "artwork": "No precise66E on-air brandasset obtained. OfficialSES2025corporate vs45E oldSES/ASTRAdemo discrepancy remains. Newcorporatelogo cannotbeassumed programmegraphic.",
+      "next_evidence_needed": [
+        "Current PAT/PMT/SDT/NIT for66E11089V confirms original_network_id andnetwork_id distinction",
+        "Direct66Eprogramme screenshot oroperatorofficialdemoasset binding currentedition"
+      ],
+      "counts": {
+        "new_png": 0,
+        "modified_zip": 0,
+        "closed_cases": 0
+      }
+    },
+    "test_cb": {
+      "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+      "name": "TEST_CB",
+      "decision": "HOLD_DISTINCT_TRANSPORT_AND_CONTENT_BINDING",
+      "new_evidence": "Direct Digitalbitrate scanner listing binds TEST_CB SID25/ONID1918 to TSID40060 at11315V, not target TSID40040 at11277V. It has MPEG4 VPID2825/APID2826 and cannot be closed as Data. Informal AlSharqiya claims apply to11315V and do not prove target programme.",
+      "source": "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=82&mux=11315",
+      "retrieval": "search result raw scanner table, last measured2026-06-28; direct site challenge",
+      "source_facts": {
+        "sid": 25,
+        "tsid": 40060,
+        "onid": 1918,
+        "frequency": "11315 V",
+        "vpid": 2825,
+        "apid": 2826,
+        "pmt": 2820,
+        "video": "MPEG4",
+        "provider": "DU"
+      },
+      "target": {
+        "sid": 25,
+        "tsid": 40040,
+        "onid": 1918,
+        "frequency": "11277 V"
+      },
+      "missing": "current exact target PMT/SDT or operator confirmation of programme/purpose; no transfer from otherTSID",
+      "new_png": 0,
+      "closed_cases": 0
+    },
+    "al_kafel": {
+      "evidence": "reports/vhannibal-followup-20261106/al-kafel-official-review/source-manifest.json",
+      "status": "NEW_OFFICIAL_SOURCE_NOT_USABLE_AS_TRANSPARENT_CHANNEL_LOGO_AND_TRANSPORT_DISCREPANCY"
+    },
+    "counts": {
+      "draft_png": 9,
+      "new_tv_references": 0,
+      "modified_zip": 0,
+      "technical_closures": 0,
+      "remaining_open": 104
+    }
   }
 }

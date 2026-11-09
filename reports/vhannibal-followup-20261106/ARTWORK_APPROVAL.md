@@ -41,3 +41,14 @@ SES a UNKNOWN RUSSIA: nové zdroje uchované v `ses-official-review/` a `unknown
 ## 9.11.2026 – TV8 Turkey: schválených všetkých deväť variantov
 
 Vlastník výslovne schválil všetkých9 pripravených PNG a ich zaradenie do pracovných balíkov. Schválenie sa vzťahuje na presné bajty z checkpointu91888de566185186d1d461097c7aa9365276546a (SHA256 v tv8-official-review/review/review.json). Vyššie označenie pending je historické. Dávka08 pridáva referenciu `1_0_16_390_20D_73_2080000_0_0_0` do deviatich520E ZIPov; TV8 Turkey, nie International. Žiadne prerenderovanie. Produkčné zaradenie ani merge nie sú schválené.
+
+
+## Dávka09 – НТВ Неизвестная Россия / UNKNOWN RUSSIA – návrhy na kontrolu
+
+Oficiálne oznámenie NTV28.9.2026 a aktuálny katalóg vlastníka Gazprom-Media potvrdzujú novú značku. Pripravených9 PNG z transparentného loga Cableman, vizuálne doloženého oficiálnym NTV obrázkom. Nejde o tvrdenie priameho stiahnutia transparentného PNG od vysielateľa.
+
+![Deväť návrhov NTV Neizvestnaya Rossiya](unknown-russia-official-review/review/preview.png)
+
+**PENDING OWNER ARTWORK REVIEW. WHITE varianty zachovávajú pôvodný biely text a majú slabší kontrast; nie sú pripravené na automatickú integráciu.** Žiadne prefarbenie ani prekreslenie. Prvá referencia `1_0_1_43A6_EAC5_42E_1A40000_0_0_0` identitne doložená v predchádzajúcom checkpointe; druhá11012H ostáva podmienene blokovaná úplným aktuálnym DVB tuple.
+
+[Proveniencia](unknown-russia-official-review/provenance.json) · [SHA256/rozmery/alfa](unknown-russia-official-review/review/review.json).0 uzavretých referencií,0 ZIP zmien,104 otvorených. AL-KAFEL má nový oficiálny nepriehľadný emblém uložený samostatne; logo Studio sa nepoužíva ako kanálový donor.
