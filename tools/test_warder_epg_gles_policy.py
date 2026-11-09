@@ -43,9 +43,11 @@ class PolicyTests(unittest.TestCase):
             self.assertFalse(self.allowed(version=version))
         self.assertFalse(self.allowed(distro="openpli"))
 
-    def test_missing_or_disabled_backend(self):
-        for backend in (None, False, 0, "off", "disabled", "", "unknown"):
-            self.assertFalse(self.allowed(e2egl=backend))
+    def test_optional_capability_key_not_required_when_runtime_is_active(self):
+        # Some image builds lack HasEGLRenderer. The native active backend
+        # is a stronger signal than that optional capability flag.
+        for capability in (None, False, 0, "off", "", "unknown"):
+            self.assertTrue(self.allowed(e2egl=capability))
 
     def test_native_framebuffer_disables_overlay(self):
         self.assertFalse(policy.allow_channel_epg_overlay(self.temp.name, Info(),
