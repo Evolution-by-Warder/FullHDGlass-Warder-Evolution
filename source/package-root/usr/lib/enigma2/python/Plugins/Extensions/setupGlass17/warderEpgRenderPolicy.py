@@ -27,7 +27,7 @@ def _read_image_version(path):
 
 
 def allow_channel_epg_overlay(image_version_path="/etc/image-version", box_info=None, graphics_info=None):
-    """Require OpenATV 8.1, EGL capability, and the active e2egl backend.
+    """Require OpenATV 8.1 and the active native e2egl backend.
 
     Test injections are optional; production reads the Enigma2 runtime.
     """
@@ -51,10 +51,9 @@ def allow_channel_epg_overlay(image_version_path="/etc/image-version", box_info=
             return False
         if version != "8.1" and not version.startswith("8.1."):
             return False
-        # HasEGLRenderer reports capability; getGraphicsInfo reports
-        # the active native graphics device. Unknown means fallback.
-        return (_enabled(box_info.getItem("HasEGLRenderer"))
-                and isinstance(graphics_info, dict)
-                and graphics_info.get("backend") == "e2egl")
+        # Runtime backend is authoritative. Requiring HasEGLRenderer
+        # as well would incorrectly reject images that do not export
+        # that optional capability key, even while EGL is active.
+        return isinstance(graphics_info, dict) and graphics_info.get("backend") == "e2egl"
     except (AttributeError, RuntimeError, TypeError, ValueError):
         return False
