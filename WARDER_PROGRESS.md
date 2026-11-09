@@ -1,3 +1,11 @@
+## 2026-11-09 — Plugin installation/removal long-version text clipping (PR #83)
+
+- Working branch `fix/plugin-download-list-text-fit-20261109` from current `main`; PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/83 (draft).
+- Receiver evidence: user's GigaBlue OpenATV 8.1 GLES install/remove plugin list screenshots show long package versions clipped on the left. User supplied Python 3.14 `Components/PluginList.pyc`; its string constants identify `PluginDownloadComponent` and the `PluginBrowserDownloadName/Descr/Icon` skin parameters. Exact Python 3.14 bytecode disassembly not established, so no unsupported claim about internal function geometry.
+- Candidate one-line skin.xml change: `PluginBrowser0` main list font Prive4 32 → 26. Shared `PluginDownloadBrowser` geometry 1920×1080 and native list 190,200/1540×720, descriptions, icons, layout and all Enigma2 system files unchanged. Since this alias could affect other native list screens, receiver regression testing is mandatory.
+- Added `tools/test_plugin_download_font_fit.py` and `.github/workflows/verify-plugin-download-text-fit.yml` for XML/layout regression. CI status pending as of candidate commit `b06ad60d06a87e60cb80cd6b5d4269b00b5fe656`.
+- BLOCKED: verify actual version text is fully readable on GigaBlue OpenATV 8.1, and ensure OpenATV 8.0 / OpenPLi older layouts unchanged; no merge, release, IPK or updater changes approved.
+
 # Warder Evolution – stav projektu
 
 **Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
