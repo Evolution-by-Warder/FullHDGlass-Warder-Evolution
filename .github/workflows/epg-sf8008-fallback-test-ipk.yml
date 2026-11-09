@@ -15,6 +15,9 @@ on:
 permissions:
   contents: read
 
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
 jobs:
   diagnostic-ipk:
     runs-on: ubuntu-latest
@@ -64,6 +67,8 @@ jobs:
       - name: Build SF8008 test IPK without publishing it
         run: |
           set -euo pipefail
+          ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .
+          ! find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -print -quit | grep -q .
           python3 - <<'PY'
           import hashlib, importlib.util, pathlib, subprocess, tempfile
           root=pathlib.Path.cwd()
