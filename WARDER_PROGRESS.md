@@ -6,7 +6,7 @@
 - Návrhy čakajú na schválenie. **WHITE má nízky kontrast pôvodného bieleho textu**; bez nepovoleného prefarbenia. Žiadny návrh vložený do balíkov. Prvý11727V tuple už doložený; druhý11012H stále potrebuje aktuálny úplný tuple.
 - **0 dokončených TV referencií /0 vložených PNG /0 ZIP zmien /0 technických uzavretí;104 otvorených.** Kandidát zostáva38 TV/339 PNG/99 ZIPov.18 CANAL+ archívov, produkcia a rádio nezmenené.
 - AL-KAFEL: uložený nový oficiálny emblém a dôkaz7W12399V; transparentné Studio logo je nesprávny donor. StarzPlay Movies: potvrdený cieľový transport a oficiálny Live katalóg, samostatný obrázok edície nezískaný. TEST_CB:11315V/TSID40060 nemožno zameniť za11277V/40040. SES: nový NID0 záznam vyžaduje rozlíšiť NID/ONID rawtabuľkami; nejde o automatický dôkaz zmeny ONID.
-- Lokálna kontrola9 návrhov SHA256/rozmery/alfa PASS, grafická kvalita WHITE vyžaduje rozhodnutie. Payload commit a spätný audit budú doplnené po uložení.
+- Lokálna kontrola9 návrhov SHA256/rozmery/alfa PASS, grafická kvalita WHITE vyžaduje rozhodnutie. **Payload `8a2ad7ec0a0494fa74f5f00134e980fb279c0e38`; vzdialený audit PASS:25 súborov/1383125 bajtov načítaných z GitHubu a presne zhodných.** Report `reports/vhannibal-followup-20261106/unknown-russia-official-review/review/remote-audit-batch09.json`. Technický PASS nie je grafické schválenie. Ďalší vykonateľný krok: kontrola9 NTV návrhov vlastníkom, osobitne bieleho textu naWHITE; ostatné prípady len pri doplnení presného chýbajúceho dôkazu.
 
 
 ### Dávka08 – TV8 Turkey schválené a zapracované – 9.11.2026
