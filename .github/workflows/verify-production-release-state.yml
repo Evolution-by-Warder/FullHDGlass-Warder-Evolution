@@ -4,8 +4,6 @@ on:
   push:
     branches: [main]
     paths:
-      - 'source/control/control'
-      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version'
       - 'update-production.json'
       - 'packages/enigma2-plugin-skins-fullhdglass_*.ipk'
       - 'packages/enigma2-plugin-skins-fullhdglass_*.ipk.sha256'
