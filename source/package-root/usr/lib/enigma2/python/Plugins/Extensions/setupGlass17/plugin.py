@@ -7867,6 +7867,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self["help_pict"].hide()
 				if filename == "39-1-0":
 					self["help_txt"].setText(ui_text("Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."))
+				elif filename == "144-0":
+					self["help_txt"].setText(ui_text("Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."))
 				else:
 					self["help_txt"].setText(helpTxt.get(filename))
 			else:
