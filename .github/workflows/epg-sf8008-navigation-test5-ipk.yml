@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/epg-sf8008-navigation-test5-ipk.yml
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
       - tools/test_warder_channel_epg_clip.py
       - tools/test_warder_epg_render_policy.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
