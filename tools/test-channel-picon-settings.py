@@ -33,9 +33,12 @@ class SettingsTests(unittest.TestCase):
         self.values['par144'].value='/test-backup/'
         self.section=NS(**self.values)
         self.section.dict=lambda:self.values
-        self.config=NS(plugins=NS(setupGlass17=self.section))
+        self.config=NS(plugins=NS(setupGlass17=self.section,
+                                  warderEpgListScroll=NS(enabled=Setting(True))))
         self.scope=dict(config=self.config,ALL_CFG=REGISTRY,ui_text=lambda s:s,_=lambda s:s,
-            configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock())
+            configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock(),
+            allow_channel_epg_overlay=lambda:True,
+            _warderEpgListScrollLabel=lambda:"Scroll EPG titles")
 
     def method(self,name):
         node=next(n for n in OWNER.body if isinstance(n,ast.FunctionDef) and n.name==name)

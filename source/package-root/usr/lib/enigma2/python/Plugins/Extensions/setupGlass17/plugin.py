@@ -748,9 +748,11 @@ config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT
 config.plugins.warderEvolutionPrimeTime = ConfigSubsection()
 config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)
 config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
-# Optional EPG overlay; native ChannelSelection is the safe, fast default.
+# Optional EPG overlay: enabled by default only when the active e2egl backend
+# is confirmed on OpenATV 8.1. Unknown images always use native drawing.
+from Plugins.Extensions.setupGlass17.warderEpgRenderPolicy import allow_channel_epg_overlay
 config.plugins.warderEpgListScroll = ConfigSubsection()
-config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=False)
+config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=allow_channel_epg_overlay())
 
 def _warderEpgListScrollLabel():
     # Short labels fit the existing settings column. English is fallback.
@@ -2909,7 +2911,9 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		# Test12 falls back to the native PLI list instead of covering it.
 		openpli_runtime = bool(globals().get('isOpenPLi', False))
 		# Only the default geometry may use this optional extra canvas.
-		epg_scroll_enabled = bool(config.plugins.warderEpgListScroll.enabled.value) and not openpli_runtime
+		epg_scroll_enabled = (allow_channel_epg_overlay()
+            and bool(config.plugins.warderEpgListScroll.enabled.value)
+            and not openpli_runtime)
 		default_geometry = bool(
 			list_tag and 'position="60,96"' in list_tag.group(0)
 			and 'size="1065,842"' in list_tag.group(0)
@@ -7135,7 +7139,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
 				if E2OK:
 					self.list.append(getConfigListEntry(S0 % _("ChannelSelection 2xOK"), config.plugins.setupGlass17.par62))      	      
-				self.list.append(getConfigListEntry(S0 % _warderEpgListScrollLabel(), config.plugins.warderEpgListScroll.enabled))
+				if allow_channel_epg_overlay():
+					self.list.append(getConfigListEntry(S0 % _warderEpgListScrollLabel(), config.plugins.warderEpgListScroll.enabled))
 				self.list.append(getConfigListEntry(S0 % _("Text rolling type"), config.plugins.setupGlass17.par76))      
 				if config.plugins.setupGlass17.par76.value != "None":
 					self.list.append(getConfigListEntry(S0 % _("Text rolling start delay"), config.plugins.setupGlass17.par77))      		

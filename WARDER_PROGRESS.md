@@ -1,3 +1,23 @@
+## 2026-11-09 — PR #82 follow-up, native backend authority
+
+- Candidate branch `fix/epg-gles-runtime-gate-20261109`; native `getGraphicsInfo().get("backend") == "e2egl"` now solely governs GLES activation, paired with strict OpenATV 8.1 family recognition. Removed requirement for optional `BoxInfo.HasEGLRenderer`: its absence must not reject a verifiably active backend. Date/build numbers do not affect selection.
+- Dedicated test fixtures cover OpenATV 8.1 beta/daily versions, classic framebuffer and unknown backend; added static integration checks for setup default, menu visibility and skin runtime gating. Latest change commit `acd384704b349412d1b9525e349c047cd878b2fe`.
+- The earlier base branch `1de30b4f...` already had failing CI. New branch fixed Prime Time fixture assumptions; earlier verification showed Prime Time and OpenATV compatibility success, but legacy setup-style fingerprint and old navigation probe tests still fail in combined suite. Preserve guard tests; review fingerprint exception explicitly instead of blindly blessing controller changes.
+- Physical acceptance still outstanding: execute `getGraphicsInfo()` within real Enigma2 process on GigaBlue GLES and SF8008 classic. PR remains draft, no merge/IPK/feed publication.
+
+## 2026-11-09 — Continued CI verification of GLES runtime gating
+
+- PR #82 working branch `fix/epg-gles-runtime-gate-20261109`. Runtime policy uses OpenATV 8.1 version family, `HasEGLRenderer` capability, and native `getGraphicsInfo()['backend'] == 'e2egl'`; does not use build date or loaded-library heuristics.
+- Unit tests extended to daily/beta versions and native framebuffer/unknown backend; dedicated workflow `.github/workflows/verify-epg-gles-runtime-policy.yml` created.
+- Initial CI failures included AST test fixtures assuming unconditional overlay (`test_warder_primetime_runtime_layout.py`, `test_warder_default_epg_panel_runtime.py`, `test-channel-picon-settings.py`); updated fixture wiring to model an eligible renderer rather than relaxing production gating.
+- **Pending:** confirm CI success after fixture adjustments; verify runtime `getGraphicsInfo()` on user's GigaBlue with OpenATV 8.1 GLES and SF8008 legacy mode; ensure saved `warderEpgListScroll.enabled=False` semantics across upgrade. No release, merge or feed changes.
+
+## 2026-11-09 — OpenATV 8.1 GLES-only EPG overlay (PR #82; candidate)
+
+- Branch `fix/epg-gles-runtime-gate-20261109`, commit `88d10d43bd6f09553749a05078af77639b446ea8`, draft PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/82, based on `fix/epg-openatv80-performance-fallback`.
+- Added fail-closed policy requiring OpenATV 8.1 and affirmative `BoxInfo.e2egl`, integrated with default scroll config and conditional visibility in Channel Selection settings. All other images fall back to native renderer; unknown backend never qualifies. Added `tools/test_warder_epg_gles_policy.py`.
+- **UPDATE 2026-11-09:** Source verification found `getGraphicsInfo().get('backend') == 'e2egl'` as the authoritative native runtime graphics state, distinct from `HasEGLRenderer` capability. Policy now checks both; test cases include framebuffer and unknown backend. Receiver-side confirmation and CI still pending. Production untouched.
+
 # Warder Evolution – stav projektu
 
 **Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
