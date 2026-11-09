@@ -2909,7 +2909,15 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		# Test12 falls back to the native PLI list instead of covering it.
 		openpli_runtime = bool(globals().get('isOpenPLi', False))
 		# Only the default geometry may use this optional extra canvas.
-		epg_scroll_enabled = bool(config.plugins.warderEpgListScroll.enabled.value) and not openpli_runtime
+		# TEST5-only: attach a no-paint navigation sampler even when the
+		# user's EPG marquee setting is OFF. Without its widget there is no
+		# renderer instance, no timer and therefore no diagnostic log.
+		try:
+			with open('/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version', 'r') as f:
+				nav_test_build = f.read().strip() == '1.0.75-test5'
+		except OSError:
+			nav_test_build = False
+		epg_scroll_enabled = (bool(config.plugins.warderEpgListScroll.enabled.value) or nav_test_build) and not openpli_runtime
 		default_geometry = bool(
 			list_tag and 'position="60,96"' in list_tag.group(0)
 			and 'size="1065,842"' in list_tag.group(0)
