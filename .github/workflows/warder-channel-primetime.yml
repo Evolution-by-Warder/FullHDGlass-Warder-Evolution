@@ -60,11 +60,11 @@ jobs:
           candidate = Path("source/package-root/usr/share/enigma2/hd_glass17/skin.xml").read_bytes()
           changes = (
               (b'MultiContentEntryText(pos=(95, 2), size=(930, 34), font=1, flags=RT_VALIGN_CENTER, text=3)',
-               b'MultiContentEntryText(pos=(95, 2), size=(690, 34), font=1, flags=RT_VALIGN_CENTER, text=3)'),
+               b'MultiContentEntryText(pos=(95, 2), size=(690, 34), font=1, flags=RT_VALIGN_CENTER, text=3, color_sel=0x006cbcf0)'),
               (b'MultiContentEntryText(pos=(1040, 2), size=(390, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)',
-               b'MultiContentEntryText(pos=(800, 2), size=(630, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)'),
+               b'MultiContentEntryText(pos=(800, 2), size=(630, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5, color_sel=0x006cbcf0)'),
               (b'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0)',
-               b'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff)'),
+               b'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff, color_sel=0x00ffff00)'),
           )
           for before, after in changes:
               assert approved.count(before) == 1, "Unexpected main skin baseline"
