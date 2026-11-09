@@ -1,3 +1,10 @@
+## 2026-11-09 — Continued CI verification of GLES runtime gating
+
+- PR #82 working branch `fix/epg-gles-runtime-gate-20261109`. Runtime policy uses OpenATV 8.1 version family, `HasEGLRenderer` capability, and native `getGraphicsInfo()['backend'] == 'e2egl'`; does not use build date or loaded-library heuristics.
+- Unit tests extended to daily/beta versions and native framebuffer/unknown backend; dedicated workflow `.github/workflows/verify-epg-gles-runtime-policy.yml` created.
+- Initial CI failures included AST test fixtures assuming unconditional overlay (`test_warder_primetime_runtime_layout.py`, `test_warder_default_epg_panel_runtime.py`, `test-channel-picon-settings.py`); updated fixture wiring to model an eligible renderer rather than relaxing production gating.
+- **Pending:** confirm CI success after fixture adjustments; verify runtime `getGraphicsInfo()` on user's GigaBlue with OpenATV 8.1 GLES and SF8008 legacy mode; ensure saved `warderEpgListScroll.enabled=False` semantics across upgrade. No release, merge or feed changes.
+
 ## 2026-11-09 — OpenATV 8.1 GLES-only EPG overlay (PR #82; candidate)
 
 - Branch `fix/epg-gles-runtime-gate-20261109`, commit `88d10d43bd6f09553749a05078af77639b446ea8`, draft PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/82, based on `fix/epg-openatv80-performance-fallback`.
