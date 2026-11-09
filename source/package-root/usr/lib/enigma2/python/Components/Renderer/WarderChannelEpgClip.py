@@ -614,10 +614,11 @@ class WarderChannelEpgClip(Renderer):
             # refresh. This branch is not intended for production releases.
             probe_native = exists("/tmp/warder-epg-native-only")
             if probe_native and component is not None:
-                first_probe = not self._warder_probe_native_active
-                self._warder_probe_native_active = True
-                self._restore_native()
-                if first_probe:
+                if not self._warder_probe_native_active:
+                    self._warder_probe_native_active = True
+                    # Restore only once; repeated setElementFont/invalidate
+                    # calls on every 55/130ms tick can cause flicker.
+                    self._restore_native()
                     self.instance.clear(self._transparent)
                     self._last = None
                     try:
