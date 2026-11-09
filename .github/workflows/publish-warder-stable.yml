@@ -159,10 +159,10 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add --sparse -f "packages/${{ steps.version.outputs.package }}" "packages/${{ steps.version.outputs.package }}.sha256" update-production.json
-          git fetch origin main:refs/remotes/origin/main
-          git merge-base --is-ancestor origin/main HEAD
           git diff --cached --check
           if ! git diff --cached --quiet; then
+            git fetch origin main:refs/remotes/origin/main
+            git merge-base --is-ancestor origin/main HEAD
             git commit -m "Publish official ${{ steps.version.outputs.version }} package and production feed [skip ci]"
             git push origin HEAD:main
           fi
