@@ -43,7 +43,7 @@ class PackageActionColumns(unittest.TestCase):
 
     def test_item_geometry_and_font_are_preserved(self):
         self.assertIn('MultiContentEntryText(pos=(95, 0), size=(1430, 70), font=0', self.template)
-        self.assertIn('MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2', self.template)
+        self.assertIn('MultiContentEntryText(pos=(95, 36), size=(650, 30), font=2', self.template)
         self.assertIn('MultiContentEntryPixmapAlphaBlend(pos=(1450, 5), size=(60, 60), png=7', self.template)
         self.assertIn('gFont("Prive3", 33)', self.template)
         self.assertIn('gFont("Prive3", 27)', self.template)
