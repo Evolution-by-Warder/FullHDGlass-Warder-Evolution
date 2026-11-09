@@ -1,0 +1,286 @@
+{
+  "payload_commit": "36706933abcbf849a661aa440ff2b0f04af95e6c",
+  "status": "PASS",
+  "remote_files_checked": 28,
+  "new_draft_png": 9,
+  "new_installed_png": 0,
+  "modified_zip": 0,
+  "closed_cases": 0,
+  "remaining_open": 105,
+  "candidate": {
+    "tv": 37,
+    "png": 330,
+    "unique_zip": 99
+  },
+  "scope": "Only listed staging/report paths and WARDER_PROGRESS.md modified; original ZIP members and 18 CANAL+ archives unchanged by tree construction. No ZIP rewrite or install tests required.",
+  "files": [
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/acun-tv8.png",
+      "sha256": "5487ffe0c48ac71b900f13d8f11bc8c38f882ebb5a77c867e1cb9852080dcd00",
+      "bytes": 32881,
+      "git_blob_sha": "57c5a2358d99fd6ff40e3ef27f5f519dd996e80e",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/render_draft.py",
+      "sha256": "a9e1b8ed7cadc0138f96ef12ba8912059acdf8eabb6477818b663bc4de14838d",
+      "bytes": 3981,
+      "git_blob_sha": "f23ae27a560a590e2a09f788bf142df019df2f2e",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/source-evidence.json",
+      "sha256": "f8691a4a2a5b3aaf94a4beb7a3dfdea635cb5b2bd62c6fafa0c1d634d8325cac",
+      "bytes": 928,
+      "git_blob_sha": "ca5d2f884fdfedf9a5a21718aae1f4b1a04ccdbf",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/220x132-black.png",
+      "sha256": "f300104eeff4a555f986f03a38673f52ca2d422ad42fbfc035e9c3f8e1282b81",
+      "bytes": 43478,
+      "git_blob_sha": "07c8ecc258c352f03748a623b4349367fadc43b3",
+      "remote_match": true,
+      "dimensions": [
+        220,
+        132
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/220x132-transparent.png",
+      "sha256": "c0bd53085802dd8d2811bbcf365637904e9763bc2d01554f2eb932776250ea24",
+      "bytes": 21002,
+      "git_blob_sha": "3226be0e9f882aeaaffe3df3a2ab38642481ef49",
+      "remote_match": true,
+      "dimensions": [
+        220,
+        132
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/220x132-white.png",
+      "sha256": "d9a00a98d8043f4789fbdd6565d71fe259e641643412649225d2caaec727d495",
+      "bytes": 43650,
+      "git_blob_sha": "f56eec3c8802abfe2bf4f78db59c58362a12a508",
+      "remote_match": true,
+      "dimensions": [
+        220,
+        132
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/400x240-black.png",
+      "sha256": "dbfb4a984a710f028e67fc0d98502841d27731f3dd9015236cfdf835ff6cca1c",
+      "bytes": 109367,
+      "git_blob_sha": "8fae85617847909ef66495c6f20a548e7169f09c",
+      "remote_match": true,
+      "dimensions": [
+        400,
+        240
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/400x240-transparent.png",
+      "sha256": "ed46bc2b289e2ef83ddacf3bee6771c187b6492bade0a600cb2f8e3ce19e7bb5",
+      "bytes": 54538,
+      "git_blob_sha": "4fb4bb4ca100688e20bfa5f201c1a67043818ea5",
+      "remote_match": true,
+      "dimensions": [
+        400,
+        240
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/400x240-white.png",
+      "sha256": "443ffd367e9e0f765b8d3def869d5d70f13b8601a5b906b2490f85f82bba32cf",
+      "bytes": 110704,
+      "git_blob_sha": "368481502f3f7f025549561d0caaf0b8aba8d3ca",
+      "remote_match": true,
+      "dimensions": [
+        400,
+        240
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/50x30-black.png",
+      "sha256": "ba32408bd6e08c833cfb1f82693bf084a74f763b86f21f8f8960ac9028dcb010",
+      "bytes": 3515,
+      "git_blob_sha": "17a05e2c396c999ef04e27b10829c10dda33fbd1",
+      "remote_match": true,
+      "dimensions": [
+        50,
+        30
+      ],
+      "alpha_extrema": [
+        9,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/50x30-transparent.png",
+      "sha256": "670e1fcd24d2410d77c298cdeb064c5e1dd3f64715a99fde062559919c9a30a2",
+      "bytes": 2261,
+      "git_blob_sha": "1612014afb766a4b83631fe28443776fa6109f47",
+      "remote_match": true,
+      "dimensions": [
+        50,
+        30
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/50x30-white.png",
+      "sha256": "5e548e04660a57bff3219d52c7cda4bfd99c1d9b4cde7181b516c821e23026f7",
+      "bytes": 3182,
+      "git_blob_sha": "23e0e97c70304b7028c5ca8e0adf3effb87ad1b0",
+      "remote_match": true,
+      "dimensions": [
+        50,
+        30
+      ],
+      "alpha_extrema": [
+        25,
+        255
+      ]
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/preview.png",
+      "sha256": "f1e4dcfb44ff3da738bd90185a97204e264e3a28ecda1b954f61a1bfd5c3d788",
+      "bytes": 288389,
+      "git_blob_sha": "40ba600dfe678fba92fed08811ad0ec809085214",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/review/review.json",
+      "sha256": "11c78f20eae64abff0b9f51ef30e933e51428eb5e5e82550eeb07abb40819db6",
+      "bytes": 4218,
+      "git_blob_sha": "c0f1fca48584841cc995abd1ba25038403525b00",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/templates/black-sablona.png",
+      "sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe",
+      "bytes": 29833,
+      "git_blob_sha": "1dd0f479c3f3a2017377eb6bec33e948ffa0dda7",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/tv8-official-review/templates/white-sablona.png",
+      "sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+      "bytes": 29645,
+      "git_blob_sha": "dd8d5860a5daec9a9cf0cd6c12b7f7c2c6428bc0",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/ses-official-review/official-source-manifest.json",
+      "sha256": "57351265392a6ebeba4d5ba9c3cdc3f8c5b94733afbe145ac4ddd85e08b00a2e",
+      "bytes": 6904,
+      "git_blob_sha": "05fe68267e1f37840fdf4f8b5fb77448a210a4a9",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/source-manifest.json",
+      "sha256": "366e73315438d5dfcc5f7d4cb05ff23e257126c95d3ebd31557552a8196d4422",
+      "bytes": 7775,
+      "git_blob_sha": "a1d2979ff9908103ff83904516b122fd7c004cae",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/channel-logo.css",
+      "sha256": "4c80c319012cb6bc105652cf3e913613c5dd5750ee1fbdd24024df8e421d7108",
+      "bytes": 2721,
+      "git_blob_sha": "940e6836202a2d26835485ae8a722f198c0e170d",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/active.png",
+      "sha256": "05297ed68aaab1a232c3577ce61f259b0feeea572f653ca5b9e3522d8c8b23e8",
+      "bytes": 22095,
+      "git_blob_sha": "8b63e33eabf5dea446589166bf93aa66d86dff69",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/unknown-russia-official.png",
+      "sha256": "a4781631d1b37dacbeff9d8e8a19d14e196155db1f0e0bf9ba69573422fdc61c",
+      "bytes": 1819,
+      "git_blob_sha": "3176de8b3dbedea76948eb714067bfac9b58a71d",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/cableman-current-logo.png",
+      "sha256": "8a98e5e6a79e0cddcb5e7695a914e1bae4d81851033a6d33cfb5d347e26c7e52",
+      "bytes": 9556,
+      "git_blob_sha": "07e9b798b2692e9cdc8f716bbac632544af3cba1",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/premier-channel.jpg",
+      "sha256": "003a0d6c0e7095c871c921cc9752984d9c3b69e94f51a204a4fb75209d5ee544",
+      "bytes": 15100,
+      "git_blob_sha": "5c5064060435e85a9c4b6be59889d61b7ca4aa2d",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/ses-official-review/official-sources/SES_Logo_Horizontal_FC_Dark_Background_RGB.png",
+      "sha256": "cce6e147a3c4b4f266fc900806b2906b8eb755122eb0fd53270768adfab1a684",
+      "bytes": 183922,
+      "git_blob_sha": "4b2ec7dcb5a60c4fa8a70e107edd969e6f2f1690",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/ses-official-review/official-sources/SES_Logo_Horizontal_FC_Light_Background_RGB.png",
+      "sha256": "d3741aeb0c79a67cf5dc2ca0144a766ba2415f96090301ffdc8ee5e927ed2d8d",
+      "bytes": 187630,
+      "git_blob_sha": "170e8f365e08257e534781878689409bfaf2d7af",
+      "remote_match": true
+    },
+    {
+      "path": "WARDER_PROGRESS.md",
+      "sha256": "7f4c3915c362a77b34ae662e731b426781e2101ecb8b396c79aab5b422d96e67",
+      "bytes": 50114,
+      "git_blob_sha": "1d553e5fd2cba960a0d721333cdf751fa81e15f8",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/ARTWORK_APPROVAL.md",
+      "sha256": "101a005035e6757971036ffb68cdc8bdd49624200ebc14b55ecd5fb30ef210c3",
+      "bytes": 3337,
+      "git_blob_sha": "a9c12df9df26891acf36b2c1ea65c2e27e8ed37c",
+      "remote_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+      "sha256": "fb04d37d2912350b855b13213432e4fbb563bb33201d830b9e67e0b5e3886fda",
+      "bytes": 240336,
+      "git_blob_sha": "60d9b57dd247f1312f0a72bf657846ecac5c7ea1",
+      "remote_match": true
+    }
+  ]
+}
