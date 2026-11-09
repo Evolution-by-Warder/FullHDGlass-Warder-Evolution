@@ -102,13 +102,21 @@ class WarderChannelEpgClip(Renderer):
         # menu switch or /tmp marker. Stable releases retain an opt-in probe.
         try:
             with open('/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version', 'r') as version_file:
-                nav_test_build = version_file.read().strip() == '1.0.75-test4'
+                nav_test_build = version_file.read().strip() == '1.0.75-test5'
         except OSError:
             nav_test_build = False
         self._navigation_probe = (not self._overlay_allowed and
                                   (nav_test_build or exists('/tmp/warder-epg-navigation-enable')))
         self._navigation_last = None
         self._navigation_last_tick = None
+        self._navigation_component_missing_reported = False
+        if nav_test_build:
+            try:
+                with open('/tmp/warder-channel-navigation-test5.log', 'a') as output:
+                    output.write('startup overlay_allowed=%s navigation_probe=%s\n' %
+                                 (self._overlay_allowed, self._navigation_probe))
+            except OSError:
+                pass
         # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
         self._perf_since = monotonic()
         self._perf_ticks = 0
@@ -632,7 +640,12 @@ class WarderChannelEpgClip(Renderer):
         try:
             component = self._find_component()
             if component is None or component.instance is None:
+                if not getattr(self, '_navigation_component_missing_reported', False):
+                    self._navigation_component_missing_reported = True
+                    with open('/tmp/warder-channel-navigation-test5.log', 'a') as output:
+                        output.write('probe_active component_unavailable\n')
                 return
+            self._navigation_component_missing_reported = False
             top = int(component.instance.getTopIndex())
             selected = int(component.instance.getCurrentIndex())
             previous = getattr(self, '_navigation_last', None)
@@ -640,7 +653,7 @@ class WarderChannelEpgClip(Renderer):
                 old_top, old_selected = previous[0]
                 kind = 'page' if top != old_top else 'row'
                 # Append only for actual changes, never every 50ms.
-                with open('/tmp/warder-channel-navigation-test3.log', 'a') as output:
+                with open('/tmp/warder-channel-navigation-test5.log', 'a') as output:
                     output.write('t=%.3f kind=%s top=%d previous_top=%d selected=%d previous_selected=%d sampling_gap_ms=%.1f\n' %
                                  (now, kind, top, old_top, selected, old_selected,
                                   (now - previous_tick) * 1000.0 if previous_tick is not None else -1.0))
