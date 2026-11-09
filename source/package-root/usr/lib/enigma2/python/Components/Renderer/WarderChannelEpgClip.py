@@ -12,6 +12,7 @@ from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
 from skin import parseColor
 from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+from Plugins.Extensions.setupGlass17.warderEpgRenderPolicy import allow_channel_epg_overlay
 
 
 def scroll_title_window(title, width, measure, pixel_offset):
@@ -66,6 +67,7 @@ class WarderChannelEpgClip(Renderer):
 
     def __init__(self):
         Renderer.__init__(self)
+        self._overlay_allowed = allow_channel_epg_overlay()
         self._timer = eTimer()
         self._connection = None
         try:
@@ -201,7 +203,8 @@ class WarderChannelEpgClip(Renderer):
             self._glyph_width_cache.clear()
         if hasattr(self, '_epg_snapshots'):
             self._epg_snapshots.clear()
-        self._timer.start(55, True)
+        if getattr(self, '_overlay_allowed', True):
+            self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
@@ -598,6 +601,9 @@ class WarderChannelEpgClip(Renderer):
         return True
 
     def refresh(self):
+        # Native fast path never starts an EPG overlay repaint cycle.
+        if not getattr(self, '_overlay_allowed', True):
+            return
         # Local import also supports isolated AST-method regression tests.
         from time import monotonic
         started = monotonic()
@@ -689,8 +695,8 @@ class WarderChannelEpgClip(Renderer):
             if self.instance:
                 self.instance.clear(self._transparent)
         finally:
-            if hasattr(self, '_perf_tick'):
-                self._perf_tick((monotonic() - started) * 1000.0)
+            # Performance diagnostics are not active in production.
+
             if self.instance:
                 # TEST10: retain the original 55 ms motion during active
                 # focused-title scrolling, but avoid repainting all visible

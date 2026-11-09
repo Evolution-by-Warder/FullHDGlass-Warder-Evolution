@@ -410,6 +410,45 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
+    def test_navigation_probe_accepts_native_list_without_painter_apis(self):
+        native = types.SimpleNamespace(
+            instance=types.SimpleNamespace(getTopIndex=lambda: 12,
+                                           getCurrentIndex=lambda: 14))
+        class ServiceScreen(dict):
+            pass
+        service = ServiceScreen({"list": native})
+        fake_infobar = types.ModuleType("Screens.InfoBar")
+        fake_infobar.InfoBar = types.SimpleNamespace(
+            instance=types.SimpleNamespace(servicelist=service))
+        fake_screens = types.ModuleType("Screens")
+        with patch.dict(sys.modules, {"Screens": fake_screens,
+                                      "Screens.InfoBar": fake_infobar}):
+            result = method("_find_navigation_component")(types.SimpleNamespace())
+        self.assertIs(result, native)
+        # The painting code may still correctly decline this unsupported list.
+        self.assertFalse(hasattr(native, "ServiceInfoFont"))
+
+    def test_opt_in_native_navigation_probe_samples_without_paint(self):
+        events = []
+        target = types.SimpleNamespace(
+            _overlay_allowed=False, _navigation_probe=True,
+            _native_navigation_tick=lambda: events.append("sample"),
+            _timer=types.SimpleNamespace(start=lambda *args: events.append(("timer", args))),
+            instance=Canvas(),
+            _find_component=lambda: self.fail("Refresh must not start EPG draw"))
+        method("refresh")(target)
+        self.assertEqual(events, ["sample", ("timer", (50, True))])
+        self.assertEqual(target.instance.calls, [])
+
+    def test_legacy_image_skips_expensive_renderer_refresh(self):
+        target = types.SimpleNamespace(
+            _overlay_allowed=False,
+            _find_component=lambda: self.fail("Legacy fast path must not inspect service list"),
+            instance=Canvas(),
+            _timer=types.SimpleNamespace(start=lambda *args: self.fail("No refresh timer")))
+        method("refresh")(target)
+        self.assertEqual(target.instance.calls, [])
+
     def test_refresh_disables_native_event_at_cpp_boundary_before_paint(self):
         events = []
         component = types.SimpleNamespace(
