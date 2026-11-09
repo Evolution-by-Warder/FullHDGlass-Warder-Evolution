@@ -247,3 +247,28 @@ for _lang, _text in {
     "zh": "用于存储下载的图形套件、台标及其他皮肤数据。保存更改后的路径时会在此创建 hdg17_files。",
 }.items():
     TEXT.setdefault(_lang, {})["Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."] = _text
+
+# Separate help for the FHDG backup configuration file setting.
+for _lang, _text in {
+    "sk": "Tu si zvolíte adresár, do ktorého sa bude ukladať záložný konfiguračný súbor hdg17.conf. Predvolené umiestnenie je /usr/share/enigma2/hd_glass17/. Stlačením OK môžete vybrať iný adresár a tlačidlom SAVE zálohu uložiť.",
+    "cs": "Zde vyberete adresář pro záložní konfigurační soubor hdg17.conf. Výchozí umístění je /usr/share/enigma2/hd_glass17/. Stisknutím OK lze vybrat jiný adresář a tlačítkem SAVE zálohu uložit.",
+    "en": "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup.",
+    "de": "Wählen Sie den Ordner für die Sicherung der Konfigurationsdatei hdg17.conf. Standard: /usr/share/enigma2/hd_glass17/. Mit OK einen anderen Ordner wählen und mit SAVE die Sicherung speichern.",
+    "pl": "Wybierz folder dla kopii zapasowej pliku konfiguracji hdg17.conf. Domyślnie: /usr/share/enigma2/hd_glass17/. Naciśnij OK, aby wybrać inny folder, a następnie SAVE, aby zapisać kopię.",
+    "hu": "Itt választható ki a hdg17.conf biztonsági konfigurációs fájl mappája. Alapértelmezett: /usr/share/enigma2/hd_glass17/. OK: másik mappa; SAVE: mentés.",
+    "ru": "Выберите папку для резервного файла конфигурации hdg17.conf. По умолчанию: /usr/share/enigma2/hd_glass17/. Нажмите OK для выбора другой папки, затем SAVE для сохранения копии.",
+    "fr": "Choisissez le dossier de sauvegarde du fichier de configuration hdg17.conf. Par défaut : /usr/share/enigma2/hd_glass17/. Appuyez sur OK pour choisir un autre dossier, puis sur SAVE pour sauvegarder.",
+    "it": "Scegli la cartella per il file di configurazione di backup hdg17.conf. Predefinita: /usr/share/enigma2/hd_glass17/. Premi OK per scegliere un'altra cartella e SAVE per salvare il backup.",
+    "es": "Elija la carpeta para la copia de seguridad de configuración hdg17.conf. Predeterminada: /usr/share/enigma2/hd_glass17/. Pulse OK para elegir otra carpeta y SAVE para guardar la copia.",
+    "pt": "Escolha a pasta para a cópia de segurança do ficheiro de configuração hdg17.conf. Padrão: /usr/share/enigma2/hd_glass17/. Prima OK para outra pasta e SAVE para guardar.",
+    "nl": "Kies de map voor het reserveconfiguratiebestand hdg17.conf. Standaard: /usr/share/enigma2/hd_glass17/. Druk op OK om een andere map te kiezen en op SAVE om de back-up op te slaan.",
+    "ro": "Alegeți dosarul pentru copia de rezervă a fișierului de configurare hdg17.conf. Implicit: /usr/share/enigma2/hd_glass17/. Apăsați OK pentru alt dosar și SAVE pentru a salva copia.",
+    "uk": "Виберіть теку для резервного файлу конфігурації hdg17.conf. Типово: /usr/share/enigma2/hd_glass17/. Натисніть OK для вибору іншої теки, потім SAVE для збереження копії.",
+    "lt": "Pasirinkite aplanką atsarginei hdg17.conf konfigūracijos kopijai. Numatytasis: /usr/share/enigma2/hd_glass17/. Spauskite OK kitam aplankui pasirinkti, tada SAVE kopijai įrašyti.",
+    "et": "Valige kaust varukoopia seadistusfailile hdg17.conf. Vaikimisi: /usr/share/enigma2/hd_glass17/. Teise kausta valimiseks vajutage OK, salvestamiseks SAVE.",
+    "al": "Zgjidhni dosjen për skedarin rezervë të konfigurimit hdg17.conf. Parazgjedhja: /usr/share/enigma2/hd_glass17/. Shtypni OK për dosje tjetër, pastaj SAVE për ta ruajtur.",
+    "tr": "Yedek yapılandırma dosyası hdg17.conf için klasör seçin. Varsayılan: /usr/share/enigma2/hd_glass17/. Başka klasör için OK, yedeği kaydetmek için SAVE tuşuna basın.",
+    "fa": "پوشه ذخیره نسخه پشتیبان تنظیمات hdg17.conf را انتخاب کنید. مسیر پیش‌فرض: /usr/share/enigma2/hd_glass17/. برای انتخاب پوشه دیگر OK و برای ذخیره نسخه پشتیبان SAVE را بزنید.",
+    "zh": "选择配置备份文件 hdg17.conf 的保存文件夹。默认位置：/usr/share/enigma2/hd_glass17/。按 OK 选择其他文件夹，再按 SAVE 保存备份。",
+}.items():
+    TEXT.setdefault(_lang, {})["Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."] = _text
