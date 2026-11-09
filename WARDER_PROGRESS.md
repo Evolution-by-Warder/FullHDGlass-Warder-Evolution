@@ -5,7 +5,7 @@
 - Vlastník schválil všetkých9 pripravených variantov. Presné schválené PNG bez prerenderovania vložené pod `1_0_16_390_20D_73_2080000_0_0_0` do9 pracovných520E balíkov. TV8 Turkey, nie International.
 - **1 nová TV referencia /9 PNG /9 ZIPov /0 technických uzavretí. Zostáva104 otvorených. Kandidát spolu38 TV/339 PNG/99 jedinečných ZIPov.**
 - Lokálne SHA256/CRC/rozmery/alfa a zhoda9 PNG so schváleným checkpointom PASS; 12471 pôvodných členov a celé pôvodné ZIP prefixy bajtovo zachované.18 CANAL+ balíkov a všetky nedotknuté balíky majú nezmenené záznamy a časti.
-- Report `reports/vhannibal-followup-20261106/scope-batch-20261109-08.json`. Vzdialený audit a presný payload SHA budú doplnené po zápise. Žiadny merge, produkčné feedy, skin ani rádio.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261109-08.json`. **Balíkový commit `5997c267f3e90b9d5485f43eb07883401fedd5f9`; spätný audit PASS:81 ciest /233529918 bajtov, všetkých74 častí a9 úplných ZIPov bajtovo zhodných. SHA256/CRC/9 schválených PNG PASS. Validátor manifestu a inštalačná funkcia aktuálneho main a711c7940f8137eaa69331a1a4b511f617edad47 prešli na9 archívoch so zachovaným používateľským PNG; fyzický prijímač netestovaný.** Report `reports/vhannibal-followup-20261106/scope-batch-20261109-08-remote-verification.json`. AntenaTSID10/0 a RADIO CLASSICA TV ONID29/0 následne cielene preverené; bez rozhodujúceho nového dôkazu zostávajú blokované. Žiadny merge, produkčné feedy, skin ani rádio.
 
 
 ### Dávka07 – nové oficiálne podklady a TV8 návrhy – 9.11.2026
