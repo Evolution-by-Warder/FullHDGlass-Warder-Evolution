@@ -614,7 +614,7 @@ class WarderChannelEpgClip(Renderer):
             # refresh. This branch is not intended for production releases.
             probe_native = exists("/tmp/warder-epg-native-only")
             if probe_native and component is not None:
-                if not self._warder_probe_native_active:
+                if not getattr(self, '_warder_probe_native_active', False):
                     self._warder_probe_native_active = True
                     # Restore only once; repeated setElementFont/invalidate
                     # calls on every 55/130ms tick can cause flicker.
@@ -626,7 +626,7 @@ class WarderChannelEpgClip(Renderer):
                     except (AttributeError, TypeError, RuntimeError):
                         pass
                 return
-            if self._warder_probe_native_active:
+            if getattr(self, '_warder_probe_native_active', False):
                 self._warder_probe_native_active = False
                 self._last = None
             if component is None:
