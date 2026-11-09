@@ -8,6 +8,7 @@ on:
     paths:
       - 'source/control/control'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version'
+      - '.github/workflows/publish-warder-stable.yml'
   workflow_dispatch:
     inputs:
       expected_version:
@@ -41,6 +42,8 @@ jobs:
             /docs/
             /reports/
             /update-production.json
+            /packages/enigma2-plugin-skins-fullhdglass_*.ipk
+            /packages/enigma2-plugin-skins-fullhdglass_*.ipk.sha256
             /.github/workflows/publish-warder-stable.yml
           persist-credentials: true
       - uses: actions/setup-python@v5
