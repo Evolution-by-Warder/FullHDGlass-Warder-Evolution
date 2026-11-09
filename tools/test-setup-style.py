@@ -15,12 +15,12 @@ style=importlib.util.module_from_spec(spec);spec.loader.exec_module(style)
 BASELINE=json.loads(style.FIXTURE.read_text())
 CURRENT=style.PLUGIN.read_text()
 LAYOUTS=style.extract(CURRENT)
-# A reviewed v1.0.76 controller fingerprint differs from the historical
-# 1.0.15 fixture solely because the approved GLES gate and release labels
-# now form part of the executable AST. Retain the original fixture for older
-# source and pin the complete candidate AST for this authorized release.
+# The v1.0.76 controller fingerprint includes the approved offline factory-icon
+# reset and localized storage menu/help changes from PR #88, in addition to
+# the earlier GLES gate and release labels. Keep the historical fixture for
+# older releases, and pin the full AST to catch any unreviewed logic edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
-REVIEWED_1076_SHA256='37629e4eb590b669d5e625991933a6913e6c579883a7e51e46ff8f6e504db2f4'
+REVIEWED_1076_SHA256='9c2e7e62276c9e3677283c93c6f4849115ec0f8544eb8c1321c5fe8515abbef3'
 EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION == '1.0.76' else BASELINE['logic_sha256'])
 
 
@@ -125,6 +125,18 @@ class SetupStyleTests(unittest.TestCase):
         )
         for statement in required:
             self.assertEqual(CURRENT.count(statement), 1, statement)
+
+    def test_pr88_offline_factory_reset_and_storage_labels_remain_guarded(self):
+        # Specific contract checks complement the complete controller fingerprint.
+        for statement in (
+            'def restoreFactoryIcons():',
+            'os.path.join(SKINPATH, "icons_factory")',
+            'os.replace(tmp, destination)',
+            'self._warderFactoryResetPending = True',
+            'ui_text("Storage for graphics sets, picons and data")',
+            'ui_text("Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here.")',
+        ):
+            self.assertIn(statement, CURRENT, statement)
 
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),EXPECTED_SHA)
