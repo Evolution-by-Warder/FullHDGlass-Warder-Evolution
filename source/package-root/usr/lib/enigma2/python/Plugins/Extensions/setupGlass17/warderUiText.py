@@ -222,3 +222,28 @@ for _lang, _label in {
     "zh": "图形套件、台标和数据存储位置",
 }.items():
     TEXT.setdefault(_lang, {})["Storage for graphics sets, picons and data"] = _label
+
+# Short help for the PATHS storage setting, localized at runtime.
+for _lang, _text in {
+    "sk": "Úložisko stiahnutých grafických sád, piconov a ďalších dát skinu. Po uložení zmeny cesty sa tu vytvorí hdg17_files.",
+    "cs": "Úložiště stažených grafických sad, piconů a dalších dat skinu. Po uložení změny cesty se zde vytvoří hdg17_files.",
+    "de": "Speicherort für heruntergeladene Grafiksets, Picons und weitere Skin-Daten. Nach dem Speichern eines geänderten Pfads wird hier hdg17_files erstellt.",
+    "en": "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here.",
+    "pl": "Miejsce na pobrane zestawy grafik, pikony i inne dane skórki. Po zapisaniu zmiany ścieżki powstanie tu hdg17_files.",
+    "hu": "Letöltött grafikai készletek, piconok és egyéb skinadatok helye. A módosított útvonal mentésekor itt jön létre a hdg17_files.",
+    "ru": "Хранилище загруженных наборов графики, пиконов и других данных скина. При сохранении нового пути здесь создаётся hdg17_files.",
+    "fr": "Emplacement des packs graphiques, picons et autres données téléchargées du skin. L'enregistrement d'un nouveau chemin crée ici hdg17_files.",
+    "it": "Percorso per set grafici, picon e altri dati scaricati della skin. Salvando un percorso modificato viene creata qui hdg17_files.",
+    "es": "Ubicación de conjuntos gráficos, picons y otros datos descargados del skin. Al guardar una ruta modificada se crea aquí hdg17_files.",
+    "pt": "Local para conjuntos gráficos, picons e outros dados descarregados da skin. Ao guardar uma alteração de caminho, cria-se aqui hdg17_files.",
+    "nl": "Opslag voor gedownloade grafische sets, picons en andere skingegevens. Bij het opslaan van een gewijzigd pad wordt hier hdg17_files gemaakt.",
+    "ro": "Loc pentru seturi grafice, piconuri și alte date descărcate ale skinului. Salvarea căii modificate creează aici hdg17_files.",
+    "uk": "Сховище завантажених графічних наборів, піконів та інших даних скіна. Після збереження зміненого шляху тут створюється hdg17_files.",
+    "lt": "Vieta atsisiųstiems grafikos rinkiniams, pikonams ir kitiems apvalkalo duomenims. Išsaugojus pakeistą kelią čia sukuriamas hdg17_files.",
+    "et": "Allalaaditud graafikakomplektide, pikonite ja muude kujundusandmete asukoht. Muudetud tee salvestamisel luuakse siia hdg17_files.",
+    "al": "Vend për paketat grafike, pikonët dhe të dhëna të tjera të shkarkuara të skin-it. Ruajtja e rrugës së ndryshuar krijon këtu hdg17_files.",
+    "tr": "İndirilen grafik setleri, piconlar ve diğer tema verileri için depolama. Yol değişikliği kaydedilince burada hdg17_files oluşturulur.",
+    "fa": "محل نگهداری مجموعه‌های گرافیکی، پیکون‌ها و دیگر داده‌های دانلودشده پوسته. با ذخیره مسیر تغییر‌یافته، پوشه hdg17_files اینجا ساخته می‌شود.",
+    "zh": "用于存储下载的图形套件、台标及其他皮肤数据。保存更改后的路径时会在此创建 hdg17_files。",
+}.items():
+    TEXT.setdefault(_lang, {})["Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."] = _text
