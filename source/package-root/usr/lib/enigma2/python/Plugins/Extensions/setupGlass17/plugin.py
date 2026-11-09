@@ -2938,11 +2938,10 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
-				if openpli_runtime:
-					# Remove a persisted TEST11 canvas from the generated runtime
-					# XML. The PLI native list must remain visible on every boot.
-					continue
-				has_clipped_events = True
+				# SF8008 TEST2: remove any persisted overlay in the generated
+				# default ChannelSelection XML, including one left by TEST1.
+				# Native EPG cells and native progressbars remain in charge.
+				continue
 			# Strip the TEST74 static line: it remains visible after
 			# turning Prime Time off without rebuilding ChannelSelection.
 			if in_default_channel_screen and '<eLabel position="1150,892" size="685,1"' in line:
@@ -2956,8 +2955,8 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
 				if not has_prime_time:
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
-				if not has_clipped_events and not openpli_runtime:
-					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
+				# SF8008 TEST2: intentionally do not inject WarderChannelEpgClip.
+				# Rest of the default screen and all PIG variants stay unchanged.
 				in_default_channel_screen = None
 			if in_any_channel_screen and '</screen>' in line:
 				in_any_channel_screen = False
