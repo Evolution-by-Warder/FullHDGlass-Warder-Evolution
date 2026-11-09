@@ -748,6 +748,29 @@ config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT
 config.plugins.warderEvolutionPrimeTime = ConfigSubsection()
 config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)
 config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
+# Optional EPG overlay; native ChannelSelection is the safe, fast default.
+config.plugins.warderEpgListScroll = ConfigSubsection()
+config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=False)
+
+def _warderEpgListScrollLabel():
+    # Short labels fit the existing settings column. English is fallback.
+    labels = {
+        "sk": "Rolovanie EPG názvov",
+        "cs": "Posouvání názvů EPG",
+        "de": "EPG-Titel scrollen",
+        "pl": "Przewijanie nazw EPG",
+        "hu": "EPG-címek görgetése",
+        "ru": "Прокрутка названий EPG",
+        "fr": "Défilement titres EPG",
+        "it": "Scorrimento titoli EPG",
+        "es": "Desplazar títulos EPG",
+        "en": "Scroll EPG titles",
+    }
+    try:
+        lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()
+    except (AttributeError, TypeError, ValueError):
+        lang = "en"
+    return labels.get(lang, labels["en"])
 config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
 config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
 config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
@@ -2885,6 +2908,8 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		# This additional canvas is verified on OpenATV, not OpenPLi 9.2.
 		# Test12 falls back to the native PLI list instead of covering it.
 		openpli_runtime = bool(globals().get('isOpenPLi', False))
+		# Only the default geometry may use this optional extra canvas.
+		epg_scroll_enabled = bool(config.plugins.warderEpgListScroll.enabled.value) and not openpli_runtime
 		default_geometry = bool(
 			list_tag and 'position="60,96"' in list_tag.group(0)
 			and 'size="1065,842"' in list_tag.group(0)
@@ -2938,9 +2963,9 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
-				if openpli_runtime:
-					# Remove a persisted TEST11 canvas from the generated runtime
-					# XML. The PLI native list must remain visible on every boot.
+				if not epg_scroll_enabled:
+					# Remove previously generated overlays when switched OFF.
+					# Native list/EPG/progressbars remain visible.
 					continue
 				has_clipped_events = True
 			# Strip the TEST74 static line: it remains visible after
@@ -2956,7 +2981,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
 				if not has_prime_time:
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
-				if not has_clipped_events and not openpli_runtime:
+				if not has_clipped_events and epg_scroll_enabled:
 					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
 				in_default_channel_screen = None
 			if in_any_channel_screen and '</screen>' in line:
@@ -6815,6 +6840,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		self._spinnerAtOpen = config.plugins.setupGlass17.par230.value
 		self._piconSourceAtOpen = config.plugins.setupGlass17.par231.value
+		self._epgListScrollAtOpen = bool(config.plugins.warderEpgListScroll.enabled.value)
 		self.firststart = True
 		self.start_rst = eTimer()
 		try:
@@ -7109,6 +7135,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
 				if E2OK:
 					self.list.append(getConfigListEntry(S0 % _("ChannelSelection 2xOK"), config.plugins.setupGlass17.par62))      	      
+				self.list.append(getConfigListEntry(S0 % _warderEpgListScrollLabel(), config.plugins.warderEpgListScroll.enabled))
 				self.list.append(getConfigListEntry(S0 % _("Text rolling type"), config.plugins.setupGlass17.par76))      
 				if config.plugins.setupGlass17.par76.value != "None":
 					self.list.append(getConfigListEntry(S0 % _("Text rolling start delay"), config.plugins.setupGlass17.par77))      		
@@ -8259,6 +8286,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			msg += ui_text("Spinner") + "\n"
 		if self._piconSourceAtOpen != config.plugins.setupGlass17.par231.value:
 			msg += ui_text("Channel-list picon source") + "\n"
+		if self._epgListScrollAtOpen != bool(config.plugins.warderEpgListScroll.enabled.value):
+			# Rebuild the runtime ChannelSelection with/without the overlay now.
+			chckPigFont()
+			msg += _warderEpgListScrollLabel() + "\n"
 		if self.d[39] != config.plugins.setupGlass17.par80.value:
 			if not isIP(config.plugins.setupGlass17.par80.value):
 				self.session.open(MessageBox, _("IP Address")+": " + str(config.plugins.setupGlass17.par80.value) + ER_F, MessageBox.TYPE_ERROR, 5)
@@ -8615,6 +8646,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if allLines != "":
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
+		# New settings live outside the legacy numbered registry.
+		config.plugins.warderEpgListScroll.enabled.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
