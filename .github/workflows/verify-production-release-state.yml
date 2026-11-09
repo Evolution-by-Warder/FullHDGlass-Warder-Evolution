@@ -1,0 +1,38 @@
+name: Verify Warder production release integrity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source/control/control'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version'
+      - 'update-production.json'
+      - 'packages/enigma2-plugin-skins-fullhdglass_*.ipk'
+      - 'packages/enigma2-plugin-skins-fullhdglass_*.ipk.sha256'
+      - 'tools/verify-production-release-state.py'
+      - '.github/workflows/verify-production-release-state.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '16 4 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-published-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/control
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
+            update-production.json
+            packages
+            tools/verify-production-release-state.py
+          sparse-checkout-cone-mode: false
+      - name: Check source, version, IPK, digest, production feed and GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/verify-production-release-state.py
