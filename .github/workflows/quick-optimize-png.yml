@@ -17,8 +17,7 @@ jobs:
       - name: Install fast PNG optimizer
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq optipng
-          python3 -m pip install --break-system-packages pillow
+          sudo apt-get install -y -qq optipng python3-pil
       - name: Optimize at most 25 largest bundled PNG files
         run: bash tools/optimize_large_png.sh
       - name: Commit smaller pixel-identical PNGs
