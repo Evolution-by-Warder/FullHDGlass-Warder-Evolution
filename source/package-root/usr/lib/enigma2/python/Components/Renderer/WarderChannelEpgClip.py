@@ -7,6 +7,7 @@ bars, selection and fonts remain owned by the image. On unsupported images the
 native renderer is left completely unchanged.
 """
 from time import time, monotonic
+from os.path import exists
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
@@ -86,6 +87,7 @@ class WarderChannelEpgClip(Renderer):
         # binding rejects None, leave its native list untouched.
         self._transparent = parseColor("#ff000000")
         self._diag_seen = set()
+        self._warder_probe_native_active = False
         # Optional receiver-QA dimensions; absent in production XML.
         self._warder_bar_width = None
         self._warder_test_marker = False
@@ -605,6 +607,27 @@ class WarderChannelEpgClip(Renderer):
             if not self.instance or not self._label:
                 return
             component = self._find_component()
+            # QA-only GLES diagnostic. An opt-in file restores the original
+            # native event text and suppresses all Warder canvas painting.
+            # This separates native ServiceListLegacy rendering from eCanvas.
+            # Remove the marker to return to the ordinary overlay on the next
+            # refresh. This branch is not intended for production releases.
+            probe_native = exists("/tmp/warder-epg-native-only")
+            if probe_native and component is not None:
+                first_probe = not self._warder_probe_native_active
+                self._warder_probe_native_active = True
+                self._restore_native()
+                if first_probe:
+                    self.instance.clear(self._transparent)
+                    self._last = None
+                    try:
+                        component.instance.invalidate()
+                    except (AttributeError, TypeError, RuntimeError):
+                        pass
+                return
+            if self._warder_probe_native_active:
+                self._warder_probe_native_active = False
+                self._last = None
             if component is None:
                 self._diag("native_component_absent")
                 self._restore_native()
