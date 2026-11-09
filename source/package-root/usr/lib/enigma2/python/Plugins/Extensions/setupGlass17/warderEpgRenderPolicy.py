@@ -14,7 +14,7 @@ def allow_channel_epg_overlay(image_version_path="/etc/image-version"):
             for raw in f:
                 if "=" in raw:
                     key, value = raw.strip().split("=", 1)
-                    info[key.strip().lower()] = value.strip().strip("'\\"").lower()
+                    info[key.strip().lower()] = value.strip().strip(chr(39) + chr(34)).lower()
         distro = (info.get("distro") or info.get("creator") or "").lower()
         version = (info.get("version") or "").lower()
         if "openatv" in distro or distro == "atv":
