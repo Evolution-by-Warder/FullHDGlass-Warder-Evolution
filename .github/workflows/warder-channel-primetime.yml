@@ -63,6 +63,8 @@ jobs:
                b'MultiContentEntryText(pos=(95, 2), size=(650, 34), font=1, flags=RT_VALIGN_CENTER, text=3)'),
               (b'MultiContentEntryText(pos=(1040, 2), size=(390, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)',
                b'MultiContentEntryText(pos=(760, 2), size=(670, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)'),
+              (b'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0)',
+               b'MultiContentEntryText(pos=(95, 36), size=(650, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0)'),
           )
           for before, after in changes:
               assert approved.count(before) == 1, "Unexpected main skin baseline"
