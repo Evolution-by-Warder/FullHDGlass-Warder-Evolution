@@ -7,7 +7,6 @@ bars, selection and fonts remain owned by the image. On unsupported images the
 native renderer is left completely unchanged.
 """
 from time import time, monotonic
-from os.path import exists
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
@@ -68,8 +67,6 @@ class WarderChannelEpgClip(Renderer):
 
     def __init__(self):
         Renderer.__init__(self)
-        # Disable expensive repeated canvas painting on OpenATV 8.0.x.
-        # Older images keep the native responsive channel list.
         self._overlay_allowed = allow_channel_epg_overlay()
         self._timer = eTimer()
         self._connection = None
@@ -94,29 +91,6 @@ class WarderChannelEpgClip(Renderer):
         # Optional receiver-QA dimensions; absent in production XML.
         self._warder_bar_width = None
         self._warder_test_marker = False
-        # Performance logging is a receiver QA opt-in, not a production hot path.
-        self._perf_enabled = exists('/tmp/warder-epg-perf-enable')
-        # Optional lightweight native navigation probe for fallback images.
-        # No EPG lookups, drawing, or periodic disk writes in production.
-        # Receiver TEST4 records navigation changes automatically: no user
-        # menu switch or /tmp marker. Stable releases retain an opt-in probe.
-        try:
-            with open('/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version', 'r') as version_file:
-                nav_test_build = version_file.read().strip() == '1.0.75-test5'
-        except OSError:
-            nav_test_build = False
-        self._navigation_probe = (not self._overlay_allowed and
-                                  (nav_test_build or exists('/tmp/warder-epg-navigation-enable')))
-        self._navigation_last = None
-        self._navigation_last_tick = None
-        self._navigation_component_missing_reported = False
-        if nav_test_build:
-            try:
-                with open('/tmp/warder-channel-navigation-test5.log', 'a') as output:
-                    output.write('startup overlay_allowed=%s navigation_probe=%s\n' %
-                                 (self._overlay_allowed, self._navigation_probe))
-            except OSError:
-                pass
         # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
         self._perf_since = monotonic()
         self._perf_ticks = 0
@@ -231,8 +205,6 @@ class WarderChannelEpgClip(Renderer):
             self._epg_snapshots.clear()
         if getattr(self, '_overlay_allowed', True):
             self._timer.start(55, True)
-        elif getattr(self, '_navigation_probe', False):
-            self._timer.start(50, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
@@ -628,58 +600,9 @@ class WarderChannelEpgClip(Renderer):
         self._diag("canvas_painted")
         return True
 
-    def _find_navigation_component(self):
-        """Minimal native list lookup without requiring renderer-specific fonts."""
-        try:
-            from Screens.InfoBar import InfoBar
-            component = InfoBar.instance.servicelist["list"]
-            widget = component.instance
-            if widget is not None and hasattr(widget, "getTopIndex") and hasattr(widget, "getCurrentIndex"):
-                return component
-        except (AttributeError, KeyError, TypeError):
-            pass
-        return None
-
-    def _native_navigation_tick(self):
-        """Opt-in sampling only: detects page and selection changes, not keydown.
-
-        Timestamps come from the sampling callback.  A physical key-to-paint
-        latency cannot be inferred from the interval between two samples.
-        """
-        now = monotonic()
-        previous_tick = getattr(self, '_navigation_last_tick', None)
-        self._navigation_last_tick = now
-        try:
-            component = self._find_navigation_component()
-            if component is None or component.instance is None:
-                if not getattr(self, '_navigation_component_missing_reported', False):
-                    self._navigation_component_missing_reported = True
-                    with open('/tmp/warder-channel-navigation-test5.log', 'a') as output:
-                        output.write('probe_active component_unavailable\n')
-                return
-            self._navigation_component_missing_reported = False
-            top = int(component.instance.getTopIndex())
-            selected = int(component.instance.getCurrentIndex())
-            previous = getattr(self, '_navigation_last', None)
-            if previous is not None and (top, selected) != previous[0]:
-                old_top, old_selected = previous[0]
-                kind = 'page' if top != old_top else 'row'
-                # Append only for actual changes, never every 50ms.
-                with open('/tmp/warder-channel-navigation-test5.log', 'a') as output:
-                    output.write('t=%.3f kind=%s top=%d previous_top=%d selected=%d previous_selected=%d sampling_gap_ms=%.1f\n' %
-                                 (now, kind, top, old_top, selected, old_selected,
-                                  (now - previous_tick) * 1000.0 if previous_tick is not None else -1.0))
-            self._navigation_last = ((top, selected), now)
-        except (OSError, AttributeError, RuntimeError, TypeError, ValueError):
-            pass
-
     def refresh(self):
-        # Native fallback has no render loop. A separate opt-in probe samples
-        # row/page changes without querying EPG or repainting the canvas.
+        # Native fast path never starts an EPG overlay repaint cycle.
         if not getattr(self, '_overlay_allowed', True):
-            if getattr(self, '_navigation_probe', False):
-                self._native_navigation_tick()
-                self._timer.start(50, True)
             return
         # Local import also supports isolated AST-method regression tests.
         from time import monotonic
@@ -772,8 +695,8 @@ class WarderChannelEpgClip(Renderer):
             if self.instance:
                 self.instance.clear(self._transparent)
         finally:
-            if getattr(self, '_perf_enabled', False) and hasattr(self, '_perf_tick'):
-                self._perf_tick((monotonic() - started) * 1000.0)
+            # Performance diagnostics are not active in production.
+
             if self.instance:
                 # TEST10: retain the original 55 ms motion during active
                 # focused-title scrolling, but avoid repainting all visible
