@@ -1,3 +1,9 @@
+## 2026-11-09 — OpenATV 8.1 GLES-only EPG overlay (PR #82; candidate)
+
+- Branch `fix/epg-gles-runtime-gate-20261109`, commit `88d10d43bd6f09553749a05078af77639b446ea8`, draft PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/82, based on `fix/epg-openatv80-performance-fallback`.
+- Added fail-closed policy requiring OpenATV 8.1 and affirmative `BoxInfo.e2egl`, integrated with default scroll config and conditional visibility in Channel Selection settings. All other images fall back to native renderer; unknown backend never qualifies. Added `tools/test_warder_epg_gles_policy.py`.
+- **BLOCKED before merge/release:** must prove that the `BoxInfo.e2egl` flag actually reflects the *active* EGL/GLES backend in OpenATV 8.1, not merely capability/build availability. Physical OpenATV 8.1 GLES and OpenATV 8.0/non-GLES receiver validation and tests not yet confirmed. No production feed or IPK changed.
+
 # Warder Evolution – stav projektu
 
 **Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
