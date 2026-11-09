@@ -46,6 +46,7 @@ jobs:
             /source/package-root/usr/lib/enigma2/python/Components/Converter/*.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.xml
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
             /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
       - uses: actions/setup-python@v5
         with:
