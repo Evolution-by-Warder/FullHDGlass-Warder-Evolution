@@ -2714,6 +2714,30 @@ def changeScreenXml(what, new="1", old="1"):
 		tmp = changePIGres()
 	return True
 ##########################################################################################################################  
+def restoreFactoryIcons():
+	"""Restore the bundled default icon set without downloaded icon packs."""
+	source = os.path.join(SKINPATH, "icons_factory")
+	target = os.path.join(SKINPATH, "icons")
+	# Never start a partial restore when any packaged default icon is missing.
+	if not all(os.path.isfile(os.path.join(source, name + ".png")) for name in allIcons):
+		return False
+	try:
+		for name in allIcons:
+			destination = os.path.join(target, name + ".png")
+			tmp = destination + ".warder-reset-tmp"
+			try:
+				shutil.copy2(os.path.join(source, name + ".png"), tmp)
+				os.replace(tmp, destination)
+			except OSError:
+				try:
+					os.remove(tmp)
+				except OSError:
+					pass
+				raise
+	except OSError:
+		return False
+	return True
+
 def setTypeIcos(num):
 	global allIcons
 	for x in allIcons:
@@ -8381,23 +8405,20 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			config.plugins.setupGlass17.par6.save()
 			if config.plugins.setupGlass17.par227.value == "0":
 				x = changeSkinXml("NumberZapExt", chckPiconSize())
+		factory_icons = getattr(self, "_warderFactoryResetPending", False) and config.plugins.setupGlass17.par1.value == 1
+		if factory_icons and not restoreFactoryIcons():
+			self.session.open(MessageBox, ui_text("Unable to restore bundled default icons. Please reinstall the skin."), MessageBox.TYPE_ERROR, 5)
+			return
 		if self.d[7] != config.plugins.setupGlass17.par1.value:
-			icons_available = checkIcons(config.plugins.setupGlass17.par1.value)
-			# A factory reset must not demand optional icon packs that were never downloaded.
-			# Keep the bundled skin icons when the selected pack is entirely absent.
-			icon_dir = os.path.join(config.plugins.setupGlass17.par39.value, "more_icons", "i_type-%s" % config.plugins.setupGlass17.par1.value)
-			try:
-				pack_has_icons = any(name.lower().endswith(".png") for name in os.listdir(icon_dir))
-			except OSError:
-				pack_has_icons = False
-			if not icons_available and not (getattr(self, "_warderFactoryResetPending", False) and not pack_has_icons):
+			# An explicit icon change still requires a complete downloaded icon set.
+			if not factory_icons and not checkIcons(config.plugins.setupGlass17.par1.value):
 				msg = (_("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + " " + _("is incorrect, please, select correct icons !!!"))
 				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)
 				return
 			self.d[7] = config.plugins.setupGlass17.par1.value
 			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"
 			config.plugins.setupGlass17.par1.save()
-			if icons_available:
+			if not factory_icons:
 				setTypeIcos(self.d[7])
 		if self.d[18] != config.plugins.setupGlass17.par44.value or self.d[19] != config.plugins.setupGlass17.par45.value:
 			isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
