@@ -628,6 +628,18 @@ class WarderChannelEpgClip(Renderer):
         self._diag("canvas_painted")
         return True
 
+    def _find_navigation_component(self):
+        """Minimal native list lookup without requiring renderer-specific fonts."""
+        try:
+            from Screens.InfoBar import InfoBar
+            component = InfoBar.instance.servicelist["list"]
+            widget = component.instance
+            if widget is not None and hasattr(widget, "getTopIndex") and hasattr(widget, "getCurrentIndex"):
+                return component
+        except (AttributeError, KeyError, TypeError):
+            pass
+        return None
+
     def _native_navigation_tick(self):
         """Opt-in sampling only: detects page and selection changes, not keydown.
 
@@ -638,7 +650,7 @@ class WarderChannelEpgClip(Renderer):
         previous_tick = getattr(self, '_navigation_last_tick', None)
         self._navigation_last_tick = now
         try:
-            component = self._find_component()
+            component = self._find_navigation_component()
             if component is None or component.instance is None:
                 if not getattr(self, '_navigation_component_missing_reported', False):
                     self._navigation_component_missing_reported = True
