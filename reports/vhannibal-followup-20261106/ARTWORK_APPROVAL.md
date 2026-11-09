@@ -36,3 +36,8 @@ Oficiálny domáci TV8 originál z [ACUNMEDYA](https://www.acunmedya.com/en/home
 **PENDING OWNER ARTWORK APPROVAL — žiadny variant nebol vložený do ZIPov.** Staršie schválenia sa nemenia.
 
 SES a UNKNOWN RUSSIA: nové zdroje uchované v `ses-official-review/` a `unknown-russia-official-review/`; nejde o schválené picony a pre rozpor značiek nemajú nové varianty.
+
+
+## 9.11.2026 – TV8 Turkey: schválených všetkých deväť variantov
+
+Vlastník výslovne schválil všetkých9 pripravených PNG a ich zaradenie do pracovných balíkov. Schválenie sa vzťahuje na presné bajty z checkpointu91888de566185186d1d461097c7aa9365276546a (SHA256 v tv8-official-review/review/review.json). Vyššie označenie pending je historické. Dávka08 pridáva referenciu `1_0_16_390_20D_73_2080000_0_0_0` do deviatich520E ZIPov; TV8 Turkey, nie International. Žiadne prerenderovanie. Produkčné zaradenie ani merge nie sú schválené.

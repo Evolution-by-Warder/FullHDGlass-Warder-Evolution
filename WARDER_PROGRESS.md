@@ -1,5 +1,13 @@
 # Warder Evolution – stav projektu
 
+### Dávka08 – TV8 Turkey schválené a zapracované – 9.11.2026
+
+- Vlastník schválil všetkých9 pripravených variantov. Presné schválené PNG bez prerenderovania vložené pod `1_0_16_390_20D_73_2080000_0_0_0` do9 pracovných520E balíkov. TV8 Turkey, nie International.
+- **1 nová TV referencia /9 PNG /9 ZIPov /0 technických uzavretí. Zostáva104 otvorených. Kandidát spolu38 TV/339 PNG/99 jedinečných ZIPov.**
+- Lokálne SHA256/CRC/rozmery/alfa a zhoda9 PNG so schváleným checkpointom PASS; 12471 pôvodných členov a celé pôvodné ZIP prefixy bajtovo zachované.18 CANAL+ balíkov a všetky nedotknuté balíky majú nezmenené záznamy a časti.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261109-08.json`. Vzdialený audit a presný payload SHA budú doplnené po zápise. Žiadny merge, produkčné feedy, skin ani rádio.
+
+
 ### Dávka07 – nové oficiálne podklady a TV8 návrhy – 9.11.2026
 
 - TV8 Turkey: **9 nových návrhov PNG**, 3 rozmery × TRANSPARENT/WHITE/BLACK, z oficiálneho originálu ACUNMEDYA; čakajú na grafické schválenie. Náhľad a SHA256: `reports/vhannibal-followup-20261106/tv8-official-review/review/`.

@@ -1733,9 +1733,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "REPAIRED_APPROVED_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "TV8 Turkey domestic identity; all nine prepared variants explicitly owner-approved and integrated into 520E candidate packages.",
     "technical_uid": {
       "sid": 912,
       "tsid": 525,
@@ -1783,12 +1783,13 @@
       "checked": "2026-11-08"
     },
     "artwork_followup_20261109_07": {
-      "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+      "status": "OWNER_APPROVED_ALL_NINE_INTEGRATED_BATCH08",
       "new_draft_png": 9,
       "review": "reports/vhannibal-followup-20261106/tv8-official-review/review/review.json",
       "source": "https://www.acunmedya.com/media/slfbdm2f/content-tv8-logo.png",
       "note": "Domestic TV8 official original. Nine variants staged; not approved or installed."
-    }
+    },
+    "resolution_batch": "scope-batch-20261109-08.json"
   },
   {
     "reference": "1_0_16_391_20D_73_2080000_0_0_0",

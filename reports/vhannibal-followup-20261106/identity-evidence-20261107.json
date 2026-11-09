@@ -3041,5 +3041,18 @@
         }
       ]
     }
+  },
+  "tv8_owner_approved_integration_20261109": {
+    "reference": "1_0_16_390_20D_73_2080000_0_0_0",
+    "station": "TV8 Turkey domestic, not TV8 International",
+    "artwork_checkpoint": "91888de566185186d1d461097c7aa9365276546a",
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261109-08.json",
+    "new_references": 1,
+    "new_png": 9,
+    "changed_zip": 9,
+    "remaining_open": 104,
+    "pr_total_repaired": 38,
+    "pr_total_png": 339,
+    "pr_total_unique_changed_zips": 99
   }
 }
