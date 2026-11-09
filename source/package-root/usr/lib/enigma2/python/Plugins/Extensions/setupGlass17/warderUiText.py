@@ -198,28 +198,27 @@ for _lang, _values in {'sk': ['Načítavam zoznam spinnerov…', 'Online zoznam 
     TEXT.setdefault(_lang, {}).update(dict(zip(['Loading spinner list...', 'Online list unavailable. Installed spinners are available.', 'Downloading selected spinner...', 'Spinner download failed. Try again.'], _values)))
 
 
-# Storage location includes picons, icons, posters and other downloaded skin data.
-# Resolve this label at runtime so compiled legacy .mo catalogs need no rebuild.
+# Storage location includes graphics sets, picons and other downloaded skin data.
 for _lang, _label in {
-    "sk": "Úložisko piconov a dát",
-    "cs": "Úložiště piconů a dat",
-    "de": "Speicherort für Picons und Daten",
-    "hu": "Piconok és adatok tárhelye",
-    "ru": "Хранилище пиконов и данных",
-    "fr": "Stockage des picons et données",
-    "it": "Archivio picon e dati",
-    "es": "Almacenamiento de picons y datos",
-    "pl": "Magazyn pikonów i danych",
-    "en": "Picons and data storage",
-    "pt": "Armazenamento de picons e dados",
-    "nl": "Opslag voor picons en gegevens",
-    "ro": "Stocare piconuri și date",
-    "uk": "Сховище піконів і даних",
-    "lt": "Pikonų ir duomenų saugykla",
-    "et": "Pikonite ja andmete salvestus",
-    "al": "Ruajtja e pikonëve dhe të dhënave",
-    "tr": "Picon ve veri depolama",
-    "fa": "محل ذخیره پیکون‌ها و داده‌ها",
-    "zh": "台标和数据存储位置",
+    "sk": "Úložisko grafických sád, piconov a dát",
+    "cs": "Úložiště grafických sad, piconů a dat",
+    "de": "Speicherort für Grafiksets, Picons und Daten",
+    "hu": "Grafikai csomagok, piconok és adatok tárhelye",
+    "ru": "Хранилище графических наборов, пиконов и данных",
+    "fr": "Stockage des packs graphiques, picons et données",
+    "it": "Archivio set grafici, picon e dati",
+    "es": "Almacenamiento de conjuntos gráficos, picons y datos",
+    "pl": "Magazyn zestawów graficznych, pikonów i danych",
+    "en": "Storage for graphics sets, picons and data",
+    "pt": "Armazenamento de conjuntos gráficos, picons e dados",
+    "nl": "Opslag voor grafische sets, picons en gegevens",
+    "ro": "Stocare seturi grafice, piconuri și date",
+    "uk": "Сховище графічних наборів, піконів і даних",
+    "lt": "Grafikos rinkinių, pikonų ir duomenų saugykla",
+    "et": "Graafikakomplektide, pikonite ja andmete salvestus",
+    "al": "Ruajtja e paketave grafike, pikonëve dhe të dhënave",
+    "tr": "Grafik setleri, piconlar ve veri depolama",
+    "fa": "محل ذخیره بسته‌های گرافیکی، پیکون‌ها و داده‌ها",
+    "zh": "图形套件、台标和数据存储位置",
 }.items():
-    TEXT.setdefault(_lang, {})["Picons and data storage"] = _label
+    TEXT.setdefault(_lang, {})["Storage for graphics sets, picons and data"] = _label
