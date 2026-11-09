@@ -98,8 +98,15 @@ class WarderChannelEpgClip(Renderer):
         self._perf_enabled = exists('/tmp/warder-epg-perf-enable')
         # Optional lightweight native navigation probe for fallback images.
         # No EPG lookups, drawing, or periodic disk writes in production.
+        # Receiver TEST4 records navigation changes automatically: no user
+        # menu switch or /tmp marker. Stable releases retain an opt-in probe.
+        try:
+            with open('/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version', 'r') as version_file:
+                nav_test_build = version_file.read().strip() == '1.0.75-test4'
+        except OSError:
+            nav_test_build = False
         self._navigation_probe = (not self._overlay_allowed and
-                                  exists('/tmp/warder-epg-navigation-enable'))
+                                  (nav_test_build or exists('/tmp/warder-epg-navigation-enable')))
         self._navigation_last = None
         self._navigation_last_tick = None
         # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
