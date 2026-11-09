@@ -5,7 +5,7 @@ on:
     branches:
       - fix/epg-openatv80-performance-fallback
     paths:
-      - .github/workflows/gles-epg-diagnostic-ipk.yml
+      - .github/workflows/epg-sf8008-fallback-test-ipk.yml
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
       - tools/test_warder_channel_epg_clip.py
       - tools/test_warder_epg_render_policy.py
