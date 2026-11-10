@@ -1,0 +1,4426 @@
+{
+  "base": "baae31f2c66d46d08c58dafeb7a92fe510b97993",
+  "scope": "89 existing open records individually triaged from stored evidence, not89 new scans or package audits",
+  "reviewed": 89,
+  "closed": 2,
+  "remaining": 87,
+  "records": [
+    {
+      "reference": "1_0_11_3CB5_C5A8_2A_1A40000_0_0_0",
+      "name": "DMDU_T",
+      "cohort": "original",
+      "group": "DMDU_T",
+      "uid": {
+        "sid": 15541,
+        "tsid": 50600,
+        "onid": 42,
+        "namespace": 27525120,
+        "service_type": 17
+      },
+      "settings_evidence": {
+        "reference": "1_0_11_3CB5_C5A8_2A_1A40000_0_0_0",
+        "name": "DMDU_T",
+        "provider": "Digital Platform",
+        "namespace": 27525120,
+        "position": "42.0e",
+        "transponder": [
+          "s 11345000:29750000:1:4:420:2:0"
+        ],
+        "service_type": 17,
+        "uid": [
+          15541,
+          50600,
+          42,
+          27525120
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Platform data label",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NO_EXPLICIT_CLASSIFICATION",
+          "finding": "No AV evidence and PCR8191 insufficient to close a service as Data. Exact current SID15541/TSID50600/ONID42 must be classified independently.",
+          "sources": [
+            "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=89&mux=11180"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_189D_C97_3_EB0000_0_0_0",
+      "name": "Test 1",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6301,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_189D_C97_3_EB0000_0_0_0",
+        "name": "Test 1",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6301,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_189E_C97_3_EB0000_0_0_0",
+      "name": "Test 2",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6302,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_189E_C97_3_EB0000_0_0_0",
+        "name": "Test 2",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6302,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_189F_C97_3_EB0000_0_0_0",
+      "name": "Test 3",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6303,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_189F_C97_3_EB0000_0_0_0",
+        "name": "Test 3",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6303,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_18A1_C97_3_EB0000_0_0_0",
+      "name": "Test 5",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6305,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_18A1_C97_3_EB0000_0_0_0",
+        "name": "Test 5",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6305,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_18A2_C97_3_EB0000_0_0_0",
+      "name": "Test 6",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6306,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_18A2_C97_3_EB0000_0_0_0",
+        "name": "Test 6",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6306,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_18A3_C97_3_EB0000_0_0_0",
+      "name": "Test 7",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6307,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_18A3_C97_3_EB0000_0_0_0",
+        "name": "Test 7",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6307,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_18AB_C97_3_EB0000_0_0_0",
+      "name": "Test 15",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6315,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_18AB_C97_3_EB0000_0_0_0",
+        "name": "Test 15",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6315,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_18AC_C97_3_EB0000_0_0_0",
+      "name": "Test 16",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6316,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_18AC_C97_3_EB0000_0_0_0",
+        "name": "Test 16",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          6316,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1F50_1_10_640000_0_0_0",
+      "name": "12",
+      "cohort": "original",
+      "group": "12",
+      "uid": {
+        "sid": 8016,
+        "tsid": 1,
+        "onid": 16,
+        "namespace": 6553600,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1F50_1_10_640000_0_0_0",
+        "name": "12",
+        "provider": "BFBS",
+        "namespace": 6553600,
+        "position": "10.0e",
+        "transponder": [
+          "s 11222000:24760000:1:4:100:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8016,
+          1,
+          16,
+          6553600
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_batch17": {
+          "reference": "1_0_16_1F50_1_10_640000_0_0_0",
+          "name": "12 / BFBS",
+          "decision": "HOLD_EXACT_CLASSIFICATION_MISSING",
+          "finding": "Direct BFBS Data table binds10E11220.90V NID16/TSID1, lists SID8015/8019/8020 as Data, but does not include targetSID8016. Neighbour classification cannot be transferred; absence does not prove departure. Independent scanner endpoint returned a verification page, not measurements.",
+          "next_required_evidence": "Exact SID8016/TSID1/ONID16 PMT/service classification or official programme binding; do not repeat same queries without new source."
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+      "name": "08",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8111,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+        "name": "08",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8111,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+      "name": "09",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8112,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+        "name": "09",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8112,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+      "name": "10",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8113,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+        "name": "10",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8113,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+      "name": "13",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8114,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+        "name": "13",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8114,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+      "name": "11",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8115,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+        "name": "11",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8115,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+      "name": "12",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8116,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+        "name": "12",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8116,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+      "name": "16",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8119,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+        "name": "16",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8119,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+      "name": "14",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8120,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+        "name": "14",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8120,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 1,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          1,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 1,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_1_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          1,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_2218_3_11_2EE0000_0_0_0",
+      "name": "Quadrille Data",
+      "cohort": "original",
+      "group": "BFBS_75E",
+      "uid": {
+        "sid": 8728,
+        "tsid": 3,
+        "onid": 17,
+        "namespace": 49152000,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_2218_3_11_2EE0000_0_0_0",
+        "name": "Quadrille Data",
+        "provider": "BFBS",
+        "namespace": 49152000,
+        "position": "75.0e",
+        "transponder": [
+          "s 11787000:23335000:0:1:750:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8728,
+          3,
+          17,
+          49152000
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_EXACT_75E_EVIDENCE_MISSING",
+          "finding": "Evidence for Quadrille on57E/10E does not identify SID8728/TSID3/ONID17 at75E; absence from a scan is not departure proof.",
+          "sources": []
+        },
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_2_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 2,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_2_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          2,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_2_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 2,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_2_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          2,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_384_20D_73_2080000_0_0_0",
+      "name": "Service-900",
+      "cohort": "original",
+      "group": "ALEM_52E",
+      "uid": {
+        "sid": 900,
+        "tsid": 525,
+        "onid": 115,
+        "namespace": 34078720,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_384_20D_73_2080000_0_0_0",
+        "name": "Service-900",
+        "provider": "AREF",
+        "namespace": 34078720,
+        "position": "52.0e",
+        "transponder": [
+          "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          900,
+          525,
+          115,
+          34078720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_CONFLICTING_PROGRAMME_IDENTITY",
+          "finding": "Exact SID900/TSID525/ONID115: LyngSat NOW since2026-10-16 PID2850/2950; Morpheus/KingOfSat Zor TV PID208/308. Quarantined payload is not active or completed.",
+          "sources": [
+            "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_38F_20D_73_2080000_0_0_0",
+      "name": "Service-911",
+      "cohort": "original",
+      "group": "ALEM_52E",
+      "uid": {
+        "sid": 911,
+        "tsid": 525,
+        "onid": 115,
+        "namespace": 34078720,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_38F_20D_73_2080000_0_0_0",
+        "name": "Service-911",
+        "provider": "AREF",
+        "namespace": 34078720,
+        "position": "52.0e",
+        "transponder": [
+          "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          911,
+          525,
+          115,
+          34078720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+          "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_3_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 3,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_3_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          3,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
+      "name": "RADIO CLASSICA TV",
+      "cohort": "original",
+      "group": "RADIO CLASSICA TV",
+      "uid": {
+        "sid": 67,
+        "tsid": 516,
+        "onid": 29,
+        "namespace": 5898240,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
+        "name": "RADIO CLASSICA TV",
+        "provider": "Persidera",
+        "namespace": 5898240,
+        "position": "9.0e",
+        "transponder": [
+          "s 12341000:31400000:1:2:90:2:0:1:4:0:2:33:0:1"
+        ],
+        "service_type": 22,
+        "uid": [
+          67,
+          516,
+          29,
+          5898240
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OPAQUE_OR_EMPTY_SOURCE",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_TRANSPORT_ID_CONFLICT",
+          "finding": "Target SID67/TSID516/ONID29. Older data listing uses29/516, fresh KingOfSat listing gives0/512 for stream33. No AV in receiver scan alone cannot prove exact tuple is Data. No radio artwork changed.",
+          "sources": [
+            "https://en.kingofsat.net/data-9E",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=9"
+          ]
+        },
+        "followup_20261109": {
+          "checked": "2026-11-09",
+          "decision": "HOLD_ONID_CONFLICT",
+          "finding": "Fresh raw KingOfSat9E: Stream33 ONID0 TSID516, RADIO CLASSICA TV SID67 explicitData PMT6007 PCR8191. Fresh Morpheus9E: Stream33 ONID29 TSID516 SID67 name matches but empty AV columns. Target requires ONID29. Search index has inconsistent0/512 and29/516 versions; do not cherry-pick cached matching tuple.",
+          "sources": [
+            {
+              "url": "https://kingofsat.tv/pos-9E",
+              "sha256": "ae62a149bf1a9926d620a3b627f2096eccc0ca89fcb18f051a81c51ca964ede5"
+            },
+            {
+              "url": "https://ftp.morpheus883.altervista.org/srv.php/?chart=9",
+              "sha256": "c55742a424951b896d0be21e88a0d89e4f1e4bc5afb8c82c6f21050cc59a5053"
+            }
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_4_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 4,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_4_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          4,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_4_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 4,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_4_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          4,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_5_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 5,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_5_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          5,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_5_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 5,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_5_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          5,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_6_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 6,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_6_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          6,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_6_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 6,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_6_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          6,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_7_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 7,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_7_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          7,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_7_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 7,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_7_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          7,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
+      "name": "Service 11-13",
+      "cohort": "original",
+      "group": "Service 11-13",
+      "uid": {
+        "sid": 8,
+        "tsid": 1,
+        "onid": 8080,
+        "namespace": 213319680,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
+        "name": "Service 11-13",
+        "provider": "SMTD DTH",
+        "namespace": 213319680,
+        "position": "34.5w",
+        "transponder": [
+          "s 11525000:12333000:1:3:-345:2:0:1:2:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          8,
+          1,
+          8080,
+          213319680
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_16_8_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 8,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_8_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          8,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_8_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 8,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_8_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          8,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_9_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 9,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_9_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          9,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_9_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 9,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_9_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          9,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_A_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 10,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_A_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          10,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_A_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 10,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_A_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          10,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_B72_1D_1800_2AD0000_0_0_0",
+      "name": "F2930",
+      "cohort": "original",
+      "group": "MCK_685E",
+      "uid": {
+        "sid": 2930,
+        "tsid": 29,
+        "onid": 6144,
+        "namespace": 44892160,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_B72_1D_1800_2AD0000_0_0_0",
+        "name": "F2930",
+        "provider": "MCK",
+        "namespace": 44892160,
+        "position": "68.5e",
+        "transponder": [
+          "s 12722000:30000000:0:3:685:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          2930,
+          29,
+          6144,
+          44892160
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_16_B77_1D_1800_2AD0000_0_0_0",
+      "name": "F2935",
+      "cohort": "original",
+      "group": "MCK_685E",
+      "uid": {
+        "sid": 2935,
+        "tsid": 29,
+        "onid": 6144,
+        "namespace": 44892160,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_B77_1D_1800_2AD0000_0_0_0",
+        "name": "F2935",
+        "provider": "MCK",
+        "namespace": 44892160,
+        "position": "68.5e",
+        "transponder": [
+          "s 12722000:30000000:0:3:685:2:0:1:1:0:2"
+        ],
+        "service_type": 22,
+        "uid": [
+          2935,
+          29,
+          6144,
+          44892160
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_16_B_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 11,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_B_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          11,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_B_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 11,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_B_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          11,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_C_C_2C_300000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 12,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 3145728,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_C_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 3145728,
+        "position": "4.8e",
+        "transponder": [
+          "s 12073000:30000000:0:2:48:2:0:1:1:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          12,
+          12,
+          44,
+          3145728
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_C_C_2C_EB0000_0_0_0",
+      "name": "DSNS Informed",
+      "cohort": "original",
+      "group": "DSNS_T2MI",
+      "uid": {
+        "sid": 12,
+        "tsid": 12,
+        "onid": 44,
+        "namespace": 15400960,
+        "service_type": 22
+      },
+      "settings_evidence": {
+        "reference": "1_0_16_C_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "provider": "BRT",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12285000:30000000:1:2:235:2:0:1:2:0:2:0:0:1:0:4097"
+        ],
+        "service_type": 22,
+        "uid": [
+          12,
+          12,
+          44,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_11A3_2D_800_DCA0000_0_0_0",
+      "name": "Spare 4515",
+      "cohort": "original",
+      "group": "SPARES_7W",
+      "uid": {
+        "sid": 4515,
+        "tsid": 45,
+        "onid": 2048,
+        "namespace": 231342080,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_11A3_2D_800_DCA0000_0_0_0",
+        "name": "Spare 4515",
+        "provider": "",
+        "namespace": 231342080,
+        "position": "7.0w",
+        "transponder": [
+          "s 12073000:30000000:0:3:-70:2:0:1:2:2:2"
+        ],
+        "service_type": 25,
+        "uid": [
+          4515,
+          45,
+          2048,
+          231342080
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_19_18A0_C97_3_EB0000_0_0_0",
+      "name": "Test 4",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6304,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_18A0_C97_3_EB0000_0_0_0",
+        "name": "Test 4",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 25,
+        "uid": [
+          6304,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_18A9_C97_3_EB0000_0_0_0",
+      "name": "Test 13",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6313,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_18A9_C97_3_EB0000_0_0_0",
+        "name": "Test 13",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 25,
+        "uid": [
+          6313,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_18AA_C97_3_EB0000_0_0_0",
+      "name": "Test 14",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6314,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_18AA_C97_3_EB0000_0_0_0",
+        "name": "Test 14",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 25,
+        "uid": [
+          6314,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+      "name": "TEST_CB",
+      "cohort": "original",
+      "group": "TEST_CB",
+      "uid": {
+        "sid": 25,
+        "tsid": 40040,
+        "onid": 1918,
+        "namespace": 231342080,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+        "name": "TEST_CB",
+        "provider": "DU",
+        "namespace": 231342080,
+        "position": "7.0w",
+        "transponder": [
+          "s 11277000:27500000:1:4:-70:2:0"
+        ],
+        "service_type": 25,
+        "uid": [
+          25,
+          40040,
+          1918,
+          231342080
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_batch09": {
+          "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+          "name": "TEST_CB",
+          "decision": "HOLD_DISTINCT_TRANSPORT_AND_CONTENT_BINDING",
+          "new_evidence": "Direct Digitalbitrate scanner listing binds TEST_CB SID25/ONID1918 to TSID40060 at11315V, not target TSID40040 at11277V. It has MPEG4 VPID2825/APID2826 and cannot be closed as Data. Informal AlSharqiya claims apply to11315V and do not prove target programme.",
+          "source": "https://www.digitalbitrate.com/dtv.php?lang=en&liste=1&live=82&mux=11315",
+          "retrieval": "search result raw scanner table, last measured2026-06-28; direct site challenge",
+          "source_facts": {
+            "sid": 25,
+            "tsid": 40060,
+            "onid": 1918,
+            "frequency": "11315 V",
+            "vpid": 2825,
+            "apid": 2826,
+            "pmt": 2820,
+            "video": "MPEG4",
+            "provider": "DU"
+          },
+          "target": {
+            "sid": 25,
+            "tsid": 40040,
+            "onid": 1918,
+            "frequency": "11277 V"
+          },
+          "missing": "current exact target PMT/SDT or operator confirmation of programme/purpose; no transfer from otherTSID",
+          "new_png": 0,
+          "closed_cases": 0
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+      "name": "Test 1",
+      "cohort": "original",
+      "group": "Test 1",
+      "uid": {
+        "sid": 459,
+        "tsid": 16,
+        "onid": 110,
+        "namespace": 231342080,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+        "name": "Test 1",
+        "provider": "",
+        "namespace": 231342080,
+        "position": "7.0w",
+        "transponder": [
+          "s 11258000:27500000:0:4:-70:2:0:1:2:0:2"
+        ],
+        "service_type": 25,
+        "uid": [
+          459,
+          16,
+          110,
+          231342080
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "CLOSED_EXACT_DEPARTED_REFERENCE_BATCH17",
+      "next_action": "Reopen only for a dated measured return of this exact tuple. Existing artwork preserved.",
+      "closure": {
+        "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+        "old_label": "Test 1",
+        "identified_station": "Al Shabab TV",
+        "sid": 459,
+        "tsid": 16,
+        "onid": 110,
+        "position": "7W",
+        "frequency": "11258 H",
+        "departure_date": "2026-11-03",
+        "decision": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+        "reason": "Direct current KingOfSat history explicitly records departure of SID459 with VPID1191/APID1192 on11257.60H. Historical LyngSat tuple110/16 and preserved Vhannibal tuple bind the exact target. Current direct KingOfSat detail places the station in cemetery. Tarddat independently reports absence from4Nov, checked9Nov. Indexed positive results predate departure; retained receiver setting is not a newer measured return.",
+        "sources": [
+          "alshabab-history.html",
+          "alshabab-kos.html",
+          "external-observations.json"
+        ]
+      }
+    },
+    {
+      "reference": "1_0_19_6_1_20C4_1860000_0_0_0",
+      "name": "HS1",
+      "cohort": "original",
+      "group": "HS1",
+      "uid": {
+        "sid": 6,
+        "tsid": 1,
+        "onid": 8388,
+        "namespace": 25559040,
+        "service_type": 25
+      },
+      "settings_evidence": {
+        "reference": "1_0_19_6_1_20C4_1860000_0_0_0",
+        "name": "HS1",
+        "provider": "HellasSat",
+        "namespace": 25559040,
+        "position": "39.0e",
+        "transponder": [
+          "s 11761000:16515000:0:4:390:2:0:1:2:0:2:0:242133:1:0:0"
+        ],
+        "service_type": 25,
+        "uid": [
+          6,
+          1,
+          8388,
+          25559040
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1F_1_0_1_46AB8F_0_0_0",
+      "name": "ITA 99 A",
+      "cohort": "original",
+      "group": "ITA 99 A",
+      "uid": {
+        "sid": 1,
+        "tsid": 0,
+        "onid": 1,
+        "namespace": 4631439,
+        "service_type": 31
+      },
+      "settings_evidence": {
+        "reference": "1_0_1F_1_0_1_46AB8F_0_0_0",
+        "name": "ITA 99 A",
+        "provider": "",
+        "namespace": 4631439,
+        "position": "7.0e",
+        "transponder": [
+          "s 11151000:7200000:1:3:70:1:0:1:2:2:1"
+        ],
+        "service_type": 31,
+        "uid": [
+          1,
+          0,
+          1,
+          4631439
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_1F_1_0_1_46AB8F_0_0_0",
+            "1_0_1_1_1000_0_46ADAF_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_FEED_IDENTITY",
+          "finding": "7E scan absence does not prove departure. 11695V3333 feed listing lacks exact tuple. Official G7 ITA99 feed document binds16E11135.83, not7E11151; cannot classify target using it.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=7",
+            "https://www.lyngsat.com/Eutelsat-7C.html",
+            "https://www.g7italy.it/wp-content/uploads/Dati-satellitari-Ita-98-99-Vertice-G7.pdf"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1F_32B_20C_73_2080000_0_0_0",
+      "name": "Service-811",
+      "cohort": "original",
+      "group": "ALEM_52E",
+      "uid": {
+        "sid": 811,
+        "tsid": 524,
+        "onid": 115,
+        "namespace": 34078720,
+        "service_type": 31
+      },
+      "settings_evidence": {
+        "reference": "1_0_1F_32B_20C_73_2080000_0_0_0",
+        "name": "Service-811",
+        "provider": "AREF",
+        "namespace": 34078720,
+        "position": "52.0e",
+        "transponder": [
+          "s 10845000:30000000:0:9:520:2:0:1:2:0:2"
+        ],
+        "service_type": 31,
+        "uid": [
+          811,
+          524,
+          115,
+          34078720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+          "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_11A4_2D_800_DCA0000_0_0_0",
+      "name": "Spare 4516",
+      "cohort": "original",
+      "group": "SPARES_7W",
+      "uid": {
+        "sid": 4516,
+        "tsid": 45,
+        "onid": 2048,
+        "namespace": 231342080,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_11A4_2D_800_DCA0000_0_0_0",
+        "name": "Spare 4516",
+        "provider": "",
+        "namespace": 231342080,
+        "position": "7.0w",
+        "transponder": [
+          "s 12073000:30000000:0:3:-70:2:0:1:2:2:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          4516,
+          45,
+          2048,
+          231342080
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
+      "name": "Spare 5677",
+      "cohort": "original",
+      "group": "SPARES_7W",
+      "uid": {
+        "sid": 5677,
+        "tsid": 566,
+        "onid": 2048,
+        "namespace": 231342080,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
+        "name": "Spare 5677",
+        "provider": "",
+        "namespace": 231342080,
+        "position": "7.0w",
+        "transponder": [
+          "s 11727000:30000000:0:3:-70:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          5677,
+          566,
+          2048,
+          231342080
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_162E_236_800_DCA0000_0_0_0",
+      "name": "Spare 5678",
+      "cohort": "original",
+      "group": "SPARES_7W",
+      "uid": {
+        "sid": 5678,
+        "tsid": 566,
+        "onid": 2048,
+        "namespace": 231342080,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_162E_236_800_DCA0000_0_0_0",
+        "name": "Spare 5678",
+        "provider": "",
+        "namespace": 231342080,
+        "position": "7.0w",
+        "transponder": [
+          "s 11727000:30000000:0:3:-70:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          5678,
+          566,
+          2048,
+          231342080
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_18A4_C97_3_EB0000_0_0_0",
+      "name": "Test 8",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6308,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_18A4_C97_3_EB0000_0_0_0",
+        "name": "Test 8",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          6308,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_18A5_C97_3_EB0000_0_0_0",
+      "name": "Test 9",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6309,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_18A5_C97_3_EB0000_0_0_0",
+        "name": "Test 9",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          6309,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_18A6_C97_3_EB0000_0_0_0",
+      "name": "Test 10",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6310,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_18A6_C97_3_EB0000_0_0_0",
+        "name": "Test 10",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          6310,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_18A7_C97_3_EB0000_0_0_0",
+      "name": "Test 11",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6311,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_18A7_C97_3_EB0000_0_0_0",
+        "name": "Test 11",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          6311,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_18A8_C97_3_EB0000_0_0_0",
+      "name": "Test 12",
+      "cohort": "original",
+      "group": "TEST_235E",
+      "uid": {
+        "sid": 6312,
+        "tsid": 3223,
+        "onid": 3,
+        "namespace": 15400960,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_18A8_C97_3_EB0000_0_0_0",
+        "name": "Test 12",
+        "provider": "",
+        "namespace": 15400960,
+        "position": "23.5e",
+        "transponder": [
+          "s 12148000:30000000:0:2:235:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          6312,
+          3223,
+          3,
+          15400960
+        ]
+      },
+      "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "23.5E12149H/TSID3223/ONID3 has actual AV streams. Test numbers and Ukrainian audio do not establish channel identity and are not Data evidence.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=23.5"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1B03_3FE_1_C00000_0_0_0",
+      "name": "TV5 MONDE EUROPE HD",
+      "cohort": "original",
+      "group": "PROTECTED_TV5MONDE",
+      "uid": {
+        "sid": 6915,
+        "tsid": 1022,
+        "onid": 1,
+        "namespace": 12582912,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1B03_3FE_1_C00000_0_0_0",
+        "name": "TV5 MONDE EUROPE HD",
+        "provider": "Globecast",
+        "namespace": 12582912,
+        "position": "19.2e",
+        "transponder": [
+          "s 11538000:22000000:1:4:192:2:0"
+        ],
+        "service_type": 1,
+        "uid": [
+          6915,
+          1022,
+          1,
+          12582912
+        ]
+      },
+      "existing_blocker": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+      "name": "Test HD",
+      "cohort": "original",
+      "group": "Test HD",
+      "uid": {
+        "sid": 7213,
+        "tsid": 72,
+        "onid": 1,
+        "namespace": 230686720,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+        "name": "Test HD",
+        "provider": "",
+        "namespace": 230686720,
+        "position": "8.0w",
+        "transponder": [
+          "s 12563000:27500000:0:4:-80:2:0"
+        ],
+        "service_type": 1,
+        "uid": [
+          7213,
+          72,
+          1,
+          230686720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
+      "name": "Test",
+      "cohort": "original",
+      "group": "Test",
+      "uid": {
+        "sid": 7411,
+        "tsid": 74,
+        "onid": 2048,
+        "namespace": 230686720,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
+        "name": "Test",
+        "provider": "",
+        "namespace": 230686720,
+        "position": "8.0w",
+        "transponder": [
+          "s 11179000:27500000:1:4:-80:2:0"
+        ],
+        "service_type": 1,
+        "uid": [
+          7411,
+          74,
+          2048,
+          230686720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_1_1000_0_46ADAF_0_0_0",
+      "name": "11695V SID 0x01",
+      "cohort": "original",
+      "group": "11695V SID 0x01",
+      "uid": {
+        "sid": 1,
+        "tsid": 4096,
+        "onid": 0,
+        "namespace": 4631983,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1_1000_0_46ADAF_0_0_0",
+        "name": "11695V SID 0x01",
+        "provider": "DVB-S2 8PSK 11695V 7.0Â°E",
+        "namespace": 4631983,
+        "position": "7.0e",
+        "transponder": [
+          "s 11695000:3333000:1:4:70:1:0:1:2:0:1"
+        ],
+        "service_type": 1,
+        "uid": [
+          1,
+          4096,
+          0,
+          4631983
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_1F_1_0_1_46AB8F_0_0_0",
+            "1_0_1_1_1000_0_46ADAF_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_FEED_IDENTITY",
+          "finding": "7E scan absence does not prove departure. 11695V3333 feed listing lacks exact tuple. Official G7 ITA99 feed document binds16E11135.83, not7E11151; cannot classify target using it.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=7",
+            "https://www.lyngsat.com/Eutelsat-7C.html",
+            "https://www.g7italy.it/wp-content/uploads/Dati-satellitari-Ita-98-99-Vertice-G7.pdf"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1_1_1_1C2AD49_0_0_0",
+      "name": "11593V SID 0x01",
+      "cohort": "original",
+      "group": "SES_DEMO",
+      "uid": {
+        "sid": 1,
+        "tsid": 1,
+        "onid": 1,
+        "namespace": 29535561,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1_1_1_1C2AD49_0_0_0",
+        "name": "11593V SID 0x01",
+        "provider": "DVB-S2 QPSK 11593V 45.0Â°E",
+        "namespace": 29535561,
+        "position": "45.0e",
+        "transponder": [
+          "s 11593000:23333000:1:1:450:2:0:1:1:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          1,
+          1,
+          1,
+          29535561
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_1_1_1_1_1C2AD49_0_0_0",
+            "1_0_1_1_1_1_1C2B0E8_0_0_0"
+          ],
+          "decision": "HOLD_ONID_CONFLICT_AND_DONOR",
+          "finding": "45E11593V/12520V: Morpheus SES DEMO HD 2025 SID1/TSID1/ONID1 VPID2064/APID2068; KingOfSat has ONID0. No safe copy across conflicting network identity or SD/HD editions.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=45",
+            "https://en.kingofsat.tv/tv-45.0E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1_1_1_1C2B0E8_0_0_0",
+      "name": "12520V SID 0x01",
+      "cohort": "original",
+      "group": "SES_DEMO",
+      "uid": {
+        "sid": 1,
+        "tsid": 1,
+        "onid": 1,
+        "namespace": 29536488,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1_1_1_1C2B0E8_0_0_0",
+        "name": "12520V SID 0x01",
+        "provider": "DVB-S QPSK 12520V 45.0Â°E",
+        "namespace": 29536488,
+        "position": "45.0e",
+        "transponder": [
+          "s 12520000:30000000:1:1:450:2:0"
+        ],
+        "service_type": 1,
+        "uid": [
+          1,
+          1,
+          1,
+          29536488
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_1_1_1_1_1C2AD49_0_0_0",
+            "1_0_1_1_1_1_1C2B0E8_0_0_0"
+          ],
+          "decision": "HOLD_ONID_CONFLICT_AND_DONOR",
+          "finding": "45E11593V/12520V: Morpheus SES DEMO HD 2025 SID1/TSID1/ONID1 VPID2064/APID2068; KingOfSat has ONID0. No safe copy across conflicting network identity or SD/HD editions.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=45",
+            "https://en.kingofsat.tv/tv-45.0E"
+          ],
+          "checked": "2026-11-08"
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+      "name": "11089V SID 0x01",
+      "cohort": "original",
+      "group": "SES_DEMO",
+      "uid": {
+        "sid": 1,
+        "tsid": 1,
+        "onid": 1,
+        "namespace": 43297617,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+        "name": "11089V SID 0x01",
+        "provider": "DVB-S QPSK 11089V 66.0Â°E",
+        "namespace": 43297617,
+        "position": "66.0e",
+        "transponder": [
+          "s 11089000:36000000:1:1:660:2:0"
+        ],
+        "service_type": 1,
+        "uid": [
+          1,
+          1,
+          1,
+          43297617
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_after_batch05": {
+          "references": [
+            "1_0_1_1_1_1_294AB51_0_0_0"
+          ],
+          "decision": "HOLD_APPROVED_SAME_EDITION_DONOR",
+          "finding": "66E11089V SID1/TSID1/ONID1 identified as SES Demo by LyngSat and Morpheus, VPID2064/APID2068. FEC differs between listings. Existing SES Demo SD on4.8E cannot be presumed identical edition. Demo TV is not automatically Data.",
+          "sources": [
+            "https://www.lyngsat.com/Intelsat-17.html",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=66"
+          ],
+          "checked": "2026-11-08"
+        },
+        "followup_20261109": {
+          "decision": "HOLD_EXISTING_UHD_ARTWORK_DOES_NOT_PROVE_HD_DONOR",
+          "finding": "Pinned candidate660E220x132 WHITE existing exact-reference PNG visually says SES UHD Demo Channel. Target is SES Demo HD2025. Existing PNG preserved; no inference of matching HD artwork. All three220x132 archives downloaded and SHA256/CRC checked; transparent target absent.",
+          "checked_commit": "7c25d892ed494f36e553be79f140ddc04d9ee020"
+        },
+        "followup_batch09": {
+          "status": "HOLD_NEW_NETWORK_ID_CONFLICT_AND_ARTWORK_BINDING",
+          "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+          "target": {
+            "position": "66E",
+            "sid": 1,
+            "tsid": 1,
+            "onid": 1,
+            "frequency": "11089V"
+          },
+          "new_evidence": {
+            "url": "https://en.kingofsat.net/hdtv-66E",
+            "retrieved": "2026-11-09",
+            "transport_date": "2026-11-09",
+            "frequency": "11088.70V",
+            "sr": 36000,
+            "sid": 1,
+            "tsid": 1,
+            "nid": 0,
+            "vpid": 2064,
+            "apid": 2068,
+            "pmt": 480,
+            "file": "kingofsat-66e-20261109.html",
+            "sha256": "eaf119a7551788fa60712b48fd0d5310e4a3fcc9e71c77bfdfa1446ecd4d3e1d"
+          },
+          "old_evidence": "Older KoS cachedvariants reportNID1; preservedMorpheus registryreportsONID1. NIDvsONID semanticdifference itself requiresrawNIT/SDT confirmation; do notsilentlyrewrite source reference.",
+          "artwork": "No precise66E on-air brandasset obtained. OfficialSES2025corporate vs45E oldSES/ASTRAdemo discrepancy remains. Newcorporatelogo cannotbeassumed programmegraphic.",
+          "next_evidence_needed": [
+            "Current PAT/PMT/SDT/NIT for66E11089V confirms original_network_id andnetwork_id distinction",
+            "Direct66Eprogramme screenshot oroperatorofficialdemoasset binding currentedition"
+          ],
+          "counts": {
+            "new_png": 0,
+            "modified_zip": 0,
+            "closed_cases": 0
+          }
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1_1_FFFF_1E2D99_0_0_0",
+      "name": "Service-1",
+      "cohort": "original",
+      "group": "Service-1",
+      "uid": {
+        "sid": 1,
+        "tsid": 1,
+        "onid": 65535,
+        "namespace": 1977753,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+      },
+      "existing_blocker": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
+      "stored_followups": {},
+      "decision": "CLOSED_EXACT_DEPARTED_REFERENCE_BATCH17",
+      "next_action": "Reopen only for a dated measured return of this exact tuple. Existing artwork preserved.",
+      "closure": {
+        "reference": "1_0_1_1_1_FFFF_1E2D99_0_0_0",
+        "old_label": "Service-1",
+        "identified_station": "Al Rabiaa Iraq",
+        "sid": 1,
+        "tsid": 1,
+        "onid": 65535,
+        "position": "3E",
+        "frequency": "11673 H",
+        "departure_date": "2026-11-02",
+        "decision": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+        "reason": "LyngSat explicit ONID65535/TSID1/SID1 on11673H binds the full target; frequency-dependent namespace low16bits0x2D99 equals11673. Direct current KingOfSat history and removal listing record departure2Nov2026 SID1/VPID1001/APID1002. Preserved8Nov settings observation has no current target, corroboration only. Existing220px SERVICE placeholder is not identity proof and remains intact. Do not transfer this closure to other Al Rabiaa services.",
+        "sources": [
+          "alrabiaa-history.html",
+          "removed-current.html",
+          "external-observations.json"
+        ]
+      }
+    },
+    {
+      "reference": "1_0_1_2FC_2025_2BE_1040000_0_0_0",
+      "name": "Oracle TV",
+      "cohort": "original",
+      "group": "Oracle TV",
+      "uid": {
+        "sid": 764,
+        "tsid": 8229,
+        "onid": 702,
+        "namespace": 17039360,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+      },
+      "existing_blocker": "NO_UNAMBIGUOUS_ORIGINAL_PICON",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_COUNTRY_AND_DONOR_IDENTITY",
+          "finding": "OracleTV Nigeria42.5E and SouthAfrican channel listings must not be conflated with target26E SID764/TSID8229/ONID702. No unambiguous approved donor.",
+          "sources": [
+            "https://www.lyngsat.com/tvchannels/ng/Oracle-TV.html"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_38A_20D_73_2080000_0_0_0",
+      "name": "Service-906",
+      "cohort": "original",
+      "group": "ALEM_52E",
+      "uid": {
+        "sid": 906,
+        "tsid": 525,
+        "onid": 115,
+        "namespace": 34078720,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_38A_20D_73_2080000_0_0_0",
+        "name": "Service-906",
+        "provider": "AREF",
+        "namespace": 34078720,
+        "position": "52.0e",
+        "transponder": [
+          "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          906,
+          525,
+          115,
+          34078720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+          "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_38B_20D_73_2080000_0_0_0",
+      "name": "Service-907",
+      "cohort": "original",
+      "group": "ALEM_52E",
+      "uid": {
+        "sid": 907,
+        "tsid": 525,
+        "onid": 115,
+        "namespace": 34078720,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_38B_20D_73_2080000_0_0_0",
+        "name": "Service-907",
+        "provider": "AREF",
+        "namespace": 34078720,
+        "position": "52.0e",
+        "transponder": [
+          "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          907,
+          525,
+          115,
+          34078720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+          "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_38C_20D_73_2080000_0_0_0",
+      "name": "Service-908",
+      "cohort": "original",
+      "group": "ALEM_52E",
+      "uid": {
+        "sid": 908,
+        "tsid": 525,
+        "onid": 115,
+        "namespace": 34078720,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_38C_20D_73_2080000_0_0_0",
+        "name": "Service-908",
+        "provider": "AREF",
+        "namespace": 34078720,
+        "position": "52.0e",
+        "transponder": [
+          "s 10887000:30000000:0:9:520:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          908,
+          525,
+          115,
+          34078720
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NO_EXACT_NAMED_BINDING",
+          "finding": "No reliable named binding for targettuple. Frocus DORAMA SID935 is notSID906 even when an AV PID looks similar.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=52"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_412_519_2_E080000_0_0_0",
+      "name": "TV5MONDE EUROPE HD",
+      "cohort": "original",
+      "group": "PROTECTED_TV5MONDE",
+      "uid": {
+        "sid": 1042,
+        "tsid": 1305,
+        "onid": 2,
+        "namespace": 235405312,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_412_519_2_E080000_0_0_0",
+        "name": "TV5MONDE EUROPE HD",
+        "provider": "",
+        "namespace": 235405312,
+        "position": "0.8w",
+        "transponder": [
+          "s 12643000:28800000:1:3:-8:2:0:1:2:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          1042,
+          1305,
+          2,
+          235405312
+        ]
+      },
+      "existing_blocker": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
+      "stored_followups": {},
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
+      "name": "F2835",
+      "cohort": "original",
+      "group": "MCK_685E",
+      "uid": {
+        "sid": 2835,
+        "tsid": 28,
+        "onid": 6144,
+        "namespace": 44892160,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
+        "name": "F2835",
+        "provider": "MCK",
+        "namespace": 44892160,
+        "position": "68.5e",
+        "transponder": [
+          "s 12602000:30000000:1:3:685:2:0:1:1:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          2835,
+          28,
+          6144,
+          44892160
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_B18_1C_1800_2AD0000_0_0_0",
+      "name": "F2840",
+      "cohort": "original",
+      "group": "MCK_685E",
+      "uid": {
+        "sid": 2840,
+        "tsid": 28,
+        "onid": 6144,
+        "namespace": 44892160,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_B18_1C_1800_2AD0000_0_0_0",
+        "name": "F2840",
+        "provider": "MCK",
+        "namespace": 44892160,
+        "position": "68.5e",
+        "transponder": [
+          "s 12602000:30000000:1:3:685:2:0:1:1:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          2840,
+          28,
+          6144,
+          44892160
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
+      "name": "F2845",
+      "cohort": "original",
+      "group": "MCK_685E",
+      "uid": {
+        "sid": 2845,
+        "tsid": 28,
+        "onid": 6144,
+        "namespace": 44892160,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
+        "name": "F2845",
+        "provider": "MCK",
+        "namespace": 44892160,
+        "position": "68.5e",
+        "transponder": [
+          "s 12602000:30000000:1:3:685:2:0:1:1:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          2845,
+          28,
+          6144,
+          44892160
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_B7C_1D_1800_2AD0000_0_0_0",
+      "name": "F2940",
+      "cohort": "original",
+      "group": "MCK_685E",
+      "uid": {
+        "sid": 2940,
+        "tsid": 29,
+        "onid": 6144,
+        "namespace": 44892160,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_B7C_1D_1800_2AD0000_0_0_0",
+        "name": "F2940",
+        "provider": "MCK",
+        "namespace": 44892160,
+        "position": "68.5e",
+        "transponder": [
+          "s 12722000:30000000:0:3:685:2:0:1:1:0:2"
+        ],
+        "service_type": 1,
+        "uid": [
+          2940,
+          29,
+          6144,
+          44892160
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_20261108": {
+          "decision": "HOLD_NUMBERED_AV_SERVICES",
+          "finding": "Numbered labels have AV listings; no verified programme identity or Data classification. Retain hold.",
+          "sources": [
+            "https://en.kingofsat.fr/sat-is20",
+            "https://en.kingofsat.eu/tp11791"
+          ]
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Additional targeted source search did not establish a named programme or explicit technical classification; existing hold retained. AV or generic label is not a Data/ceased proof."
+    },
+    {
+      "reference": "1_0_1_FFFE_14_46_E080000_0_0_0",
+      "name": "12418V SID 0xfffe",
+      "cohort": "original",
+      "group": "12418V SID 0xfffe",
+      "uid": {
+        "sid": 65534,
+        "tsid": 20,
+        "onid": 70,
+        "namespace": 235405312,
+        "service_type": 1
+      },
+      "settings_evidence": {
+        "reference": "1_0_1_FFFE_14_46_E080000_0_0_0",
+        "name": "12418V SID 0xfffe",
+        "provider": "DVB-S QPSK 12418V 359.2Â°E",
+        "namespace": 235405312,
+        "position": "0.8w",
+        "transponder": [
+          "s 12418000:28000000:1:5:-8:2:0"
+        ],
+        "service_type": 1,
+        "uid": [
+          65534,
+          20,
+          70,
+          235405312
+        ]
+      },
+      "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+      "stored_followups": {
+        "followup_batch17": {
+          "reference": "1_0_1_FFFE_14_46_E080000_0_0_0",
+          "name": "12418V SID0xfffe",
+          "decision": "HOLD_NO_EXPLICIT_EXACT_SERVICE_CLASSIFICATION",
+          "finding": "Direct Thor Data catalogue has no exact12418V/SID65534 entry. Indexed scanner excerpts do not securely associate a Data label with this row. Direct12418V scanner endpoint returned verification page. No closure by SID convention, absence or global legend.",
+          "next_required_evidence": "Exact SID65534/TSID20/ONID70 service detail with explicit classification/purpose; no renewed identical fetch until source changes."
+        }
+      },
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Resume only with exact-service identity/classification or a verified approved same-edition donor; preserve all existing assets.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_16_1E8C_D160_77E_DCA0000_0_0_0",
+      "name": "EL JUMHURIA TV",
+      "cohort": "delta",
+      "group": "DELTA_EL JUMHURIA TV",
+      "existing_blocker": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+      "name": "AL-KAFEL TV",
+      "cohort": "delta",
+      "group": "DELTA_AL-KAFEL TV",
+      "existing_blocker": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_6AC_1FB5_2BE_1040000_0_0_0",
+      "name": "StarzPlay-Movies",
+      "cohort": "delta",
+      "group": "DELTA_StarzPlay-Movies",
+      "existing_blocker": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_C782_83D_2_11A0000_0_0_0",
+      "name": "2117",
+      "cohort": "delta",
+      "group": "DELTA_2117",
+      "existing_blocker": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity.",
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_19_C786_83D_2_11A0000_0_0_0",
+      "name": "2118",
+      "cohort": "delta",
+      "group": "DELTA_2118",
+      "existing_blocker": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity.",
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    },
+    {
+      "reference": "1_0_1_1_1_FFFF_104AB59_0_0_0",
+      "name": "1TV IRAQ",
+      "cohort": "delta",
+      "group": "DELTA_1TV IRAQ",
+      "existing_blocker": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+      "decision": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "next_action": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+      "review_result": "Stored blocker and applicable evidence reviewed; no identical failed source lookup repeated. No new decisive evidence."
+    }
+  ]
+}

@@ -4218,9 +4218,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "action": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+    "remaining_current_technical": false,
+    "resolution_reason": "Direct current KingOfSat history explicitly records departure of SID459 with VPID1191/APID1192 on11257.60H. Historical LyngSat tuple110/16 and preserved Vhannibal tuple bind the exact target. Current direct KingOfSat detail places the station in cemetery. Tarddat independently reports absence from4Nov, checked9Nov. Indexed positive results predate departure; retained receiver setting is not a newer measured return.",
     "technical_uid": {
       "sid": 459,
       "tsid": 16,
@@ -4244,6 +4244,24 @@
         16,
         110,
         231342080
+      ]
+    },
+    "followup_batch17_closure": {
+      "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+      "old_label": "Test 1",
+      "identified_station": "Al Shabab TV",
+      "sid": 459,
+      "tsid": 16,
+      "onid": 110,
+      "position": "7W",
+      "frequency": "11258 H",
+      "departure_date": "2026-11-03",
+      "decision": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+      "reason": "Direct current KingOfSat history explicitly records departure of SID459 with VPID1191/APID1192 on11257.60H. Historical LyngSat tuple110/16 and preserved Vhannibal tuple bind the exact target. Current direct KingOfSat detail places the station in cemetery. Tarddat independently reports absence from4Nov, checked9Nov. Indexed positive results predate departure; retained receiver setting is not a newer measured return.",
+      "sources": [
+        "alshabab-history.html",
+        "alshabab-kos.html",
+        "external-observations.json"
       ]
     }
   },
@@ -6239,9 +6257,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
+    "action": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+    "remaining_current_technical": false,
+    "resolution_reason": "LyngSat explicit ONID65535/TSID1/SID1 on11673H binds the full target; frequency-dependent namespace low16bits0x2D99 equals11673. Direct current KingOfSat history and removal listing record departure2Nov2026 SID1/VPID1001/APID1002. Preserved8Nov settings observation has no current target, corroboration only. Existing220px SERVICE placeholder is not identity proof and remains intact. Do not transfer this closure to other Al Rabiaa services.",
     "technical_uid": {
       "sid": 1,
       "tsid": 1,
@@ -6252,6 +6270,24 @@
     "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
     "latest_settings_evidence_20261108": {
       "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
+    },
+    "followup_batch17_closure": {
+      "reference": "1_0_1_1_1_FFFF_1E2D99_0_0_0",
+      "old_label": "Service-1",
+      "identified_station": "Al Rabiaa Iraq",
+      "sid": 1,
+      "tsid": 1,
+      "onid": 65535,
+      "position": "3E",
+      "frequency": "11673 H",
+      "departure_date": "2026-11-02",
+      "decision": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+      "reason": "LyngSat explicit ONID65535/TSID1/SID1 on11673H binds the full target; frequency-dependent namespace low16bits0x2D99 equals11673. Direct current KingOfSat history and removal listing record departure2Nov2026 SID1/VPID1001/APID1002. Preserved8Nov settings observation has no current target, corroboration only. Existing220px SERVICE placeholder is not identity proof and remains intact. Do not transfer this closure to other Al Rabiaa services.",
+      "sources": [
+        "alrabiaa-history.html",
+        "removed-current.html",
+        "external-observations.json"
+      ]
     }
   },
   {

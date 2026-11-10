@@ -1,5 +1,13 @@
 # Warder Evolution – stav projektu
 
+### Dávka 17 – dve doložené technické uzavretia – 10. 11. 2026
+
+- Prejdených všetkých **89 otvorených referencií** podľa existujúcich blokácií; nejde o89nových meraní. Uzavreté2presné staré transporty: Test1/Al ShababTV7°W SID459/TSID16/ONID110 (odchod3.11.) a Service-1/Al RabiaaIraq3°E SID1/TSID1/ONID65535 (odchod2.11.). Priame aktuálne histórie KoS archivované; staršie pozitívne indexy sa nepovažujú za návrat.
+- **48 spracovaných TV referencií / 429 PNG / 99 jedinečných ZIPov; 87 otvorených (81 pôvodných + 6 delta).** Táto dávka pridala0PNG a nezmenila žiadny ZIP. Technické uzavretia sa nepripočítavajú k48graficky dokončeným referenciám.
+- Existujúce PNG oboch historických referencií zachované. Všetkých18CANAL+ archívov, TV5MONDE, rádio, produkcia a stabilné balíky bez zásahu. Inštalačné testy sa neopakujú: nie je zmenený inštalovateľný obsah. PR#50 nezlučovať.
+- Report `scope-batch-20261110-17.json`; úplný register89položiek `scope-batch-20261110-17-all89-review.json`. Zvyšných87 ostáva blokovaných konkrétnymi uloženými dôkazmi/ochranou/grafikou. Pri pokračovaní preskočiť identické neúspešné dotazy; otvoriť iba nový dôkaz alebo schválenú správnu grafiku.
+- Vzdialený audit tejto dávky čaká na uloženie.
+
 ### Dávka 17 – ďalší prieskum, bez bezpečnej integrácie
 
 - Pokračovanie: priame dátové katalógy nevyriešili BFBS SID8016 ani Thor SID65534. Meracie endpointy vrátili overovaciu stránku bez servisných dát; nevydávať za meranie. Dva konkrétne riadky registra majú uložený chýbajúci dôkaz a zákaz opakovania rovnakého slepého vyhľadávania. Počty sa nemenia; žiadne ZIPy ani PNG sa neupravovali a inštalačné testy sa preto neopakovali.
