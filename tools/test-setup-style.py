@@ -18,10 +18,11 @@ CURRENT=style.PLUGIN.read_text()
 LAYOUTS=style.extract(CURRENT)
 # The v1.0.76 controller fingerprint includes the approved offline factory-icon
 # reset and localized storage menu/help changes from PR #88, in addition to
-# the earlier GLES gate and release labels. Keep the historical fixture for
+# the earlier GLES gate, release labels, and reviewed dynamic picon destination
+# option from PR #93. Keep the historical fixture for
 # older releases, and pin the full AST to catch any unreviewed logic edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
-REVIEWED_1076_SHA256='9c2e7e62276c9e3677283c93c6f4849115ec0f8544eb8c1321c5fe8515abbef3'
+REVIEWED_1076_SHA256='98e0de3d88fb8818ba69133febc17970fbc736c79d81031d238f2903f0efea34'
 EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
 
 def fingerprint_source(source):
