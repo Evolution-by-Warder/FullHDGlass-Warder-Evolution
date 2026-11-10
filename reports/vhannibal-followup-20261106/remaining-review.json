@@ -522,6 +522,13 @@
         16,
         6553600
       ]
+    },
+    "followup_batch17": {
+      "reference": "1_0_16_1F50_1_10_640000_0_0_0",
+      "name": "12 / BFBS",
+      "decision": "HOLD_EXACT_CLASSIFICATION_MISSING",
+      "finding": "Direct BFBS Data table binds10E11220.90V NID16/TSID1, lists SID8015/8019/8020 as Data, but does not include targetSID8016. Neighbour classification cannot be transferred; absence does not prove departure. Independent scanner endpoint returned a verification page, not measurements.",
+      "next_required_evidence": "Exact SID8016/TSID1/ONID16 PMT/service classification or official programme binding; do not repeat same queries without new source."
     }
   },
   {
@@ -7027,6 +7034,13 @@
         70,
         235405312
       ]
+    },
+    "followup_batch17": {
+      "reference": "1_0_1_FFFE_14_46_E080000_0_0_0",
+      "name": "12418V SID0xfffe",
+      "decision": "HOLD_NO_EXPLICIT_EXACT_SERVICE_CLASSIFICATION",
+      "finding": "Direct Thor Data catalogue has no exact12418V/SID65534 entry. Indexed scanner excerpts do not securely associate a Data label with this row. Direct12418V scanner endpoint returned verification page. No closure by SID convention, absence or global legend.",
+      "next_required_evidence": "Exact SID65534/TSID20/ONID70 service detail with explicit classification/purpose; no renewed identical fetch until source changes."
     }
   }
 ]

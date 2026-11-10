@@ -2,6 +2,8 @@
 
 ### Dávka 17 – ďalší prieskum, bez bezpečnej integrácie
 
+- Pokračovanie: priame dátové katalógy nevyriešili BFBS SID8016 ani Thor SID65534. Meracie endpointy vrátili overovaciu stránku bez servisných dát; nevydávať za meranie. Dva konkrétne riadky registra majú uložený chýbajúci dôkaz a zákaz opakovania rovnakého slepého vyhľadávania. Počty sa nemenia; žiadne ZIPy ani PNG sa neupravovali a inštalačné testy sa preto neopakovali.
+
 - Dávka16 dokončená a auditovaná: **48 TV / 429 PNG / 99 jedinečných ZIPov; 89 otvorených**. Nový prieskum17 nepridal PNG ani technické uzavretie a nie je vykázaný ako dokončená dávka.
 - Nové priame podklady Sky2117/2118 patria iným SID než cieľovým51074/51078. SES Demo HD66°E má odlišný sieťový údaj a nemá potvrdenú schválenú HD sadu. Dôkazy a presné blokácie: `scope-batch-20261110-17-research.json`. Pokračovať iba novým rozhodujúcim dôkazom; neopakovať hotové dávky ani nepreberať podobné názvy.
 
