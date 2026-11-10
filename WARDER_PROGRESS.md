@@ -1,3 +1,11 @@
+### Dávka 18 – nový nezávislý zoznam, rozpracované – 10. 11. 2026
+
+- Základ `dc5e7508af81d708720b4004ebad0ee84c7e8933`; dávky 01–17 sa neopakovali.
+- Aktuálny Ciefp motorový lamedb: 13 463 služieb, 87 presných porovnaní SID/TSID/ONID/namespace, 14 zhôd a 73 nenájdených. Nenájdenie v kurátorovanom zozname nie je dôkaz zániku.
+- Dve presné zhody dopĺňajú identitu SES DEMO HD 2025 test (45°E 12520 V a 66°E 11089 V); vhodná schválená HD grafika chýba. DSNS historické presuny nepreukazujú ukončenie služby.
+- **48 TV / 429 PNG / 99 ZIPov / 87 otvorených.** Žiadna nová bezpečná integrácia ani technické uzavretie. Dávka18 NIE JE dokončená. Register priorít a presné zhody: `reports/vhannibal-followup-20261106/scope-batch-20261110-18-research.json`.
+- 5 prípadov vyžaduje správnu schválenú grafiku, 80 presnú identitu/klasifikáciu, 2 sú chránené TV5MONDE. Všetky pôvodné blokácie platia. Bez zásahu do PNG/ZIPov, 18 CANAL+ archívov, rádia, produkcie či main. Inštalačné testy N/A: žiadny inštalovateľný obsah sa nemenil. PR #50 nezlučovať.
+
 # Warder Evolution – stav projektu
 
 ### Dávka 17 – dve doložené technické uzavretia – 10. 11. 2026
