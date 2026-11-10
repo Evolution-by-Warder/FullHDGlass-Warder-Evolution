@@ -1,0 +1,446 @@
+{
+  "status": "PASS",
+  "manifest_validator": "PASS",
+  "receiver_ref": "12247acc20f699606f6d40f3783e4162b92674b9",
+  "receiver_installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
+  "installer_archives": 72,
+  "installed_new_pngs": 153,
+  "valid_unrelated_user_png_preserved_in_every_test": true,
+  "protected_canal_packages_sha256_crc": [
+    {
+      "filename": "warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip",
+      "sha256": "f42ac50b5adfc3a6fe6d6a5520b0e229b475b072a4c63dc20d5fcf51049f4221"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-white-16d0b4cc5986e48e.zip",
+      "sha256": "16d0b4cc5986e48e36c06ca7e91f1833b6a20abc0c05e06c95b6596d02d960b2"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-black-148f5818dd9193f6.zip",
+      "sha256": "148f5818dd9193f6b1fe68f60c66e21abae4df2ed09e2d23c327edcfb576e1e8"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip",
+      "sha256": "87d905f9027e7a0a0366e7820ab8342deaefaca8376081e33af5bc08c6a8792d"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-white-de20059b06ae4ffd.zip",
+      "sha256": "de20059b06ae4ffdf75d1295c75a9939cf87a55acd663483b9bb896b58ed1ace"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-black-caebfc2732e954a9.zip",
+      "sha256": "caebfc2732e954a9a7f90787897cab26b65f3b605e88eb131684c98044cb0abf"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-transparent-6cacdecbc8c81173.zip",
+      "sha256": "6cacdecbc8c81173859de0bce9a5471662ae9e66f639c80c7900e03ded14d07f"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-transparent-1469150c69e5f38b.zip",
+      "sha256": "1469150c69e5f38b8ad6f7364e968ed0da60ed0a14b51aa9268a47e056ef2849"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-white-ef9eec01cd368a46.zip",
+      "sha256": "ef9eec01cd368a4697e6b375255f6d113783204cf28d48223e187666ca48546e"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-white-693cadd1ab08d96d.zip",
+      "sha256": "693cadd1ab08d96d38c9a06cc74f5c7cccb6fba470736ba66f67a00bf000af38"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-black-78fed665dfd44a4b.zip",
+      "sha256": "78fed665dfd44a4b3f88e83f3f5b7221f99a34ebbea7720367a943f83971a8db"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-black-d93dedee57a80a4a.zip",
+      "sha256": "d93dedee57a80a4ab7ea29380a2d7a8be5d403e7a71ca69838c56037c54d685b"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-transparent-ca1b8443f0ceae71.zip",
+      "sha256": "ca1b8443f0ceae71a461ac559cf9c5ea95038891a6af67af040dfb83dbb4ac78"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-transparent-63864e5f39285be5.zip",
+      "sha256": "63864e5f39285be5bbe8e133a0e5e84db9414c9e968f3dc696ab87c17d62bd27"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-white-a770792d92b1a45a.zip",
+      "sha256": "a770792d92b1a45ad4812d3315cfd71e54f8ef8c7070c4d5e8e451fea6be9381"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-white-2361de5893401a1f.zip",
+      "sha256": "2361de5893401a1f5afb2b39243687dbff5ddaf99fdd8f7a00045e903f00a9d1"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-black-d212dc31031570c0.zip",
+      "sha256": "d212dc31031570c024ba1c309c91eee96c9d04600a3b5716ebd537b50de17213"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-black-88da0a3e1b54e36b.zip",
+      "sha256": "88da0a3e1b54e36be4268c1bedcb3e9330cdf94382c43f5476584da217b4ac5f"
+    }
+  ],
+  "checks": [
+    {
+      "filename": "warder-08w-220x132-black-64efe64284b637ce.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-220x132-transparent-41eb82f95e270a6a.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-220x132-white-07de894efd5cce29.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-400x240-black-9275b4545f4a67c5.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-400x240-transparent-db71cfdb6f53248e.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-400x240-white-dbb724846bd7fdb6.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-50x30-black-eb4b1b99b4ecbac2.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-50x30-transparent-1d9e1e1b5e8242a5.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-08w-50x30-white-f9927fd353dd06f9.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-220x132-black-4cb4366418fe640f.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-220x132-transparent-984f4cc557a5b5c3.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-220x132-white-8464007fb6ca6dd1.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-400x240-black-05d766caf726b19e.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-400x240-transparent-66da6f2fa6c93d06.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-400x240-white-ecbbe34f96fbbaf2.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-50x30-black-46477dcf1d9adc18.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-50x30-transparent-6f776221847e0a35.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-48e_a-50x30-white-48a210cda5e527d0.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-220x132-black-f4e9a35c56ab21df.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-220x132-transparent-66a0ef78318f9a65.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-220x132-white-8f5d03e4d751f580.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-400x240-black-ae6f65374fd859cb.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-400x240-transparent-5be4717dcedea00e.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-400x240-white-ac2df69062f46d85.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-50x30-black-f296f5a33e1a1f18.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-50x30-transparent-0d012213e4d20fcd.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-192e-50x30-white-2e03bbe368245819.zip",
+      "selected_pngs_installed": 3,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-220x132-black-b06d56f9f893f2da.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-220x132-transparent-65093d8af0b1a590.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-220x132-white-bc1471b688fdcda3.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-400x240-black-3e68191fa94a4da4.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-400x240-transparent-437c3c14234bc4c1.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-400x240-white-67c40eb9c0677851.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-50x30-black-20d71b1a20c427ba.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-50x30-transparent-a0bcd77ab837e0a8.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-260e-50x30-white-ce83da20d95a0891.zip",
+      "selected_pngs_installed": 2,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-black-ee9c732268fa79e0.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-transparent-17b704326f511cfb.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-white-113380a7d8704eeb.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-black-fe9b58dc9440af06.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-transparent-b4547a97470d44ca.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-white-a6d1ff4589d4ba35.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-black-534c804b91292f01.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-transparent-fba76682f1e64a0e.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-white-87c77ea794b02486.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-220x132-black-8223d4bcde17d931.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-220x132-transparent-ba6354c26256f83d.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-220x132-white-037bb94ef361b411.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-400x240-black-93d33a79dc66b965.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-400x240-transparent-aaae0c77aa0daee6.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-400x240-white-00d46732523006e4.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-50x30-black-15a8191b1d7db924.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-50x30-transparent-b6ef8c30edffb41c.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-70w-50x30-white-e44cdfb95699dc07.zip",
+      "selected_pngs_installed": 6,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-220x132-black-7716a3ff18b0ba09.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-220x132-transparent-2b1b9f49edc43d5e.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-220x132-white-69f4e5bd43ea292c.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-400x240-black-96171fdcbb5e8717.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-400x240-transparent-b341811eb733ef98.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-400x240-white-c3ac5df5b390d6b1.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-50x30-black-d355358e5a841fc5.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-50x30-transparent-0579dd63ef007009.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-50x30-white-1f39a09d4023f362.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-black-ee9c732268fa79e0.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-transparent-17b704326f511cfb.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-white-113380a7d8704eeb.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-black-fe9b58dc9440af06.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-transparent-b4547a97470d44ca.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-white-a6d1ff4589d4ba35.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-black-534c804b91292f01.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-transparent-fba76682f1e64a0e.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-white-87c77ea794b02486.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    }
+  ],
+  "hardware_receiver_tested": false
+}

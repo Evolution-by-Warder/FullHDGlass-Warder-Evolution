@@ -1,0 +1,870 @@
+{
+  "status": "PASS_WORKING_CANDIDATE_ONLY",
+  "date": "2026-11-07",
+  "base_production_sha": "3ba80ef8bb3b0ccd4148666372a9bf851ee85947",
+  "base_candidate_sha": "d1523e7e747eebe55b3f306cffa93a6db2dcc00d",
+  "new_references": 5,
+  "added_png_entries": 42,
+  "changed_zip_archives": 27,
+  "untouched_png_entries_byte_identical": 34131,
+  "protected_canal_packages_unchanged": 18,
+  "radio_changes": 0,
+  "new_or_rendered_artworks": 0,
+  "manifest_validator": "PASS",
+  "references": [
+    {
+      "reference": "1_0_16_2C0_20B_73_2080000_0_0_0",
+      "name": "Eurosport 2 HD",
+      "selector": "520E",
+      "donor": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-50x30-transparent-9e9c5a32e5ec7e0f.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "91428cac786a3cacaa8b85cf77f6725c2db545b7f7c4542b4e44a37565b75fac",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "source_package": "warder-130e-50x30-white-7f2fc566c43a65db.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "c0da263df98b231725f7fe988a718dee82f96ff6b637a2eb7f4906d15ce7c80d",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "source_package": "warder-130e-50x30-black-69d1e28f686d29a8.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "13debe6dab884ff3effa39ae68a57a12688f605a9269eb3b8b2fa1a3bc3186b2",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-220x132-transparent-105816aff40dc417.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "3ee77e51c14e415d83037cf484a6e149b8b708515c4d7ca54a00f07067fcf5f6",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "source_package": "warder-130e-220x132-white-a97a3f4acb18e7f6.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "7e1be89a32217f9aaa31e7bd60975a6caa6e7b3297c4d0879d493fb158285105",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "source_package": "warder-130e-220x132-black-d5dd2a5d0c290cb2.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "2b9a4140f2310b631b689fca73f858992ca2e845d4ac6c7017b97c02488c9271",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-400x240-transparent-ceadc6a0d700fca5.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "ce0f3981c09745023174715422bc49c13deda079e9d81301a88d1cf59e39a7c0",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "source_package": "warder-130e-400x240-white-61c2ac027be53638.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "cd6b876b4372301f1a2f5367f7d214aac6fccf404051c9db77ae4d0799bbba8a",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "source_package": "warder-130e-400x240-black-56e99f39a378d6d5.zip",
+          "source_reference": "1_0_19_2BE_2BC_13E_820000_0_0_0",
+          "sha256": "c98b94d23292b528c0b42b98b563ed791c5186de61f51d591a743f7ba6842b7c",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_16_DA79_22F_70_2250000_0_0_0",
+      "name": "Dom Kino Premium",
+      "selector": "549E",
+      "donor": "1_0_16_87_251C_D5_820000_0_0_0",
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-50x30-transparent-9e9c5a32e5ec7e0f.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "c83e6baceb23c662b57d62459cc386cb4d431023684d093eea7cf9b039159d97",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "source_package": "warder-130e-50x30-white-7f2fc566c43a65db.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "bd7620eb6e8f484ecd58d862cca639732259a8cd9089064b2113416f480f4e6a",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "source_package": "warder-130e-50x30-black-69d1e28f686d29a8.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "76680f00c74fb8e0ec68d4d544360c4892ce7d1b4d5c0041a27f5a43d9c310d6",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-220x132-transparent-105816aff40dc417.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "dd085316edfbe8df3cbddd3000bb99fba1de4bd78d6b65578f7f90b6a6d013d7",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "source_package": "warder-130e-220x132-white-a97a3f4acb18e7f6.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "fae6baa1e660039e7aa19b093f76bb7ed1dd0480ff9a2457ad78a73dddad0d27",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "source_package": "warder-130e-220x132-black-d5dd2a5d0c290cb2.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "865bc8d2bd7a692646ef33e6ecdfa3589426e67ceacd4f34568d676e0c0e05b5",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-400x240-transparent-ceadc6a0d700fca5.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "fba92dbb2da799d2914f69f50fde675b023149064753f4128db43d0359f4ee23",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "source_package": "warder-130e-400x240-white-61c2ac027be53638.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "4c80bf79e2c1a2fcdeb2d91402da4996b7b6995a75d5bb68eea365ac20f66815",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "source_package": "warder-130e-400x240-black-56e99f39a378d6d5.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "44a3c0d803d69d928c13ec86cf7456b3e734bf360d975bffc6d5c9b38d3c3c22",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_19_D7A3_228_70_2250000_0_0_0",
+      "name": "Dom Kino Premium HD",
+      "selector": "549E",
+      "donor": "1_0_16_87_251C_D5_820000_0_0_0",
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-50x30-transparent-9e9c5a32e5ec7e0f.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "c83e6baceb23c662b57d62459cc386cb4d431023684d093eea7cf9b039159d97",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "source_package": "warder-130e-50x30-white-7f2fc566c43a65db.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "bd7620eb6e8f484ecd58d862cca639732259a8cd9089064b2113416f480f4e6a",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "source_package": "warder-130e-50x30-black-69d1e28f686d29a8.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "76680f00c74fb8e0ec68d4d544360c4892ce7d1b4d5c0041a27f5a43d9c310d6",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-220x132-transparent-105816aff40dc417.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "dd085316edfbe8df3cbddd3000bb99fba1de4bd78d6b65578f7f90b6a6d013d7",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "source_package": "warder-130e-220x132-white-a97a3f4acb18e7f6.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "fae6baa1e660039e7aa19b093f76bb7ed1dd0480ff9a2457ad78a73dddad0d27",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "source_package": "warder-130e-220x132-black-d5dd2a5d0c290cb2.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "865bc8d2bd7a692646ef33e6ecdfa3589426e67ceacd4f34568d676e0c0e05b5",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "source_package": "warder-130e-400x240-transparent-ceadc6a0d700fca5.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "fba92dbb2da799d2914f69f50fde675b023149064753f4128db43d0359f4ee23",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "source_package": "warder-130e-400x240-white-61c2ac027be53638.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "4c80bf79e2c1a2fcdeb2d91402da4996b7b6995a75d5bb68eea365ac20f66815",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "source_package": "warder-130e-400x240-black-56e99f39a378d6d5.zip",
+          "source_reference": "1_0_16_87_251C_D5_820000_0_0_0",
+          "sha256": "44a3c0d803d69d928c13ec86cf7456b3e734bf360d975bffc6d5c9b38d3c3c22",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_19_7BD_9_42_1A40000_0_0_0",
+      "name": "SPORSMART",
+      "selector": "420E",
+      "donor": "1_0_19_76F_9_42_1A40000_0_0_0",
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "source_package": "warder-420e-50x30-transparent-8ea40f4cb699802f.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "dcb70aa9bc3d9458fa5e18fd5a0ad9db27678784c9a6759b3fcdb35e422745fa",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "source_package": "warder-420e-50x30-white-8c2699fabef48475.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "590384a9ef928b3a6d3adf74a771d6471c73413c2f8e6b118b5f8464aa2900f9",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "source_package": "warder-420e-50x30-black-4f46127894e37de2.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "9442843249c62035db40ea6880faaf5d31f0f8f41666ee0c2a95110178d522ff",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "source_package": "warder-420e-220x132-transparent-d4ad682fb39a8737.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "9d2e93bdebb838d5a34f841306fa153c0d0a7bc0f598e6120a3475d96c316536",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "source_package": "warder-420e-220x132-white-6b715b1c276088bc.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "f348234fae82b2e9c78a77c5878c5b630d38349a194f9dc67e0c773afa156d87",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "source_package": "warder-420e-220x132-black-7726bc1a426f3d2a.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "c89141cc9dd2c6b78bf1c36ca617dbea9d929a16a86a0d600e6c5867e4078493",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "source_package": "warder-420e-400x240-transparent-523b57c175602e63.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "4d461cac88879a119f83ceab67a4380b83089c409f9eb1343acd3f8d528f276f",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "source_package": "warder-420e-400x240-white-157e49d29f739e25.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "ad7cb00b849bd14f266b0d745b86423b1302e9898e4a9650c6f6adc97cc363a6",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "source_package": "warder-420e-400x240-black-b110382648f23a14.zip",
+          "source_reference": "1_0_19_76F_9_42_1A40000_0_0_0",
+          "sha256": "84dd71a3029904fc4a7b0ab365a351bdd05dcc15a3f10ec258fa0c02485bba18",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_1_C672_A477_42E_1A40000_0_0_0",
+      "name": "GUNEYDOGU TV",
+      "selector": "420E",
+      "donor": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "source_package": "warder-420e-50x30-transparent-8ea40f4cb699802f.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "52869db1d4e1072e312a407feecd38df0a102c071c7ccad0fea2e1f49740138f",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "source_package": "warder-420e-50x30-white-8c2699fabef48475.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "77636e4a5aa5d064198c379043a3b749cce636493d8c71481f437880363d8605",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "source_package": "warder-420e-50x30-black-4f46127894e37de2.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "1417456994a505920136ad36e3abb153e0a5feada7377516eb53ea13e55c71d4",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "source_package": "warder-420e-220x132-transparent-d4ad682fb39a8737.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "9d8f0b9cf022564e038dbc32b5de6a03569935c810e3ad7de9707352d35e2954",
+          "operation": "PRESERVE_EXISTING_PIXEL_IDENTICAL"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "source_package": "warder-420e-220x132-white-6b715b1c276088bc.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "a6a9e875339a9c66e6c652bef6dd4863b83042ddd070fc78bfdc1c9599f499e8",
+          "operation": "PRESERVE_EXISTING_PIXEL_IDENTICAL"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "source_package": "warder-420e-220x132-black-7726bc1a426f3d2a.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "19576210f20a364d529c37f6b9013efce4b9f85f5081336179893f7fc5e6336a",
+          "operation": "PRESERVE_EXISTING_PIXEL_IDENTICAL"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "source_package": "warder-420e-400x240-transparent-523b57c175602e63.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "f4b6397d081827ffd34677f3820267451dafd178473a1fe224cb6b7ef587d577",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "source_package": "warder-420e-400x240-white-157e49d29f739e25.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "4a200ee6ab7b0c516880e86550ce953dff928553f5048d9fb3ed326ca6066329",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "source_package": "warder-420e-400x240-black-b110382648f23a14.zip",
+          "source_reference": "1_0_1_C581_EBF1_42E_1A40000_0_0_0",
+          "sha256": "dcbf5edecbf0d1bb4ab41b3c966539d1c93bf3f3bad46aa947afe0a5f2b25fb8",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        }
+      ],
+      "rendered_pixels": 0
+    }
+  ],
+  "packages": [
+    {
+      "selector": "420E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "before_filename": "warder-420e-220x132-black-7726bc1a426f3d2a.zip",
+      "filename": "warder-420e-220x132-black-d3690594813d9d39.zip",
+      "before_sha256": "7726bc1a426f3d2afc37731d2f3581343e661a553ce14344c7aebc9720ac5786",
+      "sha256": "d3690594813d9d3938f7994ea716cf91bcb7ef9545e50ff10365336a5efb0120",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "c89141cc9dd2c6b78bf1c36ca617dbea9d929a16a86a0d600e6c5867e4078493"
+      },
+      "preserved_members": 2167,
+      "old_prefix_preserved": 50409815,
+      "new_tail_bytes": 212782,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "before_filename": "warder-420e-220x132-transparent-d4ad682fb39a8737.zip",
+      "filename": "warder-420e-220x132-transparent-7c6f232f8ccc1c1e.zip",
+      "before_sha256": "d4ad682fb39a873765e7c59733f08def37e55aa91e237d9e68dbe439ab97847e",
+      "sha256": "7c6f232f8ccc1c1e49538dfbcdb3e8a24754a6c3d2d1565a41daa915a07c2a22",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "9d2e93bdebb838d5a34f841306fa153c0d0a7bc0f598e6120a3475d96c316536"
+      },
+      "preserved_members": 2164,
+      "old_prefix_preserved": 21087491,
+      "new_tail_bytes": 180538,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "before_filename": "warder-420e-220x132-white-6b715b1c276088bc.zip",
+      "filename": "warder-420e-220x132-white-db6d07f6ec5bdeb8.zip",
+      "before_sha256": "6b715b1c276088bc100bcfebf5f06ad9d79c52c3ce440fcfba1181bf3c293b36",
+      "sha256": "db6d07f6ec5bdeb82c306ee5a70ebcff31d48578c584a05191fdf963a7e02dd6",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "f348234fae82b2e9c78a77c5878c5b630d38349a194f9dc67e0c773afa156d87"
+      },
+      "preserved_members": 2167,
+      "old_prefix_preserved": 45274942,
+      "new_tail_bytes": 212956,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "before_filename": "warder-420e-400x240-black-b110382648f23a14.zip",
+      "filename": "warder-420e-400x240-black-1bf1f03a1f78fdd6.zip",
+      "before_sha256": "b110382648f23a14389420e8ae33ec397a70ae47a8380e11493def0aebd18276",
+      "sha256": "1bf1f03a1f78fdd6ee4850a1c8541ef645f88ea57bdcba822c1557790673e96b",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "84dd71a3029904fc4a7b0ab365a351bdd05dcc15a3f10ec258fa0c02485bba18",
+        "1_0_1_C672_A477_42E_1A40000_0_0_0.png": "dcbf5edecbf0d1bb4ab41b3c966539d1c93bf3f3bad46aa947afe0a5f2b25fb8"
+      },
+      "preserved_members": 2156,
+      "old_prefix_preserved": 71597932,
+      "new_tail_bytes": 285963,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "before_filename": "warder-420e-400x240-transparent-523b57c175602e63.zip",
+      "filename": "warder-420e-400x240-transparent-51517b08ffcad80a.zip",
+      "before_sha256": "523b57c175602e63967db3c3c1bc7589e734d193e87b75d3667a29fefc5a81a9",
+      "sha256": "51517b08ffcad80a451b51c8e6882ec59be48a9f9f1766026a89a24af764bd72",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "4d461cac88879a119f83ceab67a4380b83089c409f9eb1343acd3f8d528f276f",
+        "1_0_1_C672_A477_42E_1A40000_0_0_0.png": "f4b6397d081827ffd34677f3820267451dafd178473a1fe224cb6b7ef587d577"
+      },
+      "preserved_members": 2153,
+      "old_prefix_preserved": 56066756,
+      "new_tail_bytes": 236671,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "before_filename": "warder-420e-400x240-white-157e49d29f739e25.zip",
+      "filename": "warder-420e-400x240-white-9297c55b28eaab78.zip",
+      "before_sha256": "157e49d29f739e2515f3e0dc2c9fa9a72d2578fb87150b4093f33c658d35e5b5",
+      "sha256": "9297c55b28eaab78c0a19e87b5de569a05eefacb8d812844247a8563dfaf983c",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "ad7cb00b849bd14f266b0d745b86423b1302e9898e4a9650c6f6adc97cc363a6",
+        "1_0_1_C672_A477_42E_1A40000_0_0_0.png": "4a200ee6ab7b0c516880e86550ce953dff928553f5048d9fb3ed326ca6066329"
+      },
+      "preserved_members": 2156,
+      "old_prefix_preserved": 73646704,
+      "new_tail_bytes": 295727,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "before_filename": "warder-420e-50x30-black-4f46127894e37de2.zip",
+      "filename": "warder-420e-50x30-black-5d535f210afb6343.zip",
+      "before_sha256": "4f46127894e37de2257644132d402d0666bef20e2a5dd2f84b9a9077abf0643d",
+      "sha256": "5d535f210afb6343620018f9a0b4623b58e6db305c583dc803eb2168f41f5354",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "9442843249c62035db40ea6880faaf5d31f0f8f41666ee0c2a95110178d522ff",
+        "1_0_1_C672_A477_42E_1A40000_0_0_0.png": "1417456994a505920136ad36e3abb153e0a5feada7377516eb53ea13e55c71d4"
+      },
+      "preserved_members": 2156,
+      "old_prefix_preserved": 4403230,
+      "new_tail_bytes": 181461,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "before_filename": "warder-420e-50x30-transparent-8ea40f4cb699802f.zip",
+      "filename": "warder-420e-50x30-transparent-84d1e1a24111242b.zip",
+      "before_sha256": "8ea40f4cb699802f951cda984e25915522c8fec9eb0910ddcc09f1d5f980b119",
+      "sha256": "84d1e1a24111242b66fb61e3b65e02ee659e4117309df9ec9eddfd63b474a72a",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "dcb70aa9bc3d9458fa5e18fd5a0ad9db27678784c9a6759b3fcdb35e422745fa",
+        "1_0_1_C672_A477_42E_1A40000_0_0_0.png": "52869db1d4e1072e312a407feecd38df0a102c071c7ccad0fea2e1f49740138f"
+      },
+      "preserved_members": 2153,
+      "old_prefix_preserved": 3365978,
+      "new_tail_bytes": 180176,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "before_filename": "warder-420e-50x30-white-8c2699fabef48475.zip",
+      "filename": "warder-420e-50x30-white-a47f7ba3b0992532.zip",
+      "before_sha256": "8c2699fabef48475d791ec371e194e5840744eb6e4db85f5cc23f0fddfabfb17",
+      "sha256": "a47f7ba3b0992532cabf98cd6e532b8dc55d1bc1d8afcb9839c6f723bb7cf02b",
+      "updated_members": {
+        "1_0_19_7BD_9_42_1A40000_0_0_0.png": "590384a9ef928b3a6d3adf74a771d6471c73413c2f8e6b118b5f8464aa2900f9",
+        "1_0_1_C672_A477_42E_1A40000_0_0_0.png": "77636e4a5aa5d064198c379043a3b749cce636493d8c71481f437880363d8605"
+      },
+      "preserved_members": 2156,
+      "old_prefix_preserved": 4277382,
+      "new_tail_bytes": 181564,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "before_filename": "warder-520e-220x132-black-a0b05d34e508e5c7.zip",
+      "filename": "warder-520e-220x132-black-69e947187eb7dabc.zip",
+      "before_sha256": "a0b05d34e508e5c73014a99813c9e56b1714f406cc0332e537d910f874949e4b",
+      "sha256": "69e947187eb7dabcac71c9c6e2516e5e12b4ccc5792ea991865fcf5db231b0a6",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "2b9a4140f2310b631b689fca73f858992ca2e845d4ac6c7017b97c02488c9271"
+      },
+      "preserved_members": 1457,
+      "old_prefix_preserved": 34542779,
+      "new_tail_bytes": 150818,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "before_filename": "warder-520e-220x132-transparent-08a0995a6eefb653.zip",
+      "filename": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip",
+      "before_sha256": "08a0995a6eefb6533fca0bb539444784afc564e3dcb9056834c8f6b3b7f91149",
+      "sha256": "4f3aecbaf7596e5bb1ba95afe32f14f1a6d0d6b5cc74d5005ce07e4bc9eb4643",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "3ee77e51c14e415d83037cf484a6e149b8b708515c4d7ca54a00f07067fcf5f6"
+      },
+      "preserved_members": 1457,
+      "old_prefix_preserved": 16160876,
+      "new_tail_bytes": 118100,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "before_filename": "warder-520e-220x132-white-7814012b4c325a02.zip",
+      "filename": "warder-520e-220x132-white-bbb9718559b700c0.zip",
+      "before_sha256": "7814012b4c325a02a74fcd5661437db58890aea44ceb4d57699a7bc3c8b9ad15",
+      "sha256": "bbb9718559b700c0ae20ed0ed14183dbb5aa6f8ebe591192e55c08796120b29e",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "7e1be89a32217f9aaa31e7bd60975a6caa6e7b3297c4d0879d493fb158285105"
+      },
+      "preserved_members": 1457,
+      "old_prefix_preserved": 31300228,
+      "new_tail_bytes": 151110,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "before_filename": "warder-520e-400x240-black-35466a671c6a6283.zip",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip",
+      "before_sha256": "35466a671c6a62838af5275d9a8a980ab7b534576b3f2b49ead98b6ce79c049d",
+      "sha256": "2cb86f56960a72c6f483c995c069231f21f568e5c45a40899c06d3f0909bb56e",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "c98b94d23292b528c0b42b98b563ed791c5186de61f51d591a743f7ba6842b7c"
+      },
+      "preserved_members": 1338,
+      "old_prefix_preserved": 46660682,
+      "new_tail_bytes": 123428,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "before_filename": "warder-520e-400x240-transparent-9200593004f8d2fe.zip",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip",
+      "before_sha256": "9200593004f8d2fee7697997e3a597b4978d971b8202536f950d7ce4d578ff99",
+      "sha256": "c58c5c4c9ec57cb629c61b75e823ef3c786f8d80f49244f19439ee199a9248c2",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "ce0f3981c09745023174715422bc49c13deda079e9d81301a88d1cf59e39a7c0"
+      },
+      "preserved_members": 1338,
+      "old_prefix_preserved": 40343917,
+      "new_tail_bytes": 114117,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "before_filename": "warder-520e-400x240-white-2c62e72f0d26a36f.zip",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip",
+      "before_sha256": "2c62e72f0d26a36f9341cfb6d1d7e5c016aca38f89758d72fc5467f92e9a78ac",
+      "sha256": "6b601621d52102569b1c6cb4c9c616e3ee23d433a3dcd7355555cd86d821df3b",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "cd6b876b4372301f1a2f5367f7d214aac6fccf404051c9db77ae4d0799bbba8a"
+      },
+      "preserved_members": 1338,
+      "old_prefix_preserved": 48344420,
+      "new_tail_bytes": 125565,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "before_filename": "warder-520e-50x30-black-a7533214d77e42e7.zip",
+      "filename": "warder-520e-50x30-black-c0624ddac6603fe7.zip",
+      "before_sha256": "a7533214d77e42e7f6dd02084e28b92fa4b7a360581e4ed22be6a4642b1d8fb0",
+      "sha256": "c0624ddac6603fe7dc81be5b485293ed455a6c9103672f5003185f25c0e190f2",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "13debe6dab884ff3effa39ae68a57a12688f605a9269eb3b8b2fa1a3bc3186b2"
+      },
+      "preserved_members": 1338,
+      "old_prefix_preserved": 2741691,
+      "new_tail_bytes": 107422,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "before_filename": "warder-520e-50x30-transparent-333ee32fe4b9eca0.zip",
+      "filename": "warder-520e-50x30-transparent-de654008e4705a75.zip",
+      "before_sha256": "333ee32fe4b9eca0694e73427b656123940838e5c4d2783fd187b6e16a5c6958",
+      "sha256": "de654008e4705a75cac23d6643d3bca4819cf02d80f5d724e0ea843b1f3021d5",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "91428cac786a3cacaa8b85cf77f6725c2db545b7f7c4542b4e44a37565b75fac"
+      },
+      "preserved_members": 1338,
+      "old_prefix_preserved": 2077665,
+      "new_tail_bytes": 106831,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "before_filename": "warder-520e-50x30-white-0daf1c4799291c15.zip",
+      "filename": "warder-520e-50x30-white-05c5042379bdd087.zip",
+      "before_sha256": "0daf1c4799291c155ca292574250c51703ccc2463c1d962ce0e39d4c063d1eb0",
+      "sha256": "05c5042379bdd0872530c5082657197a84c5076e2d9783a42ca69cda596232d2",
+      "updated_members": {
+        "1_0_16_2C0_20B_73_2080000_0_0_0.png": "c0da263df98b231725f7fe988a718dee82f96ff6b637a2eb7f4906d15ce7c80d"
+      },
+      "preserved_members": 1338,
+      "old_prefix_preserved": 2676531,
+      "new_tail_bytes": 107430,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "before_filename": "warder-549e-220x132-black-365c79d7ff0c1e9c.zip",
+      "filename": "warder-549e-220x132-black-381b0050454bc78e.zip",
+      "before_sha256": "365c79d7ff0c1e9c4df943cc311870dfc3c145cbeb3d950893793bb8abe054e3",
+      "sha256": "381b0050454bc78eb053a0c8953921f0b8542204307cf815ee2132b2ecf9698c",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "865bc8d2bd7a692646ef33e6ecdfa3589426e67ceacd4f34568d676e0c0e05b5",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "865bc8d2bd7a692646ef33e6ecdfa3589426e67ceacd4f34568d676e0c0e05b5"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 8464927,
+      "new_tail_bytes": 92552,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "before_filename": "warder-549e-220x132-transparent-206b626183b91b86.zip",
+      "filename": "warder-549e-220x132-transparent-ad35ae120aa603dc.zip",
+      "before_sha256": "206b626183b91b86f12f7e046f4a0b6a0eb04674ef8bafbeb3985905ebc7c946",
+      "sha256": "ad35ae120aa603dc84dc5da7f131e20819ced5c98144e0e8271e6da14560f0e9",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "dd085316edfbe8df3cbddd3000bb99fba1de4bd78d6b65578f7f90b6a6d013d7",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "dd085316edfbe8df3cbddd3000bb99fba1de4bd78d6b65578f7f90b6a6d013d7"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 2155792,
+      "new_tail_bytes": 28888,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "before_filename": "warder-549e-220x132-white-ef75f71940cf4bc2.zip",
+      "filename": "warder-549e-220x132-white-2abb1cca2f9a917c.zip",
+      "before_sha256": "ef75f71940cf4bc2e123c3659483cbe55d808e3ea126ff0e2e28f92ec90f5f04",
+      "sha256": "2abb1cca2f9a917c28d072a35ab06adf96a732eeeb50eb66610b8b87b3ea78b5",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "fae6baa1e660039e7aa19b093f76bb7ed1dd0480ff9a2457ad78a73dddad0d27",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "fae6baa1e660039e7aa19b093f76bb7ed1dd0480ff9a2457ad78a73dddad0d27"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 8512857,
+      "new_tail_bytes": 93156,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "before_filename": "warder-549e-400x240-black-44f539c0d4c6fa38.zip",
+      "filename": "warder-549e-400x240-black-789a78800daae3c7.zip",
+      "before_sha256": "44f539c0d4c6fa38f5093937bc88f34b5726143e3eb6de254b0b6c9bee7661df",
+      "sha256": "789a78800daae3c79ae460b62d5262f31c1599dae89e561438ff053c5c8b89ed",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "44a3c0d803d69d928c13ec86cf7456b3e734bf360d975bffc6d5c9b38d3c3c22",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "44a3c0d803d69d928c13ec86cf7456b3e734bf360d975bffc6d5c9b38d3c3c22"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 20583873,
+      "new_tail_bytes": 65734,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "before_filename": "warder-549e-400x240-transparent-7ab7082cb29fd21a.zip",
+      "filename": "warder-549e-400x240-transparent-427a5a21fac86229.zip",
+      "before_sha256": "7ab7082cb29fd21a11721fb593faa5d87c838bd3cd5d7bac066646c36203f989",
+      "sha256": "427a5a21fac86229d9fb3413c177850cd340f37e2001fb39e77f37c0a55d73d7",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "fba92dbb2da799d2914f69f50fde675b023149064753f4128db43d0359f4ee23",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "fba92dbb2da799d2914f69f50fde675b023149064753f4128db43d0359f4ee23"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 10812886,
+      "new_tail_bytes": 64874,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "before_filename": "warder-549e-400x240-white-521f19be7634dfdf.zip",
+      "filename": "warder-549e-400x240-white-805f051f8bd19e43.zip",
+      "before_sha256": "521f19be7634dfdf329a0ee89046c7d679d3a5865537cb3d3d1dea64cf67b554",
+      "sha256": "805f051f8bd19e4373180e121ae82eaa3b53b9f92e75e48782aebe4ec2ec33fa",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "4c80bf79e2c1a2fcdeb2d91402da4996b7b6995a75d5bb68eea365ac20f66815",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "4c80bf79e2c1a2fcdeb2d91402da4996b7b6995a75d5bb68eea365ac20f66815"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 21301934,
+      "new_tail_bytes": 64566,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "before_filename": "warder-549e-50x30-black-b37be0f968ec1ec0.zip",
+      "filename": "warder-549e-50x30-black-5e392cc7320b476a.zip",
+      "before_sha256": "b37be0f968ec1ec03838d725ce9ac90293088765f14aea9edda9daba1f9475a7",
+      "sha256": "5e392cc7320b476ae95c47218e0af39c9fd9532b93edd637a760af846d821b57",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "76680f00c74fb8e0ec68d4d544360c4892ce7d1b4d5c0041a27f5a43d9c310d6",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "76680f00c74fb8e0ec68d4d544360c4892ce7d1b4d5c0041a27f5a43d9c310d6"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 814550,
+      "new_tail_bytes": 23916,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "before_filename": "warder-549e-50x30-transparent-befadc9654fef25b.zip",
+      "filename": "warder-549e-50x30-transparent-e912acd0924ada4b.zip",
+      "before_sha256": "befadc9654fef25b0beed96934daed0ef0688552bfa8358cb2e72651a3abd51f",
+      "sha256": "e912acd0924ada4bdf1de42f1d7df3ec79ccf9041a35bdd10ae6334b697ffc2d",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "c83e6baceb23c662b57d62459cc386cb4d431023684d093eea7cf9b039159d97",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "c83e6baceb23c662b57d62459cc386cb4d431023684d093eea7cf9b039159d97"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 552792,
+      "new_tail_bytes": 23014,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "549E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "before_filename": "warder-549e-50x30-white-10c56693e598ef4b.zip",
+      "filename": "warder-549e-50x30-white-840ad53b4a91f2c3.zip",
+      "before_sha256": "10c56693e598ef4b690db733a01d7da5925469803b127fddd717cc7c5fb9531b",
+      "sha256": "840ad53b4a91f2c34e01dc7a3c8aa37350a36cbe62513cb2ccabc6b8476d3da5",
+      "updated_members": {
+        "1_0_16_DA79_22F_70_2250000_0_0_0.png": "bd7620eb6e8f484ecd58d862cca639732259a8cd9089064b2113416f480f4e6a",
+        "1_0_19_D7A3_228_70_2250000_0_0_0.png": "bd7620eb6e8f484ecd58d862cca639732259a8cd9089064b2113416f480f4e6a"
+      },
+      "preserved_members": 256,
+      "old_prefix_preserved": 763245,
+      "new_tail_bytes": 24000,
+      "receiver_install": "PASS"
+    }
+  ]
+}

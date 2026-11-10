@@ -1,0 +1,158 @@
+{
+  "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+  "station": "TV8 Turkey domestic",
+  "reference": "1_0_16_390_20D_73_2080000_0_0_0",
+  "source_url": "https://www.acunmedya.com/media/slfbdm2f/content-tv8-logo.png",
+  "source_context": "https://www.acunmedya.com/en/home",
+  "source_context_evidence": "Our Networks section explicitly associates this image and link to tv8.com.tr with national channel of T\u00fcrkiye. This is not TV8 International.",
+  "source_file": "../acun-tv8.png",
+  "source_sha256": "5487ffe0c48ac71b900f13d8f11bc8c38f882ebb5a77c867e1cb9852080dcd00",
+  "source_size": [
+    216,
+    195
+  ],
+  "source_alpha_bbox": [
+    2,
+    1,
+    215,
+    194
+  ],
+  "geometry": "Review draft: each variant independently from original source: crop alpha bounds, proportional fit into204x116 at220x132 scaled for target, centre. Premultiplied RGBa LANCZOS source and template resizing; no previous output used as input. Existing source-candidates policy; not a claim of frozen V9 fit equivalence.",
+  "native_fitted_logo_size": [
+    128,
+    116
+  ],
+  "source_colours_preserved": true,
+  "no_redraw_or_AI_generation": true,
+  "template_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+  "template_commit": "481e9b9154a510c64c743de72c1a73ed808307bf",
+  "template_path": "plugin/artwork/templates/picons/{style}-sablona.png",
+  "template_sha256": {
+    "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+    "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+  },
+  "geometry_provenance_path": "plugin/artwork/provenance/source-candidates-20261030/generate.py",
+  "output_count": 9,
+  "production_package_changes": 0,
+  "does_not_reduce_open_count": true,
+  "audit": "PASS: dimensions, nonempty alpha, source and template SHA256; visual owner approval pending",
+  "outputs": [
+    {
+      "file": "50x30-transparent.png",
+      "sha256": "670e1fcd24d2410d77c298cdeb064c5e1dd3f64715a99fde062559919c9a30a2",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "220x132-transparent.png",
+      "sha256": "c0bd53085802dd8d2811bbcf365637904e9763bc2d01554f2eb932776250ea24",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-transparent.png",
+      "sha256": "ed46bc2b289e2ef83ddacf3bee6771c187b6492bade0a600cb2f8e3ce19e7bb5",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-white.png",
+      "sha256": "5e548e04660a57bff3219d52c7cda4bfd99c1d9b4cde7181b516c821e23026f7",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        25,
+        255
+      ]
+    },
+    {
+      "file": "220x132-white.png",
+      "sha256": "d9a00a98d8043f4789fbdd6565d71fe259e641643412649225d2caaec727d495",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-white.png",
+      "sha256": "443ffd367e9e0f765b8d3def869d5d70f13b8601a5b906b2490f85f82bba32cf",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-black.png",
+      "sha256": "ba32408bd6e08c833cfb1f82693bf084a74f763b86f21f8f8960ac9028dcb010",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        9,
+        255
+      ]
+    },
+    {
+      "file": "220x132-black.png",
+      "sha256": "f300104eeff4a555f986f03a38673f52ca2d422ad42fbfc035e9c3f8e1282b81",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-black.png",
+      "sha256": "dbfb4a984a710f028e67fc0d98502841d27731f3dd9015236cfdf835ff6cca1c",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

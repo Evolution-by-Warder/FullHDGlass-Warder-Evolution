@@ -1,0 +1,86 @@
+{
+  "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+  "source": "../sources/sources.json",
+  "references": [
+    "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
+    "1_0_19_2AFA_A92B_42E_1A40000_0_0_0"
+  ],
+  "new_unique_artwork": 1,
+  "review_pngs": 9,
+  "target_reference_variants_if_approved": 18,
+  "official_dark_light_geometry_identical": true,
+  "official_chromatic_rgba_preserved": true,
+  "resampled_chromatic_edge_pixels_restored_to_fresh_original": 24,
+  "template_sha256": {
+    "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+    "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+  },
+  "immutable_v9_fit_renderer_sha256": "f931d3eb703021fa90d6c7934e6902cd1ecb49dd7a8e69e087072a9bf00d1722",
+  "production_package_changes": 0,
+  "does_not_reduce_open_count": true,
+  "outputs": [
+    {
+      "filename": "50x30-transparent.png",
+      "sha256": "d93d8eabe68fa7941f0ca7c8ecb30bf03ed4348de85c4e8f630c88e9e2f18054",
+      "source_svg": "bht-logo-black.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "220x132-transparent.png",
+      "sha256": "7646d0efd5d3652f0f12d85b40334c70c2bc8ac13733ead58cc276740cd6623e",
+      "source_svg": "bht-logo-black.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "400x240-transparent.png",
+      "sha256": "cfa1f4b395dcc1df6b97951be02c824702060b985a76e1f956cee65ddb893051",
+      "source_svg": "bht-logo-black.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "50x30-white.png",
+      "sha256": "07e9bf1621f16ff1306b886bc5f4db3987da29e85e8eadf94a2af52ec6386794",
+      "source_svg": "bht-logo-black.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "220x132-white.png",
+      "sha256": "0031a42a6ae22a530d3bd2bd630760e174ff15b917252c134e4d2591d9e34cca",
+      "source_svg": "bht-logo-black.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "400x240-white.png",
+      "sha256": "eda7d65e84871fd0453b666172f406bfe518880e0cbb3c083f3bea7736a18ad1",
+      "source_svg": "bht-logo-black.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "50x30-black.png",
+      "sha256": "47adaccc7e646fe9e71512e5edf1cc59b29440fa1ef8caa162e5a1c21fe4ad04",
+      "source_svg": "bht-logo-white.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "220x132-black.png",
+      "sha256": "94573514ad3a4aa0cb5917799ceb48d3d31e4cfde3f16ad1c564ccea48186992",
+      "source_svg": "bht-logo-white.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    },
+    {
+      "filename": "400x240-black.png",
+      "sha256": "a4999f1c1fbd56f16994cd6de7f22ac7ebdd131859874360c3571ff6bbeea0bc",
+      "source_svg": "bht-logo-white.svg",
+      "operation": "FRESH_OFFICIAL_SVG_FIT_AND_MASTER_COMPOSITE_PROTECTED_CHROMATIC_RGBA",
+      "source_alpha_nonempty": true
+    }
+  ]
+}

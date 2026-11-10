@@ -1,0 +1,70 @@
+{
+  "batch": 16,
+  "status": "RESEARCH_CHECKPOINT_NO_INTEGRATION",
+  "date": "2026-11-10",
+  "new_tv": 0,
+  "new_png": 0,
+  "modified_zips": 0,
+  "candidate_totals": {
+    "tv": 47,
+    "png": 420,
+    "unique_zip": 99,
+    "open": 90
+  },
+  "evidence": [
+    {
+      "url": "https://www.radioclassica.fm/",
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/classica-official.html",
+      "sha256": "d7ccc242d126d5abaa8e10fe88a384a6924efb5ae83b9b05d40a743610809109",
+      "bytes": 12398
+    },
+    {
+      "url": "https://en.kingofsat.net/tv.php?aff=zap&b=251&lim=0&ordre=date_maj&pos=7W&standard=All",
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/jumhuria-transport.html",
+      "sha256": "483198a79f212afa9ce4af52cc099e4d1fe2f8698ec311dd519dad54c36a4ed3",
+      "bytes": 71902
+    }
+  ],
+  "findings": [
+    {
+      "reference": "1_0_16_1E8C_D160_77E_DCA0000_0_0_0",
+      "name": "EL JUMHURIA TV",
+      "status": "HOLD_ARTWORK_IDENTITY",
+      "finding": "Directly downloaded KingOfSat now gives SID7820/VPID7822/APID7823 at12398.60V/27500 with NID1918/TID53600, updated7Nov2026. Other indexed variants report2048/41. Direct evidence is retained, but no rawSDT ONID measurement is claimed. A verified edition-specific official artwork is still missing; previous conflicting same-name donor remains rejected. Yemeni ALJOUMHOURIYA12054V is not established as the same programme."
+    },
+    {
+      "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
+      "name": "RADIO CLASSICA TV",
+      "status": "HOLD_SATELLITE_SERVICE_AND_ARTWORK",
+      "finding": "Official RadioClassica site confirms the Radio Classica TV trademark belongs to Class Editori. This does not prove the active satellite TV service or resolve the existing ONID0/29 dispute. Current indexed satellite listing is data service with PMT6007/PCR8191 and no video/audio PID. Direct Digitalbitrate retrieval503; do not claim a successful measurement. No radio package modified."
+    },
+    {
+      "name": "STARZPLAY Movies",
+      "status": "HOLD_EDITION_SPECIFIC_OFFICIAL_ARTWORK",
+      "finding": "Exact official Movies catalogue item770559016379 returned403 on direct retrieval. No source image acquired; platform,Cricket,Comedy orAction logo not substituted."
+    },
+    {
+      "name": "1TV IRAQ",
+      "status": "HOLD_EXACT_TUPLE_AND_APPROVED_ARTWORK",
+      "finding": "Alawla/1TV identification lead remains distinct from1IraqTV. Indexed11.109V/2500 or8W10971H listings do not establish the target26E11097V/1740 SID1/TSID1/ONID65535."
+    },
+    {
+      "name": "Oracle TV,2117,2118",
+      "status": "HOLD_NO_NEW_DECISIVE_EVIDENCE",
+      "finding": "No new decisive full-reference identity or approved donor acquired; old aliases are not reused."
+    }
+  ],
+  "unchanged": [
+    "18 protected CANAL+ archives",
+    "production",
+    "main",
+    "radio",
+    "stable packages"
+  ],
+  "next_steps": [
+    "Find edition-specific official EL JUMHURIA artwork, retaining saved direct transport evidence.",
+    "Acquire accessible official STARZPLAY Movies asset, not generic platform branding.",
+    "For1TV IRAQ require exact11097V tuple evidence before any alias.",
+    "Only reopen DSNS,Quadrille,DMDU_T with decisive new evidence; do not repeat completed batch audits."
+  ]
+}

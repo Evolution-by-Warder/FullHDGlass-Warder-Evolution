@@ -1,0 +1,844 @@
+{
+  "status": "PASS",
+  "payload_commit": "29a7fa0150ee944bae6cd377787d3aa9a21e3498",
+  "remote_files": 117,
+  "remote_bytes": 224760282,
+  "remote_parts": 53,
+  "new_tv_references": 6,
+  "new_png": 54,
+  "modified_zip": 9,
+  "preserved_original_members": 17430,
+  "protected_canal_packages_unchanged": 18,
+  "candidate_totals": {
+    "tv": 45,
+    "png": 402,
+    "unique_zip": 99,
+    "open": 92
+  },
+  "installer": {
+    "status": "PASS",
+    "manifest_validator": "PASS",
+    "receiver_ref": "d4627ca18c966f03f05d11214b26025525ba2556",
+    "receiver_installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
+    "installer_archives": 9,
+    "installed_new_pngs": 54,
+    "checks": [
+      {
+        "filename": "warder-390e-220x132-transparent-f3a172ce45464b8b.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-220x132-black-86a422c041beaa71.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-220x132-white-442823f76435a5ad.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-50x30-transparent-924d158c4b60e32f.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-50x30-white-bc1045f81f59cfce.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-50x30-black-be39207844c347cf.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-400x240-transparent-710f7bda9c9ff896.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-400x240-white-201d1c359e77b5b2.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      },
+      {
+        "filename": "warder-390e-400x240-black-110da767a3eb21ca.zip",
+        "antena_installed": true,
+        "unrelated_user_png_preserved": true
+      }
+    ],
+    "hardware_receiver_tested": false
+  },
+  "hardware_receiver_tested": false,
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "bytes": 59846,
+      "sha256": "c4559dec8aa70efdef24fb0ea614335a9195266a36789efd828895087d8caca9",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+      "bytes": 252340,
+      "sha256": "ffbc0c5c067b15da0ee84f0c3688062dabc5958d73e37f8283c508b2a9fddae8",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/manifest.json",
+      "bytes": 2159529,
+      "sha256": "0f2491970dae11827ac9f0869e9156a4ea6d83d5d94646a6e5b22e6a0d77bb3b",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part00",
+      "bytes": 4194304,
+      "sha256": "2e9905a75452c72a28607aa62c730ba488c14cb987af8ff57d0e0c10a7c06dee",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part01",
+      "bytes": 4194304,
+      "sha256": "ad36e5b912f2e384ac539fe69e8868f4606fc408ece208e8e27f62c05ddb7198",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part02",
+      "bytes": 4194304,
+      "sha256": "c89cfe4ec1d93fb83dc8891f200df2d18f3e7058b7e83b5f14145dcfaff101aa",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part03",
+      "bytes": 4194304,
+      "sha256": "d89de8580883a1efc5c9040cc19c25591c603b7a19a12b8d366420a3c85dbf86",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part04",
+      "bytes": 4194304,
+      "sha256": "8f1e447ac6a69232ca9f287c6d99730d5272cde4d74dc3dde2ecb9d4cec191ec",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part05",
+      "bytes": 4194304,
+      "sha256": "1329734a05d14323a9bcd43dedb8304d81f694f614d2e3ac9ef68fae01f5fc26",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part06",
+      "bytes": 4194304,
+      "sha256": "27e432e3eb622c74ec4dd8fc8ac53054a2c76da5b25c031afa160ca44f7189b5",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part07",
+      "bytes": 4194304,
+      "sha256": "1e512ce633cf5e6023670b2598b95498dd18a8546b33bdc559f04c855cc09f61",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part08",
+      "bytes": 4194304,
+      "sha256": "54f1a9639367c593e4de0660ac033aa9e2d5fd5753a7bf460b11ce0588f7a80d",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part09",
+      "bytes": 1410290,
+      "sha256": "9db4b5dac375553ed7117571c90368b1102528c7d4081028d683dcdef745fa3d",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part10",
+      "bytes": 276852,
+      "sha256": "3646778398be8b7240ad9442d777b34aaa74aec1785e91b478702d0c0b74fa58",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-86a422c041beaa71.zip.part11",
+      "bytes": 366082,
+      "sha256": "b87b94c9141dcc236bb12f629b7cd0b8dab855ae427d2e463954c8192792e886",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-f3a172ce45464b8b.zip.part00",
+      "bytes": 4194304,
+      "sha256": "6b634c1d66d5d54cd4499d956f40672144f56e2aedfecd3f866849c2b981b4e6",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-f3a172ce45464b8b.zip.part01",
+      "bytes": 4194304,
+      "sha256": "7897023e382accaf00769b85444b4d61c0a5c45f7aebcb13aac1dd3cb38d8351",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-f3a172ce45464b8b.zip.part02",
+      "bytes": 4194304,
+      "sha256": "e8deadfa4f3a90ea4199b59f7fb7e3a38339a38d00a7481055e7be823971face",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-f3a172ce45464b8b.zip.part03",
+      "bytes": 3927880,
+      "sha256": "140d4f89fa5a6c8ba3cf26d9f221afa0d349b5e61df28c7df935e8a378f1ed8f",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-f3a172ce45464b8b.zip.part04",
+      "bytes": 342466,
+      "sha256": "e1766d9a9867d82d767a4b8d843a020b8b50935c7159f4e15b6aa26dae6ba23f",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-f3a172ce45464b8b.zip.part05",
+      "bytes": 177776,
+      "sha256": "8f2140ee360cb6ea01c2f9f9a6bff6e733972ceb8f11e1984d9c8b8f7f26c15b",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part00",
+      "bytes": 4194304,
+      "sha256": "dfc462976b0d7747beffbb4fcddbfeb0b9ddf6e1b0908358e14fdda75c2e5fa3",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part01",
+      "bytes": 4194304,
+      "sha256": "939d25cc93c2a95ad042989260da90bcfa2d7179c88176eb95532ff2f29ddeb8",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part02",
+      "bytes": 4194304,
+      "sha256": "45de1de64132500ce94294652c5f235a85e38560c76573bb6eb4ae0c75d47ea0",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part03",
+      "bytes": 4194304,
+      "sha256": "b1f42cdcd1f2da01974c73124a2c4c2126c90882739489fa627cb0f00de59a78",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part04",
+      "bytes": 4194304,
+      "sha256": "1b58d3bf3b0efd665e35658d40476fb0efb6cd349f7d01a92e9b4a8ac86cd860",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part05",
+      "bytes": 4194304,
+      "sha256": "4e23e617794f5a316885d1005a36feb826423ea8ad89f7d202b39365394fa402",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part06",
+      "bytes": 4194304,
+      "sha256": "f28ac3d6c50259c0b20b35037bd70969086c303eb3a36a20fdbdd7028ef326cb",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part07",
+      "bytes": 4194304,
+      "sha256": "a3200c249b77f104dc8781d75550c9f919c7050526aef9b64346b1eed79cf53d",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part08",
+      "bytes": 20614,
+      "sha256": "323501e3db8eb6921fbe60c2bbac7a61648106c6653a0f514ce44f4ec081d2a9",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part09",
+      "bytes": 279436,
+      "sha256": "36cb2ccf81fc977b7283d2d50659e52ac84ed2698b2799277e3275945e5a3ca2",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-442823f76435a5ad.zip.part10",
+      "bytes": 375969,
+      "sha256": "65e55295a5b6712d195c975fa190f43884b4efd970dc10542b6ca64815441f2c",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-110da767a3eb21ca.zip.part00",
+      "bytes": 16777216,
+      "sha256": "9b52c2e45afcf8def61722ef5c27244088474adfdd77ae81a351e12386a8b206",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-110da767a3eb21ca.zip.part01",
+      "bytes": 16777216,
+      "sha256": "18a1a5ded8ebb3908752e45d7d41635575fec32610ff1570117ea14f244156ce",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-110da767a3eb21ca.zip.part02",
+      "bytes": 4295696,
+      "sha256": "ec7862712164db9a6af085bcb93d4ccf178528b81ec9a2a4273034d182db8b4e",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-110da767a3eb21ca.zip.part03",
+      "bytes": 2764488,
+      "sha256": "ba1a53ea36ab86ec1f78f31b08a7de3902be03c09bdff6407b01cdcddab1cbf3",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-110da767a3eb21ca.zip.part04",
+      "bytes": 267509,
+      "sha256": "035eea89aaf875c8f2ab5d0af9a559f0410c0e0064bd5f73278fffbf05df48cf",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-710f7bda9c9ff896.zip.part00",
+      "bytes": 16777216,
+      "sha256": "97623dc0ebf31af76619c9e6f11df8ebaa46888a40d1d48e6ffdafae10c8a9ea",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-710f7bda9c9ff896.zip.part01",
+      "bytes": 16777216,
+      "sha256": "5094490ef10e2afb1e5a9248a3e283a1ba9a4e7bbab1ea32d207c7da8c019992",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-710f7bda9c9ff896.zip.part02",
+      "bytes": 1704885,
+      "sha256": "924b7d9c9052bd0a6032d09e7a21887f4f38b007b5b0425bfd27ecafa01ddfb6",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-710f7bda9c9ff896.zip.part03",
+      "bytes": 1815669,
+      "sha256": "f8028907dca45fab68070bdd5a523313b8dfecd2036dc4b885390a7dec9c292a",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-710f7bda9c9ff896.zip.part04",
+      "bytes": 282326,
+      "sha256": "de5caa0394ef16ace8573145b7c9a108592dbb250cade8ac4e4a356bec29b82e",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-201d1c359e77b5b2.zip.part00",
+      "bytes": 16777216,
+      "sha256": "bfa4210aeec81806f97f7efb05e12d86a3e87d4e4983ab9050f6f6cc354fb425",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-201d1c359e77b5b2.zip.part01",
+      "bytes": 16777216,
+      "sha256": "b613abd7afceac763ac455825610224cb82cb925d1c3ff993b6353142cc2997f",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-201d1c359e77b5b2.zip.part02",
+      "bytes": 5377780,
+      "sha256": "a6c177be5e20c48956f4d735b4a5b567b7d16a3455f5c1082dfce0652e7022fe",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-201d1c359e77b5b2.zip.part03",
+      "bytes": 2872926,
+      "sha256": "41bdae3994ceea4e41b57a443d47521e13f5e2ea4cdd20c2fb466b8341e39893",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-201d1c359e77b5b2.zip.part04",
+      "bytes": 275886,
+      "sha256": "9fe8479e43a779bbf89323b308d3234c4c8bc74ad3cc8df9761ea42f59566c3f",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-be39207844c347cf.zip.part00",
+      "bytes": 3076008,
+      "sha256": "0212e4ccb327984160a5b4be1cffbf88ccd4e5de0079a0979318746adaa161bb",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-be39207844c347cf.zip.part01",
+      "bytes": 248769,
+      "sha256": "365f1249c2cc14574cbdf61c47bc4db4f492a5c21879e8d7a5c78702a2ae22bf",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-be39207844c347cf.zip.part02",
+      "bytes": 162484,
+      "sha256": "3fcf59032f47f8300dcf1eb0a1425120e75d60669fcb06a6b3190b088b8c7f58",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-924d158c4b60e32f.zip.part00",
+      "bytes": 2374993,
+      "sha256": "7cbb884c8b11a531f708a25441b2c35181d9f488400323265a8573d774190b48",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-924d158c4b60e32f.zip.part01",
+      "bytes": 235525,
+      "sha256": "aa9003bfd1285530755e91b693e2681387ae5cf21932e3ae37fb459dd18d0af2",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-924d158c4b60e32f.zip.part02",
+      "bytes": 159684,
+      "sha256": "a9e8d2c1060c73f9f6aa640e76fe65783efa8dbfd0535af7626317bac37cf089",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-bc1045f81f59cfce.zip.part00",
+      "bytes": 3031775,
+      "sha256": "8f15b0d91b02a5b4b80e9c569931f23173576829b3e2b10fbfe621fe3c9d470d",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-bc1045f81f59cfce.zip.part01",
+      "bytes": 244784,
+      "sha256": "15e02003ab0badea1734eed381c80a58e5ec829cf01c983fb63db096c6331b99",
+      "match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-bc1045f81f59cfce.zip.part02",
+      "bytes": 162789,
+      "sha256": "19fd7c6ad7aac9aa36bd2060ce5c467f422676962ebd106044aa9a3d2a86ff3a",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-black/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 30530,
+      "sha256": "56c5c378c072ad466f43f330ce53fff299e4332045849f39d0d88124d755f202",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-black/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 38044,
+      "sha256": "ada99bc071a92f0ff0d7f92ff1994d9066a912abdf1d82c8fce14f5a749e8700",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-black/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 37467,
+      "sha256": "077d10364c795d056cdffb6d6c1ced379a757701e7e3dfcf64a3968502f7c874",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-black/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 41166,
+      "sha256": "a94ff7d551d246dfba4c750fedcc9e81b4d460d853e5ec3d0171f708011deac6",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-black/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 33077,
+      "sha256": "53348278452cdab0b156525ffc77c4f4a8b7837dc0e6a47421144ab1be609193",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-black/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 30337,
+      "sha256": "eb67f8db50c0bd8e3ddbdfb66b64c974bbeb161b2fdd9b339c550137aaa92991",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-transparent/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 1461,
+      "sha256": "f706eb8c63e173518b4ba5dd841689672d5cecec80a87c76edbf8a8254f79601",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-transparent/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 4982,
+      "sha256": "896fed33bf65a0be18f0395a7466b05292e2c9c5d40014f2e126bc8404bb443f",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-transparent/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 4702,
+      "sha256": "5771ee2791a0be0ef4a8e79a5137bd33354f865727ec4974b553e58c3d039ee5",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-transparent/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 5842,
+      "sha256": "3a1234c3aa341724c7c78b769aff5fb3e4ff083b017d9d787464ed11c56d7703",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-transparent/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 3765,
+      "sha256": "36aef94befd6ce3987489a592c04f07318e5a11f4fc2212fea7398826b923b91",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-transparent/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 2569,
+      "sha256": "53064c3df79570e5eb7831b0b5416e3ef7eaf1fb6fd6f030e2b2450bff75d573",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-white/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 33078,
+      "sha256": "4a4e22dda8cf9b7abff523eb1e9164431318238d17386f5cc80c0e8155408cd7",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-white/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 37167,
+      "sha256": "878fe1ba8be14aa365ddc42b7cf597c6a6e92850a49e5925a687d9824cae4101",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-white/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 38558,
+      "sha256": "3ecc29ed82c3bf644048cb863a689812b8ec178f8425fd8afa6e65a89e72fccc",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-white/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 44505,
+      "sha256": "8a152dc50bf1e5fbf6c80db322fc79e978d81c65206d6661dbb6bf1f158a0ad9",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-white/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 34860,
+      "sha256": "a05bb63e518c85eeb96ef77676ceba4df0231ed75fd3149b8ab98f3bf76b7dfc",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/220x132/channel-white/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 32369,
+      "sha256": "49b4db021d6a73d0006f5a37e7e990f036ca20f1d42a9e908f0a0f3580e58db8",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-black/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 14762,
+      "sha256": "141b3be0ec8151f2ea4caa8c0a449792966864ec810ee6f3b8939a287fdb2bcb",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-black/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 20726,
+      "sha256": "6f6fc6f27616a2c1b47a95bb7e9eb6a11dfc1e64a93acad95d20fd3e74bf4f1b",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-black/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 26135,
+      "sha256": "a8b57494d5488b8fe491be3c3cd73f4e5d8de7dadb7e111d2f325199c205b6ba",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-black/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 20602,
+      "sha256": "ad04c5b71a9ef1ac645dfb237a2829a1a0dcc0c7e945d8b0a9cd7741cbb9994d",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-black/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 16623,
+      "sha256": "71e35687aebb70a9883df1696b62d41a1c96aa7b64ee49f2455b49673ac02738",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-black/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 14762,
+      "sha256": "141b3be0ec8151f2ea4caa8c0a449792966864ec810ee6f3b8939a287fdb2bcb",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-transparent/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 6229,
+      "sha256": "5d2c80ee4983371ddc19b057b9b1e9dc00ecc0ccea265726a11c116f2c3ec587",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-transparent/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 28908,
+      "sha256": "912eb626f236598450218a32402af7bd03b8abdee20a5d85cd0488858c73feac",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-transparent/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 56681,
+      "sha256": "465e3d64e77dde08379c5affe28b144938d1eb7a6e6ed129f1dee55e4f03b69f",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-transparent/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 20388,
+      "sha256": "55485ab6f33b9ce416fec01ad7c999f591cc31c16d0e8b8ea9a5edeb1ca9cb28",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-transparent/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 11836,
+      "sha256": "2b35b231f60001f4957283d33126a5688738e93ae5bf297bec958ade7fdd47a5",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-transparent/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 6229,
+      "sha256": "5d2c80ee4983371ddc19b057b9b1e9dc00ecc0ccea265726a11c116f2c3ec587",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-white/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 16383,
+      "sha256": "2690ab6ec0ecb89f3599bed813f3e30c6541939fdd9dc383c6d6eeff182c8e7b",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-white/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 20819,
+      "sha256": "bef4be346a73e5adef70399202da6f84dc4d8afb68e75b1f25eb9706e64f307a",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-white/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 27252,
+      "sha256": "8bf8bae91ad173bb09ae882424a738c6347bd1bf3f8f467ff1db2e9df406bc00",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-white/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 21394,
+      "sha256": "b10571572735a5c2afd03ad74d1605ebba1f19bd4998d75ac4565c6f114f677a",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-white/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 19713,
+      "sha256": "7288665b50c5b8924f1620b825a1cade2e55ad125b8787d1c47563f6ba393f04",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/400x240/channel-white/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 16383,
+      "sha256": "2690ab6ec0ecb89f3599bed813f3e30c6541939fdd9dc383c6d6eeff182c8e7b",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-black/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 1167,
+      "sha256": "4dcfbefe93979554676e448ea92b7ad9cbe5adbeb8d4d762746c749c47fd2b56",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-black/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 1689,
+      "sha256": "7fe6c4f6188cdcb5af4866f6c3542dbc9bfe7910a3dd11582c4fd6c6fa535cc1",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-black/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 1668,
+      "sha256": "4bfaede133ee9a87069c845197a2f745bc15226bf9261e20dbdbc2da9293ad0d",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-black/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 1593,
+      "sha256": "1e685e68810d5a5f8cd922dc7d9e11216a5d19101e68fd9ccc7f7876aabc1f13",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-black/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 1257,
+      "sha256": "2c5ca2c6ac1f19c7bb42ef3e3c8eea6f9730913604a5732bffb4f5ad1acd95fe",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-black/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 1167,
+      "sha256": "4dcfbefe93979554676e448ea92b7ad9cbe5adbeb8d4d762746c749c47fd2b56",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-transparent/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 827,
+      "sha256": "a0f82a63482d19579fad2b3bff8dbfa6463193092ec2f21ecd53880d1a916cb6",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-transparent/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 1191,
+      "sha256": "60b1ba9a1a69a76b19f9fd32bd5c12f191ec21420e8fc1a6a885dce9ba186409",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-transparent/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 1441,
+      "sha256": "a24f54c0fb4c815c9ce0420d61fc37dda703a731cca4a2dc05913da5eca0f8fe",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-transparent/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 1092,
+      "sha256": "580aaca6a0a9b7d500de61c47cfe3eb83b6824c2e20cf9945fbda3d057bae4ec",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-transparent/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 992,
+      "sha256": "5157e2f62e3e4bfa8bd2f13b717dfb215718eb8f458b2f98c72b45cd60d32506",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-transparent/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 827,
+      "sha256": "a0f82a63482d19579fad2b3bff8dbfa6463193092ec2f21ecd53880d1a916cb6",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-white/1_0_16_1_A_16E_1860000_0_0_0.png",
+      "bytes": 1338,
+      "sha256": "b61d89851c304ee04762684f9439599d1780fcc712dd46dcdb142fd4f775d0ff",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-white/1_0_16_2_A_16E_1860000_0_0_0.png",
+      "bytes": 1448,
+      "sha256": "8fa7beb31fd9c7d6f38b2435129125feb9548eeeb3518fc02adb1b58da5a88c8",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-white/1_0_16_3_A_16E_1860000_0_0_0.png",
+      "bytes": 1606,
+      "sha256": "b6e1404347670b338254df53768db3141feaf72d42db35cdbbd194a88e1fc736",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-white/1_0_16_4_A_16E_1860000_0_0_0.png",
+      "bytes": 1719,
+      "sha256": "73f2300631c35df64a4af02c6bb8cb353e0f4fac339009ff1e81a7c4c9c1c0eb",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-white/1_0_16_6_A_16E_1860000_0_0_0.png",
+      "bytes": 1385,
+      "sha256": "1123073b1d47bc17232cab94ae08da03aef0281db71cba3de34a22746f01b586",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/antena-approved-reuse-batch13/50x30/channel-white/1_0_19_7_A_16E_1860000_0_0_0.png",
+      "bytes": 1338,
+      "sha256": "b61d89851c304ee04762684f9439599d1780fcc712dd46dcdb142fd4f775d0ff",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch13-satindex-12655.html",
+      "bytes": 27155,
+      "sha256": "df2e06cb23e3c26c5df0fad4af00b0105a6fdcaff7425ba0a45e71c3f0df80c8",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch13-satindex-international.html",
+      "bytes": 21926,
+      "sha256": "5d977015150fc181cf9ca30b618df9685d0bcd543996bd14e2cf60ef2fb24d49",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch13-satindex-stars.html",
+      "bytes": 21042,
+      "sha256": "059b594c27a872065161f9cf07ef94be25ccfcf0b853615d8c87d2692bc22780",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch13-satindex-update.html",
+      "bytes": 66422,
+      "sha256": "ef24a15e77a406bbdec40e4751140efb493f06f2845d8201ec71d7dd2d5bd0f6",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "bytes": 187246,
+      "sha256": "2cd98168f26e6dbf0a3304f70cb1faa28f32d40ac192bd02916177a4d1320a03",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-13-install-verification.json",
+      "bytes": 1746,
+      "sha256": "3b3f929db22b5736afdaec9d8cecda570518dbff3def239b45b3db0776deead9",
+      "match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-13.json",
+      "bytes": 38264,
+      "sha256": "443cd5f5208440777395aeb578216dd8987792776ff3277adb5c9107d82b200a",
+      "match": true
+    }
+  ],
+  "zips": [
+    {
+      "filename": "warder-390e-220x132-transparent-f3a172ce45464b8b.zip",
+      "bytes": 17031034,
+      "sha256": "f3a172ce45464b8b695c5593f022bd49c9df7f92d4a982734a9e0a026c693f72",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-220x132-black-86a422c041beaa71.zip",
+      "bytes": 39801960,
+      "sha256": "86a422c041beaa717c07d93362107a2a1a64a74091cebcb85d99076f2765ac7c",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-220x132-white-442823f76435a5ad.zip",
+      "bytes": 34230451,
+      "sha256": "442823f76435a5ad474571d415a339f0ce366c5dff69abca0619b72ccc46f9b0",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-50x30-transparent-924d158c4b60e32f.zip",
+      "bytes": 2770202,
+      "sha256": "924d158c4b60e32f2eadbcefb79f5509605f69345e6cfba1f8bb7b630bdace33",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-50x30-white-bc1045f81f59cfce.zip",
+      "bytes": 3439348,
+      "sha256": "bc1045f81f59cfce74ab01358ce42ff3e4d9c1d1fa74f988d7dc6edb8301e5c5",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-50x30-black-be39207844c347cf.zip",
+      "bytes": 3487261,
+      "sha256": "be39207844c347cf54afb9864f20265ed211892c9359844cd7ac2a8f52f885b9",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-400x240-transparent-710f7bda9c9ff896.zip",
+      "bytes": 37357312,
+      "sha256": "710f7bda9c9ff896986a318eb7c12adfd797940faaf8e664388bebe8b2c0f1ca",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-400x240-white-201d1c359e77b5b2.zip",
+      "bytes": 42081024,
+      "sha256": "201d1c359e77b5b2de8160c55e3b0092bb53ea2d648934c0ec12f436487bca6c",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    },
+    {
+      "filename": "warder-390e-400x240-black-110da767a3eb21ca.zip",
+      "bytes": 40882125,
+      "sha256": "110da767a3eb21ca474ca933c922d4e2074bdc977ee6df3a10f41fb6f8064c53",
+      "crc": "PASS",
+      "six_exact_donor_png": "PASS"
+    }
+  ]
+}

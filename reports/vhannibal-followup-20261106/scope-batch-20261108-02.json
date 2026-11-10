@@ -1,0 +1,267 @@
+{
+  "status": "QUARANTINED_IDENTITY_CONFLICT_NOT_COMPLETED",
+  "date": "2026-11-08",
+  "base_production_sha": "63489718287327be969fa36e24dd384736776720",
+  "base_candidate_sha": "d401bbb3ed78bc6b043c29568b26580402d2ac86",
+  "new_references": 1,
+  "added_png_entries": 9,
+  "changed_zip_archives": 9,
+  "untouched_png_entries_byte_identical": 12408,
+  "protected_canal_packages_unchanged": 18,
+  "radio_changes": 0,
+  "new_or_rendered_artworks": 0,
+  "manifest_validator": "PASS",
+  "references": [
+    {
+      "reference": "1_0_16_384_20D_73_2080000_0_0_0",
+      "name": "Zor TV (Service-900)",
+      "selector": "520E",
+      "donor": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "source_package": "warder-520e-50x30-transparent-de654008e4705a75.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "f473fbfb0a0d019ebb51009b3e544763d3cd5298c4b26b5c40dfc0780e1a49d4",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "source_package": "warder-520e-50x30-white-05c5042379bdd087.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "f0ed9b836033f84669448f49d292458101ddbe9f552a5244c765e3fd95d1ccc0",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "source_package": "warder-520e-50x30-black-c0624ddac6603fe7.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "d2a1e8aee23831d6496f751b08c8e34a8afccfff298a33c86741977d6c1ae955",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "source_package": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "4291406023c52f0ee5c5540cb7445c2429f11350780f9d307cf0919312e572b2",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "source_package": "warder-520e-220x132-white-bbb9718559b700c0.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "47154ca7d19581195944a2edc389a21b54b93908e0175b46649b7ae08846aea1",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "source_package": "warder-520e-220x132-black-69e947187eb7dabc.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "3b106423aa01b7c17f7d6f5911bb8de38d234e7a624ef8ba6a825b19b14722a8",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "source_package": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "68efcb09446c5ddbb67e4651c10796ebcdc83444fa4c1557ccf333c4d367ba08",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "source_package": "warder-520e-400x240-white-6b601621d5210256.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "12a8300ceda62e3d078aa55db1cc4cec5e8929e23a40076b5203c3fcd75e4e4e",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "source_package": "warder-520e-400x240-black-2cb86f56960a72c6.zip",
+          "source_reference": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+          "sha256": "390642e6534b233cc54e6725383c8ab04e2b3a1b12ab40071a6b32ed9de9b97c",
+          "operation": "COPY_APPROVED_PNG_BYTES"
+        }
+      ],
+      "rendered_pixels": 0
+    }
+  ],
+  "packages": [
+    {
+      "selector": "520E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "before_filename": "warder-520e-220x132-black-69e947187eb7dabc.zip",
+      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip",
+      "before_sha256": "69e947187eb7dabcac71c9c6e2516e5e12b4ccc5792ea991865fcf5db231b0a6",
+      "sha256": "b162136f8d2a32f4eb9b710a58254d17cdea3d565092a0cc59b52331f556725c",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "3b106423aa01b7c17f7d6f5911bb8de38d234e7a624ef8ba6a825b19b14722a8"
+      },
+      "preserved_members": 1458,
+      "old_prefix_preserved": 34693597,
+      "new_tail_bytes": 154028,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "before_filename": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip",
+      "filename": "warder-520e-220x132-transparent-260be34368e56295.zip",
+      "before_sha256": "4f3aecbaf7596e5bb1ba95afe32f14f1a6d0d6b5cc74d5005ce07e4bc9eb4643",
+      "sha256": "260be34368e56295ff259fa8ff70d510931e3af48c2411a6a832aa692b4f82ce",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "4291406023c52f0ee5c5540cb7445c2429f11350780f9d307cf0919312e572b2"
+      },
+      "preserved_members": 1458,
+      "old_prefix_preserved": 16278976,
+      "new_tail_bytes": 136796,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "before_filename": "warder-520e-220x132-white-bbb9718559b700c0.zip",
+      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip",
+      "before_sha256": "bbb9718559b700c0ae20ed0ed14183dbb5aa6f8ebe591192e55c08796120b29e",
+      "sha256": "0430ae5f7919da3c24530e3b160430aed76b7ad861be34049ae7e8a7682980e7",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "47154ca7d19581195944a2edc389a21b54b93908e0175b46649b7ae08846aea1"
+      },
+      "preserved_members": 1458,
+      "old_prefix_preserved": 31451338,
+      "new_tail_bytes": 154103,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "before_filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip",
+      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip",
+      "before_sha256": "2cb86f56960a72c6f483c995c069231f21f568e5c45a40899c06d3f0909bb56e",
+      "sha256": "cb4459a5917cf8fd1e186569b53319d1eaf0746ada0f86c3dbe948ed11106e2b",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "390642e6534b233cc54e6725383c8ab04e2b3a1b12ab40071a6b32ed9de9b97c"
+      },
+      "preserved_members": 1339,
+      "old_prefix_preserved": 46784110,
+      "new_tail_bytes": 210330,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "before_filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip",
+      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip",
+      "before_sha256": "c58c5c4c9ec57cb629c61b75e823ef3c786f8d80f49244f19439ee199a9248c2",
+      "sha256": "bdf7fa6057316d40b0ced31d3a09c5144d7aa00f8daf8afb73e8068266be38f1",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "68efcb09446c5ddbb67e4651c10796ebcdc83444fa4c1557ccf333c4d367ba08"
+      },
+      "preserved_members": 1339,
+      "old_prefix_preserved": 40458034,
+      "new_tail_bytes": 170028,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "before_filename": "warder-520e-400x240-white-6b601621d5210256.zip",
+      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip",
+      "before_sha256": "6b601621d52102569b1c6cb4c9c616e3ee23d433a3dcd7355555cd86d821df3b",
+      "sha256": "6ad6782edc78d596c9de8abe0e44a0d5282a8732faefe4fd8e7af6dc11ea3a74",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "12a8300ceda62e3d078aa55db1cc4cec5e8929e23a40076b5203c3fcd75e4e4e"
+      },
+      "preserved_members": 1339,
+      "old_prefix_preserved": 48469985,
+      "new_tail_bytes": 209618,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "before_filename": "warder-520e-50x30-black-c0624ddac6603fe7.zip",
+      "filename": "warder-520e-50x30-black-a4293c9b7feae148.zip",
+      "before_sha256": "c0624ddac6603fe7dc81be5b485293ed455a6c9103672f5003185f25c0e190f2",
+      "sha256": "a4293c9b7feae14808a662ddf8104a1617219d5c39653ca0068628a0400be4fa",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "d2a1e8aee23831d6496f751b08c8e34a8afccfff298a33c86741977d6c1ae955"
+      },
+      "preserved_members": 1339,
+      "old_prefix_preserved": 2849113,
+      "new_tail_bytes": 110108,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "before_filename": "warder-520e-50x30-transparent-de654008e4705a75.zip",
+      "filename": "warder-520e-50x30-transparent-ca157bc5bef8a901.zip",
+      "before_sha256": "de654008e4705a75cac23d6643d3bca4819cf02d80f5d724e0ea843b1f3021d5",
+      "sha256": "ca157bc5bef8a9016197da8dc5feaaa42ac02e15602ec47b8a5b8aa3be90c3ee",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "f473fbfb0a0d019ebb51009b3e544763d3cd5298c4b26b5c40dfc0780e1a49d4"
+      },
+      "preserved_members": 1339,
+      "old_prefix_preserved": 2184496,
+      "new_tail_bytes": 109064,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "520E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "before_filename": "warder-520e-50x30-white-05c5042379bdd087.zip",
+      "filename": "warder-520e-50x30-white-d665a4c8857ef8d2.zip",
+      "before_sha256": "05c5042379bdd0872530c5082657197a84c5076e2d9783a42ca69cda596232d2",
+      "sha256": "d665a4c8857ef8d2dbef2f345bafcbf1e357fb9b553fa4e95354d7bb09f052d4",
+      "updated_members": {
+        "1_0_16_384_20D_73_2080000_0_0_0.png": "f0ed9b836033f84669448f49d292458101ddbe9f552a5244c765e3fd95d1ccc0"
+      },
+      "preserved_members": 1339,
+      "old_prefix_preserved": 2783961,
+      "new_tail_bytes": 109467,
+      "receiver_install": "PASS"
+    }
+  ],
+  "identity_evidence": {
+    "reference": "1_0_16_384_20D_73_2080000_0_0_0",
+    "recorded_name": "Service-900",
+    "verified_programme": "Zor TV",
+    "sid": 900,
+    "tsid": 525,
+    "onid": 115,
+    "position": "52E",
+    "frequency": "10887 H",
+    "primary_scan": "https://ftp.morpheus883.altervista.org/srv.php/?chart=52",
+    "corroboration": "https://en.kingofsat.net/detail-zortv",
+    "donor": "1_0_16_CD8F_20E_73_2080000_0_0_0",
+    "donor_identity_source": "Vhannibal Motor Dtt Italia 08 nov 2026/lamedb, cd8f:02080000:020e:0073:22:0 ZOR HD, provider AREF",
+    "artwork": "Existing published ZOR TV gold artwork; nine PNG byte copies, no render. Same Uzbek TV programme; no generic numbered-service logo used.",
+    "provider_coverage": "AREF service assigned to existing 520E selection. No dedicated AREF selector in live manifest."
+  },
+  "remaining_open_after": 115,
+  "pr_total_repaired": 29,
+  "pr_total_png": 258,
+  "pr_total_unique_changed_zips": 99,
+  "reason": "Later independent review found LyngSat exact SID900/TSID525/ONID115 identifies NOW since2026-10-16, PID2850/2950; Morpheus/KingOfSat still Zor TV PID208/308. Do not choose by crawl time. Restore active manifest/checksums and review counts to prior checkpoint. Uploaded immutable ZIP parts remain historical evidence only, not active packages.",
+  "conflicting_source": "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+  "payload_commit": "0ca6a3c1daa72f7a3edb278366f364eef5b597a4",
+  "new_completed_references": 0
+}

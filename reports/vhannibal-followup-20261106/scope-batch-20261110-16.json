@@ -1,0 +1,222 @@
+{
+  "batch": 16,
+  "status": "REMOTE_AND_INSTALLATION_PASS",
+  "base_checkpoint": "74f0cf8aa24da796ef027c09a45ecf6eefae6e75",
+  "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
+  "donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+  "new_tv_references": 1,
+  "new_png": 9,
+  "modified_zips": 9,
+  "technical_closed": 0,
+  "remaining_open": 89,
+  "original_open": 83,
+  "delta_open": 6,
+  "candidate_tv": 48,
+  "candidate_png": 429,
+  "candidate_unique_zips": 99,
+  "preserved_members": 441,
+  "protected_canal_unchanged": 18,
+  "packages": [
+    {
+      "filename": "warder-150w-220x132-transparent-6d130f6318f3f369.zip",
+      "sha256": "6d130f6318f3f3699a9181cc0d8ba770d3d5e79a4ecbfd01c15749ad32b87d64",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "f3cbe52e577670ec6cba5eab64929a3035e772b31423767ce011487942916fda",
+      "dimensions": [
+        220,
+        132
+      ]
+    },
+    {
+      "filename": "warder-150w-220x132-black-84e432102d2f4405.zip",
+      "sha256": "84e432102d2f44052019f0e5f1f9c9653e84ada2a9ba9cdeeb27ee1118aab2d4",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "aca1d41e3c7da853ca8d24435e6673d5cad7844ec95a4a078bcb4c05bd039b14",
+      "dimensions": [
+        220,
+        132
+      ]
+    },
+    {
+      "filename": "warder-150w-220x132-white-ef40e03f24dfedda.zip",
+      "sha256": "ef40e03f24dfedda749e7b3acba82028a7da2459e812eda9a3533004e84bf1ec",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "8c9fa7e9d54fdb66d420f7be5325fd20197f7d71293f91467a78fd9bcff95378",
+      "dimensions": [
+        220,
+        132
+      ]
+    },
+    {
+      "filename": "warder-150w-50x30-transparent-b42df3fc39c812ba.zip",
+      "sha256": "b42df3fc39c812bac2f83e532dda7774333814b159d39dd47ac929c0d44535a0",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "c817102ba4df0125e9ce8cab15f4cf5801914d2cab2ffe4d7bed38554d93f87c",
+      "dimensions": [
+        50,
+        30
+      ]
+    },
+    {
+      "filename": "warder-150w-50x30-white-7b2ba1211274a0bc.zip",
+      "sha256": "7b2ba1211274a0bc7bc4540a842e79ec7e6d9b627ca391881eebf4c9fe5bfbb9",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "69bacf8f46a61347aeea2249f627c39e27c33e41508ac74c0fef145fe6478a8c",
+      "dimensions": [
+        50,
+        30
+      ]
+    },
+    {
+      "filename": "warder-150w-50x30-black-b1ebf521f4ae6bea.zip",
+      "sha256": "b1ebf521f4ae6bea789f1c3f20f3de70457baaa0c21c86cb3f38bb44d175decd",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "c9870bcc9030f672c8e31bef7e5ed4c071e30607b476745fb0845005de0b054a",
+      "dimensions": [
+        50,
+        30
+      ]
+    },
+    {
+      "filename": "warder-150w-400x240-transparent-26b21d3fc1919a66.zip",
+      "sha256": "26b21d3fc1919a66ebe3b8a1499280b5b4c7652db227cc58041988c2b363dfc8",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "cdbc27837a215ed173a3277414a57b7546aa9239c2e50c9f0a3fcb6c222e4995",
+      "dimensions": [
+        400,
+        240
+      ]
+    },
+    {
+      "filename": "warder-150w-400x240-white-c521764a69bf231e.zip",
+      "sha256": "c521764a69bf231e6f3e2ae27f305dc6438967f844804351bfd6d545349fce6c",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "7e73b402df3c00f273f72cf4d5c4803ad0f763f521c5d2617a1816ab77b5062f",
+      "dimensions": [
+        400,
+        240
+      ]
+    },
+    {
+      "filename": "warder-150w-400x240-black-64619c4c7bf0991c.zip",
+      "sha256": "64619c4c7bf0991c45513af97b84339e53b7d0dff8d82b6fd8673bbf474d0c5d",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part03"
+      ],
+      "preserved_members": 49,
+      "prefix_byte_identical": true,
+      "approved_donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+      "approved_png_sha256": "810228b89278ae0dc53f4ea7f3be5726ec9ad41cc334caa52574ed53adea6677",
+      "dimensions": [
+        400,
+        240
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "url": "https://en.kingofsat.net/find2.php?aff=zap&filtre=no&lim=190&num_crypt=10&ordre=nom_pays&standard=All",
+      "file": "reports/vhannibal-followup-20261106/batch16-evidence/temp1-kingofsat.html",
+      "bytes": 65733,
+      "sha256": "99daf3d6f50c4d6ad40b66a824ceffe4f34bbf7fe2eaa35ae42b5bf04ee18706"
+    },
+    {
+      "url": "https://morpheus883.altervista.org/srv.php/?chart=-15",
+      "file": "reports/vhannibal-followup-20261106/batch16-evidence/temp1-morpheus.html",
+      "bytes": 144846,
+      "sha256": "014db8595b3831b86c2deef93dfee17038565ff010df48489b96c04c715251ef"
+    },
+    {
+      "url": "https://www.satindex.de/frequenz-4/12148/",
+      "file": "reports/vhannibal-followup-20261106/batch16-evidence/satindex-12148.html",
+      "bytes": 31085,
+      "sha256": "18a44fe2560356ce5aaf328349d0cdb6ff616674b713961881be0076e4ffbe1b"
+    },
+    {
+      "url": "https://www.satindex.de/frequenz-19/10887/",
+      "file": "reports/vhannibal-followup-20261106/batch16-evidence/satindex-10887.html",
+      "bytes": 85737,
+      "sha256": "9f4c4d23fd26486ed8537da65cda1aefd281e1cd2daf43cf7b6aa103721255c9"
+    },
+    {
+      "url": "https://www.satindex.de/tp/3850/",
+      "file": "reports/vhannibal-followup-20261106/batch16-evidence/satindex-pids-12148.html",
+      "bytes": 32376,
+      "sha256": "08c29cc735bf392426662ed0fddb9fa2cf2fac1e12d7583e66aea0a4996e9e7b"
+    }
+  ],
+  "decision": "New directly retrieved programme binding identifies TEMP1 SID105 at15W12666.50H/30000 TSID10 as Sky News International UK, updated1Oct2026. Exact Vhannibal target supplies ONID1; independent Morpheus service chart retains TEMP1 SID105 on network1/TSID10. Australia Sky News is separateSID113. Existing approved Sky News282E donor (plain Sky News edition without HD badge) copied exactly in9variants. NID is not claimed as a directSDT ONID measurement.",
+  "artwork": "Existing approved red/white Sky News artwork reused without rendering; 192E and1.9E donor sets rejected for mixed HD/legacy400x240 variants. Official distribution marketing assets have newer branding; no unapproved redesign or overwrite of existing approved picons.",
+  "other_candidates": "23.5E tests and52E numbered services remain open: inactive headings conflict with nonzero bitrate/PID tables; names or generic testcard icons without explicit dated content confirmation do not justify data/ceased classifications. HS1 screenshot reports refer to a different TSID. TestHD8W has video/audio, not proven data. No false technical closures.",
+  "production_changed": false,
+  "radio_changed": false,
+  "payload_commit": "bd076557a2e74716f491646fc8a9f6f996851fa3",
+  "remote_audit": "reports/vhannibal-followup-20261106/scope-batch-20261110-16-remote-verification.json"
+}

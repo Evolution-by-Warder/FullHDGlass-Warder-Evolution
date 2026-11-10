@@ -1,0 +1,64 @@
+{
+  "source_url": "https://hu.kingofsat.eu/tp4716",
+  "retrieved_at": "2026-11-10T06:53:21.063164+00:00",
+  "source_sha256": "8d3d2d71faee9cf19d3e88155fd3062c47d4f77ee8ba9368476ee19854d9f9e7",
+  "satellite": "Eutelsat 7 West A",
+  "position": "7.0W",
+  "frequency_MHz": 12398.6,
+  "polarization": "V",
+  "NID_as_labelled_by_source": 1918,
+  "TSID": 53600,
+  "rows": [
+    {
+      "name": "Eutelsat 1",
+      "sid": 7210,
+      "reference": "1_0_1_1C2A_D160_77E_DCA0000_0_0_0",
+      "explicit_classification": "Testcard",
+      "classification_evidence": "HTML update link title=\"Testcard\"",
+      "service_update": "2026-11-07",
+      "row_html": "<tr data-channel-id=\"\">\n              <td class=\"vrd \"><img src=\"/mire.jpg\" border=0></td>\n        <td class=\"ch\">\n        Eutelsat 1      </td>\n      <td class=\"w3-hide-small pays\"></td>\n      <td class=\"w3-hide-small genre\"></td>\n      <td class=\"w3-hide-small bq\">EUTELSAT      </td>\n      <td class=\"\"><span class=\"encryption-label\">Kódolatlan</span></td>\n      <td class=\"s\">7210</td>\n      <td class=\"w3-hide-small vpid\"><span class=\"mpeg4\">7212</span></td>\n      <td class=\"audio \">7213 aac</td>\n      <td class=\"w3-hide-small pid\">7211&nbsp;</td>\n      <td class=\"w3-hide-small pid\">7212&nbsp;</td>\n      <td class=\"w3-hide-small pid\">&nbsp;</td>\n      <td class=\"majupd\"><span class=\"update-label\"><a  title=\"Testcard\"\">2026-11-07</a></span></td></tr>"
+    },
+    {
+      "name": "Eutelsat 2",
+      "sid": 7220,
+      "reference": "1_0_1_1C34_D160_77E_DCA0000_0_0_0",
+      "explicit_classification": "Testcard",
+      "classification_evidence": "HTML update link title=\"Testcard\"",
+      "service_update": "2026-11-07",
+      "row_html": "<tr data-channel-id=\"\">\n              <td class=\"vrd \"><img src=\"/mire.jpg\" border=0></td>\n        <td class=\"ch\">\n        Eutelsat 2      </td>\n      <td class=\"w3-hide-small pays\"></td>\n      <td class=\"w3-hide-small genre\"></td>\n      <td class=\"w3-hide-small bq\">EUTELSAT      </td>\n      <td class=\"\"><span class=\"encryption-label\">Kódolatlan</span></td>\n      <td class=\"s\">7220</td>\n      <td class=\"w3-hide-small vpid\"><span class=\"mpeg4\">7222</span></td>\n      <td class=\"audio \">7223 aac</td>\n      <td class=\"w3-hide-small pid\">7221&nbsp;</td>\n      <td class=\"w3-hide-small pid\">7222&nbsp;</td>\n      <td class=\"w3-hide-small pid\">&nbsp;</td>\n      <td class=\"majupd\"><span class=\"update-label\"><a  title=\"Testcard\"\">2026-11-07</a></span></td></tr>"
+    },
+    {
+      "name": "Eutelsat 3",
+      "sid": 7230,
+      "reference": "1_0_1_1C3E_D160_77E_DCA0000_0_0_0",
+      "explicit_classification": "Testcard",
+      "classification_evidence": "HTML update link title=\"Testcard\"",
+      "service_update": "2026-11-07",
+      "row_html": "<tr data-channel-id=\"\">\n              <td class=\"vrd \"><img src=\"/mire.jpg\" border=0></td>\n        <td class=\"ch\">\n        Eutelsat 3      </td>\n      <td class=\"w3-hide-small pays\"></td>\n      <td class=\"w3-hide-small genre\"></td>\n      <td class=\"w3-hide-small bq\">EUTELSAT      </td>\n      <td class=\"\"><span class=\"encryption-label\">Kódolatlan</span></td>\n      <td class=\"s\">7230</td>\n      <td class=\"w3-hide-small vpid\"><span class=\"mpeg4\">7232</span></td>\n      <td class=\"audio \">7333 aac</td>\n      <td class=\"w3-hide-small pid\">7231&nbsp;</td>\n      <td class=\"w3-hide-small pid\">7232&nbsp;</td>\n      <td class=\"w3-hide-small pid\">&nbsp;</td>\n      <td class=\"majupd\"><span class=\"update-label\"><a  title=\"Testcard\"\">2026-11-07</a></span></td></tr>"
+    },
+    {
+      "name": "Eutelsat 4",
+      "sid": 7240,
+      "reference": "1_0_1_1C48_D160_77E_DCA0000_0_0_0",
+      "explicit_classification": "Testcard",
+      "classification_evidence": "HTML update link title=\"Testcard\"",
+      "service_update": "2026-11-07",
+      "row_html": "<tr data-channel-id=\"\">\n              <td class=\"vrd \"><img src=\"/mire.jpg\" border=0></td>\n        <td class=\"ch\">\n        Eutelsat 4      </td>\n      <td class=\"w3-hide-small pays\"></td>\n      <td class=\"w3-hide-small genre\"></td>\n      <td class=\"w3-hide-small bq\">EUTELSAT      </td>\n      <td class=\"\"><span class=\"encryption-label\">Kódolatlan</span></td>\n      <td class=\"s\">7240</td>\n      <td class=\"w3-hide-small vpid\"><span class=\"mpeg4\">7242</span></td>\n      <td class=\"audio \">7243 aac</td>\n      <td class=\"w3-hide-small pid\">7241&nbsp;</td>\n      <td class=\"w3-hide-small pid\">7242&nbsp;</td>\n      <td class=\"w3-hide-small pid\">&nbsp;</td>\n      <td class=\"majupd\"><span class=\"update-label\"><a  title=\"Testcard\"\">2026-11-07</a></span></td></tr>"
+    }
+  ],
+  "assessment": "Explicit nonprogramme testcard classification for four target services. Do not classify as data: video/audio PIDs are present. NID is not independently an ONID proof; use existing exact Vhannibal tuple mapping. Other KingOfSat mirrors can show NID2048/TSID41; preserve this snapshot and do not substitute that tuple.",
+  "batch": 11,
+  "previous_checkpoint": "8b5dd143cc2cd0775bd3066506a937805669ec72",
+  "new_tv_references": 0,
+  "new_png": 0,
+  "modified_zips": 0,
+  "technical_closed": 4,
+  "remaining_open": 99,
+  "original_open": 85,
+  "delta_open": 14,
+  "candidate_tv": 39,
+  "candidate_png": 348,
+  "candidate_unique_zips": 99,
+  "decision": "Close four exact delta references as nonprogramme testcards. Preserve historical files; not a claim of data service or cessation.",
+  "source_snapshot": "reports/vhannibal-followup-20261106/batch11-eutelsat-tp4716.html"
+}

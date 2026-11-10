@@ -1,0 +1,73 @@
+{
+  "status": "NEW_OFFICIAL_SOURCES_FOUND_NOT_APPROVED_NO_VARIANTS",
+  "retrieved_utc": "2026-11-09",
+  "station": "AL-KAFEL TV",
+  "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+  "source_page": "https://alkafil.live",
+  "source_page_sha256": "e08fea6cf7d43cf82231d2a2ab5d7199a0c51a74ed55f0dbb0a94784ccdb1275",
+  "official_identity_evidence": "Broadcaster page explicitly calls itself AL-KAFEL TV religious Arabic satellite channel and states Eutelsat7WestA Nilesat7W12399V27500; links same-named LyngSat channel listing and broadcaster socials.",
+  "source_assets": [
+    {
+      "file": "emblem.jpg",
+      "url": "https://alkafil.live/assets/emblem.jpg",
+      "sha256": "76c41f325537d9c66e424dd514cbaaa79f41cecb21f7ff513e934a8755b93641",
+      "bytes": 208905,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "wordmark.png",
+      "url": "https://alkafil.live/assets/wordmark.png",
+      "sha256": "bedf607caa99a7ae12946900954dbf6f1262e527ff1e16ed2d493057070819aa",
+      "bytes": 778708,
+      "dimensions": [
+        1400,
+        788
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "file": "favicon.png",
+      "url": "https://alkafil.live/assets/favicon.png",
+      "sha256": "d392b69d73a017c811492dec74880807cdaf65f05ad2ce3d15f482c61683dadb",
+      "bytes": 94601,
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "artwork_blocker": "Official channel emblem.jpg is opaque1024x1536 decorative background; faviconRGB256x256 is crop. Available transparent wordmark explicitly labelled AL-KAFEL Studio logo and page states creative branch: not the channel logo. Do not substitute Studio artwork or fabricate alpha/redraw.",
+  "transport_evidence": [
+    {
+      "url": "https://sk.kingofsat.tv/detail-alkafel",
+      "observed": "Fresh7Nov channel +8Novtransport:12398.60V SID7700 VPID7702 APID7703 PMT7701, but ONID2048 TSID41 instead oftarget1918/53600."
+    },
+    {
+      "url": "https://en.kingofsat.net/tv.php?aff=zap&lim=230&ordre=nom_ch&pos=7W&standard=All",
+      "observed": "AlternativeKoS cached same12398.60V row showsONID1918TSID53600 forELJUMHURIA SID7820. Conflicting transportmetadata cannot silentlyoverwrite target."
+    }
+  ],
+  "next_step": "Obtain native transparent channel emblem or owner-approved handling of official opaque emblem; verify actual current transportONID/TSID before integration.",
+  "el_jumhuria": {
+    "reference": "1_0_16_1E8C_D160_77E_DCA0000_0_0_0",
+    "blocker": "No uniquely bound broadcaster official artwork. ELJUMHURIA at11179H/12399V differs from similarlynamedYemenAljoumhouriya12054V andLebaneseAljoumhouriaTV; do not borrowtheirlogos.",
+    "source": "https://www.lyngsat.com/tvchannels/--/El-Jumhuria-TV.html"
+  },
+  "counts": {
+    "new_png_variants": 0,
+    "closed_references": 0,
+    "changed_zip": 0
+  },
+  "retained_in_this_checkpoint": [
+    "source-manifest.json",
+    "official-page-excerpts.html",
+    "emblem.jpg"
+  ],
+  "retention_note": "Studio wordmark and favicon inspected locally but not included in this checkpoint; rejected Studio artwork must not be used as channel logo.",
+  "transport_field_caution": "KingOfSat column is NID, not direct raw ONID; TSID41 vs53600 is still a concrete discrepancy. Raw NIT/SDT needed to distinguish NID/ONID."
+}

@@ -1,0 +1,530 @@
+{
+  "status": "PASS",
+  "commit": "19809becb8fd8cde4abed18535994ed471b2318b",
+  "tree": "82031d63f6c9493fa91b5a9587a020093faea4e8",
+  "expected_tree_entries_verified": 1068,
+  "changed_paths": 1068,
+  "protected_canal_tree_paths_changed": 0,
+  "radio_tree_paths_changed": 0,
+  "unrelated_current_main_files_changed": 0,
+  "checks": [
+    {
+      "path": "assets/warder/downloads/picons/channels/manifest.json",
+      "sha256": "96f90f2016566b1fa378be7f8a493b9369c5a9ac3707586509b421dd8526e029",
+      "bytes": 2101673
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+      "sha256": "c8237e7a5d477cb7cbdd671ab00f5e010d47b8c6c6a7aa67e3b7cf9c2a3c2fd4",
+      "bytes": 785087
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-220x132-black-f4e9a35c56ab21df.zip.part20",
+      "sha256": "c0cc015a075608255ff6db4c713c309319ddebc05933f131f0340c6e8719a7f0",
+      "bytes": 385444
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-220x132-transparent-66a0ef78318f9a65.zip.part09",
+      "sha256": "ba3fe13d9a8cc26a5ce979d93183d933b143ee1f10ec467fa9541889fc10094f",
+      "bytes": 308188
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-220x132-white-8f5d03e4d751f580.zip.part18",
+      "sha256": "85393ffcb5a12a91b73b237f2086ffe20fb08ae83147ddffd9833ee7b42e59d2",
+      "bytes": 387949
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-400x240-black-ae6f65374fd859cb.zip.part21",
+      "sha256": "8269544fa67230711f08230b8a9b03af7e6b7a357595655a994eaaf0d07bfbd6",
+      "bytes": 398246
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-400x240-transparent-5be4717dcedea00e.zip.part17",
+      "sha256": "0dd3c7fb3a16292f3a6c9cdddda0dd68f4a422c2baed006d306958e2f6123240",
+      "bytes": 317892
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-400x240-white-ac2df69062f46d85.zip.part23",
+      "sha256": "e272e15e186e9d223796c12f11e1f25acf296bc019ec8fba798e45158c50f271",
+      "bytes": 404482
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-50x30-black-f296f5a33e1a1f18.zip.part03",
+      "sha256": "b5da6fdac481ce5f16e7c497f8cbc3c3955692419704c52447272f78854257b6",
+      "bytes": 299080
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-50x30-transparent-0d012213e4d20fcd.zip.part03",
+      "sha256": "c14e3f5d3f6c22b4f3d1cb2465ce5ffcb23199f852af2ee9f504bb06f5df8913",
+      "bytes": 296308
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-192e-50x30-white-2e03bbe368245819.zip.part03",
+      "sha256": "b9991bf5ebef826ba9194be92eb9688e6ce2e1e9a8b635911471c16ec6048ebe",
+      "bytes": 299460
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-220x132-black-b06d56f9f893f2da.zip.part14",
+      "sha256": "3466751204b83ab1bce7143844d53f467e6dbf050b85fe6350f4cf5ec5d06c88",
+      "bytes": 226845
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-220x132-transparent-65093d8af0b1a590.zip.part08",
+      "sha256": "8104cc0a48fe3d03e42a1c75250a71fc20d82430b7e5c62999f84e859c3747c6",
+      "bytes": 197750
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-220x132-white-bc1471b688fdcda3.zip.part13",
+      "sha256": "3b780cec5b00dd24fad64cdea26c697a3a70a670219a1adb83475d0342df358a",
+      "bytes": 223593
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-400x240-black-3e68191fa94a4da4.zip.part16",
+      "sha256": "7aa9ffc8a05e5af8c411c74c8b5f43e059bded3a696e6214a97e2e885796945e",
+      "bytes": 319836
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-400x240-transparent-437c3c14234bc4c1.zip.part17",
+      "sha256": "49c24586b08b71ca7b5ddc48b34462d3aab2417d11b5c6e8418c84cd92accd47",
+      "bytes": 269235
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-400x240-white-67c40eb9c0677851.zip.part16",
+      "sha256": "15610745b9e390faf0c076b189008ef2dcb9170210ca17b7bfc81f10046b5315",
+      "bytes": 316481
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-50x30-black-20d71b1a20c427ba.zip.part03",
+      "sha256": "ac8e3fcb3cd155909361448082cd2e13b35f1b5e49b6cf16cb404ebc2318dc1c",
+      "bytes": 164860
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-50x30-transparent-a0bcd77ab837e0a8.zip.part03",
+      "sha256": "cec968234f57c23b28bf6e16b8be191fe4f8b8c83fe017b3c5b3f312083f529a",
+      "bytes": 163001
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-260e-50x30-white-ce83da20d95a0891.zip.part03",
+      "sha256": "35110cac900de5ca06c88baf63254603317210fb261c3f01294f3fbe442cffe6",
+      "bytes": 164354
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-220x132-black-1f0b684da0d82545.zip.part12",
+      "sha256": "8648c769ff9b47ea1670e96a6eb7895e53f93504e6e05c8af6b7a60b1e10683a",
+      "bytes": 172794
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-220x132-transparent-18f3eb5fcfe9b344.zip.part06",
+      "sha256": "68e0833b208f0d109c10a09d1f0609c6844b953da2db1d6d19a39fca79d75e0c",
+      "bytes": 163013
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-220x132-white-0e71311d0babf959.zip.part10",
+      "sha256": "c7323829b90636cd6c28a5eab24a9e72e3dd4b8bbfcfcf136ffb743121f2a3bb",
+      "bytes": 168225
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-400x240-black-8fdc45e29a74bc63.zip.part12",
+      "sha256": "916a364474928f0bbd43e8135f32d79e517b3959fbc2e978977d0d77edc619c0",
+      "bytes": 176282
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-400x240-transparent-f807dc56f0d1c555.zip.part11",
+      "sha256": "38de7cb0c2de5ab1f436d2417bd3c929a9f7afb820511632b136272f9d31525e",
+      "bytes": 166393
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-400x240-white-c0ff8afd4dec8390.zip.part14",
+      "sha256": "e537d7b1ac737c2fdedf73010f02892a69b75453a309829494d282b938b5d761",
+      "bytes": 177825
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-50x30-black-eb19600a677855b5.zip.part03",
+      "sha256": "c80b0ea13ddaef1a0530432811bf01464b8ade1d633753d23abb82b6be63de3d",
+      "bytes": 159714
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-50x30-transparent-284ccee463450fca.zip.part03",
+      "sha256": "c84b9a9b17255689e464dbfc9d11cea80e2e40dba2df2d1d24bb75c940c49a3d",
+      "bytes": 159366
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-282e-50x30-white-a1e83fa455380238.zip.part03",
+      "sha256": "4e1fe852109ac3f0b97dca3fe999ec5d604b593a5de42226e63cb6b60d843435",
+      "bytes": 159935
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-220x132-black-8223d4bcde17d931.zip.part17",
+      "sha256": "54c5c0ddce7db06d66952648eb6fd2e6fb5b8d29a692c891c2a6dad86d14f212",
+      "bytes": 421078
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-220x132-transparent-ba6354c26256f83d.zip.part09",
+      "sha256": "1b6e5d68d5dae980fac0fc3db3d2b283a9e827482caf7f4cc5d66ed506fbe102",
+      "bytes": 280567
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-220x132-white-037bb94ef361b411.zip.part15",
+      "sha256": "4f8fd8354d6b94c8d979620b58d799d06daefd037eaf72a16e5788ff298cdcaa",
+      "bytes": 412101
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-400x240-black-93d33a79dc66b965.zip.part20",
+      "sha256": "30f4f24ed17d529c7ccfcf1dd9c4f17c06a27895a6e16a8260914f45270238e4",
+      "bytes": 781943
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-400x240-transparent-aaae0c77aa0daee6.zip.part20",
+      "sha256": "6fcd0904ca7e2df61b06f0ca0c1ef25f0d4fefeae510a593256dac88ae33040f",
+      "bytes": 467917
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-400x240-white-00d46732523006e4.zip.part20",
+      "sha256": "c05d1d841b9701283ddd0f2537d0d8de0bc7094f87375c397128f65d493fdf3e",
+      "bytes": 753045
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-50x30-black-15a8191b1d7db924.zip.part04",
+      "sha256": "7c63f4877dac8a0996cf9d9a83dde9d288a48fe193fbf5886ca5add417e77fcd",
+      "bytes": 201380
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-50x30-transparent-b6ef8c30edffb41c.zip.part04",
+      "sha256": "15d67d0023f6c4ef2e7a759cf0c8fad63c976d1cdefa8bf0bc944f66d5336ea8",
+      "bytes": 191688
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-70w-50x30-white-e44cdfb95699dc07.zip.part04",
+      "sha256": "e9a8444175cf85baccb39830f0f82d494af8dac4bf299866b4fe15293ae0b9e3",
+      "bytes": 197905
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-black-7716a3ff18b0ba09.zip.part02",
+      "sha256": "9781d6c01df23214dff8463ec26fb5a74d66a2a5b618ab48abecf378bd134845",
+      "bytes": 36202
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-2b1b9f49edc43d5e.zip.part02",
+      "sha256": "b2ffcca1a37aa540b53802c159effdf76c495c0f0695c4ff91d2eb4b417746d7",
+      "bytes": 7441
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-white-69f4e5bd43ea292c.zip.part02",
+      "sha256": "0f3f1cd9ebcbc424944e5b7e82d28765473b3984eb2e134bdfe1752c16ba20c5",
+      "bytes": 38035
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-black-96171fdcbb5e8717.zip.part02",
+      "sha256": "a9b6063da4089f3c90c2d7f2496b68b992f97d092093c8dda4f755771dda4084",
+      "bytes": 21064
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-b341811eb733ef98.zip.part02",
+      "sha256": "5038b7df9a42d70162f952d3bb08e3bacdf56a6a2bc932d43e4d6ac98098fa2b",
+      "bytes": 13923
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c3ac5df5b390d6b1.zip.part02",
+      "sha256": "26ff3fae3d3f1c922d359f654bf9ff5108dea069a05e10f695c32b115f933050",
+      "bytes": 22826
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-black-d355358e5a841fc5.zip.part02",
+      "sha256": "4115fe223d7a07c49ddfb1bffa75dda3050ec3fc9ab8c914c0d3ca860fb828d9",
+      "bytes": 5078
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-0579dd63ef007009.zip.part02",
+      "sha256": "1c57df5e236b086a5ff586a70fc49d2e7757718e0f2206ebd30efdea4fc2ab3c",
+      "bytes": 4630
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-white-1f39a09d4023f362.zip.part02",
+      "sha256": "9a242c046a0c55f3ebf2f6e5e35bc047a8a08ffd8050ddbe1fdfa0916fb88a15",
+      "bytes": 5340
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/README.md",
+      "sha256": "dc10f7fde687717d813151e34777b35b120619f76f10cf21da4b3ce4eaca716c",
+      "bytes": 12442
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+      "sha256": "86366f720f0840f9179e824b8b8c1918c29eab0568d8fe464ea3ca5c2d06e594",
+      "bytes": 170596
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "sha256": "419e917ab438b169910b81405fa8275fd47527687c090ad917ff514d937111bf",
+      "bytes": 84714
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/source-delta-batch-20261108.json",
+      "sha256": "b6cd88edf18f25ae00df3d69c3b54e0896300fe6c801b1ca06853f27fb3849f9",
+      "bytes": 77305
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/rtp-rebrand-batch-20261108.json",
+      "sha256": "7e5416c6a869d208bac7367767b4b02a62a3c7c6b632be6879739db4a4709048",
+      "bytes": 10341
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/continuation-install-checks-20261108.json",
+      "sha256": "9f4538f647d9a3e34f1a0ac0846b3bc517c9d24de01ddd8bc8034ec0a166b815",
+      "bytes": 14092
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/resume-remote-verification-20261108.json",
+      "sha256": "afb0d6b07d8889aa4b1a2ca8d712b5407ee6f8d00fc0aa46225400ae79db6fd3",
+      "bytes": 4566
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/repair-source-delta-20261108.py",
+      "sha256": "5ec6a7946b789af84c9ddbd579e84cb6ce78b8dcde1b1bf3ef361860bac4ccd4",
+      "bytes": 8103
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/repair-rtp-rebrand-20261108.py",
+      "sha256": "10f73e346eb610f8593fed62d5d18f78680a169376ed8d50f8f14558ffa2a491",
+      "bytes": 8153
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/verify-continuation-install-20261108.py",
+      "sha256": "dcf9a3f98e60abb834500064b57caeff6ec1bad27b9e5ec745897cab413e452c",
+      "bytes": 3014
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/ARTWORK_APPROVAL.md",
+      "sha256": "8e780e665f0b72dac60d1851321c5e5ff096765bdfeeef07f9faa8918b7e6223",
+      "bytes": 2190
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/bloomberght-review/check-20261108.json",
+      "sha256": "7a3468116453d7fd4b8d8069925d9f4aefe6328bcdd430ab45eac2bb1b4e86d7",
+      "bytes": 2488
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-black.png",
+      "sha256": "8fa6e0bf16a6f64301d9edc9f51b2e925913f2560cf548f50b2bb560bdc92156",
+      "bytes": 33022
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-transparent.png",
+      "sha256": "7f45a657341d37a2b728385a654f8e52d611ad00ff01c34ec194d111fa537f96",
+      "bytes": 9384
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-white.png",
+      "sha256": "d06f583a8b0674161e8b3ea7b7c04412a9f9233e5084f652f5d2924e82762dbb",
+      "bytes": 33982
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-black.png",
+      "sha256": "244ed4693dc5a13da5517e636385a9d34185aa06aa8010d3bf483a96fd3ff961",
+      "bytes": 83294
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-transparent.png",
+      "sha256": "7e154a430c4a573e9fa63ce111f926036ca520a2259fdea293c654e27392f5c1",
+      "bytes": 27434
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-white.png",
+      "sha256": "dd30a274a09e7341cd17261d95ef0df7f32228640124d64fb103059c7a593e80",
+      "bytes": 86909
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-black.png",
+      "sha256": "c223365b993d998fd0456851245d90907fdbe6a1531fe40cb514d13441fc64a5",
+      "bytes": 3131
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-transparent.png",
+      "sha256": "33ea8cf3693ba12dd8e61735afc53b47d03d3cbccbb5e39b80a6e554cea3778b",
+      "bytes": 1613
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-white.png",
+      "sha256": "9856eb4379a1e1110fc852cf4bdbd2462f2f6f6354851c6ae7d062a3c59112c4",
+      "bytes": 2934
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/original-220x132.png",
+      "sha256": "024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15",
+      "bytes": 3675
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-black.png",
+      "sha256": "fce19b9fc12b060c205fc9f097cbf54dc13d1668171eb68897d461bdc0757321",
+      "bytes": 33417
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-transparent.png",
+      "sha256": "fe7da23e7eaac6454e29682438c87cf71ef68b41a0d5ac2874443f63a1c0ff86",
+      "bytes": 9849
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-white.png",
+      "sha256": "af8770ed06033cd6aa5cf373a054d6c48531a6a851992038f1b29da37d44f016",
+      "bytes": 34469
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-black.png",
+      "sha256": "eb4234dbbce68b050cf8abc3a00108553bc5b300375875023ec76b5eac7bfd49",
+      "bytes": 84567
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-transparent.png",
+      "sha256": "6d974d2a86590a7faf3564f13376ea697d76c31d6514c492c9f51dc9f4a67633",
+      "bytes": 28907
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-white.png",
+      "sha256": "db0c37927bf53daf0c4f6b37f74870fa9ac96c1c2e1c8a757e30772ac9753b6c",
+      "bytes": 88248
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-black.png",
+      "sha256": "20d368918abdccbf0463c4f1b56c8ee250e4f3c47e88fa0e75ac02bb3f4c8d4e",
+      "bytes": 3157
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-transparent.png",
+      "sha256": "20bccdfd8212bc325cbb0ced16fb5e7d2cc7699dbba5b2e54d5d6e15a29672a7",
+      "bytes": 1646
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-white.png",
+      "sha256": "41db3813aa692b5ff1851add608bee54e46f3e86eb35ce352502b1e2097f5554",
+      "bytes": 2973
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/original-220x132.png",
+      "sha256": "337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a",
+      "bytes": 3782
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-black.png",
+      "sha256": "d3a7fef62560249f40d11b90ec71605e1605c15d3151993b5a5a692d93ba1b03",
+      "bytes": 30701
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-transparent.png",
+      "sha256": "f0849d251e1460c76a5c7e0329e26831f3cc3f98ebb35e68cc944bf28b915895",
+      "bytes": 8271
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-white.png",
+      "sha256": "a9c006852a507cb810690416a115cec10f1eb9247e3af09911e2116e763cf6b8",
+      "bytes": 31624
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-black.png",
+      "sha256": "a8ace3c694019c049c140ecf7c38df2c67b07f613bff4cc98d133b2d0f26f728",
+      "bytes": 76919
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-transparent.png",
+      "sha256": "be70225bda22fce5957dd3ecc0faad0f159f829e35c1077c4ab6c2e853de3c76",
+      "bytes": 22984
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-white.png",
+      "sha256": "413f65a48f5f5c4bc043559e60f67a3cf807cce38aaaf511f165a50c5b64ef93",
+      "bytes": 80072
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-black.png",
+      "sha256": "4795c93f6ee3e452b4434f9000ccf8c186825e73d33046c8270f3ffd5bd7fe69",
+      "bytes": 3002
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-transparent.png",
+      "sha256": "b8d78773931451c81575d026a3e7d721588a6159b0e7956315939ef20afc38be",
+      "bytes": 1526
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-white.png",
+      "sha256": "80c65515903cd730aab47feed4b0292948654649937874080f681c4c6ef0538e",
+      "bytes": 2826
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/original-220x132.png",
+      "sha256": "ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430",
+      "bytes": 3640
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-black.png",
+      "sha256": "36d19ef7e91dfdc7739fb6bc66e6d2457ba0dc533fcd9180fa304744a86dba6e",
+      "bytes": 33602
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-transparent.png",
+      "sha256": "295d3d0fccf1d6ef98fe3b7c2fdf5cd5de4bf10716fc0fcc39dd30af950c4c2f",
+      "bytes": 9998
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-white.png",
+      "sha256": "4c46b5bded3e67a2622820c37c3e879539d828a30796095a3832a20a6fac071e",
+      "bytes": 34595
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-black.png",
+      "sha256": "c9f725966b2101af1b928c78bdebf561bc0f70f20021e1ea6e28937680372d8e",
+      "bytes": 84960
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-transparent.png",
+      "sha256": "dfe681150464f759cd26c0f49cc97390aa7591b0449e49b83c6c3c86aa3fbec9",
+      "bytes": 29200
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-white.png",
+      "sha256": "7d3aec72f4a9e4ba7432f2ce85fc5432e180142c28791f0d103f79a8977076a8",
+      "bytes": 88595
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-black.png",
+      "sha256": "c8e36d61733d619e8b799254dd52b6cd0e4aad43b0e33fe299e6ba5a024359c6",
+      "bytes": 3150
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-transparent.png",
+      "sha256": "b1f21ad51559a2abe116c269bad7b49eb10d4c1d0293d6451b8c9bdad7becc5f",
+      "bytes": 1639
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-white.png",
+      "sha256": "f763043adf90dd7de047a7f9951485322bc7a20946540f76dfe9d4c60fcfbd82",
+      "bytes": 2960
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/original-220x132.png",
+      "sha256": "eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0",
+      "bytes": 3780
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/preview.png",
+      "sha256": "70559437773d7c949f56405a84e39394aaba7a6b8aed83f0b1193e7d341102d1",
+      "bytes": 218791
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/recover-existing-review.py",
+      "sha256": "c40b45ec22cf88332f81a387b00e87671a02fdd3db8364881703a480bd77f10a",
+      "bytes": 4072
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sis-betfred-review/review.json",
+      "sha256": "e88e457172d2fe1f8d200b26317ef5893ced951365bfa967fdfbb9620c72bb02",
+      "bytes": 14151
+    },
+    {
+      "path": "WARDER_PROGRESS.md",
+      "sha256": "9552f8aeb1df75297522d4f2f009c13d9f10f0ce705e5f14fdd2ccf4a83de8b9",
+      "bytes": 28060
+    }
+  ],
+  "uploaded_files_downloaded": 103,
+  "uploaded_bytes_downloaded": 15188989,
+  "new_zip_tail_paths_downloaded": 45
+}

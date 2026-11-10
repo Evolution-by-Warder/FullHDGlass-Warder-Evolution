@@ -1,0 +1,18 @@
+{
+  "retrieved": "2026-11-10",
+  "note": "Web retrieval observations; direct raw LyngSat and Tarddat returned403. No raw snapshot or receiver measurement claimed.",
+  "observations": [
+    {
+      "url": "https://www.lyngsat.com/muxes/Eutelsat-7-West-A_MENA_11258-H.html",
+      "facts": "Historical table updated30Oct2026: ONID110/TID16; SID459 Alshabab TV, VPID1191/APID1192. Predates3Nov departure."
+    },
+    {
+      "url": "https://www.lyngsat.com/muxes/Eutelsat-3B_Europe_11673-H.html",
+      "facts": "Historical table updated2Oct2026:11673H3333; ONID65535/TID1; SID1 Al Rabiaa TV, VPID1001/APID1002. Predates2Nov departure."
+    },
+    {
+      "url": "https://www.tarddat.com/channel/al-shabab/",
+      "facts": "Reports Al Shabab stopped11258H27500 on4Nov2026; last check9Nov2026. Does not supply a complete DVB tuple; supporting evidence only."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "batch": 11,
+  "payload_commit": "1b4f30ff3c34bf134c6a38ef5318945de9499570",
+  "status": "PASS",
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "bytes": 56935,
+      "sha256": "4e34949c2d8589756f68a7194bafa2b7b31a35a0f9e5a2c5182439805c38645f"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-11.json",
+      "bytes": 5686,
+      "sha256": "47f243d94485d6f96bffd86243827b591d46b13441eb3b0530e8895e8d79bf4d"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "bytes": 129805,
+      "sha256": "a08f8b8387ad8885eabe31c5477c417e92061694bec5dc5c809761be9ffc3c03"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch11-eutelsat-tp4716.html",
+      "bytes": 54352,
+      "sha256": "8d3d2d71faee9cf19d3e88155fd3062c47d4f77ee8ba9368476ee19854d9f9e7"
+    }
+  ],
+  "new_png": 0,
+  "modified_zips": 0,
+  "technical_closed": 4,
+  "remaining_open": 99,
+  "zip_audit": "Not applicable: no ZIP or manifest changes; historical batches not reaudited.",
+  "github_diff_paths_only_documentation": true,
+  "protected_canal_archives": "Unchanged Git tree entries: no assets paths in commit diff."
+}

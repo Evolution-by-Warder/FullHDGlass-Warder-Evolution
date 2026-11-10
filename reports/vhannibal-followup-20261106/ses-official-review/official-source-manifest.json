@@ -1,0 +1,173 @@
+{
+  "source": "https://brand.ses.com/brand-elements/our-brandmark",
+  "download": "https://cdn.intelligencebank.com/eu/share/23bree/BEwVN/NZABD/original/SES%2BLogo_Full%2BSet",
+  "archive_sha256": "b5eec7236189e12672a39a797ca248393703509e22442513616fbd8d0d169e62",
+  "files": [
+    {
+      "path": "ses-draft/official-sources/ReadMe_SES Logo guides.pdf",
+      "archive_member": "ReadMe_SES Logo guides.pdf",
+      "sha256": "43563f8bb7c476158be10f1b033aa71c1b14f9d4f2a4b87466d2cdb550a27a30",
+      "bytes": 196433
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Horizontal_Black_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Horizontal_Black_RGB.png",
+      "sha256": "faa387446ecaa51319a6812cbfcda216651fc607c6e59944b6adce06777a740b",
+      "bytes": 93615,
+      "dimensions": [
+        3608,
+        1891
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Horizontal_FC_Dark_Background_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Horizontal_FC_Dark_Background_RGB.png",
+      "sha256": "cce6e147a3c4b4f266fc900806b2906b8eb755122eb0fd53270768adfab1a684",
+      "bytes": 183922,
+      "dimensions": [
+        3608,
+        1891
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Horizontal_FC_Light_Background_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Horizontal_FC_Light_Background_RGB.png",
+      "sha256": "d3741aeb0c79a67cf5dc2ca0144a766ba2415f96090301ffdc8ee5e927ed2d8d",
+      "bytes": 187630,
+      "dimensions": [
+        3608,
+        1891
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Horizontal_Purple_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Horizontal_Purple_RGB.png",
+      "sha256": "36197c65a624195615798f51cf92feda8a249f1f64e8b4e320a5deee268eee6c",
+      "bytes": 94543,
+      "dimensions": [
+        3608,
+        1891
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Horizontal_White_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Horizontal_White_RGB.png",
+      "sha256": "d736da51e970a4f3b34f3b5ee16c2143aa5c44b2337d3a7110ca2e3a9bf367f4",
+      "bytes": 88181,
+      "dimensions": [
+        3608,
+        1891
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Vertical_Black_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Vertical_Black_RGB.png",
+      "sha256": "f7cae0cf1a2c20b01a0220b31610d7ab08cd5fa6367ce8acd0aad9fd1f39caad",
+      "bytes": 108623,
+      "dimensions": [
+        2637,
+        3011
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Vertical_FC_Dark_Background_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Vertical_FC_Dark_Background_RGB.png",
+      "sha256": "4cdc2ca32be2d88ee0d60ad6e797631878e9f6d513f1388450cd1227bce94701",
+      "bytes": 259411,
+      "dimensions": [
+        2638,
+        3012
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Vertical_FC_Light_Background_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Vertical_FC_Light_Background_RGB.png",
+      "sha256": "becdb49fdb48f91a7f8cd792ca7840161397a7f91038913e3bf4d8cd03956a90",
+      "bytes": 259722,
+      "dimensions": [
+        2638,
+        3012
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Vertical_Purple_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Vertical_Purple_RGB.png",
+      "sha256": "215e2b7051d28d79a382443e2d20880b8771aacc24225be4e68950b1fd56c0c4",
+      "bytes": 109349,
+      "dimensions": [
+        2637,
+        3011
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "ses-draft/official-sources/SES_Logo_Vertical_White_RGB.png",
+      "archive_member": "SES Logo_for Digital/PNGs_RGB/SES_Logo_Vertical_White_RGB.png",
+      "sha256": "06feb6849041c84ffdf5ec2155d8d98f6133ead1ab6318675694b3ff125547cc",
+      "bytes": 102379,
+      "dimensions": [
+        2637,
+        3011
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "retrieved_utc": "2026-11-09",
+  "status": "official-corporate-source-only; blocked-channel-artwork-binding",
+  "target": {
+    "service_ref": "1_0_1_1_1_1_294AB51_0_0_0",
+    "position": "66.0E",
+    "frequency_mhz": 11089,
+    "polarisation": "V",
+    "sid": 1,
+    "tsid": 1,
+    "onid": 1,
+    "service_name": "SES DEMO HD 2025 test"
+  },
+  "draft_png_count": 0,
+  "reason": "Current corporate SES logo is not proven to identify exact66E Demo HD service. Actual April2026 reception of same-named45E demo service visibly displays old uppercase SES triangle + ASTRA, conflicting with current2025 purple orb corporatebrand. Do not substitute UHD or new corporate mark automatically.",
+  "evidence": [
+    {
+      "url": "https://forum.digitalfernsehen.de/threads/66-0%C2%B0-ost-intelsat-17-europe-middle-east-beam.456821/",
+      "finding": "First-hand66E report11089V360001/2 DVB-S QPSK SES DEMO HD2025test; no on-air screenshot; image is onlysatellitefootprint."
+    },
+    {
+      "url": "https://www.parabola.cz/zpravicky/41182/demonstracni-hd-kanal-astry-testuje-na-satelitu-intelsat/",
+      "finding": "Primary reception report2026-04-16 identifies45E11593V233331/2 and12520V300001/2. Screenshot visibly displays oldwhite uppercase SES triangle andASTRA."
+    },
+    {
+      "url": "https://www.ses.com/news/news-flash/newsflash-ses-launches-bold-new-brand",
+      "finding": "Official SES corporate rebrand2025-09-12; does not establish specificDemoHD on-airidentity."
+    }
+  ],
+  "missing_evidence": [
+    "Current exact66E target reception screenshot or officialchannel-specificbrand mapping",
+    "Official original matching on-air SES/ASTRA lockup if olddemo branding persists"
+  ],
+  "recommended_retain": [
+    "official-sources/ReadMe_SES Logo guides.pdf",
+    "official-sources/SES_Logo_Horizontal_FC_Light_Background_RGB.png",
+    "official-sources/SES_Logo_Horizontal_FC_Dark_Background_RGB.png"
+  ],
+  "reception_screenshot": {
+    "path": "ses-draft/ses-demo-hd-reception-20260416.jpg",
+    "source": "https://www.parabola.cz/img_news/202604/128.jpg",
+    "sha256": "7779eef33b451d3b3b340d01694932be1004a6b62fbcc30289fa5bb38a10554b",
+    "bytes": 49834,
+    "usage": "evidence-only;45E notexact66E;notartworkdonor"
+  },
+  "retained_in_this_checkpoint": [
+    "official-source-manifest.json",
+    "official-sources/SES_Logo_Horizontal_FC_Dark_Background_RGB.png",
+    "official-sources/SES_Logo_Horizontal_FC_Light_Background_RGB.png"
+  ],
+  "retention_note": "Other listed originals were examined locally; only retained_in_this_checkpoint files are included in this Git checkpoint."
+}

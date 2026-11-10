@@ -1,0 +1,22 @@
+{
+  "homepage": "https://www.bloomberght.com/",
+  "date": "2026-11-07",
+  "assets": [
+    {
+      "file": "bht-logo-black.svg",
+      "url": "https://www.bloomberght.com/images/common/logo/bht-logo-black.svg",
+      "resolved_url": "https://www.bloomberght.com/images/common/logo/bht-logo-black.svg",
+      "sha256": "40585c34214c294b979397c785cf00500c2c6866f77ab8319e160120e5e473a6",
+      "size": 5592,
+      "role": "Official broadcaster homepage header logo"
+    },
+    {
+      "file": "bht-logo-white.svg",
+      "url": "https://www.bloomberght.com/images/common/logo/bht-logo-white.svg",
+      "resolved_url": "https://www.bloomberght.com/images/common/logo/bht-logo-white.svg",
+      "sha256": "76aea222d24fb62364a8b2618ecd9651ac3dab7f483fe911225b43471f170f17",
+      "size": 5553,
+      "role": "Official broadcaster homepage header logo"
+    }
+  ]
+}

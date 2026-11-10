@@ -1,0 +1,97 @@
+{
+  "batch": 17,
+  "status": "COMPLETED_TECHNICAL_CLOSURES_REMOTE_AUDIT_PASS",
+  "base_checkpoint": "baae31f2c66d46d08c58dafeb7a92fe510b97993",
+  "new_tv_references": 0,
+  "new_png": 0,
+  "modified_zips": 0,
+  "technical_closed": 2,
+  "candidate_tv": 48,
+  "candidate_png": 429,
+  "candidate_unique_zips": 99,
+  "remaining_open": 87,
+  "original_open": 81,
+  "delta_open": 6,
+  "closures": [
+    {
+      "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+      "old_label": "Test 1",
+      "identified_station": "Al Shabab TV",
+      "sid": 459,
+      "tsid": 16,
+      "onid": 110,
+      "position": "7W",
+      "frequency": "11258 H",
+      "departure_date": "2026-11-03",
+      "decision": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+      "reason": "Direct current KingOfSat history explicitly records departure of SID459 with VPID1191/APID1192 on11257.60H. Historical LyngSat tuple110/16 and preserved Vhannibal tuple bind the exact target. Current direct KingOfSat detail places the station in cemetery. Tarddat independently reports absence from4Nov, checked9Nov. Indexed positive results predate departure; retained receiver setting is not a newer measured return.",
+      "sources": [
+        "alshabab-history.html",
+        "alshabab-kos.html",
+        "external-observations.json"
+      ]
+    },
+    {
+      "reference": "1_0_1_1_1_FFFF_1E2D99_0_0_0",
+      "old_label": "Service-1",
+      "identified_station": "Al Rabiaa Iraq",
+      "sid": 1,
+      "tsid": 1,
+      "onid": 65535,
+      "position": "3E",
+      "frequency": "11673 H",
+      "departure_date": "2026-11-02",
+      "decision": "EXACT_REFERENCE_DEPARTED_NO_PNG_DELETION",
+      "reason": "LyngSat explicit ONID65535/TSID1/SID1 on11673H binds the full target; frequency-dependent namespace low16bits0x2D99 equals11673. Direct current KingOfSat history and removal listing record departure2Nov2026 SID1/VPID1001/APID1002. Preserved8Nov settings observation has no current target, corroboration only. Existing220px SERVICE placeholder is not identity proof and remains intact. Do not transfer this closure to other Al Rabiaa services.",
+      "sources": [
+        "alrabiaa-history.html",
+        "removed-current.html",
+        "external-observations.json"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/alrabiaa-history.html",
+      "url": "https://en.kingofsat.net/channelhistory.php?ch=22028",
+      "bytes": 21093,
+      "sha256": "a98fd8934e4f5871411cc6109660d5118cba927b30eab6b3f4ae277b82e2040e"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/alshabab-history.html",
+      "url": "https://en.kingofsat.net/channelhistory.php?ch=9124",
+      "bytes": 29561,
+      "sha256": "ec055419bb0e4799ccca02cfbbd8f09d57a57dfc77e7cb523b30b0f02d79f8c7"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/alshabab-kos.html",
+      "url": "https://en.kingofsat.net/detail-alshabab",
+      "bytes": 30822,
+      "sha256": "289ee0a9a91c5157257dc0554f33bb97a161dd037a792fcb9592f02c72da055a"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/removed-current.html",
+      "url": "https://en.kingofsat.net/tvremoved.php?aff=zap&hdtv=1&lim=10&ordre=nom_ch&standard=Digital",
+      "bytes": 60108,
+      "sha256": "318f58653ca72a812502f06bf69a761fa7451d4437d78c1428516399ab348703"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/service11-13.html",
+      "url": "https://en.kingofsat.net/sat-is35",
+      "bytes": 150136,
+      "sha256": "70a3ea843aad0c2518e90d2243215fb449c93992af076ef46c6b3bf443f55da1"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/test8w-radio.html",
+      "url": "https://en.kingofsat.net/radio-8W",
+      "bytes": 163689,
+      "sha256": "04844fb06d53d6c6b6c192168b07ce556adefe90db2b1d5a3a5e15e0c48918cf"
+    }
+  ],
+  "full_review": "scope-batch-20261110-17-all89-review.json",
+  "preservation": "Only reports and WARDER_PROGRESS are updated; all manifest/package/PNG files including18CANAL+ archives stay inherited byte-for-byte. No deletion of historical picons.",
+  "installation_test": "NOT_APPLICABLE_NO_INSTALLABLE_PAYLOAD_CHANGED",
+  "scope_limit": "Closures apply to exact departed transports, not worldwide cessation of either broadcaster. Existing service label is not evidence of live return.",
+  "payload_commit": "d0043f949ed50bbb116e91decdb7488a6ef05774",
+  "remote_audit": "reports/vhannibal-followup-20261106/scope-batch-20261110-17-remote-verification.json"
+}

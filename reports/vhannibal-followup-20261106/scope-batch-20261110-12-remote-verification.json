@@ -1,0 +1,46 @@
+{
+  "payload_commit": "59aa4f7b51b1bee79a355508ff0ec89b48927f7e",
+  "status": "PASS",
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "sha256": "aa10aafb0354997265297ac89afbf8670d9d598e3e455bf09d6561c6b5cb6579",
+      "bytes": 58476
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-12.json",
+      "sha256": "0ab62bbbce43aaef233ff7f889cbcd7b657f4352fb0d61f79f766fadda3c6a5c",
+      "bytes": 1929
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch12-kuukauden-current.html",
+      "sha256": "65d6b8c350daefee093abaa0b7e5f0802dc94a8d17568a38e554d0b5ede23f1d",
+      "bytes": 38918
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch12-kuukauden-old-tuple.html",
+      "sha256": "54911be51c9f2d11a7251f4c8e309bf9b63ab824ebcce237fbe23be34b8b6301",
+      "bytes": 178436
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+      "sha256": "62a9224111999608b17ac1a074ba77c25d514d8ff663c446d4176d4ac0566360",
+      "bytes": 243449
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch12-kuukauden-news.html",
+      "sha256": "145331324be5339ad6b1efa9ed03330805799a912ff4b9f573826f45edd17ddc",
+      "bytes": 28474
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "sha256": "8084cdca7d38e4e66b3af1298f4c8729d06d1c82a9c5ff5516f83285cb9f29ce",
+      "bytes": 186481
+    }
+  ],
+  "new_png": 0,
+  "modified_zips": 0,
+  "inactive_closed": 1,
+  "remaining_open": 98,
+  "protected_assets": "Unchanged: GitHub commit diff contains only7 documentation/evidence files. No archive or manifest mutation."
+}
