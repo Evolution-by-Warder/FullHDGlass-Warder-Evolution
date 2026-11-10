@@ -7,6 +7,7 @@ from Components.config import config
 
 TEXT = {
     "sk": {
+        "FullHDGlass skin storage": "Úložisko skinu FullHDGlass",
         "Channel-list picon source": "Zdroj piconov v zozname staníc",
         "System setting": "Systémové nastavenie",
         "Prefer 50x30": "Preferovať 50×30",
@@ -21,6 +22,7 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainštalujte 7zip z Ponuky sťahovania a potom spustite vybrané sťahovanie znova."
     },
     "cs": {
+        "FullHDGlass skin storage": "Úložiště skinu FullHDGlass",
         "Channel-list picon source": "Zdroj piconů v seznamu stanic",
         "System setting": "Systémové nastavení",
         "Prefer 50x30": "Preferovat 50×30",
@@ -35,6 +37,7 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainstalujte 7zip z Nabídky stahování a potom spusťte vybrané stahování znovu."
     },
     "de": {
+        "FullHDGlass skin storage": "FullHDGlass-Skin-Speicher",
         "Channel-list picon source": "Picon-Quelle der Senderliste",
         "System setting": "Systemeinstellung",
         "Prefer 50x30": "50×30 bevorzugen",
@@ -48,6 +51,7 @@ TEXT = {
         "Confirm": "Bestätigen"
     },
     "hu": {
+        "FullHDGlass skin storage": "FullHDGlass skin tárhelye",
         "Channel-list picon source": "Csatornalista piconforrása",
         "System setting": "Rendszerbeállítás",
         "Prefer 50x30": "50×30 előnyben",
@@ -61,6 +65,7 @@ TEXT = {
         "Confirm": "Megerősítés"
     },
     "ru": {
+        "FullHDGlass skin storage": "Хранилище скина FullHDGlass",
         "Channel-list picon source": "Источник пиконов списка каналов",
         "System setting": "Системная настройка",
         "Prefer 50x30": "Предпочитать 50×30",
@@ -74,6 +79,7 @@ TEXT = {
         "Confirm": "Подтвердить"
     },
     "fr": {
+        "FullHDGlass skin storage": "Stockage du skin FullHDGlass",
         "Channel-list picon source": "Source des picons de la liste",
         "System setting": "Réglage système",
         "Prefer 50x30": "Préférer 50×30",
@@ -87,6 +93,7 @@ TEXT = {
         "Confirm": "Confirmer"
     },
     "it": {
+        "FullHDGlass skin storage": "Archivio dello skin FullHDGlass",
         "Channel-list picon source": "Origine picon nell’elenco canali",
         "System setting": "Impostazione di sistema",
         "Prefer 50x30": "Preferisci 50×30",
@@ -100,6 +107,7 @@ TEXT = {
         "Confirm": "Conferma"
     },
     "es": {
+        "FullHDGlass skin storage": "Almacenamiento del skin FullHDGlass",
         "Channel-list picon source": "Origen de picons de la lista",
         "System setting": "Ajuste del sistema",
         "Prefer 50x30": "Preferir 50×30",
@@ -113,6 +121,7 @@ TEXT = {
         "Confirm": "Confirmar"
     },
     "pl": {
+        "FullHDGlass skin storage": "Magazyn skina FullHDGlass",
         "Channel-list picon source": "Źródło piconów na liście kanałów",
         "System setting": "Ustawienie systemowe",
         "Prefer 50x30": "Preferuj 50×30",
@@ -126,6 +135,7 @@ TEXT = {
         "Confirm": "Potwierdź"
     },
     "en": {
+        "FullHDGlass skin storage": "FullHDGlass skin storage",
         "Channel-list picon source": "Channel-list picon source",
         "System setting": "System setting",
         "Prefer 50x30": "Prefer 50x30",
@@ -137,6 +147,42 @@ TEXT = {
 for _lang, _message in {'sk': '7zip nie je dostupný pre architektúru tohto prijímača.', 'cs': '7zip není dostupný pro architekturu tohoto přijímače.', 'de': '7zip ist für die Architektur dieses Receivers nicht verfügbar.', 'hu': 'A 7zip nem érhető el ehhez a vevőarchitektúrához.', 'ru': '7zip недоступен для архитектуры этого ресивера.', 'fr': '7zip n’est pas disponible pour l’architecture de ce récepteur.', 'it': '7zip non è disponibile per l’architettura di questo ricevitore.', 'es': '7zip no está disponible para la arquitectura de este receptor.', 'pl': '7zip jest niedostępny dla architektury tego odbiornika.'}.items():
     TEXT[_lang]["7zip is not available for this receiver architecture."] = _message
 
+
+# Expert picon selector uses the active system language.
+TEXT.setdefault("sk", {})["Custom picon location"] = "Vlastné umiestnenie piconov"
+TEXT.setdefault("cs", {})["Custom picon location"] = "Vlastní umístění piconů"
+TEXT.setdefault("de", {})["Custom picon location"] = "Benutzerdefinierter Picon-Speicherort"
+TEXT.setdefault("en", {})["Custom picon location"] = "Custom picon location"
+TEXT.setdefault("pl", {})["Custom picon location"] = "Własna lokalizacja pikon"
+TEXT.setdefault("hu", {})["Custom picon location"] = "Egyéni piconhely"
+TEXT.setdefault("ru", {})["Custom picon location"] = "Своё расположение пиконов"
+TEXT.setdefault("fr", {})["Custom picon location"] = "Emplacement personnalisé des picons"
+TEXT.setdefault("it", {})["Custom picon location"] = "Posizione personalizzata dei picon"
+TEXT.setdefault("es", {})["Custom picon location"] = "Ubicación personalizada de picons"
+TEXT.setdefault("al", {})["Custom picon location"] = "Vendndodhja e personalizuar e piconëve"
+TEXT.setdefault("el", {})["Custom picon location"] = "Προσαρμοσμένη θέση picon"
+TEXT.setdefault("et", {})["Custom picon location"] = "Kohandatud piconite asukoht"
+TEXT.setdefault("fa", {})["Custom picon location"] = "مسیر دلخواه پیکون‌ها"
+TEXT.setdefault("lt", {})["Custom picon location"] = "Pasirinktinė pikonų vieta"
+TEXT.setdefault("nl", {})["Custom picon location"] = "Aangepaste piconlocatie"
+TEXT.setdefault("pt", {})["Custom picon location"] = "Localização personalizada dos picons"
+TEXT.setdefault("ro", {})["Custom picon location"] = "Locație personalizată pentru piconuri"
+TEXT.setdefault("tr", {})["Custom picon location"] = "Özel picon konumu"
+TEXT.setdefault("uk", {})["Custom picon location"] = "Власне розташування піктограм"
+TEXT.setdefault("zh", {})["Custom picon location"] = "自定义台标位置"
+
+# Destination menu follows the current Enigma2 OSD language in all 21 supported locales.
+TEXT.setdefault("al", {})["FullHDGlass skin storage"] = "Hapësira e skin-it FullHDGlass"
+TEXT.setdefault("el", {})["FullHDGlass skin storage"] = "Αποθήκευση του skin FullHDGlass"
+TEXT.setdefault("et", {})["FullHDGlass skin storage"] = "FullHDGlassi kujunduse salvestuskoht"
+TEXT.setdefault("fa", {})["FullHDGlass skin storage"] = "فضای ذخیره‌سازی پوسته FullHDGlass"
+TEXT.setdefault("lt", {})["FullHDGlass skin storage"] = "FullHDGlass apvalkalo saugykla"
+TEXT.setdefault("nl", {})["FullHDGlass skin storage"] = "FullHDGlass-skinopslag"
+TEXT.setdefault("pt", {})["FullHDGlass skin storage"] = "Armazenamento do skin FullHDGlass"
+TEXT.setdefault("ro", {})["FullHDGlass skin storage"] = "Spațiul de stocare al temei FullHDGlass"
+TEXT.setdefault("tr", {})["FullHDGlass skin storage"] = "FullHDGlass tema depolama alanı"
+TEXT.setdefault("uk", {})["FullHDGlass skin storage"] = "Сховище скіна FullHDGlass"
+TEXT.setdefault("zh", {})["FullHDGlass skin storage"] = "FullHDGlass 皮肤存储位置"
 
 @lru_cache(maxsize=24)
 def _catalog(lang):

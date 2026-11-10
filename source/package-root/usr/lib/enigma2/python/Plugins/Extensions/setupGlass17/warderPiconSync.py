@@ -266,6 +266,12 @@ DEFAULT_UPDATE_MODE = None
 DEFAULT_STYLE = None
 DEFAULT_RESOLUTION = None
 DEFAULT_DESTINATION = "/usr/share/enigma2/picon"
+
+def skin_picon_destination(skin_data_root, resolution=None):
+    """Use the selected FullHDGlass PATHS base, never the image's flash picon path."""
+    leaf = {"50x30": "picon_50x30", "400x240": "picon_400x240"}.get(
+        str(resolution), "picon")
+    return os.path.join(str(skin_data_root), leaf)
 CHANNEL_RESOLUTION_CHOICES = (
     ("50x30", "50 x 30 - Mini picons"),
     ("220x132", "220 x 132 - Picons"),

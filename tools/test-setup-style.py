@@ -18,18 +18,19 @@ CURRENT=style.PLUGIN.read_text()
 LAYOUTS=style.extract(CURRENT)
 # The v1.0.76 controller fingerprint includes the approved offline factory-icon
 # reset and localized storage menu/help changes from PR #88, in addition to
-# the earlier GLES gate and release labels. Keep the historical fixture for
+# the earlier GLES gate, release labels, and reviewed dynamic picon destination
+# option from PR #93. Keep the historical fixture for
 # older releases, and pin the full AST to catch any unreviewed logic edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
-REVIEWED_1076_SHA256='9c2e7e62276c9e3677283c93c6f4849115ec0f8544eb8c1321c5fe8515abbef3'
-EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
+REVIEWED_1076_SHA256='fd235c106e17ee638b44c87a07411a3b8ef7a8288a5172d4525aa01fdc6f8bea'
+EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77', '1.0.78') else BASELINE['logic_sha256'])
 
 def fingerprint_source(source):
-    # Release 1.0.77 changes only the visible header version labels.
+    # Stable releases change only the visible header version labels.
     # Restore those labels for the frozen 1.0.76 controller AST check.
-    if RUNTIME_VERSION == '1.0.77':
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78'):
         source, count = re.subn(
-            r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")1\.0\.77(")',
+            r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
             r'\g<1>1.0.76\2', source)
         if count != 10:
             raise AssertionError('Expected 10 reviewed version header labels')
