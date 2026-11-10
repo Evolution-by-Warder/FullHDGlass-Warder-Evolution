@@ -1,3 +1,13 @@
+### Dávka 18 – obnovenie prerušeného spracovania – 10. 11. 2026
+
+- Obnovovací report: `reports/vhannibal-followup-20261106/scope-batch-20261110-18-recovery.json`, commit `a6de4ddf6e522c2866c34dc76bab7ab589931e47`; spätné načítanie celého textu presne zhodné.
+- Zachovaných lokálne 17 súborov z prerušeného behu vrátane originálu, 9 ALKAFEEL.TV návrhov, náhľadu a metadát; 17/17 SHA256 sedí s pôvodným inventárom. Žiadny nový render ani binárny upload. **Návrhy NIE SÚ commitnuté v PR #50**: inventár zmien ich neobsahuje, priame načítanie review.json na pôvodnom HEAD vracia 404. Lokálne cesty a hashe sú v reporte; nejde o trvalú vzdialenú zálohu PNG.
+- Hlásená chyba bola iba „Unknown error“; presná technická príčina nie je doložená. Prenos zostáva NEDOKONČENÝ, bez opakovania Base64 pokusov alebo novej autentifikácie/prenosovej metódy.
+- Oficiálna projektová stránka potvrdzuje vzťah vlastníka k alkafeel.tv, nie presný satelitný tuple. ALKAFEEL.TV ostáva mimo ZIPov do potvrdenia identity aj vizuálneho schválenia. SES firemné podklady už v PR sú; SES ASTRA sa nepoužíva.
+- Ďalší cielený prieskum: Service 11-13 má vo zverejnenom transporte z 10.11. nenulový AV tok (SID8); chýba programová identita, neuzatvárať ako zánik/dáta. ITA99A a 1TV Iraq indexované podklady patria iným frekvenciám; žiadne prenesenie loga ani uzavretie.
+- **48 TV / 429 PNG / 99 ZIPov / 87 otvorených. Dávka18 rozpracovaná.** 0 nových integrácií, 0 technických uzavretí. Iba dokumentácia; inštalačné testy N/A. Dávky01–17 neopakované; ZIPy, manifest, všetkých18 CANAL+ archívov, rádio a produkcia bez zásahu. PR50 nezlučovať.
+- Ďalej pracovať podľa 87 riadkov scope-batch-20261110-18-research.json iba s novým dôkazom; nevracať sa k už neúspešným dotazom. Zachované lokálne návrhy znovu nevytvárať.
+
 ### Dávka 18 – nový nezávislý zoznam, rozpracované – 10. 11. 2026
 
 - Základ `dc5e7508af81d708720b4004ebad0ee84c7e8933`; dávky 01–17 sa neopakovali.
