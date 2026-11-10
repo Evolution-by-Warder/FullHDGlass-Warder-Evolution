@@ -1809,8 +1809,11 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+          "action": "CLOSED_TECHNICAL_TESTCARD_BATCH11",
+          "reason": "Explicit Testcard classification dated 2026-11-07; exact SID and TSID match existing Vhannibal 7W tuple. AV PIDs present: nonprogramme testcard, not data. No artwork or archive deleted.",
+          "previous_action": "HOLD_NO_SAFE_COPY",
+          "previous_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+          "evidence": "reports/vhannibal-followup-20261106/scope-batch-20261110-11.json"
         },
         {
           "reference": "1_0_1_1C34_D160_77E_DCA0000_0_0_0",
@@ -1868,8 +1871,11 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+          "action": "CLOSED_TECHNICAL_TESTCARD_BATCH11",
+          "reason": "Explicit Testcard classification dated 2026-11-07; exact SID and TSID match existing Vhannibal 7W tuple. AV PIDs present: nonprogramme testcard, not data. No artwork or archive deleted.",
+          "previous_action": "HOLD_NO_SAFE_COPY",
+          "previous_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+          "evidence": "reports/vhannibal-followup-20261106/scope-batch-20261110-11.json"
         },
         {
           "reference": "1_0_1_1C3E_D160_77E_DCA0000_0_0_0",
@@ -1927,8 +1933,11 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+          "action": "CLOSED_TECHNICAL_TESTCARD_BATCH11",
+          "reason": "Explicit Testcard classification dated 2026-11-07; exact SID and TSID match existing Vhannibal 7W tuple. AV PIDs present: nonprogramme testcard, not data. No artwork or archive deleted.",
+          "previous_action": "HOLD_NO_SAFE_COPY",
+          "previous_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+          "evidence": "reports/vhannibal-followup-20261106/scope-batch-20261110-11.json"
         },
         {
           "reference": "1_0_1_1C48_D160_77E_DCA0000_0_0_0",
@@ -1986,8 +1995,11 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved."
+          "action": "CLOSED_TECHNICAL_TESTCARD_BATCH11",
+          "reason": "Explicit Testcard classification dated 2026-11-07; exact SID and TSID match existing Vhannibal 7W tuple. AV PIDs present: nonprogramme testcard, not data. No artwork or archive deleted.",
+          "previous_action": "HOLD_NO_SAFE_COPY",
+          "previous_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+          "evidence": "reports/vhannibal-followup-20261106/scope-batch-20261110-11.json"
         },
         {
           "reference": "1_0_1_1_1_FFFF_104AB59_0_0_0",
@@ -3294,5 +3306,31 @@
     "pr_total_unique_changed_zips": 99,
     "secondary_reference": "Still blocked; no fresh complete tuple for11012H.",
     "future_authorization": "Owner authorizes safe future batches and working-branch saves without individual approval; identity/quality conflicts remain blocked."
+  },
+  "continuation_20261110_batch11": {
+    "source_url": "https://hu.kingofsat.eu/tp4716",
+    "retrieved_at": "2026-11-10T06:53:21.063164+00:00",
+    "source_sha256": "8d3d2d71faee9cf19d3e88155fd3062c47d4f77ee8ba9368476ee19854d9f9e7",
+    "satellite": "Eutelsat 7 West A",
+    "position": "7.0W",
+    "frequency_MHz": 12398.6,
+    "polarization": "V",
+    "NID_as_labelled_by_source": 1918,
+    "TSID": 53600,
+    "assessment": "Explicit nonprogramme testcard classification for four target services. Do not classify as data: video/audio PIDs are present. NID is not independently an ONID proof; use existing exact Vhannibal tuple mapping. Other KingOfSat mirrors can show NID2048/TSID41; preserve this snapshot and do not substitute that tuple.",
+    "batch": 11,
+    "previous_checkpoint": "8b5dd143cc2cd0775bd3066506a937805669ec72",
+    "new_tv_references": 0,
+    "new_png": 0,
+    "modified_zips": 0,
+    "technical_closed": 4,
+    "remaining_open": 99,
+    "original_open": 85,
+    "delta_open": 14,
+    "candidate_tv": 39,
+    "candidate_png": 348,
+    "candidate_unique_zips": 99,
+    "decision": "Close four exact delta references as nonprogramme testcards. Preserve historical files; not a claim of data service or cessation.",
+    "source_snapshot": "reports/vhannibal-followup-20261106/batch11-eutelsat-tp4716.html"
   }
 }

@@ -1,5 +1,13 @@
 # Warder Evolution – stav projektu
 
+### Dávka11 – štyri doložené technické testovacie obrazce – 10.11.2026
+
+- Eutelsat1–4: SID7210/7220/7230/7240, TSID53600, Vhannibal ONID1918, 7°W 12399V. KingOfSat explicitne označuje všetky štyri ako Testcard (7.11.2026); zachytené HTML a presné riadky sú uložené. NID v externom zdroji sa nezamieňa za samostatný dôkaz ONID; väzbu poskytuje existujúci Vhannibal register.
+- **0 nových TV referencií /0 PNG /0 ZIPov /4 technické uzavretia. Zostáva99 otvorených (85 pôvodných +14 delta). Kandidát39 TV/348 PNG/99 jedinečných ZIPov.** Ide o neprogramové testovacie obrazce s AV PID, nie dátové služby ani dôkaz zániku.
+- Register pôvodných referencií remaining-review.json sa nemení: všetky štyri prípady patria do source_delta v identity-evidence-20261107.json. Historické grafiky a všetky balíky vrátane18 CANAL+ zachované bez zmeny; produkcia a rádio nedotknuté.
+- Podklady a rozhodnutie: `reports/vhannibal-followup-20261106/scope-batch-20261110-11.json`. Spätné overenie bude zaznamenané po uložení payload commitu.
+- Cielené preverenie ďalších kandidátov: Sky2117/2118 má konflikt SID/TSID pri údajnom NickJr/MTV aliasovaní; StarzPlay Movies nemá získaný použiteľný oficiálny podklad konkrétnej edície; EL JUMHURIA nemá doloženú grafickú identitu. Žiadna z týchto položiek nebola uzavretá. AL-KAFEL a druhá NTV ostávajú blokované. Pokračovať od dávky12 iba s novým rozhodujúcim dôkazom alebo správnym oficiálnym podkladom; dávky01–11 neopakovať.
+
 ### Dávka10 – schválené NTV Неизвестная Россия v pracovných balíkoch – 10.11.2026
 
 - **1 dokončená referencia /9 PNG /9 ZIPov /0 technických uzavretí. Zostáva103 otvorených (85 pôvodných +18 delta). Kandidát39 TV/348 PNG/99 jedinečných ZIPov.**
