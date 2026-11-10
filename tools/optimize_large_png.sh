@@ -34,5 +34,5 @@ PY
     fi
   fi
   rm -f "$tmp"
-done < <(find "$ROOT" -type f -iname '*.png' -size +100k -printf '%s\t%p\0' | sort -zrn | head -z -n "$LIMIT" | cut -z -f2-)
+done < <(find "$ROOT" -type f -iname '*.png' -size +100k -printf '%s\t%p\0' | sort -zrn | sed -z -n "1,${LIMIT}p" | cut -z -f2-)
 printf 'Checked: %s; optimized: %s; saved: %s bytes\n' "$tested" "$changed" "$(( before - after ))"
