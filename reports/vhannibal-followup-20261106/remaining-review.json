@@ -5847,9 +5847,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "action": "EXCLUDE_CONFIRMED_TESTCARD_NO_PNG_DELETION",
+    "remaining_current_technical": false,
+    "resolution_reason": "LyngSat explicitly classifies this SID as [test card] on the exact ONID1/TID72 transport. KingOfSat independently marks the same SID with its mire.jpg test-pattern symbol and matching AV PIDs. This is a non-programme testcard, not Data, not departure, and not an Iraqia Sport alias (Sport SID7207 merely uses VPID7213).",
     "technical_uid": {
       "sid": 7213,
       "tsid": 72,
@@ -5874,6 +5874,52 @@
         1,
         230686720
       ]
+    },
+    "followup_batch18_closure": {
+      "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+      "name": "Test HD",
+      "decision": "EXCLUDE_CONFIRMED_TESTCARD_NO_PNG_DELETION",
+      "sid": 7213,
+      "tsid": 72,
+      "onid": 1,
+      "namespace": "0x0DC00000",
+      "position": "8.0W",
+      "frequency_mhz": 12563,
+      "polarisation": "H",
+      "vpid": 7244,
+      "apid": 7245,
+      "reason": "LyngSat explicitly classifies this SID as [test card] on the exact ONID1/TID72 transport. KingOfSat independently marks the same SID with its mire.jpg test-pattern symbol and matching AV PIDs. This is a non-programme testcard, not Data, not departure, and not an Iraqia Sport alias (Sport SID7207 merely uses VPID7213).",
+      "sources": [
+        {
+          "url": "https://www.lyngsat.com/muxes/Eutelsat-8-West-B_MENA_12563-H.html",
+          "access": "Web open returned page and exact service table; direct urllib fetch403, not retried.",
+          "page_updated": "2026-10-31",
+          "service_updated": "2026-07-02",
+          "classification_verbatim": "[test card]",
+          "onid": 1,
+          "tsid": 72,
+          "sid": 7213,
+          "vpid": 7244,
+          "apid": 7245
+        },
+        {
+          "url": "https://en.kingofsat.info/freqs.php?aff=list&filtre=no&lim=80&ordre=date_maj&pos=8W&standard=All",
+          "access": "Web page and direct HTML retrieved",
+          "html_bytes": 504294,
+          "html_sha256": "2da65698a1279e53727c31628011db996804276856753e9580d986cb384fdca9",
+          "service_date": "2026-07-02",
+          "transport_date": "2026-11-10",
+          "nid": 1,
+          "tsid": 72,
+          "sid": 7213,
+          "vpid": 7244,
+          "apid": 7245,
+          "pmt": 113,
+          "testcard_symbol": "/mire.jpg",
+          "scope": "NID is not substituted for ONID; ONID is explicit in LyngSat and original registry."
+        }
+      ],
+      "reopen_condition": "Dated evidence of programme content/reassignment of this exact tuple; preserve existing PNG."
     }
   },
   {

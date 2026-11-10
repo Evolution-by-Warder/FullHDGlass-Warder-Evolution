@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-10",
+  "batch": 18,
+  "status": "COMPLETED_ONE_TECHNICAL_CLOSURE_PENDING_FINAL_AUDIT",
+  "base_checkpoint": "077f909f0db3b95deb1c34017b6da022292b46dd",
+  "counts_before": {
+    "tv": 48,
+    "png": 429,
+    "unique_zips": 99,
+    "open": 87
+  },
+  "counts_after": {
+    "tv": 48,
+    "png": 429,
+    "unique_zips": 99,
+    "open": 86,
+    "original_open": 80,
+    "delta_open": 6
+  },
+  "new_graphical_integrations": 0,
+  "new_png": 0,
+  "modified_zips": 0,
+  "technical_closures": 1,
+  "closures": [
+    {
+      "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+      "name": "Test HD",
+      "decision": "EXCLUDE_CONFIRMED_TESTCARD_NO_PNG_DELETION",
+      "sid": 7213,
+      "tsid": 72,
+      "onid": 1,
+      "namespace": "0x0DC00000",
+      "position": "8.0W",
+      "frequency_mhz": 12563,
+      "polarisation": "H",
+      "vpid": 7244,
+      "apid": 7245,
+      "reason": "LyngSat explicitly classifies this SID as [test card] on the exact ONID1/TID72 transport. KingOfSat independently marks the same SID with its mire.jpg test-pattern symbol and matching AV PIDs. This is a non-programme testcard, not Data, not departure, and not an Iraqia Sport alias (Sport SID7207 merely uses VPID7213).",
+      "sources": [
+        {
+          "url": "https://www.lyngsat.com/muxes/Eutelsat-8-West-B_MENA_12563-H.html",
+          "access": "Web open returned page and exact service table; direct urllib fetch403, not retried.",
+          "page_updated": "2026-10-31",
+          "service_updated": "2026-07-02",
+          "classification_verbatim": "[test card]",
+          "onid": 1,
+          "tsid": 72,
+          "sid": 7213,
+          "vpid": 7244,
+          "apid": 7245
+        },
+        {
+          "url": "https://en.kingofsat.info/freqs.php?aff=list&filtre=no&lim=80&ordre=date_maj&pos=8W&standard=All",
+          "access": "Web page and direct HTML retrieved",
+          "html_bytes": 504294,
+          "html_sha256": "2da65698a1279e53727c31628011db996804276856753e9580d986cb384fdca9",
+          "service_date": "2026-07-02",
+          "transport_date": "2026-11-10",
+          "nid": 1,
+          "tsid": 72,
+          "sid": 7213,
+          "vpid": 7244,
+          "apid": 7245,
+          "pmt": 113,
+          "testcard_symbol": "/mire.jpg",
+          "scope": "NID is not substituted for ONID; ONID is explicit in LyngSat and original registry."
+        }
+      ],
+      "reopen_condition": "Dated evidence of programme content/reassignment of this exact tuple; preserve existing PNG."
+    }
+  ],
+  "other_findings": [
+    {
+      "group": "SPARES_7W",
+      "refs": [
+        "1_0_19_11A3_2D_800_DCA0000_0_0_0",
+        "1_0_1_11A4_2D_800_DCA0000_0_0_0",
+        "1_0_1_162D_236_800_DCA0000_0_0_0",
+        "1_0_1_162E_236_800_DCA0000_0_0_0"
+      ],
+      "source": "https://en.kingofsat.eu/new.php?filtre=no&lim=0&ordre=date_maj&standard=All&tp=45",
+      "result": "New5Nov listings locate SID5677/5678 at12379.4H,NID2048/TSID566; target previously11727H. Same numeric tuple can survive frequency migration; no departure inference. Spare labels still do not establish programme identity. SID4515/4516 seen in recent aggregate listing but no named programme binding. All four held.",
+      "next": "Obtain named exact-service mapping or direct programme content; no logo from adjacent OSN services."
+    },
+    {
+      "group": "Test_7411",
+      "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
+      "result": "Current8W page lacks SID7411 in11178.8V table. Older scanner index still labels it Test. Absence and generic label do not prove departure or testcard. HOLD.",
+      "source": "https://digitalbitrate.co.uk/dtv.php?lang=en&liste=4&live=76&mux=&order=0",
+      "access": "Historical search-index lead only; direct LyngSat11179V returned403, not retried."
+    },
+    {
+      "group": "HS1",
+      "reference": "1_0_19_6_1_20C4_1860000_0_0_0",
+      "result": "Ciefp author's27Jun2026 changelog lists HS1 in Cyprus11761H T2MI ensemble, without exact-service content classification. No operator-logo reuse. HOLD.",
+      "source": "https://i-have-a-dreambox.com/forum/index.php?postID=2322747&thread%2F133929-ciefp-settings-e1-e2%2F=",
+      "access": "Search-index author-post lead. OpenPLi related page restricted, not retried."
+    }
+  ],
+  "preservation": {
+    "protected_canal_archives": 18,
+    "binary_or_production_changes": 0,
+    "alkafeel": "Existing original, preview and9variants left in place; no rerender/upload; local-only status unchanged.",
+    "ses": "Identity preserved; no SES ASTRA substitution.",
+    "previous_batches": "01-17 not rerun or audited",
+    "excluded_rechecks": [
+      "Service11-13",
+      "ITA99A",
+      "1TV Iraq"
+    ]
+  },
+  "installation_test": "N/A_DOCUMENTATION_ONLY",
+  "next": "Continue86 open cases from updated batch18 research register. Reopen held cases only for new decisive evidence. No production merge."
+}

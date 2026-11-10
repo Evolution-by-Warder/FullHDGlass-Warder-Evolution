@@ -1,16 +1,16 @@
 {
   "batch": 18,
-  "status": "IN_PROGRESS_NO_SAFE_INTEGRATION",
+  "status": "COMPLETED_ONE_TECHNICAL_CLOSURE_PENDING_FINAL_AUDIT",
   "base_checkpoint": "dc5e7508af81d708720b4004ebad0ee84c7e8933",
   "counts": {
     "tv": 48,
     "png": 429,
     "unique_zips": 99,
-    "open": 87
+    "open": 86
   },
   "new_tv": 0,
   "new_png": 0,
-  "technical_closures": 0,
+  "technical_closures": 1,
   "source": {
     "url": "https://github.com/ciefp/ciefpsettings-enigma2/blob/master/ciefp-E2-motor-75E-34W/lamedb",
     "blob_sha": "0b2214d207734b0abae299e2a25792dca1403aea",
@@ -26,10 +26,12 @@
     "not_found": 73,
     "not_found_is_not_departure": true,
     "priorities": {
-      "EXACT_IDENTITY_OR_CLASSIFICATION_REQUIRED": 80,
+      "EXACT_IDENTITY_OR_CLASSIFICATION_REQUIRED": 79,
       "PROTECTED": 2,
-      "ARTWORK_REQUIRED": 5
-    }
+      "ARTWORK_REQUIRED": 5,
+      "CLOSED_TESTCARD": 1
+    },
+    "scope_note": "Historical comparison remains87 targets; current86open plus1closed testcard. Ciefp not rerun."
   },
   "new_findings": [
     {
@@ -677,9 +679,55 @@
       "name": "Test HD",
       "group": "Test HD",
       "exact_match": null,
-      "decision": "HOLD_REQUIRES_DECISIVE_EVIDENCE",
-      "evidence_priority": "EXACT_IDENTITY_OR_CLASSIFICATION_REQUIRED",
-      "next_evidence": "Preserve existing blocker; no closure from absence in curated list. Need exact independent service identity/classification, or approved same-edition artwork where identity is established."
+      "decision": "EXCLUDE_CONFIRMED_TESTCARD_NO_PNG_DELETION",
+      "evidence_priority": "CLOSED_TESTCARD",
+      "next_evidence": "Dated evidence of programme content/reassignment of this exact tuple; preserve existing PNG.",
+      "closure": {
+        "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+        "name": "Test HD",
+        "decision": "EXCLUDE_CONFIRMED_TESTCARD_NO_PNG_DELETION",
+        "sid": 7213,
+        "tsid": 72,
+        "onid": 1,
+        "namespace": "0x0DC00000",
+        "position": "8.0W",
+        "frequency_mhz": 12563,
+        "polarisation": "H",
+        "vpid": 7244,
+        "apid": 7245,
+        "reason": "LyngSat explicitly classifies this SID as [test card] on the exact ONID1/TID72 transport. KingOfSat independently marks the same SID with its mire.jpg test-pattern symbol and matching AV PIDs. This is a non-programme testcard, not Data, not departure, and not an Iraqia Sport alias (Sport SID7207 merely uses VPID7213).",
+        "sources": [
+          {
+            "url": "https://www.lyngsat.com/muxes/Eutelsat-8-West-B_MENA_12563-H.html",
+            "access": "Web open returned page and exact service table; direct urllib fetch403, not retried.",
+            "page_updated": "2026-10-31",
+            "service_updated": "2026-07-02",
+            "classification_verbatim": "[test card]",
+            "onid": 1,
+            "tsid": 72,
+            "sid": 7213,
+            "vpid": 7244,
+            "apid": 7245
+          },
+          {
+            "url": "https://en.kingofsat.info/freqs.php?aff=list&filtre=no&lim=80&ordre=date_maj&pos=8W&standard=All",
+            "access": "Web page and direct HTML retrieved",
+            "html_bytes": 504294,
+            "html_sha256": "2da65698a1279e53727c31628011db996804276856753e9580d986cb384fdca9",
+            "service_date": "2026-07-02",
+            "transport_date": "2026-11-10",
+            "nid": 1,
+            "tsid": 72,
+            "sid": 7213,
+            "vpid": 7244,
+            "apid": 7245,
+            "pmt": 113,
+            "testcard_symbol": "/mire.jpg",
+            "scope": "NID is not substituted for ONID; ONID is explicit in LyngSat and original registry."
+          }
+        ],
+        "reopen_condition": "Dated evidence of programme content/reassignment of this exact tuple; preserve existing PNG."
+      }
     },
     {
       "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
@@ -908,5 +956,6 @@
   ],
   "preservation": "Documentation-only. No PNG, ZIP, parts, manifest, protected archive, radio or production mutations. No repeat audit of batches01-17.",
   "installation_test": "NOT_APPLICABLE_NO_INSTALLABLE_CHANGE",
-  "next": "Batch18 remains open. Prioritize five artwork-held candidates; new artwork needs visual approval. For other80 require new exact identity/classification evidence; two protected TV5MONDE records stay blocked."
+  "next": "Continue86 open cases from updated batch18 research register. Reopen held cases only for new decisive evidence. No production merge.",
+  "closure_report": "scope-batch-20261110-18-completed.json"
 }
