@@ -5,6 +5,7 @@
 - **9 nových návrhov PNG /0 vložených PNG /0 ZIP zmien /0 uzavretých referencií. Kandidát45 TV/402 PNG/99 ZIPov;92 otvorených.**
 - Oficiálny AntenaPLAY Live priamo označuje získaný1080×1080 RGBA originál ako logoChefi.ro; oficiálny webChefi.ro potvrdzuje rovnaký emblém. Nesprávny donorZU TV zostáva vyradený. PresnáSID5/TSID10/ONID366 väzba už doložená dávkou13.
 - Všetky3 rozmery ×3 pozadia pripravené priamo z originálu, bez prefarbenia a prerábania; MASTER šablóny zachované. Rozmery/alfa/SHA256 PASS. Nový artwork čaká na vizuálne schválenie; zlatá žiara originálu zachovaná, drobný text pri50×30 posúdi vlastník.
+- Payload `41010cf619db35cc3c13a5b84fcc46c43a9bb1f2`; spätný audit20 ciest/1851755 bajtov PASS, presná bajtová zhoda vrátane9 návrhov a originálu. Audit `scope-batch-20261110-14-remote-verification.json`.
 - Náhľad `reports/vhannibal-followup-20261106/chefi-official-review/review/preview.png`; report `scope-batch-20261110-14.json`. Žiadne zmeny manifestu, balíkov,18CANAL+, rádia ani produkcie. PR50 nezlúčený.
 - Dávka13 vzdialene overená: payload29a7fa0150ee944bae6cd377787d3aa9a21e3498; audit checkpoint1c0ebe67b3166980e463926bebb092526474f2f6. Spätné načítanie všetkých3 checkpoint dokumentov bajtovo zhodné.
 - Ďalší krok: schválenie9Chefi.ro návrhov pred integráciou; ostatné prípady riešiť len s novým rozhodujúcim podkladom. DSNS/Quadrille/DMDU_T bez opakovaných neúspešných dotazov.

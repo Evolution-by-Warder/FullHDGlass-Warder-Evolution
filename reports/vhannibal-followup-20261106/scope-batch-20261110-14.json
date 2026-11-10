@@ -33,5 +33,8 @@
   "radio_changed": false,
   "next_step": "Owner visual review of9 drafts before package integration. Other unresolved cases remain available for independently evidenced work. Do not repeat batches01–13.",
   "review_report": "reports/vhannibal-followup-20261106/chefi-official-review/review/review.json",
-  "preview": "reports/vhannibal-followup-20261106/chefi-official-review/review/preview.png"
+  "preview": "reports/vhannibal-followup-20261106/chefi-official-review/review/preview.png",
+  "payload_commit": "41010cf619db35cc3c13a5b84fcc46c43a9bb1f2",
+  "remote_verification": "reports/vhannibal-followup-20261106/scope-batch-20261110-14-remote-verification.json",
+  "remote_verification_status": "PASS"
 }
