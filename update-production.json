@@ -1,18 +1,18 @@
 {
-  "version": "1.0.77",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.77_all.ipk",
-  "sha256": "dd7f4bc24476cd63daf8c0168f207f86ed061c459e3a53a5b58ed9cd20dcf502",
-  "changelog": "Factory reset now restores all 148 original icons offline without downloaded icon packs. Clearer localized graphics/picon storage settings and separate hdg17.conf backup help; obsolete MSN weather default removed. Fifteen PNG assets optimized losslessly, saving 686,901 bytes. Restart the GUI after updating.",
+  "version": "1.0.78",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk",
+  "sha256": "d9b6b7b8235ca64fd5e448171bd62f68bf195b70a5ca2ad9d3ca64a1d3c3dceb",
+  "changelog": "Internal code optimization, more reliable graphics handling, improved error prevention and smoother operation. Existing user settings are preserved. Restart the GUI after updating.",
   "changelog_i18n": {
-    "en": "Factory reset now restores all 148 original icons offline without downloaded icon packs. Clearer localized graphics/picon storage settings and separate hdg17.conf backup help; obsolete MSN weather default removed. Fifteen PNG assets optimized losslessly, saving 686,901 bytes. Restart the GUI after updating.",
-    "sk": "Úplný reset obnoví všetkých 148 originálnych ikon bez internetu a bez stiahnutej sady. Zrozumiteľnejšie preložené nastavenia úložiska grafiky a piconov, samostatná nápoveda pre zálohu hdg17.conf a odstránené neplatné MSN počasie. Bezstratovo optimalizovaných 15 PNG, úspora 686 901 bajtov. Po aktualizácii reštartujte GUI.",
-    "cs": "Úplný reset obnoví všech 148 původních ikon offline bez stažené sady. Jasnější překlady úložiště grafiky a piconů, samostatná nápověda k záloze hdg17.conf a odstranění neplatné výchozí hodnoty MSN počasí. Bezztrátová optimalizace 15 PNG, úspora 686 901 bajtů. Po aktualizaci restartujte GUI.",
-    "de": "Ein vollständiger Reset stellt alle 148 Original-Icons offline wieder her. Verbesserte übersetzte Speicher- und Backup-Hilfen für Grafiksets, Picons und hdg17.conf; veralteter MSN-Wetterstandard entfernt. 15 PNG-Dateien verlustfrei optimiert, 686.901 Byte gespart. GUI nach dem Update neu starten.",
-    "pl": "Pełny reset przywraca 148 oryginalnych ikon bez pobierania. Czytelniejsze ustawienia przechowywania grafik i pikonów, osobna pomoc dla kopii hdg17.conf; usunięto przestarzałą opcję pogodową MSN. Bezstratnie zoptymalizowano 15 PNG, oszczędzając 686 901 bajtów. Po aktualizacji uruchom ponownie GUI.",
-    "hu": "A teljes visszaállítás 148 eredeti ikont állít helyre letöltés nélkül. Egyértelműbb grafikakészlet- és picon-tárolási beállítások, külön hdg17.conf súgó; elavult MSN időjárási alapérték eltávolítva. 15 PNG veszteségmentesen optimalizálva, 686 901 bájt megtakarítás. Frissítés után indítsa újra a GUI-t.",
-    "ru": "Полный сброс восстанавливает 148 исходных значков без загрузки. Улучшены переводы настроек хранения графики и пиконов, отдельная справка по hdg17.conf; удалён устаревший MSN по умолчанию. Без потерь оптимизировано 15 PNG, экономия 686 901 байт. Перезапустите интерфейс после обновления.",
-    "fr": "La réinitialisation restaure hors ligne les 148 icônes d’origine, sans pack téléchargé. Aide et libellés de stockage des graphismes/picons clarifiés, aide distincte pour hdg17.conf et suppression du réglage météo MSN obsolète. 15 PNG optimisés sans perte : 686 901 octets économisés. Redémarrez l’interface.",
-    "it": "Il ripristino completo recupera offline tutte le 148 icone originali, senza pacchetti scaricati. Menu e guida per la memoria di grafica/picon più chiari, guida separata per hdg17.conf e predefinito meteo MSN obsoleto rimosso. Ottimizzati senza perdita 15 PNG: risparmiati 686.901 byte. Riavvia la GUI.",
-    "es": "El restablecimiento completo recupera sin conexión los 148 iconos originales, sin paquetes descargados. Ajustes y ayudas más claros para gráficos y picons, ayuda separada para hdg17.conf y eliminación del ajuste meteorológico MSN obsoleto. 15 PNG optimizados sin pérdida, ahorro de 686 901 bytes. Reinicia la interfaz."
+    "en": "Internal code optimization, more reliable graphics handling, improved error prevention and smoother operation. Existing user settings are preserved. Restart the GUI after updating.",
+    "sk": "Optimalizácia interného kódu, spoľahlivejšie spracovanie grafiky, predchádzanie možným chybám a plynulejšie ovládanie. Existujúce nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "cs": "Optimalizace interního kódu, spolehlivější zpracování grafiky, prevence možných chyb a plynulejší ovládání. Stávající nastavení zůstávají zachována. Po aktualizaci restartujte GUI.",
+    "de": "Interne Codeoptimierungen, zuverlässigere Grafikverarbeitung, verbesserte Fehlervermeidung und flüssigere Bedienung. Bestehende Einstellungen bleiben erhalten. Starten Sie die GUI nach dem Update neu.",
+    "pl": "Optymalizacja kodu, niezawodniejsza obsługa grafiki, zapobieganie błędom i płynniejsza obsługa. Istniejące ustawienia zostają zachowane. Po aktualizacji uruchom ponownie GUI.",
+    "hu": "Belső kódoptimalizálás, megbízhatóbb grafikus feldolgozás és jobb hibamegelőzés. A meglévő beállítások megmaradnak. Frissítés után indítsa újra a GUI-t.",
+    "ru": "Оптимизация внутреннего кода, более надежная обработка графики и предотвращение ошибок. Настройки сохраняются. После обновления перезапустите интерфейс.",
+    "fr": "Optimisation interne, traitement graphique plus fiable et meilleure prévention des erreurs. Les paramètres existants sont conservés. Redémarrez l’interface après la mise à jour.",
+    "it": "Ottimizzazione del codice, gestione grafica più affidabile e migliore prevenzione degli errori. Le impostazioni esistenti sono conservate. Riavvia la GUI dopo l’aggiornamento.",
+    "es": "Optimización del código, gestión gráfica más fiable y mejor prevención de errores. Se conservan los ajustes existentes. Reinicia la interfaz después de actualizar."
   }
 }
