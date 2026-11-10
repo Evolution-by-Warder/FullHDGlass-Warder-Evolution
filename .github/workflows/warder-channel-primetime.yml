@@ -48,6 +48,8 @@ jobs:
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.xml
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
             /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+            /source/package-root/usr/share/enigma2/hd_glass17/icons_factory/
+            /source/package-root/usr/share/enigma2/hd_glass17/icons/
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -56,6 +58,20 @@ jobs:
           git fetch --no-tags --depth=1 origin main
           git show origin/main:source/package-root/usr/share/enigma2/hd_glass17/skin.xml > /tmp/warder-approved-skin.xml
           cmp /tmp/warder-approved-skin.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - name: Verify bundled offline factory icons
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root = Path("source/package-root/usr/share/enigma2/hd_glass17")
+          factory = sorted((root / "icons_factory").glob("*.png"))
+          live = root / "icons"
+          assert len(factory) == 148, "Factory reset must ship 148 PNG icons"
+          assert all((live / icon.name).is_file() for icon in factory), "Factory icon names must exist in live set"
+          assert all(icon.stat().st_size > 0 for icon in factory), "Factory icon must not be empty"
+          print("Factory icon payload: 148 present and mapped to live icon paths")
+          PY
+      - name: Test offline factory icon restoration
+        run: python -m unittest tools/test_factory_icon_reset.py -v
       - name: Validate Python syntax
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py

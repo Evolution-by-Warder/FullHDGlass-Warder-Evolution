@@ -2714,6 +2714,30 @@ def changeScreenXml(what, new="1", old="1"):
 		tmp = changePIGres()
 	return True
 ##########################################################################################################################  
+def restoreFactoryIcons():
+	"""Restore the bundled default icon set without downloaded icon packs."""
+	source = os.path.join(SKINPATH, "icons_factory")
+	target = os.path.join(SKINPATH, "icons")
+	# Never start a partial restore when any packaged default icon is missing.
+	if not all(os.path.isfile(os.path.join(source, name + ".png")) for name in allIcons):
+		return False
+	try:
+		for name in allIcons:
+			destination = os.path.join(target, name + ".png")
+			tmp = destination + ".warder-reset-tmp"
+			try:
+				shutil.copy2(os.path.join(source, name + ".png"), tmp)
+				os.replace(tmp, destination)
+			except OSError:
+				try:
+					os.remove(tmp)
+				except OSError:
+					pass
+				raise
+	except OSError:
+		return False
+	return True
+
 def setTypeIcos(num):
 	global allIcons
 	for x in allIcons:
@@ -7253,7 +7277,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"C"), config.plugins.setupGlass17.par97)) 
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"F"), config.plugins.setupGlass17.par150))
 			elif tt == 24:
-				self.list.append(getConfigListEntry(S0 % _("Picons/Icons path"), config.plugins.setupGlass17.par125))
+				self.list.append(getConfigListEntry(S0 % ui_text("Storage for graphics sets, picons and data"), config.plugins.setupGlass17.par125))
 				if config.plugins.setupGlass17.par125.value == "0":
 					self.list.append(getConfigListEntry(S0 % _("User defined path"), config.plugins.setupGlass17.par124))
 				self.list.append(getConfigListEntry(S0 % _("FHDG Configuration file"), config.plugins.setupGlass17.par144))
@@ -7865,7 +7889,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				else:
 					self["selected_item"].setText("")
 				self["help_pict"].hide()
-				self["help_txt"].setText(helpTxt.get(filename))
+				if filename == "39-1-0":
+					self["help_txt"].setText(ui_text("Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."))
+				elif filename == "144-0":
+					self["help_txt"].setText(ui_text("Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."))
+				else:
+					self["help_txt"].setText(helpTxt.get(filename))
 			else:
 				filename = config.plugins.setupGlass17.par39.value+"/g17_setup_pict/"+filename+".png"
 				if filename:  # All disk access and preparation are delegated to the preview worker.
@@ -8376,15 +8405,21 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			config.plugins.setupGlass17.par6.save()
 			if config.plugins.setupGlass17.par227.value == "0":
 				x = changeSkinXml("NumberZapExt", chckPiconSize())
+		factory_icons = getattr(self, "_warderFactoryResetPending", False) and config.plugins.setupGlass17.par1.value == 1
+		if factory_icons and not restoreFactoryIcons():
+			self.session.open(MessageBox, ui_text("Unable to restore bundled default icons. Please reinstall the skin."), MessageBox.TYPE_ERROR, 5)
+			return
 		if self.d[7] != config.plugins.setupGlass17.par1.value:
-			if not checkIcons(config.plugins.setupGlass17.par1.value):
+			# An explicit icon change still requires a complete downloaded icon set.
+			if not factory_icons and not checkIcons(config.plugins.setupGlass17.par1.value):
 				msg = (_("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + " " + _("is incorrect, please, select correct icons !!!"))
 				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)
 				return
 			self.d[7] = config.plugins.setupGlass17.par1.value
-			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"	
+			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"
 			config.plugins.setupGlass17.par1.save()
-			x = setTypeIcos(self.d[7])
+			if not factory_icons:
+				setTypeIcos(self.d[7])
 		if self.d[18] != config.plugins.setupGlass17.par44.value or self.d[19] != config.plugins.setupGlass17.par45.value:
 			isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
 			if isOk != "?":
@@ -8661,6 +8696,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		except AttributeError:
 			pass
 		configfile.save()
+		self._warderFactoryResetPending = False
 		if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:
 			_refreshLiveWeather()
 			self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
@@ -8692,6 +8728,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	def restoreTofactoryAnswerNow(self,a):
 		if a:
+			# Only the factory-reset flow may use bundled icons without a downloaded pack.
+			self._warderFactoryResetPending = True
 			self.restoreCfgFromFile(PLUGINPATH+"defaults")
 
 	def restoreCfgFromFile(self,cfile):
