@@ -1,0 +1,37 @@
+{
+  "batch": 19,
+  "date": "2026-11-10",
+  "result": "PASS",
+  "scope": "Documentation checkpoint integrity; not batch completion or identity confirmation",
+  "base": "116e0aed0590bbdd9d6747ee0a44fd78560be7fc",
+  "audited_head": "3edd726b44230c9f0940b2d02591b1d68c5ef2ca",
+  "independent_reviewer": "batch19_checkpoint_audit",
+  "changed_files": 3,
+  "unique_open_references_annotated": 47,
+  "group_counts": [
+    16,
+    6,
+    23,
+    1,
+    1
+  ],
+  "counts": {
+    "tv": 48,
+    "png": 429,
+    "zip": 99,
+    "open": 86,
+    "original_open": 80,
+    "delta_open": 6
+  },
+  "integrations": 0,
+  "closures": 0,
+  "binary_changes": 0,
+  "protected_canal_archives_changed": 0,
+  "checks": [
+    "Only followup_batch19 annotations added to 47 existing open records; removing annotations reproduces base records.",
+    "No changes to production, closed cases, PNG or ZIP files.",
+    "PR #50 open and unmerged.",
+    "Group-level research explicitly distinguished from individual service measurements."
+  ],
+  "batch_status": "IN_PROGRESS_NO_SAFE_INTEGRATION"
+}

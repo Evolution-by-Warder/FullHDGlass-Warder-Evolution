@@ -1,3 +1,7 @@
+## 2026-11-10 — Batch 19 research checkpoint: independent audit PASS
+
+Independent audit of `116e0aed` → `3edd726b` passed: exactly three documentation files; 47 unique open references annotated (16+6+23+1+1), no status changes or binary modifications. Counts remain **48 TV / 429 PNG / 99 ZIP / 86 open**. PASS confirms checkpoint integrity, not batch completion. Batch 19 remains **IN_PROGRESS_NO_SAFE_INTEGRATION**. Audit: `reports/vhannibal-followup-20261106/scope-batch-20261110-19-checkpoint-audit.json`. Continue only with new decisive evidence; preserve existing blockers and approved artwork.
+
 ### Dávka 19 – nový prieskum piatich skupín, bez integrácie – 10. 11. 2026
 
 - Základ `116e0aed0590bbdd9d6747ee0a44fd78560be7fc`. **48 TV / 429 PNG / 99 ZIPov / 86 otvorených.** 0 integrácií, 0 technických uzavretí; dávka19 zostáva rozpracovaná.
