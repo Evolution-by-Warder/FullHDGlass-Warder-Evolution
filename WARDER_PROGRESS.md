@@ -5,7 +5,7 @@
 - **0 nových TV referencií /0 PNG /0 ZIPov /1 uzavretá neaktívna referencia. Zostáva98 otvorených (84 pôvodných +14 delta). Kandidát39 TV/348 PNG/99 jedinečných ZIPov.** Nejde o dátovú službu ani zánik stanice.
 - Uzavretá `1_0_16_42BC_A_46_E080000_0_0_0`: nový explicitný záznam8.11.2026 potvrdzuje odchod10934.6V/SID17084; starýTSID10/ONID70 doložený pôvodnými parametrami. Hotová referenciaTSID72 na10871.9H bez zmeny. Historické súbory zachované.
 - Kompletné rozdelenie99 vstupných prípadov a požadované dôkazy pri každom sú v `identity-evidence-20261107.json` → `continuation_20261110_batch12.triage`. Žiadny pripravený bezpečný donor;2 TV5MONDE prípady vyžadujú ochranu kanonickej grafiky, ostatné otvorené prípady presnú identitu/klasifikáciu alebo použiteľný podklad. Bez nového dôkazu neopakovať rovnaké dotazy.
-- Dôkazy: `scope-batch-20261110-12.json` a3 zachytené zdrojové stránky. Spätný audit po uložení payload commitu.
+- Dôkazy: `scope-batch-20261110-12.json` a3 zachytené zdrojové stránky. Payload commit `59aa4f7b51b1bee79a355508ff0ec89b48927f7e`; jeden spätný audit7 uložených súborov PASS, bajtová zhoda aSHA256. GitHubdiff iba7 evidenčných/dokumentačných ciest; ZIPy, PNG a manifesty nedotknuté. Audit `scope-batch-20261110-12-remote-verification.json`.
 - Balíky, manifesty,18 CANAL+, produkčnýmain a rádio nezmenené. PR50 sa nezlučuje. Ďalšia dávka13 musí vychádzať z nového dôkazu podľa konkrétneho riadka registra; dávky01–12 neopakovať.
 
 ### Dávka11 – štyri doložené technické testovacie obrazce – 10.11.2026
