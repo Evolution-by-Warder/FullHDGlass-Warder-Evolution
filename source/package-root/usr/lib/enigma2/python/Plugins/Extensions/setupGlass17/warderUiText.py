@@ -149,6 +149,19 @@ for _lang, _message in {'sk': '7zip nie je dostupný pre architektúru tohto pri
 
 
 @lru_cache(maxsize=24)
+
+# Destination menu follows the current Enigma2 OSD language in all 20 supported locales.
+TEXT.setdefault("al", {})["FullHDGlass skin storage"] = "Hapësira e skin-it FullHDGlass"
+TEXT.setdefault("et", {})["FullHDGlass skin storage"] = "FullHDGlassi kujunduse salvestuskoht"
+TEXT.setdefault("fa", {})["FullHDGlass skin storage"] = "فضای ذخیره‌سازی پوسته FullHDGlass"
+TEXT.setdefault("lt", {})["FullHDGlass skin storage"] = "FullHDGlass apvalkalo saugykla"
+TEXT.setdefault("nl", {})["FullHDGlass skin storage"] = "FullHDGlass-skinopslag"
+TEXT.setdefault("pt", {})["FullHDGlass skin storage"] = "Armazenamento do skin FullHDGlass"
+TEXT.setdefault("ro", {})["FullHDGlass skin storage"] = "Spațiul de stocare al temei FullHDGlass"
+TEXT.setdefault("tr", {})["FullHDGlass skin storage"] = "FullHDGlass tema depolama alanı"
+TEXT.setdefault("uk", {})["FullHDGlass skin storage"] = "Сховище скіна FullHDGlass"
+TEXT.setdefault("zh", {})["FullHDGlass skin storage"] = "FullHDGlass 皮肤存储位置"
+
 def _catalog(lang):
     return gettext.translation("setupGlass17", str(Path(__file__).parent / "locale"), languages=[lang], fallback=True)
 
