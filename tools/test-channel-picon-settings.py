@@ -92,6 +92,30 @@ class SettingsTests(unittest.TestCase):
         size_choices = screen.session.openWithCallback.call_args.kwargs['list']
         self.assertEqual(size_choices[0][1], ('destination', '/media/usb/hdg17_files/picon_50x30'))
 
+    def test_destination_row_indexing_is_contiguous_in_both_modes(self):
+        menu = next(n for n in TREE.body if isinstance(n, ast.ClassDef) and n.name == 'downloadMenu')
+        constructor = next(n for n in menu.body if isinstance(n, ast.FunctionDef) and n.name == '__init__')
+        condition = next(n for n in ast.walk(constructor) if isinstance(n, ast.If)
+                         and 'warderPiconExpert.custom_destination.value' in ast.unparse(n.test)
+                         and 'self.menuListAll = dict(enumerate(' in ast.unparse(n))
+        scope = {'config': self.config}
+        apply_filter = compile(ast.Module(body=[condition], type_ignores=[]), 'filtered-rows.py', 'exec')
+        original = {index: [name, '', '', '', 'x'] for index, name in enumerate(
+            ('wp-pos','wp-res','wp-style','wp-dest','wp-mode','aux-prov','aux-sat','aux-cam'))}
+        standard = NS(menuListAll=dict(original))
+        scope['self'] = standard
+        self.config.plugins.warderPiconExpert.custom_destination.value = False
+        exec(apply_filter, scope)
+        self.assertEqual(list(standard.menuListAll), list(range(7)))
+        self.assertEqual([row[0] for row in standard.menuListAll.values()],
+                         ['wp-pos','wp-res','wp-style','wp-mode','aux-prov','aux-sat','aux-cam'])
+        expert = NS(menuListAll=dict(original))
+        scope['self'] = expert
+        self.config.plugins.warderPiconExpert.custom_destination.value = True
+        exec(apply_filter, scope)
+        self.assertEqual(list(expert.menuListAll), list(range(8)))
+        self.assertEqual(expert.menuListAll[3][0], 'wp-dest')
+
     def test_standard_menu_hides_destination_and_expert_opt_in_restores_it(self):
         source = TEXT
         self.assertIn('config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)', source)
