@@ -92,6 +92,29 @@ class SettingsTests(unittest.TestCase):
         size_choices = screen.session.openWithCallback.call_args.kwargs['list']
         self.assertEqual(size_choices[0][1], ('destination', '/media/usb/hdg17_files/picon_50x30'))
 
+    def test_standard_menu_hides_destination_and_expert_opt_in_restores_it(self):
+        source = TEXT
+        self.assertIn('config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)', source)
+        self.assertIn('row for row in self.menuListAll.values() if row[0] != "wp-dest"', source)
+        self.assertIn('self.menuListAll = dict(enumerate(', source)
+        self.assertIn('ui_text("Custom picon location")', source)
+        self.assertIn('config.plugins.warderPiconExpert.custom_destination.save()', source)
+        self.assertIn('config.plugins.warderPiconExpert.custom_destination.cancel()', source)
+        self.assertIn('self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(', source)
+        from types import SimpleNamespace
+        directory = '/media/hdd/hdg17_files'
+        sync_src = (PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py').read_text()
+        sync_tree = ast.parse(sync_src)
+        node = next(n for n in sync_tree.body if isinstance(n, ast.FunctionDef)
+                    and n.name == 'skin_picon_destination')
+        scope = {'os': os}
+        exec(compile(ast.Module(body=[node], type_ignores=[]), 'picon-path.py', 'exec'), scope)
+        target = scope['skin_picon_destination']
+        self.assertEqual(target(directory, '220x132'), directory + '/picon')
+        self.assertEqual(target(directory, '50x30'), directory + '/picon_50x30')
+        self.assertEqual(target(directory, '400x240'), directory + '/picon_400x240')
+        self.assertEqual(target('/media/usb/hdg17_files'), '/media/usb/hdg17_files/picon')
+
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
         self.assertEqual(REGISTRY[18],'Channel sel. type')
