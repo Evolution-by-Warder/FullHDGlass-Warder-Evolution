@@ -7,7 +7,7 @@ from Components.config import config
 
 TEXT = {
     "sk": {
-        "Skin default storage": "Predvolené úložisko skinu",
+        "FullHDGlass skin storage": "Úložisko skinu FullHDGlass",
         "Channel-list picon source": "Zdroj piconov v zozname staníc",
         "System setting": "Systémové nastavenie",
         "Prefer 50x30": "Preferovať 50×30",
@@ -22,7 +22,7 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainštalujte 7zip z Ponuky sťahovania a potom spustite vybrané sťahovanie znova."
     },
     "cs": {
-        "Skin default storage": "Výchozí úložiště skinu",
+        "FullHDGlass skin storage": "Úložiště skinu FullHDGlass",
         "Channel-list picon source": "Zdroj piconů v seznamu stanic",
         "System setting": "Systémové nastavení",
         "Prefer 50x30": "Preferovat 50×30",
@@ -37,7 +37,7 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainstalujte 7zip z Nabídky stahování a potom spusťte vybrané stahování znovu."
     },
     "de": {
-        "Skin default storage": "Standard-Speicherort des Skins",
+        "FullHDGlass skin storage": "FullHDGlass-Skin-Speicher",
         "Channel-list picon source": "Picon-Quelle der Senderliste",
         "System setting": "Systemeinstellung",
         "Prefer 50x30": "50×30 bevorzugen",
@@ -51,7 +51,7 @@ TEXT = {
         "Confirm": "Bestätigen"
     },
     "hu": {
-        "Skin default storage": "Skin alapértelmezett tárhelye",
+        "FullHDGlass skin storage": "FullHDGlass skin tárhelye",
         "Channel-list picon source": "Csatornalista piconforrása",
         "System setting": "Rendszerbeállítás",
         "Prefer 50x30": "50×30 előnyben",
@@ -65,7 +65,7 @@ TEXT = {
         "Confirm": "Megerősítés"
     },
     "ru": {
-        "Skin default storage": "Хранилище скина по умолчанию",
+        "FullHDGlass skin storage": "Хранилище скина FullHDGlass",
         "Channel-list picon source": "Источник пиконов списка каналов",
         "System setting": "Системная настройка",
         "Prefer 50x30": "Предпочитать 50×30",
@@ -79,7 +79,7 @@ TEXT = {
         "Confirm": "Подтвердить"
     },
     "fr": {
-        "Skin default storage": "Stockage par défaut du skin",
+        "FullHDGlass skin storage": "Stockage du skin FullHDGlass",
         "Channel-list picon source": "Source des picons de la liste",
         "System setting": "Réglage système",
         "Prefer 50x30": "Préférer 50×30",
@@ -93,7 +93,7 @@ TEXT = {
         "Confirm": "Confirmer"
     },
     "it": {
-        "Skin default storage": "Archivio predefinito dello skin",
+        "FullHDGlass skin storage": "Archivio dello skin FullHDGlass",
         "Channel-list picon source": "Origine picon nell’elenco canali",
         "System setting": "Impostazione di sistema",
         "Prefer 50x30": "Preferisci 50×30",
@@ -107,7 +107,7 @@ TEXT = {
         "Confirm": "Conferma"
     },
     "es": {
-        "Skin default storage": "Almacenamiento predeterminado del skin",
+        "FullHDGlass skin storage": "Almacenamiento del skin FullHDGlass",
         "Channel-list picon source": "Origen de picons de la lista",
         "System setting": "Ajuste del sistema",
         "Prefer 50x30": "Preferir 50×30",
@@ -121,7 +121,7 @@ TEXT = {
         "Confirm": "Confirmar"
     },
     "pl": {
-        "Skin default storage": "Domyślny magazyn skina",
+        "FullHDGlass skin storage": "Magazyn skina FullHDGlass",
         "Channel-list picon source": "Źródło piconów na liście kanałów",
         "System setting": "Ustawienie systemowe",
         "Prefer 50x30": "Preferuj 50×30",
@@ -135,7 +135,7 @@ TEXT = {
         "Confirm": "Potwierdź"
     },
     "en": {
-        "Skin default storage": "Skin default storage",
+        "FullHDGlass skin storage": "FullHDGlass skin storage",
         "Channel-list picon source": "Channel-list picon source",
         "System setting": "System setting",
         "Prefer 50x30": "Prefer 50x30",
