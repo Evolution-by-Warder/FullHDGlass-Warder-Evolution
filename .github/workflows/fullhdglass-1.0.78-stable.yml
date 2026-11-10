@@ -10,10 +10,11 @@ permissions:
 
 concurrency:
   group: fullhdglass-stable-1.0.78
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   verify-build-publish:
+    if: false # Superseded by the canonical publish-warder-stable workflow.
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
