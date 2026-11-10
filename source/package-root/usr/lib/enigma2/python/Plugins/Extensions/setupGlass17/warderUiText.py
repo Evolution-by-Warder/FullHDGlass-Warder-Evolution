@@ -148,6 +148,29 @@ for _lang, _message in {'sk': '7zip nie je dostupný pre architektúru tohto pri
     TEXT[_lang]["7zip is not available for this receiver architecture."] = _message
 
 
+# Expert picon selector uses the active system language.
+TEXT.setdefault("sk", {})["Custom picon location"] = "Vlastné umiestnenie piconov"
+TEXT.setdefault("cs", {})["Custom picon location"] = "Vlastní umístění piconů"
+TEXT.setdefault("de", {})["Custom picon location"] = "Benutzerdefinierter Picon-Speicherort"
+TEXT.setdefault("en", {})["Custom picon location"] = "Custom picon location"
+TEXT.setdefault("pl", {})["Custom picon location"] = "Własna lokalizacja pikon"
+TEXT.setdefault("hu", {})["Custom picon location"] = "Egyéni piconhely"
+TEXT.setdefault("ru", {})["Custom picon location"] = "Своё расположение пиконов"
+TEXT.setdefault("fr", {})["Custom picon location"] = "Emplacement personnalisé des picons"
+TEXT.setdefault("it", {})["Custom picon location"] = "Posizione personalizzata dei picon"
+TEXT.setdefault("es", {})["Custom picon location"] = "Ubicación personalizada de picons"
+TEXT.setdefault("al", {})["Custom picon location"] = "Vendndodhja e personalizuar e piconëve"
+TEXT.setdefault("el", {})["Custom picon location"] = "Προσαρμοσμένη θέση picon"
+TEXT.setdefault("et", {})["Custom picon location"] = "Kohandatud piconite asukoht"
+TEXT.setdefault("fa", {})["Custom picon location"] = "مسیر دلخواه پیکون‌ها"
+TEXT.setdefault("lt", {})["Custom picon location"] = "Pasirinktinė pikonų vieta"
+TEXT.setdefault("nl", {})["Custom picon location"] = "Aangepaste piconlocatie"
+TEXT.setdefault("pt", {})["Custom picon location"] = "Localização personalizada dos picons"
+TEXT.setdefault("ro", {})["Custom picon location"] = "Locație personalizată pentru piconuri"
+TEXT.setdefault("tr", {})["Custom picon location"] = "Özel picon konumu"
+TEXT.setdefault("uk", {})["Custom picon location"] = "Власне розташування піктограм"
+TEXT.setdefault("zh", {})["Custom picon location"] = "自定义台标位置"
+
 # Destination menu follows the current Enigma2 OSD language in all 21 supported locales.
 TEXT.setdefault("al", {})["FullHDGlass skin storage"] = "Hapësira e skin-it FullHDGlass"
 TEXT.setdefault("el", {})["FullHDGlass skin storage"] = "Αποθήκευση του skin FullHDGlass"
