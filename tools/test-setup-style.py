@@ -102,7 +102,14 @@ class SetupStyleTests(unittest.TestCase):
             9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
             11: "in_default_channel_screen = default_geometry",
             12: "if in_default_channel_screen and '</screen>' in line:",
+            14: "if in_default_channel_screen and 'render=\\\"WarderChannelEpgClip\\\"' in line:",
         }
+        # The optional EPG-scrolling switch intentionally changes the old
+        # unconditional clip detection. An existing overlay must be removed
+        # when scrolling is disabled; only enabled overlays count as present.
+        self.assertEqual(CURRENT.count('if not epg_scroll_enabled:'), 1)
+        self.assertEqual(CURRENT.count('has_clipped_events = True'), 1)
+        self.assertIn('if not has_clipped_events and epg_scroll_enabled:', CURRENT)
         for index, record in enumerate(ledger):
             if index in evolved:
                 self.assertEqual(counts[index], 0, record['scope'])
