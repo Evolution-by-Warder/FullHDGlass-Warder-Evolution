@@ -1,0 +1,127 @@
+{
+  "batch": 19,
+  "date": "2026-11-10",
+  "base_checkpoint": "116e0aed0590bbdd9d6747ee0a44fd78560be7fc",
+  "status": "IN_PROGRESS_NO_SAFE_INTEGRATION",
+  "counts": {
+    "tv": 48,
+    "png": 429,
+    "unique_zips": 99,
+    "open": 86
+  },
+  "new_integrations": 0,
+  "technical_closures": 0,
+  "new_png": 0,
+  "modified_zips": 0,
+  "scope": "Five group-level evidence investigations,47affected open references; NOT47individual fresh scans or completed references.",
+  "groups": [
+    {
+      "id": "TEST_235E",
+      "refs": [
+        "1_0_16_189D_C97_3_EB0000_0_0_0",
+        "1_0_16_189E_C97_3_EB0000_0_0_0",
+        "1_0_16_189F_C97_3_EB0000_0_0_0",
+        "1_0_16_18A1_C97_3_EB0000_0_0_0",
+        "1_0_16_18A2_C97_3_EB0000_0_0_0",
+        "1_0_16_18A3_C97_3_EB0000_0_0_0",
+        "1_0_16_18AB_C97_3_EB0000_0_0_0",
+        "1_0_16_18AC_C97_3_EB0000_0_0_0",
+        "1_0_19_18A0_C97_3_EB0000_0_0_0",
+        "1_0_19_18A9_C97_3_EB0000_0_0_0",
+        "1_0_19_18AA_C97_3_EB0000_0_0_0",
+        "1_0_1_18A4_C97_3_EB0000_0_0_0",
+        "1_0_1_18A5_C97_3_EB0000_0_0_0",
+        "1_0_1_18A6_C97_3_EB0000_0_0_0",
+        "1_0_1_18A7_C97_3_EB0000_0_0_0",
+        "1_0_1_18A8_C97_3_EB0000_0_0_0"
+      ],
+      "sources": [
+        "https://www.satindex.de/channeleng/40718/",
+        "https://www.satindex.de/tp/3850/",
+        "https://www.satelitnatv.sk/frekvencie/druzica/astra-23-5e/"
+      ],
+      "finding": "Satindex service6303 identifies TSID3223 and historical04Sep2026 ONID0→3, with H264704x576/25fps VPID6333/APID6373. This corroborates the exact transport and one SID, not programme names for16services. SatelitnaTV lists all16 as generic Test under12148H; its1+1 entry belongs elsewhere. Do not infer identities from language, test label, or adjacent transponder.",
+      "next": "Exact per-SID programme screenshot or broadcaster/transport mapping. No repeat generic name/language searches."
+    },
+    {
+      "id": "MCK_685E",
+      "refs": [
+        "1_0_16_B72_1D_1800_2AD0000_0_0_0",
+        "1_0_16_B77_1D_1800_2AD0000_0_0_0",
+        "1_0_1_B13_1C_1800_2AD0000_0_0_0",
+        "1_0_1_B18_1C_1800_2AD0000_0_0_0",
+        "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
+        "1_0_1_B7C_1D_1800_2AD0000_0_0_0"
+      ],
+      "sources": [
+        "https://www.lyngsat.com/Intelsat-20.html",
+        "https://kingofsat.tv/freqs.php?aff=list&b=268&filtre=no&lim=90&ordre=date_maj&sat=148&standard=All"
+      ],
+      "finding": "LyngSat09Nov page corroborates ONID6144/TSID28 at12602V and6144/29 at12722H, but supplies no per-service programme list for these DSTV muxes. KingOfSat29Oct service entries still have F2930/2935/2940 labels; nearby KBNTV, Mibaw, Prime,3Ktv andMBC2 have different SIDs. No adjacent-channel donor transfer.",
+      "next": "Provider service map or identifiable content bound to six exact SIDs; transport confirmation alone insufficient."
+    },
+    {
+      "id": "DSNS_T2MI",
+      "refs": [
+        "1_0_16_1_C_2C_300000_0_0_0",
+        "1_0_16_1_C_2C_EB0000_0_0_0",
+        "1_0_16_2_C_2C_300000_0_0_0",
+        "1_0_16_2_C_2C_EB0000_0_0_0",
+        "1_0_16_3_C_2C_EB0000_0_0_0",
+        "1_0_16_4_C_2C_300000_0_0_0",
+        "1_0_16_4_C_2C_EB0000_0_0_0",
+        "1_0_16_5_C_2C_300000_0_0_0",
+        "1_0_16_5_C_2C_EB0000_0_0_0",
+        "1_0_16_6_C_2C_300000_0_0_0",
+        "1_0_16_6_C_2C_EB0000_0_0_0",
+        "1_0_16_7_C_2C_300000_0_0_0",
+        "1_0_16_7_C_2C_EB0000_0_0_0",
+        "1_0_16_8_C_2C_300000_0_0_0",
+        "1_0_16_8_C_2C_EB0000_0_0_0",
+        "1_0_16_9_C_2C_300000_0_0_0",
+        "1_0_16_9_C_2C_EB0000_0_0_0",
+        "1_0_16_A_C_2C_300000_0_0_0",
+        "1_0_16_A_C_2C_EB0000_0_0_0",
+        "1_0_16_B_C_2C_300000_0_0_0",
+        "1_0_16_B_C_2C_EB0000_0_0_0",
+        "1_0_16_C_C_2C_300000_0_0_0",
+        "1_0_16_C_C_2C_EB0000_0_0_0"
+      ],
+      "sources": [
+        "https://www.satellites.co.uk/forums/threads/t2-mi-reception-on-e2-stb-with-sdg-image-a-complete-step-by-step-guide.170042/page-24"
+      ],
+      "finding": "Historical receiver user's21Jan2024 worked example labels DSNS within decapsulated stream at4.8E with TSID0x107B/ONID0x55 and local relay URL. Targets are TSID0xC/ONID0x2C on4.8E/23.5E. Same label and inner SID do not authorize mapping across transport identifiers. This is historical first-hand receiver configuration, not current broadcaster evidence or new measurement.",
+      "next": "Current inner SDT/PMT and exact TSID12/ONID44 binding; no generic DSNS label closure."
+    },
+    {
+      "id": "FEED_7E",
+      "refs": [
+        "1_0_1_1_1000_0_46ADAF_0_0_0"
+      ],
+      "sources": [
+        "https://www.lyngsat.com/Eutelsat-7C.html"
+      ],
+      "finding": "11695V is labelled feed in carrier catalogue, without target SID1/TSID4096/ONID0 binding. Frequency-only feed classification cannot close the exact target.",
+      "next": "Exact full-tuple service purpose/content evidence."
+    },
+    {
+      "id": "RADIO_CLASSICA",
+      "refs": [
+        "1_0_16_43_204_1D_5A0000_0_0_0"
+      ],
+      "sources": [
+        "https://no.kingofsat.net/data.php?filtre=Clear&lim=0&ordre=freq&pos=9E&standard=All"
+      ],
+      "finding": "Search excerpt appeared to associate NID29 with RADIO CLASSICA TV. Direct row context shows target SID67 on stream33 with NID0/TSID516; NID29/TSID512 belongs to following stream35. Reject this false new match; previously documented blocker remains. NID is not independently ONID. No reclassification.",
+      "next": "Explicit ONID29 exact-service evidence; do not use search snippet or following transport."
+    }
+  ],
+  "other_leads": {
+    "starzplay": "Search found already-known official movie page770559016379; not fetched again after recorded prior403. No new approved channel artwork.",
+    "alkafeel": "Untouched local original/preview/nine drafts, upload not retried, blocked identity and approval.",
+    "ses": "No ASTRA substitution; confirmed identity retained."
+  },
+  "preservation": "Documentation only. Closed1–18 not revisited. Protected18CANAL+, all PNG/ZIP/manifest/radio/production inherited unchanged.",
+  "tests": "No installation tests; no installable payload change.",
+  "next": "Do not create batch20 as if19 delivered integrations. Resume19 on genuinely new exact evidence or approved same-edition donor; current researched routes exhausted."
+}

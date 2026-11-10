@@ -1,3 +1,11 @@
+### Dávka 19 – nový prieskum piatich skupín, bez integrácie – 10. 11. 2026
+
+- Základ `116e0aed0590bbdd9d6747ee0a44fd78560be7fc`. **48 TV / 429 PNG / 99 ZIPov / 86 otvorených.** 0 integrácií, 0 technických uzavretí; dávka19 zostáva rozpracovaná.
+- Päť skupín zahŕňa47otvorených referencií: Test23.5E16, MCK68.5E6, DSNS23, feed7E1 aRadioClassica1. Ide o skupinové dôkazy, nie47nových meraní. Podrobnosti a ďalší požadovaný dôkaz sú v `scope-batch-20261110-19-research.json` a dotknutých riadkoch `remaining-review.json`.
+- Satindex potvrdil historickú zmenu ONID/TSID pre Test6303, ale neidentifikoval program. LyngSat potvrdzuje dva MCK transporty bez názvov cieľových služieb. Historická DSNS konfigurácia patrí inému TSID/ONID. Feed7E má iba frekvenčný údaj. Pri RadioClassica zdanlivá zhoda NID29 vo vyhľadávači patrí nasledujúcemu streamu35; nepoužitá.
+- Žiadne domyslené aliasy ani nové logá. ALKAFEEL.TV ponechaná lokálne a blokovaná; bez renderu/uploadu. SES ASTRA nepoužitá. Dávky1–18 neauditované znova. Všetkých18CANAL+,PNG/ZIPy,manifest,rádio a produkcia bez zásahu. Inštalačné testy N/A.
+- Pokračovať dávkou19 iba novým presným dôkazom podľa registra; neprezentovať tento prieskum ako dokončené referencie. PR50 nezlučovať.
+
 ### Dávka 18 – jedno technické uzavretie, nezávislý audit PASS – 10. 11. 2026
 
 - Základ `077f909f0db3b95deb1c34017b6da022292b46dd`. **48 TV / 429 PNG / 99 ZIPov / 86 otvorených (80 pôvodných + 6 delta).** 0 nových grafických integrácií; 1 technické uzavretie.
