@@ -1,7 +1,7 @@
 {
   "batch": 14,
   "stage": "OWNER_APPROVED_INTEGRATION",
-  "status": "LOCAL_PASS_PENDING_REMOTE",
+  "status": "REMOTE_VERIFIED_PASS",
   "base_checkpoint": "e9d9b1b1c10ebcb026faab80dd29e1417b8f8fa2",
   "reference": "1_0_16_5_A_16E_1860000_0_0_0",
   "new_tv_references": 1,
@@ -243,5 +243,7 @@
   "approved_artwork_checkpoint": "e9d9b1b1c10ebcb026faab80dd29e1417b8f8fa2",
   "approved_artwork_path": "reports/vhannibal-followup-20261106/chefi-official-review/review/",
   "production_changed": false,
-  "radio_changed": false
+  "radio_changed": false,
+  "payload_commit": "b8507bb81b482657feb301ccd18f2283f97d837c",
+  "remote_verification": "reports/vhannibal-followup-20261106/scope-batch-20261110-14-integration-remote-verification.json"
 }

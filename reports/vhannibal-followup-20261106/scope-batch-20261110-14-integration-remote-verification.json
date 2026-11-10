@@ -1,0 +1,518 @@
+{
+  "status": "PASS",
+  "payload_commit": "b8507bb81b482657feb301ccd18f2283f97d837c",
+  "remote_files": 69,
+  "remote_parts": 62,
+  "remote_bytes": 225583785,
+  "approved_png": 9,
+  "zips": [
+    {
+      "filename": "warder-390e-220x132-transparent-07bf2eaca52ab16b.zip",
+      "sha256": "07bf2eaca52ab16baa6fe9e87998cd591d0bb64c214b60cb79c72461b1119375",
+      "bytes": 17209945,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-220x132-black-9d0061e931b599af.zip",
+      "sha256": "9d0061e931b599afd5ced15e5a61745054240d07336d59eb53f8add6d7b6d419",
+      "bytes": 40000939,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-220x132-white-7a9b2fa892a4a82f.zip",
+      "sha256": "7a9b2fa892a4a82f9f913f5c8d2b714579dd18de18f79184fa5ca2596b221fd8",
+      "bytes": 34429114,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-50x30-transparent-fa889cbf3b477056.zip",
+      "sha256": "fa889cbf3b4770563ae650a05da026bbd318eda3047dd973c76d09e5f319fda5",
+      "bytes": 2925901,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-50x30-white-21f97248def805d7.zip",
+      "sha256": "21f97248def805d7b1c7258744b6c535f40024f8dfb4edd516875ebd143b8d38",
+      "bytes": 3596015,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-50x30-black-e8dbee129f96786a.zip",
+      "sha256": "e8dbee129f96786a7add40c0e3403e3b15cafe39c985420cc681424a7180d538",
+      "bytes": 3644239,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-400x240-transparent-475d7c236e28ee52.zip",
+      "sha256": "475d7c236e28ee5267a5fa3582100c18d611ebc0c0b4f4fb53a4e684f1beee8f",
+      "bytes": 37576623,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-400x240-white-16cfa3e7ca161947.zip",
+      "sha256": "16cfa3e7ca16194784f1187d8ebc2cfe5f2ce88830c63725aef05d1e041820fa",
+      "bytes": 42350722,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-400x240-black-8684a95bb36bdcdf.zip",
+      "sha256": "8684a95bb36bdcdf1b3584af7ec8a8b2af2a60eea7094320f77963500840e404",
+      "bytes": 41152137,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    }
+  ],
+  "preserved_original_members": 17484,
+  "protected_canal_archives_unchanged": 18,
+  "receiver_ref": "d4627ca18c966f03f05d11214b26025525ba2556",
+  "receiver_installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
+  "hardware_receiver_tested": false,
+  "candidate_totals": {
+    "tv": 46,
+    "png": 411,
+    "unique_zip": 99,
+    "open": 91
+  },
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "bytes": 62612,
+      "sha256": "33dd894ca9e0b918f2a6fcbd3789b747831e269c6b0a2400f2773e875e270740",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+      "bytes": 253432,
+      "sha256": "586a1e92c93497be8bbdefa38243c905a291f1f0b13e48ef3187a1b4fa3a7e24",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/manifest.json",
+      "bytes": 2165517,
+      "sha256": "fbd2b3725181761c6c4f36944158811ca5f48cb6553af4dfde57afffcea8d3c6",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part00",
+      "bytes": 4194304,
+      "sha256": "2e9905a75452c72a28607aa62c730ba488c14cb987af8ff57d0e0c10a7c06dee",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part01",
+      "bytes": 4194304,
+      "sha256": "ad36e5b912f2e384ac539fe69e8868f4606fc408ece208e8e27f62c05ddb7198",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part02",
+      "bytes": 4194304,
+      "sha256": "c89cfe4ec1d93fb83dc8891f200df2d18f3e7058b7e83b5f14145dcfaff101aa",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part03",
+      "bytes": 4194304,
+      "sha256": "d89de8580883a1efc5c9040cc19c25591c603b7a19a12b8d366420a3c85dbf86",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part04",
+      "bytes": 4194304,
+      "sha256": "8f1e447ac6a69232ca9f287c6d99730d5272cde4d74dc3dde2ecb9d4cec191ec",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part05",
+      "bytes": 4194304,
+      "sha256": "1329734a05d14323a9bcd43dedb8304d81f694f614d2e3ac9ef68fae01f5fc26",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part06",
+      "bytes": 4194304,
+      "sha256": "27e432e3eb622c74ec4dd8fc8ac53054a2c76da5b25c031afa160ca44f7189b5",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part07",
+      "bytes": 4194304,
+      "sha256": "1e512ce633cf5e6023670b2598b95498dd18a8546b33bdc559f04c855cc09f61",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part08",
+      "bytes": 4194304,
+      "sha256": "54f1a9639367c593e4de0660ac033aa9e2d5fd5753a7bf460b11ce0588f7a80d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part09",
+      "bytes": 1410290,
+      "sha256": "9db4b5dac375553ed7117571c90368b1102528c7d4081028d683dcdef745fa3d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part10",
+      "bytes": 276852,
+      "sha256": "3646778398be8b7240ad9442d777b34aaa74aec1785e91b478702d0c0b74fa58",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part11",
+      "bytes": 366082,
+      "sha256": "b87b94c9141dcc236bb12f629b7cd0b8dab855ae427d2e463954c8192792e886",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-black-9d0061e931b599af.zip.part12",
+      "bytes": 198979,
+      "sha256": "bccdac77c638716c1240a341117ffead76937f859c9a519763ea6643bcf1a23a",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part00",
+      "bytes": 4194304,
+      "sha256": "6b634c1d66d5d54cd4499d956f40672144f56e2aedfecd3f866849c2b981b4e6",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part01",
+      "bytes": 4194304,
+      "sha256": "7897023e382accaf00769b85444b4d61c0a5c45f7aebcb13aac1dd3cb38d8351",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part02",
+      "bytes": 4194304,
+      "sha256": "e8deadfa4f3a90ea4199b59f7fb7e3a38339a38d00a7481055e7be823971face",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part03",
+      "bytes": 3927880,
+      "sha256": "140d4f89fa5a6c8ba3cf26d9f221afa0d349b5e61df28c7df935e8a378f1ed8f",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part04",
+      "bytes": 342466,
+      "sha256": "e1766d9a9867d82d767a4b8d843a020b8b50935c7159f4e15b6aa26dae6ba23f",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part05",
+      "bytes": 177776,
+      "sha256": "8f2140ee360cb6ea01c2f9f9a6bff6e733972ceb8f11e1984d9c8b8f7f26c15b",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-transparent-07bf2eaca52ab16b.zip.part06",
+      "bytes": 178911,
+      "sha256": "2959ad65f50b4a0641eeb537c9ebde6cb1872feee9f580e00eba87154d4eb401",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part00",
+      "bytes": 4194304,
+      "sha256": "dfc462976b0d7747beffbb4fcddbfeb0b9ddf6e1b0908358e14fdda75c2e5fa3",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part01",
+      "bytes": 4194304,
+      "sha256": "939d25cc93c2a95ad042989260da90bcfa2d7179c88176eb95532ff2f29ddeb8",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part02",
+      "bytes": 4194304,
+      "sha256": "45de1de64132500ce94294652c5f235a85e38560c76573bb6eb4ae0c75d47ea0",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part03",
+      "bytes": 4194304,
+      "sha256": "b1f42cdcd1f2da01974c73124a2c4c2126c90882739489fa627cb0f00de59a78",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part04",
+      "bytes": 4194304,
+      "sha256": "1b58d3bf3b0efd665e35658d40476fb0efb6cd349f7d01a92e9b4a8ac86cd860",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part05",
+      "bytes": 4194304,
+      "sha256": "4e23e617794f5a316885d1005a36feb826423ea8ad89f7d202b39365394fa402",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part06",
+      "bytes": 4194304,
+      "sha256": "f28ac3d6c50259c0b20b35037bd70969086c303eb3a36a20fdbdd7028ef326cb",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part07",
+      "bytes": 4194304,
+      "sha256": "a3200c249b77f104dc8781d75550c9f919c7050526aef9b64346b1eed79cf53d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part08",
+      "bytes": 20614,
+      "sha256": "323501e3db8eb6921fbe60c2bbac7a61648106c6653a0f514ce44f4ec081d2a9",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part09",
+      "bytes": 279436,
+      "sha256": "36cb2ccf81fc977b7283d2d50659e52ac84ed2698b2799277e3275945e5a3ca2",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part10",
+      "bytes": 375969,
+      "sha256": "65e55295a5b6712d195c975fa190f43884b4efd970dc10542b6ca64815441f2c",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-220x132-white-7a9b2fa892a4a82f.zip.part11",
+      "bytes": 198663,
+      "sha256": "f5e1c7a286580d96071c5c2bf53816155a04befce2b92720a7eaeca65f35ac53",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-8684a95bb36bdcdf.zip.part00",
+      "bytes": 16777216,
+      "sha256": "9b52c2e45afcf8def61722ef5c27244088474adfdd77ae81a351e12386a8b206",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-8684a95bb36bdcdf.zip.part01",
+      "bytes": 16777216,
+      "sha256": "18a1a5ded8ebb3908752e45d7d41635575fec32610ff1570117ea14f244156ce",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-8684a95bb36bdcdf.zip.part02",
+      "bytes": 4295696,
+      "sha256": "ec7862712164db9a6af085bcb93d4ccf178528b81ec9a2a4273034d182db8b4e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-8684a95bb36bdcdf.zip.part03",
+      "bytes": 2764488,
+      "sha256": "ba1a53ea36ab86ec1f78f31b08a7de3902be03c09bdff6407b01cdcddab1cbf3",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-8684a95bb36bdcdf.zip.part04",
+      "bytes": 267509,
+      "sha256": "035eea89aaf875c8f2ab5d0af9a559f0410c0e0064bd5f73278fffbf05df48cf",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-black-8684a95bb36bdcdf.zip.part05",
+      "bytes": 270012,
+      "sha256": "54fe52a5d03ef401a15f7567828460955f4e03c0963993b4f542da2d8d056e6a",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-475d7c236e28ee52.zip.part00",
+      "bytes": 16777216,
+      "sha256": "97623dc0ebf31af76619c9e6f11df8ebaa46888a40d1d48e6ffdafae10c8a9ea",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-475d7c236e28ee52.zip.part01",
+      "bytes": 16777216,
+      "sha256": "5094490ef10e2afb1e5a9248a3e283a1ba9a4e7bbab1ea32d207c7da8c019992",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-475d7c236e28ee52.zip.part02",
+      "bytes": 1704885,
+      "sha256": "924b7d9c9052bd0a6032d09e7a21887f4f38b007b5b0425bfd27ecafa01ddfb6",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-475d7c236e28ee52.zip.part03",
+      "bytes": 1815669,
+      "sha256": "f8028907dca45fab68070bdd5a523313b8dfecd2036dc4b885390a7dec9c292a",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-475d7c236e28ee52.zip.part04",
+      "bytes": 282326,
+      "sha256": "de5caa0394ef16ace8573145b7c9a108592dbb250cade8ac4e4a356bec29b82e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-transparent-475d7c236e28ee52.zip.part05",
+      "bytes": 219311,
+      "sha256": "b5b1538a6e55ca667519bc0798be2a6690e16eb3d62b739ec5988f3c9f77a993",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-16cfa3e7ca161947.zip.part00",
+      "bytes": 16777216,
+      "sha256": "bfa4210aeec81806f97f7efb05e12d86a3e87d4e4983ab9050f6f6cc354fb425",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-16cfa3e7ca161947.zip.part01",
+      "bytes": 16777216,
+      "sha256": "b613abd7afceac763ac455825610224cb82cb925d1c3ff993b6353142cc2997f",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-16cfa3e7ca161947.zip.part02",
+      "bytes": 5377780,
+      "sha256": "a6c177be5e20c48956f4d735b4a5b567b7d16a3455f5c1082dfce0652e7022fe",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-16cfa3e7ca161947.zip.part03",
+      "bytes": 2872926,
+      "sha256": "41bdae3994ceea4e41b57a443d47521e13f5e2ea4cdd20c2fb466b8341e39893",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-16cfa3e7ca161947.zip.part04",
+      "bytes": 275886,
+      "sha256": "9fe8479e43a779bbf89323b308d3234c4c8bc74ad3cc8df9761ea42f59566c3f",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-400x240-white-16cfa3e7ca161947.zip.part05",
+      "bytes": 269698,
+      "sha256": "c4baf1eca6ccc75a6c59d475a261cf4c1686c805220f21c8492cc06893473536",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-e8dbee129f96786a.zip.part00",
+      "bytes": 3076008,
+      "sha256": "0212e4ccb327984160a5b4be1cffbf88ccd4e5de0079a0979318746adaa161bb",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-e8dbee129f96786a.zip.part01",
+      "bytes": 248769,
+      "sha256": "365f1249c2cc14574cbdf61c47bc4db4f492a5c21879e8d7a5c78702a2ae22bf",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-e8dbee129f96786a.zip.part02",
+      "bytes": 162484,
+      "sha256": "3fcf59032f47f8300dcf1eb0a1425120e75d60669fcb06a6b3190b088b8c7f58",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-black-e8dbee129f96786a.zip.part03",
+      "bytes": 156978,
+      "sha256": "e0cdc3ca40ddb797d9b4cf250bbab9750449bb44de41df2b6c61743d7cfa98b6",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-fa889cbf3b477056.zip.part00",
+      "bytes": 2374993,
+      "sha256": "7cbb884c8b11a531f708a25441b2c35181d9f488400323265a8573d774190b48",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-fa889cbf3b477056.zip.part01",
+      "bytes": 235525,
+      "sha256": "aa9003bfd1285530755e91b693e2681387ae5cf21932e3ae37fb459dd18d0af2",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-fa889cbf3b477056.zip.part02",
+      "bytes": 159684,
+      "sha256": "a9e8d2c1060c73f9f6aa640e76fe65783efa8dbfd0535af7626317bac37cf089",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-transparent-fa889cbf3b477056.zip.part03",
+      "bytes": 155699,
+      "sha256": "700f0e1a3b19791a44c382c927c2b5a67488c13ba73a5e449e8f042654d8c50e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-21f97248def805d7.zip.part00",
+      "bytes": 3031775,
+      "sha256": "8f15b0d91b02a5b4b80e9c569931f23173576829b3e2b10fbfe621fe3c9d470d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-21f97248def805d7.zip.part01",
+      "bytes": 244784,
+      "sha256": "15e02003ab0badea1734eed381c80a58e5ec829cf01c983fb63db096c6331b99",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-21f97248def805d7.zip.part02",
+      "bytes": 162789,
+      "sha256": "19fd7c6ad7aac9aa36bd2060ce5c467f422676962ebd106044aa9a3d2a86ff3a",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-390e-50x30-white-21f97248def805d7.zip.part03",
+      "bytes": 156667,
+      "sha256": "2c096534b30acf946a41685be6599654ccac5996450ee6e43d79a4a52b13aca5",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/ARTWORK_APPROVAL.md",
+      "bytes": 6856,
+      "sha256": "f8b2684dd5d4deee9b99c3584c76f614ebe77c7811c8d5cf54c1847ff4149886",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/chefi-official-review/review/review.json",
+      "bytes": 3765,
+      "sha256": "a7a49d94b105fa264d9828fad1ce861db416ad7b6788980c2957b13c732bc316",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "bytes": 188398,
+      "sha256": "88f8d8ea83d87c3105e72421cfee372a9b5bc631d27e9860f4935b37404d0fc2",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-14-integration.json",
+      "bytes": 17570,
+      "sha256": "ed5fb801f2271ed0862710af43c35122513f3093875040cafb3ef96d0d634321",
+      "exact_match": true
+    }
+  ]
+}
