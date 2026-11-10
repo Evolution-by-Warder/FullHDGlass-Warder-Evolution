@@ -6696,6 +6696,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 <widget source="Canvas" render="WarderSettingsCanvas" position="735,890" zPosition="6" size="450,45" backgroundColor="#00102136" transparent="1" alphatest="on" />
 <widget name="help_pict" position="445,592" size="1029,350" zPosition="4" alphatest="blend" />
 <widget name="help_txt" position="579,592" size="780,350" backgroundColor="#ff000000" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<widget source="selected_item" render="Label" position="579,829" size="780,52" zPosition="5" valign="center" halign="center" font="Regular;31" transparent="1" backgroundColor="#ff000000" foregroundColor="#00ffffff" />
 <widget name="helpPiconFrame" position="865,705" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
 <widget name="helpPicon" position="885,721" size="150,90" zPosition="9" alphatest="on" />
 <widget name="helpTxtAnim" position="579,592" size="780,350" backgroundColor="#ff000000" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
