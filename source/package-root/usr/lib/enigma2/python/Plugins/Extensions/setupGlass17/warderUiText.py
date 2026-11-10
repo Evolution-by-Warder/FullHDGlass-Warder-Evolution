@@ -150,8 +150,9 @@ for _lang, _message in {'sk': '7zip nie je dostupný pre architektúru tohto pri
 
 @lru_cache(maxsize=24)
 
-# Destination menu follows the current Enigma2 OSD language in all 20 supported locales.
+# Destination menu follows the current Enigma2 OSD language in all 21 supported locales.
 TEXT.setdefault("al", {})["FullHDGlass skin storage"] = "Hapësira e skin-it FullHDGlass"
+TEXT.setdefault("el", {})["FullHDGlass skin storage"] = "Αποθήκευση του skin FullHDGlass"
 TEXT.setdefault("et", {})["FullHDGlass skin storage"] = "FullHDGlassi kujunduse salvestuskoht"
 TEXT.setdefault("fa", {})["FullHDGlass skin storage"] = "فضای ذخیره‌سازی پوسته FullHDGlass"
 TEXT.setdefault("lt", {})["FullHDGlass skin storage"] = "FullHDGlass apvalkalo saugykla"
