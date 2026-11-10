@@ -102,7 +102,7 @@ class SetupStyleTests(unittest.TestCase):
             9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
             11: "in_default_channel_screen = default_geometry",
             12: "if in_default_channel_screen and '</screen>' in line:",
-            14: "if in_default_channel_screen and 'render=\\\"WarderChannelEpgClip\\\"' in line:",
+            14: "if in_default_channel_screen and 'render=\"WarderChannelEpgClip\"' in line:",
         }
         # The optional EPG-scrolling switch intentionally changes the old
         # unconditional clip detection. An existing overlay must be removed
