@@ -56,6 +56,36 @@ class SettingsTests(unittest.TestCase):
         self.assertEqual(self.section.par231.default,'system')
         self.assertEqual([v for v,label in self.section.par231.choices],['system','mini'])
 
+    def test_download_menu_offers_current_skin_picon_storage(self):
+        menu = next(n for n in TREE.body if isinstance(n, ast.ClassDef) and n.name == 'downloadMenu')
+        method = next(n for n in menu.body if isinstance(n, ast.FunctionDef)
+                      and n.name == 'openWarderPiconChoice')
+        scope = {
+            'os': os, '_': lambda value: value,
+            'ui_text': lambda value: {'Skin default storage': 'Predvolené úložisko skinu'}.get(value, value),
+            'warderPiconSync': NS(PICON_DESTINATIONS=(
+                ('/usr/share/enigma2/picon', 'Receiver memory'),
+                ('/media/hdd/picon', 'Hard disk'))),
+            'config': NS(plugins=NS(setupGlass17=NS(par39=Setting('/media/hdd/hdg17_files')))),
+            'ChoiceBox': object(),
+        }
+        exec(compile(ast.Module(body=[method], type_ignores=[]),
+                     'packaged-picon-choice.py', 'exec'), scope)
+        screen = NS(warderPiconPrefs={'resolution': '220x132', 'style': 'transparent'},
+                    session=NS(openWithCallback=Mock()),
+                    warderPiconChoiceAnswer=Mock())
+        scope['openWarderPiconChoice'](screen, 'wp-dest')
+        choices = screen.session.openWithCallback.call_args.kwargs['list']
+        self.assertEqual(choices[0], (
+            'Predvolené úložisko skinu - /media/hdd/hdg17_files/picon',
+            ('destination', '/media/hdd/hdg17_files/picon')))
+        self.assertIn(('Hard disk - /media/hdd/picon',
+                       ('destination', '/media/hdd/picon')), choices)
+        scope['config'].plugins.setupGlass17.par39.value = '/media/usb/hdg17_files'
+        scope['openWarderPiconChoice'](screen, 'wp-dest')
+        updated = screen.session.openWithCallback.call_args.kwargs['list']
+        self.assertEqual(updated[0][1], ('destination', '/media/usb/hdg17_files/picon'))
+
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
         self.assertEqual(REGISTRY[18],'Channel sel. type')
