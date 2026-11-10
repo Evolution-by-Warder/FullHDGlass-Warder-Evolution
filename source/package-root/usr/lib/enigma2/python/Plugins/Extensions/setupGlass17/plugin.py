@@ -8836,6 +8836,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		try:
 			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()
+		except AttributeError:
+			pass
+		try:
 			config.plugins.warderPiconExpert.custom_destination.cancel()
 		except AttributeError:
 			pass
