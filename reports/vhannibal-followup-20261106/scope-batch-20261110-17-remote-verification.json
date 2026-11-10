@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "payload_commit": "d0043f949ed50bbb116e91decdb7488a6ef05774",
+  "remote_files": 12,
+  "remote_bytes": 1155435,
+  "technical_closed": 2,
+  "tv": 48,
+  "png": 429,
+  "unique_zips": 99,
+  "remaining_open": 87,
+  "original_open": 81,
+  "delta_open": 6,
+  "full_queue_review": 89,
+  "installable_files_changed": 0,
+  "installation_tests": "NOT_APPLICABLE_NO_PACKAGE_CHANGES",
+  "old_batches_reaudited": false,
+  "checks": [
+    "Remote exact byte equality for all changed files",
+    "Two dated departure histories and exact reference bindings",
+    "89 unique reviewed records;81original+6delta still open",
+    "No asset/manifest/package change in submitted paths"
+  ],
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "sha256": "0036462e9d274ad6ad8d350470c6a1367ec5de8210e0d1b08416d211c3da1cd2",
+      "bytes": 69394
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/alrabiaa-history.html",
+      "sha256": "a98fd8934e4f5871411cc6109660d5118cba927b30eab6b3f4ae277b82e2040e",
+      "bytes": 21093
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/alshabab-history.html",
+      "sha256": "ec055419bb0e4799ccca02cfbbd8f09d57a57dfc77e7cb523b30b0f02d79f8c7",
+      "bytes": 29561
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/alshabab-kos.html",
+      "sha256": "289ee0a9a91c5157257dc0554f33bb97a161dd037a792fcb9592f02c72da055a",
+      "bytes": 30822
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/external-observations.json",
+      "sha256": "aa85acec530501cae2ce9749347c51694e095e1e14922efa253ba2cba49fd69e",
+      "bytes": 868
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/removed-current.html",
+      "sha256": "318f58653ca72a812502f06bf69a761fa7451d4437d78c1428516399ab348703",
+      "bytes": 60108
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/service11-13.html",
+      "sha256": "70a3ea843aad0c2518e90d2243215fb449c93992af076ef46c6b3bf443f55da1",
+      "bytes": 150136
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch17-evidence/test8w-radio.html",
+      "sha256": "04844fb06d53d6c6b6c192168b07ce556adefe90db2b1d5a3a5e15e0c48918cf",
+      "bytes": 163689
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "sha256": "edbd2f4b30f44b062019c966e6c65e10e3ac9bdc66b4dd1270e1ce8e1580609f",
+      "bytes": 200123
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+      "sha256": "a85ac7c985a71dc0ac24de363097a88ca029c9dddbd73bf3558ff98e7450b1ea",
+      "bytes": 247875
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-17-all89-review.json",
+      "sha256": "2c7c4079e9b2eb8e6cb08d7c804e29acc15faafbdcc1fef787b442a458420fd3",
+      "bytes": 177359
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-17.json",
+      "sha256": "1246b253e03848005ed924ec5c81b92ceecd62b4ac650a5181d0b66fff7066df",
+      "bytes": 4407
+    }
+  ],
+  "github_scope_proof": {
+    "base": "baae31f2c66d46d08c58dafeb7a92fe510b97993",
+    "head": "d0043f949ed50bbb116e91decdb7488a6ef05774",
+    "github_compare_changed_files": 12,
+    "asset_or_manifest_or_zip_changes": 0,
+    "protected_canal_archives_inherited_unchanged": 18,
+    "status": "PASS"
+  }
+}

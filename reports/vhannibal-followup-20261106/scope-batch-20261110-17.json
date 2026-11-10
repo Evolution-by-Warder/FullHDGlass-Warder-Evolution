@@ -1,6 +1,6 @@
 {
   "batch": 17,
-  "status": "TECHNICAL_CLOSURES_READY_PENDING_REMOTE_AUDIT",
+  "status": "COMPLETED_TECHNICAL_CLOSURES_REMOTE_AUDIT_PASS",
   "base_checkpoint": "baae31f2c66d46d08c58dafeb7a92fe510b97993",
   "new_tv_references": 0,
   "new_png": 0,
@@ -91,5 +91,7 @@
   "full_review": "scope-batch-20261110-17-all89-review.json",
   "preservation": "Only reports and WARDER_PROGRESS are updated; all manifest/package/PNG files including18CANAL+ archives stay inherited byte-for-byte. No deletion of historical picons.",
   "installation_test": "NOT_APPLICABLE_NO_INSTALLABLE_PAYLOAD_CHANGED",
-  "scope_limit": "Closures apply to exact departed transports, not worldwide cessation of either broadcaster. Existing service label is not evidence of live return."
+  "scope_limit": "Closures apply to exact departed transports, not worldwide cessation of either broadcaster. Existing service label is not evidence of live return.",
+  "payload_commit": "d0043f949ed50bbb116e91decdb7488a6ef05774",
+  "remote_audit": "reports/vhannibal-followup-20261106/scope-batch-20261110-17-remote-verification.json"
 }
