@@ -9165,7 +9165,7 @@ class downloadMenu(Screen):
 		path = prefs.get("destination") or warderPiconSync.DEFAULT_DESTINATION
 		preset = dict((value, label) for value, label in warderPiconSync.PICON_DESTINATIONS)
 		skin_destination = os.path.join(config.plugins.setupGlass17.par39.value, "picon")
-		location = _("Skin default storage") if path == skin_destination else (_(preset[path]) if path in preset else _("User defined"))
+		location = ui_text("Skin default storage") if path == skin_destination else (_(preset[path]) if path in preset else _("User defined"))
 		mode_labels = dict((key, _(label)) for key, label in warderPiconSync.UPDATE_MODES)
 		labels = {
 			"wp-pos": _("Satellite positions") + ": " + position_text,
@@ -9310,7 +9310,7 @@ class downloadMenu(Screen):
 			# Resolve the actual FullHDGlass data path on each menu opening.
 			# Users configure the parent in PATHS; par39 already points to hdg17_files.
 			skin_destination = os.path.join(config.plugins.setupGlass17.par39.value, "picon")
-			choices[row] = [(_("Skin default storage") + " - " + skin_destination,
+			choices[row] = [(ui_text("Skin default storage") + " - " + skin_destination,
 			                 ("destination", skin_destination))]
 			choices[row].extend((_(label) + " - " + path, ("destination", path))
 			                    for path, label in warderPiconSync.PICON_DESTINATIONS
