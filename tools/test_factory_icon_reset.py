@@ -29,6 +29,21 @@ class FactoryIconResetTests(unittest.TestCase):
                           allIcons=self.names)
         exec(code, self.scope)
 
+    def test_all_runtime_icon_names_have_exactly_matching_factory_assets(self):
+        module = ast.parse(SOURCE)
+        declaration = next(
+            node for node in module.body
+            if isinstance(node, ast.Assign)
+            and any(isinstance(target, ast.Name) and target.id == "allIcons"
+                    for target in node.targets)
+        )
+        names = ast.literal_eval(declaration.value)
+        factory = ROOT / "source/package-root/usr/share/enigma2/hd_glass17/icons_factory"
+        shipped = {path.stem for path in factory.glob("*.png")}
+        self.assertEqual(len(names), 148)
+        self.assertEqual(len(set(names)), 148)
+        self.assertEqual(set(names), shipped)
+
     def test_restore_replaces_old_icons_offline(self):
         for name in self.names:
             (self.factory / (name + ".png")).write_bytes(("factory-" + name).encode())
