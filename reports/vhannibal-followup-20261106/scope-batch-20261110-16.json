@@ -1,6 +1,6 @@
 {
   "batch": 16,
-  "status": "LOCAL_PASS_PENDING_REMOTE",
+  "status": "REMOTE_AND_INSTALLATION_PASS",
   "base_checkpoint": "74f0cf8aa24da796ef027c09a45ecf6eefae6e75",
   "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
   "donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
@@ -216,5 +216,7 @@
   "artwork": "Existing approved red/white Sky News artwork reused without rendering; 192E and1.9E donor sets rejected for mixed HD/legacy400x240 variants. Official distribution marketing assets have newer branding; no unapproved redesign or overwrite of existing approved picons.",
   "other_candidates": "23.5E tests and52E numbered services remain open: inactive headings conflict with nonzero bitrate/PID tables; names or generic testcard icons without explicit dated content confirmation do not justify data/ceased classifications. HS1 screenshot reports refer to a different TSID. TestHD8W has video/audio, not proven data. No false technical closures.",
   "production_changed": false,
-  "radio_changed": false
+  "radio_changed": false,
+  "payload_commit": "bd076557a2e74716f491646fc8a9f6f996851fa3",
+  "remote_audit": "reports/vhannibal-followup-20261106/scope-batch-20261110-16-remote-verification.json"
 }

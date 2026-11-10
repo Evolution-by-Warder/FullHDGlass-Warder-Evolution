@@ -1,14 +1,19 @@
 # Warder Evolution – stav projektu
 
+### Dávka 17 – ďalší prieskum, bez bezpečnej integrácie
+
+- Dávka16 dokončená a auditovaná: **48 TV / 429 PNG / 99 jedinečných ZIPov; 89 otvorených**. Nový prieskum17 nepridal PNG ani technické uzavretie a nie je vykázaný ako dokončená dávka.
+- Nové priame podklady Sky2117/2118 patria iným SID než cieľovým51074/51078. SES Demo HD66°E má odlišný sieťový údaj a nemá potvrdenú schválenú HD sadu. Dôkazy a presné blokácie: `scope-batch-20261110-17-research.json`. Pokračovať iba novým rozhodujúcim dôkazom; neopakovať hotové dávky ani nepreberať podobné názvy.
+
 ### Dávka 16 – TEMP 1 potvrdené ako Sky News International – 10. 11. 2026
 
 - **1 TV referencia / 9 PNG / 9 ZIPov. Kandidát 48 TV / 429 PNG / 99 jedinečných ZIPov; 89 otvorených (83 pôvodných + 6 delta).** Žiadne technické uzavretie iba podľa názvu.
 - Nový priamy záznam viaže TEMP 1 na Sky News International: 15°W, 12666.50 H, SID 105 / TSID 10; pôvodný Vhannibal má ONID 1. Austrálska verzia je samostatný SID 113. Presná referencia `1_0_1_69_A_1_D7A0000_0_0_0` používa existujúcich 9 schválených Sky News Intl PNG, bez renderovania.
-- Zachované pôvodné ZIP členy, celé byte prefixy, všetkých 18 CANAL+ archívov a všetky ostatné balíky. Report `reports/vhannibal-followup-20261106/scope-batch-20261110-16.json`. Vzdialený audit a inštalačný test čakajú na uloženie.
+- Zachované pôvodné ZIP členy, celé byte prefixy, všetkých 18 CANAL+ archívov a všetky ostatné balíky. Report `reports/vhannibal-followup-20261106/scope-batch-20261110-16.json`. Payload `bd076557a2e74716f491646fc8a9f6f996851fa3`. Záverečný vzdialený audit PASS: 56 ciest, 36 častí, 17929251 bajtov; 9 ZIPov SHA256/CRC a presná zhoda 9 PNG. Všetkých 9 inštalačných testov cez kód prijímača PASS; zachovaných 441 pôvodných členov a používateľský PNG. Fyzický prijímač netestovaný. Report `scope-batch-20261110-16-remote-verification.json`.
 - Skupiny Test 1–16 na 23,5°E a Service-900/906/907/908/911 na 52°E zostávajú otvorené: označenie neaktivity je v rozpore s nenulovými tokmi. Nevyradiť ako dáta alebo zaniknuté. Nové merania sú uložené v batch16-evidence.
 - Produkcia, rádio a main bez zásahu; PR #50 nezlučovať. Predchádzajúci prieskum dávky 16 zostáva historickým podkladom.
 
-### Dávka 16 – rozpracovaný prieskum, bez ďalšieho zaradenia – 10. 11. 2026
+### Historický podklad pred dokončením dávky 16 – rozpracovaný prieskum, bez ďalšieho zaradenia – 10. 11. 2026
 
 - Dávka 15 dokončená a spätne overená. **47 TV / 420 PNG / 99 jedinečných ZIPov; 90 otvorených (84 pôvodných + 6 delta).**
 - Nový priamy podklad EL JUMHURIA uložený: 12398.60 V, SID 7820, NID 1918 / TID 53600. Iné indexované verzie majú 2048 / 41; schválený správny artwork stále chýba. Nesprávny donor sa nepoužíva.

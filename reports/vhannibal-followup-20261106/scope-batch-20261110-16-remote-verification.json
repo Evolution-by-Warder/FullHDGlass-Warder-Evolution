@@ -1,0 +1,440 @@
+{
+  "status": "PASS",
+  "payload_commit": "bd076557a2e74716f491646fc8a9f6f996851fa3",
+  "remote_files": 56,
+  "remote_parts": 36,
+  "remote_bytes": 17929251,
+  "approved_png": 9,
+  "zips": [
+    {
+      "filename": "warder-150w-220x132-transparent-6d130f6318f3f369.zip",
+      "sha256": "6d130f6318f3f3699a9181cc0d8ba770d3d5e79a4ecbfd01c15749ad32b87d64",
+      "bytes": 435840,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-220x132-black-84e432102d2f4405.zip",
+      "sha256": "84e432102d2f44052019f0e5f1f9c9653e84ada2a9ba9cdeeb27ee1118aab2d4",
+      "bytes": 1678136,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-220x132-white-ef40e03f24dfedda.zip",
+      "sha256": "ef40e03f24dfedda749e7b3acba82028a7da2459e812eda9a3533004e84bf1ec",
+      "bytes": 1707137,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-50x30-transparent-b42df3fc39c812ba.zip",
+      "sha256": "b42df3fc39c812bac2f83e532dda7774333814b159d39dd47ac929c0d44535a0",
+      "bytes": 119434,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-50x30-white-7b2ba1211274a0bc.zip",
+      "sha256": "7b2ba1211274a0bc7bc4540a842e79ec7e6d9b627ca391881eebf4c9fe5bfbb9",
+      "bytes": 161803,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-50x30-black-b1ebf521f4ae6bea.zip",
+      "sha256": "b1ebf521f4ae6bea789f1c3f20f3de70457baaa0c21c86cb3f38bb44d175decd",
+      "bytes": 168818,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-400x240-transparent-26b21d3fc1919a66.zip",
+      "sha256": "26b21d3fc1919a66ebe3b8a1499280b5b4c7652db227cc58041988c2b363dfc8",
+      "bytes": 2126988,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-400x240-white-c521764a69bf231e.zip",
+      "sha256": "c521764a69bf231e6f3e2ae27f305dc6438967f844804351bfd6d545349fce6c",
+      "bytes": 4111383,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    },
+    {
+      "filename": "warder-150w-400x240-black-64619c4c7bf0991c.zip",
+      "sha256": "64619c4c7bf0991c45513af97b84339e53b7d0dff8d82b6fd8673bbf474d0c5d",
+      "bytes": 3976298,
+      "crc": "PASS",
+      "approved_png_exact_match": true,
+      "installation": "PASS",
+      "user_png_preserved": true
+    }
+  ],
+  "preserved_original_members": 441,
+  "protected_canal_archives_unchanged": 18,
+  "receiver_ref": "d4627ca18c966f03f05d11214b26025525ba2556",
+  "receiver_installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
+  "hardware_receiver_tested": false,
+  "candidate_totals": {
+    "tv": 48,
+    "png": 429,
+    "unique_zip": 99,
+    "open": 89
+  },
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "bytes": 66689,
+      "sha256": "319704a0fa53c170d952c0086ecd6daab261d23bb24cf64522decbd3c602c24e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+      "bytes": 255616,
+      "sha256": "36dfcc88c5a6c64673ae7f7cad5d65e8e0995221dc10dfa962ea60f0a357f29d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/manifest.json",
+      "bytes": 2177512,
+      "sha256": "3052a3efb37f00f43bd1073b8612231275a41527211cf79c9c666ce93f06b60d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part00",
+      "bytes": 1119310,
+      "sha256": "c96b41474fb7b8176acff7c6475ba4152af4ed99f08d5351505f8fd9ea405c98",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part01",
+      "bytes": 482341,
+      "sha256": "e7c482959dfe12c3574d6c117f358a7258a35d29e712f640e6e3b0f45237e549",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part02",
+      "bytes": 36202,
+      "sha256": "9781d6c01df23214dff8463ec26fb5a74d66a2a5b618ab48abecf378bd134845",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part03",
+      "bytes": 40283,
+      "sha256": "9e55216b17195a958d76e57ce1db7dd72fc495162a0ef2cb18c0f04d0023d984",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part00",
+      "bytes": 225280,
+      "sha256": "667282cd80acf67cf4251307beee169f79977c7fcba619de6783b8e9ab65dccb",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part01",
+      "bytes": 196365,
+      "sha256": "04464c9a5ceeebc43ce9ba5cd634e7f3a63c1667734f1bd0aafca7320130a45f",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part02",
+      "bytes": 7441,
+      "sha256": "b2ffcca1a37aa540b53802c159effdf76c495c0f0695c4ff91d2eb4b417746d7",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part03",
+      "bytes": 6754,
+      "sha256": "2854b35ae9f60e3621cb85f4e2c5d2d4c56bd176bbfaa08f6359f6b13d0fe46b",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part00",
+      "bytes": 1124620,
+      "sha256": "e835d21455079f500bc9afc1ec0523f803d806019572dbe636908a5a4c750d5f",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part01",
+      "bytes": 503618,
+      "sha256": "d837780be8b9cfac769468be38bb4c410a9e066fdd6abc5654fd87666b1d10fa",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part02",
+      "bytes": 38035,
+      "sha256": "0f3f1cd9ebcbc424944e5b7e82d28765473b3984eb2e134bdfe1752c16ba20c5",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part03",
+      "bytes": 40864,
+      "sha256": "750504bdf7918816849dc94c454440c20e3a6fbada69ccb490dacca8d4c1c5e4",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part00",
+      "bytes": 1016088,
+      "sha256": "b3749ce56cbd296b2f19e23a35eb69186cd0ca738598b4559c890220f335d41b",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part01",
+      "bytes": 2914798,
+      "sha256": "06b3dad7a839f0b2404e9e92dc8179e0d770bf552d0b0f6fbd639caef1e6ef2a",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part02",
+      "bytes": 21064,
+      "sha256": "a9b6063da4089f3c90c2d7f2496b68b992f97d092093c8dda4f755771dda4084",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part03",
+      "bytes": 24348,
+      "sha256": "5b723752a6f478c5d05d16617c18d40e0e20a44eff0c596aae7011380de39263",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part00",
+      "bytes": 588330,
+      "sha256": "1643997e20e2e4e7f373c764c9ae67152b2d80a13362000ea82dea10f93a0f25",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part01",
+      "bytes": 1504926,
+      "sha256": "6b914e7fcab9f29b97dfa1dc746fc766830eff3c98b1a6353fda3ea75189f9f1",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part02",
+      "bytes": 13923,
+      "sha256": "5038b7df9a42d70162f952d3bb08e3bacdf56a6a2bc932d43e4d6ac98098fa2b",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part03",
+      "bytes": 19809,
+      "sha256": "56aae024ab0641afae3c1e11fd42ba03e81d3576e1f351aeac1efa369f9fbb4a",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part00",
+      "bytes": 1012252,
+      "sha256": "53338265c27c7ff91add24dab940726a77545780b603abaf873f8d194584f531",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part01",
+      "bytes": 3054246,
+      "sha256": "f4c0f1c7a7d496623fbeefe8d45a45e50e4114b666b01e95aa6cf8d0f222318d",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part02",
+      "bytes": 22826,
+      "sha256": "26ff3fae3d3f1c922d359f654bf9ff5108dea069a05e10f695c32b115f933050",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part03",
+      "bytes": 22059,
+      "sha256": "8f1583cc7284ff46587b9a4247ff3c17c057b547aaed20508664badbc30ad2d7",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part00",
+      "bytes": 48512,
+      "sha256": "9e92fa72af0eb1c25511eaf62767419c62a46ca530f3c260fd3f928ad0528f2b",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part01",
+      "bytes": 109856,
+      "sha256": "bc04942beddd67002eeda54148db84c43b4d5b1054505c979332e8245d21495e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part02",
+      "bytes": 5078,
+      "sha256": "4115fe223d7a07c49ddfb1bffa75dda3050ec3fc9ab8c914c0d3ca860fb828d9",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part03",
+      "bytes": 5372,
+      "sha256": "0b0f498f9668acda91a4006e822ecc494d5eb353554a30d4a3744a83b4f8ce85",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part00",
+      "bytes": 32376,
+      "sha256": "dc4f4dbe14d12a7294b173c8991529bd7e3c596b264aa681527c5a6af665028c",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part01",
+      "bytes": 77415,
+      "sha256": "129893a178e2674bc46c3304991d56c4c755758d78b090c1fd7d3d299ab40197",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part02",
+      "bytes": 4630,
+      "sha256": "1c57df5e236b086a5ff586a70fc49d2e7757718e0f2206ebd30efdea4fc2ab3c",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part03",
+      "bytes": 5013,
+      "sha256": "878340e69c17ae8609c46c6f6d152995c8c333e62c6836c8e1681b24f3b6c77e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part00",
+      "bytes": 46972,
+      "sha256": "7232800e02ddd0dbd63a1bdf4ebf54ff39bce13d8513bc35a681b637b117590e",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part01",
+      "bytes": 104267,
+      "sha256": "9f2005c998ef2ea5ddc90c6c215945afad9c6ac29793ddbc43eeeeacb3c65df2",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part02",
+      "bytes": 5340,
+      "sha256": "9a242c046a0c55f3ebf2f6e5e35bc047a8a08ffd8050ddbe1fdfa0916fb88a15",
+      "exact_match": true
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part03",
+      "bytes": 5224,
+      "sha256": "6fc544b981e815bfd482edc8410ed123f12f292ed754d79e0ca3dfdb17ff0688",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/satindex-10887.html",
+      "bytes": 85737,
+      "sha256": "9f4c4d23fd26486ed8537da65cda1aefd281e1cd2daf43cf7b6aa103721255c9",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/satindex-12148.html",
+      "bytes": 31085,
+      "sha256": "18a44fe2560356ce5aaf328349d0cdb6ff616674b713961881be0076e4ffbe1b",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/satindex-pids-12148.html",
+      "bytes": 32376,
+      "sha256": "08c29cc735bf392426662ed0fddb9fa2cf2fac1e12d7583e66aea0a4996e9e7b",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/temp1-kingofsat.html",
+      "bytes": 65733,
+      "sha256": "99daf3d6f50c4d6ad40b66a824ceffe4f34bbf7fe2eaa35ae42b5bf04ee18706",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/batch16-evidence/temp1-morpheus.html",
+      "bytes": 144846,
+      "sha256": "014db8595b3831b86c2deef93dfee17038565ff010df48489b96c04c715251ef",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "bytes": 190231,
+      "sha256": "98d224829e68e7a74eb895e3dbaa7a34c35acaf4f8118ab347e2c1a2b57fe445",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+      "bytes": 243901,
+      "sha256": "032965ce95ed82e2cc50e5a4c192e5b1fb9ffb396792bfb6072139464da52015",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-16.json",
+      "bytes": 14349,
+      "sha256": "f3d632fec44c2f132a74d7a7bb23d5bfb8a4a61b235dc33367d7450d98fd6998",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/220x132-black.png",
+      "bytes": 36384,
+      "sha256": "aca1d41e3c7da853ca8d24435e6673d5cad7844ec95a4a078bcb4c05bd039b14",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/220x132-transparent.png",
+      "bytes": 2884,
+      "sha256": "f3cbe52e577670ec6cba5eab64929a3035e772b31423767ce011487942916fda",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/220x132-white.png",
+      "bytes": 36965,
+      "sha256": "8c9fa7e9d54fdb66d420f7be5325fd20197f7d71293f91467a78fd9bcff95378",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/400x240-black.png",
+      "bytes": 20454,
+      "sha256": "810228b89278ae0dc53f4ea7f3be5726ec9ad41cc334caa52574ed53adea6677",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/400x240-transparent.png",
+      "bytes": 16509,
+      "sha256": "cdbc27837a215ed173a3277414a57b7546aa9239c2e50c9f0a3fcb6c222e4995",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/400x240-white.png",
+      "bytes": 18165,
+      "sha256": "7e73b402df3c00f273f72cf4d5c4803ad0f763f521c5d2617a1816ab77b5062f",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/50x30-black.png",
+      "bytes": 1483,
+      "sha256": "c9870bcc9030f672c8e31bef7e5ed4c071e30607b476745fb0845005de0b054a",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/50x30-transparent.png",
+      "bytes": 1160,
+      "sha256": "c817102ba4df0125e9ce8cab15f4cf5801914d2cab2ffe4d7bed38554d93f87c",
+      "exact_match": true
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/sky-news-approved-reuse-batch16/50x30-white.png",
+      "bytes": 1335,
+      "sha256": "69bacf8f46a61347aeea2249f627c39e27c33e41508ac74c0fef145fe6478a8c",
+      "exact_match": true
+    }
+  ]
+}

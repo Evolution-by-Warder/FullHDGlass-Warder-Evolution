@@ -1,0 +1,41 @@
+{
+  "batch": 17,
+  "status": "RESEARCH_ONLY_NO_SAFE_INTEGRATION",
+  "base_payload": "bd076557a2e74716f491646fc8a9f6f996851fa3",
+  "new_tv": 0,
+  "new_png": 0,
+  "technical_closed": 0,
+  "remaining_open": 89,
+  "sources": [
+    {
+      "url": "https://en.kingofsat.net/tp.php?tp=1236",
+      "file": "reports/vhannibal-followup-20261106/batch17-evidence/sky-282e.html",
+      "bytes": 86705,
+      "sha256": "d149bb60d878a5df4304ea54ab1b350eec113718f99c4f78fa56c62c5bae135d"
+    },
+    {
+      "url": "https://en.kingofsat.net/hdtv-66E",
+      "file": "reports/vhannibal-followup-20261106/batch17-evidence/ses-demo-66e.html",
+      "bytes": 65325,
+      "sha256": "44c2315645b91be6bb3405de81821b526e804e184eb3c167f9fed26f9c18daae"
+    }
+  ],
+  "findings": [
+    {
+      "references": [
+        "1_0_19_C782_83D_2_11A0000_0_0_0",
+        "1_0_19_C786_83D_2_11A0000_0_0_0"
+      ],
+      "decision": "HOLD_DISTINCT_SID",
+      "finding": "Fresh transponder109 listings for names2117/2118 use SID2117/2118. Target refs encode SID51074/51078 onTSID2109. Similar labels are not exact-service binding; no copy."
+    },
+    {
+      "references": [
+        "1_0_1_1_1_1_294AB51_0_0_0"
+      ],
+      "decision": "HOLD_NETWORK_AND_HD_DONOR",
+      "finding": "Fresh66E listing identifies SES Demo HD SID1/TSID1 but NID0, while preserved target explicitly ONID1. This is not rawSDT ONID proof. Same-edition approved9-variant donor still missing; no SD logo substitution."
+    }
+  ],
+  "continuation": "No confirmed integration in batch17. Resume these holds only with exact tuple binding or approved same-edition artwork. No completion claim; prior batches not re-audited."
+}
