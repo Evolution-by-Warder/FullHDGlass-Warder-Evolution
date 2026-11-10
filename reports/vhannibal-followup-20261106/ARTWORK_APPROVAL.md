@@ -52,3 +52,8 @@ Oficiálne oznámenie NTV28.9.2026 a aktuálny katalóg vlastníka Gazprom-Media
 **PENDING OWNER ARTWORK REVIEW. WHITE varianty zachovávajú pôvodný biely text a majú slabší kontrast; nie sú pripravené na automatickú integráciu.** Žiadne prefarbenie ani prekreslenie. Prvá referencia `1_0_1_43A6_EAC5_42E_1A40000_0_0_0` identitne doložená v predchádzajúcom checkpointe; druhá11012H ostáva podmienene blokovaná úplným aktuálnym DVB tuple.
 
 [Proveniencia](unknown-russia-official-review/provenance.json) · [SHA256/rozmery/alfa](unknown-russia-official-review/review/review.json).0 uzavretých referencií,0 ZIP zmien,104 otvorených. AL-KAFEL má nový oficiálny nepriehľadný emblém uložený samostatne; logo Studio sa nepoužíva ako kanálový donor.
+
+
+## 10.11.2026 – NTV Неизвестная Россия: všetkých9 PNG schválených
+
+Vlastník výslovne schválil všetkých9 PNG dávky09 vrátaneWHITE bez prerábania. Presné bajty z checkpointu98ab9bf7a626d118cb69496c71af0bbe582f9b26 sú vložené do9 pracovných420E ZIPov pre `1_0_1_43A6_EAC5_42E_1A40000_0_0_0`. Staršie pending/contrast-hold označenia vyššie sú historické; schválenýWHITE sa nemení. Druhá11012H referencia stále blokovaná aktuálnym úplným DVB tuple. Vlastník zároveň schválil ďalšie bezpečné dávky a ich ukladanie bez jednotlivých schválení; závažné problémy identity/kvality zostávajú dôvodom odloženia. Produkčný merge nie je povolený.

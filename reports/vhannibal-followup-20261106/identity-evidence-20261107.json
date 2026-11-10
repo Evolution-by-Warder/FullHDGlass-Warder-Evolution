@@ -2070,8 +2070,8 @@
           "pixel_digest": "d94df609396e952ee364491c7945927eac93a2f5324ac3dadfb888921c866a8d",
           "reuse_candidates": [],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor.",
+          "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
+          "reason": "All nine prepared NTV Neizvestnaya Rossiya variants explicitly owner-approved including WHITE; exact11727V reference integrated without rerender.",
           "followup_after_batch05": {
             "references": [
               "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
@@ -2087,10 +2087,12 @@
             "checked": "2026-11-08"
           },
           "artwork_review_batch09": {
-            "status": "NINE_DRAFTS_OWNER_REVIEW_WHITE_CONTRAST_HOLD",
+            "status": "OWNER_APPROVED_ALL_NINE_INTEGRATED_BATCH10",
             "path": "reports/vhannibal-followup-20261106/unknown-russia-official-review/review/review.json",
             "new_branding_provenance": "reports/vhannibal-followup-20261106/unknown-russia-official-review/provenance.json"
-          }
+          },
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-10.json"
         },
         {
           "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
@@ -3277,5 +3279,20 @@
       "technical_closures": 0,
       "remaining_open": 104
     }
+  },
+  "ntv_owner_approved_integration_20261110": {
+    "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261110-10.json",
+    "new_references": 1,
+    "new_png": 9,
+    "changed_zip": 9,
+    "remaining_open": 103,
+    "original_open": 85,
+    "delta_open": 18,
+    "pr_total_repaired": 39,
+    "pr_total_png": 348,
+    "pr_total_unique_changed_zips": 99,
+    "secondary_reference": "Still blocked; no fresh complete tuple for11012H.",
+    "future_authorization": "Owner authorizes safe future batches and working-branch saves without individual approval; identity/quality conflicts remain blocked."
   }
 }

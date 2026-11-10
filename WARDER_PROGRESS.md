@@ -1,5 +1,15 @@
 # Warder Evolution – stav projektu
 
+### Dávka10 – schválené NTV Неизвестная Россия v pracovných balíkoch – 10.11.2026
+
+- **1 dokončená referencia /9 PNG /9 ZIPov /0 technických uzavretí. Zostáva103 otvorených (85 pôvodných +18 delta). Kandidát39 TV/348 PNG/99 jedinečných ZIPov.**
+- Presný11727V tuple `1_0_1_43A6_EAC5_42E_1A40000_0_0_0`; všetkých9 PNG dávky09 explicitne schválených vrátaneWHITE, bez prerenderovania. Druhá11012H referencia sa nepridáva bez aktuálneho úplného tuple.
+- Lokálne SHA256/CRC/rozmery/alfa a zhoda schválených PNG PASS. 19461 pôvodných ZIP členov a celé pôvodné archívy ako prefixy bajtovo zachované.18CANAL a ostatné balíky nezmenené.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261110-10.json`; payload SHA a jeden záverečný vzdialený audit budú doplnené po zápise.
+- Súbežne AL-KAFEL: oficiálny nepriehľadný dekoratívny emblém nie je použiteľný ako čistý transparentný picon; Studio logo je nesprávna identita. TSID41/53600 zostáva sporné. Nevytvorených9 nesprávnych variantov.
+- Nový produkčný main d4627ca18c966f03f05d11214b26025525ba2556 zachovaný; PiconHub main481e9b9154a510c64c743de72c1a73ed808307bf. Žiadny merge, produkcia ani rádio. Vlastník schválil samostatné pokračovanie bezpečných dávok bez jednotlivého schvaľovania.
+
+
 ### Dávka09 – nové NTV návrhy a oficiálne podklady – 9.11.2026
 
 - **9 nových návrhov PNG** pre NTV Неизвестная Россия / UNKNOWN RUSSIA, všetky3 rozmery ×3 pozadia. Nové oficiálne oznámenie NTV a katalóg vlastníka potvrdzujú rebranding; transparentný originál pochádza z Cableman a je potvrdený oficiálnym vizuálom. `reports/vhannibal-followup-20261106/unknown-russia-official-review/review/`.
