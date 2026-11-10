@@ -1066,15 +1066,17 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Exact transport confirmed batch13. Correct official Chefi.ro original and9 drafts obtained batch14; new artwork awaits owner visual review. Old ZU TV donor rejected.",
+          "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
+          "reason": "Owner approved all9 original Chefi.ro PNG includingWHITE; exact bytes integrated forSID5/TSID10/ONID366. ZU TV donor not used.",
           "artwork_review_batch14": {
-            "status": "OWNER_REVIEW_REQUIRED",
+            "status": "OWNER_APPROVED_ALL_NINE_INTEGRATED",
             "report": "reports/vhannibal-followup-20261106/chefi-official-review/review/review.json",
             "preview": "reports/vhannibal-followup-20261106/chefi-official-review/review/preview.png",
             "source_url": "https://assets.antenaplay.ro/2026/06/05/IX530VlrOnRp27KMRAnV.png",
             "draft_png": 9
-          }
+          },
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-14-integration.json"
         },
         {
           "reference": "1_0_16_6_A_16E_1860000_0_0_0",
@@ -4270,5 +4272,17 @@
     "new_package_png": 0,
     "modified_zips": 0,
     "remaining_open": 92
+  },
+  "continuation_20261110_batch14_integration": {
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261110-14-integration.json",
+    "new_tv_references": 1,
+    "new_png": 9,
+    "modified_zips": 9,
+    "remaining_open": 91,
+    "original_open": 84,
+    "delta_open": 7,
+    "candidate_tv": 46,
+    "candidate_png": 411,
+    "candidate_unique_zips": 99
   }
 }

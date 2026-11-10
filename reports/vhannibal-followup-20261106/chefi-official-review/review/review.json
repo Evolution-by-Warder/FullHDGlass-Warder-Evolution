@@ -1,5 +1,5 @@
 {
-  "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+  "status": "OWNER_APPROVED_ALL_NINE_INTEGRATED_BATCH14",
   "station": "Chefi.ro",
   "reference": "1_0_16_5_A_16E_1860000_0_0_0",
   "source_url": "https://assets.antenaplay.ro/2026/06/05/IX530VlrOnRp27KMRAnV.png",
@@ -145,5 +145,7 @@
         255
       ]
     }
-  ]
+  ],
+  "owner_approval": "Explicit approval10Nov2026: all9PNG includingWHITE, no changes to colours,gold effects,proportions,transparency.",
+  "integration_report": "reports/vhannibal-followup-20261106/scope-batch-20261110-14-integration.json"
 }

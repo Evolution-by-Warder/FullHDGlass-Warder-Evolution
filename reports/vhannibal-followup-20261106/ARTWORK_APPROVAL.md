@@ -62,3 +62,8 @@ Vlastník výslovne schválil všetkých9 PNG dávky09 vrátaneWHITE bez preráb
 ## Dávka14 – Chefi.ro:9 nových návrhov na schválenie (10.11.2026)
 
 Oficiálny AntenaPLAY originál, žiadne logoZU TV. Presná referencia `1_0_16_5_A_16E_1860000_0_0_0` je doložená dávkou13. Všetky tri rozmery ×TRANSPARENT/WHITE/BLACK sú pripravené bez prefarbenia a bez zmeny MASTER šablón. [Kontrolný náhľad](chefi-official-review/review/preview.png) a [technický report](chefi-official-review/review/review.json). Nový artwork čaká na výslovné vizuálne schválenie, zatiaľ nie je súčasťou ZIPov. Zostáva92 otvorených; kandidát45TV/402PNG/99ZIPov.
+
+
+## Dávka14 – všetkých9 Chefi.ro PNG schválených a integrovaných –10.11.2026
+
+Vlastník výslovne schválil všetkých9PNG vrátaneWHITE, bez prerenderovania či zmeny farieb,zlatých efektov,proporcií a priehľadnosti. Presné bajty z checkpointu e9d9b1b1c10ebcb026faab80dd29e1417b8f8fa2 vložené pre `1_0_16_5_A_16E_1860000_0_0_0` do9 pracovných390E ZIPov. Staršie pending označenia vyššie sú historické. Žiadne ďalšie aliasy ani nesprávny ZU TV donor.

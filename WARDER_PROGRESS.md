@@ -1,5 +1,12 @@
 # Warder Evolution – stav projektu
 
+### Dávka14 – schválené Chefi.ro zaradené do9 pracovných ZIPov –10.11.2026
+
+- **1 dokončená TV referencia /9 PNG /9 ZIPov. Kandidát46 TV/411 PNG/99 jedinečných ZIPov;91 otvorených (84 pôvodných +7 delta).**
+- Všetkých9 variantov vrátaneWHITE výslovne schválených vlastníkom. Presné uložené PNG pre `1_0_16_5_A_16E_1860000_0_0_0`; bez renderovania,prebieľovania či zmeny efektov a alfy. ZU TV nepoužité.
+- Zachovaných17484 pôvodných položiek aj celé ZIP prefixy;18 CANAL+ a ostatné balíky nezmenené. SHA256/CRC a zhoda schválenýchPNG PASS. Jeden záverečný vzdialený audit s inštalačným testom bude doplnený po uložení.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261110-14-integration.json`. Produkcia,rádio a main bez zásahu; PR50 nezlučovať. Pokračovať dávkou15 s novými dôkazmi; hotové dávky neopakovať.
+
 ### Dávka14 – správny oficiálny Chefi.ro originál a9 návrhov – 10.11.2026
 
 - **9 nových návrhov PNG /0 vložených PNG /0 ZIP zmien /0 uzavretých referencií. Kandidát45 TV/402 PNG/99 ZIPov;92 otvorených.**
