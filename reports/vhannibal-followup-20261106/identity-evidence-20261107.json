@@ -4310,5 +4310,19 @@
     "candidate_tv": 47,
     "candidate_png": 420,
     "candidate_unique_zips": 99
+  },
+  "continuation_20261110_batch16_integration": {
+    "status": "LOCAL_PASS_PENDING_REMOTE",
+    "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
+    "donor": "1_0_1_1906_7E4_2_11A0000_0_0_0",
+    "remaining_open": 89,
+    "original_open": 83,
+    "delta_open": 6,
+    "candidate_tv": 48,
+    "candidate_png": 429,
+    "candidate_unique_zips": 99,
+    "new_png": 9,
+    "new_tv_references": 1,
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261110-16.json"
   }
 }

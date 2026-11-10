@@ -6672,9 +6672,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity",
+    "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "New directly retrieved programme binding identifies TEMP1 SID105 at15W12666.50H/30000 TSID10 as Sky News International UK, updated1Oct2026. Exact Vhannibal target supplies ONID1; independent Morpheus service chart retains TEMP1 SID105 on network1/TSID10. Australia Sky News is separateSID113. Existing approved Sky News282E donor (plain Sky News edition without HD badge) copied exactly in9variants. NID is not claimed as a directSDT ONID measurement.",
     "technical_uid": {
       "sid": 105,
       "tsid": 10,
@@ -6699,7 +6699,9 @@
         1,
         226099200
       ]
-    }
+    },
+    "resolution_batch": "scope-batch-20261110-16.json",
+    "physical_valid_slots_after_candidate": 9
   },
   {
     "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
