@@ -57,3 +57,8 @@ Oficiálne oznámenie NTV28.9.2026 a aktuálny katalóg vlastníka Gazprom-Media
 ## 10.11.2026 – NTV Неизвестная Россия: všetkých9 PNG schválených
 
 Vlastník výslovne schválil všetkých9 PNG dávky09 vrátaneWHITE bez prerábania. Presné bajty z checkpointu98ab9bf7a626d118cb69496c71af0bbe582f9b26 sú vložené do9 pracovných420E ZIPov pre `1_0_1_43A6_EAC5_42E_1A40000_0_0_0`. Staršie pending/contrast-hold označenia vyššie sú historické; schválenýWHITE sa nemení. Druhá11012H referencia stále blokovaná aktuálnym úplným DVB tuple. Vlastník zároveň schválil ďalšie bezpečné dávky a ich ukladanie bez jednotlivých schválení; závažné problémy identity/kvality zostávajú dôvodom odloženia. Produkčný merge nie je povolený.
+
+
+## Dávka14 – Chefi.ro:9 nových návrhov na schválenie (10.11.2026)
+
+Oficiálny AntenaPLAY originál, žiadne logoZU TV. Presná referencia `1_0_16_5_A_16E_1860000_0_0_0` je doložená dávkou13. Všetky tri rozmery ×TRANSPARENT/WHITE/BLACK sú pripravené bez prefarbenia a bez zmeny MASTER šablón. [Kontrolný náhľad](chefi-official-review/review/preview.png) a [technický report](chefi-official-review/review/review.json). Nový artwork čaká na výslovné vizuálne schválenie, zatiaľ nie je súčasťou ZIPov. Zostáva92 otvorených; kandidát45TV/402PNG/99ZIPov.

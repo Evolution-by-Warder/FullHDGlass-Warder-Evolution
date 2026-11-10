@@ -1,0 +1,149 @@
+{
+  "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+  "station": "Chefi.ro",
+  "reference": "1_0_16_5_A_16E_1860000_0_0_0",
+  "source_url": "https://assets.antenaplay.ro/2026/06/05/IX530VlrOnRp27KMRAnV.png",
+  "official_catalog": "https://antenaplay.ro/live",
+  "source_sha256": "1724d41d7ef45fc0283b22e5e533f590fdf64791023065e5907f1f9e9abc66e7",
+  "source_size": [
+    1080,
+    1080
+  ],
+  "source_alpha_bbox": [
+    0,
+    105,
+    1080,
+    975
+  ],
+  "source_colours_preserved": true,
+  "no_recolour_or_redraw": true,
+  "templates_immutable": {
+    "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+    "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+  },
+  "geometry": "Every size from original alpha bounds; proportional204x116 fit at220x132; premultipliedLANCZOS. Original golden glow and shadow preserved.",
+  "output_count": 9,
+  "new_approved_references": 0,
+  "production_package_changes": 0,
+  "does_not_reduce_open_count": true,
+  "visual_review": "Original golden glow and all colours retained. Detailed lettering is small at50x30; visual owner review required for new artwork.",
+  "outputs": [
+    {
+      "file": "50x30-transparent.png",
+      "sha256": "c9dc81046c6979771abc790402710ee7dcf3797d4cfa73fb915e57724f29b0b5",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "220x132-transparent.png",
+      "sha256": "cbafb3497b80f6cac1f07da951a58f1d5beef6c23e9dcce7f5a7f804fd24eb95",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-transparent.png",
+      "sha256": "c4284e25add0de61041912f1b0d9df1289701e859fd74ae02cf9c62efd247cd1",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-white.png",
+      "sha256": "b7a7d8776923cdfaf88c66805cac1f4ccb5ce2676072e1604b1fc930499ac2c0",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        25,
+        255
+      ]
+    },
+    {
+      "file": "220x132-white.png",
+      "sha256": "d83be03ec3d9d07dcea9a1b51d709f33bdccf0b5e945cbadb04a327a36b59440",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-white.png",
+      "sha256": "00b322f82d60d6bf82ecb68df85bb5ce5fb2bf6ad9688f9c476d595e47bb45c4",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-black.png",
+      "sha256": "167c543d4d1be78e44e3339aefc6e10d75a3212f69cd2720d6c6c5ada1c24cee",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        9,
+        255
+      ]
+    },
+    {
+      "file": "220x132-black.png",
+      "sha256": "3924044a82af125837e0dbf26585d3fca39929363a052cd8ed2146e39b321342",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-black.png",
+      "sha256": "be0507d658bdae44ce30712a1a19de0b5c7a20a816b6db20f7f97317b723a0f7",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

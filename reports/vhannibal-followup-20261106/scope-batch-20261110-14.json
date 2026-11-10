@@ -1,0 +1,37 @@
+{
+  "batch": 14,
+  "date": "2026-11-10",
+  "status": "OFFICIAL_SOURCE_AND_NINE_DRAFTS_READY_FOR_OWNER_REVIEW",
+  "base_checkpoint": "1c0ebe67b3166980e463926bebb092526474f2f6",
+  "station": "Chefi.ro",
+  "reference": "1_0_16_5_A_16E_1860000_0_0_0",
+  "identity": "SID5 TSID10 ONID366 at39E confirmed in batch13; no repeated transport analysis.",
+  "official_source_url": "https://assets.antenaplay.ro/2026/06/05/IX530VlrOnRp27KMRAnV.png",
+  "source_sha256": "1724d41d7ef45fc0283b22e5e533f590fdf64791023065e5907f1f9e9abc66e7",
+  "source_bytes": 799879,
+  "source_size": [
+    1080,
+    1080
+  ],
+  "official_catalog_url": "https://antenaplay.ro/live",
+  "independent_official_site_url": "https://chefi.ro/",
+  "site_thumbnail_url": "https://chefi.ro/wp-content/uploads/2026/06/chefi-logo-696x696-1-90x90.png",
+  "source_binding": "Official AntenaPLAY live catalog labels linked asset logo Chefi.ro; official Chefi.ro TV programme uses matching flame-and-knives identity. The existing ZU TV donor remains rejected.",
+  "rendering": "Existing repository draft-render workflow reused; every size from fresh original, premultiplied Lanczos, proportional fit, colours unchanged, immutable MASTER templates.",
+  "draft_png": 9,
+  "new_completed_references": 0,
+  "new_package_png": 0,
+  "modified_zips": 0,
+  "remaining_open": 92,
+  "candidate_totals": {
+    "tv": 45,
+    "png": 402,
+    "unique_zip": 99
+  },
+  "protected_canal_archives_unchanged": 18,
+  "production_changed": false,
+  "radio_changed": false,
+  "next_step": "Owner visual review of9 drafts before package integration. Other unresolved cases remain available for independently evidenced work. Do not repeat batches01–13.",
+  "review_report": "reports/vhannibal-followup-20261106/chefi-official-review/review/review.json",
+  "preview": "reports/vhannibal-followup-20261106/chefi-official-review/review/preview.png"
+}
