@@ -1,0 +1,136 @@
+name: Publish verified FullHDGlass 1.0.78 stable
+on:
+  push:
+    branches:
+      - release/fullhdglass-1.0.78-20261110
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fullhdglass-stable-1.0.78
+  cancel-in-progress: false
+
+jobs:
+  verify-build-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            source/
+            tools/
+            design/
+            docs/
+            assets/
+            reports/
+            update.json
+            update-test.json
+            update-production.json
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenPLi/enigma2
+          ref: release-9.2
+          path: upstream/enigma2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install build requirements
+        run: |
+          python3 -m pip install --quiet 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Verify exact release identity and selected runtime
+        run: |
+          set -euo pipefail
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = '1.0.78'
+          grep -qx 'Version: 1.0.78-1' source/control/control
+          python tools/sync_header_version.py --check
+          python3 tools/test-channel-picon-settings.py -q
+          python3 tools/test-warder-picon-sync.py -q
+          python3 tools/test-setup-style.py -q
+      - name: Build and verify installable stable IPK
+        run: |
+          set -euo pipefail
+          python3 tools/build-setup-style-test.py
+          python3 tools/verify-setup-style-ipk.py
+          python3 tools/verify-spinner-choice-ipk.py
+          python3 tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk --version 1.0.78 --upstream upstream/enigma2/lib/python --report /tmp/fullhdglass-1.0.78-openpli.json
+          mkdir -p packages
+          cp packages/test/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk packages/
+          cp packages/test/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk.sha256 packages/
+          (cd packages && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk.sha256)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.78-stable
+          path: |
+            packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk
+            packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk.sha256
+          retention-days: 90
+      - name: Publish immutable release and verify public bytes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE='packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk'
+          TAG='v1.0.78'
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/released
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/released
+            cmp "$PACKAGE" "/tmp/released/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass Warder Evolution 1.0.78' --notes 'Internal code optimization, safer graphics processing, improved stability and error handling. Existing user settings are preserved. Restart the GUI after upgrading.'
+          fi
+          python3 - <<'PYVERIFY'
+          from pathlib import Path
+          from urllib.request import urlopen, Request
+          import hashlib, time
+          p=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk')
+          u='https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.78/'+p.name
+          expected=hashlib.sha256(p.read_bytes()).hexdigest()
+          for attempt in range(6):
+              try:
+                  with urlopen(Request(u, headers={'User-Agent':'FullHDGlass-release-verify'}),timeout=40) as response:
+                      body=response.read(p.stat().st_size+1)
+                  if len(body)!=p.stat().st_size or hashlib.sha256(body).hexdigest()!=expected:
+                      raise ValueError('Public stable IPK mismatch')
+                  break
+              except Exception:
+                  if attempt == 5: raise
+                  time.sleep(3)
+          print('Published IPK verified:',p.name,expected)
+          PYVERIFY
+      - name: Advance stable feed and push verified release to main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PYFEED'
+          from pathlib import Path
+          import hashlib,json
+          p=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk')
+          path=Path('update-production.json')
+          doc=json.loads(path.read_text())
+          assert doc['version']=='1.0.77'
+          doc['version']='1.0.78'
+          doc['package_url']='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/'+p.name
+          doc['sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+          doc['changelog']='Internal code optimization, more reliable graphics handling and improved error prevention. Restart the GUI after updating.'
+          doc['changelog_i18n']={'en':doc['changelog'],'sk':'Optimalizácia interného kódu, spoľahlivejšie spracovanie grafiky a prevencia možných chýb. Po aktualizácii reštartujte GUI.'}
+          path.write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n')
+          PYFEED
+          git fetch origin main:refs/remotes/origin/main
+          test "$(git merge-base HEAD origin/main)" = "$(git rev-parse origin/main)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add update-production.json
+          git add -f packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk.sha256
+          git commit -m 'Release verified FullHDGlass 1.0.78 stable and advance production feed [skip ci]'
+          git push origin HEAD:main
+          gh release edit v1.0.78 --latest
