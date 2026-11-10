@@ -1,5 +1,12 @@
 # Warder Evolution – stav projektu
 
+### Dávka15 – druhá presná UNKNOWN RUSSIA referencia na11012H –10.11.2026
+
+- **1 TV referencia /9 PNG /9 ZIPov. Kandidát47 TV/420 PNG/99 jedinečných ZIPov;90 otvorených (84 pôvodných+6delta).**
+- Čerstvé priameHTML Frocus7.11.2026 potvrdzujeSID17368/VPID1268/APID1368 na11012H/30000. Nové transportné podklady SatindexTSID32108 (bitrate31.10.) a SatFRQNID1070/TSID32108 dopĺňajú presnýVhannibal ONID1070/42E. Staršia augustová cache ani septembrové vypnutie neprepisujú návrat7.11. Žiadny rawSDT scan sa netvrdí.
+- Presná `1_0_1_43D8_7D6C_42E_1A40000_0_0_0`; všetkých9schválenýchPNG z dávky10 skopírovaných bajtovo vrátaneWHITE, bez renderovania. Zachované pôvodné členy aj úplné ZIP prefixy;18CANAL+,39E Chefi/Antena a všetky ostatné balíky nezmenené.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261110-15.json`; jeden vzdialený audit a inštalačné výsledky budú doplnené po uložení. Produkcia,rádio,main bez zásahu; PR50 nezlúčený. Ďalej dávka16: získať správne oficiálne podklady ostatných otvorenýchTV, bez opakovania blokovaných DSNS/Quadrille/DMDU_T.
+
 ### Dávka14 – schválené Chefi.ro zaradené do9 pracovných ZIPov –10.11.2026
 
 - **1 dokončená TV referencia /9 PNG /9 ZIPov. Kandidát46 TV/411 PNG/99 jedinečných ZIPov;91 otvorených (84 pôvodných +7 delta).**

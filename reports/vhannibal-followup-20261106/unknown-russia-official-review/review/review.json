@@ -2,7 +2,7 @@
   "status": "OWNER_APPROVED_ALL_NINE_INTEGRATED_BATCH10",
   "station": "NTV Neizvestnaya Rossiya / UNKNOWN RUSSIA",
   "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
-  "secondary_reference_hold": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0 requires fresh full tuple confirmation before integration",
+  "secondary_reference_hold": "Resolved batch15: exact1_0_1_43D8_7D6C_42E_1A40000_0_0_0 uses all9approved variants; see scope-batch-20261110-15.json",
   "source_file": "../cableman-current-logo.png",
   "source_sha256": "8a98e5e6a79e0cddcb5e7695a914e1bae4d81851033a6d33cfb5d347e26c7e52",
   "source_size": [
