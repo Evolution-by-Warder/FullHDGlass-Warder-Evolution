@@ -1,8 +1,9 @@
 name: Publish verified FullHDGlass 1.0.78 stable
 on:
   push:
-    branches:
-      - release/fullhdglass-1.0.78-20261110
+    branches: [main]
+    paths:
+      - .github/workflows/fullhdglass-1.0.78-stable.yml
 
 permissions:
   contents: write
