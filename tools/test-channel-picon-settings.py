@@ -34,7 +34,8 @@ class SettingsTests(unittest.TestCase):
         self.section=NS(**self.values)
         self.section.dict=lambda:self.values
         self.config=NS(plugins=NS(setupGlass17=self.section,
-                                  warderEpgListScroll=NS(enabled=Setting(True))))
+                                  warderEpgListScroll=NS(enabled=Setting(True)),
+                                  warderPiconExpert=NS(custom_destination=Setting(False))))
         self.scope=dict(config=self.config,ALL_CFG=REGISTRY,ui_text=lambda s:s,_=lambda s:s,
             configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock(),
             allow_channel_epg_overlay=lambda:True,
@@ -63,7 +64,8 @@ class SettingsTests(unittest.TestCase):
         scope = {
             'os': os, '_': lambda value: value,
             'ui_text': lambda value: {'FullHDGlass skin storage': 'Úložisko skinu FullHDGlass'}.get(value, value),
-            'warderPiconSync': NS(PICON_DESTINATIONS=(
+            'warderPiconSync': NS(skin_picon_destination=lambda root, resolution=None: os.path.join(root, {'50x30':'picon_50x30','400x240':'picon_400x240'}.get(resolution, 'picon')),
+                                  PICON_DESTINATIONS=(
                 ('/usr/share/enigma2/picon', 'Receiver memory'),
                 ('/media/hdd/picon', 'Hard disk'))),
             'config': NS(plugins=NS(setupGlass17=NS(par39=Setting('/media/hdd/hdg17_files')))),
@@ -85,6 +87,10 @@ class SettingsTests(unittest.TestCase):
         scope['openWarderPiconChoice'](screen, 'wp-dest')
         updated = screen.session.openWithCallback.call_args.kwargs['list']
         self.assertEqual(updated[0][1], ('destination', '/media/usb/hdg17_files/picon'))
+        screen.warderPiconPrefs['resolution'] = '50x30'
+        scope['openWarderPiconChoice'](screen, 'wp-dest')
+        size_choices = screen.session.openWithCallback.call_args.kwargs['list']
+        self.assertEqual(size_choices[0][1], ('destination', '/media/usb/hdg17_files/picon_50x30'))
 
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
@@ -109,6 +115,7 @@ class SettingsTests(unittest.TestCase):
         screen=self.screen()
         self.method('saving')(screen)
         self.assertEqual(self.section.par231.saved,'mini')
+        self.assertFalse(self.config.plugins.warderPiconExpert.custom_destination.saved)
         backup=self.scope['_atomicWriteText'].call_args.args
         self.assertEqual(backup[0],'/test-backup/hdg17.conf')
         self.assertIn('Channel-list picon source: mini\n',backup[1])
