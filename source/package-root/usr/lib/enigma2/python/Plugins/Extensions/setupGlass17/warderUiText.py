@@ -148,8 +148,6 @@ for _lang, _message in {'sk': '7zip nie je dostupný pre architektúru tohto pri
     TEXT[_lang]["7zip is not available for this receiver architecture."] = _message
 
 
-@lru_cache(maxsize=24)
-
 # Destination menu follows the current Enigma2 OSD language in all 21 supported locales.
 TEXT.setdefault("al", {})["FullHDGlass skin storage"] = "Hapësira e skin-it FullHDGlass"
 TEXT.setdefault("el", {})["FullHDGlass skin storage"] = "Αποθήκευση του skin FullHDGlass"
@@ -163,6 +161,7 @@ TEXT.setdefault("tr", {})["FullHDGlass skin storage"] = "FullHDGlass tema depola
 TEXT.setdefault("uk", {})["FullHDGlass skin storage"] = "Сховище скіна FullHDGlass"
 TEXT.setdefault("zh", {})["FullHDGlass skin storage"] = "FullHDGlass 皮肤存储位置"
 
+@lru_cache(maxsize=24)
 def _catalog(lang):
     return gettext.translation("setupGlass17", str(Path(__file__).parent / "locale"), languages=[lang], fallback=True)
 
