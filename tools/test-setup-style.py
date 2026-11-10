@@ -23,14 +23,14 @@ LAYOUTS=style.extract(CURRENT)
 # older releases, and pin the full AST to catch any unreviewed logic edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
 REVIEWED_1076_SHA256='98329feba398a3d689a1cf80c3c6bd354ea63de371419fefefcc0d834c6d2dfa'
-EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
+EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77', '1.0.78') else BASELINE['logic_sha256'])
 
 def fingerprint_source(source):
-    # Release 1.0.77 changes only the visible header version labels.
+    # Stable releases change only the visible header version labels.
     # Restore those labels for the frozen 1.0.76 controller AST check.
-    if RUNTIME_VERSION == '1.0.77':
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78'):
         source, count = re.subn(
-            r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")1\.0\.77(")',
+            r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
             r'\g<1>1.0.76\2', source)
         if count != 10:
             raise AssertionError('Expected 10 reviewed version header labels')
