@@ -1,3 +1,9 @@
+## 2026-11-10 — Batch 19: remaining 39 candidates, unresolved evidence
+
+Continued from `b585ed06`; selected the other 39 candidates (33 original + 6 delta), without repeating the five groups/47. No new integration or technical closure: **48 TV / 429 PNG / 99 ZIP / 86 open**. New departure lead for SID51074/51078 belongs to TSID2069, not target2109. TEST_CB removal belongs to11315V/TSID40060, not target40040. Service811 activity remains contradictory (inactive label versus2.16Mbit); no inferred departure. The10887H contradiction was already known in batch16 and is not counted as new. Default-branch provenance search found no newly proven approved donor; Sports artwork is not Movies artwork.
+
+Details and exact 39-candidate inventory: `reports/vhannibal-followup-20261106/scope-batch-20261110-19-remaining39.json`. Inventory is triage, not39new measurements. Batch19 remains IN_PROGRESS_NO_SAFE_INTEGRATION. No binary/production changes, no new independent documentation audit or completion claim. All protected archives and approval holds preserved.
+
 ## 2026-11-10 — Batch 19 research checkpoint: independent audit PASS
 
 Independent audit of `116e0aed` → `3edd726b` passed: exactly three documentation files; 47 unique open references annotated (16+6+23+1+1), no status changes or binary modifications. Counts remain **48 TV / 429 PNG / 99 ZIP / 86 open**. PASS confirms checkpoint integrity, not batch completion. Batch 19 remains **IN_PROGRESS_NO_SAFE_INTEGRATION**. Audit: `reports/vhannibal-followup-20261106/scope-batch-20261110-19-checkpoint-audit.json`. Continue only with new decisive evidence; preserve existing blockers and approved artwork.
