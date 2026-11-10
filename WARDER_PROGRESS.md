@@ -1,11 +1,18 @@
 # Warder Evolution – stav projektu
 
+### Dávka 16 – rozpracovaný prieskum, bez ďalšieho zaradenia – 10. 11. 2026
+
+- Dávka 15 dokončená a spätne overená. **47 TV / 420 PNG / 99 jedinečných ZIPov; 90 otvorených (84 pôvodných + 6 delta).**
+- Nový priamy podklad EL JUMHURIA uložený: 12398.60 V, SID 7820, NID 1918 / TID 53600. Iné indexované verzie majú 2048 / 41; schválený správny artwork stále chýba. Nesprávny donor sa nepoužíva.
+- Oficiálny Radio Classica web potvrdzuje vlastníctvo TV značky, nie aktívny satelitný TV stream ani sporný ONID. StarzPlay Movies oficiálny detail vracia 403; žiadny nový PNG nebol získaný. 1TV IRAQ sa nezamieňa s 1IraqTV ani s iným transportom.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261110-16-research.json` zachováva nové podklady, výsledky a presné ďalšie kroky. **0 nových PNG, 0 uzavretých prípadov v dávke 16.** Bezpečné integrácie pokračujú až pri doloženom párovaní; nové grafiky sa zhromažďujú na spoločné schválenie. Dávky 01–15 neopakovať. PR #50 nezlučovať.
+
 ### Dávka15 – druhá presná UNKNOWN RUSSIA referencia na11012H –10.11.2026
 
 - **1 TV referencia /9 PNG /9 ZIPov. Kandidát47 TV/420 PNG/99 jedinečných ZIPov;90 otvorených (84 pôvodných+6delta).**
 - Čerstvé priameHTML Frocus7.11.2026 potvrdzujeSID17368/VPID1268/APID1368 na11012H/30000. Nové transportné podklady SatindexTSID32108 (bitrate31.10.) a SatFRQNID1070/TSID32108 dopĺňajú presnýVhannibal ONID1070/42E. Staršia augustová cache ani septembrové vypnutie neprepisujú návrat7.11. Žiadny rawSDT scan sa netvrdí.
 - Presná `1_0_1_43D8_7D6C_42E_1A40000_0_0_0`; všetkých9schválenýchPNG z dávky10 skopírovaných bajtovo vrátaneWHITE, bez renderovania. Zachované pôvodné členy aj úplné ZIP prefixy;18CANAL+,39E Chefi/Antena a všetky ostatné balíky nezmenené.
-- Report `reports/vhannibal-followup-20261106/scope-batch-20261110-15.json`; jeden vzdialený audit a inštalačné výsledky budú doplnené po uložení. Produkcia,rádio,main bez zásahu; PR50 nezlúčený. Ďalej dávka16: získať správne oficiálne podklady ostatných otvorenýchTV, bez opakovania blokovaných DSNS/Quadrille/DMDU_T.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261110-15.json`; payload `32c0420e8769e4eadedc883974409c746e8a4dc0`. Záverečný vzdialený audit PASS: 133 ciest / 341322284 bajtov, 124 častí, 9 kompletných ZIPov; SHA256, CRC a presná zhoda 9 schválených PNG PASS. Všetkých 9 inštalačných testov cez aktuálny produkčný kód PASS, zachovaný používateľský PNG. Zachovaných 19470 pôvodných položiek. Fyzický prijímač netestovaný. Audit `scope-batch-20261110-15-remote-verification.json`. Produkcia,rádio,main bez zásahu; PR50 nezlúčený. Ďalej dávka16: získať správne oficiálne podklady ostatných otvorenýchTV, bez opakovania blokovaných DSNS/Quadrille/DMDU_T.
 
 ### Dávka14 – schválené Chefi.ro zaradené do9 pracovných ZIPov –10.11.2026
 

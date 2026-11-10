@@ -4297,6 +4297,18 @@
     "delta_open": 6,
     "candidate_tv": 47,
     "candidate_png": 420,
+    "candidate_unique_zips": 99,
+    "remote_audit": "reports/vhannibal-followup-20261106/scope-batch-20261110-15-remote-verification.json",
+    "status": "REMOTE_AND_INSTALLATION_PASS"
+  },
+  "continuation_20261110_batch16": {
+    "status": "RESEARCH_CHECKPOINT_NO_INTEGRATION",
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261110-16-research.json",
+    "new_tv": 0,
+    "new_png": 0,
+    "remaining_open": 90,
+    "candidate_tv": 47,
+    "candidate_png": 420,
     "candidate_unique_zips": 99
   }
 }

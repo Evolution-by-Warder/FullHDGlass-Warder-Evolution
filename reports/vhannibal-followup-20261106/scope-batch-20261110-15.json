@@ -1,6 +1,6 @@
 {
   "batch": 15,
-  "status": "LOCAL_PASS_PENDING_REMOTE",
+  "status": "REMOTE_AND_INSTALLATION_PASS",
   "base_checkpoint": "9d8626f4db1ea5847c43dd653f3a19e6148f042f",
   "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
   "donor": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
@@ -325,5 +325,7 @@
   "source_caveats": "Search-cache Frocus detail was staleAugust, while directHTML is7November. Satindex older absence is not a newer departure; it predates7Nov return. NID is not asserted as a directONID measurement; ONID supplied by preservedVhannibal record.",
   "artwork": "Exact9PNG from owner-approved batch10, includingWHITE, no render or recolouring.",
   "production_changed": false,
-  "radio_changed": false
+  "radio_changed": false,
+  "payload_commit": "32c0420e8769e4eadedc883974409c746e8a4dc0",
+  "remote_audit": "reports/vhannibal-followup-20261106/scope-batch-20261110-15-remote-verification.json"
 }
