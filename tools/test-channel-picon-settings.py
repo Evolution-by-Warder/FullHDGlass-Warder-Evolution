@@ -62,7 +62,7 @@ class SettingsTests(unittest.TestCase):
                       and n.name == 'openWarderPiconChoice')
         scope = {
             'os': os, '_': lambda value: value,
-            'ui_text': lambda value: {'Skin default storage': 'Predvolené úložisko skinu'}.get(value, value),
+            'ui_text': lambda value: {'FullHDGlass skin storage': 'Úložisko skinu FullHDGlass'}.get(value, value),
             'warderPiconSync': NS(PICON_DESTINATIONS=(
                 ('/usr/share/enigma2/picon', 'Receiver memory'),
                 ('/media/hdd/picon', 'Hard disk'))),
@@ -77,7 +77,7 @@ class SettingsTests(unittest.TestCase):
         scope['openWarderPiconChoice'](screen, 'wp-dest')
         choices = screen.session.openWithCallback.call_args.kwargs['list']
         self.assertEqual(choices[0], (
-            'Predvolené úložisko skinu - /media/hdd/hdg17_files/picon',
+            'Úložisko skinu FullHDGlass - /media/hdd/hdg17_files/picon',
             ('destination', '/media/hdd/hdg17_files/picon')))
         self.assertIn(('Hard disk - /media/hdd/picon',
                        ('destination', '/media/hdd/picon')), choices)
