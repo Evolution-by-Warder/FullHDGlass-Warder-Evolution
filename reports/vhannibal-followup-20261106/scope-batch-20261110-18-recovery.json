@@ -1,0 +1,437 @@
+{
+  "recovered_report": {
+    "date": "2026-11-10",
+    "batch": 18,
+    "status": "IN_PROGRESS_ARTWORK_DRAFT_CHECKPOINT_NOT_COMPLETED_BATCH",
+    "base": "4c657cdb814114c4c39a3da38ed09408b6fd5ecb",
+    "main_fullhdglass": "d4627ca18c966f03f05d11214b26025525ba2556",
+    "main_piconhub": "59ec70708d4d05a28f17c741742c78451d4fc45b",
+    "counts": {
+      "completed_tv": 48,
+      "integrated_png": 429,
+      "unique_zip": 99,
+      "open": 87,
+      "new_integrations": 0,
+      "technical_closures": 0,
+      "unapproved_draft_png": 9
+    },
+    "retained_ciefp_exact_matches": 14,
+    "findings": [
+      {
+        "case": "ALKAFEEL.TV",
+        "result": "Official original recovered and nine complete-original V9 drafts prepared. Website owner confirmed by official shrine project page; target satellite tuple binding remains unproven. WHITE low contrast retained, no recolouring.",
+        "evidence": "alkafeel-tv-review/provenance.json"
+      },
+      {
+        "case": "SES Demo HD",
+        "result": "Existing official corporate originals already retained in ses-official-review. Not re-downloaded or substituted. SES ASTRA donor rejected per owner; corporate-to-exact-demo binding still missing."
+      },
+      {
+        "case": "DMDU_T",
+        "target": "1_0_11_3CB5_C5A8_2A_1A40000_0_0_0",
+        "result": "Additional Digitalbitrate SAT1 listing corroborates label/SID15541 and TSID50600/ONID42 in search index; live page challenge prevents fresh stream inspection. Morpheus shows type17, video0, audio8191, PMT56, PCR8191; still not explicit data classification. No closure. Previous Digitalbitrate SAT2 source was already known; do not repeat this route.",
+        "sources": [
+          "https://www.digitalbitrate.com/dtv.php?lang=fr&liste=2&live=74&mux=&order=0",
+          "https://ftp.morpheus883.altervista.org/srv.php/?chart=42"
+        ]
+      },
+      {
+        "case": "Oracle TV",
+        "target": "1_0_1_2FC_2025_2BE_1040000_0_0_0",
+        "result": "Historical official Intelsat 2019 channel guide names Oracle TV at12682V but does not establish target26E SID764/TSID8229/ONID702. No donor transfer or closure.",
+        "source": "https://pages.intelsat.com/rs/409-OAJ-662/images/intelsat-channel-guide-2019.pdf"
+      },
+      {
+        "case": "2117 / 2118",
+        "result": "Historical DigitalSpy May2025 reception discussion names51074 as encrypted HD childrens test on11141H, without definitive programme or targetTSID2109. Nick Jr Hungary lookup is not enough to override numbered-service hold. No logo reused.",
+        "source": "https://forums.digitalspy.com/discussion/comment/106578426"
+      },
+      {
+        "case": "Quadrille / DSNS / HS1",
+        "result": "Queries led to other positions or previously known generic/test labels, no new decisive tuple-specific classification. These are NOT closures or completed audits."
+      }
+    ],
+    "preservation": "Only new report/draft assets and progress documentation. No assets/, manifest, ZIP, parts, CANAL+ archive, radio or production changes. No repeated audit of batches01-17.",
+    "next": "Request visual review of ALKAFEEL.TV original-preserving drafts, while retaining separate identity hold. Further research only with new raw SDT/PMT or exact programme evidence; do not repeat recorded failed sources.",
+    "tests": "Nine PNG decode/dimensions/alpha and immutable template hashes checked; visual review performed. No installation tests because no installable changes."
+  },
+  "inventory": [
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/original.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/original.png",
+      "sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+      "bytes": 1442092,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/provenance.json",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/provenance.json",
+      "sha256": "97f71e45107c26972614aca3cb6d8fa6de7e923cb42e1f3b6bdf2bef04be616a",
+      "bytes": 1485,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/render_draft.py",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/render_draft.py",
+      "sha256": "ae977fd1da4aff84734e87039c34be0b02ba2cde9809641d6c941ac203f3ae13",
+      "bytes": 3341,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/220x132-black.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/220x132-black.png",
+      "sha256": "1946a969c89c91082307d3aa0263c549e776e539a9ef81af38c58995f1771f31",
+      "bytes": 47675,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/220x132-transparent.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/220x132-transparent.png",
+      "sha256": "d238bd0c8a5bf6fcf56f62d2467cecaed4569ce9209b2713779707c4f7ac456b",
+      "bytes": 30095,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/220x132-white.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/220x132-white.png",
+      "sha256": "41da093d05c23ed3414ff4ad3acc3061183f0a46fbbe3530fc3fda4dd2d3bb99",
+      "bytes": 47864,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/400x240-black.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/400x240-black.png",
+      "sha256": "fb212be6f686c00728d1644cf014c201fdd255f88b08ffeae07a8074a01b8e69",
+      "bytes": 118979,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/400x240-transparent.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/400x240-transparent.png",
+      "sha256": "13843b4dd97301adb2b64921aa036eb616da8b1c8740c6905bf8af8896dc418d",
+      "bytes": 72140,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/400x240-white.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/400x240-white.png",
+      "sha256": "78d1b33c905a58c6fdd3147d56534c71f9eff8faa151609f086cf8c2cef66da1",
+      "bytes": 121918,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/50x30-black.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/50x30-black.png",
+      "sha256": "45fe16862f337365e04a4345bd966c222d4b8ceb586c9e9485ddb9f8902db959",
+      "bytes": 3920,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/50x30-transparent.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/50x30-transparent.png",
+      "sha256": "7fd99c7807980972039d21d99083ad3e74510b935b3979142c30e77f89806fad",
+      "bytes": 3085,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/50x30-white.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/50x30-white.png",
+      "sha256": "be1b2f2b5f6d6a310515bd8afd53dd77226a3ccc279fd0d1e16b61ab86642763",
+      "bytes": 3576,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/preview.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/preview.png",
+      "sha256": "54ed288bf21084efc4b950540b9d03ed115c4abb4499b165442cf2322f2f7f8c",
+      "bytes": 382899,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/review.json",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/review.json",
+      "sha256": "bbc5c84340359f5c80ca841f542cc4da7666b2710c86fb148c4a7d0680e2e682",
+      "bytes": 3640,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/templates/black-sablona.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/templates/black-sablona.png",
+      "sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe",
+      "bytes": 29833,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/templates/white-sablona.png",
+      "local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/templates/white-sablona.png",
+      "sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+      "bytes": 29645,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-18-artwork.json",
+      "local": "/workspace/scratch/9a1de96a9102/work/scope-batch-20261110-18-artwork.json",
+      "sha256": "23a9a1302ca7aee46612b3e1bf8c6948ed501e88ba9fd0255813702738f6b2ba",
+      "bytes": 3355,
+      "local_sha256_verified": true,
+      "github_upload_status": "NOT_COMMITTED_AT_4c657cdb"
+    }
+  ],
+  "provenance": {
+    "retrieved_date": "2026-11-10",
+    "source_url": "https://alkafeel.tv/build/assets/logo.dfe29060.png",
+    "source_sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+    "official_page": "https://alkafeel.tv/",
+    "page_sha256": "8ca723670c354455c9c57c2c550144e43dc0430678d323786feed7ff44d09c3f",
+    "app_url": "https://alkafeel.tv/build/assets/app.6af0f52a.js",
+    "app_sha256": "8b1afb04bf8c995e1256ca2cc1bb6edcc1088890d2419ad473b5fa936fe57161",
+    "app_asset_excerpts": [
+      "ect.prototype.hasOwnProperty.call(e,\"$swal\")||(e.prototype.$swal=s,e.swal=s)}}var Km=\"/build/assets/logo.dfe29060.png\",Xk=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n(\"div\",[t._m(0),t._m(1),n(\"hea"
+    ],
+    "independent_owner_page": "https://projects.alkafeel.net/project/243",
+    "owner_page_sha256": "a4c1749271d357ac0578476e7111192f6e5db5ff150784c1479dc2317fccd886",
+    "identity_finding": "Al-Abbas Holy Shrine project page explicitly links alkafeel.tv as its live broadcasting system. This establishes origin/ownership, NOT identity of SID7700/TSID53600/ONID1918.",
+    "satellite_reference_candidate": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+    "binding_status": "UNCONFIRMED_DO_NOT_INTEGRATE",
+    "separate_previous_source": "https://alkafil.live",
+    "warning": "Do not equate similarly named domains or replace previous evidence. Visual approval alone cannot settle satellite identity.",
+    "draft_variants": 9,
+    "approved_variants": 0,
+    "zip_changes": 0
+  },
+  "review": {
+    "status": "VISUAL_REVIEW_AND_EXACT_SERVICE_IDENTITY_REQUIRED",
+    "station": "ALKAFEEL.TV",
+    "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+    "source_url": "https://alkafeel.tv/build/assets/logo.dfe29060.png",
+    "official_catalog": "https://alkafeel.tv/",
+    "source_sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+    "source_size": [
+      7077,
+      3657
+    ],
+    "source_alpha_bbox": [
+      19,
+      33,
+      7032,
+      3538
+    ],
+    "source_colours_preserved": true,
+    "no_recolour_or_redraw": true,
+    "templates_immutable": {
+      "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+      "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+    },
+    "geometry": "Every size from original alpha bounds; proportional204x116 fit at220x132; premultipliedLANCZOS. Complete original retained, including wordmark and tagline.",
+    "output_count": 9,
+    "new_approved_references": 0,
+    "production_package_changes": 0,
+    "does_not_reduce_open_count": true,
+    "visual_review": "Identity binding to the satellite service is NOT confirmed. Complete original contains small text; WHITE has low white-letter contrast. Review only, never integrate from visual approval alone.",
+    "outputs": [
+      {
+        "file": "50x30-transparent.png",
+        "sha256": "7fd99c7807980972039d21d99083ad3e74510b935b3979142c30e77f89806fad",
+        "size": [
+          50,
+          30
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "220x132-transparent.png",
+        "sha256": "d238bd0c8a5bf6fcf56f62d2467cecaed4569ce9209b2713779707c4f7ac456b",
+        "size": [
+          220,
+          132
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "400x240-transparent.png",
+        "sha256": "13843b4dd97301adb2b64921aa036eb616da8b1c8740c6905bf8af8896dc418d",
+        "size": [
+          400,
+          240
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "50x30-white.png",
+        "sha256": "be1b2f2b5f6d6a310515bd8afd53dd77226a3ccc279fd0d1e16b61ab86642763",
+        "size": [
+          50,
+          30
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          25,
+          255
+        ]
+      },
+      {
+        "file": "220x132-white.png",
+        "sha256": "41da093d05c23ed3414ff4ad3acc3061183f0a46fbbe3530fc3fda4dd2d3bb99",
+        "size": [
+          220,
+          132
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "400x240-white.png",
+        "sha256": "78d1b33c905a58c6fdd3147d56534c71f9eff8faa151609f086cf8c2cef66da1",
+        "size": [
+          400,
+          240
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "50x30-black.png",
+        "sha256": "45fe16862f337365e04a4345bd966c222d4b8ceb586c9e9485ddb9f8902db959",
+        "size": [
+          50,
+          30
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          9,
+          255
+        ]
+      },
+      {
+        "file": "220x132-black.png",
+        "sha256": "1946a969c89c91082307d3aa0263c549e776e539a9ef81af38c58995f1771f31",
+        "size": [
+          220,
+          132
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "400x240-black.png",
+        "sha256": "fb212be6f686c00728d1644cf014c201fdd255f88b08ffeae07a8074a01b8e69",
+        "size": [
+          400,
+          240
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ],
+    "reference_binding": "UNCONFIRMED"
+  },
+  "date": "2026-11-10",
+  "base_checkpoint": "4c657cdb814114c4c39a3da38ed09408b6fd5ecb",
+  "status": "BATCH18_IN_PROGRESS_NO_NEW_INTEGRATION",
+  "upload_incident": {
+    "reported_error_verbatim": "Unknown error",
+    "technical_cause": "UNKNOWN: no diagnostic log recovered; do not attribute definitively to Base64 or GitHub.",
+    "binary_retry_attempts_this_session": 0,
+    "new_authentication_or_transfer_method": false,
+    "remote_check": "PR50 head unchanged at base checkpoint; changed-file inventory contains no alkafeel-tv-review paths; direct review/review.json fetch returned GitHub API 404 Not Found.",
+    "binary_status": "LOCAL_VERIFIED_NOT_COMMITTED; existing files retained in place; no rerender",
+    "ses": "Two official corporate PNGs and official-source-manifest.json present in PR changed files. SES ASTRA prohibited; corporate logo not proof of exact Demo HD artwork."
+  },
+  "new_research": [
+    {
+      "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
+      "name": "Service 11-13",
+      "source": "https://en.kingofsat.eu/tp11791",
+      "retrieved": "2026-11-10",
+      "source_scan_timestamp": "2026-11-10 04:22:38",
+      "observations": {
+        "position": "34.5W",
+        "frequency": "11525.40 V",
+        "sid": 8,
+        "tsid": 1,
+        "nid": 8080,
+        "vpid": 1310,
+        "apid": 1321,
+        "video_kbps": 1526.4,
+        "audio_kbps": 196.8
+      },
+      "decision": "HOLD: fresh published transport observation has nonzero AV. Not evidence of programme identity, departure or data-only classification. NID not independently asserted as ONID; no raw receiver scan performed.",
+      "next": "Need programme visual/official identity bound to SID8, then approved same-station artwork."
+    },
+    {
+      "reference": "1_0_1F_1_0_1_46AB8F_0_0_0",
+      "name": "ITA 99 A",
+      "source": "https://www.digital-forum.it/threads/discussioni-su-rai-3.128456/page-210",
+      "evidence_level": "SEARCH_INDEX_LEAD_ONLY",
+      "finding": "June2026 post names RAI SNG ITA99A on7E11123V, not target frequency11151V. Does not identify target full tuple; no RAI logo transfer.",
+      "decision": "HOLD"
+    },
+    {
+      "reference": "1_0_1_1_1_FFFF_104AB59_0_0_0",
+      "name": "1TV IRAQ",
+      "source": "https://uydumturk.com/board8/t4753_flysattan-guncel-frekans-degisiklikleri/1350",
+      "evidence_level": "SEARCH_INDEX_HISTORICAL_LEAD_ONLY",
+      "finding": "January2025 Alawla1TV Iraq notices concern11109V/11117V25.5E, not target11097V. Do not transfer identity or infer departure.",
+      "decision": "HOLD"
+    }
+  ],
+  "provenance_recheck": {
+    "source": "https://projects.alkafeel.net/project/243",
+    "result": "Official project page directly links alkafeel.tv and describes internet live broadcasting plus SNG satellite distribution. No exact SID7700/TSID53600/ONID1918 binding; hold unchanged."
+  },
+  "counts": {
+    "tv": 48,
+    "png": 429,
+    "unique_zips": 99,
+    "open": 87,
+    "new_integrations": 0,
+    "technical_closures": 0
+  },
+  "validation": {
+    "local_inventory_sha256": "17/17 PASS",
+    "draft_rerender": false,
+    "installation_tests": "N/A documentation only",
+    "production_or_binary_changes": 0,
+    "protected_canal_archives_modified": 0
+  }
+}
