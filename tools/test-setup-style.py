@@ -4,6 +4,7 @@ import ast
 import hashlib
 import importlib.util
 import json
+import re
 from pathlib import Path
 import unittest
 from types import SimpleNamespace
@@ -21,7 +22,19 @@ LAYOUTS=style.extract(CURRENT)
 # older releases, and pin the full AST to catch any unreviewed logic edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
 REVIEWED_1076_SHA256='9c2e7e62276c9e3677283c93c6f4849115ec0f8544eb8c1321c5fe8515abbef3'
-EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION == '1.0.76' else BASELINE['logic_sha256'])
+EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
+
+def fingerprint_source(source):
+    # Release 1.0.77 changes only the visible header version labels.
+    # Restore those labels for the frozen 1.0.76 controller AST check.
+    if RUNTIME_VERSION == '1.0.77':
+        source, count = re.subn(
+            r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")1\.0\.77(")',
+            r'\g<1>1.0.76\2', source)
+        if count != 10:
+            raise AssertionError('Expected 10 reviewed version header labels')
+    return style.normalized(ast.parse(source))
+
 
 
 class SetupStyleTests(unittest.TestCase):
@@ -146,7 +159,7 @@ class SetupStyleTests(unittest.TestCase):
             self.assertIn(statement, CURRENT, statement)
 
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
-        self.assertEqual(style.normalized(ast.parse(CURRENT)),EXPECTED_SHA)
+        self.assertEqual(fingerprint_source(CURRENT),EXPECTED_SHA)
 
     def test_modified_compatibility_installation_hook_is_not_silently_approved(self):
         changed=CURRENT.replace('_WarderCoolContent.TYPE_TEXT,','_WarderCoolContent.TYPE_PIXMAP,',1)

@@ -1,3 +1,10 @@
+FullHDGlass 1.0.77 — 10.11.2026
+Factory reset restores all 148 original bundled icons offline without downloaded icon packs, even if type 1 is already selected.
+Renamed graphics/picon storage menu setting and improved localized help; backup configuration hdg17.conf has separate help.
+Removed the obsolete MSN default weather-provider entry.
+Losslessly optimized 15 bundled PNG files, saving 686,901 bytes while retaining identical image pixels.
+Original radio JPEG background and all previously supported runtime features are retained. Restart the GUI after upgrading.
+
 FullHDGlass 1.0.73 — 08.11.2026
 ChannelSelection: fixed long EPG titles overlapping right-hand progress indicators on OpenATV.
 Selected long programme titles now scroll within their reserved text area, revealing the complete name without covering the progressbar.

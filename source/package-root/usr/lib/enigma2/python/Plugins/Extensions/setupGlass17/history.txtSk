@@ -1,3 +1,10 @@
+FullHDGlass 1.0.77 — 10.11.2026
+Úplný reset obnoví všetkých 148 originálnych ikon bez stiahnutej grafickej sady aj vtedy, keď je už zvolený typ 1.
+Premenovaná položka úložiska grafiky a piconov s viacjazyčnou nápovedou; samostatná nápoveda k zálohe hdg17.conf.
+Odstránená neplatná predvolená hodnota poskytovateľa počasia MSN.
+Bezstratovo optimalizovaných 15 PNG obrázkov s úsporou 686 901 bajtov bez zmeny obrazových pixelov.
+Pôvodné JPG pozadie rádia aj doterajšie funkcie zostávajú zachované. Po aktualizácii reštartujte GUI.
+
 FullHDGlass 1.0.73 — 08.11.2026
 Výber staníc: opravené dlhé názvy EPG zasahujúce do pravých indikátorov priebehu na OpenATV.
 Dlhý názov programu na vybranej stanici sa plynulo posúva vo vyhradenom priestore a umožní prečítať aj jeho koniec bez prekrytia progressbaru.
