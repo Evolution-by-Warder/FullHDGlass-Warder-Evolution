@@ -89,3 +89,46 @@ jobs:
           python -m unittest discover -s tools -p 'test_warder_default_epg_panel_runtime.py' -v
           python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
           python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
+
+  optimize-pr88-png:
+    # A workflow first introduced on a PR branch cannot be relied on to run
+    # as a push workflow until GitHub registers it from the default branch.
+    # Run the fast PNG pass in this already-registered PR workflow instead.
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'fix/reset-icons-weather-and-storage-label' && github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+          filter: blob:none
+          sparse-checkout: |
+            tools/optimize_large_png.sh
+            source/package-root/usr/share/enigma2/hd_glass17/
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+      - name: Install fast PNG tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq optipng python3-pil
+      - name: Losslessly optimize large bundled PNGs
+        run: |
+          bash tools/optimize_large_png.sh | tee /tmp/pr88-png-report.txt
+      - name: Save optimization report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr88-png-optimization-report
+          path: /tmp/pr88-png-report.txt
+          if-no-files-found: ignore
+      - name: Commit verified PNG size reductions
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'source/package-root'
+          if ! git diff --cached --quiet; then
+            git commit -m 'Optimize 25 large bundled PNGs losslessly'
+            git push origin HEAD:refs/heads/fix/reset-icons-weather-and-storage-label
+          fi
