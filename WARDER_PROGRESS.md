@@ -1,5 +1,13 @@
 # Warder Evolution – stav projektu
 
+### Dávka12 – doložený odchod starej Kuukauden referencie – 10.11.2026
+
+- **0 nových TV referencií /0 PNG /0 ZIPov /1 uzavretá neaktívna referencia. Zostáva98 otvorených (84 pôvodných +14 delta). Kandidát39 TV/348 PNG/99 jedinečných ZIPov.** Nejde o dátovú službu ani zánik stanice.
+- Uzavretá `1_0_16_42BC_A_46_E080000_0_0_0`: nový explicitný záznam8.11.2026 potvrdzuje odchod10934.6V/SID17084; starýTSID10/ONID70 doložený pôvodnými parametrami. Hotová referenciaTSID72 na10871.9H bez zmeny. Historické súbory zachované.
+- Kompletné rozdelenie99 vstupných prípadov a požadované dôkazy pri každom sú v `identity-evidence-20261107.json` → `continuation_20261110_batch12.triage`. Žiadny pripravený bezpečný donor;2 TV5MONDE prípady vyžadujú ochranu kanonickej grafiky, ostatné otvorené prípady presnú identitu/klasifikáciu alebo použiteľný podklad. Bez nového dôkazu neopakovať rovnaké dotazy.
+- Dôkazy: `scope-batch-20261110-12.json` a3 zachytené zdrojové stránky. Spätný audit po uložení payload commitu.
+- Balíky, manifesty,18 CANAL+, produkčnýmain a rádio nezmenené. PR50 sa nezlučuje. Ďalšia dávka13 musí vychádzať z nového dôkazu podľa konkrétneho riadka registra; dávky01–12 neopakovať.
+
 ### Dávka11 – štyri doložené technické testovacie obrazce – 10.11.2026
 
 - Eutelsat1–4: SID7210/7220/7230/7240, TSID53600, Vhannibal ONID1918, 7°W 12399V. KingOfSat explicitne označuje všetky štyri ako Testcard (7.11.2026); zachytené HTML a presné riadky sú uložené. NID v externom zdroji sa nezamieňa za samostatný dôkaz ONID; väzbu poskytuje existujúci Vhannibal register.

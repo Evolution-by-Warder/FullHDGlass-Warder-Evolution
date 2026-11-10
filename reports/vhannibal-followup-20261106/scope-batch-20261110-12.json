@@ -1,0 +1,50 @@
+{
+  "batch": 12,
+  "previous_checkpoint": "b7883508e39c7f28f58a142664bedcad105f2b73",
+  "closed_reference": "1_0_16_42BC_A_46_E080000_0_0_0",
+  "classification": "INACTIVE_OLD_TRANSPORT_NOT_DATA_NOT_BROADCASTER_CLOSURE",
+  "departure_date": "2026-11-08",
+  "binding": {
+    "sid": 17084,
+    "tsid": 10,
+    "onid": 70,
+    "position": "0.8W",
+    "frequency_mhz": 10934.6,
+    "polarization": "V",
+    "sr": 25000
+  },
+  "evidence": "Explicit KingOfSat departure notice8Nov matches old frequency/SID/PIDs. Stored independent historical parameters bindTSID10/ONID70. CurrentTSID72 uses10871.9H and is a separate already-completed reference; no alias copied. Existing8Nov settings absence is supporting context only, not sole proof.",
+  "sources": [
+    {
+      "url": "https://sk.kingofsat.tv/news.php?pos=0.8W",
+      "snapshot": "reports/vhannibal-followup-20261106/batch12-kuukauden-news.html",
+      "sha256": "145331324be5339ad6b1efa9ed03330805799a912ff4b9f573826f45edd17ddc"
+    },
+    {
+      "url": "https://sq.kingofsat.net/detail-kuukaudenkanava",
+      "snapshot": "reports/vhannibal-followup-20261106/batch12-kuukauden-current.html",
+      "sha256": "65d6b8c350daefee093abaa0b7e5f0802dc94a8d17568a38e554d0b5ede23f1d"
+    },
+    {
+      "url": "https://www.satelitnatv.sk/frekvencie/program/kuukauden-kanava/",
+      "snapshot": "reports/vhannibal-followup-20261106/batch12-kuukauden-old-tuple.html",
+      "sha256": "54911be51c9f2d11a7251f4c8e309bf9b63ab824ebcce237fbe23be34b8b6301"
+    }
+  ],
+  "new_tv_references": 0,
+  "new_png": 0,
+  "modified_zips": 0,
+  "inactive_closed": 1,
+  "technical_data_closed": 0,
+  "remaining_open": 98,
+  "original_open": 84,
+  "delta_open": 14,
+  "candidate_tv": 39,
+  "candidate_png": 348,
+  "candidate_unique_zips": 99,
+  "triage_counts": {
+    "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN": 96,
+    "C_CONFIRMED_OLD_TRANSPORT_DEPARTURE": 1,
+    "B_PROTECTED_CANONICAL_ARTWORK": 2
+  }
+}

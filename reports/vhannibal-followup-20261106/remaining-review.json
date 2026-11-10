@@ -2255,7 +2255,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "CLOSED_INACTIVE_OLD_TRANSPORT_BATCH12",
     "identity_review_20261107": {
       "reference": "1_0_16_42BC_A_46_E080000_0_0_0",
       "name": "Kuukauden kanava",
@@ -2276,8 +2276,8 @@
       "donor_candidates": [],
       "reason": "Monthlychannelservice is current; secondSID17084onTSID72alsoexists. Staticprogrammeidentity and currentmonthlylogo requireoperatorconfirmation. Genericplaceholder must not be deployed."
     },
-    "remaining_current_technical": true,
-    "resolution_reason": "Older TSID10 reference conflicts with 3Nov move to TSID72. Legacy PID1538 is not current Explore PID1535. Retain historical record without copying the new edition to old tuple.",
+    "remaining_current_technical": false,
+    "resolution_reason": "Closed batch12: explicit 8 November departure from10934.6V, SID17084; old tuple bound by stored identity evidence and independent historical parameters. TSID72 remains active and unchanged.",
     "technical_uid": {
       "sid": 17084,
       "tsid": 10,
@@ -2288,7 +2288,9 @@
     "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
     "latest_settings_evidence_20261108": {
       "status": "NOT_IN_CURRENT_MOTOR_SETTINGS_NOT_PROOF_OF_DEPARTURE"
-    }
+    },
+    "previous_resolution_reason": "Older TSID10 reference conflicts with 3Nov move to TSID72. Legacy PID1538 is not current Explore PID1535. Retain historical record without copying the new edition to old tuple.",
+    "batch12_evidence": "reports/vhannibal-followup-20261106/scope-batch-20261110-12.json"
   },
   {
     "reference": "1_0_16_43_204_1D_5A0000_0_0_0",

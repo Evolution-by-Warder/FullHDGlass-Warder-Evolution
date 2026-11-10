@@ -3332,5 +3332,907 @@
     "candidate_unique_zips": 99,
     "decision": "Close four exact delta references as nonprogramme testcards. Preserve historical files; not a claim of data service or cessation.",
     "source_snapshot": "reports/vhannibal-followup-20261106/batch11-eutelsat-tp4716.html"
+  },
+  "continuation_20261110_batch12": {
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261110-12.json",
+    "remaining_open": 98,
+    "original_open": 84,
+    "delta_open": 14,
+    "reviewed_queue_count": 99,
+    "triage": [
+      {
+        "reference": "1_0_11_3CB5_C5A8_2A_1A40000_0_0_0",
+        "name": "DMDU_T",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Platform data label",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_189D_C97_3_EB0000_0_0_0",
+        "name": "Test 1",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_189E_C97_3_EB0000_0_0_0",
+        "name": "Test 2",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_189F_C97_3_EB0000_0_0_0",
+        "name": "Test 3",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_18A1_C97_3_EB0000_0_0_0",
+        "name": "Test 5",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_18A2_C97_3_EB0000_0_0_0",
+        "name": "Test 6",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_18A3_C97_3_EB0000_0_0_0",
+        "name": "Test 7",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_18AB_C97_3_EB0000_0_0_0",
+        "name": "Test 15",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_18AC_C97_3_EB0000_0_0_0",
+        "name": "Test 16",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1F50_1_10_640000_0_0_0",
+        "name": "12",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+        "name": "08",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+        "name": "09",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+        "name": "10",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+        "name": "13",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+        "name": "11",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+        "name": "12",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+        "name": "16",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+        "name": "14",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_2218_3_11_2EE0000_0_0_0",
+        "name": "Quadrille Data",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_2_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_2_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_384_20D_73_2080000_0_0_0",
+        "name": "Service-900",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_38F_20D_73_2080000_0_0_0",
+        "name": "Service-911",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_3_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_42BC_A_46_E080000_0_0_0",
+        "name": "Kuukauden kanava",
+        "cohort": "original",
+        "category": "C_CONFIRMED_OLD_TRANSPORT_DEPARTURE",
+        "existing_blocker": "Older TSID10 reference conflicts with 3Nov move to TSID72. Legacy PID1538 is not current Explore PID1535. Retain historical record without copying the new edition to old tuple.",
+        "next_required_evidence": "Closed batch12: explicit 8 November departure from10934.6V, SID17084; old tuple bound by stored identity evidence and independent historical parameters. TSID72 remains active and unchanged.",
+        "closed": true
+      },
+      {
+        "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
+        "name": "RADIO CLASSICA TV",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OPAQUE_OR_EMPTY_SOURCE",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_4_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_4_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_5_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_5_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_6_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_6_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_7_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_7_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
+        "name": "Service 11-13",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_8_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_8_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_9_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_9_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_A_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_A_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_B72_1D_1800_2AD0000_0_0_0",
+        "name": "F2930",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_B77_1D_1800_2AD0000_0_0_0",
+        "name": "F2935",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_B_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_B_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_C_C_2C_300000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_C_C_2C_EB0000_0_0_0",
+        "name": "DSNS Informed",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_11A3_2D_800_DCA0000_0_0_0",
+        "name": "Spare 4515",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_18A0_C97_3_EB0000_0_0_0",
+        "name": "Test 4",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_18A9_C97_3_EB0000_0_0_0",
+        "name": "Test 13",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_18AA_C97_3_EB0000_0_0_0",
+        "name": "Test 14",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
+        "name": "TEST_CB",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
+        "name": "Test 1",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_6_1_20C4_1860000_0_0_0",
+        "name": "HS1",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1F_1_0_1_46AB8F_0_0_0",
+        "name": "ITA 99 A",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1F_32B_20C_73_2080000_0_0_0",
+        "name": "Service-811",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_11A4_2D_800_DCA0000_0_0_0",
+        "name": "Spare 4516",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
+        "name": "Spare 5677",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_162E_236_800_DCA0000_0_0_0",
+        "name": "Spare 5678",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_18A4_C97_3_EB0000_0_0_0",
+        "name": "Test 8",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_18A5_C97_3_EB0000_0_0_0",
+        "name": "Test 9",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_18A6_C97_3_EB0000_0_0_0",
+        "name": "Test 10",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_18A7_C97_3_EB0000_0_0_0",
+        "name": "Test 11",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_18A8_C97_3_EB0000_0_0_0",
+        "name": "Test 12",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1B03_3FE_1_C00000_0_0_0",
+        "name": "TV5 MONDE EUROPE HD",
+        "cohort": "original",
+        "category": "B_PROTECTED_CANONICAL_ARTWORK",
+        "existing_blocker": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
+        "next_required_evidence": "Canonical transparent repair consistent with protected approved artwork; do not modify protected CANAL archives or substitute legacy Vhannibal graphics.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
+        "name": "Test HD",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
+        "name": "Test",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1_1000_0_46ADAF_0_0_0",
+        "name": "11695V SID 0x01",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1_1_1_1C2AD49_0_0_0",
+        "name": "11593V SID 0x01",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1_1_1_1C2B0E8_0_0_0",
+        "name": "12520V SID 0x01",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1_1_1_294AB51_0_0_0",
+        "name": "11089V SID 0x01",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1_1_FFFF_1E2D99_0_0_0",
+        "name": "Service-1",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_2FC_2025_2BE_1040000_0_0_0",
+        "name": "Oracle TV",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "NO_UNAMBIGUOUS_ORIGINAL_PICON",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_38A_20D_73_2080000_0_0_0",
+        "name": "Service-906",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_38B_20D_73_2080000_0_0_0",
+        "name": "Service-907",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_38C_20D_73_2080000_0_0_0",
+        "name": "Service-908",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_412_519_2_E080000_0_0_0",
+        "name": "TV5MONDE EUROPE HD",
+        "cohort": "original",
+        "category": "B_PROTECTED_CANONICAL_ARTWORK",
+        "existing_blocker": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
+        "next_required_evidence": "Canonical transparent repair consistent with protected approved artwork; do not modify protected CANAL archives or substitute legacy Vhannibal graphics.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
+        "name": "TEMP 1",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
+        "name": "F2835",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_B18_1C_1800_2AD0000_0_0_0",
+        "name": "F2840",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
+        "name": "F2845",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_B7C_1D_1800_2AD0000_0_0_0",
+        "name": "F2940",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Do not repeat name-only lookup. Need dated exact-tuple programme identification or explicit nonprogramme classification. AV streams and generic labels alone are insufficient.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_FFFE_14_46_E080000_0_0_0",
+        "name": "12418V SID 0xfffe",
+        "cohort": "original",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+        "next_required_evidence": "Exact SID/TSID/ONID/position evidence linking service to broadcaster or explicitly classifying nonprogramme service; then edition-correct approved artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1E8C_D160_77E_DCA0000_0_0_0",
+        "name": "EL JUMHURIA TV",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_1_A_16E_1860000_0_0_0",
+        "name": "Antena1",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_2_A_16E_1860000_0_0_0",
+        "name": "AntenaStars",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_3_A_16E_1860000_0_0_0",
+        "name": "Antena3",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_4_A_16E_1860000_0_0_0",
+        "name": "Happy Channel",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_5_A_16E_1860000_0_0_0",
+        "name": "Chefi.ro",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_16_6_A_16E_1860000_0_0_0",
+        "name": "Antena International",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+        "name": "AL-KAFEL TV",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_6AC_1FB5_2BE_1040000_0_0_0",
+        "name": "StarzPlay-Movies",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_7_A_16E_1860000_0_0_0",
+        "name": "Antena HD",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+        "next_required_evidence": "Resolve target TSID10 versus independently reported TSID0 for exact ONID366/SID before reusing broadcaster artwork.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_C782_83D_2_11A0000_0_0_0",
+        "name": "2117",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_19_C786_83D_2_11A0000_0_0_0",
+        "name": "2118",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_1_1_FFFF_104AB59_0_0_0",
+        "name": "1TV IRAQ",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      },
+      {
+        "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
+        "name": "UNKNOWN RUSSIA",
+        "cohort": "delta",
+        "category": "D_IDENTITY_OR_CLASSIFICATION_UNPROVEN",
+        "existing_blocker": "Unresolved service label. No confirmed channel identity or approved same-edition donor.",
+        "next_required_evidence": "Owner-directed hold. Resume only with new decisive exact-service identity or edition-specific official artwork evidence; preserve existing blocker details.",
+        "closed": false
+      }
+    ],
+    "safe_copy_ready": 0,
+    "note": "No claim of99 completed cases. Only old Kuukauden tuple is closed. Remaining98 need specified evidence or protected canonical repair; not resolved by naming or generic artwork."
   }
 }
