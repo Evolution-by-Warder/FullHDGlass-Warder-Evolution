@@ -5,7 +5,7 @@
 - **6 TV referencií /54 PNG /9 ZIPov /0 technických uzavretí. Zostáva92 otvorených (84 pôvodných +8 delta). Kandidát45 TV/402 PNG/99 jedinečných ZIPov.**
 - Antena1, AntenaStars, Antena3 CNN, Happy Channel, Antena International a Antena HD: nezávislý Satindex scan7.11.2026 doložil TSID0→10 na39°E12655H, NID366 a presnéSID1/2/3/4/6/7. Vhannibal12656H má rovnaký transport. Existujúce schválené PNG skopírované bez prerenderovania; SD/HD aj International odlíšené.
 - Chefi.roSID5 má už potvrdenú identitu, ale existujúci donor má nesprávne logoZU TV. Ostáva otvorené iba pre správnu grafiku; žiadneZU TV vložené.
-- SHA256/CRC/rozmery/alfa a bajtové zachovanie pôvodných členov aj úplných ZIP prefixov PASS.18 CANAL+ a ostatné balíky nezmenené. Jeden spätný audit a payloadSHA budú zapísané po uložení.
+- SHA256/CRC/rozmery/alfa a bajtové zachovanie pôvodných členov aj úplných ZIP prefixov PASS.18 CANAL+ a ostatné balíky nezmenené. Payload `29a7fa0150ee944bae6cd377787d3aa9a21e3498`; vzdialený audit PASS:117 ciest/224760282 bajtov,53 častí a9 úplných ZIPov bajtovo zhodných;54 donorových PNG a CRC PASS. Inštalačné testy9 ZIPov na aktuálnom main PASS so zachovaním používateľského PNG. Fyzický prijímač netestovaný. Audit `scope-batch-20261110-13-remote-verification.json`.
 - Dôkazy a donorové hashe: `scope-batch-20261110-13.json`;54 skutočnýchPNG v `antena-approved-reuse-batch13/`. Produkcia, rádio, aktívnaKuukaudenTSID72 aTV5MONDE nezmenené. PR50 nezlúčený.
 
 ### Dávka12 – doložený odchod starej Kuukauden referencie – 10.11.2026

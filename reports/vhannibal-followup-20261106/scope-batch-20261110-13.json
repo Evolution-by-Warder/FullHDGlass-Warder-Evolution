@@ -1,6 +1,6 @@
 {
   "batch": 13,
-  "status": "LOCAL_PASS_PENDING_REMOTE",
+  "status": "REMOTE_VERIFIED_PASS",
   "base_checkpoint": "f86c0cc8d4b838b3b982ac729f5f05a8321f3d2a",
   "new_tv_references": 6,
   "new_png": 54,
@@ -789,5 +789,8 @@
     "https://www.satindex.de/channel/31108/",
     "https://www.satindex.de/channel/31107/"
   ],
-  "decision": "New independent7Nov transport scan confirmsTSID0->10 andSID1,2,3,4,6,7 at39E. Network366 agrees with storedVhannibal ONID366. Exact existing nine-variant station artwork reused; no rendering. Chefi.ro SID5 identity now resolved but proposed donor visibly ZU TV, excluded pending correct artwork."
+  "decision": "New independent7Nov transport scan confirmsTSID0->10 andSID1,2,3,4,6,7 at39E. Network366 agrees with storedVhannibal ONID366. Exact existing nine-variant station artwork reused; no rendering. Chefi.ro SID5 identity now resolved but proposed donor visibly ZU TV, excluded pending correct artwork.",
+  "payload_commit": "29a7fa0150ee944bae6cd377787d3aa9a21e3498",
+  "remote_verification": "reports/vhannibal-followup-20261106/scope-batch-20261110-13-remote-verification.json",
+  "installation_verification": "reports/vhannibal-followup-20261106/scope-batch-20261110-13-install-verification.json"
 }
