@@ -872,8 +872,10 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Independent7Nov Satindex TSID0->10 scan resolves transport binding; exact station donor retained byte-for-byte in nine variants.",
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-13.json"
         },
         {
           "reference": "1_0_16_2_A_16E_1860000_0_0_0",
@@ -916,8 +918,10 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Independent7Nov Satindex TSID0->10 scan resolves transport binding; exact station donor retained byte-for-byte in nine variants.",
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-13.json"
         },
         {
           "reference": "1_0_16_3_A_16E_1860000_0_0_0",
@@ -980,8 +984,10 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Independent7Nov Satindex TSID0->10 scan resolves transport binding; exact station donor retained byte-for-byte in nine variants.",
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-13.json"
         },
         {
           "reference": "1_0_16_4_A_16E_1860000_0_0_0",
@@ -1024,8 +1030,10 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Independent7Nov Satindex TSID0->10 scan resolves transport binding; exact station donor retained byte-for-byte in nine variants.",
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-13.json"
         },
         {
           "reference": "1_0_16_5_A_16E_1860000_0_0_0",
@@ -1059,7 +1067,7 @@
           ],
           "existing_valid_slots": [],
           "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "reason": "TSID10 identity now confirmed by independent7Nov Satindex scan SID5. Existing donor1_0_1_11E_D_1C_1860000_0_0_0 is visiblyZU TV, notChefi.ro; require current officialChefi.ro artwork."
         },
         {
           "reference": "1_0_16_6_A_16E_1860000_0_0_0",
@@ -1087,8 +1095,10 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Independent7Nov Satindex TSID0->10 scan resolves transport binding; exact station donor retained byte-for-byte in nine variants.",
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-13.json"
         },
         {
           "reference": "1_0_19_1E00_D160_77E_DCA0000_0_0_0",
@@ -1512,8 +1522,10 @@
             }
           ],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Independent7Nov Satindex TSID0->10 scan resolves transport binding; exact station donor retained byte-for-byte in nine variants.",
+          "physical_valid_slots_after_candidate": 9,
+          "resolution_batch": "scope-batch-20261110-13.json"
         },
         {
           "reference": "1_0_19_C782_83D_2_11A0000_0_0_0",
@@ -4234,5 +4246,14 @@
     ],
     "safe_copy_ready": 0,
     "note": "No claim of99 completed cases. Only old Kuukauden tuple is closed. Remaining98 need specified evidence or protected canonical repair; not resolved by naming or generic artwork."
+  },
+  "continuation_20261110_batch13": {
+    "report": "reports/vhannibal-followup-20261106/scope-batch-20261110-13.json",
+    "new_tv_references": 6,
+    "new_png": 54,
+    "modified_zips": 9,
+    "remaining_open": 92,
+    "original_open": 84,
+    "delta_open": 8
   }
 }

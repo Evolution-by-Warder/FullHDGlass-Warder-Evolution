@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "manifest_validator": "PASS",
+  "receiver_ref": "d4627ca18c966f03f05d11214b26025525ba2556",
+  "receiver_installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
+  "installer_archives": 9,
+  "installed_new_pngs": 54,
+  "checks": [
+    {
+      "filename": "warder-390e-220x132-transparent-f3a172ce45464b8b.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-220x132-black-86a422c041beaa71.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-220x132-white-442823f76435a5ad.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-50x30-transparent-924d158c4b60e32f.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-50x30-white-bc1045f81f59cfce.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-50x30-black-be39207844c347cf.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-400x240-transparent-710f7bda9c9ff896.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-400x240-white-201d1c359e77b5b2.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-390e-400x240-black-110da767a3eb21ca.zip",
+      "antena_installed": true,
+      "unrelated_user_png_preserved": true
+    }
+  ],
+  "hardware_receiver_tested": false
+}
