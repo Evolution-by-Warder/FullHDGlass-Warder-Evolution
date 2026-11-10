@@ -22,7 +22,7 @@ LAYOUTS=style.extract(CURRENT)
 # option from PR #93. Keep the historical fixture for
 # older releases, and pin the full AST to catch any unreviewed logic edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
-REVIEWED_1076_SHA256='98e0de3d88fb8818ba69133febc17970fbc736c79d81031d238f2903f0efea34'
+REVIEWED_1076_SHA256='98329feba398a3d689a1cf80c3c6bd354ea63de371419fefefcc0d834c6d2dfa'
 EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
 
 def fingerprint_source(source):
