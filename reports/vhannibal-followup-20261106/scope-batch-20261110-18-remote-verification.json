@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-10",
+  "batch": 18,
+  "status": "PASS",
+  "base": "077f909f0db3b95deb1c34017b6da022292b46dd",
+  "payload_commit": "a2231f0f13feb47d4777eb36a755189a8fcae4e8",
+  "independent_auditor": "batch18_final_audit",
+  "scope": "Only5new/changed documentation files; batches01-17 not reaudited.",
+  "remote_exact_verification": [
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-18-completed.json",
+      "exact": true,
+      "blob": "86ac002ea607d8818ebf00f60d7de9bd8a032535"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/remaining-review.json",
+      "exact": true,
+      "blob": "dadae64398996b951601702aa4a040529606a366"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+      "exact": true,
+      "blob": "1bf7e19a0f4e56f5e2424ae7539058411dc039ba"
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-18-research.json",
+      "exact": true,
+      "blob": "1f3b2100932bbbc2bada955e4a6269a96e7e682d"
+    },
+    {
+      "path": "WARDER_PROGRESS.md",
+      "exact": true,
+      "blob": "0d460760029e23a62ce98ec70ff85aaf73ff7463"
+    }
+  ],
+  "checks": {
+    "compare_documentation_paths": 5,
+    "binary_manifest_package_changes": 0,
+    "remaining_review_changed_rows": 1,
+    "original_open_before": 81,
+    "original_open_after": 80,
+    "delta_open": 6,
+    "total_open": 86,
+    "new_graphical_integrations": 0,
+    "technical_closures": 1,
+    "tv": 48,
+    "png": 429,
+    "unique_zips": 99,
+    "report_identity_consistency": "PASS",
+    "historical87_ciefp_targets": "86open+1closed; no new comparison claimed",
+    "testcard_binding": "PASS SID7213 TSID72 ONID1 8W12563H; SportSID7207/VPID7213 not conflated",
+    "kos_archived_html_hash": "PASS504294bytes2da65698a1279e53727c31628011db996804276856753e9580d986cb384fdca9",
+    "pr50": "OPEN_UNMERGED"
+  },
+  "limitations": [
+    "Catalogue-based classification; no live receiver RF or video capture.",
+    "Independent auditor fresh LyngSat open returned403. Earlier successful parent web open explicitly containedONID1/TID72/SID7213 [test card]; not retried.",
+    "Protected archives unchanged by Git diff; no repeated physical ZIP audit.",
+    "ALKAFEEL nine drafts remain local-only; no new binary transfer."
+  ],
+  "installation_tests": "N/A_DOCUMENTATION_ONLY"
+}

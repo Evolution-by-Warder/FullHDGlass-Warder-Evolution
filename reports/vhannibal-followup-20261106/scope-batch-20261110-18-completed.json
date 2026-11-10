@@ -1,7 +1,7 @@
 {
   "date": "2026-11-10",
   "batch": 18,
-  "status": "COMPLETED_ONE_TECHNICAL_CLOSURE_PENDING_FINAL_AUDIT",
+  "status": "COMPLETED_ONE_TECHNICAL_CLOSURE_REMOTE_AUDIT_PASS",
   "base_checkpoint": "077f909f0db3b95deb1c34017b6da022292b46dd",
   "counts_before": {
     "tv": 48,
@@ -110,5 +110,7 @@
     ]
   },
   "installation_test": "N/A_DOCUMENTATION_ONLY",
-  "next": "Continue86 open cases from updated batch18 research register. Reopen held cases only for new decisive evidence. No production merge."
+  "next": "Continue86 open cases from updated batch18 research register. Reopen held cases only for new decisive evidence. No production merge.",
+  "payload_commit": "a2231f0f13feb47d4777eb36a755189a8fcae4e8",
+  "remote_audit": "scope-batch-20261110-18-remote-verification.json"
 }

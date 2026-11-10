@@ -1,6 +1,6 @@
 {
   "batch": 18,
-  "status": "COMPLETED_ONE_TECHNICAL_CLOSURE_PENDING_FINAL_AUDIT",
+  "status": "COMPLETED_ONE_TECHNICAL_CLOSURE_REMOTE_AUDIT_PASS",
   "base_checkpoint": "dc5e7508af81d708720b4004ebad0ee84c7e8933",
   "counts": {
     "tv": 48,
@@ -957,5 +957,6 @@
   "preservation": "Documentation-only. No PNG, ZIP, parts, manifest, protected archive, radio or production mutations. No repeat audit of batches01-17.",
   "installation_test": "NOT_APPLICABLE_NO_INSTALLABLE_CHANGE",
   "next": "Continue86 open cases from updated batch18 research register. Reopen held cases only for new decisive evidence. No production merge.",
-  "closure_report": "scope-batch-20261110-18-completed.json"
+  "closure_report": "scope-batch-20261110-18-completed.json",
+  "remote_audit": "scope-batch-20261110-18-remote-verification.json"
 }

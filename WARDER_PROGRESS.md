@@ -1,4 +1,4 @@
-### Dávka 18 – jedno technické uzavretie, záverečný audit čaká – 10. 11. 2026
+### Dávka 18 – jedno technické uzavretie, nezávislý audit PASS – 10. 11. 2026
 
 - Základ `077f909f0db3b95deb1c34017b6da022292b46dd`. **48 TV / 429 PNG / 99 ZIPov / 86 otvorených (80 pôvodných + 6 delta).** 0 nových grafických integrácií; 1 technické uzavretie.
 - Test HD `1_0_1_1C2D_48_1_DC00000_0_0_0`: LyngSat explicitne uvádza testovací obrazec na8W12563H, SID7213/TSID72/ONID1; KingOfSat potvrdzuje rovnaký SID, VPID7244/APID7245 a symbol testovacieho obrazca. Nejde o zánik ani dátovú službu. Iraqia Sport má SID7207 a VPID7213; tento PID sa nesmie zameniť za SID cieľa.
@@ -6,7 +6,7 @@
 - Štyri Spare7W, Test SID7411 a HS1 zostávajú blokované; nové podklady a konkrétne chýbajúce dôkazy v reporte. Presun frekvencie Spare5677/5678 sa nepovažuje za zánik. Service11-13, ITA99A a1TV Iraq sa znova nekontrolovali.
 - ALKAFEEL.TV originál, náhľad a9variantov ostávajú lokálne, mimo ZIPov; žiadny upload ani render. SES ASTRA nepoužité. Dávky01–17 neopakované.
 - Iba dokumentácia; PNG/ZIPy/manifest,18CANAL+ archívov,rádio a produkcia bez zásahu. Inštalačné testy N/A. PR50 nezlučovať. Ďalej86otvorených podľa registra, iba nové rozhodujúce dôkazy.
-- Výsledok nezávislého záverečného auditu bude doplnený samostatným checkpointom; zatiaľ sa netvrdí PASS.
+- Nezávislý záverečný audit payloadu `a2231f0f13feb47d4777eb36a755189a8fcae4e8`: PASS. Presne5dokumentačných ciest; zmenený1riadok remaining-review,81→80pôvodných +6delta =86otvorených. Spätne načítaných5/5súborov presne zhodných. Katalógová klasifikácia, nie prijímačové meranie; audítor LyngSat403, pôvodné úspešné načítanie a KoS presná tabuľka zachované. Audit `scope-batch-20261110-18-remote-verification.json`.
 
 ### Dávka 18 – obnovenie prerušeného spracovania – 10. 11. 2026
 
