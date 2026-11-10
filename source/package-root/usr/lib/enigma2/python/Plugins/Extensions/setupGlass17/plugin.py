@@ -753,6 +753,9 @@ config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=":", li
 from Plugins.Extensions.setupGlass17.warderEpgRenderPolicy import allow_channel_epg_overlay
 config.plugins.warderEpgListScroll = ConfigSubsection()
 config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=allow_channel_epg_overlay())
+# Expert-only option: regular channel picon downloads follow the configured PATHS storage.
+config.plugins.warderPiconExpert = ConfigSubsection()
+config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)
 
 def _warderEpgListScrollLabel():
     # Short labels fit the existing settings column. English is fallback.
@@ -7307,6 +7310,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("(Channel selection) picon/Prov/Sat"), config.plugins.setupGlass17.par166))
 			elif tt == 28:   
 				self.list.append(getConfigListEntry(S0 % ui_text("Spinner"), config.plugins.setupGlass17.par230))
+				self.list.append(getConfigListEntry(S0 % ui_text("Custom picon location"), config.plugins.warderPiconExpert.custom_destination))
 				if not os.path.isdir(PYTHONPATH+"Plugins/Extensions/EnhancedMovieCenter"):
 					self.list.append(getConfigListEntry(S0 % _("Movie selection type"), config.plugins.setupGlass17.par224))
 				if ISVTI:
@@ -8688,6 +8692,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		except: pass
 		# New settings live outside the legacy numbered registry.
 		config.plugins.warderEpgListScroll.enabled.save()
+		config.plugins.warderPiconExpert.custom_destination.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -8831,6 +8836,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		try:
 			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()
+			config.plugins.warderPiconExpert.custom_destination.cancel()
 		except AttributeError:
 			pass
 		if self.rst:
@@ -8962,7 +8968,8 @@ class downloadMenu(Screen):
 		self.warderChannelAvailable = set()
 		self.warderChannelPackageResults = []
 		self.warderChannelCurrentJob = None
-		self.warderPiconPrefs = warderPiconSync.default_preferences()
+		self.warderPiconPrefs = warderPiconSync.default_preferences(
+			warderPiconSync.skin_picon_destination(config.plugins.setupGlass17.par39.value))
 		self.warderPositionSelectionAttempted = False
 		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
 		self.warderAuxRows = ("aux-prov", "aux-sat", "aux-cam", "aux-weather")
@@ -9000,6 +9007,11 @@ class downloadMenu(Screen):
 			16:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
 			17:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x']
 			}	
+		# Only experts see the destination selector. Keep list indices contiguous:
+		# navigation uses the visible list index to look up menuListAll.
+		if not config.plugins.warderPiconExpert.custom_destination.value:
+			self.menuListAll = dict(enumerate(
+				row for row in self.menuListAll.values() if row[0] != "wp-dest"))
 		self.dwnTimer = eTimer()
 		try:
 			self.dwnTimer_conn = self.dwnTimer.timeout.connect(self.dwnLoop)
@@ -9044,6 +9056,9 @@ class downloadMenu(Screen):
 	def startDown(self, destination_confirmed=False):
 		if not self.ena or self.warderChannelState == "running":
 			return
+		if not config.plugins.warderPiconExpert.custom_destination.value:
+			self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
+				config.plugins.setupGlass17.par39.value, self.warderPiconPrefs.get("resolution"))
 		prepared = bool(self.warderPiconPrefs.get("prepared"))
 		if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs) and not warderRadio.selected(self.warderPiconPrefs):
 			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
@@ -9162,9 +9177,13 @@ class downloadMenu(Screen):
 		resolution = prefs.get("resolution")
 		style = prefs.get("style")
 		mode = prefs.get("update_mode")
+		if not config.plugins.warderPiconExpert.custom_destination.value:
+			prefs["destination"] = warderPiconSync.skin_picon_destination(
+				config.plugins.setupGlass17.par39.value, prefs.get("resolution"))
 		path = prefs.get("destination") or warderPiconSync.DEFAULT_DESTINATION
 		preset = dict((value, label) for value, label in warderPiconSync.PICON_DESTINATIONS)
-		skin_destination = os.path.join(config.plugins.setupGlass17.par39.value, "picon")
+		skin_destination = warderPiconSync.skin_picon_destination(
+			config.plugins.setupGlass17.par39.value, prefs.get("resolution"))
 		location = ui_text("FullHDGlass skin storage") if path == skin_destination else (_(preset[path]) if path in preset else _("User defined"))
 		mode_labels = dict((key, _(label)) for key, label in warderPiconSync.UPDATE_MODES)
 		labels = {
@@ -9309,7 +9328,8 @@ class downloadMenu(Screen):
 		elif row == "wp-dest":
 			# Resolve the actual FullHDGlass data path on each menu opening.
 			# Users configure the parent in PATHS; par39 already points to hdg17_files.
-			skin_destination = os.path.join(config.plugins.setupGlass17.par39.value, "picon")
+			skin_destination = warderPiconSync.skin_picon_destination(
+				config.plugins.setupGlass17.par39.value, self.warderPiconPrefs.get("resolution"))
 			choices[row] = [(ui_text("FullHDGlass skin storage") + " - " + skin_destination,
 			                 ("destination", skin_destination))]
 			choices[row].extend((_(label) + " - " + path, ("destination", path))
@@ -9427,6 +9447,9 @@ class downloadMenu(Screen):
 			if not value:
 				return
 		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, key, value)
+		if key == "resolution" and not config.plugins.warderPiconExpert.custom_destination.value:
+			self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
+				config.plugins.setupGlass17.par39.value, value)
 		if key == "resolution" and self.warderPiconPrefs.get("style") and not warderPiconSync.channel_style_supported(value, self.warderPiconPrefs["style"]):
 			self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "style", None)
 		self._setWarderPiconPrepared(self.warderChoiceRow)
