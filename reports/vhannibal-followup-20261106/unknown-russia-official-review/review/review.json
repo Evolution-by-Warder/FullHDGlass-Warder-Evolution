@@ -1,5 +1,5 @@
 {
-  "status": "OWNER_ARTWORK_REVIEW_REQUIRED_NOT_IN_PACKAGES",
+  "status": "OWNER_APPROVED_ALL_NINE_INTEGRATED_BATCH10",
   "station": "NTV Neizvestnaya Rossiya / UNKNOWN RUSSIA",
   "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
   "secondary_reference_hold": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0 requires fresh full tuple confirmation before integration",
@@ -26,7 +26,7 @@
   "new_approved_references": 0,
   "production_package_changes": 0,
   "does_not_reduce_open_count": true,
-  "audit": "PASS technical: dimensions, alpha, hashes. OWNER REVIEW REQUIRED; WHITE variants have low-contrast white lettering preserved from original. Not ready for automatic integration.",
+  "audit": "Technical PASS; owner explicitly approved all9 includingWHITE on2026-11-10. Originaldraft counts/warnings below retained as historical context, superseded by owner_approval_20261110.",
   "white_variant_warning": "White text preserved exactly; low contrast on Warder WHITE. Need official dark-text alternative or explicit owner-approved contrast treatment before integration. No unapproved recolouring performed.",
   "outputs": [
     {
@@ -146,5 +146,12 @@
         255
       ]
     }
-  ]
+  ],
+  "owner_approval_20261110": {
+    "scope": "All9PNG includingWHITE, no rework",
+    "payload_commit": "3a30ac0f77f9c90de44b25fd3e8ce29afc7759c7",
+    "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+    "png_bytes_unchanged": true,
+    "production_publication": false
+  }
 }
