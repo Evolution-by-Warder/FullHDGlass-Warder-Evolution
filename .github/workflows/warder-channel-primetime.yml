@@ -70,6 +70,8 @@ jobs:
           assert all(icon.stat().st_size > 0 for icon in factory), "Factory icon must not be empty"
           print("Factory icon payload: 148 present and mapped to live icon paths")
           PY
+      - name: Test offline factory icon restoration
+        run: python -m unittest tools/test_factory_icon_reset.py -v
       - name: Validate Python syntax
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
