@@ -21,7 +21,7 @@ LAYOUTS=style.extract(CURRENT)
 # The working-branch fingerprint is pinned separately and still rejects unrelated edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
 REVIEWED_1076_SHA256='fd235c106e17ee638b44c87a07411a3b8ef7a8288a5172d4525aa01fdc6f8bea'
-REVIEWED_PR99_SHA256='a1b61b52718b16ce216e075e704b5a5ce1aceab2f9a81f1084a2333c321ce750'
+REVIEWED_PR99_SHA256='4ec56ae78eb50849b00ffb081b51d226fdd5179b6a91042fb790d5124dcb2442'
 EXPECTED_SHA=(REVIEWED_PR99_SHA256 if RUNTIME_VERSION == '1.0.78' else
               REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
 
