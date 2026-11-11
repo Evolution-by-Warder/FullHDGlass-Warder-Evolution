@@ -247,7 +247,7 @@ class ChannelSelectionPreviewTests(LookupFixture, unittest.TestCase):
         first.write_bytes(b'one')
         second.write_bytes(b'two')
         widget=NS(source=NS(service=NS(toString=lambda:REF)))
-        widget.__enaSH=None
+        setattr(widget, '__enaSH', None)
         self.assertEqual(scope['findPicon'](widget,NAME),str(first))
         self.assertEqual(scope['findPicon'](widget,second_name),str(second))
         first.unlink()
