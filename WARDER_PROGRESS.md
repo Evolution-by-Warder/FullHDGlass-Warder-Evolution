@@ -1,3 +1,11 @@
+## 2026-11-11 — Batch19 availability correction; no integration
+
+PR50 head was unchanged at `b85b1d9c`. Counts remain **48 TV /429 PNG /99 ZIP /86 open**; batch19 remains incomplete. Limited recent-source search yielded no new decisive exact-service evidence or approved donor; no completion audit claimed.
+
+**ALKAFEEL.TV original, preview and nine drafts are NOT available in the current workspace.** Recorded directory is absent. Size/SHA256 search across `/workspace/scratch` found only the two immutable templates out of the historical17-file inventory. Historical hashes/provenance remain in the recovery report. Do not repeat the earlier present-tense claim that local drafts are preserved. No rerender, upload retry or integration performed. This finding is limited to accessible workspace and does not assert deletion elsewhere.
+
+Report: `reports/vhannibal-followup-20261106/scope-batch-20261111-19-availability.json`. Production,99ZIPs,429PNG,18protectedCANAL+archives,radio and manifests untouched. All identity/approval holds remain.
+
 ## 2026-11-10 — Batch 19: remaining 39 candidates, unresolved evidence
 
 Continued from `b585ed06`; selected the other 39 candidates (33 original + 6 delta), without repeating the five groups/47. No new integration or technical closure: **48 TV / 429 PNG / 99 ZIP / 86 open**. New departure lead for SID51074/51078 belongs to TSID2069, not target2109. TEST_CB removal belongs to11315V/TSID40060, not target40040. Service811 activity remains contradictory (inactive label versus2.16Mbit); no inferred departure. The10887H contradiction was already known in batch16 and is not counted as new. Default-branch provenance search found no newly proven approved donor; Sports artwork is not Movies artwork.

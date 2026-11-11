@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-11",
+  "batch": 19,
+  "status": "IN_PROGRESS_BLOCKED_NO_SAFE_INTEGRATION",
+  "base_checkpoint": "b85b1d9ce7ce5c035186a184a9261cdd7548b3ec",
+  "main_fullhdglass": "54110839ca5281db94adc5c3fd08148e895ce005",
+  "main_piconhub": "59ec70708d4d05a28f17c741742c78451d4fc45b",
+  "counts": {
+    "tv": 48,
+    "png": 429,
+    "unique_zips": 99,
+    "open": 86
+  },
+  "new_integrations": 0,
+  "technical_closures": 0,
+  "alkafeel": {
+    "status": "DRAFT_FILES_NOT_AVAILABLE_IN_CURRENT_WORKSPACE",
+    "method": "Recorded directory absent. Enumerated /workspace/scratch files, matching stored byte size then SHA256 against all17 historical inventory entries. Filename search also covered /tmp.",
+    "result": "Only two immutable templates found by exact hash. Original, preview, nine draft PNGs and four other files not found. This does not prove deletion outside accessible workspace.",
+    "inventory": [
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/original.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/original.png",
+        "expected_sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/provenance.json",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/provenance.json",
+        "expected_sha256": "97f71e45107c26972614aca3cb6d8fa6de7e923cb42e1f3b6bdf2bef04be616a",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/render_draft.py",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/render_draft.py",
+        "expected_sha256": "ae977fd1da4aff84734e87039c34be0b02ba2cde9809641d6c941ac203f3ae13",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/220x132-black.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/220x132-black.png",
+        "expected_sha256": "1946a969c89c91082307d3aa0263c549e776e539a9ef81af38c58995f1771f31",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/220x132-transparent.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/220x132-transparent.png",
+        "expected_sha256": "d238bd0c8a5bf6fcf56f62d2467cecaed4569ce9209b2713779707c4f7ac456b",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/220x132-white.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/220x132-white.png",
+        "expected_sha256": "41da093d05c23ed3414ff4ad3acc3061183f0a46fbbe3530fc3fda4dd2d3bb99",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/400x240-black.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/400x240-black.png",
+        "expected_sha256": "fb212be6f686c00728d1644cf014c201fdd255f88b08ffeae07a8074a01b8e69",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/400x240-transparent.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/400x240-transparent.png",
+        "expected_sha256": "13843b4dd97301adb2b64921aa036eb616da8b1c8740c6905bf8af8896dc418d",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/400x240-white.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/400x240-white.png",
+        "expected_sha256": "78d1b33c905a58c6fdd3147d56534c71f9eff8faa151609f086cf8c2cef66da1",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/50x30-black.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/50x30-black.png",
+        "expected_sha256": "45fe16862f337365e04a4345bd966c222d4b8ceb586c9e9485ddb9f8902db959",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/50x30-transparent.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/50x30-transparent.png",
+        "expected_sha256": "7fd99c7807980972039d21d99083ad3e74510b935b3979142c30e77f89806fad",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/50x30-white.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/50x30-white.png",
+        "expected_sha256": "be1b2f2b5f6d6a310515bd8afd53dd77226a3ccc279fd0d1e16b61ab86642763",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/preview.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/preview.png",
+        "expected_sha256": "54ed288bf21084efc4b950540b9d03ed115c4abb4499b165442cf2322f2f7f8c",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/review/review.json",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/review/review.json",
+        "expected_sha256": "bbc5c84340359f5c80ca841f542cc4da7666b2710c86fb148c4a7d0680e2e682",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/templates/black-sablona.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/templates/black-sablona.png",
+        "expected_sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe",
+        "status": "MATCHING_TEMPLATE_FOUND_ELSEWHERE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/templates/white-sablona.png",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/alkafeel-review/templates/white-sablona.png",
+        "expected_sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+        "status": "MATCHING_TEMPLATE_FOUND_ELSEWHERE"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/scope-batch-20261110-18-artwork.json",
+        "recorded_local": "/workspace/scratch/9a1de96a9102/work/scope-batch-20261110-18-artwork.json",
+        "expected_sha256": "23a9a1302ca7aee46612b3e1bf8c6948ed501e88ba9fd0255813702738f6b2ba",
+        "status": "NOT_FOUND_IN_CURRENT_WORKSPACE"
+      }
+    ],
+    "remote": "Previous checkpoint establishes drafts not committed; PR50 head unchanged since that checkpoint. No successful upload claimed.",
+    "rerender": false,
+    "upload_retries": 0,
+    "identity_and_visual_approval": "STILL_REQUIRED",
+    "historical_metadata": "scope-batch-20261110-18-recovery.json retained unchanged; hashes/provenance remain available there."
+  },
+  "research": {
+    "scope": "Limited recent-source search only; no repeat audit of86 candidates.",
+    "queries": [
+      "\"BFBS\" \"11787\" \"8728\"",
+      "\"DMDU_T\" \"15541\"",
+      "\"StarzPlay Movies\" logo satellite"
+    ],
+    "outcome": "No new decisive evidence. BFBS results still bind Quadrille to other orbital positions; official11787H reception parameters do not bind targetSID. STARZPLAY corporate profile is not approved Movies channel artwork. Inconsistent indexed StarzPlay transport identifiers are not a basis for changing existing holds.",
+    "new_evidence_accepted": 0
+  },
+  "preservation": "No PNG/ZIP/manifest/template/protected archive/radio/production mutations. PR50 remains open and unmerged.",
+  "audit": "No completed batch, no independent completion audit claimed; binary checks N/A as no binaries changed.",
+  "next": "Do not reopen broad repeated research. Resume only with precise new source evidence, approved same-edition donor, or recoverable original draft files. Missing local drafts must not be described as preserved."
+}
