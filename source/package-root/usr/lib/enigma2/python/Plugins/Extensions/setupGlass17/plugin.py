@@ -7003,7 +7003,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				21:[_("ENHANCED WEATHER"),({False:'x',True:''}[config.plugins.setupGlass17.par78.value == "e"])],
 				22:[_("WEATHER"),({False:'x',True:''}[xxx])],
 				23:[_("WEATHER")+"/"+_("ENHANCED WEATHER"),({False:'x',True:''}[xxx or config.plugins.setupGlass17.par78.value == "e"])],
-				24:[_("PATHS"),''],
+				24:[ui_text("Paths for Skin Data, Picons and Settings"),''],
  				25:[_("VOLUME"),''],
  				26:[_("LISTBOX FONT SIZE"),({False:'x',True:''}[ENA_LS])],
  				27:[_("ANIMATIONS"),({False:'x',True:''}[ENA_ANIM])],
