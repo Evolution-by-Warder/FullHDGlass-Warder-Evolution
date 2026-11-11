@@ -116,3 +116,98 @@ class AssetWorker(object):
 
     def stage(self, label):
         self.events.put(("stage", label))
+
+
+class LegacyArchiveWorker(object):
+    """Fetch and extract one pinned legacy 7z archive without blocking the GUI."""
+    _ROOT = ("https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/"
+             "9cdda4ab414e7d50a97ca9285db8ebbb75fba615/"
+             "archives/chocholousek-picons/originals/")
+
+    def __init__(self, url, destination, sevenzip):
+        self.url = str(url)
+        self.destination = destination
+        self.sevenzip = sevenzip
+        self.events = Queue()
+        self.thread = threading.Thread(target=self.run, name="WarderLegacyArchive")
+        self.thread.daemon = True
+
+    def start(self):
+        self.thread.start()
+
+    def drain(self):
+        while True:
+            try:
+                yield self.events.get_nowait()
+            except Empty:
+                return
+
+    def run(self):
+        import subprocess
+        import time
+        try:
+            from urllib.request import Request, build_opener, HTTPCookieProcessor
+            from http.cookiejar import CookieJar
+        except ImportError:
+            from urllib2 import Request, build_opener, HTTPCookieProcessor
+            from cookielib import CookieJar
+        archive = None
+        extracted = False
+        try:
+            from os.path import basename, realpath, dirname
+            if (not self.url.startswith(self._ROOT)
+                    or not self.url.endswith(".7z")
+                    or basename(self.url) != self.url[len(self._ROOT):]):
+                raise ValueError("untrusted preserved legacy archive")
+            target = realpath(self.destination)
+            if target == "/tmp" or not target.startswith("/tmp/") or target == "/tmp/":
+                raise ValueError("invalid legacy extraction path")
+            if not os.path.isfile(self.sevenzip):
+                raise ValueError("missing legacy 7zip helper")
+            shutil.rmtree(target, ignore_errors=True)
+            fd, archive = tempfile.mkstemp(prefix="warder-legacy-", suffix=".7z", dir="/tmp")
+            self.events.put(("stage", "Downloading preserved 7z archive"))
+            received = 0
+            last_update = 0.0
+            opener = build_opener(HTTPCookieProcessor(CookieJar()))
+            req = Request(self.url, headers={"User-Agent": "FHDG17-Warder"})
+            with os.fdopen(fd, "wb") as out, opener.open(req, timeout=15) as response:
+                if str(response.geturl()) != self.url:
+                    raise ValueError("untrusted legacy archive redirect")
+                expected = int(response.headers.get("Content-Length") or 0)
+                while True:
+                    chunk = response.read(1024 * 128)
+                    if not chunk:
+                        break
+                    received += len(chunk)
+                    out.write(chunk)
+                    now = time.monotonic()
+                    if now - last_update >= 0.25:
+                        self.events.put(("bytes", (received, expected)))
+                        last_update = now
+            if received < 1:
+                raise ValueError("empty legacy archive")
+            self.events.put(("bytes", (received, expected)))
+            needed = (received * 2.0)
+            if shutil.disk_usage("/tmp").free < needed:
+                raise ValueError("insufficient space to extract legacy archive")
+            os.makedirs(target, exist_ok=True)
+            self.events.put(("stage", "Extracting preserved 7z archive"))
+            with open(os.devnull, "wb") as devnull:
+                result = subprocess.call(
+                    [self.sevenzip, "e", "-y", "-bd", "-o%s" % target, archive],
+                    stdout=devnull, stderr=devnull)
+            if result:
+                raise ValueError("legacy archive extraction failed")
+            extracted = True
+            self.events.put(("done", received))
+        except Exception as error:
+            self.events.put(("error", str(error)))
+        finally:
+            if archive:
+                try:
+                    os.unlink(archive)
+                except OSError:
+                    pass
+            if not extracted:
+                shutil.rmtree(self.destination, ignore_errors=True)
