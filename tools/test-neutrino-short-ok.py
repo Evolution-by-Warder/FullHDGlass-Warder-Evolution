@@ -39,6 +39,8 @@ class NeutrinoShortOKTest(unittest.TestCase):
         self.assertIn("config.plugins.setupGlass17.par34.value", body)
         self.assertIn('"openServiceList"', body)
         self.assertIn("open_list()", body)
+        self.assertIn('getattr(self, "LongButtonPressed", False)', body)
+        self.assertIn('getattr(self.session, "current_dialog", None) is servicelist', body)
         self.assertNotIn("CHANSEL_FILE", body)
         self.assertNotIn("KMP_FILE", body)
 
