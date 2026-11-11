@@ -133,6 +133,26 @@ class ChannelWorkerTests(unittest.TestCase):
             self.assertIn(("stage", "download"), events)
             self.assertIn(("stage", "extract"), events)
 
+    def test_legacy_copy_worker_isolated_result(self):
+        visited = []
+        def copy(folder):
+            visited.append(folder)
+            return 9, 10
+        worker = worker_module.LegacyCopyWorker(copy, "picon_50x30")
+        worker.start()
+        worker.thread.join(timeout=5)
+        self.assertFalse(worker.thread.is_alive())
+        self.assertEqual(visited, ["picon_50x30"])
+        self.assertEqual(list(worker.drain()), [("done", (9, 10))])
+
+    def test_legacy_copy_worker_reports_failure(self):
+        def broken(folder):
+            raise OSError("storage disconnected")
+        worker = worker_module.LegacyCopyWorker(broken, "picon")
+        worker.start()
+        worker.thread.join(timeout=5)
+        self.assertEqual(list(worker.drain()), [("error", "storage disconnected")])
+
 
 if __name__ == "__main__":
     unittest.main()
