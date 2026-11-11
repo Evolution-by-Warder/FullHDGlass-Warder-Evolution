@@ -37,7 +37,7 @@ def name_aliases(reference, get_name, sanitize):
         sub(r'(fhd|uhd|hd|sd|4k)$', '', legacy).strip()) if n))
 
 
-def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=False):
+def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=False, custom_folder=None):
     if not base:
         return ''
     references = reference_names(reference, alternative)
@@ -45,11 +45,12 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
         return ''
     aliases = None
     folders = ('picon_50x30', 'picon') if prefer_mini else ('picon', 'picon_50x30')
-    for folder in folders:
-        if not isdir(join(base, folder)):
+    directories = ([custom_folder] if custom_folder else []) + [join(base, folder) for folder in folders]
+    for directory in directories:
+        if not isdir(directory):
             continue
         for name in references:
-            path = join(base, folder, name + '.png')
+            path = join(directory, name + '.png')
             if isfile(path):
                 return path
         if aliases is None:
@@ -61,7 +62,7 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
     return ''
 
 
-def install(service_list, is_active, get_base, alternative, get_name, sanitize, prefer_mini=None):
+def install(service_list, is_active, get_base, alternative, get_name, sanitize, prefer_mini=None, get_custom=None):
     """Wrap only ServiceList's imported lookup; keep the image renderer intact."""
     def wrap(original):
         @wraps(original)
@@ -70,7 +71,8 @@ def install(service_list, is_active, get_base, alternative, get_name, sanitize, 
                 try:
                     return find_picon(
                         reference, get_base(), alternative, get_name, sanitize,
-                        prefer_mini=bool(prefer_mini is not None and prefer_mini()))
+                        prefer_mini=bool(prefer_mini is not None and prefer_mini()),
+                        custom_folder=get_custom() if get_custom is not None else None)
                 except (AttributeError, OSError, TypeError, ValueError):
                     return ''
             return original(reference, *args, **kwargs)
