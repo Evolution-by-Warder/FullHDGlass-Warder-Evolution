@@ -40,6 +40,69 @@ if [ -d "$WARDER_TRANSITION" ] && [ ! -L "$WARDER_TRANSITION" ]; then
 fi
 rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
 
+# Uninstallation also removes the skin's *own* downloaded data tree.
+# PATHS stores its parent in Enigma2 settings; par39 is a runtime-only value.
+# Never delete the parent: it can contain picons or data from other plugins.
+warder_setting() {
+    key="$1"
+    [ -f /etc/enigma2/settings ] || return 0
+    awk -v key="$key" '
+        index($0, key "=") == 1 {
+            print substr($0, length(key) + 2)
+            exit
+        }
+    ' /etc/enigma2/settings
+}
+
+warder_remove_data_tree() {
+    base="$1"
+    [ -n "$base" ] || return 0
+    # Reject special chars, traversal, and paths outside known storage roots.
+    case "$base" in
+        *[!a-zA-Z0-9_./\ -]*|*'/../'*|*'/./'*|*'//'*) return 1 ;;
+    esac
+    case "$base" in
+        /media/usb|/media/hdd|/media/cf|/media/sdcard|/media/mmc|/data|/usr/share/enigma2|/etc|/media/*|/mnt/*) ;;
+        *) return 1 ;;
+    esac
+    dir="${base%/}/hdg17_files"
+    [ -e "$dir" ] || [ -L "$dir" ] || return 0
+    # A symlink or mounted data tree is never treated as Warder-owned files.
+    [ -L "$dir" ] && return 1
+    [ -d "$dir" ] || return 1
+    parent="$dir"
+    while [ "$parent" != "/" ]; do
+        [ -L "$parent" ] && return 1
+        parent=${parent%/*}
+        [ -n "$parent" ] || parent=/
+    done
+    if [ -r /proc/self/mountinfo ] && awk -v d="$dir" '
+        {
+            mount = $5
+            gsub(/\\040/, " ", mount)
+            if (mount == d || index(mount, d "/") == 1) found = 1
+        }
+        END { exit !found }
+    ' /proc/self/mountinfo; then
+        echo "WARNING: mounted storage within $dir; skipping unsafe cleanup" >&2
+        return 1
+    fi
+    rm -rf -- "$dir"
+}
+
+warder_cleanup_downloaded_data() {
+    selected="$(warder_setting config.plugins.setupGlass17.par125)"
+    user_base="$(warder_setting config.plugins.setupGlass17.par124)"
+    [ -n "$selected" ] || selected=/media/usb
+    if [ "$selected" = 0 ]; then
+        base="$user_base"
+    else
+        base="$selected"
+    fi
+    # The active location, not every drive on the receiver, is ours to clean.
+    warder_remove_data_tree "$base" || echo "WARNING: could not safely remove Warder data at $base" >&2
+}
+
 # Remove all remaining data under package-exclusive installation directories.
 # opkg normally removes tracked files but leaves untracked/generated files.
 # This runs ONLY on genuine remove/purge (never on upgrade, see guard above).
@@ -88,6 +151,7 @@ warder_remove_install_dir() {
 
 case "${1:-}" in
     remove|purge)
+        warder_cleanup_downloaded_data
         warder_remove_install_dir /usr/share/enigma2/hd_glass17 || exit 1
         warder_remove_install_dir /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17 || exit 1
         warder_remove_install_dir /var/lib/fullhdglass17 || exit 1
