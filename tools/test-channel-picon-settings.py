@@ -35,7 +35,8 @@ class SettingsTests(unittest.TestCase):
         self.section.dict=lambda:self.values
         self.config=NS(plugins=NS(setupGlass17=self.section,
                                   warderEpgListScroll=NS(enabled=Setting(True)),
-                                  warderPiconExpert=NS(custom_destination=Setting(False))))
+                                  warderPiconExpert=NS(custom_destination=Setting(False),
+                                                      destination=Setting(''))))
         self.scope=dict(config=self.config,ALL_CFG=REGISTRY,ui_text=lambda s:s,_=lambda s:s,
             configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock(),
             allow_channel_epg_overlay=lambda:True,
@@ -163,6 +164,7 @@ class SettingsTests(unittest.TestCase):
         self.method('saving')(screen)
         self.assertEqual(self.section.par231.saved,'mini')
         self.assertFalse(self.config.plugins.warderPiconExpert.custom_destination.saved)
+        self.assertEqual(self.config.plugins.warderPiconExpert.destination.saved, '')
         backup=self.scope['_atomicWriteText'].call_args.args
         self.assertEqual(backup[0],'/test-backup/hdg17.conf')
         self.assertIn('Channel-list picon source: mini\n',backup[1])
