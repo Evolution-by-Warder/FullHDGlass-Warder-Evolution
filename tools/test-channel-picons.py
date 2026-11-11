@@ -49,21 +49,21 @@ class LookupFixture:
 
 
 class LookupTests(LookupFixture, unittest.TestCase):
-    def test_system_mode_restores_native_lookup_even_with_both_skin_sets(self):
-        self.put('picon_50x30'); self.put('picon'); self.prefer_mini=False
-        self.assertEqual(self.lookup(),'/image/picon.png')
+    def test_system_mode_uses_private_shared_picon_even_with_both_skin_sets(self):
+        self.put('picon_50x30'); shared=self.put('picon'); self.prefer_mini=False
+        self.assertEqual(self.lookup(),shared)
         self.get_name.assert_not_called()
 
-    def test_missing_mode_callback_defaults_to_original_system_lookup(self):
+    def test_missing_mode_callback_uses_private_skin_lookup(self):
         self.put('picon_50x30')
         module=NS(getPiconName=self.native)
         picons.install(module,lambda:True,lambda:str(self.base),lambda ref:ref,self.get_name,lambda n:n)
-        self.assertEqual(module.getPiconName(REF),'/image/picon.png')
+        self.assertEqual(module.getPiconName(REF),str(self.base/'picon_50x30'/(NAME+'.png')))
 
     def test_mode_changes_are_read_by_existing_callbacks(self):
         mini=self.put('picon_50x30'); callback=self.module.getPiconName
         self.prefer_mini=False
-        self.assertEqual(callback(REF),'/image/picon.png')
+        self.assertEqual(callback(REF),mini)
         self.prefer_mini=True
         self.assertEqual(callback(REF),mini)
 
@@ -84,9 +84,9 @@ class LookupTests(LookupFixture, unittest.TestCase):
         (self.base/'picon_50x30').mkdir()
         self.assertEqual(self.lookup(),shared)
 
-    def test_native_system_path_remains_final_fallback(self):
-        self.assertEqual(self.lookup(),'/image/picon.png')
-        self.native.assert_called_once_with(REF)
+    def test_missing_skin_picon_does_not_use_other_directory(self):
+        self.assertEqual(self.lookup(),'')
+        self.native.assert_not_called()
 
     def test_other_skins_delegate_even_with_a_mini_set(self):
         self.put('picon_50x30'); self.active=False
@@ -143,13 +143,13 @@ class LookupTests(LookupFixture, unittest.TestCase):
 
     def test_malformed_reference_cannot_escape_selected_folders(self):
         self.put('picon_50x30')
-        self.assertEqual(self.lookup(REF.replace('CA1','../CA1')),'/image/picon.png')
-        self.assertEqual(self.lookup(None),'/image/picon.png')
+        self.assertEqual(self.lookup(REF.replace('CA1','../CA1')),'')
+        self.assertEqual(self.lookup(None),'')
 
     def test_unavailable_data_path_keeps_native_lookup(self):
         self.module=NS(getPiconName=self.native)
         picons.install(self.module,lambda:True,lambda:None,lambda ref:ref,self.get_name,lambda n:n,lambda:True)
-        self.assertEqual(self.module.getPiconName(REF),'/image/picon.png')
+        self.assertEqual(self.module.getPiconName(REF),'')
 
     def test_disabled_and_reenabled_skin_uses_current_files(self):
         self.active=False
@@ -207,7 +207,7 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         self.assertIs(callback,getattr(self.module,name))
         self.assertEqual(callback(REF),mini)
         self.prefer_mini=False
-        self.assertEqual(callback(REF),'/image/picon.png')
+        self.assertEqual(callback(REF),shared)
         scope['config'].usage.service_icon_enable.value=False
         exec(compile(ast.Module(body=[binding],type_ignores=[]),'native-ServiceList.py','exec'),scope)
         self.assertIsNone(content.setGetPiconNameFunc.call_args.args[0])
@@ -228,7 +228,7 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         self.put('picon_50x30')
         system=self.put('native-system','original')
         self.native.return_value=system;self.prefer_mini=False
-        self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),system)
+        self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),shared)
 
 
 if __name__=='__main__':
