@@ -354,7 +354,7 @@ class WarderRadioArtwork(Renderer):
                     if os.path.isfile(log) and os.path.getsize(log) > 32768:
                         os.replace(log, log + ".old")
                     with open(log, "a") as handle:
-                        handle.write("ms=%d result=%s source=%s track=%s\\n" % (
+                        handle.write("ms=%d result=%s source=%s track=%s\n" % (
                             int((time.monotonic() - started) * 1000),
                             "hit" if path else "miss",
                             provider.replace(" ", "-"),
