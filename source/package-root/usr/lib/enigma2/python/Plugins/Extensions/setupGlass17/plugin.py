@@ -6915,6 +6915,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		self._spinnerAtOpen = config.plugins.setupGlass17.par230.value
 		self._piconSourceAtOpen = config.plugins.setupGlass17.par231.value
+		self._ownPiconsAtOpen = bool(config.plugins.warderUserPicons.enabled.value)
 		self._epgListScrollAtOpen = bool(config.plugins.warderEpgListScroll.enabled.value)
 		self.firststart = True
 		self.start_rst = eTimer()
@@ -8399,7 +8400,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.session.open(MessageBox, _("The file satellites.xml do not exists in selected dir"), MessageBox.TYPE_ERROR, 5)
 
 	def save(self):
+		own_picons_changed = self._ownPiconsAtOpen != bool(config.plugins.warderUserPicons.enabled.value)
+		if own_picons_changed and config.plugins.warderUserPicons.enabled.value:
+			own_folder = _warderUserNormalize(config.plugins.warderUserPicons.path.value)
+			if not own_folder or not os.path.isdir(own_folder):
+				self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
+				return
 		msg = _("GUI will now be restarted to activate changes in:") + "\n"
+		if own_picons_changed:
+			msg += ui_text("Use own channel picons") + "\n"
 		msgScr = ""
 		tmp = False
 		if self._spinnerAtOpen != config.plugins.setupGlass17.par230.value:
@@ -8729,9 +8738,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			x = chckPigFont(1)
 		if msg != _("GUI will now be restarted to activate changes in:") + "\n":                                                                                            
 			try:
-				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 8)
+				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 3 if own_picons_changed else 8, enable_input=False)
 			except: pass
-			self.rstGUI()
+			self.rstGUI(3000 if own_picons_changed else 8000)
 		else:
 			if tmp:
 				msg = _("Do you want restart GUI to activate the screen:") + " " + str(config.plugins.setupGlass17.par6.value) + " " + _("now?")
@@ -8745,9 +8754,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.rst = True
 		self.saving()
 
-	def rstGUI(self):
-		self.rst = True				
-		self.start_rst.start(8000, True)
+	def rstGUI(self, delay=8000):
+		self.rst = True
+		self.start_rst.start(delay, True)
 
 	def saving(self):
 		if config.plugins.warderUserPicons.enabled.value:
