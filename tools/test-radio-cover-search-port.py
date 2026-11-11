@@ -25,7 +25,7 @@ class Response(io.BytesIO):
 
 
 class CoverSearchTests(unittest.TestCase):
-    IMAGE = b"\\xff\\xd8" + b"x" * 2048
+    IMAGE = bytes((255, 216)) + b"x" * 2048
 
     def test_recording_rank_preserves_live_and_remix(self):
         row = {"kind":"song","artistName":"ABBA","trackName":"Dancing Queen"}
