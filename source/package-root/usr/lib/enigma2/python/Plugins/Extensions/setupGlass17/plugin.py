@@ -10987,16 +10987,14 @@ class satSelectorScr(Screen):
 			<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="424,164" size="1071,855" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1493,164" size="2,855" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="424,164" size="2,855" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="424,1017" size="1071,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="424,164" size="1071,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="list" position="439,169" scrollbarMode="showOnDemand" size="1040,780" foregroundColor="#00ffffff" backgroundColor="#ff000000" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" zPosition="4" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget name="key_red" position="444,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="793,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
-	<widget name="key_yellow" position="1142,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00f5d54e" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="444,963" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="793,963" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1142,963" size="333,2" backgroundColor="#00f5d54e" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.78" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="424,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1495,164" size="425,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,1019" size="1920,61" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="444,963" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="793,963" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.78" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="424,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1495,164" size="425,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,1019" size="1920,61" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, delP = 1):
 		Screen.__init__(self, session)
 		self.delP = delP		
 		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(_("Select"))
-		self["key_yellow"] = Label(_("Save"))
+		self["key_green"] = Label(_("Confirm selection"))
 		self.list = SelectionList()
 		self["list"] = self.list
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], 
@@ -11004,8 +11002,7 @@ class satSelectorScr(Screen):
 			"ok": self.list.toggleSelection, 
 			"cancel": self.exit,
 			"red": self.exit,
-			"yellow": self.finishSelect,
-			"green": self.list.toggleSelection
+			"green": self.finishSelect
 		}, -1)
 		self.onLayoutFinish.append(self.startSelect)
 		
@@ -11064,8 +11061,8 @@ class warderPositionSelectorScr(Screen):
 		self.list = SelectionList()
 		self["list"] = self.list
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
-			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
-			"cancel": self.cancel, "red": self.cancel, "yellow": self.finish
+			"ok": self.list.toggleSelection, "green": self.finish,
+			"cancel": self.cancel, "red": self.cancel
 		}, -1)
 		self.onLayoutFinish.append(self.startSelect)
 
