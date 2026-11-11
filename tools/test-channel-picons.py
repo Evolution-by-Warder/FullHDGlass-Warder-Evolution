@@ -204,6 +204,31 @@ class LookupTests(LookupFixture, unittest.TestCase):
         self.assertEqual(self.lookup(),mini)
 
 
+class InfoBarStorageTests(LookupFixture, unittest.TestCase):
+    def test_infobar_uses_skin_picon_by_default_and_expert_folder_when_selected(self):
+        tree=ast.parse((PKG/'Components/Renderer/g17PicRef.py').read_text())
+        owner=next(n for n in tree.body if isinstance(n, ast.ClassDef))
+        method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
+        expert=NS(custom_destination=NS(value=False),destination=NS(value=''))
+        settings=NS(par39=NS(value=str(self.base)))
+        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert)),
+                   fileExists=os.path.isfile)
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'g17PicRef.py','exec'),scope)
+        widget=NS(path='picon',source=NS(text=REF))
+        private=self.put('picon')
+        self.assertEqual(scope['findPicon'](widget,NAME),private)
+        customdir=self.base/'expert-infobar'
+        customdir.mkdir()
+        selected=customdir/(NAME+'.png')
+        selected.write_bytes(b'custom')
+        expert.custom_destination.value=True
+        expert.destination.value=str(customdir)
+        self.assertEqual(scope['findPicon'](widget,NAME),str(selected))
+        selected.unlink()
+        # The explicitly chosen folder never silently switches to old picons.
+        self.assertEqual(scope['findPicon'](widget,NAME),'')
+
+
 class SelectedPiconTests(LookupFixture, unittest.TestCase):
     def test_large_formats_keep_their_own_set_and_fall_back_to_shared(self):
         tree=ast.parse((PKG/'Components/Renderer/g17RefTV3.py').read_text())
