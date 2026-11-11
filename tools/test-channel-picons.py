@@ -209,13 +209,14 @@ class LookupTests(LookupFixture, unittest.TestCase):
 
 
 class InfoBarStorageTests(LookupFixture, unittest.TestCase):
-    def test_infobar_uses_skin_picon_by_default_and_expert_folder_when_selected(self):
+    def test_infobar_uses_skin_picon_by_default_and_own_folder_when_selected(self):
         tree=ast.parse((PKG/'Components/Renderer/g17PicRef.py').read_text())
         owner=next(n for n in tree.body if isinstance(n, ast.ClassDef))
         method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         expert=NS(custom_destination=NS(value=False),destination=NS(value=''))
         settings=NS(par39=NS(value=str(self.base)))
-        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert)),
+        own=NS(enabled=NS(value=False),path=NS(value=''))
+        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert,warderUserPicons=own)),
                    fileExists=os.path.isfile,selected_source=user_picons.selected_source)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17PicRef.py','exec'),scope)
         widget=NS(path='picon',source=NS(text=REF))
@@ -227,6 +228,9 @@ class InfoBarStorageTests(LookupFixture, unittest.TestCase):
         selected.write_bytes(b'custom')
         expert.custom_destination.value=True
         expert.destination.value=str(customdir)
+        self.assertEqual(scope['findPicon'](widget,NAME),private)
+        own.enabled.value=True
+        own.path.value=str(customdir)
         self.assertEqual(scope['findPicon'](widget,NAME),str(selected))
         selected.unlink()
         # The explicitly chosen folder never silently switches to old picons.
@@ -241,7 +245,8 @@ class ChannelSelectionPreviewTests(LookupFixture, unittest.TestCase):
                     if isinstance(node,ast.FunctionDef) and node.name=='findPicon')
         expert=NS(custom_destination=NS(value=True),destination=NS(value=str(self.base/'chosen')))
         scope=dict(os=os,config=NS(plugins=NS(
-            setupGlass17=NS(par39=NS(value=str(self.base))),warderPiconExpert=expert)),
+            setupGlass17=NS(par39=NS(value=str(self.base))),warderPiconExpert=expert,
+            warderUserPicons=NS(enabled=NS(value=True),path=NS(value=str(self.base/'chosen'))))),
             selected_source=user_picons.selected_source,find_png=user_picons.find_png)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV.py','exec'),scope)
         chosen=self.base/'chosen'
@@ -260,6 +265,7 @@ class ChannelSelectionPreviewTests(LookupFixture, unittest.TestCase):
         auxiliary=self.put('piconProv','CANALPLUS_CZ')
         self.assertEqual(scope['findPicon'](widget,'CANALPLUS_CZ','piconProv'),auxiliary)
         expert.custom_destination.value=False
+        scope['config'].plugins.warderUserPicons.enabled.value=False
         default=self.put('picon')
         self.assertEqual(scope['findPicon'](widget,NAME),default)
 
@@ -273,7 +279,8 @@ class MainInfoBarLookupTests(LookupFixture, unittest.TestCase):
         expert=NS(custom_destination=NS(value=True),
                   destination=NS(value=str(self.base/'expert')))
         settings=NS(par39=NS(value=str(self.base)))
-        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert)),
+        own=NS(enabled=NS(value=True),path=NS(value=str(self.base/'expert')))
+        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert,warderUserPicons=own)),
                    fileExists=os.path.isfile,os=os,
                    _warderSelectedPiconSource=user_picons.selected_source,
                    _warderUserFindPng=user_picons.find_png)
@@ -293,6 +300,7 @@ class MainInfoBarLookupTests(LookupFixture, unittest.TestCase):
         self.assertEqual(scope['findPicon'](widget,'CANALPLUS_CZ'),provider)
         # Turning expert mode off restores the private skin destination.
         expert.custom_destination.value=False
+        own.enabled.value=False
         widget.path='picon'
         self.assertEqual(scope['findPicon'](widget,NAME),default)
 
