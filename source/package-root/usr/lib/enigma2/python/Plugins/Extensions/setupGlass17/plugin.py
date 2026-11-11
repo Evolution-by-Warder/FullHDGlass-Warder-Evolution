@@ -1196,6 +1196,27 @@ def setPathFiles(chck=True):
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par124.value + "hdg17_files"
 		else:
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par125.value + "/hdg17_files"
+		# Keep an exact registry of Warder data directories used over time.
+		# A later uninstall removes these directories even after PATHS changes.
+		# Never record the parent, and never traverse arbitrary user folders.
+		try:
+			_warderDataPath = os.path.abspath(config.plugins.setupGlass17.par39.value)
+			_warderRegistry = "/var/lib/fullhdglass17/data-paths-v1.list"
+			if (os.path.basename(_warderDataPath) == "hdg17_files"
+					and not os.path.islink(_warderDataPath)
+					and os.path.isdir(_warderDataPath)):
+				_warderState = os.path.dirname(_warderRegistry)
+				if not os.path.islink(_warderState):
+					os.makedirs(_warderState, exist_ok=True)
+					_warderKnown = set()
+					if os.path.isfile(_warderRegistry) and not os.path.islink(_warderRegistry):
+						with open(_warderRegistry, "r") as _warderHandle:
+							_warderKnown = set(line.strip() for line in _warderHandle if line.strip())
+					if _warderDataPath not in _warderKnown and not os.path.islink(_warderRegistry):
+						with open(_warderRegistry, "a") as _warderHandle:
+							_warderHandle.write(_warderDataPath + "\\n")
+		except (IOError, OSError, ValueError):
+			pass
 		if chck and ENA_SYM:
 			# Warder may manage its legacy root/removable-media convenience links,
 			# but /usr/share/enigma2 is image/package-manager owned on OpenATV.
