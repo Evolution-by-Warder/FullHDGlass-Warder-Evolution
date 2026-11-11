@@ -22,6 +22,7 @@ from Components.Renderer.Renderer import Renderer
 from enigma import eServiceReference, eServiceCenter, ePixmap
 from Tools.Directories import fileExists
 from Components.config import config
+from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
 try:
 	from Plugins.Extensions.setupGlass17.weaUtils import setDefPicon
 except: pass
@@ -131,7 +132,6 @@ class g17PicRef(Renderer):
 	def findPicon(self, serviceName):
 		try:
 			base = config.plugins.setupGlass17.par39.value
-			from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
 			override, custom = selected_source(config)
 			fields = (self.source.text or "").split(":", 10)
 			radio = len(fields) >= 10 and fields[2].upper() in ("2", "A")
