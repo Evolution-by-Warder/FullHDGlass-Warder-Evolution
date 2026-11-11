@@ -32,14 +32,15 @@ def name_aliases(reference, get_name, sanitize):
         sub(r'(fhd|uhd|hd|sd|4k)$', '', legacy).strip()) if n))
 
 
-def find_picon(reference, base, alternative, get_name, sanitize):
+def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=False):
     if not base:
         return ''
     references = reference_names(reference, alternative)
     if not references:
         return ''
     aliases = None
-    for folder in ('picon_50x30', 'picon'):
+    folders = ('picon_50x30', 'picon') if prefer_mini else ('picon', 'picon_50x30')
+    for folder in folders:
         if not isdir(join(base, folder)):
             continue
         for name in references:
@@ -60,13 +61,13 @@ def install(service_list, is_active, get_base, alternative, get_name, sanitize, 
     def wrap(original):
         @wraps(original)
         def lookup(reference, *args, **kwargs):
-            if is_active() and prefer_mini is not None and prefer_mini():
+            if is_active():
                 try:
-                    path = find_picon(reference, get_base(), alternative, get_name, sanitize)
-                    if path:
-                        return path
+                    return find_picon(
+                        reference, get_base(), alternative, get_name, sanitize,
+                        prefer_mini=bool(prefer_mini is not None and prefer_mini()))
                 except (AttributeError, OSError, TypeError, ValueError):
-                    pass
+                    return ''
             return original(reference, *args, **kwargs)
         lookup._warder_channel_picons = True
         return lookup
