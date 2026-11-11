@@ -16,6 +16,10 @@ PKG = Path(os.environ.get('WARDER_PICON_PACKAGE_ROOT', str(ROOT/'source/package-
 spec = importlib.util.spec_from_file_location('channel_picons', PKG/'Plugins/Extensions/setupGlass17/warderChannelPicons.py')
 picons = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(picons)
+user_spec = importlib.util.spec_from_file_location('warder_user_picons',
+    PKG/'Plugins/Extensions/setupGlass17/warderUserPicons.py')
+user_picons = importlib.util.module_from_spec(user_spec)
+user_spec.loader.exec_module(user_picons)
 REF = '1:0:19:1F48:CA1:3:EB0000:0:0:0:'
 NAME = '1_0_19_1F48_CA1_3_EB0000_0_0_0'
 UPSTREAM = None
@@ -212,7 +216,7 @@ class InfoBarStorageTests(LookupFixture, unittest.TestCase):
         expert=NS(custom_destination=NS(value=False),destination=NS(value=''))
         settings=NS(par39=NS(value=str(self.base)))
         scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert)),
-                   fileExists=os.path.isfile)
+                   fileExists=os.path.isfile,selected_source=user_picons.selected_source)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17PicRef.py','exec'),scope)
         widget=NS(path='picon',source=NS(text=REF))
         private=self.put('picon')
@@ -237,7 +241,8 @@ class ChannelSelectionPreviewTests(LookupFixture, unittest.TestCase):
                     if isinstance(node,ast.FunctionDef) and node.name=='findPicon')
         expert=NS(custom_destination=NS(value=True),destination=NS(value=str(self.base/'chosen')))
         scope=dict(os=os,config=NS(plugins=NS(
-            setupGlass17=NS(par39=NS(value=str(self.base))),warderPiconExpert=expert)))
+            setupGlass17=NS(par39=NS(value=str(self.base))),warderPiconExpert=expert)),
+            selected_source=user_picons.selected_source,find_png=user_picons.find_png)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV.py','exec'),scope)
         chosen=self.base/'chosen'
         chosen.mkdir()
@@ -269,7 +274,9 @@ class MainInfoBarLookupTests(LookupFixture, unittest.TestCase):
                   destination=NS(value=str(self.base/'expert')))
         settings=NS(par39=NS(value=str(self.base)))
         scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert)),
-                   fileExists=os.path.isfile,os=os)
+                   fileExists=os.path.isfile,os=os,
+                   _warderSelectedPiconSource=user_picons.selected_source,
+                   _warderUserFindPng=user_picons.find_png)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'main-infobar.py','exec'),scope)
         custom=self.base/'expert'
         custom.mkdir()
@@ -297,7 +304,8 @@ class SelectedPiconTests(LookupFixture, unittest.TestCase):
         method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         import os
         setting=NS(value='mini')
-        scope=dict(os=os,config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)),par231=setting))))
+        scope=dict(os=os,config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)),par231=setting)))),
+                   selected_source=user_picons.selected_source,find_png=user_picons.find_png)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV3.py','exec'),scope)
         shared=self.put('picon'); self.put('picon_50x30')
         for folder in ('picon_400x240','ZZPicon'):
