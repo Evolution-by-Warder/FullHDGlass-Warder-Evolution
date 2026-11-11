@@ -50,6 +50,16 @@ jobs:
           python3 tools/test-channel-picons.py
           python3 tools/test-warder-channel-worker.py
           python3 tools/test-channel-picon-settings.py
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'tools')
+          import importlib.util
+          spec=importlib.util.spec_from_file_location('stylecheck','tools/test-setup-style.py')
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          actual=module.fingerprint_source(module.CURRENT)
+          print('::warning title=Review new controller fingerprint::'+actual)
+          PY
           python3 tools/test-setup-style.py SetupStyleTests.test_configuration_actions_callbacks_and_controller_logic_are_unchanged
           python3 tools/sync_header_version.py --check
       - name: Build from approved 1.0.78 source without publishing
