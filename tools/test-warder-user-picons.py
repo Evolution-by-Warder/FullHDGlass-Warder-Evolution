@@ -38,6 +38,13 @@ class OwnPiconTests(unittest.TestCase):
         self.assertEqual(c.plugins.warderPiconExpert.destination.value,
                          "/media/usb/other")
 
+    def test_retired_download_destination_is_not_a_picon_source(self):
+        c = self.settings(False, "", True, "/media/usb/old-download-location")
+        self.assertEqual(user.selected_source(c), (False, ""))
+        self.assertIsNone(user.custom_folder(c))
+        self.assertEqual(c.plugins.warderPiconExpert.destination.value,
+                         "/media/usb/old-download-location")
+
     def test_enabled_without_path_does_not_fall_back(self):
         c = self.settings(True, "", False)
         self.assertEqual(user.selected_source(c), (True, ""))
