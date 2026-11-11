@@ -97,7 +97,7 @@ class ProgressLogTests(unittest.TestCase):
             self.assertIn(path, finish)
         self.assertIn("os.listdir(folder)", finish)
         self.assertIn("self.warderOperationFailed = True", finish)
-        self.assertIn("verified + self.warderProgressLog.tail()", finish)
+        self.assertIn("verified + self.warderProgressLog.tail().splitlines()", finish)
 
     def test_failed_package_is_also_separated(self):
         log = ProgressLog()
