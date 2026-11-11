@@ -10125,6 +10125,8 @@ class downloadMenu(Screen):
 
 	def _warderStartLegacyDownloads(self, jobs, folder, pinned=False):
 		"""Process one legacy 7z per background worker; only GUI thread updates widgets."""
+		self.warderLegacyPreviousStage = self.zzz
+		self.zzz = "/tmp/"
 		self.warderLegacyBatch = list(jobs)
 		self.warderLegacyBatchIndex = 0
 		self.warderLegacyBatchFolder = folder
@@ -10166,6 +10168,7 @@ class downloadMenu(Screen):
 		message = "\n".join(self.warderLegacyBatchMessages)
 		self.warderLegacyBatch = None
 		self.warderLegacyWorker = None
+		self.zzz = self.warderLegacyPreviousStage
 		if pinned:
 			self._warderFinishLegacyQueue()
 		else:
