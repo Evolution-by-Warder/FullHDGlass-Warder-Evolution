@@ -138,7 +138,7 @@ class g17PicRef(Renderer):
 			paths = ("picon", "picon_220x132", "picon_400x240") if self.path == "picon" and radio else (self.path,)
 			# An explicitly selected expert destination is a picon directory,
 			# not a skin-data root. It takes priority over the PATHS default.
-			if override and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240"):
+			if override and custom and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240"):
 				pngname = "%s/%s.png" % (custom.rstrip("/"), serviceName)
 				if fileExists(pngname):
 					return pngname
