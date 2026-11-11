@@ -45,7 +45,8 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
         return ''
     aliases = None
     folders = ('picon_50x30', 'picon') if prefer_mini else ('picon', 'picon_50x30')
-    directories = ([custom_folder] if custom_folder else []) + [join(base, folder) for folder in folders]
+    # Expert choice is authoritative: never silently mix two picon collections.
+    directories = [custom_folder] if custom_folder else [join(base, folder) for folder in folders]
     for directory in directories:
         if not isdir(directory):
             continue
