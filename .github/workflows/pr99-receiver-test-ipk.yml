@@ -55,6 +55,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
           python3 tools/build-release-ipk.py
           python3 - <<'PY'
           import io,subprocess,tarfile,hashlib
