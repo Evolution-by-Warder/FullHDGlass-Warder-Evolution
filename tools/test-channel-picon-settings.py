@@ -53,6 +53,30 @@ class SettingsTests(unittest.TestCase):
         return NS(_spinnerAtOpen=self.section.par230.value,_weatherCityAtOpen=self.section.par13.value,
                   rst=False,destroyTimers=lambda:True,close=Mock())
 
+    def test_own_picon_folder_is_readonly_and_uses_classic_browser(self):
+        self.assertIn('warderUserPicons.path_display = ConfigSelection(', TEXT)
+        self.assertIn('self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), display))', TEXT)
+        self.assertNotIn('self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), config.plugins.warderUserPicons.path))', TEXT)
+        selection = next(n for n in OWNER.body if isinstance(n,ast.FunctionDef)
+                         and n.name == 'ActivateselectedFnc')
+        browser = next(n for n in ast.walk(selection) if isinstance(n,ast.If)
+                       and ast.unparse(n.test)=='t == config.plugins.warderUserPicons.path_display')
+        code = ast.unparse(browser)
+        self.assertIn('dirBrowser',code)
+        self.assertIn('_warderOwnPiconFolderSelected',code)
+        self.assertNotIn('VirtualKeyBoard',code)
+        self.assertNotIn('ConfigText',code)
+
+    def test_own_picon_help_is_specific_to_selected_row(self):
+        method = next(n for n in OWNER.body if isinstance(n,ast.FunctionDef)
+                      and n.name=='doMyHelpWindow')
+        branch = next(n for n in ast.walk(method) if isinstance(n,ast.If)
+                      and 'config.plugins.warderUserPicons.path_display' in ast.unparse(n.test))
+        self.assertIn('self["help_pict"].hide()', ast.unparse(branch))
+        self.assertIn('self["help_txt"].setText(message)', ast.unparse(branch))
+        self.assertIn('skin only reads PNG files',ast.unparse(branch))
+        self.assertIsInstance(branch.body[-1],ast.Return)
+
     def test_default_is_system_and_choices_are_only_explicit_opt_in(self):
         node=next(n for n in TREE.body if isinstance(n,ast.Assign) and any(ast.unparse(t)=='config.plugins.setupGlass17.par231' for t in n.targets))
         self.scope['ConfigSelection']=Setting
