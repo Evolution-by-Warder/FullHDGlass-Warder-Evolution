@@ -6565,6 +6565,18 @@ class ExtraInfo17(Screen):
 		self["picProvSat"].instance.setPixmapFromFile(w)
 			
 	def findPicon(self, piconName):
+		# The InfoBar's own showPicon() uses this lookup, not g17PicRef.
+		# Respect the expert channel-picon destination before skin-data paths.
+		# Provider, satellite, CAM and weather assets always stay in hdg17_files.
+		if self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240", "ZZPicon"):
+			try:
+				if config.plugins.warderPiconExpert.custom_destination.value:
+					custom = config.plugins.warderPiconExpert.destination.value
+					if custom:
+						pngname = os.path.join(custom, piconName + ".png")
+						return pngname if fileExists(pngname) else ""
+			except AttributeError:
+				pass
 		pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, piconName)
 		if fileExists(pngname):
 			return pngname
