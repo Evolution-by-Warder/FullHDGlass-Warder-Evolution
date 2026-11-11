@@ -21,7 +21,7 @@ def run(scenario):
             (path / "untracked-file").write_text("obsolete")
         settings = root / "etc/enigma2/settings"
         settings.parent.mkdir(parents=True)
-        settings.write_text("config.plugins.setupGlass17.par125=/media/usb\\nkeep-enigma2-config")
+        settings.write_text("config.plugins.setupGlass17.par125=" + str(root / "media/usb") + "\\nkeep-enigma2-config")
         own_data = root / "media/usb/hdg17_files"
         own_data.mkdir(parents=True)
         (own_data / "picon").mkdir()
@@ -59,7 +59,7 @@ def run(scenario):
         assert result.returncode == 0, (scenario, result.stdout, result.stderr)
         for path in (skin, plugin, state):
             assert path.exists() == (scenario == "upgrade"), (scenario, path)
-        assert settings.read_text() == "config.plugins.setupGlass17.par125=/media/usb\\nkeep-enigma2-config"
+        assert settings.read_text() == "config.plugins.setupGlass17.par125=" + str(root / "media/usb") + "\\nkeep-enigma2-config"
         assert own_data.exists() == (scenario == "upgrade"), (scenario, own_data)
         assert (other_picons / "keep.png").read_bytes() == b"theirs"
         assert (external / "valuable-picons.txt").read_text() == "keep"
