@@ -1,18 +1,18 @@
 {
-  "version": "1.0.78",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk",
-  "sha256": "d9b6b7b8235ca64fd5e448171bd62f68bf195b70a5ca2ad9d3ca64a1d3c3dceb",
-  "changelog": "Internal code optimization, more reliable graphics handling, improved error prevention and smoother operation. Existing user settings are preserved. Restart the GUI after updating.",
+  "version": "1.0.79",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.79_all.ipk",
+  "sha256": "64cd7c229a4ab2d86969a2fa837863b16195b0527d3169164ae7f5029c3984ce",
+  "changelog": "Fixed provider and satellite picon downloads and final file verification. Simplified own channel-picon selection and automatic GUI restart after saving. Weather descriptions follow Enigma2 language. Improved progress messages and PATHS label; existing configuration remains preserved.",
   "changelog_i18n": {
-    "en": "Internal code optimization, more reliable graphics handling, improved error prevention and smoother operation. Existing user settings are preserved. Restart the GUI after updating.",
-    "sk": "Optimalizácia interného kódu, spoľahlivejšie spracovanie grafiky, predchádzanie možným chybám a plynulejšie ovládanie. Existujúce nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.",
-    "cs": "Optimalizace interního kódu, spolehlivější zpracování grafiky, prevence možných chyb a plynulejší ovládání. Stávající nastavení zůstávají zachována. Po aktualizaci restartujte GUI.",
-    "de": "Interne Codeoptimierungen, zuverlässigere Grafikverarbeitung, verbesserte Fehlervermeidung und flüssigere Bedienung. Bestehende Einstellungen bleiben erhalten. Starten Sie die GUI nach dem Update neu.",
-    "pl": "Optymalizacja kodu, niezawodniejsza obsługa grafiki, zapobieganie błędom i płynniejsza obsługa. Istniejące ustawienia zostają zachowane. Po aktualizacji uruchom ponownie GUI.",
-    "hu": "Belső kódoptimalizálás, megbízhatóbb grafikus feldolgozás és jobb hibamegelőzés. A meglévő beállítások megmaradnak. Frissítés után indítsa újra a GUI-t.",
-    "ru": "Оптимизация внутреннего кода, более надежная обработка графики и предотвращение ошибок. Настройки сохраняются. После обновления перезапустите интерфейс.",
-    "fr": "Optimisation interne, traitement graphique plus fiable et meilleure prévention des erreurs. Les paramètres existants sont conservés. Redémarrez l’interface après la mise à jour.",
-    "it": "Ottimizzazione del codice, gestione grafica più affidabile e migliore prevenzione degli errori. Le impostazioni esistenti sono conservate. Riavvia la GUI dopo l’aggiornamento.",
-    "es": "Optimización del código, gestión gráfica más fiable y mejor prevención de errores. Se conservan los ajustes existentes. Reinicia la interfaz después de actualizar."
+    "en": "Fixed provider and satellite picon downloads and final file verification. Simplified own channel-picon selection and automatic GUI restart after saving. Weather descriptions follow Enigma2 language. Improved progress messages and PATHS label; existing configuration remains preserved.",
+    "sk": "Opravené sťahovanie log poskytovateľov a satelitov s kontrolou uložených PNG. Zjednodušený výber vlastných piconov a automatický reštart GUI po uložení. Popisy počasia podľa jazyka Enigmy2. Lepšie hlásenia priebehu a názov CESTY; pôvodné nastavenia zostávajú zachované.",
+    "cs": "Opraveno stahování log poskytovatelů a satelitů s kontrolou uložených PNG. Zjednodušen výběr vlastních piconů a automatický restart GUI po uložení. Popisy počasí podle jazyka Enigmy2. Lepší průběh stahování a název CESTY; nastavení zůstávají zachována.",
+    "de": "Downloads von Anbieter- und Satellitenlogos mit Prüfung der installierten PNG-Dateien korrigiert. Vereinfachte Auswahl eigener Sender-Picons und automatischer GUI-Neustart nach dem Speichern. Wettertexte folgen der Enigma2-Sprache. Verbesserte Download-Anzeige und PFAD-Menü; Einstellungen bleiben erhalten.",
+    "pl": "Naprawiono pobieranie logo operatorów i satelitów wraz z kontrolą zainstalowanych plików PNG. Uproszczono wybór własnych pikonów i automatyczne ponowne uruchomienie GUI po zapisaniu. Opisy pogody zgodne z językiem Enigmy2. Ulepszono postęp pobierania; ustawienia zostają zachowane.",
+    "hu": "Javítva a szolgáltatói és műholdlogók letöltése, a telepített PNG-fájlok ellenőrzésével. Egyszerűbb saját csatornapikon-választás és automatikus GUI-újraindítás mentés után. Az időjárási leírások az Enigma2 nyelvét követik. Jobb letöltési állapotjelzés; a beállítások megmaradnak.",
+    "ru": "Исправлена загрузка логотипов провайдеров и спутников с проверкой установленных PNG. Упрощён выбор собственных пиконов каналов, добавлен автоматический перезапуск интерфейса после сохранения. Описания погоды учитывают язык Enigma2. Улучшены сообщения о загрузке; настройки сохранены.",
+    "fr": "Correction du téléchargement des logos des fournisseurs et satellites avec vérification des PNG installés. Choix simplifié des picons personnels et redémarrage automatique de l'interface après sauvegarde. Météo traduite selon la langue Enigma2. Meilleur suivi des téléchargements; paramètres conservés.",
+    "it": "Corretti i download dei loghi dei provider e satelliti, con verifica dei PNG installati. Semplificata la scelta dei picon personali e riavvio automatico della GUI dopo il salvataggio. Descrizioni meteo secondo la lingua di Enigma2. Migliorato l'avanzamento dei download; impostazioni conservate.",
+    "es": "Corregidas las descargas de logotipos de proveedores y satélites, verificando los PNG instalados. Selección simplificada de picons propios y reinicio automático de la interfaz tras guardar. Descripciones meteorológicas según el idioma de Enigma2. Mejor seguimiento de descargas; ajustes conservados."
   }
 }
