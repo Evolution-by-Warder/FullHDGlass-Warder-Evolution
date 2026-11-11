@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """The visible Warder downloader must scroll; percentages must not spam rows."""
+import ast
 import importlib.util
 import unittest
 from pathlib import Path
@@ -83,6 +84,20 @@ class ProgressLogTests(unittest.TestCase):
             "-" * 78,
             "[>>] Downloading: 19.2E - 40%",
         ])
+
+    def test_final_screen_verifies_each_selected_auxiliary_directory(self):
+        plugin = (Path(__file__).resolve().parents[1] /
+                  "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py")
+        tree = ast.parse(plugin.read_text(encoding="utf-8"))
+        owner = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == "downloadMenu")
+        methods = {n.name: ast.unparse(n) for n in owner.body if isinstance(n, ast.FunctionDef)}
+        self.assertIn("self.warderAuxRequested", methods["startDown"])
+        finish = methods["_warderProgressFinish"]
+        for path in ("piconProv", "piconSat", "piconCam"):
+            self.assertIn(path, finish)
+        self.assertIn("os.listdir(folder)", finish)
+        self.assertIn("self.warderOperationFailed = True", finish)
+        self.assertIn("verified + self.warderProgressLog.tail()", finish)
 
     def test_failed_package_is_also_separated(self):
         log = ProgressLog()
