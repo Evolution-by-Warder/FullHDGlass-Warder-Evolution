@@ -304,8 +304,10 @@ class SelectedPiconTests(LookupFixture, unittest.TestCase):
         method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         import os
         setting=NS(value='mini')
-        scope=dict(os=os,config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)),par231=setting)))),
-                   selected_source=user_picons.selected_source,find_png=user_picons.find_png)
+        runtime_config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)), par231=setting)))
+        scope=dict(os=os, config=runtime_config,
+                   selected_source=user_picons.selected_source,
+                   find_png=user_picons.find_png)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV3.py','exec'),scope)
         shared=self.put('picon'); self.put('picon_50x30')
         for folder in ('picon_400x240','ZZPicon'):
