@@ -65,6 +65,43 @@ class ProgressLogTests(unittest.TestCase):
         self.assertEqual(log.entries, ["[ERROR] SHA-256 mismatch",
                                       "Download completed with errors"])
 
+    def test_completed_packages_get_one_separator_and_next_starts_below(self):
+        log = ProgressLog(visible_lines=9)
+        log.stage("Downloading: 13E - 20%")
+        log.stage("Downloading: 13E - 100%")
+        log.stage("Extracting: 13E")
+        log.done("13E - 130 picons installed")
+        log.divider()
+        log.stage("Downloading: 19.2E - 40%")
+        self.assertEqual(log.entries, [
+            "[>>] Downloading: 13E - 100%",
+            "[>>] Extracting: 13E",
+            "[OK] 13E - 130 picons installed",
+            "-" * 78,
+            "[>>] Downloading: 19.2E - 40%",
+        ])
+
+    def test_failed_package_is_also_separated(self):
+        log = ProgressLog()
+        log.stage("Downloading: 13E")
+        log.done("13E: SHA-256 mismatch", success=False)
+        log.divider()
+        log.divider()
+        log.stage("Downloading: 23.5E - 1%")
+        self.assertEqual(log.entries[0], "[ERROR] 13E: SHA-256 mismatch")
+        self.assertEqual(log.entries.count("-" * 78), 1)
+        self.assertEqual(log.entries[-1], "[>>] Downloading: 23.5E - 1%")
+
+    def test_separator_not_counted_and_log_keeps_scrolling(self):
+        log = ProgressLog(visible_lines=5, max_entries=9)
+        for number in range(4):
+            log.stage("Downloading: %sE" % number)
+            log.done("%sE installed" % number)
+            log.divider()
+        self.assertEqual(len(log.entries), 8)
+        self.assertEqual(len(log.tail().splitlines()), 5)
+        self.assertEqual(log.entries[-1], "-" * 78)
+
 
 if __name__ == "__main__":
     unittest.main()
