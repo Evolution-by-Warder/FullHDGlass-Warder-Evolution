@@ -22,6 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
+from .warderUserPicons import selected_source as _warderSelectedPiconSource, find_png as _warderUserFindPng, normalized_directory as _warderUserNormalize
 from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker, CanonicalWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
@@ -758,6 +759,10 @@ config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=allow_channel_e
 config.plugins.warderPiconExpert = ConfigSubsection()
 config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)
 config.plugins.warderPiconExpert.destination = ConfigText(default="", fixed_size=False)
+# Independent, read-only channel-picon lookup. Does not modify download destination.
+config.plugins.warderUserPicons = ConfigSubsection()
+config.plugins.warderUserPicons.enabled = ConfigYesNo(default=False)
+config.plugins.warderUserPicons.path = ConfigText(default="", fixed_size=False)
 
 def _warderEpgListScrollLabel():
     # Short labels fit the existing settings column. English is fallback.
@@ -1251,8 +1256,7 @@ try:
 		lambda: config.plugins.setupGlass17.par39.value,
 		_warderPiconAlternative, lambda ref: ServiceReference(ref).getServiceName(), _warderPiconSanitize,
 		lambda: config.plugins.setupGlass17.par231.value == 'mini',
-		lambda: (config.plugins.warderPiconExpert.destination.value or None)
-			if config.plugins.warderPiconExpert.custom_destination.value else None)
+		lambda: _warderSelectedPiconSource(config)[1] if _warderSelectedPiconSource(config)[0] else None)
 except (ImportError, AttributeError):
 	pass
 ENAFINDER = False
@@ -6571,11 +6575,9 @@ class ExtraInfo17(Screen):
 		# Provider, satellite, CAM and weather assets always stay in hdg17_files.
 		if self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240", "ZZPicon"):
 			try:
-				if config.plugins.warderPiconExpert.custom_destination.value:
-					custom = config.plugins.warderPiconExpert.destination.value
-					if custom:
-						pngname = os.path.join(custom, piconName + ".png")
-						return pngname if fileExists(pngname) else ""
+				enabled, custom = _warderSelectedPiconSource(config)
+				if enabled:
+					return _warderUserFindPng(custom, piconName)
 			except AttributeError:
 				pass
 		pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, piconName)
@@ -6937,7 +6939,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		t = self["config"].getCurrent()[1]
 		# Rebuild only the Channel Selection settings rows when Prime Time
 		# is toggled; the clock appears immediately without leaving the menu.
-		if t is config.plugins.warderEvolutionPrimeTime.enabled:
+		if t in (config.plugins.warderEvolutionPrimeTime.enabled, config.plugins.warderUserPicons.enabled):
 			self.runSetup()
 			return
 		if t in (config.plugins.setupGlass17.par229, config.plugins.setupGlass17.par226, config.plugins.setupGlass17.par222, config.plugins.setupGlass17.par209, config.plugins.setupGlass17.par104, config.plugins.setupGlass17.par143, config.plugins.setupGlass17.par180, config.plugins.setupGlass17.par171, config.plugins.setupGlass17.par172, config.plugins.setupGlass17.par169, config.plugins.setupGlass17.par161, config.plugins.setupGlass17.par8, config.plugins.setupGlass17.par56, config.plugins.setupGlass17.par125, config.plugins.setupGlass17.par15, config.plugins.setupGlass17.par22, config.plugins.setupGlass17.par95, config.plugins.setupGlass17.par93, config.plugins.setupGlass17.par94, config.plugins.setupGlass17.par31, config.plugins.setupGlass17.par78, config.plugins.setupGlass17.par12, config.plugins.setupGlass17.par76, config.plugins.setupGlass17.par66, config.plugins.setupGlass17.par7, config.plugins.setupGlass17.par27, config.plugins.setupGlass17.par2, config.plugins.setupGlass17.par57):
@@ -7318,6 +7320,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"F"), config.plugins.setupGlass17.par150))
 			elif tt == 24:
 				self.list.append(getConfigListEntry(S0 % ui_text("Storage for graphics sets, picons and data"), config.plugins.setupGlass17.par125))
+				self.list.append(getConfigListEntry(S0 % ui_text("Use own channel picons"), config.plugins.warderUserPicons.enabled))
+				if config.plugins.warderUserPicons.enabled.value:
+					self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), config.plugins.warderUserPicons.path))
 				if config.plugins.setupGlass17.par125.value == "0":
 					self.list.append(getConfigListEntry(S0 % _("User defined path"), config.plugins.setupGlass17.par124))
 				self.list.append(getConfigListEntry(S0 % _("FHDG Configuration file"), config.plugins.setupGlass17.par144))
@@ -7425,7 +7430,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.runSetup()
 		else:
 			t = self["config"].getCurrent()[1]
-			if t == config.plugins.setupGlass17.par124:
+			if t == config.plugins.warderUserPicons.path:
+				self.session.openWithCallback(self._warderOwnPiconFolderSelected, dirBrowser, config.plugins.warderUserPicons.path.value or "/media/hdd/picon/")
+			elif t == config.plugins.setupGlass17.par124:
 				self.session.openWithCallback(self.dirSelected, dirBrowser, config.plugins.setupGlass17.par124.value)
 			elif t == config.plugins.setupGlass17.par230:
 				from .warderSpinnerScreen import SpinnerChoice
@@ -8328,6 +8335,16 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if answer:
 			self.sDr()
 
+	def _warderOwnPiconFolderSelected(self, answer=None):
+		if not answer:
+			return
+		folder = _warderUserNormalize(str(answer))
+		if not folder or not os.path.isdir(folder):
+			self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
+			return
+		config.plugins.warderUserPicons.path.value = folder
+		self["config"].invalidateCurrent()
+
 	def dirSelected(self, answer):
 		if answer is not None:
 			config.plugins.setupGlass17.par124.value = answer
@@ -8731,6 +8748,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		config.plugins.warderEpgListScroll.enabled.save()
 		config.plugins.warderPiconExpert.custom_destination.save()
 		config.plugins.warderPiconExpert.destination.save()
+		config.plugins.warderUserPicons.enabled.save()
+		config.plugins.warderUserPicons.path.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -8879,6 +8898,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		try:
 			config.plugins.warderPiconExpert.custom_destination.cancel()
 			config.plugins.warderPiconExpert.destination.cancel()
+			config.plugins.warderUserPicons.enabled.cancel()
+			config.plugins.warderUserPicons.path.cancel()
 		except AttributeError:
 			pass
 		if self.rst:
