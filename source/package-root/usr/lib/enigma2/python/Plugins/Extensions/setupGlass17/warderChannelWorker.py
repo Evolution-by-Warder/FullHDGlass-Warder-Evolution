@@ -56,3 +56,29 @@ class ChannelWorker(object):
                     os.unlink(archive)
                 except OSError:
                     pass
+
+
+class ManifestWorker(object):
+    """Fetch the approved manifest without freezing the GUI event loop."""
+    def __init__(self, url, fetch):
+        self.url = url
+        self.fetch = fetch
+        self.events = Queue()
+        self.thread = threading.Thread(target=self.run, name="WarderManifestDownload")
+        self.thread.daemon = True
+
+    def start(self):
+        self.thread.start()
+
+    def drain(self):
+        while True:
+            try:
+                yield self.events.get_nowait()
+            except Empty:
+                return
+
+    def run(self):
+        try:
+            self.events.put(("done", self.fetch(self.url)))
+        except Exception as error:
+            self.events.put(("error", str(error)))
