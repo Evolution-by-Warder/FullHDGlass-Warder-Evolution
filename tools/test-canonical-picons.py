@@ -179,7 +179,7 @@ class CanonicalTests(unittest.TestCase):
     def test_channel_renderer_prefers_picon_when_old_220_directory_exists(self):
         tree=ast.parse((ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py').read_text());fn=next(n for c in tree.body if isinstance(c,ast.ClassDef) for n in c.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         config=SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par39=SimpleNamespace(value=str(self.base)))))
-        scope={'os':os,'config':config};exec(compile(ast.Module(body=[fn],type_ignores=[]),'channel-path','exec'),scope)
+        scope={'os':os,'config':config,'selected_source':lambda _: (False, '')};exec(compile(ast.Module(body=[fn],type_ignores=[]),'channel-path','exec'),scope)
         for root,data in [('picon',b'current'),('picon_220x132',b'old')]:
             folder=self.base/root;folder.mkdir();(folder/'station.png').write_bytes(data)
         owner=SimpleNamespace(**{'__enaSH':2});self.assertEqual(scope['findPicon'](owner,'station'),str(self.base/'picon/station.png'))
