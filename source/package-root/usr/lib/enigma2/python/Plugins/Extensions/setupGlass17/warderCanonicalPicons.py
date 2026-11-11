@@ -28,14 +28,14 @@ def install(screen,row,variant,get_assets,translate,progress=None,stage=None):
     expected='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/'+('providers' if kind=='provider' else 'satellites')+'/'+variant+'/'+root+'.zip'
     if asset.get('delivery')!='canonical-220x132-v1' or asset.get('resolution')!=[220,132] or asset.get('root')!=root or asset.get('filename')!=root+'.zip' or asset.get('url')!=expected or asset.get('publication_source_id')!='fullhd-production' or not 0<int(asset.get('png_count',0))<10000:raise ValueError('Canonical picon catalogue unavailable or invalid')
     destination=screen._warderAuxiliaryDestination(root)
-    archive=None;stage=None;previous=screen.zzz
+    archive=None;stage_dir=None;previous=screen.zzz
     try:
         fd,archive=tempfile.mkstemp(prefix='warder-picons-',suffix='.zip',dir='/tmp');os.close(fd)
         if stage:stage("download")
         screen._warderFetchAuxiliaryArchive(asset,archive,progress)
         if stage:stage("extract")
-        stage=tempfile.mkdtemp(prefix='warder-picons-',dir='/tmp');screen._safeExtractZip(archive,stage)
-        screen.zzz=stage+os.sep
+        stage_dir=tempfile.mkdtemp(prefix='warder-picons-',dir='/tmp');screen._safeExtractZip(archive,stage_dir)
+        screen.zzz=stage_dir+os.sep
         if stage:stage("copy")
         updated,total=screen.cprmFiles(root)
         if updated!=asset['png_count'] or total!=asset['png_count']:raise OSError('Canonical picon installation incomplete')
@@ -46,7 +46,7 @@ def install(screen,row,variant,get_assets,translate,progress=None,stage=None):
         if archive:
             try:os.unlink(archive)
             except OSError:pass
-        if stage:
+        if stage_dir:
             # The whole directory belongs to this one operation, including
             # nested archive entries left behind by an interrupted extraction.
-            shutil.rmtree(stage,ignore_errors=True)
+            shutil.rmtree(stage_dir,ignore_errors=True)
