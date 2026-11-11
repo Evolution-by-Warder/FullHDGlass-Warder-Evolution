@@ -334,14 +334,33 @@ class WarderRadioArtwork(Renderer):
         generation = self._generation
         def worker():
             path = ""
+            provider = "none"
+            started = time.monotonic()
             try:
                 cached = os.path.join(self._cacheDir(), hashlib.sha1(key.encode("utf-8")).hexdigest() + ".jpg")
                 # Fast, bounded Radio-plugin search runs only in this I/O worker.
                 # Preserve successful legacy cache entries without new requests.
-                path = cached if os.path.isfile(cached) else cover_search.lookup_cover(artist, title)[0]
+                if os.path.isfile(cached):
+                    path, provider = cached, "legacy-cache"
+                else:
+                    path, provider = cover_search.lookup_cover(artist, title)
             except Exception as err:
                 self._diag("ERROR %s: %s" % (err.__class__.__name__, err))
                 path = ""
+            # Explicit receiver opt-in only; no logs or GUI I/O in normal use.
+            if os.path.isfile("/tmp/warder-radio-cover-benchmark"):
+                try:
+                    log = "/tmp/warder-radio-cover-benchmark.log"
+                    if os.path.isfile(log) and os.path.getsize(log) > 32768:
+                        os.replace(log, log + ".old")
+                    with open(log, "a") as handle:
+                        handle.write("ms=%d result=%s source=%s track=%s\\n" % (
+                            int((time.monotonic() - started) * 1000),
+                            "hit" if path else "miss",
+                            provider.replace(" ", "-"),
+                            hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]))
+                except OSError:
+                    pass
             self._result = (generation, key, path)
             self._busy = False
         thread = threading.Thread(target=worker)
