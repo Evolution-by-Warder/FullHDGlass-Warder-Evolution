@@ -23,6 +23,7 @@ jobs:
           sparse-checkout: |
             /source/
             /tools/
+            /design/
             /packages/test/
             /reports/bitrate-test5-20261101.json
       - uses: actions/setup-python@v5
