@@ -343,3 +343,26 @@ for _lang, _text in {
     "zh": "无法恢复默认图标，请重新安装皮肤。",
 }.items():
     TEXT.setdefault(_lang, {})["Unable to restore bundled default icons. Please reinstall the skin."] = _text
+
+# Clear storage-path menu title in all supported OSD languages.
+TEXT.setdefault("sk", {})["Paths for Skin Data, Picons and Settings"] = "Cesty k dátam skinu, piconom a nastaveniam"
+TEXT.setdefault("cs", {})["Paths for Skin Data, Picons and Settings"] = "Cesty k datům skinu, piconům a nastavení"
+TEXT.setdefault("de", {})["Paths for Skin Data, Picons and Settings"] = "Pfade für Skin-Daten, Picons und Einstellungen"
+TEXT.setdefault("hu", {})["Paths for Skin Data, Picons and Settings"] = "Skinadatok, piconok és beállítások útvonalai"
+TEXT.setdefault("ru", {})["Paths for Skin Data, Picons and Settings"] = "Пути к данным скина, пиконам и настройкам"
+TEXT.setdefault("fr", {})["Paths for Skin Data, Picons and Settings"] = "Chemins des données, picons et réglages"
+TEXT.setdefault("it", {})["Paths for Skin Data, Picons and Settings"] = "Percorsi per dati skin, picon e impostazioni"
+TEXT.setdefault("es", {})["Paths for Skin Data, Picons and Settings"] = "Rutas de datos, picons y ajustes"
+TEXT.setdefault("pl", {})["Paths for Skin Data, Picons and Settings"] = "Ścieżki danych skórki, pikon i ustawień"
+TEXT.setdefault("en", {})["Paths for Skin Data, Picons and Settings"] = "Paths for Skin Data, Picons and Settings"
+TEXT.setdefault("al", {})["Paths for Skin Data, Picons and Settings"] = "Shtigjet e të dhënave, piconëve dhe cilësimeve"
+TEXT.setdefault("el", {})["Paths for Skin Data, Picons and Settings"] = "Διαδρομές δεδομένων, picons και ρυθμίσεων"
+TEXT.setdefault("et", {})["Paths for Skin Data, Picons and Settings"] = "Kujunduse andmete, piconide ja seadete teed"
+TEXT.setdefault("fa", {})["Paths for Skin Data, Picons and Settings"] = "مسیر داده‌های پوسته، پیکون‌ها و تنظیمات"
+TEXT.setdefault("lt", {})["Paths for Skin Data, Picons and Settings"] = "Apvalkalo duomenų, pikonų ir nustatymų keliai"
+TEXT.setdefault("nl", {})["Paths for Skin Data, Picons and Settings"] = "Paden voor skingegevens, picons en instellingen"
+TEXT.setdefault("pt", {})["Paths for Skin Data, Picons and Settings"] = "Caminhos de dados, picons e definições"
+TEXT.setdefault("ro", {})["Paths for Skin Data, Picons and Settings"] = "Căi pentru datele skinului, piconuri și setări"
+TEXT.setdefault("tr", {})["Paths for Skin Data, Picons and Settings"] = "Skin verileri, piconlar ve ayar yolları"
+TEXT.setdefault("uk", {})["Paths for Skin Data, Picons and Settings"] = "Шляхи до даних скіна, піктограм і налаштувань"
+TEXT.setdefault("zh", {})["Paths for Skin Data, Picons and Settings"] = "皮肤数据、台标和设置路径"
