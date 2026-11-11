@@ -48,6 +48,7 @@ jobs:
           for script in preinst postinst prerm postrm; do sh -n "source/control/$script"; done
           python3 tools/test_uninstall_cleanup.py
           python3 tools/test-channel-picons.py
+          python3 tools/test-warder-channel-worker.py
           python3 tools/test-channel-picon-settings.py
           python3 tools/test-setup-style.py SetupStyleTests.test_configuration_actions_callbacks_and_controller_logic_are_unchanged
           python3 tools/sync_header_version.py --check
