@@ -10012,6 +10012,7 @@ class downloadMenu(Screen):
 			self._recordWarderOperationResult(txt)
 			self._warderProgressDone(txt, _("ERROR") + ":" not in str(txt))
 		if self.clrSelectsat:
+			self._warderProgressClose()
 			self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),txt)
 		else:
 			if txt != "":
@@ -10162,7 +10163,7 @@ class downloadMenu(Screen):
 			if ena:
 				if self.warderOperationSucceeded and not self.warderOperationFailed:
 					self.resetWarderWorkingState()
-				self._warderProgressStage(_("Download finished"))
+				self._warderProgressClose()
 				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
 		
 	def dwnFin(self, answer=""):
