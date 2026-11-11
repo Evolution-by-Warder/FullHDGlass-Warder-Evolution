@@ -9309,11 +9309,13 @@ class downloadMenu(Screen):
 		self.warderProgressLog.stage(line)
 		self["progress_history"].setText(self.warderProgressLog.tail())
 
-	def _warderProgressDone(self, description, success=True):
+	def _warderProgressDone(self, description, success=True, separate=False):
 		if not getattr(self, "warderProgressActive", False):
 			return
 		self.warderProgressLog.done(description, success)
 		self.warderProgressFinished += 1
+		if separate:
+			self.warderProgressLog.divider()
 		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
 		self["progress_history"].setText(self.warderProgressLog.tail())
 
@@ -10123,12 +10125,12 @@ class downloadMenu(Screen):
 				self.warderChannelAvailable.update(available)
 				if row is not None:
 					row["updated"] = len(installed)
-				self._warderProgressDone(job_label + " - " + str(len(installed)) + " " + _("picons"))
+				self._warderProgressDone(job_label + " - " + str(len(installed)) + " " + _("picons"), separate=True)
 			else:
 				if row is not None:
 					row["failures"] += 1
 					row["error"] = str(value)
-				self._warderProgressDone(job_label + ": " + str(value), False)
+				self._warderProgressDone(job_label + ": " + str(value), False, separate=True)
 				print("FullHDGlass17 Warder package failed (%s/%s): %s" % (
 					job.get("orbital_position"), job.get("selector_id"), value))
 			self.dwnTimer.start(25, True)
@@ -10228,7 +10230,7 @@ class downloadMenu(Screen):
 
 	def _warderLegacyAppend(self, text, success):
 		self.warderLegacyBatchMessages.append(str(text))
-		self._warderProgressDone(text, success)
+		self._warderProgressDone(text, success, separate=True)
 
 	def _warderLegacyPoll(self):
 		worker = self.warderLegacyWorker
@@ -10344,7 +10346,7 @@ class downloadMenu(Screen):
 			self.dwnTimer.stop()
 		if txt:
 			self._recordWarderOperationResult(txt)
-			self._warderProgressDone(txt, _("ERROR") + ":" not in str(txt))
+			self._warderProgressDone(txt, _("ERROR") + ":" not in str(txt), separate=True)
 		if self.clrSelectsat:
 			self._warderProgressClose()
 			self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),txt)
