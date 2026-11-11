@@ -22,7 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
-from .warderChannelWorker import ChannelWorker
+from .warderChannelWorker import ChannelWorker, ManifestWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -8997,6 +8997,10 @@ class downloadMenu(Screen):
 		self.warderProgressFinished = 0
 		self.warderProgressComplete = False
 		self.warderChannelWorker = None
+		self.warderManifestWorker = None
+		self.warderManifestDocument = None
+		self.warderManifestError = None
+		self.warderChannelPreparingQueue = None
 		self.warderChannelTimer = eTimer()
 		try:
 			self.warderChannelTimerConnection = self.warderChannelTimer.timeout.connect(self._warderChannelPoll)
@@ -9920,7 +9924,13 @@ class downloadMenu(Screen):
 	def _warderRunChannelQueue(self):
 		self.warderChannelState = "running"
 		queue = getattr(self, "warderChannelQueue", None)
-		if queue is None:
+		if queue is None and self.warderManifestWorker is not None:
+			return None
+		if queue is None and self.warderManifestError is not None:
+			error = self.warderManifestError
+			self.warderManifestError = None
+			raise ValueError(error)
+		if queue is None and self.warderChannelPreparingQueue is None:
 			self.warderChannelTaskSnapshot = dict(self.warderPiconPrefs)
 			queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 			if queue.get("state") != warderPiconSync.READY:
@@ -9933,7 +9943,19 @@ class downloadMenu(Screen):
 			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
 				raise ValueError("unsafe Warder picon destination")
 			queue["destination"] = destination
-			document = self._warderLoadChannelManifest(queue.get("manifest_url"))
+			self.warderChannelPreparingQueue = queue
+			self._warderProgressStage(_("Downloading") + ": manifest")
+			self.warderManifestWorker = ManifestWorker(queue.get("manifest_url"), self._warderLoadChannelManifest)
+			self.warderChannelTimer.start(150, False)
+			self.warderManifestWorker.start()
+			return None
+		if queue is None:
+			queue = self.warderChannelPreparingQueue
+			self.warderChannelPreparingQueue = None
+			document = self.warderManifestDocument
+			self.warderManifestDocument = None
+			if document is None:
+				raise ValueError("Warder channel manifest is missing")
 			plan = warderPiconSync.plan_runtime_packages(document, queue, queue.get("manifest_url"))
 			jobs = warderPiconSync.build_download_jobs(document, plan, queue.get("manifest_url"))
 			if jobs.get("state") not in ("ready", "partial"):
@@ -9994,6 +10016,19 @@ class downloadMenu(Screen):
 		return None
 
 	def _warderChannelPoll(self):
+		manifest = self.warderManifestWorker
+		if manifest is not None:
+			for kind, value in manifest.drain():
+				self.warderChannelTimer.stop()
+				self.warderManifestWorker = None
+				if kind == "done":
+					self.warderManifestDocument = value
+					self._warderProgressDone(_("Channel manifest verified"))
+				else:
+					self.warderManifestError = str(value)
+				self.dwnTimer.start(25, True)
+				return
+			return
 		worker = self.warderChannelWorker
 		if worker is None:
 			return
