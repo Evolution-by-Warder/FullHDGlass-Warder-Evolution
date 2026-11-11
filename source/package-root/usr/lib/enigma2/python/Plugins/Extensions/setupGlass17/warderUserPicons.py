@@ -16,19 +16,13 @@ def normalized_directory(path):
 def selected_source(config):
     """Return (override_enabled, source_directory).
 
-    An enabled but unavailable user directory remains an override, preventing
-    accidental substitution of Warder picons from another directory.
+    Only the explicit PATHS own-picons switch controls the channel picon source.
+    Removed legacy download-destination settings must never affect lookup.
     """
     try:
         settings = config.plugins.warderUserPicons
         if settings.enabled.value:
             return True, normalized_directory(settings.path.value)
-    except (AttributeError, TypeError, ValueError):
-        pass
-    try:
-        expert = config.plugins.warderPiconExpert
-        if expert.custom_destination.value:
-            return True, normalized_directory(expert.destination.value)
     except (AttributeError, TypeError, ValueError):
         pass
     return False, ""
