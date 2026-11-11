@@ -122,8 +122,7 @@ class ChannelWorkerTests(unittest.TestCase):
             executable.write_text("fake 7zip fixture")
             target = str(Path(root) / "unpack")
             url = worker_module.LegacyArchiveWorker._ROOT + "verified.7z"
-            with patch("urllib.request.build_opener", return_value=Opener()), \\
-                 patch("subprocess.call", return_value=0):
+            with patch("urllib.request.build_opener", return_value=Opener()), patch("subprocess.call", return_value=0):
                 worker = worker_module.LegacyArchiveWorker(url, target, str(executable))
                 worker.start()
                 worker.thread.join(timeout=5)
