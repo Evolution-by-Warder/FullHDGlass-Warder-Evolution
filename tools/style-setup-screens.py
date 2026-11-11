@@ -259,6 +259,23 @@ def strip_reviewed_scoped(tree, records):
 
 
 def normalized(tree):
+    # Reverse only the four exact, scoped Neutrino additions approved in PR #104.
+    # Audit three touched functions, not the entire 12k-line plugin AST.
+    neutrino_ledger = ROOT / 'design/neutrino-short-ok/logic.json'
+    if neutrino_ledger.exists():
+        target_names = {'startHdg17', 'hdg17inicialize', 'warderNeutrinoChannelList17'}
+        target = [node for node in tree.body
+                  if isinstance(node, ast.FunctionDef) and node.name in target_names]
+        stripped = strip_reviewed_scoped(
+            ast.Module(body=target, type_ignores=[]),
+            json.loads(neutrino_ledger.read_text()))
+        restored = {node.name: node for node in stripped.body}
+        tree = copy.deepcopy(tree)
+        tree.body = [
+            restored[node.name] if isinstance(node, ast.FunctionDef) and node.name in restored else node
+            for node in tree.body
+            if not isinstance(node, ast.FunctionDef) or node.name not in target_names or node.name in restored
+        ]
     # Only exact, scope-bound reviewed Prime Time additions are ignored by the
     # frozen legacy fingerprint. Any changed save/cancel or progress hook must
     # still fail the baseline comparison.

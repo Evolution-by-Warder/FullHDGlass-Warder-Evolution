@@ -66,6 +66,7 @@ jobs:
           print('::warning title=Review new controller fingerprint::'+actual)
           PY
           python3 tools/test-setup-style.py SetupStyleTests.test_configuration_actions_callbacks_and_controller_logic_are_unchanged
+          python3 tools/test-neutrino-short-ok.py -q
           python3 tools/sync_header_version.py --check
       - name: Build from approved 1.0.78 source without publishing
         shell: bash
