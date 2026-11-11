@@ -22,6 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
+from .warderChannelWorker import ChannelWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -8994,6 +8995,14 @@ class downloadMenu(Screen):
 		self.warderProgressActive = False
 		self.warderProgressEvents = []
 		self.warderProgressFinished = 0
+		self.warderProgressComplete = False
+		self.warderChannelWorker = None
+		self.warderChannelTimer = eTimer()
+		try:
+			self.warderChannelTimerConnection = self.warderChannelTimer.timeout.connect(self._warderChannelPoll)
+		except AttributeError:
+			self.warderChannelTimer.timeout.get().append(self._warderChannelPoll)
+		self.onClose.append(self.warderChannelTimer.stop)
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Cleaning Picons"))
 		self["key_red"] = Label(_("Exit"))
@@ -9090,8 +9099,9 @@ class downloadMenu(Screen):
 		return ({9:"picon",3:"picon_400x240",4:"picon_50x30",5:"picon",6:"picon_50x30",7:"picon",8:"piconOled"}[a])
 
 	def exit(self):
-		if not self.ena:
+		if not self.ena and not getattr(self, "warderProgressComplete", False):
 			return
+		self.warderChannelTimer.stop()
 		if self.dwnTimer is not None and self.dwnTimer.isActive():
 			self.dwnTimer.stop()
 		self.dwnTimer_conn = None
@@ -9111,7 +9121,7 @@ class downloadMenu(Screen):
 			self["key_blue"].hide()
 				
 	def startDown(self, destination_confirmed=False):
-		if not self.ena or self.warderChannelState == "running":
+		if getattr(self, "warderProgressComplete", False) or not self.ena or self.warderChannelState == "running":
 			return
 		if not config.plugins.warderPiconExpert.custom_destination.value:
 			self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
@@ -9220,6 +9230,7 @@ class downloadMenu(Screen):
 	def _warderProgressBegin(self):
 		"""Display feedback immediately, before the download timer fires."""
 		self.warderProgressActive = True
+		self.warderProgressComplete = False
 		self.warderProgressEvents = []
 		self.warderProgressFinished = 0
 		self["list"].hide()
@@ -9244,6 +9255,18 @@ class downloadMenu(Screen):
 		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
 		self["progress_history"].setText("\n".join(self.warderProgressEvents))
 		self._warderProgressStage(description)
+
+	def _warderProgressFinish(self):
+		"""Keep the same progress screen visible with its final result."""
+		self.warderProgressComplete = True
+		self._warderProgressStage(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
+		self.warderProgressEvents.extend(str(self.msg).strip().splitlines())
+		self.warderProgressEvents = self.warderProgressEvents[-12:]
+		self["progress_history"].setText("\n".join(self.warderProgressEvents))
+		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
+		self["key_red"].setText(_("Close"))
+		for key in ("key_green", "key_yellow", "key_blue"):
+			self[key].hide()
 
 	def _warderProgressClose(self):
 		self.warderProgressActive = False
@@ -9956,54 +9979,55 @@ class downloadMenu(Screen):
 			result = summary["status"] + ": " + summary["text"]
 			self.warderChannelInstalled = set()
 			return result
+		if self.warderChannelWorker is not None:
+			return None
 		job = self.warderChannelJobs.pop(0)
 		self.warderChannelCurrentJob = job
 		job_label = str(job.get("orbital_position", "")) + " / " + str(job.get("selector_id", ""))
 		self._warderProgressStage(_("Downloading") + ": " + job_label)
-		result_row = next((item for item in self.warderChannelPackageResults
-			if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
-		archive = None
-		try:
-			required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
-			try:
-				free_mb = int(shutil.disk_usage("/tmp").free / (1024 * 1024))
-			except OSError:
-				free_mb = 0
-			if free_mb < required:
-				raise ValueError("insufficient temporary space for Warder channel package")
-			destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
-			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
-				raise ValueError("unsafe Warder picon destination")
-			try:
-				dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
-			except OSError:
-				dest_free_mb = 0
-			if dest_free_mb < required:
-				raise ValueError("insufficient destination space for Warder channel package")
-			fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
-			os.close(fd)
-			self._warderFetchChannelJob(job, archive)
-			self._warderProgressStage(_("Verifying and installing") + ": " + job_label)
-			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
-			installed, available = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
-			self.warderChannelInstalled.update(installed)
-			self.warderChannelAvailable.update(available)
-			if result_row is not None:
-				result_row["updated"] = len(installed)
-			self._warderProgressDone(job_label + " - " + str(len(installed)) + " " + _("picons"))
-		except Exception as err:
-			if result_row is not None:
-				result_row["failures"] += 1
-				result_row["error"] = str(err)
-			self._warderProgressDone(job_label + ": " + str(err), False)
-			print("FullHDGlass17 Warder package failed (%s/%s): %s" % (job.get("orbital_position"), job.get("selector_id"), err))
-		finally:
-			if archive:
-				try:
-					os.unlink(archive)
-				except OSError:
-					pass
+		wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
+		self.warderChannelWorker = ChannelWorker(
+			job, self.warderChannelQueue["destination"], wanted,
+			self._warderFetchChannelJob, self._warderInstallChannelArchive)
+		self.warderChannelTimer.start(150, False)
+		self.warderChannelWorker.start()
 		return None
+
+	def _warderChannelPoll(self):
+		worker = self.warderChannelWorker
+		if worker is None:
+			return
+		job = self.warderChannelCurrentJob or {}
+		job_label = str(job.get("orbital_position", "")) + " / " + str(job.get("selector_id", ""))
+		for kind, value in worker.drain():
+			if kind == "bytes":
+				done, total = value
+				percent = min(100, int(100 * done / max(1, total)))
+				self._warderProgressStage(_("Downloading") + ": " + job_label + " - %d%%" % percent)
+				continue
+			if kind == "stage":
+				self._warderProgressStage(str(value) + ": " + job_label)
+				continue
+			self.warderChannelTimer.stop()
+			self.warderChannelWorker = None
+			row = next((item for item in self.warderChannelPackageResults
+				if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
+			if kind == "done":
+				installed, available = value
+				self.warderChannelInstalled.update(installed)
+				self.warderChannelAvailable.update(available)
+				if row is not None:
+					row["updated"] = len(installed)
+				self._warderProgressDone(job_label + " - " + str(len(installed)) + " " + _("picons"))
+			else:
+				if row is not None:
+					row["failures"] += 1
+					row["error"] = str(value)
+				self._warderProgressDone(job_label + ": " + str(value), False)
+				print("FullHDGlass17 Warder package failed (%s/%s): %s" % (
+					job.get("orbital_position"), job.get("selector_id"), value))
+			self.dwnTimer.start(25, True)
+			return
 
 	def dwnLoop(self, txt=""):
 		if self.dwnTimer.isActive():
@@ -10114,8 +10138,7 @@ class downloadMenu(Screen):
 					self._warderProgressDone(self.dwnJob + ": " + error_text, False)
 				else:
 					if warder_result is None:
-						# One package per GUI timer tick keeps the receiver event loop responsive.
-						self.dwnTimer.start(25, True)
+						# Background worker will resume the queue from its GUI polling callback.
 						return
 					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
 					self._warderProgressDone(self.dwnJob + ": " + warder_result, _("ERROR") + ":" not in warder_result)
@@ -10163,8 +10186,7 @@ class downloadMenu(Screen):
 			if ena:
 				if self.warderOperationSucceeded and not self.warderOperationFailed:
 					self.resetWarderWorkingState()
-				self._warderProgressClose()
-				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
+				self._warderProgressFinish() 		
 		
 	def dwnFin(self, answer=""):
 		if self.warderChannelState in ("done", "error", "locked"):
@@ -10349,7 +10371,7 @@ class downloadMenu(Screen):
 		else:
 			self.dwnLoop(_("ERROR")+": " + what[:-4])
 
-	def _warderFetchChannelJob(self, job, archive):
+	def _warderFetchChannelJob(self, job, archive, progress=None):
 		"""Reassemble a package only from the root bound to its source manifest."""
 		source_id = job.get("publication_source_id")
 		source = warderPiconSync.publication_source(source_id)
@@ -10357,6 +10379,7 @@ class downloadMenu(Screen):
 			raise ValueError("untrusted Warder channel publication source")
 		full_hash = hashlib.sha256()
 		total = 0
+		last_update = 0
 		with open(archive, "wb") as out:
 			for part in job.get("parts", []):
 				url = str(part.get("url", ""))
@@ -10382,8 +10405,13 @@ class downloadMenu(Screen):
 						out.write(chunk)
 						full_hash.update(chunk)
 						part_hash.update(chunk)
+						if progress and time1.monotonic() - last_update >= 0.25:
+							progress(total, int(job.get("bytes", 0)))
+							last_update = time1.monotonic()
 				if part_size != int(part.get("bytes", -1)) or part_hash.hexdigest().lower() != str(part.get("sha256", "")).lower():
 					raise ValueError("Warder channel part integrity mismatch")
+		if progress:
+			progress(total, int(job.get("bytes", 0)))
 		if total != int(job.get("bytes", -1)) or full_hash.hexdigest().lower() != str(job.get("sha256", "")).lower():
 			raise ValueError("Warder channel package integrity mismatch")
 
