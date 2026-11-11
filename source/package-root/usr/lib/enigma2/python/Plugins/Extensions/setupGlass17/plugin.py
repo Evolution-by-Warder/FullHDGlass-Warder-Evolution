@@ -10182,7 +10182,9 @@ class downloadMenu(Screen):
 		label = str(self.warderLegacyBatch[self.warderLegacyBatchIndex][0])
 		for kind, value in worker.drain():
 			if kind == "stage":
-				self._warderProgressStage(label + ": " + str(value))
+				stage_label = (_("Downloading") if value == "download" else
+					_("Extracting") if value == "extract" else str(value))
+				self._warderProgressStage(stage_label + ": " + label)
 				continue
 			if kind == "bytes":
 				done, total = value
