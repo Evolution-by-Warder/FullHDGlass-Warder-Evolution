@@ -74,6 +74,48 @@ class CoverSearchTests(unittest.TestCase):
             self.assertEqual(provider, "TheAudioDB")
             self.assertEqual(Path(path).read_bytes(), self.IMAGE)
 
+    def test_unrelated_artist_release_never_masquerades_as_artist_photo(self):
+        calls = []
+        def opener(request, timeout):
+            url = request.full_url
+            calls.append(url)
+            if "itunes.apple.com/search" in url:
+                return Response(json.dumps({"results":[
+                    {"kind":"song", "artistName":"ABBA", "trackName":"Mamma Mia",
+                     "artworkUrl100":"https://is1-ssl.mzstatic.com/image/thumb/100x100bb.jpg"}
+                ]}).encode(), url)
+            if "theaudiodb.com/api/" in url:
+                return Response(json.dumps({"artists":[
+                    {"strArtist":"ABBA", "strArtistThumb":"https://www.theaudiodb.com/artist.jpg"}
+                ]}).encode(), url)
+            if url == "https://www.theaudiodb.com/artist.jpg":
+                return Response(self.IMAGE, url)
+            raise AssertionError("unrelated album artwork must not be downloaded: " + url)
+        with tempfile.TemporaryDirectory() as directory:
+            path, provider = covers.lookup_cover("ABBA", "Unlisted Song", directory=directory, opener=opener)
+            self.assertEqual(provider, "TheAudioDB")
+            self.assertEqual(Path(path).read_bytes(), self.IMAGE)
+            self.assertFalse(any("mzstatic.com" in url for url in calls))
+            self.assertFalse(any("attribute=artistTerm" in url for url in calls))
+
+    def test_legacy_performer_artwork_cache_is_not_reused(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as directory:
+            key = hashlib.sha256(b"abba|unlisted song").hexdigest()
+            Path(directory, key + "-performer.jpg").write_bytes(self.IMAGE)
+            calls = []
+            def opener(request, timeout):
+                calls.append(request.full_url)
+                if "itunes.apple.com/search" in request.full_url:
+                    return Response(b'{"results":[]}', request.full_url)
+                if "theaudiodb.com/api/" in request.full_url:
+                    return Response(b'{"artists":[]}', request.full_url)
+                raise AssertionError(request.full_url)
+            self.assertEqual(covers.lookup_cover("ABBA", "Unlisted Song",
+                                               directory=directory, opener=opener), ('', ''))
+            self.assertGreater(len(calls), 0)
+            self.assertTrue(Path(directory, key + "-performer.jpg").is_file())
+
     def test_no_hit_is_not_retried_immediately_after_valid_catalogue_response(self):
         requests = []
         def opener(request, timeout):
