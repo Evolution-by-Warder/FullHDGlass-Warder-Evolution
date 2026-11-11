@@ -180,10 +180,12 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
     # Regional searches remain fallbacks; US would duplicate the first query.
     if title:
         plans = [dict(term=artist + ' ' + title, limit=20, media='music')]
-        plans.append(dict(term=artist, limit=20, media='music', attribute='artistTerm'))
+        # Verify all suitable album tracks before trying an artist portrait.
+        # Otherwise an early artistTerm result hides a real SK/CZ album cover.
         plans += [dict(entity='song', limit=10, country=country, term=artist + ' ' + title)
                   for country in ('SK', 'CZ')]
         plans.append(dict(entity='song', limit=25, country='SK', term=identity.site_titles(artist, title)[0]))
+        plans.append(dict(term=artist, limit=20, media='music', attribute='artistTerm'))
         for params in plans:
             try:
                 url = 'https://itunes.apple.com/search?' + urlencode(params)
