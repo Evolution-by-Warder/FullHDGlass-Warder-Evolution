@@ -81,6 +81,8 @@ jobs:
           PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"
           python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest upstream/enigma2/lib/python/Screens/VirtualKeyBoard.py -v
+      - name: Verify uninstall only removes Warder-managed hdg17_files roots
+        run: python tools/test_uninstall_cleanup.py
       - name: Reproduce and repair the reported OpenATV 8.1 animation crash
         run: |
           python tools/fetch-openatv81-fixture.py /tmp/warder-openatv81-pinned

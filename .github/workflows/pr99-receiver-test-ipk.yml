@@ -1,0 +1,117 @@
+name: Build PR99 receiver test IPK (artifact only)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/pr99-receiver-test-ipk.yml'
+      - 'source/**'
+      - 'tools/**'
+
+permissions:
+  contents: read
+
+jobs:
+  receiver-test-package:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /packages/test/
+            /reports/bitrate-test5-20261101.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preflight and prepare binary verification reports
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          proof=json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
+          assert len(proof['builds']) == 3
+          directory=Path('packages/test')
+          directory.mkdir(parents=True,exist_ok=True)
+          for name, report in zip(('arm','mipsel','aarch64'),proof['builds']):
+              dest='bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json'
+              (directory/dest).write_text(json.dumps(report,indent=2)+'\n')
+          PY
+          for script in preinst postinst prerm postrm; do sh -n "source/control/$script"; done
+          python3 tools/test_uninstall_cleanup.py
+          python3 tools/test-channel-picons.py
+          python3 tools/test-canonical-picons.py
+          python3 tools/test-weather-condition-language.py
+          python3 tools/test-own-picon-gui-restart.py
+          python3 tools/test-warder-user-picons.py
+          python3 tools/test-warder-progress-log.py
+          python3 tools/test-warder-channel-worker.py
+          python3 tools/test-channel-picon-settings.py
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'tools')
+          import importlib.util
+          spec=importlib.util.spec_from_file_location('stylecheck','tools/test-setup-style.py')
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          actual=module.fingerprint_source(module.CURRENT)
+          print('::warning title=Review new controller fingerprint::'+actual)
+          PY
+          python3 tools/test-setup-style.py SetupStyleTests.test_configuration_actions_callbacks_and_controller_logic_are_unchanged
+          python3 tools/sync_header_version.py --check
+      - name: Build from approved 1.0.78 source without publishing
+        shell: bash
+        run: |
+          set -euo pipefail
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+          python3 tools/build-release-ipk.py
+          python3 - <<'PY'
+          import io,subprocess,tarfile,hashlib
+          from pathlib import Path
+          stable=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.79_all.ipk')
+          assert stable.is_file()
+          control_bytes=subprocess.check_output(['ar','p',str(stable),'control.tar.gz'])
+          members=[]
+          with tarfile.open(fileobj=io.BytesIO(control_bytes),mode='r:gz') as tar:
+              for member in tar.getmembers():
+                  body=tar.extractfile(member).read() if member.isfile() else None
+                  if member.name.lstrip('./') == 'control':
+                      body=body.replace(b'Version: 1.0.79-1\n',b'Version: 1.0.79-111\n')
+                      assert b'Version: 1.0.79-111\n' in body
+                      member.size=len(body)
+                  members.append((member,body))
+          transformed=io.BytesIO()
+          with tarfile.open(fileobj=transformed,mode='w:gz') as tar:
+              for member,body in members:
+                  tar.addfile(member,io.BytesIO(body) if body is not None else None)
+          path=Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-111_all.ipk')
+          path.parent.mkdir(parents=True,exist_ok=True)
+          with __import__('tempfile').TemporaryDirectory() as d:
+              wd=Path(d)
+              (wd/'debian-binary').write_bytes(b'2.0\n')
+              (wd/'control.tar.gz').write_bytes(transformed.getvalue())
+              (wd/'data.tar.gz').write_bytes(subprocess.check_output(['ar','p',str(stable),'data.tar.gz']))
+              subprocess.run(['ar','rcsD',str(path.resolve()),'debian-binary','control.tar.gz','data.tar.gz'],cwd=wd,check=True)
+          digest=hashlib.sha256(path.read_bytes()).hexdigest()
+          path.with_suffix('.ipk.sha256').write_text(digest+'  '+path.name+'\n')
+          print('PR99 artifact:',path,'SHA256:',digest)
+          PY
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.79-111_all.ipk.sha256)
+      - name: Upload isolated receiver test package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Warder-PR99-1.0.79-111
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-111_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-111_all.ipk.sha256
+          if-no-files-found: error
+          retention-days: 14

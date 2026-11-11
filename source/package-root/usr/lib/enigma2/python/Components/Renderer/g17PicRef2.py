@@ -21,6 +21,7 @@ from Components.Renderer.g17PicRef import g17PicRef
 from enigma import eServiceReference, eServiceCenter, ePixmap, eTimer
 from Tools.Directories import fileExists
 from Components.config import config
+from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
 try:
 	from Plugins.Extensions.setupGlass17.weaUtils import setDefPicon
 except: pass
@@ -30,6 +31,7 @@ class g17PicRef2(Renderer):
 	def __init__(self):
 		Renderer.__init__(self)
 		self.nameCache = { }
+		self._warderCacheLocation = None
 		self.pngname = ""
 		self.path = "picon"
 		self.isON = True
@@ -52,6 +54,17 @@ class g17PicRef2(Renderer):
 	GUI_WIDGET = ePixmap
 
 	def changed(self, what):
+		# Picons may move at runtime (PATHS or the expert-only destination).
+		# Cached filenames from a previous storage location must not survive.
+		try:
+			base = config.plugins.setupGlass17.par39.value
+			active, custom = selected_source(config)
+		except (AttributeError, ImportError):
+			base, active, custom = "", False, ""
+		location = (base, active, custom)
+		if location != self._warderCacheLocation:
+			self.nameCache.clear()
+			self._warderCacheLocation = location
 		if self.instance:
 			pngname = ""
 			if what[0] != self.CHANGED_CLEAR:

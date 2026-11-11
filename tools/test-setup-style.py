@@ -16,19 +16,19 @@ style=importlib.util.module_from_spec(spec);spec.loader.exec_module(style)
 BASELINE=json.loads(style.FIXTURE.read_text())
 CURRENT=style.PLUGIN.read_text()
 LAYOUTS=style.extract(CURRENT)
-# The v1.0.76 controller fingerprint includes the approved offline factory-icon
-# reset and localized storage menu/help changes from PR #88, in addition to
-# the earlier GLES gate, release labels, and reviewed dynamic picon destination
-# option from PR #93. Keep the historical fixture for
-# older releases, and pin the full AST to catch any unreviewed logic edits.
+# The v1.0.76 baseline retains reviewed controller behavior. PR #99 intentionally
+# changes picon lookup wiring, expert destination persistence and the PATHS label.
+# The working-branch fingerprint is pinned separately and still rejects unrelated edits.
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
 REVIEWED_1076_SHA256='fd235c106e17ee638b44c87a07411a3b8ef7a8288a5172d4525aa01fdc6f8bea'
-EXPECTED_SHA=(REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77', '1.0.78') else BASELINE['logic_sha256'])
+REVIEWED_PR99_SHA256='c057e541971ba6a442f1959e8e5f19e99c673db3dce2c23da21abf1a1e643777'
+EXPECTED_SHA=(REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
+              REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
 
 def fingerprint_source(source):
     # Stable releases change only the visible header version labels.
     # Restore those labels for the frozen 1.0.76 controller AST check.
-    if RUNTIME_VERSION in ('1.0.77', '1.0.78'):
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79'):
         source, count = re.subn(
             r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
             r'\g<1>1.0.76\2', source)
@@ -112,6 +112,7 @@ class SetupStyleTests(unittest.TestCase):
         # remain historical records; verify their approved successor patterns
         # explicitly instead of requiring obsolete AST nodes to still exist.
         evolved = {
+            4: "if t in (config.plugins.warderEvolutionPrimeTime.enabled, config.plugins.warderUserPicons.enabled):",
             3: "if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:",
             9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
             11: "in_default_channel_screen = default_geometry",
