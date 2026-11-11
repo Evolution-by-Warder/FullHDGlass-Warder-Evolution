@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Offline tests for GUI-safe background Warder channel downloads."""
+import importlib.util
+import tempfile
+import unittest
+from pathlib import Path
+
+MODULE = Path(__file__).resolve().parents[1] / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelWorker.py"
+spec = importlib.util.spec_from_file_location("warderChannelWorker", MODULE)
+worker_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(worker_module)
+
+
+class ChannelWorkerTests(unittest.TestCase):
+    def test_manifest_done_and_error_events(self):
+        success = worker_module.ManifestWorker("manifest", lambda url: {"url": url})
+        success.start()
+        success.thread.join(timeout=5)
+        self.assertFalse(success.thread.is_alive())
+        self.assertEqual(list(success.drain()), [("done", {"url": "manifest"})])
+
+        def broken(url):
+            raise ValueError("invalid manifest")
+        failure = worker_module.ManifestWorker("manifest", broken)
+        failure.start()
+        failure.thread.join(timeout=5)
+        self.assertEqual(list(failure.drain()), [("error", "invalid manifest")])
+
+    def test_package_reports_bytes_stages_and_result(self):
+        with tempfile.TemporaryDirectory() as root:
+            def fetch(job, archive, progress):
+                Path(archive).write_bytes(b"test")
+                progress(2, 4)
+                progress(4, 4)
+
+            def install(archive, destination, wanted):
+                self.assertEqual(Path(archive).read_bytes(), b"test")
+                self.assertEqual(wanted, {"a.png"})
+                return {"a.png"}, {"a.png", "b.png"}
+
+            worker = worker_module.ChannelWorker(
+                {"bytes": 4}, root, {"a.png"}, fetch, install)
+            worker.start()
+            worker.thread.join(timeout=5)
+            self.assertFalse(worker.thread.is_alive())
+            events = list(worker.drain())
+            self.assertIn(("bytes", (2, 4)), events)
+            self.assertIn(("bytes", (4, 4)), events)
+            self.assertEqual(events[-1], ("done", ({"a.png"}, {"a.png", "b.png"})))
+
+    def test_package_failure_does_not_report_success(self):
+        with tempfile.TemporaryDirectory() as root:
+            def broken(job, archive, progress):
+                raise ValueError("SHA-256 mismatch")
+
+            worker = worker_module.ChannelWorker(
+                {"bytes": 4}, root, None, broken,
+                lambda *args: self.fail("install must not be called"))
+            worker.start()
+            worker.thread.join(timeout=5)
+            self.assertEqual(list(worker.drain())[-1],
+                             ("error", "SHA-256 mismatch"))
+
+
+if __name__ == "__main__":
+    unittest.main()
