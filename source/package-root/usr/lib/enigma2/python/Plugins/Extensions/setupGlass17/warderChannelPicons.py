@@ -5,9 +5,14 @@ from re import sub
 
 
 def reference_names(reference, alternative):
-    fields = alternative(reference).split(':', 10)[:10]
+    resolved = alternative(reference)
+    if not isinstance(resolved, str):
+        return ()
+    fields = resolved.split(':', 10)[:10]
     if len(fields) != 10 or any('/' in field or '\\' in field for field in fields):
         return ()
+    # Canonical PNG files use uppercase hex reference components.
+    fields = [field.upper() for field in fields]
     names = ['_'.join(fields)]
     # Match the image/legacy skin aliases without changing native search paths.
     for reftype in dict.fromkeys((fields[0], '1')):
