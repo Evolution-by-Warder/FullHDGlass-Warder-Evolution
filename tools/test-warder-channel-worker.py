@@ -130,8 +130,8 @@ class ChannelWorkerTests(unittest.TestCase):
             events = list(worker.drain())
             self.assertIn(("bytes", (4, 4)), events)
             self.assertEqual(events[-1], ("done", 4))
-            self.assertTrue(any(x[0] == "stage" and "Extracting" in x[1]
-                                for x in events))
+            self.assertIn(("stage", "download"), events)
+            self.assertIn(("stage", "extract"), events)
 
 
 if __name__ == "__main__":
