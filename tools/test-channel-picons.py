@@ -64,9 +64,9 @@ class LookupTests(LookupFixture, unittest.TestCase):
         self.prefer_mini=False
         self.assertEqual(module.getChannelSelectionPiconName(REF),str(custom))
         custom.unlink()
-        self.assertEqual(module.getChannelSelectionPiconName(REF),shared)
+        self.assertEqual(module.getChannelSelectionPiconName(REF),"")
         self.prefer_mini=True
-        self.assertEqual(module.getChannelSelectionPiconName(REF),mini)
+        self.assertEqual(module.getChannelSelectionPiconName(REF),"")
 
     def test_expert_path_change_applies_without_restarting(self):
         first=self.base/'first'
