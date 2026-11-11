@@ -229,6 +229,36 @@ class InfoBarStorageTests(LookupFixture, unittest.TestCase):
         self.assertEqual(scope['findPicon'](widget,NAME),'')
 
 
+class ChannelSelectionPreviewTests(LookupFixture, unittest.TestCase):
+    def test_cursor_preview_loads_expert_picons_without_changing_auxiliary_logos(self):
+        tree=ast.parse((PKG/'Components/Renderer/g17RefTV.py').read_text())
+        owner=next(node for node in tree.body if isinstance(node,ast.ClassDef))
+        method=next(node for node in owner.body
+                    if isinstance(node,ast.FunctionDef) and node.name=='findPicon')
+        expert=NS(custom_destination=NS(value=True),destination=NS(value=str(self.base/'chosen')))
+        scope=dict(os=os,config=NS(plugins=NS(
+            setupGlass17=NS(par39=NS(value=str(self.base))),warderPiconExpert=expert)))
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV.py','exec'),scope)
+        chosen=self.base/'chosen'
+        chosen.mkdir()
+        first=chosen/(NAME+'.png')
+        second_name='1_0_1_3C3D_C90_3_EB0000_0_0_0'
+        second=chosen/(second_name+'.png')
+        first.write_bytes(b'one')
+        second.write_bytes(b'two')
+        widget=NS(source=NS(service=NS(toString=lambda:REF)))
+        widget.__enaSH=None
+        self.assertEqual(scope['findPicon'](widget,NAME),str(first))
+        self.assertEqual(scope['findPicon'](widget,second_name),str(second))
+        first.unlink()
+        self.assertEqual(scope['findPicon'](widget,NAME),'')
+        auxiliary=self.put('piconProv','CANALPLUS_CZ')
+        self.assertEqual(scope['findPicon'](widget,'CANALPLUS_CZ','piconProv'),auxiliary)
+        expert.custom_destination.value=False
+        default=self.put('picon')
+        self.assertEqual(scope['findPicon'](widget,NAME),default)
+
+
 class MainInfoBarLookupTests(LookupFixture, unittest.TestCase):
     def test_main_infobar_uses_expert_path_and_keeps_auxiliary_assets_private(self):
         tree=ast.parse((PKG/'Plugins/Extensions/setupGlass17/plugin.py').read_text())
