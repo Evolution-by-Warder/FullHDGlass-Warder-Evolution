@@ -22,7 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
-from .warderChannelWorker import ChannelWorker, ManifestWorker
+from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -9001,6 +9001,14 @@ class downloadMenu(Screen):
 		self.warderManifestDocument = None
 		self.warderManifestError = None
 		self.warderChannelPreparingQueue = None
+		self.warderAssetCatalogWorker = None
+		self.warderAssetWorker = None
+		self.warderAssetTimer = eTimer()
+		try:
+			self.warderAssetTimerConnection = self.warderAssetTimer.timeout.connect(self._warderAssetPoll)
+		except AttributeError:
+			self.warderAssetTimer.timeout.get().append(self._warderAssetPoll)
+		self.onClose.append(self.warderAssetTimer.stop)
 		self.warderChannelTimer = eTimer()
 		try:
 			self.warderChannelTimerConnection = self.warderChannelTimer.timeout.connect(self._warderChannelPoll)
@@ -9106,6 +9114,7 @@ class downloadMenu(Screen):
 		if not self.ena and not getattr(self, "warderProgressComplete", False):
 			return
 		self.warderChannelTimer.stop()
+		self.warderAssetTimer.stop()
 		if self.dwnTimer is not None and self.dwnTimer.isActive():
 			self.dwnTimer.stop()
 		self.dwnTimer_conn = None
@@ -10064,6 +10073,41 @@ class downloadMenu(Screen):
 			self.dwnTimer.start(25, True)
 			return
 
+	def _warderAssetPoll(self):
+		catalog = self.warderAssetCatalogWorker
+		if catalog is not None:
+			for kind, value in catalog.drain():
+				self.warderAssetCatalogWorker = None
+				if kind == "done":
+					self._warderProgressDone(_("Download catalog verified"))
+					self._warderAssetCatalogReady(value)
+				else:
+					self.dwnLoop(_("ERROR") + ": " + str(value))
+				if self.warderAssetWorker is None:
+					self.warderAssetTimer.stop()
+				return
+			return
+		worker = self.warderAssetWorker
+		if worker is None:
+			self.warderAssetTimer.stop()
+			return
+		for kind, value in worker.drain():
+			if kind == "bytes":
+				done, total = value
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob + " - %d%%" % min(100, int(100 * done / max(1, total))))
+				continue
+			self.warderAssetWorker = None
+			self.warderAssetTimer.stop()
+			if kind == "done":
+				self._warderProgressStage(_("Verifying and installing") + ": " + self.dwnJob)
+				try:
+					self._warderAssetFilesReady(str(self.warderAsset["filename"]), value)
+				except Exception as err:
+					self.dwnLoop(_("ERROR") + ": " + str(err))
+			else:
+				self.dwnLoop(_("ERROR") + ": " + str(value))
+			return
+
 	def dwnLoop(self, txt=""):
 		if self.dwnTimer.isActive():
 			self.dwnTimer.stop()
@@ -10235,7 +10279,16 @@ class downloadMenu(Screen):
 		self.instance.resize(eSize(1920,1080))
                   		
 	def downAnswerNow(self):
-		err, assets = getWarderAssets()
+		"""Fetch the auxiliary catalogue off the GUI event loop."""
+		if self.warderAssetCatalogWorker is not None or self.warderAssetWorker is not None:
+			return
+		self._warderProgressStage(_("Downloading") + ": catalog")
+		self.warderAssetCatalogWorker = ManifestWorker(None, lambda ignored: getWarderAssets())
+		self.warderAssetTimer.start(150, False)
+		self.warderAssetCatalogWorker.start()
+
+	def _warderAssetCatalogReady(self, result):
+		err, assets = result
 		if err != "":
 			self.dwnLoop(_("ERROR")+": "+err)
 			return
@@ -10298,17 +10351,29 @@ class downloadMenu(Screen):
 			shutil.rmtree(path, ignore_errors=True)
 				
 	def downloadPicons(self, what):
-		state = False
-		target = self.zzz + what
+		"""Download and unpack in a worker; finish UI bookkeeping on GUI thread."""
 		asset = getattr(self, "warderAsset", {})
+		self.warderAssetWorker = AssetWorker(asset, self.zzz + what, self._warderFetchExtractAsset)
+		self.warderAssetTimer.start(150, False)
+		self.warderAssetWorker.start()
+
+	def _warderFetchExtractAsset(self, asset, target, progress):
+		"""Worker-only I/O. No skin widgets or Enigma2 state are touched here."""
+		expected = str(asset["sha256"]).lower()
+		parts = asset.get("parts", [])
+		urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
+		source_id = asset.get("publication_source_id", "fullhd-production")
+		if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(
+			warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
+			raise ValueError("unsafe asset metadata")
+		root = str(asset.get("root", os.path.basename(target)[:-4]))
+		base = os.path.dirname(target)
+		if not root or "/" in root or "\\\\" in root or ".." in root:
+			raise ValueError("unsafe asset root")
+		h = hashlib.sha256()
+		total = 0
+		last_update = 0
 		try:
-			expected = str(asset["sha256"]).lower()
-			parts = asset.get("parts", [])
-			urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
-			source_id = asset.get("publication_source_id", "fullhd-production")
-			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
-				raise ValueError("unsafe asset metadata")
-			h = hashlib.sha256()
 			with open(target, "wb") as out:
 				for url in urls:
 					req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5-test1"})
@@ -10321,40 +10386,30 @@ class downloadMenu(Screen):
 								break
 							out.write(chunk)
 							h.update(chunk)
+							total += len(chunk)
+							if time1.monotonic() - last_update >= 0.25:
+								progress(total, int(asset.get("size", 0)))
+								last_update = time1.monotonic()
 			if h.hexdigest().lower() != expected:
 				raise ValueError("SHA-256 mismatch")
-			state = True
-		except Exception as err:
-			try:
-				if os.path.isfile(target):
-					os.remove(target)
-			except:
-				pass
-			state = False
-		if state:
-			if os.path.exists(("/tmp/more_icons")):
+			progress(total, int(asset.get("size", 0)))
+			# Only the selected staging root is replaced. Never delete user data.
+			if os.path.exists("/tmp/more_icons"):
 				self.rmTmp()
-			root = str(asset.get("root", what[:-4]))
-			if os.path.exists(self.zzz + root):
-				self.rmTmp2(self.zzz, root)
+			if os.path.exists(os.path.join(base, root)):
+				self.rmTmp2(base, root)
+			self._safeExtractZip(target, base)
+			if not os.path.exists(os.path.join(base, root)):
+				raise ValueError("Unzip failed: missing archive root")
+			return root
+		finally:
 			try:
-				self._safeExtractZip(target, self.zzz[:-1])
-			except Exception:
-				try:
-					os.remove(target)
-				except OSError:
-					pass
-				if os.path.exists(self.zzz + root):
-					self.rmTmp2(self.zzz, root)
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				return
-			try:
-				os.remove(target)
+				os.unlink(target)
 			except OSError:
 				pass
-			if not os.path.exists(self.zzz + root):
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				return
+
+	def _warderAssetFilesReady(self, what, root):
+		"""Maintain original per-asset installation and result accounting."""
 			if "7z" in self.type_download:
 				# Original archive extracts to /tmp/7z/7z_g.
 				try:
