@@ -130,6 +130,24 @@ class CoverSearchTests(unittest.TestCase):
                                                directory=directory, opener=opener), ('', ''))
             self.assertEqual(len(requests), count)
 
+    def test_negative_cache_does_not_cross_artwork_directories(self):
+        import tempfile
+        calls = []
+        def first_catalogue(request, timeout):
+            calls.append(request.full_url)
+            return Response(b'{"results":[]}', request.full_url)
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            covers.lookup_cover("Different singer", "Missing track", directory=first,
+                                opener=first_catalogue)
+            count = len(calls)
+            self.assertGreater(count, 0)
+            covers.lookup_cover("Different singer", "Missing track", directory=first,
+                                opener=first_catalogue)
+            self.assertEqual(count, len(calls))
+            covers.lookup_cover("Different singer", "Missing track", directory=second,
+                                opener=first_catalogue)
+            self.assertGreater(len(calls), count)
+
     def test_network_failures_are_not_stored_as_catalogue_misses(self):
         calls = []
         def offline(request, timeout):
