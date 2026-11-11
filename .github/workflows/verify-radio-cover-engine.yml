@@ -21,7 +21,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.9', '3.11']
+        # 3.9 toolcache retrieval on GitHub runners is presently failing
+        # before Python or any Warder test is executed; test the actual
+        # engine with an available Python runtime, without pip/apt calls.
+        python: ['3.11']
     steps:
       - uses: actions/checkout@v4
         with:
