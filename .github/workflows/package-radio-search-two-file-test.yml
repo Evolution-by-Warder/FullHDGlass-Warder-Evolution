@@ -1,0 +1,51 @@
+name: Package skin RADIO search engine receiver test
+on:
+  push:
+    branches:
+      - feature/radio-artwork-plugin-search-20261111
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCoverSearch.py'
+      - 'tools/test-radio-cover-search-port.py'
+      - 'tools/test-radio-artwork-benchmark.py'
+      - '.github/workflows/package-radio-search-two-file-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  radio-two-file-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python
+            tools
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline regression and version guard
+        run: |
+          set -euo pipefail
+          root=source/package-root/usr/lib/enigma2/python
+          test "$(cat "$root/Plugins/Extensions/setupGlass17/version")" = "1.0.79"
+          python -m py_compile "$root/Components/Renderer/WarderRadioArtwork.py"
+          python -m py_compile "$root/Plugins/Extensions/setupGlass17/warderRadioCoverSearch.py"
+          python tools/test-radio-cover-search-port.py -q
+          python tools/test-radio-artwork-benchmark.py -q
+      - name: Package only the two RADIO engine files
+        run: |
+          set -euo pipefail
+          root=source/package-root/usr/lib/enigma2/python
+          cd "$root"
+          zip -q "$GITHUB_WORKSPACE/Warder-RADIO-Search-Engine-1.0.79-2files-TEST.zip"             Components/Renderer/WarderRadioArtwork.py             Plugins/Extensions/setupGlass17/warderRadioCoverSearch.py
+          test "$(unzip -Z1 "$GITHUB_WORKSPACE/Warder-RADIO-Search-Engine-1.0.79-2files-TEST.zip" | wc -l)" -eq 2
+          sha256sum Components/Renderer/WarderRadioArtwork.py                     Plugins/Extensions/setupGlass17/warderRadioCoverSearch.py > "$GITHUB_WORKSPACE/RADIO-Search-test-SHA256SUMS.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Warder-RADIO-Search-Engine-1.0.79-2files-TEST
+          path: |
+            Warder-RADIO-Search-Engine-1.0.79-2files-TEST.zip
+            RADIO-Search-test-SHA256SUMS.txt
+          if-no-files-found: error
