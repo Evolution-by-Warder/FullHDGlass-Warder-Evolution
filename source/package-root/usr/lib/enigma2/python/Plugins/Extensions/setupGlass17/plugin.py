@@ -22,7 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
-from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker
+from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker, CanonicalWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -9001,6 +9001,13 @@ class downloadMenu(Screen):
 		self.warderManifestDocument = None
 		self.warderManifestError = None
 		self.warderChannelPreparingQueue = None
+		self.warderAuxWorker = None
+		self.warderAuxTimer = eTimer()
+		try:
+			self.warderAuxTimerConnection = self.warderAuxTimer.timeout.connect(self._warderAuxPoll)
+		except AttributeError:
+			self.warderAuxTimer.timeout.get().append(self._warderAuxPoll)
+		self.onClose.append(self.warderAuxTimer.stop)
 		self.warderLegacyBatch = None
 		self.warderLegacyWorker = None
 		self.warderLegacyTimer = eTimer()
@@ -9124,6 +9131,7 @@ class downloadMenu(Screen):
 		self.warderChannelTimer.stop()
 		self.warderAssetTimer.stop()
 		self.warderLegacyTimer.stop()
+		self.warderAuxTimer.stop()
 		if self.dwnTimer is not None and self.dwnTimer.isActive():
 			self.dwnTimer.stop()
 		self.dwnTimer_conn = None
@@ -9723,7 +9731,7 @@ class downloadMenu(Screen):
 			raise ValueError("unsafe auxiliary destination")
 		return destination
 
-	def _warderFetchAuxiliaryArchive(self, asset, archive):
+	def _warderFetchAuxiliaryArchive(self, asset, archive, progress=None):
 		"""Download and reassemble source-bound archive parts; verify SHA and ZIP."""
 		source_id = asset.get("publication_source_id")
 		parts = asset.get("parts", [])
@@ -9735,6 +9743,7 @@ class downloadMenu(Screen):
 			raise ValueError("invalid Warder auxiliary archive size")
 		digest = hashlib.sha256()
 		total = 0
+		last_update = 0
 		with open(archive, "wb") as output:
 			for url in urls:
 				req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
@@ -9753,6 +9762,11 @@ class downloadMenu(Screen):
 							raise ValueError("oversized Warder auxiliary archive")
 						output.write(chunk)
 						digest.update(chunk)
+						if progress and time1.monotonic() - last_update >= 0.25:
+							progress(total, expected_size)
+							last_update = time1.monotonic()
+		if progress:
+			progress(total, expected_size)
 		if total != expected_size:
 			raise ValueError("Warder auxiliary archive size mismatch")
 		if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():
@@ -9825,9 +9839,9 @@ class downloadMenu(Screen):
 				except OSError:
 					pass
 
-	def _warderRunAuxiliaryComposite(self, row, variant_id):
+	def _warderRunAuxiliaryComposite(self, row, variant_id, progress=None, stage=None):
 	    from .warderCanonicalPicons import install
-	    return install(self, row, variant_id, getWarderAssets, _)
+	    return install(self, row, variant_id, getWarderAssets, _, progress, stage)
 
 	def _warderRemoveStaleChannelPicons(self, destination, positions, package_names):
 		"""Remove only stale service PNGs for selected orbits after package success."""
@@ -10225,6 +10239,29 @@ class downloadMenu(Screen):
 			self._warderLegacyLaunch()
 			return
 
+	def _warderAuxPoll(self):
+		worker = self.warderAuxWorker
+		if worker is None:
+			return
+		for kind, value in worker.drain():
+			if kind == "stage":
+				labels = {
+					"catalog": _("Downloading") + ": " + _("Catalog"),
+					"download": _("Downloading"),
+					"extract": _("Extracting"),
+					"copy": _("Verifying and installing")}
+				self._warderProgressStage(labels.get(value, str(value)) + ": " + self.dwnJob)
+				continue
+			if kind == "bytes":
+				done, total = value
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob + " - %d%%" %
+					min(100, int(100 * done / max(1, total))))
+				continue
+			self.warderAuxTimer.stop()
+			self.warderAuxWorker = None
+			self.dwnLoop(value if kind == "done" else _("ERROR") + ": " + str(value))
+			return
+
 	def _warderAssetPoll(self):
 		catalog = self.warderAssetCatalogWorker
 		if catalog is not None:
@@ -10372,11 +10409,9 @@ class downloadMenu(Screen):
 					self.dwnJob = str(self.menuListAll[x][1])
 					self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 					if self.menuListAll[x][0] in ("aux-prov", "aux-sat"):
-						try:
-							aux_result = self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
-						except Exception as err:
-							aux_result = _("ERROR") + ": " + str(err)
-						self.dwnLoop(aux_result)
+						self.warderAuxWorker = CanonicalWorker(self.menuListAll[x][0], self.type_download, self._warderRunAuxiliaryComposite)
+						self.warderAuxTimer.start(150, False)
+						self.warderAuxWorker.start()
 						return
 					elif '***' in self.menuListAll[x][1]:
 						self.enaSelectsat = True
