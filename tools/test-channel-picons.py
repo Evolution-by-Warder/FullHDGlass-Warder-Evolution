@@ -129,6 +129,11 @@ class LookupTests(LookupFixture, unittest.TestCase):
         self.put('picon')
         self.assertEqual(self.lookup(),mini)
 
+    def test_lowercase_reference_matches_canonical_png(self):
+        shared=self.put('picon')
+        self.prefer_mini=False
+        self.assertEqual(self.lookup(REF.lower()),shared)
+
     def test_namespace_and_iptv_aliases(self):
         mini=self.put('picon_50x30',NAME.replace('_19_','_1_'))
         self.assertEqual(self.lookup(REF.replace('EB0000','EB1234')),mini)
