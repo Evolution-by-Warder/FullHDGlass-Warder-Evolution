@@ -10079,7 +10079,8 @@ class downloadMenu(Screen):
 			for kind, value in catalog.drain():
 				self.warderAssetCatalogWorker = None
 				if kind == "done":
-					self._warderProgressDone(_("Download catalog verified"))
+					if not value[0]:
+						self._warderProgressDone(_("Download catalog verified"))
 					self._warderAssetCatalogReady(value)
 				else:
 					self.dwnLoop(_("ERROR") + ": " + str(value))
@@ -10398,9 +10399,13 @@ class downloadMenu(Screen):
 				self.rmTmp()
 			if os.path.exists(os.path.join(base, root)):
 				self.rmTmp2(base, root)
-			self._safeExtractZip(target, base)
-			if not os.path.exists(os.path.join(base, root)):
-				raise ValueError("Unzip failed: missing archive root")
+			try:
+				self._safeExtractZip(target, base)
+				if not os.path.exists(os.path.join(base, root)):
+					raise ValueError("Unzip failed: missing archive root")
+			except Exception:
+				self.rmTmp2(base, root)
+				raise
 			return root
 		finally:
 			try:
