@@ -124,6 +124,9 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
         return '', ''
     deadline = clock() + 18
     key = hashlib.sha256((identity.norm(artist) + '|' + identity.norm(title)).encode()).hexdigest()
+    # A previous miss in another cache directory must not suppress a fresh test
+    # or a receiver that changed its artwork storage location.
+    miss_key = (os.path.abspath(directory), key)
     if os.path.islink(directory):
         return '', ''
     os.makedirs(directory, mode=0o700, exist_ok=True)
@@ -134,10 +137,10 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
         if os.path.isfile(path) and not os.path.islink(path):
             return path, source
     with _misses_lock:
-        until = _misses.get(key, 0)
+        until = _misses.get(miss_key, 0)
         if until > clock():
             return '', ''
-        _misses.pop(key, None)
+        _misses.pop(miss_key, None)
     if opener is None:
         opener = lambda request, timeout: urlopen(request, timeout=timeout, context=ssl.create_default_context())
 
@@ -255,5 +258,5 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
         with _misses_lock:
             if len(_misses) >= _MISS_LIMIT:
                 _misses.clear()  # Bounded, ephemeral RAM state only.
-            _misses[key] = clock() + _MISS_TTL_SECONDS
+            _misses[miss_key] = clock() + _MISS_TTL_SECONDS
     return '', ''
