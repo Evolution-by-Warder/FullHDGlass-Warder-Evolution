@@ -137,6 +137,7 @@ class g17RefTV3(Renderer):
 							candidate = os.path.join(custom, serviceName + ".png")
 							if os.path.isfile(candidate):
 								return candidate
+							return ""
 				except AttributeError:
 					pass
 			source = getattr(config.plugins.setupGlass17, "par231", None)
