@@ -39,17 +39,25 @@ class ProgressLog(object):
         line = self._sanitize(description)
         key = self._stage_key(line)
         if key == self.active_key and self.active_index is not None:
+            # In-place update: percent changes never flood the display.
             self.entries[self.active_index] = "[>>] " + line
         else:
+            # The previous operation has advanced to the next stage.
+            # Keep its line visible instead of silently replacing it.
+            if self.active_index is not None and self.active_index < len(self.entries):
+                previous = self.entries[self.active_index]
+                if previous.startswith("[>>] "):
+                    self.entries[self.active_index] = "[OK] " + previous[5:]
             self.active_key = key
             self.active_index = self._add("[>>] " + line)
 
     def done(self, description, success=True):
-        line = ("[OK] " if success else "[ERROR] ") + self._sanitize(description)
+        prefix = "[OK] " if success else "[ERROR] "
         if self.active_index is not None and self.active_index < len(self.entries):
-            self.entries[self.active_index] = line
-        else:
-            self._add(line)
+            previous = self.entries[self.active_index]
+            if previous.startswith("[>>] "):
+                self.entries[self.active_index] = prefix + previous[5:]
+        self._add(prefix + self._sanitize(description))
         self.active_key = None
         self.active_index = None
 
