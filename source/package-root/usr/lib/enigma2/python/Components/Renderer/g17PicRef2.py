@@ -57,11 +57,11 @@ class g17PicRef2(Renderer):
 		# Cached filenames from a previous storage location must not survive.
 		try:
 			base = config.plugins.setupGlass17.par39.value
-			custom = (config.plugins.warderPiconExpert.destination.value
-				if config.plugins.warderPiconExpert.custom_destination.value else "")
-		except AttributeError:
-			base, custom = "", ""
-		location = (base, custom)
+			from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
+			active, custom = selected_source(config)
+		except (AttributeError, ImportError):
+			base, active, custom = "", False, ""
+		location = (base, active, custom)
 		if location != self._warderCacheLocation:
 			self.nameCache.clear()
 			self._warderCacheLocation = location
