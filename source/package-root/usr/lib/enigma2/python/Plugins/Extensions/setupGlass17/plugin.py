@@ -10368,7 +10368,7 @@ class downloadMenu(Screen):
 			raise ValueError("unsafe asset metadata")
 		root = str(asset.get("root", os.path.basename(target)[:-4]))
 		base = os.path.dirname(target)
-		if not root or "/" in root or "\\\\" in root or ".." in root:
+		if not root or "/" in root or "\\" in root or ".." in root:
 			raise ValueError("unsafe asset root")
 		h = hashlib.sha256()
 		total = 0
@@ -10410,56 +10410,54 @@ class downloadMenu(Screen):
 
 	def _warderAssetFilesReady(self, what, root):
 		"""Maintain original per-asset installation and result accounting."""
-			if "7z" in self.type_download:
-				# Original archive extracts to /tmp/7z/7z_g.
-				try:
-					os.makedirs(os.path.dirname(SEVENZIP), exist_ok=True)
-					shutil.copy2(os.path.join(self.zzz, root, "7z_g"), SEVENZIP)
-					os.chmod(SEVENZIP, 0o755)
-				except OSError:
-					pass
-				self.rmTmp2(self.zzz, root)
-				numPict = 0
-				if find_sevenzip(SEVENZIP):
-					numPict = 1
-				total = 1
-			elif "icon_sets_preview" in self.type_download:
-				self.iconPreviewManage()
-				return
-			elif self.type_download in ['animWeatherIcons',"weatherIconsN","extraScreens","menuicons"]:
-				numPict = 0
-				total = 0
-				if "animWeatherIcons" in self.type_download:
-					rng = 48
-					typeGrf = "animIconWeather"
-				else:
-					rng = MAXSCREENS
-					typeGrf = "extraScreens17"
-					if not "extraScreens" in self.type_download:
-						rng = MAXICONS
-						typeGrf = "menuIcons"
-						if "weatherIconsN" in self.type_download:
-							typeGrf = "weatherIcons"
-				for i in range(1,rng):
-					subPath = "%s/%s" % (typeGrf, i)
-					if os.path.exists(("/tmp/%s" % subPath)):
-						if not os.path.exists((config.plugins.setupGlass17.par39.value + "/" + subPath)):
-							os.makedirs(config.plugins.setupGlass17.par39.value + "/" + subPath, exist_ok=True)
-						x1, x2 = self.cprmFiles(subPath)
-						numPict += x1
-						total += x2
-				try:
-					os.rmdir("/tmp/%s" % typeGrf)
-				except OSError:
-					pass
+		if "7z" in self.type_download:
+			# Original archive extracts to /tmp/7z/7z_g.
+			try:
+				os.makedirs(os.path.dirname(SEVENZIP), exist_ok=True)
+				shutil.copy2(os.path.join(self.zzz, root, "7z_g"), SEVENZIP)
+				os.chmod(SEVENZIP, 0o755)
+			except OSError:
+				pass
+			self.rmTmp2(self.zzz, root)
+			numPict = 0
+			if find_sevenzip(SEVENZIP):
+				numPict = 1
+			total = 1
+		elif "icon_sets_preview" in self.type_download:
+			self.iconPreviewManage()
+			return
+		elif self.type_download in ['animWeatherIcons',"weatherIconsN","extraScreens","menuicons"]:
+			numPict = 0
+			total = 0
+			if "animWeatherIcons" in self.type_download:
+				rng = 48
+				typeGrf = "animIconWeather"
 			else:
-				numPict, total = self.cprmFiles(root)
-			if numPict-total == 0:
-				self.dwnLoop(_("SUCCESSFUL")+": "+warderPiconSync.success_summary(total, None, _))
-			else:
-				self.dwnLoop(_("ERROR")+": " + what[:-4] + ", " + (_("%d of %d picons failed to install") % (total-numPict, total)))
+				rng = MAXSCREENS
+				typeGrf = "extraScreens17"
+				if not "extraScreens" in self.type_download:
+					rng = MAXICONS
+					typeGrf = "menuIcons"
+					if "weatherIconsN" in self.type_download:
+						typeGrf = "weatherIcons"
+			for i in range(1,rng):
+				subPath = "%s/%s" % (typeGrf, i)
+				if os.path.exists(("/tmp/%s" % subPath)):
+					if not os.path.exists((config.plugins.setupGlass17.par39.value + "/" + subPath)):
+						os.makedirs(config.plugins.setupGlass17.par39.value + "/" + subPath, exist_ok=True)
+					x1, x2 = self.cprmFiles(subPath)
+					numPict += x1
+					total += x2
+			try:
+				os.rmdir("/tmp/%s" % typeGrf)
+			except OSError:
+				pass
 		else:
-			self.dwnLoop(_("ERROR")+": " + what[:-4])
+			numPict, total = self.cprmFiles(root)
+		if numPict-total == 0:
+			self.dwnLoop(_("SUCCESSFUL")+": "+warderPiconSync.success_summary(total, None, _))
+		else:
+			self.dwnLoop(_("ERROR")+": " + what[:-4] + ", " + (_("%d of %d picons failed to install") % (total-numPict, total)))
 
 	def _warderFetchChannelJob(self, job, archive, progress=None):
 		"""Reassemble a package only from the root bound to its source manifest."""
