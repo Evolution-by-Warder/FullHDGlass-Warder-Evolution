@@ -63,7 +63,8 @@ class ChannelWorkerTests(unittest.TestCase):
 
     def test_auxiliary_asset_worker_reports_progress(self):
         with tempfile.TemporaryDirectory() as root:
-            def work(asset, target, progress):
+            def work(asset, target, progress, stage):
+                stage('Checking archive')
                 progress(1, 2)
                 progress(2, 2)
                 self.assertEqual(asset["root"], "icons")
@@ -75,10 +76,11 @@ class ChannelWorkerTests(unittest.TestCase):
             worker.thread.join(timeout=5)
             self.assertFalse(worker.thread.is_alive())
             self.assertEqual(list(worker.drain()), [
-                ("bytes", (1, 2)), ("bytes", (2, 2)), ("done", "icons")])
+                ("stage", "Checking archive"), ("bytes", (1, 2)),
+                ("bytes", (2, 2)), ("done", "icons")])
 
     def test_auxiliary_asset_worker_propagates_error(self):
-        def reject(asset, target, progress):
+        def reject(asset, target, progress, stage):
             raise ValueError("unsafe asset redirect")
         worker = worker_module.AssetWorker(
             {"root": "icons"}, "/tmp/asset.zip", reject)
