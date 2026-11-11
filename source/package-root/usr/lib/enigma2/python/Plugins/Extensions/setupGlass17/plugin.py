@@ -10084,6 +10084,7 @@ class downloadMenu(Screen):
 
 	def _warderFinishLegacyQueue(self):
 		"""Complete the old package accounting only after the background queue ends."""
+		legacy_destination = self.warderLegacyPiconDestination
 		archive_count = len(self.warderLegacyPackageResults)
 		if self.warderLegacyArchivesProcessed < archive_count:
 			self.warderLegacyChannelFailures += archive_count - self.warderLegacyArchivesProcessed
