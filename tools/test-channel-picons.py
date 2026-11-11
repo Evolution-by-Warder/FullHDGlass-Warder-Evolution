@@ -61,9 +61,10 @@ class LookupTests(LookupFixture, unittest.TestCase):
         self.assertEqual(module.getPiconName(REF),str(self.base/'picon_50x30'/(NAME+'.png')))
 
     def test_mode_changes_are_read_by_existing_callbacks(self):
-        mini=self.put('picon_50x30'); callback=self.module.getPiconName
+        mini=self.put('picon_50x30'); shared=self.put('picon')
+        callback=self.module.getPiconName
         self.prefer_mini=False
-        self.assertEqual(callback(REF),mini)
+        self.assertEqual(callback(REF),shared)
         self.prefer_mini=True
         self.assertEqual(callback(REF),mini)
 
@@ -83,6 +84,12 @@ class LookupTests(LookupFixture, unittest.TestCase):
         self.assertEqual(self.lookup(),shared)
         (self.base/'picon_50x30').mkdir()
         self.assertEqual(self.lookup(),shared)
+
+    def test_external_system_png_never_wins_against_private_picon(self):
+        shared=self.put('picon')
+        self.prefer_mini=False
+        self.assertEqual(self.lookup(),shared)
+        self.native.assert_not_called()
 
     def test_missing_skin_picon_does_not_use_other_directory(self):
         self.assertEqual(self.lookup(),'')
@@ -199,7 +206,7 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         imports=[alias.name for n in tree.body if isinstance(n,ast.ImportFrom) and n.module=='Components.Renderer.Picon' for alias in n.names]
         name=next(n for n in ('getChannelSelectionPiconName','getPiconName') if n in imports)
         binding=next(n for n in ast.walk(tree) if isinstance(n,ast.If) and ast.unparse(n.test)=='config.usage.service_icon_enable.value')
-        mini=self.put('picon_50x30'); self.put('picon')
+        mini=self.put('picon_50x30'); shared=self.put('picon')
         content=NS(setGetPiconNameFunc=Mock())
         scope=dict(vars(self.module),self=NS(l=content),config=NS(usage=NS(service_icon_enable=NS(value=True))))
         exec(compile(ast.Module(body=[binding],type_ignores=[]),'native-ServiceList.py','exec'),scope)
