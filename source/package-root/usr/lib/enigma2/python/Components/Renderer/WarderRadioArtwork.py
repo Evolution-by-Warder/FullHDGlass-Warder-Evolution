@@ -21,9 +21,11 @@ from Components.Converter.WarderRadioMetadata import current_song
 try:
     from Plugins.Extensions.setupGlass17 import warderSongIdentity as song_identity
     from Plugins.Extensions.setupGlass17 import warderRuntimeCache as runtime_cache
+    from Plugins.Extensions.setupGlass17 import warderRadioCoverSearch as cover_search
 except ImportError:
     import warderSongIdentity as song_identity
     import warderRuntimeCache as runtime_cache
+    import warderRadioCoverSearch as cover_search
 
 
 class WarderRadioArtwork(Renderer):
@@ -334,7 +336,9 @@ class WarderRadioArtwork(Renderer):
             path = ""
             try:
                 cached = os.path.join(self._cacheDir(), hashlib.sha1(key.encode("utf-8")).hexdigest() + ".jpg")
-                path = cached if os.path.isfile(cached) else self._lookupExact(artist, title, key)
+                # Fast, bounded Radio-plugin search runs only in this I/O worker.
+                # Preserve successful legacy cache entries without new requests.
+                path = cached if os.path.isfile(cached) else cover_search.lookup_cover(artist, title)[0]
             except Exception as err:
                 self._diag("ERROR %s: %s" % (err.__class__.__name__, err))
                 path = ""
