@@ -9463,6 +9463,7 @@ class downloadMenu(Screen):
 		if key == "destination" and config.plugins.warderPiconExpert.custom_destination.value:
 			config.plugins.warderPiconExpert.destination.value = value
 			config.plugins.warderPiconExpert.destination.save()
+			configfile.save()
 		if key == "resolution" and not config.plugins.warderPiconExpert.custom_destination.value:
 			self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
 				config.plugins.setupGlass17.par39.value, value)
@@ -9486,6 +9487,7 @@ class downloadMenu(Screen):
 		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "destination", path)
 		config.plugins.warderPiconExpert.destination.value = path
 		config.plugins.warderPiconExpert.destination.save()
+		configfile.save()
 		self._setWarderPiconPrepared("wp-dest")
 		self.createList()
 		self.reactivate()
