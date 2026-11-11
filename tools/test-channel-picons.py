@@ -49,6 +49,40 @@ class LookupFixture:
 
 
 class LookupTests(LookupFixture, unittest.TestCase):
+    def test_expert_custom_path_wins_over_default_in_both_modes(self):
+        shared=self.put('picon')
+        mini=self.put('picon_50x30')
+        custom_dir=self.base/'expert-folder'
+        custom_dir.mkdir()
+        custom=(custom_dir/(NAME+'.png'))
+        custom.write_bytes(b'expert')
+        module=NS(getChannelSelectionPiconName=self.native)
+        picons.install(module,lambda:True,lambda:str(self.base),
+                      lambda ref:ref,self.get_name,lambda n:n,
+                      lambda:self.prefer_mini,lambda:str(custom_dir))
+        self.assertEqual(module.getChannelSelectionPiconName(REF),str(custom))
+        self.prefer_mini=False
+        self.assertEqual(module.getChannelSelectionPiconName(REF),str(custom))
+        custom.unlink()
+        self.assertEqual(module.getChannelSelectionPiconName(REF),shared)
+        self.prefer_mini=True
+        self.assertEqual(module.getChannelSelectionPiconName(REF),mini)
+
+    def test_expert_path_change_applies_without_restarting(self):
+        first=self.base/'first'
+        second=self.base/'second'
+        for folder in (first, second):
+            folder.mkdir()
+            (folder/(NAME+'.png')).write_bytes(b'expert')
+        selection=[str(first)]
+        module=NS(getPiconName=self.native)
+        picons.install(module,lambda:True,lambda:str(self.base),
+                      lambda ref:ref,self.get_name,lambda n:n,
+                      lambda:False,lambda:selection[0])
+        self.assertEqual(module.getPiconName(REF),str(first/(NAME+'.png')))
+        selection[0]=str(second)
+        self.assertEqual(module.getPiconName(REF),str(second/(NAME+'.png')))
+
     def test_system_mode_uses_private_shared_picon_even_with_both_skin_sets(self):
         self.put('picon_50x30'); shared=self.put('picon'); self.prefer_mini=False
         self.assertEqual(self.lookup(),shared)
