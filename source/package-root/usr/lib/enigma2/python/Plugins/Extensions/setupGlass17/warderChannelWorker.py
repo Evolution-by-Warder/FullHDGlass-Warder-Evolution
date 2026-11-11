@@ -240,3 +240,37 @@ class LegacyCopyWorker(object):
             self.events.put(("done", self.copy(self.folder)))
         except Exception as error:
             self.events.put(("error", str(error)))
+
+
+class CanonicalWorker(object):
+    """Run checked provider/satellite bundle installation off the GUI thread."""
+    def __init__(self, row, variant, install):
+        self.row = row
+        self.variant = variant
+        self.install = install
+        self.events = Queue()
+        self.thread = threading.Thread(target=self.run, name="WarderAuxiliaryPicons")
+        self.thread.daemon = True
+
+    def start(self):
+        self.thread.start()
+
+    def drain(self):
+        while True:
+            try:
+                yield self.events.get_nowait()
+            except Empty:
+                return
+
+    def run(self):
+        try:
+            result = self.install(self.row, self.variant, self.progress, self.stage)
+            self.events.put(("done", result))
+        except Exception as error:
+            self.events.put(("error", str(error)))
+
+    def progress(self, done, total):
+        self.events.put(("bytes", (done, total)))
+
+    def stage(self, name):
+        self.events.put(("stage", name))
