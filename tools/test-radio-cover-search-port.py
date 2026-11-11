@@ -74,6 +74,32 @@ class CoverSearchTests(unittest.TestCase):
             self.assertEqual(provider, "TheAudioDB")
             self.assertEqual(Path(path).read_bytes(), self.IMAGE)
 
+    def test_no_hit_is_not_retried_immediately_after_valid_catalogue_response(self):
+        requests = []
+        def opener(request, timeout):
+            requests.append(request.full_url)
+            return Response(b'{"results":[]}', request.full_url)
+        with tempfile.TemporaryDirectory() as directory:
+            self.assertEqual(covers.lookup_cover("Unknown performer", "No such song",
+                                               directory=directory, opener=opener), ('', ''))
+            count = len(requests)
+            self.assertGreater(count, 0)
+            self.assertEqual(covers.lookup_cover("Unknown performer", "No such song",
+                                               directory=directory, opener=opener), ('', ''))
+            self.assertEqual(len(requests), count)
+
+    def test_network_failures_are_not_stored_as_catalogue_misses(self):
+        calls = []
+        def offline(request, timeout):
+            calls.append(request.full_url)
+            raise OSError("network offline")
+        with tempfile.TemporaryDirectory() as directory:
+            covers.lookup_cover("Offline singer", "Offline track", directory=directory, opener=offline)
+            first = len(calls)
+            self.assertGreater(first, 0)
+            covers.lookup_cover("Offline singer", "Offline track", directory=directory, opener=offline)
+            self.assertGreater(len(calls), first)
+
 
 if __name__ == "__main__":
     unittest.main()
