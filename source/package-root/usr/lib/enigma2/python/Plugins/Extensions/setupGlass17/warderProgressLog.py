@@ -58,5 +58,17 @@ class ProgressLog(object):
         self.active_index = None
         self._add(self._sanitize(description))
 
+    def divider(self):
+        """Separate completed packages, without creating an active work step.
+
+        Multiple completion notifications for the same package must not
+        produce stacked lines. The separator does not count as a work step.
+        """
+        self.active_key = None
+        self.active_index = None
+        line = "-" * 78
+        if self.entries and self.entries[-1] != line:
+            self._add(line)
+
     def tail(self):
         return "\n".join(self.entries[-self.visible_lines:])
