@@ -77,7 +77,7 @@ jobs:
           python3 - <<'PY'
           import io,subprocess,tarfile,hashlib
           from pathlib import Path
-          stable=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.78_all.ipk')
+          stable=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.79_all.ipk')
           assert stable.is_file()
           control_bytes=subprocess.check_output(['ar','p',str(stable),'control.tar.gz'])
           members=[]
