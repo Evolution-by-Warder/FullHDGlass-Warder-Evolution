@@ -22,7 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
-from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker
+from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -9001,6 +9001,14 @@ class downloadMenu(Screen):
 		self.warderManifestDocument = None
 		self.warderManifestError = None
 		self.warderChannelPreparingQueue = None
+		self.warderLegacyBatch = None
+		self.warderLegacyWorker = None
+		self.warderLegacyTimer = eTimer()
+		try:
+			self.warderLegacyTimerConnection = self.warderLegacyTimer.timeout.connect(self._warderLegacyPoll)
+		except AttributeError:
+			self.warderLegacyTimer.timeout.get().append(self._warderLegacyPoll)
+		self.onClose.append(self.warderLegacyTimer.stop)
 		self.warderAssetCatalogWorker = None
 		self.warderAssetWorker = None
 		self.warderAssetTimer = eTimer()
@@ -9115,6 +9123,7 @@ class downloadMenu(Screen):
 			return
 		self.warderChannelTimer.stop()
 		self.warderAssetTimer.stop()
+		self.warderLegacyTimer.stop()
 		if self.dwnTimer is not None and self.dwnTimer.isActive():
 			self.dwnTimer.stop()
 		self.dwnTimer_conn = None
@@ -10073,6 +10082,139 @@ class downloadMenu(Screen):
 			self.dwnTimer.start(25, True)
 			return
 
+	def _warderFinishLegacyQueue(self):
+		"""Complete the old package accounting only after the background queue ends."""
+		archive_count = len(self.warderLegacyPackageResults)
+		if self.warderLegacyArchivesProcessed < archive_count:
+			self.warderLegacyChannelFailures += archive_count - self.warderLegacyArchivesProcessed
+		self.enaSelectsat = False
+		self.warderLegacyChannelQueue = None
+		self.warderLegacyPiconDestination = None
+		coverage = warderPiconSync.classify_requested_picons(
+			self.warderLegacyChannelWanted,
+			self.warderLegacyChannelAvailable,
+			self.warderLegacyChannelInstalled)
+		missing_by_position = {}
+		for filename in coverage["missing"]:
+			position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
+			missing_by_position[position] = missing_by_position.get(position, 0) + 1
+		package_results = []
+		for item in getattr(self, "warderLegacyPackageResults", []):
+			position = item.get("orbital_position")
+			item["failures"] += missing_by_position.pop(position, 0) if position else 0
+			if position and not item.get("processed"):
+				item["failures"] += 1
+			package_results.append(item)
+		for position, failures in missing_by_position.items():
+			package_results.append({"selector_id": "unbound", "orbital_position": position,
+				"updated": 0, "failures": failures})
+		if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not self.warderLegacyChannelFailures:
+			try:
+				self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
+			except Exception:
+				if package_results:
+					package_results[0]["failures"] += 1
+		summary = warderPiconSync.package_result_summary(package_results, _)
+		self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
+		result_text = summary["status"] + ": " + summary["text"]
+		self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
+		self._warderProgressDone(self.dwnJob + ": " + result_text, not summary["failures"])
+		self._recordWarderOperationResult(result_text)
+		self.dwnTimer.start(25, True)
+
+	def _warderStartLegacyDownloads(self, jobs, folder, pinned=False):
+		"""Process one legacy 7z per background worker; only GUI thread updates widgets."""
+		self.warderLegacyBatch = list(jobs)
+		self.warderLegacyBatchIndex = 0
+		self.warderLegacyBatchFolder = folder
+		self.warderLegacyBatchPinned = bool(pinned)
+		self.warderLegacyBatchMessages = []
+		self._warderLegacyLaunch()
+
+	def _warderLegacyLaunch(self):
+		while self.warderLegacyBatchIndex < len(self.warderLegacyBatch):
+			x = self.warderLegacyBatchIndex
+			label, archive_id = self.warderLegacyBatch[x][:2]
+			self.warderLegacyCurrentPackageLabel = label if self.warderLegacyPiconDestination else None
+			self.warderLegacyCurrentPackageResult = (
+				self.warderLegacyPackageResults[x]
+				if self.warderLegacyPiconDestination and x < len(self.warderLegacyPackageResults) else None)
+			url = self._legacyPiconArchiveUrl(archive_id)
+			if not url:
+				self._warderLegacyAppend(_("ERROR") + ": (" + self.warderLegacyBatchFolder + ") " +
+					str(label) + ", " + _("Preserved legacy archive is not available in Warder migration catalogue") + " [" + str(archive_id) + "]", False)
+				self.warderLegacyBatchIndex += 1
+				continue
+			sevenzip = find_sevenzip(SEVENZIP)
+			if not sevenzip:
+				self._warderLegacyAppend(_("ERROR") + ": 7zip helper unavailable", False)
+				self.warderLegacyBatchIndex += 1
+				continue
+			extract_dir = os.path.realpath(os.path.join("/tmp", self.warderLegacyBatchFolder))
+			if extract_dir == "/tmp" or not extract_dir.startswith("/tmp/"):
+				self._warderLegacyAppend(_("ERROR") + ": " + _("Invalid extraction path"), False)
+				self.warderLegacyBatchIndex += 1
+				continue
+			self._warderProgressStage(_("Downloading") + ": " + str(label))
+			self.warderLegacyWorker = LegacyArchiveWorker(url, extract_dir, sevenzip)
+			self.warderLegacyTimer.start(150, False)
+			self.warderLegacyWorker.start()
+			return
+		self.warderLegacyTimer.stop()
+		pinned = self.warderLegacyBatchPinned
+		message = "\n".join(self.warderLegacyBatchMessages)
+		self.warderLegacyBatch = None
+		self.warderLegacyWorker = None
+		if pinned:
+			self._warderFinishLegacyQueue()
+		else:
+			self.dwnLoop(message or (_("ERROR") + ": " + _("Unknown error detected, try again!!!")))
+
+	def _warderLegacyAppend(self, text, success):
+		self.warderLegacyBatchMessages.append(str(text))
+		self._warderProgressDone(text, success)
+
+	def _warderLegacyPoll(self):
+		worker = self.warderLegacyWorker
+		if worker is None:
+			return
+		label = str(self.warderLegacyBatch[self.warderLegacyBatchIndex][0])
+		for kind, value in worker.drain():
+			if kind == "stage":
+				self._warderProgressStage(label + ": " + str(value))
+				continue
+			if kind == "bytes":
+				done, total = value
+				if total:
+					self._warderProgressStage(label + ": %d%%" % min(100, int(100 * done / max(1, total))))
+				else:
+					self._warderProgressStage(label + ": %.1f MiB" % (done / (1024.0 * 1024.0)))
+				continue
+			self.warderLegacyTimer.stop()
+			self.warderLegacyWorker = None
+			folder = self.warderLegacyBatchFolder
+			if kind == "done":
+				self._warderProgressStage(_("Verifying and installing") + ": " + label)
+				try:
+					available_before = len(self.warderLegacyChannelAvailable)
+					numPict, total = self.cprmFiles(folder)
+					if self.warderLegacyPiconDestination and len(self.warderLegacyChannelAvailable) <= available_before:
+						self.warderLegacyChannelFailures += 1
+					if total < 1:
+						message = _("ERROR") + ": (" + folder + ") " + label + ", " + _("No picons were downloaded.")
+					elif numPict == total:
+						message = _("SUCCESSFUL") + ": (" + folder + ") " + label + ", " + warderPiconSync.success_summary(total, None, _)
+					else:
+						message = _("ERROR") + ": (" + folder + ") " + label + ", " + (_("%d of %d picons failed to install") % (total-numPict, total))
+				except Exception as err:
+					message = _("ERROR") + ": (" + folder + ") " + label + ": " + str(err)
+				self._warderLegacyAppend(message, (_("ERROR") + ":") not in message)
+			else:
+				self._warderLegacyAppend(_("ERROR") + ": (" + folder + ") " + label + ": " + str(value), False)
+			self.warderLegacyBatchIndex += 1
+			self._warderLegacyLaunch()
+			return
+
 	def _warderAssetPoll(self):
 		catalog = self.warderAssetCatalogWorker
 		if catalog is not None:
@@ -10159,42 +10301,8 @@ class downloadMenu(Screen):
 					for selector_id, archive_id in legacy_queue
 				]
 				legacy_destination = self.warderLegacyPiconDestination
-				legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)
-				if self.warderLegacyArchivesProcessed < archive_count:
-					self.warderLegacyChannelFailures += archive_count - self.warderLegacyArchivesProcessed
-				self.enaSelectsat = False
-				self.warderLegacyChannelQueue = None
-				self.warderLegacyPiconDestination = None
-				coverage = warderPiconSync.classify_requested_picons(
-					self.warderLegacyChannelWanted,
-					self.warderLegacyChannelAvailable,
-					self.warderLegacyChannelInstalled)
-				missing_by_position = {}
-				for filename in coverage["missing"]:
-					position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
-					missing_by_position[position] = missing_by_position.get(position, 0) + 1
-				package_results = []
-				for item in getattr(self, "warderLegacyPackageResults", []):
-					position = item.get("orbital_position")
-					item["failures"] += missing_by_position.pop(position, 0) if position else 0
-					if position and not item.get("processed"):
-						item["failures"] += 1
-					package_results.append(item)
-				for position, failures in missing_by_position.items():
-					package_results.append({"selector_id": "unbound", "orbital_position": position,
-						"updated": 0, "failures": failures})
-				if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not self.warderLegacyChannelFailures:
-					try:
-						self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
-					except Exception:
-						if package_results:
-							package_results[0]["failures"] += 1
-				summary = warderPiconSync.package_result_summary(package_results, _)
-				self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
-				result_text = summary["status"] + ": " + summary["text"]
-				self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
-				self._warderProgressDone(self.dwnJob + ": " + result_text, not summary["failures"])
-				self._recordWarderOperationResult(result_text)
+				self._warderStartLegacyDownloads(legacy_queue, folder, pinned=True)
+				return
 			if (self.warderPiconPrefs.get("prepared") and not self.warderDABOnly
 					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "warder"
 					and self.warderChannelState not in ("locked", "error", "done", "partial")):
@@ -10262,7 +10370,8 @@ class downloadMenu(Screen):
 						return
 					elif '***' in self.menuListAll[x][1]:
 						self.enaSelectsat = True
-						self.downMulti(self.menuListAll[x][3],self.destDir(self.menuListAll[x][2]))
+						self._warderStartLegacyDownloads(self.menuListAll[x][3],self.destDir(self.menuListAll[x][2]), pinned=False)
+						return
 					else:
 						self.downAnswerNow()
 					break
