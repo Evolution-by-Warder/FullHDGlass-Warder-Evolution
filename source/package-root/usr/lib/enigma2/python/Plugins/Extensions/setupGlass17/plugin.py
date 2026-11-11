@@ -764,6 +764,10 @@ config.plugins.warderPiconExpert.destination = ConfigText(default="", fixed_size
 config.plugins.warderUserPicons = ConfigSubsection()
 config.plugins.warderUserPicons.enabled = ConfigYesNo(default=False)
 config.plugins.warderUserPicons.path = ConfigText(default="", fixed_size=False)
+# Read-only presentation of the persisted path: ConfigText would open a
+# character-grid keyboard when focused, although browsing is done with OK.
+config.plugins.warderUserPicons.path_display = ConfigSelection(
+    default="none", choices=[("none", "-")])
 
 def _warderEpgListScrollLabel():
     # Short labels fit the existing settings column. English is fallback.
@@ -7323,7 +7327,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % ui_text("Storage for graphics sets, picons and data"), config.plugins.setupGlass17.par125))
 				self.list.append(getConfigListEntry(S0 % ui_text("Use own channel picons"), config.plugins.warderUserPicons.enabled))
 				if config.plugins.warderUserPicons.enabled.value:
-					self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), config.plugins.warderUserPicons.path))
+					folder = config.plugins.warderUserPicons.path.value
+					display = config.plugins.warderUserPicons.path_display
+					if folder:
+						display.setChoices([(folder, folder)], default=folder)
+						display.value = folder
+					else:
+						display.setChoices([("none", "-")], default="none")
+						display.value = "none"
+					self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), display))
 				if config.plugins.setupGlass17.par125.value == "0":
 					self.list.append(getConfigListEntry(S0 % _("User defined path"), config.plugins.setupGlass17.par124))
 				self.list.append(getConfigListEntry(S0 % _("FHDG Configuration file"), config.plugins.setupGlass17.par144))
@@ -7431,7 +7443,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.runSetup()
 		else:
 			t = self["config"].getCurrent()[1]
-			if t == config.plugins.warderUserPicons.path:
+			if t == config.plugins.warderUserPicons.path_display:
 				self.session.openWithCallback(self._warderOwnPiconFolderSelected, dirBrowser, config.plugins.warderUserPicons.path.value or "/media/hdd/picon/")
 			elif t == config.plugins.setupGlass17.par124:
 				self.session.openWithCallback(self.dirSelected, dirBrowser, config.plugins.setupGlass17.par124.value)
@@ -7524,6 +7536,19 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		t = self["config"].getCurrent()[1]
 		filename = "00" 
 		ed = False
+		if t in (config.plugins.warderUserPicons.enabled, config.plugins.warderUserPicons.path_display):
+			if ENA_ANIM:
+				self["helpPicon"].hide()
+				self["helpPiconFrame"].hide()
+				self["helpTxtAnim"].hide()
+			self["help_pict"].hide()
+			self["selected_item"].setText("")
+			if t == config.plugins.warderUserPicons.enabled:
+				message = ui_text("Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified.")
+			else:
+				message = ui_text("Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them.")
+			self["help_txt"].setText(message)
+			return
 		if t == getattr(config.plugins.setupGlass17, "par231", None):
 			if ENA_ANIM:
 				self["helpPicon"].hide()
@@ -8344,7 +8369,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
 			return
 		config.plugins.warderUserPicons.path.value = folder
+		config.plugins.warderUserPicons.path_display.setChoices([(folder, folder)], default=folder)
+		config.plugins.warderUserPicons.path_display.value = folder
 		self["config"].invalidateCurrent()
+		self.doMyHelpWindow()
 
 	def dirSelected(self, answer):
 		if answer is not None:
