@@ -8722,6 +8722,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.start_rst.start(8000, True)
 
 	def saving(self):
+		if config.plugins.warderUserPicons.enabled.value:
+			user_folder = _warderUserNormalize(config.plugins.warderUserPicons.path.value)
+			if not user_folder or not os.path.isdir(user_folder):
+				self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
+				return
 		if self._spinnerAtOpen != config.plugins.setupGlass17.par230.value:
 			try:
 				warderSpinner.apply(config.plugins.setupGlass17.par230.value)
