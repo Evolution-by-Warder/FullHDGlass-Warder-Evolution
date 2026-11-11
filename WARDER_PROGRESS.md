@@ -1,3 +1,9 @@
+## 2026-11-11 — ALKAFEEL original recovered exactly; batch19 blocked
+
+Original restored from the recorded official URL with exact historical SHA256 `dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a`,1442092bytes. Independent recovery/metadata audit PASS (PNG7077x3657); **not integration, identity or visual approval**. Durable original copy and provenance: `reports/vhannibal-followup-20261106/scope-batch-20261111-19-original-recovery.json`. Nine drafts and preview NOT recovered; no rerender/Base64 retry. Original binary NOT uploaded to GitHub; exact Git blob lookup returned404. This supersedes only the earlier missing-original status, not missing drafts.
+
+86open cases remain79identity/classification holds,5artwork holds,2protected. No safe ready candidate identified; no fabricated batch20. **48TV/429PNG/99ZIP/86open unchanged.** Current PR manifest has9unique combinations each for345W/500E; client sorting/icons supported by existing release documentation, not a new runtime test. No existing PNG/ZIP/manifest/18CANAL+/production/radio changes.
+
 ## 2026-11-11 — Batch19 availability correction; no integration
 
 PR50 head was unchanged at `b85b1d9c`. Counts remain **48 TV /429 PNG /99 ZIP /86 open**; batch19 remains incomplete. Limited recent-source search yielded no new decisive exact-service evidence or approved donor; no completion audit claimed.
