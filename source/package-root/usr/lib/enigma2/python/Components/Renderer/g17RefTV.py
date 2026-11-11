@@ -17,6 +17,7 @@
 from Components.Renderer.Renderer import Renderer
 from enigma import eServiceReference, eServiceCenter, ePixmap
 from Components.config import config
+from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source, find_png
 from ServiceReference import ServiceReference
 import os, re
 try:
@@ -147,7 +148,6 @@ class g17RefTV(Renderer):
 			# InfoBar and the native channel list. Honor the same expert folder.
 			# Auxiliary provider/satellite logos always remain in hdg17_files.
 			if typ == "picon":
-				from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source, find_png
 				override, custom = selected_source(config)
 				if override:
 					result = find_png(custom, serviceName)
