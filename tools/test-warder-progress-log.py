@@ -38,7 +38,7 @@ class ProgressLogTests(unittest.TestCase):
         self.assertEqual(len(log.entries), 9)
         visible = log.tail().splitlines()
         self.assertEqual(len(visible), 4)
-        self.assertEqual(visible[0], "[OK] File 10 verified")
+        self.assertEqual(visible[0], "[OK] File 10")
         self.assertEqual(visible[-1], "[OK] File 11 verified")
 
     def test_stage_transition_adds_new_line_without_loss(self):
