@@ -29,8 +29,12 @@ def run(scenario):
         old_data = root / "media/other-storage/hdg17_files"
         old_data.mkdir(parents=True)
         (old_data / "old-warder.png").write_bytes(b"ours")
+        link_data = root / "media/linked/hdg17_files"
+        link_data.parent.mkdir(parents=True)
+        link_data.symlink_to(external, target_is_directory=True)
         (state / "data-paths-v1.list").write_text(
-            str(own_data) + "\n" + str(old_data) + "\n")
+            str(own_data) + "\n" + str(old_data) + "\n" +
+            str(link_data) + "\n")
         other_data = root / "media/other-storage/unrelated"
         other_data.mkdir()
         (other_data / "keep.png").write_bytes(b"theirs")
@@ -71,6 +75,7 @@ def run(scenario):
         assert own_data.exists() == (scenario == "upgrade"), (scenario, own_data)
         assert old_data.exists() == (scenario == "upgrade"), (scenario, old_data)
         assert (other_data / "keep.png").read_bytes() == b"theirs"
+        assert link_data.is_symlink(), "Uninstall must never follow external symlinks"
         assert (other_picons / "keep.png").read_bytes() == b"theirs"
         assert (external / "valuable-picons.txt").read_text() == "keep"
 
