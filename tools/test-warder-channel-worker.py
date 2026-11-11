@@ -153,6 +153,34 @@ class ChannelWorkerTests(unittest.TestCase):
         worker.thread.join(timeout=5)
         self.assertEqual(list(worker.drain()), [("error", "storage disconnected")])
 
+    def test_canonical_worker_reports_stages_and_verified_result(self):
+        def install(row, variant, progress, stage):
+            self.assertEqual((row, variant), ("aux-prov", "black"))
+            stage("catalog")
+            stage("download")
+            progress(3, 4)
+            stage("extract")
+            stage("copy")
+            return "SUCCESSFUL: 2/2"
+        worker = worker_module.CanonicalWorker("aux-prov", "black", install)
+        worker.start()
+        worker.thread.join(timeout=5)
+        self.assertFalse(worker.thread.is_alive())
+        self.assertEqual(list(worker.drain()), [
+            ("stage", "catalog"), ("stage", "download"),
+            ("bytes", (3, 4)), ("stage", "extract"),
+            ("stage", "copy"), ("done", "SUCCESSFUL: 2/2")])
+
+    def test_canonical_worker_propagates_verification_failure(self):
+        def broken(row, variant, progress, stage):
+            stage("download")
+            raise ValueError("SHA-256 mismatch")
+        worker = worker_module.CanonicalWorker("aux-sat", "white", broken)
+        worker.start()
+        worker.thread.join(timeout=5)
+        self.assertEqual(list(worker.drain()), [
+            ("stage", "download"), ("error", "SHA-256 mismatch")])
+
 
 if __name__ == "__main__":
     unittest.main()
