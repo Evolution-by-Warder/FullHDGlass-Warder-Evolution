@@ -21,6 +21,7 @@ from Components.Renderer.g17PicRef import g17PicRef
 from enigma import eServiceReference, eServiceCenter, ePixmap, eTimer
 from Tools.Directories import fileExists
 from Components.config import config
+from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
 try:
 	from Plugins.Extensions.setupGlass17.weaUtils import setDefPicon
 except: pass
@@ -57,7 +58,6 @@ class g17PicRef2(Renderer):
 		# Cached filenames from a previous storage location must not survive.
 		try:
 			base = config.plugins.setupGlass17.par39.value
-			from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
 			active, custom = selected_source(config)
 		except (AttributeError, ImportError):
 			base, active, custom = "", False, ""
