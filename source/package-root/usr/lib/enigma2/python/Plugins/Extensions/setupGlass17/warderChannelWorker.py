@@ -153,6 +153,8 @@ class LegacyArchiveWorker(object):
             from cookielib import CookieJar
         archive = None
         extracted = False
+        safe_cleanup = False
+        target = None
         try:
             from os.path import basename, realpath, dirname
             if (not self.url.startswith(self._ROOT)
@@ -162,6 +164,7 @@ class LegacyArchiveWorker(object):
             target = realpath(self.destination)
             if target == "/tmp" or not target.startswith("/tmp/") or target == "/tmp/":
                 raise ValueError("invalid legacy extraction path")
+            safe_cleanup = True
             if not os.path.isfile(self.sevenzip):
                 raise ValueError("missing legacy 7zip helper")
             shutil.rmtree(target, ignore_errors=True)
@@ -209,5 +212,5 @@ class LegacyArchiveWorker(object):
                     os.unlink(archive)
                 except OSError:
                     pass
-            if not extracted:
-                shutil.rmtree(self.destination, ignore_errors=True)
+            if not extracted and safe_cleanup:
+                shutil.rmtree(target, ignore_errors=True)
