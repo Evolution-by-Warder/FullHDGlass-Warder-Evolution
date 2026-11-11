@@ -67,7 +67,7 @@ def run(scenario):
         assert result.returncode == 0, (scenario, result.stdout, result.stderr)
         for path in (skin, plugin, state):
             assert path.exists() == (scenario == "upgrade"), (scenario, path)
-        assert settings.read_text() == "config.plugins.setupGlass17.par125=" + str(root / "media/usb") + "\\nkeep-enigma2-config"
+        assert settings.read_text() == "config.plugins.setupGlass17.par125=" + str(root / "media/usb") + "\nkeep-enigma2-config"
         assert own_data.exists() == (scenario == "upgrade"), (scenario, own_data)
         assert old_data.exists() == (scenario == "upgrade"), (scenario, old_data)
         assert (other_data / "keep.png").read_bytes() == b"theirs"
