@@ -1751,10 +1751,19 @@ def warderNeutrinoChannelList17(self):
 	Use the image-owned API; do not patch Enigma2 or replace its keymap.
 	The keymap binds on key release (b), leaving long-OK mappings intact.
 	"""
-	if isinstance(self, InfoBar) and config.plugins.setupGlass17.par34.value:
-		open_list = getattr(self, "openServiceList", None)
-		if callable(open_list):
-			open_list()
+	if not isinstance(self, InfoBar) or not config.plugins.setupGlass17.par34.value:
+		return
+	# OpenATV 7.6 keeps LongButtonPressed set on long-press release.
+	# Do not reinterpret a long OK as another short OK.
+	if getattr(self, "LongButtonPressed", False):
+		return
+	# System Neutrino may have already opened the list on key-down.
+	servicelist = getattr(self, "servicelist", None)
+	if servicelist is not None and getattr(self.session, "current_dialog", None) is servicelist:
+		return
+	open_list = getattr(self, "openServiceList", None)
+	if callable(open_list):
+		open_list()
 
 
 def controlWindow17(self):
