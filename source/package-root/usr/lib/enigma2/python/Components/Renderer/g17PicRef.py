@@ -131,22 +131,18 @@ class g17PicRef(Renderer):
 	def findPicon(self, serviceName):
 		try:
 			base = config.plugins.setupGlass17.par39.value
-			custom = ""
-			try:
-				if config.plugins.warderPiconExpert.custom_destination.value:
-					custom = config.plugins.warderPiconExpert.destination.value
-			except AttributeError:
-				pass
+			from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source
+			override, custom = selected_source(config)
 			fields = (self.source.text or "").split(":", 10)
 			radio = len(fields) >= 10 and fields[2].upper() in ("2", "A")
 			paths = ("picon", "picon_220x132", "picon_400x240") if self.path == "picon" and radio else (self.path,)
 			# An explicitly selected expert destination is a picon directory,
 			# not a skin-data root. It takes priority over the PATHS default.
-			if custom and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240"):
+			if override and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240"):
 				pngname = "%s/%s.png" % (custom.rstrip("/"), serviceName)
 				if fileExists(pngname):
 					return pngname
-			for path in (() if custom and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240") else paths):
+			for path in (() if override and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240") else paths):
 				pngname = "%s/%s/%s.png" % (base, path, serviceName)
 				if fileExists(pngname):
 					return pngname
@@ -161,7 +157,7 @@ class g17PicRef(Renderer):
 					self.source.text, base, GetWithAlternative,
 					lambda ref: ServiceReference(ref).getServiceName(),
 					sanitizeFilename, prefer_mini=self.path == "picon_50x30",
-					custom_folder=custom or None)
+					custom_folder=custom if override else None)
 		except (AttributeError, ImportError, OSError, TypeError, ValueError):
 			pass
 		return ""
