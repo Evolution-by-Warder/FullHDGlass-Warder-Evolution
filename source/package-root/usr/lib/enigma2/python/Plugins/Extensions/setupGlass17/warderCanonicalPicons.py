@@ -16,10 +16,11 @@ def remove_verified_duplicates(screen,base,root):
     except OSError:pass
 
 
-def install(screen,row,variant,get_assets,translate):
+def install(screen,row,variant,get_assets,translate,progress=None,stage=None):
     kind={'aux-prov':'provider','aux-sat':'satellite'}.get(row)
     root={'provider':'piconProv','satellite':'piconSat'}.get(kind)
     if not root or variant not in ('transparent','black','white'):raise ValueError('Invalid auxiliary selection')
+    if stage:stage("catalog")
     error,assets=get_assets()
     if error:raise ValueError(error)
     suffix={'transparent':'220','black':'b','white':'w'}[variant]
@@ -30,9 +31,12 @@ def install(screen,row,variant,get_assets,translate):
     archive=None;stage=None;previous=screen.zzz
     try:
         fd,archive=tempfile.mkstemp(prefix='warder-picons-',suffix='.zip',dir='/tmp');os.close(fd)
-        screen._warderFetchAuxiliaryArchive(asset,archive)
+        if stage:stage("download")
+        screen._warderFetchAuxiliaryArchive(asset,archive,progress)
+        if stage:stage("extract")
         stage=tempfile.mkdtemp(prefix='warder-picons-',dir='/tmp');screen._safeExtractZip(archive,stage)
         screen.zzz=stage+os.sep
+        if stage:stage("copy")
         updated,total=screen.cprmFiles(root)
         if updated!=asset['png_count'] or total!=asset['png_count']:raise OSError('Canonical picon installation incomplete')
         remove_verified_duplicates(screen,os.path.dirname(destination),root)
