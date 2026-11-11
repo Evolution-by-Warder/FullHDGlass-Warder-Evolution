@@ -57,7 +57,7 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
         if aliases is None:
             aliases = name_aliases(reference, get_name, sanitize)
         for name in aliases:
-            path = join(base, folder, name + '.png')
+            path = join(directory, name + '.png')
             if isfile(path):
                 return path
     return ''
