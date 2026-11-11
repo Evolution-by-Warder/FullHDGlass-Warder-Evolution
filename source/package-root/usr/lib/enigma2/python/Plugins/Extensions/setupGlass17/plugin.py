@@ -8968,6 +8968,11 @@ class downloadMenu(Screen):
 	skin = """
 <screen name="downloadMenu" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="#ff000000">
 	<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="40,197" size="1840,778" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1878,197" size="2,778" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,197" size="2,778" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,973" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,197" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="dwn" position="50,166" size="1820,30" zPosition="20" valign="center" halign="center" font="Regular;25" transparent="1" backgroundColor="#ff000000" foregroundColor="#00ffffff" />
+  <widget name="progress_bg" position="82,236" size="1756,646" zPosition="11" transparent="0" backgroundColor="#00102036" />
+  <widget name="progress_title" position="124,269" size="1670,58" zPosition="12" transparent="1" font="Regular;42" foregroundColor="#003ee8ff" />
+  <widget name="progress_current" position="124,340" size="1670,70" zPosition="12" transparent="1" font="Regular;31" foregroundColor="#00ffffff" />
+  <widget name="progress_count" position="124,418" size="1670,44" zPosition="12" transparent="1" font="Regular;25" foregroundColor="#00b2e0b4" />
+  <widget name="progress_history" position="124,480" size="1670,360" zPosition="12" transparent="1" font="Regular;27" foregroundColor="#00ffffff" />
   <widget name="list" position="50,207" size="1820,730" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget name="key_red" position="20,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_green" position="494,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
@@ -8981,8 +8986,14 @@ class downloadMenu(Screen):
 		self.session = session
 		Screen.__init__(self, session)
 		self.list = []
-		self["dwn"] = Label(_("Wait for the file downloads to complete"))
+		self["dwn"] = Label("")
 		self["dwn"].hide()
+		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
+			self[key] = Label("")
+			self[key].hide()
+		self.warderProgressActive = False
+		self.warderProgressEvents = []
+		self.warderProgressFinished = 0
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Cleaning Picons"))
 		self["key_red"] = Label(_("Exit"))
@@ -9199,12 +9210,46 @@ class downloadMenu(Screen):
 		self.warderOperationFailed = False
 		self.warderFailedRows = set()
 		self.instance.resize(eSize(1920,1080))
-		self["dwn"].show()
+		self._warderProgressBegin()
 		self.ena = False
 		if self.warderChannelState != "locked":
 			self.msg = ""
 		self.dwnJob = ""
 		self.dwnTimer.start(25, True)
+
+	def _warderProgressBegin(self):
+		"""Display feedback immediately, before the download timer fires."""
+		self.warderProgressActive = True
+		self.warderProgressEvents = []
+		self.warderProgressFinished = 0
+		self["list"].hide()
+		self["dwn"].hide()
+		self["progress_title"].setText(_("Download progress"))
+		self["progress_count"].setText(_("Completed steps") + ": 0")
+		self["progress_history"].setText("")
+		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
+			self[key].show()
+		self._warderProgressStage(_("Preparing downloads"))
+
+	def _warderProgressStage(self, description):
+		if getattr(self, "warderProgressActive", False):
+			self["progress_current"].setText(str(description).replace("\n", " ")[:145])
+
+	def _warderProgressDone(self, description, success=True):
+		if not getattr(self, "warderProgressActive", False):
+			return
+		self.warderProgressEvents.append(("[OK] " if success else "[ERROR] ") + str(description).replace("\n", " ")[:110])
+		self.warderProgressEvents = self.warderProgressEvents[-9:]
+		self.warderProgressFinished += 1
+		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
+		self["progress_history"].setText("\n".join(self.warderProgressEvents))
+		self._warderProgressStage(description)
+
+	def _warderProgressClose(self):
+		self.warderProgressActive = False
+		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
+			self[key].hide()
+		self["list"].show()
 
 	def warderCreateDestinationAnswer(self, answer=None):
 		if answer:
@@ -9809,6 +9854,7 @@ class downloadMenu(Screen):
 
 	def _warderDABStart(self):
 		self.dwnJob = warderRadio.label(self.warderDABTaskSnapshot or {}, _)
+		self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 		self.type_download = "DAB"
 		self.warderCurrentActionRow = "wp-pos"
 		try:
@@ -9831,8 +9877,8 @@ class downloadMenu(Screen):
 			if kind == "event":
 				if value[0] == "download":
 					percent = int(100 * value[2] / max(1,value[3]))
-					self["dwn"].setText(self.dwnJob + ": %d%%" % percent)
-				elif value[0] == "stage":self["dwn"].setText(value[1])
+					self._warderProgressStage(self.dwnJob + ": %d%%" % percent)
+				elif value[0] == "stage":self._warderProgressStage(value[1])
 			else:
 				self.warderDABTimer.stop()
 				self.warderDABWorker = None
@@ -9873,6 +9919,7 @@ class downloadMenu(Screen):
 				raise ValueError("missing Warder channel packages: " + ", ".join(jobs["missing_selectors"]))
 			self.warderChannelQueue = queue
 			self.warderChannelJobs = list(jobs.get("jobs", []))
+			self._warderProgressStage(_("Preparing channel packages") + ": " + str(len(self.warderChannelJobs)))
 			self.warderChannelInstalled = set()
 			self.warderChannelAvailable = set()
 			self.warderChannelPackageResults = [
@@ -9911,6 +9958,8 @@ class downloadMenu(Screen):
 			return result
 		job = self.warderChannelJobs.pop(0)
 		self.warderChannelCurrentJob = job
+		job_label = str(job.get("orbital_position", "")) + " / " + str(job.get("selector_id", ""))
+		self._warderProgressStage(_("Downloading") + ": " + job_label)
 		result_row = next((item for item in self.warderChannelPackageResults
 			if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
 		archive = None
@@ -9934,16 +9983,19 @@ class downloadMenu(Screen):
 			fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
 			os.close(fd)
 			self._warderFetchChannelJob(job, archive)
+			self._warderProgressStage(_("Verifying and installing") + ": " + job_label)
 			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
 			installed, available = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
 			self.warderChannelInstalled.update(installed)
 			self.warderChannelAvailable.update(available)
 			if result_row is not None:
 				result_row["updated"] = len(installed)
+			self._warderProgressDone(job_label + " - " + str(len(installed)) + " " + _("picons"))
 		except Exception as err:
 			if result_row is not None:
 				result_row["failures"] += 1
 				result_row["error"] = str(err)
+			self._warderProgressDone(job_label + ": " + str(err), False)
 			print("FullHDGlass17 Warder package failed (%s/%s): %s" % (job.get("orbital_position"), job.get("selector_id"), err))
 		finally:
 			if archive:
@@ -9958,6 +10010,7 @@ class downloadMenu(Screen):
 			self.dwnTimer.stop()
 		if txt:
 			self._recordWarderOperationResult(txt)
+			self._warderProgressDone(txt, _("ERROR") + ":" not in str(txt))
 		if self.clrSelectsat:
 			self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),txt)
 		else:
@@ -9972,12 +10025,14 @@ class downloadMenu(Screen):
 					self.type_download = str(tool_row[2])
 					self.zzz = self.setWdir()
 					self.dwnJob = "7zip"
+					self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 					self.downAnswerNow()
 					return
 			if (self.warderPiconPrefs.get("prepared") and not self.warderDABOnly
 					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "pinned-legacy"
 					and self.warderLegacyChannelQueue):
 				self.dwnJob = _("Channel picons")
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 				resolution = self.warderPiconPrefs.get("resolution")
 				folder = warderPiconSync.legacy_channel_destination(resolution)
 				self.enaSelectsat = True
@@ -10030,6 +10085,7 @@ class downloadMenu(Screen):
 				self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
 				result_text = summary["status"] + ": " + summary["text"]
 				self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
+				self._warderProgressDone(self.dwnJob + ": " + result_text, not summary["failures"])
 				self._recordWarderOperationResult(result_text)
 			if (self.warderPiconPrefs.get("prepared") and not self.warderDABOnly
 					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "warder"
@@ -10054,12 +10110,14 @@ class downloadMenu(Screen):
 					else:
 						error_text = str(err)
 					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + error_text + "\n"
+					self._warderProgressDone(self.dwnJob + ": " + error_text, False)
 				else:
 					if warder_result is None:
 						# One package per GUI timer tick keeps the receiver event loop responsive.
 						self.dwnTimer.start(25, True)
 						return
 					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
+					self._warderProgressDone(self.dwnJob + ": " + warder_result, _("ERROR") + ":" not in warder_result)
 					self._recordWarderOperationResult(warder_result)
 			if self.warderDABPending:
 				self.warderDABPending = False
@@ -10074,6 +10132,7 @@ class downloadMenu(Screen):
 				self.type_download = "CHSPiconbig"
 				self.zzz = self.setWdir()
 				self.dwnJob = _("Large channel selection icons (710 x 682)")
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 				self.downAnswerNow()
 				return
 			ena = True
@@ -10086,6 +10145,7 @@ class downloadMenu(Screen):
 					self.type_download = str(self.menuListAll[x][2])
 					self.zzz = self.setWdir()
 					self.dwnJob = str(self.menuListAll[x][1])
+					self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 					if self.menuListAll[x][0] in ("aux-prov", "aux-sat"):
 						try:
 							aux_result = self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
@@ -10102,6 +10162,7 @@ class downloadMenu(Screen):
 			if ena:
 				if self.warderOperationSucceeded and not self.warderOperationFailed:
 					self.resetWarderWorkingState()
+				self._warderProgressStage(_("Download finished"))
 				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
 		
 	def dwnFin(self, answer=""):
@@ -10112,6 +10173,7 @@ class downloadMenu(Screen):
 		self.clrSelectsat = False
 		self.enaSelectsat = False
 		self["dwn"].hide()
+		self._warderProgressClose()
 		self.instance.resize(eSize(1920,1080))
                   		
 	def downAnswerNow(self):
