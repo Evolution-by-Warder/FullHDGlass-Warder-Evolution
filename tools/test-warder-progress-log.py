@@ -26,8 +26,9 @@ class ProgressLogTests(unittest.TestCase):
         log.stage("Downloading: CANALPLUS_CZ - 28%")
         log.done("CANALPLUS_CZ - 98 picons")
         log.stage("Downloading: CANALPLUS_SK - 58%")
-        self.assertEqual(log.entries[0], "[OK] CANALPLUS_CZ - 98 picons")
-        self.assertEqual(log.entries[1], "[>>] Downloading: CANALPLUS_SK - 58%")
+        self.assertEqual(log.entries[0], "[OK] Downloading: CANALPLUS_CZ - 28%")
+        self.assertEqual(log.entries[1], "[OK] CANALPLUS_CZ - 98 picons")
+        self.assertEqual(log.entries[2], "[>>] Downloading: CANALPLUS_SK - 58%")
 
     def test_rows_scroll_up_with_bounded_visible_tail(self):
         log = ProgressLog(visible_lines=4, max_entries=9)
@@ -37,7 +38,7 @@ class ProgressLogTests(unittest.TestCase):
         self.assertEqual(len(log.entries), 9)
         visible = log.tail().splitlines()
         self.assertEqual(len(visible), 4)
-        self.assertEqual(visible[0], "[OK] File 8 verified")
+        self.assertEqual(visible[0], "[OK] File 10 verified")
         self.assertEqual(visible[-1], "[OK] File 11 verified")
 
     def test_stage_transition_adds_new_line_without_loss(self):
@@ -46,10 +47,11 @@ class ProgressLogTests(unittest.TestCase):
         log.stage("Verifying: SHA-256")
         log.stage("Extracting: pack.zip")
         log.done("99 picons")
-        self.assertEqual(len(log.entries), 3)
-        self.assertTrue(log.entries[0].startswith("[>>] Downloading"))
-        self.assertTrue(log.entries[1].startswith("[>>] Verifying"))
-        self.assertEqual(log.entries[2], "[OK] 99 picons")
+        self.assertEqual(len(log.entries), 4)
+        self.assertTrue(log.entries[0].startswith("[OK] Downloading"))
+        self.assertTrue(log.entries[1].startswith("[OK] Verifying"))
+        self.assertTrue(log.entries[2].startswith("[OK] Extracting"))
+        self.assertEqual(log.entries[3], "[OK] 99 picons")
 
     def test_bytes_without_known_total_update_same_line(self):
         log = ProgressLog()
@@ -62,7 +64,8 @@ class ProgressLogTests(unittest.TestCase):
         log.stage("Downloading: failed pack")
         log.done("SHA-256 mismatch", success=False)
         log.note("Download completed with errors")
-        self.assertEqual(log.entries, ["[ERROR] SHA-256 mismatch",
+        self.assertEqual(log.entries, ["[ERROR] Downloading: failed pack",
+                                      "[ERROR] SHA-256 mismatch",
                                       "Download completed with errors"])
 
     def test_completed_packages_get_one_separator_and_next_starts_below(self):
@@ -74,8 +77,8 @@ class ProgressLogTests(unittest.TestCase):
         log.divider()
         log.stage("Downloading: 19.2E - 40%")
         self.assertEqual(log.entries, [
-            "[>>] Downloading: 13E - 100%",
-            "[>>] Extracting: 13E",
+            "[OK] Downloading: 13E - 100%",
+            "[OK] Extracting: 13E",
             "[OK] 13E - 130 picons installed",
             "-" * 78,
             "[>>] Downloading: 19.2E - 40%",
@@ -88,7 +91,8 @@ class ProgressLogTests(unittest.TestCase):
         log.divider()
         log.divider()
         log.stage("Downloading: 23.5E - 1%")
-        self.assertEqual(log.entries[0], "[ERROR] 13E: SHA-256 mismatch")
+        self.assertEqual(log.entries[0], "[ERROR] Downloading: 13E")
+        self.assertEqual(log.entries[1], "[ERROR] 13E: SHA-256 mismatch")
         self.assertEqual(log.entries.count("-" * 78), 1)
         self.assertEqual(log.entries[-1], "[>>] Downloading: 23.5E - 1%")
 
@@ -98,7 +102,7 @@ class ProgressLogTests(unittest.TestCase):
             log.stage("Downloading: %sE" % number)
             log.done("%sE installed" % number)
             log.divider()
-        self.assertEqual(len(log.entries), 8)
+        self.assertEqual(len(log.entries), 9)
         self.assertEqual(len(log.tail().splitlines()), 5)
         self.assertEqual(log.entries[-1], "-" * 78)
 
