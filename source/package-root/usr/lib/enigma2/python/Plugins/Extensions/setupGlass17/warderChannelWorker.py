@@ -214,3 +214,29 @@ class LegacyArchiveWorker(object):
                     pass
             if not extracted and safe_cleanup:
                 shutil.rmtree(target, ignore_errors=True)
+
+
+class LegacyCopyWorker(object):
+    """Copy/verify previously extracted picons without blocking Enigma rendering."""
+    def __init__(self, copy, folder):
+        self.copy = copy
+        self.folder = folder
+        self.events = Queue()
+        self.thread = threading.Thread(target=self.run, name="WarderLegacyCopy")
+        self.thread.daemon = True
+
+    def start(self):
+        self.thread.start()
+
+    def drain(self):
+        while True:
+            try:
+                yield self.events.get_nowait()
+            except Empty:
+                return
+
+    def run(self):
+        try:
+            self.events.put(("done", self.copy(self.folder)))
+        except Exception as error:
+            self.events.put(("error", str(error)))
