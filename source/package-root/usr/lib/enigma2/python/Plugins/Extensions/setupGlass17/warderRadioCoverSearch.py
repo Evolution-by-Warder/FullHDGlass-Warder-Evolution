@@ -10,6 +10,7 @@ import os
 import re
 import ssl
 import time
+import threading
 from urllib.parse import quote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 try:
@@ -22,6 +23,14 @@ write_atomic, prune = cache.write_atomic, cache.prune
 
 CACHE = '/tmp/warder-radio-skin-covers'
 USER_AGENT = 'Radio-Warder-Evolution (https://github.com/Evolution-by-Warder/Radio-Warder-Evolution)'
+
+# Misses are only cached briefly and only when a catalogue actually responded.
+# A disconnected receiver must not suppress a later successful search.
+_misses = {}
+_misses_lock = threading.Lock()
+_MISS_TTL_SECONDS = 45
+_MISS_LIMIT = 128
+
 
 # Artwork may be labelled with more complete credits than a broadcaster's ICY
 # tag. This is deliberately separate from FullHDGlass's exact recording/lyrics
@@ -122,6 +131,11 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
         path = os.path.join(directory, key + '-' + kind + '.jpg')
         if os.path.isfile(path) and not os.path.islink(path):
             return path, source
+    with _misses_lock:
+        until = _misses.get(key, 0)
+        if until > clock():
+            return '', ''
+        _misses.pop(key, None)
     if opener is None:
         opener = lambda request, timeout: urlopen(request, timeout=timeout, context=ssl.create_default_context())
 
@@ -154,9 +168,13 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
                    bytes=count, seconds=round(clock() - started, 3))
         return b''.join(chunks)
 
+    successful_documents = [0]
     def document(url):
         value = json.loads(read(url, 1024 * 1024, 2.5))
-        return value if isinstance(value, dict) else {}
+        if isinstance(value, dict):
+            successful_documents[0] += 1
+            return value
+        return {}
 
     def save(url, kind, provider):
         parts = urlsplit(url)
@@ -235,4 +253,9 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
                 return found
     except Exception:
         pass
+    if successful_documents[0]:
+        with _misses_lock:
+            if len(_misses) >= _MISS_LIMIT:
+                _misses.clear()  # Bounded, ephemeral RAM state only.
+            _misses[key] = clock() + _MISS_TTL_SECONDS
     return '', ''
