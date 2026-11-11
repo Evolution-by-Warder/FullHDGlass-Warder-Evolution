@@ -106,10 +106,13 @@ class AssetWorker(object):
 
     def run(self):
         try:
-            root = self.work(self.asset, self.target, self.report)
+            root = self.work(self.asset, self.target, self.report, self.stage)
             self.events.put(("done", root))
         except Exception as error:
             self.events.put(("error", str(error)))
 
     def report(self, done, total):
         self.events.put(("bytes", (done, total)))
+
+    def stage(self, label):
+        self.events.put(("stage", label))
