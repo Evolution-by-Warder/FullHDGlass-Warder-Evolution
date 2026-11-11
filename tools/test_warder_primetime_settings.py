@@ -33,7 +33,8 @@ class PrimeTimeSettingsTests(unittest.TestCase):
         for key in ("enabled", "clock"):
             self.assertIn("config.plugins.warderEvolutionPrimeTime.%s.save()" % key, methods["saving"])
             self.assertIn("config.plugins.warderEvolutionPrimeTime.%s.cancel()" % key, methods["exitNow"])
-        self.assertIn("if t is config.plugins.warderEvolutionPrimeTime.enabled", methods["chckSetup"])
+        self.assertIn("config.plugins.warderEvolutionPrimeTime.enabled", methods["chckSetup"])
+        self.assertIn("config.plugins.warderUserPicons.enabled", methods["chckSetup"])
         self.assertIn("self.runSetup()", methods["chckSetup"])
 
 
