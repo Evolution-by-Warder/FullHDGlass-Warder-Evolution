@@ -66,7 +66,7 @@ class OpenATV76NeutrinoTest(unittest.TestCase):
                              [("ok_pressed", "m")])
         source = self.parser.read_text(encoding="utf-8")
         for flag, mask in (("m", 1), ("b", 2), ("r", 4), ("l", 8)):
-            self.assertRegex(source, r'["\\\']' + flag + r'["\\\']\\s*:\\s*' + str(mask))
+            self.assertRegex(source, '"' + flag + r'"\s*:\s*' + str(mask))
 
     def test_upstream_76_short_and_long_native_dispatch(self):
         namespace = {}
