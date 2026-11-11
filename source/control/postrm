@@ -40,9 +40,10 @@ if [ -d "$WARDER_TRANSITION" ] && [ ! -L "$WARDER_TRANSITION" ]; then
 fi
 rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
 
-# Uninstallation also removes the skin's *own* downloaded data tree.
-# PATHS stores its parent in Enigma2 settings; par39 is a runtime-only value.
-# Never delete the parent: it can contain picons or data from other plugins.
+# Remove only the specifically registered Warder data roots. Never search a
+# disk for matching folder names: identical names alone do not prove ownership.
+# The active PATHS setting is also included for older installs without a registry.
+WARDER_DATA_REGISTRY="$WARDER_EPG_STATE_DIR/data-paths-v1.list"
 warder_setting() {
     key="$1"
     [ -f /etc/enigma2/settings ] || return 0
@@ -55,27 +56,25 @@ warder_setting() {
 }
 
 warder_remove_data_tree() {
-    base="$1"
-    [ -n "$base" ] || return 0
-    # Reject special chars, traversal, and paths outside known storage roots.
-    case "$base" in
-        *[!a-zA-Z0-9_./\ -]*|*'/../'*|*'/./'*|*'//'*) return 1 ;;
-    esac
-    case "$base" in
-        /media/usb|/media/hdd|/media/cf|/media/sdcard|/media/mmc|/data|/usr/share/enigma2|/etc|/media/*|/mnt/*) ;;
+    dir="$1"
+    # The complete path, not its parent, must be an absolute hdg17_files path.
+    case "$dir" in
+        /*/hdg17_files) ;;
         *) return 1 ;;
     esac
-    dir="${base%/}/hdg17_files"
+    case "$dir" in
+        *[!a-zA-Z0-9_./\ -]*|*'/../'*|*'/./'*|*'//'*) return 1 ;;
+    esac
     [ -e "$dir" ] || [ -L "$dir" ] || return 0
-    # A symlink or mounted data tree is never treated as Warder-owned files.
-    [ -L "$dir" ] && return 1
-    [ -d "$dir" ] || return 1
-    parent="$dir"
-    while [ "$parent" != "/" ]; do
-        [ -L "$parent" ] && return 1
-        parent=${parent%/*}
-        [ -n "$parent" ] || parent=/
+    [ -d "$dir" ] && [ ! -L "$dir" ] || return 1
+    # Do not traverse symlinks on the way to a removable volume.
+    probe="$dir"
+    while [ "$probe" != / ]; do
+        [ ! -L "$probe" ] || return 1
+        probe=${probe%/*}
+        [ -n "$probe" ] || probe=/
     done
+    # Never recursively delete an independently mounted subtree.
     if [ -r /proc/self/mountinfo ] && awk -v d="$dir" '
         {
             mount = $5
@@ -84,13 +83,22 @@ warder_remove_data_tree() {
         }
         END { exit !found }
     ' /proc/self/mountinfo; then
-        echo "WARNING: mounted storage within $dir; skipping unsafe cleanup" >&2
+        echo "WARNING: mount inside $dir; refusing unsafe deletion" >&2
         return 1
     fi
-    rm -rf -- "$dir"
+    rm -rf -- "$dir" || return 1
+    [ ! -e "$dir" ] && [ ! -L "$dir" ]
 }
 
 warder_cleanup_downloaded_data() {
+    # Read all previously selected roots, even if the user moved the skin.
+    if [ -f "$WARDER_DATA_REGISTRY" ] && [ ! -L "$WARDER_DATA_REGISTRY" ]; then
+        while IFS= read -r dir || [ -n "$dir" ]; do
+            [ -n "$dir" ] || continue
+            warder_remove_data_tree "$dir" ||
+                echo "WARNING: could not safely remove Warder data: $dir" >&2
+        done < "$WARDER_DATA_REGISTRY"
+    fi
     selected="$(warder_setting config.plugins.setupGlass17.par125)"
     user_base="$(warder_setting config.plugins.setupGlass17.par124)"
     [ -n "$selected" ] || selected=/media/usb
@@ -99,8 +107,9 @@ warder_cleanup_downloaded_data() {
     else
         base="$selected"
     fi
-    # The active location, not every drive on the receiver, is ours to clean.
-    warder_remove_data_tree "$base" || echo "WARNING: could not safely remove Warder data at $base" >&2
+    # Backward compatibility for existing receivers without a registry.
+    [ -n "$base" ] && warder_remove_data_tree "${base%/}/hdg17_files" ||
+        echo "WARNING: active Warder data path was not removed" >&2
 }
 
 # Remove all remaining data under package-exclusive installation directories.
