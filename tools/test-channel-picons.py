@@ -229,6 +229,37 @@ class InfoBarStorageTests(LookupFixture, unittest.TestCase):
         self.assertEqual(scope['findPicon'](widget,NAME),'')
 
 
+class MainInfoBarLookupTests(LookupFixture, unittest.TestCase):
+    def test_main_infobar_uses_expert_path_and_keeps_auxiliary_assets_private(self):
+        tree=ast.parse((PKG/'Plugins/Extensions/setupGlass17/plugin.py').read_text())
+        method=next(node for node in ast.walk(tree)
+                    if isinstance(node,ast.FunctionDef) and node.name=='findPicon'
+                    and 'self.path' in ast.unparse(node) and 'piconSat' in ast.unparse(node))
+        expert=NS(custom_destination=NS(value=True),
+                  destination=NS(value=str(self.base/'expert')))
+        settings=NS(par39=NS(value=str(self.base)))
+        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert)),
+                   fileExists=os.path.isfile,os=os)
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'main-infobar.py','exec'),scope)
+        custom=self.base/'expert'
+        custom.mkdir()
+        wanted=custom/(NAME+'.png')
+        wanted.write_bytes(b'channel')
+        default=self.put('picon')
+        widget=NS(path='picon')
+        self.assertEqual(scope['findPicon'](widget,NAME),str(wanted))
+        wanted.unlink()
+        self.assertEqual(scope['findPicon'](widget,NAME),'')
+        # Other graphic families always come from hdg17_files.
+        provider=self.put('piconProv','CANALPLUS_CZ')
+        widget.path='piconProv'
+        self.assertEqual(scope['findPicon'](widget,'CANALPLUS_CZ'),provider)
+        # Turning expert mode off restores the private skin destination.
+        expert.custom_destination.value=False
+        widget.path='picon'
+        self.assertEqual(scope['findPicon'](widget,NAME),default)
+
+
 class SelectedPiconTests(LookupFixture, unittest.TestCase):
     def test_large_formats_keep_their_own_set_and_fall_back_to_shared(self):
         tree=ast.parse((PKG/'Components/Renderer/g17RefTV3.py').read_text())
