@@ -72,8 +72,8 @@ class SettingsTests(unittest.TestCase):
                       and n.name=='doMyHelpWindow')
         branch = next(n for n in ast.walk(method) if isinstance(n,ast.If)
                       and 'config.plugins.warderUserPicons.path_display' in ast.unparse(n.test))
-        self.assertIn('self["help_pict"].hide()', ast.unparse(branch))
-        self.assertIn('self["help_txt"].setText(message)', ast.unparse(branch))
+        self.assertIn("self['help_pict'].hide()", ast.unparse(branch))
+        self.assertIn("self['help_txt'].setText(message)", ast.unparse(branch))
         self.assertIn('skin only reads PNG files',ast.unparse(branch))
         self.assertIsInstance(branch.body[-1],ast.Return)
 
