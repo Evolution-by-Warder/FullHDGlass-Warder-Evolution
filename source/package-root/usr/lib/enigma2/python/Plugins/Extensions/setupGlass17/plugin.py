@@ -9294,6 +9294,9 @@ class downloadMenu(Screen):
 		self.warderOperationSucceeded = False
 		self.warderOperationFailed = False
 		self.warderFailedRows = set()
+		# Remember the actual selected auxiliary jobs before they are marked processed.
+		self.warderAuxRequested = [row[0] for row in self.menuListAll.values()
+			if row[4] == 'd' and row[0] in self.warderAuxRows]
 		self.instance.resize(eSize(1920,1080))
 		self._warderProgressBegin()
 		self.ena = False
@@ -9341,6 +9344,30 @@ class downloadMenu(Screen):
 		if self.warderProgressComplete:
 			return
 		self.warderProgressComplete = True
+		# Final success must reflect files actually installed, not just downloaded ZIPs.
+		# Keep every requested auxiliary set visible even after the short log scrolls.
+		aux_roots = {
+			"aux-prov": ("piconProv", _("Provider logos")),
+			"aux-sat": ("piconSat", _("Satellite logos")),
+			"aux-cam": ("piconCam", _("CAM picons")),
+			"aux-weather": ("piconWeather", _("Weather picons")),
+		}
+		verified = []
+		base = config.plugins.setupGlass17.par39.value
+		for row_id in getattr(self, "warderAuxRequested", []):
+			root, label = aux_roots[row_id]
+			folder = os.path.join(base, root)
+			try:
+				count = sum(1 for name in os.listdir(folder)
+					if name.lower().endswith(".png") and os.path.isfile(os.path.join(folder, name))
+					and not os.path.islink(os.path.join(folder, name)))
+			except OSError:
+				count = 0
+			verified.append(("%s: %d PNG" % (label, count)) if count else
+				("%s: %s" % (label, _("ERROR") + ": 0 PNG")))
+			if not count:
+				self.warderOperationFailed = True
+				self.warderFailedRows.add(row_id)
 		# The old results text may contain a very long, duplicated paragraph.
 		# Keep the useful final totals without wrapping over other log lines.
 		result_lines = [x.strip() for x in str(self.msg).splitlines() if x.strip()]
@@ -9349,7 +9376,7 @@ class downloadMenu(Screen):
 				self.warderProgressLog.note(line[line.find("Total:"):] if "Total:" in line else line[line.find("Failures:"):])
 		self.warderProgressLog.note(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
 		self["progress_current"].setText(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
-		self["progress_history"].setText(self.warderProgressLog.tail())
+		self["progress_history"].setText("\n".join(verified + self.warderProgressLog.tail().splitlines()[-5:]))
 		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
 		self["key_red"].setText(_("Close"))
 		for key in ("key_green", "key_yellow", "key_blue"):
