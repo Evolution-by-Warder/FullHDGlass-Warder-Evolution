@@ -22,7 +22,7 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
-from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker
+from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -10183,6 +10183,7 @@ class downloadMenu(Screen):
 		if worker is None:
 			return
 		label = str(self.warderLegacyBatch[self.warderLegacyBatchIndex][0])
+		folder = self.warderLegacyBatchFolder
 		for kind, value in worker.drain():
 			if kind == "stage":
 				stage_label = (_("Downloading") if value == "download" else
@@ -10196,26 +10197,29 @@ class downloadMenu(Screen):
 				else:
 					self._warderProgressStage(label + ": %.1f MiB" % (done / (1024.0 * 1024.0)))
 				continue
+			if isinstance(worker, LegacyArchiveWorker) and kind == "done":
+				self.warderLegacyAvailableBefore = len(self.warderLegacyChannelAvailable)
+				self._warderProgressStage(_("Verifying and installing") + ": " + label)
+				self.warderLegacyWorker = LegacyCopyWorker(self.cprmFiles, folder)
+				self.warderLegacyWorker.start()
+				return
 			self.warderLegacyTimer.stop()
 			self.warderLegacyWorker = None
-			folder = self.warderLegacyBatchFolder
 			if kind == "done":
-				self._warderProgressStage(_("Verifying and installing") + ": " + label)
-				try:
-					available_before = len(self.warderLegacyChannelAvailable)
-					numPict, total = self.cprmFiles(folder)
-					if self.warderLegacyPiconDestination and len(self.warderLegacyChannelAvailable) <= available_before:
-						self.warderLegacyChannelFailures += 1
-					if total < 1:
-						message = _("ERROR") + ": (" + folder + ") " + label + ", " + _("No picons were downloaded.")
-					elif numPict == total:
-						message = _("SUCCESSFUL") + ": (" + folder + ") " + label + ", " + warderPiconSync.success_summary(total, None, _)
-					else:
-						message = _("ERROR") + ": (" + folder + ") " + label + ", " + (_("%d of %d picons failed to install") % (total-numPict, total))
-				except Exception as err:
-					message = _("ERROR") + ": (" + folder + ") " + label + ": " + str(err)
+				numPict, total = value
+				if (self.warderLegacyPiconDestination and
+						len(self.warderLegacyChannelAvailable) <= self.warderLegacyAvailableBefore):
+					self.warderLegacyChannelFailures += 1
+				if total < 1:
+					message = _("ERROR") + ": (" + folder + ") " + label + ", " + _("No picons were downloaded.")
+				elif numPict == total:
+					message = _("SUCCESSFUL") + ": (" + folder + ") " + label + ", " + warderPiconSync.success_summary(total, None, _)
+				else:
+					message = _("ERROR") + ": (" + folder + ") " + label + ", " + (_("%d of %d picons failed to install") % (total-numPict, total))
 				self._warderLegacyAppend(message, (_("ERROR") + ":") not in message)
 			else:
+				if isinstance(worker, LegacyCopyWorker):
+					self.rmTmp2("/tmp/", folder)
 				self._warderLegacyAppend(_("ERROR") + ": (" + folder + ") " + label + ": " + str(value), False)
 			self.warderLegacyBatchIndex += 1
 			self._warderLegacyLaunch()
