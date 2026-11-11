@@ -6916,13 +6916,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self._spinnerAtOpen = config.plugins.setupGlass17.par230.value
 		self._piconSourceAtOpen = config.plugins.setupGlass17.par231.value
 		self._ownPiconsAtOpen = bool(config.plugins.warderUserPicons.enabled.value)
+		self._ownPiconRestartPending = False
 		self._epgListScrollAtOpen = bool(config.plugins.warderEpgListScroll.enabled.value)
 		self.firststart = True
 		self.start_rst = eTimer()
 		try:
-			self.start_rst_conn = self.start_rst.timeout.connect(self.saving)
+			self.start_rst_conn = self.start_rst.timeout.connect(self._warderRestartTimerFired)
 		except AttributeError:
-			self.start_rst.timeout.get().append(self.saving)
+			self.start_rst.timeout.get().append(self._warderRestartTimerFired)
 		self.delayTimer = eTimer()
 		try:
 			self.delayTimer_conn = self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)
@@ -8740,7 +8741,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			try:
 				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 3 if own_picons_changed else 8, enable_input=False)
 			except: pass
-			self.rstGUI(3000 if own_picons_changed else 8000)
+			if own_picons_changed:
+				# Commit PATHS immediately; only the GUI restart waits three seconds.
+				self.rst = True
+				self._ownPiconRestartPending = True
+				self.saving()
+			else:
+				self.rstGUI()
 		else:
 			if tmp:
 				msg = _("Do you want restart GUI to activate the screen:") + " " + str(config.plugins.setupGlass17.par6.value) + " " + _("now?")
@@ -8757,6 +8764,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 	def rstGUI(self, delay=8000):
 		self.rst = True
 		self.start_rst.start(delay, True)
+
+	def _warderRestartTimerFired(self):
+		if self._ownPiconRestartPending:
+			self._ownPiconRestartPending = False
+			self.sDr()
+		else:
+			self.saving()
 
 	def saving(self):
 		if config.plugins.warderUserPicons.enabled.value:
@@ -8806,7 +8820,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		config.plugins.setupGlass17.par43.value = True
 		if self.rst:
-			self.sDr()
+			if self._ownPiconRestartPending:
+				self.start_rst.start(3000, True)
+			else:
+				self.sDr()
 		elif self.destroyTimers():
 			self.close()    
 
