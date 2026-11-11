@@ -130,12 +130,25 @@ class g17PicRef(Renderer):
 
 	def findPicon(self, serviceName):
 		try:
+			base = config.plugins.setupGlass17.par39.value
 			fields = (self.source.text or "").split(":", 10)
 			radio = len(fields) >= 10 and fields[2].upper() in ("2", "A")
 			paths = ("picon", "picon_220x132", "picon_400x240") if self.path == "picon" and radio else (self.path,)
 			for path in paths:
-				pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, path, serviceName)
+				pngname = "%s/%s/%s.png" % (base, path, serviceName)
 				if fileExists(pngname):
 					return pngname
-		except: pass
+			# Resolve aliases only within Warder's configured private data root.
+			# Never use a system picon here: it may belong to an older installation.
+			if self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240"):
+				from Plugins.Extensions.setupGlass17.warderChannelPicons import find_picon
+				from Tools.Alternatives import GetWithAlternative
+				from Tools.Directories import sanitizeFilename
+				from ServiceReference import ServiceReference
+				return find_picon(
+					self.source.text, base, GetWithAlternative,
+					lambda ref: ServiceReference(ref).getServiceName(),
+					sanitizeFilename, prefer_mini=self.path == "picon_50x30")
+		except (AttributeError, ImportError, OSError, TypeError, ValueError):
+			pass
 		return ""
