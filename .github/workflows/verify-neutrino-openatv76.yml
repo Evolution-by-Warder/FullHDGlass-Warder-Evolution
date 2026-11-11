@@ -1,0 +1,38 @@
+name: Verify Warder Neutrino short OK with OpenATV 7.6
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/keymap.xml'
+      - 'tools/test-neutrino-*.py'
+      - '.github/workflows/verify-neutrino-openatv76.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  openatv76-neutrino:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout upstream OpenATV 7.6 (pinned)
+        uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: e42a0ffb0064962321bf500999ac2bc48cadec34
+          path: upstream/openatv76
+          sparse-checkout: |
+            data
+            lib/python/Screens
+            lib/python/Components
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify Warder scope plus native OpenATV 7.6 key behavior
+        run: |
+          python3 tools/test-neutrino-short-ok.py -q
+          python3 tools/test-neutrino-openatv76.py --upstream upstream/openatv76 -q
