@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Offline guard for Warder-only Neutrino short-OK mapping."""
 from pathlib import Path
+import ast
+from types import SimpleNamespace
 import re
 import unittest
 import xml.etree.ElementTree as ET
@@ -43,6 +45,47 @@ class NeutrinoShortOKTest(unittest.TestCase):
         self.assertIn('getattr(self.session, "current_dialog", None) is servicelist', body)
         self.assertNotIn("CHANSEL_FILE", body)
         self.assertNotIn("KMP_FILE", body)
+
+
+    def test_native_api_dispatch_for_short_long_and_duplicate_ok(self):
+        module = ast.parse(PLUGIN.read_text(encoding="utf-8"))
+        handler = next(node for node in module.body
+                       if isinstance(node, ast.FunctionDef)
+                       and node.name == "warderNeutrinoChannelList17")
+        class InfoBar:
+            def __init__(self):
+                self.called = 0
+                self.servicelist = object()
+                self.session = SimpleNamespace(current_dialog=None)
+                self.LongButtonPressed = False
+            def openServiceList(self):
+                self.called += 1
+        feature = SimpleNamespace(value=True)
+        config = SimpleNamespace(plugins=SimpleNamespace(
+            setupGlass17=SimpleNamespace(par34=feature)))
+        sandbox = {"InfoBar": InfoBar, "config": config}
+        exec(compile(ast.Module(body=[handler], type_ignores=[]),
+                     str(PLUGIN), "exec"), sandbox)
+        fn = sandbox["warderNeutrinoChannelList17"]
+
+        box = InfoBar()
+        fn(box)
+        self.assertEqual(box.called, 1, "short OK should open the channel list")
+        box.LongButtonPressed = True
+        fn(box)
+        self.assertEqual(box.called, 1, "long OK must not reopen the list")
+        box.LongButtonPressed = False
+        box.session.current_dialog = box.servicelist
+        fn(box)
+        self.assertEqual(box.called, 1, "already-open list must be left untouched")
+        box.session.current_dialog = None
+        feature.value = False
+        fn(box)
+        self.assertEqual(box.called, 1, "disabled Neutrino must not intercept OK")
+        feature.value = True
+        fn(object())
+        self.assertEqual(box.called, 1)
+
 
 
 if __name__ == "__main__":
