@@ -169,7 +169,7 @@ class LegacyArchiveWorker(object):
                 raise ValueError("missing legacy 7zip helper")
             shutil.rmtree(target, ignore_errors=True)
             fd, archive = tempfile.mkstemp(prefix="warder-legacy-", suffix=".7z", dir="/tmp")
-            self.events.put(("stage", "Downloading preserved 7z archive"))
+            self.events.put(("stage", "download"))
             received = 0
             last_update = 0.0
             opener = build_opener(HTTPCookieProcessor(CookieJar()))
@@ -195,7 +195,7 @@ class LegacyArchiveWorker(object):
             if shutil.disk_usage("/tmp").free < needed:
                 raise ValueError("insufficient space to extract legacy archive")
             os.makedirs(target, exist_ok=True)
-            self.events.put(("stage", "Extracting preserved 7z archive"))
+            self.events.put(("stage", "extract"))
             with open(os.devnull, "wb") as devnull:
                 result = subprocess.call(
                     [self.sevenzip, "e", "-y", "-bd", "-o%s" % target, archive],
