@@ -84,75 +84,28 @@ class SettingsTests(unittest.TestCase):
         self.assertEqual(self.section.par231.default,'system')
         self.assertEqual([v for v,label in self.section.par231.choices],['system','mini'])
 
-    def test_download_menu_offers_current_skin_picon_storage(self):
-        menu = next(n for n in TREE.body if isinstance(n, ast.ClassDef) and n.name == 'downloadMenu')
-        method = next(n for n in menu.body if isinstance(n, ast.FunctionDef)
-                      and n.name == 'openWarderPiconChoice')
-        scope = {
-            'os': os, '_': lambda value: value,
-            'ui_text': lambda value: {'FullHDGlass skin storage': 'Úložisko skinu FullHDGlass'}.get(value, value),
-            'warderPiconSync': NS(skin_picon_destination=lambda root, resolution=None: os.path.join(root, {'50x30':'picon_50x30','400x240':'picon_400x240'}.get(resolution, 'picon')),
-                                  PICON_DESTINATIONS=(
-                ('/usr/share/enigma2/picon', 'Receiver memory'),
-                ('/media/hdd/picon', 'Hard disk'))),
-            'config': NS(plugins=NS(setupGlass17=NS(par39=Setting('/media/hdd/hdg17_files')))),
-            'ChoiceBox': object(),
-        }
-        exec(compile(ast.Module(body=[method], type_ignores=[]),
-                     'packaged-picon-choice.py', 'exec'), scope)
-        screen = NS(warderPiconPrefs={'resolution': '220x132', 'style': 'transparent'},
-                    session=NS(openWithCallback=Mock()),
-                    warderPiconChoiceAnswer=Mock())
-        scope['openWarderPiconChoice'](screen, 'wp-dest')
-        choices = screen.session.openWithCallback.call_args.kwargs['list']
-        self.assertEqual(choices[0], (
-            'Úložisko skinu FullHDGlass - /media/hdd/hdg17_files/picon',
-            ('destination', '/media/hdd/hdg17_files/picon')))
-        self.assertIn(('Hard disk - /media/hdd/picon',
-                       ('destination', '/media/hdd/picon')), choices)
-        scope['config'].plugins.setupGlass17.par39.value = '/media/usb/hdg17_files'
-        scope['openWarderPiconChoice'](screen, 'wp-dest')
-        updated = screen.session.openWithCallback.call_args.kwargs['list']
-        self.assertEqual(updated[0][1], ('destination', '/media/usb/hdg17_files/picon'))
-        screen.warderPiconPrefs['resolution'] = '50x30'
-        scope['openWarderPiconChoice'](screen, 'wp-dest')
-        size_choices = screen.session.openWithCallback.call_args.kwargs['list']
-        self.assertEqual(size_choices[0][1], ('destination', '/media/usb/hdg17_files/picon_50x30'))
-
-    def test_destination_row_indexing_is_contiguous_in_both_modes(self):
+    def test_download_menu_has_no_custom_destination_in_any_mode(self):
         menu = next(n for n in TREE.body if isinstance(n, ast.ClassDef) and n.name == 'downloadMenu')
         constructor = next(n for n in menu.body if isinstance(n, ast.FunctionDef) and n.name == '__init__')
-        condition = next(n for n in ast.walk(constructor) if isinstance(n, ast.If)
-                         and 'warderPiconExpert.custom_destination.value' in ast.unparse(n.test)
-                         and 'self.menuListAll = dict(enumerate(' in ast.unparse(n))
-        scope = {'config': self.config}
-        apply_filter = compile(ast.Module(body=[condition], type_ignores=[]), 'filtered-rows.py', 'exec')
-        original = {index: [name, '', '', '', 'x'] for index, name in enumerate(
-            ('wp-pos','wp-res','wp-style','wp-dest','wp-mode','aux-prov','aux-sat','aux-cam'))}
-        standard = NS(menuListAll=dict(original))
-        scope['self'] = standard
-        self.config.plugins.warderPiconExpert.custom_destination.value = False
-        exec(apply_filter, scope)
-        self.assertEqual(list(standard.menuListAll), list(range(7)))
-        self.assertEqual([row[0] for row in standard.menuListAll.values()],
-                         ['wp-pos','wp-res','wp-style','wp-mode','aux-prov','aux-sat','aux-cam'])
-        expert = NS(menuListAll=dict(original))
-        scope['self'] = expert
-        self.config.plugins.warderPiconExpert.custom_destination.value = True
-        exec(apply_filter, scope)
-        self.assertEqual(list(expert.menuListAll), list(range(8)))
-        self.assertEqual(expert.menuListAll[3][0], 'wp-dest')
+        values = next(n for n in ast.walk(constructor) if isinstance(n, ast.Dict)
+                      and 'warder-picon-positions' in ast.unparse(n))
+        ids = [node.value for node in values.values if isinstance(node, ast.List)
+               for item in node.elts[:1] if isinstance(item, ast.Constant)
+               for node in (item,)]
+        self.assertNotIn('wp-dest', ids)
+        self.assertIn('wp-pos', ids)
+        self.assertIn('wp-res', ids)
+        self.assertIn('wp-style', ids)
+        self.assertIn('wp-mode', ids)
+        self.assertIn('self.menuListAll = dict(enumerate(self.menuListAll.values()))', TEXT)
+        self.assertNotIn('ui_text("Custom picon location")', TEXT)
+        self.assertNotIn('def warderCustomLocationAnswer(', TEXT)
 
-    def test_standard_menu_hides_destination_and_expert_opt_in_restores_it(self):
+    def test_warder_destination_is_derived_from_skin_root(self):
         source = TEXT
-        self.assertIn('config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)', source)
-        self.assertIn('row for row in self.menuListAll.values() if row[0] != "wp-dest"', source)
-        self.assertIn('self.menuListAll = dict(enumerate(', source)
-        self.assertIn('ui_text("Custom picon location")', source)
-        self.assertIn('config.plugins.warderPiconExpert.custom_destination.save()', source)
-        self.assertIn('config.plugins.warderPiconExpert.custom_destination.cancel()', source)
-        self.assertIn('self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(', source)
-        from types import SimpleNamespace
+        self.assertIn('config.plugins.setupGlass17.par39.value, self.warderPiconPrefs.get("resolution")', source)
+        self.assertNotIn('if not config.plugins.warderPiconExpert.custom_destination.value:', source)
+        self.assertNotIn('if config.plugins.warderPiconExpert.custom_destination.value:', source)
         directory = '/media/hdd/hdg17_files'
         sync_src = (PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py').read_text()
         sync_tree = ast.parse(sync_src)
