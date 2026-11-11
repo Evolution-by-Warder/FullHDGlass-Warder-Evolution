@@ -10097,6 +10097,9 @@ class downloadMenu(Screen):
 				done, total = value
 				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob + " - %d%%" % min(100, int(100 * done / max(1, total))))
 				continue
+			if kind == "stage":
+				self._warderProgressStage(str(value))
+				continue
 			self.warderAssetWorker = None
 			self.warderAssetTimer.stop()
 			if kind == "done":
@@ -10358,7 +10361,7 @@ class downloadMenu(Screen):
 		self.warderAssetTimer.start(150, False)
 		self.warderAssetWorker.start()
 
-	def _warderFetchExtractAsset(self, asset, target, progress):
+	def _warderFetchExtractAsset(self, asset, target, progress, stage):
 		"""Worker-only I/O. No skin widgets or Enigma2 state are touched here."""
 		expected = str(asset["sha256"]).lower()
 		parts = asset.get("parts", [])
@@ -10374,6 +10377,7 @@ class downloadMenu(Screen):
 		h = hashlib.sha256()
 		total = 0
 		last_update = 0
+		stage(_("Downloading") + ": " + str(asset.get("filename", "ZIP")))
 		try:
 			with open(target, "wb") as out:
 				for url in urls:
@@ -10391,9 +10395,11 @@ class downloadMenu(Screen):
 							if time1.monotonic() - last_update >= 0.25:
 								progress(total, int(asset.get("size", 0)))
 								last_update = time1.monotonic()
+			stage(_("Verifying") + ": SHA-256")
 			if h.hexdigest().lower() != expected:
 				raise ValueError("SHA-256 mismatch")
 			progress(total, int(asset.get("size", 0)))
+			stage(_("Extracting") + ": " + str(asset.get("filename", "ZIP")))
 			# Only the selected staging root is replaced. Never delete user data.
 			if os.path.exists("/tmp/more_icons"):
 				self.rmTmp()
