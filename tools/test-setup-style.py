@@ -112,6 +112,7 @@ class SetupStyleTests(unittest.TestCase):
         # remain historical records; verify their approved successor patterns
         # explicitly instead of requiring obsolete AST nodes to still exist.
         evolved = {
+            4: "if t in (config.plugins.warderEvolutionPrimeTime.enabled, config.plugins.warderUserPicons.enabled):",
             3: "if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:",
             9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
             11: "in_default_channel_screen = default_geometry",
