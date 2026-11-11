@@ -127,7 +127,9 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
     if os.path.islink(directory):
         return '', ''
     os.makedirs(directory, mode=0o700, exist_ok=True)
-    for kind, source in [('album', 'iTunes'), ('performer', 'iTunes artist'), ('artist', 'TheAudioDB')]:
+    for kind, source in [('album', 'iTunes'), ('artist', 'TheAudioDB')]:
+        # Older experimental performer cache entries contain arbitrary album art.
+        # Never present them as photographs of the credited artist.
         path = os.path.join(directory, key + '-' + kind + '.jpg')
         if os.path.isfile(path) and not os.path.islink(path):
             return path, source
@@ -179,7 +181,7 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
     def save(url, kind, provider):
         parts = urlsplit(url)
         allowed = (parts.hostname and (parts.hostname == 'mzstatic.com' or parts.hostname.endswith('.mzstatic.com'))
-                   if kind in ('album', 'performer') else parts.hostname in ('theaudiodb.com', 'www.theaudiodb.com'))
+                   if kind == 'album' else parts.hostname in ('theaudiodb.com', 'www.theaudiodb.com'))
         if parts.scheme == 'http' and allowed:
             url = 'https://' + url[len('http://'):]
             parts = urlsplit(url)
@@ -203,7 +205,6 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
         plans += [dict(entity='song', limit=10, country=country, term=artist + ' ' + title)
                   for country in ('SK', 'CZ')]
         plans.append(dict(entity='song', limit=25, country='SK', term=identity.site_titles(artist, title)[0]))
-        plans.append(dict(term=artist, limit=20, media='music', attribute='artistTerm'))
         for params in plans:
             try:
                 url = 'https://itunes.apple.com/search?' + urlencode(params)
@@ -215,7 +216,6 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
                            title=item.get('trackName') if isinstance(item, dict) else None, rank=rank)
                     if rank:
                         ranked.append((rank, item))
-                artist_lookup = params.get('attribute') == 'artistTerm'
                 if not ranked:
                     albums = [item for item in rows[:params['limit']] if album_candidate(item, artist, title)] if isinstance(rows, list) else []
                     identities = {(identity.roster(item.get('artistName', '')),
@@ -226,14 +226,12 @@ def lookup_cover(artist, title, directory=CACHE, opener=None, clock=time.monoton
                     if len(identities) == 1:
                         ranked = [(0.5, item) for item in albums]
                         report('album_fallback', candidates=len(albums))
-                if not ranked and artist_lookup:
-                    ranked = [(0.25, item) for item in rows[:params['limit']]
-                              if isinstance(item, dict) and item.get('kind', 'song') == 'song'
-                              and identity.roster(item.get('artistName', '')) == identity.roster(artist)] if isinstance(rows, list) else []
                 for rank, item in sorted(ranked, key=lambda pair: pair[0], reverse=True):
                     url = (item.get('artworkUrl100') or '').replace('100x100bb', '600x600bb')
-                    provider = 'iTunes artist' if rank == 0.25 else 'iTunes'
-                    found = save(url, 'performer' if rank == 0.25 else 'album', provider)
+                    # Every iTunes image must belong to the requested song.
+                    # An unrelated release by the same artist is not a portrait.
+                    provider = 'iTunes'
+                    found = save(url, 'album', provider)
                     if found[0]:
                         report('selected', artist=item.get('artistName'), title=item.get('trackName'),
                                rank=rank, image_url=url, provider=provider)
