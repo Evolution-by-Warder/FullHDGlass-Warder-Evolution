@@ -22,7 +22,9 @@ permissions:
 
 concurrency:
   group: warder-stable-publish
-  cancel-in-progress: false
+  # A deliberate recovery merge cancels a hung previous publisher attempt.
+  # Normal version bumps NEVER interrupt an active immutable release.
+  cancel-in-progress: ${{ contains(github.event.head_commit.message, '[release-recovery]') }}
 
 jobs:
   build-verify-publish:
