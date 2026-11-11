@@ -90,7 +90,7 @@ class ArtworkBenchmarkTests(unittest.TestCase):
         marker_present[0] = True
         request(box, "ABBA", "Mamma Mia", "abba|mamma mia")
         self.assertEqual(len(records), 1)
-        self.assertRegex(records[0], r"^ms=\\d+ result=hit source=TheAudioDB track=[0-9a-f]{12}\\n$")
+        self.assertRegex(records[0], r"^ms=\d+ result=hit source=TheAudioDB track=[0-9a-f]{12}\n$")
         self.assertEqual(len(queries), 2)
 
 
