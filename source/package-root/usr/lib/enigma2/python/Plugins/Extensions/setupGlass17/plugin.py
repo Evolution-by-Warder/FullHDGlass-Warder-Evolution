@@ -23,6 +23,7 @@ import time as time1
 import re, os
 import threading
 from .warderUserPicons import selected_source as _warderSelectedPiconSource, find_png as _warderUserFindPng, normalized_directory as _warderUserNormalize
+from .warderProgressLog import ProgressLog
 from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker, CanonicalWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
@@ -9020,6 +9021,7 @@ class downloadMenu(Screen):
 			self[key].hide()
 		self.warderProgressActive = False
 		self.warderProgressEvents = []
+		self.warderProgressLog = ProgressLog()
 		self.warderProgressFinished = 0
 		self.warderProgressComplete = False
 		self.warderChannelWorker = None
@@ -9284,10 +9286,11 @@ class downloadMenu(Screen):
 		self.dwnTimer.start(25, True)
 
 	def _warderProgressBegin(self):
-		"""Display feedback immediately, before the download timer fires."""
+		"""Display a single steadily scrolling live log from the first operation."""
 		self.warderProgressActive = True
 		self.warderProgressComplete = False
-		self.warderProgressEvents = []
+		self.warderProgressLog = ProgressLog(visible_lines=9)
+		self.warderProgressEvents = self.warderProgressLog.entries
 		self.warderProgressFinished = 0
 		self["list"].hide()
 		self["dwn"].hide()
@@ -9299,26 +9302,35 @@ class downloadMenu(Screen):
 		self._warderProgressStage(_("Preparing downloads"))
 
 	def _warderProgressStage(self, description):
-		if getattr(self, "warderProgressActive", False):
-			self["progress_current"].setText(str(description).replace("\n", " ")[:145])
+		if not getattr(self, "warderProgressActive", False):
+			return
+		line = str(description).replace("\n", " ")[:115]
+		self["progress_current"].setText(line)
+		self.warderProgressLog.stage(line)
+		self["progress_history"].setText(self.warderProgressLog.tail())
 
 	def _warderProgressDone(self, description, success=True):
 		if not getattr(self, "warderProgressActive", False):
 			return
-		self.warderProgressEvents.append(("[OK] " if success else "[ERROR] ") + str(description).replace("\n", " ")[:110])
-		self.warderProgressEvents = self.warderProgressEvents[-9:]
+		self.warderProgressLog.done(description, success)
 		self.warderProgressFinished += 1
 		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
-		self["progress_history"].setText("\n".join(self.warderProgressEvents))
-		self._warderProgressStage(description)
+		self["progress_history"].setText(self.warderProgressLog.tail())
 
 	def _warderProgressFinish(self):
-		"""Keep the same progress screen visible with its final result."""
+		"""Keep the live log in this screen, finish with a short result summary."""
+		if self.warderProgressComplete:
+			return
 		self.warderProgressComplete = True
-		self._warderProgressStage(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
-		self.warderProgressEvents.extend(str(self.msg).strip().splitlines())
-		self.warderProgressEvents = self.warderProgressEvents[-12:]
-		self["progress_history"].setText("\n".join(self.warderProgressEvents))
+		# The old results text may contain a very long, duplicated paragraph.
+		# Keep the useful final totals without wrapping over other log lines.
+		result_lines = [x.strip() for x in str(self.msg).splitlines() if x.strip()]
+		for line in result_lines:
+			if "Total:" in line or "Failures:" in line:
+				self.warderProgressLog.note(line[line.find("Total:"):] if "Total:" in line else line[line.find("Failures:"):])
+		self.warderProgressLog.note(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
+		self["progress_current"].setText(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
+		self["progress_history"].setText(self.warderProgressLog.tail())
 		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
 		self["key_red"].setText(_("Close"))
 		for key in ("key_green", "key_yellow", "key_blue"):
