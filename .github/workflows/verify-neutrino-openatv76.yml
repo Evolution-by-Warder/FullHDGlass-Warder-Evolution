@@ -18,6 +18,10 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
       - name: Checkout upstream OpenATV 7.6 (pinned)
         uses: actions/checkout@v4
         with:
