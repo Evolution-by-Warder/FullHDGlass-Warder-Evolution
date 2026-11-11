@@ -146,7 +146,7 @@ class g17PicRef(Renderer):
 				pngname = "%s/%s.png" % (custom.rstrip("/"), serviceName)
 				if fileExists(pngname):
 					return pngname
-			for path in paths:
+			for path in (() if custom and self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240") else paths):
 				pngname = "%s/%s/%s.png" % (base, path, serviceName)
 				if fileExists(pngname):
 					return pngname
