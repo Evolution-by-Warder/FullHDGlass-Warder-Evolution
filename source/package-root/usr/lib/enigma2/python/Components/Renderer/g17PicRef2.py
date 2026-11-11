@@ -30,6 +30,7 @@ class g17PicRef2(Renderer):
 	def __init__(self):
 		Renderer.__init__(self)
 		self.nameCache = { }
+		self._warderCacheLocation = None
 		self.pngname = ""
 		self.path = "picon"
 		self.isON = True
@@ -52,6 +53,18 @@ class g17PicRef2(Renderer):
 	GUI_WIDGET = ePixmap
 
 	def changed(self, what):
+		# Picons may move at runtime (PATHS or the expert-only destination).
+		# Cached filenames from a previous storage location must not survive.
+		try:
+			base = config.plugins.setupGlass17.par39.value
+			custom = (config.plugins.warderPiconExpert.destination.value
+				if config.plugins.warderPiconExpert.custom_destination.value else "")
+		except AttributeError:
+			base, custom = "", ""
+		location = (base, custom)
+		if location != self._warderCacheLocation:
+			self.nameCache.clear()
+			self._warderCacheLocation = location
 		if self.instance:
 			pngname = ""
 			if what[0] != self.CHANGED_CLEAR:
