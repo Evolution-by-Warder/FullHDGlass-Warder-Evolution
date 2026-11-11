@@ -756,6 +756,7 @@ config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=allow_channel_e
 # Expert-only option: regular channel picon downloads follow the configured PATHS storage.
 config.plugins.warderPiconExpert = ConfigSubsection()
 config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)
+config.plugins.warderPiconExpert.destination = ConfigText(default="", fixed_size=False)
 
 def _warderEpgListScrollLabel():
     # Short labels fit the existing settings column. English is fallback.
@@ -1227,7 +1228,9 @@ try:
 		lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml',
 		lambda: config.plugins.setupGlass17.par39.value,
 		_warderPiconAlternative, lambda ref: ServiceReference(ref).getServiceName(), _warderPiconSanitize,
-		lambda: config.plugins.setupGlass17.par231.value == 'mini')
+		lambda: config.plugins.setupGlass17.par231.value == 'mini',
+		lambda: (config.plugins.warderPiconExpert.destination.value or None)
+			if config.plugins.warderPiconExpert.custom_destination.value else None)
 except (ImportError, AttributeError):
 	pass
 ENAFINDER = False
@@ -8693,6 +8696,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		# New settings live outside the legacy numbered registry.
 		config.plugins.warderEpgListScroll.enabled.save()
 		config.plugins.warderPiconExpert.custom_destination.save()
+		config.plugins.warderPiconExpert.destination.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -8840,6 +8844,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			pass
 		try:
 			config.plugins.warderPiconExpert.custom_destination.cancel()
+			config.plugins.warderPiconExpert.destination.cancel()
 		except AttributeError:
 			pass
 		if self.rst:
@@ -8973,6 +8978,11 @@ class downloadMenu(Screen):
 		self.warderChannelCurrentJob = None
 		self.warderPiconPrefs = warderPiconSync.default_preferences(
 			warderPiconSync.skin_picon_destination(config.plugins.setupGlass17.par39.value))
+		if config.plugins.warderPiconExpert.custom_destination.value:
+			stored = warderPiconSync.validate_destination(
+				config.plugins.warderPiconExpert.destination.value)
+			if stored:
+				self.warderPiconPrefs["destination"] = stored
 		self.warderPositionSelectionAttempted = False
 		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
 		self.warderAuxRows = ("aux-prov", "aux-sat", "aux-cam", "aux-weather")
@@ -9450,6 +9460,9 @@ class downloadMenu(Screen):
 			if not value:
 				return
 		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, key, value)
+		if key == "destination" and config.plugins.warderPiconExpert.custom_destination.value:
+			config.plugins.warderPiconExpert.destination.value = value
+			config.plugins.warderPiconExpert.destination.save()
 		if key == "resolution" and not config.plugins.warderPiconExpert.custom_destination.value:
 			self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
 				config.plugins.setupGlass17.par39.value, value)
@@ -9471,6 +9484,8 @@ class downloadMenu(Screen):
 			self.session.open(historyScreen, _("Result"), _("Invalid picon destination"))
 			return
 		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "destination", path)
+		config.plugins.warderPiconExpert.destination.value = path
+		config.plugins.warderPiconExpert.destination.save()
 		self._setWarderPiconPrepared("wp-dest")
 		self.createList()
 		self.reactivate()
