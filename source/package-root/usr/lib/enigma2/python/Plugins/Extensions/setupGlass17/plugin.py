@@ -1214,7 +1214,7 @@ def setPathFiles(chck=True):
 							_warderKnown = set(line.strip() for line in _warderHandle if line.strip())
 					if _warderDataPath not in _warderKnown and not os.path.islink(_warderRegistry):
 						with open(_warderRegistry, "a") as _warderHandle:
-							_warderHandle.write(_warderDataPath + "\\n")
+							_warderHandle.write(_warderDataPath + "\n")
 		except (IOError, OSError, ValueError):
 			pass
 		if chck and ENA_SYM:
