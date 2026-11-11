@@ -61,6 +61,33 @@ class ChannelWorkerTests(unittest.TestCase):
             self.assertEqual(list(worker.drain())[-1],
                              ("error", "SHA-256 mismatch"))
 
+    def test_auxiliary_asset_worker_reports_progress(self):
+        with tempfile.TemporaryDirectory() as root:
+            def work(asset, target, progress):
+                progress(1, 2)
+                progress(2, 2)
+                self.assertEqual(asset["root"], "icons")
+                self.assertTrue(target.endswith("asset.zip"))
+                return "icons"
+            worker = worker_module.AssetWorker(
+                {"root": "icons"}, str(Path(root) / "asset.zip"), work)
+            worker.start()
+            worker.thread.join(timeout=5)
+            self.assertFalse(worker.thread.is_alive())
+            self.assertEqual(list(worker.drain()), [
+                ("bytes", (1, 2)), ("bytes", (2, 2)), ("done", "icons")])
+
+    def test_auxiliary_asset_worker_propagates_error(self):
+        def reject(asset, target, progress):
+            raise ValueError("unsafe asset redirect")
+        worker = worker_module.AssetWorker(
+            {"root": "icons"}, "/tmp/asset.zip", reject)
+        worker.start()
+        worker.thread.join(timeout=5)
+        self.assertFalse(worker.thread.is_alive())
+        self.assertEqual(list(worker.drain()), [
+            ("error", "unsafe asset redirect")])
+
 
 if __name__ == "__main__":
     unittest.main()
