@@ -49,6 +49,7 @@ jobs:
           python3 tools/test_uninstall_cleanup.py
           python3 tools/test-channel-picons.py
           python3 tools/test-canonical-picons.py
+          python3 tools/test-weather-condition-language.py
           python3 tools/test-warder-user-picons.py
           python3 tools/test-warder-progress-log.py
           python3 tools/test-warder-channel-worker.py
