@@ -147,24 +147,24 @@ class g17RefTV(Renderer):
 			# InfoBar and the native channel list. Honor the same expert folder.
 			# Auxiliary provider/satellite logos always remain in hdg17_files.
 			if typ == "picon":
-				try:
-					if config.plugins.warderPiconExpert.custom_destination.value:
-						custom = config.plugins.warderPiconExpert.destination.value
-						if custom:
-							path = os.path.join(custom, serviceName + ".png")
-							if os.path.isfile(path):
-								return path
-							from Plugins.Extensions.setupGlass17.warderChannelPicons import find_picon
-							from Tools.Alternatives import GetWithAlternative
-							from Tools.Directories import sanitizeFilename
-							service = self.source.service
-							return find_picon(
-								service.toString(), config.plugins.setupGlass17.par39.value,
-								GetWithAlternative,
-								lambda ref: ServiceReference(ref).getServiceName(),
-								sanitizeFilename, custom_folder=custom)
-				except (AttributeError, ImportError, OSError, TypeError, ValueError):
-					return ""
+				from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source, find_png
+				override, custom = selected_source(config)
+				if override:
+					result = find_png(custom, serviceName)
+					if result:
+						return result
+					try:
+						from Plugins.Extensions.setupGlass17.warderChannelPicons import find_picon
+						from Tools.Alternatives import GetWithAlternative
+						from Tools.Directories import sanitizeFilename
+						service = self.source.service
+						return find_picon(
+							service.toString(), config.plugins.setupGlass17.par39.value,
+							GetWithAlternative,
+							lambda ref: ServiceReference(ref).getServiceName(),
+							sanitizeFilename, custom_folder=custom)
+					except (AttributeError, ImportError, OSError, TypeError, ValueError):
+						return ""
 			if self.__enaSH is None or self.__enaSH == 1:
 				x = ("","_400x240","_220x132")
 			else:
