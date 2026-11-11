@@ -259,6 +259,11 @@ def strip_reviewed_scoped(tree, records):
 
 
 def normalized(tree):
+    # Reverse only the four exact, scoped Neutrino additions approved in PR #104.
+    # All other changes to image/keymap and setup controllers remain guarded.
+    neutrino_ledger = ROOT / 'design/neutrino-short-ok/logic.json'
+    if neutrino_ledger.exists():
+        tree = strip_reviewed_scoped(tree, json.loads(neutrino_ledger.read_text()))
     # Only exact, scope-bound reviewed Prime Time additions are ignored by the
     # frozen legacy fingerprint. Any changed save/cancel or progress hook must
     # still fail the baseline comparison.
