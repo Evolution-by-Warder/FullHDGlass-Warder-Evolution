@@ -90,6 +90,50 @@ class ChannelWorkerTests(unittest.TestCase):
         self.assertEqual(list(worker.drain()), [
             ("error", "unsafe asset redirect")])
 
+    def test_legacy_worker_rejects_untrusted_download(self):
+        with tempfile.TemporaryDirectory(dir="/tmp") as root:
+            worker = worker_module.LegacyArchiveWorker(
+                "https://example.invalid/archive.7z", str(Path(root) / "unpack"),
+                str(Path(root) / "7z"))
+            worker.start()
+            worker.thread.join(timeout=5)
+            self.assertFalse(worker.thread.is_alive())
+            self.assertIn("untrusted preserved legacy archive",
+                          str(list(worker.drain())[-1]))
+
+    def test_legacy_worker_streams_and_extracts_approved_archive(self):
+        from unittest.mock import patch
+        import io
+
+        class Response(io.BytesIO):
+            def __init__(self, url):
+                super().__init__(b"TEST")
+                self.url = url
+                self.headers = {"Content-Length": "4"}
+            def geturl(self):
+                return self.url
+
+        class Opener:
+            def open(self, request, timeout=15):
+                return Response(request.full_url)
+
+        with tempfile.TemporaryDirectory(dir="/tmp") as root:
+            executable = Path(root) / "7z"
+            executable.write_text("fake 7zip fixture")
+            target = str(Path(root) / "unpack")
+            url = worker_module.LegacyArchiveWorker._ROOT + "verified.7z"
+            with patch("urllib.request.build_opener", return_value=Opener()), \\
+                 patch("subprocess.call", return_value=0):
+                worker = worker_module.LegacyArchiveWorker(url, target, str(executable))
+                worker.start()
+                worker.thread.join(timeout=5)
+            self.assertFalse(worker.thread.is_alive())
+            events = list(worker.drain())
+            self.assertIn(("bytes", (4, 4)), events)
+            self.assertEqual(events[-1], ("done", 4))
+            self.assertTrue(any(x[0] == "stage" and "Extracting" in x[1]
+                                for x in events))
+
 
 if __name__ == "__main__":
     unittest.main()
