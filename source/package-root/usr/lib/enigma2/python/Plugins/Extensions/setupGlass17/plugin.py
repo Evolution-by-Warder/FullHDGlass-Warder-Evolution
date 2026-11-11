@@ -1532,6 +1532,7 @@ def startHdg17(reason, **kwargs):
 					Glass17__init__ = InfoBarPlugins.__init__
 				InfoBarPlugins.__init__ = hdg17inicialize
 				InfoBarPlugins.controlWindow17 = controlWindow17
+				InfoBarPlugins.warderNeutrinoChannelList17 = warderNeutrinoChannelList17
 				InfoBarPlugins.hideWindow17 = hideWindow17
 				InfoBarPlugins.fadeEvent17 = fadeEvent17
 				InfoBarPlugins.fadeEvent217 = fadeEvent217
@@ -1569,12 +1570,12 @@ def hdg17inicialize(self):
 			pass
 		if config.plugins.setupGlass17.par12.value == "n":
 			if config.plugins.setupGlass17.par34.value:
-				self["g17Actions"] = ActionMap(["g17Actions_neutrino"],{"ok_pressed": self.controlWindow17}, -1)
+				self["g17Actions"] = ActionMap(["g17Actions_neutrino"],{"ok_pressed": self.controlWindow17,"warder_neutrino_channel_list": self.warderNeutrinoChannelList17}, -1)
 			else:
 				self["g17Actions"] = ActionMap(["g17Actions"],{"ok_pressed": self.controlWindow17,"exit_pressed": self.hideWindow17}, -1)
 		else:
 			if config.plugins.setupGlass17.par34.value:
-				self["g17Actions"] = ActionMap(["g17Actions_neutrinoSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17}, -1)
+				self["g17Actions"] = ActionMap(["g17Actions_neutrinoSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17,"warder_neutrino_channel_list": self.warderNeutrinoChannelList17}, -1)
 			else:
 				self["g17Actions"] = ActionMap(["g17ActionsSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17,"exit_pressed": self.hideWindow17}, -1)
 			self["helpActions"] = ActionMap(['HelpActions'],{"displayHelp": doNothing})
@@ -1743,6 +1744,18 @@ def serviceStartNow173(self):
 			idx = config.usage.infobar_timeout.index
 			if idx:
 				self.g17eventupdTimer.start(idx*1000, True)
+
+def warderNeutrinoChannelList17(self):
+	"""Open the existing Enigma2 service list only in Warder Neutrino mode.
+
+	Use the image-owned API; do not patch Enigma2 or replace its keymap.
+	The keymap binds on key release (b), leaving long-OK mappings intact.
+	"""
+	if isinstance(self, InfoBar) and config.plugins.setupGlass17.par34.value:
+		open_list = getattr(self, "openServiceList", None)
+		if callable(open_list):
+			open_list()
+
 
 def controlWindow17(self):
 	global transStep17
