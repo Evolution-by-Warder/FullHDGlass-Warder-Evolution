@@ -82,3 +82,34 @@ class ManifestWorker(object):
             self.events.put(("done", self.fetch(self.url)))
         except Exception as error:
             self.events.put(("error", str(error)))
+
+
+class AssetWorker(object):
+    """Run a verified archive download/extraction without touching Enigma widgets."""
+    def __init__(self, asset, target, work):
+        self.asset = dict(asset)
+        self.target = target
+        self.work = work
+        self.events = Queue()
+        self.thread = threading.Thread(target=self.run, name="WarderAssetDownload")
+        self.thread.daemon = True
+
+    def start(self):
+        self.thread.start()
+
+    def drain(self):
+        while True:
+            try:
+                yield self.events.get_nowait()
+            except Empty:
+                return
+
+    def run(self):
+        try:
+            root = self.work(self.asset, self.target, self.report)
+            self.events.put(("done", root))
+        except Exception as error:
+            self.events.put(("error", str(error)))
+
+    def report(self, done, total):
+        self.events.put(("bytes", (done, total)))
