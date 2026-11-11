@@ -80,15 +80,15 @@ jobs:
               for member in tar.getmembers():
                   body=tar.extractfile(member).read() if member.isfile() else None
                   if member.name.lstrip('./') == 'control':
-                      body=body.replace(b'Version: 1.0.78-1\n',b'Version: 1.0.78-103\n')
-                      assert b'Version: 1.0.78-103\n' in body
+                      body=body.replace(b'Version: 1.0.78-1\n',b'Version: 1.0.78-104\n')
+                      assert b'Version: 1.0.78-104\n' in body
                       member.size=len(body)
                   members.append((member,body))
           transformed=io.BytesIO()
           with tarfile.open(fileobj=transformed,mode='w:gz') as tar:
               for member,body in members:
                   tar.addfile(member,io.BytesIO(body) if body is not None else None)
-          path=Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.78-103_all.ipk')
+          path=Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.78-104_all.ipk')
           path.parent.mkdir(parents=True,exist_ok=True)
           with __import__('tempfile').TemporaryDirectory() as d:
               wd=Path(d)
@@ -100,13 +100,13 @@ jobs:
           path.with_suffix('.ipk.sha256').write_text(digest+'  '+path.name+'\n')
           print('PR99 artifact:',path,'SHA256:',digest)
           PY
-          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.78-103_all.ipk.sha256)
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.78-104_all.ipk.sha256)
       - name: Upload isolated receiver test package
         uses: actions/upload-artifact@v4
         with:
-          name: Warder-PR99-1.0.78-103
+          name: Warder-PR99-1.0.78-104
           path: |
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.78-103_all.ipk
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.78-103_all.ipk.sha256
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.78-104_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.78-104_all.ipk.sha256
           if-no-files-found: error
           retention-days: 14
