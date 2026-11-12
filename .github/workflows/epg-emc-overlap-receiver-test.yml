@@ -34,7 +34,7 @@ jobs:
           record = json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
           assert len(record['builds']) == 3
           out = Path('packages/test')
-          out.mkdir(exist_ok=True)
+          out.mkdir(parents=True, exist_ok=True)
           for platform, proof in zip(('arm','mipsel','aarch64'), record['builds']):
               name = ('bitrate-helper-build.json' if platform == 'arm'
                       else 'bitrate-helper-' + platform + '-build.json')
