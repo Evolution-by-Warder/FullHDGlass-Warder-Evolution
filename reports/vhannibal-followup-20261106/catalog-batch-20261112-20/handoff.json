@@ -1,0 +1,22 @@
+{
+  "base_checkpoint": "975f3acf96fce0db7307388cbf5e171b0f315fa7",
+  "payload_checkpoint": "791fb6d076629be0296c6201c8374c07729d983d",
+  "branch": "work/vhannibal-mezzo-sd-20261106",
+  "pr": 50,
+  "batch19": "OPEN_86_BLOCKED",
+  "batch20": "COMPLETED_INDEPENDENT_REMOTE_AUDIT_PASS",
+  "next_work": [
+    "Continue unprocessed SAT catalogue outside86blocked, require exact service tuple and valid approved donors.",
+    "Do not repeat BFBS/ALKAFEEL research without new decisive evidence.",
+    "Ciefp fetched bytes are unchanged since10Nov; catalogue difference is not proof of a new active service.",
+    "12name-matched donor leads without ledger V9deviations were found; only36E19121/19123 integrated in this payload. Other leads remain unaccepted; duplicate names alone are insufficient."
+  ],
+  "protection": "No main/production/client/template/radio changes;18CANAL+packages identical.",
+  "totals": {
+    "tv": 50,
+    "integrated_png": 447,
+    "original_open": 86,
+    "new_zip_versions": 9,
+    "historical_99_archives_preserved": true
+  }
+}

@@ -1,13 +1,11 @@
 {
-  "status": "LOCAL_PASS_REMOTE_AUDIT_PENDING",
+  "status": "PASS_INDEPENDENT_REMOTE_AUDIT",
   "base": "975f3acf96fce0db7307388cbf5e171b0f315fa7",
   "batch": 20,
   "batch19": "OPEN_WITH_86_HOLDS",
   "new_tv": 2,
   "new_png": 18,
   "changed_zip": 9,
-  "completed_tv_total_pending_audit": 50,
-  "integrated_png_total_pending_audit": 447,
   "original_open": 86,
   "production_unchanged": true,
   "protected_canal": 18,
@@ -932,6 +930,21 @@
       "https://ntvplus.ru/channel/v-gostyah-u-skazki-380",
       "https://ntvplus.tv/channel/women-s-magazine-573"
     ],
-    "donors": "Existing nine-valid production graphics, zero recorded V9 deviations; byte-for-byte reuse. No render."
-  }
+    "donors": "Existing nine-valid production graphics, zero recorded V9 deviations; byte-for-byte reuse. No render.",
+    "lamedb_rows": [
+      [
+        "4ab1:01680000:0013:0070:22:0",
+        "Женский Журнал",
+        "p:HTB+,c:0000dd,c:0300dd,c:190781,C:0500,C:4ab0"
+      ],
+      [
+        "4ab3:01680000:0013:0070:22:0",
+        "В гостях у сказки",
+        "p:HTB+,c:0000df,c:0300df,c:190783,C:0500,C:4ab0"
+      ]
+    ]
+  },
+  "payload_commit": "791fb6d076629be0296c6201c8374c07729d983d",
+  "completed_tv_total": 50,
+  "integrated_png_total": 447
 }

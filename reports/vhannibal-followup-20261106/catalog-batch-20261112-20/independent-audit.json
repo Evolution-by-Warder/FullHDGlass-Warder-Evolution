@@ -1,0 +1,265 @@
+{
+  "status": "PASS",
+  "audit_scope": "Independent pinned remote payload integration audit, not batch19 closure",
+  "base_commit": "975f3acf96fce0db7307388cbf5e171b0f315fa7",
+  "payload_commit": "791fb6d076629be0296c6201c8374c07729d983d",
+  "changed_files": 33,
+  "remote_files_byte_identical_to_reviewed_payload": 33,
+  "additional_remote_old_parts": 18,
+  "new_tv_references": 2,
+  "new_png": 18,
+  "new_zip_versions": 9,
+  "old_zip_members_byte_identical": 1092,
+  "protected_canal_packages_unchanged": 18,
+  "other_package_entries_unchanged": 489,
+  "all_part_sizes_below_32MiB": true,
+  "png_crc_sha256_dimensions_rgba_and_donor_bytes": "PASS",
+  "zip_crc_sha256_prefix_and_members": "PASS",
+  "original_86_holds_unchanged": true,
+  "batch19": "OPEN",
+  "new_completed_tv_total": 50,
+  "new_integrated_png_total": 447,
+  "cumulative_unique_zip_count": "Not independently recomputed; nine new versions added, historical archives preserved",
+  "identity_evidence": "Independent LyngSat indexed full transport ONID112/TID19 SID19121 and19123, VPID221/223, matches raw Ciefp lamedb service_type22 and names. Direct LyngSat page403; full indexed source independently retrieved. Existing nine-valid zero-V9-deviation donor sets reused exactly.",
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "sha256": "4a3cd8b94f3a741142f780345421b20500752425320121efa3eead1ea3eaed64",
+      "bytes": 85928
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+      "sha256": "91cce20c1dfb089f2ba6b5cdfad4e0816099a945ea0579506562cf674566c323",
+      "bytes": 256708
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/manifest.json",
+      "sha256": "63f9ff2596d02d84e4ff5390f14970799184b97c327cee6c5e57d8b3f450bff1",
+      "bytes": 2183424
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-220x132-black-40765b3030c953b8.zip.part02",
+      "sha256": "9020beb67d23c262ec70085b24f5f1eee44f8fb69bcfa238b99181c3dc3765e3",
+      "bytes": 91843
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-220x132-transparent-0bcfc85c2b0126f8.zip.part02",
+      "sha256": "26f05d31ae4d1a5dfc5027da17cf2f3b646ba487be514f18ee5e2e3c2136233f",
+      "bytes": 49205
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-220x132-white-4dd155cb43de0fa6.zip.part02",
+      "sha256": "fa8364d4abaf3690d871bc9d4db17276c130f5da5d22a8c0f0f47d1069a96240",
+      "bytes": 93017
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-400x240-black-5036860efea5db6e.zip.part02",
+      "sha256": "ec31d225d45f678a94ba74a5d035691e757d2aaa4a2c8038d91fdabfff6c4882",
+      "bytes": 226002
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-400x240-transparent-b9c7a6c4c59cf30e.zip.part02",
+      "sha256": "ffc9658ba1c87b35678cb822d634eaacd9a260d6f8c7f389ac7c2eb1ec6347dd",
+      "bytes": 127927
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-400x240-white-b0e20fe99319a0bd.zip.part02",
+      "sha256": "be3f01c4df24d820c9e5f6beca88777b44f257a2c042097ee303ec460d3db6d6",
+      "bytes": 231464
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-50x30-black-6b001ba945444ebd.zip.part02",
+      "sha256": "c5d134ff272b7af15599bb5113312d5bd1d5fc1d606e42de7a37ca898e7a572f",
+      "bytes": 16400
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-50x30-transparent-bc5b30197888c0d8.zip.part02",
+      "sha256": "9203690c166a1a38f734408595a75eef6f88423fbeefd4b9d3346183d3c9a999",
+      "bytes": 13989
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-360e-50x30-white-f523cab6febcebd1.zip.part02",
+      "sha256": "9936e3aaf085ce5c7e8b02361bb7fb265427ff945c2266f01e30059c2fc27090",
+      "bytes": 15926
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/build.py",
+      "sha256": "890effcfca8ed2e9d3e315e6404638e4464fc24ad4f21b8d6a55be4349495ed7",
+      "bytes": 6466
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/integration.json",
+      "sha256": "13b267378af9f58463310c63b59c758efbc3f99055fadaa0ecac2923c11d6156",
+      "bytes": 42550
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/220x132/channel-black/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "9afb38f151cf726da408e032c0e403985e1c5ca7467d068e4f49b9de2836f8a2",
+      "bytes": 42262
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/220x132/channel-black/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "4913306e94df230c3b432e7d47956a84dc9696ed387fff69b068c42231b975b0",
+      "bytes": 39600
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/220x132/channel-transparent/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "5aedeff55f5e0629ab90866ec2146dd84e871b64805fb78660b355636521aea6",
+      "bytes": 23864
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/220x132/channel-transparent/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "3a4fa6bddfdd7af5fd7dd328129a6de37be20efe2085e94f5195b057388d0f38",
+      "bytes": 15701
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/220x132/channel-white/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "319f6955896d901e96f24b2699ef4bc815f24d60382f315eb975e28b7e574cca",
+      "bytes": 43282
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/220x132/channel-white/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "297ce5167c1a632741b8c514042c6c28502e58423ae57377f33ef100a3ef467a",
+      "bytes": 39754
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/400x240/channel-black/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "00ef90a14f5fdd10394e6683c9c553236aad93acc341ad4304c61e162933ee70",
+      "bytes": 110047
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/400x240/channel-black/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "b365c0bb909d68681ba06e1c4396c6ec876e5441652e1e27b8b7982e35115c8b",
+      "bytes": 106239
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/400x240/channel-transparent/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "31b9f5a3cc6e43bda11f3d056bd832e6bd028df2be8f98f65e6a246d224f976d",
+      "bytes": 64496
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/400x240/channel-transparent/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "82049dc0f30385a78befb60c1af911a1b530cc86f6e8aeca8d074f09144414c4",
+      "bytes": 54806
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/400x240/channel-white/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "3333d9cd429276c2ecee43de148fb7343dd46f2de46d0869f6e6af502bcf9211",
+      "bytes": 113885
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/400x240/channel-white/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "2f34cff29178a5a97454954c0ff8ace947faa883fa5a8b191e4b64928e2cba40",
+      "bytes": 107863
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/50x30/channel-black/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "704998b3d731359b1794faadb6977bc76e0cf8edfbd3028680f1d9c672fbd717",
+      "bytes": 3418
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/50x30/channel-black/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "9a6375bec0158d193c973a22df2314c871bf7d36f0c29b8c0eb41dfcfbe17a84",
+      "bytes": 3326
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/50x30/channel-transparent/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "64d688846afe109cc8d05f89222103cc13ff8cae043b0b3b00f8c46a4642d68b",
+      "bytes": 2328
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/50x30/channel-transparent/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "638a6017029f55fcb2a87ca38dda2a593ff9e4d760af4686ae51adaaf67d6974",
+      "bytes": 2005
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/50x30/channel-white/1_0_16_4AB1_13_70_1680000_0_0_0.png",
+      "sha256": "ffbd758f2aea615001529eacd4c0465e3175bd8ad2e360637cce57ab9125d623",
+      "bytes": 3250
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/png/50x30/channel-white/1_0_16_4AB3_13_70_1680000_0_0_0.png",
+      "sha256": "7f00407607fc9c688c546efb3595cc0e2b9cca2c5b7a2bcb9a77228c4f987a16",
+      "bytes": 3020
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-20/reference-register.json",
+      "sha256": "d7e382a0b0d272d5d11a93e103a9a28a64f57962bc7312d170cf2481edb0038c",
+      "bytes": 406
+    }
+  ],
+  "packages": [
+    {
+      "filename": "warder-360e-220x132-transparent-0bcfc85c2b0126f8.zip",
+      "sha256": "0bcfc85c2b0126f8d726447349269e1ed5485f8475a7ec06376eb27deae0fdff",
+      "old_members_preserved": 124,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-220x132-black-40765b3030c953b8.zip",
+      "sha256": "40765b3030c953b880017bfbfad126b04bf6366dac1cf877fd725b2bd2f31d12",
+      "old_members_preserved": 124,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-220x132-white-4dd155cb43de0fa6.zip",
+      "sha256": "4dd155cb43de0fa6c5af7cf6b417d55269f4e3c8d5201e3300d498fafdbfc5e2",
+      "old_members_preserved": 124,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-50x30-transparent-bc5b30197888c0d8.zip",
+      "sha256": "bc5b30197888c0d83b9d311460b48d20539b61d2f0c448918959d83ae512e29c",
+      "old_members_preserved": 120,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-50x30-white-f523cab6febcebd1.zip",
+      "sha256": "f523cab6febcebd162c3d321bba1c6b9e1c6c9c7b679d93394747ab39e3c381e",
+      "old_members_preserved": 120,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-50x30-black-6b001ba945444ebd.zip",
+      "sha256": "6b001ba945444ebd8047fb0680577403f8e4270c9eb3b6c51d17f8b416718401",
+      "old_members_preserved": 120,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-400x240-transparent-b9c7a6c4c59cf30e.zip",
+      "sha256": "b9c7a6c4c59cf30e337d19233fdbfbe06dd67fc5f5d612542b63a5447952e7e4",
+      "old_members_preserved": 120,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-400x240-white-b0e20fe99319a0bd.zip",
+      "sha256": "b0e20fe99319a0bdb769741dbf26212e92f2aa2be12a0e162dac6bec10530501",
+      "old_members_preserved": 120,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    },
+    {
+      "filename": "warder-360e-400x240-black-5036860efea5db6e.zip",
+      "sha256": "5036860efea5db6ef3649f30264ff5b49740f19cd2095205135bd653b223be6c",
+      "old_members_preserved": 120,
+      "new_png": 2,
+      "crc": "PASS",
+      "prefix_byte_identical": true
+    }
+  ]
+}

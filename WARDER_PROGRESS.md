@@ -1,8 +1,8 @@
-## 2026-11-12 — Independent catalog batch20: two36E references, remote audit pending
+## 2026-11-12 — Catalog batch20 completed: two new36E references, independent remote audit PASS
 
-Two new exact references outside the86blocked batch19 cases: Женский Журнал SID19121 and В гостях у сказки SID19123, TSID19/ONID112. Existing approved nine-variant donor bytes reused unchanged. Added18PNG to nine360E working ZIPs, preserving every previous ZIP byte/member and all18protectedCANAL+packages. Main/production unchanged; PR50 unmerged.
+Payload `791fb6d076629be0296c6201c8374c07729d983d` adds Женский Журнал (SID19121) and В гостях у сказки (SID19123), both TSID19/ONID112 on36E. Exact Ciefp tuples and VPIDs221/223 match independent LyngSat transport data. Existing nine-variant donor bytes reused without rendering. Added18PNG and9new working ZIP versions;1,092oldmembers and oldZIPbyteprefixes preserved. All33remotechangedfiles match;9ZIPs rebuilt from freshly fetched oldparts and newtails, SHA256/CRC verified. All18protectedCANAL+packages and489otherpackageentries unchanged. No production/main/radio/client/template changes; PR50 unmerged.
 
-Payload awaiting independent remote audit; do not mark batch20 complete yet. On PASS, totals50TV/447integratedPNG; original86open unchanged. Batch19 remains open. Report `reports/vhannibal-followup-20261106/catalog-batch-20261112-20/integration.json`. BFBS/ALKAFEEL not revisited.
+**50completedTV /447integratedPNG /86originalopen. Batch20 COMPLETE; batch19 still OPEN.** Nine new ZIP versions are recorded separately; historical99archives remain preserved. This extends the SAT catalogue outside the86holds, not a reduction of their count. ALKAFEEL/BFBS not revisited. Full report,reference register,audit andhandoff: `reports/vhannibal-followup-20261106/catalog-batch-20261112-20/`. Continue independent exact-tuple candidates; no duplicate names, inferred identities or stale Ciefp rows counted as completion.
 
 ## 2026-11-12 — Batch19: new BFBS reception evidence for eight held SIDs
 
