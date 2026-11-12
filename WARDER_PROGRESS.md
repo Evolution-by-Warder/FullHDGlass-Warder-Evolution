@@ -1,3 +1,9 @@
+## 2026-11-12 — Independent catalog batch20: two36E references, remote audit pending
+
+Two new exact references outside the86blocked batch19 cases: Женский Журнал SID19121 and В гостях у сказки SID19123, TSID19/ONID112. Existing approved nine-variant donor bytes reused unchanged. Added18PNG to nine360E working ZIPs, preserving every previous ZIP byte/member and all18protectedCANAL+packages. Main/production unchanged; PR50 unmerged.
+
+Payload awaiting independent remote audit; do not mark batch20 complete yet. On PASS, totals50TV/447integratedPNG; original86open unchanged. Batch19 remains open. Report `reports/vhannibal-followup-20261106/catalog-batch-20261112-20/integration.json`. BFBS/ALKAFEEL not revisited.
+
 ## 2026-11-12 — Batch19: new BFBS reception evidence for eight held SIDs
 
 A newly retrieved receiver-analyser screenshot dated26September directly shows75E11786.672H with eight target SIDs8111–8116,8119,8120 still numbered, separate from named BBC/ITV/Sky programmes. Screenshot archived withSHA256; noTSID/ONID or expandedPMT is visible. Unknown icons do not prove Data. Eight register rows annotated; all holds preserved. DMDU_T independent Morpheus chart corroborates nullAV but not data classification. Report: `reports/vhannibal-followup-20261106/scope-batch-20261112-19-bfbs-reception.json`.
