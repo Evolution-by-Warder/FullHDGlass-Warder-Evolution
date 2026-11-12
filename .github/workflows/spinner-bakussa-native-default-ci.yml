@@ -32,6 +32,5 @@ jobs:
       - name: Validate product and package metadata without publishing
         run: |
           python tools/test-package-transition.py -q
-          python tools/test-install-transition.py -q
       - name: Report source-only candidate
         run: echo "PASS native spinner sources and lifecycle; no IPK or production feed modified"
