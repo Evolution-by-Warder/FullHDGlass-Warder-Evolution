@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-12",
+  "batch": 19,
+  "base": "73af107217797d207eceaff71f6b822cb3322b48",
+  "status": "IDENTITY_HOLD_GRAPHICS_DEFINITIVELY_APPROVED",
+  "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+  "target": {
+    "sid": 7700,
+    "tsid": 53600,
+    "onid": 1918,
+    "namespace": "DCA0000",
+    "position": "7.0W"
+  },
+  "visual_approval": "FINAL_ALL_9_NO_RERENDER_NO_FURTHER_VISUAL_APPROVAL",
+  "findings": [
+    {
+      "url": "https://sk.kingofsat.tv/detail-alkafel",
+      "observation": "Direct detail transport dated2026-11-12:7W12398.60V SID7700 NID2048 TSID41. Indexed frequency listing still exposes1918/53600. This inconsistency is not proof of exact-reference departure or brand equivalence."
+    },
+    {
+      "url": "https://sk.kingofsat.tv/channelhistory.php?ch=25944",
+      "observation": "History links AL-KAFEL name/SID7700 at12398.60V on2026-11-07 and11178.70H on2026-06-03; no full historical tuple or official artwork binding."
+    },
+    {
+      "url": "https://t.me/s/shiatv2014",
+      "observation": "Third-party satellite-news post explicitly pairs12399V and11179H with alkafil.live. Arabic name الكافل differs from الكفيل branding. Not official ownership evidence; no assumed equivalence or definitive different-entity verdict."
+    },
+    {
+      "url": "https://alkafil.live",
+      "observation": "Web retrieval failed: URL not accessible via tool. No claim of website contents."
+    }
+  ],
+  "other_candidates": {
+    "checked": "Limited exact identifier searches for StarzPlay-Movies1708,EL JUMHURIA7820,BFBS8016.",
+    "result": "No new decisive service-to-approved-artwork proof. Existing holds preserved; not a new86-case audit."
+  },
+  "counts": {
+    "tv": 48,
+    "integrated_png": 429,
+    "zip": 99,
+    "open": 86
+  },
+  "new_integrations": 0,
+  "technical_closures": 0,
+  "png_changes": 0,
+  "zip_changes": 0,
+  "preservation": "Original,nineapprovedPNGs,preview,18CANAL+archives,production,radio,manifests and clients unchanged.",
+  "audit": "Documentation checkpoint only; no new binary audit or batch-completion PASS claimed.",
+  "next": "Resolve exact target historical/current transport and bind its broadcaster to approved ALKAFEEL.TV artwork using operator confirmation or tuple-bound station ident. Do not repeat SID-only listings,rerender or request visual approval. Other references need new evidence; batch19 remains incomplete."
+}

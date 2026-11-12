@@ -1,5 +1,5 @@
 {
-  "status": "NEW_DRAFT_IDENTITY_AND_VISUAL_HOLD",
+  "status": "VISUALLY_APPROVED_IDENTITY_HOLD",
   "station": "ALKAFEEL.TV",
   "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
   "source_sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
@@ -139,5 +139,7 @@
   "new_integrations": 0,
   "open_references": 86,
   "note": "Newly generated, not recovered historical drafts. Original colours and all alpha-bounded artwork retained. Premultiplied LANCZOS scaling from original for every size. WHITE white-letter contrast is unchanged. Outside all ZIPs; exact satellite identity unconfirmed.",
-  "preview_sha256": "11a6a284a089621df9cf4a4a146652a714ff330a7e15bafbbcdbfebf5f286d79"
+  "preview_sha256": "11a6a284a089621df9cf4a4a146652a714ff330a7e15bafbbcdbfebf5f286d79",
+  "visual_approval": "APPROVED_BY_OWNER_FINAL_ALL_9_INCLUDING_WHITE_CONTRAST",
+  "approval_record": "../visual-approval-20261112.json"
 }
