@@ -1,0 +1,89 @@
+{
+  "batch": 19,
+  "date": "2026-11-12",
+  "base": "cf2cc7d527e06b3548c349030c51028ed933dded",
+  "status": "NEW_RECEPTION_EVIDENCE_NO_INTEGRATION",
+  "counts": {
+    "tv": 48,
+    "png": 429,
+    "zip": 99,
+    "open": 86
+  },
+  "new_integrations": 0,
+  "technical_closures": 0,
+  "source": {
+    "url": "https://www.satellitescommunity.de/index.php?file-download/112599/=",
+    "thread": "https://www.satellitescommunity.de/forum/index.php?postID=75978&thread/231-74-9-e-abs-2-2a/=",
+    "author": "Cybertomanek",
+    "observed_date": "2026-09-26",
+    "path": "batch19-bfbs-evidence/receiver-scan-20260926.jpg",
+    "sha256": "8bb707185b90abd164a05eebf9e9f8178c950f1348b9a1d1cab90cf327558501",
+    "bytes": 358983
+  },
+  "observed_target_services": [
+    [
+      8111,
+      "08",
+      1111
+    ],
+    [
+      8112,
+      "09",
+      1112
+    ],
+    [
+      8113,
+      "10",
+      1113
+    ],
+    [
+      8114,
+      "13",
+      1114
+    ],
+    [
+      8115,
+      "11",
+      1115
+    ],
+    [
+      8116,
+      "12",
+      1116
+    ],
+    [
+      8119,
+      "16",
+      1119
+    ],
+    [
+      8120,
+      "14",
+      1120
+    ]
+  ],
+  "columns": [
+    "SID",
+    "SDT label",
+    "PMT PID"
+  ],
+  "references": [
+    "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+    "1_0_16_1FB8_3_11_2EE0000_0_0_0"
+  ],
+  "finding": "Eight target SIDs are visible under numeric labels, with unknown icons, separate from named programmes. The transport is directly received at75E11786.672H; no TSID/ONID is visible. No programme binding or explicit data classification can be inferred.",
+  "excluded": "Quadrille8728 is outside visible screenshot rows; no new claim. November11 receiver photo shows ITV frequency only, not target SID or tuple; not used for closure.",
+  "other_source": {
+    "url": "https://ftp.morpheus883.altervista.org/srv.php/?chart=42",
+    "finding": "DMDU_T exact SID15541/ONID42/TSID50600 remains type17 with VP0/AP8191/PCR8191. Independent chart corroboration does not supply explicit data classification; old blocker stands."
+  },
+  "preservation": "ALKAFEEL untouched; no picon PNG,ZIP,manifest,production,radio,client or18protectedCANAL+changes.",
+  "next": "Do not repeat numeric-label or absence searches. Need PMT/SDT capture including exactTSID/ONID and stream descriptors, or operator classification. Missing service evidence cannot be replaced with another transport's channel ordering.",
+  "audit": "No completed batch or integration PASS claimed."
+}

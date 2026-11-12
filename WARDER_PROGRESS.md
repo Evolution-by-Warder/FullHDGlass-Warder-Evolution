@@ -1,3 +1,9 @@
+## 2026-11-12 — Batch19: new BFBS reception evidence for eight held SIDs
+
+A newly retrieved receiver-analyser screenshot dated26September directly shows75E11786.672H with eight target SIDs8111–8116,8119,8120 still numbered, separate from named BBC/ITV/Sky programmes. Screenshot archived withSHA256; noTSID/ONID or expandedPMT is visible. Unknown icons do not prove Data. Eight register rows annotated; all holds preserved. DMDU_T independent Morpheus chart corroborates nullAV but not data classification. Report: `reports/vhannibal-followup-20261106/scope-batch-20261112-19-bfbs-reception.json`.
+
+**48TV/429integratedPNG/99ZIP/86open unchanged; batch19 incomplete.** Zero integrations/technical closures. One sourceJPEG added, no picon changes. ALKAFEEL was not re-researched or rerendered. No production,18CANAL+,radio,manifest or client changes; PR50 unmerged. Next required evidence is exact-tuplePMT/SDT content or operator classification, not further repeats of these listings.
+
 ## 2026-11-12 — ALKAFEEL identity follow-up; visual approval final
 
 All nine exact PNGs remain definitively approved, including WHITE contrast; review registry corrected to VISUALLY_APPROVED_IDENTITY_HOLD. No render or binary changes. Direct KingOfSat detail now reports7W SID7700/NID2048/TSID41, whereas indexed listings still expose target1918/53600. History lacks complete tuple-to-brand binding. A third-party satellite-news post links12399V/11179H to alkafil.live; this does not establish equivalence to alkafeel.tv. Do not integrate or technically close the target from these conflicting records.
