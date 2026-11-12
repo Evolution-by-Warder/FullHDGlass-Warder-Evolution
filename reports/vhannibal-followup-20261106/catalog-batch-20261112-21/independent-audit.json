@@ -1,0 +1,226 @@
+{
+  "status": "PASS",
+  "base_commit": "c5d3d95062646589f706b8d7968e9dfcc1790abe",
+  "payload_commit": "cd2954a45aec0001a39f8bf9ee497aa377bb06f2",
+  "batch": 21,
+  "scope": "Independent remote integration audit; no production publication",
+  "changed_files": 23,
+  "all_changed_files_remote_byte_identical": true,
+  "remote_archive_parts_and_templates_fetched": 139,
+  "new_references": 1,
+  "new_png": 9,
+  "new_zip_versions": 9,
+  "new_completed_tv_total": 51,
+  "new_integrated_png_total": 456,
+  "original_open": 86,
+  "batch19": "OPEN",
+  "old_members_preserved": 450,
+  "protected_canal_packages_unchanged": 18,
+  "other_package_entries_unchanged": 489,
+  "new_and_referenced_parts_below_32MiB": true,
+  "png_crc_sha256_rgba_dimensions": "PASS",
+  "master_v9_borders": "PASS6/6",
+  "donor_identity_and_bytes": "PASS9/9; current5DRAMA not5SELECT",
+  "zip_sha256_crc_and_exact_old_prefix": "PASS9/9",
+  "identity": "Full tuple20256/4096/1 andVPID7501 corroborated byMorpheus andKingOfSat; officialFreeview21Oct2026 rebrand5SELECT to5DRAMA independently confirmed.",
+  "files": [
+    {
+      "path": "WARDER_PROGRESS.md",
+      "sha256": "52a1c0df9e8ead95060b99506fba7a353fe358848ac769a254daaf1dfd703b58",
+      "bytes": 86655
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+      "sha256": "0ce68ce8d6d878d722835bb6b55ce6d9538f0b7cdc32eb917a0b0cb100240c15",
+      "bytes": 257800
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/manifest.json",
+      "sha256": "f40a12d557d1aaf44e11c367efb6486e7d9ce5b016a948f7c24a6f306b53ef2c",
+      "bytes": 2189322
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-black-738c070d8fd85fcb.zip.part04",
+      "sha256": "988a2dce357f5f449e243518ea30526dce7f2f21f4b25d8b71b18a7f2ceee6d7",
+      "bytes": 43053
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-dbd21328c72b71f7.zip.part04",
+      "sha256": "6e8725673fec32ac2633ab30f5cdbf10b20b3f0131b46aafbc790d05d7aa9f4c",
+      "bytes": 15314
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-220x132-white-e121a21cc3c5cb2c.zip.part04",
+      "sha256": "a29aef2bd047eae9a27c65d48527812f38ddba718cc9e50835b5ba575e3ac6e6",
+      "bytes": 43153
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-black-62011474d829897e.zip.part04",
+      "sha256": "4a27c4bd234efa2e7fda2c6005796c0bd7e3b40e6f9594d0c0081999e2129e60",
+      "bytes": 104143
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-cd1794697e33bcbd.zip.part04",
+      "sha256": "dd5e8730d6fe41fc8c25c48da9078a14fe48c35a9c7f624ef56302ae82548153",
+      "bytes": 37559
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-400x240-white-7578cfdb690b1821.zip.part04",
+      "sha256": "1ce728fb622de77f03e64f2eb61f5c81800eaa4d38f174b890b6cff56ff5426e",
+      "bytes": 106223
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-black-000452a1447ea0c9.zip.part04",
+      "sha256": "fb7607914f8670c2c70e9259a87f90eb1c9c464b27c6806073d1df4c16dff991",
+      "bytes": 7585
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-30befe722d966559.zip.part04",
+      "sha256": "bd4adb153e1af93995abc3575e338cc2a1d8d65a0436d3e1d339cd0986c14208",
+      "bytes": 5500
+    },
+    {
+      "path": "assets/warder/downloads/picons/channels/warder-150w-50x30-white-5eae7e9601fd2a94.zip.part04",
+      "sha256": "2733b635b572787a7444c3071d579bde8be417818b312d8c9a21dd3669db4c8e",
+      "bytes": 7392
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/integration.json",
+      "sha256": "d2328ffd358287367fefd9852a36660b7bc4dc17a3da29b572c383de61e5100e",
+      "bytes": 55181
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/220x132/channel-black/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "39cc9a61e31ed6144aa2313cb518577223f48f3b88882f762b9df214694b80a0",
+      "bytes": 39087
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/220x132/channel-transparent/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "80e6cf50f112dd88fe30b120705176c4c7130be7ca8299bdf15a044430416acb",
+      "bytes": 11546
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/220x132/channel-white/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "5e1e4cb62f452afa31675f2cbeefb3dcbf19c05563c534b5f591ee659e567a0e",
+      "bytes": 39166
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/400x240/channel-black/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "f754f875be9d1f94e68841958797c60ab93803b357342d38dc26daf9de2c1127",
+      "bytes": 100204
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/400x240/channel-transparent/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "8698748ef77f1171c7ea3a2b548f9448a4d7f51ebe5481b602850d270e2d64b2",
+      "bytes": 34078
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/400x240/channel-white/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "2e54102e37c04884fe79194fbeaacf9d4dfe958e1c7ddb4f637b33ea1f3691c7",
+      "bytes": 102250
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/50x30/channel-black/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "4728072d42110b5e1866bc93f6ff1645d6f44738855a9b0b1f48b898d389f3d7",
+      "bytes": 3608
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/50x30/channel-transparent/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "e8915213015c452ecdf2cd5968d292161693855418e6b7ae5056e0a5d17ac4c5",
+      "bytes": 1523
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/png/50x30/channel-white/1_0_16_4F20_1000_1_D7AAB23_0_0_0.png",
+      "sha256": "2c6b3054f0452b0d28b8a2b3ca7a208fb3b2c7608ab764657f26bc012da8d581",
+      "bytes": 3415
+    },
+    {
+      "path": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/reference-register.json",
+      "sha256": "dc5f97fe14bf23e2685106d04af181cce073f0b4ef3cb852b1bee540e9a737b9",
+      "bytes": 1151
+    }
+  ],
+  "packages": [
+    {
+      "filename": "warder-150w-220x132-transparent-dbd21328c72b71f7.zip",
+      "sha256": "dbd21328c72b71f7cb875b24cb4d7406149ea3596f5038eb397f13ce11344201",
+      "png_sha256": "80e6cf50f112dd88fe30b120705176c4c7130be7ca8299bdf15a044430416acb",
+      "old_members_preserved": 50,
+      "master_v9_border": "N/A transparent",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-220x132-black-738c070d8fd85fcb.zip",
+      "sha256": "738c070d8fd85fcb0f5ceedcc1cad7ff8f35c7dae62c7c6a63747f335a99600d",
+      "png_sha256": "39cc9a61e31ed6144aa2313cb518577223f48f3b88882f762b9df214694b80a0",
+      "old_members_preserved": 50,
+      "master_v9_border": "PASS exact MASTER V9 edge",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-220x132-white-e121a21cc3c5cb2c.zip",
+      "sha256": "e121a21cc3c5cb2c6a088c8e11bd71db20335a4b2f4b469e99feabc1e21eb725",
+      "png_sha256": "5e1e4cb62f452afa31675f2cbeefb3dcbf19c05563c534b5f591ee659e567a0e",
+      "old_members_preserved": 50,
+      "master_v9_border": "PASS exact MASTER V9 edge",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-50x30-transparent-30befe722d966559.zip",
+      "sha256": "30befe722d9665598936abf1abf60b9bfa47103a19c21504c984ce42f7e5cb60",
+      "png_sha256": "e8915213015c452ecdf2cd5968d292161693855418e6b7ae5056e0a5d17ac4c5",
+      "old_members_preserved": 50,
+      "master_v9_border": "N/A transparent",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-50x30-white-5eae7e9601fd2a94.zip",
+      "sha256": "5eae7e9601fd2a9465540e4d684ad45e983ca346965445229c58c2cfa88eb822",
+      "png_sha256": "2c6b3054f0452b0d28b8a2b3ca7a208fb3b2c7608ab764657f26bc012da8d581",
+      "old_members_preserved": 50,
+      "master_v9_border": "PASS exact MASTER V9 edge",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-50x30-black-000452a1447ea0c9.zip",
+      "sha256": "000452a1447ea0c9117ef5985ca5c896ab28ed8effb11cd6689f5786577d136d",
+      "png_sha256": "4728072d42110b5e1866bc93f6ff1645d6f44738855a9b0b1f48b898d389f3d7",
+      "old_members_preserved": 50,
+      "master_v9_border": "PASS exact MASTER V9 edge",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-400x240-transparent-cd1794697e33bcbd.zip",
+      "sha256": "cd1794697e33bcbdb093e274d642c8a25f50fc8bf2d591613517dacb0d3063ab",
+      "png_sha256": "8698748ef77f1171c7ea3a2b548f9448a4d7f51ebe5481b602850d270e2d64b2",
+      "old_members_preserved": 50,
+      "master_v9_border": "N/A transparent",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-400x240-white-7578cfdb690b1821.zip",
+      "sha256": "7578cfdb690b18211705b5b59a820a805557efc939cc3bf4b990e6f856844073",
+      "png_sha256": "2e54102e37c04884fe79194fbeaacf9d4dfe958e1c7ddb4f637b33ea1f3691c7",
+      "old_members_preserved": 50,
+      "master_v9_border": "PASS exact MASTER V9 edge",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    },
+    {
+      "filename": "warder-150w-400x240-black-62011474d829897e.zip",
+      "sha256": "62011474d829897ee96ba6dc1ccb69d126de7d6ff8cbcb6ecdd52a8d2d2a5da7",
+      "png_sha256": "f754f875be9d1f94e68841958797c60ab93803b357342d38dc26daf9de2c1127",
+      "old_members_preserved": 50,
+      "master_v9_border": "PASS exact MASTER V9 edge",
+      "crc": "PASS",
+      "donor_bytes_identical": true
+    }
+  ]
+}

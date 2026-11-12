@@ -1,6 +1,8 @@
-## 2026-11-12 — Katalógová dávka 21, 5Drama na 15°W
+## 2026-11-12 — Katalógová dávka 21 dokončená, nezávislý audit PASS
 
-Pracovné ZIPy obsahujú deväť variantov z overeného donora na 28,2°E. Dokončenie dávky čaká na nezávislý audit uloženého commitu.
+Payload `cd2954a45aec0001a39f8bf9ee497aa377bb06f2` pridáva 5Drama na 15°W. SID 20256, TSID 4096, ONID 1 a VPID 7501 sú doložené spolu s namespace 0D7AAB23 a typom služby 22. Názov 5Select v Morpheus zodpovedá premenovaniu potvrdenému vysielateľom. Deväť PNG je bajtovo zhodných s existujúcou sadou 5Drama na 28,2°E. Deväť pracovných ZIPov zachováva 450 pôvodných členov aj pôvodný bajtový prefix. Audit overil SHA-256, ZIP CRC, PNG CRC, rozmery, RGBA a rám MASTER V9.
+
+**51 TV, 456 integrovaných PNG a 86 pôvodných otvorených prípadov dávky 19.** CBBC HD má deväť návrhov na vizuálnu kontrolu. CNBC Europe, Daystar HD a Telesur English už majú všetkých deväť súborov v existujúcich ZIPoch z dávky source-delta 8. novembra. Pri siedmich službách Anuvu na 34,5°W chýba presná referencia z prijímača. Dôkazy, audit, register a náhľad sú v `reports/vhannibal-followup-20261106/catalog-batch-20261112-21/`. Zachovaných 18 chránených balíkov CANAL+ a ostatné položky manifestu. PR #50 je otvorený.
 
 ## 2026-11-12 — Catalog batch20 completed: two new36E references, independent remote audit PASS
 

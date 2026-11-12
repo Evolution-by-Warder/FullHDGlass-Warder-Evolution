@@ -1,7 +1,7 @@
 {
   "batch": 21,
   "base": "c5d3d95062646589f706b8d7968e9dfcc1790abe",
-  "status": "REMOTE_AUDIT_PENDING",
+  "status": "PASS_INDEPENDENT_REMOTE_AUDIT",
   "new_tv": 1,
   "new_png": 9,
   "changed_zip": 9,
@@ -1094,5 +1094,10 @@
       "tail_sha256": "4a27c4bd234efa2e7fda2c6005796c0bd7e3b40e6f9594d0c0081999e2129e60",
       "tail_bytes": 104143
     }
-  ]
+  ],
+  "payload_commit": "cd2954a45aec0001a39f8bf9ee497aa377bb06f2",
+  "completed_tv_total": 51,
+  "integrated_png_total": 456,
+  "review_only_tv": 1,
+  "independent_audit": "independent-audit.json"
 }

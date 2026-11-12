@@ -1,0 +1,32 @@
+{
+  "base_checkpoint": "c5d3d95062646589f706b8d7968e9dfcc1790abe",
+  "payload_commit": "cd2954a45aec0001a39f8bf9ee497aa377bb06f2",
+  "batch21": "COMPLETE_INDEPENDENT_REMOTE_AUDIT_PASS",
+  "batch19": "OPEN",
+  "original_blocked": 86,
+  "completed_tv": 51,
+  "integrated_png": 456,
+  "delta": {
+    "tv": 1,
+    "png": 9,
+    "working_zip_versions": 9
+  },
+  "additional_tracked_cases": 8,
+  "visual_review": 1,
+  "review_artifacts": {
+    "preview.png": "5f295512583cd144cd399b50ab13b03009641fdb2f744500cbcaa7eebf5a904e",
+    "review-variants.zip": "7f36cf08f41d024858e9e99e4325045a500610e4547c6417bb7bda6e7923ca8b",
+    "review.json": "5a67ba9e7b239c406259400e6347964fe3e1fbe74504e528e649332af889c828"
+  },
+  "sources": {
+    "vhannibal_motor_11_nov_sha256": "db3891b3bf489c5a74cd1cde67ba391ffaf83c5c34caae8d3b5fa030210313ae",
+    "morpheus_motor_10_nov_sha256": "459c9d7c3f6502d5910dfdcef4b6d77ee2f748567059235f3b44871d870d42d7",
+    "kos_positions_scanned": 40
+  },
+  "decisions": [
+    "5Drama uses the exact namespace and type 22 from the Morpheus row, plus matching VPID and the confirmed 5Select-to-5Drama rebrand.",
+    "Do not import the old Yamal 11580 H / TSID 566 list from Ciefp. The operator moved it in June and the current 12620 H table uses TSID 552.",
+    "The three 19.2E Vhannibal delta references were already present in all nine working ZIPs. Excluded from integration and visual review; the historical ledger alone did not reflect them.",
+    "Use the separately tracked visual review and marine service-reference evidence gaps for subsequent work."
+  ]
+}
