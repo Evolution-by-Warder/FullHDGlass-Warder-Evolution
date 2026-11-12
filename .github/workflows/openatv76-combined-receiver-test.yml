@@ -51,6 +51,10 @@ jobs:
                       else 'bitrate-helper-' + platform + '-build.json')
               (out/name).write_text(json.dumps(proof, indent=2) + '\n')
           PY
+      - name: Clear test-only Python cache before the package safety guard
+        run: |
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f -name '*.pyc' -delete
       - name: Build complete receiver IPK from current tested baseline
         run: |
           python3 tools/build-release-ipk.py
