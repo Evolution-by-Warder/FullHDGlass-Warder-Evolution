@@ -1,3 +1,7 @@
+## 2026-11-12 — Katalógová dávka 21, 5Drama na 15°W
+
+Pracovné ZIPy obsahujú deväť variantov z overeného donora na 28,2°E. Dokončenie dávky čaká na nezávislý audit uloženého commitu.
+
 ## 2026-11-12 — Catalog batch20 completed: two new36E references, independent remote audit PASS
 
 Payload `791fb6d076629be0296c6201c8374c07729d983d` adds Женский Журнал (SID19121) and В гостях у сказки (SID19123), both TSID19/ONID112 on36E. Exact Ciefp tuples and VPIDs221/223 match independent LyngSat transport data. Existing nine-variant donor bytes reused without rendering. Added18PNG and9new working ZIP versions;1,092oldmembers and oldZIPbyteprefixes preserved. All33remotechangedfiles match;9ZIPs rebuilt from freshly fetched oldparts and newtails, SHA256/CRC verified. All18protectedCANAL+packages and489otherpackageentries unchanged. No production/main/radio/client/template changes; PR50 unmerged.

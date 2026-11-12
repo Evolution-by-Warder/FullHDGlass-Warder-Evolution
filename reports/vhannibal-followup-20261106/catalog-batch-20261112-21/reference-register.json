@@ -1,0 +1,30 @@
+[
+  {
+    "name": "5Drama",
+    "reference": "1_0_16_4F20_1000_1_D7AAB23_0_0_0",
+    "selector": "150W",
+    "orbital_position": "15.0W",
+    "frequency": "11043.30 V",
+    "sid": 20256,
+    "tsid": 4096,
+    "onid": 1,
+    "namespace": "0D7AAB23",
+    "service_type": 22,
+    "vpid": 7501,
+    "donor_reference": "1_0_1_839_83D_2_11A0000_0_0_0",
+    "donor_selector": "282E",
+    "source_rows": [
+      "4f20:0d7aab23:1000:0001:22:0",
+      "5Select",
+      "p:Channel 5 Broadcasting Ltd,c:001d4d,c:011d4e,c:031d4d,C:2600,f:5"
+    ],
+    "evidence": {
+      "morpheus_lamedb": "https://morpheus883.altervista.org/settings/E2_Morph883_Motor_101126.zip",
+      "morpheus_zip_sha256": "459c9d7c3f6502d5910dfdcef4b6d77ee2f748567059235f3b44871d870d42d7",
+      "kingofsat_transport": "https://en.kingofsat.net/tp14044",
+      "kingofsat_service_update": "2026-11-03",
+      "broadcaster": "https://www.paramount-mediahub.co.uk/press-releases/5-to-launch-dedicated-drama-channel-%E2%80%93-5drama",
+      "brand_transition": "5Drama replaced 5Select on 2026-10-21. DVB tuple and VPID are identical in the Enigma2 and current transport records."
+    }
+  }
+]
