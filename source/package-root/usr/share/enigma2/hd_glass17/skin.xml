@@ -836,10 +836,10 @@ self.autoResize()
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert>
     </widget>
     <widget name="list" position="845,133" size="995,795" itemHeight="46" zPosition="3" backgroundColor="black" scrollbarMode="showOnDemand" />
-    <widget source="key_red" render="Label" position="60,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
-    <widget source="key_green" render="Label" position="528,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
-    <widget source="key_yellow" render="Label" position="994,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
-    <widget source="key_blue" render="Label" position="1462,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_red" position="60,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_green" position="528,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_yellow" position="994,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_blue" position="1462,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
     <eLabel position="60,1044" size="397,2" backgroundColor="red" zPosition="5" transparent="0" />
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
