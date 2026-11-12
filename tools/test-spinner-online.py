@@ -192,8 +192,19 @@ class ScreenContractTests(unittest.TestCase):
         import xml.etree.ElementTree as ET
         widget=ET.fromstring(module.screen_skin()).find("widget[@name='list']")
         box['list'].height=int(widget.get('itemHeight'))
-        box.rows=copy.deepcopy(ROWS);box.start()
+        box.rows=copy.deepcopy(ROWS);box.selected=box.rows[0]['id'];box.start()
         return module,box,workers
+
+    def test_image_spinner_is_always_selectable_after_online_results(self):
+        module, box, workers = self.screen()
+        self.assertEqual(box.local_rows()[0]['id'], 'system')
+        box.selected = 'system'
+        box.loaded(copy.deepcopy(ROWS))
+        self.assertEqual(len(box.rows), len(ROWS) + 1)
+        self.assertEqual(box.rows[0]['local_id'], 'system')
+        self.assertEqual(box.cursor, 0)
+        box.choose()
+        self.assertEqual(box.answer, ('Default spinner of image', 'system'))
 
     def test_skin_and_native_grid_use_all_complete_rows_without_clipping(self):
         module,box,workers=self.screen()
