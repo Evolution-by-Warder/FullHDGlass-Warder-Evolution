@@ -1,3 +1,9 @@
+## 2026-11-12 — ALKAFEEL original uploaded and independently verified
+
+Payload `379862f4d832c64a042cd693c931c778f4bb4424` adds only `reports/vhannibal-followup-20261106/alkafeel-tv-review/original.png`. Independent pinned GitHub download:1442092bytes,PNG7077x3657,SHA256 `dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a` exact. **PASS original transfer only**. Upload blocker resolved; original is now on GitHub. Do not repeat upload. Nine drafts/preview remain unrecovered; no rerender. New SID7700/12399V indexed lead lacksTSID/ONID and brand binding; identity/visual approval holds retained.
+
+**48TV/429integratedPNG/99ZIP/86open unchanged; batch19 incomplete.** One sourcePNG added,0picon integrations,0technical closures,0ZIPchanges. New/changed ZIPs must remain below32MiB. No production,radio,protectedCANAL+,manifest or template changes. Report and handoff: `reports/vhannibal-followup-20261106/scope-batch-20261112-19-original-upload.json`.
+
 ## 2026-11-11 — ALKAFEEL original recovered exactly; batch19 blocked
 
 Original restored from the recorded official URL with exact historical SHA256 `dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a`,1442092bytes. Independent recovery/metadata audit PASS (PNG7077x3657); **not integration, identity or visual approval**. Durable original copy and provenance: `reports/vhannibal-followup-20261106/scope-batch-20261111-19-original-recovery.json`. Nine drafts and preview NOT recovered; no rerender/Base64 retry. Original binary NOT uploaded to GitHub; exact Git blob lookup returned404. This supersedes only the earlier missing-original status, not missing drafts.

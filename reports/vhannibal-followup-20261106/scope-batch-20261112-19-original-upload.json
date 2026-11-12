@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-12",
+  "batch": 19,
+  "status": "IN_PROGRESS_ORIGINAL_UPLOAD_COMPLETED_NO_PICON_INTEGRATION",
+  "base": "c485e717ca5d0162a44bc8e6cdf03f2cf215c6e7",
+  "payload_commit": "379862f4d832c64a042cd693c931c778f4bb4424",
+  "original": {
+    "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/original.png",
+    "git_blob": "a33b4e9abb39959d29ddd63cab048bae9bfba232",
+    "sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+    "bytes": 1442092,
+    "dimensions": [
+      7077,
+      3657
+    ],
+    "status": "COMMITTED_AND_INDEPENDENTLY_DOWNLOADED_VERIFIED"
+  },
+  "audit": {
+    "reviewer": "github_original_audit12",
+    "result": "PASS_ORIGINAL_TRANSFER_ONLY",
+    "diff": "Exactly one added original.png, no ZIP/production/protected archive changes",
+    "not_established": [
+      "Satellite identity",
+      "Visual approval",
+      "Picon integration"
+    ]
+  },
+  "draft_recovery": {
+    "status": "NINE_DRAFTS_AND_PREVIEW_NOT_RECOVERED",
+    "additional_check": "Nine accessible ZIP archives inspected by member names in SAT workspaces; no alkafeel/alkafel/alkafil draft paths. Previous SHA256 filesystem search preserved as historical evidence.",
+    "new_render": false
+  },
+  "identity": {
+    "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+    "status": "HOLD_EXACT_IDENTITY_AND_VISUAL_APPROVAL",
+    "new_lead": {
+      "url": "https://www.tarddat.com/channel/al-kafel/",
+      "source_check_date": "2026-11-11",
+      "facts": "12399V27500 5/6 SID7700",
+      "limitations": "Third-party indexed lead lacks TSID/ONID and link to alkafeel.tv artwork. Not decisive."
+    }
+  },
+  "other_candidates": "Recent targeted Spare4515/HS1/ElJumhuria searches yielded no decisive new programme identity or approved graphic. Newspaper Djoumhouria is not a verified TV donor.",
+  "counts": {
+    "completed_tv": 48,
+    "integrated_png": 429,
+    "unique_zips": 99,
+    "open": 86,
+    "new_integrations": 0,
+    "technical_closures": 0,
+    "new_reference_png": 0,
+    "new_original_source_png": 1,
+    "modified_zips": 0
+  },
+  "next": "Keep batch19 open. Original upload blocker is resolved; do not retry upload. Need exact satellite-to-brand binding and visual approval before integration. New or changed ZIPs must be below32MiB and audited; no existing ZIP repartition attempted.",
+  "preservation": "18protectedCANAL+archives,all existing picons,production,radio,manifests and templates unchanged."
+}
