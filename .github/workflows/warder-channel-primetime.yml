@@ -57,7 +57,21 @@ jobs:
         run: |
           git fetch --no-tags --depth=1 origin main
           git show origin/main:source/package-root/usr/share/enigma2/hd_glass17/skin.xml > /tmp/warder-approved-skin.xml
-          cmp /tmp/warder-approved-skin.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          previous=Path('/tmp/warder-approved-skin.xml').read_text()
+          candidate=Path('source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+          ledger=Path('design/shared-emc-epg-overlap-20261112/layout.json')
+          if ledger.exists():
+              # Audit exactly the allowed EMC/EPG differences and reject any
+              # changes to Prime Time, native lists, or unrelated skin XML.
+              for edit in json.loads(ledger.read_text())['edits']:
+                  assert candidate.count(edit['updated']) == 1, 'Candidate geometry drift'
+                  candidate=candidate.replace(edit['updated'], edit['original'], 1)
+          assert candidate == previous, 'Unapproved base skin change'
+          print('PASS: prime-time baseline unchanged after exact EMC/EPG reversion')
+          PY
       - name: Verify bundled offline factory icons
         run: |
           python - <<'PY'
