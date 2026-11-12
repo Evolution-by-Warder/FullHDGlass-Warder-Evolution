@@ -1,3 +1,9 @@
+## 2026-11-12 — ALKAFEEL.TV: all 9 new picon variants visually APPROVED by owner
+
+Project owner reviewed the nine new ALKAFEEL.TV PNG variants and confirmed **all are OK**. Applies to sizes 50x30, 220x132, 400x240 across Transparent, White and Black; known WHITE contrast is accepted as-is. No further cosmetic rerender or visual re-approval is needed for these exact files. Pinned drafts: `c060f97121b10a997587ed40c1d5838429801fa0`, checkpoint `16f57bc2`. Durable approval record: `reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/visual-approval-20261112.json`.
+
+**Exact satellite service-to-brand identity remains UNCONFIRMED, so integration is still BLOCKED.** No reference closure or ZIP/production changes; totals remain **48 TV / 429 integrated PNG / 99 ZIP / 86 open**, batch 19 in progress. Keep PR #50 unmerged and all 18 protected CANAL+ archives unchanged. Seek decisive evidence for the full reference tuple; work on independent safe cases in parallel.
+
 ## 2026-11-12 — Nine NEW ALKAFEEL.TV review drafts saved
 
 User-authorized new rendering supersedes previous no-rerender instructions; historical draft recovery is stopped. Payload `c060f97121b10a997587ed40c1d5838429801fa0` stores nine newly created PNGs (50x30,220x132,400x240 x Transparent/White/Black), combined preview, reproducible renderer and byte-identical MASTER template copies under `reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/`. Exact restored original is preserved; no recolouring, redesign or artwork-part removal. WHITE retains original white-letter low contrast.
