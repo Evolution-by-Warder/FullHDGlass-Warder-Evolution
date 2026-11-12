@@ -55,10 +55,17 @@ def main():
             spec = importlib.util.spec_from_file_location('packaged_spinner_choice', helper)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
-            assert module.apply('bakussa', skin, catalog)
+            assert data['default'] == 'bakussa'
             assert len(list((skin / 'spinner').iterdir())) == 20
+            for entry in data['themes']['bakussa']['frames']:
+                assert hashlib.sha256((skin / 'spinner' / entry['name']).read_bytes()).hexdigest() == entry['sha256']
+            assert not module.apply('bakussa', skin, catalog)
             assert module.apply('dove', skin, catalog)
             assert len(list((skin / 'spinner').iterdir())) == 18
+            assert module.apply('bakussa', skin, catalog)
+            assert module.apply('system', skin, catalog)
+            assert not (skin / 'spinner').exists()
+            assert module.apply('bakussa', skin, catalog)
             assert not list(skin.glob('.warder-spinner-*'))
     raw = PACKAGE.read_bytes()
     from bitrate_package import validate_helpers
