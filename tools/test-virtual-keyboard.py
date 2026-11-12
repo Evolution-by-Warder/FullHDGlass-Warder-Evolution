@@ -84,6 +84,13 @@ class KeyboardTests(unittest.TestCase):
 
     def test_only_the_modern_screen_changes_and_legacy_screen_is_preserved(self):
         raw=SKIN.read_text()
+        # Restore exactly the separately-reviewed EMC/EPG column candidate
+        # before checking the immutable VirtualKeyBoard baseline.
+        layout=ROOT/'design/shared-emc-epg-overlap-20261112/layout.json'
+        if layout.exists():
+            for edit in json.loads(layout.read_text())['edits']:
+                self.assertEqual(raw.count(edit['updated']),1,'EMC/EPG delta drift')
+                raw=raw.replace(edit['updated'],edit['original'],1)
         from openatv81_skin import revert_skin
         raw=revert_skin(ROOT,raw)
         # Restore the receiver-approved PackageAction TEST5 selection geometry
