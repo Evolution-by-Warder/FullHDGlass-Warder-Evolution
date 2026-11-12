@@ -245,6 +245,7 @@ class SelectionTests(unittest.TestCase):
         path.write_text(json.dumps(data))
         shutil.copytree(self.root / 'spinner-themes/bakussa', self.root / 'spinner-themes/third-theme')
         self.assertEqual(spinner.choices(lambda text:text, path)[-1], ('third-theme', 'Another author'))
+        self.assertTrue(self.apply('dove'))
         self.assertTrue(spinner.apply('third-theme', self.root, path))
         self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/third-theme'))
         settings = Path(self.temp.name) / 'settings'
@@ -305,7 +306,8 @@ class ControllerTests(unittest.TestCase):
 
     def test_ok_opens_two_choices_in_catalog_order_and_callback_is_cancel_safe(self):
         setup = SimpleNamespace(par124=object(), par230=SimpleNamespace(value='dove', setChoices=lambda *a,**kw:None))
-        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup))
+        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup,
+            warderUserPicons=SimpleNamespace(path_display=object(), path=SimpleNamespace(value='/media/hdd/picon'))))
         events = []
         callback = self.method('spinnerChoiceSelected')
         activate = self.method('ActivateselectedFnc')
@@ -349,7 +351,8 @@ class ControllerTests(unittest.TestCase):
                 return values[key]
             def sampleColor(self, value):
                 pass
-        scope = {'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par230=selected))),
+        scope = {'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par230=selected),
+                 warderUserPicons=SimpleNamespace(enabled=object(), path_display=object()))),
                  'ENA_ANIM':False, 'ui_text':lambda text:text}
         exec(compile(ast.Module(body=[self.method('doMyHelpWindow')], type_ignores=[]), 'actual-help', 'exec'), scope)
         scope['doMyHelpWindow'](Screen())
@@ -371,12 +374,19 @@ class ControllerTests(unittest.TestCase):
         node = next(n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == 'saving')
         events = []
         setup = SimpleNamespace(par230=SimpleNamespace(value=theme), par13=SimpleNamespace(value='same'), par43=SimpleNamespace(value=False), dict=lambda: {})
-        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup))
+        noop = lambda:None
+        cfg = SimpleNamespace(plugins=SimpleNamespace(
+            setupGlass17=setup,
+            warderUserPicons=SimpleNamespace(enabled=SimpleNamespace(value=False, save=noop),
+                path=SimpleNamespace(value='', save=noop)),
+            warderEpgListScroll=SimpleNamespace(enabled=SimpleNamespace(save=noop)),
+            warderPiconExpert=SimpleNamespace(custom_destination=SimpleNamespace(save=noop),
+                destination=SimpleNamespace(save=noop))))
         def apply(value):
             events.append(('apply', value))
             if fail:
                 raise ValueError('custom user file')
-        self_scope = SimpleNamespace(_spinnerAtOpen='dove', _weatherCityAtOpen='same', rst=True,
+        self_scope = SimpleNamespace(_spinnerAtOpen='dove', _weatherCityAtOpen='same', rst=True, _ownPiconRestartPending=False,
             session=SimpleNamespace(open=lambda *args: events.append(('error', args))),
             sDr=lambda: events.append(('restart',)), destroyTimers=lambda: True,
             close=lambda: events.append(('close',)))
