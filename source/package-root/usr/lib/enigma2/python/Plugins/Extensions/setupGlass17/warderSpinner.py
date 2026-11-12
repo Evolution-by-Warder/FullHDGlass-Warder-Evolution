@@ -197,7 +197,7 @@ def saved_theme(settings, catalog_path=CATALOG):
             if separator and key == SETTING:
                 value = selected.strip()
     data = catalog(catalog_path)
-    return value if value in data['themes'] else data['default']
+    return value if value == 'system' or value in data['themes'] else data['default']
 
 
 if __name__ == '__main__':
