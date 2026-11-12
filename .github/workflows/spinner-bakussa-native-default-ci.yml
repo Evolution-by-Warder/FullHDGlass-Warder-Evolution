@@ -1,0 +1,30 @@
+name: TEST ONLY - bakussa default and native image spinner
+on:
+  push:
+    branches: [fix/spinner-bakussa-image-default-20261112]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  spinner-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image test dependency
+        run: python -m pip install --disable-pip-version-check 'Pillow==11.3.0'
+      - name: Check exact packaged bakussa frames, safe image fallback, menu, saved choices and rollbacks
+        run: python tools/test-spinner-choice.py -q
+      - name: Check spinner on-demand online/offline interface and storage
+        run: python tools/test-spinner-online.py -q
+      - name: Validate product and package metadata without publishing
+        run: |
+          python tools/test-package-transition.py -q
+          python tools/test-install-transition.py -q
+      - name: Report source-only candidate
+        run: echo "PASS native spinner sources and lifecycle; no IPK or production feed modified"
