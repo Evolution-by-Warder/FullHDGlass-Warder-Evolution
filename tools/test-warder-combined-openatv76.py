@@ -15,6 +15,7 @@ for name in ('EPGvertical','EPGverticalPIG'):
     assert screen.get('size')=='1920,1080'
     assert screen.get('position')=='0,0'
     assert screen.get('flags')=='wfNoBorder'
+    assert screen.get('backgroundColor')=='dark', 'Keep the previous semi-transparent dark EPG backdrop'
     assert screen.find("widget[@name='bouquetlist']") is not None
     assert screen.find("widget[@name='list']") is not None
     for i in range(1,6):
