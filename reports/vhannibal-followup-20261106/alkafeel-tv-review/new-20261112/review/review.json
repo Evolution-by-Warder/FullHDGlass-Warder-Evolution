@@ -1,0 +1,143 @@
+{
+  "status": "NEW_DRAFT_IDENTITY_AND_VISUAL_HOLD",
+  "station": "ALKAFEEL.TV",
+  "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+  "source_sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+  "source_size": [
+    7077,
+    3657
+  ],
+  "source_alpha_bbox": [
+    19,
+    33,
+    7032,
+    3538
+  ],
+  "templates_immutable": {
+    "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+    "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+  },
+  "outputs": [
+    {
+      "file": "50x30-transparent.png",
+      "sha256": "7fd99c7807980972039d21d99083ad3e74510b935b3979142c30e77f89806fad",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "220x132-transparent.png",
+      "sha256": "d238bd0c8a5bf6fcf56f62d2467cecaed4569ce9209b2713779707c4f7ac456b",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-transparent.png",
+      "sha256": "13843b4dd97301adb2b64921aa036eb616da8b1c8740c6905bf8af8896dc418d",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-white.png",
+      "sha256": "be1b2f2b5f6d6a310515bd8afd53dd77226a3ccc279fd0d1e16b61ab86642763",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        25,
+        255
+      ]
+    },
+    {
+      "file": "220x132-white.png",
+      "sha256": "41da093d05c23ed3414ff4ad3acc3061183f0a46fbbe3530fc3fda4dd2d3bb99",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-white.png",
+      "sha256": "78d1b33c905a58c6fdd3147d56534c71f9eff8faa151609f086cf8c2cef66da1",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "50x30-black.png",
+      "sha256": "45fe16862f337365e04a4345bd966c222d4b8ceb586c9e9485ddb9f8902db959",
+      "size": [
+        50,
+        30
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        9,
+        255
+      ]
+    },
+    {
+      "file": "220x132-black.png",
+      "sha256": "1946a969c89c91082307d3aa0263c549e776e539a9ef81af38c58995f1771f31",
+      "size": [
+        220,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "400x240-black.png",
+      "sha256": "fb212be6f686c00728d1644cf014c201fdd255f88b08ffeae07a8074a01b8e69",
+      "size": [
+        400,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "new_integrations": 0,
+  "open_references": 86,
+  "note": "Newly generated, not recovered historical drafts. Original colours and all alpha-bounded artwork retained. Premultiplied LANCZOS scaling from original for every size. WHITE white-letter contrast is unchanged. Outside all ZIPs; exact satellite identity unconfirmed.",
+  "preview_sha256": "11a6a284a089621df9cf4a4a146652a714ff330a7e15bafbbcdbfebf5f286d79"
+}
