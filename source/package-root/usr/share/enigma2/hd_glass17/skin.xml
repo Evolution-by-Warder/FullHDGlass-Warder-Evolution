@@ -64,6 +64,11 @@
   </colors>
   <parameters>
 		<parameter name="EPGSingleColumnSpecs" value="0,135,5,165,15"/>
+		<!-- Native OpenATV/OE-Alliance single EPG + EPGSearch date/time columns.
+		     The older 225px date/time rectangle clips localized dates and crowds
+		     the optional EPGSearch orbital position. OpenPLi EPGList computes
+		     its own geometry and ignores this optional parameter. -->
+		<parameter name="EpgListSingle" value="85,310" />
 		<parameter name="SelectionListDescr" value="50,2,1200,50" />
 		<parameter name="SelectionListLock" value="0,2,44,40" />
 		<parameter name="SelectionListLockOff" value="0,2,44,40" />
@@ -814,7 +819,34 @@ self.autoResize()
     <widget name="arrowup2" pixmap="hd_glass17/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on" />
   </screen>
 
- <screen name="EPGSelection" position="0,0" size="1920,1080" backgroundColor="black" title="EPG Selection" flags="wfNoBorder">
+   <!-- Explicit EPGSearch layout: search plugin chooses this screen before its
+       generic EPGSelection fallback on OpenATV. Independent columns keep the
+       native datetime and optional orbital-position fields clear of titles. -->
+  <screen name="EPGSearch" position="0,0" size="1920,1080" backgroundColor="black" title="EPG Search" flags="wfNoBorder">
+    <widget source="Title" render="Label" position="83,24" size="970,45" foregroundColor="#cdcdcd" zPosition="1" valign="center" backgroundColor="black" halign="left" font="Prive4;33" transparent="1" />
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1067,24" backgroundColor="black" size="645,45" font="Prive4;33" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1702,24" size="135,45" font="Prive4;33" backgroundColor="black" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+    <eLabel position="60,76" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />
+    <widget source="Service" render="Label" position="60,110" size="740,46" font="Prive4;30" foregroundColor="yellow" backgroundColor="black" transparent="1" noWrap="1">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="Event" font="Prive4;28" position="60,170" render="Label" size="738,756" backgroundColor="black" halign="left" valign="top" transparent="1">
+      <convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert>
+    </widget>
+    <widget name="list" position="845,133" size="995,795" itemHeight="46" zPosition="3" backgroundColor="black" scrollbarMode="showOnDemand" />
+    <widget name="key_red" position="60,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_green" position="528,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_yellow" position="994,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <widget name="key_blue" position="1462,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
+    <eLabel position="60,1044" size="397,2" backgroundColor="red" zPosition="5" transparent="0" />
+    <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
+    <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
+    <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
+  </screen>
+
+<screen name="EPGSelection" position="0,0" size="1920,1080" backgroundColor="black" title="EPG Selection" flags="wfNoBorder">
 		<widget source="Title" render="Label" position="83,24" size="1210,45" foregroundColor="#cdcdcd" zPosition="1" valign="center" backgroundColor="black" halign="left" font="Prive4;33" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1702,24" size="135,45" font="Prive4;33" backgroundColor="black" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -5372,7 +5404,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="Label" position="66,45" size="1800,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive3;31" transparent="1"/>
 		<widget source="session.VideoPicture" render="Pig" position="66,110" zPosition="1" size="600,370" backgroundColor="transparent" />
-        <widget size="1200,840" position="700,120" CoolBarHPos="13" CoolBarPos="45" CoolBarSizeSa="80,16" CoolDateColor="1" CoolDateFont="Prive3;28" CoolDateHPos="2" CoolDatePos="850" CoolDateWidth="290" CoolDirInfoWidth="385" CoolFolderSize="800" CoolFont="Prive4;31" CoolHighlightColor="1" CoolMovieHPos="2" CoolMoviePiconPos="115" CoolMoviePiconSize="635" CoolMoviePos="145" CoolMovieSize="750" CoolPiconHPos="4" CoolPiconHeight="32" CoolPiconPos="20" CoolProgressPos="75" CoolSelNumTxtWidth="60" CoolSelectFont="Prive4;31" CoolTitleColor="1" DefaultColor="white" FinishedColor="green" FrontColorSel="#0033b5e5" RecordingColor="red" UnwatchedColor="foreground" WatchingColor="yellow" backgroundColor="background" itemHeight="40" name="list" scrollbarMode="showOnDemand" transparent="1" />
+        <widget size="1200,840" position="700,120" CoolBarHPos="13" CoolBarPos="45" CoolBarSizeSa="80,16" CoolDateColor="1" CoolDateFont="Prive3;28" CoolDateHPos="2" CoolDatePos="850" CoolDateWidth="290" CoolDirInfoWidth="385" CoolFolderSize="720" CoolFont="Prive4;31" CoolHighlightColor="1" CoolMovieHPos="2" CoolMoviePiconPos="255" CoolMoviePiconSize="580" CoolMoviePos="255" CoolMovieSize="580" CoolPiconHPos="4" CoolPiconHeight="32" CoolPiconPos="20" CoolProgressPos="75" CoolSelNumTxtWidth="60" CoolSelectFont="Prive4;31" CoolTitleColor="1" DefaultColor="white" FinishedColor="green" FrontColorSel="#0033b5e5" RecordingColor="red" UnwatchedColor="foreground" WatchingColor="yellow" backgroundColor="background" itemHeight="40" name="list" scrollbarMode="showOnDemand" transparent="1" />
         <widget backgroundColor="black" font="Prive3;32" foregroundColor="yellow" position="66,500" render="Label" size="190,35" source="Service" transparent="1">
             <convert type="EMCMovieInfo">FileSize</convert>
         </widget>

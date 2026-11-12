@@ -93,12 +93,12 @@ class CacheTests(unittest.TestCase):
     def install(self,row):
         return online.install_selected(row,(ASSETS/row['archive']['path']).read_bytes(),backend,self.root,self.cache)
 
-    def test_download_does_not_apply_and_native_switch_restores_dove(self):
+    def test_download_does_not_apply_and_native_switch_restores_bakussa(self):
         key=self.install(ROWS[3])
         self.assertEqual({p.name:p.read_bytes() for p in (self.root/'spinner').iterdir()},self.original)
         self.assertIn(key,backend.catalog(download_root=self.cache)['themes'])
         self.assertTrue(backend.apply(key,self.root,download_root=self.cache))
-        self.assertTrue(backend.apply('dove',self.root,download_root=self.cache))
+        self.assertTrue(backend.apply('bakussa',self.root,download_root=self.cache))
         self.assertEqual({p.name:p.read_bytes() for p in (self.root/'spinner').iterdir()},self.original)
 
     def test_cache_keeps_active_and_one_pending_set_and_is_offline_usable(self):
@@ -192,8 +192,19 @@ class ScreenContractTests(unittest.TestCase):
         import xml.etree.ElementTree as ET
         widget=ET.fromstring(module.screen_skin()).find("widget[@name='list']")
         box['list'].height=int(widget.get('itemHeight'))
-        box.rows=copy.deepcopy(ROWS);box.start()
+        box.rows=copy.deepcopy(ROWS);box.selected=box.rows[0]['id'];box.start()
         return module,box,workers
+
+    def test_image_spinner_is_always_selectable_after_online_results(self):
+        module, box, workers = self.screen()
+        self.assertEqual(box.local_rows()[0]['id'], 'system')
+        box.selected = 'system'
+        box.loaded(copy.deepcopy(ROWS))
+        self.assertEqual(len(box.rows), len(ROWS) + 1)
+        self.assertEqual(box.rows[0]['local_id'], 'system')
+        self.assertEqual(box.cursor, 0)
+        box.choose()
+        self.assertEqual(box.answer, ('Default spinner of image', 'system'))
 
     def test_skin_and_native_grid_use_all_complete_rows_without_clipping(self):
         module,box,workers=self.screen()

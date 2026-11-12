@@ -174,6 +174,12 @@ class Tests(unittest.TestCase):
  def test_registered_addition_keeps_the_entire_stable_skin_unchanged(self):
   import hashlib
   record=json.loads((ROOT/'design/openpli-graph-epg/layout.json').read_text());text=(PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml').read_text()
+  # Exact candidate reversals keep historic OpenPLi geometry checks strict.
+  ledger=ROOT/'design/shared-emc-epg-overlap-20261112/layout.json'
+  if ledger.exists():
+   for edit in json.loads(ledger.read_text())['edits']:
+    self.assertEqual(text.count(edit['updated']),1,'EMC/EPG delta drift')
+    text=text.replace(edit['updated'],edit['original'],1)
   for item in record['additions']:
    self.assertEqual(text.count(item['inserted_text']),1);text=text.replace(item['inserted_text'],'',1)
   # This historical hash predates the receiver-approved PackageAction TEST5.

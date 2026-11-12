@@ -1018,7 +1018,7 @@ config.plugins.setupGlass17.par226 = ConfigSelection(default="1", choices = [("1
 config.plugins.setupGlass17.par227 = ConfigSelection(default="5", choices = [("5",_("Default")),("7",_("Default")+" 2"),("0",_("Auto")),("1","150x90"),("2","220x132"),("6","220x132 (2)"),("3","400x170"),("4","400x240")]) # Extended Number ZAP Picon Size
 config.plugins.setupGlass17.par228 = ConfigText(default="-", fixed_size=False, visible_width=50)
 config.plugins.setupGlass17.par229 = ConfigSelection(default="1", choices = [("1",_("Default")),("2",_("Poster"))]) # EventView
-config.plugins.setupGlass17.par230 = ConfigSelection(default="dove", choices=warderSpinner.choices(ui_text))
+config.plugins.setupGlass17.par230 = ConfigSelection(default="bakussa", choices=warderSpinner.choices(ui_text))
 config.plugins.setupGlass17.par231 = ConfigSelection(default="system", choices=[("system", ui_text("System setting")), ("mini", ui_text("Prefer 50x30"))])
 config.plugins.setupGlass17.par101 = ConfigYesNo(default = True) # 
 ##########################################################################################################################
@@ -8406,7 +8406,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if answer is None:
 			return
 		if answer[1] in {value for value, title in warderSpinner.choices(ui_text)}:
-			config.plugins.setupGlass17.par230.setChoices(warderSpinner.choices(ui_text), default="dove")
+			config.plugins.setupGlass17.par230.setChoices(warderSpinner.choices(ui_text), default="bakussa")
 			config.plugins.setupGlass17.par230.value = answer[1]
 			self["config"].invalidateCurrent()
 			self.doMyHelpWindow()

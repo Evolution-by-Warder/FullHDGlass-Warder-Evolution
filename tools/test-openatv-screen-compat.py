@@ -25,6 +25,14 @@ def widgets(name,keys):return [w for w in screen(name).findall('widget') if acti
 class ScreenCompatTests(unittest.TestCase):
  def test_approved_pig_screen_is_byte_identical_and_only_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  # The separately reviewed EMC/EPG geometry candidate must be reverted
+  # exactly before comparing this historical OpenATV layout fingerprint.
+  # Require a unique full-text match for each audited edit, not a broad skip.
+  reviewed=ROOT/'design/shared-emc-epg-overlap-20261112/layout.json'
+  if reviewed.exists():
+   for edit in json.loads(reviewed.read_text())['edits']:
+    self.assertEqual(text.count(edit['updated']),1,'Unexpected EMC/EPG candidate drift')
+    text=text.replace(edit['updated'],edit['original'],1)
   from openatv81_skin import revert_skin
   text=revert_skin(ROOT,text)
   # Restore the receiver-approved PackageAction TEST5 selection geometry
