@@ -13,6 +13,13 @@ jobs:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source
+            tools
+            design
+            assets/warder/downloads/ui/spinners
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
