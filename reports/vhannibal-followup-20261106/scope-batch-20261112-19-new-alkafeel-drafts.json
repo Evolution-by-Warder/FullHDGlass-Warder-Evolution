@@ -1,0 +1,242 @@
+{
+  "date": "2026-11-12",
+  "batch": 19,
+  "status": "IN_PROGRESS_NEW_REVIEW_ARTWORK_SAVED_NO_INTEGRATION",
+  "base": "795b3b98bc55aa57ed5643f04bc244c1706ec483",
+  "payload_commit": "c060f97121b10a997587ed40c1d5838429801fa0",
+  "counts": {
+    "tv": 48,
+    "integrated_png": 429,
+    "unique_zip": 99,
+    "open": 86
+  },
+  "new_results": {
+    "draft_png": 9,
+    "preview": 1,
+    "integrations": 0,
+    "technical_closures": 0,
+    "zip_changes": 0
+  },
+  "draft_register": "alkafeel-tv-review/new-20261112/review/review.json",
+  "origin": "Exact GitHub original, independently matched historical SHA256. Newly created drafts; historical recovery stopped per user instruction.",
+  "authorization": "User authorized creation of all9 new drafts. This is not identity proof or final visual approval.",
+  "identity": {
+    "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+    "sid": 7700,
+    "tsid": 53600,
+    "onid": 1918,
+    "status": "HOLD_EXACT_SATELLITE_SERVICE_TO_BRAND_BINDING",
+    "required": "Trustworthy binding of this full tuple to ALKAFEEL.TV artwork/official broadcaster. Similar names and SID-only listings insufficient."
+  },
+  "other_cases": {
+    "status": "NO_NEW_DECISIVE_EVIDENCE",
+    "scope": "Limited search for exact BFBS/ALKAFEEL tuple and SES same-edition artwork; no full repeat audit of86 cases.",
+    "rejected_lead": {
+      "url": "https://www.spaceman-tvportal.de/test.php",
+      "event_date": "2025-07-28",
+      "finding": "SES DEMO HD2025 renamed ASTRA TV15 at19.2E11406V. Different position/service context; does not prove45E/66E artwork binding. No ASTRA logo substituted."
+    }
+  },
+  "preservation": "All existing integrated PNG,99ZIPs,18CANAL+archives,production,radio,live manifest,clients and templates unchanged. Added review-only copies of MASTER templates for reproduction.",
+  "handoff": [
+    "Review preview for visual decision; WHITE retains low-contrast original white lettering.",
+    "Do not integrate without exact satellite identity.",
+    "Do not rerender or recover historical drafts again.",
+    "Continue batch19 only with new decisive evidence or approved same-service artwork; no safe ready remaining candidate established.",
+    "Batch19 is not complete; do not create fictitious batch20."
+  ],
+  "audit": {
+    "local_audit": "PASS",
+    "remote_drafts_audit": "PASS",
+    "source_remote_sha256": "dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a",
+    "source_pinned_commit": "795b3b98bc55aa57ed5643f04bc244c1706ec483",
+    "outputs": [
+      {
+        "file": "50x30-transparent.png",
+        "sha256": "7fd99c7807980972039d21d99083ad3e74510b935b3979142c30e77f89806fad",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 3,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "220x132-transparent.png",
+        "sha256": "d238bd0c8a5bf6fcf56f62d2467cecaed4569ce9209b2713779707c4f7ac456b",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 3,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "400x240-transparent.png",
+        "sha256": "13843b4dd97301adb2b64921aa036eb616da8b1c8740c6905bf8af8896dc418d",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 4,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "50x30-white.png",
+        "sha256": "be1b2f2b5f6d6a310515bd8afd53dd77226a3ccc279fd0d1e16b61ab86642763",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 3,
+        "alpha_extrema": [
+          25,
+          255
+        ]
+      },
+      {
+        "file": "220x132-white.png",
+        "sha256": "41da093d05c23ed3414ff4ad3acc3061183f0a46fbbe3530fc3fda4dd2d3bb99",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 3,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "400x240-white.png",
+        "sha256": "78d1b33c905a58c6fdd3147d56534c71f9eff8faa151609f086cf8c2cef66da1",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 4,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "50x30-black.png",
+        "sha256": "45fe16862f337365e04a4345bd966c222d4b8ceb586c9e9485ddb9f8902db959",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 3,
+        "alpha_extrema": [
+          9,
+          255
+        ]
+      },
+      {
+        "file": "220x132-black.png",
+        "sha256": "1946a969c89c91082307d3aa0263c549e776e539a9ef81af38c58995f1771f31",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 3,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "400x240-black.png",
+        "sha256": "fb212be6f686c00728d1644cf014c201fdd255f88b08ffeae07a8074a01b8e69",
+        "pixel_reconstruction": "PASS",
+        "crc_chunks": 4,
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ],
+    "preview_sha256": "11a6a284a089621df9cf4a4a146652a714ff330a7e15bafbbcdbfebf5f286d79",
+    "notes": [
+      "9 newly created review drafts, not historical recovery.",
+      "Every output pixel matches independent direct original-source composition with immutable MASTER templates.",
+      "No deliberate recolouring or part removal; raster downscaling necessarily loses tiny detail.",
+      "50x30 master corners have nonzero minimum alpha due to downsampling; expected exact template resampling.",
+      "WHITE contrast is low, original white text preserved.",
+      "Identity and visual approval remain blocked; no integration PASS.",
+      "ZIP CRC/member checks N/A: independently verified GitHub diff includes zero ZIP changes; all existing archives unchanged by payload."
+    ],
+    "payload_commit": "c060f97121b10a997587ed40c1d5838429801fa0",
+    "remote_files": [
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/render.py",
+        "bytes": 3094,
+        "sha256": "bcf86e105dd5fb72392f496d1a8a3093af8bfe0d1a2b17edd8d79f38d28cff18"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/templates/white-sablona.png",
+        "bytes": 29645,
+        "sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/templates/black-sablona.png",
+        "bytes": 29833,
+        "sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/220x132-transparent.png",
+        "bytes": 30095,
+        "sha256": "d238bd0c8a5bf6fcf56f62d2467cecaed4569ce9209b2713779707c4f7ac456b"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/220x132-black.png",
+        "bytes": 47675,
+        "sha256": "1946a969c89c91082307d3aa0263c549e776e539a9ef81af38c58995f1771f31"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/220x132-white.png",
+        "bytes": 47864,
+        "sha256": "41da093d05c23ed3414ff4ad3acc3061183f0a46fbbe3530fc3fda4dd2d3bb99"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/50x30-transparent.png",
+        "bytes": 3085,
+        "sha256": "7fd99c7807980972039d21d99083ad3e74510b935b3979142c30e77f89806fad"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/50x30-black.png",
+        "bytes": 3920,
+        "sha256": "45fe16862f337365e04a4345bd966c222d4b8ceb586c9e9485ddb9f8902db959"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/preview.png",
+        "bytes": 383292,
+        "sha256": "11a6a284a089621df9cf4a4a146652a714ff330a7e15bafbbcdbfebf5f286d79"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/review.json",
+        "bytes": 3304,
+        "sha256": "aa005c65c0cdaaa230ba772b53c08457f9345510cc65f0bcac6ecee579de9094"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/400x240-transparent.png",
+        "bytes": 72140,
+        "sha256": "13843b4dd97301adb2b64921aa036eb616da8b1c8740c6905bf8af8896dc418d"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/400x240-black.png",
+        "bytes": 118979,
+        "sha256": "fb212be6f686c00728d1644cf014c201fdd255f88b08ffeae07a8074a01b8e69"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/50x30-white.png",
+        "bytes": 3576,
+        "sha256": "be1b2f2b5f6d6a310515bd8afd53dd77226a3ccc279fd0d1e16b61ab86642763"
+      },
+      {
+        "path": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/400x240-white.png",
+        "bytes": 121918,
+        "sha256": "78d1b33c905a58c6fdd3147d56534c71f9eff8faa151609f086cf8c2cef66da1"
+      }
+    ],
+    "diff_audit": "PASS",
+    "diff_scope": {
+      "base": "795b3b98bc55aa57ed5643f04bc244c1706ec483",
+      "head": "c060f97121b10a997587ed40c1d5838429801fa0",
+      "added_files": 14,
+      "modified_files": 0,
+      "deleted_files": 0,
+      "all_under": "reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/",
+      "zip_changes": 0,
+      "production_changes": 0,
+      "protected_archives_changed": 0
+    },
+    "result": "PASS_NEW_DRAFT_ARTIFACTS_ONLY_NOT_IDENTITY_VISUAL_OR_INTEGRATION"
+  }
+}

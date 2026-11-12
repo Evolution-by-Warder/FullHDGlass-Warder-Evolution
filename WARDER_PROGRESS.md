@@ -1,3 +1,11 @@
+## 2026-11-12 — Nine NEW ALKAFEEL.TV review drafts saved
+
+User-authorized new rendering supersedes previous no-rerender instructions; historical draft recovery is stopped. Payload `c060f97121b10a997587ed40c1d5838429801fa0` stores nine newly created PNGs (50x30,220x132,400x240 x Transparent/White/Black), combined preview, reproducible renderer and byte-identical MASTER template copies under `reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/`. Exact restored original is preserved; no recolouring, redesign or artwork-part removal. WHITE retains original white-letter low contrast.
+
+**48 TV /429 integrated PNG /99 ZIP /86 open unchanged.** Added9 review drafts and1preview, not9 integrated picons. Exact SID7700/TSID53600/ONID1918 to ALKAFEEL.TV brand binding remains unproven; final visual approval is also pending. All files stay outside ZIPs. Batch19 remains incomplete. No production,radio,client,manifest or protected18CANAL+changes. New SES19.2E naming lead is a different service context and cannot authorize ASTRA artwork for45E/66E targets. Other existing holds remain.
+
+Draft register: `reports/vhannibal-followup-20261106/alkafeel-tv-review/new-20261112/review/review.json`. Technical audit and handoff: `reports/vhannibal-followup-20261106/scope-batch-20261112-19-new-alkafeel-drafts.json`. Audit scope is new draft correctness/remote integrity, not satellite identity, visual approval or completed integration.
+
 ## 2026-11-12 — ALKAFEEL original uploaded and independently verified
 
 Payload `379862f4d832c64a042cd693c931c778f4bb4424` adds only `reports/vhannibal-followup-20261106/alkafeel-tv-review/original.png`. Independent pinned GitHub download:1442092bytes,PNG7077x3657,SHA256 `dfe2906085010054d889edfff27f790ab17c8a996baf2c4432c004a5d78f9f9a` exact. **PASS original transfer only**. Upload blocker resolved; original is now on GitHub. Do not repeat upload. Nine drafts/preview remain unrecovered; no rerender. New SID7700/12399V indexed lead lacksTSID/ONID and brand binding; identity/visual approval holds retained.
