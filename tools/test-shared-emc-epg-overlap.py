@@ -49,6 +49,38 @@ for label_pos_key, label_size_key in (
 assert date_pos + int(emc.get("CoolDateWidth")) <= rectangle(emc)[2] - 30
 assert int(emc.get("CoolFolderSize")) < date_pos
 
+# Native OpenATV EpgList (including the 7.6 EPGSearch plugin) uses
+# EpgListSingle=(weekday_width, date_time_width). The EPGSearch plugin adds
+# an optional orbital-position column after this pair. Keep the title region
+# wide enough for long localized dates and a second orbital column.
+params = {p.get("name"): p.get("value") for p in SKIN.findall("./parameters/parameter")}
+weekday_width, datetime_width = map(int, params["EpgListSingle"].split(","))
+assert 80 <= weekday_width <= 110
+assert datetime_width >= 300, "Old narrow datetime field clips localized date/time"
+assert datetime_width + weekday_width < 480
+
+search = SKIN.find("screen[@name='EPGSearch']")
+assert search is not None, "EPGSearch must have an explicit plugin layout"
+sx, sy, sw, sh = rectangle(widget("EPGSearch", "list"))
+assert sx >= 840 and sx + sw <= 1890
+assert sw - weekday_width - datetime_width - 175 >= 400, (
+    "Too little room for titles after date/time plus optional orbital position"
+)
+description = next(w for w in search.findall("widget")
+                   if w.get("source") == "Event")
+dx, dy, dw, dh = rectangle(description)
+assert dx + dw + 24 <= sx, "Description overlaps search results"
+assert sy + sh <= 970 and dy + dh <= 970, "EPG content covers color-key footer"
+assert search.find("widget[@source='Service']") is not None
+assert search.find("widget[@source='Title']") is not None
+for colour in ("red", "green", "yellow", "blue"):
+    assert search.find("widget[@source='key_%s']" % colour) is not None
+
+single_width = rectangle(widget("EPGSelection", "list"))[2]
+assert single_width - weekday_width - datetime_width >= 430, (
+    "Native single EPG title would become too narrow"
+)
+
 # Other bundled list/detail screens already separate their text panels in the
 # Y-axis. Do not distort these layouts to correct an external plugin's columns.
 single = widget("EPGSelection", "list")
