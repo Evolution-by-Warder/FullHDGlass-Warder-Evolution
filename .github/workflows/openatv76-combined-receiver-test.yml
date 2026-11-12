@@ -58,7 +58,7 @@ jobs:
       - name: Build complete receiver IPK from current tested baseline
         run: |
           python3 tools/build-release-ipk.py
-      - name: Convert only package revision to isolated test revision 112
+      - name: Convert only package revision to isolated test revision 115
         shell: bash
         run: |
           python3 - <<'PY'
@@ -74,7 +74,7 @@ jobs:
                   data = tar.extractfile(member).read() if member.isfile() else None
                   if member.name.lstrip('./') == 'control':
                       assert b'Version: 1.0.79-1\n' in data
-                      data = data.replace(b'Version: 1.0.79-1\n', b'Version: 1.0.79-114\n', 1)
+                      data = data.replace(b'Version: 1.0.79-1\n', b'Version: 1.0.79-115\n', 1)
                       member.size = len(data)
                       changed = True
                   members.append((member, data))
@@ -83,7 +83,7 @@ jobs:
           with tarfile.open(fileobj=control_out, mode='w:gz') as tar:
               for member, data in members:
                   tar.addfile(member, io.BytesIO(data) if data is not None else None)
-          dest = Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-114_all.ipk')
+          dest = Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-115_all.ipk')
           dest.parent.mkdir(parents=True, exist_ok=True)
           with tempfile.TemporaryDirectory() as folder:
               wd = Path(folder)
@@ -97,12 +97,12 @@ jobs:
           dest.with_suffix('.ipk.sha256').write_text(digest + '  ' + dest.name + '\n')
           print('PRIVATE RECEIVER TEST', dest, digest)
           PY
-          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.79-114_all.ipk.sha256)
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.79-115_all.ipk.sha256)
       - uses: actions/upload-artifact@v4
         with:
-          name: warder-openatv76-combined-test114
+          name: warder-openatv76-combined-test115
           path: |
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-114_all.ipk
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-114_all.ipk.sha256
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-115_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-115_all.ipk.sha256
           if-no-files-found: error
           retention-days: 14

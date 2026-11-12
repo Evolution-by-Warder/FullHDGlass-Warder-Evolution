@@ -8,6 +8,7 @@ SK=ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml'
 HD=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml'
 P=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 root=ET.parse(SK).getroot()
+assert root.find("colors/color[@name='dark']").get('value') == '#50000000', 'Keep approved translucent EPG shade'
 for name in ('EPGvertical','EPGverticalPIG'):
     screens=root.findall("screen[@name='%s']"%name)
     assert len(screens)==1,(name,len(screens))
@@ -15,6 +16,7 @@ for name in ('EPGvertical','EPGverticalPIG'):
     assert screen.get('size')=='1920,1080'
     assert screen.get('position')=='0,0'
     assert screen.get('flags')=='wfNoBorder'
+    assert screen.get('backgroundColor')=='dark', 'Keep the previous semi-transparent dark EPG backdrop'
     assert screen.find("widget[@name='bouquetlist']") is not None
     assert screen.find("widget[@name='list']") is not None
     for i in range(1,6):
