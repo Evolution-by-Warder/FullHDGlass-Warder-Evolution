@@ -74,7 +74,7 @@ assert sy + sh <= 970 and dy + dh <= 970, "EPG content covers color-key footer"
 assert search.find("widget[@source='Service']") is not None
 assert search.find("widget[@source='Title']") is not None
 for colour in ("red", "green", "yellow", "blue"):
-    assert search.find("widget[@source='key_%s']" % colour) is not None
+    assert search.find("widget[@name='key_%s']" % colour) is not None
 
 single_width = rectangle(widget("EPGSelection", "list"))[2]
 assert single_width - weekday_width - datetime_width >= 430, (
