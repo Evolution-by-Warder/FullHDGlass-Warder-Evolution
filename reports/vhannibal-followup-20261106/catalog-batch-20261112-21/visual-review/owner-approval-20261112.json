@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "decision": "APPROVED_BY_OWNER",
+  "approved_on": "2026-11-12",
+  "name": "CBBC HD",
+  "position": "15.0W",
+  "reference": "1_0_19_46C0_1000_1_D7AAB23_0_0_0",
+  "variant_count": 9,
+  "sizes": [
+    "50x30",
+    "220x132",
+    "400x240"
+  ],
+  "backgrounds": [
+    "transparent",
+    "white",
+    "black"
+  ],
+  "base_checkpoint": "ddfbcd0b7301861536543d578b0d0d2bc69c5b89",
+  "approved_source": "visual-review/review-variants.zip",
+  "approved_metadata": "visual-review/review.json",
+  "image_approval": "The nine visual proposals are approved as presented; no redesign or re-rendering is authorized.",
+  "integration_status": "AWAITING_ARCHIVE_INTEGRATION_AND_INDEPENDENT_AUDIT",
+  "protected_packages": "18 CANAL+ SK/CZ archives must remain bit-for-bit unchanged",
+  "no_production_release": true
+}

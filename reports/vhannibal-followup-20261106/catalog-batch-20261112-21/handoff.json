@@ -28,5 +28,20 @@
     "Do not import the old Yamal 11580 H / TSID 566 list from Ciefp. The operator moved it in June and the current 12620 H table uses TSID 552.",
     "The three 19.2E Vhannibal delta references were already present in all nine working ZIPs. Excluded from integration and visual review; the historical ledger alone did not reflect them.",
     "Use the separately tracked visual review and marine service-reference evidence gaps for subsequent work."
-  ]
+  ],
+  "post_checkpoint_owner_approval": {
+    "date": "2026-11-12",
+    "name": "CBBC HD",
+    "reference": "1_0_19_46C0_1000_1_D7AAB23_0_0_0",
+    "decision": "ALL_NINE_VISUAL_VARIANTS_APPROVED",
+    "source": "Owner's explicit approval in conversation after batch 21",
+    "visual_review_remaining": 0,
+    "integration_status": "NOT_YET_IN_WORKING_ZIPS",
+    "next_action": "Integrate review-variants.zip into all nine 15.0W working ZIP archives, update their parts/manifest, audit SHA256/CRC/dimensions/RGBA/preservation of original members; do not alter the 18 protected CANAL+ packages.",
+    "counts_unchanged_until_integration": {
+      "completed_tv": 51,
+      "integrated_png": 456,
+      "original_blocked": 86
+    }
+  }
 }

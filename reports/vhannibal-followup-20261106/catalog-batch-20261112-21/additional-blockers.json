@@ -2,8 +2,8 @@
   {
     "name": "CBBC HD",
     "reference": "1_0_19_46C0_1000_1_D7AAB23_0_0_0",
-    "status": "PENDING_VISUAL_APPROVAL",
-    "reason": "Existing donor search did not yield a complete approved MASTER V9 set. The review archive contains nine draft variants.",
+    "status": "OWNER_APPROVED_ARTWORK_PENDING_INTEGRATION",
+    "reason": "Owner explicitly approved the nine existing 50x30, 220x132 and 400x240 variants (transparent, white and black) on 2026-11-12. Keep source bytes; next step is insertion into nine 15.0W working ZIPs and independent audit. Do not count as integrated until archives and manifest pass validation.",
     "transport": "15W 11043.30 V TSID 4096 ONID 1"
   },
   {
