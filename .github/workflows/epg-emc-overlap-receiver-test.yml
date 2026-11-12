@@ -1,0 +1,79 @@
+name: TEST ONLY - EMC and EPG columns receiver IPK
+on:
+  push:
+    branches: [fix/shared-emc-layout-20261112]
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /packages/test/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check shared EMC and EPG geometry before packaging
+        run: |
+          python3 tools/test-shared-emc-epg-overlap.py
+          python3 -m py_compile tools/test-shared-emc-epg-overlap.py
+      - name: Build complete receiver IPK from current tested baseline
+        run: |
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          python3 tools/build-release-ipk.py
+      - name: Convert only package revision to isolated test revision 112
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, io, subprocess, tarfile, tempfile
+          from pathlib import Path
+          source = Path('packages/enigma2-plugin-skins-fullhdglass_1.0.79_all.ipk')
+          assert source.is_file(), 'Unexpected baseline package name/version'
+          control_bytes = subprocess.check_output(['ar', 'p', str(source), 'control.tar.gz'])
+          with tarfile.open(fileobj=io.BytesIO(control_bytes), mode='r:gz') as tar:
+              members = []
+              changed = False
+              for member in tar:
+                  data = tar.extractfile(member).read() if member.isfile() else None
+                  if member.name.lstrip('./') == 'control':
+                      assert b'Version: 1.0.79-1\n' in data
+                      data = data.replace(b'Version: 1.0.79-1\n', b'Version: 1.0.79-112\n', 1)
+                      member.size = len(data)
+                      changed = True
+                  members.append((member, data))
+          assert changed
+          control_out = io.BytesIO()
+          with tarfile.open(fileobj=control_out, mode='w:gz') as tar:
+              for member, data in members:
+                  tar.addfile(member, io.BytesIO(data) if data is not None else None)
+          dest = Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-112_all.ipk')
+          dest.parent.mkdir(parents=True, exist_ok=True)
+          with tempfile.TemporaryDirectory() as folder:
+              wd = Path(folder)
+              (wd / 'debian-binary').write_bytes(b'2.0\n')
+              (wd / 'control.tar.gz').write_bytes(control_out.getvalue())
+              (wd / 'data.tar.gz').write_bytes(
+                  subprocess.check_output(['ar', 'p', str(source), 'data.tar.gz']))
+              subprocess.run(['ar', 'rcsD', str(dest.resolve()), 'debian-binary',
+                              'control.tar.gz', 'data.tar.gz'], cwd=wd, check=True)
+          digest = hashlib.sha256(dest.read_bytes()).hexdigest()
+          dest.with_suffix('.ipk.sha256').write_text(digest + '  ' + dest.name + '\n')
+          print('PRIVATE RECEIVER TEST', dest, digest)
+          PY
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.79-112_all.ipk.sha256)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: warder-emc-epg-overlap-openatv76-test112
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-112_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.79-112_all.ipk.sha256
+          if-no-files-found: error
+          retention-days: 14
