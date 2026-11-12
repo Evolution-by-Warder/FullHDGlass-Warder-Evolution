@@ -2139,15 +2139,15 @@
              No change to the separate Neutrino mapping or other list types. -->
         <ePixmap pixmap="hd_glass17/general/title.png" position="55,25" size="1810,65" zPosition="0" alphatest="off" />
         <widget source="Title" render="g17cutCHSS" position="70,30" size="1770,55" font="Prive4;32" foregroundColor="un6cbcf0" valign="center" halign="left" transparent="1" zPosition="1" />
-        <ePixmap pixmap="hd_glass17/buttons/button_200x60_red.png" position="60,110" size="420,90" alphatest="on" />
-        <ePixmap pixmap="hd_glass17/buttons/button_200x60_green.png" position="520,110" size="420,90" alphatest="on" />
-        <ePixmap pixmap="hd_glass17/buttons/button_200x60_yellow.png" position="980,110" size="420,90" alphatest="on" />
-        <ePixmap pixmap="hd_glass17/buttons/button_200x60_blue.png" position="1440,110" size="420,90" alphatest="on" />
-        <widget name="key_red" position="60,122" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-        <widget name="key_green" position="520,122" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-        <widget name="key_yellow" position="980,122" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-        <widget name="key_blue" position="1440,122" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-        <widget name="list" position="60,215" size="1800,600" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="50" serviceNumberFont="Prive4;23" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
+        <ePixmap pixmap="hd_glass17/buttons/button_200x60_red.png" position="120,110" size="420,90" alphatest="on" />
+        <ePixmap pixmap="hd_glass17/buttons/button_200x60_green.png" position="580,110" size="420,90" alphatest="on" />
+        <ePixmap pixmap="hd_glass17/buttons/button_200x60_yellow.png" position="1040,110" size="420,90" alphatest="on" />
+        <ePixmap pixmap="hd_glass17/buttons/button_200x60_blue.png" position="1500,110" size="420,90" alphatest="on" />
+        <widget name="key_red" position="60,108" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
+        <widget name="key_green" position="520,108" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
+        <widget name="key_yellow" position="980,108" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
+        <widget name="key_blue" position="1440,108" zPosition="1" size="420,54" font="Prive4;31" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
+        <widget name="list" position="60,215" size="1800,600" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="50" serviceNumberFont="Prive4;23" serviceNameFont="Prive4;28" serviceInfoFont="Prive4;25" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
         <ePixmap position="60,846" zPosition="8" size="1110,1" pixmap="hd_glass17/tib.png" />
         <ePixmap position="1170,846" zPosition="8" size="690,1" pixmap="hd_glass17/tib.png" />
         <widget source="ServiceEvent" render="Label" position="60,854" zPosition="1" size="1370,40" font="Prive4;29" noWrap="1" transparent="1">
