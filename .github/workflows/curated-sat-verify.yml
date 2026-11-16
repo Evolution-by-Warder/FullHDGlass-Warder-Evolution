@@ -86,7 +86,7 @@ jobs:
               assert total == p["bytes"], ident
           assert len(pkg_index) == 498 and len(used) == 2132
           assert refs == {"main": 959, BRANCH: 1173}, refs
-          with urllib.request.urlopen(remote + BASE + segment.lstrip("/") + "manifest.json", timeout=60) as response:
+          with urllib.request.urlopen(remote + BASE + segment + "manifest.json", timeout=60) as response:
               baseline = json.load(response)
           old_packages = {(p["selector_id"], p["resolution"], p["family"]): p for p in baseline["packages"]}
           changed = [k for k,p in pkg_index.items() if p["sha256"] != old_packages[k]["sha256"]]
