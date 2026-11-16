@@ -1,3 +1,13 @@
+## 2026-11-16 — CBBC HD na 15°W, audit PASS
+
+**52 TV referencií a 465 integrovaných PNG.** Referencia `1_0_19_46C0_1000_1_D7AAB23_0_0_0` má v deviatich pracovných ZIPoch všetky varianty 50×30, 220×132 a 400×240 s transparentným, bielym a čiernym pozadím. Každý PNG je bajtovo zhodný so sadou schválenou vlastníkom 12. novembra.
+
+[Základný checkpoint `3de2d8ca`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/3de2d8cae90586b32ea28a4f483c4b08ee8dafff) · [Commit s balíkmi `e3246160`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/e32461603cbb49ab7048b7e5cf0c3e355337c4e2) · [Audit](reports/vhannibal-followup-20261106/cbbc-hd-20261116/independent-audit.json) · [PR #50](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/50)
+
+Audit načítal z GitHubu všetkých deväť ZIPov cez 54 odkazov v pracovnom manifeste a overil SHA-256, ZIP CRC, PNG CRC, rozmery a RGBA. Zachovaných je 459 pôvodných členov aj celý bajtový prefix každého ZIPu. Všetkých 18 balíkov CANAL+ SK/CZ má pôvodné bajty. Nutné odkazy pre 15°W smerujú na vetvu `work/vhannibal-mezzo-sd-20261106`. PR #50 zostáva otvorený, bez merge a bez produkčného vydania.
+
+Dávka 19 má stále 86 otvorených prípadov. Ďalší krok pre sedem služieb Anuvu na 34,5°W je doložiť typ služby Enigma2 a namespace z prijímača.
+
 ## 2026-11-12 — Katalógová dávka 21 dokončená, nezávislý audit PASS
 
 Payload `cd2954a45aec0001a39f8bf9ee497aa377bb06f2` pridáva 5Drama na 15°W. SID 20256, TSID 4096, ONID 1 a VPID 7501 sú doložené spolu s namespace 0D7AAB23 a typom služby 22. Názov 5Select v Morpheus zodpovedá premenovaniu potvrdenému vysielateľom. Deväť PNG je bajtovo zhodných s existujúcou sadou 5Drama na 28,2°E. Deväť pracovných ZIPov zachováva 450 pôvodných členov aj pôvodný bajtový prefix. Audit overil SHA-256, ZIP CRC, PNG CRC, rozmery, RGBA a rám MASTER V9.

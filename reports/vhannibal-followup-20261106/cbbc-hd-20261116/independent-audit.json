@@ -1,0 +1,320 @@
+{
+  "base_checkpoint": "3de2d8cae90586b32ea28a4f483c4b08ee8dafff",
+  "branch": "work/vhannibal-mezzo-sd-20261106",
+  "pull_request": 50,
+  "reference": "1_0_19_46C0_1000_1_D7AAB23_0_0_0",
+  "station": "CBBC HD",
+  "position": "15°W",
+  "approval": "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/visual-review/owner-approval-20261112.json",
+  "integrated_tv_references": 52,
+  "integrated_png": 465,
+  "original_open_cases": 86,
+  "zip_crc_and_full_old_prefix_preserved": true,
+  "png_crc_dimensions_rgba_and_approved_bytes_verified": true,
+  "preserved_members": 459,
+  "protected_canal_packages": [
+    {
+      "filename": "warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip",
+      "sha256": "f42ac50b5adfc3a6fe6d6a5520b0e229b475b072a4c63dc20d5fcf51049f4221"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-white-16d0b4cc5986e48e.zip",
+      "sha256": "16d0b4cc5986e48e36c06ca7e91f1833b6a20abc0c05e06c95b6596d02d960b2"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-black-148f5818dd9193f6.zip",
+      "sha256": "148f5818dd9193f6b1fe68f60c66e21abae4df2ed09e2d23c327edcfb576e1e8"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip",
+      "sha256": "87d905f9027e7a0a0366e7820ab8342deaefaca8376081e33af5bc08c6a8792d"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-white-de20059b06ae4ffd.zip",
+      "sha256": "de20059b06ae4ffdf75d1295c75a9939cf87a55acd663483b9bb896b58ed1ace"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-black-caebfc2732e954a9.zip",
+      "sha256": "caebfc2732e954a9a7f90787897cab26b65f3b605e88eb131684c98044cb0abf"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-transparent-6cacdecbc8c81173.zip",
+      "sha256": "6cacdecbc8c81173859de0bce9a5471662ae9e66f639c80c7900e03ded14d07f"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-transparent-1469150c69e5f38b.zip",
+      "sha256": "1469150c69e5f38b8ad6f7364e968ed0da60ed0a14b51aa9268a47e056ef2849"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-white-ef9eec01cd368a46.zip",
+      "sha256": "ef9eec01cd368a4697e6b375255f6d113783204cf28d48223e187666ca48546e"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-white-693cadd1ab08d96d.zip",
+      "sha256": "693cadd1ab08d96d38c9a06cc74f5c7cccb6fba470736ba66f67a00bf000af38"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-black-78fed665dfd44a4b.zip",
+      "sha256": "78fed665dfd44a4b3f88e83f3f5b7221f99a34ebbea7720367a943f83971a8db"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-black-d93dedee57a80a4a.zip",
+      "sha256": "d93dedee57a80a4ab7ea29380a2d7a8be5d403e7a71ca69838c56037c54d685b"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-transparent-ca1b8443f0ceae71.zip",
+      "sha256": "ca1b8443f0ceae71a461ac559cf9c5ea95038891a6af67af040dfb83dbb4ac78"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-transparent-63864e5f39285be5.zip",
+      "sha256": "63864e5f39285be5bbe8e133a0e5e84db9414c9e968f3dc696ab87c17d62bd27"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-white-a770792d92b1a45a.zip",
+      "sha256": "a770792d92b1a45ad4812d3315cfd71e54f8ef8c7070c4d5e8e451fea6be9381"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-white-2361de5893401a1f.zip",
+      "sha256": "2361de5893401a1f5afb2b39243687dbff5ddaf99fdd8f7a00045e903f00a9d1"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-black-d212dc31031570c0.zip",
+      "sha256": "d212dc31031570c024ba1c309c91eee96c9d04600a3b5716ebd537b50de17213"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-black-88da0a3e1b54e36b.zip",
+      "sha256": "88da0a3e1b54e36be4268c1bedcb3e9330cdf94382c43f5476584da217b4ac5f"
+    }
+  ],
+  "other_package_entries_unchanged": 489,
+  "manifest_sha256": "2411211ce003189a6b4fa9029cd60619bd70a009e24e7d3308e26ab177fdf5b0",
+  "packages": [
+    {
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "filename": "warder-150w-220x132-transparent-fcd839503114ac53.zip",
+      "previous_filename": "warder-150w-220x132-transparent-dbd21328c72b71f7.zip",
+      "zip_sha256": "fcd839503114ac5305950255c8ad8ec1688405c9e7bc9cc61f18e2b8c56a62f1",
+      "zip_bytes": 468367,
+      "png_sha256": "96079d229aa760ce099c11b7ddf8c8974bee2a7f8e6f68cec479c071d9ffd4f5",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-220x132-transparent-fcd839503114ac53.zip.part05",
+        "sha256": "045eb03486e4ebae48f5e8875c01093482c5926edee63e666f47e5691d036853",
+        "bytes": 17213
+      }
+    },
+    {
+      "resolution": "220x132",
+      "family": "channel-black",
+      "filename": "warder-150w-220x132-black-beee6a53b93100af.zip",
+      "previous_filename": "warder-150w-220x132-black-738c070d8fd85fcb.zip",
+      "zip_sha256": "beee6a53b93100af3f50befeb9b10cc971ff1d4a65b9f08dbe3e93a83e434953",
+      "zip_bytes": 1758875,
+      "png_sha256": "b083da2c2bbc7621cff8780fdb1292b0101d942fe636a3dcf985de685cf6d8f0",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-220x132-black-beee6a53b93100af.zip.part05",
+        "sha256": "d14cf84b9de1882268d37480e8933a1c2cfd0a7b2fe28fd0f65f669e0f5c03e5",
+        "bytes": 37686
+      }
+    },
+    {
+      "resolution": "220x132",
+      "family": "channel-white",
+      "filename": "warder-150w-220x132-white-9cd5fcc44f83c03f.zip",
+      "previous_filename": "warder-150w-220x132-white-e121a21cc3c5cb2c.zip",
+      "zip_sha256": "9cd5fcc44f83c03f6253854f86ce0501262ad5ff8b5bba978a53d33a783efe58",
+      "zip_bytes": 1787906,
+      "png_sha256": "a0f1fa64f17dcda94eb45180097eca909a6e13299bfc049db0abda5c2cc7ae9c",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-220x132-white-9cd5fcc44f83c03f.zip.part05",
+        "sha256": "d10eed9f6b69cd381533b831bb8270d4fd7e339bc7f78cfe3e47c81dbd9901ab",
+        "bytes": 37616
+      }
+    },
+    {
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "filename": "warder-150w-50x30-transparent-c3ba42629022d8f5.zip",
+      "previous_filename": "warder-150w-50x30-transparent-30befe722d966559.zip",
+      "zip_sha256": "c3ba42629022d8f583aa19713b5aa44fb95b40ce8b00f0c6ae7b0d804c445eea",
+      "zip_bytes": 131619,
+      "png_sha256": "462fca38fcb32b5e66f3a822d35c40dae0643ae6907d9604c2009204a6e4fc7b",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-50x30-transparent-c3ba42629022d8f5.zip.part05",
+        "sha256": "a9d3658e1c8e064e75c7372ca2c14a6955e6c7ee08e6096ca14ef410673552fc",
+        "bytes": 6685
+      }
+    },
+    {
+      "resolution": "50x30",
+      "family": "channel-white",
+      "filename": "warder-150w-50x30-white-e7eed2cf3dde4138.zip",
+      "previous_filename": "warder-150w-50x30-white-5eae7e9601fd2a94.zip",
+      "zip_sha256": "e7eed2cf3dde4138cf6396cf20d147e7866e06ed40123209f4c79b1ed7fe58e9",
+      "zip_bytes": 176639,
+      "png_sha256": "aa7cad020a8cbf5aebababbacb98c5e0b6bc61b90a2990a06de0fd32b8ccafe9",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-50x30-white-e7eed2cf3dde4138.zip.part05",
+        "sha256": "7aebac9c95ff66bb7fc978c3ced6a6b7f12cf474fc4e8cc48dd86a4791574aa5",
+        "bytes": 7444
+      }
+    },
+    {
+      "resolution": "50x30",
+      "family": "channel-black",
+      "filename": "warder-150w-50x30-black-a8395473054f8108.zip",
+      "previous_filename": "warder-150w-50x30-black-000452a1447ea0c9.zip",
+      "zip_sha256": "a8395473054f81081b0ecbedb449104dd07cf17796e47fa5b2c48d432f15d347",
+      "zip_bytes": 184212,
+      "png_sha256": "8f24dd4f475ed796b1965c0f7ecb39afbebc1a89522b12685ff409fa1d637fa3",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-50x30-black-a8395473054f8108.zip.part05",
+        "sha256": "6bd370cd620b350d224ccc4e297e6832f411ccad40ae3a2efc89a10ee32e5232",
+        "bytes": 7809
+      }
+    },
+    {
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "filename": "warder-150w-400x240-transparent-7eb6de0515fb382d.zip",
+      "previous_filename": "warder-150w-400x240-transparent-cd1794697e33bcbd.zip",
+      "zip_sha256": "7eb6de0515fb382d4b417b4206a37bf0c5acc3687ab5bab4a0058c56172df4ac",
+      "zip_bytes": 2210503,
+      "png_sha256": "5f7265dc182b1f2c120da7924e83399698cfac6e621aba812226ed40e4d4f651",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-400x240-transparent-7eb6de0515fb382d.zip.part05",
+        "sha256": "5284dad8379f0f1b835ee6e985a3bcc40df7269b7659d1f47707ee7664122b64",
+        "bytes": 45956
+      }
+    },
+    {
+      "resolution": "400x240",
+      "family": "channel-white",
+      "filename": "warder-150w-400x240-white-ffbd9b5c72566b65.zip",
+      "previous_filename": "warder-150w-400x240-white-7578cfdb690b1821.zip",
+      "zip_sha256": "ffbd9b5c72566b65caac021f43d7eb4b579594fb7d5f5019543515e66d8195c2",
+      "zip_bytes": 4307214,
+      "png_sha256": "1f48a9751614c053fd9e4724dab75a01f5aac9e996709e93a75716456aa1c289",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-400x240-white-ffbd9b5c72566b65.zip.part05",
+        "sha256": "06de425d6392fef2035e1f69d3367627332595ee5409484d291624fd356cbc30",
+        "bytes": 89608
+      }
+    },
+    {
+      "resolution": "400x240",
+      "family": "channel-black",
+      "filename": "warder-150w-400x240-black-55d9d01ac3c688b8.zip",
+      "previous_filename": "warder-150w-400x240-black-62011474d829897e.zip",
+      "zip_sha256": "55d9d01ac3c688b81225c1da05aa9cc43ab1252aab3b15730b131f6e6bcb6b34",
+      "zip_bytes": 4171188,
+      "png_sha256": "616d27e47ebc60a389409046295838e1fce019f32f200ec0b102fff4245b07d1",
+      "preserved_members": 51,
+      "png_count": 52,
+      "part": {
+        "filename": "warder-150w-400x240-black-55d9d01ac3c688b8.zip.part05",
+        "sha256": "873968d373f1627a8f3e56ad15899ec2f067f161dedfa211171ad857cccd266b",
+        "bytes": 90747
+      }
+    }
+  ],
+  "status": "PASS",
+  "payload_commit": "e32461603cbb49ab7048b7e5cf0c3e355337c4e2",
+  "pinned_files": [
+    "assets/warder/downloads/picons/channels/SHA256SUMS",
+    "assets/warder/downloads/picons/channels/manifest.json",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-black-738c070d8fd85fcb.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-black-84e432102d2f4405.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-black-beee6a53b93100af.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-6d130f6318f3f369.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-dbd21328c72b71f7.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-transparent-fcd839503114ac53.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-white-9cd5fcc44f83c03f.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-white-e121a21cc3c5cb2c.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-220x132-white-ef40e03f24dfedda.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-black-55d9d01ac3c688b8.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-black-62011474d829897e.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-black-64619c4c7bf0991c.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-26b21d3fc1919a66.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-7eb6de0515fb382d.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-transparent-cd1794697e33bcbd.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-white-7578cfdb690b1821.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-white-c521764a69bf231e.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-400x240-white-ffbd9b5c72566b65.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-black-000452a1447ea0c9.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-black-a8395473054f8108.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-black-b1ebf521f4ae6bea.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-30befe722d966559.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-b42df3fc39c812ba.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-transparent-c3ba42629022d8f5.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-white-5eae7e9601fd2a94.zip.part04",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part01",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part02",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-white-7b2ba1211274a0bc.zip.part03",
+    "assets/warder/downloads/picons/channels/warder-150w-50x30-white-e7eed2cf3dde4138.zip.part05",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-black-caebfc2732e954a9.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-white-de20059b06ae4ffd.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-black-88da0a3e1b54e36b.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-transparent-63864e5f39285be5.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-white-2361de5893401a1f.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-50x30-black-d212dc31031570c0.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-50x30-transparent-ca1b8443f0ceae71.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_cz-50x30-white-a770792d92b1a45a.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-black-148f5818dd9193f6.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-white-16d0b4cc5986e48e.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-black-d93dedee57a80a4a.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-transparent-1469150c69e5f38b.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-white-693cadd1ab08d96d.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-50x30-black-78fed665dfd44a4b.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-50x30-transparent-6cacdecbc8c81173.zip.part00",
+    "assets/warder/downloads/picons/channels/warder-canalplus_sk-50x30-white-ef9eec01cd368a46.zip.part00",
+    "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/visual-review/owner-approval-20261112.json",
+    "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/visual-review/review-variants.zip",
+    "reports/vhannibal-followup-20261106/catalog-batch-20261112-21/visual-review/review.json"
+  ],
+  "working_manifest_part_urls_verified": 54,
+  "payload_files_read_back": 11
+}
