@@ -42,6 +42,43 @@ grep -Fx './usr/share/enigma2/hd_glass17/skin.xml' "$TMP/payload" >/dev/null
 grep -Fx './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py' "$TMP/payload" >/dev/null
 grep -Fx './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version' "$TMP/payload" >/dev/null
 ! grep -E '/(__pycache__/|[^/]+\.py[co]$)' "$TMP/payload"
+# PR88: verify that offline reset icons survive packaging, not just source checkout.
+FACTORY_ICON_PREFIX='./usr/share/enigma2/hd_glass17/icons_factory/'
+grep -E '^\./usr/share/enigma2/hd_glass17/icons_factory/[^/]+[.]png
+ACTUAL_RUNTIME="$(tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | tr -d '\r\n')"
+test "$ACTUAL_RUNTIME" = "$EXPECTED_RUNTIME"
+
+# Verify that the receiver payload contains freshly compiled r10 weather translations.
+tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/sk/LC_MESSAGES/weather.mo > "$TMP/weather-sk.mo"
+tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/sk/LC_MESSAGES/eWeather.mo > "$TMP/eWeather-sk.mo"
+python3 - "$TMP/weather-sk.mo" "$TMP/eWeather-sk.mo" <<'PY'
+import gettext, sys
+for path in sys.argv[1:]:
+    with open(path, "rb") as handle:
+        catalog = gettext.GNUTranslations(handle)
+    assert catalog.gettext("Overcast") == "Zamračené", path
+    assert catalog.gettext("Partly cloudy") == "Čiastočne oblačno", path
+    assert catalog.gettext("Thunderstorm") == "Búrka", path
+print("Compiled Slovak weather catalogs: PASS")
+PY
+
+echo "TEST IPK integrity: PASS ($ACTUAL_RUNTIME)"
+ "$TMP/payload" > "$TMP/factory-icons"
+FACTORY_COUNT="$(wc -l < "$TMP/factory-icons" | tr -d ' ')"
+if [ "$FACTORY_COUNT" -ne 148 ]; then
+  echo "TEST package must contain exactly 148 factory icons, found: $FACTORY_COUNT" >&2
+  exit 4
+fi
+while IFS= read -r icon; do
+  live_icon="./usr/share/enigma2/hd_glass17/icons/${icon##*/}"
+  grep -Fx "$live_icon" "$TMP/payload" >/dev/null || {
+    echo "Missing live icon corresponding to $icon" >&2
+    exit 4
+  }
+done < "$TMP/factory-icons"
+echo "Bundled offline factory icons in TEST IPK: PASS (148)"
+
+
 ACTUAL_RUNTIME="$(tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | tr -d '\r\n')"
 test "$ACTUAL_RUNTIME" = "$EXPECTED_RUNTIME"
 

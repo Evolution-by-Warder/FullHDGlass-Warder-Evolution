@@ -40,6 +40,15 @@ def main():
     from bitrate_package import validate_helpers
     validate_helpers(ROOT)
     payload = ROOT / "source/package-root"
+    # Factory reset must always have the complete bundled offline icon set.
+    graphics = payload / "usr/share/enigma2/hd_glass17"
+    bundled = sorted((graphics / "icons_factory").glob("*.png"))
+    if len(bundled) != 148:
+        raise SystemExit("Stable IPK requires 148 bundled factory icons; found %s" % len(bundled))
+    live = graphics / "icons"
+    for icon in bundled:
+        if not icon.is_file() or not icon.stat().st_size or not (live / icon.name).is_file():
+            raise SystemExit("Missing/empty factory or matching live icon: %s" % icon.name)
     from sync_header_version import sync_headers
     sync_headers(payload, check=True)
     control = ROOT / "source/control"

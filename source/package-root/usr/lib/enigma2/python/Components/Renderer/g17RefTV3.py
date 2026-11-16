@@ -17,6 +17,7 @@
 from Components.Renderer.Renderer import Renderer
 from enigma import eServiceReference, eServiceCenter, ePixmap, eSize
 from Components.config import config
+from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source, find_png
 from ServiceReference import ServiceReference
 import os, re
 try:
@@ -129,6 +130,10 @@ class g17RefTV3(Renderer):
 
 	def findPicon(self, serviceName):
 		try:
+			if self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240", "ZZPicon"):
+				override, custom = selected_source(config)
+				if override:
+					return find_png(custom, serviceName)
 			source = getattr(config.plugins.setupGlass17, "par231", None)
 			paths = (self.path, "picon") if source is not None and source.value == "mini" else (self.path,)
 			for path in dict.fromkeys(paths):

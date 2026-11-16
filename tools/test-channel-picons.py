@@ -16,6 +16,10 @@ PKG = Path(os.environ.get('WARDER_PICON_PACKAGE_ROOT', str(ROOT/'source/package-
 spec = importlib.util.spec_from_file_location('channel_picons', PKG/'Plugins/Extensions/setupGlass17/warderChannelPicons.py')
 picons = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(picons)
+user_spec = importlib.util.spec_from_file_location('warder_user_picons',
+    PKG/'Plugins/Extensions/setupGlass17/warderUserPicons.py')
+user_picons = importlib.util.module_from_spec(user_spec)
+user_spec.loader.exec_module(user_picons)
 REF = '1:0:19:1F48:CA1:3:EB0000:0:0:0:'
 NAME = '1_0_19_1F48_CA1_3_EB0000_0_0_0'
 UPSTREAM = None
@@ -49,21 +53,56 @@ class LookupFixture:
 
 
 class LookupTests(LookupFixture, unittest.TestCase):
-    def test_system_mode_restores_native_lookup_even_with_both_skin_sets(self):
-        self.put('picon_50x30'); self.put('picon'); self.prefer_mini=False
-        self.assertEqual(self.lookup(),'/image/picon.png')
+    def test_expert_custom_path_wins_over_default_in_both_modes(self):
+        shared=self.put('picon')
+        mini=self.put('picon_50x30')
+        custom_dir=self.base/'expert-folder'
+        custom_dir.mkdir()
+        custom=(custom_dir/(NAME+'.png'))
+        custom.write_bytes(b'expert')
+        module=NS(getChannelSelectionPiconName=self.native)
+        picons.install(module,lambda:True,lambda:str(self.base),
+                      lambda ref:ref,self.get_name,lambda n:n,
+                      lambda:self.prefer_mini,lambda:str(custom_dir))
+        self.assertEqual(module.getChannelSelectionPiconName(REF),str(custom))
+        self.prefer_mini=False
+        self.assertEqual(module.getChannelSelectionPiconName(REF),str(custom))
+        custom.unlink()
+        self.assertEqual(module.getChannelSelectionPiconName(REF),"")
+        self.prefer_mini=True
+        self.assertEqual(module.getChannelSelectionPiconName(REF),"")
+
+    def test_expert_path_change_applies_without_restarting(self):
+        first=self.base/'first'
+        second=self.base/'second'
+        for folder in (first, second):
+            folder.mkdir()
+            (folder/(NAME+'.png')).write_bytes(b'expert')
+        selection=[str(first)]
+        module=NS(getPiconName=self.native)
+        picons.install(module,lambda:True,lambda:str(self.base),
+                      lambda ref:ref,self.get_name,lambda n:n,
+                      lambda:False,lambda:selection[0])
+        self.assertEqual(module.getPiconName(REF),str(first/(NAME+'.png')))
+        selection[0]=str(second)
+        self.assertEqual(module.getPiconName(REF),str(second/(NAME+'.png')))
+
+    def test_system_mode_uses_private_shared_picon_even_with_both_skin_sets(self):
+        self.put('picon_50x30'); shared=self.put('picon'); self.prefer_mini=False
+        self.assertEqual(self.lookup(),shared)
         self.get_name.assert_not_called()
 
-    def test_missing_mode_callback_defaults_to_original_system_lookup(self):
+    def test_missing_mode_callback_uses_private_skin_lookup(self):
         self.put('picon_50x30')
         module=NS(getPiconName=self.native)
         picons.install(module,lambda:True,lambda:str(self.base),lambda ref:ref,self.get_name,lambda n:n)
-        self.assertEqual(module.getPiconName(REF),'/image/picon.png')
+        self.assertEqual(module.getPiconName(REF),str(self.base/'picon_50x30'/(NAME+'.png')))
 
     def test_mode_changes_are_read_by_existing_callbacks(self):
-        mini=self.put('picon_50x30'); callback=self.module.getPiconName
+        mini=self.put('picon_50x30'); shared=self.put('picon')
+        callback=self.module.getPiconName
         self.prefer_mini=False
-        self.assertEqual(callback(REF),'/image/picon.png')
+        self.assertEqual(callback(REF),shared)
         self.prefer_mini=True
         self.assertEqual(callback(REF),mini)
 
@@ -84,9 +123,15 @@ class LookupTests(LookupFixture, unittest.TestCase):
         (self.base/'picon_50x30').mkdir()
         self.assertEqual(self.lookup(),shared)
 
-    def test_native_system_path_remains_final_fallback(self):
-        self.assertEqual(self.lookup(),'/image/picon.png')
-        self.native.assert_called_once_with(REF)
+    def test_external_system_png_never_wins_against_private_picon(self):
+        shared=self.put('picon')
+        self.prefer_mini=False
+        self.assertEqual(self.lookup(),shared)
+        self.native.assert_not_called()
+
+    def test_missing_skin_picon_does_not_use_other_directory(self):
+        self.assertEqual(self.lookup(),'')
+        self.native.assert_not_called()
 
     def test_other_skins_delegate_even_with_a_mini_set(self):
         self.put('picon_50x30'); self.active=False
@@ -122,6 +167,11 @@ class LookupTests(LookupFixture, unittest.TestCase):
         self.put('picon')
         self.assertEqual(self.lookup(),mini)
 
+    def test_lowercase_reference_matches_canonical_png(self):
+        shared=self.put('picon')
+        self.prefer_mini=False
+        self.assertEqual(self.lookup(REF.lower()),shared)
+
     def test_namespace_and_iptv_aliases(self):
         mini=self.put('picon_50x30',NAME.replace('_19_','_1_'))
         self.assertEqual(self.lookup(REF.replace('EB0000','EB1234')),mini)
@@ -143,19 +193,116 @@ class LookupTests(LookupFixture, unittest.TestCase):
 
     def test_malformed_reference_cannot_escape_selected_folders(self):
         self.put('picon_50x30')
-        self.assertEqual(self.lookup(REF.replace('CA1','../CA1')),'/image/picon.png')
-        self.assertEqual(self.lookup(None),'/image/picon.png')
+        self.assertEqual(self.lookup(REF.replace('CA1','../CA1')),'')
+        self.assertEqual(self.lookup(None),'')
 
     def test_unavailable_data_path_keeps_native_lookup(self):
         self.module=NS(getPiconName=self.native)
         picons.install(self.module,lambda:True,lambda:None,lambda ref:ref,self.get_name,lambda n:n,lambda:True)
-        self.assertEqual(self.module.getPiconName(REF),'/image/picon.png')
+        self.assertEqual(self.module.getPiconName(REF),'')
 
     def test_disabled_and_reenabled_skin_uses_current_files(self):
         self.active=False
         self.assertEqual(self.lookup(),'/image/picon.png')
         mini=self.put('picon_50x30'); self.active=True
         self.assertEqual(self.lookup(),mini)
+
+
+class InfoBarStorageTests(LookupFixture, unittest.TestCase):
+    def test_infobar_uses_skin_picon_by_default_and_own_folder_when_selected(self):
+        tree=ast.parse((PKG/'Components/Renderer/g17PicRef.py').read_text())
+        owner=next(n for n in tree.body if isinstance(n, ast.ClassDef))
+        method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
+        expert=NS(custom_destination=NS(value=False),destination=NS(value=''))
+        settings=NS(par39=NS(value=str(self.base)))
+        own=NS(enabled=NS(value=False),path=NS(value=''))
+        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert,warderUserPicons=own)),
+                   fileExists=os.path.isfile,selected_source=user_picons.selected_source)
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'g17PicRef.py','exec'),scope)
+        widget=NS(path='picon',source=NS(text=REF))
+        private=self.put('picon')
+        self.assertEqual(scope['findPicon'](widget,NAME),private)
+        customdir=self.base/'expert-infobar'
+        customdir.mkdir()
+        selected=customdir/(NAME+'.png')
+        selected.write_bytes(b'custom')
+        expert.custom_destination.value=True
+        expert.destination.value=str(customdir)
+        self.assertEqual(scope['findPicon'](widget,NAME),private)
+        own.enabled.value=True
+        own.path.value=str(customdir)
+        self.assertEqual(scope['findPicon'](widget,NAME),str(selected))
+        selected.unlink()
+        # The explicitly chosen folder never silently switches to old picons.
+        self.assertEqual(scope['findPicon'](widget,NAME),'')
+
+
+class ChannelSelectionPreviewTests(LookupFixture, unittest.TestCase):
+    def test_cursor_preview_loads_expert_picons_without_changing_auxiliary_logos(self):
+        tree=ast.parse((PKG/'Components/Renderer/g17RefTV.py').read_text())
+        owner=next(node for node in tree.body if isinstance(node,ast.ClassDef))
+        method=next(node for node in owner.body
+                    if isinstance(node,ast.FunctionDef) and node.name=='findPicon')
+        expert=NS(custom_destination=NS(value=True),destination=NS(value=str(self.base/'chosen')))
+        scope=dict(os=os,config=NS(plugins=NS(
+            setupGlass17=NS(par39=NS(value=str(self.base))),warderPiconExpert=expert,
+            warderUserPicons=NS(enabled=NS(value=True),path=NS(value=str(self.base/'chosen'))))),
+            selected_source=user_picons.selected_source,find_png=user_picons.find_png)
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV.py','exec'),scope)
+        chosen=self.base/'chosen'
+        chosen.mkdir()
+        first=chosen/(NAME+'.png')
+        second_name='1_0_1_3C3D_C90_3_EB0000_0_0_0'
+        second=chosen/(second_name+'.png')
+        first.write_bytes(b'one')
+        second.write_bytes(b'two')
+        widget=NS(source=NS(service=NS(toString=lambda:REF)))
+        setattr(widget, '__enaSH', None)
+        self.assertEqual(scope['findPicon'](widget,NAME),str(first))
+        self.assertEqual(scope['findPicon'](widget,second_name),str(second))
+        first.unlink()
+        self.assertEqual(scope['findPicon'](widget,NAME),'')
+        auxiliary=self.put('piconProv','CANALPLUS_CZ')
+        self.assertEqual(scope['findPicon'](widget,'CANALPLUS_CZ','piconProv'),auxiliary)
+        expert.custom_destination.value=False
+        scope['config'].plugins.warderUserPicons.enabled.value=False
+        default=self.put('picon')
+        self.assertEqual(scope['findPicon'](widget,NAME),default)
+
+
+class MainInfoBarLookupTests(LookupFixture, unittest.TestCase):
+    def test_main_infobar_uses_expert_path_and_keeps_auxiliary_assets_private(self):
+        tree=ast.parse((PKG/'Plugins/Extensions/setupGlass17/plugin.py').read_text())
+        method=next(node for node in ast.walk(tree)
+                    if isinstance(node,ast.FunctionDef) and node.name=='findPicon'
+                    and 'self.path' in ast.unparse(node) and 'piconSat' in ast.unparse(node))
+        expert=NS(custom_destination=NS(value=True),
+                  destination=NS(value=str(self.base/'expert')))
+        settings=NS(par39=NS(value=str(self.base)))
+        own=NS(enabled=NS(value=True),path=NS(value=str(self.base/'expert')))
+        scope=dict(config=NS(plugins=NS(setupGlass17=settings,warderPiconExpert=expert,warderUserPicons=own)),
+                   fileExists=os.path.isfile,os=os,
+                   _warderSelectedPiconSource=user_picons.selected_source,
+                   _warderUserFindPng=user_picons.find_png)
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'main-infobar.py','exec'),scope)
+        custom=self.base/'expert'
+        custom.mkdir()
+        wanted=custom/(NAME+'.png')
+        wanted.write_bytes(b'channel')
+        default=self.put('picon')
+        widget=NS(path='picon')
+        self.assertEqual(scope['findPicon'](widget,NAME),str(wanted))
+        wanted.unlink()
+        self.assertEqual(scope['findPicon'](widget,NAME),'')
+        # Other graphic families always come from hdg17_files.
+        provider=self.put('piconProv','CANALPLUS_CZ')
+        widget.path='piconProv'
+        self.assertEqual(scope['findPicon'](widget,'CANALPLUS_CZ'),provider)
+        # Turning expert mode off restores the private skin destination.
+        expert.custom_destination.value=False
+        own.enabled.value=False
+        widget.path='picon'
+        self.assertEqual(scope['findPicon'](widget,NAME),default)
 
 
 class SelectedPiconTests(LookupFixture, unittest.TestCase):
@@ -165,7 +312,10 @@ class SelectedPiconTests(LookupFixture, unittest.TestCase):
         method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         import os
         setting=NS(value='mini')
-        scope=dict(os=os,config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)),par231=setting))))
+        runtime_config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)), par231=setting)))
+        scope=dict(os=os, config=runtime_config,
+                   selected_source=user_picons.selected_source,
+                   find_png=user_picons.find_png)
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV3.py','exec'),scope)
         shared=self.put('picon'); self.put('picon_50x30')
         for folder in ('picon_400x240','ZZPicon'):
@@ -199,7 +349,7 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         imports=[alias.name for n in tree.body if isinstance(n,ast.ImportFrom) and n.module=='Components.Renderer.Picon' for alias in n.names]
         name=next(n for n in ('getChannelSelectionPiconName','getPiconName') if n in imports)
         binding=next(n for n in ast.walk(tree) if isinstance(n,ast.If) and ast.unparse(n.test)=='config.usage.service_icon_enable.value')
-        mini=self.put('picon_50x30'); self.put('picon')
+        mini=self.put('picon_50x30'); shared=self.put('picon')
         content=NS(setGetPiconNameFunc=Mock())
         scope=dict(vars(self.module),self=NS(l=content),config=NS(usage=NS(service_icon_enable=NS(value=True))))
         exec(compile(ast.Module(body=[binding],type_ignores=[]),'native-ServiceList.py','exec'),scope)
@@ -207,7 +357,7 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         self.assertIs(callback,getattr(self.module,name))
         self.assertEqual(callback(REF),mini)
         self.prefer_mini=False
-        self.assertEqual(callback(REF),'/image/picon.png')
+        self.assertEqual(callback(REF),shared)
         scope['config'].usage.service_icon_enable.value=False
         exec(compile(ast.Module(body=[binding],type_ignores=[]),'native-ServiceList.py','exec'),scope)
         self.assertIsNone(content.setGetPiconNameFunc.call_args.args[0])
@@ -228,7 +378,7 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         self.put('picon_50x30')
         system=self.put('native-system','original')
         self.native.return_value=system;self.prefer_mini=False
-        self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),system)
+        self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),shared)
 
 
 if __name__=='__main__':

@@ -17,6 +17,7 @@
 from Components.Renderer.Renderer import Renderer
 from enigma import eServiceReference, eServiceCenter, ePixmap
 from Components.config import config
+from Plugins.Extensions.setupGlass17.warderUserPicons import selected_source, find_png
 from ServiceReference import ServiceReference
 import os, re
 try:
@@ -143,6 +144,27 @@ class g17RefTV(Renderer):
 
 	def findPicon(self, serviceName, typ="picon"):
 		try:
+			# The channel selection preview has a separate renderer from
+			# InfoBar and the native channel list. Honor the same expert folder.
+			# Auxiliary provider/satellite logos always remain in hdg17_files.
+			if typ == "picon":
+				override, custom = selected_source(config)
+				if override:
+					result = find_png(custom, serviceName)
+					if result:
+						return result
+					try:
+						from Plugins.Extensions.setupGlass17.warderChannelPicons import find_picon
+						from Tools.Alternatives import GetWithAlternative
+						from Tools.Directories import sanitizeFilename
+						service = self.source.service
+						return find_picon(
+							service.toString(), config.plugins.setupGlass17.par39.value,
+							GetWithAlternative,
+							lambda ref: ServiceReference(ref).getServiceName(),
+							sanitizeFilename, custom_folder=custom)
+					except (AttributeError, ImportError, OSError, TypeError, ValueError):
+						return ""
 			if self.__enaSH is None or self.__enaSH == 1:
 				x = ("","_400x240","_220x132")
 			else:
@@ -151,5 +173,6 @@ class g17RefTV(Renderer):
 				pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, typ + i, serviceName)
 				if os.path.isfile(pngname):
 					return pngname
-		except: pass
+		except (AttributeError, OSError, TypeError, ValueError):
+			pass
 		return ""

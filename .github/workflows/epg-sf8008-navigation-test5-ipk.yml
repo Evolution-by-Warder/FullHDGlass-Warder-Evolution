@@ -1,0 +1,102 @@
+name: SF8008 automatic navigation timing TEST5 IPK (artifact only)
+
+on:
+  push:
+    branches:
+      - fix/epg-openatv80-performance-fallback
+    paths:
+      - .github/workflows/epg-sf8008-navigation-test5-ipk.yml
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - tools/test_warder_channel_epg_clip.py
+      - tools/test_warder_epg_render_policy.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  diagnostic-ipk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            source
+            tools/build-release-ipk.py
+            tools/sync_header_version.py
+            tools/test_warder_channel_epg_clip.py
+            tools/test_warder_epg_render_policy.py
+            tools/test_channel_selection_epg_performance.py
+            tools/test_channel_selection_snapshot_cache.py
+            tools/test_channel_selection_text_measure_cache.py
+            tools/test_channel_selection_progress_paint_cache.py
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test EPG renderer before packaging
+        run: |
+          set -euo pipefail
+          python3 tools/test_warder_epg_render_policy.py -q
+          python3 tools/test_warder_channel_epg_clip.py -q
+          python3 tools/test_channel_selection_epg_performance.py -q
+          python3 tools/test_channel_selection_snapshot_cache.py -q
+          python3 tools/test_channel_selection_text_measure_cache.py -q
+          python3 tools/test_channel_selection_progress_paint_cache.py -q
+      - name: Stage isolated performance test version
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          v=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version')
+          c=Path('source/control/control')
+          assert v.read_text().strip()=='1.0.75'
+          v.write_text('1.0.75-test5\n')
+          metadata=c.read_text()
+          assert metadata.count('Version: 1.0.75-1')==1
+          c.write_text(metadata.replace('Version: 1.0.75-1','Version: 1.0.75-test5-1'))
+          PY
+          python3 tools/sync_header_version.py
+          python3 tools/sync_header_version.py --check
+      - name: Build SF8008 test IPK without publishing it
+        run: |
+          set -euo pipefail
+          ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .
+          ! find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -print -quit | grep -q .
+          python3 - <<'PY'
+          import hashlib, importlib.util, pathlib, subprocess, tempfile
+          root=pathlib.Path.cwd()
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(builder)
+          name='enigma2-plugin-skins-fullhdglass_1.0.75-test5-sf8008-auto-navigation_all.ipk'
+          output=root/'packages/test'/name
+          output.parent.mkdir(parents=True,exist_ok=True)
+          with tempfile.TemporaryDirectory() as folder:
+              work=pathlib.Path(folder)
+              (work/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(root/'source/control',work/'control.tar.gz')
+              builder.archive(root/'source/package-root',work/'data.tar.gz',payload=True)
+              subprocess.run(['ar','rcsD',str(output),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
+          digest=hashlib.sha256(output.read_bytes()).hexdigest()
+          (output.parent/(name+'.sha256')).write_text(digest+'  '+name+'\n')
+          print('Diagnostic IPK:',name,'SHA256:',digest)
+          PY
+          test "$(ar t packages/test/enigma2-plugin-skins-fullhdglass_1.0.75-test5-sf8008-auto-navigation_all.ipk | paste -sd' ' -)" = "debian-binary control.tar.gz data.tar.gz"
+          cd packages/test
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.75-test5-sf8008-auto-navigation_all.ipk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.75-test5-SF8008-auto-navigation
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.75-test5-sf8008-auto-navigation_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.75-test5-sf8008-auto-navigation_all.ipk.sha256
+          retention-days: 14
+          if-no-files-found: error

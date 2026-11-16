@@ -25,8 +25,33 @@ def widgets(name,keys):return [w for w in screen(name).findall('widget') if acti
 class ScreenCompatTests(unittest.TestCase):
  def test_approved_pig_screen_is_byte_identical_and_only_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  # The separately reviewed EMC/EPG geometry candidate must be reverted
+  # exactly before comparing this historical OpenATV layout fingerprint.
+  # Require a unique full-text match for each audited edit, not a broad skip.
+  reviewed=ROOT/'design/shared-emc-epg-overlap-20261112/layout.json'
+  if reviewed.exists():
+   for edit in json.loads(reviewed.read_text())['edits']:
+    self.assertEqual(text.count(edit['updated']),1,'Unexpected EMC/EPG candidate drift')
+    text=text.replace(edit['updated'],edit['original'],1)
   from openatv81_skin import revert_skin
   text=revert_skin(ROOT,text)
+  # Restore the receiver-approved PackageAction TEST5 selection geometry
+  # before replaying historical OpenATV baselines. Keep the old ledger intact.
+  start=text.index('<screen name="PackageAction"')
+  end=text.index('</screen>',start)+len('</screen>')
+  section=text[start:end]
+  approved_to_legacy=(
+   ('MultiContentEntryText(pos=(95, 2), size=(690, 34), font=1, flags=RT_VALIGN_CENTER, text=3, color_sel=0x006cbcf0)',
+    'MultiContentEntryText(pos=(95, 2), size=(930, 34), font=1, flags=RT_VALIGN_CENTER, text=3)'),
+   ('MultiContentEntryText(pos=(800, 2), size=(630, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5, color_sel=0x006cbcf0)',
+    'MultiContentEntryText(pos=(1040, 2), size=(390, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5)'),
+   ('MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00ffffff, color_sel=0x00ffff00)',
+    'MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0)'),
+  )
+  for approved, legacy in approved_to_legacy:
+   self.assertEqual(section.count(approved),1,"Unexpected approved PackageAction TEST5 layout")
+   section=section.replace(approved,legacy,1)
+  text=text[:start]+section+text[end:]
   cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
   if cover_layout.exists():
       for edit in json.loads(cover_layout.read_text())['edits']:

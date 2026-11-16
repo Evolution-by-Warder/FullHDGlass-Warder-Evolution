@@ -22,6 +22,9 @@ from Components.FileList import FileList
 import time as time1
 import re, os
 import threading
+from .warderUserPicons import selected_source as _warderSelectedPiconSource, find_png as _warderUserFindPng, normalized_directory as _warderUserNormalize
+from .warderProgressLog import ProgressLog
+from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker, CanonicalWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
@@ -557,6 +560,9 @@ def chckVersion(ff="ViX"):
 	except: pass
 	return what
 isATV = chckVersion("openATV")
+# OpenPLi uses its own service-list painter and eCanvas composition.
+# Never apply OpenATV-only fullscreen-over-list EPG canvas on OpenPLi.
+isOpenPLi = chckVersion("openpli") or chckVersion("OpenPLi")
 HDDTMP = "/media/hdd/hdg_tmp"
 SEVENZIP = os.path.join(PLUGINPATH, "bin", "7z_g")
 NO_TUN = _("No tuner data")
@@ -745,6 +751,43 @@ config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT
 config.plugins.warderEvolutionPrimeTime = ConfigSubsection()
 config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)
 config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
+# Optional EPG overlay: enabled by default only when the active e2egl backend
+# is confirmed on OpenATV 8.1. Unknown images always use native drawing.
+from Plugins.Extensions.setupGlass17.warderEpgRenderPolicy import allow_channel_epg_overlay
+config.plugins.warderEpgListScroll = ConfigSubsection()
+config.plugins.warderEpgListScroll.enabled = ConfigYesNo(default=allow_channel_epg_overlay())
+# Expert-only option: regular channel picon downloads follow the configured PATHS storage.
+config.plugins.warderPiconExpert = ConfigSubsection()
+config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)
+config.plugins.warderPiconExpert.destination = ConfigText(default="", fixed_size=False)
+# Independent, read-only channel-picon lookup. Does not modify download destination.
+config.plugins.warderUserPicons = ConfigSubsection()
+config.plugins.warderUserPicons.enabled = ConfigYesNo(default=False)
+config.plugins.warderUserPicons.path = ConfigText(default="", fixed_size=False)
+# Read-only presentation of the persisted path: ConfigText would open a
+# character-grid keyboard when focused, although browsing is done with OK.
+config.plugins.warderUserPicons.path_display = ConfigSelection(
+    default="none", choices=[("none", "-")])
+
+def _warderEpgListScrollLabel():
+    # Short labels fit the existing settings column. English is fallback.
+    labels = {
+        "sk": "Rolovanie EPG názvov",
+        "cs": "Posouvání názvů EPG",
+        "de": "EPG-Titel scrollen",
+        "pl": "Przewijanie nazw EPG",
+        "hu": "EPG-címek görgetése",
+        "ru": "Прокрутка названий EPG",
+        "fr": "Défilement titres EPG",
+        "it": "Scorrimento titoli EPG",
+        "es": "Desplazar títulos EPG",
+        "en": "Scroll EPG titles",
+    }
+    try:
+        lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()
+    except (AttributeError, TypeError, ValueError):
+        lang = "en"
+    return labels.get(lang, labels["en"])
 config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
 config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
 config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
@@ -975,7 +1018,7 @@ config.plugins.setupGlass17.par226 = ConfigSelection(default="1", choices = [("1
 config.plugins.setupGlass17.par227 = ConfigSelection(default="5", choices = [("5",_("Default")),("7",_("Default")+" 2"),("0",_("Auto")),("1","150x90"),("2","220x132"),("6","220x132 (2)"),("3","400x170"),("4","400x240")]) # Extended Number ZAP Picon Size
 config.plugins.setupGlass17.par228 = ConfigText(default="-", fixed_size=False, visible_width=50)
 config.plugins.setupGlass17.par229 = ConfigSelection(default="1", choices = [("1",_("Default")),("2",_("Poster"))]) # EventView
-config.plugins.setupGlass17.par230 = ConfigSelection(default="dove", choices=warderSpinner.choices(ui_text))
+config.plugins.setupGlass17.par230 = ConfigSelection(default="bakussa", choices=warderSpinner.choices(ui_text))
 config.plugins.setupGlass17.par231 = ConfigSelection(default="system", choices=[("system", ui_text("System setting")), ("mini", ui_text("Prefer 50x30"))])
 config.plugins.setupGlass17.par101 = ConfigYesNo(default = True) # 
 ##########################################################################################################################
@@ -1164,6 +1207,27 @@ def setPathFiles(chck=True):
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par124.value + "hdg17_files"
 		else:
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par125.value + "/hdg17_files"
+		# Keep an exact registry of Warder data directories used over time.
+		# A later uninstall removes these directories even after PATHS changes.
+		# Never record the parent, and never traverse arbitrary user folders.
+		try:
+			_warderDataPath = os.path.abspath(config.plugins.setupGlass17.par39.value)
+			_warderRegistry = "/var/lib/fullhdglass17/data-paths-v1.list"
+			if (os.path.basename(_warderDataPath) == "hdg17_files"
+					and not os.path.islink(_warderDataPath)
+					and os.path.isdir(_warderDataPath)):
+				_warderState = os.path.dirname(_warderRegistry)
+				if not os.path.islink(_warderState):
+					os.makedirs(_warderState, exist_ok=True)
+					_warderKnown = set()
+					if os.path.isfile(_warderRegistry) and not os.path.islink(_warderRegistry):
+						with open(_warderRegistry, "r") as _warderHandle:
+							_warderKnown = set(line.strip() for line in _warderHandle if line.strip())
+					if _warderDataPath not in _warderKnown and not os.path.islink(_warderRegistry):
+						with open(_warderRegistry, "a") as _warderHandle:
+							_warderHandle.write(_warderDataPath + "\n")
+		except (IOError, OSError, ValueError):
+			pass
 		if chck and ENA_SYM:
 			# Warder may manage its legacy root/removable-media convenience links,
 			# but /usr/share/enigma2 is image/package-manager owned on OpenATV.
@@ -1196,7 +1260,8 @@ try:
 		lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml',
 		lambda: config.plugins.setupGlass17.par39.value,
 		_warderPiconAlternative, lambda ref: ServiceReference(ref).getServiceName(), _warderPiconSanitize,
-		lambda: config.plugins.setupGlass17.par231.value == 'mini')
+		lambda: config.plugins.setupGlass17.par231.value == 'mini',
+		lambda: _warderSelectedPiconSource(config)[1] if _warderSelectedPiconSource(config)[0] else None)
 except (ImportError, AttributeError):
 	pass
 ENAFINDER = False
@@ -1467,6 +1532,7 @@ def startHdg17(reason, **kwargs):
 					Glass17__init__ = InfoBarPlugins.__init__
 				InfoBarPlugins.__init__ = hdg17inicialize
 				InfoBarPlugins.controlWindow17 = controlWindow17
+				InfoBarPlugins.warderNeutrinoChannelList17 = warderNeutrinoChannelList17
 				InfoBarPlugins.hideWindow17 = hideWindow17
 				InfoBarPlugins.fadeEvent17 = fadeEvent17
 				InfoBarPlugins.fadeEvent217 = fadeEvent217
@@ -1504,12 +1570,12 @@ def hdg17inicialize(self):
 			pass
 		if config.plugins.setupGlass17.par12.value == "n":
 			if config.plugins.setupGlass17.par34.value:
-				self["g17Actions"] = ActionMap(["g17Actions_neutrino"],{"ok_pressed": self.controlWindow17}, -1)
+				self["g17Actions"] = ActionMap(["g17Actions_neutrino"],{"ok_pressed": self.controlWindow17,"warder_neutrino_channel_list": self.warderNeutrinoChannelList17}, -1)
 			else:
 				self["g17Actions"] = ActionMap(["g17Actions"],{"ok_pressed": self.controlWindow17,"exit_pressed": self.hideWindow17}, -1)
 		else:
 			if config.plugins.setupGlass17.par34.value:
-				self["g17Actions"] = ActionMap(["g17Actions_neutrinoSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17}, -1)
+				self["g17Actions"] = ActionMap(["g17Actions_neutrinoSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17,"warder_neutrino_channel_list": self.warderNeutrinoChannelList17}, -1)
 			else:
 				self["g17Actions"] = ActionMap(["g17ActionsSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17,"exit_pressed": self.hideWindow17}, -1)
 			self["helpActions"] = ActionMap(['HelpActions'],{"displayHelp": doNothing})
@@ -1678,6 +1744,27 @@ def serviceStartNow173(self):
 			idx = config.usage.infobar_timeout.index
 			if idx:
 				self.g17eventupdTimer.start(idx*1000, True)
+
+def warderNeutrinoChannelList17(self):
+	"""Open the existing Enigma2 service list only in Warder Neutrino mode.
+
+	Use the image-owned API; do not patch Enigma2 or replace its keymap.
+	The keymap binds on key release (b), leaving long-OK mappings intact.
+	"""
+	if not isinstance(self, InfoBar) or not config.plugins.setupGlass17.par34.value:
+		return
+	# OpenATV 7.6 keeps LongButtonPressed set on long-press release.
+	# Do not reinterpret a long OK as another short OK.
+	if getattr(self, "LongButtonPressed", False):
+		return
+	# System Neutrino may have already opened the list on key-down.
+	servicelist = getattr(self, "servicelist", None)
+	if servicelist is not None and getattr(self.session, "current_dialog", None) is servicelist:
+		return
+	open_list = getattr(self, "openServiceList", None)
+	if callable(open_list):
+		open_list()
+
 
 def controlWindow17(self):
 	global transStep17
@@ -2686,6 +2773,30 @@ def changeScreenXml(what, new="1", old="1"):
 		tmp = changePIGres()
 	return True
 ##########################################################################################################################  
+def restoreFactoryIcons():
+	"""Restore the bundled default icon set without downloaded icon packs."""
+	source = os.path.join(SKINPATH, "icons_factory")
+	target = os.path.join(SKINPATH, "icons")
+	# Never start a partial restore when any packaged default icon is missing.
+	if not all(os.path.isfile(os.path.join(source, name + ".png")) for name in allIcons):
+		return False
+	try:
+		for name in allIcons:
+			destination = os.path.join(target, name + ".png")
+			tmp = destination + ".warder-reset-tmp"
+			try:
+				shutil.copy2(os.path.join(source, name + ".png"), tmp)
+				os.replace(tmp, destination)
+			except OSError:
+				try:
+					os.remove(tmp)
+				except OSError:
+					pass
+				raise
+	except OSError:
+		return False
+	return True
+
 def setTypeIcos(num):
 	global allIcons
 	for x in allIcons:
@@ -2879,6 +2990,13 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		list_tag = re.search(r'<widget\s+name="list"[^>]*>', channel_xml)
 		epg_tag = re.search(r'<widget\b[^>]*render="g17ShowExtraEpg"[^>]*>', channel_xml)
 		desc_tag = re.search(r'<widget\b[^>]*render="g17MetrixHDRunningText"[^>]*>', channel_xml)
+		# This additional canvas is verified on OpenATV, not OpenPLi 9.2.
+		# Test12 falls back to the native PLI list instead of covering it.
+		openpli_runtime = bool(globals().get('isOpenPLi', False))
+		# Only the default geometry may use this optional extra canvas.
+		epg_scroll_enabled = (allow_channel_epg_overlay()
+            and bool(config.plugins.warderEpgListScroll.enabled.value)
+            and not openpli_runtime)
 		default_geometry = bool(
 			list_tag and 'position="60,96"' in list_tag.group(0)
 			and 'size="1065,842"' in list_tag.group(0)
@@ -2932,6 +3050,10 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
+				if not epg_scroll_enabled:
+					# Remove previously generated overlays when switched OFF.
+					# Native list/EPG/progressbars remain visible.
+					continue
 				has_clipped_events = True
 			# Strip the TEST74 static line: it remains visible after
 			# turning Prime Time off without rebuilding ChannelSelection.
@@ -2946,7 +3068,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
 				if not has_prime_time:
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
-				if not has_clipped_events:
+				if not has_clipped_events and epg_scroll_enabled:
 					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
 				in_default_channel_screen = None
 			if in_any_channel_screen and '</screen>' in line:
@@ -6475,6 +6597,16 @@ class ExtraInfo17(Screen):
 		self["picProvSat"].instance.setPixmapFromFile(w)
 			
 	def findPicon(self, piconName):
+		# The InfoBar's own showPicon() uses this lookup, not g17PicRef.
+		# Respect the expert channel-picon destination before skin-data paths.
+		# Provider, satellite, CAM and weather assets always stay in hdg17_files.
+		if self.path in ("picon", "picon_50x30", "picon_220x132", "picon_400x240", "ZZPicon"):
+			try:
+				enabled, custom = _warderSelectedPiconSource(config)
+				if enabled:
+					return _warderUserFindPng(custom, piconName)
+			except AttributeError:
+				pass
 		pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, piconName)
 		if fileExists(pngname):
 			return pngname
@@ -6633,10 +6765,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 <widget source="Canvas" render="WarderSettingsCanvas" position="735,890" zPosition="6" size="450,45" backgroundColor="#00102136" transparent="1" alphatest="on" />
 <widget name="help_pict" position="445,592" size="1029,350" zPosition="4" alphatest="blend" />
 <widget name="help_txt" position="579,592" size="780,350" backgroundColor="#ff000000" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<widget source="selected_item" render="Label" position="579,829" size="780,52" zPosition="5" valign="center" halign="center" font="Regular;31" transparent="1" backgroundColor="#ff000000" foregroundColor="#00ffffff" />
 <widget name="helpPiconFrame" position="865,705" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
 <widget name="helpPicon" position="885,721" size="150,90" zPosition="9" alphatest="on" />
 <widget name="helpTxtAnim" position="579,592" size="780,350" backgroundColor="#ff000000" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
-<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="50,232" size="760,728" name="warder_menu_panel_0" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="50,232" size="760,2" name="warder_menu_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,958" size="760,2" name="warder_menu_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="2,728" name="warder_menu_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="808,232" size="2,728" name="warder_menu_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="1010,728" name="warder_menu_panel_5" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="850,232" size="1010,2" name="warder_menu_panel_6" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,958" size="1010,2" name="warder_menu_panel_7" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="2,728" name="warder_menu_panel_8" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="1858,232" size="2,728" name="warder_menu_panel_9" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="1810,728" name="warder_settings_panel_0" backgroundColor="#1a102136" transparent="0" zPosition="-1" /><widget position="50,232" size="1810,2" name="warder_settings_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,958" size="1810,2" name="warder_settings_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,232" size="2,728" name="warder_settings_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1858,232" size="2,728" name="warder_settings_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,68" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,232" size="50,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1860,232" size="60,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
+<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="50,232" size="760,728" name="warder_menu_panel_0" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="50,232" size="760,2" name="warder_menu_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,958" size="760,2" name="warder_menu_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="2,728" name="warder_menu_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="808,232" size="2,728" name="warder_menu_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="1010,728" name="warder_menu_panel_5" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="850,232" size="1010,2" name="warder_menu_panel_6" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,958" size="1010,2" name="warder_menu_panel_7" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="2,728" name="warder_menu_panel_8" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="1858,232" size="2,728" name="warder_menu_panel_9" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="1810,728" name="warder_settings_panel_0" backgroundColor="#1a102136" transparent="0" zPosition="-1" /><widget position="50,232" size="1810,2" name="warder_settings_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,958" size="1810,2" name="warder_settings_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,232" size="2,728" name="warder_settings_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1858,232" size="2,728" name="warder_settings_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,68" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,232" size="50,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1860,232" size="60,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
   	
 	def __init__(self, session):
@@ -6805,12 +6938,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		self._spinnerAtOpen = config.plugins.setupGlass17.par230.value
 		self._piconSourceAtOpen = config.plugins.setupGlass17.par231.value
+		self._ownPiconsAtOpen = bool(config.plugins.warderUserPicons.enabled.value)
+		self._ownPiconRestartPending = False
+		self._epgListScrollAtOpen = bool(config.plugins.warderEpgListScroll.enabled.value)
 		self.firststart = True
 		self.start_rst = eTimer()
 		try:
-			self.start_rst_conn = self.start_rst.timeout.connect(self.saving)
+			self.start_rst_conn = self.start_rst.timeout.connect(self._warderRestartTimerFired)
 		except AttributeError:
-			self.start_rst.timeout.get().append(self.saving)
+			self.start_rst.timeout.get().append(self._warderRestartTimerFired)
 		self.delayTimer = eTimer()
 		try:
 			self.delayTimer_conn = self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)
@@ -6833,7 +6969,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		t = self["config"].getCurrent()[1]
 		# Rebuild only the Channel Selection settings rows when Prime Time
 		# is toggled; the clock appears immediately without leaving the menu.
-		if t is config.plugins.warderEvolutionPrimeTime.enabled:
+		if t in (config.plugins.warderEvolutionPrimeTime.enabled, config.plugins.warderUserPicons.enabled):
 			self.runSetup()
 			return
 		if t in (config.plugins.setupGlass17.par229, config.plugins.setupGlass17.par226, config.plugins.setupGlass17.par222, config.plugins.setupGlass17.par209, config.plugins.setupGlass17.par104, config.plugins.setupGlass17.par143, config.plugins.setupGlass17.par180, config.plugins.setupGlass17.par171, config.plugins.setupGlass17.par172, config.plugins.setupGlass17.par169, config.plugins.setupGlass17.par161, config.plugins.setupGlass17.par8, config.plugins.setupGlass17.par56, config.plugins.setupGlass17.par125, config.plugins.setupGlass17.par15, config.plugins.setupGlass17.par22, config.plugins.setupGlass17.par95, config.plugins.setupGlass17.par93, config.plugins.setupGlass17.par94, config.plugins.setupGlass17.par31, config.plugins.setupGlass17.par78, config.plugins.setupGlass17.par12, config.plugins.setupGlass17.par76, config.plugins.setupGlass17.par66, config.plugins.setupGlass17.par7, config.plugins.setupGlass17.par27, config.plugins.setupGlass17.par2, config.plugins.setupGlass17.par57):
@@ -6933,7 +7069,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				21:[_("ENHANCED WEATHER"),({False:'x',True:''}[config.plugins.setupGlass17.par78.value == "e"])],
 				22:[_("WEATHER"),({False:'x',True:''}[xxx])],
 				23:[_("WEATHER")+"/"+_("ENHANCED WEATHER"),({False:'x',True:''}[xxx or config.plugins.setupGlass17.par78.value == "e"])],
-				24:[_("PATHS"),''],
+				24:[ui_text("Paths for Skin Data, Picons and Settings").upper(),''],
  				25:[_("VOLUME"),''],
  				26:[_("LISTBOX FONT SIZE"),({False:'x',True:''}[ENA_LS])],
  				27:[_("ANIMATIONS"),({False:'x',True:''}[ENA_ANIM])],
@@ -7099,6 +7235,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
 				if E2OK:
 					self.list.append(getConfigListEntry(S0 % _("ChannelSelection 2xOK"), config.plugins.setupGlass17.par62))      	      
+				if allow_channel_epg_overlay():
+					self.list.append(getConfigListEntry(S0 % _warderEpgListScrollLabel(), config.plugins.warderEpgListScroll.enabled))
 				self.list.append(getConfigListEntry(S0 % _("Text rolling type"), config.plugins.setupGlass17.par76))      
 				if config.plugins.setupGlass17.par76.value != "None":
 					self.list.append(getConfigListEntry(S0 % _("Text rolling start delay"), config.plugins.setupGlass17.par77))      		
@@ -7211,7 +7349,18 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"C"), config.plugins.setupGlass17.par97)) 
 							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"F"), config.plugins.setupGlass17.par150))
 			elif tt == 24:
-				self.list.append(getConfigListEntry(S0 % _("Picons/Icons path"), config.plugins.setupGlass17.par125))
+				self.list.append(getConfigListEntry(S0 % ui_text("Storage for graphics sets, picons and data"), config.plugins.setupGlass17.par125))
+				self.list.append(getConfigListEntry(S0 % ui_text("Use own channel picons"), config.plugins.warderUserPicons.enabled))
+				if config.plugins.warderUserPicons.enabled.value:
+					folder = config.plugins.warderUserPicons.path.value
+					display = config.plugins.warderUserPicons.path_display
+					if folder:
+						display.setChoices([(folder, folder)], default=folder)
+						display.value = folder
+					else:
+						display.setChoices([("none", "-")], default="none")
+						display.value = "none"
+					self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), display))
 				if config.plugins.setupGlass17.par125.value == "0":
 					self.list.append(getConfigListEntry(S0 % _("User defined path"), config.plugins.setupGlass17.par124))
 				self.list.append(getConfigListEntry(S0 % _("FHDG Configuration file"), config.plugins.setupGlass17.par144))
@@ -7318,7 +7467,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.runSetup()
 		else:
 			t = self["config"].getCurrent()[1]
-			if t == config.plugins.setupGlass17.par124:
+			if t == config.plugins.warderUserPicons.path_display:
+				self.session.openWithCallback(self._warderOwnPiconFolderSelected, dirBrowser, config.plugins.warderUserPicons.path.value or "/media/hdd/picon/")
+			elif t == config.plugins.setupGlass17.par124:
 				self.session.openWithCallback(self.dirSelected, dirBrowser, config.plugins.setupGlass17.par124.value)
 			elif t == config.plugins.setupGlass17.par230:
 				from .warderSpinnerScreen import SpinnerChoice
@@ -7409,6 +7560,19 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		t = self["config"].getCurrent()[1]
 		filename = "00" 
 		ed = False
+		if t in (config.plugins.warderUserPicons.enabled, config.plugins.warderUserPicons.path_display):
+			if ENA_ANIM:
+				self["helpPicon"].hide()
+				self["helpPiconFrame"].hide()
+				self["helpTxtAnim"].hide()
+			self["help_pict"].hide()
+			self["selected_item"].setText("")
+			if t == config.plugins.warderUserPicons.enabled:
+				message = ui_text("Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified.")
+			else:
+				message = ui_text("Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them.")
+			self["help_txt"].setText(message)
+			return
 		if t == getattr(config.plugins.setupGlass17, "par231", None):
 			if ENA_ANIM:
 				self["helpPicon"].hide()
@@ -7823,7 +7987,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				else:
 					self["selected_item"].setText("")
 				self["help_pict"].hide()
-				self["help_txt"].setText(helpTxt.get(filename))
+				if filename == "39-1-0":
+					self["help_txt"].setText(ui_text("Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."))
+				elif filename == "144-0":
+					self["help_txt"].setText(ui_text("Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."))
+				else:
+					self["help_txt"].setText(helpTxt.get(filename))
 			else:
 				filename = config.plugins.setupGlass17.par39.value+"/g17_setup_pict/"+filename+".png"
 				if filename:  # All disk access and preparation are delegated to the preview worker.
@@ -8216,6 +8385,19 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if answer:
 			self.sDr()
 
+	def _warderOwnPiconFolderSelected(self, answer=None):
+		if not answer:
+			return
+		folder = _warderUserNormalize(str(answer))
+		if not folder or not os.path.isdir(folder):
+			self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
+			return
+		config.plugins.warderUserPicons.path.value = folder
+		config.plugins.warderUserPicons.path_display.setChoices([(folder, folder)], default=folder)
+		config.plugins.warderUserPicons.path_display.value = folder
+		self["config"].invalidateCurrent()
+		self.doMyHelpWindow()
+
 	def dirSelected(self, answer):
 		if answer is not None:
 			config.plugins.setupGlass17.par124.value = answer
@@ -8225,7 +8407,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if answer is None:
 			return
 		if answer[1] in {value for value, title in warderSpinner.choices(ui_text)}:
-			config.plugins.setupGlass17.par230.setChoices(warderSpinner.choices(ui_text), default="dove")
+			config.plugins.setupGlass17.par230.setChoices(warderSpinner.choices(ui_text), default="bakussa")
 			config.plugins.setupGlass17.par230.value = answer[1]
 			self["config"].invalidateCurrent()
 			self.doMyHelpWindow()
@@ -8242,13 +8424,25 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.session.open(MessageBox, _("The file satellites.xml do not exists in selected dir"), MessageBox.TYPE_ERROR, 5)
 
 	def save(self):
+		own_picons_changed = self._ownPiconsAtOpen != bool(config.plugins.warderUserPicons.enabled.value)
+		if own_picons_changed and config.plugins.warderUserPicons.enabled.value:
+			own_folder = _warderUserNormalize(config.plugins.warderUserPicons.path.value)
+			if not own_folder or not os.path.isdir(own_folder):
+				self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
+				return
 		msg = _("GUI will now be restarted to activate changes in:") + "\n"
+		if own_picons_changed:
+			msg += ui_text("Use own channel picons") + "\n"
 		msgScr = ""
 		tmp = False
 		if self._spinnerAtOpen != config.plugins.setupGlass17.par230.value:
 			msg += ui_text("Spinner") + "\n"
 		if self._piconSourceAtOpen != config.plugins.setupGlass17.par231.value:
 			msg += ui_text("Channel-list picon source") + "\n"
+		if self._epgListScrollAtOpen != bool(config.plugins.warderEpgListScroll.enabled.value):
+			# Rebuild the runtime ChannelSelection with/without the overlay now.
+			chckPigFont()
+			msg += _warderEpgListScrollLabel() + "\n"
 		if self.d[39] != config.plugins.setupGlass17.par80.value:
 			if not isIP(config.plugins.setupGlass17.par80.value):
 				self.session.open(MessageBox, _("IP Address")+": " + str(config.plugins.setupGlass17.par80.value) + ER_F, MessageBox.TYPE_ERROR, 5)
@@ -8330,15 +8524,21 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			config.plugins.setupGlass17.par6.save()
 			if config.plugins.setupGlass17.par227.value == "0":
 				x = changeSkinXml("NumberZapExt", chckPiconSize())
+		factory_icons = getattr(self, "_warderFactoryResetPending", False) and config.plugins.setupGlass17.par1.value == 1
+		if factory_icons and not restoreFactoryIcons():
+			self.session.open(MessageBox, ui_text("Unable to restore bundled default icons. Please reinstall the skin."), MessageBox.TYPE_ERROR, 5)
+			return
 		if self.d[7] != config.plugins.setupGlass17.par1.value:
-			if not checkIcons(config.plugins.setupGlass17.par1.value):
+			# An explicit icon change still requires a complete downloaded icon set.
+			if not factory_icons and not checkIcons(config.plugins.setupGlass17.par1.value):
 				msg = (_("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + " " + _("is incorrect, please, select correct icons !!!"))
 				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)
 				return
 			self.d[7] = config.plugins.setupGlass17.par1.value
-			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"	
+			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"
 			config.plugins.setupGlass17.par1.save()
-			x = setTypeIcos(self.d[7])
+			if not factory_icons:
+				setTypeIcos(self.d[7])
 		if self.d[18] != config.plugins.setupGlass17.par44.value or self.d[19] != config.plugins.setupGlass17.par45.value:
 			isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
 			if isOk != "?":
@@ -8562,9 +8762,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			x = chckPigFont(1)
 		if msg != _("GUI will now be restarted to activate changes in:") + "\n":                                                                                            
 			try:
-				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 8)
+				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 3 if own_picons_changed else 8, enable_input=False)
 			except: pass
-			self.rstGUI()
+			if own_picons_changed:
+				# Commit PATHS immediately; only the GUI restart waits three seconds.
+				self.rst = True
+				self._ownPiconRestartPending = True
+				self.saving()
+			else:
+				self.rstGUI()
 		else:
 			if tmp:
 				msg = _("Do you want restart GUI to activate the screen:") + " " + str(config.plugins.setupGlass17.par6.value) + " " + _("now?")
@@ -8578,11 +8784,23 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.rst = True
 		self.saving()
 
-	def rstGUI(self):
-		self.rst = True				
-		self.start_rst.start(8000, True)
+	def rstGUI(self, delay=8000):
+		self.rst = True
+		self.start_rst.start(delay, True)
+
+	def _warderRestartTimerFired(self):
+		if self._ownPiconRestartPending:
+			self._ownPiconRestartPending = False
+			self.sDr()
+		else:
+			self.saving()
 
 	def saving(self):
+		if config.plugins.warderUserPicons.enabled.value:
+			user_folder = _warderUserNormalize(config.plugins.warderUserPicons.path.value)
+			if not user_folder or not os.path.isdir(user_folder):
+				self.session.open(MessageBox, ui_text("Selected picon folder does not exist."), MessageBox.TYPE_ERROR)
+				return
 		if self._spinnerAtOpen != config.plugins.setupGlass17.par230.value:
 			try:
 				warderSpinner.apply(config.plugins.setupGlass17.par230.value)
@@ -8605,6 +8823,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if allLines != "":
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
+		# New settings live outside the legacy numbered registry.
+		config.plugins.warderEpgListScroll.enabled.save()
+		config.plugins.warderPiconExpert.custom_destination.save()
+		config.plugins.warderPiconExpert.destination.save()
+		config.plugins.warderUserPicons.enabled.save()
+		config.plugins.warderUserPicons.path.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -8613,12 +8837,16 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		except AttributeError:
 			pass
 		configfile.save()
+		self._warderFactoryResetPending = False
 		if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:
 			_refreshLiveWeather()
 			self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		config.plugins.setupGlass17.par43.value = True
 		if self.rst:
-			self.sDr()
+			if self._ownPiconRestartPending:
+				self.start_rst.start(3000, True)
+			else:
+				self.sDr()
 		elif self.destroyTimers():
 			self.close()    
 
@@ -8644,6 +8872,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	def restoreTofactoryAnswerNow(self,a):
 		if a:
+			# Only the factory-reset flow may use bundled icons without a downloaded pack.
+			self._warderFactoryResetPending = True
 			self.restoreCfgFromFile(PLUGINPATH+"defaults")
 
 	def restoreCfgFromFile(self,cfile):
@@ -8747,6 +8977,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()
 		except AttributeError:
 			pass
+		try:
+			config.plugins.warderPiconExpert.custom_destination.cancel()
+			config.plugins.warderPiconExpert.destination.cancel()
+			config.plugins.warderUserPicons.enabled.cancel()
+			config.plugins.warderUserPicons.path.cancel()
+		except AttributeError:
+			pass
 		if self.rst:
 			self.sDr()
 		else:
@@ -8835,12 +9072,17 @@ class downloadMenu(Screen):
 	skin = """
 <screen name="downloadMenu" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="#ff000000">
 	<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="40,197" size="1840,778" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1878,197" size="2,778" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,197" size="2,778" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,973" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,197" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="dwn" position="50,166" size="1820,30" zPosition="20" valign="center" halign="center" font="Regular;25" transparent="1" backgroundColor="#ff000000" foregroundColor="#00ffffff" />
+  <widget name="progress_bg" position="82,236" size="1756,646" zPosition="11" transparent="0" backgroundColor="#00102036" />
+  <widget name="progress_title" position="124,269" size="1670,58" zPosition="12" transparent="1" font="Regular;42" foregroundColor="#003ee8ff" />
+  <widget name="progress_current" position="124,340" size="1670,70" zPosition="12" transparent="1" font="Regular;31" foregroundColor="#00ffffff" />
+  <widget name="progress_count" position="124,418" size="1670,44" zPosition="12" transparent="1" font="Regular;25" foregroundColor="#00b2e0b4" />
+  <widget name="progress_history" position="124,480" size="1670,360" zPosition="12" transparent="1" font="Regular;27" foregroundColor="#00ffffff" />
   <widget name="list" position="50,207" size="1820,730" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget name="key_red" position="20,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_green" position="494,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_yellow" position="968,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_blue" position="1442,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00071627" noWrap="1" />
-   <eLabel position="20,1000" size="458,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="494,1000" size="458,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1000" size="458,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1442,1000" size="458,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,33" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1880,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,975" size="1920,105" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="20,1000" size="458,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="494,1000" size="458,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1000" size="458,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1442,1000" size="458,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,33" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1880,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,975" size="1920,105" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self,session):
@@ -8848,8 +9090,50 @@ class downloadMenu(Screen):
 		self.session = session
 		Screen.__init__(self, session)
 		self.list = []
-		self["dwn"] = Label(_("Wait for the file downloads to complete"))
+		self["dwn"] = Label("")
 		self["dwn"].hide()
+		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
+			self[key] = Label("")
+			self[key].hide()
+		self.warderProgressActive = False
+		self.warderProgressEvents = []
+		self.warderProgressLog = ProgressLog()
+		self.warderProgressFinished = 0
+		self.warderProgressComplete = False
+		self.warderChannelWorker = None
+		self.warderManifestWorker = None
+		self.warderManifestDocument = None
+		self.warderManifestError = None
+		self.warderChannelPreparingQueue = None
+		self.warderAuxWorker = None
+		self.warderAuxTimer = eTimer()
+		try:
+			self.warderAuxTimerConnection = self.warderAuxTimer.timeout.connect(self._warderAuxPoll)
+		except AttributeError:
+			self.warderAuxTimer.timeout.get().append(self._warderAuxPoll)
+		self.onClose.append(self.warderAuxTimer.stop)
+		self.warderLegacyBatch = None
+		self.warderLegacyWorker = None
+		self.warderLegacyTimer = eTimer()
+		try:
+			self.warderLegacyTimerConnection = self.warderLegacyTimer.timeout.connect(self._warderLegacyPoll)
+		except AttributeError:
+			self.warderLegacyTimer.timeout.get().append(self._warderLegacyPoll)
+		self.onClose.append(self.warderLegacyTimer.stop)
+		self.warderAssetCatalogWorker = None
+		self.warderAssetWorker = None
+		self.warderAssetTimer = eTimer()
+		try:
+			self.warderAssetTimerConnection = self.warderAssetTimer.timeout.connect(self._warderAssetPoll)
+		except AttributeError:
+			self.warderAssetTimer.timeout.get().append(self._warderAssetPoll)
+		self.onClose.append(self.warderAssetTimer.stop)
+		self.warderChannelTimer = eTimer()
+		try:
+			self.warderChannelTimerConnection = self.warderChannelTimer.timeout.connect(self._warderChannelPoll)
+		except AttributeError:
+			self.warderChannelTimer.timeout.get().append(self._warderChannelPoll)
+		self.onClose.append(self.warderChannelTimer.stop)
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Cleaning Picons"))
 		self["key_red"] = Label(_("Exit"))
@@ -8876,9 +9160,10 @@ class downloadMenu(Screen):
 		self.warderChannelAvailable = set()
 		self.warderChannelPackageResults = []
 		self.warderChannelCurrentJob = None
-		self.warderPiconPrefs = warderPiconSync.default_preferences()
+		self.warderPiconPrefs = warderPiconSync.default_preferences(
+			warderPiconSync.skin_picon_destination(config.plugins.setupGlass17.par39.value))
 		self.warderPositionSelectionAttempted = False
-		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
+		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-mode")
 		self.warderAuxRows = ("aux-prov", "aux-sat", "aux-cam", "aux-weather")
 		self.warderAuxChoiceRow = None
 		self.warderLargeSelectionPending = False
@@ -8898,7 +9183,6 @@ class downloadMenu(Screen):
 			0:['wp-pos',_('Satellite positions') + ': ' + _('No position selected'),'warder-picon-positions','','x'],
 			1:['wp-res',_('Picon resolution') + ': ' + _('No resolution selected'),'warder-picon-resolution','','x'],
 			2:['wp-style',_('Picon colour') + ': ' + _('No colour selected'),'warder-picon-style','','x'],
-			3:['wp-dest',_('Picon location') + ': ' + self.warderPiconPrefs["destination"],'warder-picon-destination','','x'],
 			4:['wp-mode',_('Update method') + ': ' + _('No update method selected'),'warder-picon-mode','','x'],
 			5:['aux-prov',_('Provider logos'),'piconProv','','x'],
 			6:['aux-sat',_('Satellite logos'),'piconSat','','x'],
@@ -8914,6 +9198,8 @@ class downloadMenu(Screen):
 			16:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
 			17:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x']
 			}	
+		# Destination is fixed to hdg17_files. Keep visible row indices contiguous.
+		self.menuListAll = dict(enumerate(self.menuListAll.values()))
 		self.dwnTimer = eTimer()
 		try:
 			self.dwnTimer_conn = self.dwnTimer.timeout.connect(self.dwnLoop)
@@ -8935,8 +9221,12 @@ class downloadMenu(Screen):
 		return ({9:"picon",3:"picon_400x240",4:"picon_50x30",5:"picon",6:"picon_50x30",7:"picon",8:"piconOled"}[a])
 
 	def exit(self):
-		if not self.ena:
+		if not self.ena and not getattr(self, "warderProgressComplete", False):
 			return
+		self.warderChannelTimer.stop()
+		self.warderAssetTimer.stop()
+		self.warderLegacyTimer.stop()
+		self.warderAuxTimer.stop()
 		if self.dwnTimer is not None and self.dwnTimer.isActive():
 			self.dwnTimer.stop()
 		self.dwnTimer_conn = None
@@ -8956,15 +9246,17 @@ class downloadMenu(Screen):
 			self["key_blue"].hide()
 				
 	def startDown(self, destination_confirmed=False):
-		if not self.ena or self.warderChannelState == "running":
+		if getattr(self, "warderProgressComplete", False) or not self.ena or self.warderChannelState == "running":
 			return
+		self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
+			config.plugins.setupGlass17.par39.value, self.warderPiconPrefs.get("resolution"))
 		prepared = bool(self.warderPiconPrefs.get("prepared"))
 		if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs) and not warderRadio.selected(self.warderPiconPrefs):
 			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
 			return
 		self.warderDABOnly = bool(warderRadio.selected(self.warderPiconPrefs) and not warderPiconSync.valid_task_selection(self.warderPiconPrefs))
 		if prepared and ((warderRadio.selected(self.warderPiconPrefs) and not warderRadio.ready(self.warderPiconPrefs)) or (not self.warderDABOnly and not warderPiconSync.channel_preferences_ready(self.warderPiconPrefs))):
-			self.session.open(historyScreen, _("Result"), _("Choose a resolution, colour, location and update method before downloading."))
+			self.session.open(historyScreen, _("Result"), _("Choose a resolution, colour and update method before downloading."))
 			return
 		if not self.toDown:
 			return
@@ -9051,13 +9343,99 @@ class downloadMenu(Screen):
 		self.warderOperationSucceeded = False
 		self.warderOperationFailed = False
 		self.warderFailedRows = set()
+		# Remember the actual selected auxiliary jobs before they are marked processed.
+		self.warderAuxRequested = [row[0] for row in self.menuListAll.values()
+			if row[4] == 'd' and row[0] in self.warderAuxRows]
 		self.instance.resize(eSize(1920,1080))
-		self["dwn"].show()
+		self._warderProgressBegin()
 		self.ena = False
 		if self.warderChannelState != "locked":
 			self.msg = ""
 		self.dwnJob = ""
 		self.dwnTimer.start(25, True)
+
+	def _warderProgressBegin(self):
+		"""Display a single steadily scrolling live log from the first operation."""
+		self.warderProgressActive = True
+		self.warderProgressComplete = False
+		self.warderProgressLog = ProgressLog(visible_lines=9)
+		self.warderProgressEvents = self.warderProgressLog.entries
+		self.warderProgressFinished = 0
+		self["list"].hide()
+		self["dwn"].hide()
+		self["progress_title"].setText(_("Download progress"))
+		self["progress_count"].setText(_("Completed steps") + ": 0")
+		self["progress_history"].setText("")
+		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
+			self[key].show()
+		self._warderProgressStage(_("Preparing downloads"))
+
+	def _warderProgressStage(self, description):
+		if not getattr(self, "warderProgressActive", False):
+			return
+		line = str(description).replace("\n", " ")[:115]
+		self["progress_current"].setText(line)
+		self.warderProgressLog.stage(line)
+		self["progress_history"].setText(self.warderProgressLog.tail())
+
+	def _warderProgressDone(self, description, success=True, separate=False):
+		if not getattr(self, "warderProgressActive", False):
+			return
+		self.warderProgressLog.done(description, success)
+		self.warderProgressFinished += 1
+		if separate:
+			self.warderProgressLog.divider()
+		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
+		self["progress_history"].setText(self.warderProgressLog.tail())
+
+	def _warderProgressFinish(self):
+		"""Keep the live log in this screen, finish with a short result summary."""
+		if self.warderProgressComplete:
+			return
+		self.warderProgressComplete = True
+		# Final success must reflect files actually installed, not just downloaded ZIPs.
+		# Keep every requested auxiliary set visible even after the short log scrolls.
+		aux_roots = {
+			"aux-prov": ("piconProv", _("Provider logos")),
+			"aux-sat": ("piconSat", _("Satellite logos")),
+			"aux-cam": ("piconCam", _("CAM picons")),
+			"aux-weather": ("piconWeather", _("Weather picons")),
+		}
+		verified = []
+		base = config.plugins.setupGlass17.par39.value
+		for row_id in getattr(self, "warderAuxRequested", []):
+			root, label = aux_roots[row_id]
+			folder = os.path.join(base, root)
+			try:
+				count = sum(1 for name in os.listdir(folder)
+					if name.lower().endswith(".png") and os.path.isfile(os.path.join(folder, name))
+					and not os.path.islink(os.path.join(folder, name)))
+			except OSError:
+				count = 0
+			verified.append(("%s: %d PNG" % (label, count)) if count else
+				("%s: %s" % (label, _("ERROR") + ": 0 PNG")))
+			if not count:
+				self.warderOperationFailed = True
+				self.warderFailedRows.add(row_id)
+		# The old results text may contain a very long, duplicated paragraph.
+		# Keep the useful final totals without wrapping over other log lines.
+		result_lines = [x.strip() for x in str(self.msg).splitlines() if x.strip()]
+		for line in result_lines:
+			if "Total:" in line or "Failures:" in line:
+				self.warderProgressLog.note(line[line.find("Total:"):] if "Total:" in line else line[line.find("Failures:"):])
+		self.warderProgressLog.note(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
+		self["progress_current"].setText(_("Download completed") if not self.warderOperationFailed else _("Download completed with errors"))
+		self["progress_history"].setText("\n".join(verified + self.warderProgressLog.tail().splitlines()[-5:]))
+		self["progress_count"].setText(_("Completed steps") + ": " + str(self.warderProgressFinished))
+		self["key_red"].setText(_("Close"))
+		for key in ("key_green", "key_yellow", "key_blue"):
+			self[key].hide()
+
+	def _warderProgressClose(self):
+		self.warderProgressActive = False
+		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
+			self[key].hide()
+		self["list"].show()
 
 	def warderCreateDestinationAnswer(self, answer=None):
 		if answer:
@@ -9076,15 +9454,18 @@ class downloadMenu(Screen):
 		resolution = prefs.get("resolution")
 		style = prefs.get("style")
 		mode = prefs.get("update_mode")
+		prefs["destination"] = warderPiconSync.skin_picon_destination(
+			config.plugins.setupGlass17.par39.value, prefs.get("resolution"))
 		path = prefs.get("destination") or warderPiconSync.DEFAULT_DESTINATION
 		preset = dict((value, label) for value, label in warderPiconSync.PICON_DESTINATIONS)
-		location = _(preset[path]) if path in preset else _("User defined")
+		skin_destination = warderPiconSync.skin_picon_destination(
+			config.plugins.setupGlass17.par39.value, prefs.get("resolution"))
+		location = ui_text("FullHDGlass skin storage") if path == skin_destination else (_(preset[path]) if path in preset else _("User defined"))
 		mode_labels = dict((key, _(label)) for key, label in warderPiconSync.UPDATE_MODES)
 		labels = {
 			"wp-pos": _("Satellite positions") + ": " + position_text,
 			"wp-res": _("Picon resolution") + ": " + (resolution.replace("x", " x ") if resolution else _("No resolution selected")),
 			"wp-style": _("Picon colour") + ": " + (_(style.capitalize()) if style else _("No colour selected")),
-			"wp-dest": _("Picon location") + ": " + location,
 			"wp-mode": _("Update method") + ": " + (mode_labels.get(mode, _("No update method selected"))),
 		}
 		if warderRadio.selected(prefs):
@@ -9109,7 +9490,6 @@ class downloadMenu(Screen):
 			"wp-pos": _("Choose satellite positions for channel picon downloads and updates."),
 			"wp-res": _("Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."),
 			"wp-style": _("Choose a channel picon colour supported at the selected size."),
-			"wp-dest": _("Download destination:") + " " + self._warderDisplayPath(warder_destination),
 			"wp-mode": _("Choose how channel picons are synchronized or copied for selected positions."),
 			"aux-prov": _("TV platform and service provider logos."),
 			"aux-sat": _("Satellite logos and graphical identifiers."),
@@ -9120,7 +9500,6 @@ class downloadMenu(Screen):
 			"wp-pos": "down/p4.png",
 			"wp-res": "down/ba5.png",
 			"wp-style": "down/warder-colour.png",
-			"wp-dest": "down/warder-location.png",
 			"wp-mode": "down/warder-sync.png",
 			"aux-prov": "down/p4p.png",
 			"aux-sat": "down/p4s.png",
@@ -9205,7 +9584,6 @@ class downloadMenu(Screen):
 		if row == "wp-pos":
 			selected = list(self.warderPiconPrefs.get("position_bindings", []))
 			if self.warderPiconPrefs.get("include_dab"):selected.append(dict(warderRadio.DAB_BINDING))
-			if self.warderPiconPrefs.get("include_iptv"):selected.append(dict(warderRadio.IPTV_BINDING))
 			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, selected)
 			return
 		choices = {}
@@ -9219,9 +9597,6 @@ class downloadMenu(Screen):
 			choices[row] = [(_(label), ("style", value)) for value, label in styles]
 		elif row == "wp-mode":
 			choices[row] = [(_(label), ("update_mode", value)) for value, label in warderPiconSync.UPDATE_MODES]
-		elif row == "wp-dest":
-			choices[row] = [(_(label) + " - " + path, ("destination", path)) for path, label in warderPiconSync.PICON_DESTINATIONS]
-			choices[row].append((_("User defined..."), ("custom-location", "")))
 		self.warderChoiceRow = row
 		self.session.openWithCallback(self.warderPiconChoiceAnswer, ChoiceBox, title=_("Select"), list=choices.get(row, []))
 
@@ -9269,21 +9644,20 @@ class downloadMenu(Screen):
 			return
 		self.warderPositionSelectionAttempted = True
 		include_dab = any(warderRadio.is_dab(item) for item in answer)
-		include_iptv = any(warderRadio.is_iptv(item) for item in answer)
 		native = [item for item in answer if not warderRadio.is_radio(item)]
 		bindings = warderPiconSync.normalize_position_bindings(native)
 		if len(bindings) != len(native):
 			bindings = []
 		self.warderPiconPrefs = warderPiconSync.set_task_position_bindings(self.warderPiconPrefs, bindings)
 		self.warderPiconPrefs["include_dab"] = include_dab
-		self.warderPiconPrefs["include_iptv"] = include_iptv
+		self.warderPiconPrefs.pop("include_iptv", None)
 		positions = list(self.warderPiconPrefs.get("positions", []))
 		if positions:
 			preview = ", ".join(positions[:4])
 			if len(positions) > 4:
 				preview += " ..."
 			label = _("Satellite positions") + ": " + preview + " (" + str(len(bindings)) + " " + _("FastScan tables selected") + ")"
-		elif include_dab or include_iptv:
+		elif include_dab:
 			label = _("Satellite positions") + ": " + warderRadio.label(self.warderPiconPrefs, _)
 			self.warderPiconPrefs["prepared"] = True
 		else:
@@ -9296,7 +9670,7 @@ class downloadMenu(Screen):
 			if self.menuListAll[index][0] == "wp-pos":
 				self.menuListAll[index][1] = label
 				break
-		if positions or include_dab or include_iptv:
+		if positions or include_dab:
 			self.warderPiconPrefs["prepared"] = True
 			self._setWarderPiconPrepared("wp-pos")
 		self.createList()
@@ -9310,11 +9684,6 @@ class downloadMenu(Screen):
 			key, value = answer[1]
 		except (TypeError, ValueError):
 			return
-		if key == "custom-location":
-			current = self.warderPiconPrefs.get("destination") or warderPiconSync.DEFAULT_DESTINATION
-			start_path = current if os.path.isdir(current) else "/"
-			self.session.openWithCallback(self.warderCustomLocationAnswer, dirBrowser, start_path)
-			return
 		if key == "large-selection":
 			self.warderLargeSelectionPending = True
 			for index in self.menuListAll:
@@ -9324,34 +9693,17 @@ class downloadMenu(Screen):
 			self.createList()
 			self.reactivate()
 			return
-		if key not in ("resolution", "style", "update_mode", "destination"):
+		if key not in ("resolution", "style", "update_mode"):
 			return
 		if key == "style" and self.warderPiconPrefs.get("resolution") and not warderPiconSync.channel_style_supported(self.warderPiconPrefs.get("resolution"), value):
 			return
-		if key == "destination":
-			value = warderPiconSync.validate_destination(value)
-			if not value:
-				return
 		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, key, value)
+		if key == "resolution":
+			self.warderPiconPrefs["destination"] = warderPiconSync.skin_picon_destination(
+				config.plugins.setupGlass17.par39.value, value)
 		if key == "resolution" and self.warderPiconPrefs.get("style") and not warderPiconSync.channel_style_supported(value, self.warderPiconPrefs["style"]):
 			self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "style", None)
 		self._setWarderPiconPrepared(self.warderChoiceRow)
-		self.createList()
-		self.reactivate()
-
-	def warderCustomLocationAnswer(self, answer=None):
-		if not answer:
-			return
-		path = os.path.normpath(str(answer))
-		if not os.path.isabs(path) or not os.path.isdir(path) or os.path.islink(path):
-			self.session.open(historyScreen, _("Result"), _("Select an existing directory."))
-			return
-		path = warderPiconSync.validate_destination(path)
-		if not path:
-			self.session.open(historyScreen, _("Result"), _("Invalid picon destination"))
-			return
-		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "destination", path)
-		self._setWarderPiconPrepared("wp-dest")
 		self.createList()
 		self.reactivate()
 
@@ -9463,7 +9815,7 @@ class downloadMenu(Screen):
 			raise ValueError("unsafe auxiliary destination")
 		return destination
 
-	def _warderFetchAuxiliaryArchive(self, asset, archive):
+	def _warderFetchAuxiliaryArchive(self, asset, archive, progress=None):
 		"""Download and reassemble source-bound archive parts; verify SHA and ZIP."""
 		source_id = asset.get("publication_source_id")
 		parts = asset.get("parts", [])
@@ -9475,6 +9827,7 @@ class downloadMenu(Screen):
 			raise ValueError("invalid Warder auxiliary archive size")
 		digest = hashlib.sha256()
 		total = 0
+		last_update = 0
 		with open(archive, "wb") as output:
 			for url in urls:
 				req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
@@ -9493,6 +9846,11 @@ class downloadMenu(Screen):
 							raise ValueError("oversized Warder auxiliary archive")
 						output.write(chunk)
 						digest.update(chunk)
+						if progress and time1.monotonic() - last_update >= 0.25:
+							progress(total, expected_size)
+							last_update = time1.monotonic()
+		if progress:
+			progress(total, expected_size)
 		if total != expected_size:
 			raise ValueError("Warder auxiliary archive size mismatch")
 		if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():
@@ -9565,9 +9923,9 @@ class downloadMenu(Screen):
 				except OSError:
 					pass
 
-	def _warderRunAuxiliaryComposite(self, row, variant_id):
+	def _warderRunAuxiliaryComposite(self, row, variant_id, progress=None, stage=None):
 	    from .warderCanonicalPicons import install
-	    return install(self, row, variant_id, getWarderAssets, _)
+	    return install(self, row, variant_id, getWarderAssets, _, progress, stage)
 
 	def _warderRemoveStaleChannelPicons(self, destination, positions, package_names):
 		"""Remove only stale service PNGs for selected orbits after package success."""
@@ -9639,6 +9997,7 @@ class downloadMenu(Screen):
 
 	def _warderDABStart(self):
 		self.dwnJob = warderRadio.label(self.warderDABTaskSnapshot or {}, _)
+		self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 		self.type_download = "DAB"
 		self.warderCurrentActionRow = "wp-pos"
 		try:
@@ -9661,8 +10020,8 @@ class downloadMenu(Screen):
 			if kind == "event":
 				if value[0] == "download":
 					percent = int(100 * value[2] / max(1,value[3]))
-					self["dwn"].setText(self.dwnJob + ": %d%%" % percent)
-				elif value[0] == "stage":self["dwn"].setText(value[1])
+					self._warderProgressStage(self.dwnJob + ": %d%%" % percent)
+				elif value[0] == "stage":self._warderProgressStage(value[1])
 			else:
 				self.warderDABTimer.stop()
 				self.warderDABWorker = None
@@ -9681,7 +10040,13 @@ class downloadMenu(Screen):
 	def _warderRunChannelQueue(self):
 		self.warderChannelState = "running"
 		queue = getattr(self, "warderChannelQueue", None)
-		if queue is None:
+		if queue is None and self.warderManifestWorker is not None:
+			return None
+		if queue is None and self.warderManifestError is not None:
+			error = self.warderManifestError
+			self.warderManifestError = None
+			raise ValueError(error)
+		if queue is None and self.warderChannelPreparingQueue is None:
 			self.warderChannelTaskSnapshot = dict(self.warderPiconPrefs)
 			queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 			if queue.get("state") != warderPiconSync.READY:
@@ -9694,7 +10059,19 @@ class downloadMenu(Screen):
 			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
 				raise ValueError("unsafe Warder picon destination")
 			queue["destination"] = destination
-			document = self._warderLoadChannelManifest(queue.get("manifest_url"))
+			self.warderChannelPreparingQueue = queue
+			self._warderProgressStage(_("Downloading") + ": manifest")
+			self.warderManifestWorker = ManifestWorker(queue.get("manifest_url"), self._warderLoadChannelManifest)
+			self.warderChannelTimer.start(150, False)
+			self.warderManifestWorker.start()
+			return None
+		if queue is None:
+			queue = self.warderChannelPreparingQueue
+			self.warderChannelPreparingQueue = None
+			document = self.warderManifestDocument
+			self.warderManifestDocument = None
+			if document is None:
+				raise ValueError("Warder channel manifest is missing")
 			plan = warderPiconSync.plan_runtime_packages(document, queue, queue.get("manifest_url"))
 			jobs = warderPiconSync.build_download_jobs(document, plan, queue.get("manifest_url"))
 			if jobs.get("state") not in ("ready", "partial"):
@@ -9703,6 +10080,7 @@ class downloadMenu(Screen):
 				raise ValueError("missing Warder channel packages: " + ", ".join(jobs["missing_selectors"]))
 			self.warderChannelQueue = queue
 			self.warderChannelJobs = list(jobs.get("jobs", []))
+			self._warderProgressStage(_("Preparing channel packages") + ": " + str(len(self.warderChannelJobs)))
 			self.warderChannelInstalled = set()
 			self.warderChannelAvailable = set()
 			self.warderChannelPackageResults = [
@@ -9739,56 +10117,282 @@ class downloadMenu(Screen):
 			result = summary["status"] + ": " + summary["text"]
 			self.warderChannelInstalled = set()
 			return result
+		if self.warderChannelWorker is not None:
+			return None
 		job = self.warderChannelJobs.pop(0)
 		self.warderChannelCurrentJob = job
-		result_row = next((item for item in self.warderChannelPackageResults
-			if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
-		archive = None
-		try:
-			required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
-			try:
-				free_mb = int(shutil.disk_usage("/tmp").free / (1024 * 1024))
-			except OSError:
-				free_mb = 0
-			if free_mb < required:
-				raise ValueError("insufficient temporary space for Warder channel package")
-			destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
-			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
-				raise ValueError("unsafe Warder picon destination")
-			try:
-				dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
-			except OSError:
-				dest_free_mb = 0
-			if dest_free_mb < required:
-				raise ValueError("insufficient destination space for Warder channel package")
-			fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
-			os.close(fd)
-			self._warderFetchChannelJob(job, archive)
-			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
-			installed, available = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
-			self.warderChannelInstalled.update(installed)
-			self.warderChannelAvailable.update(available)
-			if result_row is not None:
-				result_row["updated"] = len(installed)
-		except Exception as err:
-			if result_row is not None:
-				result_row["failures"] += 1
-				result_row["error"] = str(err)
-			print("FullHDGlass17 Warder package failed (%s/%s): %s" % (job.get("orbital_position"), job.get("selector_id"), err))
-		finally:
-			if archive:
-				try:
-					os.unlink(archive)
-				except OSError:
-					pass
+		job_label = str(job.get("orbital_position", "")) + " / " + str(job.get("selector_id", ""))
+		self._warderProgressStage(_("Downloading") + ": " + job_label)
+		wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
+		self.warderChannelWorker = ChannelWorker(
+			job, self.warderChannelQueue["destination"], wanted,
+			self._warderFetchChannelJob, self._warderInstallChannelArchive)
+		self.warderChannelTimer.start(150, False)
+		self.warderChannelWorker.start()
 		return None
+
+	def _warderChannelPoll(self):
+		manifest = self.warderManifestWorker
+		if manifest is not None:
+			for kind, value in manifest.drain():
+				self.warderChannelTimer.stop()
+				self.warderManifestWorker = None
+				if kind == "done":
+					self.warderManifestDocument = value
+					self._warderProgressDone(_("Channel manifest verified"))
+				else:
+					self.warderManifestError = str(value)
+				self.dwnTimer.start(25, True)
+				return
+			return
+		worker = self.warderChannelWorker
+		if worker is None:
+			return
+		job = self.warderChannelCurrentJob or {}
+		job_label = str(job.get("orbital_position", "")) + " / " + str(job.get("selector_id", ""))
+		for kind, value in worker.drain():
+			if kind == "bytes":
+				done, total = value
+				percent = min(100, int(100 * done / max(1, total)))
+				self._warderProgressStage(_("Downloading") + ": " + job_label + " - %d%%" % percent)
+				continue
+			if kind == "stage":
+				self._warderProgressStage(str(value) + ": " + job_label)
+				continue
+			self.warderChannelTimer.stop()
+			self.warderChannelWorker = None
+			row = next((item for item in self.warderChannelPackageResults
+				if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
+			if kind == "done":
+				installed, available = value
+				self.warderChannelInstalled.update(installed)
+				self.warderChannelAvailable.update(available)
+				if row is not None:
+					row["updated"] = len(installed)
+				self._warderProgressDone(job_label + " - " + str(len(installed)) + " " + _("picons"), separate=True)
+			else:
+				if row is not None:
+					row["failures"] += 1
+					row["error"] = str(value)
+				self._warderProgressDone(job_label + ": " + str(value), False, separate=True)
+				print("FullHDGlass17 Warder package failed (%s/%s): %s" % (
+					job.get("orbital_position"), job.get("selector_id"), value))
+			self.dwnTimer.start(25, True)
+			return
+
+	def _warderFinishLegacyQueue(self):
+		"""Complete the old package accounting only after the background queue ends."""
+		legacy_destination = self.warderLegacyPiconDestination
+		archive_count = len(self.warderLegacyPackageResults)
+		if self.warderLegacyArchivesProcessed < archive_count:
+			self.warderLegacyChannelFailures += archive_count - self.warderLegacyArchivesProcessed
+		self.enaSelectsat = False
+		self.warderLegacyChannelQueue = None
+		self.warderLegacyPiconDestination = None
+		coverage = warderPiconSync.classify_requested_picons(
+			self.warderLegacyChannelWanted,
+			self.warderLegacyChannelAvailable,
+			self.warderLegacyChannelInstalled)
+		missing_by_position = {}
+		for filename in coverage["missing"]:
+			position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
+			missing_by_position[position] = missing_by_position.get(position, 0) + 1
+		package_results = []
+		for item in getattr(self, "warderLegacyPackageResults", []):
+			position = item.get("orbital_position")
+			item["failures"] += missing_by_position.pop(position, 0) if position else 0
+			if position and not item.get("processed"):
+				item["failures"] += 1
+			package_results.append(item)
+		for position, failures in missing_by_position.items():
+			package_results.append({"selector_id": "unbound", "orbital_position": position,
+				"updated": 0, "failures": failures})
+		if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not self.warderLegacyChannelFailures:
+			try:
+				self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
+			except Exception:
+				if package_results:
+					package_results[0]["failures"] += 1
+		summary = warderPiconSync.package_result_summary(package_results, _)
+		self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
+		result_text = summary["status"] + ": " + summary["text"]
+		self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
+		self._warderProgressDone(self.dwnJob + ": " + result_text, not summary["failures"])
+		self._recordWarderOperationResult(result_text)
+		self.dwnTimer.start(25, True)
+
+	def _warderStartLegacyDownloads(self, jobs, folder, pinned=False):
+		"""Process one legacy 7z per background worker; only GUI thread updates widgets."""
+		self.warderLegacyPreviousStage = self.zzz
+		self.zzz = "/tmp/"
+		self.warderLegacyBatch = list(jobs)
+		self.warderLegacyBatchIndex = 0
+		self.warderLegacyBatchFolder = folder
+		self.warderLegacyBatchPinned = bool(pinned)
+		self.warderLegacyBatchMessages = []
+		self._warderLegacyLaunch()
+
+	def _warderLegacyLaunch(self):
+		while self.warderLegacyBatchIndex < len(self.warderLegacyBatch):
+			x = self.warderLegacyBatchIndex
+			label, archive_id = self.warderLegacyBatch[x][:2]
+			self.warderLegacyCurrentPackageLabel = label if self.warderLegacyPiconDestination else None
+			self.warderLegacyCurrentPackageResult = (
+				self.warderLegacyPackageResults[x]
+				if self.warderLegacyPiconDestination and x < len(self.warderLegacyPackageResults) else None)
+			url = self._legacyPiconArchiveUrl(archive_id)
+			if not url:
+				self._warderLegacyAppend(_("ERROR") + ": (" + self.warderLegacyBatchFolder + ") " +
+					str(label) + ", " + _("Preserved legacy archive is not available in Warder migration catalogue") + " [" + str(archive_id) + "]", False)
+				self.warderLegacyBatchIndex += 1
+				continue
+			sevenzip = find_sevenzip(SEVENZIP)
+			if not sevenzip:
+				self._warderLegacyAppend(_("ERROR") + ": 7zip helper unavailable", False)
+				self.warderLegacyBatchIndex += 1
+				continue
+			extract_dir = os.path.realpath(os.path.join("/tmp", self.warderLegacyBatchFolder))
+			if extract_dir == "/tmp" or not extract_dir.startswith("/tmp/"):
+				self._warderLegacyAppend(_("ERROR") + ": " + _("Invalid extraction path"), False)
+				self.warderLegacyBatchIndex += 1
+				continue
+			self._warderProgressStage(_("Downloading") + ": " + str(label))
+			self.warderLegacyWorker = LegacyArchiveWorker(url, extract_dir, sevenzip)
+			self.warderLegacyTimer.start(150, False)
+			self.warderLegacyWorker.start()
+			return
+		self.warderLegacyTimer.stop()
+		pinned = self.warderLegacyBatchPinned
+		message = "\n".join(self.warderLegacyBatchMessages)
+		self.warderLegacyBatch = None
+		self.warderLegacyWorker = None
+		self.zzz = self.warderLegacyPreviousStage
+		if pinned:
+			self._warderFinishLegacyQueue()
+		else:
+			self.dwnLoop(message or (_("ERROR") + ": " + _("Unknown error detected, try again!!!")))
+
+	def _warderLegacyAppend(self, text, success):
+		self.warderLegacyBatchMessages.append(str(text))
+		self._warderProgressDone(text, success, separate=True)
+
+	def _warderLegacyPoll(self):
+		worker = self.warderLegacyWorker
+		if worker is None:
+			return
+		label = str(self.warderLegacyBatch[self.warderLegacyBatchIndex][0])
+		folder = self.warderLegacyBatchFolder
+		for kind, value in worker.drain():
+			if kind == "stage":
+				stage_label = (_("Downloading") if value == "download" else
+					_("Extracting") if value == "extract" else str(value))
+				self._warderProgressStage(stage_label + ": " + label)
+				continue
+			if kind == "bytes":
+				done, total = value
+				if total:
+					self._warderProgressStage(label + ": %d%%" % min(100, int(100 * done / max(1, total))))
+				else:
+					self._warderProgressStage(label + ": %.1f MiB" % (done / (1024.0 * 1024.0)))
+				continue
+			if isinstance(worker, LegacyArchiveWorker) and kind == "done":
+				self.warderLegacyAvailableBefore = len(self.warderLegacyChannelAvailable)
+				self._warderProgressStage(_("Verifying and installing") + ": " + label)
+				self.warderLegacyWorker = LegacyCopyWorker(self.cprmFiles, folder)
+				self.warderLegacyWorker.start()
+				return
+			self.warderLegacyTimer.stop()
+			self.warderLegacyWorker = None
+			if kind == "done":
+				numPict, total = value
+				if (self.warderLegacyPiconDestination and
+						len(self.warderLegacyChannelAvailable) <= self.warderLegacyAvailableBefore):
+					self.warderLegacyChannelFailures += 1
+				if total < 1:
+					message = _("ERROR") + ": (" + folder + ") " + label + ", " + _("No picons were downloaded.")
+				elif numPict == total:
+					message = _("SUCCESSFUL") + ": (" + folder + ") " + label + ", " + warderPiconSync.success_summary(total, None, _)
+				else:
+					message = _("ERROR") + ": (" + folder + ") " + label + ", " + (_("%d of %d picons failed to install") % (total-numPict, total))
+				self._warderLegacyAppend(message, (_("ERROR") + ":") not in message)
+			else:
+				if isinstance(worker, LegacyCopyWorker):
+					self.rmTmp2("/tmp/", folder)
+				self._warderLegacyAppend(_("ERROR") + ": (" + folder + ") " + label + ": " + str(value), False)
+			self.warderLegacyBatchIndex += 1
+			self._warderLegacyLaunch()
+			return
+
+	def _warderAuxPoll(self):
+		worker = self.warderAuxWorker
+		if worker is None:
+			return
+		for kind, value in worker.drain():
+			if kind == "stage":
+				labels = {
+					"catalog": _("Downloading") + ": " + _("Catalog"),
+					"download": _("Downloading"),
+					"extract": _("Extracting"),
+					"copy": _("Verifying and installing")}
+				self._warderProgressStage(labels.get(value, str(value)) + ": " + self.dwnJob)
+				continue
+			if kind == "bytes":
+				done, total = value
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob + " - %d%%" %
+					min(100, int(100 * done / max(1, total))))
+				continue
+			self.warderAuxTimer.stop()
+			self.warderAuxWorker = None
+			self.dwnLoop(value if kind == "done" else _("ERROR") + ": " + str(value))
+			return
+
+	def _warderAssetPoll(self):
+		catalog = self.warderAssetCatalogWorker
+		if catalog is not None:
+			for kind, value in catalog.drain():
+				self.warderAssetCatalogWorker = None
+				if kind == "done":
+					if not value[0]:
+						self._warderProgressDone(_("Download catalog verified"))
+					self._warderAssetCatalogReady(value)
+				else:
+					self.dwnLoop(_("ERROR") + ": " + str(value))
+				if self.warderAssetWorker is None:
+					self.warderAssetTimer.stop()
+				return
+			return
+		worker = self.warderAssetWorker
+		if worker is None:
+			self.warderAssetTimer.stop()
+			return
+		for kind, value in worker.drain():
+			if kind == "bytes":
+				done, total = value
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob + " - %d%%" % min(100, int(100 * done / max(1, total))))
+				continue
+			if kind == "stage":
+				self._warderProgressStage(str(value))
+				continue
+			self.warderAssetWorker = None
+			self.warderAssetTimer.stop()
+			if kind == "done":
+				self._warderProgressStage(_("Verifying and installing") + ": " + self.dwnJob)
+				try:
+					self._warderAssetFilesReady(str(self.warderAsset["filename"]), value)
+				except Exception as err:
+					self.dwnLoop(_("ERROR") + ": " + str(err))
+			else:
+				self.dwnLoop(_("ERROR") + ": " + str(value))
+			return
 
 	def dwnLoop(self, txt=""):
 		if self.dwnTimer.isActive():
 			self.dwnTimer.stop()
 		if txt:
 			self._recordWarderOperationResult(txt)
+			self._warderProgressDone(txt, _("ERROR") + ":" not in str(txt), separate=True)
 		if self.clrSelectsat:
+			self._warderProgressClose()
 			self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),txt)
 		else:
 			if txt != "":
@@ -9802,12 +10406,14 @@ class downloadMenu(Screen):
 					self.type_download = str(tool_row[2])
 					self.zzz = self.setWdir()
 					self.dwnJob = "7zip"
+					self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 					self.downAnswerNow()
 					return
 			if (self.warderPiconPrefs.get("prepared") and not self.warderDABOnly
 					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "pinned-legacy"
 					and self.warderLegacyChannelQueue):
 				self.dwnJob = _("Channel picons")
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 				resolution = self.warderPiconPrefs.get("resolution")
 				folder = warderPiconSync.legacy_channel_destination(resolution)
 				self.enaSelectsat = True
@@ -9826,41 +10432,8 @@ class downloadMenu(Screen):
 					for selector_id, archive_id in legacy_queue
 				]
 				legacy_destination = self.warderLegacyPiconDestination
-				legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)
-				if self.warderLegacyArchivesProcessed < archive_count:
-					self.warderLegacyChannelFailures += archive_count - self.warderLegacyArchivesProcessed
-				self.enaSelectsat = False
-				self.warderLegacyChannelQueue = None
-				self.warderLegacyPiconDestination = None
-				coverage = warderPiconSync.classify_requested_picons(
-					self.warderLegacyChannelWanted,
-					self.warderLegacyChannelAvailable,
-					self.warderLegacyChannelInstalled)
-				missing_by_position = {}
-				for filename in coverage["missing"]:
-					position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
-					missing_by_position[position] = missing_by_position.get(position, 0) + 1
-				package_results = []
-				for item in getattr(self, "warderLegacyPackageResults", []):
-					position = item.get("orbital_position")
-					item["failures"] += missing_by_position.pop(position, 0) if position else 0
-					if position and not item.get("processed"):
-						item["failures"] += 1
-					package_results.append(item)
-				for position, failures in missing_by_position.items():
-					package_results.append({"selector_id": "unbound", "orbital_position": position,
-						"updated": 0, "failures": failures})
-				if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not self.warderLegacyChannelFailures:
-					try:
-						self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
-					except Exception:
-						if package_results:
-							package_results[0]["failures"] += 1
-				summary = warderPiconSync.package_result_summary(package_results, _)
-				self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
-				result_text = summary["status"] + ": " + summary["text"]
-				self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
-				self._recordWarderOperationResult(result_text)
+				self._warderStartLegacyDownloads(legacy_queue, folder, pinned=True)
+				return
 			if (self.warderPiconPrefs.get("prepared") and not self.warderDABOnly
 					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "warder"
 					and self.warderChannelState not in ("locked", "error", "done", "partial")):
@@ -9884,12 +10457,13 @@ class downloadMenu(Screen):
 					else:
 						error_text = str(err)
 					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + error_text + "\n"
+					self._warderProgressDone(self.dwnJob + ": " + error_text, False)
 				else:
 					if warder_result is None:
-						# One package per GUI timer tick keeps the receiver event loop responsive.
-						self.dwnTimer.start(25, True)
+						# Background worker will resume the queue from its GUI polling callback.
 						return
 					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
+					self._warderProgressDone(self.dwnJob + ": " + warder_result, _("ERROR") + ":" not in warder_result)
 					self._recordWarderOperationResult(warder_result)
 			if self.warderDABPending:
 				self.warderDABPending = False
@@ -9904,6 +10478,7 @@ class downloadMenu(Screen):
 				self.type_download = "CHSPiconbig"
 				self.zzz = self.setWdir()
 				self.dwnJob = _("Large channel selection icons (710 x 682)")
+				self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 				self.downAnswerNow()
 				return
 			ena = True
@@ -9916,23 +10491,23 @@ class downloadMenu(Screen):
 					self.type_download = str(self.menuListAll[x][2])
 					self.zzz = self.setWdir()
 					self.dwnJob = str(self.menuListAll[x][1])
+					self._warderProgressStage(_("Downloading") + ": " + self.dwnJob)
 					if self.menuListAll[x][0] in ("aux-prov", "aux-sat"):
-						try:
-							aux_result = self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
-						except Exception as err:
-							aux_result = _("ERROR") + ": " + str(err)
-						self.dwnLoop(aux_result)
+						self.warderAuxWorker = CanonicalWorker(self.menuListAll[x][0], self.type_download, self._warderRunAuxiliaryComposite)
+						self.warderAuxTimer.start(150, False)
+						self.warderAuxWorker.start()
 						return
 					elif '***' in self.menuListAll[x][1]:
 						self.enaSelectsat = True
-						self.downMulti(self.menuListAll[x][3],self.destDir(self.menuListAll[x][2]))
+						self._warderStartLegacyDownloads(self.menuListAll[x][3],self.destDir(self.menuListAll[x][2]), pinned=False)
+						return
 					else:
 						self.downAnswerNow()
 					break
 			if ena:
 				if self.warderOperationSucceeded and not self.warderOperationFailed:
 					self.resetWarderWorkingState()
-				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
+				self._warderProgressFinish() 		
 		
 	def dwnFin(self, answer=""):
 		if self.warderChannelState in ("done", "error", "locked"):
@@ -9942,10 +10517,20 @@ class downloadMenu(Screen):
 		self.clrSelectsat = False
 		self.enaSelectsat = False
 		self["dwn"].hide()
+		self._warderProgressClose()
 		self.instance.resize(eSize(1920,1080))
                   		
 	def downAnswerNow(self):
-		err, assets = getWarderAssets()
+		"""Fetch the auxiliary catalogue off the GUI event loop."""
+		if self.warderAssetCatalogWorker is not None or self.warderAssetWorker is not None:
+			return
+		self._warderProgressStage(_("Downloading") + ": catalog")
+		self.warderAssetCatalogWorker = ManifestWorker(None, lambda ignored: getWarderAssets())
+		self.warderAssetTimer.start(150, False)
+		self.warderAssetCatalogWorker.start()
+
+	def _warderAssetCatalogReady(self, result):
+		err, assets = result
 		if err != "":
 			self.dwnLoop(_("ERROR")+": "+err)
 			return
@@ -10008,17 +10593,30 @@ class downloadMenu(Screen):
 			shutil.rmtree(path, ignore_errors=True)
 				
 	def downloadPicons(self, what):
-		state = False
-		target = self.zzz + what
+		"""Download and unpack in a worker; finish UI bookkeeping on GUI thread."""
 		asset = getattr(self, "warderAsset", {})
+		self.warderAssetWorker = AssetWorker(asset, self.zzz + what, self._warderFetchExtractAsset)
+		self.warderAssetTimer.start(150, False)
+		self.warderAssetWorker.start()
+
+	def _warderFetchExtractAsset(self, asset, target, progress, stage):
+		"""Worker-only I/O. No skin widgets or Enigma2 state are touched here."""
+		expected = str(asset["sha256"]).lower()
+		parts = asset.get("parts", [])
+		urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
+		source_id = asset.get("publication_source_id", "fullhd-production")
+		if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(
+			warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
+			raise ValueError("unsafe asset metadata")
+		root = str(asset.get("root", os.path.basename(target)[:-4]))
+		base = os.path.dirname(target)
+		if not root or "/" in root or "\\" in root or ".." in root:
+			raise ValueError("unsafe asset root")
+		h = hashlib.sha256()
+		total = 0
+		last_update = 0
+		stage(_("Downloading") + ": " + str(asset.get("filename", "ZIP")))
 		try:
-			expected = str(asset["sha256"]).lower()
-			parts = asset.get("parts", [])
-			urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
-			source_id = asset.get("publication_source_id", "fullhd-production")
-			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
-				raise ValueError("unsafe asset metadata")
-			h = hashlib.sha256()
 			with open(target, "wb") as out:
 				for url in urls:
 					req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5-test1"})
@@ -10031,92 +10629,86 @@ class downloadMenu(Screen):
 								break
 							out.write(chunk)
 							h.update(chunk)
+							total += len(chunk)
+							if time1.monotonic() - last_update >= 0.25:
+								progress(total, int(asset.get("size", 0)))
+								last_update = time1.monotonic()
+			stage(_("Verifying") + ": SHA-256")
 			if h.hexdigest().lower() != expected:
 				raise ValueError("SHA-256 mismatch")
-			state = True
-		except Exception as err:
-			try:
-				if os.path.isfile(target):
-					os.remove(target)
-			except:
-				pass
-			state = False
-		if state:
-			if os.path.exists(("/tmp/more_icons")):
+			progress(total, int(asset.get("size", 0)))
+			stage(_("Extracting") + ": " + str(asset.get("filename", "ZIP")))
+			# Only the selected staging root is replaced. Never delete user data.
+			if os.path.exists("/tmp/more_icons"):
 				self.rmTmp()
-			root = str(asset.get("root", what[:-4]))
-			if os.path.exists(self.zzz + root):
-				self.rmTmp2(self.zzz, root)
+			if os.path.exists(os.path.join(base, root)):
+				self.rmTmp2(base, root)
 			try:
-				self._safeExtractZip(target, self.zzz[:-1])
+				self._safeExtractZip(target, base)
+				if not os.path.exists(os.path.join(base, root)):
+					raise ValueError("Unzip failed: missing archive root")
 			except Exception:
-				try:
-					os.remove(target)
-				except OSError:
-					pass
-				if os.path.exists(self.zzz + root):
-					self.rmTmp2(self.zzz, root)
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				return
+				self.rmTmp2(base, root)
+				raise
+			return root
+		finally:
 			try:
-				os.remove(target)
+				os.unlink(target)
 			except OSError:
 				pass
-			if not os.path.exists(self.zzz + root):
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				return
-			if "7z" in self.type_download:
-				# Original archive extracts to /tmp/7z/7z_g.
-				try:
-					os.makedirs(os.path.dirname(SEVENZIP), exist_ok=True)
-					shutil.copy2(os.path.join(self.zzz, root, "7z_g"), SEVENZIP)
-					os.chmod(SEVENZIP, 0o755)
-				except OSError:
-					pass
-				self.rmTmp2(self.zzz, root)
-				numPict = 0
-				if find_sevenzip(SEVENZIP):
-					numPict = 1
-				total = 1
-			elif "icon_sets_preview" in self.type_download:
-				self.iconPreviewManage()
-				return
-			elif self.type_download in ['animWeatherIcons',"weatherIconsN","extraScreens","menuicons"]:
-				numPict = 0
-				total = 0
-				if "animWeatherIcons" in self.type_download:
-					rng = 48
-					typeGrf = "animIconWeather"
-				else:
-					rng = MAXSCREENS
-					typeGrf = "extraScreens17"
-					if not "extraScreens" in self.type_download:
-						rng = MAXICONS
-						typeGrf = "menuIcons"
-						if "weatherIconsN" in self.type_download:
-							typeGrf = "weatherIcons"
-				for i in range(1,rng):
-					subPath = "%s/%s" % (typeGrf, i)
-					if os.path.exists(("/tmp/%s" % subPath)):
-						if not os.path.exists((config.plugins.setupGlass17.par39.value + "/" + subPath)):
-							os.makedirs(config.plugins.setupGlass17.par39.value + "/" + subPath, exist_ok=True)
-						x1, x2 = self.cprmFiles(subPath)
-						numPict += x1
-						total += x2
-				try:
-					os.rmdir("/tmp/%s" % typeGrf)
-				except OSError:
-					pass
-			else:
-				numPict, total = self.cprmFiles(root)
-			if numPict-total == 0:
-				self.dwnLoop(_("SUCCESSFUL")+": "+warderPiconSync.success_summary(total, None, _))
-			else:
-				self.dwnLoop(_("ERROR")+": " + what[:-4] + ", " + (_("%d of %d picons failed to install") % (total-numPict, total)))
-		else:
-			self.dwnLoop(_("ERROR")+": " + what[:-4])
 
-	def _warderFetchChannelJob(self, job, archive):
+	def _warderAssetFilesReady(self, what, root):
+		"""Maintain original per-asset installation and result accounting."""
+		if "7z" in self.type_download:
+			# Original archive extracts to /tmp/7z/7z_g.
+			try:
+				os.makedirs(os.path.dirname(SEVENZIP), exist_ok=True)
+				shutil.copy2(os.path.join(self.zzz, root, "7z_g"), SEVENZIP)
+				os.chmod(SEVENZIP, 0o755)
+			except OSError:
+				pass
+			self.rmTmp2(self.zzz, root)
+			numPict = 0
+			if find_sevenzip(SEVENZIP):
+				numPict = 1
+			total = 1
+		elif "icon_sets_preview" in self.type_download:
+			self.iconPreviewManage()
+			return
+		elif self.type_download in ['animWeatherIcons',"weatherIconsN","extraScreens","menuicons"]:
+			numPict = 0
+			total = 0
+			if "animWeatherIcons" in self.type_download:
+				rng = 48
+				typeGrf = "animIconWeather"
+			else:
+				rng = MAXSCREENS
+				typeGrf = "extraScreens17"
+				if not "extraScreens" in self.type_download:
+					rng = MAXICONS
+					typeGrf = "menuIcons"
+					if "weatherIconsN" in self.type_download:
+						typeGrf = "weatherIcons"
+			for i in range(1,rng):
+				subPath = "%s/%s" % (typeGrf, i)
+				if os.path.exists(("/tmp/%s" % subPath)):
+					if not os.path.exists((config.plugins.setupGlass17.par39.value + "/" + subPath)):
+						os.makedirs(config.plugins.setupGlass17.par39.value + "/" + subPath, exist_ok=True)
+					x1, x2 = self.cprmFiles(subPath)
+					numPict += x1
+					total += x2
+			try:
+				os.rmdir("/tmp/%s" % typeGrf)
+			except OSError:
+				pass
+		else:
+			numPict, total = self.cprmFiles(root)
+		if numPict-total == 0:
+			self.dwnLoop(_("SUCCESSFUL")+": "+warderPiconSync.success_summary(total, None, _))
+		else:
+			self.dwnLoop(_("ERROR")+": " + what[:-4] + ", " + (_("%d of %d picons failed to install") % (total-numPict, total)))
+
+	def _warderFetchChannelJob(self, job, archive, progress=None):
 		"""Reassemble a package only from the root bound to its source manifest."""
 		source_id = job.get("publication_source_id")
 		source = warderPiconSync.publication_source(source_id)
@@ -10124,6 +10716,7 @@ class downloadMenu(Screen):
 			raise ValueError("untrusted Warder channel publication source")
 		full_hash = hashlib.sha256()
 		total = 0
+		last_update = 0
 		with open(archive, "wb") as out:
 			for part in job.get("parts", []):
 				url = str(part.get("url", ""))
@@ -10149,8 +10742,13 @@ class downloadMenu(Screen):
 						out.write(chunk)
 						full_hash.update(chunk)
 						part_hash.update(chunk)
+						if progress and time1.monotonic() - last_update >= 0.25:
+							progress(total, int(job.get("bytes", 0)))
+							last_update = time1.monotonic()
 				if part_size != int(part.get("bytes", -1)) or part_hash.hexdigest().lower() != str(part.get("sha256", "")).lower():
 					raise ValueError("Warder channel part integrity mismatch")
+		if progress:
+			progress(total, int(job.get("bytes", 0)))
 		if total != int(job.get("bytes", -1)) or full_hash.hexdigest().lower() != str(job.get("sha256", "")).lower():
 			raise ValueError("Warder channel package integrity mismatch")
 
@@ -10463,16 +11061,14 @@ class satSelectorScr(Screen):
 			<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="424,164" size="1071,855" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1493,164" size="2,855" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="424,164" size="2,855" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="424,1017" size="1071,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="424,164" size="1071,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="list" position="439,169" scrollbarMode="showOnDemand" size="1040,780" foregroundColor="#00ffffff" backgroundColor="#ff000000" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" zPosition="4" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget name="key_red" position="444,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="793,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
-	<widget name="key_yellow" position="1142,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00f5d54e" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="444,963" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="793,963" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1142,963" size="333,2" backgroundColor="#00f5d54e" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="424,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1495,164" size="425,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,1019" size="1920,61" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="444,963" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="793,963" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="424,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1495,164" size="425,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,1019" size="1920,61" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, delP = 1):
 		Screen.__init__(self, session)
 		self.delP = delP		
 		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(_("Select"))
-		self["key_yellow"] = Label(_("Save"))
+		self["key_green"] = Label(_("Confirm selection"))
 		self.list = SelectionList()
 		self["list"] = self.list
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], 
@@ -10480,8 +11076,7 @@ class satSelectorScr(Screen):
 			"ok": self.list.toggleSelection, 
 			"cancel": self.exit,
 			"red": self.exit,
-			"yellow": self.finishSelect,
-			"green": self.list.toggleSelection
+			"green": self.finishSelect
 		}, -1)
 		self.onLayoutFinish.append(self.startSelect)
 		
@@ -10533,20 +11128,18 @@ class warderPositionSelectorScr(Screen):
 		Screen.__init__(self, session)
 		self.selected = set(warderPiconSync.task_package_selectors_from_bindings([item for item in (selected or []) if not warderRadio.is_radio(item)]))
 		if any(warderRadio.is_dab(item) for item in (selected or [])):self.selected.add("DAB")
-		if any(warderRadio.is_iptv(item) for item in (selected or [])):self.selected.add("IPTV-SK-CZ")
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Save"))
 		self.list = SelectionList()
 		self["list"] = self.list
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
-			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
-			"cancel": self.cancel, "red": self.cancel, "yellow": self.finish
+			"ok": self.list.toggleSelection, "green": self.finish,
+			"cancel": self.cancel, "red": self.cancel
 		}, -1)
 		self.onLayoutFinish.append(self.startSelect)
 
 	def startSelect(self):
-		self.list.addSelection(warderRadio.label({"include_iptv": True}), dict(warderRadio.IPTV_BINDING), -1, "IPTV-SK-CZ" in self.selected, PLUGINPATH + "images/selectors/IPTV-SK-CZ.png")
 		self.list.addSelection("DAB / DAB+", dict(warderRadio.DAB_BINDING), 0, "DAB" in self.selected, PLUGINPATH + "images/selectors/DAB.png")
 		ordered = warderPiconSync.task_satlist_display_order(SATLIST)
 		for x in ordered:
@@ -10589,7 +11182,7 @@ class styleSelectorScr(Screen):
 	<widget name="key_red" position="650,696" size="196,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="862,696" size="196,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_blue" position="1074,696" size="196,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0045b9ff" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="650,690" size="196,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="862,690" size="196,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1074,690" size="196,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,210" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1290,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,746" size="1920,334" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="650,690" size="196,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="862,690" size="196,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1074,690" size="196,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,210" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1290,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,746" size="1920,334" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, style, scrNum):
@@ -10698,7 +11291,7 @@ class selectScreenShowed(Screen):
 	<widget name="key_red" position="196,888" size="498,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="710,888" size="498,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_blue" position="1224,888" size="498,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0045b9ff" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="196,882" size="498,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="710,882" size="498,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1224,882" size="498,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,17" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,181" size="176,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1743,181" size="177,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,938" size="1920,142" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="196,882" size="498,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="710,882" size="498,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1224,882" size="498,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,17" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,181" size="176,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1743,181" size="177,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,938" size="1920,142" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self,session):
@@ -10804,7 +11397,7 @@ class selectIconsDisplayed(Screen):
   <widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="267,164" size="1386,757" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1651,164" size="2,757" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="267,164" size="2,757" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="267,919" size="1386,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="267,164" size="1386,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="list" position="312,291" size="315,370" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget name="key_red" position="267,871" size="693,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="960,871" size="693,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="267,865" size="693,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="960,865" size="693,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1653,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,921" size="1920,159" backgroundColor="#00071627" zPosition="-2" />
+   <eLabel position="267,865" size="693,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="960,865" size="693,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1653,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,921" size="1920,159" backgroundColor="#00071627" zPosition="-2" />
 """
 
 	def __init__(self,session,what=0):
@@ -10951,7 +11544,7 @@ class historyScreen(Screen):
 	<widget name="key_green" position="960,1006" size="825,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
    <widget name="line_red" position="135,996" size="825,2" backgroundColor="#00ff526a" zPosition="5" transparent="0" foregroundColor="#00ffffff" />
     <widget name="line_green" position="960,996" size="825,2" backgroundColor="#0039ff59" zPosition="5" transparent="0" foregroundColor="#00ffffff" />
-<widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1785,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
+<widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1785,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
                         
 	def __init__(self, session, ver="", new=""):
@@ -11169,7 +11762,7 @@ class weatherCitySelector(Screen):
 		<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="510,210" size="900,700" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1408,210" size="2,700" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="510,210" size="2,700" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="510,908" size="900,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="510,210" size="900,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="list" position="535,235" size="850,590" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" zPosition="4" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 		<widget name="key_red" position="530,860" size="422,50" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" zPosition="4" />
 		<widget name="key_green" position="968,860" size="422,50" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" zPosition="4" />
-	<eLabel position="530,854" size="422,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,854" size="422,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,46" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1410,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,910" size="1920,170" backgroundColor="#00071627" zPosition="-2" /></screen>
+	<eLabel position="530,854" size="422,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,854" size="422,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,46" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1410,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,910" size="1920,170" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, current=None):
@@ -11214,7 +11807,7 @@ class cityFinder(Screen):
 	<widget name="key_green" position="599,1030" size="353,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_yellow" position="968,1030" size="353,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_blue" position="1337,1030" size="353,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00071627" noWrap="1" />
-   <eLabel position="230,1024" size="353,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="599,1024" size="353,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1024" size="353,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1337,1024" size="353,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1710,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="230,1024" size="353,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="599,1024" size="353,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1024" size="353,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1337,1024" size="353,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1710,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session):
@@ -11518,7 +12111,7 @@ class dirBrowser(Screen):
 			<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="570,185" size="780,750" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1348,185" size="2,750" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="570,185" size="2,750" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="570,933" size="780,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="570,185" size="780,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="filelist" position="585,200" size="750,660" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColor="#ff000000" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" zPosition="4" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget source="key_red" render="Label" position="590,885" size="362,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget source="key_green" render="Label" position="968,885" size="362,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="590,879" size="362,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,879" size="362,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.72" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,21" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1350,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,935" size="1920,145" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="590,879" size="362,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,879" size="362,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.80" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,21" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1350,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,935" size="1920,145" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
     
 	def __init__(self, session, dd, files=False):

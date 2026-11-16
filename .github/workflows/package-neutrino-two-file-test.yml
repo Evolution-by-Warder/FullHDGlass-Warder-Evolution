@@ -1,0 +1,44 @@
+name: Package Neutrino two-file receiver test
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/keymap.xml'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - '.github/workflows/package-neutrino-two-file-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  make-two-file-test-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+            tools/test-neutrino-short-ok.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify sources and package only two replacement files
+        run: |
+          set -euo pipefail
+          base=source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+          test "$(cat "$base/version")" = "1.0.79"
+          python -m py_compile "$base/plugin.py"
+          python tools/test-neutrino-short-ok.py -q
+          mkdir -p /tmp/warder-neutrino-only-2-files
+          cp "$base/plugin.py" /tmp/warder-neutrino-only-2-files/plugin.py
+          cp "$base/keymap.xml" /tmp/warder-neutrino-only-2-files/keymap.xml
+          cd /tmp/warder-neutrino-only-2-files
+          zip -q "$GITHUB_WORKSPACE/Warder-1.0.79-Neutrino-OK-2-files-TEST.zip" plugin.py keymap.xml
+          test "$(unzip -Z1 "$GITHUB_WORKSPACE/Warder-1.0.79-Neutrino-OK-2-files-TEST.zip" | wc -l)" -eq 2
+          sha256sum plugin.py keymap.xml > "$GITHUB_WORKSPACE/Neutrino-test-SHA256SUMS.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Warder-1.0.79-Neutrino-OK-2-files-TEST
+          path: |
+            Warder-1.0.79-Neutrino-OK-2-files-TEST.zip
+            Neutrino-test-SHA256SUMS.txt
+          if-no-files-found: error

@@ -33,9 +33,16 @@ class SettingsTests(unittest.TestCase):
         self.values['par144'].value='/test-backup/'
         self.section=NS(**self.values)
         self.section.dict=lambda:self.values
-        self.config=NS(plugins=NS(setupGlass17=self.section))
+        self.config=NS(plugins=NS(setupGlass17=self.section,
+                                  warderEpgListScroll=NS(enabled=Setting(True)),
+                                  warderPiconExpert=NS(custom_destination=Setting(False),
+                                                      destination=Setting('')),
+                                  warderUserPicons=NS(enabled=Setting(False),path=Setting(''))))
         self.scope=dict(config=self.config,ALL_CFG=REGISTRY,ui_text=lambda s:s,_=lambda s:s,
-            configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock())
+            configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock(),
+            allow_channel_epg_overlay=lambda:True,
+            _warderUserNormalize=lambda path:path, os=os,
+            _warderEpgListScrollLabel=lambda:"Scroll EPG titles")
 
     def method(self,name):
         node=next(n for n in OWNER.body if isinstance(n,ast.FunctionDef) and n.name==name)
@@ -46,12 +53,71 @@ class SettingsTests(unittest.TestCase):
         return NS(_spinnerAtOpen=self.section.par230.value,_weatherCityAtOpen=self.section.par13.value,
                   rst=False,destroyTimers=lambda:True,close=Mock())
 
+    def test_own_picon_folder_is_readonly_and_uses_classic_browser(self):
+        self.assertIn('warderUserPicons.path_display = ConfigSelection(', TEXT)
+        self.assertIn('self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), display))', TEXT)
+        self.assertNotIn('self.list.append(getConfigListEntry(S0 % ui_text("Own picon folder"), config.plugins.warderUserPicons.path))', TEXT)
+        selection = next(n for n in OWNER.body if isinstance(n,ast.FunctionDef)
+                         and n.name == 'ActivateselectedFnc')
+        browser = next(n for n in ast.walk(selection) if isinstance(n,ast.If)
+                       and ast.unparse(n.test)=='t == config.plugins.warderUserPicons.path_display')
+        code = ast.unparse(browser)
+        self.assertIn('dirBrowser',code)
+        self.assertIn('_warderOwnPiconFolderSelected',code)
+        self.assertNotIn('VirtualKeyBoard',code)
+        self.assertNotIn('ConfigText',code)
+
+    def test_own_picon_help_is_specific_to_selected_row(self):
+        method = next(n for n in OWNER.body if isinstance(n,ast.FunctionDef)
+                      and n.name=='doMyHelpWindow')
+        branch = next(n for n in ast.walk(method) if isinstance(n,ast.If)
+                      and 'config.plugins.warderUserPicons.path_display' in ast.unparse(n.test))
+        self.assertIn("self['help_pict'].hide()", ast.unparse(branch))
+        self.assertIn("self['help_txt'].setText(message)", ast.unparse(branch))
+        self.assertIn('skin only reads PNG files',ast.unparse(branch))
+        self.assertIsInstance(branch.body[-1],ast.Return)
+
     def test_default_is_system_and_choices_are_only_explicit_opt_in(self):
         node=next(n for n in TREE.body if isinstance(n,ast.Assign) and any(ast.unparse(t)=='config.plugins.setupGlass17.par231' for t in n.targets))
         self.scope['ConfigSelection']=Setting
         exec(compile(ast.Module(body=[node],type_ignores=[]),'packaged-config.py','exec'),self.scope)
         self.assertEqual(self.section.par231.default,'system')
         self.assertEqual([v for v,label in self.section.par231.choices],['system','mini'])
+
+    def test_download_menu_has_no_custom_destination_in_any_mode(self):
+        menu = next(n for n in TREE.body if isinstance(n, ast.ClassDef) and n.name == 'downloadMenu')
+        constructor = next(n for n in menu.body if isinstance(n, ast.FunctionDef) and n.name == '__init__')
+        values = next(n for n in ast.walk(constructor) if isinstance(n, ast.Dict)
+                      and 'warder-picon-positions' in ast.unparse(n))
+        ids = [node.value for node in values.values if isinstance(node, ast.List)
+               for item in node.elts[:1] if isinstance(item, ast.Constant)
+               for node in (item,)]
+        self.assertNotIn('wp-dest', ids)
+        self.assertIn('wp-pos', ids)
+        self.assertIn('wp-res', ids)
+        self.assertIn('wp-style', ids)
+        self.assertIn('wp-mode', ids)
+        self.assertIn('self.menuListAll = dict(enumerate(self.menuListAll.values()))', TEXT)
+        self.assertNotIn('ui_text("Custom picon location")', TEXT)
+        self.assertNotIn('def warderCustomLocationAnswer(', TEXT)
+
+    def test_warder_destination_is_derived_from_skin_root(self):
+        source = TEXT
+        self.assertIn('config.plugins.setupGlass17.par39.value, self.warderPiconPrefs.get("resolution")', source)
+        self.assertNotIn('if not config.plugins.warderPiconExpert.custom_destination.value:', source)
+        self.assertNotIn('if config.plugins.warderPiconExpert.custom_destination.value:', source)
+        directory = '/media/hdd/hdg17_files'
+        sync_src = (PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py').read_text()
+        sync_tree = ast.parse(sync_src)
+        node = next(n for n in sync_tree.body if isinstance(n, ast.FunctionDef)
+                    and n.name == 'skin_picon_destination')
+        scope = {'os': os}
+        exec(compile(ast.Module(body=[node], type_ignores=[]), 'picon-path.py', 'exec'), scope)
+        target = scope['skin_picon_destination']
+        self.assertEqual(target(directory, '220x132'), directory + '/picon')
+        self.assertEqual(target(directory, '50x30'), directory + '/picon_50x30')
+        self.assertEqual(target(directory, '400x240'), directory + '/picon_400x240')
+        self.assertEqual(target('/media/usb/hdg17_files'), '/media/usb/hdg17_files/picon')
 
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
@@ -76,6 +142,10 @@ class SettingsTests(unittest.TestCase):
         screen=self.screen()
         self.method('saving')(screen)
         self.assertEqual(self.section.par231.saved,'mini')
+        self.assertFalse(self.config.plugins.warderPiconExpert.custom_destination.saved)
+        self.assertEqual(self.config.plugins.warderPiconExpert.destination.saved, '')
+        self.assertFalse(self.config.plugins.warderUserPicons.enabled.saved)
+        self.assertEqual(self.config.plugins.warderUserPicons.path.saved, '')
         backup=self.scope['_atomicWriteText'].call_args.args
         self.assertEqual(backup[0],'/test-backup/hdg17.conf')
         self.assertIn('Channel-list picon source: mini\n',backup[1])

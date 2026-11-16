@@ -95,12 +95,13 @@ class AssetTests(unittest.TestCase):
         cfg = SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk_SK')))
         with patch.dict(sys.modules, {'Components.config': SimpleNamespace(config=cfg)}):
             text = load('spinner_text', PLUGIN / 'warderUiText.py')
-        self.assertEqual(spinner.choices(text.ui_text), [('dove', 'Holubica'), ('bakussa', 'HDGlass - bakussa')])
+        self.assertEqual(spinner.choices(text.ui_text), [('system', 'Predvolený spinner image'), ('dove', 'Holubica'), ('bakussa', 'HDGlass - bakussa')])
         for code in ('al','cs','de','en','es','et','fa','fr','hu','it','lt','nl','pl','pt','ro','ru','sk','tr','uk','zh'):
             cfg.osd.language.value = code + '_XX'
             self.assertTrue(text.ui_text('Dove'))
             self.assertIn('Dove', text.TEXT[code])
-            self.assertEqual(spinner.choices(text.ui_text)[1][1], 'HDGlass - bakussa')
+            self.assertTrue(text.ui_text('Default spinner of image'))
+            self.assertEqual(spinner.choices(text.ui_text)[2][1], 'HDGlass - bakussa')
 
 
 class SelectionTests(unittest.TestCase):
@@ -120,15 +121,15 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual({p.name for p in self.root.iterdir()}, {'spinner', 'spinner-themes'})
 
     def test_switch_both_directions_and_remove_obsolete_twenty_frame_tail(self):
-        self.assertTrue(self.apply('bakussa'))
-        self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/bakussa'))
         self.assertTrue(self.apply('dove'))
+        self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/dove'))
+        self.assertTrue(self.apply('bakussa'))
         self.assertEqual(content(self.root / 'spinner'), self.before)
         self.assert_clean()
 
     def test_unchanged_selection_causes_no_flash_writes(self):
         with patch.object(spinner.os, 'rename', side_effect=AssertionError('unexpected rename')), patch.object(spinner.tempfile, 'mkdtemp', side_effect=AssertionError('unexpected write')):
-            self.assertFalse(self.apply('dove'))
+            self.assertFalse(self.apply('bakussa'))
         self.assert_clean()
 
     def test_upgrade_overlay_preserves_saved_bakussa_and_drops_tail_when_dove_selected(self):
@@ -192,25 +193,25 @@ class SelectionTests(unittest.TestCase):
                 raise OSError('injected rename failure')
             return real_rename(source, target)
         with patch.object(spinner.os, 'rename', side_effect=rename), self.assertRaises(OSError):
-            self.apply('bakussa')
+            self.apply('dove')
         self.assertEqual(content(self.root / 'spinner'), self.before)
         self.assert_clean()
 
     def test_failed_copy_leaves_previous_active_set_and_no_staging_files(self):
         with patch.object(spinner.os, 'fsync', side_effect=OSError('injected full disk')), self.assertRaises(OSError):
-            self.apply('bakussa')
+            self.apply('dove')
         self.assertEqual(content(self.root / 'spinner'), self.before)
         self.assert_clean()
 
     def test_interrupted_swap_is_recovered_before_selection(self):
         (self.root / 'spinner').rename(self.root / '.warder-spinner-previous')
-        self.assertTrue(self.apply('bakussa'))
-        self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/bakussa'))
+        self.assertTrue(self.apply('dove'))
+        self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/dove'))
         self.assert_clean()
 
     def test_leftover_previous_set_is_cleaned_only_when_owned(self):
         shutil.copytree(self.root / 'spinner', self.root / '.warder-spinner-previous')
-        self.assertFalse(self.apply('dove'))
+        self.assertFalse(self.apply('bakussa'))
         self.assert_clean()
         shutil.copytree(self.root / 'spinner', self.root / '.warder-spinner-previous')
         (self.root / '.warder-spinner-previous/custom.txt').write_text('keep')
@@ -224,9 +225,9 @@ class SelectionTests(unittest.TestCase):
         self.assert_clean()
 
     def test_uninstall_can_remove_every_owned_frame_without_a_longer_theme_tail(self):
-        self.apply('bakussa')
-        self.assertEqual(len(content(self.root / 'spinner')), 20)
         self.apply('dove')
+        self.assertEqual(len(content(self.root / 'spinner')), 18)
+        self.apply('bakussa')
         # Simulate opkg deleting only the eighteen paths in its package list.
         for path in (SKIN / 'spinner').iterdir():
             (self.root / 'spinner' / path.name).unlink()
@@ -244,16 +245,40 @@ class SelectionTests(unittest.TestCase):
         path.write_text(json.dumps(data))
         shutil.copytree(self.root / 'spinner-themes/bakussa', self.root / 'spinner-themes/third-theme')
         self.assertEqual(spinner.choices(lambda text:text, path)[-1], ('third-theme', 'Another author'))
+        self.assertTrue(self.apply('dove'))
         self.assertTrue(spinner.apply('third-theme', self.root, path))
         self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/third-theme'))
         settings = Path(self.temp.name) / 'settings'
         settings.write_text(spinner.SETTING + '=third-theme\n')
         self.assertEqual(spinner.saved_theme(settings, path), 'third-theme')
 
+    def test_image_spinner_fallback_preserves_original_system_files(self):
+        image_spinner = Path(self.temp.name) / 'skin_default' / 'spinner'
+        image_spinner.mkdir(parents=True)
+        (image_spinner / 'wait1.png').write_bytes(b'image-owned-animation')
+        self.assertTrue(self.apply('system'))
+        self.assertFalse((self.root / 'spinner').exists())
+        self.assertEqual((image_spinner / 'wait1.png').read_bytes(), b'image-owned-animation')
+        self.assertFalse(self.apply('system'))
+        self.assertTrue(self.apply('bakussa'))
+        self.assertEqual(content(self.root / 'spinner'), self.before)
+        self.assertEqual((image_spinner / 'wait1.png').read_bytes(), b'image-owned-animation')
+        self.assert_clean()
+
+    def test_image_spinner_refuses_custom_private_frames(self):
+        (self.root / 'spinner/wait1.png').write_bytes(b'personal')
+        with self.assertRaises(ValueError):
+            self.apply('system')
+        self.assertEqual((self.root / 'spinner/wait1.png').read_bytes(), b'personal')
+
+    def test_bakussa_packaged_as_full_20_frame_default(self):
+        self.assertEqual(DATA['default'], 'bakussa')
+        self.assertEqual(content(SKIN / 'spinner'), content(SKIN / 'spinner-themes/bakussa'))
+
     def test_saved_selection_defaults_without_modifying_settings(self):
         settings = Path(self.temp.name) / 'settings'
-        self.assertEqual(spinner.saved_theme(settings), 'dove')
-        for value, expected in [('bakussa','bakussa'), ('dove','dove'), ('../../../etc','dove')]:
+        self.assertEqual(spinner.saved_theme(settings), 'bakussa')
+        for value, expected in [('bakussa','bakussa'), ('dove','dove'), ('system','system'), ('../../../etc','bakussa')]:
             original = ('config.skin.primary_skin=hd_glass17/skin.xml\n' + spinner.SETTING + '=' + value + '\n').encode()
             settings.write_bytes(original)
             self.assertEqual(spinner.saved_theme(settings), expected)
@@ -281,7 +306,8 @@ class ControllerTests(unittest.TestCase):
 
     def test_ok_opens_two_choices_in_catalog_order_and_callback_is_cancel_safe(self):
         setup = SimpleNamespace(par124=object(), par230=SimpleNamespace(value='dove', setChoices=lambda *a,**kw:None))
-        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup))
+        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup,
+            warderUserPicons=SimpleNamespace(path_display=object(), path=SimpleNamespace(value='/media/hdd/picon'))))
         events = []
         callback = self.method('spinnerChoiceSelected')
         activate = self.method('ActivateselectedFnc')
@@ -293,7 +319,7 @@ class ControllerTests(unittest.TestCase):
             def doMyHelpWindow(self):
                 events.append('help')
         screen = Screen()
-        scope = {'__package__':'spinner_screen_test', 'config':cfg, 'warderSpinner':SimpleNamespace(choices=lambda translate:[('dove','Holubica'),('bakussa','HDGlass - bakussa')]), 'ui_text':lambda text:text, 'ChoiceBox':object()}
+        scope = {'__package__':'spinner_screen_test', 'config':cfg, 'warderSpinner':SimpleNamespace(choices=lambda translate:[('system','Default spinner of image'),('dove','Holubica'),('bakussa','HDGlass - bakussa')]), 'ui_text':lambda text:text, 'ChoiceBox':object()}
         exec(compile(ast.Module(body=[activate, callback], type_ignores=[]), 'actual-choice-box', 'exec'), scope)
         screen.spinnerChoiceSelected = lambda answer:scope['spinnerChoiceSelected'](screen, answer)
         module = SimpleNamespace(SpinnerChoice=object())
@@ -304,6 +330,8 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(setup.par230.value, 'dove')
         screen.spinnerChoiceSelected(('HDGlass - bakussa','bakussa'))
         self.assertEqual(setup.par230.value, 'bakussa')
+        screen.spinnerChoiceSelected(('Default spinner of image','system'))
+        self.assertEqual(setup.par230.value, 'system')
         self.assertEqual(events[-2:], ['invalidate','help'])
 
     def test_actual_help_shows_restart_instruction_without_starting_animation(self):
@@ -323,7 +351,8 @@ class ControllerTests(unittest.TestCase):
                 return values[key]
             def sampleColor(self, value):
                 pass
-        scope = {'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par230=selected))),
+        scope = {'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par230=selected),
+                 warderUserPicons=SimpleNamespace(enabled=object(), path_display=object()))),
                  'ENA_ANIM':False, 'ui_text':lambda text:text}
         exec(compile(ast.Module(body=[self.method('doMyHelpWindow')], type_ignores=[]), 'actual-help', 'exec'), scope)
         scope['doMyHelpWindow'](Screen())
@@ -345,12 +374,19 @@ class ControllerTests(unittest.TestCase):
         node = next(n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == 'saving')
         events = []
         setup = SimpleNamespace(par230=SimpleNamespace(value=theme), par13=SimpleNamespace(value='same'), par43=SimpleNamespace(value=False), dict=lambda: {})
-        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup))
+        noop = lambda:None
+        cfg = SimpleNamespace(plugins=SimpleNamespace(
+            setupGlass17=setup,
+            warderUserPicons=SimpleNamespace(enabled=SimpleNamespace(value=False, save=noop),
+                path=SimpleNamespace(value='', save=noop)),
+            warderEpgListScroll=SimpleNamespace(enabled=SimpleNamespace(save=noop)),
+            warderPiconExpert=SimpleNamespace(custom_destination=SimpleNamespace(save=noop),
+                destination=SimpleNamespace(save=noop))))
         def apply(value):
             events.append(('apply', value))
             if fail:
                 raise ValueError('custom user file')
-        self_scope = SimpleNamespace(_spinnerAtOpen='dove', _weatherCityAtOpen='same', rst=True,
+        self_scope = SimpleNamespace(_spinnerAtOpen='dove', _weatherCityAtOpen='same', rst=True, _ownPiconRestartPending=False,
             session=SimpleNamespace(open=lambda *args: events.append(('error', args))),
             sDr=lambda: events.append(('restart',)), destroyTimers=lambda: True,
             close=lambda: events.append(('close',)))

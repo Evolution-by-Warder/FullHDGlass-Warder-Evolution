@@ -1,0 +1,23 @@
+name: EPG OpenATV 8.0 performance fallback checks
+on:
+  push:
+    branches:
+      - fix/epg-openatv80-performance-fallback
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  renderer-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          set -euo pipefail
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
+          python3 tools/test_warder_epg_render_policy.py -q
+          python3 tools/test_warder_channel_epg_clip.py -q
+          python3 tools/test_channel_selection_epg_performance.py -q

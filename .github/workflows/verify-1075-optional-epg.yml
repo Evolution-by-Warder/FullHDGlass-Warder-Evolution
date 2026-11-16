@@ -1,0 +1,23 @@
+name: Verify 1.0.75 optional EPG regression tests
+on:
+  push:
+    branches: [fix/warder-1075-optional-epg-regression-tests]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools/test_warder_default_epg_panel_runtime.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test native EPG default and optional overlay
+        run: |
+          python3 -m py_compile tools/test_warder_default_epg_panel_runtime.py
+          python3 tools/test_warder_default_epg_panel_runtime.py -q

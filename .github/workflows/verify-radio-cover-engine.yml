@@ -1,0 +1,44 @@
+name: Verify skin RADIO plugin-derived cover engine
+on:
+  push:
+    branches:
+      - feature/radio-artwork-plugin-search-20261111
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCoverSearch.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSongIdentity.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRuntimeCache.py'
+      - 'tools/test-radio-cover-search-port.py'
+      - 'tools/test-radio-artwork-benchmark.py'
+      - 'tools/test-radio-stream-metadata.py'
+      - '.github/workflows/verify-radio-cover-engine.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  host:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 toolcache retrieval on GitHub runners is presently failing
+        # before Python or any Warder test is executed; test the actual
+        # engine with an available Python runtime, without pip/apt calls.
+        python: ['3.11']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python
+            tools
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Offline compile and cover engine regression
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCoverSearch.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py
+          python tools/test-radio-cover-search-port.py -v
+          python tools/test-radio-artwork-benchmark.py -v
+          python tools/test-radio-stream-metadata.py -q

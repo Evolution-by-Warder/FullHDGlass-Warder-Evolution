@@ -56,26 +56,59 @@ class CanonicalTests(unittest.TestCase):
         installer.remove_verified_duplicates(screen,str(self.base),'piconProv')
         self.assertFalse((old/'same.png').exists());self.assertEqual((old/'custom.png').read_bytes(),b'old custom')
         self.assertEqual((canonical/'custom.png').read_bytes(),b'new')
-    def test_successful_install_uses_original_directory_and_cleans_equal_duplicates(self):
-        raw=png((220,132),'green');source=archive(self.base/'piconProv.zip','piconProv',{'current.png':raw})
-        data=source.read_bytes();url=builder.RAW+'assets/warder/downloads/picons/providers/transparent/piconProv.zip'
-        entry={'delivery':'canonical-220x132-v1','resolution':[220,132],'root':'piconProv','filename':'piconProv.zip','url':url,'publication_source_id':'fullhd-production','png_count':1,'size':len(data),'sha256':hashlib.sha256(data).hexdigest()}
-        target=self.base/'receiver';target.mkdir();old=target/'piconProv_220x132';old.mkdir();(old/'current.png').write_bytes(raw)
-        class Screen:
-            zzz='original-state'
-            def _warderAuxiliaryDestination(_,root):
-                self.assertEqual(root,'piconProv');destination=target/root;destination.mkdir(exist_ok=True);return str(destination)
-            def _warderFetchAuxiliaryArchive(_,asset,path):self.assertEqual(asset['filename'],'piconProv.zip');Path(path).write_bytes(data)
-            def _safeExtractZip(_,path,stage):
-                with zipfile.ZipFile(path) as z:z.extractall(stage)
-            def cprmFiles(s,root):
-                files=list((Path(s.zzz)/root).glob('*.png'))
-                for file in files:shutil.copyfile(file,target/root/file.name)
-                shutil.rmtree(Path(s.zzz)/root);return len(files),len(files)
-            def rmTmp2(_,stage,root):shutil.rmtree(Path(stage)/root,ignore_errors=True)
-            def _warderFilesMatch(_,a,b):return Path(a).read_bytes()==Path(b).read_bytes()
-        screen=Screen();message=installer.install(screen,'aux-prov','transparent',lambda:('',{'piconProv-220':entry}),lambda x:x)
-        self.assertIn('1/1',message);self.assertEqual(screen.zzz,'original-state');self.assertEqual((target/'piconProv/current.png').read_bytes(),raw);self.assertFalse(old.exists())
+    def test_install_provider_and_satellite_with_progress_callback(self):
+        # The progress callback must never be overwritten by the extraction directory.
+        # Both downloads must finish with actual PNG bytes in their final destination.
+        for kind, row, root in (
+            ('provider', 'aux-prov', 'piconProv'),
+            ('satellite', 'aux-sat', 'piconSat'),
+        ):
+            with self.subTest(kind=kind):
+                raw=png((220,132),'green')
+                source=archive(self.base/(root+'.zip'),root,{'current.png':raw})
+                data=source.read_bytes()
+                url=builder.RAW+'assets/warder/downloads/picons/'+kind+'s/transparent/'+root+'.zip'
+                entry={'delivery':'canonical-220x132-v1','resolution':[220,132],
+                       'root':root,'filename':root+'.zip','url':url,
+                       'publication_source_id':'fullhd-production','png_count':1,
+                       'size':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+                target=self.base/('receiver-'+kind)
+                target.mkdir()
+                old=target/(root+'_220x132')
+                old.mkdir()
+                (old/'current.png').write_bytes(raw)
+                events=[]
+                class Screen:
+                    zzz='original-state'
+                    def _warderAuxiliaryDestination(_,folder):
+                        self.assertEqual(folder,root)
+                        destination=target/folder
+                        destination.mkdir(exist_ok=True)
+                        return str(destination)
+                    def _warderFetchAuxiliaryArchive(_,asset,path,progress=None):
+                        self.assertEqual(asset['filename'],root+'.zip')
+                        Path(path).write_bytes(data)
+                    def _safeExtractZip(_,path,stage_dir):
+                        with zipfile.ZipFile(path) as z:
+                            z.extractall(stage_dir)
+                    def cprmFiles(_,folder):
+                        files=list((Path(_.zzz)/folder).glob('*.png'))
+                        for file in files:
+                            shutil.copyfile(file,target/folder/file.name)
+                        shutil.rmtree(Path(_.zzz)/folder)
+                        return len(files),len(files)
+                    def _warderFilesMatch(_,a,b):
+                        return Path(a).read_bytes()==Path(b).read_bytes()
+                screen=Screen()
+                message=installer.install(
+                    screen,row,'transparent',lambda:('',{root+'-220':entry}),
+                    lambda x:x,stage=events.append)
+                self.assertEqual(events,['catalog','download','extract','copy'])
+                self.assertIn('1/1',message)
+                self.assertEqual(screen.zzz,'original-state')
+                self.assertEqual((target/root/'current.png').read_bytes(),raw)
+                self.assertFalse(old.exists())
+
     def test_bad_descriptor_rejected_before_writes(self):
         screen=SimpleNamespace()
         with self.assertRaises(ValueError):installer.install(screen,'aux-prov','black',lambda:('',{'piconProv-b':{'filename':'wrong.zip'}}),lambda x:x)
@@ -146,7 +179,7 @@ class CanonicalTests(unittest.TestCase):
     def test_channel_renderer_prefers_picon_when_old_220_directory_exists(self):
         tree=ast.parse((ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py').read_text());fn=next(n for c in tree.body if isinstance(c,ast.ClassDef) for n in c.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         config=SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par39=SimpleNamespace(value=str(self.base)))))
-        scope={'os':os,'config':config};exec(compile(ast.Module(body=[fn],type_ignores=[]),'channel-path','exec'),scope)
+        scope={'os':os,'config':config,'selected_source':lambda _: (False, '')};exec(compile(ast.Module(body=[fn],type_ignores=[]),'channel-path','exec'),scope)
         for root,data in [('picon',b'current'),('picon_220x132',b'old')]:
             folder=self.base/root;folder.mkdir();(folder/'station.png').write_bytes(data)
         owner=SimpleNamespace(**{'__enaSH':2});self.assertEqual(scope['findPicon'](owner,'station'),str(self.base/'picon/station.png'))

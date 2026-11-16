@@ -212,6 +212,73 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(new_written[0].endswith("…"))
         self.assertTrue(new_written[2].endswith("…"))
 
+    def test_epg_change_notification_preserves_active_marquee_clock(self):
+        from time import time
+        started = time() - 10.0
+        calls = []
+        target = types.SimpleNamespace(
+            instance=Canvas(), _last=("previous",),
+            _scroll_started=started,
+            refresh=lambda: calls.append("refresh"))
+        method("changed")(target, ("updated",))
+        self.assertEqual(calls, ["refresh"])
+        self.assertIsNone(target._last)
+        self.assertEqual(target._scroll_started, started)
+
+    def test_marquee_moves_after_initial_wait_without_extra_three_seconds(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_mode = "barright"
+        self.renderer._scroll_identity = (self.refs[0].name, self.refs[0].title)
+        self.renderer._scroll_started = time() - 2.5
+        self.assertTrue(self.draw())
+        displayed = [call[-1] for call in self.renderer.instance.calls
+                     if call[0] == "write"]
+        measure = lambda value: len(value) * 10
+        # A 2.5s-old selection must already have moved: 1.2s initial wait,
+        # not 1.2s plus a second artificial ~3s delay.
+        start = scroll_title_window(
+            self.refs[0].title, len(displayed[0]) * 10, measure, 0)
+        self.assertNotEqual(displayed[0], start)
+        self.assertFalse(displayed[0].endswith("…"))
+
+    def test_same_station_new_event_restarts_marquee_once(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_mode = "barright"
+        self.renderer._scroll_identity = (self.refs[0].name, self.refs[0].title)
+        self.renderer._scroll_started = time() - 8
+        self.assertTrue(self.draw())
+        previous = self.renderer._scroll_started
+        writes = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"]
+        self.assertFalse(writes[0].endswith("…"))
+        self.refs[0].title = "Vymenený dlhý názov relácie " * 15
+        self.renderer.instance.calls.clear()
+        self.assertTrue(self.draw())
+        self.assertGreater(self.renderer._scroll_started, previous + 1)
+        new_start = self.renderer._scroll_started
+        updated = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"]
+        self.assertTrue(updated[0].endswith("…"))
+        self.assertEqual(self.renderer._scroll_identity,
+                         (self.refs[0].name, self.refs[0].title))
+        self.assertTrue(self.draw())
+        self.assertEqual(self.renderer._scroll_started, new_start)
+
+    def test_same_position_new_station_restarts_marquee(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_mode = "barright"
+        self.renderer._scroll_identity = (self.refs[0].name, self.refs[0].title)
+        self.renderer._scroll_started = time() - 8
+        self.refs[0].name = "Nová stanica HD"
+        self.assertTrue(self.draw())
+        self.assertLess(time() - self.renderer._scroll_started, 2)
+        self.assertEqual(self.renderer._scroll_identity,
+                         (self.refs[0].name, self.refs[0].title))
+
     def test_mode_switch_reapplies_native_disable_before_drawing(self):
         events = []
         component = types.SimpleNamespace(
@@ -342,6 +409,33 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(self.draw())
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
+
+    def test_removed_navigation_probe_is_not_reintroduced(self):
+        # Ineligible backends never sample the native list or schedule an
+        # overlay timer. The old diagnostic probing helper was retired.
+        with self.assertRaises(StopIteration):
+            method("_find_navigation_component")
+
+    def test_ineligible_backend_skips_native_probe_and_paint(self):
+        events = []
+        target = types.SimpleNamespace(
+            _overlay_allowed=False, _navigation_probe=True,
+            _native_navigation_tick=lambda: events.append("sample"),
+            _timer=types.SimpleNamespace(start=lambda *args: events.append(("timer", args))),
+            instance=Canvas(),
+            _find_component=lambda: self.fail("Refresh must not start EPG draw"))
+        method("refresh")(target)
+        self.assertEqual(events, [])
+        self.assertEqual(target.instance.calls, [])
+
+    def test_legacy_image_skips_expensive_renderer_refresh(self):
+        target = types.SimpleNamespace(
+            _overlay_allowed=False,
+            _find_component=lambda: self.fail("Legacy fast path must not inspect service list"),
+            instance=Canvas(),
+            _timer=types.SimpleNamespace(start=lambda *args: self.fail("No refresh timer")))
+        method("refresh")(target)
+        self.assertEqual(target.instance.calls, [])
 
     def test_refresh_disables_native_event_at_cpp_boundary_before_paint(self):
         events = []
@@ -588,22 +682,18 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(target._warder_test_marker)
         self.assertEqual(target.skinAttributes, [("size", "1065,842")])
 
-    def test_diagnostics_are_bounded_and_fail_open(self):
-        import tempfile
-        with tempfile.TemporaryDirectory() as d:
-            logfile = Path(d) / "diagnostics.log"
-            instance = types.SimpleNamespace(_diag_seen=set())
-            def fake_open(filename, mode):
-                self.assertEqual(mode, "a")
-                return logfile.open("a", encoding="utf-8")
-            fn = method("_diag")
-            with patch.dict(fn.__globals__, {"open": fake_open}):
-                for i in range(40):
-                    fn(instance, "code%d" % i, "no event titles")
-            lines = logfile.read_text().splitlines()
-            self.assertEqual(len(lines), 32)
-            self.assertTrue(lines[0].startswith("code0 "))
-            self.assertTrue(lines[-1].startswith("code31 "))
+    def test_obsolete_test59_diagnostics_do_not_write_files(self):
+        # TEST5 replaces the obsolete TEST59 status file with a no-op.
+        # Time-series performance sampling still has its own TEST3 logger.
+        import builtins
+        instance = types.SimpleNamespace(_diag_seen=set())
+        def forbidden_open(*args, **kwargs):
+            raise AssertionError("Obsolete TEST59 logger attempted to write")
+        fn = method("_diag")
+        with patch.dict(fn.__globals__, {"open": forbidden_open}):
+            for i in range(40):
+                fn(instance, "code%d" % i, "no event titles")
+        self.assertNotIn("warder-epg-clip-test59.log", RENDERER.read_text(encoding="utf-8"))
 
     def test_renderer_is_fail_open_and_default_only(self):
         content = RENDERER.read_text(encoding="utf-8")

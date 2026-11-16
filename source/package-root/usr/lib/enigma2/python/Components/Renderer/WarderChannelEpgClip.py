@@ -6,12 +6,13 @@ repaint those titles inside the reserved field. Service names, picons, progress
 bars, selection and fonts remain owned by the image. On unsupported images the
 native renderer is left completely unchanged.
 """
-from time import time
+from time import time, monotonic
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
 from skin import parseColor
 from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+from Plugins.Extensions.setupGlass17.warderEpgRenderPolicy import allow_channel_epg_overlay
 
 
 def scroll_title_window(title, width, measure, pixel_offset):
@@ -66,6 +67,7 @@ class WarderChannelEpgClip(Renderer):
 
     def __init__(self):
         Renderer.__init__(self)
+        self._overlay_allowed = allow_channel_epg_overlay()
         self._timer = eTimer()
         self._connection = None
         try:
@@ -80,6 +82,7 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        self._scroll_identity = None
         # Never fake native EPG suppression with a tiny font. The C++ list
         # skips elements whose font pointer is null; where the image's SWIG
         # binding rejects None, leave its native list untouched.
@@ -88,16 +91,70 @@ class WarderChannelEpgClip(Renderer):
         # Optional receiver-QA dimensions; absent in production XML.
         self._warder_bar_width = None
         self._warder_test_marker = False
+        # TEST3 ONLY: bounded timing samples; no per-frame disk writes.
+        self._perf_since = monotonic()
+        self._perf_ticks = 0
+        self._perf_elapsed_ms = 0.0
+        self._perf_worst_ms = 0.0
+        self._perf_over_20ms = 0
+        self._perf_row_changes = 0
+        self._perf_last_row = None
+        self._perf_name_calls = 0
+        self._perf_progress_calls = 0
+        self._epg_snapshots = {}
+        self._epg_cache_hits = 0
+        self._epg_cache_misses = 0
+        # TEST5: static title/geometry and glyph width measurements.
+        # Neither cache stores channel references or paints pixels.
+        self._row_fit_cache = {}
+        self._glyph_width_cache = {}
+        # TEST6: reusable exact pixel paint plans (not raster approximations).
+        self._progress_paint_cache = {}
+        self._perf_bar_plan_hits = 0
+        self._perf_bar_plan_misses = 0
+        self._perf_text_measure_calls = 0
+        self._perf_text_cache_hits = 0
 
     def _diag(self, key, details=""):
-        # TEST59 only: bounded, local status events; never include EPG titles.
-        # Silently skip unavailable/readonly /tmp; diagnosis must not crash GUI.
+        # Retained as a no-op for compatibility with diagnostic call sites.
+        # TEST59 startup traces are obsolete; do not create a second log.
+        pass
+
+    def _perf_tick(self, elapsed_ms):
         try:
-            if key in self._diag_seen or len(self._diag_seen) >= 32:
+            self._perf_ticks += 1
+            self._perf_elapsed_ms += elapsed_ms
+            self._perf_worst_ms = max(self._perf_worst_ms, elapsed_ms)
+            if elapsed_ms >= 20.0:
+                self._perf_over_20ms += 1
+            now = monotonic()
+            if now - self._perf_since < 5.0:
                 return
-            self._diag_seen.add(key)
-            with open("/tmp/warder-epg-clip-test59.log", "a") as output:
-                output.write("%s %s\n" % (key, details))
+            count = self._perf_ticks
+            if count > 0:
+                with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d bar_plan_hits=%d bar_plan_misses=%d mode=%s\n' % (
+                        now - self._perf_since, count, self._perf_elapsed_ms / count,
+                        self._perf_worst_ms, self._perf_over_20ms,
+                        self._perf_row_changes, self._perf_name_calls,
+                        self._perf_progress_calls, self._epg_cache_hits,
+                        self._epg_cache_misses, self._perf_text_measure_calls,
+                        self._perf_text_cache_hits, self._perf_bar_plan_hits,
+                        self._perf_bar_plan_misses, str(self._progress_mode())))
+            self._perf_since = now
+            self._perf_ticks = 0
+            self._perf_elapsed_ms = 0.0
+            self._perf_worst_ms = 0.0
+            self._perf_over_20ms = 0
+            self._perf_row_changes = 0
+            self._perf_name_calls = 0
+            self._perf_progress_calls = 0
+            self._epg_cache_hits = 0
+            self._epg_cache_misses = 0
+            self._perf_text_measure_calls = 0
+            self._perf_text_cache_hits = 0
+            self._perf_bar_plan_hits = 0
+            self._perf_bar_plan_misses = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -139,17 +196,33 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
-        self._timer.start(55, True)
+        self._scroll_identity = None
+        if hasattr(self, '_row_fit_cache'):
+            self._row_fit_cache.clear()
+        if hasattr(self, '_glyph_width_cache'):
+            self._glyph_width_cache.clear()
+        if hasattr(self, '_epg_snapshots'):
+            self._epg_snapshots.clear()
+        if getattr(self, '_overlay_allowed', True):
+            self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
+        if hasattr(self, '_row_fit_cache'):
+            self._row_fit_cache.clear()
+        if hasattr(self, '_glyph_width_cache'):
+            self._glyph_width_cache.clear()
+        if hasattr(self, '_epg_snapshots'):
+            self._epg_snapshots.clear()
         self._restore_native()
         self._label = None
 
     def changed(self, what):
         if self.instance:
             self._last = None
-            self._scroll_started = time()
+            # EPG/source notifications may fire frequently while the selected
+            # station stays the same. Do not restart its marquee on each one.
+            # _draw_rows resets it for real selection/title/mode changes.
             self.refresh()
 
     def _restore_native(self):
@@ -190,22 +263,49 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_lookup_error", "%s" % type(exc).__name__)
             return None
 
-    def _name_and_event(self, center, ref):
+    def _event_snapshot(self, center, ref):
+        """Keep a short-lived service/EPG snapshot shared by title and bar.
+
+        The GUI still refreshes/scrolls every 55ms, but the native service
+        center is consulted at most once per service per one-second TTL.
+        A fresh event is loaded on the next second, screen rebuild or source
+        change. Never cache indefinitely, and keep memory bounded.
+        """
         try:
-            if ref.flags & 7:  # marker/directory and non-service entries
-                return "", ""
+            if ref.flags & 7:
+                return ("", "", None)
+            key = ref.toString()
+            now = monotonic()
+            cached = self._epg_snapshots.get(key)
+            if cached is not None and now - cached[0] < 1.0:
+                self._epg_cache_hits += 1
+                return cached[1]
             info = center.info(ref)
             if info is None:
-                return "", ""
-            name = info.getName(ref) or ""
-            event = info.getEvent(ref)
-            return name, (event.getEventName() or "") if event else ""
-        except (AttributeError, RuntimeError, TypeError):
-            return "", ""
+                snapshot = ("", "", None)
+            else:
+                event = info.getEvent(ref)
+                snapshot = (info.getName(ref) or "",
+                            (event.getEventName() or "") if event else "", event)
+            if len(self._epg_snapshots) >= 96:
+                # The visible list is usually <= 30. Bound long browsing
+                # sessions without affecting currently visible rows.
+                self._epg_snapshots.clear()
+            self._epg_snapshots[key] = (now, snapshot)
+            self._epg_cache_misses += 1
+            return snapshot
+        except (AttributeError, RuntimeError, TypeError, ValueError):
+            return ("", "", None)
+
+    def _name_and_event(self, center, ref):
+        self._perf_name_calls += 1
+        name, title, event = self._event_snapshot(center, ref)
+        return name, title
 
     def _progress_fraction(self, center, ref):
+        self._perf_progress_calls += 1
         try:
-            event = center.info(ref).getEvent(ref)
+            name, title, event = self._event_snapshot(center, ref)
             if event is None:
                 return None
             duration = int(event.getDuration())
@@ -246,11 +346,15 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
+        if getattr(self, '_perf_last_row', None) is not None and selected != self._perf_last_row:
+            self._perf_row_changes = getattr(self, '_perf_row_changes', 0) + 1
+        self._perf_last_row = selected
         # A new focused service starts its own scroll at the beginning.
         if (selected != getattr(self, "_scroll_selected", None)
                 or mode != getattr(self, "_scroll_mode", None)):
             self._scroll_selected = selected
             self._scroll_mode = mode
+            self._scroll_identity = None
             self._scroll_started = time()
             self._last = None
         width = component.instance.size().width()
@@ -296,44 +400,107 @@ class WarderChannelEpgClip(Renderer):
         name_font = component.ServiceNameFont
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
+        # Invalidate geometrical measurements whenever a style/geometry
+        # property changes; color changes are applied at painting time.
+        geometry_key = (mode, width, height, row_height, text_end, left_shift,
+                        int(component.listMarginLeft), int(component.itemsDistances),
+                        str(config.usage.servicelist_picon_downsize.value),
+                        str(config.usage.servicelist_picon_ratio.value),
+                        id(font), id(name_font))
+        if getattr(self, '_row_geometry_key', None) != geometry_key:
+            if hasattr(self, '_row_fit_cache'):
+                self._row_fit_cache.clear()
+            if hasattr(self, '_glyph_width_cache'):
+                self._glyph_width_cache.clear()
+            self._row_geometry_key = geometry_key
         drawing = []
-        scroll_age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
-        pixel_clock = int(scroll_age * 1000.0 / 55.0) * 2
+        self._focused_title_overflow = False
+        # One progress lookup per visible service: reuse it for the
+        # selected-row text and for the original progress indicator.
+        # Avoid asking the native EPG cache twice on every 55ms refresh.
+        fractions = {}
         for row_index in range(available_rows):
             index = top + row_index
             ref = rows[index]
             name, title = self._name_and_event(center, ref)
             if not title:
                 continue
-            # Service names remain native; use the image's actual name font.
-            self._label.setFont(name_font)
-            self._label.setText(name)
-            name_width = self._label.calculateSize().width()
-            # The legacy row reserves its number/picon column before the name.
-            picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
-                              int(config.usage.servicelist_picon_ratio.value) / 100)
-            start = max(0, int(component.listMarginLeft) + picon_width +
-                        2 * int(component.itemsDistances) + name_width + left_shift)
-            end = text_end
-            remaining = end - start
+            # Stable rows retain their measured name/title geometry across
+            # timer ticks and rapid selection changes. The source snapshot
+            # supplies new text on EPG changes, automatically changing the key.
+            row_cache = getattr(self, '_row_fit_cache', None)
+            glyph_cache = getattr(self, '_glyph_width_cache', None)
+            row_key = (name, title, geometry_key)
+            cached_row = row_cache.get(row_key) if row_cache is not None else None
+            if cached_row is None:
+                self._label.setFont(name_font)
+                self._label.setText(name)
+                name_width = self._label.calculateSize().width()
+                if hasattr(self, '_perf_text_measure_calls'):
+                    self._perf_text_measure_calls += 1
+                picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
+                                  int(config.usage.servicelist_picon_ratio.value) / 100)
+                start = max(0, int(component.listMarginLeft) + picon_width +
+                            2 * int(component.itemsDistances) + name_width + left_shift)
+                remaining = text_end - start
+            else:
+                start, remaining, overflow, first_frame = cached_row
+                if hasattr(self, '_perf_text_cache_hits'):
+                    self._perf_text_cache_hits += 1
             if remaining <= 0:
                 continue
             self._label.setFont(font)
             def measure(text):
+                if glyph_cache is not None:
+                    key = (title, text)
+                    found = glyph_cache.get(key)
+                    if found is not None:
+                        if hasattr(self, '_perf_text_cache_hits'):
+                            self._perf_text_cache_hits += 1
+                        return found
                 self._label.setText(text)
-                return self._label.calculateSize().width()
-            overflow = max(0, measure(title) - remaining)
-            # Pause at both ends; replay the whole title from its beginning.
-            # 2px per 55ms virtual motion, with safe glyph-aligned painting.
-            journey = overflow + 220
-            # Only the focused row animates; every other event remains
-            # ellipsized and stable even while the timer refreshes the canvas.
-            position = (min(overflow, max(0, (pixel_clock % journey) - 110))
-                        if overflow and index == selected else 0)
-            fitted = scroll_title_window(title, remaining, measure, position)
+                result = self._label.calculateSize().width()
+                if hasattr(self, '_perf_text_measure_calls'):
+                    self._perf_text_measure_calls += 1
+                if glyph_cache is not None:
+                    if len(glyph_cache) >= 512:
+                        glyph_cache.clear()
+                    glyph_cache[(title, text)] = result
+                return result
+            if cached_row is None:
+                overflow = max(0, measure(title) - remaining)
+                first_frame = scroll_title_window(title, remaining, measure, 0)
+                if row_cache is not None:
+                    if len(row_cache) >= 128:
+                        row_cache.clear()
+                    row_cache[row_key] = (start, remaining, overflow, first_frame)
+            position = 0
+            if index == selected:
+                self._focused_title_overflow = overflow > 0
+                current_identity = (name, title)
+                previous_identity = getattr(self, '_scroll_identity', None)
+                if previous_identity is not None and previous_identity != current_identity:
+                    # New programme on the same station, or a changed station
+                    # at the same row index: restart from the beginning.
+                    self._scroll_started = time()
+                self._scroll_identity = current_identity
+                if overflow:
+                    # Show the beginning for 1.2s, then scroll at a
+                    # glyph-aligned 2px/55ms clock. Pause on the complete
+                    # suffix before returning to the start. Avoid the old
+                    # extra ~3-second hold *after* the initial wait.
+                    age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
+                    pixel_clock = int(age * 1000.0 / 55.0) * 2
+                    journey = overflow + 90
+                    position = min(overflow, pixel_clock % journey)
+            # Other rows remain statically fitted within their own field.
+            fitted = (first_frame if position == 0 else
+                      scroll_title_window(title, remaining, measure, position))
             if fitted:
+                fraction = self._progress_fraction(center, ref)
+                fractions[row_index] = fraction
                 drawing.append((start, row_index * row_height, remaining, row_height,
-                                fitted, index == selected, self._progress_fraction(center, ref)))
+                                fitted, index == selected, fraction))
         # On stock OpenATV, disabling native EPG text also prevents the native
         # C++ progressbar from receiving its event. Draw its real elapsed
         # fraction in the reserved bar cell: no C++ patch or black mask.
@@ -343,8 +510,11 @@ class WarderChannelEpgClip(Renderer):
                      else width - int(component.listMarginRight) - bar_width)
             bar_h = 10
             for row_index in range(available_rows):
-                ref = rows[top + row_index]
-                fraction = self._progress_fraction(center, ref)
+                # No second EPG lookup when this row already has a fraction.
+                fraction = fractions.get(row_index)
+                if row_index not in fractions:
+                    ref = rows[top + row_index]
+                    fraction = self._progress_fraction(center, ref)
                 if fraction is None:
                     continue
                 progress_bars.append((bar_x, row_index * row_height + (row_height - bar_h) // 2,
@@ -368,33 +538,57 @@ class WarderChannelEpgClip(Renderer):
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
         if progress_bars:
-            # Restore the original Warder progressbar design from the
-            # pre-TEST69 renderer, without its former opaque text mask.
+            # The exact eight-segment gradient, frame width, rectangles and
+            # source colors remain identical to TEST5. Only geometry and
+            # parseColor conversion are reused across rows/timer frames.
+            #
+            # Cache by actual pixel width/height and integer filled length,
+            # *not* by service: a programme changing does not inherit an
+            # outdated bar, and no user-selected position is shared.
+            paint_cache = getattr(self, '_progress_paint_cache', None)
+            if paint_cache is None:
+                paint_cache = {}
             border = parseColor("#dfdfdf")
             for bx, by, bw, bh, fraction in progress_bars:
                 if bw <= 4 or bh <= 4:
                     continue
+                inner_width = bw - 4
+                filled = int(inner_width * fraction)
+                key = (bw, bh, filled)
+                plan = paint_cache.get(key)
+                if plan is None:
+                    if hasattr(self, '_perf_bar_plan_misses'):
+                        self._perf_bar_plan_misses += 1
+                    # Immutable relative rectangles preserve every original
+                    # eCanvas fillRect call; only offset by the current row.
+                    segments = []
+                    for segment in range(8):
+                        a = filled * segment // 8
+                        z = filled * (segment + 1) // 8
+                        if z <= a:
+                            continue
+                        t = ((a + z) / 2.0) / max(1, inner_width)
+                        if t < .55:
+                            u = t / .55
+                            rgb = (int(53 + 179 * u), int(177 + 23 * u),
+                                   int(63 - 14 * u))
+                        else:
+                            u = (t - .55) / .45
+                            rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
+                        segments.append((2 + a, 2, z - a, bh - 4,
+                                         parseColor("#%02x%02x%02x" % rgb)))
+                    plan = tuple(segments)
+                    if len(paint_cache) >= 128:
+                        paint_cache.clear()
+                    paint_cache[key] = plan
+                elif hasattr(self, '_perf_bar_plan_hits'):
+                    self._perf_bar_plan_hits += 1
                 self.instance.fillRect(eRect(bx, by, bw, 2), border)
                 self.instance.fillRect(eRect(bx, by + bh - 2, bw, 2), border)
                 self.instance.fillRect(eRect(bx, by + 2, 2, bh - 4), border)
                 self.instance.fillRect(eRect(bx + bw - 2, by + 2, 2, bh - 4), border)
-                inner_width = bw - 4
-                filled = int(inner_width * fraction)
-                for segment in range(8):
-                    a = filled * segment // 8
-                    z = filled * (segment + 1) // 8
-                    if z <= a:
-                        continue
-                    t = ((a + z) / 2.0) / max(1, inner_width)
-                    if t < .55:
-                        u = t / .55
-                        rgb = (int(53 + 179 * u), int(177 + 23 * u), int(63 - 14 * u))
-                    else:
-                        u = (t - .55) / .45
-                        rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
-                    self.instance.fillRect(
-                        eRect(bx + 2 + a, by + 2, z - a, bh - 4),
-                        parseColor("#%02x%02x%02x" % rgb))
+                for dx, dy, pw, ph, color in plan:
+                    self.instance.fillRect(eRect(bx + dx, by + dy, pw, ph), color)
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
@@ -407,6 +601,12 @@ class WarderChannelEpgClip(Renderer):
         return True
 
     def refresh(self):
+        # Native fast path never starts an EPG overlay repaint cycle.
+        if not getattr(self, '_overlay_allowed', True):
+            return
+        # Local import also supports isolated AST-method regression tests.
+        from time import monotonic
+        started = monotonic()
         try:
             if not self.instance or not self._label:
                 return
@@ -418,6 +618,12 @@ class WarderChannelEpgClip(Renderer):
             if component is not self._component:
                 self._restore_native()
                 self._component = component
+                if hasattr(self, '_epg_snapshots'):
+                    self._epg_snapshots.clear()
+                if hasattr(self, '_row_fit_cache'):
+                    self._row_fit_cache.clear()
+                if hasattr(self, '_glyph_width_cache'):
+                    self._glyph_width_cache.clear()
                 self._native_disable_unsupported = False
                 self._last = None
             # Unsupported views must remain completely native; never
@@ -489,5 +695,15 @@ class WarderChannelEpgClip(Renderer):
             if self.instance:
                 self.instance.clear(self._transparent)
         finally:
+            # Performance diagnostics are not active in production.
+
             if self.instance:
-                self._timer.start(55, True)
+                # TEST10: retain the original 55 ms motion during active
+                # focused-title scrolling, but avoid repainting all visible
+                # rows 18x/sec while the text is stationary. The native
+                # scroll position is derived from wall time, so slow/fast
+                # timer transitions cannot change the displayed title.
+                age = time() - getattr(self, '_scroll_started', time())
+                active = bool(getattr(self, '_focused_title_overflow', False)
+                              and age >= 1.2)
+                self._timer.start(55 if active else 130, True)

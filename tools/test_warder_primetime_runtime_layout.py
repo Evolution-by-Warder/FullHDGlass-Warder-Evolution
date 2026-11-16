@@ -22,11 +22,13 @@ def runtime_function(path, enabled):
     value = lambda x: SimpleNamespace(value=x)
     config = SimpleNamespace(plugins=SimpleNamespace(
         warderEvolutionPrimeTime=SimpleNamespace(enabled=value(enabled)),
+        warderEpgListScroll=SimpleNamespace(enabled=value(True)),
         setupGlass17=SimpleNamespace(
             par109=value("#cdcdcd"), par110=value("#6cbcf0"),
             par111=value("#6cbcf0"), par117=value("#dddddd"))))
     context = {
         "config": config, "SKINXML": str(path), "ENA_P_CH": False, "re": re,
+        "allow_channel_epg_overlay": lambda: True,
         "_atomicWriteText": lambda p, content: Path(p).write_text(content, encoding="utf-8"),
     }
     exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), context)

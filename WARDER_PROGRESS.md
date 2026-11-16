@@ -122,6 +122,43 @@ Independent audit of `116e0aed` → `3edd726b` passed: exactly three documentati
 - **48 TV / 429 PNG / 99 ZIPov / 87 otvorených.** Žiadna nová bezpečná integrácia ani technické uzavretie. Dávka18 NIE JE dokončená. Register priorít a presné zhody: `reports/vhannibal-followup-20261106/scope-batch-20261110-18-research.json`.
 - 5 prípadov vyžaduje správnu schválenú grafiku, 80 presnú identitu/klasifikáciu, 2 sú chránené TV5MONDE. Všetky pôvodné blokácie platia. Bez zásahu do PNG/ZIPov, 18 CANAL+ archívov, rádia, produkcie či main. Inštalačné testy N/A: žiadny inštalovateľný obsah sa nemenil. PR #50 nezlučovať.
 
+## 2026-11-09 — PackageAction TEST 5 selected-row contrast
+
+## 9. 11. 2026 – oficiálna 1.0.76, reprodukovateľné vydávanie
+
+- **Oficiálny Release [v1.0.76](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.76) je publikovaný**. IPK `enigma2-plugin-skins-fullhdglass_1.0.76_all.ipk` (18 230 904 B), SHA-256 v `update-production.json`: `e5eb84dd8c5eaeeae09de055fa862857c4ff508ddef73f91bcb6cd89084b7f9a`, 10 jazykov aktualizátora. Produkčný zápis a IPK na `main` commit `29fb0706`.
+- Integrácia: PR #85 (úplné odstránenie vlastných adresárov pri skutočnom odinštalovaní, release pipeline a integrity guard), PR #84 (fyzicky schválený PackageAction TEST5), PR #81 (natívny EPG fallback), PR #86 (OpenATV 8.1 aktívny GLES, schválené čierne/biele/transparentné picony, `prev.png`, lokálne testy a verziovanie).
+- Všetkých päť grafík má byte-identické Git blob SHA voči schváleným súborom: `picon_default.png` aj `picon_default-def.png` `7cd7354e75f2658fb5e933c8c5038c0e59dc6606`, `picon_default-wdef.png` `486b587e139b19cd6072fd08dd573e59398acdc8`, `picon220_default.png` `faf96e4b810d802833faeb9fdd1b9d6dfe08d2c1`, `prev.png` `110fd855d2de670bb3e2de500ac0d0685c762ae9`.
+- Jediný generický vydávací workflow `.github/workflows/publish-warder-stable.yml` reaguje na zmenu čísla verzie, robí preflight, regresie, deterministický IPK, immutable GitHub Release, až potom aktualizuje produkčný feed, a nakoniec overí celý reťazec. Pri opakovanom zostavení neprepíše existujúci Release. Opravený bol sparse-checkout posledného kroku a jeho idempotencia. **Overený úspešný opakovaný GitHub Actions run [42659693345](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42659693345)**.
+- `.github/workflows/verify-production-release-state.yml` a `tools/verify-production-release-state.py` denne alebo po zmene produkčného balíka/feedu kontrolujú zhodu verzie, IPK, SHA-256, URL a Release assetov. Overovací run [42659622888](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42659622888) **success**. Staré per-version publikačné workflow ponechané ako historické záznamy, nie sú už potrebné pre ďalšie vydanie.
+
+- **Repo-wide retention zapísaný v každom projekte**: `docs/RELEASE_RETENTION_POLICY.md` v FullHDGlass (`f4876aec`, 58 Releases), PiconHub (`481e9b91`, 15), GSU (`e152e593`, 10), Warder Radio (`527493e3`, 43) a archívnom Trezore (`523287aa`, 2 zálohy). Uchovávať posledných 5 ostrých vydaní a významné míľniky, chrániť živé aktualizačné URL a rollback verzie; Trezor výslovne vyňatý z automatického prerezávania. **Žiadne Releases ani tagy neboli odstránené**; pred čistením treba vytvoriť referenčný audit a keep/remove manifest.
+- Release notes obsahujú technický opis GLES, EPG, PackageAction a grafík. Podľa výslovného želania používateľa **neobsahujú informáciu o úprave odinštalovania**.
+- Stav: oficiálna 1.0.76 publikovaná, aktualizačný kanál aktivovaný, automatická reprodukcia a kontrola úspešné. Na fyzickom GigaBlue/SF8008 ešte treba overiť celé nové IPK. Cleanup starých Releases v ďalších projektoch rieši samostatná inventúra; nič nemaž bez auditu existujúcich závislostí.
+
+
+- Approved request: only active row gets cyan name/version `color_sel=0x006cbcf0` and yellow description `color_sel=0x00ffff00`; normal rows keep their original colors and description white. Geometry remains name 690, version 630, description 1335. No changes to plugin logic or other screen styles.
+- Candidate implemented on draft PR #84, latest source/test commit `eb523fb307f6283ad26612c32c36c8cb6398d20e`; the exact-change skin guard was updated. Receiver ZIP `/mnt/data/warder_packageaction_columns_test5.zip` prepared and XML verified. Hardware acceptance and CI confirmation pending; production 1.0.75 unchanged.
+
+## 2026-11-09 — PackageAction TEST 4 (full-width white description)
+
+- Owner requested restoring second-row description to x95 width1335, independent from first-row name and version columns, and displaying the description white while retaining the selected plugin name's existing blue highlighting.
+- Candidate PR #84 branch: name x95 width690; version x800 width630; description x95 width1335 with `color=0x00ffffff`; all original fonts and icon positions unchanged. CI guard allows only the exact three approved template edits; focused test updated. Latest code commit `3263cdf38eaf6046448b1fc6f28f3d9a76a1a0ae`.
+- Receiver test ZIP `warder_packageaction_columns_test4.zip` created; XML parsed and ZIP integrity verified. Receiver visual confirmation pending; no release/merge/feed change.
+
+## 2026-11-09 — PackageAction TEST 2: restrict descriptions to left column
+
+- User's receiver confirmed full right-column versions after TEST 1 but very long descriptions overlapped them. On branch `fix/packageaction-version-columns-20261109` (draft PR #84), description `text=4` x95 width1335 -> width650; name remains width650 and version x760 width670, gap 15. Original fonts and icons retained. Test case and exact-diff guard updated through commit `f663f8137c99ea47b94f19212cb2b8a26cbe9b74`. Created receiver ZIP `warder_packageaction_columns_test2.zip` based on prior tested XML. Receiver validation remains pending; no production changes.
+
+## 2026-11-09 — PackageAction plugin install/remove version clipping (PR #84)
+
+- Owner supplied Python 3.14 `PluginBrowser.pyc`; embedded screen for `PackageAction` is confirmed. Shaman 9.50 and Warder 9.50-r12.2 have no `PackageAction` override; modern Warder `skin.xml` does, which is used for plugin install/remove lists.
+- Original PackageAction template: category name `text=2` is wide but independent; plugin name `text=3` is x95 width930, version `text=5` is right-aligned x1040 width390. Long 8.1 package versions are left-truncated within that narrow field. **Do not change PluginDownloadBrowser**, which is not this screenshot.
+- Draft candidate `fix/packageaction-version-columns-20261109`, PR https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/84. Exactly two template fields changed: plugin name width650, version x760 width670; gap15; right icon stays x1450. Original typography and unrelated widgets unchanged. Added `tools/test_packageaction_version_columns.py`, focused GitHub workflow and exact-two-edits approved-skin guard.
+- Created local receiver test ZIP from owner's installed `skin.xml` archive containing only revised skin.xml and Slovak instructions. XML parses and bytewise change confined to two template entries.
+- Previous font-only PR #83 closed unmerged and font restored; no production update or official IPK changed.
+- Pending GitHub CI and **GigaBlue OpenATV 8.1 receiver visual acceptance** of install and uninstall screens, followed by regression on older image/other layouts. No merge/release authorization.
+
 # Warder Evolution – stav projektu
 
 ### Dávka 17 – dve doložené technické uzavretia – 10. 11. 2026

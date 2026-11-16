@@ -1,9 +1,16 @@
-# FullHDGlass 1.0.69
+# FullHDGlass – Warder Evolution 1.0.73
 
-Nová voľba Zdroj piconov v zozname staníc vo VÝBER KANÁLOV, hneď pod Typ. Predvolené Systémové nastavenie obnovuje pôvodné vyhľadávanie spred 1.0.68. Preferovať 50×30 je voliteľné a zachováva náhradu z picon. Po aktualizácii reštartujte GUI.
+Stabilné vydanie zo dňa **8. novembra 2026**, založené na na prijímačoch overenej verzii TEST12.
 
-[Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.69/enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk)
+- **OpenATV 7.6 a 8.1:** opravené prekrývanie dlhých EPG názvov s indikátormi; plynulé rolovanie vybraného názvu, optimalizované prekresľovanie.
+- **OpenPLi 9.2:** obnovený predvolený zoznam staníc natívnym vykresľovaním; rolovanie dlhých názvov na OpenPLi nie je súčasťou tejto verzie.
+- Zachované PIG rozloženia, Prime Time, picony, progressbary, používateľské nastavenia a predchádzajúce opravy. Bez systémového C++ patchu.
 
-SHA256: ed6ce655b3506606c9f424b5b55854453dd39bce7aac2572691c4318c1c07f4e
+[Stiahnuť oficiálny IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.73/enigma2-plugin-skins-fullhdglass_1.0.73_all.ipk)
 
-Automatické kontroly OpenATV a OpenPLi a overenie skutočného balíka prešli. Čakáme na spätnú väzbu z prijímača.
+[Podrobný zoznam zmien](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/docs/warder-1.0.73-release-notes.md)
+
+**SHA256:** `a5fd727d35a40dd40c36cff3bb0cf7a862d0c15f37a42eb64c43d9dc37089df0`  
+**Veľkosť:** 17 275 662 bajtov
+
+GitHub Release, kontrolný súčet a produkčný aktualizačný feed overené. Po úspešnej aktualizácii **reštartujte GUI**.

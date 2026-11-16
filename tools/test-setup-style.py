@@ -4,6 +4,7 @@ import ast
 import hashlib
 import importlib.util
 import json
+import re
 from pathlib import Path
 import unittest
 from types import SimpleNamespace
@@ -15,33 +16,57 @@ style=importlib.util.module_from_spec(spec);spec.loader.exec_module(style)
 BASELINE=json.loads(style.FIXTURE.read_text())
 CURRENT=style.PLUGIN.read_text()
 LAYOUTS=style.extract(CURRENT)
+# The v1.0.76 baseline retains reviewed controller behavior. PR #99 intentionally
+# changes picon lookup wiring, expert destination persistence and the PATHS label.
+# The working-branch fingerprint is pinned separately and still rejects unrelated edits.
+RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
+REVIEWED_1076_SHA256='fd235c106e17ee638b44c87a07411a3b8ef7a8288a5172d4525aa01fdc6f8bea'
+REVIEWED_PR99_SHA256='c057e541971ba6a442f1959e8e5f19e99c673db3dce2c23da21abf1a1e643777'
+# Owner-requested removal of the abandoned IPTV radio-picon selector is the
+# only authorized 1.0.80 controller change. Preserve an exact AST fingerprint.
+RETIRED_RADIO_PICONS_1080_SHA256='81875e0d54ec49b51cb96814c099a02e3aaed641a2268659445e3072ba3c8557'
+EXPECTED_SHA=(RETIRED_RADIO_PICONS_1080_SHA256 if RUNTIME_VERSION == '1.0.80' else
+              REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
+              REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
+
+def fingerprint_source(source):
+    # Stable releases change only the visible header version labels.
+    # Restore those labels for the frozen 1.0.76 controller AST check.
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79'):
+        source, count = re.subn(
+            r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
+            r'\g<1>1.0.76\2', source)
+        if count != 10:
+            raise AssertionError('Expected 10 reviewed version header labels')
+    return style.normalized(ast.parse(source))
+
 
 
 class SetupStyleTests(unittest.TestCase):
     def test_picon_source_default_cannot_silently_change_to_mini(self):
         changed=CURRENT.replace('par231 = ConfigSelection(default="system"','par231 = ConfigSelection(default="mini"',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_modified_channel_picon_hook_is_not_silently_approved(self):
         changed=CURRENT.replace('lambda: config.plugins.setupGlass17.par39.value,','lambda: "/tmp",',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_openpli_graph_hook_changes_are_not_silently_approved(self):
         changed=CURRENT.replace('WarderProgramInfo, _warderUiText, report_error=Writelog)', 'None, _warderUiText, report_error=Writelog)',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_openpli_hook_changes_are_not_silently_approved(self):
         changed=CURRENT.replace('domScreens as _WarderSkinScreens','screens as _WarderSkinScreens',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_openpli_guard_cannot_drop_existing_openatv_protection(self):
         changed=CURRENT.replace('if isATV or _WarderOpenPli:', 'if _WarderOpenPli:',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_prime_time_exceptions_are_exact_and_scope_bound(self):
         ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
@@ -68,7 +93,7 @@ class SetupStyleTests(unittest.TestCase):
         ):
             changed = CURRENT.replace(old, new, 1)
             self.assertNotEqual(changed, CURRENT)
-            self.assertNotEqual(style.normalized(ast.parse(changed)), BASELINE['logic_sha256'])
+            self.assertNotEqual(style.normalized(ast.parse(changed)), EXPECTED_SHA)
 
     def test_each_reviewed_prime_time_ast_node_occurs_once_in_its_scope(self):
         ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
@@ -91,11 +116,19 @@ class SetupStyleTests(unittest.TestCase):
         # remain historical records; verify their approved successor patterns
         # explicitly instead of requiring obsolete AST nodes to still exist.
         evolved = {
+            4: "if t in (config.plugins.warderEvolutionPrimeTime.enabled, config.plugins.warderUserPicons.enabled):",
             3: "if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:",
             9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
             11: "in_default_channel_screen = default_geometry",
             12: "if in_default_channel_screen and '</screen>' in line:",
+            14: "if in_default_channel_screen and 'render=\"WarderChannelEpgClip\"' in line:",
         }
+        # The optional EPG-scrolling switch intentionally changes the old
+        # unconditional clip detection. An existing overlay must be removed
+        # when scrolling is disabled; only enabled overlays count as present.
+        self.assertEqual(CURRENT.count('if not epg_scroll_enabled:'), 1)
+        self.assertEqual(CURRENT.count('has_clipped_events = True'), 1)
+        self.assertIn('if not has_clipped_events and epg_scroll_enabled:', CURRENT)
         for index, record in enumerate(ledger):
             if index in evolved:
                 self.assertEqual(counts[index], 0, record['scope'])
@@ -119,18 +152,30 @@ class SetupStyleTests(unittest.TestCase):
         for statement in required:
             self.assertEqual(CURRENT.count(statement), 1, statement)
 
+    def test_pr88_offline_factory_reset_and_storage_labels_remain_guarded(self):
+        # Specific contract checks complement the complete controller fingerprint.
+        for statement in (
+            'def restoreFactoryIcons():',
+            'os.path.join(SKINPATH, "icons_factory")',
+            'os.replace(tmp, destination)',
+            'self._warderFactoryResetPending = True',
+            'ui_text("Storage for graphics sets, picons and data")',
+            'ui_text("Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here.")',
+        ):
+            self.assertIn(statement, CURRENT, statement)
+
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
-        self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
+        self.assertEqual(fingerprint_source(CURRENT),EXPECTED_SHA)
 
     def test_modified_compatibility_installation_hook_is_not_silently_approved(self):
         changed=CURRENT.replace('_WarderCoolContent.TYPE_TEXT,','_WarderCoolContent.TYPE_PIXMAP,',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_modified_approved_bitrate_readiness_limit_still_fails(self):
         changed=CURRENT.replace('self.bitratePrepareAttempts > 20','self.bitratePrepareAttempts > 0',1)
         self.assertNotEqual(changed,CURRENT)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_fingerprint_is_portable_but_still_detects_changed_save_action(self):
         tree=ast.parse(CURRENT);before=style.normalized(tree)
@@ -260,7 +305,7 @@ class SetupStyleTests(unittest.TestCase):
         self.assertIn(ast.dump(ast.parse(style.PANEL_INIT).body[0]),[ast.dump(x) for x in init.body])
         self.assertEqual(ast.dump(setup.body[0]),ast.dump(ast.parse(style.PANEL_CALL).body[0]))
         changed=CURRENT.replace('panel.show()', 'panel.hide()',1)
-        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+        self.assertNotEqual(style.normalized(ast.parse(changed)),EXPECTED_SHA)
 
     def test_footer_canvas_is_hidden_until_an_actual_colour_is_selected(self):
         renderer_path=ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsCanvas.py'

@@ -1,0 +1,23 @@
+name: Verify EPG GLES runtime policy
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'tools/test_warder_epg_gles_policy.py'
+      - '.github/workflows/verify-epg-gles-runtime-policy.yml'
+  workflow_dispatch:
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile runtime modules
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - name: Verify supported and fallback renderers
+        run: python -m unittest discover -s tools -p 'test_warder_epg_gles_policy.py' -v

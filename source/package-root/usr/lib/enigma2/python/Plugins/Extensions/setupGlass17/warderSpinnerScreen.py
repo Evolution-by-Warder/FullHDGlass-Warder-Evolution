@@ -54,7 +54,7 @@ def screen_skin():
 class SpinnerChoice(Screen):
     skin = screen_skin()
 
-    def __init__(self, session, selected='dove'):
+    def __init__(self, session, selected='bakussa'):
         Screen.__init__(self, session)
         self.skinName = ['WarderSpinnerChoice']
         self.setTitle(ui_text('Spinner'))
@@ -86,7 +86,9 @@ class SpinnerChoice(Screen):
 
     def local_rows(self):
         catalog = backend.catalog()
-        rows = []
+        rows = [{'id': 'system', 'title': 'Default spinner of image',
+                 'author': 'OpenATV / OpenPLi', 'local_id': 'system',
+                 'local_picture': None}]
         for key, theme in catalog['themes'].items():
             source = Path(catalog['downloaded_sources'].get(key, backend.SKIN_ROOT/'spinner-themes'/key))
             image = source/theme.get('preview_frame', theme['frames'][0]['name'])
@@ -124,8 +126,9 @@ class SpinnerChoice(Screen):
             key = row['id'] if row['id'] in available and online.frame_digest(available[row['id']]['frames'])==row['frames_sha256'] else 'dl-'+row['archive']['sha256'][:16]
             if key in local:
                 row.update(local_id=key, local_picture=local[key]['local_picture'])
-        self.rows = rows
-        self.cursor = next((i for i,r in enumerate(rows) if r.get('local_id')==self.selected), 0)
+        # Keep the system entry visible even after the online list arrives.
+        self.rows = [local['system']] + [row for row in rows if row.get('id') != 'system']
+        self.cursor = next((i for i,r in enumerate(self.rows) if r.get('local_id')==self.selected), 0)
         self.page = -1
         self.show_page()
 

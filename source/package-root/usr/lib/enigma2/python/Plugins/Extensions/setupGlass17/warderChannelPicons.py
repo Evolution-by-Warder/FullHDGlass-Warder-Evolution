@@ -5,9 +5,14 @@ from re import sub
 
 
 def reference_names(reference, alternative):
-    fields = alternative(reference).split(':', 10)[:10]
+    resolved = alternative(reference)
+    if not isinstance(resolved, str):
+        return ()
+    fields = resolved.split(':', 10)[:10]
     if len(fields) != 10 or any('/' in field or '\\' in field for field in fields):
         return ()
+    # Canonical PNG files use uppercase hex reference components.
+    fields = [field.upper() for field in fields]
     names = ['_'.join(fields)]
     # Match the image/legacy skin aliases without changing native search paths.
     for reftype in dict.fromkeys((fields[0], '1')):
@@ -32,41 +37,45 @@ def name_aliases(reference, get_name, sanitize):
         sub(r'(fhd|uhd|hd|sd|4k)$', '', legacy).strip()) if n))
 
 
-def find_picon(reference, base, alternative, get_name, sanitize):
+def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=False, custom_folder=None):
     if not base:
         return ''
     references = reference_names(reference, alternative)
     if not references:
         return ''
     aliases = None
-    for folder in ('picon_50x30', 'picon'):
-        if not isdir(join(base, folder)):
+    folders = ('picon_50x30', 'picon') if prefer_mini else ('picon', 'picon_50x30')
+    # Expert choice is authoritative: never silently mix two picon collections.
+    directories = [custom_folder] if custom_folder is not None else [join(base, folder) for folder in folders]
+    for directory in directories:
+        if not isdir(directory):
             continue
         for name in references:
-            path = join(base, folder, name + '.png')
+            path = join(directory, name + '.png')
             if isfile(path):
                 return path
         if aliases is None:
             aliases = name_aliases(reference, get_name, sanitize)
         for name in aliases:
-            path = join(base, folder, name + '.png')
+            path = join(directory, name + '.png')
             if isfile(path):
                 return path
     return ''
 
 
-def install(service_list, is_active, get_base, alternative, get_name, sanitize, prefer_mini=None):
+def install(service_list, is_active, get_base, alternative, get_name, sanitize, prefer_mini=None, get_custom=None):
     """Wrap only ServiceList's imported lookup; keep the image renderer intact."""
     def wrap(original):
         @wraps(original)
         def lookup(reference, *args, **kwargs):
-            if is_active() and prefer_mini is not None and prefer_mini():
+            if is_active():
                 try:
-                    path = find_picon(reference, get_base(), alternative, get_name, sanitize)
-                    if path:
-                        return path
+                    return find_picon(
+                        reference, get_base(), alternative, get_name, sanitize,
+                        prefer_mini=bool(prefer_mini is not None and prefer_mini()),
+                        custom_folder=get_custom() if get_custom is not None else None)
                 except (AttributeError, OSError, TypeError, ValueError):
-                    pass
+                    return ''
             return original(reference, *args, **kwargs)
         lookup._warder_channel_picons = True
         return lookup

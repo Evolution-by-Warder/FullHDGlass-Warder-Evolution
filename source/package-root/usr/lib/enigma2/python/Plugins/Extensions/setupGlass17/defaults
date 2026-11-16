@@ -75,7 +75,6 @@ Temp.HDD: False
 Special info mainmenu: True
 Weather units: c
 Weather reloading time: 15
-Weather provider: MSN
 wea-autoreconnect time: 10
 Show yesterday: True
 Warm color: AutoColors

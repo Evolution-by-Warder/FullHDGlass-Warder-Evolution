@@ -1,7 +1,8 @@
 """Select native, pre-rendered skin spinners at save/install time only.
 
 No renderer, background worker, playback timer or diagnostic files are added.
-The image/system/user spinner paths are never changed. Enigma2 loads the
+The image/system/user spinner paths are never changed. Selecting 'system'
+removes only the private skin-owned frames, enabling native image fallback. Enigma2 loads the
 selected private skin frames on the next GUI start.
 """
 import hashlib
@@ -53,7 +54,7 @@ def downloaded(root=DOWNLOAD_ROOT):
 
 def catalog(path=CATALOG, download_root=DOWNLOAD_ROOT):
     value = json.loads(Path(path).read_text())
-    if value.get('schema') != 1 or value.get('default') != 'dove':
+    if value.get('schema') != 1 or value.get('default') != 'bakussa':
         raise ValueError('Unsupported spinner catalog')
     themes = value['themes']
     if not themes or value['default'] not in themes or any(not re.fullmatch('[a-z][a-z0-9-]{0,31}', key) for key in themes):
@@ -73,7 +74,7 @@ def catalog(path=CATALOG, download_root=DOWNLOAD_ROOT):
 
 
 def choices(translate, catalog_path=CATALOG):
-    return [(key, translate(theme['title'])) for key, theme in catalog(catalog_path)['themes'].items()]
+    return [('system', translate('Default spinner of image'))] + [(key, translate(theme['title'])) for key, theme in catalog(catalog_path)['themes'].items()]
 
 
 def _read_frame(path):
@@ -113,21 +114,11 @@ def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOW
     """Validate first, swap a complete private set, roll back failed swaps."""
     data = catalog(catalog_path, download_root)
     themes = data['themes']
-    if theme_id not in themes:
+    if theme_id != 'system' and theme_id not in themes:
         raise ValueError('Unknown spinner selection')
     root = Path(skin_root)
     if root.is_symlink() or not root.is_dir():
         raise ValueError('Skin directory is not a regular directory')
-    source = Path(data['downloaded_sources'].get(theme_id, root / 'spinner-themes' / theme_id))
-    library = root / 'spinner-themes'
-    if library.is_symlink() or source.is_symlink() or not source.is_dir():
-        raise ValueError('Spinner source directory is not a regular directory')
-    frames = []
-    for entry in themes[theme_id]['frames']:
-        raw, digest = _read_frame(source / entry['name'])
-        if digest != entry['sha256']:
-            raise ValueError('Spinner source verification failed')
-        frames.append((entry['name'], raw, digest))
     active = root / 'spinner'
     previous = root / '.warder-spinner-previous'
     # Recover an interruption between the two directory renames.
@@ -138,6 +129,26 @@ def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOW
         else:
             _known_files(active, themes)
             _remove_known(previous, themes)
+    # Return to the image-provided spinner without changing system files.
+    # The receiver falls back to skin_default/spinner when our private
+    # hd_glass17/spinner/wait1.png is absent at GUI startup.
+    if theme_id == 'system':
+        if not active.exists() and not active.is_symlink():
+            return False
+        _known_files(active, themes)
+        os.rename(active, previous)
+        _remove_known(previous, themes)
+        return True
+    source = Path(data['downloaded_sources'].get(theme_id, root / 'spinner-themes' / theme_id))
+    library = root / 'spinner-themes'
+    if library.is_symlink() or source.is_symlink() or not source.is_dir():
+        raise ValueError('Spinner source directory is not a regular directory')
+    frames = []
+    for entry in themes[theme_id]['frames']:
+        raw, digest = _read_frame(source / entry['name'])
+        if digest != entry['sha256']:
+            raise ValueError('Spinner source verification failed')
+        frames.append((entry['name'], raw, digest))
     if active.exists() or active.is_symlink():
         current = _known_files(active, themes)
         if {path.name for path in current} == {name for name, _, _ in frames} and all(
@@ -178,7 +189,7 @@ def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOW
 
 
 def saved_theme(settings, catalog_path=CATALOG):
-    value = 'dove'
+    value = 'bakussa'
     path = Path(settings)
     if path.is_file():
         for line in path.read_text(errors='replace').splitlines():
@@ -186,16 +197,16 @@ def saved_theme(settings, catalog_path=CATALOG):
             if separator and key == SETTING:
                 value = selected.strip()
     data = catalog(catalog_path)
-    return value if value in data['themes'] else data['default']
+    return value if value == 'system' or value in data['themes'] else data['default']
 
 
 if __name__ == '__main__':
     import sys
     try:
         if sys.argv[1:] == ['--prepare-removal']:
-            # Return to the package-owned eighteen files before opkg removes
-            # them, so a longer selected set cannot leave an unowned tail.
-            apply('dove')
+            # Restore all twenty package-owned frames before opkg removal,
+            # even if the saved choice is 'system' or another theme.
+            apply('bakussa')
         elif not sys.argv[1:]:
             apply(saved_theme('/etc/enigma2/settings'))
         else:

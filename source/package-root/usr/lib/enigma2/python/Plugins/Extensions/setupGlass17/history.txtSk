@@ -1,3 +1,23 @@
+FullHDGlass 1.0.77 — 10.11.2026
+Úplný reset obnoví všetkých 148 originálnych ikon bez stiahnutej grafickej sady aj vtedy, keď je už zvolený typ 1.
+Premenovaná položka úložiska grafiky a piconov s viacjazyčnou nápovedou; samostatná nápoveda k zálohe hdg17.conf.
+Odstránená neplatná predvolená hodnota poskytovateľa počasia MSN.
+Bezstratovo optimalizovaných 15 PNG obrázkov s úsporou 686 901 bajtov bez zmeny obrazových pixelov.
+Pôvodné JPG pozadie rádia aj doterajšie funkcie zostávajú zachované. Po aktualizácii reštartujte GUI.
+
+FullHDGlass 1.0.73 — 08.11.2026
+Výber staníc: opravené dlhé názvy EPG zasahujúce do pravých indikátorov priebehu na OpenATV.
+Dlhý názov programu na vybranej stanici sa plynulo posúva vo vyhradenom priestore a umožní prečítať aj jeho koniec bez prekrytia progressbaru.
+Názvy programov na ostatných staniciach zostávajú pokojné a bezpečne skrátené.
+Obmedzené zbytočné prekresľovanie stojaceho textu; zachovaná plynulosť posúvania vybraného dlhého názvu.
+Zachované zvýraznenie stanice, picony, pôvodné fonty a nastavenia veľkosti písma.
+Farebné progressbary, percentá a zostávajúci čas zostávajú vo svojich stĺpcoch.
+OpenPLi 9.2: opravený prázdny predvolený zoznam staníc použitím natívneho vykresľovania OpenPLi namiesto vrstvy určenej pre OpenATV.
+Zachované pôvodné indikátory a správanie zoznamu OpenPLi; rolovanie názvov na OpenPLi táto verzia nepridáva.
+Zachované funkčné rozloženia PIG, oddeľovač Prime Time a panel so šiestimi nasledujúcimi udalosťami.
+Zachované rozloženie PluginBrowser a schválená oprava horného okraja.
+Overené na GigaBlue s OpenATV 7.6 a 8.1 a OpenPLi 9.2; po aktualizácii reštartujte GUI.
+
 FullHDGlass 1.0.72 — 08.11.2026
 Vylepšené zisťovanie rozlíšenia IPTV aj pri neúplných údajoch služby.
 Doplnené náhradné načítanie šírky obrazu priamo z dekodéra.

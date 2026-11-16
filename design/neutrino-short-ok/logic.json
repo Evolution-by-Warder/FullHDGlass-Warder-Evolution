@@ -1,0 +1,22 @@
+[
+  {
+    "scope": "startHdg17",
+    "before": "",
+    "after": "InfoBarPlugins.warderNeutrinoChannelList17 = warderNeutrinoChannelList17"
+  },
+  {
+    "scope": "hdg17inicialize",
+    "before": "self[\"g17Actions\"] = ActionMap([\"g17Actions_neutrino\"],{\"ok_pressed\": self.controlWindow17}, -1)",
+    "after": "self[\"g17Actions\"] = ActionMap([\"g17Actions_neutrino\"],{\"ok_pressed\": self.controlWindow17,\"warder_neutrino_channel_list\": self.warderNeutrinoChannelList17}, -1)"
+  },
+  {
+    "scope": "hdg17inicialize",
+    "before": "self[\"g17Actions\"] = ActionMap([\"g17Actions_neutrinoSpecial\"],{\"showSpecialScreen\": self.SpecialScreenWindow17,\"ok_pressed\": self.controlWindow17}, -1)",
+    "after": "self[\"g17Actions\"] = ActionMap([\"g17Actions_neutrinoSpecial\"],{\"showSpecialScreen\": self.SpecialScreenWindow17,\"ok_pressed\": self.controlWindow17,\"warder_neutrino_channel_list\": self.warderNeutrinoChannelList17}, -1)"
+  },
+  {
+    "scope": "module",
+    "before": "",
+    "after": "def warderNeutrinoChannelList17(self):\n\t\"\"\"Open the existing Enigma2 service list only in Warder Neutrino mode.\n\n\tUse the image-owned API; do not patch Enigma2 or replace its keymap.\n\tThe keymap binds on key release (b), leaving long-OK mappings intact.\n\t\"\"\"\n\tif not isinstance(self, InfoBar) or not config.plugins.setupGlass17.par34.value:\n\t\treturn\n\t# OpenATV 7.6 keeps LongButtonPressed set on long-press release.\n\t# Do not reinterpret a long OK as another short OK.\n\tif getattr(self, \"LongButtonPressed\", False):\n\t\treturn\n\t# System Neutrino may have already opened the list on key-down.\n\tservicelist = getattr(self, \"servicelist\", None)\n\tif servicelist is not None and getattr(self.session, \"current_dialog\", None) is servicelist:\n\t\treturn\n\topen_list = getattr(self, \"openServiceList\", None)\n\tif callable(open_list):\n\t\topen_list()"
+  }
+]
