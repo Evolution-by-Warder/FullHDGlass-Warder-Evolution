@@ -1,0 +1,158 @@
+name: Curated SAT full 117-ZIP archive audit
+
+on:
+  push:
+    branches:
+      - curation/vhannibal-sat-approved-20261116
+    paths:
+      - .github/workflows/curated-sat-full-verify.yml
+      - assets/warder/downloads/picons/channels/manifest.json
+      - assets/warder/downloads/picons/channels/SHA256SUMS
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Verify 39 ZIPs ${{ matrix.resolution }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        resolution: ["50x30", "220x132", "400x240"]
+    env:
+      RESOLUTION: ${{ matrix.resolution }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+          persist-credentials: false
+      - name: Check all changed archives of this resolution
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, struct, tempfile, time, urllib.request, zipfile
+          ROOT = pathlib.Path("assets/warder/downloads/picons/channels")
+          REPO = "Evolution-by-Warder/FullHDGlass-Warder-Evolution"
+          BRANCH = "curation/vhannibal-sat-approved-20261116"
+          BASE = "26d3d5aefc234f106b04a205eb628e152c10bf7f"
+          REMOTE = "https://raw.githubusercontent.com/" + REPO + "/"
+          SEG = "/assets/warder/downloads/picons/channels/"
+          resolution = os.environ["RESOLUTION"]
+          dims = tuple(map(int, resolution.split("x")))
+
+          data = (ROOT / "manifest.json").read_bytes()
+          hashes = {}
+          for line in (ROOT / "SHA256SUMS").read_text().splitlines():
+              digest, sep, name = line.partition("  ")
+              assert sep and name not in hashes and len(digest) == 64
+              hashes[name] = digest
+          assert hashes.pop("manifest.json") == hashlib.sha256(data).hexdigest()
+          manifest = json.loads(data)
+          assert manifest["delivery"] == "raw-github-parts"
+          assert len(manifest["packages"]) == 498 and len(manifest["parts"]) == 2132
+          parts = {}
+          for part in manifest["parts"]:
+              n = part["filename"]
+              assert n not in parts
+              assert hashes.pop(n) == part["sha256"]
+              parts[n] = part
+          assert not hashes
+          with urllib.request.urlopen(REMOTE + BASE + SEG + "manifest.json", timeout=120) as response:
+              baseline = json.load(response)
+          old = {(p["selector_id"],p["resolution"],p["family"]): p for p in baseline["packages"]}
+          main_parts = {p["filename"] for p in baseline["parts"]}
+          new_parts = set(parts) - main_parts
+          assert len(new_parts) == 1173, len(new_parts)
+          index = {(p["selector_id"],p["resolution"],p["family"]): p for p in manifest["packages"]}
+          assert len(index) == 498 and set(index) == set(old)
+          changed = {k for k,p in index.items() if p["sha256"] != old[k]["sha256"]}
+          assert len(changed) == 117 and len({k[0] for k in changed}) == 13
+          assert len([k for k in changed if k[1] == resolution]) == 39
+          protected = [k for k in index if k[0].upper() in ("CANALPLUS_SK", "CANALPLUS_CZ")]
+          assert len(protected) == 18
+          assert all(index[k]["sha256"] == old[k]["sha256"] for k in protected)
+          used = set()
+          for key,pkg in index.items():
+              total = 0
+              for url in pkg["parts"]:
+                  assert url.startswith(REMOTE + "main" + SEG), url
+                  n = url.rsplit("/", 1)[-1]
+                  assert n in parts and n not in used, n
+                  total += parts[n]["bytes"]
+                  used.add(n)
+              assert total == pkg["bytes"], key
+          assert used == set(parts)
+
+          def download(url, out, expected_sha, expected_size):
+              last_error = None
+              for attempt in range(4):
+                  digest = hashlib.sha256()
+                  count = 0
+                  try:
+                      request = urllib.request.Request(url, headers={"User-Agent":"Warder-full-archive-verification"})
+                      with urllib.request.urlopen(request,timeout=150) as response, open(out,"wb") as output:
+                          while True:
+                              block = response.read(1024*1024)
+                              if not block:
+                                  break
+                              output.write(block)
+                              digest.update(block)
+                              count += len(block)
+                      assert count == expected_size, (url,count,expected_size)
+                      assert digest.hexdigest() == expected_sha, (url,"SHA256 mismatch")
+                      return
+                  except (OSError,AssertionError) as exc:
+                      last_error = exc
+                      if attempt < 3:
+                          time.sleep(2**attempt)
+              raise RuntimeError("Part verification failed: " + url) from last_error
+
+          verified = 0
+          total_pngs = 0
+          for key in sorted(changed):
+              if key[1] != resolution:
+                  continue
+              pkg = index[key]
+              digest = hashlib.sha256()
+              with tempfile.TemporaryDirectory() as td:
+                  archive = pathlib.Path(td) / "archive.zip"
+                  with archive.open("wb") as combined:
+                      for url in pkg["parts"]:
+                          filename = url.rsplit("/", 1)[-1]
+                          source = url.replace("/main/", "/" + BRANCH + "/") if filename in new_parts else url
+                          piece = pathlib.Path(td) / "part"
+                          download(source,piece,parts[filename]["sha256"],parts[filename]["bytes"])
+                          with piece.open("rb") as part:
+                              while True:
+                                  chunk = part.read(1024*1024)
+                                  if not chunk:
+                                      break
+                                  combined.write(chunk)
+                                  digest.update(chunk)
+                  assert archive.stat().st_size == pkg["bytes"], key
+                  assert digest.hexdigest() == pkg["sha256"], key
+                  with zipfile.ZipFile(archive) as z:
+                      assert z.testzip() is None, key
+                      names = z.namelist()
+                      assert len(names) == len(set(names)) == pkg["png_count"], key
+                      for filename in names:
+                          assert filename.lower().endswith(".png"), filename
+                          with z.open(filename) as member:
+                              header = member.read(24)
+                          assert header[:8] == bytes.fromhex("89504e470d0a1a0a"), filename
+                          assert header[12:16] == b"IHDR", filename
+                          assert struct.unpack(">II",header[16:24]) == dims, (key,filename)
+                      total_pngs += len(names)
+              verified += 1
+              print("PASS",key,"PNG",pkg["png_count"],flush=True)
+          assert verified == 39
+          print("FULL SAT PASS",resolution,verified,"ZIPs",total_pngs,"PNGs; SHA256 ZIP CRC and dimensions",flush=True)
+          print("Read-only CI. Physical receiver installation and visual correctness are not certified.",flush=True)
+          PY
