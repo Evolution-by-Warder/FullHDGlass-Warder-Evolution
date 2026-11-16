@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "date": "2026-11-16",
+  "scope": "PR #50 SAT manifest link availability audit and repair",
+  "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "pr": 50,
+  "branch": "work/vhannibal-mezzo-sd-20261106",
+  "base_commit": "153aa3a7b9c51fab8744c427ddf449638b57f4f3",
+  "main_commit": "26d3d5aefc234f106b04a205eb628e152c10bf7f",
+  "issue": {
+    "broken_main_part_urls": 1098,
+    "affected_package_records": 106,
+    "affected_selectors": [
+      "08W",
+      "130E",
+      "192E",
+      "260E",
+      "282E",
+      "360E",
+      "390E",
+      "420E",
+      "48E_A",
+      "520E",
+      "549E",
+      "70W"
+    ],
+    "cause": "Files already present in PR work branch but absent from production main"
+  },
+  "repair": {
+    "url_replacements": 1098,
+    "source_ref": "main",
+    "target_ref": "work/vhannibal-mezzo-sd-20261106",
+    "old_manifest_sha256": "967bd8c6d454eb34e9ef1f298e7f0d875784ffbfcf2957bb9365eb4c19476624",
+    "new_manifest_sha256": "8bb9f720c6e054d7de9a2806d96c265038e0ea9ab51761b8bc26ab2864ea62f6",
+    "changed_assets": [
+      "manifest.json",
+      "SHA256SUMS"
+    ],
+    "png_changed": 0,
+    "zip_bytes_changed": 0,
+    "part_records_changed": 0,
+    "package_hashes_changed": 0
+  },
+  "validated": {
+    "package_count": 498,
+    "part_count": 2132,
+    "sha256sums_entries": 2133,
+    "all_part_metadata_consistent": true,
+    "package_sizes_consistent": true,
+    "protected_canalplus_packages_byte_identical": 18
+  },
+  "release_gate": "PR remains unmerged. Before eventual merge/release, switch work-branch URLs to main only after every target part exists on main, then refresh manifest SHA256SUMS and perform full ZIP/CRC/receiver test.",
+  "limitations": "Repository object checks and checksums metadata only; no re-download of complete ZIP or physical receiver run"
+}
