@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "date": "2026-11-16",
+  "scope": "PR #50 main sync without production release",
+  "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "pr": 50,
+  "branch": "work/vhannibal-mezzo-sd-20261106",
+  "backup_branch": "backup/vhannibal-pr50-pre-sync-20261116",
+  "base_checkpoint": "12247acc20f699606f6d40f3783e4162b92674b9",
+  "main_before": "26d3d5aefc234f106b04a205eb628e152c10bf7f",
+  "pr_before": "270e9b0b57ade7ab6e685af7c0877782d0631f15",
+  "merge_commit": "9cff48bbf16084611ac0843c6f63cca4d5b0c7c8",
+  "merge_tree": "34fb3e3a72438323c33867650ab45c099d2f256c",
+  "merged_parents": [
+    "270e9b0b57ade7ab6e685af7c0877782d0631f15",
+    "26d3d5aefc234f106b04a205eb628e152c10bf7f"
+  ],
+  "conflict_resolution": "main-only additions are carried into PR; conflicting WARDER_PROGRESS.md keeps the exact PR content plus the main-only release history; no existing PR picon assets overwritten",
+  "audit": {
+    "expected_git_files": 17429,
+    "actual_git_files": 17429,
+    "mismatched_git_blob_paths_or_modes": 0,
+    "main_changed_paths_since_base": 345,
+    "pr_changed_paths_since_base": 2311,
+    "simultaneously_divergent_paths": [
+      "WARDER_PROGRESS.md"
+    ],
+    "assets_picon_mismatches": 0,
+    "main_branch_changed": false,
+    "pr_mergeable": true,
+    "pr_mergeable_state": "clean",
+    "behind_main": 0,
+    "ahead_of_main_after_merge": 74
+  },
+  "sat_work": {
+    "completed_tv_references": 54,
+    "integrated_png": 467,
+    "open_blocked": 81,
+    "ready_queue": 0,
+    "anuvu_blocked_outside_queue": 7,
+    "protected_canal_packages_preserved": 18
+  },
+  "caveats": [
+    "Git blob/tree audit is not a receiver installation test.",
+    "CI status was not available for the merge commit at the moment of synchronization.",
+    "PR #50 is open; no merge to main, no release, no feed update."
+  ],
+  "followup": "Only revisit blocked cases upon genuinely new per-reference DVB/Enigma2 proof or authoritative station identity; do not repeat closed batches."
+}
