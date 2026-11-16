@@ -85,10 +85,13 @@ jobs:
                   total += part_meta[filename]["bytes"]
               assert total == p["bytes"], ident
           assert len(pkg_index) == 498 and len(used) == 2132
-          assert refs == {"main": 959, BRANCH: 1173}, refs
+          assert refs == {"main": 2132, BRANCH: 0}, refs
           with urllib.request.urlopen(remote + BASE + segment + "manifest.json", timeout=60) as response:
               baseline = json.load(response)
           old_packages = {(p["selector_id"], p["resolution"], p["family"]): p for p in baseline["packages"]}
+          main_part_names = {p["filename"] for p in baseline["parts"]}
+          new_part_names = set(part_meta) - main_part_names
+          assert len(new_part_names) == 1173, len(new_part_names)
           changed = [k for k,p in pkg_index.items() if p["sha256"] != old_packages[k]["sha256"]]
           assert len(changed) == 117
           protected = [k for k in pkg_index if k[0].upper() in ("CANALPLUS_SK", "CANALPLUS_CZ")]
@@ -109,7 +112,9 @@ jobs:
                           n = url.rsplit("/", 1)[-1]
                           one = hashlib.sha256()
                           size = 0
-                          request = urllib.request.Request(url, headers={"User-Agent": "Warder-curation-integrity"})
+                          # Main URLs are staged; unmerged new parts must be fetched from the draft branch.
+                          source_url = url.replace("/main/", "/" + BRANCH + "/") if n in new_part_names else url
+                          request = urllib.request.Request(source_url, headers={"User-Agent": "Warder-curation-integrity"})
                           with urllib.request.urlopen(request, timeout=90) as response:
                               while True:
                                   chunk = response.read(1024*1024)
@@ -138,5 +143,5 @@ jobs:
                       print("SELECTOR PASS", selector, len(members), "picons")
           print("CURATED SAT PASS: 498 packages, 2132 linked parts, 117 modified packages,")
           print("13 real representative ZIP archives CRC+SHA256+PNG dimensions verified; CANAL+ protected.")
-          print("This is a read-only archive test, not full visual or receiver certification.")
+          print("Main URLs staged, unmerged part files read from curation branch. No receiver certification.")
           PY
