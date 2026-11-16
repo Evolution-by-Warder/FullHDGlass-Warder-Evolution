@@ -1,0 +1,142 @@
+name: Curated SAT picons read-only verification
+
+on:
+  push:
+    branches:
+      - curation/vhannibal-sat-approved-20261116
+    paths:
+      - .github/workflows/curated-sat-verify.yml
+      - assets/warder/downloads/picons/channels/manifest.json
+      - assets/warder/downloads/picons/channels/SHA256SUMS
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /reports/vhannibal-curation-20261116.json
+          persist-credentials: false
+
+      - name: Audit main preservation, references and 13 real archive samples
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import struct
+          import tempfile
+          import urllib.request
+          import zipfile
+
+          REPO = "Evolution-by-Warder/FullHDGlass-Warder-Evolution"
+          BRANCH = "curation/vhannibal-sat-approved-20261116"
+          BASE = "26d3d5aefc234f106b04a205eb628e152c10bf7f"
+          root = pathlib.Path("assets/warder/downloads/picons/channels")
+          data = (root / "manifest.json").read_bytes()
+          sha = hashlib.sha256(data).hexdigest()
+          lines = (root / "SHA256SUMS").read_text().splitlines()
+          sums = {}
+          for line in lines:
+              digest, name = line.split("  ", 1)
+              assert name not in sums, name
+              sums[name] = digest
+          assert sums.pop("manifest.json") == sha
+          m = json.loads(data)
+          assert m["delivery"] == "raw-github-parts"
+          assert len(m["packages"]) == 498 and len(m["parts"]) == 2132
+          assert len(sums) == 2132
+          part_meta = {}
+          for part in m["parts"]:
+              n = part["filename"]
+              assert n not in part_meta
+              assert sums.pop(n) == part["sha256"]
+              part_meta[n] = part
+          assert not sums
+          used = set()
+          refs = {"main": 0, BRANCH: 0}
+          remote = "https://raw.githubusercontent.com/" + REPO + "/"
+          segment = "/assets/warder/downloads/picons/channels/"
+          pkg_index = {}
+          for p in m["packages"]:
+              ident = (p["selector_id"], p["resolution"], p["family"])
+              assert ident not in pkg_index
+              pkg_index[ident] = p
+              total = 0
+              for url in p["parts"]:
+                  assert url.startswith(remote), url
+                  stem = url[len(remote):]
+                  ref, sep, filename = stem.partition(segment)
+                  assert sep and ref in refs, (ref, filename)
+                  assert filename in part_meta and filename not in used
+                  used.add(filename)
+                  refs[ref] += 1
+                  total += part_meta[filename]["bytes"]
+              assert total == p["bytes"], ident
+          assert len(pkg_index) == 498 and len(used) == 2132
+          assert refs == {"main": 959, BRANCH: 1173}, refs
+          with urllib.request.urlopen(remote + BASE + segment.lstrip("/") + "manifest.json", timeout=60) as response:
+              baseline = json.load(response)
+          old_packages = {(p["selector_id"], p["resolution"], p["family"]): p for p in baseline["packages"]}
+          changed = [k for k,p in pkg_index.items() if p["sha256"] != old_packages[k]["sha256"]]
+          assert len(changed) == 117
+          protected = [k for k in pkg_index if k[0].upper() in ("CANALPLUS_SK", "CANALPLUS_CZ")]
+          assert len(protected) == 18
+          assert all(pkg_index[k]["sha256"] == old_packages[k]["sha256"] for k in protected)
+          selected_positions = sorted({k[0] for k in changed})
+          assert len(selected_positions) == 13
+
+          for selector in selected_positions:
+              pkg = pkg_index[(selector, "50x30", "channel-transparent")]
+              assert pkg["sha256"] != old_packages[(selector, "50x30", "channel-transparent")]["sha256"]
+              digest = hashlib.sha256()
+              with tempfile.TemporaryDirectory() as td:
+                  path = pathlib.Path(td) / "archive.zip"
+                  total = 0
+                  with path.open("wb") as out:
+                      for url in pkg["parts"]:
+                          n = url.rsplit("/", 1)[-1]
+                          one = hashlib.sha256()
+                          size = 0
+                          request = urllib.request.Request(url, headers={"User-Agent": "Warder-curation-integrity"})
+                          with urllib.request.urlopen(request, timeout=90) as response:
+                              while True:
+                                  chunk = response.read(1024*1024)
+                                  if not chunk:
+                                      break
+                                  out.write(chunk)
+                                  one.update(chunk)
+                                  digest.update(chunk)
+                                  size += len(chunk)
+                          assert one.hexdigest() == part_meta[n]["sha256"], n
+                          assert size == part_meta[n]["bytes"], n
+                          total += size
+                  assert total == pkg["bytes"]
+                  assert digest.hexdigest() == pkg["sha256"]
+                  with zipfile.ZipFile(path) as z:
+                      assert z.testzip() is None, selector
+                      members = z.namelist()
+                      assert len(members) == pkg["png_count"], selector
+                      for filename in members:
+                          assert filename.endswith(".png"), filename
+                          with z.open(filename) as f:
+                              header = f.read(24)
+                              assert header[:8] == b"\x89PNG\r\n\x1a\n"
+                              assert header[12:16] == b"IHDR"
+                              assert struct.unpack(">II", header[16:24]) == (50,30), (selector,filename)
+                      print("SELECTOR PASS", selector, len(members), "picons")
+          print("CURATED SAT PASS: 498 packages, 2132 linked parts, 117 modified packages,")
+          print("13 real representative ZIP archives CRC+SHA256+PNG dimensions verified; CANAL+ protected.")
+          print("This is a read-only archive test, not full visual or receiver certification.")
+          PY
