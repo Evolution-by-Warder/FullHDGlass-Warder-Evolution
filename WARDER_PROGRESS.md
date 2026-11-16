@@ -1,3 +1,13 @@
+## 2026-11-16 — Dávka 22, TV5MONDE Europe HD a technické uzavretia
+
+**54 TV referencií / 467 integrovaných PNG.** Doplnené dva pôvodne neviditeľné transparentné PNG 220×132 pre TV5MONDE Europe HD na 19,2°E a 0,8°W. Teraz má každá referencia všetkých deväť variantov. Oba PNG sú bajtovo zhodné s existujúcim donorom TV5MONDE Europe z troch pozícií. Zvyšných 16 variantov má pôvodné bajty.
+
+[Balíkový commit `6ac2928b`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/6ac2928b6fbefe14268eb4f7e853957540031e31) · [Audit](reports/vhannibal-followup-20261106/scope-batch-20261116-22/independent-audit.json) · [Register 86 prípadov](reports/vhannibal-followup-20261106/scope-batch-20261116-22/reference-register.json) · [PR #50](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/50)
+
+**Audit po spätnom načítaní PASS.** Dva ZIPy, 21 odkazov na časti a 6914 zachovaných členov. SHA‑256, CRC, rozmery a RGBA oboch integrovaných PNG sú overené. Overená je bajtová identita 18 chránených balíkov CANAL+ SK/CZ podľa Git objektov a manifestu.
+
+Tri referencie SES Demo HD na 45°E a 66°E sú uzavreté ako testovacie prezentačné služby. Z dávky 19 ostáva **81 otvorených prípadov** s konkrétnym chýbajúcim externým dôkazom. Sedem služieb Anuvu na 34,5°W evidujeme mimo týchto 81 a potrebujú plný typ služby a namespace z Enigma2. PR #50 zostáva otvorený.
+
 ## 2026-11-16 — CBBC HD na 15°W, audit PASS
 
 **52 TV referencií a 465 integrovaných PNG.** Referencia `1_0_19_46C0_1000_1_D7AAB23_0_0_0` má v deviatich pracovných ZIPoch všetky varianty 50×30, 220×132 a 400×240 s transparentným, bielym a čiernym pozadím. Každý PNG je bajtovo zhodný so sadou schválenou vlastníkom 12. novembra.
