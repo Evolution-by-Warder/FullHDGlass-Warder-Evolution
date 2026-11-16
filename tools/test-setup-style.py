@@ -22,7 +22,11 @@ LAYOUTS=style.extract(CURRENT)
 RUNTIME_VERSION=(style.PLUGIN.parent/'version').read_text().strip()
 REVIEWED_1076_SHA256='fd235c106e17ee638b44c87a07411a3b8ef7a8288a5172d4525aa01fdc6f8bea'
 REVIEWED_PR99_SHA256='c057e541971ba6a442f1959e8e5f19e99c673db3dce2c23da21abf1a1e643777'
-EXPECTED_SHA=(REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
+# Owner-requested removal of the abandoned IPTV radio-picon selector is the
+# only authorized 1.0.80 controller change. Preserve an exact AST fingerprint.
+RETIRED_RADIO_PICONS_1080_SHA256='81875e0d54ec49b51cb96814c099a02e3aaed641a2268659445e3072ba3c8557'
+EXPECTED_SHA=(RETIRED_RADIO_PICONS_1080_SHA256 if RUNTIME_VERSION == '1.0.80' else
+              REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
               REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
 
 def fingerprint_source(source):

@@ -9584,7 +9584,6 @@ class downloadMenu(Screen):
 		if row == "wp-pos":
 			selected = list(self.warderPiconPrefs.get("position_bindings", []))
 			if self.warderPiconPrefs.get("include_dab"):selected.append(dict(warderRadio.DAB_BINDING))
-			if self.warderPiconPrefs.get("include_iptv"):selected.append(dict(warderRadio.IPTV_BINDING))
 			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, selected)
 			return
 		choices = {}
@@ -9645,21 +9644,20 @@ class downloadMenu(Screen):
 			return
 		self.warderPositionSelectionAttempted = True
 		include_dab = any(warderRadio.is_dab(item) for item in answer)
-		include_iptv = any(warderRadio.is_iptv(item) for item in answer)
 		native = [item for item in answer if not warderRadio.is_radio(item)]
 		bindings = warderPiconSync.normalize_position_bindings(native)
 		if len(bindings) != len(native):
 			bindings = []
 		self.warderPiconPrefs = warderPiconSync.set_task_position_bindings(self.warderPiconPrefs, bindings)
 		self.warderPiconPrefs["include_dab"] = include_dab
-		self.warderPiconPrefs["include_iptv"] = include_iptv
+		self.warderPiconPrefs.pop("include_iptv", None)
 		positions = list(self.warderPiconPrefs.get("positions", []))
 		if positions:
 			preview = ", ".join(positions[:4])
 			if len(positions) > 4:
 				preview += " ..."
 			label = _("Satellite positions") + ": " + preview + " (" + str(len(bindings)) + " " + _("FastScan tables selected") + ")"
-		elif include_dab or include_iptv:
+		elif include_dab:
 			label = _("Satellite positions") + ": " + warderRadio.label(self.warderPiconPrefs, _)
 			self.warderPiconPrefs["prepared"] = True
 		else:
@@ -9672,7 +9670,7 @@ class downloadMenu(Screen):
 			if self.menuListAll[index][0] == "wp-pos":
 				self.menuListAll[index][1] = label
 				break
-		if positions or include_dab or include_iptv:
+		if positions or include_dab:
 			self.warderPiconPrefs["prepared"] = True
 			self._setWarderPiconPrepared("wp-pos")
 		self.createList()
@@ -11130,7 +11128,6 @@ class warderPositionSelectorScr(Screen):
 		Screen.__init__(self, session)
 		self.selected = set(warderPiconSync.task_package_selectors_from_bindings([item for item in (selected or []) if not warderRadio.is_radio(item)]))
 		if any(warderRadio.is_dab(item) for item in (selected or [])):self.selected.add("DAB")
-		if any(warderRadio.is_iptv(item) for item in (selected or [])):self.selected.add("IPTV-SK-CZ")
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Save"))
@@ -11143,7 +11140,6 @@ class warderPositionSelectorScr(Screen):
 		self.onLayoutFinish.append(self.startSelect)
 
 	def startSelect(self):
-		self.list.addSelection(warderRadio.label({"include_iptv": True}), dict(warderRadio.IPTV_BINDING), -1, "IPTV-SK-CZ" in self.selected, PLUGINPATH + "images/selectors/IPTV-SK-CZ.png")
 		self.list.addSelection("DAB / DAB+", dict(warderRadio.DAB_BINDING), 0, "DAB" in self.selected, PLUGINPATH + "images/selectors/DAB.png")
 		ordered = warderPiconSync.task_satlist_display_order(SATLIST)
 		for x in ordered:
