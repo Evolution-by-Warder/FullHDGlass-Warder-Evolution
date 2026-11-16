@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "date": "2026-11-16",
+  "kind": "CURATED_SAT_INTEGRATION",
+  "repo": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "source": "PR #50 at 670d1776297539abc1789cd15c3228df8f5f3c92",
+  "base_main": "26d3d5aefc234f106b04a205eb628e152c10bf7f",
+  "curation_branch": "curation/vhannibal-sat-approved-20261116",
+  "selection": {
+    "package_total": 498,
+    "updated_packages": 117,
+    "source_tv_references_complete": 54,
+    "source_png_integrated": 467,
+    "net_added_png_members": 465,
+    "repaired_existing_empty_png": 2,
+    "positions": [
+      "08W",
+      "130E",
+      "150W",
+      "192E",
+      "260E",
+      "282E",
+      "360E",
+      "390E",
+      "420E",
+      "48E_A",
+      "520E",
+      "549E",
+      "70W"
+    ],
+    "required_new_git_part_objects": 1173,
+    "excluded_unreferenced_source_part_objects": 781,
+    "unchanged_packages": 381,
+    "protected_canalplus_packages": 18,
+    "blocked_reference_cases_not_added": 81,
+    "blocked_anuvu_cases_not_added": 7
+  },
+  "contents": {
+    "git_parts": "Only source objects addressed by manifest; all other main assets kept unchanged",
+    "manifest": "Picon references updated to self-contained curation branch; package hashes/bytes unchanged",
+    "sha256sums": "Only manifest checksum recalculated",
+    "legacy_batch_reports": "not imported",
+    "source_plugin_code": "not imported",
+    "production_main": "unchanged"
+  },
+  "verification": {
+    "source_parts_and_package_sizes": "Checked against Git objects and manifest metadata",
+    "batch22_real_zip_sha256_crc": "PASS in PR50 GitHub Actions 43883670885",
+    "all117_packages_full_crc": "NOT YET VERIFIED",
+    "receiver_install": "NOT YET VERIFIED"
+  },
+  "release_gate": "Before merging to main, change the 1173 curation URLs to main after files are available; check SHA256SUMS/ZIP and receiver. No auto merge or release."
+}
