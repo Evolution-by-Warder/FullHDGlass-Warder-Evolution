@@ -168,10 +168,8 @@ msgstr "带着PIG"
 msgid "G17 events"
 msgstr "G17事件"
 
-#, fuzzy
-#| msgid "Icons"
 msgid "Big Icons"
-msgstr "图标"
+msgstr "大图标"
 
 msgid "Poster"
 msgstr "海报"
@@ -362,7 +360,7 @@ msgstr "HD Glass17(FHD)皮肤设置"
 msgid ""
 "Sorry, \"ftp\" is unavailable yet, check your internet connection or "
 "firewall settings !!!"
-msgstr ""
+msgstr "FTP 暂不可用，请检查网络连接或防火墙设置！"
 
 msgid "OLED type"
 msgstr "OLED类型"
@@ -415,10 +413,8 @@ msgstr "电影选择类型"
 msgid "EPG selection type"
 msgstr "EPG选择类型"
 
-#, fuzzy
-#| msgid "Menu type"
 msgid "EventView type"
-msgstr "菜单类型"
+msgstr "节目信息类型"
 
 msgid "PIG type"
 msgstr "PIG 类型"
@@ -460,7 +456,7 @@ msgid "Service scan long list"
 msgstr "服务扫描长列表"
 
 msgid "Extended Number ZAP Picon Size"
-msgstr ""
+msgstr "数字换台台标大小"
 
 msgid "GUI will now be restarted to activate restored options:"
 msgstr "现在将重新启以激活还原选项："
@@ -574,7 +570,7 @@ msgid "EPG SELECTION"
 msgstr "EPG选择"
 
 msgid "EVENT VIEW"
-msgstr ""
+msgstr "节目信息"
 
 msgid "SPECIAL INFO"
 msgstr "特殊信息"
@@ -919,17 +915,13 @@ msgid "Enable next city in Weather"
 msgstr "在天气中启用下一个城市"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "OpenWeatherMap API 密钥"
 
-#, fuzzy
-#| msgid "Forecast for Nighttime"
 msgid "Forecast for more days"
-msgstr "夜间预报"
+msgstr "多日天气预报"
 
-#, fuzzy
-#| msgid "10 days switch time"
 msgid "More days switch time"
-msgstr "10天切换时间"
+msgstr "更多天数切换时间"
 
 msgid "Show yesterday"
 msgstr "显示昨天"
@@ -1062,7 +1054,7 @@ msgstr "外接屏幕"
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
+msgstr "网站：www.hdglass16.eu；捐助：PayPal 账户 hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "未检测到文件！"
@@ -1226,10 +1218,8 @@ msgstr "菜单图标"
 msgid "Weather icons"
 msgstr "天气图标"
 
-#, fuzzy
-#| msgid "Channel selection font size"
 msgid "Channelselection icons"
-msgstr "频道选择字体大小"
+msgstr "频道列表图标"
 
 msgid "Result"
 msgstr "结果"
@@ -1268,7 +1258,7 @@ msgid "file(s) from"
 msgstr "文件来自"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "加载 URL 工具失败"
 
 msgid "Internet connection failed"
 msgstr "Internet连接失败"
@@ -1475,71 +1465,71 @@ msgstr "适用于所选频道列表类型的大图标 (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "卫星轨位"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "台标分辨率"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "台标颜色"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "台标存储位置"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "更新方式"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "未选择分辨率"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "未选择颜色"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "未选择更新方式"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "接收机内存"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "硬盘"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "USB 存储设备"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "SD 卡"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "MMC 存储设备"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "台标根目录"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "用户自定义"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "用户自定义..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 — 迷你台标"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1547,126 +1537,126 @@ msgstr "220 × 132 – Picon"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 — 大台标"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 — 用于所选频道列表类型的大图标"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "与电视频道列表同步"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "与电视和广播列表同步"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "复制全部；替换当前所选轨位的台标"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "复制全部；增量更新"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "下载位置："
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "选择 50 × 30、220 × 132、400 × 240 或 710 × 682 的频道列表图标。"
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "选择如何同步或复制所选轨位的频道台标。"
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "下载前请选择分辨率、颜色、存储位置和更新方式。"
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "创建台标目录？"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "无法创建台标目标目录"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "台标目标目录不可写入"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "请选择现有目录。"
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "无法读取台标目标目录"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "无法移除所选轨位的过期台标"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "无法安全替换所选轨位的台标。"
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "所选接收机频道在选定的软件包中没有匹配的台标。"
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "已成功更新 %d 个台标"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "已成功更新 %d 个台标"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "已选择 %d 个频道"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "已选择 %d 个频道"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "未下载任何台标。"
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "%d / %d 个台标安装失败"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "所选存储设备未挂载"
 
 msgid "Provider logos"
 msgstr "服务提供商徽标"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "电视平台和服务提供商的标志。"
 
 msgid "Satellite logos"
 msgstr "卫星徽标"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "卫星标志和图形标识。"
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s：已更新 %d 个台标；失败 %d 个"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "总计更新 %d 个台标"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "失败：%d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "部分成功"
 
 
 # Completed operation result dialog button.
