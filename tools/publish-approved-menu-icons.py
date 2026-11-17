@@ -58,9 +58,15 @@ def main():
 
     assert len(entries) == 129, "Unexpected resulting PNG count"
     out_buffer = io.BytesIO()
+    # Reproducible archive: fixed ZIP timestamps and file metadata.
+    # ZipFile.writestr(name, data) otherwise embeds current wall-clock time.
     with zipfile.ZipFile(out_buffer, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as new:
         for name, data in sorted(entries.items()):
-            new.writestr(name, data)
+            info = zipfile.ZipInfo(name, (1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3
+            info.external_attr = 0o100644 << 16
+            new.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=6)
     archive = out_buffer.getvalue()
     with zipfile.ZipFile(io.BytesIO(archive)) as check:
         assert check.testzip() is None and len(check.namelist()) == 129
