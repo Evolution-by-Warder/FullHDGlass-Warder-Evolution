@@ -1,55 +1,52 @@
-# FullHDGlass Warder Evolution — 21-language audit (2026-11-17)
+# FullHDGlass — jazykový audit 17. 11. 2026
 
-**Status: PARTIAL; not yet 100% translated.** 21 OSD language codes are recognized; English is the original msgid fallback. Correct existing translations must not be overwritten with the original English wording.
+Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav: **čiastočne dokončené**. Vyplnený prekladový záznam nie je záruka správnosti jazykovej formulácie; kontrola na prijímači ešte neprebehla.
 
-## Main skin settings (setupGlass17)
+## Hlavné nastavenia
 
-| Locale | Result |
-|---|---|
-| sk | Complete (515 original entries) |
-| cs | Completed all 46 previously blank entries; GNU MO rebuilt |
-| ru | Completed all 53 previously blank entries; GNU MO rebuilt |
-| lt | Completed all 49 previously blank entries; GNU MO rebuilt |
-| zh | Completed 54 blank entries, corrected five erroneous fuzzy translations; GNU MO rebuilt |
-| el | New partial Greek translation, 397/515 entries |
-| al | 213 source entries were untranslated |
-| de | 211 source entries were untranslated |
-| es | 211 source entries were untranslated |
-| et | 134 source entries were untranslated |
-| fa | 218 source entries were untranslated |
-| fr | 167 source entries were untranslated |
-| hu | 211 source entries were untranslated |
-| it | 212 source entries were untranslated |
-| nl | 107 source entries were untranslated |
-| pl | 209 source entries were untranslated |
-| pt | 208 source entries were untranslated |
-| ro | 209 source entries were untranslated |
-| tr | 211 source entries were untranslated |
-| uk | 208 source entries were untranslated |
-| en | Original English source (not a translation catalogue) |
+| Jazyk | Chýbajúce položky v hlavnom katalógu |
+|---|---:|
+| Slovenský (sk) | 0 |
+| Český (cs) | 0 |
+| Ruský (ru) | 0 |
+| Litovský (lt) | 0 |
+| Čínsky (zh) | 0 |
+| Grécky (el) | 0 |
+| Albánsky (al) | 169 |
+| Nemecký (de) | 167 |
+| Španielsky (es) | 166 |
+| Estónsky (et) | 104 |
+| Perzský (fa) | 174 |
+| Francúzsky (fr) | 132 |
+| Maďarský (hu) | 167 |
+| Taliansky (it) | 167 |
+| Holandský (nl) | 83 |
+| Poľský (pl) | 164 |
+| Portugalský (pt) | 163 |
+| Rumunský (ro) | 165 |
+| Turecký (tr) | 167 |
+| Ukrajinský (uk) | 165 |
 
-The counts for al/de/es/et/fa/fr/hu/it/nl/pl/pt/ro/tr/uk are from the original main branch and have not yet been filled. Original translated strings are preserved.
+**V 14 hlavných katalógoch zostáva 2 153 prázdnych položiek.** Angličtina (en) je zdrojová verzia.
 
-## Greek optional catalogues
+## Gréčtina
 
-| Domain | Translated | Total |
-|---|---:|---:|
-| setupGlass17 | 397 | 515 |
-| helpTxt | 29 | 150 |
-| weather | 90 | 108 |
-| netatmo | 26 | 42 |
-| eWeather | 25 | 2117 |
+| Oblasť | Preložené |
+|---|---:|
+| Nastavenia setupGlass17 | 515/515 |
+| Nápoveda helpTxt | 150/150 |
+| Počasie weather | 108/108 |
+| Netatmo | 42/42 |
+| Historické eWeather | 25/2 117 |
 
-## Runtime / build
+## Čo je zapísané
 
-- Standard Python 3 `gettext.translation` replaces unsupported legacy `gettext.Catalog` calls in setup, help, weather and Netatmo.
-- The code normalizes Enigma2 language names, including `sq` -> `al`, `gr` -> `el` and `zh_CN` -> `zh`.
-- The original skin translation-enabled setting is retained and absent translations fall back to the original English msgid.
-- New Greek `.po` + compiled `.mo` catalogues exist in all five domains; updated CS/RU/LT/ZH main `.po` + `.mo` catalogues exist.
-- `.github/workflows/verify-skin-i18n.yml` tests syntax, language-code normalization and compiled Greek and four completed main catalogs.
-- A green workflow and test on an actual Enigma2 receiver have **not** been confirmed.
-- **No IPK, feed update, release or version increment.**
+- Technický resolver pre 21 jazykov v štandardnom GNU gettext, bezpečný anglický fallback a zachovanie vypínača prekladov.
+- Nové katalógy .po/.mo pre gréčtinu a doplnené preklady pre ostatné jazyky.
+- Nové hlavné preklady v 14 ďalších jazykoch, nezmenené existujúce vyplnené hodnoty.
+- Kontroly python3 syntaktiky a binárnych katalógov v `tools/test-warder-catalog-integrity.py`.
+- Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
-## Remaining for real completion
+## Stále chýba
 
-Translate and review remaining original strings in all incomplete languages and domains, regenerate compiled gettext catalogs and test actual UI/text on OpenATV and OpenPLi. The source-only preparations do not count as fully localized releases.
+Preklad zostávajúcich položiek v ostatných jazykoch, úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.

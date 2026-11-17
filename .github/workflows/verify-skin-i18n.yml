@@ -1,4 +1,4 @@
-name: FullHDGlass locale checks
+name: Validate FullHDGlass skin translations
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/**'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocale.py'
       - 'tools/test-warder-skin-i18n.py'
+      - 'tools/test-warder-catalog-integrity.py'
       - '.github/workflows/verify-skin-i18n.yml'
   workflow_dispatch:
 
@@ -23,7 +24,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Python syntax and locale regression
+      - name: Compile Python 3 sources
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/{warderLocale,plugin,txt,weather,E_weather,Netatmo,warderUiText}.py
+      - name: Run language regression tests
+        run: |
           python tools/test-warder-skin-i18n.py
+          python tools/test-warder-catalog-integrity.py
