@@ -1314,11 +1314,12 @@ def chckEnaWea():
 def startSetup17(menuid, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Search the installed menu.xml for an Ostatné submenu; images without
+		# that submenu keep the opt-in shortcut directly in Main menu.
+		from .warderSettingsMenuPlacement import target_key
+		if config.plugins.warderSkinMainMenu.enabled.value and menuid == target_key():
+			ret.append(("FullHDGlass Warder Evolution", main, "warder_fullhdglass_settings", 43))
 		if menuid == "mainmenu":
-			# Direct access to the same settings screen already offered in
-			# Plugins. Never depend on the optional Special info entry.
-			if config.plugins.warderSkinMainMenu.enabled.value:
-				ret.append(("FullHDGlass Warder Evolution", main, "warder_fullhdglass_settings", 43))
 			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
 				ret.append((config.plugins.setupGlass17.par78.getText()+" (FullHDGlass)", main17, str(config.plugins.setupGlass17.par78.value), 44))
 	return ret
