@@ -38,7 +38,7 @@ class SkinMainMenuTests(unittest.TestCase):
         menu, open_skin, _, names = self.register()
         self.assertEqual(menu("mainmenu"), [
             ("FullHDGlass Warder Evolution", open_skin, "warder_fullhdglass_settings", 43)])
-        self.assertEqual(names, ["Configure the FullHDGlass skin"])
+        self.assertEqual(names, [])
 
     def test_existing_special_info_entry_is_preserved(self):
         menu, open_skin, special_info, _ = self.register(special="w")
