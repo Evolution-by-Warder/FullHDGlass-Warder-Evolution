@@ -167,10 +167,10 @@ msgid "G17 events"
 msgstr "G17 events"
 
 msgid "Big Icons"
-msgstr ""
+msgstr "Grote pictogrammen"
 
 msgid "Poster"
-msgstr ""
+msgstr "Poster"
 
 msgid "PIG + PIP"
 msgstr "PIG + PIP"
@@ -329,16 +329,16 @@ msgid "Animation"
 msgstr "Animatie"
 
 msgid "Transponder data"
-msgstr ""
+msgstr "Transpondergegevens"
 
 msgid "Real tuner data"
-msgstr ""
+msgstr "Werkelijke tunergegevens"
 
 msgid "All available"
-msgstr ""
+msgstr "Alle beschikbare"
 
 msgid "Selected in Netatmo plugin"
-msgstr ""
+msgstr "Geselecteerd in de Netatmo-plug-in"
 
 msgid "IMDb"
 msgstr ""
@@ -408,13 +408,13 @@ msgid "Channel selection type"
 msgstr "Soort zenderlijst"
 
 msgid "Movie selection type"
-msgstr ""
+msgstr "Type filmselectie"
 
 msgid "EPG selection type"
 msgstr "Soort EPG selectie"
 
 msgid "EventView type"
-msgstr ""
+msgstr "Type programmaweergave"
 
 msgid "PIG type"
 msgstr "Soort PIG"
@@ -450,7 +450,7 @@ msgid "Enable windowstylescrollbar"
 msgstr "Activeer vensterstijl scrollbar"
 
 msgid "On/Off icons"
-msgstr ""
+msgstr "Aan/uit-pictogrammen"
 
 msgid "Service scan long list"
 msgstr "Zender scannen lange lijst"
@@ -513,7 +513,7 @@ msgid "Remaining:"
 msgstr "Over:"
 
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 msgid "Streaming service"
 msgstr "streaming-dienst"
@@ -852,7 +852,7 @@ msgid "User info act./next switching"
 msgstr "Info nu/volgende "
 
 msgid "Station"
-msgstr ""
+msgstr "Zender"
 
 msgid "Stations switch time"
 msgstr ""
@@ -891,13 +891,13 @@ msgid "Temperature unit"
 msgstr "Eenheid voor temperatuur"
 
 msgid "UV index"
-msgstr ""
+msgstr "UV-index"
 
 msgid "Wind speed"
-msgstr ""
+msgstr "Windsnelheid"
 
 msgid "Weather Title"
-msgstr ""
+msgstr "Weertitel"
 
 msgid "Weather location"
 msgstr "Weerslocatie"
@@ -1423,23 +1423,23 @@ msgstr "Grote pictogrammen voor geselecteerde kanaalselectietypen (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Satellietposities"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Piconresolutie"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Piconkleur"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Piconlocatie"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Bijwerkmethode"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
@@ -1455,23 +1455,23 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Ontvangergeheugen"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Harde schijf"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "USB-opslag"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "SD-kaart"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "MMC-opslag"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"

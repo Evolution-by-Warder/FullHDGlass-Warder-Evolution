@@ -167,10 +167,10 @@ msgid "G17 events"
 msgstr "G17 events"
 
 msgid "Big Icons"
-msgstr ""
+msgstr "Grandes icônes"
 
 msgid "Poster"
-msgstr ""
+msgstr "Affiche"
 
 msgid "PIG + PIP"
 msgstr "Image + PIP"
@@ -212,16 +212,16 @@ msgid "only Prov"
 msgstr "seul Prov"
 
 msgid "only Weather"
-msgstr ""
+msgstr "Météo uniquement"
 
 msgid "Sat and Weather"
-msgstr ""
+msgstr "Satellite et météo"
 
 msgid "Prov and Weather"
-msgstr ""
+msgstr "Fournisseur et météo"
 
 msgid "Sat, Prov and Weather"
-msgstr ""
+msgstr "Satellite, fournisseur et météo"
 
 msgid "InfoECM by Duri"
 msgstr "InfoECM par Duri"
@@ -326,19 +326,19 @@ msgid "Dynamic"
 msgstr "Dynamique"
 
 msgid "Animation"
-msgstr ""
+msgstr "Animation"
 
 msgid "Transponder data"
-msgstr ""
+msgstr "Données du transpondeur"
 
 msgid "Real tuner data"
-msgstr ""
+msgstr "Données réelles du tuner"
 
 msgid "All available"
-msgstr ""
+msgstr "Tous disponibles"
 
 msgid "Selected in Netatmo plugin"
-msgstr ""
+msgstr "Sélectionné dans le plugin Netatmo"
 
 msgid "IMDb"
 msgstr ""
@@ -353,7 +353,7 @@ msgid "Full HD GLass17 spinner"
 msgstr ""
 
 msgid "Full HD Glass17 Setup"
-msgstr ""
+msgstr "Paramètres FullHDGlass17"
 
 msgid ""
 "Sorry, \"ftp\" is unavailable yet, check your internet connection or "
@@ -369,10 +369,10 @@ msgid "Set OLED off in Standby"
 msgstr "OLED éteint en mode veille"
 
 msgid "Listbox font size"
-msgstr ""
+msgstr "Taille de police de la liste"
 
 msgid "Mute picture transparency"
-msgstr ""
+msgstr "Transparence de l'image muette"
 
 msgid "Set binaries"
 msgstr "Définir binaire"
@@ -408,13 +408,13 @@ msgid "Channel selection type"
 msgstr "Type de sélection de chaine"
 
 msgid "Movie selection type"
-msgstr ""
+msgstr "Type de sélection des films"
 
 msgid "EPG selection type"
 msgstr "Type de sélection d'EPG"
 
 msgid "EventView type"
-msgstr ""
+msgstr "Type d'affichage de l'émission"
 
 msgid "PIG type"
 msgstr "Image type"
@@ -450,10 +450,10 @@ msgid "Enable windowstylescrollbar"
 msgstr "Activer scrollbar type windows"
 
 msgid "On/Off icons"
-msgstr ""
+msgstr "Icônes activé/désactivé"
 
 msgid "Service scan long list"
-msgstr ""
+msgstr "Liste longue lors de la recherche des chaînes"
 
 msgid "Extended Number ZAP Picon Size"
 msgstr ""
@@ -513,7 +513,7 @@ msgid "Remaining:"
 msgstr "Reste:"
 
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 msgid "Streaming service"
 msgstr "Service streaming"
@@ -534,7 +534,7 @@ msgid "Changelog"
 msgstr "Changelog"
 
 msgid "Update"
-msgstr ""
+msgstr "Mettre à jour"
 
 msgid "Restore config"
 msgstr "Restore Configuration"
@@ -852,7 +852,7 @@ msgid "User info act./next switching"
 msgstr "Info utilisateur act./suivant"
 
 msgid "Station"
-msgstr ""
+msgstr "Station"
 
 msgid "Stations switch time"
 msgstr ""
@@ -891,13 +891,13 @@ msgid "Temperature unit"
 msgstr "Unité température"
 
 msgid "UV index"
-msgstr ""
+msgstr "Indice UV"
 
 msgid "Wind speed"
-msgstr ""
+msgstr "Vitesse du vent"
 
 msgid "Weather Title"
-msgstr ""
+msgstr "Titre de la météo"
 
 msgid "Weather location"
 msgstr "Emplacement météo"
@@ -972,7 +972,7 @@ msgid "Smaller"
 msgstr ""
 
 msgid "Enable Animations"
-msgstr ""
+msgstr "Activer les animations"
 
 msgid "(Infobar) Picon"
 msgstr ""
@@ -1425,23 +1425,23 @@ msgstr "Grandes icônes pour les types de sélection de chaînes choisis (710 x 
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Positions satellites"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Résolution des picons"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Couleur des picons"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Emplacement des picons"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Méthode de mise à jour"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
@@ -1457,23 +1457,23 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Mémoire du récepteur"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Disque dur"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "Stockage USB"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "Carte SD"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "Stockage MMC"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
