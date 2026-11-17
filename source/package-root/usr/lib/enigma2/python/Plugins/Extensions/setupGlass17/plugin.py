@@ -1313,7 +1313,7 @@ def startSetup17(menuid, **kwargs):
 		if menuid == "mainmenu":
 			# Direct access to the same settings screen already offered in
 			# Plugins. Never depend on the optional Special info entry.
-			ret.append((ui_text("Configure the FullHDGlass skin"), main, "warder_fullhdglass_settings", 43))
+			ret.append(("FullHDGlass Warder Evolution", main, "warder_fullhdglass_settings", 43))
 			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
 				ret.append((config.plugins.setupGlass17.par78.getText()+" (FullHDGlass)", main17, str(config.plugins.setupGlass17.par78.value), 44))
 	return ret
