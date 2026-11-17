@@ -37,9 +37,9 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Nápoveda helpTxt | 189/189 |
 | Počasie weather | 108/108 |
 | Netatmo | 42/42 |
-| Historické eWeather | 844/2 117 |
+| Historické eWeather | 1 014/2 117 |
 
-**Grécke eWeather:** ďalších 249 meteorologických fráz bolo preložených v nasledujúcej dávke (spolu 844/2 117); zostáva 1 273 prázdnych položiek.
+**Grécke eWeather:** po ďalších 170 ručne pripravených meteorologických frázach obsahuje katalóg 1 014/2 117 prekladov; zostáva 1 103 prázdnych položiek.
 
 ## Inventár vedľajších katalógov
 Údaje sú **prítomné preložené kľúče / referenčný počet**: nápoveda 189, počasie 108, Netatmo 42 a rozšírené počasie eWeather 2 117. Znak **—** znamená, že pre daný jazyk úplne chýba samostatný katalóg `.po`; nie je to dokončený preklad. Kontrola sa týka súborov pracovnej vetvy a nenahrádza jazykovú ani fyzickú validáciu.
@@ -49,25 +49,25 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | al | — | — | — | — |
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | de | — | 108/108 | 42/42 | — |
-| el | 189/189 | 108/108 | 42/42 | 844/2117 |
+| el | 189/189 | 108/108 | 42/42 | 1014/2117 |
 | es | — | — | 42/42 | — |
 | et | — | 108/108 | — | 96/2117 |
 | fa | — | — | — | — |
 | fr | — | 108/108 | 42/42 | — |
-| hu | — | 108/108 | — | — |
-| it | — | — | — | — |
+| hu | — | 108/108 | 42/42 | — |
+| it | — | — | 42/42 | — |
 | lt | 189/189 | 108/108 | — | 2117/2117 |
-| nl | — | 108/108 | — | — |
-| pl | — | 108/108 | — | — |
-| pt | — | — | — | — |
-| ro | — | 108/108 | — | — |
+| nl | — | 108/108 | 42/42 | — |
+| pl | — | 108/108 | 42/42 | — |
+| pt | — | — | 42/42 | — |
+| ro | — | 108/108 | 42/42 | — |
 | ru | 189/189 | 108/108 | — | — |
 | sk | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | tr | — | — | — | — |
 | uk | — | 108/108 | — | — |
 | zh | 189/189 | 108/108 | — | — |
 
-Pri gréčtine zostáva **1 273 nepreložených fráz eWeather**; všetkých 189 kľúčov helpTxt je už preložených. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
+Pri gréčtine zostáva **1 103 nepreložených fráz eWeather**; všetkých 189 kľúčov helpTxt je už preložených. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
 
 ## Čo je zapísané
 
@@ -78,8 +78,9 @@ Pri gréčtine zostáva **1 273 nepreložených fráz eWeather**; všetkých 189
 - V nasledujúcom behu bolo doplnených 39 chýbajúcich gréckych helpTxt a 249 gréckych eWeather fráz; katalógy .mo boli znova skompilované a zachovali sa predchádzajúce preklady.
 - Opravený vážne poškodený súbor `tools/test-warder-catalog-integrity.py` (duplicitné a rozbité časti testov). Nová verzia kontroluje všetkých 20 hlavných jazykov, zhodu kľúčov, čitateľnosť a obsah všetkých existujúcich .mo, zhodu printf argumentov aj úplnosť gréckeho helpTxt. Čaká sa na výsledok aktuálneho GitHub Actions.
 - Pre nemčinu, francúzštinu a španielčinu boli vytvorené kompletné samostatné katalógy Netatmo (každý 42/42) vrátane skutočných jazykových textov a 16 svetových strán podľa príslušných národných skratiek. Spolu 126 nových prekladov, nové `.mo`.
+- V ďalšom behu pribudlo 170 skutočných gréckych meteorologických prekladov eWeather a šesť kompletných katalógov Netatmo (it/nl/pl/pt/ro/hu), 6 × 42 položiek vrátane lokalizovaných smerov vetra tam, kde sa národné skratky líšia od medzinárodných. Skompilované binárne GNU gettext `.mo` boli overené párovým dekódovaním; kontrolu v GitHub Actions treba potvrdiť osobitne.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
 
-Doplniť chýbajúce jazykové katalógy podľa tabuľky, 2 021 estónskych eWeather kľúčov a 1 273 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
+Doplniť chýbajúce jazykové katalógy podľa tabuľky, 2 021 estónskych eWeather kľúčov a 1 103 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.

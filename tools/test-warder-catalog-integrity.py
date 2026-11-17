@@ -118,5 +118,33 @@ class CatalogIntegrity(unittest.TestCase):
         self.assertEqual([], [key for key, value in greek.items() if key and not value])
 
 
+    def test_new_netatmo_catalogs_complete(self):
+        reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'netatmo.po')
+        keys = set(reference) - {''}
+        self.assertEqual(len(keys), 42)
+        samples = {
+            'it': ('Wind Strength', 'Velocità del vento'),
+            'nl': ('Dew Point', 'Dauwpunt'),
+            'pl': ('Pressure', 'Ciśnienie atmosferyczne'),
+            'pt': ('Rainfall', 'Precipitação'),
+            'ro': ('Wind Angle', 'Direcția vântului'),
+            'hu': ('Humidity', 'Páratartalom'),
+        }
+        for lang, (key, expected) in samples.items():
+            with self.subTest(lang=lang):
+                catalog = po_entries(ROOT / lang / 'LC_MESSAGES' / 'netatmo.po')
+                self.assertEqual(set(catalog) - {''}, keys)
+                self.assertEqual([], [k for k in keys if not catalog[k]])
+                with (ROOT / lang / 'LC_MESSAGES' / 'netatmo.mo').open('rb') as stream:
+                    compiled = gettext.GNUTranslations(stream)
+                self.assertEqual(compiled.gettext(key), expected)
+
+    def test_extended_greek_weather_batch(self):
+        catalog = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'eWeather.po')
+        self.assertEqual(len(catalog) - 1, 2117)
+        self.assertEqual(sum(bool(v) for k, v in catalog.items() if k), 1014)
+        self.assertEqual(catalog['drizzle'], 'Ψιχάλα')
+        self.assertEqual(catalog['a thunderstorm'], 'Καταιγίδα')
+
 if __name__ == '__main__':
     unittest.main()

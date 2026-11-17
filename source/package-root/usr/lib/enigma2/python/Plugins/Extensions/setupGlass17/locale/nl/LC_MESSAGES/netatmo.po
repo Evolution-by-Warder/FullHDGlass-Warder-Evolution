@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Buiten"
+
+msgid "Wind"
+msgstr "Wind"
+
+msgid "Rain"
+msgstr "Regen"
+
+msgid "Indoor"
+msgstr "Binnen"
+
+msgid "ENE"
+msgstr "ONO"
+
+msgid "ESE"
+msgstr "OZO"
+
+msgid "WNW"
+msgstr "WNW"
+
+msgid "WSW"
+msgstr "WZW"
+
+msgid "SSE"
+msgstr "ZZO"
+
+msgid "SW"
+msgstr "ZW"
+
+msgid "SSW"
+msgstr "ZZW"
+
+msgid "SE"
+msgstr "ZO"
+
+msgid "NW"
+msgstr "NW"
+
+msgid "NNW"
+msgstr "NNW"
+
+msgid "NNE"
+msgstr "NNO"
+
+msgid "NE"
+msgstr "NO"
+
+msgid "S"
+msgstr "Z"
+
+msgid "W"
+msgstr "W"
+
+msgid "N"
+msgstr "N"
+
+msgid "E"
+msgstr "O"
+
+msgid "N/A"
+msgstr "n.b."
+
+msgid "No Netatmo station detected"
+msgstr "Geen Netatmo-station gevonden"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Main station"
+msgstr "Hoofdstation"
+
+msgid "Temperature"
+msgstr "Temperatuur"
+
+msgid "Humidity"
+msgstr "Luchtvochtigheid"
+
+msgid "Noise"
+msgstr "Geluidsniveau"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Wifi-status"
+
+msgid "Index"
+msgstr "Index"
+
+msgid "Pressure"
+msgstr "Luchtdruk"
+
+msgid "Rainfall"
+msgstr "Neerslag"
+
+msgid "Summary 1 Hour"
+msgstr "Totaal afgelopen uur"
+
+msgid "Summary 24 Hours"
+msgstr "Totaal afgelopen 24 uur"
+
+msgid "Wind Strength"
+msgstr "Windsnelheid"
+
+msgid "Wind Angle"
+msgstr "Windrichting"
+
+msgid "Gust Strength"
+msgstr "Windstootsnelheid"
+
+msgid "Gust Angle"
+msgstr "Windstootrichting"
+
+msgid "Dew Point"
+msgstr "Dauwpunt"
+
+msgid "RF Status"
+msgstr "Status radioverbinding"
+
+msgid "Baterry"
+msgstr "Batterij"

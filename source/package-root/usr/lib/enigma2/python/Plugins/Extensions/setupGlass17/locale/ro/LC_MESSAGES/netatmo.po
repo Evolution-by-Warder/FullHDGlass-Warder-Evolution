@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Exterior"
+
+msgid "Wind"
+msgstr "Vânt"
+
+msgid "Rain"
+msgstr "Ploaie"
+
+msgid "Indoor"
+msgstr "Interior"
+
+msgid "ENE"
+msgstr "ENE"
+
+msgid "ESE"
+msgstr "ESE"
+
+msgid "WNW"
+msgstr "VNV"
+
+msgid "WSW"
+msgstr "VSV"
+
+msgid "SSE"
+msgstr "SSE"
+
+msgid "SW"
+msgstr "SV"
+
+msgid "SSW"
+msgstr "SSV"
+
+msgid "SE"
+msgstr "SE"
+
+msgid "NW"
+msgstr "NV"
+
+msgid "NNW"
+msgstr "NNV"
+
+msgid "NNE"
+msgstr "NNE"
+
+msgid "NE"
+msgstr "NE"
+
+msgid "S"
+msgstr "S"
+
+msgid "W"
+msgstr "V"
+
+msgid "N"
+msgstr "N"
+
+msgid "E"
+msgstr "E"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "No Netatmo station detected"
+msgstr "Nu a fost detectată nicio stație Netatmo"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Type"
+msgstr "Tip"
+
+msgid "Main station"
+msgstr "Stație principală"
+
+msgid "Temperature"
+msgstr "Temperatură"
+
+msgid "Humidity"
+msgstr "Umiditate"
+
+msgid "Noise"
+msgstr "Nivel de zgomot"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Stare Wi-Fi"
+
+msgid "Index"
+msgstr "Indice"
+
+msgid "Pressure"
+msgstr "Presiune atmosferică"
+
+msgid "Rainfall"
+msgstr "Precipitații"
+
+msgid "Summary 1 Hour"
+msgstr "Total într-o oră"
+
+msgid "Summary 24 Hours"
+msgstr "Total în 24 de ore"
+
+msgid "Wind Strength"
+msgstr "Viteza vântului"
+
+msgid "Wind Angle"
+msgstr "Direcția vântului"
+
+msgid "Gust Strength"
+msgstr "Viteza rafalelor"
+
+msgid "Gust Angle"
+msgstr "Direcția rafalelor"
+
+msgid "Dew Point"
+msgstr "Punct de rouă"
+
+msgid "RF Status"
+msgstr "Stare conexiune radio"
+
+msgid "Baterry"
+msgstr "Baterie"

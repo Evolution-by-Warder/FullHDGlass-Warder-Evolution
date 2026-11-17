@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Kültéri"
+
+msgid "Wind"
+msgstr "Szél"
+
+msgid "Rain"
+msgstr "Eső"
+
+msgid "Indoor"
+msgstr "Beltéri"
+
+msgid "ENE"
+msgstr "KÉK"
+
+msgid "ESE"
+msgstr "KDK"
+
+msgid "WNW"
+msgstr "NyÉNy"
+
+msgid "WSW"
+msgstr "NyDNy"
+
+msgid "SSE"
+msgstr "DDK"
+
+msgid "SW"
+msgstr "DNy"
+
+msgid "SSW"
+msgstr "DDNy"
+
+msgid "SE"
+msgstr "DK"
+
+msgid "NW"
+msgstr "ÉNy"
+
+msgid "NNW"
+msgstr "ÉÉNy"
+
+msgid "NNE"
+msgstr "ÉÉK"
+
+msgid "NE"
+msgstr "ÉK"
+
+msgid "S"
+msgstr "D"
+
+msgid "W"
+msgstr "Ny"
+
+msgid "N"
+msgstr "É"
+
+msgid "E"
+msgstr "K"
+
+msgid "N/A"
+msgstr "Nincs adat"
+
+msgid "No Netatmo station detected"
+msgstr "Nem található Netatmo állomás"
+
+msgid "Name"
+msgstr "Név"
+
+msgid "Type"
+msgstr "Típus"
+
+msgid "Main station"
+msgstr "Főállomás"
+
+msgid "Temperature"
+msgstr "Hőmérséklet"
+
+msgid "Humidity"
+msgstr "Páratartalom"
+
+msgid "Noise"
+msgstr "Zajszint"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Wi-Fi állapota"
+
+msgid "Index"
+msgstr "Index"
+
+msgid "Pressure"
+msgstr "Légnyomás"
+
+msgid "Rainfall"
+msgstr "Csapadék"
+
+msgid "Summary 1 Hour"
+msgstr "Összesen az elmúlt 1 órában"
+
+msgid "Summary 24 Hours"
+msgstr "Összesen az elmúlt 24 órában"
+
+msgid "Wind Strength"
+msgstr "Szélsebesség"
+
+msgid "Wind Angle"
+msgstr "Szélirány"
+
+msgid "Gust Strength"
+msgstr "Széllökések sebessége"
+
+msgid "Gust Angle"
+msgstr "Széllökések iránya"
+
+msgid "Dew Point"
+msgstr "Harmatpont"
+
+msgid "RF Status"
+msgstr "Rádiókapcsolat állapota"
+
+msgid "Baterry"
+msgstr "Elem"
