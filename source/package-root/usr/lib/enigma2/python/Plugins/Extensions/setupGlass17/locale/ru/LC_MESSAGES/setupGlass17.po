@@ -461,12 +461,12 @@ msgid "Extended Number ZAP Picon Size"
 msgstr "Размер пиконов при цифровом переключении"
 
 msgid "GUI will now be restarted to activate restored options:"
-msgstr ""
+msgstr "Графический интерфейс будет перезапущен для активации восстановленных параметров:"
 "Необходимо перезагрузить пользовательский интерфейс для активации опций "
 "восстановления:"
 
 msgid "GUI will now be restarted, updated files founded !!!"
-msgstr ""
+msgstr "Графический интерфейс будет перезапущен: обнаружены обновлённые файлы!"
 "Пользовательский интерфейс будет перезагружен сейчас, найдены файлы для "
 "обновления !!!"
 
@@ -1089,7 +1089,7 @@ msgid "Update finished successfully!"
 msgstr "Обновление успешно завершено!"
 
 msgid "Do you want restart GUI to activate version"
-msgstr ""
+msgstr "Перезапустить графический интерфейс для активации версии"
 "Вы хотите перезагрузить интерфейс пользователя для активации новой версии"
 
 msgid "Restart GUI now?"
@@ -1102,7 +1102,7 @@ msgid "The file satellites.xml do not exists in selected dir"
 msgstr "В указанном каталоге сatellites.xml нет"
 
 msgid "GUI will now be restarted to activate changes in:"
-msgstr ""
+msgstr "Графический интерфейс будет перезапущен для применения изменений в:"
 "Необходимо перезагрузить интерфейс пользователя для применения изменений в:"
 
 msgid "Sorry, cannot create dir on path:"
@@ -1130,7 +1130,7 @@ msgid "is incorrect, style will not be changed!!!"
 msgstr "неправильный, стиль не будет изменен!!!"
 
 msgid "Save again to apply all setup changes without style change"
-msgstr ""
+msgstr "Сохраните ещё раз, чтобы применить настройки без изменения стиля"
 "Сохранить снова для применения всех изменений настроек без изменения стиля"
 
 msgid "Special Info type"
@@ -1433,71 +1433,71 @@ msgstr "Крупные значки для выбранных типов спи�
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Спутниковые позиции"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Разрешение пиконов"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Цвет пиконов"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Расположение пиконов"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Способ обновления"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Разрешение не выбрано"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Цвет не выбран"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Способ обновления не выбран"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Память ресивера"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Жёсткий диск"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "USB-накопитель"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "SD-карта"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "MMC-накопитель"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Корневой каталог пиконов"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Пользовательский"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Пользовательский..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 — мини-пиконы"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1505,126 +1505,126 @@ msgstr "220 × 132 – Пиконы"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 — большие пиконы"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 — большие значки для выбранных типов списка каналов"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Синхронизировать со списками ТВ"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Синхронизировать со списками ТВ и радио"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Копировать всё; заменить пиконы выбранных позиций"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Копировать всё; инкрементальное обновление"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Место загрузки:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Выберите значки списка каналов 50 × 30, 220 × 132, 400 × 240 или 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Выберите способ синхронизации или копирования пиконов каналов для выбранных позиций."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Перед загрузкой выберите разрешение, цвет, расположение и способ обновления."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Создать каталог пиконов?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Не удалось создать каталог для пиконов"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "Каталог пиконов недоступен для записи"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Выберите существующий каталог."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Не удалось прочитать каталог пиконов"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Не удалось удалить устаревший пикон выбранной позиции"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Не удалось безопасно заменить пиконы выбранных позиций."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "выбранные сервисы ресивера не имеют соответствующих пиконов в выбранных пакетах."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "Успешно обновлён %d пикон"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "Успешно обновлено %d пиконов"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "Выбрана %d служба"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "Выбрано %d служб"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Пиконы не были загружены."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "Не удалось установить %d из %d пиконов"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "Выбранный носитель не смонтирован"
 
 msgid "Provider logos"
 msgstr "Логотипы провайдеров"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "Логотипы ТВ-платформ и поставщиков услуг."
 
 msgid "Satellite logos"
 msgstr "Логотипы спутников"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Логотипы спутников и графические обозначения."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: обновлено %d пиконов; ошибок: %d"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Всего обновлено пиконов: %d"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Ошибок: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "ЧАСТИЧНЫЙ УСПЕХ"
 
 
 # Completed operation result dialog button.
