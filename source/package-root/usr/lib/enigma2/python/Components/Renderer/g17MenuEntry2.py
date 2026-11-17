@@ -64,12 +64,32 @@ class g17MenuEntry2(Renderer):
 					if config.plugins.setupGlass17.par161.value and config.plugins.setupGlass17.par165.value != "None":
 						self.instance.setShowHideAnimation(config.plugins.setupGlass17.par165.value)
 				except: pass
-			pixpath = self.default              
+			pixpath = self.default
 			try:
-				pixpath = config.plugins.setupGlass17.par39.value + '/menuIconsBig/' + self.source.entryName + self.pict + '.png'
-				if not fileExists(pixpath):
-					pixpath = self.default
-					Writelog(self.source.entryName + self.pict + '.png')
+				entry_id = str(self.source.entryName)
+				big_root = config.plugins.setupGlass17.par39.value + '/menuIconsBig/'
+				# Keep menu IDs separate from the approved, shared Warder artwork.
+				# This also covers plugin menu IDs not stored as literal PNG names.
+				warder_aliases = {
+					'glass_sys_utils': 'warder_gsu',
+					'warder_piconhub_mainmenu': 'warder_piconhub',
+					'warder_radio_mainmenu': 'warder_radio',
+					'warder_youtube_mainmenu': 'warder_youtube',
+					'FHD_Glass17_Setup': 'warder_skin',
+				}
+				candidates = [entry_id + self.pict]
+				alias = warder_aliases.get(entry_id)
+				if alias:
+					candidates.append(alias + self.pict)
+					if self.pict:
+						candidates.append(alias)
+				for candidate in candidates:
+					candidate_path = big_root + candidate + '.png'
+					if fileExists(candidate_path):
+						pixpath = candidate_path
+						break
+				if pixpath == self.default:
+					Writelog(entry_id + self.pict + '.png')
 			except: pass
 			if self.__last != pixpath:
 				self.__last = pixpath
