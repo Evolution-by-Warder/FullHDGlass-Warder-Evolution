@@ -13,16 +13,17 @@ SRC = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-
 OUT = ROOT / "assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-AUDITED-20261117"
 PREFIX = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-AUDITED-20261117/"
 BASE_HASH = "83f65a74001189e0febdd8ed988f3d607782ac36ca0d49b9dfc2890c9fddb3c1"
-# Keep the real Enigma2 menu IDs AND the existing small-menu fallback names.
-# PiconHub currently exposes WHERE_PLUGINMENU only: its name here is a
-# reserved matching icon, not a claim that it registers a main-menu ID.
-# The FullHDGlass optional main-menu ID is configured dynamically.
-ALIASES = {
-    "warder_gsu": ["glass_sys_utils", "warder_gsu"],
-    "warder_piconhub": ["PiconHub_Warder_Evolution", "warder_piconhub"],
-    "warder_radio": ["warder_radio_mainmenu", "warder_radio"],
-    "warder_youtube": ["warder_youtube_mainmenu", "warder_youtube"],
-    "warder_skin": ["FHD_Glass17_Setup", "warder_skin"],
+# One approved image per exact intended filename; no speculative aliases.
+# The PiconHub graphic is retained under its owner-approved filename, but
+# PiconHub only registers WHERE_PLUGINMENU (not WHERE_MENU).
+# FullHDGlass menu shortcut IDs are configurable, while the setup asset is
+# already part of the baseline and is replaced with its approved graphic.
+APPROVED_NAMES = {
+    "warder_gsu": "glass_sys_utils",
+    "warder_piconhub": "PiconHub_Warder_Evolution",
+    "warder_radio": "warder_radio_mainmenu",
+    "warder_youtube": "warder_youtube_mainmenu",
+    "warder_skin": "FHD_Glass17_Setup",
 }
 
 
@@ -47,23 +48,22 @@ def main():
                 entries[info.filename] = old.read(info.filename)
     assert len(entries) == 125, "Unexpected original icon count"
 
-    for original, names in ALIASES.items():
+    for original, name in APPROVED_NAMES.items():
         data = (ROOT / "assets/warder/menu-icon-overrides" / (original + ".png")).read_bytes()
         assert data.startswith(bytes((137, 80, 78, 71, 13, 10, 26, 10))), original + " is not a PNG"
         width = int.from_bytes(data[16:20], "big")
         height = int.from_bytes(data[20:24], "big")
         assert (width, height) == (810, 810), original + " has incorrect dimensions"
-        for name in names:
-            entries["menuIconsBig/" + name + ".png"] = data
+        entries["menuIconsBig/" + name + ".png"] = data
 
-    assert len(entries) == 134, "Unexpected resulting PNG count"
+    assert len(entries) == 129, "Unexpected resulting PNG count"
     out_buffer = io.BytesIO()
     with zipfile.ZipFile(out_buffer, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as new:
         for name, data in sorted(entries.items()):
             new.writestr(name, data)
     archive = out_buffer.getvalue()
     with zipfile.ZipFile(io.BytesIO(archive)) as check:
-        assert check.testzip() is None and len(check.namelist()) == 134
+        assert check.testzip() is None and len(check.namelist()) == 129
 
     OUT.mkdir(parents=True, exist_ok=True)
     # The new destination is uniquely named. Never delete the old FINAL-221.
@@ -80,8 +80,8 @@ def main():
     item["sha256"] = sha256(archive)
     item["root"] = "menuIconsBig"
     item["parts"] = paths
-    item["png_count"] = 134
-    item["release_label"] = "owner-approved-menu-art-id-dedup-20261117"
+    item["png_count"] = 129
+    item["release_label"] = "owner-approved-exact-menu-ids-20261117"
     CATALOG.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
     print("Published", len(entries), "icons,", len(archive), "bytes,", len(paths), "parts; sha256", sha256(archive))
 
