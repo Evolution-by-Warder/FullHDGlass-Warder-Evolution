@@ -6,7 +6,7 @@ msgstr ""
 "PO-Revision-Date: 2022-01-15 17:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: <shamann@pobox.sk>\n"
-"Language: en_GB\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +59,7 @@ msgid "from image"
 msgstr "from image"
 
 msgid "G17 (Ch. Name)"
-msgstr ""
+msgstr "G17 (numele canalului)"
 
 msgid "Default"
 msgstr "Default"
@@ -80,16 +80,16 @@ msgid "VU+ (Ch. Name + Act. event)"
 msgstr "VU+ (Ch. Name + Act. event)"
 
 msgid "G17 (Act. event)"
-msgstr ""
+msgstr "G17 (emisiunea curentă)"
 
 msgid "G17 (Ch. Name + Act. event)"
-msgstr ""
+msgstr "G17 (numele canalului + emisiunea curentă)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
-msgstr ""
+msgstr "G17 (sus: numele canalului, jos: emisiunea curentă)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
-msgstr ""
+msgstr "G17 (sus: numele canalului, jos: SNR și AGC)"
 
 msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
@@ -119,19 +119,19 @@ msgid "with ZZPicon"
 msgstr "with ZZPicon"
 
 msgid "with Picon 400x240"
-msgstr ""
+msgstr "cu picon 400 × 240"
 
 msgid "Glass17"
-msgstr ""
+msgstr "Glass17"
 
 msgid "Glass17(+next event)"
-msgstr ""
+msgstr "Glass17 (+ emisiunea următoare)"
 
 msgid "with PIG(+next event)"
 msgstr "with PIG(+next event)"
 
 msgid "Glass17(+next, date)"
-msgstr ""
+msgstr "Glass17 (+ emisiunea următoare, data)"
 
 msgid "New style"
 msgstr "New style"
@@ -152,7 +152,7 @@ msgid "PIG(+several event)"
 msgstr "PIG(+several event)"
 
 msgid "G17(+several event)"
-msgstr ""
+msgstr "G17 (+ mai multe emisiuni)"
 
 msgid "New style(+several event)"
 msgstr "New style(+several event)"
@@ -164,7 +164,7 @@ msgid "with PIG"
 msgstr "with PIG"
 
 msgid "G17 events"
-msgstr ""
+msgstr "Emisiuni G17"
 
 msgid "Big Icons"
 msgstr "Pictograme mari"
@@ -251,7 +251,7 @@ msgid "SID only"
 msgstr "SID only"
 
 msgid "CAID, SID, VPID"
-msgstr ""
+msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
 msgstr "Percentage"
@@ -341,16 +341,16 @@ msgid "Selected in Netatmo plugin"
 msgstr "Selectat în pluginul Netatmo"
 
 msgid "IMDb"
-msgstr ""
+msgstr "IMDb"
 
 msgid "TMDb"
-msgstr ""
+msgstr "TMDb"
 
 msgid "Transparent"
 msgstr "Transparente"
 
 msgid "Full HD GLass17 spinner"
-msgstr ""
+msgstr "Indicator de încărcare FullHDGlass17"
 
 msgid "Full HD Glass17 Setup"
 msgstr "Setări FullHDGlass17"
@@ -384,7 +384,7 @@ msgid "Title color:"
 msgstr "Title color:"
 
 msgid "Picon default, marker, next ..."
-msgstr ""
+msgstr "Picon implicit, marcaj, următorul ..."
 
 msgid "Icons type"
 msgstr "Icons type"
@@ -393,10 +393,10 @@ msgid "Menu type"
 msgstr "Tipul Meniului"
 
 msgid "Permanent Extra Infobar"
-msgstr ""
+msgstr "Infobar suplimentar permanent"
 
 msgid "Standard Infobar type"
-msgstr ""
+msgstr "Tipul infobarului standard"
 
 msgid "Volume type"
 msgstr "Tipul Volumului"
@@ -420,16 +420,16 @@ msgid "PIG type"
 msgstr "Tipul de PIG "
 
 msgid "Extendend description font size"
-msgstr ""
+msgstr "Dimensiunea fontului pentru descrierea extinsă"
 
 msgid "color"
 msgstr "culoare"
 
 msgid "Channel selection font size"
-msgstr ""
+msgstr "Dimensiunea fontului pentru lista de canale"
 
 msgid "EPG list font size"
-msgstr ""
+msgstr "Dimensiunea fontului pentru lista EPG"
 
 msgid "Dish screen"
 msgstr "Dish screen"
@@ -453,10 +453,10 @@ msgid "On/Off icons"
 msgstr "Pictograme pornit/oprit"
 
 msgid "Service scan long list"
-msgstr ""
+msgstr "Listă extinsă la scanarea serviciilor"
 
 msgid "Extended Number ZAP Picon Size"
-msgstr ""
+msgstr "Dimensiunea piconului la selectarea numerică a canalului"
 
 msgid "GUI will now be restarted to activate restored options:"
 msgstr "Restartam GUI pentru a activa optiunile restaurate:"
@@ -465,7 +465,7 @@ msgid "GUI will now be restarted, updated files founded !!!"
 msgstr "GUI se restarteaza, am gasit fisiere de update !!!"
 
 msgid "ECM and TP Status"
-msgstr ""
+msgstr "Starea ECM și a transponderului"
 
 msgid "No data"
 msgstr "Nu exista date"
@@ -540,19 +540,19 @@ msgid "Restore config"
 msgstr "Restaurare configurație"
 
 msgid "Reset all settings of FHDG 17"
-msgstr ""
+msgstr "Resetează toate setările FHDG 17"
 
 msgid "ECM"
 msgstr "ECM"
 
 msgid "EXTRA INFOBAR"
-msgstr ""
+msgstr "INFOBAR SUPLIMENTAR"
 
 msgid "INFOBAR"
 msgstr "INFOBAR"
 
 msgid "POSTER"
-msgstr ""
+msgstr "AFIȘ"
 
 msgid "HDD/SSD"
 msgstr "HDD/SSD"
@@ -567,10 +567,10 @@ msgid "CHANNEL SELECTION"
 msgstr "SELECTAREA CANALULUI"
 
 msgid "EPG SELECTION"
-msgstr ""
+msgstr "SELECTARE EPG"
 
 msgid "EVENT VIEW"
-msgstr ""
+msgstr "DETALIILE EMISIUNII"
 
 msgid "SPECIAL INFO"
 msgstr "INFO SPECIAL"
@@ -579,7 +579,7 @@ msgid "USER INFO"
 msgstr "USER INFO"
 
 msgid "NETATMO"
-msgstr ""
+msgstr "NETATMO"
 
 msgid "OLED"
 msgstr "OLED"
@@ -597,19 +597,19 @@ msgid "PATHS"
 msgstr "Căi către fișierele de configurare ale skinului"
 
 msgid "VOLUME"
-msgstr ""
+msgstr "VOLUM"
 
 msgid "LISTBOX FONT SIZE"
-msgstr ""
+msgstr "DIMENSIUNEA FONTULUI LISTEI"
 
 msgid "ANIMATIONS"
-msgstr ""
+msgstr "ANIMAȚII"
 
 msgid "OTHER"
 msgstr "ALTE"
 
 msgid "Color(s)"
-msgstr ""
+msgstr "Culoare (culori)"
 
 msgid "ECM line type"
 msgstr "Tipul de ECM line"
@@ -621,16 +621,16 @@ msgid "Enable show address in ECM info"
 msgstr "Activeaza sa arate adresa  in ECM info"
 
 msgid "ECM info from current displayed channel only"
-msgstr ""
+msgstr "Informații ECM doar pentru canalul afișat în prezent"
 
 msgid "Display CW0/1 in Side bar"
-msgstr ""
+msgstr "Afișează CW0/1 în bara laterală"
 
 msgid "Show PID in ECM line"
-msgstr ""
+msgstr "Afișează PID în linia ECM"
 
 msgid "Show CHID in ECM line"
-msgstr ""
+msgstr "Afișează CHID în linia ECM"
 
 msgid "ECM line"
 msgstr "ECM line"
@@ -645,25 +645,25 @@ msgid "Enable Enhanced Infobar"
 msgstr "Activeaza Infobar avansat"
 
 msgid "Vertical Offset"
-msgstr ""
+msgstr "Decalaj vertical"
 
 msgid "Date format"
-msgstr ""
+msgstr "Formatul datei"
 
 msgid "Second picon type"
 msgstr "Al 2-lea tip de picon"
 
 msgid "Animated Weather Icons"
-msgstr ""
+msgstr "Pictograme meteo animate"
 
 msgid "Animation speed (ms)"
-msgstr ""
+msgstr "Viteza animației (ms)"
 
 msgid "Enable icon"
-msgstr ""
+msgstr "Activează pictograma"
 
 msgid "Enable icon of Unknown CAID"
-msgstr ""
+msgstr "Activează pictograma pentru CAID necunoscut"
 
 msgid "Audio type of current track"
 msgstr "Audio type of current track"
@@ -672,13 +672,13 @@ msgid "Progressive/Interlace detection"
 msgstr "Progressive/Interlace detection"
 
 msgid "Tuner info"
-msgstr ""
+msgstr "Informații despre tuner"
 
 msgid "Hide SNR/AGC (Q/S) if value is 0"
-msgstr ""
+msgstr "Ascunde SNR/AGC (Q/S) dacă valoarea este 0"
 
 msgid "CI info"
-msgstr ""
+msgstr "Informații CI"
 
 msgid "Enable full bitrate info"
 msgstr "Activeaza full bitrate info"
@@ -687,7 +687,7 @@ msgid "Bitrate auto stop limit"
 msgstr "Limita autostop pt Bitrate"
 
 msgid "Enable eBitrateCalculator"
-msgstr ""
+msgstr "Activează eBitrateCalculator"
 
 msgid "Show Satellite position in TP info"
 msgstr "Show Satellite position in TP info"
@@ -705,10 +705,10 @@ msgid "Temp. HDD/SSD"
 msgstr "Temp. HDD/SSD"
 
 msgid "Progress bar pixmap"
-msgstr ""
+msgstr "Imaginea barei de progres"
 
 msgid "Progress bar background pixmap"
-msgstr ""
+msgstr "Imaginea de fundal a barei de progres"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
 msgstr "CPU/Mem, RPM/Temp, Provider"
@@ -735,16 +735,16 @@ msgid "Channel name"
 msgstr "Channel name"
 
 msgid "Event now"
-msgstr ""
+msgstr "Emisiunea curentă"
 
 msgid "Event next"
-msgstr ""
+msgstr "Emisiunea următoare"
 
 msgid "Progress bar foreground"
-msgstr ""
+msgstr "Prim-planul barei de progres"
 
 msgid "Progress bar background"
-msgstr ""
+msgstr "Fundalul barei de progres"
 
 msgid "Enable typewriting"
 msgstr "Activeaza typewriting"
@@ -771,19 +771,19 @@ msgid "Set Position"
 msgstr "Seteaza Pozitia"
 
 msgid "Size"
-msgstr ""
+msgstr "Dimensiune"
 
 msgid "Search delay (s)"
-msgstr ""
+msgstr "Întârzierea căutării (s)"
 
 msgid "Erase poster cache"
-msgstr ""
+msgstr "Șterge memoria cache a afișelor"
 
 msgid "Removing current Poster"
-msgstr ""
+msgstr "Se elimină afișul curent"
 
 msgid "Movieplayer infobar HDD/SSD state"
-msgstr ""
+msgstr "Starea HDD/SSD în infobarul playerului video"
 
 msgid "Enable HDD/SSD power state check"
 msgstr "Activeaza verificare stare  HDD/SSD"
@@ -798,7 +798,7 @@ msgid "IP Address"
 msgstr "adresa IP"
 
 msgid "Network speed"
-msgstr ""
+msgstr "Viteza rețelei"
 
 msgid "Menu Icons"
 msgstr "Meniu Icoane"
@@ -810,7 +810,7 @@ msgid "Enable Animation (Menu: Icons/Icons Bar)"
 msgstr "Activeaza Animation (Menu: Icons/Icons Bar)"
 
 msgid "Display remaining time in extra EPG"
-msgstr ""
+msgstr "Afișează timpul rămas în EPG-ul suplimentar"
 
 msgid "Text rolling type"
 msgstr "Tip de text rulare"
@@ -819,13 +819,13 @@ msgid "Text rolling start delay"
 msgstr "Textul întârziere de pornire de rulare"
 
 msgid "Service name font size"
-msgstr ""
+msgstr "Dimensiunea fontului pentru numele canalului"
 
 msgid "Service info font size"
-msgstr ""
+msgstr "Dimensiunea fontului pentru informațiile canalului"
 
 msgid "Line height"
-msgstr ""
+msgstr "Înălțimea rândului"
 
 msgid "EPG Description"
 msgstr "EPG Description"
@@ -855,7 +855,7 @@ msgid "Station"
 msgstr "Stație"
 
 msgid "Stations switch time"
-msgstr ""
+msgstr "Intervalul de comutare între posturi"
 
 msgid "Enable OLED off in standby"
 msgstr "Activeaza OLED off in standby"
@@ -864,7 +864,7 @@ msgid "Number of tuners"
 msgstr "Număr de tunere"
 
 msgid "Hide tuner in standby or missing tuner"
-msgstr ""
+msgstr "Ascunde tunerul în standby sau când lipsește"
 
 msgid "Active"
 msgstr "Activ"
@@ -909,19 +909,19 @@ msgid "Reconnect time"
 msgstr "Reconectați timp"
 
 msgid "Display nighttime icons"
-msgstr ""
+msgstr "Afișează pictogramele pentru noapte"
 
 msgid "Enable next city in Weather"
 msgstr "Activeaza urmatorul Oras in Vreme"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "Cheia API OpenWeatherMap"
 
 msgid "Forecast for more days"
-msgstr ""
+msgstr "Prognoză pentru mai multe zile"
 
 msgid "More days switch time"
-msgstr ""
+msgstr "Intervalul de comutare a zilelor suplimentare"
 
 msgid "Show yesterday"
 msgstr "arată ieri"
@@ -933,7 +933,7 @@ msgid "Weather Icons"
 msgstr "Icoane meteo"
 
 msgid "State"
-msgstr ""
+msgstr "Stare"
 
 msgid "Warm"
 msgstr "Cald"
@@ -951,64 +951,64 @@ msgid "Picons/Icons path"
 msgstr "Locatia pentru Picons/Icoane"
 
 msgid "FHDG Configuration file"
-msgstr ""
+msgstr "Fișier de configurare FHDG"
 
 msgid "Path to satellites.xml"
-msgstr ""
+msgstr "Calea către satellites.xml"
 
 msgid "Bigger"
-msgstr ""
+msgstr "Mai mare"
 
 msgid "Big"
-msgstr ""
+msgstr "Mare"
 
 msgid "Medium"
-msgstr ""
+msgstr "Mediu"
 
 msgid "Small"
-msgstr ""
+msgstr "Mic"
 
 msgid "Smaller"
-msgstr ""
+msgstr "Mai mic"
 
 msgid "Enable Animations"
 msgstr "Activează animațiile"
 
 msgid "(Infobar) Picon"
-msgstr ""
+msgstr "(Infobar) Picon"
 
 msgid "(Infobar) Second Picon"
-msgstr ""
+msgstr "(Infobar) Al doilea picon"
 
 msgid "(Infobar) Poster"
-msgstr ""
+msgstr "(Infobar) Afiș"
 
 msgid "(Infobar) ECM line"
-msgstr ""
+msgstr "(Infobar) Linia ECM"
 
 msgid "(Infobar) TP info/type"
-msgstr ""
+msgstr "(Infobar) Informații/tip transponder"
 
 msgid "(Menu) Big Icons/Icons"
-msgstr ""
+msgstr "(Meniu) Pictograme mari/pictograme"
 
 msgid "(Channel selection) picon/Prov/Sat"
-msgstr ""
+msgstr "(Lista de canale) picon/furnizor/satelit"
 
 msgid "VTi SplitScreen"
-msgstr ""
+msgstr "VTi SplitScreen"
 
 msgid "Reference separating char"
-msgstr ""
+msgstr "Caracter separator pentru referințe"
 
 msgid "Ignore leading 0 in time"
-msgstr ""
+msgstr "Ignoră cifra 0 de la începutul orei"
 
 msgid "Ignore leading 0 in date"
-msgstr ""
+msgstr "Ignoră cifra 0 de la începutul datei"
 
 msgid "Calculation of channel numbers"
-msgstr ""
+msgstr "Calcularea numerelor canalelor"
 
 msgid "Enable CAID PIDs"
 msgstr "Activeaza CAID PIDs"
@@ -1017,7 +1017,7 @@ msgid "Neutrino keymap"
 msgstr "Neutrino keymap"
 
 msgid "Full HD Glass17 spinner"
-msgstr ""
+msgstr "Indicator de încărcare FullHDGlass17"
 
 msgid "Localization of the skin"
 msgstr "Localization of the skin"
@@ -1032,7 +1032,7 @@ msgid "RadioScreenSaver"
 msgstr "RadioScreenSaver"
 
 msgid "IPTV Radio Detection"
-msgstr ""
+msgstr "Detectarea radioului IPTV"
 
 msgid "Exit"
 msgstr "Exit"
@@ -1041,7 +1041,7 @@ msgid "now?"
 msgstr "acum?"
 
 msgid "Erase finished successfully!"
-msgstr ""
+msgstr "Ștergerea s-a încheiat cu succes!"
 
 msgid "Color Sample"
 msgstr "Color Sample"
@@ -1091,7 +1091,7 @@ msgid "Error while updating to new version!!!"
 msgstr "Error update la versiunea noua!!!"
 
 msgid "The file satellites.xml do not exists in selected dir"
-msgstr ""
+msgstr "Fișierul satellites.xml nu există în directorul selectat"
 
 msgid "GUI will now be restarted to activate changes in:"
 msgstr "GUI will now be restarted to activate changes in:"
@@ -1133,7 +1133,7 @@ msgid "HDD/SSD state"
 msgstr "HDD/SSD state"
 
 msgid "10 days forecast"
-msgstr ""
+msgstr "Prognoză pe 10 zile"
 
 msgid "Do you want restart GUI to activate the screen:"
 msgstr "Do you want restart GUI to activate the screen:"
@@ -1145,7 +1145,7 @@ msgid "Welcome in setup"
 msgstr "Welcome in setup"
 
 msgid "Wait for the file downloads to complete"
-msgstr ""
+msgstr "Așteptați finalizarea descărcării fișierelor"
 
 msgid "Select"
 msgstr "Select"
@@ -1154,85 +1154,85 @@ msgid "Cleaning Picons"
 msgstr "Curățenie Picons"
 
 msgid "Start Download"
-msgstr ""
+msgstr "Începe descărcarea"
 
 msgid "picon white"
-msgstr ""
+msgstr "Piconuri albe"
 
 msgid "picon black"
-msgstr ""
+msgstr "Piconuri negre"
 
 msgid "picon 400x240"
-msgstr ""
+msgstr "Piconuri 400 × 240"
 
 msgid "picon 220x132"
-msgstr ""
+msgstr "Piconuri 220 × 132"
 
 msgid "piconProv 220x132"
-msgstr ""
+msgstr "Piconuri furnizor 220 × 132"
 
 msgid "piconSat 220x132"
-msgstr ""
+msgstr "Piconuri satelit 220 × 132"
 
 msgid "piconProv black"
-msgstr ""
+msgstr "Piconuri furnizor negre"
 
 msgid "piconSat black"
-msgstr ""
+msgstr "Piconuri satelit negre"
 
 msgid "piconCam black"
-msgstr ""
+msgstr "Piconuri CAM negre"
 
 msgid "piconWeather black"
-msgstr ""
+msgstr "Piconuri meteo negre"
 
 msgid "piconProv white"
-msgstr ""
+msgstr "Piconuri furnizor albe"
 
 msgid "piconSat white"
-msgstr ""
+msgstr "Piconuri satelit albe"
 
 msgid "piconCam white"
-msgstr ""
+msgstr "Piconuri CAM albe"
 
 msgid "piconWeather white"
-msgstr ""
+msgstr "Piconuri meteo albe"
 
 msgid "picon OLED"
-msgstr ""
+msgstr "Piconuri OLED"
 
 msgid "ZZPicon"
-msgstr ""
+msgstr "ZZPicon"
 
 msgid "Help"
-msgstr ""
+msgstr "Ajutor"
 
 msgid "Set of icons and prewievs"
-msgstr ""
+msgstr "Set de pictograme și previzualizări"
 
 msgid "ExtraScreens graphics"
-msgstr ""
+msgstr "Grafică pentru ecranele suplimentare"
 
 msgid "Menu icons"
-msgstr ""
+msgstr "Pictogramele meniului"
 
 msgid "Weather icons"
 msgstr "Icoane meteo"
 
 msgid "Channelselection icons"
-msgstr ""
+msgstr "Pictogramele listei de canale"
 
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 msgid "ERROR"
-msgstr ""
+msgstr "EROARE"
 
 msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
-msgstr ""
+msgstr "Instrumentul 7zip lipsește; îl puteți descărca din MENIUL DE DESCĂRCĂRI"
 
 msgid "SUCCESSFUL"
-msgstr ""
+msgstr "SUCCES"
 
 msgid "Total:"
 msgstr "Total:"
@@ -1259,10 +1259,10 @@ msgid "file(s) from"
 msgstr "file(s) from"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "Nu s-au putut încărca instrumentele URL"
 
 msgid "Internet connection failed"
-msgstr ""
+msgstr "Conexiunea la internet a eșuat"
 
 msgid "Unknown error detected, try again!!!"
 msgstr "Unknown error detected, try again!!!"
@@ -1298,7 +1298,7 @@ msgid "writed successfully !!!"
 msgstr "writed successfully !!!"
 
 msgid "Sorry, write to g17Screens.cfg failed !!!"
-msgstr ""
+msgstr "Nu s-a putut scrie în g17Screens.cfg!"
 
 msgid "Changes writed successfully !!!"
 msgstr "Changes writed successfully !!!"
@@ -1307,7 +1307,7 @@ msgid "Edit"
 msgstr "Edit"
 
 msgid "Picon path"
-msgstr ""
+msgstr "Calea către piconuri"
 
 msgid "Choose Icons"
 msgstr "Choose Icons"
@@ -1334,7 +1334,7 @@ msgid "Please enter a city name"
 msgstr "Vă rugăm să introduceți un nume de oraș"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Timpul de așteptare pentru citirea datelor site-ului a expirat"
 
 msgid "None city detected"
 msgstr "Nici unul oras detectat"
@@ -1443,15 +1443,15 @@ msgstr "Metodă actualizare"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Nu a fost selectată rezoluția"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Nu a fost selectată culoarea"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Nu a fost selectată metoda de actualizare"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
@@ -1475,19 +1475,19 @@ msgstr "Stocare MMC"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Directorul rădăcină pentru piconuri"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Definit de utilizator"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Definit de utilizator..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – Piconuri mini"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1495,126 +1495,126 @@ msgstr "220 × 132 – Piconuri"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – Piconuri mari"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – Pictograme mari pentru tipurile de listă de canale selectate"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Sincronizează cu listele TV"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Sincronizează cu listele TV și radio"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Copiază toate; înlocuiește piconurile existente pentru pozițiile selectate"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Copiază toate; actualizare incrementală"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Destinația descărcării:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Alegeți pictograme pentru lista de canale de 50 × 30, 220 × 132, 400 × 240 sau 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Alegeți cum sunt sincronizate sau copiate piconurile canalelor pentru pozițiile selectate."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Înainte de descărcare, selectați rezoluția, culoarea, locația și metoda de actualizare."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Creați directorul pentru piconuri?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Nu se poate crea destinația piconurilor"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "Nu se poate scrie în destinația piconurilor"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Selectați un director existent."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Nu se poate citi destinația piconurilor"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Piconul vechi pentru poziția selectată nu a putut fi șters"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Piconurile pozițiilor selectate nu au putut fi înlocuite în siguranță."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "Serviciile selectate pe receptor nu au piconuri corespunzătoare în pachetele alese."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "%d picon actualizat cu succes"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "%d piconuri actualizate cu succes"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "%d serviciu selectat"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "%d servicii selectate"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Nu s-au descărcat piconuri."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "Instalarea a eșuat pentru %d din %d piconuri"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "Spațiul de stocare selectat nu este montat"
 
 msgid "Provider logos"
 msgstr "Sigle ale furnizorilor"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "Sigle ale platformelor TV și furnizorilor de servicii."
 
 msgid "Satellite logos"
 msgstr "Sigle ale sateliților"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Sigle de sateliți și identificatori grafici."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: %d piconuri actualizate; %d eșecuri"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Total: %d piconuri actualizate"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Eșecuri: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "SUCCES PARȚIAL"
 
 
 # Completed operation result dialog button.
