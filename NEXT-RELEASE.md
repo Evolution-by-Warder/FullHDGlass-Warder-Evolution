@@ -9,13 +9,22 @@ The file is attached in the ChatGPT conversation, **not yet committed to the rep
 retrieve the exact archive and stage it as a canonical spinner source before building.
 
 Follow `docs/SPINNERS.md` and the current theme registry/build workflow. Add
-this as a **third selectable** animation with the **exact menu title `Warder`**
-and a separate text line below it **`Autor: bakussa`**. List-order requirement:
-(1) existing default `HDGlass - bakussa` (the registry currently sets
-`default: "bakussa"`), (2) `Warder` + author subtitle, (3) `Holubica`/Dove,
-followed by any other choices. Keep the existing default (do not auto-select
-Warder), preserve both existing themes and saved user choices, and retain
-user/system spinner priority. Check transparent edges,
+this as a new selectable animation with the **exact menu title `Warder`**
+and a second, smaller **author** line `bakussa` (same subtitle style as existing
+entries). The owner's screenshot confirms a TWO-COLUMN list, and the precise
+visual order must be:
+- Top left: `Predvolený spinner image` / `OpenATV / OpenPLi` (existing item)
+- Top right: `Warder` / `bakussa` (**new animation immediately beside default**)
+- Second row left: `HDGlass - bakussa` / `bakussa`
+- Second row right: `Holubica` / Dove
+- Remaining spinner items follow in their existing relative order.
+
+**Do not confuse** `Predvolený spinner image` (the first visible item in the
+screenshot) with `HDGlass - bakussa` (a separate second-row item). The current
+internal theme registry uses `default: "bakussa"`; do not change any saved
+selection or internal default setting merely to achieve visual reordering.
+Preserve existing themes, user/system spinner priority, and saved user choices;
+Warder must not be selected automatically. Check transparent edges,
 24-frame ordering and animation on-device, and run existing spinner regressions.
 **Do not change current runtime, package version, IPK, releases, or update feeds
 solely because of this note.** Tracking: #112.
