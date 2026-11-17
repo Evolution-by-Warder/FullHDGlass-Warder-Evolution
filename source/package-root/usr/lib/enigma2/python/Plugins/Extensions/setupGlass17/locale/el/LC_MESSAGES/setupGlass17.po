@@ -48,7 +48,7 @@ msgid "from image"
 msgstr "από το image"
 
 msgid "G17 (Ch. Name)"
-msgstr ""
+msgstr "G17 (όνομα καναλιού)"
 
 msgid "Default"
 msgstr "Προεπιλογή"
@@ -60,28 +60,28 @@ msgid "only Time"
 msgstr "μόνο ώρα"
 
 msgid "VU+ (Ch. Name)"
-msgstr ""
+msgstr "VU+ (όνομα καναλιού)"
 
 msgid "VU+ (Act. event)"
-msgstr ""
+msgstr "VU+ (τρέχουσα εκπομπή)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr ""
+msgstr "VU+ (όνομα καναλιού και τρέχουσα εκπομπή)"
 
 msgid "G17 (Act. event)"
-msgstr ""
+msgstr "G17 (τρέχουσα εκπομπή)"
 
 msgid "G17 (Ch. Name + Act. event)"
-msgstr ""
+msgstr "G17 (όνομα καναλιού και τρέχουσα εκπομπή)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
-msgstr ""
+msgstr "G17 (πάνω: όνομα καναλιού, κάτω: τρέχουσα εκπομπή)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
-msgstr ""
+msgstr "G17 (πάνω: όνομα καναλιού, κάτω: SNR και AGC)"
 
 msgid "VU+ Ultimo"
-msgstr ""
+msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
 msgstr "Picon και ώρα"
@@ -90,37 +90,37 @@ msgid "Default 2"
 msgstr "Προεπιλογή 2"
 
 msgid "VU+ Duo2 Snr,Agc"
-msgstr ""
+msgstr "VU+ Duo2 SNR, AGC"
 
 msgid "VU+ Duo2 Snr,Agc,RPM,Temp."
-msgstr ""
+msgstr "VU+ Duo2 SNR, AGC, στροφές, θερμοκρασία"
 
 msgid "VU+ 4k Snr,Agc"
-msgstr ""
+msgstr "VU+ 4K SNR, AGC"
 
 msgid "Duo2 Snr,Agc,RPM,Temp. 2"
-msgstr ""
+msgstr "Duo2 SNR, AGC, στροφές, θερμοκρασία 2"
 
 msgid "Classical"
-msgstr ""
+msgstr "Κλασικό"
 
 msgid "with ZZPicon"
-msgstr ""
+msgstr "με ZZPicon"
 
 msgid "with Picon 400x240"
-msgstr ""
+msgstr "με picon 400×240"
 
 msgid "Glass17"
-msgstr ""
+msgstr "Glass17"
 
 msgid "Glass17(+next event)"
-msgstr ""
+msgstr "Glass17 (+επόμενη εκπομπή)"
 
 msgid "with PIG(+next event)"
-msgstr ""
+msgstr "με PIG (+επόμενη εκπομπή)"
 
 msgid "Glass17(+next, date)"
-msgstr ""
+msgstr "Glass17 (+επόμενη εκπομπή, ημερομηνία)"
 
 msgid "New style"
 msgstr "Νέο στυλ"
@@ -129,31 +129,31 @@ msgid "New style with PIG"
 msgstr "Νέο στυλ με PIG"
 
 msgid "PIG(+next event,left)"
-msgstr ""
+msgstr "PIG (+επόμενη εκπομπή, αριστερά)"
 
 msgid "PIG(+act,next,left)"
-msgstr ""
+msgstr "PIG (+τρέχουσα, επόμενη, αριστερά)"
 
 msgid "The Core 88"
-msgstr ""
+msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr ""
+msgstr "PIG (+πολλές εκπομπές)"
 
 msgid "G17(+several event)"
-msgstr ""
+msgstr "G17 (+πολλές εκπομπές)"
 
 msgid "New style(+several event)"
-msgstr ""
+msgstr "Νέο στυλ (+πολλές εκπομπές)"
 
 msgid "PIG(+act,several,left)"
-msgstr ""
+msgstr "PIG (+τρέχουσα, πολλές, αριστερά)"
 
 msgid "with PIG"
 msgstr "με PIG"
 
 msgid "G17 events"
-msgstr ""
+msgstr "Εκπομπές G17"
 
 msgid "Big Icons"
 msgstr "Μεγάλα εικονίδια"
@@ -162,10 +162,10 @@ msgid "Poster"
 msgstr "Αφίσα"
 
 msgid "PIG + PIP"
-msgstr ""
+msgstr "PIG + PIP"
 
 msgid "PIP"
-msgstr ""
+msgstr "PIP"
 
 msgid "yes"
 msgstr "ναι"
@@ -189,7 +189,7 @@ msgid "Icons Bar"
 msgstr "Γραμμή εικονιδίων"
 
 msgid "simply PIG"
-msgstr ""
+msgstr "απλό PIG"
 
 msgid "Sat and Prov"
 msgstr "Δορυφόρος και πάροχος"
@@ -213,7 +213,7 @@ msgid "Sat, Prov and Weather"
 msgstr "Δορυφόρος, πάροχος και καιρός"
 
 msgid "InfoECM by Duri"
-msgstr ""
+msgstr "InfoECM από Duri"
 
 msgid "None"
 msgstr "Κανένα"
@@ -228,19 +228,19 @@ msgid "Simple"
 msgstr "Απλό"
 
 msgid "Ecminfo only"
-msgstr ""
+msgstr "μόνο πληροφορίες ECM"
 
 msgid "Ecminfo and CAID"
-msgstr ""
+msgstr "πληροφορίες ECM και CAID"
 
 msgid "CAID and SID"
-msgstr ""
+msgstr "CAID και SID"
 
 msgid "SID only"
-msgstr ""
+msgstr "μόνο SID"
 
 msgid "CAID, SID, VPID"
-msgstr ""
+msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
 msgstr "Ποσοστό"
@@ -264,13 +264,13 @@ msgid "Event - now and next"
 msgstr "Τρέχουσα και επόμενη εκπομπή"
 
 msgid "Event now/next and side infobar"
-msgstr ""
+msgstr "Τρέχουσα/επόμενη εκπομπή και πλευρική μπάρα"
 
 msgid "Black"
 msgstr "Μαύρο"
 
 msgid "with PIG(+ch.name,number)"
-msgstr ""
+msgstr "με PIG (+όνομα και αριθμός καναλιού)"
 
 msgid "no time"
 msgstr "χωρίς ώρα"
@@ -330,16 +330,16 @@ msgid "Selected in Netatmo plugin"
 msgstr "Επιλογή από το πρόσθετο Netatmo"
 
 msgid "IMDb"
-msgstr ""
+msgstr "IMDb"
 
 msgid "TMDb"
-msgstr ""
+msgstr "TMDb"
 
 msgid "Transparent"
 msgstr "Διαφανές"
 
 msgid "Full HD GLass17 spinner"
-msgstr ""
+msgstr "Spinner FullHDGlass17"
 
 msgid "Full HD Glass17 Setup"
 msgstr "Ρυθμίσεις FullHDGlass17"
@@ -366,7 +366,7 @@ msgid "Title color:"
 msgstr "Χρώμα τίτλου:"
 
 msgid "Picon default, marker, next ..."
-msgstr ""
+msgstr "Προεπιλεγμένο picon, δείκτης, επόμενο ..."
 
 msgid "Icons type"
 msgstr "Τύπος εικονιδίων"
@@ -444,7 +444,7 @@ msgid "GUI will now be restarted to activate restored options:"
 msgstr "Το γραφικό περιβάλλον θα επανεκκινηθεί για ενεργοποίηση των επαναφερμένων επιλογών:"
 
 msgid "GUI will now be restarted, updated files founded !!!"
-msgstr ""
+msgstr "Το γραφικό περιβάλλον θα επανεκκινηθεί· βρέθηκαν ενημερωμένα αρχεία!"
 
 msgid "ECM and TP Status"
 msgstr "Κατάσταση ECM και TP"
@@ -471,7 +471,7 @@ msgid "Bitrate"
 msgstr "Ρυθμός μετάδοσης"
 
 msgid "Btr: too high - stopped"
-msgstr ""
+msgstr "Bitrate: πολύ υψηλό – διακόπηκε"
 
 msgid "Bitrate stopped"
 msgstr "Η μέτρηση bitrate σταμάτησε"
@@ -483,7 +483,7 @@ msgid "Error reading CaIds !!!"
 msgstr "Σφάλμα ανάγνωσης CAID!"
 
 msgid "Unsuported CA found, no correct ECM info !!!"
-msgstr ""
+msgstr "Βρέθηκε μη υποστηριζόμενο CA· δεν υπάρχουν σωστές πληροφορίες ECM!"
 
 msgid "Available:"
 msgstr "Διαθέσιμο:"
@@ -600,7 +600,7 @@ msgid "ECM refresh time"
 msgstr "Χρόνος ανανέωσης ECM"
 
 msgid "Enable show address in ECM info"
-msgstr ""
+msgstr "Εμφάνιση διεύθυνσης στις πληροφορίες ECM"
 
 msgid "ECM info from current displayed channel only"
 msgstr "Πληροφορίες ECM μόνο του τρέχοντος καναλιού"
@@ -651,13 +651,13 @@ msgid "Audio type of current track"
 msgstr "Τύπος ήχου τρέχοντος κομματιού"
 
 msgid "Progressive/Interlace detection"
-msgstr ""
+msgstr "Ανίχνευση προοδευτικής/πεπλεγμένης σάρωσης"
 
 msgid "Tuner info"
 msgstr "Πληροφορίες δέκτη"
 
 msgid "Hide SNR/AGC (Q/S) if value is 0"
-msgstr ""
+msgstr "Απόκρυψη SNR/AGC (Q/S) όταν η τιμή είναι 0"
 
 msgid "CI info"
 msgstr "Πληροφορίες CI"
@@ -693,7 +693,7 @@ msgid "Progress bar background pixmap"
 msgstr "Εικόνα φόντου γραμμής προόδου"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr ""
+msgstr "CPU/Μνήμη, στροφές/θερμοκρασία, πάροχος"
 
 msgid "TP type"
 msgstr "Τύπος TP"
@@ -765,7 +765,7 @@ msgid "Removing current Poster"
 msgstr "Αφαίρεση τρέχουσας αφίσας"
 
 msgid "Movieplayer infobar HDD/SSD state"
-msgstr ""
+msgstr "Κατάσταση HDD/SSD στη μπάρα αναπαραγωγής ταινιών"
 
 msgid "Enable HDD/SSD power state check"
 msgstr "Έλεγχος κατάστασης τροφοδοσίας HDD/SSD"
@@ -786,10 +786,10 @@ msgid "Menu Icons"
 msgstr "Εικονίδια μενού"
 
 msgid "Enable empty icons in Menu type - Icons"
-msgstr ""
+msgstr "Εμφάνιση κενών εικονιδίων στο μενού εικονιδίων"
 
 msgid "Enable Animation (Menu: Icons/Icons Bar)"
-msgstr ""
+msgstr "Ενεργοποίηση κίνησης (Μενού: Εικονίδια/Γραμμή εικονιδίων)"
 
 msgid "Display remaining time in extra EPG"
 msgstr "Εμφάνιση χρόνου που απομένει στο πρόσθετο EPG"
@@ -897,7 +897,7 @@ msgid "Enable next city in Weather"
 msgstr "Ενεργοποίηση επόμενης πόλης στον καιρό"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "Κλειδί API OpenWeatherMap"
 
 msgid "Forecast for more days"
 msgstr "Πρόγνωση περισσότερων ημερών"
@@ -957,28 +957,28 @@ msgid "Enable Animations"
 msgstr "Ενεργοποίηση κινήσεων"
 
 msgid "(Infobar) Picon"
-msgstr ""
+msgstr "(Μπάρα πληροφοριών) Picon"
 
 msgid "(Infobar) Second Picon"
-msgstr ""
+msgstr "(Μπάρα πληροφοριών) Δεύτερο picon"
 
 msgid "(Infobar) Poster"
-msgstr ""
+msgstr "(Μπάρα πληροφοριών) Αφίσα"
 
 msgid "(Infobar) ECM line"
-msgstr ""
+msgstr "(Μπάρα πληροφοριών) Γραμμή ECM"
 
 msgid "(Infobar) TP info/type"
-msgstr ""
+msgstr "(Μπάρα πληροφοριών) Στοιχεία/τύπος TP"
 
 msgid "(Menu) Big Icons/Icons"
-msgstr ""
+msgstr "(Μενού) Μεγάλα εικονίδια/Εικονίδια"
 
 msgid "(Channel selection) picon/Prov/Sat"
-msgstr ""
+msgstr "(Λίστα καναλιών) Picon/Πάροχος/Δορυφόρος"
 
 msgid "VTi SplitScreen"
-msgstr ""
+msgstr "Διαχωρισμένη οθόνη VTi"
 
 msgid "Reference separating char"
 msgstr "Χαρακτήρας διαχωρισμού αναφοράς"
@@ -1059,7 +1059,7 @@ msgid "Update finished successfully!"
 msgstr "Η ενημέρωση ολοκληρώθηκε!"
 
 msgid "Do you want restart GUI to activate version"
-msgstr ""
+msgstr "Θέλετε επανεκκίνηση του γραφικού περιβάλλοντος για ενεργοποίηση της έκδοσης"
 
 msgid "Restart GUI now?"
 msgstr "Επανεκκίνηση γραφικού περιβάλλοντος τώρα;"
@@ -1068,34 +1068,34 @@ msgid "Error while updating to new version!!!"
 msgstr "Σφάλμα ενημέρωσης στην νέα έκδοση!"
 
 msgid "The file satellites.xml do not exists in selected dir"
-msgstr ""
+msgstr "Το αρχείο satellites.xml δεν υπάρχει στον επιλεγμένο φάκελο"
 
 msgid "GUI will now be restarted to activate changes in:"
-msgstr ""
+msgstr "Το γραφικό περιβάλλον θα επανεκκινηθεί για εφαρμογή των αλλαγών σε:"
 
 msgid "Sorry, cannot create dir on path:"
 msgstr "Δεν είναι δυνατή η δημιουργία φακέλου στη διαδρομή:"
 
 msgid "Fade cannot be used, alhpa file missing!!!"
-msgstr ""
+msgstr "Δεν είναι δυνατή η μετάβαση· λείπει το αρχείο alpha!"
 
 msgid "HDD/SSD power state check is not available for SH4"
-msgstr ""
+msgstr "Ο έλεγχος κατάστασης HDD/SSD δεν υποστηρίζεται στο SH4"
 
 msgid "Set Clear memory"
-msgstr ""
+msgstr "Ρύθμιση εκκαθάρισης μνήμης"
 
 msgid "Set original encoding.conf"
-msgstr ""
+msgstr "Επαναφορά αρχικού encoding.conf"
 
 msgid "is incorrect, please, select existing/correct screen !!!"
-msgstr ""
+msgstr "δεν είναι έγκυρο, επιλέξτε υπάρχουσα/σωστή οθόνη!"
 
 msgid "is incorrect, please, select correct icons !!!"
-msgstr ""
+msgstr "δεν είναι έγκυρο, επιλέξτε σωστά εικονίδια!"
 
 msgid "is incorrect, style will not be changed!!!"
-msgstr ""
+msgstr "δεν είναι έγκυρο, το στυλ δεν θα αλλάξει!"
 
 msgid "Save again to apply all setup changes without style change"
 msgstr "Αποθηκεύστε ξανά για εφαρμογή των αλλαγών χωρίς αλλαγή στυλ"
@@ -1113,7 +1113,7 @@ msgid "10 days forecast"
 msgstr "Πρόγνωση 10 ημερών"
 
 msgid "Do you want restart GUI to activate the screen:"
-msgstr ""
+msgstr "Θέλετε επανεκκίνηση του γραφικού περιβάλλοντος για ενεργοποίηση της οθόνης:"
 
 msgid "Config loaded successfully!"
 msgstr "Οι ρυθμίσεις φορτώθηκαν!"
@@ -1146,10 +1146,10 @@ msgid "picon 220x132"
 msgstr "picon 220x132"
 
 msgid "piconProv 220x132"
-msgstr ""
+msgstr "Picons παρόχων 220×132"
 
 msgid "piconSat 220x132"
-msgstr ""
+msgstr "Picons δορυφόρων 220×132"
 
 msgid "piconProv black"
 msgstr "μαύρα picons παρόχων"
@@ -1179,7 +1179,7 @@ msgid "picon OLED"
 msgstr "picon OLED"
 
 msgid "ZZPicon"
-msgstr ""
+msgstr "ZZPicon"
 
 msgid "Help"
 msgstr "Βοήθεια"
@@ -1206,7 +1206,7 @@ msgid "ERROR"
 msgstr "ΣΦΑΛΜΑ"
 
 msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
-msgstr ""
+msgstr "Λείπει το εργαλείο 7zip· μπορείτε να το κατεβάσετε από το ΜΕΝΟΥ ΛΗΨΕΩΝ"
 
 msgid "SUCCESSFUL"
 msgstr "ΕΠΙΤΥΧΙΑ"
@@ -1233,10 +1233,10 @@ msgid "file(s) downloaded/updated."
 msgstr "αρχεία λήφθηκαν/ενημερώθηκαν."
 
 msgid "file(s) from"
-msgstr ""
+msgstr "αρχεία από"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "Απέτυχε η φόρτωση εργαλείων URL"
 
 msgid "Internet connection failed"
 msgstr "Αποτυχία σύνδεσης στο διαδίκτυο"
@@ -1260,22 +1260,22 @@ msgid "Style menu"
 msgstr "Μενού στυλ"
 
 msgid "Sorry, you have entered a wrong color:"
-msgstr ""
+msgstr "Μη έγκυρο χρώμα:"
 
 msgid "Sorry, writing color:"
-msgstr ""
+msgstr "Σφάλμα εγγραφής χρώματος:"
 
 msgid "failed !!!"
-msgstr ""
+msgstr "απέτυχε!"
 
 msgid "Color:"
 msgstr "Χρώμα:"
 
 msgid "writed successfully !!!"
-msgstr ""
+msgstr "αποθηκεύτηκε επιτυχώς!"
 
 msgid "Sorry, write to g17Screens.cfg failed !!!"
-msgstr ""
+msgstr "Αποτυχία εγγραφής στο g17Screens.cfg!"
 
 msgid "Changes writed successfully !!!"
 msgstr "Οι αλλαγές αποθηκεύτηκαν!"
@@ -1341,67 +1341,67 @@ msgid "Updated:"
 msgstr "Ενημερώθηκαν:"
 
 msgid "Selected upstream picons were not installed:"
-msgstr ""
+msgstr "Δεν εγκαταστάθηκαν τα επιλεγμένα picons της πηγής:"
 
 msgid "selected receiver service(s) have no matching picon in the selected packages."
-msgstr ""
+msgstr "οι επιλεγμένες υπηρεσίες του δέκτη δεν έχουν αντίστοιχο picon στα επιλεγμένα πακέτα."
 
 msgid "Choose an available channel picon size and the large channel selection icon package."
-msgstr ""
+msgstr "Επιλέξτε διαθέσιμο μέγεθος picon και πακέτο μεγάλων εικονιδίων λίστας καναλιών."
 
 msgid "Choose a channel picon colour supported at the selected size."
-msgstr ""
+msgstr "Επιλέξτε χρώμα picon που υποστηρίζεται στο επιλεγμένο μέγεθος."
 
 msgid "Choose the available provider picon variant."
-msgstr ""
+msgstr "Επιλέξτε διαθέσιμη παραλλαγή picons παρόχων."
 
 msgid "Choose the available satellite picon variant."
-msgstr ""
+msgstr "Επιλέξτε διαθέσιμη παραλλαγή picons δορυφόρων."
 
 msgid "Choose black or white CAM picons."
-msgstr ""
+msgstr "Επιλέξτε μαύρα ή λευκά CAM picons."
 
 msgid "Choose black or white weather information picons."
-msgstr ""
+msgstr "Επιλέξτε μαύρα ή λευκά picons πληροφοριών καιρού."
 
 msgid "Provider picons"
-msgstr ""
+msgstr "Picons παρόχων"
 
 msgid "Satellite picons"
-msgstr ""
+msgstr "Picons δορυφόρων"
 
 msgid "CAM picons"
-msgstr ""
+msgstr "CAM picons"
 
 msgid "Weather picons"
-msgstr ""
+msgstr "Picons καιρού"
 
 msgid "Large for selected channel selection types"
-msgstr ""
+msgstr "Μεγάλα για επιλεγμένους τύπους λίστας καναλιών"
 
 msgid "No legacy picon archive is available for the selected positions and variant."
-msgstr ""
+msgstr "Δεν υπάρχει παλιό πακέτο picons για τις επιλεγμένες θέσεις και παραλλαγή."
 
 msgid "Invalid picon destination"
-msgstr ""
+msgstr "Μη έγκυρος προορισμός picons"
 
 msgid "Large channel selection icons (710 x 682)"
-msgstr ""
+msgstr "Μεγάλα εικονίδια λίστας καναλιών (710 × 682)"
 
 msgid "Satellite positions"
-msgstr ""
+msgstr "Δορυφορικές θέσεις"
 
 msgid "Picon resolution"
-msgstr ""
+msgstr "Ανάλυση picon"
 
 msgid "Picon colour"
-msgstr ""
+msgstr "Χρώμα picon"
 
 msgid "Picon location"
-msgstr ""
+msgstr "Θέση αποθήκευσης picon"
 
 msgid "Update method"
-msgstr ""
+msgstr "Μέθοδος ενημέρωσης"
 
 msgid "No resolution selected"
 msgstr "Δεν επιλέχθηκε ανάλυση"
@@ -1437,16 +1437,16 @@ msgid "User defined..."
 msgstr "Ορισμένο από χρήστη..."
 
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – μικρά picons"
 
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – picons"
 
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – μεγάλα picons"
 
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – μεγάλα εικονίδια για επιλεγμένους τύπους λίστας καναλιών"
 
 msgid "Synchronize with TV lists"
 msgstr "Συγχρονισμός με λίστες TV"
@@ -1464,13 +1464,13 @@ msgid "Download destination:"
 msgstr "Προορισμός λήψης:"
 
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Επιλέξτε εικονίδια λίστας καναλιών 50 × 30, 220 × 132, 400 × 240 ή 710 × 682."
 
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Επιλέξτε τρόπο συγχρονισμού ή αντιγραφής picons για τις επιλεγμένες θέσεις."
 
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Επιλέξτε ανάλυση, χρώμα, θέση και μέθοδο ενημέρωσης πριν από τη λήψη."
 
 msgid "Create picon directory?"
 msgstr "Δημιουργία φακέλου picon;"
@@ -1488,13 +1488,13 @@ msgid "Cannot read picon destination"
 msgstr "Δεν είναι δυνατή η ανάγνωση προορισμού picon"
 
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η αφαίρεση παλιού picon της επιλεγμένης θέσης"
 
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η ασφαλής αντικατάσταση picons της επιλεγμένης θέσης."
 
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "οι επιλεγμένες υπηρεσίες δέκτη δεν έχουν αντίστοιχο picon στα επιλεγμένα πακέτα."
 
 msgid "%d picon successfully updated"
 msgstr "Ενημερώθηκε επιτυχώς %d picon"
@@ -1530,10 +1530,10 @@ msgid "Satellite logos and graphical identifiers."
 msgstr "Λογότυπα και γραφικά αναγνωριστικά δορυφόρων."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: ενημερώθηκαν %d picons· %d αποτυχίες"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Σύνολο: ενημερώθηκαν %d picons"
 
 msgid "Failures: %d"
 msgstr "Αποτυχίες: %d"
@@ -1545,7 +1545,7 @@ msgid "Close"
 msgstr "Κλείσιμο"
 
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
-msgstr ""
+msgstr "Εφεδρικό %d/%d· ασφαλής επικάλυψη %d/%d· σφάλματα %d"
 
 msgid "FastScan tables selected"
 msgstr "Επιλέχθηκαν πίνακες FastScan"
