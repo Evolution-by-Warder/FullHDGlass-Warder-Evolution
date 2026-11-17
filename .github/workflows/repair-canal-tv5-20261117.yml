@@ -100,6 +100,7 @@ jobs:
           report={'date':'2026-11-17','source':'Already published and identical CANALPLUS_SK/CZ 400x240 transparent same DVB reference',
                   'source_400_sha256':sha(good_pngs[0]),'new_220_sha256':sha(new_png),
                   'target':REF,'affected':[],'unchanged_archive_count':496,'ipk_changed':False}
+          replaced_old_parts=[]
           for selector in ('CANALPLUS_SK','CANALPLUS_CZ'):
               package=entries[(selector,'220x132','channel-transparent')]
               oldzip=archive(package)
@@ -131,12 +132,19 @@ jobs:
               (R/partname).write_bytes(newzip)
               m['parts'].append({'bytes':len(newzip),'filename':partname,'sha256':h})
               old_name=package['filename']
+              replaced_old_parts.extend(url.rsplit('/',1)[-1] for url in package['parts'])
               package.update(filename=new_name,parts=[RAW+partname],sha256=h,bytes=len(newzip))
               report['affected'].append({'selector':selector,'from':old_name,'to':new_name,'archive_sha256':h,
                   'png_count':package['png_count'],'other_png_bytes_preserved':package['png_count']-1})
               print('REPAIRED',selector,'220x132 transparent',new_name,'preserved',package['png_count']-1,flush=True)
-          assert len(report['affected'])==2
-          assert len(m['packages'])==498 and len(m['parts'])==len(allparts)+2
+          assert len(report['affected'])==2 and len(replaced_old_parts)==2
+          # Manifest metadata describes the active set only. Retired parts remain
+          # physically on GitHub for safe in-flight downloads, but MUST NOT be listed
+          # as unreferenced manifest entries.
+          m['parts']=[p for p in m['parts'] if p['filename'] not in replaced_old_parts]
+          for old_part in replaced_old_parts:
+              assert original_checks.pop(old_part)==allparts[old_part]['sha256']
+          assert len(m['packages'])==498 and len(m['parts'])==len(allparts)
           # Preserve all unchanged package references and all old content-addressed parts for safe in-flight downloads.
           new_manifest=(json.dumps(m,ensure_ascii=False,indent=2,sort_keys=True)+'\n').encode()
           M.write_bytes(new_manifest)
@@ -149,14 +157,14 @@ jobs:
           spec=importlib.util.spec_from_file_location('warder_picon_sync','source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py')
           sync=importlib.util.module_from_spec(spec)
           spec.loader.exec_module(sync)
-          errors=sync.validate_publication_manifest(m,'production')
+          errors=sync.validate_publication_manifest(m,RAW+'manifest.json')
           assert not errors,errors
           assert sha(fetch(RAW+'manifest.json'))==sha(oldbytes),'Main publication changed while preparing changes'
           out=pathlib.Path('reports/canal-tv5-repair-20261117')
           out.mkdir(parents=True,exist_ok=True)
           report.update(status='SOURCE_VERIFIED_PRODUCTION_PACKAGE_REPAIR_READY',
                         manifest_before_sha256=sha(oldbytes),manifest_after_sha256=sha(new_manifest),
-                        parts_added=2,live_runtime_manifest_test='PASS',
+                        parts_replaced=2,retired_part_files_preserved=True,live_runtime_manifest_test='PASS',
                         unchanged_archive_data_preserved=True)
           (out/'verification.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n')
           target.save(out/'tv5-preview.png')
@@ -179,7 +187,7 @@ jobs:
           git add --sparse assets/warder/downloads/picons/channels/manifest.json assets/warder/downloads/picons/channels/SHA256SUMS
           git add --sparse assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-transparent-*.zip.part00
           git add --sparse assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-transparent-*.zip.part00
-          git add reports/canal-tv5-repair-20261117/verification.json
+          git add --sparse reports/canal-tv5-repair-20261117/verification.json
           git diff --cached --check
           git commit -m "Fix blank CANAL+ SK/CZ 220x132 TV5MONDE in exact production archives"
           FIX_COMMIT="$(git rev-parse HEAD)"
