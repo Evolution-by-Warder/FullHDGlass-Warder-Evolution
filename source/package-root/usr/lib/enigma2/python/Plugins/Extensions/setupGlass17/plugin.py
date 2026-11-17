@@ -10676,6 +10676,8 @@ class downloadMenu(Screen):
 							chunk = response.read(1024 * 128)
 							if not chunk:
 								break
+							if not _warderStorageHasSpace(base, len(chunk)):
+								raise IOError("Not enough available space for Warder archive")
 							out.write(chunk)
 							h.update(chunk)
 							total += len(chunk)
@@ -10687,6 +10689,11 @@ class downloadMenu(Screen):
 				raise ValueError("SHA-256 mismatch")
 			progress(total, int(asset.get("size", 0)))
 			stage(_("Extracting") + ": " + str(asset.get("filename", "ZIP")))
+			# Check expanded archive size before deleting or replacing any icon data.
+			with zipfile.ZipFile(target, "r") as _warderZip:
+				unpacked_bytes = sum(info.file_size for info in _warderZip.infolist())
+			if not _warderStorageHasSpace(base, unpacked_bytes):
+				raise IOError("Not enough available space to extract Warder archive")
 			# Only the selected staging root is replaced. Never delete user data.
 			if os.path.exists("/tmp/more_icons"):
 				self.rmTmp()
@@ -10910,6 +10917,8 @@ class downloadMenu(Screen):
 								chunk = handler.read(1024 * 128)
 								if not chunk:
 									break
+								if not _warderStorageHasSpace("/tmp", len(chunk)):
+									raise IOError("Not enough available space for legacy archive")
 								f.write(chunk)
 					except Exception:
 						try:
@@ -10920,7 +10929,7 @@ class downloadMenu(Screen):
 						size = 1.0*os.path.getsize(archive)/(1024*1024)
 						if size != 0:
 							ret, ret1 = self.getFreeSpace()
-							if ret > size and ret1 > (size/2):
+							if ret > (size * 2.2) + 64 and ret1 > (size * 1.2) + 64:
 								os.makedirs(extract_dir, exist_ok=True)
 								cmd = [find_sevenzip(SEVENZIP) or SEVENZIP, "e", "-y", "-o%s" % extract_dir, archive]
 								try:
