@@ -6,6 +6,7 @@ on:
       - 'tools/test_fastscan_epg_name_geometry.py'
       - 'tools/test_fastscan_epg_owner_sync.py'
       - 'tools/test_fastscan_epg_repaint_cache.py'
+      - 'tools/test_fastscan_epg_invisible_rows.py'
       - 'tools/test_warder_channel_epg_clip.py'
       - 'tools/test_channel_selection_*'
       - '.github/workflows/verify-fastscan-epg-names.yml'
@@ -27,6 +28,7 @@ jobs:
             tools/test_fastscan_epg_name_geometry.py
             tools/test_fastscan_epg_owner_sync.py
             tools/test_fastscan_epg_repaint_cache.py
+            tools/test_fastscan_epg_invisible_rows.py
             tools/test_warder_channel_epg_clip.py
             tools/test_channel_selection_snapshot_cache.py
             tools/test_channel_selection_text_measure_cache.py
@@ -43,6 +45,7 @@ jobs:
           python3 tools/test_fastscan_epg_name_geometry.py -q
           python3 tools/test_fastscan_epg_owner_sync.py -q
           python3 tools/test_fastscan_epg_repaint_cache.py -q
+          python3 tools/test_fastscan_epg_invisible_rows.py -q
           python3 tools/test_warder_channel_epg_clip.py -q
           python3 tools/test_channel_selection_snapshot_cache.py -q
           python3 tools/test_channel_selection_text_measure_cache.py -q
