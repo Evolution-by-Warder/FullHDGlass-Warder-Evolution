@@ -1628,3 +1628,7 @@ msgstr "Kapat"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Yedek %d/%d; güvenli katman %d/%d; hata %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "FastScan tabloları seçildi"

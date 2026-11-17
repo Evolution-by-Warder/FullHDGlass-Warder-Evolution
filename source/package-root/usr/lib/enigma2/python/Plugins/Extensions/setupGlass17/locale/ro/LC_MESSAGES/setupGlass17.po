@@ -1624,3 +1624,7 @@ msgstr "Închide"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Rezervă %d/%d; strat sigur %d/%d; erori %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "Tabele FastScan selectate"
