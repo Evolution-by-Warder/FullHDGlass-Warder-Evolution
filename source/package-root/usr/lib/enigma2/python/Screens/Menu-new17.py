@@ -521,7 +521,15 @@ class Menu(Screen):
 				pixpath = config.plugins.setupGlass17.par39.value + '/menuIcons/' + str(config.plugins.setupGlass17.par69.value) + "/" + pic
 			except : pass
 			if not fileExists(pixpath):
-				pixpath = defPixpath
+				# These five are approved, exact menu IDs with artwork in menuIconsBig.
+				# Reuse the same image in the alternate grid/bar menu layouts;
+				# do not create aliases or replace other menu icons.
+				entry_id = str(x[2]) if len(x) > 2 else ""
+				if entry_id in ("glass_sys_utils", "PiconHub_Warder_Evolution", "warder_radio_mainmenu", "warder_youtube_mainmenu", "FHD_Glass17_Setup"):
+					candidate = config.plugins.setupGlass17.par39.value + '/menuIconsBig/' + entry_id + '.png'
+					pixpath = candidate if fileExists(candidate) else defPixpath
+				else:
+					pixpath = defPixpath
 			self.pics.append(pixpath)
 			self.labels.append(x[0])
 		if self.typeIcons == "all":
