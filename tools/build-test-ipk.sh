@@ -47,6 +47,9 @@ trap 'rm -rf "$WORK"' EXIT HUP INT TERM
 mkdir -p "$WORK/CONTROL" "$OUTDIR"
 cp -a "$PAYLOAD"/. "$WORK"/
 
+# Remove unapproved Warder Menu images from the staged TEST IPK payload.
+find "$WORK" -type f \( -name "warder_gsu.png" -o -name "warder_piconhub.png" -o -name "warder_radio.png" -o -name "warder_youtube.png" \) -delete
+
 # TEST93: build radio.mvi only from the approved package-owned production master.
 # Never fall back to the retired synthetic generator: a missing/wrong master must fail CI.
 RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
