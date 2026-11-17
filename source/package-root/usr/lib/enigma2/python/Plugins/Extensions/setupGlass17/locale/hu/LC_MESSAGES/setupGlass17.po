@@ -1625,3 +1625,7 @@ msgstr "Bezárás"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Tartalék %d/%d; biztonságos réteg %d/%d; hibák %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "FastScan-táblák kiválasztva"

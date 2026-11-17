@@ -1629,3 +1629,7 @@ msgstr "بستن"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "جایگزین %d/%d؛ لایه امن %d/%d؛ خطاها %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "جدول‌های FastScan انتخاب شدند"
