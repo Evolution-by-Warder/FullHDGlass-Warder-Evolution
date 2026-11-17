@@ -1,0 +1,46 @@
+name: Inspect CAM source artwork for transparent variants
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/inspect-cam-transparent-candidate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            assets/warder/downloads/picons/cam
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Inspect paired CAM archives and prepare sample files
+        run: |
+          python3 - <<'PY'
+          import zipfile, pathlib, json, shutil
+          root=pathlib.Path('assets/warder/downloads/picons/cam')
+          out=pathlib.Path('cam-samples');out.mkdir()
+          stats={}
+          for style in ('black','white'):
+              zip_path=root/style/'piconCam.zip'
+              with zipfile.ZipFile(zip_path) as archive:
+                  names=[n for n in archive.namelist() if n.lower().endswith('.png')]
+                  stats[style]={'count':len(names),'names':names[:20]}
+                  for name in names[:10]:
+                      path=out/style/name.split('/')[-1]
+                      path.parent.mkdir(exist_ok=True)
+                      path.write_bytes(archive.read(name))
+              print(style,len(names))
+          (out/'report.json').write_text(json.dumps(stats,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CAM-black-white-original-samples
+          path: cam-samples
+          retention-days: 7
