@@ -21,6 +21,12 @@ def archive(directory, output, payload=False):
                 # Translation sources stay in Git; ship the receiver-confirmed MO files.
                 if payload and path.suffix == ".po":
                     continue
+                # Never include these four unapproved Warder Menu graphics.
+                if payload and path.name.lower() in {
+                    "warder_gsu.png", "warder_piconhub.png",
+                    "warder_radio.png", "warder_youtube.png",
+                }:
+                    continue
                 entry = tar.gettarinfo(str(path), arcname="./" + path.relative_to(directory).as_posix())
                 entry.uid = entry.gid = entry.mtime = 0
                 entry.uname = entry.gname = ""
