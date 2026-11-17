@@ -5,6 +5,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
       - 'tools/test_fastscan_epg_name_geometry.py'
       - 'tools/test_fastscan_epg_owner_sync.py'
+      - 'tools/test_fastscan_epg_repaint_cache.py'
       - 'tools/test_warder_channel_epg_clip.py'
       - 'tools/test_channel_selection_*'
       - '.github/workflows/verify-fastscan-epg-names.yml'
@@ -25,6 +26,7 @@ jobs:
             source/package-root/usr/share/enigma2/hd_glass17/skin.xml
             tools/test_fastscan_epg_name_geometry.py
             tools/test_fastscan_epg_owner_sync.py
+            tools/test_fastscan_epg_repaint_cache.py
             tools/test_warder_channel_epg_clip.py
             tools/test_channel_selection_snapshot_cache.py
             tools/test_channel_selection_text_measure_cache.py
@@ -40,6 +42,7 @@ jobs:
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
           python3 tools/test_fastscan_epg_name_geometry.py -q
           python3 tools/test_fastscan_epg_owner_sync.py -q
+          python3 tools/test_fastscan_epg_repaint_cache.py -q
           python3 tools/test_warder_channel_epg_clip.py -q
           python3 tools/test_channel_selection_snapshot_cache.py -q
           python3 tools/test_channel_selection_text_measure_cache.py -q
