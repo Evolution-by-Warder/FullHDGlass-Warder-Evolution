@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish only the five user-approved Warder menu motifs into menuIconsBig.\nSparse-checkout compatible; prior stable archive is retained for rollback.\n"""
+"""Publish only the five user-approved Warder menu motifs into menuIconsBig.\nSparse-checkout compatible; prior stable archive is retained for rollback.\nProduction upload triggers the isolated sparse publisher.\n"""
 import hashlib
 import io
 import json
