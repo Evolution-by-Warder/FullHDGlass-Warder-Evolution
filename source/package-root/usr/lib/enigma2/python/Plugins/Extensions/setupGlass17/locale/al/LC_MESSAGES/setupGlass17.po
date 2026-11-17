@@ -53,7 +53,7 @@ msgid "Auto"
 msgstr "Auto"
 
 msgid "Type"
-msgstr ""
+msgstr "Lloji"
 
 msgid "from image"
 msgstr "from image"
@@ -167,10 +167,10 @@ msgid "G17 events"
 msgstr ""
 
 msgid "Big Icons"
-msgstr ""
+msgstr "Ikona të mëdha"
 
 msgid "Poster"
-msgstr ""
+msgstr "Poster"
 
 msgid "PIG + PIP"
 msgstr "PIG + PIP"
@@ -212,16 +212,16 @@ msgid "only Prov"
 msgstr "only Prov"
 
 msgid "only Weather"
-msgstr ""
+msgstr "Vetëm moti"
 
 msgid "Sat and Weather"
-msgstr ""
+msgstr "Sateliti dhe moti"
 
 msgid "Prov and Weather"
-msgstr ""
+msgstr "Ofruesi dhe moti"
 
 msgid "Sat, Prov and Weather"
-msgstr ""
+msgstr "Sateliti, ofruesi dhe moti"
 
 msgid "InfoECM by Duri"
 msgstr "InfoECM nga Duri"
@@ -233,10 +233,10 @@ msgid "Weather"
 msgstr "Mot"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgid "Simple"
-msgstr ""
+msgstr "I thjeshtë"
 
 msgid "Ecminfo only"
 msgstr "Ecminfo only"
@@ -317,28 +317,28 @@ msgid "disabled"
 msgstr "disabled"
 
 msgid "User defined path"
-msgstr ""
+msgstr "Shteg i përcaktuar nga përdoruesi"
 
 msgid "Static"
-msgstr ""
+msgstr "Statike"
 
 msgid "Dynamic"
-msgstr ""
+msgstr "Dinamike"
 
 msgid "Animation"
-msgstr ""
+msgstr "Animacion"
 
 msgid "Transponder data"
-msgstr ""
+msgstr "Të dhënat e transponderit"
 
 msgid "Real tuner data"
-msgstr ""
+msgstr "Të dhënat reale të tunerit"
 
 msgid "All available"
-msgstr ""
+msgstr "Të gjitha të disponueshmet"
 
 msgid "Selected in Netatmo plugin"
-msgstr ""
+msgstr "Zgjedhur në shtojcën Netatmo"
 
 msgid "IMDb"
 msgstr ""
@@ -353,7 +353,7 @@ msgid "Full HD GLass17 spinner"
 msgstr ""
 
 msgid "Full HD Glass17 Setup"
-msgstr ""
+msgstr "Cilësimet FullHDGlass17"
 
 msgid ""
 "Sorry, \"ftp\" is unavailable yet, check your internet connection or "
@@ -369,10 +369,10 @@ msgid "Set OLED off in Standby"
 msgstr "Vendos OLED off  ne Standby"
 
 msgid "Listbox font size"
-msgstr ""
+msgstr "Madhësia e shkronjave të listës"
 
 msgid "Mute picture transparency"
-msgstr ""
+msgstr "Transparenca e figurës së heshtjes"
 
 msgid "Set binaries"
 msgstr "Zgjidh binaries"
@@ -408,13 +408,13 @@ msgid "Channel selection type"
 msgstr "Lloji i zgjedhjes se kanalit"
 
 msgid "Movie selection type"
-msgstr ""
+msgstr "Lloji i përzgjedhjes së filmave"
 
 msgid "EPG selection type"
 msgstr "Lloji i selektimit te EPG"
 
 msgid "EventView type"
-msgstr ""
+msgstr "Lloji i shfaqjes së programit"
 
 msgid "PIG type"
 msgstr "Zgjidh llojin e PIG"
@@ -450,7 +450,7 @@ msgid "Enable windowstylescrollbar"
 msgstr "Aktivizo windowstylescrollbar"
 
 msgid "On/Off icons"
-msgstr ""
+msgstr "Ikona ndezur/fikur"
 
 msgid "Service scan long list"
 msgstr ""
@@ -513,7 +513,7 @@ msgid "Remaining:"
 msgstr "e mbetur:"
 
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 msgid "Streaming service"
 msgstr "shërbimi streaming"
@@ -534,7 +534,7 @@ msgid "Changelog"
 msgstr "Ndryshimet me te fundit"
 
 msgid "Update"
-msgstr ""
+msgstr "Përditëso"
 
 msgid "Restore config"
 msgstr "Rikthe konfigurimin"
@@ -723,13 +723,13 @@ msgid "Video resolution"
 msgstr "Video resolution"
 
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgid "Time"
-msgstr ""
+msgstr "Ora"
 
 msgid "Seconds"
-msgstr ""
+msgstr "Sekonda"
 
 msgid "Channel name"
 msgstr "Channel name"
@@ -852,7 +852,7 @@ msgid "User info act./next switching"
 msgstr "Informacioni i perdoruesit  act./next switching"
 
 msgid "Station"
-msgstr ""
+msgstr "Stacioni"
 
 msgid "Stations switch time"
 msgstr ""
@@ -888,16 +888,16 @@ msgid "Show Astronomical Information"
 msgstr "Trego Informacion Astronomical"
 
 msgid "Temperature unit"
-msgstr ""
+msgstr "Njësia e temperaturës"
 
 msgid "UV index"
-msgstr ""
+msgstr "Indeksi UV"
 
 msgid "Wind speed"
-msgstr ""
+msgstr "Shpejtësia e erës"
 
 msgid "Weather Title"
-msgstr ""
+msgstr "Titulli i motit"
 
 msgid "Weather location"
 msgstr "Vendndodhja moti"
@@ -972,7 +972,7 @@ msgid "Smaller"
 msgstr ""
 
 msgid "Enable Animations"
-msgstr ""
+msgstr "Aktivizo animacionet"
 
 msgid "(Infobar) Picon"
 msgstr ""
@@ -1424,23 +1424,23 @@ msgstr "Large for selected channel selection types (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Pozicionet satelitore"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Rezolucioni i pikonëve"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Ngjyra e pikonëve"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Vendndodhja e pikonëve"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Metoda e përditësimit"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
@@ -1456,23 +1456,23 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Memoria e marrësit"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Disku i ngurtë"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "Memoria USB"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "Kartë SD"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "Memoria MMC"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"

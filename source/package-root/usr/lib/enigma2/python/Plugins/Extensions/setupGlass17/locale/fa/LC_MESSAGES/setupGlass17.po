@@ -53,7 +53,7 @@ msgid "Auto"
 msgstr "Auto"
 
 msgid "Type"
-msgstr ""
+msgstr "نوع"
 
 msgid "from image"
 msgstr "from image"
@@ -167,10 +167,10 @@ msgid "G17 events"
 msgstr ""
 
 msgid "Big Icons"
-msgstr ""
+msgstr "آیکون‌های بزرگ"
 
 msgid "Poster"
-msgstr ""
+msgstr "پوستر"
 
 msgid "PIG + PIP"
 msgstr ""
@@ -212,16 +212,16 @@ msgid "only Prov"
 msgstr "only Prov"
 
 msgid "only Weather"
-msgstr ""
+msgstr "فقط آب‌وهوا"
 
 msgid "Sat and Weather"
-msgstr ""
+msgstr "ماهواره و آب‌وهوا"
 
 msgid "Prov and Weather"
-msgstr ""
+msgstr "ارائه‌دهنده و آب‌وهوا"
 
 msgid "Sat, Prov and Weather"
-msgstr ""
+msgstr "ماهواره، ارائه‌دهنده و آب‌وهوا"
 
 msgid "InfoECM by Duri"
 msgstr "InfoECM by Duri"
@@ -233,10 +233,10 @@ msgid "Weather"
 msgstr "حالة الطقس"
 
 msgid "Standard"
-msgstr ""
+msgstr "استاندارد"
 
 msgid "Simple"
-msgstr ""
+msgstr "ساده"
 
 msgid "Ecminfo only"
 msgstr "Ecminfo only"
@@ -317,28 +317,28 @@ msgid "disabled"
 msgstr "disabled"
 
 msgid "User defined path"
-msgstr ""
+msgstr "مسیر تعریف‌شده توسط کاربر"
 
 msgid "Static"
-msgstr ""
+msgstr "ثابت"
 
 msgid "Dynamic"
-msgstr ""
+msgstr "پویا"
 
 msgid "Animation"
-msgstr ""
+msgstr "پویانمایی"
 
 msgid "Transponder data"
-msgstr ""
+msgstr "اطلاعات ترانسپوندر"
 
 msgid "Real tuner data"
-msgstr ""
+msgstr "داده‌های واقعی تیونر"
 
 msgid "All available"
-msgstr ""
+msgstr "همه موارد موجود"
 
 msgid "Selected in Netatmo plugin"
-msgstr ""
+msgstr "انتخاب‌شده در افزونه Netatmo"
 
 msgid "IMDb"
 msgstr ""
@@ -353,7 +353,7 @@ msgid "Full HD GLass17 spinner"
 msgstr ""
 
 msgid "Full HD Glass17 Setup"
-msgstr ""
+msgstr "تنظیمات FullHDGlass17"
 
 msgid ""
 "Sorry, \"ftp\" is unavailable yet, check your internet connection or "
@@ -369,10 +369,10 @@ msgid "Set OLED off in Standby"
 msgstr "تنظیم مد دیود ساطع کننده نور ارگانیک به حالت استندبای"
 
 msgid "Listbox font size"
-msgstr ""
+msgstr "اندازه قلم فهرست"
 
 msgid "Mute picture transparency"
-msgstr ""
+msgstr "شفافیت تصویر بی‌صدا"
 
 msgid "Set binaries"
 msgstr "Set binaries"
@@ -408,13 +408,13 @@ msgid "Channel selection type"
 msgstr "نوع انتخاب کانال"
 
 msgid "Movie selection type"
-msgstr ""
+msgstr "نوع انتخاب فیلم"
 
 msgid "EPG selection type"
 msgstr "نوع انتخاب برنامه راهنمای الکترونیک"
 
 msgid "EventView type"
-msgstr ""
+msgstr "نوع نمایش برنامه"
 
 msgid "PIG type"
 msgstr "PIG type"
@@ -450,7 +450,7 @@ msgid "Enable windowstylescrollbar"
 msgstr "Enable windowstylescrollbar"
 
 msgid "On/Off icons"
-msgstr ""
+msgstr "آیکون‌های روشن/خاموش"
 
 msgid "Service scan long list"
 msgstr ""
@@ -515,7 +515,7 @@ msgid "Remaining:"
 msgstr "موارد باقیمانده :"
 
 msgid "Radio"
-msgstr ""
+msgstr "رادیو"
 
 msgid "Streaming service"
 msgstr "Streaming service"
@@ -536,7 +536,7 @@ msgid "Changelog"
 msgstr "تغییرات سیستمی"
 
 msgid "Update"
-msgstr ""
+msgstr "به‌روزرسانی"
 
 msgid "Restore config"
 msgstr "استعادة التكوين"
@@ -725,13 +725,13 @@ msgid "Video resolution"
 msgstr "Video resolution"
 
 msgid "Date"
-msgstr ""
+msgstr "تاریخ"
 
 msgid "Time"
-msgstr ""
+msgstr "زمان"
 
 msgid "Seconds"
-msgstr ""
+msgstr "ثانیه"
 
 msgid "Channel name"
 msgstr "Channel name"
@@ -854,7 +854,7 @@ msgid "User info act./next switching"
 msgstr "اطلاعات کاربری فعال ./ سوئیچ بعدی"
 
 msgid "Station"
-msgstr ""
+msgstr "ایستگاه"
 
 msgid "Stations switch time"
 msgstr ""
@@ -890,16 +890,16 @@ msgid "Show Astronomical Information"
 msgstr "Show Astronomical Information"
 
 msgid "Temperature unit"
-msgstr ""
+msgstr "واحد دما"
 
 msgid "UV index"
-msgstr ""
+msgstr "شاخص UV"
 
 msgid "Wind speed"
-msgstr ""
+msgstr "سرعت باد"
 
 msgid "Weather Title"
-msgstr ""
+msgstr "عنوان آب‌وهوا"
 
 msgid "Weather location"
 msgstr "حالة الطقس في بلدة"
@@ -974,7 +974,7 @@ msgid "Smaller"
 msgstr ""
 
 msgid "Enable Animations"
-msgstr ""
+msgstr "فعال‌سازی پویانمایی‌ها"
 
 msgid "(Infobar) Picon"
 msgstr ""
@@ -1428,23 +1428,23 @@ msgstr "Large for selected channel selection types (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "موقعیت‌های ماهواره‌ای"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "وضوح پیکون‌ها"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "رنگ پیکون‌ها"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "محل ذخیره پیکون‌ها"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "روش به‌روزرسانی"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
@@ -1460,23 +1460,23 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "حافظه گیرنده"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "دیسک سخت"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "حافظه USB"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "کارت SD"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "حافظه MMC"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"

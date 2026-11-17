@@ -52,7 +52,7 @@ msgid "Auto"
 msgstr "Auto"
 
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 msgid "from image"
 msgstr "from image"
@@ -166,10 +166,10 @@ msgid "G17 events"
 msgstr ""
 
 msgid "Big Icons"
-msgstr ""
+msgstr "Великі значки"
 
 msgid "Poster"
-msgstr ""
+msgstr "Постер"
 
 msgid "PIG + PIP"
 msgstr "PIG + PIP"
@@ -211,16 +211,16 @@ msgid "only Prov"
 msgstr "only Prov"
 
 msgid "only Weather"
-msgstr ""
+msgstr "Лише погода"
 
 msgid "Sat and Weather"
-msgstr ""
+msgstr "Супутник і погода"
 
 msgid "Prov and Weather"
-msgstr ""
+msgstr "Провайдер і погода"
 
 msgid "Sat, Prov and Weather"
-msgstr ""
+msgstr "Супутник, провайдер і погода"
 
 msgid "InfoECM by Duri"
 msgstr "InfoECM по Дурі"
@@ -232,10 +232,10 @@ msgid "Weather"
 msgstr "Погода"
 
 msgid "Standard"
-msgstr ""
+msgstr "Стандартний"
 
 msgid "Simple"
-msgstr ""
+msgstr "Простий"
 
 msgid "Ecminfo only"
 msgstr "Ecminfo only"
@@ -316,28 +316,28 @@ msgid "disabled"
 msgstr "disabled"
 
 msgid "User defined path"
-msgstr ""
+msgstr "Шлях користувача"
 
 msgid "Static"
-msgstr ""
+msgstr "Статичний"
 
 msgid "Dynamic"
-msgstr ""
+msgstr "Динамічний"
 
 msgid "Animation"
-msgstr ""
+msgstr "Анімація"
 
 msgid "Transponder data"
-msgstr ""
+msgstr "Дані транспондера"
 
 msgid "Real tuner data"
-msgstr ""
+msgstr "Реальні дані тюнера"
 
 msgid "All available"
-msgstr ""
+msgstr "Усі доступні"
 
 msgid "Selected in Netatmo plugin"
-msgstr ""
+msgstr "Вибрано у плагіні Netatmo"
 
 msgid "IMDb"
 msgstr ""
@@ -352,7 +352,7 @@ msgid "Full HD GLass17 spinner"
 msgstr ""
 
 msgid "Full HD Glass17 Setup"
-msgstr ""
+msgstr "Налаштування FullHDGlass17"
 
 msgid ""
 "Sorry, \"ftp\" is unavailable yet, check your internet connection or "
@@ -368,10 +368,10 @@ msgid "Set OLED off in Standby"
 msgstr "Вимкнути OLED в деж. режимі"
 
 msgid "Listbox font size"
-msgstr ""
+msgstr "Розмір шрифту списку"
 
 msgid "Mute picture transparency"
-msgstr ""
+msgstr "Прозорість зображення вимкнення звуку"
 
 msgid "Set binaries"
 msgstr "Встановити binary"
@@ -407,13 +407,13 @@ msgid "Channel selection type"
 msgstr "Тип вибору каналів"
 
 msgid "Movie selection type"
-msgstr ""
+msgstr "Тип вибору фільмів"
 
 msgid "EPG selection type"
 msgstr "Тип вибору EPG"
 
 msgid "EventView type"
-msgstr ""
+msgstr "Тип перегляду передачі"
 
 msgid "PIG type"
 msgstr "Тип PIG"
@@ -449,7 +449,7 @@ msgid "Enable windowstylescrollbar"
 msgstr "Активувати windowstylescrollbar"
 
 msgid "On/Off icons"
-msgstr ""
+msgstr "Значки увімкнено/вимкнено"
 
 msgid "Service scan long list"
 msgstr ""
@@ -512,7 +512,7 @@ msgid "Remaining:"
 msgstr "Залишилось:"
 
 msgid "Radio"
-msgstr ""
+msgstr "Радіо"
 
 msgid "Streaming service"
 msgstr "Streaming service"
@@ -722,13 +722,13 @@ msgid "Video resolution"
 msgstr "Video resolution"
 
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 msgid "Time"
-msgstr ""
+msgstr "Час"
 
 msgid "Seconds"
-msgstr ""
+msgstr "Секунди"
 
 msgid "Channel name"
 msgstr "Channel name"
@@ -851,7 +851,7 @@ msgid "User info act./next switching"
 msgstr "Інфо Користувача перемикання зараз/наст."
 
 msgid "Station"
-msgstr ""
+msgstr "Станція"
 
 msgid "Stations switch time"
 msgstr ""
@@ -887,16 +887,16 @@ msgid "Show Astronomical Information"
 msgstr "Show Astronomical Information"
 
 msgid "Temperature unit"
-msgstr ""
+msgstr "Одиниця температури"
 
 msgid "UV index"
-msgstr ""
+msgstr "УФ-індекс"
 
 msgid "Wind speed"
-msgstr ""
+msgstr "Швидкість вітру"
 
 msgid "Weather Title"
-msgstr ""
+msgstr "Заголовок погоди"
 
 msgid "Weather location"
 msgstr "Погода в місті"
@@ -971,7 +971,7 @@ msgid "Smaller"
 msgstr ""
 
 msgid "Enable Animations"
-msgstr ""
+msgstr "Увімкнути анімацію"
 
 msgid "(Infobar) Picon"
 msgstr ""
@@ -1424,23 +1424,23 @@ msgstr "Великі піктограми для вибраних типів с�
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Супутникові позиції"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Роздільність піконів"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Колір піконів"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Розташування піконів"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Спосіб оновлення"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
@@ -1456,23 +1456,23 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Пам'ять приймача"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Жорсткий диск"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "USB-накопичувач"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "SD-картка"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "MMC-накопичувач"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
