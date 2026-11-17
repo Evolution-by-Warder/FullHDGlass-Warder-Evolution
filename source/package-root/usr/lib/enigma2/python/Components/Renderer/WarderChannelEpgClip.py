@@ -347,10 +347,37 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_progress_mode_fallback")
             return False
         from enigma import eServiceCenter
-        rows = component.getList()
-        if rows is None:
+        raw_rows = component.getList()
+        if raw_rows is None:
             self._diag("native_rows_none")
             return False
+        # OpenATV eListboxServiceContent::getList() returns the RAW bouquet,
+        # including invisible services (flag 512) and numbered markers
+        # (flag 256). Its native cursorMove/size/cursorResolve, however,
+        # exclude invisible services and hide numbered markers when enabled.
+        # getTopIndex/getCurrentIndex are therefore VISIBLE-row indexes.
+        # Using raw_rows[top + row] caused an exact one-row EPG displacement
+        # after a hidden FastScan item, then incorrect event/name pairing.
+        try:
+            hide_numbered = bool(config.usage.hide_number_markers.value)
+        except (AttributeError, TypeError, ValueError):
+            hide_numbered = False
+        if hide_numbered and any(int(getattr(ref, "flags", 0)) & 256
+                                 for ref in raw_rows):
+            # In native marked/edit mode numbered markers become visible.
+            # Fail closed if edit-mode visibility cannot be determined.
+            marked_getter = getattr(component, "getMarked", None)
+            if not callable(marked_getter):
+                self._diag("native_marker_visibility_unknown")
+                return False
+            try:
+                hide_numbered = not bool(marked_getter())
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                self._diag("native_marker_visibility_error")
+                return False
+        rows = [ref for ref in raw_rows
+                if not (int(getattr(ref, "flags", 0)) & 512)
+                and not (hide_numbered and (int(getattr(ref, "flags", 0)) & 256))]
         top = component.instance.getTopIndex()
         if top < 0:
             self._diag("native_top_negative")
