@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish only the five user-approved Warder menu motifs into menuIconsBig."""
+"""Publish only the five user-approved Warder menu motifs into menuIconsBig.\nSparse-checkout compatible; prior stable archive is retained for rollback.\n"""
 import hashlib
 import io
 import json
