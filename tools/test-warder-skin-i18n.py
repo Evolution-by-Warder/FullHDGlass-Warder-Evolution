@@ -53,5 +53,27 @@ class TestLocale(unittest.TestCase):
                                                 languages=['el'], fallback=False)
                 self.assertEqual(catalogue.gettext(english), expected)
 
+    def test_complete_main_setup_catalogues(self):
+        import gettext
+        directory = str(PATH.parent / 'locale')
+        examples = {'cs': 'Satelitní pozice', 'ru': 'Спутниковые позиции',
+                    'lt': 'Palydovinės pozicijos', 'zh': '卫星轨位'}
+        for lang, translated in examples.items():
+            with self.subTest(language=lang):
+                catalog = gettext.translation('setupGlass17',
+                                              localedir=directory,
+                                              languages=[lang],
+                                              fallback=False)
+                self.assertEqual(catalog.gettext('Satellite positions'), translated)
+
+    def test_chinese_fuzzy_corrections(self):
+        import gettext
+        directory = str(PATH.parent / 'locale')
+        catalog = gettext.translation('setupGlass17',
+                                      localedir=directory,
+                                      languages=['zh'], fallback=False)
+        self.assertEqual(catalog.gettext('EventView type'), '节目信息类型')
+        self.assertEqual(catalog.gettext('Forecast for more days'), '多日天气预报')
+
 if __name__ == '__main__':
     unittest.main()

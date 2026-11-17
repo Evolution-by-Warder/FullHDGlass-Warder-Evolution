@@ -1,0 +1,29 @@
+name: FullHDGlass locale checks
+
+on:
+  push:
+    branches:
+      - fix/skin-i18n-21-languages-20261117
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/**'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocale.py'
+      - 'tools/test-warder-skin-i18n.py'
+      - '.github/workflows/verify-skin-i18n.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  locale-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Python syntax and locale regression
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/{warderLocale,plugin,txt,weather,E_weather,Netatmo,warderUiText}.py
+          python tools/test-warder-skin-i18n.py
