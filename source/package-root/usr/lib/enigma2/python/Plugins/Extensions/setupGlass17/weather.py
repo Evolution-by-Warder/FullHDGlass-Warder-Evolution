@@ -55,13 +55,8 @@ PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
 def Writelog(txt):
     """Production runtime does not write diagnostic logs."""
     return None
-try:
-	if config.plugins.setupGlass17.par49.value:
-		weather_language = []
-		weather_language = config.osd.language.value.split("_")
-		if os.path.exists(PLUGINPATH + "locale/%s" % (weather_language[0])):
-			_ = gettext.Catalog('weather', PLUGINPATH + 'locale', weather_language).gettext
-except: pass
+from .warderLocale import get_translator as _warderGetTranslator
+_ = _warderGetTranslator("weather", config, PLUGINPATH)
 if os.path.isfile(PLUGINPATH + "wea.log"):
 	try:
 		os.remove(PLUGINPATH + "wea.log")

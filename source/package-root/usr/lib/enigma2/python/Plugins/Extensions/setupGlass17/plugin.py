@@ -256,18 +256,16 @@ def _warderInstallOpenWebifGrabHook():
 
 config.plugins.setupGlass17 = ConfigSubsection()
 config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
+from .warderLocale import get_translator as _warderGetTranslator, language_code as _warderLanguageCode
 CH_LOG = "AllAboutNew"
 HIST = "history.txt"
 try:
-	if config.plugins.setupGlass17.par49.value:
-		glass17_language = []
-		glass17_language = config.osd.language.value.split("_")
-		if "cs" in glass17_language or "sk" in glass17_language:
-			CH_LOG += "Sk"
-			HIST += "Sk"
-		if os.path.exists(PLUGINPATH + "locale/%s" % (glass17_language[0])):
-			_ = gettext.Catalog('setupGlass17', PLUGINPATH + 'locale', glass17_language).gettext
-except: pass
+	if _warderLanguageCode(config.osd.language.value) in ("cs", "sk"):
+		CH_LOG += "Sk"
+		HIST += "Sk"
+except (AttributeError, TypeError, ValueError):
+	pass
+_ = _warderGetTranslator("setupGlass17", config, PLUGINPATH)
 ENA_ANIM = False
 try:
 	from Components.ScreenAnimations import *

@@ -42,13 +42,8 @@ try:
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
 SKINPATH = "/usr/share/enigma2/hd_glass17/netatmo/"
-try:
-	if config.plugins.setupGlass17.par49.value:
-		Netatmo_language = []
-		Netatmo_language = config.osd.language.value.split("_")
-		if os.path.exists(PLUGINPATH + "locale/%s" % (Netatmo_language[0])):
-			_ = gettext.Catalog('netatmo', PLUGINPATH + 'locale', Netatmo_language).gettext
-except: pass
+from .warderLocale import get_translator as _warderGetTranslator
+_ = _warderGetTranslator("netatmo", config, PLUGINPATH)
 
 class netatmoList(MenuList):
 	def __init__(self, list, enableWrapAround = False):

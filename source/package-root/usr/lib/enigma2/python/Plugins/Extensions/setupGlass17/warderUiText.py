@@ -3,6 +3,7 @@ import gettext
 from functools import lru_cache
 from pathlib import Path
 from Components.config import config
+from .warderLocale import language_code
 
 
 TEXT = {
@@ -190,7 +191,7 @@ def _catalog(lang):
 
 
 def ui_text(text):
-    lang = config.osd.language.value.split("_")[0].lower()
+    lang = language_code(config.osd.language.value)
     if text in TEXT.get(lang, {}):
         return TEXT[lang][text]
     if text == "FullHDGlass configuration":

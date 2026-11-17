@@ -7,16 +7,12 @@ import math
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
 config.plugins.setupGlass17 = ConfigSubsection()
 config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
-L = True
+from .warderLocale import get_translator as _warderGetTranslator, language_code as _warderLanguageCode
+_ = _warderGetTranslator("helpTxt", config, PLUGINPATH)
 try:
-	if config.plugins.setupGlass17.par49.value:
-		g17_language = []
-		g17_language = config.osd.language.value.split("_")
-		if os.path.exists(PLUGINPATH + "locale/%s" % (g17_language[0])):
-			_ = gettext.Catalog('helpTxt', PLUGINPATH + 'locale', g17_language).gettext
-		if "cs" in g17_language[0]:
-			L = False
-except: pass
+	L = _warderLanguageCode(config.osd.language.value) != "cs"
+except (AttributeError, TypeError, ValueError):
+	L = True
 from Plugins.Extensions.setupGlass17.weaUtils import ISP38
 if ISP38:
 	from Plugins.Extensions.setupGlass17.py38 import DG

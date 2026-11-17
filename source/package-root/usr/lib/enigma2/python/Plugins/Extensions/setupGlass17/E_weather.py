@@ -36,13 +36,8 @@ except Exception:
 	ENAACC = False
 
 DEFAULT_V = "----"
-try:
-	if config.plugins.setupGlass17.par49.value:
-		E_weather_language = []
-		E_weather_language = config.osd.language.value.split("_")
-		if os.path.exists(PLUGINPATH + "locale/%s" % (E_weather_language[0])):
-			_ = gettext.Catalog('eWeather', PLUGINPATH + 'locale', E_weather_language).gettext
-except: pass
+from .warderLocale import get_translator as _warderGetTranslator
+_ = _warderGetTranslator("eWeather", config, PLUGINPATH)
 ENA_ANIM = False
 try:
 	if config.plugins.setupGlass17.par66.value:
