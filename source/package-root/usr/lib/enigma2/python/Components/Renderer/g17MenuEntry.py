@@ -60,7 +60,7 @@ class g17MenuEntry(Renderer):
 				# Exact Enigma2 IDs only; no speculative aliases in the downloaded archive.
 			if pixpath.endswith("/undefined.png"):
 				entry_id = str(self.source.entryName)
-				if entry_id in ("glass_sys_utils", "warder_radio_mainmenu", "warder_youtube_mainmenu", "FHD_Glass17_Setup"):
+				if entry_id in ("glass_sys_utils", "PiconHub_Warder_Evolution", "warder_radio_mainmenu", "warder_youtube_mainmenu", "FHD_Glass17_Setup"):
 					candidate_path = config.plugins.setupGlass17.par39.value + '/menuIconsBig/' + entry_id + '.png'
 					if fileExists(candidate_path):
 						pixpath = candidate_path
