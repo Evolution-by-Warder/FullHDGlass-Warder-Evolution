@@ -144,6 +144,7 @@ from .warderDialogs import ChoiceBox
 from . import warderPiconSync
 from .warderTools import find_sevenzip
 from .warderUiText import ui_text
+from .warderStorageSafety import is_internal as _warderStorageIsInternal, available_bytes as _warderStorageFreeBytes
 from . import warderSpinner
 from .warderTypePreviews import thumbnail_path
 from Screens.InfoBarGenerics import InfoBarPlugins
@@ -9263,6 +9264,20 @@ class downloadMenu(Screen):
 			return
 		if not self.toDown:
 			return
+		storage_target = os.path.realpath(config.plugins.setupGlass17.par39.value)
+		if (_warderStorageIsInternal(storage_target)
+				and getattr(self, '_warderInternalStorageApproved', None) != storage_target):
+			space_mb = _warderStorageFreeBytes(storage_target) // (1024 * 1024)
+			message = (ui_text('Internal storage download warning') + '\n'
+				+ storage_target + '\n'
+				+ ui_text('Large downloads can fill receiver memory.') + '\n'
+				+ ui_text('Available space') + ': %d MB' % space_mb)
+			self.session.openWithCallback(self._warderStorageChoice, ChoiceBox,
+				title=message,
+				list=[(ui_text('Choose another location'), 'select'),
+				      (ui_text('Continue anyway'), 'continue'),
+				      (ui_text('Cancel'), 'cancel')])
+			return
 		if prepared:
 			destination = warderPiconSync.validate_destination(self.warderPiconPrefs.get("destination"))
 			if not destination:
@@ -9439,6 +9454,27 @@ class downloadMenu(Screen):
 		for key in ("progress_bg", "progress_title", "progress_current", "progress_count", "progress_history"):
 			self[key].hide()
 		self["list"].show()
+
+	def _warderStorageChoice(self, answer=None):
+		choice = answer[1] if isinstance(answer, (tuple, list)) and len(answer) > 1 else None
+		if choice == 'continue':
+			self._warderInternalStorageApproved = os.path.realpath(config.plugins.setupGlass17.par39.value)
+			self.startDown()
+		elif choice == 'select':
+			self.session.openWithCallback(self._warderStorageSelected, dirBrowser,
+				config.plugins.setupGlass17.par124.value)
+
+	def _warderStorageSelected(self, folder=None):
+		if not folder or not isinstance(folder, str) or not os.path.isabs(folder):
+			return
+		config.plugins.setupGlass17.par124.value = folder.rstrip('/') + '/'
+		config.plugins.setupGlass17.par125.value = '0'
+		config.plugins.setupGlass17.par124.save()
+		config.plugins.setupGlass17.par125.save()
+		configfile.save()
+		setPathFiles()
+		self._warderInternalStorageApproved = None
+		self.startDown()
 
 	def warderCreateDestinationAnswer(self, answer=None):
 		if answer:
