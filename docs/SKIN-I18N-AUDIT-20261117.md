@@ -34,12 +34,12 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Oblasť | Preložené |
 |---|---:|
 | Nastavenia setupGlass17 | 517/517 |
-| Nápoveda helpTxt | 150/189 |
+| Nápoveda helpTxt | 189/189 |
 | Počasie weather | 108/108 |
 | Netatmo | 42/42 |
-| Historické eWeather | 595/2 117 |
+| Historické eWeather | 844/2 117 |
 
-**Grécke eWeather:** ďalších 250 skutočných meteorologických fráz bolo preložených (spolu 595); zostáva 1 522 prázdnych položiek.
+**Grécke eWeather:** ďalších 249 meteorologických fráz bolo preložených v nasledujúcej dávke (spolu 844/2 117); zostáva 1 273 prázdnych položiek.
 
 ## Inventár vedľajších katalógov
 Údaje sú **prítomné preložené kľúče / referenčný počet**: nápoveda 189, počasie 108, Netatmo 42 a rozšírené počasie eWeather 2 117. Znak **—** znamená, že pre daný jazyk úplne chýba samostatný katalóg `.po`; nie je to dokončený preklad. Kontrola sa týka súborov pracovnej vetvy a nenahrádza jazykovú ani fyzickú validáciu.
@@ -49,7 +49,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | al | — | — | — | — |
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | de | — | 108/108 | — | — |
-| el | 150/189 | 108/108 | 42/42 | 595/2117 |
+| el | 189/189 | 108/108 | 42/42 | 844/2117 |
 | es | — | — | — | — |
 | et | — | 108/108 | — | 96/2117 |
 | fa | — | — | — | — |
@@ -67,7 +67,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | uk | — | 108/108 | — | — |
 | zh | 189/189 | 108/108 | — | — |
 
-Pri gréčtine je okrem **1 522 nepreložených fráz eWeather** ďalších **39 neprítomných kľúčov v helpTxt**. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
+Pri gréčtine zostáva **1 273 nepreložených fráz eWeather**; všetkých 189 kľúčov helpTxt je už preložených. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
 
 ## Čo je zapísané
 
@@ -75,8 +75,10 @@ Pri gréčtine je okrem **1 522 nepreložených fráz eWeather** ďalších **39
 - Nové katalógy .po/.mo pre gréčtinu a doplnené preklady pre ostatné jazyky.
 - Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny, holandčiny, španielčiny, taliančiny, estónčiny a poľštiny, portugalčiny, rumunčiny, ukrajinčiny, turečtiny, maďarčiny, albánčiny a perzštiny, nezmenené existujúce vyplnené hodnoty.
 - Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL/ES/IT/ET/PL/PT/RO/UK/TR/HU/AL/FA) v `tools/test-warder-catalog-integrity.py`. Opravený chybný test, ktorý považoval hlavičku gettext `msgid ""` za nepreloženú frázu. Stav CI musí ešte potvrdiť nasledujúci beh GitHub Actions.
+- V nasledujúcom behu bolo doplnených 39 chýbajúcich gréckych helpTxt a 249 gréckych eWeather fráz; katalógy .mo boli znova skompilované a zachovali sa predchádzajúce preklady.
+- Opravený vážne poškodený súbor `tools/test-warder-catalog-integrity.py` (duplicitné a rozbité časti testov). Nová verzia kontroluje všetkých 20 hlavných jazykov, zhodu kľúčov, čitateľnosť a obsah všetkých existujúcich .mo, zhodu printf argumentov aj úplnosť gréckeho helpTxt. Čaká sa na výsledok aktuálneho GitHub Actions.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
 
-Doplniť chýbajúce jazykové katalógy podľa tabuľky, chýbajúcich 39 gréckych helpTxt kľúčov, 2 021 estónskych eWeather kľúčov a 1 522 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
+Doplniť chýbajúce jazykové katalógy podľa tabuľky, 2 021 estónskych eWeather kľúčov a 1 273 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
