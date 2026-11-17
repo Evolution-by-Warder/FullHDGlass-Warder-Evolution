@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Exterior"
+
+msgid "Wind"
+msgstr "Viento"
+
+msgid "Rain"
+msgstr "Lluvia"
+
+msgid "Indoor"
+msgstr "Interior"
+
+msgid "ENE"
+msgstr "ENE"
+
+msgid "ESE"
+msgstr "ESE"
+
+msgid "WNW"
+msgstr "ONO"
+
+msgid "WSW"
+msgstr "OSO"
+
+msgid "SSE"
+msgstr "SSE"
+
+msgid "SW"
+msgstr "SO"
+
+msgid "SSW"
+msgstr "SSO"
+
+msgid "SE"
+msgstr "SE"
+
+msgid "NW"
+msgstr "NO"
+
+msgid "NNW"
+msgstr "NNO"
+
+msgid "NNE"
+msgstr "NNE"
+
+msgid "NE"
+msgstr "NE"
+
+msgid "S"
+msgstr "S"
+
+msgid "W"
+msgstr "O"
+
+msgid "N"
+msgstr "N"
+
+msgid "E"
+msgstr "E"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "No Netatmo station detected"
+msgstr "No se ha detectado ninguna estación Netatmo"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Main station"
+msgstr "Estación principal"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Humidity"
+msgstr "Humedad"
+
+msgid "Noise"
+msgstr "Nivel de ruido"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Estado del Wi-Fi"
+
+msgid "Index"
+msgstr "Índice"
+
+msgid "Pressure"
+msgstr "Presión atmosférica"
+
+msgid "Rainfall"
+msgstr "Precipitación"
+
+msgid "Summary 1 Hour"
+msgstr "Acumulado en 1 hora"
+
+msgid "Summary 24 Hours"
+msgstr "Acumulado en 24 horas"
+
+msgid "Wind Strength"
+msgstr "Velocidad del viento"
+
+msgid "Wind Angle"
+msgstr "Dirección del viento"
+
+msgid "Gust Strength"
+msgstr "Velocidad de las ráfagas"
+
+msgid "Gust Angle"
+msgstr "Dirección de las ráfagas"
+
+msgid "Dew Point"
+msgstr "Punto de rocío"
+
+msgid "RF Status"
+msgstr "Estado de la conexión de radio"
+
+msgid "Baterry"
+msgstr "Batería"
