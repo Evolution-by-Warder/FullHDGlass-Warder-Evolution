@@ -24,11 +24,11 @@ class MainMenuToggleTests(unittest.TestCase):
         cls.source=PLUGIN.read_text()
         cls.tree=ast.parse(cls.source)
         node=next(n for n in cls.tree.body if isinstance(n,ast.FunctionDef) and n.name=='startSetup17')
-        cls.fn=ast.get_source_segment(cls.source,node)
-    def menu(self,config,menuid='mainmenu'):
+        cls.fn=ast.get_source_segment(cls.source,node).replace('from .warderSettingsMenuPlacement import target_key', 'pass  # supplied by test')
+    def menu(self,config,menuid='mainmenu', target='mainmenu'):
         def main(*args,**kwargs): pass
         def main17(*args,**kwargs): pass
-        env=dict(config=config,main=main,main17=main17)
+        env=dict(config=config,main=main,main17=main17,target_key=lambda:target)
         exec(self.fn,env)
         return env['startSetup17'](menuid),main,main17
     def test_persistent_config_default_no(self):
@@ -57,6 +57,12 @@ class MainMenuToggleTests(unittest.TestCase):
         items,main,main17=self.menu(cfg)
         self.assertEqual(len(items),2)
         self.assertEqual([x[1] for x in items],[main,main17])
+    def test_ostatne_is_used_when_image_has_its_own_submenu(self):
+        cfg=fake_cfg();cfg.plugins.warderSkinMainMenu.enabled.value=True
+        self.assertEqual(self.menu(cfg,'mainmenu',target='others')[0],[])
+        items,main,_=self.menu(cfg,'others',target='others')
+        self.assertEqual(len(items),1)
+        self.assertIs(items[0][1],main)
     def test_not_inserted_into_unrelated_submenu(self):
         cfg=fake_cfg();cfg.plugins.warderSkinMainMenu.enabled.value=True
         self.assertEqual(self.menu(cfg,'setup')[0],[])
