@@ -82,7 +82,7 @@ class StorageSafetyTests(unittest.TestCase):
         ast.parse(text)
         self.assertIn('ui_text("Internal storage download warning")', text)
         self.assertIn('self.session.openWithCallback(self._warderStorageChoice, ChoiceBox', text)
-        self.assertIn('("Continue anyway"), "continue"', text)
+        self.assertIn('ui_text("Continue anyway"), "continue"', text)
         self.assertIn('self._warderStorageSelected, dirBrowser', text)
         self.assertIn('if not _warderStorageHasSpace(target):', text)
         self.assertIn('setPathFiles(chck=False)', text)
