@@ -8,6 +8,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py'
       - 'tools/test_warder_integrated_skin.py'
+      - 'tools/test_warder_mainmenu_toggle.py'
       - '.github/workflows/verify-warder-integrated-skin.yml'
   workflow_dispatch:
 permissions:
@@ -27,6 +28,7 @@ jobs:
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py
             source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py
             tools/test_warder_integrated_skin.py
+            tools/test_warder_mainmenu_toggle.py
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
@@ -38,3 +40,4 @@ jobs:
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py
           python3 -m unittest discover -s tools -p 'test_warder_integrated_skin.py' -v
+          python3 -m unittest discover -s tools -p 'test_warder_mainmenu_toggle.py' -v
