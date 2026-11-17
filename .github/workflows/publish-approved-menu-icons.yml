@@ -22,7 +22,7 @@ jobs:
             tools/publish-approved-menu-icons.py
             assets/warder/downloads.json
             assets/warder/menu-icon-overrides
-            assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-20261117
+            assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-AUDITED-20261117
           sparse-checkout-cone-mode: false
       - name: Build and validate production menuIconsBig
         run: python3 tools/publish-approved-menu-icons.py
@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --sparse assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-20261117 assets/warder/downloads.json
+          git add --sparse assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-AUDITED-20261117 assets/warder/downloads.json
           if ! git diff --cached --quiet; then
             git commit -m "Publish owner-approved Warder big menu icons in production archive"
             git push
