@@ -10977,6 +10977,32 @@ class downloadMenu(Screen):
 			self.dwnLoop(message)
 		return message
 
+
+	def _warderCopyWithStorageReserve(self, source, destination):
+		"""Avoid partial overwrites on flash and keep free space for the system."""
+		if os.path.islink(source) or not os.path.isfile(source) or os.path.islink(destination):
+			raise OSError("unsafe Warder picon file")
+		parent = os.path.dirname(destination)
+		if not _warderStorageHasSpace(parent, os.path.getsize(source)):
+			raise OSError("Not enough available space for Warder picon")
+		if not _warderStorageIsInternal(parent):
+			# Keep existing fast copying for mounted HDD/USB/network storage.
+			shutil.copy2(source, destination)
+			return
+		# On internal flash, write a sibling temporary file first. A failed
+		# write must never truncate an existing service logo.
+		fd, tmp = tempfile.mkstemp(prefix=".warder-picon-", suffix=".tmp", dir=parent)
+		try:
+			with os.fdopen(fd, "wb") as out, open(source, "rb") as inp:
+				shutil.copyfileobj(inp, out, 128 * 1024)
+			shutil.copystat(source, tmp)
+			if os.path.islink(destination):
+				raise OSError("unsafe Warder picon destination")
+			os.replace(tmp, destination)
+		finally:
+			if os.path.exists(tmp):
+				os.unlink(tmp)
+
 	def cprmFiles(self, what):
 		f = listDir(self.zzz + what)
 		numPict = 0
@@ -11008,7 +11034,7 @@ class downloadMenu(Screen):
 						current_result["failures"] += 1
 					continue
 				try:
-					shutil.copy2(source, destination)
+					self._warderCopyWithStorageReserve(source, destination)
 				except OSError:
 					self.warderLegacyChannelFailures += 1
 					if current_result is not None:
@@ -11039,7 +11065,7 @@ class downloadMenu(Screen):
 				try:
 					if os.path.islink(destination):
 						raise OSError("destination is a symbolic link")
-					shutil.copy2(source, destination)
+					self._warderCopyWithStorageReserve(source, destination)
 				except OSError:
 					continue
 				if (os.path.isfile(destination) and not os.path.islink(destination)
