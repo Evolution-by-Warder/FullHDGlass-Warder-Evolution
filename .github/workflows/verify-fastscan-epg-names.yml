@@ -1,0 +1,43 @@
+name: Verify FastScan channel name EPG clipping
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
+      - 'tools/test_fastscan_epg_name_geometry.py'
+      - 'tools/test_warder_channel_epg_clip.py'
+      - 'tools/test_channel_selection_*'
+      - '.github/workflows/verify-fastscan-epg-names.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fastscan-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+            tools/test_fastscan_epg_name_geometry.py
+            tools/test_warder_channel_epg_clip.py
+            tools/test_channel_selection_snapshot_cache.py
+            tools/test_channel_selection_text_measure_cache.py
+            tools/test_channel_selection_progress_paint_cache.py
+            tools/test_channel_selection_epg_performance.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source syntax and receiver-independent render regressions
+        run: |
+          set -e
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python3 tools/test_fastscan_epg_name_geometry.py -q
+          python3 tools/test_warder_channel_epg_clip.py -q
+          python3 tools/test_channel_selection_snapshot_cache.py -q
+          python3 tools/test_channel_selection_text_measure_cache.py -q
+          python3 tools/test_channel_selection_progress_paint_cache.py -q
+          python3 tools/test_channel_selection_epg_performance.py -q
