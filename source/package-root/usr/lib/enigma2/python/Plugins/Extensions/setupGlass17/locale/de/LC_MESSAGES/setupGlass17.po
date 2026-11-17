@@ -1627,3 +1627,7 @@ msgstr "Schließen"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Fallback %d/%d; sichere Warder-Ebene %d/%d; Fehler %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "FastScan-Tabellen ausgewählt"

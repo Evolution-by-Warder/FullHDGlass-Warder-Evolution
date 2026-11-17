@@ -1625,3 +1625,7 @@ msgstr "Mbyll"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Rezervë %d/%d; shtresë e sigurt %d/%d; gabime %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "U zgjodhën tabelat FastScan"

@@ -1624,3 +1624,7 @@ msgstr "Sulge"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Varukoopia %d/%d; Warderi turvaline kiht %d/%d; vigu %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "FastScani tabelid valitud"
