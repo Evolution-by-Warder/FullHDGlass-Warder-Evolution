@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\\n"
+"Language: el_GR\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "Outdoor"
+msgstr "Εξωτερικός χώρος"
+
+msgid "Wind"
+msgstr "Άνεμος"
+
+msgid "Rain"
+msgstr "Βροχή"
+
+msgid "Indoor"
+msgstr "Εσωτερικός χώρος"
+
+msgid "ENE"
+msgstr ""
+
+msgid "ESE"
+msgstr ""
+
+msgid "WNW"
+msgstr ""
+
+msgid "WSW"
+msgstr ""
+
+msgid "SSE"
+msgstr ""
+
+msgid "SW"
+msgstr ""
+
+msgid "SSW"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "NW"
+msgstr ""
+
+msgid "NNW"
+msgstr ""
+
+msgid "NNE"
+msgstr ""
+
+msgid "NE"
+msgstr ""
+
+msgid "S"
+msgstr ""
+
+msgid "W"
+msgstr ""
+
+msgid "N"
+msgstr ""
+
+msgid "E"
+msgstr ""
+
+msgid "N/A"
+msgstr "Μ/Δ"
+
+msgid "No Netatmo station detected"
+msgstr "Δεν εντοπίστηκε σταθμός Netatmo"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Type"
+msgstr "Τύπος"
+
+msgid "Main station"
+msgstr "Κύριος σταθμός"
+
+msgid "Temperature"
+msgstr "Θερμοκρασία"
+
+msgid "Humidity"
+msgstr "Υγρασία"
+
+msgid "Noise"
+msgstr "Θόρυβος"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Κατάσταση Wi-Fi"
+
+msgid "Index"
+msgstr "Δείκτης"
+
+msgid "Pressure"
+msgstr "Πίεση"
+
+msgid "Rainfall"
+msgstr "Ύψος βροχής"
+
+msgid "Summary 1 Hour"
+msgstr "Σύνολο 1 ώρας"
+
+msgid "Summary 24 Hours"
+msgstr "Σύνολο 24 ωρών"
+
+msgid "Wind Strength"
+msgstr "Ένταση ανέμου"
+
+msgid "Wind Angle"
+msgstr "Διεύθυνση ανέμου"
+
+msgid "Gust Strength"
+msgstr "Ένταση ριπών"
+
+msgid "Gust Angle"
+msgstr "Διεύθυνση ριπών"
+
+msgid "Dew Point"
+msgstr "Σημείο δρόσου"
+
+msgid "RF Status"
+msgstr "Κατάσταση RF"
+
+msgid "Baterry"
+msgstr "Μπαταρία"

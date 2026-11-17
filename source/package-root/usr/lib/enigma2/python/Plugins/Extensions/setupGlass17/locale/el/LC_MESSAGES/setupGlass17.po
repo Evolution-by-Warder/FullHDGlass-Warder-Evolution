@@ -1,0 +1,1551 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\\n"
+"Language: el_GR\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "No tuner data"
+msgstr "Δεν υπάρχουν δεδομένα δέκτη"
+
+msgid " failed"
+msgstr " απέτυχε"
+
+msgid "AutoColors"
+msgstr "Αυτόματα χρώματα"
+
+msgid "White"
+msgstr "Λευκό"
+
+msgid "Green"
+msgstr "Πράσινο"
+
+msgid "Orange"
+msgstr "Πορτοκαλί"
+
+msgid "Red"
+msgstr "Κόκκινο"
+
+msgid "Purple"
+msgstr "Μοβ"
+
+msgid "Gray"
+msgstr "Γκρι"
+
+msgid "Blue"
+msgstr "Μπλε"
+
+msgid "Yellow"
+msgstr "Κίτρινο"
+
+msgid "Auto"
+msgstr "Αυτόματο"
+
+msgid "Type"
+msgstr "Τύπος"
+
+msgid "from image"
+msgstr "από το image"
+
+msgid "G17 (Ch. Name)"
+msgstr ""
+
+msgid "Default"
+msgstr "Προεπιλογή"
+
+msgid "only Picon"
+msgstr "μόνο picon"
+
+msgid "only Time"
+msgstr "μόνο ώρα"
+
+msgid "VU+ (Ch. Name)"
+msgstr ""
+
+msgid "VU+ (Act. event)"
+msgstr ""
+
+msgid "VU+ (Ch. Name + Act. event)"
+msgstr ""
+
+msgid "G17 (Act. event)"
+msgstr ""
+
+msgid "G17 (Ch. Name + Act. event)"
+msgstr ""
+
+msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
+msgstr ""
+
+msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
+msgstr ""
+
+msgid "VU+ Ultimo"
+msgstr ""
+
+msgid "Picon and Time"
+msgstr "Picon και ώρα"
+
+msgid "Default 2"
+msgstr "Προεπιλογή 2"
+
+msgid "VU+ Duo2 Snr,Agc"
+msgstr ""
+
+msgid "VU+ Duo2 Snr,Agc,RPM,Temp."
+msgstr ""
+
+msgid "VU+ 4k Snr,Agc"
+msgstr ""
+
+msgid "Duo2 Snr,Agc,RPM,Temp. 2"
+msgstr ""
+
+msgid "Classical"
+msgstr ""
+
+msgid "with ZZPicon"
+msgstr ""
+
+msgid "with Picon 400x240"
+msgstr ""
+
+msgid "Glass17"
+msgstr ""
+
+msgid "Glass17(+next event)"
+msgstr ""
+
+msgid "with PIG(+next event)"
+msgstr ""
+
+msgid "Glass17(+next, date)"
+msgstr ""
+
+msgid "New style"
+msgstr "Νέο στυλ"
+
+msgid "New style with PIG"
+msgstr "Νέο στυλ με PIG"
+
+msgid "PIG(+next event,left)"
+msgstr ""
+
+msgid "PIG(+act,next,left)"
+msgstr ""
+
+msgid "The Core 88"
+msgstr ""
+
+msgid "PIG(+several event)"
+msgstr ""
+
+msgid "G17(+several event)"
+msgstr ""
+
+msgid "New style(+several event)"
+msgstr ""
+
+msgid "PIG(+act,several,left)"
+msgstr ""
+
+msgid "with PIG"
+msgstr "με PIG"
+
+msgid "G17 events"
+msgstr ""
+
+msgid "Big Icons"
+msgstr "Μεγάλα εικονίδια"
+
+msgid "Poster"
+msgstr "Αφίσα"
+
+msgid "PIG + PIP"
+msgstr ""
+
+msgid "PIP"
+msgstr ""
+
+msgid "yes"
+msgstr "ναι"
+
+msgid "no"
+msgstr "όχι"
+
+msgid "Icons"
+msgstr "Εικονίδια"
+
+msgid "Icons Right"
+msgstr "Εικονίδια δεξιά"
+
+msgid "List"
+msgstr "Λίστα"
+
+msgid "List and Icon"
+msgstr "Λίστα και εικονίδιο"
+
+msgid "Icons Bar"
+msgstr "Γραμμή εικονιδίων"
+
+msgid "simply PIG"
+msgstr ""
+
+msgid "Sat and Prov"
+msgstr "Δορυφόρος και πάροχος"
+
+msgid "only Sat"
+msgstr "μόνο δορυφόρος"
+
+msgid "only Prov"
+msgstr "μόνο πάροχος"
+
+msgid "only Weather"
+msgstr "μόνο καιρός"
+
+msgid "Sat and Weather"
+msgstr "Δορυφόρος και καιρός"
+
+msgid "Prov and Weather"
+msgstr "Πάροχος και καιρός"
+
+msgid "Sat, Prov and Weather"
+msgstr "Δορυφόρος, πάροχος και καιρός"
+
+msgid "InfoECM by Duri"
+msgstr ""
+
+msgid "None"
+msgstr "Κανένα"
+
+msgid "Weather"
+msgstr "Καιρός"
+
+msgid "Standard"
+msgstr "Τυπικό"
+
+msgid "Simple"
+msgstr "Απλό"
+
+msgid "Ecminfo only"
+msgstr ""
+
+msgid "Ecminfo and CAID"
+msgstr ""
+
+msgid "CAID and SID"
+msgstr ""
+
+msgid "SID only"
+msgstr ""
+
+msgid "CAID, SID, VPID"
+msgstr ""
+
+msgid "Percentage"
+msgstr "Ποσοστό"
+
+msgid "Colored gauge"
+msgstr "Έγχρωμος δείκτης"
+
+msgid "System info"
+msgstr "Πληροφορίες συστήματος"
+
+msgid "Event - extended description"
+msgstr "Εκτεταμένη περιγραφή εκπομπής"
+
+msgid "Side infobar"
+msgstr "Πλευρική μπάρα πληροφοριών"
+
+msgid "Event and side infobar"
+msgstr "Εκπομπή και πλευρική μπάρα"
+
+msgid "Event - now and next"
+msgstr "Τρέχουσα και επόμενη εκπομπή"
+
+msgid "Event now/next and side infobar"
+msgstr ""
+
+msgid "Black"
+msgstr "Μαύρο"
+
+msgid "with PIG(+ch.name,number)"
+msgstr ""
+
+msgid "no time"
+msgstr "χωρίς ώρα"
+
+msgid "with internet check"
+msgstr "με έλεγχο σύνδεσης"
+
+msgid "with frame"
+msgstr "με πλαίσιο"
+
+msgid "big"
+msgstr "μεγάλο"
+
+msgid "Autostop"
+msgstr "Αυτόματη διακοπή"
+
+msgid "Roll back"
+msgstr "Επαναφορά"
+
+msgid "Enhanced Weather"
+msgstr "Αναλυτικός καιρός"
+
+msgid "Satellite"
+msgstr "Δορυφόρος"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Number"
+msgstr "Αριθμός"
+
+msgid "disabled"
+msgstr "απενεργοποιημένο"
+
+msgid "User defined path"
+msgstr "Διαδρομή χρήστη"
+
+msgid "Static"
+msgstr "Στατικό"
+
+msgid "Dynamic"
+msgstr "Δυναμικό"
+
+msgid "Animation"
+msgstr "Κίνηση"
+
+msgid "Transponder data"
+msgstr "Δεδομένα αναμεταδότη"
+
+msgid "Real tuner data"
+msgstr "Πραγματικά δεδομένα δέκτη"
+
+msgid "All available"
+msgstr "Όλα τα διαθέσιμα"
+
+msgid "Selected in Netatmo plugin"
+msgstr "Επιλογή από το πρόσθετο Netatmo"
+
+msgid "IMDb"
+msgstr ""
+
+msgid "TMDb"
+msgstr ""
+
+msgid "Transparent"
+msgstr "Διαφανές"
+
+msgid "Full HD GLass17 spinner"
+msgstr ""
+
+msgid "Full HD Glass17 Setup"
+msgstr "Ρυθμίσεις FullHDGlass17"
+
+msgid "OLED type"
+msgstr "Τύπος OLED"
+
+msgid "Set OLED off in Standby"
+msgstr "Απενεργοποίηση OLED στην αναμονή"
+
+msgid "Listbox font size"
+msgstr "Μέγεθος γραμματοσειράς λίστας"
+
+msgid "Mute picture transparency"
+msgstr "Διαφάνεια εικόνας σίγασης"
+
+msgid "Set binaries"
+msgstr "Ρύθμιση εκτελέσιμων αρχείων"
+
+msgid "Style:"
+msgstr "Στυλ:"
+
+msgid "Title color:"
+msgstr "Χρώμα τίτλου:"
+
+msgid "Picon default, marker, next ..."
+msgstr ""
+
+msgid "Icons type"
+msgstr "Τύπος εικονιδίων"
+
+msgid "Menu type"
+msgstr "Τύπος μενού"
+
+msgid "Permanent Extra Infobar"
+msgstr "Μόνιμη πρόσθετη μπάρα πληροφοριών"
+
+msgid "Standard Infobar type"
+msgstr "Τύπος κανονικής μπάρας πληροφοριών"
+
+msgid "Volume type"
+msgstr "Τύπος έντασης"
+
+msgid "Set Volume and Mute positions"
+msgstr "Θέσεις έντασης και σίγασης"
+
+msgid "Channel selection type"
+msgstr "Τύπος λίστας καναλιών"
+
+msgid "Movie selection type"
+msgstr "Τύπος επιλογής ταινιών"
+
+msgid "EPG selection type"
+msgstr "Τύπος επιλογής EPG"
+
+msgid "EventView type"
+msgstr "Τύπος προβολής εκπομπής"
+
+msgid "PIG type"
+msgstr "Τύπος PIG"
+
+msgid "Extendend description font size"
+msgstr "Μέγεθος γραμματοσειράς αναλυτικής περιγραφής"
+
+msgid "color"
+msgstr "χρώμα"
+
+msgid "Channel selection font size"
+msgstr "Μέγεθος γραμματοσειράς λίστας καναλιών"
+
+msgid "EPG list font size"
+msgstr "Μέγεθος γραμματοσειράς λίστας EPG"
+
+msgid "Dish screen"
+msgstr "Οθόνη δορυφορικού πιάτου"
+
+msgid "AudioSelection"
+msgstr "Επιλογή ήχου"
+
+msgid "Set PluginBrowser - OE 2.0"
+msgstr "Ρύθμιση περιηγητή προσθέτων - OE 2.0"
+
+msgid "Set user encoding.conf"
+msgstr "Ρύθμιση αρχείου encoding.conf"
+
+msgid "ChannelSelection 2xOK"
+msgstr "Λίστα καναλιών με διπλό OK"
+
+msgid "Enable windowstylescrollbar"
+msgstr "Ενεργοποίηση γραμμής κύλισης"
+
+msgid "On/Off icons"
+msgstr "Εικονίδια ενεργοποίησης/απενεργοποίησης"
+
+msgid "Service scan long list"
+msgstr "Μεγάλη λίστα αναζήτησης υπηρεσιών"
+
+msgid "Extended Number ZAP Picon Size"
+msgstr "Μέγεθος picon για αλλαγή με αριθμό"
+
+msgid "GUI will now be restarted to activate restored options:"
+msgstr "Το γραφικό περιβάλλον θα επανεκκινηθεί για ενεργοποίηση των επαναφερμένων επιλογών:"
+
+msgid "GUI will now be restarted, updated files founded !!!"
+msgstr ""
+
+msgid "ECM and TP Status"
+msgstr "Κατάσταση ECM και TP"
+
+msgid "No data"
+msgstr "Δεν υπάρχουν δεδομένα"
+
+msgid "No info from Cam"
+msgstr "Δεν υπάρχουν πληροφορίες CAM"
+
+msgid "Bitrate Stopped"
+msgstr "Η μέτρηση bitrate σταμάτησε"
+
+msgid "No info about Caids"
+msgstr "Δεν υπάρχουν πληροφορίες CAID"
+
+msgid "Free To Air"
+msgstr "Ελεύθερο κανάλι"
+
+msgid "Starting Bitrate"
+msgstr "Έναρξη μέτρησης bitrate"
+
+msgid "Bitrate"
+msgstr "Ρυθμός μετάδοσης"
+
+msgid "Btr: too high - stopped"
+msgstr ""
+
+msgid "Bitrate stopped"
+msgstr "Η μέτρηση bitrate σταμάτησε"
+
+msgid "Preparing Bitrate"
+msgstr "Προετοιμασία μέτρησης bitrate"
+
+msgid "Error reading CaIds !!!"
+msgstr "Σφάλμα ανάγνωσης CAID!"
+
+msgid "Unsuported CA found, no correct ECM info !!!"
+msgstr ""
+
+msgid "Available:"
+msgstr "Διαθέσιμο:"
+
+msgid "Used:"
+msgstr "Σε χρήση:"
+
+msgid "Remaining:"
+msgstr "Απομένει:"
+
+msgid "Radio"
+msgstr "Ραδιόφωνο"
+
+msgid "Streaming service"
+msgstr "Υπηρεσία ροής"
+
+msgid "IP stream"
+msgstr "Ροή IP"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgid "Download menu"
+msgstr "Μενού λήψεων"
+
+msgid "Changelog"
+msgstr "Ιστορικό αλλαγών"
+
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "Restore config"
+msgstr "Επαναφορά ρυθμίσεων"
+
+msgid "Reset all settings of FHDG 17"
+msgstr "Επαναφορά όλων των ρυθμίσεων FullHDGlass17"
+
+msgid "ECM"
+msgstr "ECM"
+
+msgid "EXTRA INFOBAR"
+msgstr "ΠΡΟΣΘΕΤΗ ΜΠΑΡΑ ΠΛΗΡΟΦΟΡΙΩΝ"
+
+msgid "INFOBAR"
+msgstr "ΜΠΑΡΑ ΠΛΗΡΟΦΟΡΙΩΝ"
+
+msgid "POSTER"
+msgstr "ΑΦΙΣΑ"
+
+msgid "HDD/SSD"
+msgstr "HDD/SSD"
+
+msgid "NETWORK"
+msgstr "ΔΙΚΤΥΟ"
+
+msgid "MENU"
+msgstr "ΜΕΝΟΥ"
+
+msgid "CHANNEL SELECTION"
+msgstr "ΕΠΙΛΟΓΗ ΚΑΝΑΛΙΩΝ"
+
+msgid "EPG SELECTION"
+msgstr "ΕΠΙΛΟΓΗ EPG"
+
+msgid "EVENT VIEW"
+msgstr "ΠΡΟΒΟΛΗ ΕΚΠΟΜΠΗΣ"
+
+msgid "SPECIAL INFO"
+msgstr "ΕΙΔΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ"
+
+msgid "USER INFO"
+msgstr "ΠΛΗΡΟΦΟΡΙΕΣ ΧΡΗΣΤΗ"
+
+msgid "NETATMO"
+msgstr "NETATMO"
+
+msgid "OLED"
+msgstr "OLED"
+
+msgid "TUNER"
+msgstr "ΔΕΚΤΗΣ"
+
+msgid "ENHANCED WEATHER"
+msgstr "ΑΝΑΛΥΤΙΚΟΣ ΚΑΙΡΟΣ"
+
+msgid "WEATHER"
+msgstr "ΚΑΙΡΟΣ"
+
+msgid "PATHS"
+msgstr "ΔΙΑΔΡΟΜΕΣ"
+
+msgid "VOLUME"
+msgstr "ΕΝΤΑΣΗ"
+
+msgid "LISTBOX FONT SIZE"
+msgstr "ΜΕΓΕΘΟΣ ΓΡΑΜΜΑΤΟΣΕΙΡΑΣ ΛΙΣΤΑΣ"
+
+msgid "ANIMATIONS"
+msgstr "ΚΙΝΗΣΕΙΣ"
+
+msgid "OTHER"
+msgstr "ΑΛΛΑ"
+
+msgid "Color(s)"
+msgstr "Χρώμα(τα)"
+
+msgid "ECM line type"
+msgstr "Τύπος γραμμής ECM"
+
+msgid "ECM refresh time"
+msgstr "Χρόνος ανανέωσης ECM"
+
+msgid "Enable show address in ECM info"
+msgstr ""
+
+msgid "ECM info from current displayed channel only"
+msgstr "Πληροφορίες ECM μόνο του τρέχοντος καναλιού"
+
+msgid "Display CW0/1 in Side bar"
+msgstr "Εμφάνιση CW0/1 στην πλευρική μπάρα"
+
+msgid "Show PID in ECM line"
+msgstr "Εμφάνιση PID στη γραμμή ECM"
+
+msgid "Show CHID in ECM line"
+msgstr "Εμφάνιση CHID στη γραμμή ECM"
+
+msgid "ECM line"
+msgstr "Γραμμή ECM"
+
+msgid "ECM Labels"
+msgstr "Ετικέτες ECM"
+
+msgid "ECM Values"
+msgstr "Τιμές ECM"
+
+msgid "Enable Enhanced Infobar"
+msgstr "Ενεργοποίηση αναλυτικής μπάρας πληροφοριών"
+
+msgid "Vertical Offset"
+msgstr "Κατακόρυφη μετατόπιση"
+
+msgid "Date format"
+msgstr "Μορφή ημερομηνίας"
+
+msgid "Second picon type"
+msgstr "Τύπος δεύτερου picon"
+
+msgid "Animated Weather Icons"
+msgstr "Κινούμενα εικονίδια καιρού"
+
+msgid "Animation speed (ms)"
+msgstr "Ταχύτητα κίνησης (ms)"
+
+msgid "Enable icon"
+msgstr "Ενεργοποίηση εικονιδίου"
+
+msgid "Enable icon of Unknown CAID"
+msgstr "Εμφάνιση εικονιδίου άγνωστου CAID"
+
+msgid "Audio type of current track"
+msgstr "Τύπος ήχου τρέχοντος κομματιού"
+
+msgid "Progressive/Interlace detection"
+msgstr ""
+
+msgid "Tuner info"
+msgstr "Πληροφορίες δέκτη"
+
+msgid "Hide SNR/AGC (Q/S) if value is 0"
+msgstr ""
+
+msgid "CI info"
+msgstr "Πληροφορίες CI"
+
+msgid "Enable full bitrate info"
+msgstr "Πλήρεις πληροφορίες bitrate"
+
+msgid "Bitrate auto stop limit"
+msgstr "Όριο αυτόματης διακοπής bitrate"
+
+msgid "Enable eBitrateCalculator"
+msgstr "Ενεργοποίηση eBitrateCalculator"
+
+msgid "Show Satellite position in TP info"
+msgstr "Εμφάνιση δορυφορικής θέσης στα στοιχεία TP"
+
+msgid "Provider"
+msgstr "Πάροχος"
+
+msgid "Temp/RPM"
+msgstr "Θερμοκρασία/RPM"
+
+msgid "CPU/Mem"
+msgstr "CPU/Μνήμη"
+
+msgid "Temp. HDD/SSD"
+msgstr "Θερμοκρασία HDD/SSD"
+
+msgid "Progress bar pixmap"
+msgstr "Εικόνα γραμμής προόδου"
+
+msgid "Progress bar background pixmap"
+msgstr "Εικόνα φόντου γραμμής προόδου"
+
+msgid "CPU/Mem, RPM/Temp, Provider"
+msgstr ""
+
+msgid "TP type"
+msgstr "Τύπος TP"
+
+msgid "TP info"
+msgstr "Πληροφορίες TP"
+
+msgid "Video resolution"
+msgstr "Ανάλυση βίντεο"
+
+msgid "Date"
+msgstr "Ημερομηνία"
+
+msgid "Time"
+msgstr "Ώρα"
+
+msgid "Seconds"
+msgstr "Δευτερόλεπτα"
+
+msgid "Channel name"
+msgstr "Όνομα καναλιού"
+
+msgid "Event now"
+msgstr "Τρέχουσα εκπομπή"
+
+msgid "Event next"
+msgstr "Επόμενη εκπομπή"
+
+msgid "Progress bar foreground"
+msgstr "Προσκήνιο γραμμής προόδου"
+
+msgid "Progress bar background"
+msgstr "Φόντο γραμμής προόδου"
+
+msgid "Enable typewriting"
+msgstr "Ενεργοποίηση εφέ πληκτρολόγησης"
+
+msgid "Ignore infobar timeout"
+msgstr "Παράβλεψη χρόνου απόκρυψης μπάρας"
+
+msgid "Enable fade"
+msgstr "Ενεργοποίηση ομαλής μετάβασης"
+
+msgid "Speed of fade"
+msgstr "Ταχύτητα μετάβασης"
+
+msgid "Enable fade in"
+msgstr "Ενεργοποίηση εμφάνισης με μετάβαση"
+
+msgid "Show recording icon"
+msgstr "Εμφάνιση εικονιδίου εγγραφής"
+
+msgid "Channel name type"
+msgstr "Τύπος ονόματος καναλιού"
+
+msgid "Set Position"
+msgstr "Ορισμός θέσης"
+
+msgid "Size"
+msgstr "Μέγεθος"
+
+msgid "Search delay (s)"
+msgstr "Καθυστέρηση αναζήτησης (s)"
+
+msgid "Erase poster cache"
+msgstr "Εκκαθάριση προσωρινής μνήμης αφισών"
+
+msgid "Removing current Poster"
+msgstr "Αφαίρεση τρέχουσας αφίσας"
+
+msgid "Movieplayer infobar HDD/SSD state"
+msgstr ""
+
+msgid "Enable HDD/SSD power state check"
+msgstr "Έλεγχος κατάστασης τροφοδοσίας HDD/SSD"
+
+msgid "Wake up HDD/SSD if needed"
+msgstr "Αφύπνιση HDD/SSD όταν χρειάζεται"
+
+msgid "Enable control of network status"
+msgstr "Ενεργοποίηση ελέγχου κατάστασης δικτύου"
+
+msgid "IP Address"
+msgstr "Διεύθυνση IP"
+
+msgid "Network speed"
+msgstr "Ταχύτητα δικτύου"
+
+msgid "Menu Icons"
+msgstr "Εικονίδια μενού"
+
+msgid "Enable empty icons in Menu type - Icons"
+msgstr ""
+
+msgid "Enable Animation (Menu: Icons/Icons Bar)"
+msgstr ""
+
+msgid "Display remaining time in extra EPG"
+msgstr "Εμφάνιση χρόνου που απομένει στο πρόσθετο EPG"
+
+msgid "Text rolling type"
+msgstr "Τύπος κύλισης κειμένου"
+
+msgid "Text rolling start delay"
+msgstr "Καθυστέρηση έναρξης κύλισης"
+
+msgid "Service name font size"
+msgstr "Μέγεθος γραμματοσειράς ονόματος υπηρεσίας"
+
+msgid "Service info font size"
+msgstr "Μέγεθος γραμματοσειράς στοιχείων υπηρεσίας"
+
+msgid "Line height"
+msgstr "Ύψος γραμμής"
+
+msgid "EPG Description"
+msgstr "Περιγραφή EPG"
+
+msgid "EPG Description - selected"
+msgstr "Περιγραφή EPG - επιλεγμένη"
+
+msgid "Channel name - selected"
+msgstr "Όνομα καναλιού - επιλεγμένο"
+
+msgid "Enable Special info timeout"
+msgstr "Χρονικό όριο ειδικών πληροφοριών"
+
+msgid "extensions"
+msgstr "επεκτάσεις"
+
+msgid "Special info in main menu"
+msgstr "Ειδικές πληροφορίες στο κύριο μενού"
+
+msgid "Enable Permanent User info"
+msgstr "Μόνιμες πληροφορίες χρήστη"
+
+msgid "User info act./next switching"
+msgstr "Εναλλαγή τρέχουσας/επόμενης εκπομπής"
+
+msgid "Station"
+msgstr "Σταθμός"
+
+msgid "Stations switch time"
+msgstr "Χρόνος εναλλαγής σταθμών"
+
+msgid "Enable OLED off in standby"
+msgstr "Απενεργοποίηση OLED στην αναμονή"
+
+msgid "Number of tuners"
+msgstr "Αριθμός δεκτών"
+
+msgid "Hide tuner in standby or missing tuner"
+msgstr "Απόκρυψη δέκτη σε αναμονή ή όταν απουσιάζει"
+
+msgid "Active"
+msgstr "Ενεργός"
+
+msgid "Active in the background"
+msgstr "Ενεργός στο παρασκήνιο"
+
+msgid "Standby mode"
+msgstr "Κατάσταση αναμονής"
+
+msgid "Missing"
+msgstr "Απουσιάζει"
+
+msgid "Recording"
+msgstr "Εγγραφή"
+
+msgid "Recording and live"
+msgstr "Εγγραφή και ζωντανή προβολή"
+
+msgid "Show Astronomical Information"
+msgstr "Εμφάνιση αστρονομικών πληροφοριών"
+
+msgid "Temperature unit"
+msgstr "Μονάδα θερμοκρασίας"
+
+msgid "UV index"
+msgstr "Δείκτης UV"
+
+msgid "Wind speed"
+msgstr "Ταχύτητα ανέμου"
+
+msgid "Weather Title"
+msgstr "Τίτλος καιρού"
+
+msgid "Weather location"
+msgstr "Τοποθεσία καιρού"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Reconnect time"
+msgstr "Χρόνος επανασύνδεσης"
+
+msgid "Display nighttime icons"
+msgstr "Εμφάνιση νυχτερινών εικονιδίων"
+
+msgid "Enable next city in Weather"
+msgstr "Ενεργοποίηση επόμενης πόλης στον καιρό"
+
+msgid "API-Key OpenWeatherMap"
+msgstr ""
+
+msgid "Forecast for more days"
+msgstr "Πρόγνωση περισσότερων ημερών"
+
+msgid "More days switch time"
+msgstr "Χρόνος αλλαγής επιπλέον ημερών"
+
+msgid "Show yesterday"
+msgstr "Εμφάνιση χθεσινής ημέρας"
+
+msgid "Find a city"
+msgstr "Αναζήτηση πόλης"
+
+msgid "Weather Icons"
+msgstr "Εικονίδια καιρού"
+
+msgid "State"
+msgstr "Κατάσταση"
+
+msgid "Warm"
+msgstr "Ζέστη"
+
+msgid "Cold"
+msgstr "Κρύο"
+
+msgid "Fair"
+msgstr "Αίθριος"
+
+msgid "temperature"
+msgstr "θερμοκρασία"
+
+msgid "Picons/Icons path"
+msgstr "Διαδρομή picons/εικονιδίων"
+
+msgid "FHDG Configuration file"
+msgstr "Αρχείο ρυθμίσεων FHDG"
+
+msgid "Path to satellites.xml"
+msgstr "Διαδρομή satellites.xml"
+
+msgid "Bigger"
+msgstr "Μεγαλύτερο"
+
+msgid "Big"
+msgstr "Μεγάλο"
+
+msgid "Medium"
+msgstr "Μεσαίο"
+
+msgid "Small"
+msgstr "Μικρό"
+
+msgid "Smaller"
+msgstr "Μικρότερο"
+
+msgid "Enable Animations"
+msgstr "Ενεργοποίηση κινήσεων"
+
+msgid "(Infobar) Picon"
+msgstr ""
+
+msgid "(Infobar) Second Picon"
+msgstr ""
+
+msgid "(Infobar) Poster"
+msgstr ""
+
+msgid "(Infobar) ECM line"
+msgstr ""
+
+msgid "(Infobar) TP info/type"
+msgstr ""
+
+msgid "(Menu) Big Icons/Icons"
+msgstr ""
+
+msgid "(Channel selection) picon/Prov/Sat"
+msgstr ""
+
+msgid "VTi SplitScreen"
+msgstr ""
+
+msgid "Reference separating char"
+msgstr "Χαρακτήρας διαχωρισμού αναφοράς"
+
+msgid "Ignore leading 0 in time"
+msgstr "Παράβλεψη αρχικού 0 στην ώρα"
+
+msgid "Ignore leading 0 in date"
+msgstr "Παράβλεψη αρχικού 0 στην ημερομηνία"
+
+msgid "Calculation of channel numbers"
+msgstr "Υπολογισμός αριθμών καναλιών"
+
+msgid "Enable CAID PIDs"
+msgstr "Ενεργοποίηση PID CAID"
+
+msgid "Neutrino keymap"
+msgstr "Διάταξη πλήκτρων Neutrino"
+
+msgid "Full HD Glass17 spinner"
+msgstr "Spinner FullHDGlass17"
+
+msgid "Localization of the skin"
+msgstr "Μετάφραση του skin"
+
+msgid "Enable Clear memory"
+msgstr "Ενεργοποίηση εκκαθάρισης μνήμης"
+
+msgid "Enable user encoding.conf"
+msgstr "Ενεργοποίηση encoding.conf χρήστη"
+
+msgid "RadioScreenSaver"
+msgstr "Προφύλαξη οθόνης ραδιοφώνου"
+
+msgid "IPTV Radio Detection"
+msgstr "Ανίχνευση ραδιοφώνου IPTV"
+
+msgid "Exit"
+msgstr "Έξοδος"
+
+msgid "now?"
+msgstr "τώρα;"
+
+msgid "Erase finished successfully!"
+msgstr "Η διαγραφή ολοκληρώθηκε!"
+
+msgid "Color Sample"
+msgstr "Δείγμα χρώματος"
+
+msgid "Version:"
+msgstr "Έκδοση:"
+
+msgid "Extra Screen"
+msgstr "Πρόσθετη οθόνη"
+
+msgid "None files detected!"
+msgstr "Δεν βρέθηκαν αρχεία!"
+
+msgid "Error reading version info!"
+msgstr "Σφάλμα ανάγνωσης έκδοσης!"
+
+msgid "New version:"
+msgstr "Νέα έκδοση:"
+
+msgid "detected"
+msgstr "εντοπίστηκε"
+
+msgid "You have actual version installed, no update needed."
+msgstr "Έχετε την τελευταία έκδοση, δεν χρειάζεται ενημέρωση."
+
+msgid "Installing package:"
+msgstr "Εγκατάσταση πακέτου:"
+
+msgid "Error while downloading file!"
+msgstr "Σφάλμα λήψης αρχείου!"
+
+msgid "Update finished successfully!"
+msgstr "Η ενημέρωση ολοκληρώθηκε!"
+
+msgid "Do you want restart GUI to activate version"
+msgstr ""
+
+msgid "Restart GUI now?"
+msgstr "Επανεκκίνηση γραφικού περιβάλλοντος τώρα;"
+
+msgid "Error while updating to new version!!!"
+msgstr "Σφάλμα ενημέρωσης στην νέα έκδοση!"
+
+msgid "The file satellites.xml do not exists in selected dir"
+msgstr ""
+
+msgid "GUI will now be restarted to activate changes in:"
+msgstr ""
+
+msgid "Sorry, cannot create dir on path:"
+msgstr "Δεν είναι δυνατή η δημιουργία φακέλου στη διαδρομή:"
+
+msgid "Fade cannot be used, alhpa file missing!!!"
+msgstr ""
+
+msgid "HDD/SSD power state check is not available for SH4"
+msgstr ""
+
+msgid "Set Clear memory"
+msgstr ""
+
+msgid "Set original encoding.conf"
+msgstr ""
+
+msgid "is incorrect, please, select existing/correct screen !!!"
+msgstr ""
+
+msgid "is incorrect, please, select correct icons !!!"
+msgstr ""
+
+msgid "is incorrect, style will not be changed!!!"
+msgstr ""
+
+msgid "Save again to apply all setup changes without style change"
+msgstr "Αποθηκεύστε ξανά για εφαρμογή των αλλαγών χωρίς αλλαγή στυλ"
+
+msgid "Special Info type"
+msgstr "Τύπος ειδικών πληροφοριών"
+
+msgid "User info type"
+msgstr "Τύπος πληροφοριών χρήστη"
+
+msgid "HDD/SSD state"
+msgstr "Κατάσταση HDD/SSD"
+
+msgid "10 days forecast"
+msgstr "Πρόγνωση 10 ημερών"
+
+msgid "Do you want restart GUI to activate the screen:"
+msgstr ""
+
+msgid "Config loaded successfully!"
+msgstr "Οι ρυθμίσεις φορτώθηκαν!"
+
+msgid "Welcome in setup"
+msgstr "Καλώς ορίσατε στις ρυθμίσεις"
+
+msgid "Wait for the file downloads to complete"
+msgstr "Περιμένετε να ολοκληρωθεί η λήψη αρχείων"
+
+msgid "Select"
+msgstr "Επιλογή"
+
+msgid "Cleaning Picons"
+msgstr "Εκκαθάριση picons"
+
+msgid "Start Download"
+msgstr "Έναρξη λήψης"
+
+msgid "picon white"
+msgstr "λευκό picon"
+
+msgid "picon black"
+msgstr "μαύρο picon"
+
+msgid "picon 400x240"
+msgstr "picon 400x240"
+
+msgid "picon 220x132"
+msgstr "picon 220x132"
+
+msgid "piconProv 220x132"
+msgstr ""
+
+msgid "piconSat 220x132"
+msgstr ""
+
+msgid "piconProv black"
+msgstr "μαύρα picons παρόχων"
+
+msgid "piconSat black"
+msgstr "μαύρα picons δορυφόρων"
+
+msgid "piconCam black"
+msgstr "μαύρα picons CAM"
+
+msgid "piconWeather black"
+msgstr "μαύρα picons καιρού"
+
+msgid "piconProv white"
+msgstr "λευκά picons παρόχων"
+
+msgid "piconSat white"
+msgstr "λευκά picons δορυφόρων"
+
+msgid "piconCam white"
+msgstr "λευκά picons CAM"
+
+msgid "piconWeather white"
+msgstr "λευκά picons καιρού"
+
+msgid "picon OLED"
+msgstr "picon OLED"
+
+msgid "ZZPicon"
+msgstr ""
+
+msgid "Help"
+msgstr "Βοήθεια"
+
+msgid "Set of icons and prewievs"
+msgstr "Συλλογή εικονιδίων και προεπισκοπήσεων"
+
+msgid "ExtraScreens graphics"
+msgstr "Γραφικά πρόσθετων οθονών"
+
+msgid "Menu icons"
+msgstr "Εικονίδια μενού"
+
+msgid "Weather icons"
+msgstr "Εικονίδια καιρού"
+
+msgid "Channelselection icons"
+msgstr "Εικονίδια λίστας καναλιών"
+
+msgid "Result"
+msgstr "Αποτέλεσμα"
+
+msgid "ERROR"
+msgstr "ΣΦΑΛΜΑ"
+
+msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
+msgstr ""
+
+msgid "SUCCESSFUL"
+msgstr "ΕΠΙΤΥΧΙΑ"
+
+msgid "Total:"
+msgstr "Σύνολο:"
+
+msgid "Deleted:"
+msgstr "Διαγράφηκαν:"
+
+msgid "Sorry, too low free space"
+msgstr "Δεν υπάρχει αρκετός ελεύθερος χώρος"
+
+msgid "Required"
+msgstr "Απαιτείται"
+
+msgid "Free"
+msgstr "Ελεύθερο"
+
+msgid "failed"
+msgstr "απέτυχε"
+
+msgid "file(s) downloaded/updated."
+msgstr "αρχεία λήφθηκαν/ενημερώθηκαν."
+
+msgid "file(s) from"
+msgstr ""
+
+msgid "Loading URL tools failed"
+msgstr ""
+
+msgid "Internet connection failed"
+msgstr "Αποτυχία σύνδεσης στο διαδίκτυο"
+
+msgid "Unknown error detected, try again!!!"
+msgstr "Άγνωστο σφάλμα, δοκιμάστε ξανά!"
+
+msgid "Previews downloaded successfully!"
+msgstr "Η λήψη προεπισκοπήσεων ολοκληρώθηκε!"
+
+msgid "Previews:"
+msgstr "Προεπισκοπήσεις:"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Edit color"
+msgstr "Επεξεργασία χρώματος"
+
+msgid "Style menu"
+msgstr "Μενού στυλ"
+
+msgid "Sorry, you have entered a wrong color:"
+msgstr ""
+
+msgid "Sorry, writing color:"
+msgstr ""
+
+msgid "failed !!!"
+msgstr ""
+
+msgid "Color:"
+msgstr "Χρώμα:"
+
+msgid "writed successfully !!!"
+msgstr ""
+
+msgid "Sorry, write to g17Screens.cfg failed !!!"
+msgstr ""
+
+msgid "Changes writed successfully !!!"
+msgstr "Οι αλλαγές αποθηκεύτηκαν!"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Picon path"
+msgstr "Διαδρομή picon"
+
+msgid "Choose Icons"
+msgstr "Επιλογή εικονιδίων"
+
+msgid "No Changelog info !!!"
+msgstr "Δεν υπάρχουν πληροφορίες αλλαγών!"
+
+msgid "Edit line"
+msgstr "Επεξεργασία γραμμής"
+
+msgid "Delete line"
+msgstr "Διαγραφή γραμμής"
+
+msgid "Add line"
+msgstr "Προσθήκη γραμμής"
+
+msgid "up"
+msgstr "πάνω"
+
+msgid "down"
+msgstr "κάτω"
+
+msgid "Please enter a city name"
+msgstr "Εισαγάγετε όνομα πόλης"
+
+msgid "Website data reading timeout"
+msgstr "Έληξε ο χρόνος ανάγνωσης δεδομένων ιστοσελίδας"
+
+msgid "None city detected"
+msgstr "Δεν βρέθηκε πόλη"
+
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Επιλέξτε δορυφορικές θέσεις για λήψεις και ενημερώσεις picons καναλιών."
+
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Επιλέξτε ανάλυση picon για τις λίστες καναλιών και τις οθόνες."
+
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Επιλέξτε διαφανή, μαύρα ή λευκά picons καναλιών."
+
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Επιλέξτε πού θα αποθηκεύονται και θα ενημερώνονται τα picons."
+
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Επιλέξτε συγχρονισμό picons από λίστες TV ή λήψη πλήρων πακέτων."
+
+msgid "No position selected"
+msgstr "Δεν επιλέχθηκε θέση"
+
+msgid "Select at least one satellite position."
+msgstr "Επιλέξτε τουλάχιστον μία δορυφορική θέση."
+
+msgid "Updated:"
+msgstr "Ενημερώθηκαν:"
+
+msgid "Selected upstream picons were not installed:"
+msgstr ""
+
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr ""
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr ""
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr ""
+
+msgid "Choose the available provider picon variant."
+msgstr ""
+
+msgid "Choose the available satellite picon variant."
+msgstr ""
+
+msgid "Choose black or white CAM picons."
+msgstr ""
+
+msgid "Choose black or white weather information picons."
+msgstr ""
+
+msgid "Provider picons"
+msgstr ""
+
+msgid "Satellite picons"
+msgstr ""
+
+msgid "CAM picons"
+msgstr ""
+
+msgid "Weather picons"
+msgstr ""
+
+msgid "Large for selected channel selection types"
+msgstr ""
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr ""
+
+msgid "Invalid picon destination"
+msgstr ""
+
+msgid "Large channel selection icons (710 x 682)"
+msgstr ""
+
+msgid "Satellite positions"
+msgstr ""
+
+msgid "Picon resolution"
+msgstr ""
+
+msgid "Picon colour"
+msgstr ""
+
+msgid "Picon location"
+msgstr ""
+
+msgid "Update method"
+msgstr ""
+
+msgid "No resolution selected"
+msgstr "Δεν επιλέχθηκε ανάλυση"
+
+msgid "No colour selected"
+msgstr "Δεν επιλέχθηκε χρώμα"
+
+msgid "No update method selected"
+msgstr "Δεν επιλέχθηκε μέθοδος ενημέρωσης"
+
+msgid "Receiver memory"
+msgstr "Μνήμη δέκτη"
+
+msgid "Hard disk"
+msgstr "Σκληρός δίσκος"
+
+msgid "USB storage"
+msgstr "Αποθήκευση USB"
+
+msgid "SD card"
+msgstr "Κάρτα SD"
+
+msgid "MMC storage"
+msgstr "Αποθήκευση MMC"
+
+msgid "Root picon directory"
+msgstr "Ριζικός φάκελος picon"
+
+msgid "User defined"
+msgstr "Ορισμένο από χρήστη"
+
+msgid "User defined..."
+msgstr "Ορισμένο από χρήστη..."
+
+msgid "50 x 30 - Mini picons"
+msgstr ""
+
+msgid "220 x 132 - Picons"
+msgstr ""
+
+msgid "400 x 240 - Large picons"
+msgstr ""
+
+msgid "710 x 682 - Large icons for selected channel list types"
+msgstr ""
+
+msgid "Synchronize with TV lists"
+msgstr "Συγχρονισμός με λίστες TV"
+
+msgid "Synchronize with TV and radio lists"
+msgstr "Συγχρονισμός με λίστες TV και ραδιοφώνου"
+
+msgid "Copy all; replace current selected-position picons"
+msgstr "Αντιγραφή όλων· αντικατάσταση picons επιλεγμένων θέσεων"
+
+msgid "Copy all; incremental update"
+msgstr "Αντιγραφή όλων· σταδιακή ενημέρωση"
+
+msgid "Download destination:"
+msgstr "Προορισμός λήψης:"
+
+msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
+msgstr ""
+
+msgid "Choose how channel picons are synchronized or copied for selected positions."
+msgstr ""
+
+msgid "Choose a resolution, colour, location and update method before downloading."
+msgstr ""
+
+msgid "Create picon directory?"
+msgstr "Δημιουργία φακέλου picon;"
+
+msgid "Cannot create picon destination"
+msgstr "Δεν είναι δυνατή η δημιουργία προορισμού picon"
+
+msgid "Picon destination is not writable"
+msgstr "Ο φάκελος picons δεν επιτρέπει εγγραφή"
+
+msgid "Select an existing directory."
+msgstr "Επιλέξτε υπάρχοντα φάκελο."
+
+msgid "Cannot read picon destination"
+msgstr "Δεν είναι δυνατή η ανάγνωση προορισμού picon"
+
+msgid "Could not remove stale selected-position picon"
+msgstr ""
+
+msgid "Could not replace selected-position picons safely."
+msgstr ""
+
+msgid "selected receiver services have no matching picon in the selected packages."
+msgstr ""
+
+msgid "%d picon successfully updated"
+msgstr "Ενημερώθηκε επιτυχώς %d picon"
+
+msgid "%d picons successfully updated"
+msgstr "Ενημερώθηκαν επιτυχώς %d picons"
+
+msgid "%d service selected"
+msgstr "Επιλέχθηκε %d υπηρεσία"
+
+msgid "%d services selected"
+msgstr "Επιλέχθηκαν %d υπηρεσίες"
+
+msgid "No picons were downloaded."
+msgstr "Δεν λήφθηκαν picons."
+
+msgid "%d of %d picons failed to install"
+msgstr "Απέτυχε η εγκατάσταση %d από %d picons"
+
+msgid "Selected storage is not mounted"
+msgstr "Το επιλεγμένο αποθηκευτικό μέσο δεν είναι προσαρτημένο"
+
+msgid "Provider logos"
+msgstr "Λογότυπα παρόχων"
+
+msgid "TV platform and service provider logos."
+msgstr "Λογότυπα τηλεοπτικών πλατφορμών και παρόχων."
+
+msgid "Satellite logos"
+msgstr "Λογότυπα δορυφόρων"
+
+msgid "Satellite logos and graphical identifiers."
+msgstr "Λογότυπα και γραφικά αναγνωριστικά δορυφόρων."
+
+msgid "%s / %s: %d picons updated; %d failures"
+msgstr ""
+
+msgid "Total: %d picons updated"
+msgstr ""
+
+msgid "Failures: %d"
+msgstr "Αποτυχίες: %d"
+
+msgid "PARTIAL SUCCESS"
+msgstr "ΜΕΡΙΚΗ ΕΠΙΤΥΧΙΑ"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr ""
+
+msgid "FastScan tables selected"
+msgstr "Επιλέχθηκαν πίνακες FastScan"

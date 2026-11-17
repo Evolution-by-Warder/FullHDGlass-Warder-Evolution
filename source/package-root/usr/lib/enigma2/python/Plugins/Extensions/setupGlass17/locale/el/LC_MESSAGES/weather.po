@@ -1,0 +1,330 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\\n"
+"Language: el_GR\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "...N/A..."
+msgstr "...Μ/Δ..."
+
+msgid "Sun"
+msgstr "Κυρ"
+
+msgid "Mon"
+msgstr "Δευ"
+
+msgid "Tue"
+msgstr "Τρι"
+
+msgid "Wed"
+msgstr "Τετ"
+
+msgid "Thu"
+msgstr "Πεμ"
+
+msgid "Fri"
+msgstr "Παρ"
+
+msgid "Sat"
+msgstr "Σαβ"
+
+msgid "January"
+msgstr "Ιανουάριος"
+
+msgid "February"
+msgstr "Φεβρουάριος"
+
+msgid "March"
+msgstr "Μάρτιος"
+
+msgid "April"
+msgstr "Απρίλιος"
+
+msgid "May"
+msgstr "Μάιος"
+
+msgid "Jun"
+msgstr "Ιούνιος"
+
+msgid "Jul"
+msgstr "Ιούλιος"
+
+msgid "August"
+msgstr "Αύγουστος"
+
+msgid "September"
+msgstr "Σεπτέμβριος"
+
+msgid "October"
+msgstr "Οκτώβριος"
+
+msgid "November"
+msgstr "Νοέμβριος"
+
+msgid "December"
+msgstr "Δεκέμβριος"
+
+msgid "Light Snow Shower"
+msgstr "Ασθενής χιονόπτωση"
+
+msgid "Fog"
+msgstr "Ομίχλη"
+
+msgid "Sunny"
+msgstr "Ηλιοφάνεια"
+
+msgid "Cloudy"
+msgstr "Συννεφιά"
+
+msgid "Light Rain with Thunder"
+msgstr "Ασθενής βροχή με βροντές"
+
+msgid "Drizzle"
+msgstr "Ψιχάλα"
+
+msgid "Showers in the Vicinity"
+msgstr "Τοπικές μπόρες"
+
+msgid "Rain Shower"
+msgstr "Μπόρα"
+
+msgid "Thunderstorm"
+msgstr "Καταιγίδα"
+
+msgid "Thunder in the Vicinity"
+msgstr "Βροντές στην περιοχή"
+
+msgid "Thundershowers"
+msgstr "Καταιγίδες με βροχή"
+
+msgid "Light Drizzle"
+msgstr "Ασθενής ψιχάλα"
+
+msgid "Thunder"
+msgstr "Βροντή"
+
+msgid "Light Rain Shower"
+msgstr "Ασθενής μπόρα"
+
+msgid "Isolated Thunderstorms"
+msgstr "Μεμονωμένες καταιγίδες"
+
+msgid "Scattered Thunderstorms"
+msgstr "Σποραδικές καταιγίδες"
+
+msgid "AM"
+msgstr "π.μ."
+
+msgid "PM"
+msgstr "μ.μ."
+
+msgid "Mostly Clear"
+msgstr "Σχεδόν αίθριος"
+
+msgid "Snow"
+msgstr "Χιόνι"
+
+msgid "Thunderstorms"
+msgstr "Καταιγίδες"
+
+msgid "Wind"
+msgstr "Άνεμος"
+
+msgid "Showers"
+msgstr "Μπόρες"
+
+msgid "Rain"
+msgstr "Βροχή"
+
+msgid "Mostly Sunny"
+msgstr "Κυρίως ηλιοφάνεια"
+
+msgid "Clear"
+msgstr "Αίθριος"
+
+msgid "Partly Cloudy"
+msgstr "Μερική συννεφιά"
+
+msgid "Mostly Cloudy"
+msgstr "Κυρίως συννεφιά"
+
+msgid "Scattered Showers"
+msgstr "Σποραδικές μπόρες"
+
+msgid "Few Showers"
+msgstr "Λίγες μπόρες"
+
+msgid "Light Rain"
+msgstr "Ασθενής βροχή"
+
+msgid "Fair"
+msgstr "Αίθριος"
+
+msgid "Scattered Snow Showers"
+msgstr "Σποραδικές χιονομπόρες"
+
+msgid "Wintry Mix"
+msgstr "Μικτά χειμερινά φαινόμενα"
+
+msgid "Ice"
+msgstr "Πάγος"
+
+msgid "Breezy"
+msgstr "Ελαφρύς άνεμος"
+
+msgid "Freezing Drizzle"
+msgstr "Παγωμένη ψιχάλα"
+
+msgid "Freezing Rain"
+msgstr "Παγωμένη βροχή"
+
+msgid "Wind direction"
+msgstr "Κατεύθυνση ανέμου"
+
+msgid "Location"
+msgstr "Τοποθεσία"
+
+msgid "Humidity"
+msgstr "Υγρασία"
+
+msgid "Visibility"
+msgstr "Ορατότητα"
+
+msgid "Geo position"
+msgstr "Γεωγραφική θέση"
+
+msgid "Pressure"
+msgstr "Πίεση"
+
+msgid "Feels like"
+msgstr "Αίσθηση θερμοκρασίας"
+
+msgid "City"
+msgstr "Πόλη"
+
+msgid "Sunrise"
+msgstr "Ανατολή ηλίου"
+
+msgid "Sunset"
+msgstr "Δύση ηλίου"
+
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Website data reading timeout"
+msgstr "Έληξε ο χρόνος ανάγνωσης δεδομένων ιστοσελίδας"
+
+msgid "None data received from website"
+msgstr "Δεν ελήφθησαν δεδομένα από την ιστοσελίδα"
+
+msgid "Website is not responding"
+msgstr "Η ιστοσελίδα δεν ανταποκρίνεται"
+
+msgid "is not defined"
+msgstr "δεν έχει οριστεί"
+
+msgid "NW"
+msgstr ""
+
+msgid "SW"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "NE"
+msgstr ""
+
+msgid "S"
+msgstr ""
+
+msgid "N"
+msgstr ""
+
+msgid "W"
+msgstr ""
+
+msgid "E"
+msgstr ""
+
+msgid "Mishmash in the data"
+msgstr "Ασυνεπή δεδομένα"
+
+msgid "Weather"
+msgstr "Καιρός"
+
+msgid "Attempt"
+msgstr "Προσπάθεια"
+
+msgid "time to reconnect"
+msgstr "χρόνος επανασύνδεσης"
+
+msgid "Clear sky"
+msgstr "Καθαρός ουρανός"
+
+msgid "Mainly clear"
+msgstr "Κυρίως αίθριος"
+
+msgid "Partly cloudy"
+msgstr ""
+
+msgid "Overcast"
+msgstr "Νεφοσκεπής"
+
+msgid "Depositing rime fog"
+msgstr ""
+
+msgid "Dense drizzle"
+msgstr ""
+
+msgid "Slight rain"
+msgstr ""
+
+msgid "Heavy rain"
+msgstr ""
+
+msgid "Heavy freezing rain"
+msgstr ""
+
+msgid "Slight snow"
+msgstr ""
+
+msgid "Heavy snow"
+msgstr ""
+
+msgid "Snow grains"
+msgstr ""
+
+msgid "Rain showers"
+msgstr ""
+
+msgid "Heavy rain showers"
+msgstr "Ισχυρές μπόρες"
+
+msgid "Snow showers"
+msgstr "Χιονομπόρες"
+
+msgid "Heavy snow showers"
+msgstr "Ισχυρές χιονομπόρες"
+
+msgid "Thunderstorm with hail"
+msgstr "Καταιγίδα με χαλάζι"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Καταιγίδα με ισχυρό χαλάζι"
+
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+msgid "Light drizzle"
+msgstr "Ασθενής ψιχάλα"
+
+msgid "Freezing drizzle"
+msgstr "Παγωμένη ψιχάλα"
+
+msgid "Freezing rain"
+msgstr "Παγωμένη βροχή"

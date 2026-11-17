@@ -1,0 +1,456 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\\n"
+"Language: el_GR\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "N/A"
+msgstr "Μ/Δ"
+
+msgid "free"
+msgstr "ελεύθερο"
+
+msgid "TP info is not detected"
+msgstr "Δεν εντοπίστηκαν πληροφορίες TP"
+
+msgid "Reference is not detected"
+msgstr "Δεν εντοπίστηκε αναφορά"
+
+msgid "No EPG data available"
+msgstr "Δεν υπάρχουν δεδομένα EPG"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Παρακαλώ περιμένετε για την ανάγνωση και επεξεργασία δεδομένων"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Πατήστε OK για επιλογή αγαπημένου φακέλου."
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr ""
+
+msgid "No plugin Netatmo installed"
+msgstr "Το πρόσθετο Netatmo δεν είναι εγκατεστημένο"
+
+msgid "Your API-key"
+msgstr "Το κλειδί API σας"
+
+msgid "Measurement of current network speed is disabled"
+msgstr ""
+
+msgid "Poster is displayed if exists"
+msgstr ""
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr ""
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr ""
+
+msgid "Poster search is started with selected delay"
+msgstr ""
+
+msgid "Poster is displayed with the selected size"
+msgstr ""
+
+msgid "ECM info is displayed from current channel"
+msgstr ""
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr ""
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr ""
+
+msgid "Time in seconds"
+msgstr "Χρόνος σε δευτερόλεπτα"
+
+msgid "Real tuner data are displayed"
+msgstr "Εμφανίζονται πραγματικά δεδομένα δέκτη"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Τα δεδομένα προέρχονται από τον αναμεταδότη"
+
+msgid "Animations are disabled"
+msgstr "Οι κινήσεις είναι απενεργοποιημένες"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr ""
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Να μην εμφανίζονται στοιχεία κατάστασης HDD/SSD"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr ""
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr ""
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Εφαρμογή σε όλες τις οθόνες που χρησιμοποιούν λίστα"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Τα νυχτερινά εικονίδια αντικαθίστανται από ημερήσια"
+
+msgid "Nighttime icons are displayed"
+msgstr "Εμφανίζονται νυχτερινά εικονίδια"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Πατήστε OK για ενεργοποίηση της επιλεγμένης λειτουργίας"
+
+msgid "Spinner will be used as default from image"
+msgstr "Χρησιμοποιείται ο προεπιλεγμένος spinner του image"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "Η λίστα EPG εμφανίζεται με το επιλεγμένο μέγεθος γραμματοσειράς"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr ""
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr ""
+
+msgid "Display forecast for 5 days"
+msgstr ""
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr ""
+
+msgid "Sorry, help info is missing"
+msgstr "Δεν υπάρχουν πληροφορίες βοήθειας"
+
+msgid "Info is displayed with defined color"
+msgstr ""
+
+msgid "Info is displayed with autoselected color"
+msgstr ""
+
+msgid "Show extra screen only"
+msgstr ""
+
+msgid "None special info is selected"
+msgstr ""
+
+msgid "Show extra infobar only"
+msgstr ""
+
+msgid "Show side bar and extra infobar only"
+msgstr ""
+
+msgid "1 - fastest, 10 - slowest"
+msgstr ""
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr ""
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr ""
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr ""
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr ""
+
+msgid "Show actual event(EPG) only"
+msgstr ""
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr ""
+
+msgid "Display ECM PID info with extra infobar"
+msgstr ""
+
+msgid "Show events name in infobar as static text"
+msgstr ""
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr ""
+
+msgid "Show OLED design from \"image\" definition"
+msgstr ""
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr ""
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr ""
+
+msgid "Show messages in default language - english"
+msgstr ""
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr ""
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr ""
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr ""
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr ""
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr ""
+
+msgid "Leave memory management untouched"
+msgstr ""
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr ""
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr ""
+
+msgid "Used to encoding.conf origin from active image"
+msgstr ""
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr ""
+
+msgid "Channel selection works with standard functionality"
+msgstr ""
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr ""
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr ""
+
+msgid "Show Weather for selected city in the setup"
+msgstr ""
+
+msgid "Press \">\" show Weather for next city"
+msgstr ""
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr ""
+
+msgid "Refresh time for reading ecm.info file"
+msgstr ""
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr ""
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr ""
+
+msgid "Static text - no scrolling"
+msgstr ""
+
+msgid "Roll up at end of text and stop"
+msgstr ""
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr ""
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr ""
+
+msgid "Show channel name only"
+msgstr ""
+
+msgid "Show number and channel name"
+msgstr ""
+
+msgid "Show satellite position and channel name"
+msgstr ""
+
+msgid "Show number, satellite position and channel name"
+msgstr ""
+
+msgid "None info about \"Provider\" in infobar"
+msgstr ""
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr ""
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr ""
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr ""
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr ""
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr ""
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr ""
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr ""
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr ""
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr ""
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr ""
+
+msgid "Temperature will be displayed in Celsius"
+msgstr ""
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr ""
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr ""
+
+msgid "Reading weather data from MSN website"
+msgstr ""
+
+msgid "\"Find a city\" is disabled"
+msgstr ""
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr ""
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr ""
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr ""
+
+msgid "Display forecast for today and next 3 days"
+msgstr ""
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr ""
+
+msgid "High temperature appear in Autocolor"
+msgstr ""
+
+msgid "High temperature appear in selected color"
+msgstr ""
+
+msgid "Low temperature appear in Autocolor"
+msgstr ""
+
+msgid "Low temperature appear in selected color"
+msgstr ""
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr ""
+
+msgid "Warm temperature limit range: 15-40"
+msgstr ""
+
+msgid "Cold temperature limit range: 1-14"
+msgstr ""
+
+msgid "Warm temperature limit range: 58-104"
+msgstr ""
+
+msgid "Cold temperature limit range: 33-57"
+msgstr ""
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr ""
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr ""
+
+msgid "Date format will be used from definition in skin part"
+msgstr ""
+
+msgid "Date format will be used as follow"
+msgstr ""
+
+msgid "Channel logos with white background"
+msgstr ""
+
+msgid "Channel logos with black background"
+msgstr ""
+
+msgid "Channel logos for OLED display"
+msgstr ""
+
+msgid "Provider logos with white background"
+msgstr ""
+
+msgid "Provider logos with black background"
+msgstr ""
+
+msgid "Satellite logos with white background"
+msgstr ""
+
+msgid "Satellite logos with black background"
+msgstr ""
+
+msgid "CA system and SoftCam logos with white background"
+msgstr ""
+
+msgid "CA system and SoftCam logos with black background"
+msgstr ""
+
+msgid "Selected option previews in setup of skin"
+msgstr ""
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr ""
+
+msgid "Icons used in some menu types"
+msgstr ""
+
+msgid "Big icons used in some menu types"
+msgstr ""
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr ""
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr ""
+
+msgid "Animated icons will be displayed"
+msgstr ""
+
+msgid "Static icons will be displayed"
+msgstr ""
+
+msgid "Channel logos with picture background"
+msgstr ""
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr ""
+
+msgid "Channel logos with transparent background"
+msgstr ""
+
+msgid "Tool needed to extract picon packages"
+msgstr ""
+
+msgid "Provider logos with transparent background"
+msgstr ""
+
+msgid "Satellite logos with transparent background"
+msgstr ""
+
+msgid "New Moon"
+msgstr "Νέα Σελήνη"
+
+msgid "First Quarter"
+msgstr "Πρώτο τέταρτο"
+
+msgid "Waxing Crescent"
+msgstr "Αύξων μηνίσκος"
+
+msgid "Waxing Moon"
+msgstr "Αύξουσα Σελήνη"
+
+msgid "Full Moon"
+msgstr "Πανσέληνος"
+
+msgid "Waning Moon"
+msgstr "Φθίνουσα Σελήνη"
+
+msgid "Waning Crescent"
+msgstr "Φθίνων μηνίσκος"
+
+msgid "Last Quarter"
+msgstr "Τελευταίο τέταρτο"
