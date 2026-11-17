@@ -104,6 +104,17 @@ class StorageSafetyTests(unittest.TestCase):
         self.assertIn('not _warderStorageHasSpace(base, len(chunk))', text)
         self.assertIn('not _warderStorageHasSpace("/tmp", len(chunk))', text)
 
+    def test_copy_to_internal_flash_is_atomic_and_checks_reserve(self):
+        text = PLUGIN.read_text(encoding="utf-8")
+        safe_copy = text.split("def _warderCopyWithStorageReserve(self, source, destination):", 1)[1].split("def cprmFiles(", 1)[0]
+        self.assertIn("_warderStorageHasSpace(parent, os.path.getsize(source))", safe_copy)
+        self.assertLess(safe_copy.index("tempfile.mkstemp"), safe_copy.index("os.replace(tmp, destination)"))
+        self.assertIn("finally:", safe_copy)
+        self.assertIn("os.unlink(tmp)", safe_copy)
+        self.assertIn("shutil.copy2(source, destination)", safe_copy)
+        copies = text.split("def cprmFiles(self, what):", 1)[1].split("def _warderFilesMatch(", 1)[0]
+        self.assertEqual(copies.count("self._warderCopyWithStorageReserve(source, destination)"), 2)
+
     def test_storage_warning_translated_into_all_21_skin_languages(self):
         text = TEXTS.read_text(encoding="utf-8")
         tree = ast.parse(text)
