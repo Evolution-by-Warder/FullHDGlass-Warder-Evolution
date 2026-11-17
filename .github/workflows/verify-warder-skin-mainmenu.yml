@@ -1,0 +1,29 @@
+name: Verify FullHDGlass settings in Enigma2 Main menu
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'tools/test_warder_skin_settings_mainmenu.py'
+      - '.github/workflows/verify-warder-skin-mainmenu.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  settings-main-menu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            tools/test_warder_skin_settings_mainmenu.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile plugin and verify Main menu shortcut behavior
+        run: |
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          python3 tools/test_warder_skin_settings_mainmenu.py -v
