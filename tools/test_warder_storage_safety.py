@@ -115,6 +115,13 @@ class StorageSafetyTests(unittest.TestCase):
         copies = text.split("def cprmFiles(self, what):", 1)[1].split("def _warderFilesMatch(", 1)[0]
         self.assertEqual(copies.count("self._warderCopyWithStorageReserve(source, destination)"), 2)
 
+    def test_preview_bundle_checks_total_before_creating_skin_dirs(self):
+        text = PLUGIN.read_text(encoding="utf-8")
+        preamble = text.split("def iconPreviewManage(self):", 1)[1].split("if not os.path.exists((path+\"/more_icons/scr_prew\")):", 1)[0]
+        self.assertIn('os.walk("/tmp/more_icons")', preamble)
+        self.assertIn("_warderStorageHasSpace(path, preview_bytes)", preamble)
+        self.assertIn('self.dwnLoop(_("ERROR")', preamble)
+
     def test_storage_warning_translated_into_all_21_skin_languages(self):
         text = TEXTS.read_text(encoding="utf-8")
         tree = ast.parse(text)
