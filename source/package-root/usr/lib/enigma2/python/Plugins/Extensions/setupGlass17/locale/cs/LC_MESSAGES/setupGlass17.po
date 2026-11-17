@@ -1422,71 +1422,71 @@ msgstr "Velké ikony pro vybrané typy výběru kanálů (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Satelitní pozice"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Rozlišení piconů"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Barva piconů"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Umístění piconů"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Způsob aktualizace"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Nebylo vybráno rozlišení"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Nebyla vybrána barva"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Nebyl vybrán způsob aktualizace"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Paměť přijímače"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Pevný disk"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "Úložiště USB"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "Karta SD"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "Úložiště MMC"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Kořenový adresář piconů"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Vlastní"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Vlastní..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – Mini picony"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1494,102 +1494,102 @@ msgstr "220 × 132 – Picony"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – Velké picony"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – Velké ikony pro vybrané typy seznamu kanálů"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Synchronizovat se seznamy TV"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Synchronizovat se seznamy TV a rádií"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Kopírovat vše; nahradit picony vybraných pozic"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Kopírovat vše; průběžná aktualizace"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Cíl stahování:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Zvolte ikony seznamu kanálů 50 × 30, 220 × 132, 400 × 240 nebo 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Zvolte, jak se picony kanálů synchronizují nebo kopírují pro vybrané pozice."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Před stahováním zvolte rozlišení, barvu, umístění a způsob aktualizace."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Vytvořit adresář piconů?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Nelze vytvořit cílový adresář piconů"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "Do cílového adresáře piconů nelze zapisovat"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Vyberte existující adresář."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Nelze číst cílový adresář piconů"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Nepodařilo se odstranit zastaralý picon vybrané pozice"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Picony vybraných pozic se nepodařilo bezpečně nahradit."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "vybrané služby přijímače nemají ve zvolených balíčcích odpovídající picon."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "Úspěšně aktualizován %d picon"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "Úspěšně aktualizováno %d piconů"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "Vybrána %d služba"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "Vybráno %d služeb"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Nebyly staženy žádné picony."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "Nepodařilo se nainstalovat %d z %d piconů"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "Vybrané úložiště není připojeno"
 
 msgid "Provider logos"
 msgstr "Loga poskytovatelů"
@@ -1604,16 +1604,16 @@ msgid "Satellite logos and graphical identifiers."
 msgstr "Loga satelitů a grafické symboly."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: aktualizováno %d piconů; %d chyb"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Celkem aktualizováno piconů: %d"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Chyby: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "ČÁSTEČNÝ ÚSPĚCH"
 
 
 # Completed operation result dialog button.
