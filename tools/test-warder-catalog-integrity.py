@@ -7,7 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1] / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale'
 LANGS = ('al', 'cs', 'de', 'el', 'es', 'et', 'fa', 'fr', 'hu', 'it',
          'lt', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'tr', 'uk', 'zh')
-COMPLETE_MAIN = ('cs', 'de', 'el', 'fr', 'lt', 'nl', 'ru', 'sk', 'zh')
+COMPLETE_MAIN = ('cs', 'de', 'el', 'es', 'et', 'fr', 'it', 'lt', 'nl', 'ru', 'sk', 'zh')
 
 
 class CatalogIntegrity(unittest.TestCase):
@@ -29,15 +29,19 @@ class CatalogIntegrity(unittest.TestCase):
             with self.subTest(language=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
                 source = path.read_text(encoding='utf-8')
-                untranslated = pattern.findall(source)
+                # Empty msgid is the gettext metadata header, not a real message.
+                untranslated = [msgid for msgid in pattern.findall(source) if msgid]
                 self.assertEqual([], untranslated,
                                  'Untranslated entries in %s: %r' % (lang, untranslated[:5]))
 
-    def test_german_french_and_dutch_new_messages_load_correctly(self):
+    def test_completed_new_language_messages_load_correctly(self):
         samples = {
             'de': ('Standard Infobar type', 'Typ der Standard-Infobar'),
             'fr': ('Root picon directory', 'Répertoire racine des picons'),
             'nl': ('Root picon directory', 'Hoofdmap voor picons'),
+            'es': ('Root picon directory', 'Directorio raíz de picons'),
+            'it': ('Root picon directory', 'Cartella principale dei picon'),
+            'et': ('Root picon directory', 'Pikonite juurkataloog'),
         }
         for lang, (source, expected) in samples.items():
             with self.subTest(language=lang):
