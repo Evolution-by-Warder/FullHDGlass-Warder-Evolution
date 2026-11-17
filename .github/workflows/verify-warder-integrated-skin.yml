@@ -1,0 +1,40 @@
+name: Verify integrated FullHDGlass skin changes
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderStorageSafety.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py'
+      - 'tools/test_warder_integrated_skin.py'
+      - '.github/workflows/verify-warder-integrated-skin.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrated-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderStorageSafety.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py
+            source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py
+            tools/test_warder_integrated_skin.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile syntax and test integrated changes
+        run: |
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py
+          python3 -m unittest discover -s tools -p 'test_warder_integrated_skin.py' -v
