@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-17",
+  "source": "Already published and identical CANALPLUS_SK/CZ 400x240 transparent same DVB reference",
+  "source_400_sha256": "eee6bca4f5647d39a7a0f30b323860aee49e08bef40a44d293639dcf12708d31",
+  "new_220_sha256": "db2b9d3ff882310914b1e47d760db2287a0b148d16ef4bfadca59aeb1524b3f5",
+  "target": "1_0_1_1B03_3FE_1_C00000_0_0_0.png",
+  "affected": [
+    {
+      "selector": "CANALPLUS_SK",
+      "from": "warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip",
+      "to": "warder-canalplus_sk-220x132-transparent-43f7712aaa8d3bff.zip",
+      "archive_sha256": "43f7712aaa8d3bffc3be68da0c5d1c5d14bd764fde04d2a28428650e050d86fc",
+      "png_count": 242,
+      "other_png_bytes_preserved": 241
+    },
+    {
+      "selector": "CANALPLUS_CZ",
+      "from": "warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip",
+      "to": "warder-canalplus_cz-220x132-transparent-3348a69f0df0cd71.zip",
+      "archive_sha256": "3348a69f0df0cd710b91223ba5321943ce617c6bd31c0203e0c4024f4c1d3c28",
+      "png_count": 247,
+      "other_png_bytes_preserved": 246
+    }
+  ],
+  "unchanged_archive_count": 496,
+  "ipk_changed": false,
+  "status": "SOURCE_VERIFIED_PRODUCTION_PACKAGE_REPAIR_READY",
+  "manifest_before_sha256": "b45c80653b8109e124c6d226dcd99429253b858cd334d7d438460953d23ead9c",
+  "manifest_after_sha256": "174737923a4da88c7a7d85c153d268378807ae4d46840ee7a37dbaf74d3c0247",
+  "parts_replaced": 2,
+  "retired_part_files_preserved": true,
+  "live_runtime_manifest_test": "NO_NEW_ERRORS",
+  "unchanged_archive_data_preserved": true
+}
