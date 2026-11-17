@@ -1,0 +1,39 @@
+name: Verify Warder storage / receiver flash protection
+
+on:
+  push:
+    branches: [fix/warder-storage-flash-guard-20261117]
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderStorageSafety.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+      - tools/test_warder_storage_safety.py
+      - .github/workflows/verify-warder-storage-safety.yml
+  pull_request:
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderStorageSafety.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+      - tools/test_warder_storage_safety.py
+      - .github/workflows/verify-warder-storage-safety.yml
+
+permissions:
+  contents: read
+
+jobs:
+  safety-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/test_warder_storage_safety.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate flash, mount and space guards (tests only, no IPK)
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -m unittest discover -s tools -p 'test_warder_storage_safety.py' -v

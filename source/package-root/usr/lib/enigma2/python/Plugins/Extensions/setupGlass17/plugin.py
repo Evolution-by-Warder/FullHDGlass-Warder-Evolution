@@ -144,6 +144,7 @@ from .warderDialogs import ChoiceBox
 from . import warderPiconSync
 from .warderTools import find_sevenzip
 from .warderUiText import ui_text
+from .warderStorageSafety import is_internal as _warderStorageIsInternal, available_bytes as _warderStorageFreeBytes, has_space as _warderStorageHasSpace
 from . import warderSpinner
 from .warderTypePreviews import thumbnail_path
 from Screens.InfoBarGenerics import InfoBarPlugins
@@ -9260,6 +9261,23 @@ class downloadMenu(Screen):
 			return
 		if not self.toDown:
 			return
+		# /media/usb and /media/hdd can silently point to receiver flash when
+		# their media are not mounted. Warn before starting a selected batch.
+		storage_target = os.path.realpath(str(config.plugins.setupGlass17.par39.value))
+		if (_warderStorageIsInternal(storage_target) and
+				getattr(self, "_warderInternalStorageApproved", None) != storage_target):
+			free_mb = _warderStorageFreeBytes(storage_target) // (1024 * 1024)
+			message = (ui_text("Internal storage download warning") + "\n" +
+				storage_target + "\n" +
+				ui_text("Large downloads can fill receiver memory.") + "\n" +
+				ui_text("Available space") + ": %d MB" % free_mb)
+			choices = [(ui_text("Choose another location"), "select")]
+			if _warderStorageHasSpace(storage_target):
+				choices.append((ui_text("Continue anyway"), "continue"))
+			choices.append((ui_text("Cancel"), "cancel"))
+			self.session.openWithCallback(self._warderStorageChoice, ChoiceBox,
+				title=message, list=choices)
+			return
 		if prepared:
 			destination = warderPiconSync.validate_destination(self.warderPiconPrefs.get("destination"))
 			if not destination:
@@ -9437,6 +9455,40 @@ class downloadMenu(Screen):
 			self[key].hide()
 		self["list"].show()
 
+	def _warderStorageChoice(self, answer=None):
+		choice = answer[1] if isinstance(answer, (tuple, list)) and len(answer) > 1 else None
+		if choice == "continue":
+			target = os.path.realpath(str(config.plugins.setupGlass17.par39.value))
+			# Confirmation never bypasses the available-space minimum.
+			if not _warderStorageHasSpace(target):
+				self.session.open(historyScreen, _("Result"), _("Sorry, too low free space"))
+				return
+			self._warderInternalStorageApproved = target
+			self.startDown()
+		elif choice == "select":
+			self.session.openWithCallback(self._warderStorageSelected, dirBrowser,
+				config.plugins.setupGlass17.par124.value)
+
+	def _warderStorageSelected(self, folder=None):
+		# Do not create folders on an unmounted /media/hdd or /media/usb.
+		if not isinstance(folder, str) or not os.path.isabs(folder):
+			return
+		parent = os.path.realpath(folder)
+		if (_warderStorageIsInternal(parent) or not os.path.isdir(parent) or
+				not os.access(parent, os.W_OK | os.X_OK) or not _warderStorageHasSpace(parent)):
+			self.session.open(historyScreen, _("Result"), ui_text("Internal storage download warning") +
+				"\n" + parent + "\n" + _("Sorry, too low free space"))
+			return
+		# Changing storage is an explicit user choice. No files are moved or removed.
+		config.plugins.setupGlass17.par124.value = parent.rstrip("/") + "/"
+		config.plugins.setupGlass17.par125.value = "0"
+		config.plugins.setupGlass17.par124.save()
+		config.plugins.setupGlass17.par125.save()
+		configfile.save()
+		setPathFiles(chck=False)
+		self._warderInternalStorageApproved = None
+		self.startDown()
+
 	def warderCreateDestinationAnswer(self, answer=None):
 		if answer:
 			self.startDown(True)
@@ -9525,24 +9577,20 @@ class downloadMenu(Screen):
 				self.session.openWithCallback(self.exit,MessageBox, _("Sorry, cannot create dir on path:") + " " + config.plugins.setupGlass17.par39.value + "!!!" , MessageBox.TYPE_ERROR, 30)
         		
 	def getFreeSpace(self):
-		ret = 0
-		ret1 = 0
-		try:
-			stat = statvfs(self.zzz[:-1])
-			ret = float(stat.f_bfree/1024 * stat.f_bsize/1024)
-			stat = statvfs(config.plugins.setupGlass17.par39.value)
-			ret1 = float(stat.f_bfree/1024 * stat.f_bsize/1024)
-		except OSError:
-			pass
-		return ret,ret1
+		# f_bavail, unlike f_bfree, excludes blocks reserved for the image.
+		mb = float(1024 * 1024)
+		return (_warderStorageFreeBytes(self.zzz.rstrip("/")) / mb,
+			_warderStorageFreeBytes(config.plugins.setupGlass17.par39.value) / mb)
 
 	def setWdir(self):
 		if not any(kind in self.type_download for kind in ('big', 'ZZPicon', '400')):
 			return "/tmp/"
 		try:
-			os.makedirs(HDDTMP, exist_ok=True)
-			if os.path.isdir(HDDTMP) and os.access(HDDTMP, os.W_OK | os.X_OK):
-				return HDDTMP.rstrip('/') + '/'
+			# Never create /media/hdd/hdg_tmp on internal flash if HDD is unmounted.
+			if not _warderStorageIsInternal(os.path.dirname(HDDTMP)):
+				os.makedirs(HDDTMP, exist_ok=True)
+				if os.path.isdir(HDDTMP) and os.access(HDDTMP, os.W_OK | os.X_OK):
+					return HDDTMP.rstrip('/') + '/'
 		except OSError:
 			pass
 		# The existing free-space checks also apply to this fallback.
@@ -10510,6 +10558,8 @@ class downloadMenu(Screen):
 				self._warderProgressFinish() 		
 		
 	def dwnFin(self, answer=""):
+		# Require a fresh acknowledgement for each new batch on internal flash.
+		self._warderInternalStorageApproved = None
 		if self.warderChannelState in ("done", "error", "locked"):
 			self.warderChannelState = "idle"
 		self.createList()
@@ -10560,7 +10610,8 @@ class downloadMenu(Screen):
 		# Keep the original conservative free-space calculation.
 		size = int(round(1.0 * size_bytes/(1024*1024))*2.2+10)
 		ret, ret1 = self.getFreeSpace()
-		if ret > size and ret1 > (size/2):
+		# Keep 64 MiB available for the receiver after staging/unpacking.
+		if ret > size + 64 and ret1 > (size / 2) + 64:
 			self.downloadPicons(filename)
 			return
 		msg = "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)
@@ -10627,6 +10678,8 @@ class downloadMenu(Screen):
 							chunk = response.read(1024 * 128)
 							if not chunk:
 								break
+							if not _warderStorageHasSpace(base, len(chunk)):
+								raise IOError("Not enough available space for Warder archive")
 							out.write(chunk)
 							h.update(chunk)
 							total += len(chunk)
@@ -10638,6 +10691,11 @@ class downloadMenu(Screen):
 				raise ValueError("SHA-256 mismatch")
 			progress(total, int(asset.get("size", 0)))
 			stage(_("Extracting") + ": " + str(asset.get("filename", "ZIP")))
+			# Check expanded archive size before deleting or replacing any icon data.
+			with zipfile.ZipFile(target, "r") as _warderZip:
+				unpacked_bytes = sum(info.file_size for info in _warderZip.infolist())
+			if not _warderStorageHasSpace(base, unpacked_bytes):
+				raise IOError("Not enough available space to extract Warder archive")
 			# Only the selected staging root is replaced. Never delete user data.
 			if os.path.exists("/tmp/more_icons"):
 				self.rmTmp()
@@ -10861,6 +10919,8 @@ class downloadMenu(Screen):
 								chunk = handler.read(1024 * 128)
 								if not chunk:
 									break
+								if not _warderStorageHasSpace("/tmp", len(chunk)):
+									raise IOError("Not enough available space for legacy archive")
 								f.write(chunk)
 					except Exception:
 						try:
@@ -10871,7 +10931,7 @@ class downloadMenu(Screen):
 						size = 1.0*os.path.getsize(archive)/(1024*1024)
 						if size != 0:
 							ret, ret1 = self.getFreeSpace()
-							if ret > size and ret1 > (size/2):
+							if ret > (size * 2.2) + 64 and ret1 > (size * 1.2) + 64:
 								os.makedirs(extract_dir, exist_ok=True)
 								cmd = [find_sevenzip(SEVENZIP) or SEVENZIP, "e", "-y", "-o%s" % extract_dir, archive]
 								try:
@@ -10919,6 +10979,32 @@ class downloadMenu(Screen):
 			self.dwnLoop(message)
 		return message
 
+
+	def _warderCopyWithStorageReserve(self, source, destination):
+		"""Avoid partial overwrites on flash and keep free space for the system."""
+		if os.path.islink(source) or not os.path.isfile(source) or os.path.islink(destination):
+			raise OSError("unsafe Warder picon file")
+		parent = os.path.dirname(destination)
+		if not _warderStorageHasSpace(parent, os.path.getsize(source)):
+			raise OSError("Not enough available space for Warder picon")
+		if not _warderStorageIsInternal(parent):
+			# Keep existing fast copying for mounted HDD/USB/network storage.
+			shutil.copy2(source, destination)
+			return
+		# On internal flash, write a sibling temporary file first. A failed
+		# write must never truncate an existing service logo.
+		fd, tmp = tempfile.mkstemp(prefix=".warder-picon-", suffix=".tmp", dir=parent)
+		try:
+			with os.fdopen(fd, "wb") as out, open(source, "rb") as inp:
+				shutil.copyfileobj(inp, out, 128 * 1024)
+			shutil.copystat(source, tmp)
+			if os.path.islink(destination):
+				raise OSError("unsafe Warder picon destination")
+			os.replace(tmp, destination)
+		finally:
+			if os.path.exists(tmp):
+				os.unlink(tmp)
+
 	def cprmFiles(self, what):
 		f = listDir(self.zzz + what)
 		numPict = 0
@@ -10950,7 +11036,7 @@ class downloadMenu(Screen):
 						current_result["failures"] += 1
 					continue
 				try:
-					shutil.copy2(source, destination)
+					self._warderCopyWithStorageReserve(source, destination)
 				except OSError:
 					self.warderLegacyChannelFailures += 1
 					if current_result is not None:
@@ -10981,7 +11067,7 @@ class downloadMenu(Screen):
 				try:
 					if os.path.islink(destination):
 						raise OSError("destination is a symbolic link")
-					shutil.copy2(source, destination)
+					self._warderCopyWithStorageReserve(source, destination)
 				except OSError:
 					continue
 				if (os.path.isfile(destination) and not os.path.islink(destination)
@@ -11021,6 +11107,20 @@ class downloadMenu(Screen):
 	def iconPreviewManage(self):
 		tmp = ""
 		path = config.plugins.setupGlass17.par39.value
+		# Icon previews may contain thousands of files. Budget all PNG bytes
+		# before creating directories or copying anything to receiver storage.
+		try:
+			preview_bytes = 0
+			for root, dirs, names in os.walk("/tmp/more_icons"):
+				for name in names:
+					if name.lower().endswith(".png"):
+						preview_bytes += os.path.getsize(os.path.join(root, name))
+		except OSError:
+			preview_bytes = -1
+		if preview_bytes < 0 or not _warderStorageHasSpace(path, preview_bytes):
+			self.rmTmp()
+			self.dwnLoop(_("ERROR") + ": " + _("Sorry, too low free space"))
+			return
 		if not os.path.exists((path+"/more_icons/scr_prew")):
 			os.makedirs(path + "/more_icons/scr_prew", exist_ok=True)
 		numPict = 0
