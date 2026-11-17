@@ -10558,6 +10558,8 @@ class downloadMenu(Screen):
 				self._warderProgressFinish() 		
 		
 	def dwnFin(self, answer=""):
+		# Require a fresh acknowledgement for each new batch on internal flash.
+		self._warderInternalStorageApproved = None
 		if self.warderChannelState in ("done", "error", "locked"):
 			self.warderChannelState = "idle"
 		self.createList()
