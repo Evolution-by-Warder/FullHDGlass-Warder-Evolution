@@ -341,10 +341,10 @@ msgid "Selected in Netatmo plugin"
 msgstr "Geselecteerd in de Netatmo-plug-in"
 
 msgid "IMDb"
-msgstr ""
+msgstr "IMDb"
 
 msgid "TMDb"
-msgstr ""
+msgstr "TMDb"
 
 msgid "Transparent"
 msgstr "Transparant"
@@ -456,7 +456,7 @@ msgid "Service scan long list"
 msgstr "Zender scannen lange lijst"
 
 msgid "Extended Number ZAP Picon Size"
-msgstr ""
+msgstr "Piconformaat bij zappen met kanaalnummers"
 
 msgid "GUI will now be restarted to activate restored options:"
 msgstr "E2/GUI wordt opnieuw gestart om de bewaarde opties te activeren:"
@@ -552,7 +552,7 @@ msgid "INFOBAR"
 msgstr "INFOBALK"
 
 msgid "POSTER"
-msgstr ""
+msgstr "POSTER"
 
 msgid "HDD/SSD"
 msgstr "HDD/SSD"
@@ -570,7 +570,7 @@ msgid "EPG SELECTION"
 msgstr "EPG SELECTIE"
 
 msgid "EVENT VIEW"
-msgstr ""
+msgstr "PROGRAMMADETAILS"
 
 msgid "SPECIAL INFO"
 msgstr "SPECIALE INFO"
@@ -579,7 +579,7 @@ msgid "USER INFO"
 msgstr "GEBRUIKERSINFO"
 
 msgid "NETATMO"
-msgstr ""
+msgstr "NETATMO"
 
 msgid "OLED"
 msgstr "OLED"
@@ -621,16 +621,16 @@ msgid "Enable show address in ECM info"
 msgstr "Adres tonen in ECM-info"
 
 msgid "ECM info from current displayed channel only"
-msgstr ""
+msgstr "ECM-informatie alleen van de huidige zender"
 
 msgid "Display CW0/1 in Side bar"
-msgstr ""
+msgstr "CW0/1 in de zijbalk tonen"
 
 msgid "Show PID in ECM line"
-msgstr ""
+msgstr "PID in de ECM-regel tonen"
 
 msgid "Show CHID in ECM line"
-msgstr ""
+msgstr "CHID in de ECM-regel tonen"
 
 msgid "ECM line"
 msgstr "ECM regel"
@@ -645,7 +645,7 @@ msgid "Enable Enhanced Infobar"
 msgstr "Toon uitgebreide infobalk (CAM info)"
 
 msgid "Vertical Offset"
-msgstr ""
+msgstr "Verticale verschuiving"
 
 msgid "Date format"
 msgstr "Datum formaat"
@@ -663,7 +663,7 @@ msgid "Enable icon"
 msgstr "Toon icon"
 
 msgid "Enable icon of Unknown CAID"
-msgstr ""
+msgstr "Pictogram voor onbekende CAID inschakelen"
 
 msgid "Audio type of current track"
 msgstr "Huidig audio type"
@@ -672,13 +672,13 @@ msgid "Progressive/Interlace detection"
 msgstr "Progressive/Interlace detectie"
 
 msgid "Tuner info"
-msgstr ""
+msgstr "Tunerinformatie"
 
 msgid "Hide SNR/AGC (Q/S) if value is 0"
-msgstr ""
+msgstr "SNR/AGC (Q/S) verbergen als de waarde 0 is"
 
 msgid "CI info"
-msgstr ""
+msgstr "CI-informatie"
 
 msgid "Enable full bitrate info"
 msgstr "Toon volledige bitrate info"
@@ -687,7 +687,7 @@ msgid "Bitrate auto stop limit"
 msgstr "Bitrate auto stop limiet"
 
 msgid "Enable eBitrateCalculator"
-msgstr ""
+msgstr "eBitrateCalculator inschakelen"
 
 msgid "Show Satellite position in TP info"
 msgstr "Toon alleen sat positie bij TP info"
@@ -705,10 +705,10 @@ msgid "Temp. HDD/SSD"
 msgstr "Temp. HDD/SSD"
 
 msgid "Progress bar pixmap"
-msgstr ""
+msgstr "Afbeelding van de voortgangsbalk"
 
 msgid "Progress bar background pixmap"
-msgstr ""
+msgstr "Achtergrondafbeelding van de voortgangsbalk"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
 msgstr "CPU/Mem, RPM/Temp, Provider"
@@ -741,10 +741,10 @@ msgid "Event next"
 msgstr "Event volgende"
 
 msgid "Progress bar foreground"
-msgstr ""
+msgstr "Voorgrond van de voortgangsbalk"
 
 msgid "Progress bar background"
-msgstr ""
+msgstr "Achtergrond van de voortgangsbalk"
 
 msgid "Enable typewriting"
 msgstr "Activeer per karakter schrijven"
@@ -771,16 +771,16 @@ msgid "Set Position"
 msgstr "Positie instellen"
 
 msgid "Size"
-msgstr ""
+msgstr "Grootte"
 
 msgid "Search delay (s)"
-msgstr ""
+msgstr "Zoekvertraging (s)"
 
 msgid "Erase poster cache"
-msgstr ""
+msgstr "Postercache wissen"
 
 msgid "Removing current Poster"
-msgstr ""
+msgstr "Huidige poster verwijderen"
 
 msgid "Movieplayer infobar HDD/SSD state"
 msgstr "Movieplayer infobar HDD/SSD status"
@@ -798,7 +798,7 @@ msgid "IP Address"
 msgstr "IP adres"
 
 msgid "Network speed"
-msgstr ""
+msgstr "Netwerksnelheid"
 
 msgid "Menu Icons"
 msgstr "Menu ikonen"
@@ -855,7 +855,7 @@ msgid "Station"
 msgstr "Zender"
 
 msgid "Stations switch time"
-msgstr ""
+msgstr "Wisselinterval van zenders"
 
 msgid "Enable OLED off in standby"
 msgstr "OLED uit in standby"
@@ -915,13 +915,13 @@ msgid "Enable next city in Weather"
 msgstr "Activeer volgende stad in weeroverzicht"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "OpenWeatherMap API-sleutel"
 
 msgid "Forecast for more days"
-msgstr ""
+msgstr "Voorspelling voor meer dagen"
 
 msgid "More days switch time"
-msgstr ""
+msgstr "Wisselinterval voor extra dagen"
 
 msgid "Show yesterday"
 msgstr "Toon vorige dag"
@@ -933,7 +933,7 @@ msgid "Weather Icons"
 msgstr "Weer ikonen"
 
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgid "Warm"
 msgstr "Warm"
@@ -981,7 +981,7 @@ msgid "(Infobar) Second Picon"
 msgstr "(Infobalk) tweede picon"
 
 msgid "(Infobar) Poster"
-msgstr ""
+msgstr "(Infobalk) Poster"
 
 msgid "(Infobar) ECM line"
 msgstr "(Infobalk) ECM regel"
@@ -996,16 +996,16 @@ msgid "(Channel selection) picon/Prov/Sat"
 msgstr "(Zenderkeuze) picon/Prov/Sat"
 
 msgid "VTi SplitScreen"
-msgstr ""
+msgstr "VTi gesplitst scherm"
 
 msgid "Reference separating char"
-msgstr ""
+msgstr "Scheidingsteken voor referenties"
 
 msgid "Ignore leading 0 in time"
 msgstr "Vooraan geen 0 in tijdformaat"
 
 msgid "Ignore leading 0 in date"
-msgstr ""
+msgstr "Voorloopnul in datum negeren"
 
 msgid "Calculation of channel numbers"
 msgstr "Berekenen van zendernummers"
@@ -1032,7 +1032,7 @@ msgid "RadioScreenSaver"
 msgstr "RadioScreenSaver"
 
 msgid "IPTV Radio Detection"
-msgstr ""
+msgstr "IPTV-radioherkenning"
 
 msgid "Exit"
 msgstr "Stoppen"
@@ -1041,7 +1041,7 @@ msgid "now?"
 msgstr "nu?"
 
 msgid "Erase finished successfully!"
-msgstr ""
+msgstr "Wissen is geslaagd!"
 
 msgid "Color Sample"
 msgstr "Kleur voorbeeld"
@@ -1133,7 +1133,7 @@ msgid "HDD/SSD state"
 msgstr "HD status"
 
 msgid "10 days forecast"
-msgstr ""
+msgstr "10-daagse weersverwachting"
 
 msgid "Do you want restart GUI to activate the screen:"
 msgstr "Wil je E2/GUI herstarten (nodig voor actualisatie):"
@@ -1166,13 +1166,13 @@ msgid "picon 400x240"
 msgstr "picon 400x240"
 
 msgid "picon 220x132"
-msgstr ""
+msgstr "Picons 220 × 132"
 
 msgid "piconProv 220x132"
-msgstr ""
+msgstr "Providerpicons 220 × 132"
 
 msgid "piconSat 220x132"
-msgstr ""
+msgstr "Satellietpicons 220 × 132"
 
 msgid "piconProv black"
 msgstr "piconsProv zwart"
@@ -1220,7 +1220,7 @@ msgid "Weather icons"
 msgstr "Weer ikonen"
 
 msgid "Channelselection icons"
-msgstr ""
+msgstr "Pictogrammen voor de zenderlijst"
 
 msgid "Result"
 msgstr "Resultaat"
@@ -1229,7 +1229,7 @@ msgid "ERROR"
 msgstr "FOUT"
 
 msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
-msgstr ""
+msgstr "7zip ontbreekt; download het via het DOWNLOADMENU"
 
 msgid "SUCCESSFUL"
 msgstr "SUCCESVOL"
@@ -1259,10 +1259,10 @@ msgid "file(s) from"
 msgstr "Bestand(en) van"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "Laden van URL-hulpmiddelen mislukt"
 
 msgid "Internet connection failed"
-msgstr ""
+msgstr "Internetverbinding mislukt"
 
 msgid "Unknown error detected, try again!!!"
 msgstr "Onbekende fout, probeer het opnieuw !!!"
@@ -1307,7 +1307,7 @@ msgid "Edit"
 msgstr "Bewerken"
 
 msgid "Picon path"
-msgstr ""
+msgstr "Piconpad"
 
 msgid "Choose Icons"
 msgstr "Symbolen kiezen"
@@ -1443,15 +1443,15 @@ msgstr "Bijwerkmethode"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Geen resolutie geselecteerd"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Geen kleur geselecteerd"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Geen bijwerkmethode geselecteerd"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
@@ -1475,19 +1475,19 @@ msgstr "MMC-opslag"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Hoofdmap voor picons"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Door gebruiker ingesteld"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Door gebruiker ingesteld..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – Mini-picons"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1495,126 +1495,126 @@ msgstr "220 × 132 – Picons"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – Grote picons"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – Grote pictogrammen voor geselecteerde zenderlijsttypen"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Synchroniseren met tv-lijsten"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Synchroniseren met tv- en radiolijsten"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Alles kopiëren; picons van geselecteerde posities vervangen"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Alles kopiëren; incrementeel bijwerken"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Downloadlocatie:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Kies zenderlijstpictogrammen van 50 × 30, 220 × 132, 400 × 240 of 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Kies hoe zenderpicons voor geselecteerde posities worden gesynchroniseerd of gekopieerd."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Kies vóór het downloaden een resolutie, kleur, locatie en bijwerkmethode."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Piconmap aanmaken?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Kan de doelmap voor picons niet aanmaken"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "De doelmap voor picons is niet beschrijfbaar"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Selecteer een bestaande map."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Kan de doelmap voor picons niet lezen"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Kan het verouderde picon van de geselecteerde positie niet verwijderen"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Kan picons van geselecteerde posities niet veilig vervangen."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "geselecteerde ontvangerdiensten hebben geen passend picon in de gekozen pakketten."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "%d picon bijgewerkt"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "%d picons bijgewerkt"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "%d dienst geselecteerd"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "%d diensten geselecteerd"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Er zijn geen picons gedownload."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "Installatie van %d van de %d picons mislukt"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "De geselecteerde opslag is niet aangekoppeld"
 
 msgid "Provider logos"
 msgstr "Providerlogo’s"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "Logo's van tv-platforms en dienstaanbieders."
 
 msgid "Satellite logos"
 msgstr "Satellietlogo’s"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Satellietlogo's en grafische aanduidingen."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: %d picons bijgewerkt; %d fouten"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Totaal: %d picons bijgewerkt"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Fouten: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "GEDEELTELIJK GELUKT"
 
 
 # Completed operation result dialog button.

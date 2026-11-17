@@ -17,17 +17,17 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Španielsky (es) | 166 |
 | Estónsky (et) | 104 |
 | Perzský (fa) | 174 |
-| Francúzsky (fr) | 132 |
+| Francúzsky (fr) | 0 |
 | Maďarský (hu) | 167 |
 | Taliansky (it) | 167 |
-| Holandský (nl) | 83 |
+| Holandský (nl) | 0 |
 | Poľský (pl) | 164 |
 | Portugalský (pt) | 163 |
 | Rumunský (ro) | 165 |
 | Turecký (tr) | 167 |
 | Ukrajinský (uk) | 165 |
 
-**V 13 hlavných katalógoch zostáva 1 986 prázdnych položiek.** Angličtina (en) je zdrojová verzia.
+**V 11 hlavných katalógoch zostáva 1 771 prázdnych položiek.** Angličtina (en) je zdrojová verzia.
 
 ## Gréčtina
 
@@ -43,10 +43,10 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 
 - Technický resolver pre 21 jazykov v štandardnom GNU gettext, bezpečný anglický fallback a zachovanie vypínača prekladov.
 - Nové katalógy .po/.mo pre gréčtinu a doplnené preklady pre ostatné jazyky.
-- Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, nezmenené existujúce vyplnené hodnoty.
+- Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny a holandčiny, nezmenené existujúce vyplnené hodnoty.
 - Kontroly python3 syntaktiky a binárnych katalógov v `tools/test-warder-catalog-integrity.py`.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
 
-Preklad zostávajúcich 1 986 položiek v ďalších 13 hlavných katalógoch a textov, úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
+Preklad zostávajúcich 1 771 položiek v ďalších 11 hlavných katalógoch a textov, úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
