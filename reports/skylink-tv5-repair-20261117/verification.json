@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-17",
+  "source": "Already published and identical CANALPLUS_SK/CZ 400x240 transparent same DVB reference",
+  "source_400_sha256": "eee6bca4f5647d39a7a0f30b323860aee49e08bef40a44d293639dcf12708d31",
+  "new_220_sha256": "db2b9d3ff882310914b1e47d760db2287a0b148d16ef4bfadca59aeb1524b3f5",
+  "target": "1_0_1_1B03_3FE_1_C00000_0_0_0.png",
+  "affected": [
+    {
+      "selector": "SKYLINK",
+      "from": "warder-skylink-220x132-transparent-122eb58c02d530c6.zip",
+      "to": "warder-skylink-220x132-transparent-5ad69212ed1b040d.zip",
+      "archive_sha256": "5ad69212ed1b040d3780b9e02b93312765190699585019fdba34d80375568092",
+      "png_count": 456,
+      "other_png_bytes_preserved": 455,
+      "parts": [
+        {
+          "bytes": 1960537,
+          "filename": "warder-skylink-220x132-transparent-5ad69212ed1b040d.zip.part00",
+          "sha256": "5ad69212ed1b040d3780b9e02b93312765190699585019fdba34d80375568092"
+        }
+      ]
+    }
+  ],
+  "unchanged_archive_count": 498,
+  "ipk_changed": false,
+  "status": "SOURCE_VERIFIED_PRODUCTION_PACKAGE_REPAIR_READY",
+  "manifest_before_sha256": "174737923a4da88c7a7d85c153d268378807ae4d46840ee7a37dbaf74d3c0247",
+  "manifest_after_sha256": "01585ecb740e4ae010e19b015743c5b5c3c52abe01e962e1a9ba37b25bbed5e9",
+  "parts_replaced": 2,
+  "retired_part_files_preserved": true,
+  "live_runtime_manifest_test": "NO_NEW_ERRORS",
+  "unchanged_archive_data_preserved": true
+}
