@@ -18,7 +18,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Estónsky (et) | 0 |
 | Perzský (fa) | 174 |
 | Francúzsky (fr) | 0 |
-| Maďarský (hu) | 167 |
+| Maďarský (hu) | 0 |
 | Taliansky (it) | 0 |
 | Holandský (nl) | 0 |
 | Poľský (pl) | 0 |
@@ -27,7 +27,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Turecký (tr) | 0 |
 | Ukrajinský (uk) | 0 |
 
-**V 3 hlavných katalógoch zostáva 510 prázdnych položiek.** Angličtina (en) je zdrojová verzia.
+**V 2 hlavných katalógoch zostáva 343 prázdnych položiek.** Angličtina (en) je zdrojová verzia.
 
 ## Gréčtina
 
@@ -45,10 +45,10 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 
 - Technický resolver pre 21 jazykov v štandardnom GNU gettext, bezpečný anglický fallback a zachovanie vypínača prekladov.
 - Nové katalógy .po/.mo pre gréčtinu a doplnené preklady pre ostatné jazyky.
-- Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny, holandčiny, španielčiny, taliančiny, estónčiny a poľštiny, portugalčiny, rumunčiny, ukrajinčiny a turečtiny, nezmenené existujúce vyplnené hodnoty.
-- Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL/ES/IT/ET/PL/PT/RO/UK/TR) v `tools/test-warder-catalog-integrity.py`. Opravený chybný test, ktorý považoval hlavičku gettext `msgid ""` za nepreloženú frázu. Stav CI musí ešte potvrdiť nasledujúci beh GitHub Actions.
+- Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny, holandčiny, španielčiny, taliančiny, estónčiny a poľštiny, portugalčiny, rumunčiny, ukrajinčiny, turečtiny a maďarčiny, nezmenené existujúce vyplnené hodnoty.
+- Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL/ES/IT/ET/PL/PT/RO/UK/TR/HU) v `tools/test-warder-catalog-integrity.py`. Opravený chybný test, ktorý považoval hlavičku gettext `msgid ""` za nepreloženú frázu. Stav CI musí ešte potvrdiť nasledujúci beh GitHub Actions.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
 
-Preklad zostávajúcich 510 položiek v ďalších 3 hlavných katalógoch (al, fa, hu) a textov, úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
+Preklad zostávajúcich 343 položiek v ďalších 2 hlavných katalógoch (al, fa) a textov, úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
