@@ -376,14 +376,25 @@ class WarderChannelEpgClip(Renderer):
         if getattr(self, '_perf_last_row', None) is not None and selected != self._perf_last_row:
             self._perf_row_changes = getattr(self, '_perf_row_changes', 0) + 1
         self._perf_last_row = selected
-        # A new focused service starts its own scroll at the beginning.
-        if (selected != getattr(self, "_scroll_selected", None)
-                or mode != getattr(self, "_scroll_mode", None)):
+        # Native ServiceList can recalculate text cells when focus moves,
+        # FastScan replaces a bouquet or the visible page changes. Cached
+        # EPG x-coordinates from the preceding paint may then overlap names.
+        selection_changed = (selected != getattr(self, "_scroll_selected", None)
+                             or mode != getattr(self, "_scroll_mode", None))
+        page_changed = top != getattr(self, "_last_visible_top", None)
+        if selection_changed or page_changed:
+            self._last_visible_top = top
+            if hasattr(self, "_row_fit_cache"):
+                self._row_fit_cache.clear()
+            if hasattr(self, "_glyph_width_cache"):
+                self._glyph_width_cache.clear()
+            self._row_geometry_key = None
+            self._last = None
+        if selection_changed:
             self._scroll_selected = selected
             self._scroll_mode = mode
             self._scroll_identity = None
             self._scroll_started = time()
-            self._last = None
         width = component.instance.size().width()
         height = component.instance.size().height()
         row_height = int(component.ItemHeight)
