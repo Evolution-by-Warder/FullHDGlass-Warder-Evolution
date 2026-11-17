@@ -45,7 +45,7 @@ def main():
 
     for original, names in ALIASES.items():
         data = (ROOT / "assets/warder/menu-icon-overrides" / (original + ".png")).read_bytes()
-        assert data.startswith(b"\\x89PNG\\r\\n\\x1a\\n"), original + " is not a PNG"
+        assert data.startswith(bytes((137, 80, 78, 71, 13, 10, 26, 10))), original + " is not a PNG"
         width = int.from_bytes(data[16:20], "big")
         height = int.from_bytes(data[20:24], "big")
         assert (width, height) == (810, 810), original + " has incorrect dimensions"
@@ -78,7 +78,7 @@ def main():
     item["parts"] = paths
     item["png_count"] = 141
     item["release_label"] = "owner-approved-warder-menu-20261117"
-    CATALOG.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    CATALOG.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
     print("Published", len(entries), "icons,", len(archive), "bytes,", len(paths), "parts; sha256", sha256(archive))
 
 
