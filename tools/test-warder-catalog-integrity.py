@@ -24,43 +24,7 @@ class CatalogIntegrity(unittest.TestCase):
 
     def test_completed_main_po_files_contain_no_empty_translations(self):
         # Count only real messages, not the multi-line gettext metadata header.
-        pattern = re.compile(r'^msgid "((?:\\\\.|[^"\\\\])*)"\\nmsgstr ""(self):
-        samples = {
-            'setupGlass17': ('Satellite positions', 'Δορυφορικές θέσεις'),
-            'weather': ('Heavy rain', 'Ισχυρή βροχή'),
-            'netatmo': ('Wind Strength', 'Ένταση ανέμου'),
-            'helpTxt': ('Temperature will be displayed in Celsius',
-                        'Η θερμοκρασία εμφανίζεται σε βαθμούς Κελσίου'),
-            'eWeather': ('Rain', 'Βροχή'),
-        }
-        for domain, (source, translated) in samples.items():
-            with self.subTest(domain=domain):
-                with (ROOT / 'el' / 'LC_MESSAGES' / (domain + '.mo')).open('rb') as f:
-                    catalog = gettext.GNUTranslations(f)
-                self.assertEqual(catalog.gettext(source), translated)
-
-    def test_recent_translations_survive_rebuild(self):
-        examples = {
-            'cs': ('Satellite positions', 'Satelitní pozice'),
-            'ru': ('Satellite positions', 'Спутниковые позиции'),
-            'lt': ('Satellite positions', 'Palydovinės pozicijos'),
-            'zh': ('Satellite positions', '卫星轨位'),
-            'de': ('Satellite positions', 'Satellitenpositionen'),
-            'fr': ('Satellite positions', 'Positions satellites'),
-            'al': ('Satellite positions', 'Pozicionet satelitore'),
-            'tr': ('Satellite positions', 'Uydu konumları'),
-            'uk': ('Satellite positions', 'Супутникові позиції'),
-        }
-        for lang, (source, translated) in examples.items():
-            with self.subTest(language=lang):
-                with (ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo').open('rb') as f:
-                    catalog = gettext.GNUTranslations(f)
-                self.assertEqual(catalog.gettext(source), translated)
-
-
-if __name__ == '__main__':
-    unittest.main()
-, re.MULTILINE)
+        pattern = re.compile(r'^msgid "((?:\\.|[^"\\])*)"\nmsgstr ""$', re.MULTILINE)
         for lang in COMPLETE_MAIN:
             with self.subTest(language=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
