@@ -87,6 +87,8 @@ class StorageSafetyTests(unittest.TestCase):
         self.assertIn('if not _warderStorageHasSpace(target):', text)
         self.assertIn('setPathFiles(chck=False)', text)
         self.assertIn('config.plugins.setupGlass17.par124.save()', text)
+        finish = text.split('def dwnFin(self, answer=""):', 1)[1].split('def downAnswerNow(self):', 1)[0]
+        self.assertIn('self._warderInternalStorageApproved = None', finish)
 
     def test_unmounted_hdd_is_not_created_as_staging(self):
         text = PLUGIN.read_text(encoding="utf-8")
