@@ -454,3 +454,120 @@ msgstr "Φθίνων μηνίσκος"
 
 msgid "Last Quarter"
 msgstr "Τελευταίο τέταρτο"
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Αυτόματο χρώμα: χρήση της τιμής από το skin.xml ή το g17Screens.py. Επιλεγμένο χρώμα: εμφάνιση με το χρώμα που ορίσατε."
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "Η διάταξη επιλέγεται αυτόματα με βάση το μέγεθος του picon στη γραμμή πληροφοριών."
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Η μέτρηση της τρέχουσας ταχύτητας δικτύου είναι ενεργή και εμφανίζεται σε kb/s."
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Η μέτρηση της τρέχουσας ταχύτητας δικτύου είναι ενεργή και εμφανίζεται σε Mb/s."
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "Η αφίσα που εμφανίζεται τώρα διαγράφεται με παρατεταμένο πάτημα του «OK» και δεν θα εμφανιστεί ξανά."
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Αναζήτηση αφίσας πρώτα στο Internet Movie Database (IMDb) και, αν δεν βρεθεί, στο The Movie Database (TMDb)."
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "Εμφανίζονται πληροφορίες ECM από όλα τα κανάλια: το τρέχον, εγγραφές στο παρασκήνιο, ροές μετάδοσης κ.ά."
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "Ο ρυθμός μετάδοσης υπολογίζεται με το eBitrateCalculator του πρόσθετου BitrateViewer."
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Όλοι οι διαθέσιμοι σταθμοί και οι μονάδες τους εμφανίζονται διαδοχικά, με το καθορισμένο διάστημα εναλλαγής."
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "Η θερμοκρασία, η χωρητικότητα και ο ελεύθερος χώρος HDD/SSD εμφανίζονται στη γραμμή πληροφοριών του EMC και του Movieplayer."
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Τα κανάλια που βρέθηκαν εμφανίζονται σε εκτενή λίστα, την οποία μπορείτε να περιηγηθείτε."
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "Χρησιμοποιείται η ένδειξη φόρτωσης του FullHDGlass17. Η αρχική μεταφέρεται στον φάκελο spinner-ori."
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "Οι τύποι λίστας καναλιών PIP είναι διαθέσιμοι, αλλά ενδέχεται να προκαλέσουν σφάλμα GSOD σε ορισμένα images."
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Φάκελος όπου αποθηκεύονται οι τρέχουσες ρυθμίσεις του FHDG (αρχείο: hdg17.conf)."
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Εμφάνιση πρόγνωσης 10 ημερών: πρώτα οι 5 ημέρες και, μετά το καθορισμένο διάστημα, οι επόμενες 5."
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "Η γραμμή πληροφοριών εμφανίζεται ή αποκρύπτεται με μετάβαση ανάμεσα στην πλήρη και την καθορισμένη διαφάνεια."
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "Η γραμμή πληροφοριών εμφανίζεται αμέσως και εξαφανίζεται σταδιακά, από την καθορισμένη στην πλήρη διαφάνεια."
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Εμφάνιση «Btr πολύ υψηλό - διακοπή» όταν ο πραγματικός ρυθμός μετάδοσης υπερβαίνει την καθορισμένη τιμή."
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Εμφάνιση μεταφρασμένων μηνυμάτων στη γλώσσα που εντοπίζεται αυτόματα από τις ρυθμίσεις OSD."
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "Η γραμμή πληροφοριών εμφανίζεται κατά την αλλαγή καναλιού και κλείνει μετά τον χρόνο που ορίζεται στο σύστημα. Αν ανοίξει με «OK», παραμένει ορατή ώσπου να πατήσετε «EXIT» ή «OK»."
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "Αν ανοίξετε τη γραμμή πληροφοριών με «OK», παραμένει ορατή ώσπου να πατήσετε «EXIT» ή «OK»."
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "Αφύπνιση HDD/SSD όταν μια λειτουργία δεν μπορεί να διαβάσει τα απαιτούμενα δεδομένα επειδή ο δίσκος βρίσκεται σε αναμονή."
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "auto: αυτόματη ανίχνευση των tuner του δέκτη. Τιμή (1–19): εμφάνιση του επιλεγμένου αριθμού tuner."
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "Ανίχνευση AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC και MPEG στην τρέχουσα ηχητική ροή."
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "Διεύθυνση IP που χρησιμοποιείται για τον έλεγχο σύνδεσης δικτύου και πρόσβασης στο διαδίκτυο."
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "Πατήστε «OK» για να ενεργοποιήσετε το επιλεγμένο κανάλι, διατηρώντας ανοιχτή τη λίστα. Πατήστε ξανά «OK» για να κλείσει ή «EXIT» για επιστροφή στο κανάλι που παρακολουθούσατε πριν ανοίξετε τη λίστα."
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "Η ειδική οθόνη πληροφοριών, που ανοίγει με «HELP», κλείνει αυτόματα μετά από 20 δευτερόλεπτα."
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Κύλιση προς τα πάνω μέχρι το τέλος του κειμένου, αναμονή για τα επιλεγμένα δευτερόλεπτα και έπειτα κύλιση προς τα κάτω."
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Η θερμοκρασία εμφανίζεται στις μονάδες που ορίζονται στο my_city_Code.txt ή στο city_Code.txt."
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Λήψη δεδομένων καιρού από το OpenWeatherMap. Απαιτείται κλειδί API από εγγραφή στο openweathermap.org (η εγγραφή και το βασικό κλειδί είναι δωρεάν). Το κλειδί μπορεί επίσης να διαβαστεί από το /etc/openweathermap.api."
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Αυτόματη επανασύνδεση: σε περίπτωση σφάλματος γίνεται επανάληψη της λήψης δεδομένων από τον πάροχο στο καθορισμένο χρονικό διάστημα, μέχρι να ληφθούν έγκυρα δεδομένα."
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "Η θερμοκρασία για την ένδειξη «Κρύο» είναι υψηλότερη από το καθορισμένο όριο ή/και η θερμοκρασία για την ένδειξη «Ζέστη» είναι χαμηλότερη από το αντίστοιχο όριο."
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "Προσαρμοσμένη διαδρομή προς τους απαιτούμενους φακέλους, όπως picon, piconProv κ.ά."
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Η αρίθμηση των καναλιών υπολογίζεται κατά την εκκίνηση του Enigma, επομένως μεταγενέστερες αλλαγές στη σειρά καναλιών δεν την επηρεάζουν."
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "Ο αριθμός καναλιού υπολογίζεται μετά από κάθε αλλαγή καναλιού, ώστε να λαμβάνεται υπόψη κάθε αλλαγή στη σειρά των καναλιών."
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Γραφικά που χρησιμοποιούνται στις πρόσθετες οθόνες. Μετά τη λήψη διατίθενται περισσότερες επιλογές πρόσθετων οθονών."
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Εικονίδια καιρού για ειδικές οθόνες και πληροφορίες χρήστη: Καιρός, Ελαφρύς καιρός και Αναλυτικός καιρός."
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Κινούμενα εικονίδια καιρού για τη γραμμή πληροφοριών, τις ειδικές οθόνες και τις πληροφορίες χρήστη «Καιρός» ή «Αναλυτικός καιρός»."
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Εικονίδια επιλογής καναλιών με διαφανές φόντο, που χρησιμοποιούνται σε ορισμένους τύπους λίστας καναλιών."
