@@ -44,7 +44,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 - Technický resolver pre 21 jazykov v štandardnom GNU gettext, bezpečný anglický fallback a zachovanie vypínača prekladov.
 - Nové katalógy .po/.mo pre gréčtinu a doplnené preklady pre ostatné jazyky.
 - Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny a holandčiny, nezmenené existujúce vyplnené hodnoty.
-- Kontroly python3 syntaktiky a binárnych katalógov v `tools/test-warder-catalog-integrity.py`.
+- Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL) v `tools/test-warder-catalog-integrity.py`.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
