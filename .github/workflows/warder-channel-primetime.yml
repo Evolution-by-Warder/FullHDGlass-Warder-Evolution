@@ -16,6 +16,7 @@ on:
       - 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml'
       - 'tools/test_warder_*'
       - 'tools/test_fastscan_epg_name_geometry.py'
+      - 'tools/test_fastscan_epg_owner_sync.py'
       - 'tools/stage-pr51-clip-candidate.py'
       - 'tools/test-setup-style.py'
       - 'tools/style-setup-screens.py'
@@ -106,4 +107,5 @@ jobs:
           python -m unittest discover -s tools -p 'test_warder_default_epg_panel_runtime.py' -v
           python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
           python -m unittest discover -s tools -p 'test_fastscan_epg_name_geometry.py' -v
+          python -m unittest discover -s tools -p 'test_fastscan_epg_owner_sync.py' -v
           python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
