@@ -59,7 +59,7 @@ msgid "from image"
 msgstr "from image"
 
 msgid "G17 (Ch. Name)"
-msgstr ""
+msgstr "G17 (nombre del canal)"
 
 msgid "Default"
 msgstr "Default"
@@ -80,16 +80,16 @@ msgid "VU+ (Ch. Name + Act. event)"
 msgstr "VU+ (Ch. Name + Act. event)"
 
 msgid "G17 (Act. event)"
-msgstr ""
+msgstr "G17 (programa actual)"
 
 msgid "G17 (Ch. Name + Act. event)"
-msgstr ""
+msgstr "G17 (nombre del canal + programa actual)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
-msgstr ""
+msgstr "G17 (arriba: nombre del canal; abajo: programa actual)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
-msgstr ""
+msgstr "G17 (arriba: nombre del canal; abajo: SNR y AGC)"
 
 msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
@@ -119,19 +119,19 @@ msgid "with ZZPicon"
 msgstr "with ZZPicon"
 
 msgid "with Picon 400x240"
-msgstr ""
+msgstr "con picon de 400 × 240"
 
 msgid "Glass17"
-msgstr ""
+msgstr "Glass17"
 
 msgid "Glass17(+next event)"
-msgstr ""
+msgstr "Glass17 (+ siguiente programa)"
 
 msgid "with PIG(+next event)"
 msgstr "with PIG(+next event)"
 
 msgid "Glass17(+next, date)"
-msgstr ""
+msgstr "Glass17 (+ siguiente programa, fecha)"
 
 msgid "New style"
 msgstr "New style"
@@ -152,7 +152,7 @@ msgid "PIG(+several event)"
 msgstr "PIG(+several event)"
 
 msgid "G17(+several event)"
-msgstr ""
+msgstr "G17 (+ varios programas)"
 
 msgid "New style(+several event)"
 msgstr "New style(+several event)"
@@ -164,7 +164,7 @@ msgid "with PIG"
 msgstr "with PIG"
 
 msgid "G17 events"
-msgstr ""
+msgstr "Programas de G17"
 
 msgid "Big Icons"
 msgstr "Iconos grandes"
@@ -251,7 +251,7 @@ msgid "SID only"
 msgstr "SID only"
 
 msgid "CAID, SID, VPID"
-msgstr ""
+msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
 msgstr "Percentage"
@@ -341,16 +341,16 @@ msgid "Selected in Netatmo plugin"
 msgstr "Seleccionado en el plugin Netatmo"
 
 msgid "IMDb"
-msgstr ""
+msgstr "IMDb"
 
 msgid "TMDb"
-msgstr ""
+msgstr "TMDb"
 
 msgid "Transparent"
 msgstr "Transparentes"
 
 msgid "Full HD GLass17 spinner"
-msgstr ""
+msgstr "Animación de carga de FullHDGlass17"
 
 msgid "Full HD Glass17 Setup"
 msgstr "Configuración de FullHDGlass17"
@@ -393,10 +393,10 @@ msgid "Menu type"
 msgstr "Menu tipo"
 
 msgid "Permanent Extra Infobar"
-msgstr ""
+msgstr "Barra informativa adicional permanente"
 
 msgid "Standard Infobar type"
-msgstr ""
+msgstr "Tipo de barra informativa estándar"
 
 msgid "Volume type"
 msgstr "Tipo de volumen"
@@ -420,16 +420,16 @@ msgid "PIG type"
 msgstr "PIG tipo"
 
 msgid "Extendend description font size"
-msgstr ""
+msgstr "Tamaño de letra de la descripción ampliada"
 
 msgid "color"
 msgstr "color"
 
 msgid "Channel selection font size"
-msgstr ""
+msgstr "Tamaño de letra de la lista de canales"
 
 msgid "EPG list font size"
-msgstr ""
+msgstr "Tamaño de letra de la lista EPG"
 
 msgid "Dish screen"
 msgstr "Dish screen"
@@ -456,7 +456,7 @@ msgid "Service scan long list"
 msgstr "Lista larga de búsqueda de canales"
 
 msgid "Extended Number ZAP Picon Size"
-msgstr ""
+msgstr "Tamaño del picon en el cambio por número"
 
 msgid "GUI will now be restarted to activate restored options:"
 msgstr "GUI se reiniciara para activar las opciones que hemos cambiado:"
@@ -465,7 +465,7 @@ msgid "GUI will now be restarted, updated files founded !!!"
 msgstr "GUI se reiniciara, actualizados los cambios !!!"
 
 msgid "ECM and TP Status"
-msgstr ""
+msgstr "Estado de ECM y TP"
 
 msgid "No data"
 msgstr "Sin datos"
@@ -540,19 +540,19 @@ msgid "Restore config"
 msgstr "Restaurar configuración"
 
 msgid "Reset all settings of FHDG 17"
-msgstr ""
+msgstr "Restablecer todos los ajustes de FHDG 17"
 
 msgid "ECM"
 msgstr "ECM"
 
 msgid "EXTRA INFOBAR"
-msgstr ""
+msgstr "BARRA INFORMATIVA ADICIONAL"
 
 msgid "INFOBAR"
 msgstr "INFOBAR"
 
 msgid "POSTER"
-msgstr ""
+msgstr "PÓSTER"
 
 msgid "HDD/SSD"
 msgstr "HDD/SSD"
@@ -567,10 +567,10 @@ msgid "CHANNEL SELECTION"
 msgstr "SELECCIÓN DE CANAL"
 
 msgid "EPG SELECTION"
-msgstr ""
+msgstr "SELECCIÓN DE EPG"
 
 msgid "EVENT VIEW"
-msgstr ""
+msgstr "VISTA DEL PROGRAMA"
 
 msgid "SPECIAL INFO"
 msgstr "INFO ESPECIAL"
@@ -579,7 +579,7 @@ msgid "USER INFO"
 msgstr "INFORMACIÓN DE USUARIO"
 
 msgid "NETATMO"
-msgstr ""
+msgstr "NETATMO"
 
 msgid "OLED"
 msgstr "OLED"
@@ -597,19 +597,19 @@ msgid "PATHS"
 msgstr "Rutas a los archivos de configuración del skin"
 
 msgid "VOLUME"
-msgstr ""
+msgstr "VOLUMEN"
 
 msgid "LISTBOX FONT SIZE"
-msgstr ""
+msgstr "TAMAÑO DE LETRA DE LA LISTA"
 
 msgid "ANIMATIONS"
-msgstr ""
+msgstr "ANIMACIONES"
 
 msgid "OTHER"
 msgstr "OTRO"
 
 msgid "Color(s)"
-msgstr ""
+msgstr "Color(es)"
 
 msgid "ECM line type"
 msgstr "ECM line tipo"
@@ -621,16 +621,16 @@ msgid "Enable show address in ECM info"
 msgstr "Habilitar la dirección de la info del ECM"
 
 msgid "ECM info from current displayed channel only"
-msgstr ""
+msgstr "Información ECM solo del canal mostrado"
 
 msgid "Display CW0/1 in Side bar"
-msgstr ""
+msgstr "Mostrar CW0/1 en la barra lateral"
 
 msgid "Show PID in ECM line"
-msgstr ""
+msgstr "Mostrar PID en la línea ECM"
 
 msgid "Show CHID in ECM line"
-msgstr ""
+msgstr "Mostrar CHID en la línea ECM"
 
 msgid "ECM line"
 msgstr "ECM line"
@@ -645,25 +645,25 @@ msgid "Enable Enhanced Infobar"
 msgstr "Habilitar mejoras del Infobar"
 
 msgid "Vertical Offset"
-msgstr ""
+msgstr "Desplazamiento vertical"
 
 msgid "Date format"
-msgstr ""
+msgstr "Formato de fecha"
 
 msgid "Second picon type"
 msgstr "Segundo picon tipo"
 
 msgid "Animated Weather Icons"
-msgstr ""
+msgstr "Iconos meteorológicos animados"
 
 msgid "Animation speed (ms)"
-msgstr ""
+msgstr "Velocidad de animación (ms)"
 
 msgid "Enable icon"
-msgstr ""
+msgstr "Activar icono"
 
 msgid "Enable icon of Unknown CAID"
-msgstr ""
+msgstr "Activar icono de CAID desconocido"
 
 msgid "Audio type of current track"
 msgstr "Audio type of current track"
@@ -672,13 +672,13 @@ msgid "Progressive/Interlace detection"
 msgstr "Progressive/Interlace detection"
 
 msgid "Tuner info"
-msgstr ""
+msgstr "Información del sintonizador"
 
 msgid "Hide SNR/AGC (Q/S) if value is 0"
-msgstr ""
+msgstr "Ocultar SNR/AGC (Q/S) si el valor es 0"
 
 msgid "CI info"
-msgstr ""
+msgstr "Información de CI"
 
 msgid "Enable full bitrate info"
 msgstr "Habiitar toda la info del  bitrate"
@@ -687,7 +687,7 @@ msgid "Bitrate auto stop limit"
 msgstr "Bitrate auto stop limit"
 
 msgid "Enable eBitrateCalculator"
-msgstr ""
+msgstr "Activar eBitrateCalculator"
 
 msgid "Show Satellite position in TP info"
 msgstr "Mostrar la posición del satélite en el TP info"
@@ -705,10 +705,10 @@ msgid "Temp. HDD/SSD"
 msgstr "Temp. HDD/SSD"
 
 msgid "Progress bar pixmap"
-msgstr ""
+msgstr "Imagen de la barra de progreso"
 
 msgid "Progress bar background pixmap"
-msgstr ""
+msgstr "Imagen de fondo de la barra de progreso"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
 msgstr "CPU/Mem, RPM/Temp, Provider"
@@ -735,16 +735,16 @@ msgid "Channel name"
 msgstr "Channel name"
 
 msgid "Event now"
-msgstr ""
+msgstr "Programa actual"
 
 msgid "Event next"
-msgstr ""
+msgstr "Siguiente programa"
 
 msgid "Progress bar foreground"
-msgstr ""
+msgstr "Primer plano de la barra de progreso"
 
 msgid "Progress bar background"
-msgstr ""
+msgstr "Fondo de la barra de progreso"
 
 msgid "Enable typewriting"
 msgstr "Habilitar tipo de escitura"
@@ -771,19 +771,19 @@ msgid "Set Position"
 msgstr "Ajuste de Posicion"
 
 msgid "Size"
-msgstr ""
+msgstr "Tamaño"
 
 msgid "Search delay (s)"
-msgstr ""
+msgstr "Retardo de búsqueda (s)"
 
 msgid "Erase poster cache"
-msgstr ""
+msgstr "Borrar caché de pósteres"
 
 msgid "Removing current Poster"
-msgstr ""
+msgstr "Eliminando el póster actual"
 
 msgid "Movieplayer infobar HDD/SSD state"
-msgstr ""
+msgstr "Estado del HDD/SSD en la barra informativa del reproductor"
 
 msgid "Enable HDD/SSD power state check"
 msgstr "Habilitar control del estado  del HDD/SSD (disco duro)"
@@ -798,7 +798,7 @@ msgid "IP Address"
 msgstr "dirección IP"
 
 msgid "Network speed"
-msgstr ""
+msgstr "Velocidad de red"
 
 msgid "Menu Icons"
 msgstr "Menu Iconos"
@@ -810,7 +810,7 @@ msgid "Enable Animation (Menu: Icons/Icons Bar)"
 msgstr "Activar animación (Menu: Icons/Icons Bar)"
 
 msgid "Display remaining time in extra EPG"
-msgstr ""
+msgstr "Mostrar tiempo restante en la EPG adicional"
 
 msgid "Text rolling type"
 msgstr "Texto retraso tipo"
@@ -819,13 +819,13 @@ msgid "Text rolling start delay"
 msgstr "Texto retraso salida lanzada"
 
 msgid "Service name font size"
-msgstr ""
+msgstr "Tamaño de letra del nombre del servicio"
 
 msgid "Service info font size"
-msgstr ""
+msgstr "Tamaño de letra de la información del servicio"
 
 msgid "Line height"
-msgstr ""
+msgstr "Altura de línea"
 
 msgid "EPG Description"
 msgstr "EPG Description"
@@ -855,7 +855,7 @@ msgid "Station"
 msgstr "Emisora"
 
 msgid "Stations switch time"
-msgstr ""
+msgstr "Intervalo de cambio de emisoras"
 
 msgid "Enable OLED off in standby"
 msgstr "Habilitar apagador OLED ein standby"
@@ -864,7 +864,7 @@ msgid "Number of tuners"
 msgstr "Número de tuner"
 
 msgid "Hide tuner in standby or missing tuner"
-msgstr ""
+msgstr "Ocultar sintonizador en espera o si no está disponible"
 
 msgid "Active"
 msgstr "Activo"
@@ -909,22 +909,22 @@ msgid "Reconnect time"
 msgstr "Vuelva a conectar el tiempo"
 
 msgid "Display nighttime icons"
-msgstr ""
+msgstr "Mostrar iconos nocturnos"
 
 msgid "Enable next city in Weather"
 msgstr "Habilitar al lado de la ciudad en el tiempo"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "Clave API de OpenWeatherMap"
 
 msgid "Forecast for more days"
-msgstr ""
+msgstr "Pronóstico de más días"
 
 msgid "More days switch time"
-msgstr ""
+msgstr "Intervalo de cambio entre días adicionales"
 
 msgid "Show yesterday"
-msgstr ""
+msgstr "Mostrar ayer"
 
 msgid "Find a city"
 msgstr "Buscar una ciudad"
@@ -933,7 +933,7 @@ msgid "Weather Icons"
 msgstr "Iconos del tiempo"
 
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 msgid "Warm"
 msgstr "caliente"
@@ -951,64 +951,64 @@ msgid "Picons/Icons path"
 msgstr "Picones/Iconos ruta"
 
 msgid "FHDG Configuration file"
-msgstr ""
+msgstr "Archivo de configuración de FHDG"
 
 msgid "Path to satellites.xml"
-msgstr ""
+msgstr "Ruta de satellites.xml"
 
 msgid "Bigger"
-msgstr ""
+msgstr "Más grande"
 
 msgid "Big"
-msgstr ""
+msgstr "Grande"
 
 msgid "Medium"
-msgstr ""
+msgstr "Mediano"
 
 msgid "Small"
-msgstr ""
+msgstr "Pequeño"
 
 msgid "Smaller"
-msgstr ""
+msgstr "Más pequeño"
 
 msgid "Enable Animations"
 msgstr "Activar animaciones"
 
 msgid "(Infobar) Picon"
-msgstr ""
+msgstr "(Barra informativa) Picon"
 
 msgid "(Infobar) Second Picon"
-msgstr ""
+msgstr "(Barra informativa) Segundo picon"
 
 msgid "(Infobar) Poster"
-msgstr ""
+msgstr "(Barra informativa) Póster"
 
 msgid "(Infobar) ECM line"
-msgstr ""
+msgstr "(Barra informativa) Línea ECM"
 
 msgid "(Infobar) TP info/type"
-msgstr ""
+msgstr "(Barra informativa) Información/tipo de TP"
 
 msgid "(Menu) Big Icons/Icons"
-msgstr ""
+msgstr "(Menú) Iconos grandes/iconos"
 
 msgid "(Channel selection) picon/Prov/Sat"
-msgstr ""
+msgstr "(Lista de canales) Picon/proveedor/satélite"
 
 msgid "VTi SplitScreen"
-msgstr ""
+msgstr "Pantalla dividida de VTi"
 
 msgid "Reference separating char"
-msgstr ""
+msgstr "Carácter separador de referencias"
 
 msgid "Ignore leading 0 in time"
-msgstr ""
+msgstr "Omitir el cero inicial en la hora"
 
 msgid "Ignore leading 0 in date"
-msgstr ""
+msgstr "Omitir el cero inicial en la fecha"
 
 msgid "Calculation of channel numbers"
-msgstr ""
+msgstr "Cálculo de números de canal"
 
 msgid "Enable CAID PIDs"
 msgstr "Habilitar CAID PIDs"
@@ -1017,7 +1017,7 @@ msgid "Neutrino keymap"
 msgstr "Neutrino keymap"
 
 msgid "Full HD Glass17 spinner"
-msgstr ""
+msgstr "Animación de carga de FullHDGlass17"
 
 msgid "Localization of the skin"
 msgstr "localización del skin"
@@ -1032,7 +1032,7 @@ msgid "RadioScreenSaver"
 msgstr "RadioScreenSaver"
 
 msgid "IPTV Radio Detection"
-msgstr ""
+msgstr "Detección de radio IPTV"
 
 msgid "Exit"
 msgstr "Salir"
@@ -1041,7 +1041,7 @@ msgid "now?"
 msgstr "ahora?"
 
 msgid "Erase finished successfully!"
-msgstr ""
+msgstr "¡Borrado completado correctamente!"
 
 msgid "Color Sample"
 msgstr "Color Sample"
@@ -1091,7 +1091,7 @@ msgid "Error while updating to new version!!!"
 msgstr "Error al actualizar  la versión nueva"
 
 msgid "The file satellites.xml do not exists in selected dir"
-msgstr ""
+msgstr "El archivo satellites.xml no existe en la carpeta seleccionada"
 
 msgid "GUI will now be restarted to activate changes in:"
 msgstr "GUI se reinicia ahora para activar los cambios :"
@@ -1121,7 +1121,7 @@ msgid "is incorrect, style will not be changed!!!"
 msgstr "es incorrectot, el estilo  no se puede cambiar!!!"
 
 msgid "Save again to apply all setup changes without style change"
-msgstr ""
+msgstr "Guardar de nuevo para aplicar todos los ajustes sin cambiar el estilo"
 "Guardar de nuevo para aplicar todos los cambios de configuración sin cambio "
 "de estilo"
 
@@ -1135,7 +1135,7 @@ msgid "HDD/SSD state"
 msgstr "HDD/SSD estado"
 
 msgid "10 days forecast"
-msgstr ""
+msgstr "Pronóstico de 10 días"
 
 msgid "Do you want restart GUI to activate the screen:"
 msgstr "Doesea reiniciar GUI para activarlo en pantalla  ?"
@@ -1147,7 +1147,7 @@ msgid "Welcome in setup"
 msgstr "Bienvenido a la instalaccion"
 
 msgid "Wait for the file downloads to complete"
-msgstr ""
+msgstr "Espere a que se completen las descargas de archivos"
 
 msgid "Select"
 msgstr "Seleccionar"
@@ -1156,85 +1156,85 @@ msgid "Cleaning Picons"
 msgstr "Picons Limpieza"
 
 msgid "Start Download"
-msgstr ""
+msgstr "Iniciar descarga"
 
 msgid "picon white"
-msgstr ""
+msgstr "Picons blancos"
 
 msgid "picon black"
-msgstr ""
+msgstr "Picons negros"
 
 msgid "picon 400x240"
-msgstr ""
+msgstr "Picons de 400 × 240"
 
 msgid "picon 220x132"
-msgstr ""
+msgstr "Picons de 220 × 132"
 
 msgid "piconProv 220x132"
-msgstr ""
+msgstr "Picons de proveedor de 220 × 132"
 
 msgid "piconSat 220x132"
-msgstr ""
+msgstr "Picons de satélite de 220 × 132"
 
 msgid "piconProv black"
-msgstr ""
+msgstr "Picons de proveedor negros"
 
 msgid "piconSat black"
-msgstr ""
+msgstr "Picons de satélite negros"
 
 msgid "piconCam black"
-msgstr ""
+msgstr "Picons de CAM negros"
 
 msgid "piconWeather black"
-msgstr ""
+msgstr "Picons meteorológicos negros"
 
 msgid "piconProv white"
-msgstr ""
+msgstr "Picons de proveedor blancos"
 
 msgid "piconSat white"
-msgstr ""
+msgstr "Picons de satélite blancos"
 
 msgid "piconCam white"
-msgstr ""
+msgstr "Picons de CAM blancos"
 
 msgid "piconWeather white"
-msgstr ""
+msgstr "Picons meteorológicos blancos"
 
 msgid "picon OLED"
-msgstr ""
+msgstr "Picons OLED"
 
 msgid "ZZPicon"
-msgstr ""
+msgstr "ZZPicon"
 
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 msgid "Set of icons and prewievs"
-msgstr ""
+msgstr "Conjunto de iconos y vistas previas"
 
 msgid "ExtraScreens graphics"
-msgstr ""
+msgstr "Gráficos de pantallas adicionales"
 
 msgid "Menu icons"
-msgstr ""
+msgstr "Iconos del menú"
 
 msgid "Weather icons"
-msgstr ""
+msgstr "Iconos meteorológicos"
 
 msgid "Channelselection icons"
-msgstr ""
+msgstr "Iconos de la lista de canales"
 
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 msgid "ERROR"
-msgstr ""
+msgstr "ERROR"
 
 msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
-msgstr ""
+msgstr "Falta 7zip; puede descargarlo desde el MENÚ DE DESCARGAS"
 
 msgid "SUCCESSFUL"
-msgstr ""
+msgstr "CORRECTO"
 
 msgid "Total:"
 msgstr "Total:"
@@ -1261,10 +1261,10 @@ msgid "file(s) from"
 msgstr "Archivo(s) desde"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "No se pudieron cargar las herramientas de URL"
 
 msgid "Internet connection failed"
-msgstr ""
+msgstr "Falló la conexión a Internet"
 
 msgid "Unknown error detected, try again!!!"
 msgstr "Detectado error desconocido, inténtalo de nuevo!!!"
@@ -1300,7 +1300,7 @@ msgid "writed successfully !!!"
 msgstr "escrito con exito !!!"
 
 msgid "Sorry, write to g17Screens.cfg failed !!!"
-msgstr ""
+msgstr "No se pudo escribir en g17Screens.cfg"
 
 msgid "Changes writed successfully !!!"
 msgstr "Cambios escrito con éxito !!!"
@@ -1309,7 +1309,7 @@ msgid "Edit"
 msgstr "Editar"
 
 msgid "Picon path"
-msgstr ""
+msgstr "Ruta de los picons"
 
 msgid "Choose Icons"
 msgstr "Elijir Iconos"
@@ -1336,7 +1336,7 @@ msgid "Please enter a city name"
 msgstr "Por favor, introduzca un nombre de ciudad"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Tiempo de espera agotado al leer los datos del sitio web"
 
 msgid "None city detected"
 msgstr "Ninguna ciudad detectado"
@@ -1445,15 +1445,15 @@ msgstr "Método de actualización"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "No se ha seleccionado ninguna resolución"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "No se ha seleccionado ningún color"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "No se ha seleccionado ningún método de actualización"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
@@ -1477,19 +1477,19 @@ msgstr "Almacenamiento MMC"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Directorio raíz de picons"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Personalizado"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Personalizado..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30: mini picons"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1497,126 +1497,126 @@ msgstr "220 × 132 – Piconos"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240: picons grandes"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682: iconos grandes para los tipos de lista de canales seleccionados"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Sincronizar con listas de TV"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Sincronizar con listas de TV y radio"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Copiar todo; sustituir los picons de las posiciones seleccionadas"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Copiar todo; actualización incremental"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Destino de descarga:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Elija iconos de la lista de canales de 50 × 30, 220 × 132, 400 × 240 o 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Elija cómo sincronizar o copiar los picons de canales para las posiciones seleccionadas."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Antes de descargar, seleccione la resolución, el color, la ubicación y el método de actualización."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "¿Crear el directorio de picons?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "No se puede crear el directorio de destino de picons"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "No se puede escribir en el destino de picons"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Seleccione un directorio existente."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "No se puede leer el destino de picons"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "No se pudo eliminar el picon obsoleto de la posición seleccionada"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "No se pudieron sustituir de forma segura los picons de las posiciones seleccionadas."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "servicios seleccionados del receptor no tienen un picon correspondiente en los paquetes elegidos."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "%d picon actualizado correctamente"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "%d picons actualizados correctamente"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "%d servicio seleccionado"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "%d servicios seleccionados"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "No se descargó ningún picon."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "Falló la instalación de %d de %d picons"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "El almacenamiento seleccionado no está montado"
 
 msgid "Provider logos"
 msgstr "Logotipos de proveedores"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "Logotipos de plataformas de TV y proveedores de servicios."
 
 msgid "Satellite logos"
 msgstr "Logotipos de satélites"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Logotipos de satélites e identificadores gráficos."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: %d picons actualizados; %d errores"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Total: %d picons actualizados"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Errores: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "ÉXITO PARCIAL"
 
 
 # Completed operation result dialog button.
