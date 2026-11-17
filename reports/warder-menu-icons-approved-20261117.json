@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "approval": "User approved 5 Warder menu icons",
+  "archive": "menuIconsBig_Warder_approved.zip",
+  "archive_sha256": "2a212b732a4320b8402ecc18cea70325c394f2cc6463936227c0d45f8e75ccf3",
+  "archive_uploaded_to_github": false,
+  "original_icons_preserved": 125,
+  "total_png": 141,
+  "dimensions": [
+    810,
+    810
+  ],
+  "background_rgba": [
+    0,
+    0,
+    0,
+    206
+  ],
+  "menu_ids": {
+    "glass_sys_utils": "warder_gsu.png",
+    "warder_radio_mainmenu": "warder_radio.png",
+    "warder_youtube_mainmenu": "warder_youtube.png",
+    "FHD_Glass17_Setup": "warder_skin.png",
+    "warder_piconhub_mainmenu": "warder_piconhub.png"
+  },
+  "notes": [
+    "Source icon package was checked locally; not yet published to repository.",
+    "The PiconHub main menu shortcut is not currently supplied by its own plugin.",
+    "Skin renderer uses the approved big icon as fallback only when a small icon is missing."
+  ]
+}
