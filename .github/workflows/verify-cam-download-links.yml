@@ -1,0 +1,49 @@
+name: Verify live FullHDGlass CAM download links
+on:
+  pull_request:
+    paths:
+      - 'assets/warder/downloads.json'
+      - 'assets/warder/downloads/picons/cam/transparent/**'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'tools/verify_cam_download_links.py'
+      - '.github/workflows/verify-cam-download-links.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/warder/downloads.json'
+      - 'assets/warder/downloads/picons/cam/transparent/**'
+      - 'tools/verify_cam_download_links.py'
+      - '.github/workflows/verify-cam-download-links.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            assets/warder/downloads.json
+            tools/verify_cam_download_links.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pillow
+      - name: Check skin selector and live downloadable packages
+        env:
+          BRANCH: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || 'main' }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17')
+          assert '"piconCam-220", "piconCam-b", "piconCam-w"' in (p/'warderPiconSync.py').read_text()
+          assert '/main/assets/warder/downloads.json' in (p/'plugin.py').read_text()
+          PY
+          python tools/verify_cam_download_links.py "$BRANCH"

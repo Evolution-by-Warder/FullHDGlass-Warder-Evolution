@@ -289,7 +289,7 @@ AUXILIARY_ASSET_KEYS = (
     "piconProv-220", "piconProv-b", "piconProv-w",
     "piconProv-canalplus-t", "piconProv-canalplus-b", "piconProv-canalplus-w",
     "piconSat-220", "piconSat-b", "piconSat-w",
-    "piconCam-b", "piconCam-w",
+    "piconCam-220", "piconCam-b", "piconCam-w",
     "piconWeather-b", "piconWeather-w",
 )
 CANAL_PROVIDER_BUNDLE_ASSETS = {

@@ -2278,7 +2278,7 @@ def setONOFF():
 		except: pass
 	return ena
 ##########################################################################################################################
-WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads.json"
+WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads.json"
 
 def getWarderAssets():
 	"""Load the Warder download catalog over HTTPS without reusing a stale cache entry.

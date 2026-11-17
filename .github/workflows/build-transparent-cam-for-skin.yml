@@ -1,0 +1,67 @@
+name: Build transparent CAM downloads for FullHDGlass
+on:
+  pull_request:
+    paths:
+      - 'tools/build_cam_transparent.py'
+      - '.github/workflows/build-transparent-cam-for-skin.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: read
+jobs:
+  cam:
+    # Only permit publishing the reviewed, explicitly named feature branch.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.ref == 'feat/cam-transparent-skin-downloads-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out original CAM masters
+        uses: actions/checkout@v4
+        with:
+          ref: feat/cam-transparent-skin-downloads-20261117
+          persist-credentials: true
+          filter: blob:none
+          sparse-checkout: |
+            assets/warder/downloads/picons/cam/black/piconCam.zip
+            assets/warder/downloads/picons/cam/white/piconCam.zip
+            assets/warder/downloads.json
+            tools/build_cam_transparent.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install graphics processing dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy<3' pillow opencv-python-headless
+      - name: Build the fully transparent CAM ZIP and catalogue
+        run: python tools/build_cam_transparent.py
+      - name: Verify source and result dimensions
+        run: |
+          python - <<'PY'
+          import zipfile, json, io, pathlib, hashlib
+          from collections import Counter
+          from PIL import Image
+          root=pathlib.Path('assets/warder/downloads/picons/cam')
+          out=root/'transparent/piconCam.zip'
+          with zipfile.ZipFile(out) as z:
+              assert len(z.namelist())==48
+              assert z.testzip() is None
+              assert Counter(Image.open(io.BytesIO(z.read(n))).size for n in z.namelist()) == {(150,90):45,(153,90):3}
+              assert all(Image.open(io.BytesIO(z.read(n))).mode=='RGBA' for n in z.namelist())
+          catalog=json.loads(pathlib.Path('assets/warder/downloads.json').read_text())
+          c=catalog['assets']['piconCam-220']
+          assert c['size']==out.stat().st_size
+          assert c['sha256']==hashlib.sha256(out.read_bytes()).hexdigest()
+          assert c['root']=='piconCam'
+          print('CAM transparent: all 48 images, both dimensions, checksum PASS')
+          PY
+      - name: Commit only CAM transparent archive and download catalogue
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse assets/warder/downloads/picons/cam/transparent/piconCam.zip assets/warder/downloads.json
+          if git diff --staged --quiet; then
+            echo "Transparent CAM assets unchanged"
+          else
+            git commit -m "Publish transparent CAM archive and verified skin download manifest entry"
+            git push origin HEAD:feat/cam-transparent-skin-downloads-20261117
+          fi
