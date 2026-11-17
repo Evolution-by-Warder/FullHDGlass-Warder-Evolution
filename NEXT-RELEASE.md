@@ -11,7 +11,12 @@ retrieve the exact archive and stage it as a canonical spinner source before bui
 Follow `docs/SPINNERS.md` and the current theme registry/build workflow. Add
 this as a new selectable animation with the **exact menu title `Warder`**
 and a second, smaller **author** line `bakussa` (same subtitle style as existing
-entries). The owner's screenshot confirms a TWO-COLUMN list, and the precise
+entries). The local menu thumbnail for `Warder` must be the **first original clean frame**
+`wait1.png` (static PNG preview), using the current `warderSpinnerScreen.py`
+72×72 preview cell with aspect ratio retained, not a new generated/alternate
+icon. The 100×100 animation frames remain unchanged; all 24 play when selected.
+Verify the thumbnail against the actual skin background and ensure transparent
+edges remain clean. The owner's screenshot confirms a TWO-COLUMN list, and the precise
 visual order must be:
 - Top left: `Predvolený spinner image` / `OpenATV / OpenPLi` (existing item)
 - Top right: `Warder` / `bakussa` (**new animation immediately beside default**)
