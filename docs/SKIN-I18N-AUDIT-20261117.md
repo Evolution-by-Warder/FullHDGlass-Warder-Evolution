@@ -48,12 +48,12 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 |---|---:|---:|---:|---:|
 | al | — | — | — | — |
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
-| de | — | 108/108 | — | — |
+| de | — | 108/108 | 42/42 | — |
 | el | 189/189 | 108/108 | 42/42 | 844/2117 |
-| es | — | — | — | — |
+| es | — | — | 42/42 | — |
 | et | — | 108/108 | — | 96/2117 |
 | fa | — | — | — | — |
-| fr | — | 108/108 | — | — |
+| fr | — | 108/108 | 42/42 | — |
 | hu | — | 108/108 | — | — |
 | it | — | — | — | — |
 | lt | 189/189 | 108/108 | — | 2117/2117 |
@@ -77,6 +77,7 @@ Pri gréčtine zostáva **1 273 nepreložených fráz eWeather**; všetkých 189
 - Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL/ES/IT/ET/PL/PT/RO/UK/TR/HU/AL/FA) v `tools/test-warder-catalog-integrity.py`. Opravený chybný test, ktorý považoval hlavičku gettext `msgid ""` za nepreloženú frázu. Stav CI musí ešte potvrdiť nasledujúci beh GitHub Actions.
 - V nasledujúcom behu bolo doplnených 39 chýbajúcich gréckych helpTxt a 249 gréckych eWeather fráz; katalógy .mo boli znova skompilované a zachovali sa predchádzajúce preklady.
 - Opravený vážne poškodený súbor `tools/test-warder-catalog-integrity.py` (duplicitné a rozbité časti testov). Nová verzia kontroluje všetkých 20 hlavných jazykov, zhodu kľúčov, čitateľnosť a obsah všetkých existujúcich .mo, zhodu printf argumentov aj úplnosť gréckeho helpTxt. Čaká sa na výsledok aktuálneho GitHub Actions.
+- Pre nemčinu, francúzštinu a španielčinu boli vytvorené kompletné samostatné katalógy Netatmo (každý 42/42) vrátane skutočných jazykových textov a 16 svetových strán podľa príslušných národných skratiek. Spolu 126 nových prekladov, nové `.mo`.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
