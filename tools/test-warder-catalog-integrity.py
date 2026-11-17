@@ -7,7 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1] / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale'
 LANGS = ('al', 'cs', 'de', 'el', 'es', 'et', 'fa', 'fr', 'hu', 'it',
          'lt', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'tr', 'uk', 'zh')
-COMPLETE_MAIN = ('cs', 'de', 'el', 'es', 'et', 'fr', 'it', 'lt', 'nl', 'pl', 'ru', 'sk', 'zh')
+COMPLETE_MAIN = ('cs', 'de', 'el', 'es', 'et', 'fr', 'it', 'lt', 'nl', 'pl', 'pt', 'ru', 'sk', 'zh')
 
 
 class CatalogIntegrity(unittest.TestCase):
@@ -42,6 +42,7 @@ class CatalogIntegrity(unittest.TestCase):
             'es': ('Root picon directory', 'Directorio raíz de picons'),
             'it': ('Root picon directory', 'Cartella principale dei picon'),
             'et': ('Root picon directory', 'Pikonite juurkataloog'),
+            'pt': ('Root picon directory', 'Pasta raiz dos picons'),
         }
         for lang, (source, expected) in samples.items():
             with self.subTest(language=lang):
