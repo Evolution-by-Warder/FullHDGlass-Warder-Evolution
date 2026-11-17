@@ -7592,6 +7592,22 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self["selected_item"].setText("")
 			self["help_txt"].setText(ui_text("Choose the waiting animation. Save to apply it after a GUI restart."))
 			return
+		# Only these two approved previews use the glass speech-bubble artwork.
+		# Keep existing settings, selected colours, and other help pictures intact.
+		if t in (config.plugins.setupGlass17.par176, config.plugins.setupGlass17.par177):
+			if ENA_ANIM:
+				self["helpPicon"].hide()
+				self["helpPiconFrame"].hide()
+				self["helpTxtAnim"].hide()
+			if t.value != "AutoColors":
+				self.sampleColor(t.value)
+			self["selected_item"].setText("")
+			self["help_txt"].setText("")
+			art = "weather-uv-help.png" if t == config.plugins.setupGlass17.par176 else "weather-wind-help.png"
+			filename = os.path.join(os.path.dirname(__file__), "images", "help", art)
+			self._warderLoadHelpPicture(filename)
+			self["help_pict"].show()
+			return
 		if t in (config.plugins.setupGlass17.par215, config.plugins.setupGlass17.par214, config.plugins.setupGlass17.par213, config.plugins.setupGlass17.par177, config.plugins.setupGlass17.par176, config.plugins.setupGlass17.par175, config.plugins.setupGlass17.par174, config.plugins.setupGlass17.par137, config.plugins.setupGlass17.par136, config.plugins.setupGlass17.par135, config.plugins.setupGlass17.par130, config.plugins.setupGlass17.par129, config.plugins.setupGlass17.par128, config.plugins.setupGlass17.par123, config.plugins.setupGlass17.par121, config.plugins.setupGlass17.par122, config.plugins.setupGlass17.par20, config.plugins.setupGlass17.par115, config.plugins.setupGlass17.par116, config.plugins.setupGlass17.par118, config.plugins.setupGlass17.par119):
 			ed = True
 			t = t.value
