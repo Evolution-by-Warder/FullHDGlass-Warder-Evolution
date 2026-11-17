@@ -9,9 +9,13 @@ The file is attached in the ChatGPT conversation, **not yet committed to the rep
 retrieve the exact archive and stage it as a canonical spinner source before building.
 
 Follow `docs/SPINNERS.md` and the current theme registry/build workflow. Add
-this as a **third selectable** animation (proposed menu label: `Warder – lebka`),
-preserve existing Dove/Holubica and HDGlass - bakussa themes, the saved choice,
-user/system spinner priority, and the approved default. Check transparent edges,
+this as a **third selectable** animation with the **exact menu title `Warder`**
+and a separate text line below it **`Autor: bakussa`**. List-order requirement:
+(1) existing default `HDGlass - bakussa` (the registry currently sets
+`default: "bakussa"`), (2) `Warder` + author subtitle, (3) `Holubica`/Dove,
+followed by any other choices. Keep the existing default (do not auto-select
+Warder), preserve both existing themes and saved user choices, and retain
+user/system spinner priority. Check transparent edges,
 24-frame ordering and animation on-device, and run existing spinner regressions.
 **Do not change current runtime, package version, IPK, releases, or update feeds
 solely because of this note.** Tracking: #112.
