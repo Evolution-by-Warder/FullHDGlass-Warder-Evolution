@@ -398,6 +398,20 @@ class WarderChannelEpgClip(Renderer):
             return False
         font = component.ServiceInfoFont
         name_font = component.ServiceNameFont
+        # ServiceList C++ paints a bouquet's own display name, which can
+        # differ from eServiceCenter.info(ref).getName(ref) (notably FastScan).
+        # Match its font measurement instead of trusting a hidden eLabel's
+        # calculateSize() alone; an underestimated name moves the red EPG
+        # directly on top of the yellow native channel title.
+        try:
+            from enigma import eLabel as NativeLabel, eSize as NativeSize
+            native_measure = NativeLabel.calculateTextSize
+        except (ImportError, AttributeError):
+            native_measure = None
+        try:
+            native_column = int(config.usage.servicelist_column.value)
+        except (AttributeError, TypeError, ValueError):
+            native_column = -1
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
         # Invalidate geometrical measurements whenever a style/geometry
@@ -406,7 +420,7 @@ class WarderChannelEpgClip(Renderer):
                         int(component.listMarginLeft), int(component.itemsDistances),
                         str(config.usage.servicelist_picon_downsize.value),
                         str(config.usage.servicelist_picon_ratio.value),
-                        id(font), id(name_font))
+                        native_column, id(font), id(name_font))
         if getattr(self, '_row_geometry_key', None) != geometry_key:
             if hasattr(self, '_row_fit_cache'):
                 self._row_fit_cache.clear()
@@ -430,18 +444,47 @@ class WarderChannelEpgClip(Renderer):
             # supplies new text on EPG changes, automatically changing the key.
             row_cache = getattr(self, '_row_fit_cache', None)
             glyph_cache = getattr(self, '_glyph_width_cache', None)
-            row_key = (name, title, geometry_key)
+            # The service-reference display name belongs to the bouquet; the
+            # service-centre name may be shorter or even different. Measure
+            # both so a FastScan/custom bouquet cannot put EPG over the name.
+            try:
+                reference_name = ref.getName() or ""
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                reference_name = ""
+            row_key = (name, reference_name, title, geometry_key)
             cached_row = row_cache.get(row_key) if row_cache is not None else None
             if cached_row is None:
                 self._label.setFont(name_font)
-                self._label.setText(name)
-                name_width = self._label.calculateSize().width()
-                if hasattr(self, '_perf_text_measure_calls'):
-                    self._perf_text_measure_calls += 1
+                name_width = 0
+                for display_name in (name, reference_name):
+                    if not display_name:
+                        continue
+                    self._label.setText(display_name)
+                    measured = self._label.calculateSize().width()
+                    if native_measure is not None:
+                        try:
+                            # OpenATV's own TextBoundary helper uses this
+                            # native glyph geometry, not a hidden label.
+                            bounds = native_measure(name_font, display_name,
+                                                    NativeSize(max(width, 4096), row_height), True)
+                            measured = max(measured, int(bounds.width()))
+                        except (AttributeError, RuntimeError, TypeError, ValueError):
+                            pass
+                    name_width = max(name_width, measured)
+                    if hasattr(self, '_perf_text_measure_calls'):
+                        self._perf_text_measure_calls += 1
+                # A configured native column can be wider than the text.
+                # Do not begin custom EPG inside that reserved column.
+                if native_column > 0:
+                    name_width = max(name_width, native_column)
                 picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
                                   int(config.usage.servicelist_picon_ratio.value) / 100)
+                # A gap keeps variable-width glyph bearings off the adjacent
+                # EPG cell; never shrink fonts or edit broadcaster names.
+                name_gap = max(12, int(component.itemsDistances))
                 start = max(0, int(component.listMarginLeft) + picon_width +
-                            2 * int(component.itemsDistances) + name_width + left_shift)
+                            2 * int(component.itemsDistances) + name_width +
+                            left_shift + name_gap)
                 remaining = text_end - start
             else:
                 start, remaining, overflow, first_frame = cached_row
