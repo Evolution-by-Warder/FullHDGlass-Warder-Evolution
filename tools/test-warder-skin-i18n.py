@@ -39,5 +39,19 @@ class TestLocale(unittest.TestCase):
                                            languages=['el'], fallback=True)
 
 
+    def test_greek_catalogs_are_loadable_utf8(self):
+        import gettext
+        localedir = str(PATH.parent / 'locale')
+        examples = {'setupGlass17': ('Save', 'Αποθήκευση'),
+                    'helpTxt': ('N/A', 'Μ/Δ'),
+                    'weather': ('Sunny', 'Ηλιοφάνεια'),
+                    'netatmo': ('Humidity', 'Υγρασία'),
+                    'eWeather': ('Rain', 'Βροχή')}
+        for domain, (english, expected) in examples.items():
+            with self.subTest(domain=domain):
+                catalogue = gettext.translation(domain, localedir=localedir,
+                                                languages=['el'], fallback=False)
+                self.assertEqual(catalogue.gettext(english), expected)
+
 if __name__ == '__main__':
     unittest.main()
