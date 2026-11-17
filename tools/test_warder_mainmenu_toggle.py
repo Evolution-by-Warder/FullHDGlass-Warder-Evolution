@@ -67,8 +67,10 @@ class MainMenuToggleTests(unittest.TestCase):
         cfg=fake_cfg();cfg.plugins.warderSkinMainMenu.enabled.value=True
         self.assertEqual(self.menu(cfg,'setup')[0],[])
     def test_visible_in_skin_menu_settings(self):
-        section=self.source.split('elif tt == 12:',1)[1].split('elif tt == 13:',1)[0]
+        section=self.source.split('elif tt == 28:',1)[1].split('self["config"].list = self.list',1)[0]
         self.assertIn('getConfigListEntry(S0 % ui_text("Show FullHDGlass Warder Evolution in main menu"), config.plugins.warderSkinMainMenu.enabled)',section)
+        menu=self.source.split('elif tt == 12:',1)[1].split('elif tt == 13:',1)[0]
+        self.assertNotIn('Show FullHDGlass Warder Evolution in main menu',menu)
     def test_save_cancel_restart_and_factory_reset(self):
         self.assertIn('config.plugins.warderSkinMainMenu.enabled.save()',self.source)
         self.assertIn('config.plugins.warderSkinMainMenu.enabled.cancel()',self.source)
