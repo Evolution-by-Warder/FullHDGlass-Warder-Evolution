@@ -5,6 +5,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderStorageSafety.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSettingsMenuPlacement.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py'
       - 'tools/test_warder_integrated_skin.py'
@@ -25,6 +26,7 @@ jobs:
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderStorageSafety.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSettingsMenuPlacement.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py
             source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py
             tools/test_warder_integrated_skin.py
@@ -37,6 +39,7 @@ jobs:
         run: |
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSettingsMenuPlacement.py
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py
           python3 -m unittest discover -s tools -p 'test_warder_integrated_skin.py' -v
