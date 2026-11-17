@@ -11105,6 +11105,20 @@ class downloadMenu(Screen):
 	def iconPreviewManage(self):
 		tmp = ""
 		path = config.plugins.setupGlass17.par39.value
+		# Icon previews may contain thousands of files. Budget all PNG bytes
+		# before creating directories or copying anything to receiver storage.
+		try:
+			preview_bytes = 0
+			for root, dirs, names in os.walk("/tmp/more_icons"):
+				for name in names:
+					if name.lower().endswith(".png"):
+						preview_bytes += os.path.getsize(os.path.join(root, name))
+		except OSError:
+			preview_bytes = -1
+		if preview_bytes < 0 or not _warderStorageHasSpace(path, preview_bytes):
+			self.rmTmp()
+			self.dwnLoop(_("ERROR") + ": " + _("Sorry, too low free space"))
+			return
 		if not os.path.exists((path+"/more_icons/scr_prew")):
 			os.makedirs(path + "/more_icons/scr_prew", exist_ok=True)
 		numPict = 0
