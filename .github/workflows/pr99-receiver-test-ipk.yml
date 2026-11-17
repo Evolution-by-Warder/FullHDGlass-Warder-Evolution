@@ -1,11 +1,9 @@
 name: Build PR99 receiver test IPK (artifact only)
 
+# Receiver test IPK must only be built by an explicit manual dispatch.
+# Do not auto-build test IPKs on unrelated pull requests.
 on:
-  pull_request:
-    paths:
-      - '.github/workflows/pr99-receiver-test-ipk.yml'
-      - 'source/**'
-      - 'tools/**'
+  workflow_dispatch:
 
 permissions:
   contents: read
