@@ -37,13 +37,13 @@ class SkinMainMenuTests(unittest.TestCase):
     def test_active_skin_has_settings_in_mainmenu_even_when_special_info_off(self):
         menu, open_skin, _, names = self.register()
         self.assertEqual(menu("mainmenu"), [
-            ("Nastavenie skinu FullHDGlass", open_skin, "warder_fullhdglass_settings", 43)])
+            ("FullHDGlass Warder Evolution", open_skin, "warder_fullhdglass_settings", 43)])
         self.assertEqual(names, ["Configure the FullHDGlass skin"])
 
     def test_existing_special_info_entry_is_preserved(self):
         menu, open_skin, special_info, _ = self.register(special="w")
         self.assertEqual(menu("mainmenu"), [
-            ("Nastavenie skinu FullHDGlass", open_skin, "warder_fullhdglass_settings", 43),
+            ("FullHDGlass Warder Evolution", open_skin, "warder_fullhdglass_settings", 43),
             ("Weather (FullHDGlass)", special_info, "w", 44)])
 
     def test_special_info_user_toggle_does_not_hide_skin_settings(self):
