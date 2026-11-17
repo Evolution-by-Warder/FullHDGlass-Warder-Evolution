@@ -1,3 +1,21 @@
+## Queued follow-up — 2026-11-17: Warder skull spinner (next normal IPK only)
+
+Owner requested adding the newly prepared **24-frame transparent Warder skull spinner**
+to the FullHDGlass spinner selector **with the next normally authorized IPK**, not
+as a new package/release of its own. Approved source from the conversation:
+`wait_blink_transparent_100x100_clean.zip` (24 numbered RGBA PNG frames, each
+100×100; SHA-256 `ef19838ea62246ea2ea985959f9eeb417788d3023d40b91c8e5494457c645db6`).
+The file is attached in the ChatGPT conversation, **not yet committed to the repo**;
+retrieve the exact archive and stage it as a canonical spinner source before building.
+
+Follow `docs/SPINNERS.md` and the current theme registry/build workflow. Add
+this as a **third selectable** animation (proposed menu label: `Warder – lebka`),
+preserve existing Dove/Holubica and HDGlass - bakussa themes, the saved choice,
+user/system spinner priority, and the approved default. Check transparent edges,
+24-frame ordering and animation on-device, and run existing spinner regressions.
+**Do not change current runtime, package version, IPK, releases, or update feeds
+solely because of this note.** Tracking: #112.
+
 ## Queued follow-up — 2026-11-03: Radio Mode artwork lookup
 
 Owner requests reviewing the FullHDGlass Radio Mode artwork engine after the
