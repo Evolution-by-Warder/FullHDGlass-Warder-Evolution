@@ -342,10 +342,10 @@ msgid "Selected in Netatmo plugin"
 msgstr "Valitud Netatmo pluginas"
 
 msgid "IMDb"
-msgstr ""
+msgstr "IMDb"
 
 msgid "TMDb"
-msgstr ""
+msgstr "TMDb"
 
 msgid "Transparent"
 msgstr "Läbipaistvad"
@@ -453,10 +453,10 @@ msgid "On/Off icons"
 msgstr "Sisse/välja ikoonid"
 
 msgid "Service scan long list"
-msgstr ""
+msgstr "Teenuste otsingu pikk loend"
 
 msgid "Extended Number ZAP Picon Size"
-msgstr ""
+msgstr "Numbriga kanalivahetuse pikoni suurus"
 
 msgid "GUI will now be restarted to activate restored options:"
 msgstr "GUI taaskäivitatakse taastatud valikute aktiveerimiseks:"
@@ -465,7 +465,7 @@ msgid "GUI will now be restarted, updated files founded !!!"
 msgstr "GUI taaskäivitatakse, leiti uuendatud failid !!!"
 
 msgid "ECM and TP Status"
-msgstr ""
+msgstr "ECM-i ja transpondri olek"
 
 msgid "No data"
 msgstr "Pole andmeid"
@@ -552,7 +552,7 @@ msgid "INFOBAR"
 msgstr "Inforiba"
 
 msgid "POSTER"
-msgstr ""
+msgstr "PLAKAT"
 
 msgid "HDD/SSD"
 msgstr "HDD/SSD"
@@ -570,7 +570,7 @@ msgid "EPG SELECTION"
 msgstr "EPG VALIK"
 
 msgid "EVENT VIEW"
-msgstr ""
+msgstr "SAATE VAADE"
 
 msgid "SPECIAL INFO"
 msgstr "ERILINE INFO"
@@ -579,7 +579,7 @@ msgid "USER INFO"
 msgstr "KASUTAJA INFO"
 
 msgid "NETATMO"
-msgstr ""
+msgstr "NETATMO"
 
 msgid "OLED"
 msgstr "OLED"
@@ -603,7 +603,7 @@ msgid "LISTBOX FONT SIZE"
 msgstr "LISTBOX KIRJA SUURUS"
 
 msgid "ANIMATIONS"
-msgstr ""
+msgstr "ANIMATSIOONID"
 
 msgid "OTHER"
 msgstr "MUU"
@@ -621,16 +621,16 @@ msgid "Enable show address in ECM info"
 msgstr "Luba ECM infos aadressi näitamine"
 
 msgid "ECM info from current displayed channel only"
-msgstr ""
+msgstr "ECM-i teave ainult kuvatava kanali kohta"
 
 msgid "Display CW0/1 in Side bar"
-msgstr ""
+msgstr "Kuva CW0/1 külgribal"
 
 msgid "Show PID in ECM line"
-msgstr ""
+msgstr "Kuva PID ECM-i real"
 
 msgid "Show CHID in ECM line"
-msgstr ""
+msgstr "Kuva CHID ECM-i real"
 
 msgid "ECM line"
 msgstr "ECM rida"
@@ -645,7 +645,7 @@ msgid "Enable Enhanced Infobar"
 msgstr "Luba täiendatud inforiba"
 
 msgid "Vertical Offset"
-msgstr ""
+msgstr "Vertikaalnihe"
 
 msgid "Date format"
 msgstr "Kuupäeva formaat"
@@ -660,10 +660,10 @@ msgid "Animation speed (ms)"
 msgstr "Liikumise kiirus (ms)"
 
 msgid "Enable icon"
-msgstr ""
+msgstr "Luba ikoon"
 
 msgid "Enable icon of Unknown CAID"
-msgstr ""
+msgstr "Luba tundmatu CAID-i ikoon"
 
 msgid "Audio type of current track"
 msgstr "Hetke heliriba Audio tüüp"
@@ -672,13 +672,13 @@ msgid "Progressive/Interlace detection"
 msgstr "Järjestlaotuse/Ülerealaotuse avastamine"
 
 msgid "Tuner info"
-msgstr ""
+msgstr "Tuuneri teave"
 
 msgid "Hide SNR/AGC (Q/S) if value is 0"
-msgstr ""
+msgstr "Peida SNR/AGC (Q/S), kui väärtus on 0"
 
 msgid "CI info"
-msgstr ""
+msgstr "CI teave"
 
 msgid "Enable full bitrate info"
 msgstr "Luba täielik bitikiiruse info"
@@ -687,7 +687,7 @@ msgid "Bitrate auto stop limit"
 msgstr "Bitikiiruse auto stop piir"
 
 msgid "Enable eBitrateCalculator"
-msgstr ""
+msgstr "Luba eBitrateCalculator"
 
 msgid "Show Satellite position in TP info"
 msgstr "Näita Satelliidi positsiooni TP infos"
@@ -705,10 +705,10 @@ msgid "Temp. HDD/SSD"
 msgstr "Temp. HDD/SSD"
 
 msgid "Progress bar pixmap"
-msgstr ""
+msgstr "Edenemisriba pilt"
 
 msgid "Progress bar background pixmap"
-msgstr ""
+msgstr "Edenemisriba taustapilt"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
 msgstr "CPU/Mem, RPM/Temp, Provider"
@@ -741,10 +741,10 @@ msgid "Event next"
 msgstr "Järgmine sündmus"
 
 msgid "Progress bar foreground"
-msgstr ""
+msgstr "Edenemisriba esiplaan"
 
 msgid "Progress bar background"
-msgstr ""
+msgstr "Edenemisriba taust"
 
 msgid "Enable typewriting"
 msgstr "Luba tähekirjutamine"
@@ -771,19 +771,19 @@ msgid "Set Position"
 msgstr "Ümberpaigutus"
 
 msgid "Size"
-msgstr ""
+msgstr "Suurus"
 
 msgid "Search delay (s)"
-msgstr ""
+msgstr "Otsingu viivitus (s)"
 
 msgid "Erase poster cache"
-msgstr ""
+msgstr "Tühjenda plakatite vahemälu"
 
 msgid "Removing current Poster"
-msgstr ""
+msgstr "Praeguse plakati eemaldamine"
 
 msgid "Movieplayer infobar HDD/SSD state"
-msgstr ""
+msgstr "HDD/SSD olek videopleieri inforibal"
 
 msgid "Enable HDD/SSD power state check"
 msgstr "Luba HDD/SSD toite oleku kontroll"
@@ -798,7 +798,7 @@ msgid "IP Address"
 msgstr "IP aadress"
 
 msgid "Network speed"
-msgstr ""
+msgstr "Võrgu kiirus"
 
 msgid "Menu Icons"
 msgstr "Menüü ikoonid"
@@ -855,7 +855,7 @@ msgid "Station"
 msgstr "Jaam"
 
 msgid "Stations switch time"
-msgstr ""
+msgstr "Jaamade vahetamise intervall"
 
 msgid "Enable OLED off in standby"
 msgstr "Luba OLED väljalülitus ootel"
@@ -915,16 +915,16 @@ msgid "Enable next city in Weather"
 msgstr "Luba järgmine linn ilmateates"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "OpenWeatherMapi API-võti"
 
 msgid "Forecast for more days"
-msgstr ""
+msgstr "Pikem ilmaprognoos"
 
 msgid "More days switch time"
-msgstr ""
+msgstr "Lisapäevade vahetamise intervall"
 
 msgid "Show yesterday"
-msgstr ""
+msgstr "Kuva eilne päev"
 
 msgid "Find a city"
 msgstr "Leia linn"
@@ -933,7 +933,7 @@ msgid "Weather Icons"
 msgstr "Ilma ikoonid"
 
 msgid "State"
-msgstr ""
+msgstr "Olek"
 
 msgid "Warm"
 msgstr "Soe"
@@ -951,7 +951,7 @@ msgid "Picons/Icons path"
 msgstr "Piconite asukoht"
 
 msgid "FHDG Configuration file"
-msgstr ""
+msgstr "FHDG seadistusfail"
 
 msgid "Path to satellites.xml"
 msgstr "Tee satellites.xml failini"
@@ -975,37 +975,37 @@ msgid "Enable Animations"
 msgstr "Luba animatsioonid"
 
 msgid "(Infobar) Picon"
-msgstr ""
+msgstr "(Inforiba) Pikon"
 
 msgid "(Infobar) Second Picon"
-msgstr ""
+msgstr "(Inforiba) Teine pikon"
 
 msgid "(Infobar) Poster"
-msgstr ""
+msgstr "(Inforiba) Plakat"
 
 msgid "(Infobar) ECM line"
-msgstr ""
+msgstr "(Inforiba) ECM-i rida"
 
 msgid "(Infobar) TP info/type"
-msgstr ""
+msgstr "(Inforiba) Transpondri teave/tüüp"
 
 msgid "(Menu) Big Icons/Icons"
-msgstr ""
+msgstr "(Menüü) Suured ikoonid/ikoonid"
 
 msgid "(Channel selection) picon/Prov/Sat"
-msgstr ""
+msgstr "(Kanaliloend) Pikon/teenusepakkuja/satelliit"
 
 msgid "VTi SplitScreen"
-msgstr ""
+msgstr "VTi poolitatud ekraan"
 
 msgid "Reference separating char"
-msgstr ""
+msgstr "Viidete eraldusmärk"
 
 msgid "Ignore leading 0 in time"
 msgstr "Eira juhtivat 0 õigeaegselt"
 
 msgid "Ignore leading 0 in date"
-msgstr ""
+msgstr "Eira kuupäeva alguses olevat nulli"
 
 msgid "Calculation of channel numbers"
 msgstr "Kanalinumbrite arvutamine"
@@ -1032,7 +1032,7 @@ msgid "RadioScreenSaver"
 msgstr "RaadioEkraanisäästja"
 
 msgid "IPTV Radio Detection"
-msgstr ""
+msgstr "IPTV-raadio tuvastamine"
 
 msgid "Exit"
 msgstr "Välju"
@@ -1041,7 +1041,7 @@ msgid "now?"
 msgstr "nüüd?"
 
 msgid "Erase finished successfully!"
-msgstr ""
+msgstr "Kustutamine lõpetati edukalt!"
 
 msgid "Color Sample"
 msgstr "Color Sample"
@@ -1133,7 +1133,7 @@ msgid "HDD/SSD state"
 msgstr "HDD/SSD olek"
 
 msgid "10 days forecast"
-msgstr ""
+msgstr "10 päeva ilmaprognoos"
 
 msgid "Do you want restart GUI to activate the screen:"
 msgstr "Kas tahad taaskäivitada GUI ekraani aktiveerimiseks:"
@@ -1145,7 +1145,7 @@ msgid "Welcome in setup"
 msgstr "Tere seadistamisele"
 
 msgid "Wait for the file downloads to complete"
-msgstr ""
+msgstr "Oota failide allalaadimise lõppemist"
 
 msgid "Select"
 msgstr "Vali"
@@ -1154,7 +1154,7 @@ msgid "Cleaning Picons"
 msgstr "Piconite puhastamine"
 
 msgid "Start Download"
-msgstr ""
+msgstr "Alusta allalaadimist"
 
 msgid "picon white"
 msgstr "valge picon"
@@ -1166,13 +1166,13 @@ msgid "picon 400x240"
 msgstr "picon 400x240"
 
 msgid "picon 220x132"
-msgstr ""
+msgstr "Pikonid 220 × 132"
 
 msgid "piconProv 220x132"
-msgstr ""
+msgstr "Teenusepakkuja pikonid 220 × 132"
 
 msgid "piconSat 220x132"
-msgstr ""
+msgstr "Satelliidi pikonid 220 × 132"
 
 msgid "piconProv black"
 msgstr "must piconProv"
@@ -1184,7 +1184,7 @@ msgid "piconCam black"
 msgstr "must piconCam"
 
 msgid "piconWeather black"
-msgstr ""
+msgstr "Mustad ilmaikoonid"
 
 msgid "piconProv white"
 msgstr "valge piconProv"
@@ -1196,7 +1196,7 @@ msgid "piconCam white"
 msgstr "valge piconCam"
 
 msgid "piconWeather white"
-msgstr ""
+msgstr "Valged ilmaikoonid"
 
 msgid "picon OLED"
 msgstr "OLED picon"
@@ -1217,22 +1217,22 @@ msgid "Menu icons"
 msgstr "Menüü ikoonid"
 
 msgid "Weather icons"
-msgstr ""
+msgstr "Ilmaikoonid"
 
 msgid "Channelselection icons"
-msgstr ""
+msgstr "Kanaliloendi ikoonid"
 
 msgid "Result"
-msgstr ""
+msgstr "Tulemus"
 
 msgid "ERROR"
-msgstr ""
+msgstr "VIGA"
 
 msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
-msgstr ""
+msgstr "7zip puudub; selle saab alla laadida ALLALAADIMISE MENÜÜST"
 
 msgid "SUCCESSFUL"
-msgstr ""
+msgstr "ÕNNESTUS"
 
 msgid "Total:"
 msgstr "Kokku:"
@@ -1259,10 +1259,10 @@ msgid "file(s) from"
 msgstr "fail(id) saadud"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "URL-tööriistade laadimine ebaõnnestus"
 
 msgid "Internet connection failed"
-msgstr ""
+msgstr "Internetiühendus ebaõnnestus"
 
 msgid "Unknown error detected, try again!!!"
 msgstr "Leitud tundmatu viga, proovi uuesti!!!"
@@ -1307,7 +1307,7 @@ msgid "Edit"
 msgstr "Muuda"
 
 msgid "Picon path"
-msgstr ""
+msgstr "Pikonite asukoht"
 
 msgid "Choose Icons"
 msgstr "Vali ikoonid"
@@ -1443,15 +1443,15 @@ msgstr "Uuendamise viis"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Eraldusvõimet pole valitud"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Värvi pole valitud"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Uuendusviisi pole valitud"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
@@ -1475,19 +1475,19 @@ msgstr "MMC-mäluseade"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Pikonite juurkataloog"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Kasutaja määratud"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Kasutaja määratud..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – minipikonid"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1495,126 +1495,126 @@ msgstr "220 × 132 – Piconid"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – suured pikonid"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – suured ikoonid valitud kanaliloendi tüüpidele"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Sünkrooni telekanalite loenditega"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Sünkrooni tele- ja raadiokanalite loenditega"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Kopeeri kõik; asenda valitud positsioonide pikonid"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Kopeeri kõik; järkjärguline uuendamine"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Allalaadimise sihtkoht:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Vali kanaliloendi ikoonide suuruseks 50 × 30, 220 × 132, 400 × 240 või 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Vali, kuidas kanalipikoneid valitud positsioonide jaoks sünkroonida või kopeerida."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Enne allalaadimist vali eraldusvõime, värv, asukoht ja uuendusviis."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Kas luua pikonite kataloog?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Pikonite sihtkataloogi ei saa luua"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "Pikonite sihtkohta ei saa kirjutada"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Vali olemasolev kataloog."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Pikonite sihtkohta ei saa lugeda"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Valitud positsiooni aegunud pikoni eemaldamine ebaõnnestus"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Valitud positsioonide pikonite turvaline asendamine ebaõnnestus."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "valitud vastuvõtja teenusele ei leitud valitud pakettidest sobivat pikonit."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "%d pikon uuendati edukalt"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "%d pikonit uuendati edukalt"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "%d teenus valitud"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "%d teenust valitud"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Ühtegi pikonit ei laaditud alla."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "%d pikonit %d-st ei õnnestunud paigaldada"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "Valitud andmekandja pole ühendatud"
 
 msgid "Provider logos"
 msgstr "Teenusepakkujate logod"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "Teleplatvormide ja teenusepakkujate logod."
 
 msgid "Satellite logos"
 msgstr "Satelliitide logod"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Satelliitide logod ja graafilised tähised."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: uuendati %d pikonit; %d tõrget"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Kokku uuendati %d pikonit"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Tõrkeid: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "OSALISELT ÕNNESTUS"
 
 
 # Completed operation result dialog button.
