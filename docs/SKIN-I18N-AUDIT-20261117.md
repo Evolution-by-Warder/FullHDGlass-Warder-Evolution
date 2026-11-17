@@ -16,7 +16,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Nemecký (de) | 0 |
 | Španielsky (es) | 0 |
 | Estónsky (et) | 0 |
-| Perzský (fa) | 174 |
+| Perzský (fa) | 0 |
 | Francúzsky (fr) | 0 |
 | Maďarský (hu) | 0 |
 | Taliansky (it) | 0 |
@@ -27,7 +27,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Turecký (tr) | 0 |
 | Ukrajinský (uk) | 0 |
 
-**V 1 hlavnom katalógu zostáva 174 prázdnych položiek.** Angličtina (en) je zdrojová verzia.
+**Všetkých 20 hlavných prekladových katalógov má 0 prázdnych položiek; angličtina je zdrojový jazyk.** Angličtina (en) je zdrojová verzia.
 
 ## Gréčtina
 
@@ -45,10 +45,10 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 
 - Technický resolver pre 21 jazykov v štandardnom GNU gettext, bezpečný anglický fallback a zachovanie vypínača prekladov.
 - Nové katalógy .po/.mo pre gréčtinu a doplnené preklady pre ostatné jazyky.
-- Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny, holandčiny, španielčiny, taliančiny, estónčiny a poľštiny, portugalčiny, rumunčiny, ukrajinčiny, turečtiny, maďarčiny a albánčiny, nezmenené existujúce vyplnené hodnoty.
-- Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL/ES/IT/ET/PL/PT/RO/UK/TR/HU/AL) v `tools/test-warder-catalog-integrity.py`. Opravený chybný test, ktorý považoval hlavičku gettext `msgid ""` za nepreloženú frázu. Stav CI musí ešte potvrdiť nasledujúci beh GitHub Actions.
+- Nové hlavné preklady v 14 ďalších jazykoch vrátane úplného dokončenia nemčiny, francúzštiny, holandčiny, španielčiny, taliančiny, estónčiny a poľštiny, portugalčiny, rumunčiny, ukrajinčiny, turečtiny, maďarčiny, albánčiny a perzštiny, nezmenené existujúce vyplnené hodnoty.
+- Kontroly python3 syntaktiky, binárnych katalógov a regresné CI testy dokončených jazykov (DE/FR/NL/ES/IT/ET/PL/PT/RO/UK/TR/HU/AL/FA) v `tools/test-warder-catalog-integrity.py`. Opravený chybný test, ktorý považoval hlavičku gettext `msgid ""` za nepreloženú frázu. Stav CI musí ešte potvrdiť nasledujúci beh GitHub Actions.
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 ## Stále chýba
 
-Preklad zostávajúcich 174 položiek v ďalších 1 hlavnom katalógu (fa) a textov, úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
+Úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
