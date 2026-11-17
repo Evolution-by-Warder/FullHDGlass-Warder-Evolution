@@ -37,9 +37,9 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Nápoveda helpTxt | 150/150 |
 | Počasie weather | 108/108 |
 | Netatmo | 42/42 |
-| Historické eWeather | 345/2 117 |
+| Historické eWeather | 595/2 117 |
 
-**Grécke eWeather:** ďalších 200 meteorologických a používateľských fráz bolo preložených (spolu 345); zostáva 1 772 prázdnych položiek.
+**Grécke eWeather:** ďalších 250 skutočných meteorologických fráz bolo preložených (spolu 595); zostáva 1 522 prázdnych položiek.
 
 ## Čo je zapísané
 
