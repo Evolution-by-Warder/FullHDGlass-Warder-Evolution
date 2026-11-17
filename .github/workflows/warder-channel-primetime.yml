@@ -18,6 +18,7 @@ on:
       - 'tools/test_fastscan_epg_name_geometry.py'
       - 'tools/test_fastscan_epg_owner_sync.py'
       - 'tools/test_fastscan_epg_repaint_cache.py'
+      - 'tools/test_fastscan_epg_invisible_rows.py'
       - 'tools/stage-pr51-clip-candidate.py'
       - 'tools/test-setup-style.py'
       - 'tools/style-setup-screens.py'
@@ -110,4 +111,5 @@ jobs:
           python -m unittest discover -s tools -p 'test_fastscan_epg_name_geometry.py' -v
           python -m unittest discover -s tools -p 'test_fastscan_epg_owner_sync.py' -v
           python -m unittest discover -s tools -p 'test_fastscan_epg_repaint_cache.py' -v
+          python -m unittest discover -s tools -p 'test_fastscan_epg_invisible_rows.py' -v
           python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
