@@ -1123,7 +1123,7 @@ msgid "is incorrect, style will not be changed!!!"
 msgstr "neteisingas, stilius pakeistas nebus!!!"
 
 msgid "Save again to apply all setup changes without style change"
-msgstr ""
+msgstr "Išsaugokite dar kartą, kad pritaikytumėte nustatymus nekeisdami stiliaus"
 "Kad pritaikyti visus diegimo pakeitimus be stiliaus pasikeitimo, išsaugoti "
 "vėl"
 
@@ -1427,71 +1427,71 @@ msgstr "Didelės piktogramos pasirinktiems kanalų sąrašo tipams (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
-msgstr ""
+msgstr "Palydovinės pozicijos"
 
 # TEST196 Warder picon settings
 msgid "Picon resolution"
-msgstr ""
+msgstr "Pikonų raiška"
 
 # TEST196 Warder picon settings
 msgid "Picon colour"
-msgstr ""
+msgstr "Pikonų spalva"
 
 # TEST196 Warder picon settings
 msgid "Picon location"
-msgstr ""
+msgstr "Pikonų vieta"
 
 # TEST196 Warder picon settings
 msgid "Update method"
-msgstr ""
+msgstr "Atnaujinimo būdas"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Nepasirinkta raiška"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Nepasirinkta spalva"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Nepasirinktas atnaujinimo būdas"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
-msgstr ""
+msgstr "Imtuvo atmintis"
 
 # TEST196 Warder picon settings
 msgid "Hard disk"
-msgstr ""
+msgstr "Standusis diskas"
 
 # TEST196 Warder picon settings
 msgid "USB storage"
-msgstr ""
+msgstr "USB laikmena"
 
 # TEST196 Warder picon settings
 msgid "SD card"
-msgstr ""
+msgstr "SD kortelė"
 
 # TEST196 Warder picon settings
 msgid "MMC storage"
-msgstr ""
+msgstr "MMC laikmena"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Šakninis pikonų aplankas"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Pasirinktinis"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Pasirinktinis..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – mini pikonai"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1499,126 +1499,126 @@ msgstr "220 × 132 – Piktogramos"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – dideli pikonai"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – didelės piktogramos pasirinktiems kanalų sąrašo tipams"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "Sinchronizuoti su TV sąrašais"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "Sinchronizuoti su TV ir radijo sąrašais"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Kopijuoti viską; pakeisti pasirinktų pozicijų pikonus"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Kopijuoti viską; papildomas atnaujinimas"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "Atsisiuntimo vieta:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "Pasirinkite kanalų sąrašo piktogramas 50 × 30, 220 × 132, 400 × 240 arba 710 × 682."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Pasirinkite, kaip sinchronizuoti arba kopijuoti pasirinktų pozicijų kanalų pikonus."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "Prieš atsisiųsdami pasirinkite raišką, spalvą, vietą ir atnaujinimo būdą."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Sukurti pikonų aplanką?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Nepavyksta sukurti pikonų paskirties aplanko"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "Į pikonų paskirties aplanką negalima įrašyti"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Pasirinkite esamą aplanką."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Nepavyksta nuskaityti pikonų paskirties aplanko"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Nepavyko pašalinti pasenusio pasirinktos pozicijos pikono"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Nepavyko saugiai pakeisti pasirinktų pozicijų pikonų."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "pasirinktoms imtuvo paslaugoms pasirinktuose paketuose nėra tinkamų pikonų."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "Sėkmingai atnaujintas %d pikonas"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "Sėkmingai atnaujinta %d pikonų"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "Pasirinkta %d paslauga"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "Pasirinkta %d paslaugų"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Nebuvo atsisiųsta pikonų."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "Nepavyko įdiegti %d iš %d pikonų"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "Pasirinkta laikmena neprijungta"
 
 msgid "Provider logos"
 msgstr "Teikėjų logotipai"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "TV platformų ir paslaugų teikėjų logotipai."
 
 msgid "Satellite logos"
 msgstr "Palydovų logotipai"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Palydovų logotipai ir grafiniai identifikatoriai."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: atnaujinta %d pikonų; klaidų: %d"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Iš viso atnaujinta pikonų: %d"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Klaidų: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "DALINĖ SĖKMĖ"
 
 
 # Completed operation result dialog button.
