@@ -57,7 +57,7 @@ class CatalogIntegrity(unittest.TestCase):
             'netatmo': ('Wind Strength', 'Ένταση ανέμου'),
             'helpTxt': ('Temperature will be displayed in Celsius',
                         'Η θερμοκρασία εμφανίζεται σε βαθμούς Κελσίου'),
-            'eWeather': ('Rain', 'Βροχή'),
+            'eWeather': ('Add City', 'Προσθήκη πόλης'),
         }
         for domain, (source, translated) in samples.items():
             with self.subTest(domain=domain):
