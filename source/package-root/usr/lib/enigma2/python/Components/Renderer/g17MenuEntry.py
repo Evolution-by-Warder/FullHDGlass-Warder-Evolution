@@ -57,25 +57,14 @@ class g17MenuEntry(Renderer):
 					Writelog(self.source.entryName + '.png')
 					if not fileExists(pixpath):
 						pixpath = "/usr/share/enigma2/hd_glass17/menu/undefined.png"
-				# Warder plugin icons are provided by the approved big-menu set.
-				# Only fall back to these icons when the selected small icon is absent.
-				if pixpath.endswith("/undefined.png"):
-					warder_ids = {
-						"glass_sys_utils": "warder_gsu",
-						"warder_radio_mainmenu": "warder_radio",
-						"warder_youtube_mainmenu": "warder_youtube",
-						"FHD_Glass17_Setup": "warder_skin",
-						"warder_piconhub_mainmenu": "warder_piconhub",
-					}
-					icon_id = str(self.source.entryName)
-					if icon_id in warder_ids:
-						big_root = config.plugins.setupGlass17.par39.value + '/menuIconsBig/'
-						for candidate in (icon_id, warder_ids[icon_id]):
-							candidate_path = big_root + candidate + '.png'
-							if fileExists(candidate_path):
-								pixpath = candidate_path
-								break
-			except: pass
+				# Exact Enigma2 IDs only; no speculative aliases in the downloaded archive.
+			if pixpath.endswith("/undefined.png"):
+				entry_id = str(self.source.entryName)
+				if entry_id in ("glass_sys_utils", "warder_radio_mainmenu", "warder_youtube_mainmenu", "FHD_Glass17_Setup"):
+					candidate_path = config.plugins.setupGlass17.par39.value + '/menuIconsBig/' + entry_id + '.png'
+					if fileExists(candidate_path):
+						pixpath = candidate_path
+			
 			if self.__last != pixpath:
 				self.__last = pixpath
 				self.instance.setPixmapFromFile(pixpath)					
