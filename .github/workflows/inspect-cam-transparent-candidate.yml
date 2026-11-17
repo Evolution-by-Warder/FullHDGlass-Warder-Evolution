@@ -38,6 +38,8 @@ jobs:
                       path.write_bytes(archive.read(name))
               print(style,len(names))
           (out/'report.json').write_text(json.dumps(stats,indent=2))
+          for style in ('black','white'):
+              shutil.copyfile(root/style/'piconCam.zip',out/(style+'-piconCam.zip'))
           PY
       - uses: actions/upload-artifact@v4
         with:
