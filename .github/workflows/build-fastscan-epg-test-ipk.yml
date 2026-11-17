@@ -5,6 +5,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
       - 'tools/test_fastscan_epg_name_geometry.py'
       - 'tools/test_fastscan_epg_owner_sync.py'
+      - 'tools/test_fastscan_epg_repaint_cache.py'
       - '.github/workflows/build-fastscan-epg-test-ipk.yml'
   workflow_dispatch:
 permissions:
@@ -23,6 +24,7 @@ jobs:
             tools/sync_header_version.py
             tools/test_fastscan_epg_name_geometry.py
             tools/test_fastscan_epg_owner_sync.py
+            tools/test_fastscan_epg_repaint_cache.py
             tools/test_warder_channel_epg_clip.py
           sparse-checkout-cone-mode: true
       - uses: actions/setup-python@v5
@@ -33,6 +35,7 @@ jobs:
           set -euo pipefail
           python3 tools/test_fastscan_epg_name_geometry.py -q
           python3 tools/test_fastscan_epg_owner_sync.py -q
+          python3 tools/test_fastscan_epg_repaint_cache.py -q
           python3 tools/test_warder_channel_epg_clip.py -q
       - name: Stage isolated version without modifying committed production
         run: |
@@ -44,8 +47,8 @@ jobs:
           assert runtime.read_text().strip() == '1.0.80'
           text=meta.read_text()
           assert text.count('Version: 1.0.80-1\n') == 1
-          runtime.write_text('1.0.81-test2\n')
-          meta.write_text(text.replace('Version: 1.0.80-1\n', 'Version: 1.0.81-test2-1\n'))
+          runtime.write_text('1.0.81-test3\n')
+          meta.write_text(text.replace('Version: 1.0.80-1\n', 'Version: 1.0.81-test3-1\n'))
           PY
           python3 tools/sync_header_version.py
           python3 tools/sync_header_version.py --check
@@ -61,8 +64,8 @@ jobs:
           spec.loader.exec_module(builder)
           source=root/'source/package-root'
           control=root/'source/control'
-          assert (source/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()=='1.0.81-test2'
-          assert 'Version: 1.0.81-test2-1\n' in (control/'control').read_text()
+          assert (source/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()=='1.0.81-test3'
+          assert 'Version: 1.0.81-test3-1\n' in (control/'control').read_text()
           renderer=source/'usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
           code=renderer.read_text()
           assert 'reference_name = ref.getName() or ""' in code
@@ -72,7 +75,7 @@ jobs:
           assert "name_width = max(name_width, native_column)" in code
           for name in ('preinst','postinst','postrm'):
               assert (control/name).is_file()
-          output=root/'packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test2_all.ipk'
+          output=root/'packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test3_all.ipk'
           output.parent.mkdir(parents=True,exist_ok=True)
           with tempfile.TemporaryDirectory() as folder:
               tmp=Path(folder)
@@ -85,15 +88,15 @@ jobs:
           checksum.write_text(sha+'  '+output.name+'\n')
           print('TEST IPK',output.name, 'bytes',output.stat().st_size,'sha256',sha)
           PY
-          test "$(ar t packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test2_all.ipk | paste -sd' ' -)" = "debian-binary control.tar.gz data.tar.gz"
-          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.81-test2_all.ipk.sha256)
-          ! grep -q 'Version: 1.0.80-1' <(ar p packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test2_all.ipk control.tar.gz | tar -xzO ./control)
+          test "$(ar t packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test3_all.ipk | paste -sd' ' -)" = "debian-binary control.tar.gz data.tar.gz"
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.81-test3_all.ipk.sha256)
+          ! grep -q 'Version: 1.0.80-1' <(ar p packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test3_all.ipk control.tar.gz | tar -xzO ./control)
       - name: Upload isolated TEST IPK (not a release)
         uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.81-test2-FastScan-EPG
+          name: FullHDGlass-1.0.81-test3-FastScan-EPG
           path: |
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test2_all.ipk
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test2_all.ipk.sha256
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test3_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.81-test3_all.ipk.sha256
           if-no-files-found: error
           retention-days: 14
