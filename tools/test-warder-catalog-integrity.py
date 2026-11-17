@@ -7,7 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1] / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale'
 LANGS = ('al', 'cs', 'de', 'el', 'es', 'et', 'fa', 'fr', 'hu', 'it',
          'lt', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'tr', 'uk', 'zh')
-COMPLETE_MAIN = ('cs', 'de', 'el', 'es', 'et', 'fr', 'it', 'lt', 'nl', 'ru', 'sk', 'zh')
+COMPLETE_MAIN = ('cs', 'de', 'el', 'es', 'et', 'fr', 'it', 'lt', 'nl', 'pl', 'ru', 'sk', 'zh')
 
 
 class CatalogIntegrity(unittest.TestCase):
