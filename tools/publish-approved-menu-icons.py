@@ -14,8 +14,8 @@ OUT = ROOT / "assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/F
 PREFIX = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-20261117/"
 BASE_HASH = "83f65a74001189e0febdd8ed988f3d607782ac36ca0d49b9dfc2890c9fddb3c1"
 ALIASES = {
-    "warder_gsu": ["warder_gsu", "glass_sys_utils", "GSU_Warder_Evolution"],
-    "warder_piconhub": ["warder_piconhub", "PiconHub_Warder_Evolution"],
+    "warder_gsu": ["warder_gsu", "glass_sys_utils", "GSU_Warder_Evolution", "GSU"],
+    "warder_piconhub": ["warder_piconhub", "PiconHub_Warder_Evolution", "PiconHub"],
     "warder_radio": ["warder_radio", "warder_radio_mainmenu", "Radio_Warder_Evolution", "radio_warder_evolution"],
     "warder_youtube": ["warder_youtube", "warder_youtube_mainmenu", "YouTube_Warder_Evolution", "youtube_warder_evolution"],
     "warder_skin": ["warder_skin", "FHD_Glass17_Setup"],
