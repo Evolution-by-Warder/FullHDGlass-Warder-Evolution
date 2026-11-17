@@ -159,6 +159,11 @@ class WarderChannelEpgClip(Renderer):
             pass
 
     def applySkin(self, desktop, parent):
+        # Bind to the ChannelSelection screen that actually owns this canvas.
+        # The global InfoBar servicelist can point at a different list when
+        # another bouquet/window is opened (notably after FastScan). Using
+        # global rows silently draws the wrong programme on the wrong station.
+        self._warder_owner_screen = parent
         # Private, per-overlay receiver QA flags must never be forwarded to
         # generic Enigma2 skin attribute processing as unknown properties.
         passthrough = []
@@ -238,9 +243,14 @@ class WarderChannelEpgClip(Renderer):
         self._component = None
 
     def _find_component(self):
+        # Never use InfoBar.instance.servicelist here. It is not guaranteed
+        # to be the ChannelSelection that owns this renderer. If the owning
+        # screen is unavailable, preserve native EPG instead of mixing rows.
+        screen = getattr(self, "_warder_owner_screen", None)
+        if screen is None:
+            self._diag("no_owning_channel_screen")
+            return None
         try:
-            from Screens.InfoBar import InfoBar
-            screen = InfoBar.instance.servicelist
             component = screen["list"]
             if not hasattr(component, "ServiceInfoFont"):
                 self._diag("no_service_info_font")
@@ -346,6 +356,23 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
+        # The native list controls the actual row order. Reject mismatched
+        # indices (e.g. while FastScan replaces a bouquet) rather than paint
+        # programme text over unrelated rows. Test mocks without getCurrent
+        # continue exercising geometry, but native ServiceList has this API.
+        if selected < 0 or selected >= len(rows):
+            self._diag("native_selected_index_invalid")
+            return False
+        current_ref = getattr(component, "getCurrent", None)
+        if callable(current_ref):
+            try:
+                current = current_ref()
+                if not current or current.toString() != rows[selected].toString():
+                    self._diag("native_selected_service_mismatch")
+                    return False
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                self._diag("native_selected_service_unknown")
+                return False
         if getattr(self, '_perf_last_row', None) is not None and selected != self._perf_last_row:
             self._perf_row_changes = getattr(self, '_perf_row_changes', 0) + 1
         self._perf_last_row = selected
