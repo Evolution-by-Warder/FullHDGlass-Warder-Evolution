@@ -27,19 +27,47 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Turecký (tr) | 0 |
 | Ukrajinský (uk) | 0 |
 
-**Všetkých 20 hlavných prekladových katalógov má 0 prázdnych položiek; angličtina je zdrojový jazyk.** Angličtina (en) je zdrojová verzia.
+**Hlavné nastavenia: všetkých 20 prekladových katalógov obsahuje 517/517 správ podľa slovenského referenčného inventára a 0 prázdnych `msgstr`; angličtina je zdrojový jazyk.** V 17 jazykoch bol doplnený doteraz chýbajúci kľúč `FastScan tables selected`.
 
 ## Gréčtina
 
 | Oblasť | Preložené |
 |---|---:|
-| Nastavenia setupGlass17 | 515/515 |
-| Nápoveda helpTxt | 150/150 |
+| Nastavenia setupGlass17 | 517/517 |
+| Nápoveda helpTxt | 150/189 |
 | Počasie weather | 108/108 |
 | Netatmo | 42/42 |
 | Historické eWeather | 595/2 117 |
 
 **Grécke eWeather:** ďalších 250 skutočných meteorologických fráz bolo preložených (spolu 595); zostáva 1 522 prázdnych položiek.
+
+## Inventár vedľajších katalógov
+Údaje sú **prítomné preložené kľúče / referenčný počet**: nápoveda 189, počasie 108, Netatmo 42 a rozšírené počasie eWeather 2 117. Znak **—** znamená, že pre daný jazyk úplne chýba samostatný katalóg `.po`; nie je to dokončený preklad. Kontrola sa týka súborov pracovnej vetvy a nenahrádza jazykovú ani fyzickú validáciu.
+
+| Jazyk | helpTxt | weather | netatmo | eWeather |
+|---|---:|---:|---:|---:|
+| al | — | — | — | — |
+| cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
+| de | — | 108/108 | — | — |
+| el | 150/189 | 108/108 | 42/42 | 595/2117 |
+| es | — | — | — | — |
+| et | — | 108/108 | — | 96/2117 |
+| fa | — | — | — | — |
+| fr | — | 108/108 | — | — |
+| hu | — | 108/108 | — | — |
+| it | — | — | — | — |
+| lt | 189/189 | 108/108 | — | 2117/2117 |
+| nl | — | 108/108 | — | — |
+| pl | — | 108/108 | — | — |
+| pt | — | — | — | — |
+| ro | — | 108/108 | — | — |
+| ru | 189/189 | 108/108 | — | — |
+| sk | 189/189 | 108/108 | 42/42 | 2117/2117 |
+| tr | — | — | — | — |
+| uk | — | 108/108 | — | — |
+| zh | 189/189 | 108/108 | — | — |
+
+Pri gréčtine je okrem **1 522 nepreložených fráz eWeather** ďalších **39 neprítomných kľúčov v helpTxt**. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
 
 ## Čo je zapísané
 
@@ -51,4 +79,4 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 
 ## Stále chýba
 
-Úplné pokrytie nápovied a rozšíreného počasia, kontrola kontextu i jazykovej kvality a fyzický test na OpenATV/OpenPLi.
+Doplniť chýbajúce jazykové katalógy podľa tabuľky, chýbajúcich 39 gréckych helpTxt kľúčov, 2 021 estónskych eWeather kľúčov a 1 522 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.

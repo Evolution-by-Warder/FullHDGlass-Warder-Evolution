@@ -1625,3 +1625,7 @@ msgstr "Закрити"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Резерв %d/%d; безпечний шар %d/%d; помилки %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "Вибрано таблиці FastScan"

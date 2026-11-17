@@ -25,6 +25,207 @@ class CatalogIntegrity(unittest.TestCase):
     def test_completed_main_po_files_contain_no_empty_translations(self):
         # Count only real messages, not the multi-line gettext metadata header.
         pattern = re.compile(r'^msgid "((?:\\.|[^"\\])*)"\nmsgstr ""$', re.MULTILINE)
+        reference = ROOT / 'sk' / 'LC_MESSAGES' / 'setupGlass17.po'
+        canonical_ids = set(re.findall(r'^msgid "(.+)"
+                source = path.read_text(encoding='utf-8')
+                # Empty msgid is the gettext metadata header, not a real message.
+                untranslated = [msgid for msgid in pattern.findall(source) if msgid]
+                self.assertEqual([], untranslated,
+                                 'Untranslated entries in %s: %r' % (lang, untranslated[:5]))
+                actual_ids = set(re.findall(r'^msgid "(.+)"
+
+    def test_completed_new_language_messages_load_correctly(self):
+        samples = {
+            'de': ('Standard Infobar type', 'Typ der Standard-Infobar'),
+            'fr': ('Root picon directory', 'Répertoire racine des picons'),
+            'nl': ('Root picon directory', 'Hoofdmap voor picons'),
+            'es': ('Root picon directory', 'Directorio raíz de picons'),
+            'it': ('Root picon directory', 'Cartella principale dei picon'),
+            'et': ('Root picon directory', 'Pikonite juurkataloog'),
+            'pt': ('Root picon directory', 'Pasta raiz dos picons'),
+            'ro': ('Root picon directory', 'Directorul rădăcină pentru piconuri'),
+            'uk': ('Root picon directory', 'Коренева тека піктограм каналів'),
+            'tr': ('Root picon directory', 'Picon ana dizini'),
+            'hu': ('Root picon directory', 'Piconok gyökérkönyvtára'),
+            'al': ('Root picon directory', 'Dosja rrënjë e pikoneve'),
+            'fa': ('Root picon directory', 'پوشهٔ اصلی پیکون‌ها'),
+        }
+        for lang, (source, expected) in samples.items():
+            with self.subTest(language=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo'
+                with path.open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), expected)
+
+    def test_greek_all_five_domains_and_known_messages(self):
+        samples = {
+            'setupGlass17': ('Satellite positions', 'Δορυφορικές θέσεις'),
+            'weather': ('Heavy rain', 'Ισχυρή βροχή'),
+            'netatmo': ('Wind Strength', 'Ένταση ανέμου'),
+            'helpTxt': ('Temperature will be displayed in Celsius',
+                        'Η θερμοκρασία εμφανίζεται σε βαθμούς Κελσίου'),
+            'eWeather': ('Add City', 'Προσθήκη πόλης'),
+        }
+        for domain, (source, translated) in samples.items():
+            with self.subTest(domain=domain):
+                with (ROOT / 'el' / 'LC_MESSAGES' / (domain + '.mo')).open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), translated)
+
+    def test_recent_translations_survive_rebuild(self):
+        examples = {
+            'cs': ('Satellite positions', 'Satelitní pozice'),
+            'ru': ('Satellite positions', 'Спутниковые позиции'),
+            'lt': ('Satellite positions', 'Palydovinės pozicijos'),
+            'zh': ('Satellite positions', '卫星轨位'),
+            'de': ('Satellite positions', 'Satellitenpositionen'),
+            'fr': ('Satellite positions', 'Positions satellites'),
+            'al': ('Satellite positions', 'Pozicionet satelitore'),
+            'tr': ('Satellite positions', 'Uydu konumları'),
+            'uk': ('Satellite positions', 'Супутникові позиції'),
+        }
+        for lang, (source, translated) in examples.items():
+            with self.subTest(language=lang):
+                with (ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo').open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), translated)
+
+
+if __name__ == '__main__':
+    unittest.main()
+, reference.read_text(encoding='utf-8'), re.MULTILINE))
+        for lang in COMPLETE_MAIN:
+            with self.subTest(language=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
+                source = path.read_text(encoding='utf-8')
+                # Empty msgid is the gettext metadata header, not a real message.
+                untranslated = [msgid for msgid in pattern.findall(source) if msgid]
+                self.assertEqual([], untranslated,
+                                 'Untranslated entries in %s: %r' % (lang, untranslated[:5]))
+
+    def test_completed_new_language_messages_load_correctly(self):
+        samples = {
+            'de': ('Standard Infobar type', 'Typ der Standard-Infobar'),
+            'fr': ('Root picon directory', 'Répertoire racine des picons'),
+            'nl': ('Root picon directory', 'Hoofdmap voor picons'),
+            'es': ('Root picon directory', 'Directorio raíz de picons'),
+            'it': ('Root picon directory', 'Cartella principale dei picon'),
+            'et': ('Root picon directory', 'Pikonite juurkataloog'),
+            'pt': ('Root picon directory', 'Pasta raiz dos picons'),
+            'ro': ('Root picon directory', 'Directorul rădăcină pentru piconuri'),
+            'uk': ('Root picon directory', 'Коренева тека піктограм каналів'),
+            'tr': ('Root picon directory', 'Picon ana dizini'),
+            'hu': ('Root picon directory', 'Piconok gyökérkönyvtára'),
+            'al': ('Root picon directory', 'Dosja rrënjë e pikoneve'),
+            'fa': ('Root picon directory', 'پوشهٔ اصلی پیکون‌ها'),
+        }
+        for lang, (source, expected) in samples.items():
+            with self.subTest(language=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo'
+                with path.open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), expected)
+
+    def test_greek_all_five_domains_and_known_messages(self):
+        samples = {
+            'setupGlass17': ('Satellite positions', 'Δορυφορικές θέσεις'),
+            'weather': ('Heavy rain', 'Ισχυρή βροχή'),
+            'netatmo': ('Wind Strength', 'Ένταση ανέμου'),
+            'helpTxt': ('Temperature will be displayed in Celsius',
+                        'Η θερμοκρασία εμφανίζεται σε βαθμούς Κελσίου'),
+            'eWeather': ('Add City', 'Προσθήκη πόλης'),
+        }
+        for domain, (source, translated) in samples.items():
+            with self.subTest(domain=domain):
+                with (ROOT / 'el' / 'LC_MESSAGES' / (domain + '.mo')).open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), translated)
+
+    def test_recent_translations_survive_rebuild(self):
+        examples = {
+            'cs': ('Satellite positions', 'Satelitní pozice'),
+            'ru': ('Satellite positions', 'Спутниковые позиции'),
+            'lt': ('Satellite positions', 'Palydovinės pozicijos'),
+            'zh': ('Satellite positions', '卫星轨位'),
+            'de': ('Satellite positions', 'Satellitenpositionen'),
+            'fr': ('Satellite positions', 'Positions satellites'),
+            'al': ('Satellite positions', 'Pozicionet satelitore'),
+            'tr': ('Satellite positions', 'Uydu konumları'),
+            'uk': ('Satellite positions', 'Супутникові позиції'),
+        }
+        for lang, (source, translated) in examples.items():
+            with self.subTest(language=lang):
+                with (ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo').open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), translated)
+
+
+if __name__ == '__main__':
+    unittest.main()
+, source, re.MULTILINE))
+                self.assertEqual(canonical_ids, actual_ids,
+                                 'Missing/extra setup keys for %s' % lang)
+
+    def test_completed_new_language_messages_load_correctly(self):
+        samples = {
+            'de': ('Standard Infobar type', 'Typ der Standard-Infobar'),
+            'fr': ('Root picon directory', 'Répertoire racine des picons'),
+            'nl': ('Root picon directory', 'Hoofdmap voor picons'),
+            'es': ('Root picon directory', 'Directorio raíz de picons'),
+            'it': ('Root picon directory', 'Cartella principale dei picon'),
+            'et': ('Root picon directory', 'Pikonite juurkataloog'),
+            'pt': ('Root picon directory', 'Pasta raiz dos picons'),
+            'ro': ('Root picon directory', 'Directorul rădăcină pentru piconuri'),
+            'uk': ('Root picon directory', 'Коренева тека піктограм каналів'),
+            'tr': ('Root picon directory', 'Picon ana dizini'),
+            'hu': ('Root picon directory', 'Piconok gyökérkönyvtára'),
+            'al': ('Root picon directory', 'Dosja rrënjë e pikoneve'),
+            'fa': ('Root picon directory', 'پوشهٔ اصلی پیکون‌ها'),
+        }
+        for lang, (source, expected) in samples.items():
+            with self.subTest(language=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo'
+                with path.open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), expected)
+
+    def test_greek_all_five_domains_and_known_messages(self):
+        samples = {
+            'setupGlass17': ('Satellite positions', 'Δορυφορικές θέσεις'),
+            'weather': ('Heavy rain', 'Ισχυρή βροχή'),
+            'netatmo': ('Wind Strength', 'Ένταση ανέμου'),
+            'helpTxt': ('Temperature will be displayed in Celsius',
+                        'Η θερμοκρασία εμφανίζεται σε βαθμούς Κελσίου'),
+            'eWeather': ('Add City', 'Προσθήκη πόλης'),
+        }
+        for domain, (source, translated) in samples.items():
+            with self.subTest(domain=domain):
+                with (ROOT / 'el' / 'LC_MESSAGES' / (domain + '.mo')).open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), translated)
+
+    def test_recent_translations_survive_rebuild(self):
+        examples = {
+            'cs': ('Satellite positions', 'Satelitní pozice'),
+            'ru': ('Satellite positions', 'Спутниковые позиции'),
+            'lt': ('Satellite positions', 'Palydovinės pozicijos'),
+            'zh': ('Satellite positions', '卫星轨位'),
+            'de': ('Satellite positions', 'Satellitenpositionen'),
+            'fr': ('Satellite positions', 'Positions satellites'),
+            'al': ('Satellite positions', 'Pozicionet satelitore'),
+            'tr': ('Satellite positions', 'Uydu konumları'),
+            'uk': ('Satellite positions', 'Супутникові позиції'),
+        }
+        for lang, (source, translated) in examples.items():
+            with self.subTest(language=lang):
+                with (ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.mo').open('rb') as f:
+                    catalog = gettext.GNUTranslations(f)
+                self.assertEqual(catalog.gettext(source), translated)
+
+
+if __name__ == '__main__':
+    unittest.main()
+, reference.read_text(encoding='utf-8'), re.MULTILINE))
         for lang in COMPLETE_MAIN:
             with self.subTest(language=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'

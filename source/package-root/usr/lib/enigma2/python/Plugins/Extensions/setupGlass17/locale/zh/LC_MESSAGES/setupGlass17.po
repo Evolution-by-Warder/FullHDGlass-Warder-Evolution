@@ -1666,3 +1666,7 @@ msgstr "关闭"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "回退 %d/%d；安全覆盖层 %d/%d；错误 %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "已选择 FastScan 表"
