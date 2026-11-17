@@ -159,6 +159,11 @@ class WarderChannelEpgClip(Renderer):
             pass
 
     def applySkin(self, desktop, parent):
+        # Bind to the ChannelSelection screen that actually owns this canvas.
+        # The global InfoBar servicelist can point at a different list when
+        # another bouquet/window is opened (notably after FastScan). Using
+        # global rows silently draws the wrong programme on the wrong station.
+        self._warder_owner_screen = parent
         # Private, per-overlay receiver QA flags must never be forwarded to
         # generic Enigma2 skin attribute processing as unknown properties.
         passthrough = []
@@ -238,9 +243,14 @@ class WarderChannelEpgClip(Renderer):
         self._component = None
 
     def _find_component(self):
+        # Never use InfoBar.instance.servicelist here. It is not guaranteed
+        # to be the ChannelSelection that owns this renderer. If the owning
+        # screen is unavailable, preserve native EPG instead of mixing rows.
+        screen = getattr(self, "_warder_owner_screen", None)
+        if screen is None:
+            self._diag("no_owning_channel_screen")
+            return None
         try:
-            from Screens.InfoBar import InfoBar
-            screen = InfoBar.instance.servicelist
             component = screen["list"]
             if not hasattr(component, "ServiceInfoFont"):
                 self._diag("no_service_info_font")
@@ -337,26 +347,81 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_progress_mode_fallback")
             return False
         from enigma import eServiceCenter
-        rows = component.getList()
-        if rows is None:
+        raw_rows = component.getList()
+        if raw_rows is None:
             self._diag("native_rows_none")
             return False
+        # OpenATV eListboxServiceContent::getList() returns the RAW bouquet,
+        # including invisible services (flag 512) and numbered markers
+        # (flag 256). Its native cursorMove/size/cursorResolve, however,
+        # exclude invisible services and hide numbered markers when enabled.
+        # getTopIndex/getCurrentIndex are therefore VISIBLE-row indexes.
+        # Using raw_rows[top + row] caused an exact one-row EPG displacement
+        # after a hidden FastScan item, then incorrect event/name pairing.
+        try:
+            hide_numbered = bool(config.usage.hide_number_markers.value)
+        except (AttributeError, TypeError, ValueError):
+            hide_numbered = False
+        if hide_numbered and any(int(getattr(ref, "flags", 0)) & 256
+                                 for ref in raw_rows):
+            # In native marked/edit mode numbered markers become visible.
+            # Fail closed if edit-mode visibility cannot be determined.
+            marked_getter = getattr(component, "getMarked", None)
+            if not callable(marked_getter):
+                self._diag("native_marker_visibility_unknown")
+                return False
+            try:
+                hide_numbered = not bool(marked_getter())
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                self._diag("native_marker_visibility_error")
+                return False
+        rows = [ref for ref in raw_rows
+                if not (int(getattr(ref, "flags", 0)) & 512)
+                and not (hide_numbered and (int(getattr(ref, "flags", 0)) & 256))]
         top = component.instance.getTopIndex()
         if top < 0:
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
+        # The native list controls the actual row order. Reject mismatched
+        # indices (e.g. while FastScan replaces a bouquet) rather than paint
+        # programme text over unrelated rows. Test mocks without getCurrent
+        # continue exercising geometry, but native ServiceList has this API.
+        if selected < 0 or selected >= len(rows):
+            self._diag("native_selected_index_invalid")
+            return False
+        current_ref = getattr(component, "getCurrent", None)
+        if callable(current_ref):
+            try:
+                current = current_ref()
+                if not current or current.toString() != rows[selected].toString():
+                    self._diag("native_selected_service_mismatch")
+                    return False
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                self._diag("native_selected_service_unknown")
+                return False
         if getattr(self, '_perf_last_row', None) is not None and selected != self._perf_last_row:
             self._perf_row_changes = getattr(self, '_perf_row_changes', 0) + 1
         self._perf_last_row = selected
-        # A new focused service starts its own scroll at the beginning.
-        if (selected != getattr(self, "_scroll_selected", None)
-                or mode != getattr(self, "_scroll_mode", None)):
+        # Native ServiceList can recalculate text cells when focus moves,
+        # FastScan replaces a bouquet or the visible page changes. Cached
+        # EPG x-coordinates from the preceding paint may then overlap names.
+        selection_changed = (selected != getattr(self, "_scroll_selected", None)
+                             or mode != getattr(self, "_scroll_mode", None))
+        page_changed = top != getattr(self, "_last_visible_top", None)
+        if selection_changed or page_changed:
+            self._last_visible_top = top
+            if hasattr(self, "_row_fit_cache"):
+                self._row_fit_cache.clear()
+            if hasattr(self, "_glyph_width_cache"):
+                self._glyph_width_cache.clear()
+            self._row_geometry_key = None
+            self._last = None
+        if selection_changed:
             self._scroll_selected = selected
             self._scroll_mode = mode
             self._scroll_identity = None
             self._scroll_started = time()
-            self._last = None
         width = component.instance.size().width()
         height = component.instance.size().height()
         row_height = int(component.ItemHeight)
@@ -398,6 +463,20 @@ class WarderChannelEpgClip(Renderer):
             return False
         font = component.ServiceInfoFont
         name_font = component.ServiceNameFont
+        # ServiceList C++ paints a bouquet's own display name, which can
+        # differ from eServiceCenter.info(ref).getName(ref) (notably FastScan).
+        # Match its font measurement instead of trusting a hidden eLabel's
+        # calculateSize() alone; an underestimated name moves the red EPG
+        # directly on top of the yellow native channel title.
+        try:
+            from enigma import eLabel as NativeLabel, eSize as NativeSize
+            native_measure = NativeLabel.calculateTextSize
+        except (ImportError, AttributeError):
+            native_measure = None
+        try:
+            native_column = int(config.usage.servicelist_column.value)
+        except (AttributeError, TypeError, ValueError):
+            native_column = -1
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
         # Invalidate geometrical measurements whenever a style/geometry
@@ -406,7 +485,7 @@ class WarderChannelEpgClip(Renderer):
                         int(component.listMarginLeft), int(component.itemsDistances),
                         str(config.usage.servicelist_picon_downsize.value),
                         str(config.usage.servicelist_picon_ratio.value),
-                        id(font), id(name_font))
+                        native_column, id(font), id(name_font))
         if getattr(self, '_row_geometry_key', None) != geometry_key:
             if hasattr(self, '_row_fit_cache'):
                 self._row_fit_cache.clear()
@@ -430,18 +509,47 @@ class WarderChannelEpgClip(Renderer):
             # supplies new text on EPG changes, automatically changing the key.
             row_cache = getattr(self, '_row_fit_cache', None)
             glyph_cache = getattr(self, '_glyph_width_cache', None)
-            row_key = (name, title, geometry_key)
+            # The service-reference display name belongs to the bouquet; the
+            # service-centre name may be shorter or even different. Measure
+            # both so a FastScan/custom bouquet cannot put EPG over the name.
+            try:
+                reference_name = ref.getName() or ""
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                reference_name = ""
+            row_key = (name, reference_name, title, geometry_key)
             cached_row = row_cache.get(row_key) if row_cache is not None else None
             if cached_row is None:
                 self._label.setFont(name_font)
-                self._label.setText(name)
-                name_width = self._label.calculateSize().width()
-                if hasattr(self, '_perf_text_measure_calls'):
-                    self._perf_text_measure_calls += 1
+                name_width = 0
+                for display_name in (name, reference_name):
+                    if not display_name:
+                        continue
+                    self._label.setText(display_name)
+                    measured = self._label.calculateSize().width()
+                    if native_measure is not None:
+                        try:
+                            # OpenATV's own TextBoundary helper uses this
+                            # native glyph geometry, not a hidden label.
+                            bounds = native_measure(name_font, display_name,
+                                                    NativeSize(max(width, 4096), row_height), True)
+                            measured = max(measured, int(bounds.width()))
+                        except (AttributeError, RuntimeError, TypeError, ValueError):
+                            pass
+                    name_width = max(name_width, measured)
+                    if hasattr(self, '_perf_text_measure_calls'):
+                        self._perf_text_measure_calls += 1
+                # A configured native column can be wider than the text.
+                # Do not begin custom EPG inside that reserved column.
+                if native_column > 0:
+                    name_width = max(name_width, native_column)
                 picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
                                   int(config.usage.servicelist_picon_ratio.value) / 100)
+                # A gap keeps variable-width glyph bearings off the adjacent
+                # EPG cell; never shrink fonts or edit broadcaster names.
+                name_gap = max(12, int(component.itemsDistances))
                 start = max(0, int(component.listMarginLeft) + picon_width +
-                            2 * int(component.itemsDistances) + name_width + left_shift)
+                            2 * int(component.itemsDistances) + name_width +
+                            left_shift + name_gap)
                 remaining = text_end - start
             else:
                 start, remaining, overflow, first_frame = cached_row

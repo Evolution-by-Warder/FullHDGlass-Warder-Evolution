@@ -51,17 +51,25 @@ class RowMeasurementTests(unittest.TestCase):
         self.assertEqual(sum(x[0] == "write" for x in case.renderer.instance.calls), 0)
         self.assertGreater(case.renderer._perf_text_cache_hits, 0)
 
-    def test_selection_movement_reuses_rows_and_preserves_highlight(self):
+    def test_selection_movement_remeasures_once_and_preserves_highlight(self):
         case, label = self.setup_case()
         self.assertTrue(case.draw())
         count = label.calls
         case.component.selected = 2
         case.renderer.instance.calls.clear()
         self.assertTrue(case.draw())
-        self.assertEqual(label.calls, count)
+        # Native Enigma2 may reflow the name/event columns when focus moves.
+        # Correctness requires one fresh row measurement on that transition;
+        # the stationary frame immediately afterward must still use the cache.
+        self.assertGreater(label.calls, count)
         writes = [c for c in case.renderer.instance.calls if c[0] == "write"]
         self.assertEqual(len(writes), 3)
         self.assertEqual(writes[2][2], "#62aaff")
+        calls_after_move = label.calls
+        case.renderer.instance.calls.clear()
+        self.assertTrue(case.draw())
+        self.assertEqual(label.calls, calls_after_move)
+        self.assertFalse(any(c[0] == "write" for c in case.renderer.instance.calls))
 
     def test_changed_epg_title_invalidates_only_affected_row(self):
         case, label = self.setup_case()
