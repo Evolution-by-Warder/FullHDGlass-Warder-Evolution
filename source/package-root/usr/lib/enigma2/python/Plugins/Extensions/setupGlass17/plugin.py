@@ -7222,7 +7222,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 						self.list.append(getConfigListEntry(sepCC)) 
 						self.list.append(getConfigListEntry(C1 % _("Network speed"), config.plugins.setupGlass17.par213))   
 			elif tt == 12:	
-				self.list.append(getConfigListEntry(S0 % ui_text("Show FullHDGlass Warder Evolution in main menu"), config.plugins.warderSkinMainMenu.enabled))
 				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par7))                              
 				if config.plugins.setupGlass17.par7.value in ("Icons","Icons Right","Icons Bar","List and Icon"):
 					x = S0 % _("Menu Icons")
@@ -7400,6 +7399,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("(Menu) Big Icons/Icons"), config.plugins.setupGlass17.par165))
 					self.list.append(getConfigListEntry(S0 % _("(Channel selection) picon/Prov/Sat"), config.plugins.setupGlass17.par166))
 			elif tt == 28:   
+				self.list.append(getConfigListEntry(S0 % ui_text("Show FullHDGlass Warder Evolution in main menu"), config.plugins.warderSkinMainMenu.enabled))
 				self.list.append(getConfigListEntry(S0 % ui_text("Spinner"), config.plugins.setupGlass17.par230))
 				if not os.path.isdir(PYTHONPATH+"Plugins/Extensions/EnhancedMovieCenter"):
 					self.list.append(getConfigListEntry(S0 % _("Movie selection type"), config.plugins.setupGlass17.par224))
