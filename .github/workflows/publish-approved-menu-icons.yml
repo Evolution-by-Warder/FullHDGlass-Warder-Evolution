@@ -8,7 +8,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: publish-approved-menu-icons
+  group: publish-approved-menu-icons-sparse
   cancel-in-progress: false
 jobs:
   publish:
