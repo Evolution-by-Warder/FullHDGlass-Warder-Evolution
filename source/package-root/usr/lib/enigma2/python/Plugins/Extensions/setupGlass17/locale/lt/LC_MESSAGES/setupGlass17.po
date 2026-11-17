@@ -1628,3 +1628,7 @@ msgstr "Uždaryti"
 # TEST202 auxiliary composite result counts.
 msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Atsarginė kopija %d/%d; saugus sluoksnis %d/%d; klaidos %d"
+
+# Warder selector summary
+msgid "FastScan tables selected"
+msgstr "Pasirinktos „FastScan“ lentelės"
