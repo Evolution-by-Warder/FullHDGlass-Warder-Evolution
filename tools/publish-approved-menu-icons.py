@@ -10,15 +10,19 @@ import zipfile
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "assets/warder/downloads.json"
 SRC = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-221/"
-OUT = ROOT / "assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-20261117"
-PREFIX = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-20261117/"
+OUT = ROOT / "assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-AUDITED-20261117"
+PREFIX = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/FINAL-WARDER-AUDITED-20261117/"
 BASE_HASH = "83f65a74001189e0febdd8ed988f3d607782ac36ca0d49b9dfc2890c9fddb3c1"
+# Keep the real Enigma2 menu IDs AND the existing small-menu fallback names.
+# PiconHub currently exposes WHERE_PLUGINMENU only: its name here is a
+# reserved matching icon, not a claim that it registers a main-menu ID.
+# The FullHDGlass optional main-menu ID is configured dynamically.
 ALIASES = {
-    "warder_gsu": ["warder_gsu", "glass_sys_utils", "GSU_Warder_Evolution", "GSU"],
-    "warder_piconhub": ["warder_piconhub", "PiconHub_Warder_Evolution", "PiconHub"],
-    "warder_radio": ["warder_radio", "warder_radio_mainmenu", "Radio_Warder_Evolution", "radio_warder_evolution"],
-    "warder_youtube": ["warder_youtube", "warder_youtube_mainmenu", "YouTube_Warder_Evolution", "youtube_warder_evolution"],
-    "warder_skin": ["warder_skin", "FHD_Glass17_Setup"],
+    "warder_gsu": ["glass_sys_utils", "warder_gsu"],
+    "warder_piconhub": ["PiconHub_Warder_Evolution", "warder_piconhub"],
+    "warder_radio": ["warder_radio_mainmenu", "warder_radio"],
+    "warder_youtube": ["warder_youtube_mainmenu", "warder_youtube"],
+    "warder_skin": ["FHD_Glass17_Setup", "warder_skin"],
 }
 
 
@@ -52,14 +56,14 @@ def main():
         for name in names:
             entries["menuIconsBig/" + name + ".png"] = data
 
-    assert len(entries) == 141, "Unexpected resulting PNG count"
+    assert len(entries) == 134, "Unexpected resulting PNG count"
     out_buffer = io.BytesIO()
     with zipfile.ZipFile(out_buffer, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as new:
         for name, data in sorted(entries.items()):
             new.writestr(name, data)
     archive = out_buffer.getvalue()
     with zipfile.ZipFile(io.BytesIO(archive)) as check:
-        assert check.testzip() is None and len(check.namelist()) == 141
+        assert check.testzip() is None and len(check.namelist()) == 134
 
     OUT.mkdir(parents=True, exist_ok=True)
     # The new destination is uniquely named. Never delete the old FINAL-221.
@@ -76,8 +80,8 @@ def main():
     item["sha256"] = sha256(archive)
     item["root"] = "menuIconsBig"
     item["parts"] = paths
-    item["png_count"] = 141
-    item["release_label"] = "owner-approved-warder-menu-20261117"
+    item["png_count"] = 134
+    item["release_label"] = "owner-approved-menu-art-id-dedup-20261117"
     CATALOG.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
     print("Published", len(entries), "icons,", len(archive), "bytes,", len(paths), "parts; sha256", sha256(archive))
 
