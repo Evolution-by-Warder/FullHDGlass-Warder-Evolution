@@ -60,7 +60,7 @@ msgid "from image"
 msgstr "from image"
 
 msgid "G17 (Ch. Name)"
-msgstr ""
+msgstr "G17 (kanal adı)"
 
 msgid "Default"
 msgstr "Default"
@@ -81,16 +81,16 @@ msgid "VU+ (Ch. Name + Act. event)"
 msgstr "VU+ (Ch. Name + Act. event)"
 
 msgid "G17 (Act. event)"
-msgstr ""
+msgstr "G17 (yayındaki program)"
 
 msgid "G17 (Ch. Name + Act. event)"
-msgstr ""
+msgstr "G17 (kanal adı + yayındaki program)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
-msgstr ""
+msgstr "G17 (üstte: kanal adı, altta: yayındaki program)"
 
 msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
-msgstr ""
+msgstr "G17 (üstte: kanal adı, altta: SNR ve AGC)"
 
 msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
@@ -120,19 +120,19 @@ msgid "with ZZPicon"
 msgstr "with ZZPicon"
 
 msgid "with Picon 400x240"
-msgstr ""
+msgstr "400 × 240 picon ile"
 
 msgid "Glass17"
-msgstr ""
+msgstr "Glass17"
 
 msgid "Glass17(+next event)"
-msgstr ""
+msgstr "Glass17 (+ sonraki program)"
 
 msgid "with PIG(+next event)"
 msgstr "with PIG(+next event)"
 
 msgid "Glass17(+next, date)"
-msgstr ""
+msgstr "Glass17 (+ sonraki program, tarih)"
 
 msgid "New style"
 msgstr "New style"
@@ -153,7 +153,7 @@ msgid "PIG(+several event)"
 msgstr "PIG(+several event)"
 
 msgid "G17(+several event)"
-msgstr ""
+msgstr "G17 (+ birden fazla program)"
 
 msgid "New style(+several event)"
 msgstr "New style(+several event)"
@@ -165,7 +165,7 @@ msgid "with PIG"
 msgstr "with PIG"
 
 msgid "G17 events"
-msgstr ""
+msgstr "G17 programları"
 
 msgid "Big Icons"
 msgstr "Büyük simgeler"
@@ -252,7 +252,7 @@ msgid "SID only"
 msgstr "SID only"
 
 msgid "CAID, SID, VPID"
-msgstr ""
+msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
 msgstr "Percentage"
@@ -342,16 +342,16 @@ msgid "Selected in Netatmo plugin"
 msgstr "Netatmo eklentisinde seçili"
 
 msgid "IMDb"
-msgstr ""
+msgstr "IMDb"
 
 msgid "TMDb"
-msgstr ""
+msgstr "TMDb"
 
 msgid "Transparent"
 msgstr "Şeffaf"
 
 msgid "Full HD GLass17 spinner"
-msgstr ""
+msgstr "FullHDGlass17 yükleme göstergesi"
 
 msgid "Full HD Glass17 Setup"
 msgstr "FullHDGlass17 ayarları"
@@ -394,10 +394,10 @@ msgid "Menu type"
 msgstr "Menü türü"
 
 msgid "Permanent Extra Infobar"
-msgstr ""
+msgstr "Kalıcı ek bilgi çubuğu"
 
 msgid "Standard Infobar type"
-msgstr ""
+msgstr "Standart bilgi çubuğu türü"
 
 msgid "Volume type"
 msgstr "Ses türü"
@@ -421,16 +421,16 @@ msgid "PIG type"
 msgstr "PIG türü"
 
 msgid "Extendend description font size"
-msgstr ""
+msgstr "Ayrıntılı açıklama yazı tipi boyutu"
 
 msgid "color"
 msgstr "renk"
 
 msgid "Channel selection font size"
-msgstr ""
+msgstr "Kanal listesi yazı tipi boyutu"
 
 msgid "EPG list font size"
-msgstr ""
+msgstr "EPG listesi yazı tipi boyutu"
 
 msgid "Dish screen"
 msgstr "Dish screen"
@@ -454,20 +454,20 @@ msgid "On/Off icons"
 msgstr "Açık/kapalı simgeleri"
 
 msgid "Service scan long list"
-msgstr ""
+msgstr "Uzun kanal tarama listesi"
 
 msgid "Extended Number ZAP Picon Size"
-msgstr ""
+msgstr "Numarayla kanal seçiminde picon boyutu"
 
 msgid "GUI will now be restarted to activate restored options:"
-msgstr ""
+msgstr "Geri yüklenen seçeneklerin etkinleşmesi için arayüz şimdi yeniden başlatılacak:"
 "GUI şimdi geri yükleme seçenekleri etkinleştirmek için yeniden başlatılacak:"
 
 msgid "GUI will now be restarted, updated files founded !!!"
 msgstr "GUI şimdi yeniden başlatılacak, güncelleştirilmiş dosyalar kuruldu !!!"
 
 msgid "ECM and TP Status"
-msgstr ""
+msgstr "ECM ve transponder durumu"
 
 msgid "No data"
 msgstr "Veri yok"
@@ -542,19 +542,19 @@ msgid "Restore config"
 msgstr "Yapılandırmayı geri yüklemek"
 
 msgid "Reset all settings of FHDG 17"
-msgstr ""
+msgstr "FHDG 17 ayarlarının tümünü sıfırla"
 
 msgid "ECM"
 msgstr "ECM"
 
 msgid "EXTRA INFOBAR"
-msgstr ""
+msgstr "EK BİLGİ ÇUBUĞU"
 
 msgid "INFOBAR"
 msgstr "INFOBAR"
 
 msgid "POSTER"
-msgstr ""
+msgstr "AFİŞ"
 
 msgid "HDD/SSD"
 msgstr "HDD/SSD"
@@ -569,10 +569,10 @@ msgid "CHANNEL SELECTION"
 msgstr "KANAL SEÇİMİ"
 
 msgid "EPG SELECTION"
-msgstr ""
+msgstr "EPG SEÇİMİ"
 
 msgid "EVENT VIEW"
-msgstr ""
+msgstr "PROGRAM AYRINTILARI"
 
 msgid "SPECIAL INFO"
 msgstr "ÖZEL BİLGİ"
@@ -581,7 +581,7 @@ msgid "USER INFO"
 msgstr "KULLANICI BİLGİSİ"
 
 msgid "NETATMO"
-msgstr ""
+msgstr "NETATMO"
 
 msgid "OLED"
 msgstr "OLED"
@@ -599,19 +599,19 @@ msgid "PATHS"
 msgstr "Skin yapılandırma dosyalarının yolları"
 
 msgid "VOLUME"
-msgstr ""
+msgstr "SES DÜZEYİ"
 
 msgid "LISTBOX FONT SIZE"
-msgstr ""
+msgstr "LİSTE YAZI TİPİ BOYUTU"
 
 msgid "ANIMATIONS"
-msgstr ""
+msgstr "ANİMASYONLAR"
 
 msgid "OTHER"
 msgstr "DİĞER"
 
 msgid "Color(s)"
-msgstr ""
+msgstr "Renk(ler)"
 
 msgid "ECM line type"
 msgstr "ECM line türü"
@@ -623,16 +623,16 @@ msgid "Enable show address in ECM info"
 msgstr "ECM bilgi gösteren adresi etkinleştir"
 
 msgid "ECM info from current displayed channel only"
-msgstr ""
+msgstr "ECM bilgilerini yalnızca görüntülenen kanaldan al"
 
 msgid "Display CW0/1 in Side bar"
-msgstr ""
+msgstr "Yan çubukta CW0/1 göster"
 
 msgid "Show PID in ECM line"
-msgstr ""
+msgstr "ECM satırında PID göster"
 
 msgid "Show CHID in ECM line"
-msgstr ""
+msgstr "ECM satırında CHID göster"
 
 msgid "ECM line"
 msgstr "ECM line"
@@ -647,25 +647,25 @@ msgid "Enable Enhanced Infobar"
 msgstr "Geliştirilmiş bilgiçubuğunu etkinleştir"
 
 msgid "Vertical Offset"
-msgstr ""
+msgstr "Dikey kaydırma"
 
 msgid "Date format"
-msgstr ""
+msgstr "Tarih biçimi"
 
 msgid "Second picon type"
 msgstr "İkinci picon türü"
 
 msgid "Animated Weather Icons"
-msgstr ""
+msgstr "Hareketli hava durumu simgeleri"
 
 msgid "Animation speed (ms)"
-msgstr ""
+msgstr "Animasyon hızı (ms)"
 
 msgid "Enable icon"
-msgstr ""
+msgstr "Simgeyi etkinleştir"
 
 msgid "Enable icon of Unknown CAID"
-msgstr ""
+msgstr "Bilinmeyen CAID simgesini etkinleştir"
 
 msgid "Audio type of current track"
 msgstr "Audio type of current track"
@@ -674,13 +674,13 @@ msgid "Progressive/Interlace detection"
 msgstr "Progressive/Interlace detection"
 
 msgid "Tuner info"
-msgstr ""
+msgstr "Tuner bilgileri"
 
 msgid "Hide SNR/AGC (Q/S) if value is 0"
-msgstr ""
+msgstr "Değer 0 ise SNR/AGC (Q/S) gizle"
 
 msgid "CI info"
-msgstr ""
+msgstr "CI bilgileri"
 
 msgid "Enable full bitrate info"
 msgstr "Tam bitrate bilgisi etkinleştir"
@@ -689,7 +689,7 @@ msgid "Bitrate auto stop limit"
 msgstr "Bitrate oto durdurma sınırı"
 
 msgid "Enable eBitrateCalculator"
-msgstr ""
+msgstr "eBitrateCalculator'ı etkinleştir"
 
 msgid "Show Satellite position in TP info"
 msgstr "TP bilgisi ve Uydu konumunu göster"
@@ -707,10 +707,10 @@ msgid "Temp. HDD/SSD"
 msgstr "Temp. HDD/SSD"
 
 msgid "Progress bar pixmap"
-msgstr ""
+msgstr "İlerleme çubuğu görseli"
 
 msgid "Progress bar background pixmap"
-msgstr ""
+msgstr "İlerleme çubuğu arka plan görseli"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
 msgstr "CPU/Mem, RPM/Temp, Provider"
@@ -737,16 +737,16 @@ msgid "Channel name"
 msgstr "Channel name"
 
 msgid "Event now"
-msgstr ""
+msgstr "Şimdiki program"
 
 msgid "Event next"
-msgstr ""
+msgstr "Sonraki program"
 
 msgid "Progress bar foreground"
-msgstr ""
+msgstr "İlerleme çubuğunun ön planı"
 
 msgid "Progress bar background"
-msgstr ""
+msgstr "İlerleme çubuğunun arka planı"
 
 msgid "Enable typewriting"
 msgstr "Daktilo yazımı etkinleştir"
@@ -773,19 +773,19 @@ msgid "Set Position"
 msgstr "Konum ayarı"
 
 msgid "Size"
-msgstr ""
+msgstr "Boyut"
 
 msgid "Search delay (s)"
-msgstr ""
+msgstr "Arama gecikmesi (sn)"
 
 msgid "Erase poster cache"
-msgstr ""
+msgstr "Afiş önbelleğini temizle"
 
 msgid "Removing current Poster"
-msgstr ""
+msgstr "Geçerli afiş kaldırılıyor"
 
 msgid "Movieplayer infobar HDD/SSD state"
-msgstr ""
+msgstr "Video oynatıcı bilgi çubuğunda HDD/SSD durumu"
 
 msgid "Enable HDD/SSD power state check"
 msgstr "HDD/SSD güç durum kontrolü etkinleştir"
@@ -800,7 +800,7 @@ msgid "IP Address"
 msgstr "IP adresi"
 
 msgid "Network speed"
-msgstr ""
+msgstr "Ağ hızı"
 
 msgid "Menu Icons"
 msgstr "Menü simgeleri"
@@ -812,7 +812,7 @@ msgid "Enable Animation (Menu: Icons/Icons Bar)"
 msgstr "Animasyon Etkinleştir (Menu: Icons/Icons Bar)"
 
 msgid "Display remaining time in extra EPG"
-msgstr ""
+msgstr "Ek EPG'de kalan süreyi göster"
 
 msgid "Text rolling type"
 msgstr "Metin haddeleme tipi"
@@ -821,13 +821,13 @@ msgid "Text rolling start delay"
 msgstr "Metin haddeleme başlangıç gecikmesi"
 
 msgid "Service name font size"
-msgstr ""
+msgstr "Kanal adı yazı tipi boyutu"
 
 msgid "Service info font size"
-msgstr ""
+msgstr "Kanal bilgisi yazı tipi boyutu"
 
 msgid "Line height"
-msgstr ""
+msgstr "Satır yüksekliği"
 
 msgid "EPG Description"
 msgstr "EPG Description"
@@ -857,7 +857,7 @@ msgid "Station"
 msgstr "İstasyon"
 
 msgid "Stations switch time"
-msgstr ""
+msgstr "İstasyon değiştirme aralığı"
 
 msgid "Enable OLED off in standby"
 msgstr "Bekleme modunda OLED kapalı etkinleştir"
@@ -866,7 +866,7 @@ msgid "Number of tuners"
 msgstr "tuner sayısı"
 
 msgid "Hide tuner in standby or missing tuner"
-msgstr ""
+msgstr "Bekleme durumunda veya tuner yoksa tuneri gizle"
 
 msgid "Active"
 msgstr "Aktif"
@@ -911,19 +911,19 @@ msgid "Reconnect time"
 msgstr "zaman yeniden bağlayın"
 
 msgid "Display nighttime icons"
-msgstr ""
+msgstr "Gece simgelerini göster"
 
 msgid "Enable next city in Weather"
 msgstr "Hava sonraki şehir etkinleştirin"
 
 msgid "API-Key OpenWeatherMap"
-msgstr ""
+msgstr "OpenWeatherMap API anahtarı"
 
 msgid "Forecast for more days"
-msgstr ""
+msgstr "Daha fazla gün için hava tahmini"
 
 msgid "More days switch time"
-msgstr ""
+msgstr "Ek günler arasında geçiş aralığı"
 
 msgid "Show yesterday"
 msgstr "dün gösterir"
@@ -935,7 +935,7 @@ msgid "Weather Icons"
 msgstr "hava durumu simgeleri"
 
 msgid "State"
-msgstr ""
+msgstr "Durum"
 
 msgid "Warm"
 msgstr "Sıcak"
@@ -953,64 +953,64 @@ msgid "Picons/Icons path"
 msgstr "Piconlar/Simgeler dizini"
 
 msgid "FHDG Configuration file"
-msgstr ""
+msgstr "FHDG yapılandırma dosyası"
 
 msgid "Path to satellites.xml"
-msgstr ""
+msgstr "satellites.xml dosyasının yolu"
 
 msgid "Bigger"
-msgstr ""
+msgstr "Daha büyük"
 
 msgid "Big"
-msgstr ""
+msgstr "Büyük"
 
 msgid "Medium"
-msgstr ""
+msgstr "Orta"
 
 msgid "Small"
-msgstr ""
+msgstr "Küçük"
 
 msgid "Smaller"
-msgstr ""
+msgstr "Daha küçük"
 
 msgid "Enable Animations"
 msgstr "Animasyonları etkinleştir"
 
 msgid "(Infobar) Picon"
-msgstr ""
+msgstr "(Bilgi çubuğu) Picon"
 
 msgid "(Infobar) Second Picon"
-msgstr ""
+msgstr "(Bilgi çubuğu) İkinci picon"
 
 msgid "(Infobar) Poster"
-msgstr ""
+msgstr "(Bilgi çubuğu) Afiş"
 
 msgid "(Infobar) ECM line"
-msgstr ""
+msgstr "(Bilgi çubuğu) ECM satırı"
 
 msgid "(Infobar) TP info/type"
-msgstr ""
+msgstr "(Bilgi çubuğu) Transponder bilgisi/türü"
 
 msgid "(Menu) Big Icons/Icons"
-msgstr ""
+msgstr "(Menü) Büyük simgeler/simgeler"
 
 msgid "(Channel selection) picon/Prov/Sat"
-msgstr ""
+msgstr "(Kanal listesi) picon/sağlayıcı/uydu"
 
 msgid "VTi SplitScreen"
-msgstr ""
+msgstr "VTi SplitScreen"
 
 msgid "Reference separating char"
-msgstr ""
+msgstr "Referans ayırıcı karakteri"
 
 msgid "Ignore leading 0 in time"
-msgstr ""
+msgstr "Saatte baştaki 0'ı yok say"
 
 msgid "Ignore leading 0 in date"
-msgstr ""
+msgstr "Tarihte baştaki 0'ı yok say"
 
 msgid "Calculation of channel numbers"
-msgstr ""
+msgstr "Kanal numaralarının hesaplanması"
 
 msgid "Enable CAID PIDs"
 msgstr "CAID PIDs etkinleştir"
@@ -1019,7 +1019,7 @@ msgid "Neutrino keymap"
 msgstr "Neutrino keymap"
 
 msgid "Full HD Glass17 spinner"
-msgstr ""
+msgstr "FullHDGlass17 yükleme göstergesi"
 
 msgid "Localization of the skin"
 msgstr "Skin yer belirleme"
@@ -1034,7 +1034,7 @@ msgid "RadioScreenSaver"
 msgstr "RadioScreenSaver"
 
 msgid "IPTV Radio Detection"
-msgstr ""
+msgstr "IPTV radyo algılama"
 
 msgid "Exit"
 msgstr "Çıkış"
@@ -1043,7 +1043,7 @@ msgid "now?"
 msgstr "Şimdi?"
 
 msgid "Erase finished successfully!"
-msgstr ""
+msgstr "Silme işlemi başarıyla tamamlandı!"
 
 msgid "Color Sample"
 msgstr "Color Sample"
@@ -1093,7 +1093,7 @@ msgid "Error while updating to new version!!!"
 msgstr "Yeni sürüme güncellemede Hata!!!"
 
 msgid "The file satellites.xml do not exists in selected dir"
-msgstr ""
+msgstr "Seçilen klasörde satellites.xml dosyası bulunmuyor"
 
 msgid "GUI will now be restarted to activate changes in:"
 msgstr "GUI şimdi değişiklikleri etkinleştirmek için yeniden başlatılacak:"
@@ -1123,7 +1123,7 @@ msgid "is incorrect, style will not be changed!!!"
 msgstr "Yanlış, biçim değiştirilemez!!!"
 
 msgid "Save again to apply all setup changes without style change"
-msgstr ""
+msgstr "Stili değiştirmeden tüm ayarları uygulamak için yeniden kaydedin"
 "Biçim değişikliği olmadan tüm kurulum değişiklikleri uygulamak için tekrar "
 "kaydet"
 
@@ -1137,7 +1137,7 @@ msgid "HDD/SSD state"
 msgstr "HDD/SSD durum"
 
 msgid "10 days forecast"
-msgstr ""
+msgstr "10 günlük hava tahmini"
 
 msgid "Do you want restart GUI to activate the screen:"
 msgstr "Ekranı etkinleştirmek için GUI yeniden başlatmak istiyormusunuz ?:"
@@ -1149,7 +1149,7 @@ msgid "Welcome in setup"
 msgstr "Kuruluma Hoşgeldiniz"
 
 msgid "Wait for the file downloads to complete"
-msgstr ""
+msgstr "Dosyaların indirilmesinin tamamlanmasını bekleyin"
 
 msgid "Select"
 msgstr "Seç"
@@ -1158,85 +1158,85 @@ msgid "Cleaning Picons"
 msgstr "Picons Temizlik"
 
 msgid "Start Download"
-msgstr ""
+msgstr "İndirmeyi başlat"
 
 msgid "picon white"
-msgstr ""
+msgstr "Beyaz piconlar"
 
 msgid "picon black"
-msgstr ""
+msgstr "Siyah piconlar"
 
 msgid "picon 400x240"
-msgstr ""
+msgstr "400 × 240 piconlar"
 
 msgid "picon 220x132"
-msgstr ""
+msgstr "220 × 132 piconlar"
 
 msgid "piconProv 220x132"
-msgstr ""
+msgstr "220 × 132 sağlayıcı piconları"
 
 msgid "piconSat 220x132"
-msgstr ""
+msgstr "220 × 132 uydu piconları"
 
 msgid "piconProv black"
-msgstr ""
+msgstr "Siyah sağlayıcı piconları"
 
 msgid "piconSat black"
-msgstr ""
+msgstr "Siyah uydu piconları"
 
 msgid "piconCam black"
-msgstr ""
+msgstr "Siyah CAM piconları"
 
 msgid "piconWeather black"
-msgstr ""
+msgstr "Siyah hava durumu piconları"
 
 msgid "piconProv white"
-msgstr ""
+msgstr "Beyaz sağlayıcı piconları"
 
 msgid "piconSat white"
-msgstr ""
+msgstr "Beyaz uydu piconları"
 
 msgid "piconCam white"
-msgstr ""
+msgstr "Beyaz CAM piconları"
 
 msgid "piconWeather white"
-msgstr ""
+msgstr "Beyaz hava durumu piconları"
 
 msgid "picon OLED"
-msgstr ""
+msgstr "OLED piconları"
 
 msgid "ZZPicon"
-msgstr ""
+msgstr "ZZPicon"
 
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 msgid "Set of icons and prewievs"
-msgstr ""
+msgstr "Simge ve önizleme paketi"
 
 msgid "ExtraScreens graphics"
-msgstr ""
+msgstr "Ek ekran grafikleri"
 
 msgid "Menu icons"
-msgstr ""
+msgstr "Menü simgeleri"
 
 msgid "Weather icons"
-msgstr ""
+msgstr "Hava durumu simgeleri"
 
 msgid "Channelselection icons"
-msgstr ""
+msgstr "Kanal listesi simgeleri"
 
 msgid "Result"
-msgstr ""
+msgstr "Sonuç"
 
 msgid "ERROR"
-msgstr ""
+msgstr "HATA"
 
 msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
-msgstr ""
+msgstr "7zip aracı eksik; İNDİRME MENÜSÜ'nden indirebilirsiniz"
 
 msgid "SUCCESSFUL"
-msgstr ""
+msgstr "BAŞARILI"
 
 msgid "Total:"
 msgstr "Toplam:"
@@ -1263,10 +1263,10 @@ msgid "file(s) from"
 msgstr "dosya(lar) dan"
 
 msgid "Loading URL tools failed"
-msgstr ""
+msgstr "URL araçları yüklenemedi"
 
 msgid "Internet connection failed"
-msgstr ""
+msgstr "İnternet bağlantısı başarısız oldu"
 
 msgid "Unknown error detected, try again!!!"
 msgstr "Bilinmeyen bir hata algılandı, tekrar deneyin!!!"
@@ -1302,7 +1302,7 @@ msgid "writed successfully !!!"
 msgstr "Başarıyla yazıldı !!!"
 
 msgid "Sorry, write to g17Screens.cfg failed !!!"
-msgstr ""
+msgstr "g17Screens.cfg dosyasına yazılamadı!"
 
 msgid "Changes writed successfully !!!"
 msgstr "Değişiklikler başarıyla yazıldı !!!"
@@ -1311,7 +1311,7 @@ msgid "Edit"
 msgstr "Düzen"
 
 msgid "Picon path"
-msgstr ""
+msgstr "Picon yolu"
 
 msgid "Choose Icons"
 msgstr "Simgeleri seç"
@@ -1338,7 +1338,7 @@ msgid "Please enter a city name"
 msgstr "Bir şehir adı girin"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Web sitesi verileri okunurken zaman aşımı"
 
 msgid "None city detected"
 msgstr "Yok Şehir algılandı"
@@ -1447,15 +1447,15 @@ msgstr "Güncelleme yöntemi"
 
 # TEST196 Warder picon settings
 msgid "No resolution selected"
-msgstr ""
+msgstr "Çözünürlük seçilmedi"
 
 # TEST196 Warder picon settings
 msgid "No colour selected"
-msgstr ""
+msgstr "Renk seçilmedi"
 
 # TEST196 Warder picon settings
 msgid "No update method selected"
-msgstr ""
+msgstr "Güncelleme yöntemi seçilmedi"
 
 # TEST196 Warder picon settings
 msgid "Receiver memory"
@@ -1479,19 +1479,19 @@ msgstr "MMC depolama"
 
 # TEST196 Warder picon settings
 msgid "Root picon directory"
-msgstr ""
+msgstr "Picon ana dizini"
 
 # TEST196 Warder picon settings
 msgid "User defined"
-msgstr ""
+msgstr "Kullanıcı tanımlı"
 
 # TEST196 Warder picon settings
 msgid "User defined..."
-msgstr ""
+msgstr "Kullanıcı tanımlı..."
 
 # TEST196 Warder picon settings
 msgid "50 x 30 - Mini picons"
-msgstr ""
+msgstr "50 × 30 – Mini piconlar"
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
@@ -1499,126 +1499,126 @@ msgstr "220 × 132 – Piconlar"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
-msgstr ""
+msgstr "400 × 240 – Büyük piconlar"
 
 # TEST196 Warder picon settings
 msgid "710 x 682 - Large icons for selected channel list types"
-msgstr ""
+msgstr "710 × 682 – Seçili kanal listesi türleri için büyük simgeler"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV lists"
-msgstr ""
+msgstr "TV listeleriyle eşitle"
 
 # TEST196 Warder picon settings
 msgid "Synchronize with TV and radio lists"
-msgstr ""
+msgstr "TV ve radyo listeleriyle eşitle"
 
 # TEST196 Warder picon settings
 msgid "Copy all; replace current selected-position picons"
-msgstr ""
+msgstr "Tümünü kopyala; seçili konumların mevcut piconlarını değiştir"
 
 # TEST196 Warder picon settings
 msgid "Copy all; incremental update"
-msgstr ""
+msgstr "Tümünü kopyala; artımlı güncelle"
 
 # TEST196 Warder picon settings
 msgid "Download destination:"
-msgstr ""
+msgstr "İndirme hedefi:"
 
 # TEST196 Warder picon settings
 msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
-msgstr ""
+msgstr "50 × 30, 220 × 132, 400 × 240 veya 710 × 682 kanal listesi simgelerini seçin."
 
 # TEST196 Warder picon settings
 msgid "Choose how channel picons are synchronized or copied for selected positions."
-msgstr ""
+msgstr "Seçilen konumlarda kanal piconlarının nasıl eşitleneceğini veya kopyalanacağını belirleyin."
 
 # TEST196 Warder picon settings
 msgid "Choose a resolution, colour, location and update method before downloading."
-msgstr ""
+msgstr "İndirmeden önce çözünürlük, renk, konum ve güncelleme yöntemini seçin."
 
 # TEST196 Warder picon settings
 msgid "Create picon directory?"
-msgstr ""
+msgstr "Picon dizini oluşturulsun mu?"
 
 # TEST196 Warder picon settings
 msgid "Cannot create picon destination"
-msgstr ""
+msgstr "Picon hedef dizini oluşturulamadı"
 
 # TEST196 Warder picon settings
 msgid "Picon destination is not writable"
-msgstr ""
+msgstr "Picon hedef dizinine yazılamıyor"
 
 # TEST196 Warder picon settings
 msgid "Select an existing directory."
-msgstr ""
+msgstr "Mevcut bir dizin seçin."
 
 # TEST196 Warder picon settings
 msgid "Cannot read picon destination"
-msgstr ""
+msgstr "Picon hedef dizini okunamadı"
 
 # TEST196 Warder picon settings
 msgid "Could not remove stale selected-position picon"
-msgstr ""
+msgstr "Seçili konumdaki eski picon silinemedi"
 
 # TEST196 Warder picon settings
 msgid "Could not replace selected-position picons safely."
-msgstr ""
+msgstr "Seçili konumların piconları güvenli biçimde değiştirilemedi."
 
 # TEST196 Warder picon settings
 msgid "selected receiver services have no matching picon in the selected packages."
-msgstr ""
+msgstr "Alıcıda seçili servislerin, seçilen paketlerde eşleşen piconu yok."
 
 # TEST196 Warder picon settings
 msgid "%d picon successfully updated"
-msgstr ""
+msgstr "%d picon başarıyla güncellendi"
 
 # TEST196 Warder picon settings
 msgid "%d picons successfully updated"
-msgstr ""
+msgstr "%d picon başarıyla güncellendi"
 
 # TEST196 Warder picon settings
 msgid "%d service selected"
-msgstr ""
+msgstr "%d servis seçildi"
 
 # TEST196 Warder picon settings
 msgid "%d services selected"
-msgstr ""
+msgstr "%d servis seçildi"
 
 # TEST196 localized download results
 msgid "No picons were downloaded."
-msgstr ""
+msgstr "Hiç picon indirilmedi."
 
 # TEST196 localized download results
 msgid "%d of %d picons failed to install"
-msgstr ""
+msgstr "%d piconun %d tanesi yüklenemedi"
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
-msgstr ""
+msgstr "Seçili depolama alanı bağlı değil"
 
 msgid "Provider logos"
 msgstr "Sağlayıcı logoları"
 
 msgid "TV platform and service provider logos."
-msgstr ""
+msgstr "TV platformlarının ve servis sağlayıcıların logoları."
 
 msgid "Satellite logos"
 msgstr "Uydu logoları"
 
 msgid "Satellite logos and graphical identifiers."
-msgstr ""
+msgstr "Uydu logoları ve grafik tanımlayıcılar."
 
 msgid "%s / %s: %d picons updated; %d failures"
-msgstr ""
+msgstr "%s / %s: %d picon güncellendi; %d hata"
 
 msgid "Total: %d picons updated"
-msgstr ""
+msgstr "Toplam: %d picon güncellendi"
 
 msgid "Failures: %d"
-msgstr ""
+msgstr "Hatalar: %d"
 
 msgid "PARTIAL SUCCESS"
-msgstr ""
+msgstr "KISMİ BAŞARI"
 
 
 # Completed operation result dialog button.
