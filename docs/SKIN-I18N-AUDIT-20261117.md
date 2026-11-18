@@ -184,3 +184,11 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 - Rozšírený regresný test `tools/test-warder-catalog-integrity.py` meria presne 1 065 referenčných kľúčov, zachováva historickú položku a kontroluje gettext hodnoty. Výsledok nového GitHub Actions CI treba potvrdiť samostatne.
 - **Zostáva 35 453 referenčných jazykových položiek** celkovo: `helpTxt` 2 646 a `eWeather` 32 807 (15 úplne chýbajúcich katalógov × 2 117 a 1 052 estónskych fráz). Hlavné nastavenia 20 × 517/517, weather 20 × 108/108 a Netatmo 20 × 42/42 ostávajú podľa posledného inventára kompletné.
 - Žiadne IPK, feed, release, zlúčenie do main, zmena verzie či neschválené grafiky. Jazyková korektúra a fyzický test na prijímačoch zostávajú otvorené.
+
+## Veľká dávka 18. 11. 2026 – estónske eWeather (+250)
+
+- Predchádzajúci HEAD a audit overené, doplnených **250 nových skutočných estónskych prekladov** meteorologických predpovedí. Zachovaných všetkých doterajších 1 065 referenčných viet a historický samostatný kľúč `Select city`.
+- **Estónske eWeather teraz 1 315/2 117** referenčných fráz; **802 zostáva**. Celkovo `eWeather.po` obsahuje 1 316 neprázdnych položiek vrátane extra historického kľúča, `eWeather.mo` má 1 317 GNU gettext záznamov vrátane hlavičky. Oba súbory aktualizované na GitHube.
+- Regresný test aktualizovaný na presných 1 315 referenčných správ a kontrolné estónske formulácie; výsledok posledného CI treba osobitne potvrdiť.
+- **Zostáva spolu 35 203 referenčných položiek**: `helpTxt` **2 646**, `eWeather` **32 557** (15 úplne chýbajúcich katalógov × 2 117 + 802 estónskych fráz). Hlavné nastavenia, weather a Netatmo bez zmeny, 20 jazykov s kompletne vyplnenými referenčnými kľúčmi podľa predchádzajúceho auditu.
+- Jazyková korektúra a fyzický test prijímača zostávajú otvorené. Žiadna IPK, release, feed, zmena verzie ani zlúčenie do main.
