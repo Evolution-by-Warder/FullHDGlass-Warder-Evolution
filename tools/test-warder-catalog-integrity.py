@@ -205,6 +205,26 @@ class CatalogIntegrity(unittest.TestCase):
         for key, translation in expected.items():
             self.assertEqual(binary.gettext(key), translation)
 
+    def test_estonian_eweather_new_batch(self):
+        catalog = po_entries(ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.po')
+        reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'eWeather.po')
+        keys = set(catalog) - {''}
+        self.assertEqual(len(keys), 216)
+        self.assertTrue(keys <= set(reference))
+        expected = {
+            'a p.m. snow shower in spots': 'pärastlõunal kohati lumehooge',
+            'a severe thunderstorm': 'tugev äikesetorm',
+            'windy and frigid': 'tuuline ja pakaseline',
+            'rain to snow': 'vihm läheb üle lumeks',
+            'a wintry mix late': 'hiljem segasademed',
+        }
+        with (ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.mo').open('rb') as stream:
+            binary = gettext.GNUTranslations(stream)
+        for key, value in expected.items():
+            with self.subTest(key=key):
+                self.assertEqual(catalog[key], value)
+                self.assertEqual(binary.gettext(key), value)
+
     def test_extended_greek_weather_batch(self):
         catalog = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'eWeather.po')
         self.assertEqual(len(catalog) - 1, 2117)
