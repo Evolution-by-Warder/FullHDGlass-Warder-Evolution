@@ -157,7 +157,7 @@ class CatalogIntegrity(unittest.TestCase):
         self.assertEqual(len(set(reference) - {''}), 189)
         self.assertEqual(set(german), set(reference))
         self.assertEqual([], [key for key, value in german.items() if key and not value])
-        self.assertIn('Language: de_DE\\n', german[''])
+        self.assertIn('Language: de_DE\n', german[''])
         self.assertIn('charset=UTF-8', german[''])
         samples = {
             'Please wait for the reading and processing of data':
