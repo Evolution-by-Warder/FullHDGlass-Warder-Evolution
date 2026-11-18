@@ -61,7 +61,7 @@ def archive(directory, output, payload=False):
                     files.setdefault(lang, {})[mo.stem] = hashlib.sha256(mo.read_bytes()).hexdigest()
                 manifest = json.dumps(
                     {"schema": 1, "ref": revision, "files": files},
-                    sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\\n"
+                    sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\n"
                 entry = tarfile.TarInfo(
                     "./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-locale-manifest.json")
                 entry.mode = 0o644
