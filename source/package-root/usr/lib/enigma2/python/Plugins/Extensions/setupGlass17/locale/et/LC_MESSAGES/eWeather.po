@@ -138,7 +138,7 @@ msgid "S"
 msgstr "Lõunapoolne"
 
 msgid "Change city"
-msgstr "Muuda linn"
+msgstr "Muuda linna"
 
 msgid "Rising"
 msgstr "Tõuseb"
@@ -153,7 +153,7 @@ msgid "ESE"
 msgstr "Ida-kagu"
 
 msgid "ENE"
-msgstr "Idaloe"
+msgstr "ida-kirde"
 
 msgid "W"
 msgstr "Lääne-"
@@ -165,10 +165,10 @@ msgid "SW"
 msgstr "Edela-"
 
 msgid "WSW"
-msgstr "Lääneloe"
+msgstr "lääne-edela"
 
 msgid "WNW"
-msgstr "Idaloe"
+msgstr "lääne-loode"
 
 msgid "Location"
 msgstr "Asukoht"
@@ -204,7 +204,7 @@ msgid "sunlit"
 msgstr "Päikeseküllane"
 
 msgid "then showers"
-msgstr "seejärel hooti tugevad sademed"
+msgstr "seejärel hoovihmad"
 
 msgid "fog"
 msgstr "Udu"
@@ -219,10 +219,10 @@ msgid "then some sun"
 msgstr "seejärel päikest"
 
 msgid "warm"
-msgstr "warm"
+msgstr "soe"
 
 msgid "then t-storms"
-msgstr "then t-storms"
+msgstr "seejärel äikesetormid"
 
 
 msgid "Clear sky"

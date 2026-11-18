@@ -150,7 +150,9 @@ class CatalogIntegrity(unittest.TestCase):
     def test_extended_greek_weather_batch(self):
         catalog = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'eWeather.po')
         self.assertEqual(len(catalog) - 1, 2117)
-        self.assertEqual(sum(bool(v) for k, v in catalog.items() if k), 1174)
+        self.assertEqual(sum(bool(v) for k, v in catalog.items() if k), 1374)
+        self.assertEqual(catalog['cloudy with a heavy shower'], 'Συννεφιά με ισχυρή μπόρα')
+        self.assertEqual(catalog['early showers'], 'Πρωινές μπόρες')
         self.assertEqual(catalog['drizzle'], 'Ψιχάλα')
         self.assertEqual(catalog['a thunderstorm'], 'Καταιγίδα')
         self.assertEqual(catalog['abundant sunshine and breezy'], 'Άφθονη ηλιοφάνεια με αεράκι')
