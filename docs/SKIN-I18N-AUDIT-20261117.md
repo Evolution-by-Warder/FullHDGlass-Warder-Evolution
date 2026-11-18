@@ -145,3 +145,11 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 **Súhrn celej dávky:** 324 nových prekladov (`al`, `fa`, `tr`) + 32 doplnených starších prázdnych viet = **356 skutočne doplnených viet**. Merané pokrytie `weather` je **2 160/2 160** naprieč 20 jazykmi, 0 prázdnych `msgstr`. Hlavné nastavenia: 20 × 517/517. Netatmo: 20 × 42/42.
 
 **Zostáva 36 422 chýbajúcich jazykových položiek:** `helpTxt` 2 646 (14 chýbajúcich jazykových katalógov) a `eWeather` 33 776 (15 chýbajúcich jazykových katalógov a 2 021 chýbajúcich estónskych viet). Úplnosť nie je synonymum jazykovej korektnosti; korektúra rodenými hovoriacimi a testy na prijímačoch stále chýbajú. Výsledok najnovšej GitHub CI kontroly musí byť potvrdený samostatne. Bez IPK, feedu, verzie a zlúčenia.
+
+## Dávka 18. 11. 2026 – estónske eWeather (+120)
+
+- Na aktuálnom HEAD pracovnej vetvy bolo pred zmenou zistených 96/2 117 estónskych fráz eWeather; pribudlo **120 nových skutočných estónskych prekladov**, najmä sneh, dážď, búrky, zmeny teploty a zimné podmienky. Starých 96 fráz zostalo bez zmeny.
+- Nový stav **estónske eWeather: 216/2 117**, zostáva **1 901**. Binárny UTF-8 GNU gettext súbor `et/LC_MESSAGES/eWeather.mo` bol zostavený z aktuálneho `.po` (217 gettext správ vrátane hlavičky). Doplnený regresný test konkrétnych formulácií a gettext binárneho načítania.
+- Stav ostatných jazykových katalógov sa v tejto dávke nemenil. **Celkovo zostáva 36 302 chýbajúcich položiek:** helpTxt 2 646 a eWeather 33 656. Hlavné nastavenia 20 × 517/517, weather 20 × 108/108 a Netatmo 20 × 42/42 podľa predchádzajúceho auditu.
+- Údaje sú merané podľa prítomnosti konkrétnych textov v katalógoch; jazyková korektúra rodeným hovoriacim, výsledok najnovšej CI a fyzické testy prijímača zostávajú samostatnou úlohou.
+- Žiadna IPK, release, feed, zlúčenie do main ani zmena verzie.
