@@ -111,7 +111,7 @@ class CatalogIntegrity(unittest.TestCase):
                     catalog = gettext.GNUTranslations(stream)
                 self.assertEqual(catalog.gettext(key), expected)
 
-    def test_romance_weather_catalogs_complete(self):
+    def test_new_weather_catalogs_complete(self):
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'weather.po')
         keys = set(reference) - {''}
         self.assertEqual(len(keys), 108)
@@ -119,6 +119,9 @@ class CatalogIntegrity(unittest.TestCase):
             'es': ('Heavy rain', 'Lluvia intensa', 'Wind direction', 'Dirección del viento'),
             'it': ('Heavy rain', 'Pioggia forte', 'Wind direction', 'Direzione del vento'),
             'pt': ('Heavy rain', 'Chuva forte', 'Wind direction', 'Direção do vento'),
+            'al': ('Heavy rain', 'Shi i rrëmbyeshëm', 'Wind direction', 'Drejtimi i erës'),
+            'tr': ('Heavy rain', 'Şiddetli yağmur', 'Wind direction', 'Rüzgâr yönü'),
+            'fa': ('Heavy rain', 'باران شدید', 'Wind direction', 'جهت باد'),
         }
         for lang, (key1, expected1, key2, expected2) in samples.items():
             with self.subTest(lang=lang):
