@@ -90,13 +90,6 @@ class CatalogIntegrity(unittest.TestCase):
                     path = ROOT / language / 'LC_MESSAGES' / (domain + '.po')
                     values = po_entries(path)
                     for key in source_keys:
-                        if domain == 'helpTxt' and len(values) < len(reference):
-                            if key not in {'Legacy FullHDGlass custom spinner is retired; the image spinner is preserved',
-                                           'Legacy weather API key (unused; Open-Meteo needs no API key)',
-                                           'Legacy weather provider setting is no longer used', 'Please install beautifulsoup4',
-                                           'System spinner provided by the image is used',
-                                           'Weather data is provided by Open-Meteo; no API key is required'}:
-                                continue
                         self.assertTrue(values.get(key, '').strip(), (domain, language, key))
 
     def test_locale_count_and_complete_main_keys(self):
@@ -142,6 +135,35 @@ class CatalogIntegrity(unittest.TestCase):
                         self.assertEqual(compiled.gettext(key), value, (lang, key))
                 self.assertEqual(compiled.gettext('No EPG data available'), no_epg)
                 self.assertEqual(compiled.gettext('Last Quarter'), last_quarter)
+
+    def test_every_help_catalog_is_complete_and_localized(self):
+        """All twenty help catalogs must include 195 reference keys and load as GNU gettext."""
+        reference = po_entries(ROOT / 'sk/LC_MESSAGES/helpTxt.po')
+        expected = set(reference) - {''}
+        self.assertEqual(len(expected), 195)
+        samples = {
+            'al': ('No EPG data available', 'Nuk ka të dhëna EPG'),
+            'et': ('Last Quarter', 'Viimane veerand'),
+            'fa': ('No EPG data available', 'داده‌های EPG در دسترس نیست'),
+            'hu': ('Last Quarter', 'Utolsó negyed'),
+            'tr': ('No EPG data available', 'EPG verisi bulunmuyor'),
+        }
+        for lang in LANGS:
+            with self.subTest(lang=lang):
+                path = ROOT / lang / 'LC_MESSAGES/helpTxt.po'
+                entries = po_entries(path)
+                self.assertEqual(set(entries) - {''}, expected)
+                self.assertFalse(any(not entries[key].strip() for key in expected))
+                self.assertIn('Language: %s\\n' % LANGUAGE_TAGS[lang], entries[''])
+                with path.with_suffix('.mo').open('rb') as stream:
+                    compiled = gettext.GNUTranslations(stream)
+                self.assertEqual(compiled.info().get('language'), LANGUAGE_TAGS[lang])
+                self.assertEqual(set(compiled._catalog), set(entries))
+                for key in expected:
+                    self.assertEqual(compiled.gettext(key), entries[key], (lang, key))
+                if lang in samples:
+                    key, translation = samples[lang]
+                    self.assertEqual(compiled.gettext(key), translation)
 
     def test_all_shipped_mo_files_load_and_match_po(self):
         for lang in LANGS:
