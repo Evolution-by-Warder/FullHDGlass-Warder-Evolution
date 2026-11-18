@@ -168,3 +168,11 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 - Zostavený `et/LC_MESSAGES/eWeather.mo` (557 správ vrátane hlavičky), rozšírená kontrola gettext načítania, presných referenčných kľúčov a historického `Select city`. Predchádzajúci CI beh `44250310144` zlyhal preto, že test nesprávne požadoval neprítomnosť tohto historického kľúča; regresný test je opravený. Úspech nového CI behu treba potvrdiť po jeho ukončení.
 - **Presne zostáva 35 963 referenčných prekladových položiek**: `helpTxt` 2 646 (14 jazykov), `eWeather` 33 317 (15 × 2 117 absentujúcich katalógov + 1 562 estónskych). Hlavné nastavenia, weather a Netatmo majú podľa skoršieho auditu všetky plánované vyplnené referenčné kľúče. Vyplnenie neznamená jazykovú korektúru rodeným hovoriacim.
 - Fyzické overenie na prijímačoch zostáva otvorené. Žiadne vydanie IPK, feed, release, zmena verzie ani zlúčenie do `main`.
+
+## Veľká dávka 18. 11. 2026 – estónske eWeather (+290)
+
+- Z HEAD pracovnej vetvy načítaný referenčný inventár 2 117 fráz a existujúcich **555 referenčných estónskych prekladov** (+ jeden historický `Select city`). Doplnených **290 nových skutočných estónskych prekladov** počasia, vrátane zrážok, vysokých teplôt, búrok, vlhkosti, oblačnosti, slnka a vetra. Žiadne predchádzajúce texty neboli prepísané.
+- **Estónske eWeather: 845/2 117 referenčných fráz** (zostáva **1 272**), plus pôvodný extra kľúč `Select city`. `et/eWeather.po` spolu obsahuje 846 preložených kľúčov a hlavičku; nanovo zostavený `et/eWeather.mo` obsahuje 847 gettext záznamov.
+- Rozšírený regresný test všetkých 845 referenčných kľúčov v `tools/test-warder-catalog-integrity.py`, pričom historický extra kľúč sa zachováva a nezapočítava do pokrytia.
+- **Celkom ešte chýba 35 673 referenčných prekladov**: helpTxt **2 646**, eWeather **33 027** (15 × 2 117 úplne chýbajúcich jazykových katalógov + 1 272 estónskych viet). Pokrytie hlavných nastavení, weather a Netatmo sa touto dávkou nemení.
+- CI pre najnovší commit treba overiť samostatne; bez skutočnej jazykovej korektúry rodenými hovoriacimi a fyzických testov prijímača nie je bod 9 uzavretý. Žiadna IPK, feed, release, zlúčenie do `main` ani zmena verzie.
