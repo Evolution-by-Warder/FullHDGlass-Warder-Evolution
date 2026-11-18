@@ -39,8 +39,11 @@ class PolicyTests(unittest.TestCase):
         self.assertTrue(self.allowed())
 
     def test_legacy_and_other_images(self):
-        for version in ("7.6", "8.0", "8.0.1", "8.2", ""):
+        for version in ("7.6", "8.0", "8.0.1", "8.2"):
             self.assertFalse(self.allowed(version=version))
+        # Empty BoxInfo version is allowed when /etc/image-version explicitly
+        # reports OpenATV 8.1: the fallback is intentional, not an unsafe gate.
+        self.assertTrue(self.allowed(version=""))
         self.assertFalse(self.allowed(distro="openpli"))
 
     def test_optional_capability_key_not_required_when_runtime_is_active(self):
