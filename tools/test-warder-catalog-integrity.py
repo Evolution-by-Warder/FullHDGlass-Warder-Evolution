@@ -178,6 +178,31 @@ class CatalogIntegrity(unittest.TestCase):
             self.assertEqual(german[key], expected)
             self.assertEqual(binary.gettext(key), expected)
 
+    def test_french_help_translations_complete_and_loadable(self):
+        path = ROOT / 'fr' / 'LC_MESSAGES' / 'helpTxt.po'
+        reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
+        french = po_entries(path)
+        self.assertEqual(len(set(reference) - {''}), 189)
+        self.assertEqual(set(french), set(reference))
+        self.assertEqual([], [key for key, value in french.items() if key and not value])
+        self.assertIn('Language: fr_FR\n', french[''])
+        self.assertIn('charset=UTF-8', french[''])
+        samples = {
+            'Your API-key': 'Votre clé API',
+            'No EPG data available': 'Aucune donnée EPG disponible',
+            'Measurement of current network speed is enabled and is displayed in Mb/s':
+                'La mesure de la vitesse réseau actuelle est activée et s’affiche en Mb/s',
+            'Last Quarter': 'Dernier quartier',
+        }
+        with path.with_suffix('.mo').open('rb') as stream:
+            binary = gettext.GNUTranslations(stream)
+        self.assertEqual(binary.info().get('language'), 'fr_FR')
+        for key in set(reference) - {''}:
+            self.assertEqual(binary.gettext(key), french[key], key)
+        for key, expected in samples.items():
+            self.assertEqual(french[key], expected)
+            self.assertEqual(binary.gettext(key), expected)
+
     def test_greek_help_is_complete(self):
         greek = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'helpTxt.po')
         slovak = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
