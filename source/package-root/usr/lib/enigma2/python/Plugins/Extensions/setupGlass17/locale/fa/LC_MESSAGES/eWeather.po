@@ -241,3 +241,6126 @@ msgstr "خطا"
 
 msgid "Select country"
 msgstr "انتخاب کشور"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "افزودن شهر"
+
+msgid "Change Temperature Unit"
+msgstr "تغییر یکای دما"
+
+msgid "Change Units to"
+msgstr "تغییر یکاها به"
+
+msgid "Change city"
+msgstr "تغییر شهر"
+
+msgid "Daytime"
+msgstr "در طول روز"
+
+msgid "Decreasing"
+msgstr "رو به کاهش"
+
+msgid "Delete City"
+msgstr "حذف شهر"
+
+msgid "Forecast for"
+msgstr "پیش‌بینی برای"
+
+msgid "Friday"
+msgstr "جمعه"
+
+msgid "High"
+msgstr "بالا"
+
+msgid "Latitude"
+msgstr "عرض جغرافیایی"
+
+msgid "Longtitude"
+msgstr "طول جغرافیایی"
+
+msgid "Low"
+msgstr "پایین"
+
+msgid "Moderate"
+msgstr "متوسط"
+
+msgid "Monday"
+msgstr "دوشنبه"
+
+msgid "Nighttime"
+msgstr "در طول شب"
+
+msgid "None city founded"
+msgstr "هیچ شهری پیدا نشد"
+
+msgid "Precip"
+msgstr "بارش"
+
+msgid "Realfeel"
+msgstr "دمای محسوس"
+
+msgid "Rising"
+msgstr "رو به افزایش"
+
+msgid "Saturday"
+msgstr "شنبه"
+
+msgid "Select City"
+msgstr "انتخاب شهر"
+
+msgid "Steady"
+msgstr "ثابت"
+
+msgid "Sunday"
+msgstr "یکشنبه"
+
+msgid "Thursday"
+msgstr "پنجشنبه"
+
+msgid "Tuesday"
+msgstr "سه‌شنبه"
+
+msgid "Updated at"
+msgstr "زمان به‌روزرسانی"
+
+msgid "Uvindex"
+msgstr "شاخص فرابنفش"
+
+msgid "Very high"
+msgstr "بسیار بالا"
+
+msgid "Wednesday"
+msgstr "چهارشنبه"
+
+msgid "a bit of afternoon rain"
+msgstr "بعدازظهر، کمی باران"
+
+msgid "a bit of afternoon snow"
+msgstr "بعدازظهر، کمی برف"
+
+msgid "a bit of evening rain"
+msgstr "عصر، کمی باران"
+
+msgid "a bit of evening snow"
+msgstr "عصر، کمی برف"
+
+msgid "a bit of ice"
+msgstr "یخ‌زدگی پراکنده"
+
+msgid "a bit of ice and rain"
+msgstr "یخ‌زدگی پراکنده، باران"
+
+msgid "a bit of ice early"
+msgstr "در ابتدای دوره، یخ‌زدگی پراکنده"
+
+msgid "a bit of ice in the afternoon"
+msgstr "بعدازظهر، یخ‌زدگی پراکنده"
+
+msgid "a bit of ice in the morning"
+msgstr "صبح، یخ‌زدگی پراکنده"
+
+msgid "a bit of ice late"
+msgstr "در ساعات بعد، یخ‌زدگی پراکنده"
+
+msgid "a bit of late-night rain"
+msgstr "اواخر شب، کمی باران"
+
+msgid "a bit of late-night snow"
+msgstr "اواخر شب، کمی برف"
+
+msgid "a bit of morning rain"
+msgstr "صبح، کمی باران"
+
+msgid "a bit of morning snow"
+msgstr "صبح، کمی برف"
+
+msgid "a bit of rain"
+msgstr "کمی باران"
+
+msgid "a bit of rain and ice late"
+msgstr "کمی باران. در ساعات بعد، یخ"
+
+msgid "a bit of rain and sleet"
+msgstr "کمی باران، باران و برف آمیخته"
+
+msgid "a bit of rain and sleet later"
+msgstr "کمی باران. در ساعات بعد، باران و برف آمیخته"
+
+msgid "a bit of rain and snow"
+msgstr "کمی باران، برف"
+
+msgid "a bit of rain in the evening"
+msgstr "عصر، کمی باران"
+
+msgid "a bit of rain in the morning"
+msgstr "صبح، کمی باران"
+
+msgid "a bit of rain late"
+msgstr "در ساعات بعد، کمی باران"
+
+msgid "a bit of rain this evening"
+msgstr "امروز عصر، کمی باران"
+
+msgid "a bit of snow"
+msgstr "کمی برف"
+
+msgid "a bit of snow and ice later"
+msgstr "کمی برف. در ساعات بعد، یخ"
+
+msgid "a bit of snow and rain"
+msgstr "کمی برف، باران"
+
+msgid "a bit of snow and rain late"
+msgstr "کمی برف. در ساعات بعد، باران"
+
+msgid "a bit of snow and sleet late"
+msgstr "کمی برف. در ساعات بعد، باران و برف آمیخته"
+
+msgid "a bit of snow early"
+msgstr "در ابتدای دوره، کمی برف"
+
+msgid "a bit of snow in the evening"
+msgstr "عصر، کمی برف"
+
+msgid "a bit of snow in the morning"
+msgstr "صبح، کمی برف"
+
+msgid "a bit of snow late"
+msgstr "در ساعات بعد، کمی برف"
+
+msgid "a bit of wintry mix"
+msgstr "بارش خفیف و مخلوط زمستانی"
+
+msgid "a blend of sun and clouds"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "a brief afternoon shower"
+msgstr "بعدازظهر، رگبارهای کوتاه"
+
+msgid "a brief evening shower or two"
+msgstr "عصر، یک یا دو رگبار کوتاه"
+
+msgid "a brief morning shower or two"
+msgstr "صبح، یک یا دو رگبار کوتاه"
+
+msgid "a brief shower"
+msgstr "رگبارهای کوتاه"
+
+msgid "a brief shower in the morning"
+msgstr "صبح، رگبارهای کوتاه"
+
+msgid "a brief shower or two"
+msgstr "یک یا دو رگبار کوتاه"
+
+msgid "a brief shower or two late"
+msgstr "در ساعات بعد، یک یا دو رگبار کوتاه"
+
+msgid "a brief shower this afternoon"
+msgstr "امروز بعدازظهر، رگبارهای کوتاه"
+
+msgid "a brief t-storm early"
+msgstr "در ابتدای دوره، رعدوبرق کوتاه‌مدت"
+
+msgid "a brief t-storm in the p.m."
+msgstr "بعدازظهر، رعدوبرق کوتاه‌مدت"
+
+msgid "a chance for snow"
+msgstr "احتمال بارش برف"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "بعدازظهر، رعدوبرق همراه با خنک شدن هوا"
+
+msgid "a couple of a.m. snow showers"
+msgstr "صبح، چند رگبار برف"
+
+msgid "a couple of afternoon showers"
+msgstr "بعدازظهر، یک یا دو رگبار"
+
+msgid "a couple of downpours late"
+msgstr "در ساعات بعد، چند نوبت باران سیل‌آسا"
+
+msgid "a couple of evening downpours"
+msgstr "عصر، چند نوبت باران سیل‌آسا"
+
+msgid "a couple of evening showers"
+msgstr "عصر، یک یا دو رگبار"
+
+msgid "a couple of evening t-showers"
+msgstr "عصر، چند رگبار همراه با رعدوبرق"
+
+msgid "a couple of evening t-storms"
+msgstr "عصر، چند توفان تندری"
+
+msgid "a couple of flurries"
+msgstr "چند رگبار خفیف برف"
+
+msgid "a couple of heavy t-storms"
+msgstr "چند توفان تندری شدید"
+
+msgid "a couple of morning showers"
+msgstr "صبح، یک یا دو رگبار"
+
+msgid "a couple of morning t-showers"
+msgstr "صبح، چند رگبار همراه با رعدوبرق"
+
+msgid "a couple of morning t-storms"
+msgstr "صبح، چند توفان تندری"
+
+msgid "a couple of p.m. snow showers"
+msgstr "بعدازظهر، چند رگبار برف"
+
+msgid "a couple of p.m. t-showers"
+msgstr "بعدازظهر، چند رگبار همراه با رعدوبرق"
+
+msgid "a couple of showers"
+msgstr "یک یا دو رگبار"
+
+msgid "a couple of showers late"
+msgstr "در ساعات بعد، یک یا دو رگبار"
+
+msgid "a couple of showers possible"
+msgstr "احتمال چند نوبت رگبار"
+
+msgid "a couple of snow showers"
+msgstr "چند رگبار برف"
+
+msgid "a couple of snow showers late"
+msgstr "در ساعات بعد، چند رگبار برف"
+
+msgid "a couple of strong t-storms"
+msgstr "چند توفان تندری شدید"
+
+msgid "a couple of t-showers"
+msgstr "چند رگبار همراه با رعدوبرق"
+
+msgid "a couple of t-showers early"
+msgstr "در ابتدای دوره، چند رگبار همراه با رعدوبرق"
+
+msgid "a couple of t-showers late"
+msgstr "در ساعات بعد، چند رگبار همراه با رعدوبرق"
+
+msgid "a couple of t-storms late"
+msgstr "در ساعات بعد، چند توفان تندری"
+
+msgid "a couple of thundershowers"
+msgstr "چند رگبار همراه با رعدوبرق"
+
+msgid "a damaging thunderstorm"
+msgstr "توفان تندری خسارت‌زا"
+
+msgid "a downpour early"
+msgstr "در ابتدای دوره، باران سیل‌آسا"
+
+msgid "a downpour in the afternoon"
+msgstr "بعدازظهر، باران سیل‌آسا"
+
+msgid "a downpour in the morning"
+msgstr "صبح، باران سیل‌آسا"
+
+msgid "a downpour this morning"
+msgstr "امروز صبح، باران سیل‌آسا"
+
+msgid "a drenching morning shower"
+msgstr "صبح، رگبارهای شدید"
+
+msgid "a drenching shower late"
+msgstr "در ساعات بعد، رگبارهای شدید"
+
+msgid "a drenching t-storm early"
+msgstr "در ابتدای دوره، رعدوبرق همراه با باران سیل‌آسا"
+
+msgid "a drenching thunderstorm late"
+msgstr "در ساعات بعد، رعدوبرق همراه با باران سیل‌آسا"
+
+msgid "a few a.m. showers"
+msgstr "صبح، چند رگبار"
+
+msgid "a few afternoon showers"
+msgstr "بعدازظهر، چند رگبار"
+
+msgid "a few evening showers"
+msgstr "عصر، چند رگبار"
+
+msgid "a few flurries"
+msgstr "چند رگبار خفیف برف"
+
+msgid "a few flurries in the morning"
+msgstr "صبح، چند رگبار خفیف برف"
+
+msgid "a few late-night showers"
+msgstr "اواخر شب، چند رگبار"
+
+msgid "a few morning showers"
+msgstr "صبح، چند رگبار"
+
+msgid "a few showers"
+msgstr "چند رگبار"
+
+msgid "a few showers in the evening"
+msgstr "عصر، چند رگبار"
+
+msgid "a few showers in the morning"
+msgstr "صبح، چند رگبار"
+
+msgid "a few showers late"
+msgstr "در ساعات بعد، چند رگبار"
+
+msgid "a few showers this afternoon"
+msgstr "امروز بعدازظهر، چند رگبار"
+
+msgid "a few showers this evening"
+msgstr "امروز عصر، چند رگبار"
+
+msgid "a few snowflakes late"
+msgstr "در ساعات بعد، چند دانه برف"
+
+msgid "a few strong p.m. t-storms"
+msgstr "بعدازظهر، چند توفان تندری شدید"
+
+msgid "a few t-storms"
+msgstr "چند توفان تندری"
+
+msgid "a flurry early"
+msgstr "در ابتدای دوره، رگبارهای خفیف برف"
+
+msgid "a flurry in the p.m."
+msgstr "بعدازظهر، رگبارهای خفیف برف"
+
+msgid "a flurry late"
+msgstr "در ساعات بعد، رگبارهای خفیف برف"
+
+msgid "a gusty breeze with clearing"
+msgstr "وزش تندباد لحظه‌ای، آسمان به‌تدریج صاف می‌شود"
+
+msgid "a gusty morning breeze"
+msgstr "صبح، وزش تندباد لحظه‌ای"
+
+msgid "a heavy afternoon shower"
+msgstr "بعدازظهر، رگبارهای شدید"
+
+msgid "a heavy afternoon t-storm"
+msgstr "بعدازظهر، توفان تندری شدید"
+
+msgid "a heavy morning shower or two"
+msgstr "صبح، چند نوبت رگبار شدید"
+
+msgid "a heavy shower in the morning"
+msgstr "صبح، رگبارهای شدید"
+
+msgid "a heavy t-storm"
+msgstr "توفان تندری شدید"
+
+msgid "a heavy t-storm early"
+msgstr "در ابتدای دوره، توفان تندری شدید"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "صبح، توفان تندری شدید"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "بعدازظهر، توفان تندری شدید"
+
+msgid "a heavy thunderstorm"
+msgstr "توفان تندری شدید"
+
+msgid "a late-night shower"
+msgstr "اواخر شب، رگبار باران"
+
+msgid "a late-night shower in places"
+msgstr "اواخر شب، رگبار پراکنده"
+
+msgid "a late-night shower in spots"
+msgstr "اواخر شب، رگبار پراکنده"
+
+msgid "a late-night shower or two"
+msgstr "اواخر شب، یک یا دو رگبار"
+
+msgid "a late-night t-storm in spots"
+msgstr "اواخر شب، توفان تندری پراکنده"
+
+msgid "a late-night t-storm or two"
+msgstr "اواخر شب، چند توفان تندری"
+
+msgid "a late-night thunderstorm"
+msgstr "اواخر شب، توفان تندری"
+
+msgid "a little a.m. rain"
+msgstr "صبح، کمی باران"
+
+msgid "a little afternoon rain"
+msgstr "بعدازظهر، کمی باران"
+
+msgid "a little afternoon snow"
+msgstr "بعدازظهر، کمی برف"
+
+msgid "a little evening rain"
+msgstr "عصر، کمی باران"
+
+msgid "a little evening snow"
+msgstr "عصر، کمی برف"
+
+msgid "a little icy mix early"
+msgstr "در ابتدای دوره، بارش مخلوط خفیف همراه با یخ‌زدگی"
+
+msgid "a little icy mix in the a.m."
+msgstr "صبح، بارش مخلوط خفیف همراه با یخ‌زدگی"
+
+msgid "a little icy mix this morning"
+msgstr "امروز صبح، بارش مخلوط خفیف همراه با یخ‌زدگی"
+
+msgid "a little late-night rain"
+msgstr "اواخر شب، کمی باران"
+
+msgid "a little late-night snow"
+msgstr "اواخر شب، کمی برف"
+
+msgid "a little morning rain"
+msgstr "صبح، کمی باران"
+
+msgid "a little morning snow"
+msgstr "صبح، کمی برف"
+
+msgid "a little rain"
+msgstr "کمی باران"
+
+msgid "a little rain early"
+msgstr "در ابتدای دوره، کمی باران"
+
+msgid "a little rain in the evening"
+msgstr "عصر، کمی باران"
+
+msgid "a little rain in the morning"
+msgstr "صبح، کمی باران"
+
+msgid "a little rain late"
+msgstr "در ساعات بعد، کمی باران"
+
+msgid "a little rain this afternoon"
+msgstr "امروز بعدازظهر، کمی باران"
+
+msgid "a little rain this morning"
+msgstr "امروز صبح، کمی باران"
+
+msgid "a little snow"
+msgstr "کمی برف"
+
+msgid "a little snow and sleet early"
+msgstr "کمی برف. در ابتدای دوره، باران و برف آمیخته"
+
+msgid "a little snow and sleet late"
+msgstr "کمی برف. در ساعات بعد، باران و برف آمیخته"
+
+msgid "a little snow at times"
+msgstr "گاهی برف خفیف"
+
+msgid "a little snow at times late"
+msgstr "در ساعات بعد، گاهی برف خفیف"
+
+msgid "a little snow early"
+msgstr "در ابتدای دوره، کمی برف"
+
+msgid "a little snow in the evening"
+msgstr "عصر، کمی برف"
+
+msgid "a little snow late"
+msgstr "در ساعات بعد، کمی برف"
+
+msgid "a little snow this afternoon"
+msgstr "امروز بعدازظهر، کمی برف"
+
+msgid "a little wintry mix"
+msgstr "بارش خفیف و مخلوط زمستانی"
+
+msgid "a little wintry mix late"
+msgstr "در ساعات بعد، بارش خفیف و مخلوط زمستانی"
+
+msgid "a morning flurry"
+msgstr "صبح، رگبارهای خفیف برف"
+
+msgid "a morning rain or snow shower"
+msgstr "صبح، رگبار باران یا برف"
+
+msgid "a morning shower"
+msgstr "صبح، رگبار باران"
+
+msgid "a morning shower in places"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "a morning shower in spots"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "a morning shower in the area"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "a morning shower or t-storm"
+msgstr "صبح، رگبار یا توفان تندری"
+
+msgid "a morning shower or two"
+msgstr "صبح، یک یا دو رگبار"
+
+msgid "a morning snow shower around"
+msgstr "صبح، رگبار برف"
+
+msgid "a morning t-storm"
+msgstr "صبح، توفان تندری"
+
+msgid "a morning t-storm in spots"
+msgstr "صبح، توفان تندری پراکنده"
+
+msgid "a morning t-storm in the area"
+msgstr "صبح، توفان تندری پراکنده"
+
+msgid "a morning thunderstorm"
+msgstr "صبح، توفان تندری"
+
+msgid "a morning thunderstorm or two"
+msgstr "صبح، چند توفان تندری"
+
+msgid "a p.m. rain or snow shower"
+msgstr "بعدازظهر، رگبار باران یا برف"
+
+msgid "a p.m. shower"
+msgstr "بعدازظهر، رگبار باران"
+
+msgid "a p.m. shower in places"
+msgstr "بعدازظهر، رگبار پراکنده"
+
+msgid "a p.m. shower in the area"
+msgstr "بعدازظهر، رگبار پراکنده"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "بعدازظهر، رگبار یا توفان تندری"
+
+msgid "a p.m. snow shower in spots"
+msgstr "بعدازظهر، رگبار برف در برخی نقاط"
+
+msgid "a p.m. t-storm"
+msgstr "بعدازظهر، توفان تندری"
+
+msgid "a p.m. t-storm in spots"
+msgstr "بعدازظهر، توفان تندری پراکنده"
+
+msgid "a p.m. t-storm in the area"
+msgstr "بعدازظهر، توفان تندری پراکنده"
+
+msgid "a p.m. t-storm possible"
+msgstr "بعدازظهر، احتمال توفان تندری"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "بعدازظهر، توفان تندری پراکنده"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "بعدازظهر، چند توفان تندری"
+
+msgid "a passing afternoon shower"
+msgstr "بعدازظهر، رگبارهای کوتاه"
+
+msgid "a passing flurry late"
+msgstr "در ساعات بعد، رگبارهای خفیف برف"
+
+msgid "a passing late-night shower"
+msgstr "اواخر شب، رگبارهای کوتاه"
+
+msgid "a passing morning shower"
+msgstr "صبح، رگبارهای کوتاه"
+
+msgid "a passing shower"
+msgstr "رگبارهای کوتاه"
+
+msgid "a passing shower late"
+msgstr "در ساعات بعد، رگبارهای کوتاه"
+
+msgid "a passing shower or two"
+msgstr "یک یا دو رگبار کوتاه"
+
+msgid "a passing shower this morning"
+msgstr "امروز صبح، رگبارهای کوتاه"
+
+msgid "a quick afternoon shower"
+msgstr "بعدازظهر، رگبارهای کوتاه"
+
+msgid "a quick shower"
+msgstr "رگبارهای کوتاه"
+
+msgid "a rain and sleet shower"
+msgstr "رگبار باران و برفاب"
+
+msgid "a rain and sleet shower late"
+msgstr "در ساعات بعد، رگبار باران و برفاب"
+
+msgid "a rain or snow shower"
+msgstr "رگبار باران یا برف"
+
+msgid "a rain or snow shower early"
+msgstr "در ابتدای دوره، رگبار باران یا برف"
+
+msgid "a rain or snow shower late"
+msgstr "در ساعات بعد، رگبار باران یا برف"
+
+msgid "a severe afternoon t-storm"
+msgstr "بعدازظهر، توفان تندری شدید"
+
+msgid "a severe thunderstorm"
+msgstr "توفان تندری شدید"
+
+msgid "a shower"
+msgstr "رگبار باران"
+
+msgid "a shower and t-storm around"
+msgstr "رگبار باران، توفان تندری پراکنده"
+
+msgid "a shower around"
+msgstr "رگبار پراکنده"
+
+msgid "a shower early"
+msgstr "در ابتدای دوره، رگبار باران"
+
+msgid "a shower in places"
+msgstr "رگبار پراکنده"
+
+msgid "a shower in places late"
+msgstr "در ساعات بعد، رگبار پراکنده"
+
+msgid "a shower in spots"
+msgstr "رگبار پراکنده"
+
+msgid "a shower in spots late"
+msgstr "در ساعات بعد، رگبار پراکنده"
+
+msgid "a shower in the a.m."
+msgstr "صبح، رگبار باران"
+
+msgid "a shower in the afternoon"
+msgstr "بعدازظهر، رگبار باران"
+
+msgid "a shower in the area"
+msgstr "رگبار پراکنده"
+
+msgid "a shower in the area late"
+msgstr "در ساعات بعد، رگبار پراکنده"
+
+msgid "a shower in the evening"
+msgstr "عصر، رگبار باران"
+
+msgid "a shower in the morning"
+msgstr "صبح، رگبار باران"
+
+msgid "a shower in the p.m."
+msgstr "بعدازظهر، رگبار باران"
+
+msgid "a shower late"
+msgstr "در ساعات بعد، رگبار باران"
+
+msgid "a shower late this afternoon"
+msgstr "اواخر بعدازظهر، رگبار باران"
+
+msgid "a shower late this morning"
+msgstr "اواخر صبح، رگبار باران"
+
+msgid "a shower or heavy t-storm"
+msgstr "رگبار یا توفان تندری شدید"
+
+msgid "a shower or t-storm"
+msgstr "رگبار یا توفان تندری"
+
+msgid "a shower or t-storm early"
+msgstr "در ابتدای دوره، رگبار یا توفان تندری"
+
+msgid "a shower or t-storm in spots"
+msgstr "رگبار یا رعدوبرق در برخی نقاط"
+
+msgid "a shower or thunderstorm"
+msgstr "رگبار یا توفان تندری"
+
+msgid "a shower or two"
+msgstr "یک یا دو رگبار"
+
+msgid "a shower or two early"
+msgstr "در ابتدای دوره، یک یا دو رگبار"
+
+msgid "a shower or two late"
+msgstr "در ساعات بعد، یک یا دو رگبار"
+
+msgid "a shower possible"
+msgstr "احتمال رگبار"
+
+msgid "a shower this afternoon"
+msgstr "امروز بعدازظهر، رگبار باران"
+
+msgid "a shower this morning"
+msgstr "امروز صبح، رگبار باران"
+
+msgid "a shower toward dawn"
+msgstr "نزدیک سپیده‌دم، رگبار باران"
+
+msgid "a snow shower"
+msgstr "رگبار برف"
+
+msgid "a snow shower around"
+msgstr "رگبار برف"
+
+msgid "a snow shower around late"
+msgstr "در ساعات بعد، رگبار برف"
+
+msgid "a snow shower in the morning"
+msgstr "صبح، رگبار برف"
+
+msgid "a snow shower in the p.m."
+msgstr "بعدازظهر، رگبار برف"
+
+msgid "a snow shower late"
+msgstr "در ساعات بعد، رگبار برف"
+
+msgid "a snow shower this afternoon"
+msgstr "امروز بعدازظهر، رگبار برف"
+
+msgid "a snow shower this evening"
+msgstr "امروز عصر، رگبار برف"
+
+msgid "a snow shower with low clouds"
+msgstr "رگبار برف، ابرهای کم‌ارتفاع"
+
+msgid "a snow squall early"
+msgstr "در ابتدای دوره، رگبار برف همراه با تندباد"
+
+msgid "a snow squall in the evening"
+msgstr "عصر، رگبار برف همراه با تندباد"
+
+msgid "a snow squall in the morning"
+msgstr "صبح، رگبار برف همراه با تندباد"
+
+msgid "a snow squall in the p.m."
+msgstr "بعدازظهر، رگبار برف همراه با تندباد"
+
+msgid "a snow squall late"
+msgstr "در ساعات بعد، رگبار برف همراه با تندباد"
+
+msgid "a stray a.m. t-shower"
+msgstr "صبح، رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a stray a.m. t-storm"
+msgstr "صبح، توفان تندری پراکنده"
+
+msgid "a stray afternoon shower"
+msgstr "بعدازظهر، رگبار پراکنده"
+
+msgid "a stray afternoon t-shower"
+msgstr "بعدازظهر، رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a stray afternoon t-storm"
+msgstr "بعدازظهر، توفان تندری پراکنده"
+
+msgid "a stray evening thunderstorm"
+msgstr "عصر، توفان تندری پراکنده"
+
+msgid "a stray late-night t-storm"
+msgstr "اواخر شب، توفان تندری پراکنده"
+
+msgid "a stray morning shower"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "a stray morning thunderstorm"
+msgstr "صبح، توفان تندری پراکنده"
+
+msgid "a stray shower in the morning"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "a stray shower late"
+msgstr "در ساعات بعد، رگبار پراکنده"
+
+msgid "a stray t-shower"
+msgstr "رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a stray t-storm"
+msgstr "توفان تندری پراکنده"
+
+msgid "a stray t-storm early"
+msgstr "در ابتدای دوره، توفان تندری پراکنده"
+
+msgid "a stray t-storm this evening"
+msgstr "امروز عصر، توفان تندری پراکنده"
+
+msgid "a stray thundershower"
+msgstr "رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a stray thunderstorm"
+msgstr "توفان تندری پراکنده"
+
+msgid "a stray thunderstorm early"
+msgstr "در ابتدای دوره، توفان تندری پراکنده"
+
+msgid "a stray thunderstorm late"
+msgstr "در ساعات بعد، توفان تندری پراکنده"
+
+msgid "a strong a.m. t-storm"
+msgstr "صبح، توفان تندری شدید"
+
+msgid "a strong afternoon t-storm"
+msgstr "بعدازظهر، توفان تندری شدید"
+
+msgid "a strong evening thunderstorm"
+msgstr "عصر، توفان تندری شدید"
+
+msgid "a strong late-night t-storm"
+msgstr "اواخر شب، توفان تندری شدید"
+
+msgid "a strong morning thunderstorm"
+msgstr "صبح، توفان تندری شدید"
+
+msgid "a strong t-storm"
+msgstr "توفان تندری شدید"
+
+msgid "a strong t-storm in spots"
+msgstr "رعدوبرق شدید در برخی نقاط"
+
+msgid "a strong t-storm late"
+msgstr "در ساعات بعد، توفان تندری شدید"
+
+msgid "a strong t-storm possible"
+msgstr "احتمال توفان تندری شدید"
+
+msgid "a strong t-storm this evening"
+msgstr "امروز عصر، توفان تندری شدید"
+
+msgid "a strong thunderstorm"
+msgstr "توفان تندری شدید"
+
+msgid "a strong thunderstorm early"
+msgstr "در ابتدای دوره، توفان تندری شدید"
+
+msgid "a strong thunderstorm late"
+msgstr "در ساعات بعد، توفان تندری شدید"
+
+msgid "a t-shower in spots"
+msgstr "رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a t-shower in spots early"
+msgstr "در ابتدای دوره، رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a t-shower in the afternoon"
+msgstr "بعدازظهر، رگبار همراه با رعدوبرق"
+
+msgid "a t-storm"
+msgstr "توفان تندری"
+
+msgid "a t-storm around in the a.m."
+msgstr "صبح، توفان تندری پراکنده"
+
+msgid "a t-storm around in the p.m."
+msgstr "بعدازظهر، توفان تندری پراکنده"
+
+msgid "a t-storm around late"
+msgstr "در ساعات بعد، توفان تندری پراکنده"
+
+msgid "a t-storm around this evening"
+msgstr "امروز عصر، توفان تندری پراکنده"
+
+msgid "a t-storm early"
+msgstr "در ابتدای دوره، توفان تندری"
+
+msgid "a t-storm in spots"
+msgstr "توفان تندری پراکنده"
+
+msgid "a t-storm in the afternoon"
+msgstr "بعدازظهر، توفان تندری"
+
+msgid "a t-storm in the area late"
+msgstr "در ساعات بعد، توفان تندری پراکنده"
+
+msgid "a t-storm in the p.m."
+msgstr "بعدازظهر، توفان تندری"
+
+msgid "a t-storm late"
+msgstr "در ساعات بعد، توفان تندری"
+
+msgid "a t-storm late this afternoon"
+msgstr "اواخر بعدازظهر، توفان تندری"
+
+msgid "a t-storm late this evening"
+msgstr "اواخر عصر، توفان تندری"
+
+msgid "a t-storm late this morning"
+msgstr "اواخر صبح، توفان تندری"
+
+msgid "a t-storm or two"
+msgstr "چند توفان تندری"
+
+msgid "a t-storm possible"
+msgstr "احتمال توفان تندری"
+
+msgid "a thick cloud cover"
+msgstr "تمام‌ابری"
+
+msgid "a thick cloud cover and hot"
+msgstr "تمام‌ابری، هوای داغ"
+
+msgid "a thundershower"
+msgstr "رگبار همراه با رعدوبرق"
+
+msgid "a thundershower in spots"
+msgstr "رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a thundershower in spots late"
+msgstr "در ساعات بعد، رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a thundershower late"
+msgstr "در ساعات بعد، رگبار همراه با رعدوبرق"
+
+msgid "a thundershower on the prowl"
+msgstr "رگبار پراکنده همراه با رعدوبرق"
+
+msgid "a thunderstorm"
+msgstr "توفان تندری"
+
+msgid "a thunderstorm around"
+msgstr "توفان تندری پراکنده"
+
+msgid "a thunderstorm around early"
+msgstr "در ابتدای دوره، توفان تندری پراکنده"
+
+msgid "a thunderstorm around late"
+msgstr "در ساعات بعد، توفان تندری پراکنده"
+
+msgid "a thunderstorm early"
+msgstr "در ابتدای دوره، توفان تندری"
+
+msgid "a thunderstorm in spots"
+msgstr "توفان تندری پراکنده"
+
+msgid "a thunderstorm in spots early"
+msgstr "در ابتدای دوره، توفان تندری پراکنده"
+
+msgid "a thunderstorm in spots late"
+msgstr "در ساعات بعد، توفان تندری پراکنده"
+
+msgid "a thunderstorm in the area"
+msgstr "توفان تندری پراکنده"
+
+msgid "a thunderstorm in the evening"
+msgstr "عصر، توفان تندری"
+
+msgid "a thunderstorm in the morning"
+msgstr "صبح، توفان تندری"
+
+msgid "a thunderstorm late"
+msgstr "در ساعات بعد، توفان تندری"
+
+msgid "a thunderstorm or two"
+msgstr "چند توفان تندری"
+
+msgid "a thunderstorm or two early"
+msgstr "در ابتدای دوره، چند توفان تندری"
+
+msgid "a thunderstorm or two late"
+msgstr "در ساعات بعد، چند توفان تندری"
+
+msgid "a thunderstorm possible"
+msgstr "احتمال توفان تندری"
+
+msgid "a thunderstorm this afternoon"
+msgstr "امروز بعدازظهر، توفان تندری"
+
+msgid "a thunderstorm this evening"
+msgstr "امروز عصر، توفان تندری"
+
+msgid "a thunderstorm this morning"
+msgstr "امروز صبح، توفان تندری"
+
+msgid "a touch of afternoon rain"
+msgstr "بعدازظهر، کمی باران"
+
+msgid "a touch of evening rain"
+msgstr "عصر، کمی باران"
+
+msgid "a touch of late-night rain"
+msgstr "اواخر شب، کمی باران"
+
+msgid "a touch of morning rain"
+msgstr "صبح، کمی باران"
+
+msgid "a touch of rain"
+msgstr "کمی باران"
+
+msgid "a touch of rain late"
+msgstr "در ساعات بعد، کمی باران"
+
+msgid "a wintry mix"
+msgstr "بارش مخلوط زمستانی"
+
+msgid "a wintry mix in the morning"
+msgstr "صبح، بارش مخلوط زمستانی"
+
+msgid "a wintry mix late"
+msgstr "در ساعات بعد، بارش مخلوط زمستانی"
+
+msgid "a wintry mix this morning"
+msgstr "امروز صبح، بارش مخلوط زمستانی"
+
+msgid "a.m. flurries"
+msgstr "صبح، رگبارهای خفیف برف"
+
+msgid "a.m. rain"
+msgstr "صبح، باران"
+
+msgid "a.m. showers"
+msgstr "صبح، رگبار"
+
+msgid "abundant sunshine"
+msgstr "آفتاب فراوان"
+
+msgid "abundant sunshine and breezy"
+msgstr "آفتاب فراوان، کمی بادخیز"
+
+msgid "abundant sunshine and hot"
+msgstr "آفتاب فراوان، هوای داغ"
+
+msgid "abundant sunshine and nice"
+msgstr "آفتاب فراوان، هوای مطبوع"
+
+msgid "abundant sunshine and warm"
+msgstr "آفتاب فراوان، گرم"
+
+msgid "abundant sunshine and warmer"
+msgstr "آفتاب فراوان، گرم‌تر"
+
+msgid "afternoon flurries"
+msgstr "بعدازظهر، رگبارهای خفیف برف"
+
+msgid "afternoon rain"
+msgstr "بعدازظهر، باران"
+
+msgid "afternoon showers"
+msgstr "بعدازظهر، رگبار"
+
+msgid "afternoon snow"
+msgstr "بعدازظهر، برف"
+
+msgid "afternoon snow showers"
+msgstr "بعدازظهر، رگبار برف"
+
+msgid "afternoon t-storms"
+msgstr "بعدازظهر، طوفان‌های تندری"
+
+msgid "afternoon thundershowers"
+msgstr "بعدازظهر، رگبار همراه با رعدوبرق"
+
+msgid "afternoon thunderstorms"
+msgstr "بعدازظهر، طوفان‌های تندری"
+
+msgid "an a.m. flurry"
+msgstr "صبح، رگبارهای خفیف برف"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "صبح، رگبار باران و برفاب"
+
+msgid "an a.m. rain or snow shower"
+msgstr "صبح، رگبار باران یا برف"
+
+msgid "an a.m. shower"
+msgstr "صبح، رگبار باران"
+
+msgid "an a.m. shower or two"
+msgstr "صبح، یک یا دو رگبار"
+
+msgid "an a.m. t-storm"
+msgstr "صبح، توفان تندری"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "صبح، توفان تندری پراکنده"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "صبح، چند توفان تندری"
+
+msgid "an afternoon shower"
+msgstr "بعدازظهر، رگبار باران"
+
+msgid "an afternoon shower in spots"
+msgstr "بعدازظهر، رگبار پراکنده"
+
+msgid "an afternoon shower or two"
+msgstr "بعدازظهر، یک یا دو رگبار"
+
+msgid "an afternoon shower possible"
+msgstr "بعدازظهر، احتمال رگبار"
+
+msgid "an afternoon snow showers"
+msgstr "بعدازظهر، رگبار برف"
+
+msgid "an afternoon t-storm"
+msgstr "بعدازظهر، توفان تندری"
+
+msgid "an afternoon t-storm or two"
+msgstr "بعدازظهر، چند توفان تندری"
+
+msgid "an afternoon thundershower"
+msgstr "بعدازظهر، رگبار همراه با رعدوبرق"
+
+msgid "an afternoon thunderstorm"
+msgstr "بعدازظهر، توفان تندری"
+
+msgid "an evening shower"
+msgstr "عصر، رگبار باران"
+
+msgid "an evening shower in the area"
+msgstr "عصر، رگبار پراکنده"
+
+msgid "an evening shower or t-storm"
+msgstr "عصر، رگبار یا توفان تندری"
+
+msgid "an evening shower or two"
+msgstr "عصر، یک یا دو رگبار"
+
+msgid "an evening t-storm in spots"
+msgstr "عصر، توفان تندری پراکنده"
+
+msgid "an evening t-storm or two"
+msgstr "عصر، چند توفان تندری"
+
+msgid "an evening thundershower"
+msgstr "عصر، رگبار همراه با رعدوبرق"
+
+msgid "an evening thunderstorm"
+msgstr "عصر، توفان تندری"
+
+msgid "areas of fog"
+msgstr "مه در بعضی مناطق"
+
+msgid "areas of fog in the morning"
+msgstr "صبح، مه در بعضی مناطق"
+
+msgid "areas of low clouds"
+msgstr "ابرهای کم‌ارتفاع در بعضی مناطق"
+
+msgid "areas of low clouds and cold"
+msgstr "ابرهای کم‌ارتفاع در بعضی مناطق، سرد"
+
+msgid "areas of low clouds and fog"
+msgstr "ابرهای کم‌ارتفاع در بعضی مناطق، مه"
+
+msgid "be advised for strong winds"
+msgstr "مراقب باد شدید باشید"
+
+msgid "beautiful"
+msgstr "هوای مطبوع"
+
+msgid "beautiful with clouds and sun"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "beautiful with periods of sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "beautiful with plenty of sun"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "beautiful with some sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "beautiful with sun and clouds"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "beautiful with sunshine"
+msgstr "هوای مطبوع، آفتابی"
+
+msgid "becoming clear"
+msgstr "آسمان به‌تدریج صاف می‌شود"
+
+msgid "becoming clear and chilly"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرمای محسوس"
+
+msgid "becoming clear and cold"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرد"
+
+msgid "becoming clear and colder"
+msgstr "آسمان به‌تدریج صاف می‌شود، سردتر"
+
+msgid "becoming clear and cool"
+msgstr "آسمان به‌تدریج صاف می‌شود، خنک"
+
+msgid "becoming clear and cooler"
+msgstr "آسمان به‌تدریج صاف می‌شود، خنک‌تر"
+
+msgid "becoming clear and mild"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای ملایم"
+
+msgid "becoming clear and very warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، بسیار گرم"
+
+msgid "becoming clear and warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، گرم"
+
+msgid "becoming clear with a shower"
+msgstr "آسمان به‌تدریج صاف می‌شود، رگبار باران"
+
+msgid "becoming cloudy"
+msgstr "آسمان ابری می‌شود"
+
+msgid "becoming cloudy and breezy"
+msgstr "آسمان ابری می‌شود، کمی بادخیز"
+
+msgid "becoming cloudy and chilly"
+msgstr "آسمان ابری می‌شود، سرمای محسوس"
+
+msgid "becoming cloudy and cold"
+msgstr "آسمان ابری می‌شود، سرد"
+
+msgid "becoming cloudy and cooler"
+msgstr "آسمان ابری می‌شود، خنک‌تر"
+
+msgid "becoming cloudy and hot"
+msgstr "آسمان ابری می‌شود، هوای داغ"
+
+msgid "becoming cloudy and humid"
+msgstr "آسمان ابری می‌شود، مرطوب"
+
+msgid "becoming cloudy and mild"
+msgstr "آسمان ابری می‌شود، هوای ملایم"
+
+msgid "becoming cloudy and very warm"
+msgstr "آسمان ابری می‌شود، بسیار گرم"
+
+msgid "becoming cloudy and warm"
+msgstr "آسمان ابری می‌شود، گرم"
+
+msgid "becoming cloudy and warmer"
+msgstr "آسمان ابری می‌شود، گرم‌تر"
+
+msgid "becoming cloudy with a shower"
+msgstr "آسمان ابری می‌شود، رگبار باران"
+
+msgid "becoming partly cloudy"
+msgstr "هوا تا حدی ابری می‌شود"
+
+msgid "becoming windier and colder"
+msgstr "وزش باد شدیدتر می‌شود، سردتر"
+
+msgid "becoming windier and cooler"
+msgstr "وزش باد شدیدتر می‌شود، خنک‌تر"
+
+msgid "bitterly cold"
+msgstr "سرمای شدید"
+
+msgid "bitterly cold in the evening"
+msgstr "عصر، سرمای شدید"
+
+msgid "bitterly cold with clearing"
+msgstr "سرمای شدید، آسمان به‌تدریج صاف می‌شود"
+
+msgid "bitterly cold with low clouds"
+msgstr "سرمای شدید، ابرهای کم‌ارتفاع"
+
+msgid "blazing sunshine and hot"
+msgstr "آفتاب سوزان، هوای داغ"
+
+msgid "blazing sunshine and warmer"
+msgstr "آفتاب سوزان، گرم‌تر"
+
+msgid "blowing dust"
+msgstr "گردوخاک ناشی از باد"
+
+msgid "blowing dust with high clouds"
+msgstr "گردوخاک ناشی از باد، ابرهای مرتفع"
+
+msgid "blowing snow"
+msgstr "برف بادبرده"
+
+msgid "breezy and cold"
+msgstr "کمی بادخیز، سرد"
+
+msgid "breezy and colder with rain"
+msgstr "کمی بادخیز، سردتر، باران"
+
+msgid "breezy and cool"
+msgstr "کمی بادخیز، خنک"
+
+msgid "breezy and cool with some sun"
+msgstr "کمی بادخیز، خنک، گاه آفتابی"
+
+msgid "breezy and cooler with clouds"
+msgstr "کمی بادخیز، خنک‌تر، ابری"
+
+msgid "breezy and cooler with rain"
+msgstr "کمی بادخیز، خنک‌تر، باران"
+
+msgid "breezy and hot with sunshine"
+msgstr "کمی بادخیز، هوای داغ، آفتابی"
+
+msgid "breezy and humid"
+msgstr "کمی بادخیز، مرطوب"
+
+msgid "breezy and mild"
+msgstr "کمی بادخیز، هوای ملایم"
+
+msgid "breezy and mild with rain"
+msgstr "کمی بادخیز، هوای ملایم، باران"
+
+msgid "breezy and nice"
+msgstr "کمی بادخیز، هوای مطبوع"
+
+msgid "breezy and nice with some sun"
+msgstr "کمی بادخیز، هوای مطبوع، گاه آفتابی"
+
+msgid "breezy and nice with sunshine"
+msgstr "کمی بادخیز، هوای مطبوع، آفتابی"
+
+msgid "breezy and pleasant"
+msgstr "کمی بادخیز، هوای مطبوع"
+
+msgid "breezy and quite cold"
+msgstr "کمی بادخیز، نسبتاً سرد"
+
+msgid "breezy and very cold"
+msgstr "کمی بادخیز، بسیار سرد"
+
+msgid "breezy and warm with some sun"
+msgstr "کمی بادخیز، گرم، گاه آفتابی"
+
+msgid "breezy early"
+msgstr "در ابتدای دوره، کمی بادخیز"
+
+msgid "breezy in the a.m."
+msgstr "صبح، کمی بادخیز"
+
+msgid "breezy in the afternoon"
+msgstr "بعدازظهر، کمی بادخیز"
+
+msgid "breezy in the morning"
+msgstr "صبح، کمی بادخیز"
+
+msgid "breezy this morning"
+msgstr "امروز صبح، کمی بادخیز"
+
+msgid "breezy with clearing"
+msgstr "کمی بادخیز، آسمان به‌تدریج صاف می‌شود"
+
+msgid "breezy with clouds and sun"
+msgstr "کمی بادخیز، تناوب آفتاب و ابر"
+
+msgid "breezy with decreasing clouds"
+msgstr "کمی بادخیز، کاهش ابرناکی"
+
+msgid "breezy with high clouds"
+msgstr "کمی بادخیز، ابرهای مرتفع"
+
+msgid "breezy with increasing clouds"
+msgstr "کمی بادخیز، افزایش ابرناکی"
+
+msgid "breezy with lots of sun"
+msgstr "کمی بادخیز، آفتاب فراوان"
+
+msgid "breezy with partial sunshine"
+msgstr "کمی بادخیز، گاه آفتابی"
+
+msgid "breezy with patchy clouds"
+msgstr "کمی بادخیز، ابرهای پراکنده"
+
+msgid "breezy with periods of rain"
+msgstr "کمی بادخیز، باران متناوب"
+
+msgid "breezy with periods of snow"
+msgstr "کمی بادخیز، بارش متناوب برف"
+
+msgid "breezy with periods of sun"
+msgstr "کمی بادخیز، گاه آفتابی"
+
+msgid "breezy with plenty of sun"
+msgstr "کمی بادخیز، آفتاب فراوان"
+
+msgid "breezy with rain"
+msgstr "کمی بادخیز، باران"
+
+msgid "breezy with rain and drizzle"
+msgstr "کمی بادخیز، باران و نم‌نم باران"
+
+msgid "breezy with snow"
+msgstr "کمی بادخیز، برف"
+
+msgid "breezy with some sun"
+msgstr "کمی بادخیز، گاه آفتابی"
+
+msgid "breezy with sun and clouds"
+msgstr "کمی بادخیز، تناوب آفتاب و ابر"
+
+msgid "breezy with sunny intervals"
+msgstr "کمی بادخیز، گاه آفتابی"
+
+msgid "breezy with sunshine"
+msgstr "کمی بادخیز، آفتابی"
+
+msgid "breezy with variable clouds"
+msgstr "کمی بادخیز، ابرناکی متغیر"
+
+msgid "brief a.m. showers"
+msgstr "صبح، رگبارهای کوتاه"
+
+msgid "brief afternoon showers"
+msgstr "بعدازظهر، رگبارهای کوتاه"
+
+msgid "brief evening showers"
+msgstr "عصر، رگبارهای کوتاه"
+
+msgid "brief late-night showers"
+msgstr "اواخر شب، رگبارهای کوتاه"
+
+msgid "brief morning showers"
+msgstr "صبح، رگبارهای کوتاه"
+
+msgid "brief showers"
+msgstr "رگبارهای کوتاه"
+
+msgid "brief showers early"
+msgstr "در ابتدای دوره، رگبارهای کوتاه"
+
+msgid "brief showers in the evening"
+msgstr "عصر، رگبارهای کوتاه"
+
+msgid "brief showers in the morning"
+msgstr "صبح، رگبارهای کوتاه"
+
+msgid "brief showers late"
+msgstr "در ساعات بعد، رگبارهای کوتاه"
+
+msgid "brief showers this afternoon"
+msgstr "امروز بعدازظهر، رگبارهای کوتاه"
+
+msgid "brilliant sunshine"
+msgstr "آفتاب درخشان"
+
+msgid "brilliant sunshine and breezy"
+msgstr "آفتاب درخشان، کمی بادخیز"
+
+msgid "brilliant sunshine and hot"
+msgstr "آفتاب درخشان، هوای داغ"
+
+msgid "brilliant sunshine and hotter"
+msgstr "آفتاب درخشان، گرمای بیشتر"
+
+msgid "brilliant sunshine and nice"
+msgstr "آفتاب درخشان، هوای مطبوع"
+
+msgid "brilliant sunshine and warm"
+msgstr "آفتاب درخشان، گرم"
+
+msgid "brilliant sunshine and warmer"
+msgstr "آفتاب درخشان، گرم‌تر"
+
+msgid "brisk and chilly"
+msgstr "باد نسبتاً تند، سرمای محسوس"
+
+msgid "brisk and cold"
+msgstr "باد نسبتاً تند، سرد"
+
+msgid "brisk and very cold"
+msgstr "باد نسبتاً تند، بسیار سرد"
+
+msgid "but chilly"
+msgstr "اما سرمای محسوس"
+
+msgid "but cold"
+msgstr "اما سرد"
+
+msgid "but very cold"
+msgstr "اما بسیار سرد"
+
+msgid "chance for a strong t-storm"
+msgstr "احتمال توفان تندری شدید"
+
+msgid "chance for a thunderstorm"
+msgstr "احتمال توفان تندری"
+
+msgid "chance for rain"
+msgstr "احتمال باران"
+
+msgid "chance of a little a.m. rain"
+msgstr "صبح، احتمال باران خفیف"
+
+msgid "chance of a little p.m. rain"
+msgstr "بعدازظهر، احتمال باران خفیف"
+
+msgid "chance of a shower"
+msgstr "احتمال رگبار"
+
+msgid "chance of a thunderstorm"
+msgstr "احتمال توفان تندری"
+
+msgid "chilly"
+msgstr "سرمای محسوس"
+
+msgid "chilly whit partial sunshine"
+msgstr "سرمای محسوس، گاه آفتابی"
+
+msgid "chilly whit some sun"
+msgstr "سرمای محسوس، گاه آفتابی"
+
+msgid "chilly with a little snow"
+msgstr "سرمای محسوس، کمی برف"
+
+msgid "chilly with clearing"
+msgstr "سرمای محسوس، آسمان به‌تدریج صاف می‌شود"
+
+msgid "chilly with clouds and sun"
+msgstr "سرمای محسوس، تناوب آفتاب و ابر"
+
+msgid "chilly with increasing clouds"
+msgstr "سرمای محسوس، افزایش ابرناکی"
+
+msgid "chilly with low clouds"
+msgstr "سرمای محسوس، ابرهای کم‌ارتفاع"
+
+msgid "chilly with occasional rain"
+msgstr "سرمای محسوس، باران متناوب"
+
+msgid "chilly with partial sunshine"
+msgstr "سرمای محسوس، گاه آفتابی"
+
+msgid "chilly with patchy clouds"
+msgstr "سرمای محسوس، ابرهای پراکنده"
+
+msgid "chilly with periods of rain"
+msgstr "سرمای محسوس، باران متناوب"
+
+msgid "chilly with periods of snow"
+msgstr "سرمای محسوس، بارش متناوب برف"
+
+msgid "chilly with periods of sun"
+msgstr "سرمای محسوس، گاه آفتابی"
+
+msgid "chilly with plenty of sun"
+msgstr "سرمای محسوس، آفتاب فراوان"
+
+msgid "chilly with rain"
+msgstr "سرمای محسوس، باران"
+
+msgid "chilly with rain and drizzle"
+msgstr "سرمای محسوس، باران و نم‌نم باران"
+
+msgid "chilly with snow and rain"
+msgstr "سرمای محسوس، باران و برف"
+
+msgid "chilly with some sun"
+msgstr "سرمای محسوس، گاه آفتابی"
+
+msgid "chilly with sun and clouds"
+msgstr "سرمای محسوس، تناوب آفتاب و ابر"
+
+msgid "chilly with variable clouds"
+msgstr "سرمای محسوس، ابرناکی متغیر"
+
+msgid "clear and bitterly cold"
+msgstr "صاف، سرمای شدید"
+
+msgid "clear and breezy"
+msgstr "صاف، کمی بادخیز"
+
+msgid "clear and chilly"
+msgstr "صاف، سرمای محسوس"
+
+msgid "clear and cold"
+msgstr "صاف، سرد"
+
+msgid "clear and colder"
+msgstr "صاف، سردتر"
+
+msgid "clear and cool"
+msgstr "صاف، خنک"
+
+msgid "clear and cooler"
+msgstr "صاف، خنک‌تر"
+
+msgid "clear and dry"
+msgstr "صاف، خشک"
+
+msgid "clear and frigid"
+msgstr "صاف، سرمای شدید"
+
+msgid "clear and humid"
+msgstr "صاف، مرطوب"
+
+msgid "clear and mild"
+msgstr "صاف، هوای ملایم"
+
+msgid "clear and much colder"
+msgstr "صاف، بسیار سردتر"
+
+msgid "clear and not as warm"
+msgstr "صاف، اندکی خنک‌تر"
+
+msgid "clear and quite cold"
+msgstr "صاف، نسبتاً سرد"
+
+msgid "clear and seasonably cool"
+msgstr "صاف، خنکی معمول فصل"
+
+msgid "clear and seasonably warm"
+msgstr "صاف، گرمای معمول فصل"
+
+msgid "clear and unseasonably cold"
+msgstr "صاف، سردتر از حد معمول فصل"
+
+msgid "clear and very cold"
+msgstr "صاف، بسیار سرد"
+
+msgid "clear and very humid"
+msgstr "صاف، بسیار مرطوب"
+
+msgid "clear and very warm"
+msgstr "صاف، بسیار گرم"
+
+msgid "clear and warm"
+msgstr "صاف، گرم"
+
+msgid "clear and warmer"
+msgstr "صاف، گرم‌تر"
+
+msgid "clear to partly cloudy"
+msgstr "صاف تا قسمتی ابری"
+
+msgid "clear with a gusty breeze"
+msgstr "صاف، وزش تندباد لحظه‌ای"
+
+msgid "clearing"
+msgstr "آسمان به‌تدریج صاف می‌شود"
+
+msgid "clearing and a few showers"
+msgstr "آسمان به‌تدریج صاف می‌شود، چند رگبار"
+
+msgid "clearing and a stray t-storm"
+msgstr "آسمان به‌تدریج صاف می‌شود، توفان تندری پراکنده"
+
+msgid "clearing and chilly"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرمای محسوس"
+
+msgid "clearing and cold"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرد"
+
+msgid "clearing and colder"
+msgstr "آسمان به‌تدریج صاف می‌شود، سردتر"
+
+msgid "clearing and cool"
+msgstr "آسمان به‌تدریج صاف می‌شود، خنک"
+
+msgid "clearing and cooler"
+msgstr "آسمان به‌تدریج صاف می‌شود، خنک‌تر"
+
+msgid "clearing and hot"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای داغ"
+
+msgid "clearing and humid"
+msgstr "آسمان به‌تدریج صاف می‌شود، مرطوب"
+
+msgid "clearing and mild"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای ملایم"
+
+msgid "clearing and nice"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای مطبوع"
+
+msgid "clearing and not as warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، اندکی خنک‌تر"
+
+msgid "clearing and pleasant"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای مطبوع"
+
+msgid "clearing and showers around"
+msgstr "آسمان به‌تدریج صاف می‌شود، رگبار پراکنده"
+
+msgid "clearing and spotty showers"
+msgstr "آسمان به‌تدریج صاف می‌شود، رگبار پراکنده"
+
+msgid "clearing and summerlike"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای تابستانی"
+
+msgid "clearing and unseasonably hot"
+msgstr "آسمان به‌تدریج صاف می‌شود، گرمای غیرمعمول برای این فصل"
+
+msgid "clearing and very cold"
+msgstr "آسمان به‌تدریج صاف می‌شود، بسیار سرد"
+
+msgid "clearing and very warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، بسیار گرم"
+
+msgid "clearing and warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، گرم"
+
+msgid "clearing and warmer"
+msgstr "آسمان به‌تدریج صاف می‌شود، گرم‌تر"
+
+msgid "clearing with a shower late"
+msgstr "آسمان به‌تدریج صاف می‌شود. در ساعات بعد، رگبار باران"
+
+msgid "clouding up"
+msgstr "افزایش ابرناکی"
+
+msgid "clouding up with a shower"
+msgstr "افزایش ابرناکی، رگبار باران"
+
+msgid "clouds"
+msgstr "ابری"
+
+msgid "clouds and a few showers"
+msgstr "ابری، چند رگبار"
+
+msgid "clouds and a stray t-storm"
+msgstr "ابری، توفان تندری پراکنده"
+
+msgid "clouds and a t-storm in spots"
+msgstr "ابری، توفان تندری پراکنده"
+
+msgid "clouds and becoming rainy"
+msgstr "ابری، باران آغاز می‌شود"
+
+msgid "clouds and breaks of sun"
+msgstr "ابری، گاه آفتابی"
+
+msgid "clouds and fog"
+msgstr "ابری، مه"
+
+msgid "clouds and limited sun"
+msgstr "ابری، آفتاب کم"
+
+msgid "clouds and showers"
+msgstr "ابری، رگبار"
+
+msgid "clouds and showers around"
+msgstr "ابری، رگبار پراکنده"
+
+msgid "clouds and spotty showers"
+msgstr "ابری، رگبار پراکنده"
+
+msgid "clouds and sun"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "clouds and sun with a shower"
+msgstr "تناوب آفتاب و ابر، رگبار باران"
+
+msgid "clouds and sun with a t-storm"
+msgstr "تناوب آفتاب و ابر، توفان تندری"
+
+msgid "clouds and sun with showers"
+msgstr "تناوب آفتاب و ابر، رگبار"
+
+msgid "clouds and sunshine"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "clouds and very warm"
+msgstr "ابری، بسیار گرم"
+
+msgid "clouds and warm"
+msgstr "ابری، گرم"
+
+msgid "clouds and warm with a shower"
+msgstr "ابری، گرم، رگبار باران"
+
+msgid "clouds break for sun"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds breaking"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds breaking and beautiful"
+msgstr "کاهش ابرناکی، هوای مطبوع"
+
+msgid "clouds breaking and chilly"
+msgstr "کاهش ابرناکی، سرمای محسوس"
+
+msgid "clouds breaking and pleasant"
+msgstr "کاهش ابرناکی، هوای مطبوع"
+
+msgid "clouds breaking and very warm"
+msgstr "کاهش ابرناکی، بسیار گرم"
+
+msgid "clouds breaking for some sun"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds breaking for sun"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds breaking with a shower"
+msgstr "کاهش ابرناکی، رگبار باران"
+
+msgid "clouds giving way to some sun"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds giving way to sun"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds limiting sun"
+msgstr "ابرها مانع تابش آفتاب می‌شوند"
+
+msgid "clouds limiting sunshine"
+msgstr "ابرها مانع تابش آفتاب می‌شوند"
+
+msgid "clouds rolling in"
+msgstr "ابرها از راه می‌رسند"
+
+msgid "clouds rolling in and humid"
+msgstr "ابرها از راه می‌رسند، مرطوب"
+
+msgid "clouds with a shower late"
+msgstr "ابری. در ساعات بعد، رگبار باران"
+
+msgid "clouds with downpours late"
+msgstr "ابری. در ساعات بعد، باران سیل‌آسا"
+
+msgid "clouds with snow late"
+msgstr "ابری. در ساعات بعد، برف"
+
+msgid "clouds yielding to some sun"
+msgstr "کاهش ابرناکی"
+
+msgid "clouds yielding to sun"
+msgstr "کاهش ابرناکی"
+
+msgid "cloudy and becoming rainy"
+msgstr "ابری، باران آغاز می‌شود"
+
+msgid "cloudy and bitterly cold"
+msgstr "ابری، سرمای شدید"
+
+msgid "cloudy and breezy"
+msgstr "ابری، کمی بادخیز"
+
+msgid "cloudy and chilly"
+msgstr "ابری، سرمای محسوس"
+
+msgid "cloudy and cold"
+msgstr "ابری، سرد"
+
+msgid "cloudy and colder"
+msgstr "ابری، سردتر"
+
+msgid "cloudy and comfortable"
+msgstr "ابری، هوای مطبوع"
+
+msgid "cloudy and cool"
+msgstr "ابری، خنک"
+
+msgid "cloudy and cool with a shower"
+msgstr "ابری، خنک، رگبار باران"
+
+msgid "cloudy and cool with showers"
+msgstr "ابری، خنک، رگبار"
+
+msgid "cloudy and cooler"
+msgstr "ابری، خنک‌تر"
+
+msgid "cloudy and frigid"
+msgstr "ابری، سرمای شدید"
+
+msgid "cloudy and hot"
+msgstr "ابری، هوای داغ"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "ابری، هوای داغ، توفان تندری"
+
+msgid "cloudy and humid"
+msgstr "ابری، مرطوب"
+
+msgid "cloudy and humid with showers"
+msgstr "ابری، مرطوب، رگبار"
+
+msgid "cloudy and less humid"
+msgstr "ابری، رطوبت کمتر"
+
+msgid "cloudy and mild"
+msgstr "ابری، هوای ملایم"
+
+msgid "cloudy and mild with a shower"
+msgstr "ابری، هوای ملایم، رگبار باران"
+
+msgid "cloudy and milder"
+msgstr "ابری، ملایم‌تر"
+
+msgid "cloudy and not as cold"
+msgstr "ابری، از شدت سرما کاسته می‌شود"
+
+msgid "cloudy and not as cool"
+msgstr "ابری، از خنکی هوا کاسته می‌شود"
+
+msgid "cloudy and not as hot"
+msgstr "ابری، کاهش شدت گرما"
+
+msgid "cloudy and not as warm"
+msgstr "ابری، اندکی خنک‌تر"
+
+msgid "cloudy and remaining cool"
+msgstr "ابری، هوا همچنان خنک است"
+
+msgid "cloudy and remaining warm"
+msgstr "ابری، هوا همچنان گرم است"
+
+msgid "cloudy and seasonably cold"
+msgstr "ابری، سرمای معمول فصل"
+
+msgid "cloudy and seasonably cool"
+msgstr "ابری، خنکی معمول فصل"
+
+msgid "cloudy and seasonably warm"
+msgstr "ابری، گرمای معمول فصل"
+
+msgid "cloudy and turning colder"
+msgstr "ابری، سردتر"
+
+msgid "cloudy and very cold"
+msgstr "ابری، بسیار سرد"
+
+msgid "cloudy and very humid"
+msgstr "ابری، بسیار مرطوب"
+
+msgid "cloudy and very warm"
+msgstr "ابری، بسیار گرم"
+
+msgid "cloudy and warm"
+msgstr "ابری، گرم"
+
+msgid "cloudy and warm with a shower"
+msgstr "ابری، گرم، رگبار باران"
+
+msgid "cloudy and warmer"
+msgstr "ابری، گرم‌تر"
+
+msgid "cloudy and windy"
+msgstr "ابری، وزش باد"
+
+msgid "cloudy and windy with showers"
+msgstr "ابری، وزش باد، رگبار"
+
+msgid "cloudy most of the time"
+msgstr "عمدتاً ابری"
+
+msgid "cloudy spells with a t-storm"
+msgstr "گاهی ابری، توفان تندری"
+
+msgid "cloudy to partly sunny"
+msgstr "ابتدا ابری، سپس گاهی آفتابی"
+
+msgid "cloudy with a bit of ice"
+msgstr "ابری، یخ‌زدگی پراکنده"
+
+msgid "cloudy with a bit of ice late"
+msgstr "ابری. در ساعات بعد، یخ‌زدگی پراکنده"
+
+msgid "cloudy with a bit of rain"
+msgstr "ابری، کمی باران"
+
+msgid "cloudy with a bit of snow"
+msgstr "ابری، کمی برف"
+
+msgid "cloudy with a brief shower"
+msgstr "ابری، رگبارهای کوتاه"
+
+msgid "cloudy with a chance of rain"
+msgstr "ابری، احتمال باران"
+
+msgid "cloudy with a downpour late"
+msgstr "ابری. در ساعات بعد، باران سیل‌آسا"
+
+msgid "cloudy with a few flurries"
+msgstr "ابری، چند رگبار خفیف برف"
+
+msgid "cloudy with a few showers"
+msgstr "ابری، چند رگبار"
+
+msgid "cloudy with a few snowflakes"
+msgstr "ابری، چند دانه برف"
+
+msgid "cloudy with a flurry"
+msgstr "ابری، رگبارهای خفیف برف"
+
+msgid "cloudy with a flurry late"
+msgstr "ابری. در ساعات بعد، رگبارهای خفیف برف"
+
+msgid "cloudy with a flurry or two"
+msgstr "ابری، چند رگبار خفیف برف"
+
+msgid "cloudy with a heavy shower"
+msgstr "ابری، رگبارهای شدید"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "ابری، توفان تندری شدید"
+
+msgid "cloudy with a little rain"
+msgstr "ابری، کمی باران"
+
+msgid "cloudy with a little snow"
+msgstr "ابری، کمی برف"
+
+msgid "cloudy with a passing shower"
+msgstr "ابری، رگبارهای کوتاه"
+
+msgid "cloudy with a quick shower"
+msgstr "ابری، رگبارهای کوتاه"
+
+msgid "cloudy with a shower"
+msgstr "ابری، رگبار باران"
+
+msgid "cloudy with a shower in spots"
+msgstr "ابری، رگبار پراکنده"
+
+msgid "cloudy with a shower late"
+msgstr "ابری. در ساعات بعد، رگبار باران"
+
+msgid "cloudy with a shower or two"
+msgstr "ابری، یک یا دو رگبار"
+
+msgid "cloudy with a shower possible"
+msgstr "ابری، احتمال رگبار"
+
+msgid "cloudy with a snow shower"
+msgstr "ابری، رگبار برف"
+
+msgid "cloudy with a stray flurry"
+msgstr "ابری، چند رگبار خفیف برف"
+
+msgid "cloudy with a stray shower"
+msgstr "ابری، رگبار پراکنده"
+
+msgid "cloudy with a stray t-shower"
+msgstr "ابری، رگبار پراکنده همراه با رعدوبرق"
+
+msgid "cloudy with a stray t-storm"
+msgstr "ابری، توفان تندری پراکنده"
+
+msgid "cloudy with a strong t-storm"
+msgstr "ابری، توفان تندری شدید"
+
+msgid "cloudy with a t-storm"
+msgstr "ابری، توفان تندری"
+
+msgid "cloudy with a t-storm around"
+msgstr "ابری، توفان تندری پراکنده"
+
+msgid "cloudy with a t-storm late"
+msgstr "ابری. در ساعات بعد، توفان تندری"
+
+msgid "cloudy with a t-storm or two"
+msgstr "ابری، چند توفان تندری"
+
+msgid "cloudy with a thundershower"
+msgstr "ابری، رگبار همراه با رعدوبرق"
+
+msgid "cloudy with a thunderstorm"
+msgstr "ابری، توفان تندری"
+
+msgid "cloudy with a touch of rain"
+msgstr "ابری، کمی باران"
+
+msgid "cloudy with afternoon rain"
+msgstr "ابری. بعدازظهر، باران"
+
+msgid "cloudy with afternoon showers"
+msgstr "ابری. بعدازظهر، رگبار"
+
+msgid "cloudy with blowing dust"
+msgstr "ابری، گردوخاک ناشی از باد"
+
+msgid "cloudy with brief showers"
+msgstr "ابری، رگبارهای کوتاه"
+
+msgid "cloudy with downpours"
+msgstr "ابری، باران سیل‌آسا"
+
+msgid "cloudy with downpours late"
+msgstr "ابری. در ساعات بعد، باران سیل‌آسا"
+
+msgid "cloudy with flurries"
+msgstr "ابری، رگبارهای خفیف برف"
+
+msgid "cloudy with flurries late"
+msgstr "ابری. در ساعات بعد، رگبارهای خفیف برف"
+
+msgid "cloudy with heavy rain late"
+msgstr "ابری. در ساعات بعد، باران شدید"
+
+msgid "cloudy with heavy showers"
+msgstr "ابری، رگبارهای شدید"
+
+msgid "cloudy with late-night rain"
+msgstr "ابری. اواخر شب، باران"
+
+msgid "cloudy with occasional rain"
+msgstr "ابری، باران متناوب"
+
+msgid "cloudy with pouring rain late"
+msgstr "ابری. در ساعات بعد، باران شدید"
+
+msgid "cloudy with rain"
+msgstr "ابری، باران"
+
+msgid "cloudy with rain and drizzle"
+msgstr "ابری، باران و نم‌نم باران"
+
+msgid "cloudy with rain and ice late"
+msgstr "ابری. در ساعات بعد، باران و یخ"
+
+msgid "cloudy with rain beginning"
+msgstr "ابری، باران آغاز می‌شود"
+
+msgid "cloudy with rain developing"
+msgstr "ابری، باران آغاز می‌شود"
+
+msgid "cloudy with rain ending"
+msgstr "ابری، باران بند می‌آید"
+
+msgid "cloudy with rain tapering off"
+msgstr "ابری، باران ضعیف‌تر می‌شود"
+
+msgid "cloudy with showers"
+msgstr "ابری، رگبار"
+
+msgid "cloudy with showers around"
+msgstr "ابری، رگبار پراکنده"
+
+msgid "cloudy with showers late"
+msgstr "ابری. در ساعات بعد، رگبار"
+
+msgid "cloudy with snow"
+msgstr "ابری، برف"
+
+msgid "cloudy with snow and ice"
+msgstr "ابری، برف و یخ"
+
+msgid "cloudy with snow at times"
+msgstr "ابری، بارش متناوب برف"
+
+msgid "cloudy with snow showers"
+msgstr "ابری، رگبار برف"
+
+msgid "cloudy with snow showers late"
+msgstr "ابری. در ساعات بعد، رگبار برف"
+
+msgid "cloudy with snow tapering off"
+msgstr "ابری، بارش برف کم می‌شود"
+
+msgid "cloudy with spotty showers"
+msgstr "ابری، رگبار پراکنده"
+
+msgid "cloudy with t-storms"
+msgstr "ابری، طوفان‌های تندری"
+
+msgid "cloudy with thundershowers"
+msgstr "ابری، رگبار همراه با رعدوبرق"
+
+msgid "cloudy with thunderstorms"
+msgstr "ابری، طوفان‌های تندری"
+
+msgid "cloudy with times of rain"
+msgstr "ابری، باران متناوب"
+
+msgid "cold"
+msgstr "سرد"
+
+msgid "cold whit rain and drizzle"
+msgstr "سرد، باران و نم‌نم باران"
+
+msgid "cold with areas of low clouds"
+msgstr "سرد، ابرهای کم‌ارتفاع در بعضی مناطق"
+
+msgid "cold with clearing"
+msgstr "سرد، آسمان به‌تدریج صاف می‌شود"
+
+msgid "cold with clouds and sun"
+msgstr "سرد، تناوب آفتاب و ابر"
+
+msgid "cold with clouds and sunshine"
+msgstr "سرد، تناوب آفتاب و ابر"
+
+msgid "cold with clouds breaking"
+msgstr "سرد، کاهش ابرناکی"
+
+msgid "cold with considerable clouds"
+msgstr "سرد، عمدتاً ابری"
+
+msgid "cold with icy mix"
+msgstr "سرد، بارش مخلوط باران یخ‌زننده و دانه‌های یخ"
+
+msgid "cold with increasing clouds"
+msgstr "سرد، افزایش ابرناکی"
+
+msgid "cold with low clouds"
+msgstr "سرد، ابرهای کم‌ارتفاع"
+
+msgid "cold with partial sunshine"
+msgstr "سرد، گاه آفتابی"
+
+msgid "cold with patchy clouds"
+msgstr "سرد، ابرهای پراکنده"
+
+msgid "cold with periods of sun"
+msgstr "سرد، گاه آفتابی"
+
+msgid "cold with plenty of clouds"
+msgstr "سرد، عمدتاً ابری"
+
+msgid "cold with plenty of sunshine"
+msgstr "سرد، آفتاب فراوان"
+
+msgid "cold with snow"
+msgstr "سرد، برف"
+
+msgid "cold with snow and rain"
+msgstr "سرد، باران و برف"
+
+msgid "cold with snow at times"
+msgstr "سرد، بارش متناوب برف"
+
+msgid "cold with some sun"
+msgstr "سرد، گاه آفتابی"
+
+msgid "cold with sun"
+msgstr "سرد، آفتابی"
+
+msgid "cold with variable clouds"
+msgstr "سرد، ابرناکی متغیر"
+
+msgid "colder"
+msgstr "سردتر"
+
+msgid "colder in the afternoon"
+msgstr "بعدازظهر، سردتر"
+
+msgid "colder in the morning"
+msgstr "صبح، سردتر"
+
+msgid "colder with a bit of snow"
+msgstr "سردتر، کمی برف"
+
+msgid "colder with a few showers"
+msgstr "سردتر، چند رگبار"
+
+msgid "colder with a few snowflakes"
+msgstr "سردتر، چند دانه برف"
+
+msgid "colder with a little rain"
+msgstr "سردتر، کمی باران"
+
+msgid "colder with a little snow"
+msgstr "سردتر، کمی برف"
+
+msgid "colder with a shower or two"
+msgstr "سردتر، یک یا دو رگبار"
+
+msgid "colder with a snow squall"
+msgstr "سردتر، رگبار برف همراه با تندباد"
+
+msgid "colder with a stray shower"
+msgstr "سردتر، رگبار پراکنده"
+
+msgid "colder with increasing clouds"
+msgstr "سردتر، افزایش ابرناکی"
+
+msgid "colder with low clouds"
+msgstr "سردتر، ابرهای کم‌ارتفاع"
+
+msgid "colder with occasional rain"
+msgstr "سردتر، باران متناوب"
+
+msgid "colder with partial sunshine"
+msgstr "سردتر، گاه آفتابی"
+
+msgid "colder with periods of sun"
+msgstr "سردتر، گاه آفتابی"
+
+msgid "colder with rain"
+msgstr "سردتر، باران"
+
+msgid "colder with showers around"
+msgstr "سردتر، رگبار پراکنده"
+
+msgid "colder with snow"
+msgstr "سردتر، برف"
+
+msgid "colder with snow and rain"
+msgstr "سردتر، باران و برف"
+
+msgid "colder with snow at times"
+msgstr "سردتر، بارش متناوب برف"
+
+msgid "colder with snow showers"
+msgstr "سردتر، رگبار برف"
+
+msgid "colder with some sun"
+msgstr "سردتر، گاه آفتابی"
+
+msgid "colder with spotty showers"
+msgstr "سردتر، رگبار پراکنده"
+
+msgid "comfortable"
+msgstr "هوای مطبوع"
+
+msgid "comfortable with some sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "comfortable with sunshine"
+msgstr "هوای مطبوع، آفتابی"
+
+msgid "considerable cloudiness"
+msgstr "عمدتاً ابری"
+
+msgid "considerable clouds"
+msgstr "عمدتاً ابری"
+
+msgid "considerable clouds and humid"
+msgstr "عمدتاً ابری، مرطوب"
+
+msgid "considerable clouds and mild"
+msgstr "عمدتاً ابری، هوای ملایم"
+
+msgid "considerable clouds and warm"
+msgstr "عمدتاً ابری، گرم"
+
+msgid "continued cloudy"
+msgstr "هوا همچنان ابری است"
+
+msgid "continued cloudy with showers"
+msgstr "هوا همچنان ابری است، رگبار"
+
+msgid "cool"
+msgstr "خنک"
+
+msgid "cool with a thick cloud cover"
+msgstr "خنک، تمام‌ابری"
+
+msgid "cool with areas of low clouds"
+msgstr "خنک، ابرهای کم‌ارتفاع در بعضی مناطق"
+
+msgid "cool with clearing"
+msgstr "خنک، آسمان به‌تدریج صاف می‌شود"
+
+msgid "cool with clouds and sun"
+msgstr "خنک، تناوب آفتاب و ابر"
+
+msgid "cool with clouds breaking"
+msgstr "خنک، کاهش ابرناکی"
+
+msgid "cool with decreasing clouds"
+msgstr "خنک، کاهش ابرناکی"
+
+msgid "cool with increasing clouds"
+msgstr "خنک، افزایش ابرناکی"
+
+msgid "cool with low clouds"
+msgstr "خنک، ابرهای کم‌ارتفاع"
+
+msgid "cool with occasional rain"
+msgstr "خنک، باران متناوب"
+
+msgid "cool with partial sunshine"
+msgstr "خنک، گاه آفتابی"
+
+msgid "cool with patchy clouds"
+msgstr "خنک، ابرهای پراکنده"
+
+msgid "cool with periods of rain"
+msgstr "خنک، باران متناوب"
+
+msgid "cool with periods of sun"
+msgstr "خنک، گاه آفتابی"
+
+msgid "cool with plenty of sun"
+msgstr "خنک، آفتاب فراوان"
+
+msgid "cool with plenty of sunshine"
+msgstr "خنک، آفتاب فراوان"
+
+msgid "cool with rain"
+msgstr "خنک، باران"
+
+msgid "cool with rain and a t-storm"
+msgstr "خنک، باران، توفان تندری"
+
+msgid "cool with rain and drizzle"
+msgstr "خنک، باران و نم‌نم باران"
+
+msgid "cool with some sun"
+msgstr "خنک، گاه آفتابی"
+
+msgid "cool with sun and clouds"
+msgstr "خنک، تناوب آفتاب و ابر"
+
+msgid "cool with sun and some clouds"
+msgstr "خنک، تناوب آفتاب و ابر"
+
+msgid "cool with sunny intervals"
+msgstr "خنک، گاه آفتابی"
+
+msgid "cool with thickening clouds"
+msgstr "خنک، ابرها متراکم‌تر می‌شوند"
+
+msgid "cool with variable cloudiness"
+msgstr "خنک، ابرناکی متغیر"
+
+msgid "cool with variable clouds"
+msgstr "خنک، ابرناکی متغیر"
+
+msgid "cooler"
+msgstr "خنک‌تر"
+
+msgid "cooler with a brief shower"
+msgstr "خنک‌تر، رگبارهای کوتاه"
+
+msgid "cooler with a few showers"
+msgstr "خنک‌تر، چند رگبار"
+
+msgid "cooler with a little rain"
+msgstr "خنک‌تر، کمی باران"
+
+msgid "cooler with a little snow"
+msgstr "خنک‌تر، کمی برف"
+
+msgid "cooler with a passing shower"
+msgstr "خنک‌تر، رگبارهای کوتاه"
+
+msgid "cooler with a shower"
+msgstr "خنک‌تر، رگبار باران"
+
+msgid "cooler with a shower in spots"
+msgstr "خنک‌تر، رگبار پراکنده"
+
+msgid "cooler with a shower or two"
+msgstr "خنک‌تر، یک یا دو رگبار"
+
+msgid "cooler with a shower possible"
+msgstr "خنک‌تر، احتمال رگبار"
+
+msgid "cooler with a stray shower"
+msgstr "خنک‌تر، رگبار پراکنده"
+
+msgid "cooler with a stray t-shower"
+msgstr "خنک‌تر، رگبار پراکنده همراه با رعدوبرق"
+
+msgid "cooler with a stray t-storm"
+msgstr "خنک‌تر، توفان تندری پراکنده"
+
+msgid "cooler with a t-storm or two"
+msgstr "خنک‌تر، چند توفان تندری"
+
+msgid "cooler with a thundershower"
+msgstr "خنک‌تر، رگبار همراه با رعدوبرق"
+
+msgid "cooler with a thunderstorm"
+msgstr "خنک‌تر، توفان تندری"
+
+msgid "cooler with a touch of rain"
+msgstr "خنک‌تر، کمی باران"
+
+msgid "cooler with clearing"
+msgstr "خنک‌تر، آسمان به‌تدریج صاف می‌شود"
+
+msgid "cooler with clouds and sun"
+msgstr "خنک‌تر، تناوب آفتاب و ابر"
+
+msgid "cooler with clouds breaking"
+msgstr "خنک‌تر، کاهش ابرناکی"
+
+msgid "cooler with decreasing clouds"
+msgstr "خنک‌تر، کاهش ابرناکی"
+
+msgid "cooler with downpours"
+msgstr "خنک‌تر، باران سیل‌آسا"
+
+msgid "cooler with heavy showers"
+msgstr "خنک‌تر، رگبارهای شدید"
+
+msgid "cooler with high clouds"
+msgstr "خنک‌تر، ابرهای مرتفع"
+
+msgid "cooler with increasing clouds"
+msgstr "خنک‌تر، افزایش ابرناکی"
+
+msgid "cooler with low clouds"
+msgstr "خنک‌تر، ابرهای کم‌ارتفاع"
+
+msgid "cooler with morning showers"
+msgstr "خنک‌تر. صبح، رگبار"
+
+msgid "cooler with occasional rain"
+msgstr "خنک‌تر، باران متناوب"
+
+msgid "cooler with partial sunshine"
+msgstr "خنک‌تر، گاه آفتابی"
+
+msgid "cooler with periods of rain"
+msgstr "خنک‌تر، باران متناوب"
+
+msgid "cooler with periods of sun"
+msgstr "خنک‌تر، گاه آفتابی"
+
+msgid "cooler with plenty of clouds"
+msgstr "خنک‌تر، عمدتاً ابری"
+
+msgid "cooler with plenty of sun"
+msgstr "خنک‌تر، آفتاب فراوان"
+
+msgid "cooler with rain"
+msgstr "خنک‌تر، باران"
+
+msgid "cooler with rain and drizzle"
+msgstr "خنک‌تر، باران و نم‌نم باران"
+
+msgid "cooler with rain at times"
+msgstr "خنک‌تر، باران متناوب"
+
+msgid "cooler with rain beginning"
+msgstr "خنک‌تر، باران آغاز می‌شود"
+
+msgid "cooler with rain tapering off"
+msgstr "خنک‌تر، باران ضعیف‌تر می‌شود"
+
+msgid "cooler with showers"
+msgstr "خنک‌تر، رگبار"
+
+msgid "cooler with showers around"
+msgstr "خنک‌تر، رگبار پراکنده"
+
+msgid "cooler with some brightening"
+msgstr "خنک‌تر، کمی باز شدن آسمان"
+
+msgid "cooler with some sun"
+msgstr "خنک‌تر، گاه آفتابی"
+
+msgid "cooler with spotty showers"
+msgstr "خنک‌تر، رگبار پراکنده"
+
+msgid "cooler with sun"
+msgstr "خنک‌تر، آفتابی"
+
+msgid "cooler with sun and clouds"
+msgstr "خنک‌تر، تناوب آفتاب و ابر"
+
+msgid "cooler with sunny intervals"
+msgstr "خنک‌تر، گاه آفتابی"
+
+msgid "cooler with thunderstorms"
+msgstr "خنک‌تر، طوفان‌های تندری"
+
+msgid "cooler with variable clouds"
+msgstr "خنک‌تر، ابرناکی متغیر"
+
+msgid "couple of showers"
+msgstr "یک یا دو رگبار"
+
+msgid "couple of thunderstorms"
+msgstr "چند توفان تندری"
+
+msgid "damp early"
+msgstr "در ابتدای دوره، هوای نمناک"
+
+msgid "decreasing clouds"
+msgstr "کاهش ابرناکی"
+
+msgid "decreasing clouds and breezy"
+msgstr "کاهش ابرناکی، کمی بادخیز"
+
+msgid "decreasing clouds and colder"
+msgstr "کاهش ابرناکی، سردتر"
+
+msgid "decreasing clouds and cool"
+msgstr "کاهش ابرناکی، خنک"
+
+msgid "decreasing clouds and cooler"
+msgstr "کاهش ابرناکی، خنک‌تر"
+
+msgid "decreasing clouds and humid"
+msgstr "کاهش ابرناکی، مرطوب"
+
+msgid "decreasing clouds and warm"
+msgstr "کاهش ابرناکی، گرم"
+
+msgid "decreasing clouds and warmer"
+msgstr "کاهش ابرناکی، گرم‌تر"
+
+msgid "delightful"
+msgstr "هوای مطبوع"
+
+msgid "delightful with plenty of sun"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "delightful with some sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "delightful with sunshine"
+msgstr "هوای مطبوع، آفتابی"
+
+msgid "dense fog"
+msgstr "مه غلیظ"
+
+msgid "downpours"
+msgstr "باران سیل‌آسا"
+
+msgid "downpours early"
+msgstr "در ابتدای دوره، باران سیل‌آسا"
+
+msgid "downpours in the a.m."
+msgstr "صبح، باران سیل‌آسا"
+
+msgid "downpours in the afternoon"
+msgstr "بعدازظهر، باران سیل‌آسا"
+
+msgid "downpours in the evening"
+msgstr "عصر، باران سیل‌آسا"
+
+msgid "downpours in the morning"
+msgstr "صبح، باران سیل‌آسا"
+
+msgid "downpours in the p.m."
+msgstr "بعدازظهر، باران سیل‌آسا"
+
+msgid "downpours this evening"
+msgstr "امروز عصر، باران سیل‌آسا"
+
+msgid "drizzle/rain"
+msgstr "باران و نم‌نم باران"
+
+msgid "dull and dreary"
+msgstr "هوای گرفته و دلگیر"
+
+msgid "dull and dreary with showers"
+msgstr "هوای گرفته و دلگیر، رگبار"
+
+msgid "early downpours"
+msgstr "در ابتدای دوره، باران سیل‌آسا"
+
+msgid "early flurries"
+msgstr "در ابتدای دوره، رگبارهای خفیف برف"
+
+msgid "early rain"
+msgstr "در ابتدای دوره، باران"
+
+msgid "early showers"
+msgstr "در ابتدای دوره، رگبار"
+
+msgid "early snow"
+msgstr "در ابتدای دوره، برف"
+
+msgid "early snow showers"
+msgstr "در ابتدای دوره، رگبار برف"
+
+msgid "early t-showers"
+msgstr "در ابتدای دوره، رگبار همراه با رعدوبرق"
+
+msgid "early thunderstorms"
+msgstr "در ابتدای دوره، طوفان‌های تندری"
+
+msgid "episodes of sunshine"
+msgstr "گاه آفتابی"
+
+msgid "evening downpours"
+msgstr "عصر، باران سیل‌آسا"
+
+msgid "evening rain"
+msgstr "عصر، باران"
+
+msgid "evening rain and drizzle"
+msgstr "عصر، باران، نم‌نم باران"
+
+msgid "evening showers"
+msgstr "عصر، رگبار"
+
+msgid "evening showers and t-storms"
+msgstr "عصر، رگبار، طوفان‌های تندری"
+
+msgid "evening snow showers"
+msgstr "عصر، رگبار برف"
+
+msgid "evening thundershowers"
+msgstr "عصر، رگبار همراه با رعدوبرق"
+
+msgid "evening thunderstorms"
+msgstr "عصر، طوفان‌های تندری"
+
+msgid "flurries"
+msgstr "رگبارهای خفیف برف"
+
+msgid "fog forming"
+msgstr "مه تشکیل می‌شود"
+
+msgid "fog in the a.m."
+msgstr "صبح، مه"
+
+msgid "fog in the morning"
+msgstr "صبح، مه"
+
+msgid "fog to sun"
+msgstr "پس از مه، هوا آفتابی می‌شود"
+
+msgid "fog will lift this morning"
+msgstr "امروز صبح، مه برطرف می‌شود"
+
+msgid "foggy"
+msgstr "مه"
+
+msgid "freezing early"
+msgstr "در ابتدای دوره، یخبندان"
+
+msgid "freezing fog"
+msgstr "مه یخ‌زننده"
+
+msgid "freezing fog this morning"
+msgstr "امروز صبح، مه یخ‌زننده"
+
+msgid "freezing late"
+msgstr "در ساعات بعد، یخبندان"
+
+msgid "frigid"
+msgstr "سرمای شدید"
+
+msgid "frigid in the evening"
+msgstr "عصر، سرمای شدید"
+
+msgid "frigid with a bit of snow"
+msgstr "سرمای شدید، کمی برف"
+
+msgid "frigid with clouds and sun"
+msgstr "سرمای شدید، تناوب آفتاب و ابر"
+
+msgid "frigid with increasing clouds"
+msgstr "سرمای شدید، افزایش ابرناکی"
+
+msgid "frigid with low clouds"
+msgstr "سرمای شدید، ابرهای کم‌ارتفاع"
+
+msgid "frigid with patchy clouds"
+msgstr "سرمای شدید، ابرهای پراکنده"
+
+msgid "frigid with periods of snow"
+msgstr "سرمای شدید، بارش متناوب برف"
+
+msgid "frigid with some sun"
+msgstr "سرمای شدید، گاه آفتابی"
+
+msgid "frigid with tapering off"
+msgstr "سرمای شدید، به‌تدریج ضعیف‌تر می‌شود"
+
+msgid "ground fog"
+msgstr "مه نزدیک سطح زمین"
+
+msgid "gusty thunderstorms possible"
+msgstr "احتمال رعدوبرق همراه با تندباد"
+
+msgid "hazy"
+msgstr "هوا غبارآلود"
+
+msgid "hazy and humid"
+msgstr "هوا غبارآلود، مرطوب"
+
+msgid "hazy and remaining very warm"
+msgstr "هوا غبارآلود، هوا همچنان بسیار گرم است"
+
+msgid "hazy and seasonably warm"
+msgstr "هوا غبارآلود، گرمای معمول فصل"
+
+msgid "hazy and unseasonably hot"
+msgstr "هوا غبارآلود، گرمای غیرمعمول برای این فصل"
+
+msgid "hazy and very warm"
+msgstr "هوا غبارآلود، بسیار گرم"
+
+msgid "hazy and warm"
+msgstr "هوا غبارآلود، گرم"
+
+msgid "hazy clouds"
+msgstr "ابر و غبار"
+
+msgid "hazy sun"
+msgstr "آفتاب در غبار"
+
+msgid "hazy sun and hot"
+msgstr "آفتاب در غبار، هوای داغ"
+
+msgid "hazy sun and summerlike"
+msgstr "آفتاب در غبار، هوای تابستانی"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "آفتاب در غبار، گرمای غیرمعمول برای این فصل"
+
+msgid "hazy sun and very warm"
+msgstr "آفتاب در غبار، بسیار گرم"
+
+msgid "hazy sunshine"
+msgstr "آفتاب در غبار"
+
+msgid "hazy sunshine and hot"
+msgstr "آفتاب در غبار، هوای داغ"
+
+msgid "hazy sunshine and less humid"
+msgstr "آفتاب در غبار، رطوبت کمتر"
+
+msgid "hazy sunshine and very warm"
+msgstr "آفتاب در غبار، بسیار گرم"
+
+msgid "hazy with a t-storm in spots"
+msgstr "هوا غبارآلود، توفان تندری پراکنده"
+
+msgid "heavy a.m. rain"
+msgstr "صبح، باران شدید"
+
+msgid "heavy a.m. showers"
+msgstr "صبح، رگبارهای شدید"
+
+msgid "heavy afternoon rain"
+msgstr "بعدازظهر، باران شدید"
+
+msgid "heavy afternoon showers"
+msgstr "بعدازظهر، رگبارهای شدید"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "بعدازظهر، توفان تندری شدید"
+
+msgid "heavy evening rain"
+msgstr "عصر، باران شدید"
+
+msgid "heavy evening thunderstorms"
+msgstr "عصر، توفان تندری شدید"
+
+msgid "heavy late-night rain"
+msgstr "اواخر شب، باران شدید"
+
+msgid "heavy morning rain"
+msgstr "صبح، باران شدید"
+
+msgid "heavy morning showers"
+msgstr "صبح، رگبارهای شدید"
+
+msgid "heavy morning thunderstorms"
+msgstr "صبح، توفان تندری شدید"
+
+msgid "heavy rain and a t-storm late"
+msgstr "باران شدید. در ساعات بعد، توفان تندری"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "باران شدید، توفان تندری"
+
+msgid "heavy rain and ice late"
+msgstr "باران شدید. در ساعات بعد، یخ"
+
+msgid "heavy rain developing"
+msgstr "باران شدید آغاز می‌شود"
+
+msgid "heavy rain in the afternoon"
+msgstr "بعدازظهر، باران شدید"
+
+msgid "heavy rain shower"
+msgstr "رگبارهای شدید"
+
+msgid "heavy rain tapering off"
+msgstr "شدت باران سنگین کم می‌شود"
+
+msgid "heavy showers early"
+msgstr "در ابتدای دوره، رگبارهای شدید"
+
+msgid "heavy showers in the evening"
+msgstr "عصر، رگبارهای شدید"
+
+msgid "heavy showers in the morning"
+msgstr "صبح، رگبارهای شدید"
+
+msgid "heavy showers late"
+msgstr "در ساعات بعد، رگبارهای شدید"
+
+msgid "heavy showers this afternoon"
+msgstr "امروز بعدازظهر، رگبارهای شدید"
+
+msgid "heavy showers this evening"
+msgstr "امروز عصر، رگبارهای شدید"
+
+msgid "heavy showers this morning"
+msgstr "امروز صبح، رگبارهای شدید"
+
+msgid "heavy t-storms"
+msgstr "توفان تندری شدید"
+
+msgid "heavy t-storms early"
+msgstr "در ابتدای دوره، توفان تندری شدید"
+
+msgid "heavy t-storms in the evening"
+msgstr "عصر، توفان تندری شدید"
+
+msgid "heavy t-storms late"
+msgstr "در ساعات بعد، توفان تندری شدید"
+
+msgid "heavy thunderstorm"
+msgstr "توفان تندری شدید"
+
+msgid "heavy thunderstorms"
+msgstr "توفان تندری شدید"
+
+msgid "high clouds"
+msgstr "ابرهای مرتفع"
+
+msgid "high clouds and breezy"
+msgstr "ابرهای مرتفع، کمی بادخیز"
+
+msgid "high clouds and chilly"
+msgstr "ابرهای مرتفع، سرمای محسوس"
+
+msgid "high clouds and cooler"
+msgstr "ابرهای مرتفع، خنک‌تر"
+
+msgid "high clouds and hot"
+msgstr "ابرهای مرتفع، هوای داغ"
+
+msgid "high clouds and nice"
+msgstr "ابرهای مرتفع، هوای مطبوع"
+
+msgid "high clouds and pleasant"
+msgstr "ابرهای مرتفع، هوای مطبوع"
+
+msgid "high clouds and summerlike"
+msgstr "ابرهای مرتفع، هوای تابستانی"
+
+msgid "high clouds and very warm"
+msgstr "ابرهای مرتفع، بسیار گرم"
+
+msgid "high clouds and warm"
+msgstr "ابرهای مرتفع، گرم"
+
+msgid "high clouds and warmer"
+msgstr "ابرهای مرتفع، گرم‌تر"
+
+msgid "hot and humid with some sun"
+msgstr "هوای داغ، مرطوب، گاه آفتابی"
+
+msgid "hot with abundant sunshine"
+msgstr "هوای داغ، آفتاب فراوان"
+
+msgid "hot with blazing sunshine"
+msgstr "هوای داغ، آفتاب سوزان"
+
+msgid "hot with brilliant sunshine"
+msgstr "هوای داغ، آفتاب درخشان"
+
+msgid "hot with clearing"
+msgstr "هوای داغ، آسمان به‌تدریج صاف می‌شود"
+
+msgid "hot with clouds and sun"
+msgstr "هوای داغ، تناوب آفتاب و ابر"
+
+msgid "hot with clouds and sunshine"
+msgstr "هوای داغ، تناوب آفتاب و ابر"
+
+msgid "hot with clouds rolling in"
+msgstr "هوای داغ، ابرها از راه می‌رسند"
+
+msgid "hot with considerable clouds"
+msgstr "هوای داغ، عمدتاً ابری"
+
+msgid "hot with decreasing clouds"
+msgstr "هوای داغ، کاهش ابرناکی"
+
+msgid "hot with hazy sun"
+msgstr "هوای داغ، آفتاب در غبار"
+
+msgid "hot with hazy sunshine"
+msgstr "هوای داغ، آفتاب در غبار"
+
+msgid "hot with high clouds"
+msgstr "هوای داغ، ابرهای مرتفع"
+
+msgid "hot with increasing clouds"
+msgstr "هوای داغ، افزایش ابرناکی"
+
+msgid "hot with more clouds than sun"
+msgstr "هوای داغ، عمدتاً ابری"
+
+msgid "hot with more sun than clouds"
+msgstr "هوای داغ، عمدتاً آفتابی"
+
+msgid "hot with partial sunshine"
+msgstr "هوای داغ، گاه آفتابی"
+
+msgid "hot with periods of sun"
+msgstr "هوای داغ، گاه آفتابی"
+
+msgid "hot with periods of sunshine"
+msgstr "هوای داغ، گاه آفتابی"
+
+msgid "hot with plenty of sun"
+msgstr "هوای داغ، آفتاب فراوان"
+
+msgid "hot with plenty of sunshine"
+msgstr "هوای داغ، آفتاب فراوان"
+
+msgid "hot with rain and drizzle"
+msgstr "هوای داغ، باران و نم‌نم باران"
+
+msgid "hot with some sun"
+msgstr "هوای داغ، گاه آفتابی"
+
+msgid "hot with some sunshine"
+msgstr "هوای داغ، گاه آفتابی"
+
+msgid "hot with sun"
+msgstr "هوای داغ، آفتابی"
+
+msgid "hot with sun and clouds"
+msgstr "هوای داغ، تناوب آفتاب و ابر"
+
+msgid "hot with sun and some clouds"
+msgstr "هوای داغ، تناوب آفتاب و ابر"
+
+msgid "hot with sunny intervals"
+msgstr "هوای داغ، گاه آفتابی"
+
+msgid "hot with sunshine"
+msgstr "هوای داغ، آفتابی"
+
+msgid "hot with variable cloudiness"
+msgstr "هوای داغ، ابرناکی متغیر"
+
+msgid "hot with variable clouds"
+msgstr "هوای داغ، ابرناکی متغیر"
+
+msgid "hotter"
+msgstr "گرمای بیشتر"
+
+msgid "hotter with a stray t-storm"
+msgstr "گرمای بیشتر، توفان تندری پراکنده"
+
+msgid "hotter with a t-storm around"
+msgstr "گرمای بیشتر، توفان تندری پراکنده"
+
+msgid "hotter with a thunderstorm"
+msgstr "گرمای بیشتر، توفان تندری"
+
+msgid "hotter with abundant sunshine"
+msgstr "گرمای بیشتر، آفتاب فراوان"
+
+msgid "hotter with blazing sunshine"
+msgstr "گرمای بیشتر، آفتاب سوزان"
+
+msgid "hotter with partial sunshine"
+msgstr "گرمای بیشتر، گاه آفتابی"
+
+msgid "hotter with plenty of sun"
+msgstr "گرمای بیشتر، آفتاب فراوان"
+
+msgid "hotter with sunshine"
+msgstr "گرمای بیشتر، آفتابی"
+
+msgid "humid"
+msgstr "مرطوب"
+
+msgid "humid with a t-storm in spots"
+msgstr "مرطوب، توفان تندری پراکنده"
+
+msgid "humid with clouds"
+msgstr "مرطوب، ابری"
+
+msgid "humid with clouds and sun"
+msgstr "مرطوب، تناوب آفتاب و ابر"
+
+msgid "humid with clouds breaking"
+msgstr "مرطوب، کاهش ابرناکی"
+
+msgid "humid with cloudy spells"
+msgstr "مرطوب، گاهی ابری"
+
+msgid "humid with high clouds"
+msgstr "مرطوب، ابرهای مرتفع"
+
+msgid "humid with increasing clouds"
+msgstr "مرطوب، افزایش ابرناکی"
+
+msgid "humid with low clouds"
+msgstr "مرطوب، ابرهای کم‌ارتفاع"
+
+msgid "humid with partial sunshine"
+msgstr "مرطوب، گاه آفتابی"
+
+msgid "humid with patchy clouds"
+msgstr "مرطوب، ابرهای پراکنده"
+
+msgid "humid with periods of rain"
+msgstr "مرطوب، باران متناوب"
+
+msgid "humid with periods of sun"
+msgstr "مرطوب، گاه آفتابی"
+
+msgid "humid with plenty of clouds"
+msgstr "مرطوب، عمدتاً ابری"
+
+msgid "humid with plenty of sun"
+msgstr "مرطوب، آفتاب فراوان"
+
+msgid "humid with plenty of sunshine"
+msgstr "مرطوب، آفتاب فراوان"
+
+msgid "humid with rain"
+msgstr "مرطوب، باران"
+
+msgid "humid with rain and a t-storm"
+msgstr "مرطوب، باران، توفان تندری"
+
+msgid "humid with rain and drizzle"
+msgstr "مرطوب، باران و نم‌نم باران"
+
+msgid "humid with rain at times"
+msgstr "مرطوب، باران متناوب"
+
+msgid "humid with some brightening"
+msgstr "مرطوب، کمی باز شدن آسمان"
+
+msgid "humid with some sun"
+msgstr "مرطوب، گاه آفتابی"
+
+msgid "humid with sunny intervals"
+msgstr "مرطوب، گاه آفتابی"
+
+msgid "humid with thickening clouds"
+msgstr "مرطوب، ابرها متراکم‌تر می‌شوند"
+
+msgid "humid with variable clouds"
+msgstr "مرطوب، ابرناکی متغیر"
+
+msgid "ice and rain at times"
+msgstr "یخ، باران متناوب"
+
+msgid "increasing amounts of clouds"
+msgstr "افزایش ابرناکی"
+
+msgid "increasing amounts of sun"
+msgstr "آفتاب بیشتر می‌شود"
+
+msgid "increasing cloudiness"
+msgstr "افزایش ابرناکی"
+
+msgid "increasing cloudiness and hot"
+msgstr "افزایش ابرناکی، هوای داغ"
+
+msgid "increasing clouds"
+msgstr "افزایش ابرناکی"
+
+msgid "increasing clouds and chilly"
+msgstr "افزایش ابرناکی، سرمای محسوس"
+
+msgid "increasing clouds and cold"
+msgstr "افزایش ابرناکی، سرد"
+
+msgid "increasing clouds and cool"
+msgstr "افزایش ابرناکی، خنک"
+
+msgid "increasing clouds and hot"
+msgstr "افزایش ابرناکی، هوای داغ"
+
+msgid "increasing clouds and hotter"
+msgstr "افزایش ابرناکی، گرمای بیشتر"
+
+msgid "increasing clouds and humid"
+msgstr "افزایش ابرناکی، مرطوب"
+
+msgid "increasing clouds and milder"
+msgstr "افزایش ابرناکی، ملایم‌تر"
+
+msgid "increasing clouds and warm"
+msgstr "افزایش ابرناکی، گرم"
+
+msgid "increasing clouds and warmer"
+msgstr "افزایش ابرناکی، گرم‌تر"
+
+msgid "increasingly windy"
+msgstr "وزش باد شدیدتر می‌شود"
+
+msgid "intermittent snow"
+msgstr "بارش متناوب برف"
+
+msgid "intervals of clouds and sun"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "jupiter"
+msgstr "مشتری"
+
+msgid "late downpours"
+msgstr "در ساعات بعد، باران سیل‌آسا"
+
+msgid "late flurries"
+msgstr "در ساعات بعد، رگبارهای خفیف برف"
+
+msgid "late rain"
+msgstr "در ساعات بعد، باران"
+
+msgid "late snow"
+msgstr "در ساعات بعد، برف"
+
+msgid "late snow showers"
+msgstr "در ساعات بعد، رگبار برف"
+
+msgid "late-night rain"
+msgstr "اواخر شب، باران"
+
+msgid "late-night showers"
+msgstr "اواخر شب، رگبار"
+
+msgid "late-night snow"
+msgstr "اواخر شب، برف"
+
+msgid "late-night thunderstorms"
+msgstr "اواخر شب، طوفان‌های تندری"
+
+msgid "less humid with plenty of sun"
+msgstr "رطوبت کمتر، آفتاب فراوان"
+
+msgid "less humid with some sun"
+msgstr "رطوبت کمتر، گاه آفتابی"
+
+msgid "light fog"
+msgstr "مه رقیق"
+
+msgid "light snow"
+msgstr "برف خفیف"
+
+msgid "lots of sun"
+msgstr "آفتاب فراوان"
+
+msgid "lots of sun with a shower"
+msgstr "آفتاب فراوان، رگبار باران"
+
+msgid "low clouds"
+msgstr "ابرهای کم‌ارتفاع"
+
+msgid "low clouds and bitterly cold"
+msgstr "ابرهای کم‌ارتفاع، سرمای شدید"
+
+msgid "low clouds and breezy"
+msgstr "ابرهای کم‌ارتفاع، کمی بادخیز"
+
+msgid "low clouds and chilly"
+msgstr "ابرهای کم‌ارتفاع، سرمای محسوس"
+
+msgid "low clouds and cold"
+msgstr "ابرهای کم‌ارتفاع، سرد"
+
+msgid "low clouds and colder"
+msgstr "ابرهای کم‌ارتفاع، سردتر"
+
+msgid "low clouds and cool"
+msgstr "ابرهای کم‌ارتفاع، خنک"
+
+msgid "low clouds and cooler"
+msgstr "ابرهای کم‌ارتفاع، خنک‌تر"
+
+msgid "low clouds and fog"
+msgstr "ابرهای کم‌ارتفاع، مه"
+
+msgid "low clouds and fog and cooler"
+msgstr "ابرهای کم‌ارتفاع، مه، خنک‌تر"
+
+msgid "low clouds and freezing fog"
+msgstr "ابرهای کم‌ارتفاع، مه یخ‌زننده"
+
+msgid "low clouds and frigid"
+msgstr "ابرهای کم‌ارتفاع، سرمای شدید"
+
+msgid "low clouds and humid"
+msgstr "ابرهای کم‌ارتفاع، مرطوب"
+
+msgid "low clouds and mild"
+msgstr "ابرهای کم‌ارتفاع، هوای ملایم"
+
+msgid "low clouds and not as cold"
+msgstr "ابرهای کم‌ارتفاع، از شدت سرما کاسته می‌شود"
+
+msgid "low clouds and remaining cool"
+msgstr "ابرهای کم‌ارتفاع، هوا همچنان خنک است"
+
+msgid "low clouds and spotty showers"
+msgstr "ابرهای کم‌ارتفاع، رگبار پراکنده"
+
+msgid "low clouds and warmer"
+msgstr "ابرهای کم‌ارتفاع، گرم‌تر"
+
+msgid "low clouds break for some sun"
+msgstr "ابرهای کم‌ارتفاع پراکنده می‌شوند"
+
+msgid "low clouds breaking"
+msgstr "ابرهای کم‌ارتفاع پراکنده می‌شوند"
+
+msgid "low clouds breaking and humid"
+msgstr "ابرهای کم‌ارتفاع پراکنده می‌شوند، مرطوب"
+
+msgid "low clouds followed by sun"
+msgstr "ابرهای کم‌ارتفاع پراکنده می‌شوند"
+
+msgid "low clouds may break"
+msgstr "ابرهای کم‌ارتفاع ممکن است پراکنده شوند"
+
+msgid "low clouds with a flurry late"
+msgstr "ابرهای کم‌ارتفاع. در ساعات بعد، رگبارهای خفیف برف"
+
+msgid "low clouds with rain late"
+msgstr "ابرهای کم‌ارتفاع. در ساعات بعد، باران"
+
+msgid "low humidity with some sun"
+msgstr "رطوبت کم، گاه آفتابی"
+
+msgid "low humidity with sunshine"
+msgstr "رطوبت کم، آفتابی"
+
+msgid "mainly clear and breezy"
+msgstr "عمدتاً صاف، کمی بادخیز"
+
+msgid "mainly clear and chilly"
+msgstr "عمدتاً صاف، سرمای محسوس"
+
+msgid "mainly clear and cold"
+msgstr "عمدتاً صاف، سرد"
+
+msgid "mainly clear and colder"
+msgstr "عمدتاً صاف، سردتر"
+
+msgid "mainly clear and cool"
+msgstr "عمدتاً صاف، خنک"
+
+msgid "mainly clear and cooler"
+msgstr "عمدتاً صاف، خنک‌تر"
+
+msgid "mainly clear and frigid"
+msgstr "عمدتاً صاف، سرمای شدید"
+
+msgid "mainly clear and humid"
+msgstr "عمدتاً صاف، مرطوب"
+
+msgid "mainly clear and mild"
+msgstr "عمدتاً صاف، هوای ملایم"
+
+msgid "mainly clear and much colder"
+msgstr "عمدتاً صاف، بسیار سردتر"
+
+msgid "mainly clear and not as warm"
+msgstr "عمدتاً صاف، اندکی خنک‌تر"
+
+msgid "mainly clear and very cold"
+msgstr "عمدتاً صاف، بسیار سرد"
+
+msgid "mainly clear and very humid"
+msgstr "عمدتاً صاف، بسیار مرطوب"
+
+msgid "mainly clear and very warm"
+msgstr "عمدتاً صاف، بسیار گرم"
+
+msgid "mainly clear and warm"
+msgstr "عمدتاً صاف، گرم"
+
+msgid "mainly clear and warmer"
+msgstr "عمدتاً صاف، گرم‌تر"
+
+msgid "mainly clear with a shower"
+msgstr "عمدتاً صاف، رگبار باران"
+
+msgid "mainly clear with a t-storm"
+msgstr "عمدتاً صاف، توفان تندری"
+
+msgid "mainly cloudy"
+msgstr "عمدتاً ابری"
+
+msgid "mainly cloudy and chilly"
+msgstr "عمدتاً ابری، سرمای محسوس"
+
+msgid "mainly cloudy and cold"
+msgstr "عمدتاً ابری، سرد"
+
+msgid "mainly cloudy and colder"
+msgstr "عمدتاً ابری، سردتر"
+
+msgid "mainly cloudy and cool"
+msgstr "عمدتاً ابری، خنک"
+
+msgid "mainly cloudy and cooler"
+msgstr "عمدتاً ابری، خنک‌تر"
+
+msgid "mainly cloudy and frigid"
+msgstr "عمدتاً ابری، سرمای شدید"
+
+msgid "mainly cloudy and hot"
+msgstr "عمدتاً ابری، هوای داغ"
+
+msgid "mainly cloudy and humid"
+msgstr "عمدتاً ابری، مرطوب"
+
+msgid "mainly cloudy and summerlike"
+msgstr "عمدتاً ابری، هوای تابستانی"
+
+msgid "mainly cloudy and very warm"
+msgstr "عمدتاً ابری، بسیار گرم"
+
+msgid "mainly cloudy and warm"
+msgstr "عمدتاً ابری، گرم"
+
+msgid "mainly cloudy and warmer"
+msgstr "عمدتاً ابری، گرم‌تر"
+
+msgid "mainly cloudy with a shower"
+msgstr "عمدتاً ابری، رگبار باران"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "عمدتاً ابری، توفان تندری"
+
+msgid "mainly cloudy with flurries"
+msgstr "عمدتاً ابری، رگبارهای خفیف برف"
+
+msgid "mainly cloudy with showers"
+msgstr "عمدتاً ابری، رگبار"
+
+msgid "mainly early"
+msgstr "بیشتر در ابتدای دوره"
+
+msgid "mainly later"
+msgstr "بیشتر در ساعات بعد"
+
+msgid "mars"
+msgstr "مریخ"
+
+msgid "mercury"
+msgstr "عطارد"
+
+msgid "mild"
+msgstr "هوای ملایم"
+
+msgid "mild with abundant sunshine"
+msgstr "هوای ملایم، آفتاب فراوان"
+
+msgid "mild with clouds and sun"
+msgstr "هوای ملایم، تناوب آفتاب و ابر"
+
+msgid "mild with clouds and sunshine"
+msgstr "هوای ملایم، تناوب آفتاب و ابر"
+
+msgid "mild with considerable clouds"
+msgstr "هوای ملایم، عمدتاً ابری"
+
+msgid "mild with increasing clouds"
+msgstr "هوای ملایم، افزایش ابرناکی"
+
+msgid "mild with partial sunshine"
+msgstr "هوای ملایم، گاه آفتابی"
+
+msgid "mild with patchy clouds"
+msgstr "هوای ملایم، ابرهای پراکنده"
+
+msgid "mild with periods of rain"
+msgstr "هوای ملایم، باران متناوب"
+
+msgid "mild with periods of sun"
+msgstr "هوای ملایم، گاه آفتابی"
+
+msgid "mild with plenty of clouds"
+msgstr "هوای ملایم، عمدتاً ابری"
+
+msgid "mild with plenty of sun"
+msgstr "هوای ملایم، آفتاب فراوان"
+
+msgid "mild with plenty of sunshine"
+msgstr "هوای ملایم، آفتاب فراوان"
+
+msgid "mild with some sun"
+msgstr "هوای ملایم، گاه آفتابی"
+
+msgid "mild with sun and clouds"
+msgstr "هوای ملایم، تناوب آفتاب و ابر"
+
+msgid "mild with sun and some clouds"
+msgstr "هوای ملایم، تناوب آفتاب و ابر"
+
+msgid "mild with sunny intervals"
+msgstr "هوای ملایم، گاه آفتابی"
+
+msgid "mild with sunshine"
+msgstr "هوای ملایم، آفتابی"
+
+msgid "mild with thickening clouds"
+msgstr "هوای ملایم، ابرها متراکم‌تر می‌شوند"
+
+msgid "mild with variable cloudiness"
+msgstr "هوای ملایم، ابرناکی متغیر"
+
+msgid "milder"
+msgstr "ملایم‌تر"
+
+msgid "milder with a shower in spots"
+msgstr "ملایم‌تر، رگبار پراکنده"
+
+msgid "milder with brief showers"
+msgstr "ملایم‌تر، رگبارهای کوتاه"
+
+msgid "milder with clouds and sun"
+msgstr "ملایم‌تر، تناوب آفتاب و ابر"
+
+msgid "milder with increasing clouds"
+msgstr "ملایم‌تر، افزایش ابرناکی"
+
+msgid "milder with low clouds"
+msgstr "ملایم‌تر، ابرهای کم‌ارتفاع"
+
+msgid "milder with periods of rain"
+msgstr "ملایم‌تر، باران متناوب"
+
+msgid "milder with periods of sun"
+msgstr "ملایم‌تر، گاه آفتابی"
+
+msgid "milder with sun"
+msgstr "ملایم‌تر، آفتابی"
+
+msgid "milder with thickening clouds"
+msgstr "ملایم‌تر، ابرها متراکم‌تر می‌شوند"
+
+msgid "mist"
+msgstr "مه رقیق"
+
+msgid "mixed with snow early"
+msgstr "در ابتدای دوره، مخلوط با برف"
+
+msgid "moderate rain"
+msgstr "باران متوسط"
+
+msgid "moon"
+msgstr "ماه"
+
+msgid "more clouds than sun"
+msgstr "عمدتاً ابری"
+
+msgid "more clouds than sunshine"
+msgstr "عمدتاً ابری"
+
+msgid "more sun than clouds"
+msgstr "عمدتاً آفتابی"
+
+msgid "more sunshine than clouds"
+msgstr "عمدتاً آفتابی"
+
+msgid "morning downpours"
+msgstr "صبح، باران سیل‌آسا"
+
+msgid "morning flurries"
+msgstr "صبح، رگبارهای خفیف برف"
+
+msgid "morning rain"
+msgstr "صبح، باران"
+
+msgid "morning showers"
+msgstr "صبح، رگبار"
+
+msgid "morning snow"
+msgstr "صبح، برف"
+
+msgid "morning snow showers"
+msgstr "صبح، رگبار برف"
+
+msgid "morning t-showers"
+msgstr "صبح، رگبار همراه با رعدوبرق"
+
+msgid "morning thunderstorms"
+msgstr "صبح، طوفان‌های تندری"
+
+msgid "mostly clear and chilly"
+msgstr "عمدتاً صاف، سرمای محسوس"
+
+msgid "mostly clear and cold"
+msgstr "عمدتاً صاف، سرد"
+
+msgid "mostly clear and cool"
+msgstr "عمدتاً صاف، خنک"
+
+msgid "mostly clear and cooler"
+msgstr "عمدتاً صاف، خنک‌تر"
+
+msgid "mostly clear and humid"
+msgstr "عمدتاً صاف، مرطوب"
+
+msgid "mostly clear and mild"
+msgstr "عمدتاً صاف، هوای ملایم"
+
+msgid "mostly clear and very warm"
+msgstr "عمدتاً صاف، بسیار گرم"
+
+msgid "mostly clear with a shower"
+msgstr "عمدتاً صاف، رگبار باران"
+
+msgid "mostly cloudy and breezy"
+msgstr "عمدتاً ابری، کمی بادخیز"
+
+msgid "mostly cloudy and chilly"
+msgstr "عمدتاً ابری، سرمای محسوس"
+
+msgid "mostly cloudy and cold"
+msgstr "عمدتاً ابری، سرد"
+
+msgid "mostly cloudy and colder"
+msgstr "عمدتاً ابری، سردتر"
+
+msgid "mostly cloudy and comfortable"
+msgstr "عمدتاً ابری، هوای مطبوع"
+
+msgid "mostly cloudy and cool"
+msgstr "عمدتاً ابری، خنک"
+
+msgid "mostly cloudy and cooler"
+msgstr "عمدتاً ابری، خنک‌تر"
+
+msgid "mostly cloudy and frigid"
+msgstr "عمدتاً ابری، سرمای شدید"
+
+msgid "mostly cloudy and hot"
+msgstr "عمدتاً ابری، هوای داغ"
+
+msgid "mostly cloudy and hotter"
+msgstr "عمدتاً ابری، گرمای بیشتر"
+
+msgid "mostly cloudy and humid"
+msgstr "عمدتاً ابری، مرطوب"
+
+msgid "mostly cloudy and less humid"
+msgstr "عمدتاً ابری، رطوبت کمتر"
+
+msgid "mostly cloudy and mild"
+msgstr "عمدتاً ابری، هوای ملایم"
+
+msgid "mostly cloudy and milder"
+msgstr "عمدتاً ابری، ملایم‌تر"
+
+msgid "mostly cloudy and misty"
+msgstr "عمدتاً ابری، مه رقیق"
+
+msgid "mostly cloudy and misty late"
+msgstr "عمدتاً ابری. در ساعات بعد، مه رقیق"
+
+msgid "mostly cloudy and not as cold"
+msgstr "عمدتاً ابری، از شدت سرما کاسته می‌شود"
+
+msgid "mostly cloudy and not as cool"
+msgstr "عمدتاً ابری، از خنکی هوا کاسته می‌شود"
+
+msgid "mostly cloudy and not as hot"
+msgstr "عمدتاً ابری، کاهش شدت گرما"
+
+msgid "mostly cloudy and not as warm"
+msgstr "عمدتاً ابری، اندکی خنک‌تر"
+
+msgid "mostly cloudy and seasonable"
+msgstr "عمدتاً ابری، دمای معمول فصل"
+
+msgid "mostly cloudy and summerlike"
+msgstr "عمدتاً ابری، هوای تابستانی"
+
+msgid "mostly cloudy and very cold"
+msgstr "عمدتاً ابری، بسیار سرد"
+
+msgid "mostly cloudy and very hot"
+msgstr "عمدتاً ابری، گرمای شدید"
+
+msgid "mostly cloudy and very humid"
+msgstr "عمدتاً ابری، بسیار مرطوب"
+
+msgid "mostly cloudy and very warm"
+msgstr "عمدتاً ابری، بسیار گرم"
+
+msgid "mostly cloudy and warm"
+msgstr "عمدتاً ابری، گرم"
+
+msgid "mostly cloudy and warmer"
+msgstr "عمدتاً ابری، گرم‌تر"
+
+msgid "mostly cloudy and windy"
+msgstr "عمدتاً ابری، وزش باد"
+
+msgid "mostly cloudy with a downpour"
+msgstr "عمدتاً ابری، باران سیل‌آسا"
+
+msgid "mostly cloudy with a shower"
+msgstr "عمدتاً ابری، رگبار باران"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "عمدتاً ابری، رگبار همراه با رعدوبرق"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "عمدتاً ابری، توفان تندری"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "عمدتاً ابری، بارش مخلوط باران یخ‌زننده و دانه‌های یخ"
+
+msgid "mostly cloudy with downpours"
+msgstr "عمدتاً ابری، باران سیل‌آسا"
+
+msgid "mostly cloudy with flurries"
+msgstr "عمدتاً ابری، رگبارهای خفیف برف"
+
+msgid "mostly cloudy with mist late"
+msgstr "عمدتاً ابری. در ساعات بعد، مه رقیق"
+
+msgid "mostly cloudy with rain"
+msgstr "عمدتاً ابری، باران"
+
+msgid "mostly cloudy with rain late"
+msgstr "عمدتاً ابری. در ساعات بعد، باران"
+
+msgid "mostly cloudy with showers"
+msgstr "عمدتاً ابری، رگبار"
+
+msgid "mostly cloudy with snow late"
+msgstr "عمدتاً ابری. در ساعات بعد، برف"
+
+msgid "mostly cloudy with t-showers"
+msgstr "عمدتاً ابری، رگبار همراه با رعدوبرق"
+
+msgid "mostly cloudy with t-storms"
+msgstr "عمدتاً ابری، طوفان‌های تندری"
+
+msgid "mostly sunny and beautiful"
+msgstr "عمدتاً آفتابی، هوای مطبوع"
+
+msgid "mostly sunny and breezy"
+msgstr "عمدتاً آفتابی، کمی بادخیز"
+
+msgid "mostly sunny and chilly"
+msgstr "عمدتاً آفتابی، سرمای محسوس"
+
+msgid "mostly sunny and cold"
+msgstr "عمدتاً آفتابی، سرد"
+
+msgid "mostly sunny and colder"
+msgstr "عمدتاً آفتابی، سردتر"
+
+msgid "mostly sunny and comfortable"
+msgstr "عمدتاً آفتابی، هوای مطبوع"
+
+msgid "mostly sunny and cool"
+msgstr "عمدتاً آفتابی، خنک"
+
+msgid "mostly sunny and cooler"
+msgstr "عمدتاً آفتابی، خنک‌تر"
+
+msgid "mostly sunny and delightful"
+msgstr "عمدتاً آفتابی، هوای مطبوع"
+
+msgid "mostly sunny and frigid"
+msgstr "عمدتاً آفتابی، سرمای شدید"
+
+msgid "mostly sunny and hot"
+msgstr "عمدتاً آفتابی، هوای داغ"
+
+msgid "mostly sunny and hotter"
+msgstr "عمدتاً آفتابی، گرمای بیشتر"
+
+msgid "mostly sunny and humid"
+msgstr "عمدتاً آفتابی، مرطوب"
+
+msgid "mostly sunny and less humid"
+msgstr "عمدتاً آفتابی، رطوبت کمتر"
+
+msgid "mostly sunny and mild"
+msgstr "عمدتاً آفتابی، هوای ملایم"
+
+msgid "mostly sunny and milder"
+msgstr "عمدتاً آفتابی، ملایم‌تر"
+
+msgid "mostly sunny and nice"
+msgstr "عمدتاً آفتابی، هوای مطبوع"
+
+msgid "mostly sunny and not as cold"
+msgstr "عمدتاً آفتابی، از شدت سرما کاسته می‌شود"
+
+msgid "mostly sunny and not as hot"
+msgstr "عمدتاً آفتابی، کاهش شدت گرما"
+
+msgid "mostly sunny and not as warm"
+msgstr "عمدتاً آفتابی، اندکی خنک‌تر"
+
+msgid "mostly sunny and pleasant"
+msgstr "عمدتاً آفتابی، هوای مطبوع"
+
+msgid "mostly sunny and quite cold"
+msgstr "عمدتاً آفتابی، نسبتاً سرد"
+
+msgid "mostly sunny and summerlike"
+msgstr "عمدتاً آفتابی، هوای تابستانی"
+
+msgid "mostly sunny and very cold"
+msgstr "عمدتاً آفتابی، بسیار سرد"
+
+msgid "mostly sunny and very hot"
+msgstr "عمدتاً آفتابی، گرمای شدید"
+
+msgid "mostly sunny and very humid"
+msgstr "عمدتاً آفتابی، بسیار مرطوب"
+
+msgid "mostly sunny and very warm"
+msgstr "عمدتاً آفتابی، بسیار گرم"
+
+msgid "mostly sunny and warm"
+msgstr "عمدتاً آفتابی، گرم"
+
+msgid "mostly sunny and warmer"
+msgstr "عمدتاً آفتابی، گرم‌تر"
+
+msgid "mostly sunny and windy"
+msgstr "عمدتاً آفتابی، وزش باد"
+
+msgid "mostly sunny with a shower"
+msgstr "عمدتاً آفتابی، رگبار باران"
+
+msgid "mostly sunny with a t-shower"
+msgstr "عمدتاً آفتابی، رگبار همراه با رعدوبرق"
+
+msgid "mostly sunny with a t-storm"
+msgstr "عمدتاً آفتابی، توفان تندری"
+
+msgid "much colder"
+msgstr "بسیار سردتر"
+
+msgid "much colder with low clouds"
+msgstr "بسیار سردتر، ابرهای کم‌ارتفاع"
+
+msgid "neptune"
+msgstr "نپتون"
+
+msgid "nice"
+msgstr "هوای مطبوع"
+
+msgid "nice and warm"
+msgstr "هوای مطبوع، گرم"
+
+msgid "nice and warm with some sun"
+msgstr "هوای مطبوع، گرم، گاه آفتابی"
+
+msgid "nice and warm with sunshine"
+msgstr "هوای مطبوع، گرم، آفتابی"
+
+msgid "nice with abundant sunshine"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "nice with brilliant sunshine"
+msgstr "هوای مطبوع، آفتاب درخشان"
+
+msgid "nice with clouds"
+msgstr "هوای مطبوع، ابری"
+
+msgid "nice with clouds and sun"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "nice with clouds and sunshine"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "nice with partial sunshine"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "nice with periods of sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "nice with periods of sunshine"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "nice with plenty of sun"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "nice with plenty of sunshine"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "nice with some sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "nice with some sunshine"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "nice with sun"
+msgstr "هوای مطبوع، آفتابی"
+
+msgid "nice with sun and clouds"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "nice with sun and some clouds"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "nice with sunny intervals"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "nice with sunshine"
+msgstr "هوای مطبوع، آفتابی"
+
+msgid "nice with variable cloudiness"
+msgstr "هوای مطبوع، ابرناکی متغیر"
+
+msgid "nice with variable clouds"
+msgstr "هوای مطبوع، ابرناکی متغیر"
+
+msgid "not as cold"
+msgstr "از شدت سرما کاسته می‌شود"
+
+msgid "not as cold with clearing"
+msgstr "از شدت سرما کاسته می‌شود، آسمان به‌تدریج صاف می‌شود"
+
+msgid "not as cold with flurries"
+msgstr "از شدت سرما کاسته می‌شود، رگبارهای خفیف برف"
+
+msgid "not as cold with low clouds"
+msgstr "از شدت سرما کاسته می‌شود، ابرهای کم‌ارتفاع"
+
+msgid "not as cold with snow showers"
+msgstr "از شدت سرما کاسته می‌شود، رگبار برف"
+
+msgid "not as cold with some sun"
+msgstr "از شدت سرما کاسته می‌شود، گاه آفتابی"
+
+msgid "not as cool"
+msgstr "از خنکی هوا کاسته می‌شود"
+
+msgid "not as cool late"
+msgstr "در ساعات بعد، از خنکی هوا کاسته می‌شود"
+
+msgid "not as cool with clearing"
+msgstr "از خنکی هوا کاسته می‌شود، آسمان به‌تدریج صاف می‌شود"
+
+msgid "not as hot"
+msgstr "کاهش شدت گرما"
+
+msgid "not as hot with a shower"
+msgstr "کاهش شدت گرما، رگبار باران"
+
+msgid "not as hot with a t-storm"
+msgstr "کاهش شدت گرما، توفان تندری"
+
+msgid "not as hot with some sun"
+msgstr "کاهش شدت گرما، گاه آفتابی"
+
+msgid "not as warm"
+msgstr "اندکی خنک‌تر"
+
+msgid "not as warm but pleasant"
+msgstr "اندکی خنک‌تر، هوای مطبوع"
+
+msgid "not as warm in the afternoon"
+msgstr "بعدازظهر، اندکی خنک‌تر"
+
+msgid "not as warm this afternoon"
+msgstr "امروز بعدازظهر، اندکی خنک‌تر"
+
+msgid "not as warm with a shower"
+msgstr "اندکی خنک‌تر، رگبار باران"
+
+msgid "not as warm with a t-shower"
+msgstr "اندکی خنک‌تر، رگبار همراه با رعدوبرق"
+
+msgid "not as warm with a t-storm"
+msgstr "اندکی خنک‌تر، توفان تندری"
+
+msgid "not as warm with clearing"
+msgstr "اندکی خنک‌تر، آسمان به‌تدریج صاف می‌شود"
+
+msgid "not as warm with downpours"
+msgstr "اندکی خنک‌تر، باران سیل‌آسا"
+
+msgid "not as warm with high clouds"
+msgstr "اندکی خنک‌تر، ابرهای مرتفع"
+
+msgid "not as warm with low clouds"
+msgstr "اندکی خنک‌تر، ابرهای کم‌ارتفاع"
+
+msgid "not as warm with morning rain"
+msgstr "اندکی خنک‌تر. صبح، باران"
+
+msgid "not as warm with rain"
+msgstr "اندکی خنک‌تر، باران"
+
+msgid "not as warm with rain ending"
+msgstr "اندکی خنک‌تر، باران بند می‌آید"
+
+msgid "not as warm with showers"
+msgstr "اندکی خنک‌تر، رگبار"
+
+msgid "not as warm with some sun"
+msgstr "اندکی خنک‌تر، گاه آفتابی"
+
+msgid "occasional afternoon rain"
+msgstr "بعدازظهر، باران متناوب"
+
+msgid "occasional evening rain"
+msgstr "عصر، باران متناوب"
+
+msgid "occasional late-night rain"
+msgstr "اواخر شب، باران متناوب"
+
+msgid "occasional morning rain"
+msgstr "صبح، باران متناوب"
+
+msgid "occasional rain"
+msgstr "باران متناوب"
+
+msgid "occasional rain and a t-storm"
+msgstr "باران متناوب، توفان تندری"
+
+msgid "occasional rain and drizzle"
+msgstr "باران متناوب، نم‌نم باران"
+
+msgid "occasional rain late"
+msgstr "در ساعات بعد، باران متناوب"
+
+msgid "occasional snow and flurries"
+msgstr "بارش متناوب برف، رگبارهای خفیف برف"
+
+msgid "on-and-off rain and drizzle"
+msgstr "باران متناوب، نم‌نم باران"
+
+msgid "on-and-off snow"
+msgstr "بارش متناوب برف"
+
+msgid "otherwise"
+msgstr "در غیر این صورت"
+
+msgid "overcast and becoming rainy"
+msgstr "تمام‌ابری، باران آغاز می‌شود"
+
+msgid "overcast and chilly"
+msgstr "تمام‌ابری، سرمای محسوس"
+
+msgid "overcast and cold"
+msgstr "تمام‌ابری، سرد"
+
+msgid "overcast and cooler"
+msgstr "تمام‌ابری، خنک‌تر"
+
+msgid "overcast and frigid"
+msgstr "تمام‌ابری، سرمای شدید"
+
+msgid "overcast and humid"
+msgstr "تمام‌ابری، مرطوب"
+
+msgid "overcast and mild"
+msgstr "تمام‌ابری، هوای ملایم"
+
+msgid "overcast and not as warm"
+msgstr "تمام‌ابری، اندکی خنک‌تر"
+
+msgid "overcast and seasonably cold"
+msgstr "تمام‌ابری، سرمای معمول فصل"
+
+msgid "overcast and seasonably warm"
+msgstr "تمام‌ابری، گرمای معمول فصل"
+
+msgid "overcast and very warm"
+msgstr "تمام‌ابری، بسیار گرم"
+
+msgid "overcast and warm"
+msgstr "تمام‌ابری، گرم"
+
+msgid "overcast and windy"
+msgstr "تمام‌ابری، وزش باد"
+
+msgid "overcast with a bit of rain"
+msgstr "تمام‌ابری، کمی باران"
+
+msgid "overcast with a bit of snow"
+msgstr "تمام‌ابری، کمی برف"
+
+msgid "overcast with a brief shower"
+msgstr "تمام‌ابری، رگبارهای کوتاه"
+
+msgid "overcast with a few showers"
+msgstr "تمام‌ابری، چند رگبار"
+
+msgid "overcast with a little rain"
+msgstr "تمام‌ابری، کمی باران"
+
+msgid "overcast with a little snow"
+msgstr "تمام‌ابری، کمی برف"
+
+msgid "overcast with a quick shower"
+msgstr "تمام‌ابری، رگبارهای کوتاه"
+
+msgid "overcast with a shower"
+msgstr "تمام‌ابری، رگبار باران"
+
+msgid "overcast with a shower late"
+msgstr "تمام‌ابری. در ساعات بعد، رگبار باران"
+
+msgid "overcast with a shower or two"
+msgstr "تمام‌ابری، یک یا دو رگبار"
+
+msgid "overcast with a stray shower"
+msgstr "تمام‌ابری، رگبار پراکنده"
+
+msgid "overcast with a stray t-storm"
+msgstr "تمام‌ابری، توفان تندری پراکنده"
+
+msgid "overcast with a t-storm late"
+msgstr "تمام‌ابری. در ساعات بعد، توفان تندری"
+
+msgid "overcast with a thundershower"
+msgstr "تمام‌ابری، رگبار همراه با رعدوبرق"
+
+msgid "overcast with a thunderstorm"
+msgstr "تمام‌ابری، توفان تندری"
+
+msgid "overcast with a touch of rain"
+msgstr "تمام‌ابری، کمی باران"
+
+msgid "overcast with brief showers"
+msgstr "تمام‌ابری، رگبارهای کوتاه"
+
+msgid "overcast with downpours"
+msgstr "تمام‌ابری، باران سیل‌آسا"
+
+msgid "overcast with downpours late"
+msgstr "تمام‌ابری. در ساعات بعد، باران سیل‌آسا"
+
+msgid "overcast with flurries"
+msgstr "تمام‌ابری، رگبارهای خفیف برف"
+
+msgid "overcast with heavy rain late"
+msgstr "تمام‌ابری. در ساعات بعد، باران شدید"
+
+msgid "overcast with heavy showers"
+msgstr "تمام‌ابری، رگبارهای شدید"
+
+msgid "overcast with late-night rain"
+msgstr "تمام‌ابری. اواخر شب، باران"
+
+msgid "overcast with occasional rain"
+msgstr "تمام‌ابری، باران متناوب"
+
+msgid "overcast with rain developing"
+msgstr "تمام‌ابری، باران آغاز می‌شود"
+
+msgid "overcast with rain late"
+msgstr "تمام‌ابری. در ساعات بعد، باران"
+
+msgid "overcast with showers"
+msgstr "تمام‌ابری، رگبار"
+
+msgid "overcast with showers around"
+msgstr "تمام‌ابری، رگبار پراکنده"
+
+msgid "overcast with showers late"
+msgstr "تمام‌ابری. در ساعات بعد، رگبار"
+
+msgid "overcast with snow showers"
+msgstr "تمام‌ابری، رگبار برف"
+
+msgid "overcast with spotty showers"
+msgstr "تمام‌ابری، رگبار پراکنده"
+
+msgid "overcast with thunderstorms"
+msgstr "تمام‌ابری، طوفان‌های تندری"
+
+msgid "p.m. downpours"
+msgstr "بعدازظهر، باران سیل‌آسا"
+
+msgid "p.m. flurries"
+msgstr "بعدازظهر، رگبارهای خفیف برف"
+
+msgid "p.m. snow"
+msgstr "بعدازظهر، برف"
+
+msgid "p.m. snow showers"
+msgstr "بعدازظهر، رگبار برف"
+
+msgid "partial sunshine"
+msgstr "گاه آفتابی"
+
+msgid "partly cloudy and breezy"
+msgstr "نیمه‌ابری، کمی بادخیز"
+
+msgid "partly cloudy and chilly"
+msgstr "نیمه‌ابری، سرمای محسوس"
+
+msgid "partly cloudy and cold"
+msgstr "نیمه‌ابری، سرد"
+
+msgid "partly cloudy and colder"
+msgstr "نیمه‌ابری، سردتر"
+
+msgid "partly cloudy and cool"
+msgstr "نیمه‌ابری، خنک"
+
+msgid "partly cloudy and cooler"
+msgstr "نیمه‌ابری، خنک‌تر"
+
+msgid "partly cloudy and frigid"
+msgstr "نیمه‌ابری، سرمای شدید"
+
+msgid "partly cloudy and humid"
+msgstr "نیمه‌ابری، مرطوب"
+
+msgid "partly cloudy and mild"
+msgstr "نیمه‌ابری، هوای ملایم"
+
+msgid "partly cloudy and much colder"
+msgstr "نیمه‌ابری، بسیار سردتر"
+
+msgid "partly cloudy and seasonable"
+msgstr "نیمه‌ابری، دمای معمول فصل"
+
+msgid "partly cloudy and very cold"
+msgstr "نیمه‌ابری، بسیار سرد"
+
+msgid "partly cloudy and very humid"
+msgstr "نیمه‌ابری، بسیار مرطوب"
+
+msgid "partly cloudy and very warm"
+msgstr "نیمه‌ابری، بسیار گرم"
+
+msgid "partly cloudy and warm"
+msgstr "نیمه‌ابری، گرم"
+
+msgid "partly cloudy and windy"
+msgstr "نیمه‌ابری، وزش باد"
+
+msgid "partly cloudy with a shower"
+msgstr "نیمه‌ابری، رگبار باران"
+
+msgid "partly cloudy with a t-storm"
+msgstr "نیمه‌ابری، توفان تندری"
+
+msgid "partly cloudy with flurries"
+msgstr "نیمه‌ابری، رگبارهای خفیف برف"
+
+msgid "partly sunny"
+msgstr "گاه آفتابی"
+
+msgid "partly sunny and beautiful"
+msgstr "گاه آفتابی، هوای مطبوع"
+
+msgid "partly sunny and breezy"
+msgstr "گاه آفتابی، کمی بادخیز"
+
+msgid "partly sunny and chilly"
+msgstr "گاه آفتابی، سرمای محسوس"
+
+msgid "partly sunny and cold"
+msgstr "گاه آفتابی، سرد"
+
+msgid "partly sunny and colder"
+msgstr "گاه آفتابی، سردتر"
+
+msgid "partly sunny and comfortable"
+msgstr "گاه آفتابی، هوای مطبوع"
+
+msgid "partly sunny and cool"
+msgstr "گاه آفتابی، خنک"
+
+msgid "partly sunny and cooler"
+msgstr "گاه آفتابی، خنک‌تر"
+
+msgid "partly sunny and delightful"
+msgstr "گاه آفتابی، هوای مطبوع"
+
+msgid "partly sunny and frigid"
+msgstr "گاه آفتابی، سرمای شدید"
+
+msgid "partly sunny and hot"
+msgstr "گاه آفتابی، هوای داغ"
+
+msgid "partly sunny and hotter"
+msgstr "گاه آفتابی، گرمای بیشتر"
+
+msgid "partly sunny and humid"
+msgstr "گاه آفتابی، مرطوب"
+
+msgid "partly sunny and less humid"
+msgstr "گاه آفتابی، رطوبت کمتر"
+
+msgid "partly sunny and mild"
+msgstr "گاه آفتابی، هوای ملایم"
+
+msgid "partly sunny and milder"
+msgstr "گاه آفتابی، ملایم‌تر"
+
+msgid "partly sunny and nice"
+msgstr "گاه آفتابی، هوای مطبوع"
+
+msgid "partly sunny and not as cold"
+msgstr "گاه آفتابی، از شدت سرما کاسته می‌شود"
+
+msgid "partly sunny and not as cool"
+msgstr "گاه آفتابی، از خنکی هوا کاسته می‌شود"
+
+msgid "partly sunny and not as hot"
+msgstr "گاه آفتابی، کاهش شدت گرما"
+
+msgid "partly sunny and not as warm"
+msgstr "گاه آفتابی، اندکی خنک‌تر"
+
+msgid "partly sunny and pleasant"
+msgstr "گاه آفتابی، هوای مطبوع"
+
+msgid "partly sunny and quite cold"
+msgstr "گاه آفتابی، نسبتاً سرد"
+
+msgid "partly sunny and seasonable"
+msgstr "گاه آفتابی، دمای معمول فصل"
+
+msgid "partly sunny and summerlike"
+msgstr "گاه آفتابی، هوای تابستانی"
+
+msgid "partly sunny and very cold"
+msgstr "گاه آفتابی، بسیار سرد"
+
+msgid "partly sunny and very hot"
+msgstr "گاه آفتابی، گرمای شدید"
+
+msgid "partly sunny and very humid"
+msgstr "گاه آفتابی، بسیار مرطوب"
+
+msgid "partly sunny and very warm"
+msgstr "گاه آفتابی، بسیار گرم"
+
+msgid "partly sunny and warm"
+msgstr "گاه آفتابی، گرم"
+
+msgid "partly sunny and warmer"
+msgstr "گاه آفتابی، گرم‌تر"
+
+msgid "partly sunny and windy"
+msgstr "گاه آفتابی، وزش باد"
+
+msgid "partly sunny with a shower"
+msgstr "گاه آفتابی، رگبار باران"
+
+msgid "partly sunny with a t-shower"
+msgstr "گاه آفتابی، رگبار همراه با رعدوبرق"
+
+msgid "partly sunny with a t-storm"
+msgstr "گاه آفتابی، توفان تندری"
+
+msgid "partly sunny with flurries"
+msgstr "گاه آفتابی، رگبارهای خفیف برف"
+
+msgid "partly to mostly cloudy"
+msgstr "قسمتی تا عمدتاً ابری"
+
+msgid "partly to mostly sunny"
+msgstr "نیمه‌آفتابی تا عمدتاً آفتابی"
+
+msgid "patchy clouds"
+msgstr "ابرهای پراکنده"
+
+msgid "patchy clouds and breezy"
+msgstr "ابرهای پراکنده، کمی بادخیز"
+
+msgid "patchy clouds and chilly"
+msgstr "ابرهای پراکنده، سرمای محسوس"
+
+msgid "patchy clouds and cold"
+msgstr "ابرهای پراکنده، سرد"
+
+msgid "patchy clouds and cool"
+msgstr "ابرهای پراکنده، خنک"
+
+msgid "patchy clouds and frigid"
+msgstr "ابرهای پراکنده، سرمای شدید"
+
+msgid "patchy clouds and humid"
+msgstr "ابرهای پراکنده، مرطوب"
+
+msgid "patchy clouds and mild"
+msgstr "ابرهای پراکنده، هوای ملایم"
+
+msgid "patchy clouds and very warm"
+msgstr "ابرهای پراکنده، بسیار گرم"
+
+msgid "patchy clouds and warm"
+msgstr "ابرهای پراکنده، گرم"
+
+msgid "patchy clouds with a shower"
+msgstr "ابرهای پراکنده، رگبار باران"
+
+msgid "patchy fog"
+msgstr "مه در بعضی مناطق"
+
+msgid "patchy fog freezing late"
+msgstr "در ساعات بعد، مه در برخی نقاط یخ می‌زند"
+
+msgid "patchy freezing fog"
+msgstr "مه یخ‌زننده در برخی نقاط"
+
+msgid "patchy low clouds and fog"
+msgstr "ابرهای کم‌ارتفاع در بعضی مناطق، مه"
+
+msgid "perhaps snow late"
+msgstr "در ساعات بعد، احتمال بارش برف"
+
+msgid "periods of clouds and sun"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "periods of rain"
+msgstr "باران متناوب"
+
+msgid "periods of rain and a t-storm"
+msgstr "باران متناوب، توفان تندری"
+
+msgid "periods of rain late"
+msgstr "در ساعات بعد، باران متناوب"
+
+msgid "periods of rain this morning"
+msgstr "امروز صبح، باران متناوب"
+
+msgid "periods of snow"
+msgstr "بارش متناوب برف"
+
+msgid "periods of snow and rain"
+msgstr "بارش متناوب برف، باران"
+
+msgid "periods of sun"
+msgstr "گاه آفتابی"
+
+msgid "periods of sun with a shower"
+msgstr "گاه آفتابی، رگبار باران"
+
+msgid "periods of sun with a t-storm"
+msgstr "گاه آفتابی، توفان تندری"
+
+msgid "periods of sunshine"
+msgstr "گاه آفتابی"
+
+msgid "periods of wet snow"
+msgstr "برف مرطوب در برخی ساعات"
+
+msgid "pleasant"
+msgstr "هوای مطبوع"
+
+msgid "pleasant and not as cool"
+msgstr "هوای مطبوع، از خنکی هوا کاسته می‌شود"
+
+msgid "pleasant and warmer"
+msgstr "هوای مطبوع، گرم‌تر"
+
+msgid "pleasant with clouds and sun"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "pleasant with clouds breaking"
+msgstr "هوای مطبوع، کاهش ابرناکی"
+
+msgid "pleasant with lots of sun"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "pleasant with periods of sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "pleasant with plenty of sun"
+msgstr "هوای مطبوع، آفتاب فراوان"
+
+msgid "pleasant with some sun"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "pleasant with some sunshine"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "pleasant with sun and clouds"
+msgstr "هوای مطبوع، تناوب آفتاب و ابر"
+
+msgid "pleasant with sunny intervals"
+msgstr "هوای مطبوع، گاه آفتابی"
+
+msgid "pleasant with sunshine"
+msgstr "هوای مطبوع، آفتابی"
+
+msgid "pleasant with variable clouds"
+msgstr "هوای مطبوع، ابرناکی متغیر"
+
+msgid "pleasantly warm"
+msgstr "گرمای مطبوع"
+
+msgid "pleasantly warm with some sun"
+msgstr "گرمای مطبوع، گاه آفتابی"
+
+msgid "pleasantly warm with sunshine"
+msgstr "گرمای مطبوع، آفتابی"
+
+msgid "plenty of clouds"
+msgstr "عمدتاً ابری"
+
+msgid "plenty of clouds with showers"
+msgstr "عمدتاً ابری، رگبار"
+
+msgid "plenty of sun"
+msgstr "آفتاب فراوان"
+
+msgid "plenty of sunshine"
+msgstr "آفتاب فراوان"
+
+msgid "pluto"
+msgstr "پلوتون"
+
+msgid "quite cold"
+msgstr "نسبتاً سرد"
+
+msgid "rain and a t-storm"
+msgstr "باران، توفان تندری"
+
+msgid "rain and a thunderstorm"
+msgstr "باران، توفان تندری"
+
+msgid "rain and a thunderstorm early"
+msgstr "باران. در ابتدای دوره، توفان تندری"
+
+msgid "rain and a thunderstorm late"
+msgstr "باران. در ساعات بعد، توفان تندری"
+
+msgid "rain and drizzle"
+msgstr "باران و نم‌نم باران"
+
+msgid "rain and drizzle early"
+msgstr "در ابتدای دوره، باران و نم‌نم باران"
+
+msgid "rain and drizzle in the a.m."
+msgstr "صبح، باران و نم‌نم باران"
+
+msgid "rain and drizzle in the p.m."
+msgstr "بعدازظهر، باران و نم‌نم باران"
+
+msgid "rain and drizzle late"
+msgstr "در ساعات بعد، باران و نم‌نم باران"
+
+msgid "rain and drizzle this evening"
+msgstr "امروز عصر، باران و نم‌نم باران"
+
+msgid "rain and drizzle this morning"
+msgstr "امروز صبح، باران و نم‌نم باران"
+
+msgid "rain and ice in the evening"
+msgstr "عصر، باران و یخ"
+
+msgid "rain and snow"
+msgstr "باران و برف"
+
+msgid "rain and snow shower"
+msgstr "رگبار باران و برف"
+
+msgid "rain and snow showers"
+msgstr "رگبار باران و برف"
+
+msgid "rain and snow showers early"
+msgstr "در ابتدای دوره، رگبار باران و برف"
+
+msgid "rain and snow showers late"
+msgstr "در ساعات بعد، رگبار باران و برف"
+
+msgid "rain at times"
+msgstr "باران متناوب"
+
+msgid "rain at times in the evening"
+msgstr "عصر، باران متناوب"
+
+msgid "rain at times late"
+msgstr "در ساعات بعد، باران متناوب"
+
+msgid "rain becoming heavier"
+msgstr "باران شدیدتر می‌شود"
+
+msgid "rain becoming steadier"
+msgstr "باران پیوسته‌تر می‌شود"
+
+msgid "rain ending"
+msgstr "باران بند می‌آید"
+
+msgid "rain in the afternoon"
+msgstr "بعدازظهر، باران"
+
+msgid "rain in the evening"
+msgstr "عصر، باران"
+
+msgid "rain in the morning"
+msgstr "صبح، باران"
+
+msgid "rain late in the afternoon"
+msgstr "اواخر بعدازظهر، باران"
+
+msgid "rain mixing in"
+msgstr "با باران مخلوط می‌شود"
+
+msgid "rain tapering off"
+msgstr "باران ضعیف‌تر می‌شود"
+
+msgid "rain tapering to showers"
+msgstr "باران ضعیف می‌شود و به رگبارهای پراکنده تبدیل می‌شود"
+
+msgid "rain this morning"
+msgstr "امروز صبح، باران"
+
+msgid "rain to ice"
+msgstr "پس از باران یخ تشکیل می‌شود"
+
+msgid "rain to snow"
+msgstr "باران به برف تبدیل می‌شود"
+
+msgid "rain/drizzle"
+msgstr "باران و نم‌نم باران"
+
+msgid "rain/snow"
+msgstr "باران و برف"
+
+msgid "rainy spells in the morning"
+msgstr "صبح، باران متناوب"
+
+msgid "rainy times in the afternoon"
+msgstr "بعدازظهر، باران متناوب"
+
+msgid "rainy times in the morning"
+msgstr "صبح، باران متناوب"
+
+msgid "rainy times late"
+msgstr "در ساعات بعد، باران متناوب"
+
+msgid "rather cloudy"
+msgstr "نسبتاً ابری"
+
+msgid "rather cloudy and breezy"
+msgstr "نسبتاً ابری، کمی بادخیز"
+
+msgid "rather cloudy and chilly"
+msgstr "نسبتاً ابری، سرمای محسوس"
+
+msgid "rather cloudy and cold"
+msgstr "نسبتاً ابری، سرد"
+
+msgid "rather cloudy and cool"
+msgstr "نسبتاً ابری، خنک"
+
+msgid "rather cloudy and cooler"
+msgstr "نسبتاً ابری، خنک‌تر"
+
+msgid "rather cloudy and hot"
+msgstr "نسبتاً ابری، هوای داغ"
+
+msgid "rather cloudy and humid"
+msgstr "نسبتاً ابری، مرطوب"
+
+msgid "rather cloudy and mild"
+msgstr "نسبتاً ابری، هوای ملایم"
+
+msgid "rather cloudy and not as cold"
+msgstr "نسبتاً ابری، از شدت سرما کاسته می‌شود"
+
+msgid "rather cloudy and not as warm"
+msgstr "نسبتاً ابری، اندکی خنک‌تر"
+
+msgid "rather cloudy and summerlike"
+msgstr "نسبتاً ابری، هوای تابستانی"
+
+msgid "rather cloudy and very cold"
+msgstr "نسبتاً ابری، بسیار سرد"
+
+msgid "rather cloudy and very warm"
+msgstr "نسبتاً ابری، بسیار گرم"
+
+msgid "rather cloudy and warm"
+msgstr "نسبتاً ابری، گرم"
+
+msgid "rather cloudy and warmer"
+msgstr "نسبتاً ابری، گرم‌تر"
+
+msgid "rather cloudy with a shower"
+msgstr "نسبتاً ابری، رگبار باران"
+
+msgid "rather cloudy with a t-storm"
+msgstr "نسبتاً ابری، توفان تندری"
+
+msgid "rather cloudy with rain late"
+msgstr "نسبتاً ابری. در ساعات بعد، باران"
+
+msgid "rather cloudy with showers"
+msgstr "نسبتاً ابری، رگبار"
+
+msgid "remaining cloudy"
+msgstr "هوا همچنان ابری است"
+
+msgid "remaining cloudy and cold"
+msgstr "هوا همچنان ابری است، سرد"
+
+msgid "remaining cloudy and warmer"
+msgstr "هوا همچنان ابری است، گرم‌تر"
+
+msgid "remaining cloudy with showers"
+msgstr "هوا همچنان ابری است، رگبار"
+
+msgid "remaining cool with some sun"
+msgstr "هوا همچنان خنک است، گاه آفتابی"
+
+msgid "remaining warm"
+msgstr "هوا همچنان گرم است"
+
+msgid "remaining warm with some sun"
+msgstr "هوا همچنان گرم است، گاه آفتابی"
+
+msgid "remaining warm with sunshine"
+msgstr "هوا همچنان گرم است، آفتابی"
+
+msgid "rising temperatures"
+msgstr "افزایش دما"
+
+msgid "rising temperatures early"
+msgstr "در ابتدای دوره، افزایش دما"
+
+msgid "rising temperatures late"
+msgstr "در ساعات بعد، افزایش دما"
+
+msgid "saturn"
+msgstr "زحل"
+
+msgid "seasonably warm"
+msgstr "گرمای معمول فصل"
+
+msgid "seasonably warm with sunshine"
+msgstr "گرمای معمول فصل، آفتابی"
+
+msgid "shower"
+msgstr "رگبار باران"
+
+msgid "shower and thunderstorm"
+msgstr "رگبار باران، توفان تندری"
+
+msgid "showers and a heavier t-storm"
+msgstr "رگبار، توفان تندری شدید"
+
+msgid "showers and heavy t-storms"
+msgstr "رگبار، توفان تندری شدید"
+
+msgid "showers and thunderstorm"
+msgstr "رگبار، توفان تندری"
+
+msgid "showers and thunderstorms"
+msgstr "رگبار، طوفان‌های تندری"
+
+msgid "showers around"
+msgstr "رگبار پراکنده"
+
+msgid "showers around early"
+msgstr "در ابتدای دوره، رگبار پراکنده"
+
+msgid "showers around in the evening"
+msgstr "عصر، رگبار پراکنده"
+
+msgid "showers around in the morning"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "showers around in the p.m."
+msgstr "بعدازظهر، رگبار پراکنده"
+
+msgid "showers around late"
+msgstr "در ساعات بعد، رگبار پراکنده"
+
+msgid "showers around this afternoon"
+msgstr "امروز بعدازظهر، رگبار پراکنده"
+
+msgid "showers around this evening"
+msgstr "امروز عصر، رگبار پراکنده"
+
+msgid "showers early in the morning"
+msgstr "اوایل صبح، رگبار"
+
+msgid "showers early this morning"
+msgstr "اوایل صبح، رگبار"
+
+msgid "showers in the afternoon"
+msgstr "بعدازظهر، رگبار"
+
+msgid "showers in the evening"
+msgstr "عصر، رگبار"
+
+msgid "showers in the morning"
+msgstr "صبح، رگبار"
+
+msgid "showers late"
+msgstr "در ساعات بعد، رگبار"
+
+msgid "showers late in the afternoon"
+msgstr "اواخر بعدازظهر، رگبار"
+
+msgid "showers late this afternoon"
+msgstr "اواخر بعدازظهر، رگبار"
+
+msgid "showers late this morning"
+msgstr "اواخر صبح، رگبار"
+
+msgid "showers of rain and snow"
+msgstr "رگبار باران و برف"
+
+msgid "showers of rain and snow late"
+msgstr "در ساعات بعد، رگبار باران و برف"
+
+msgid "showers possible"
+msgstr "احتمال رگبار"
+
+msgid "showers this evening"
+msgstr "امروز عصر، رگبار"
+
+msgid "showers this morning"
+msgstr "امروز صبح، رگبار"
+
+msgid "sleet and freezing rain late"
+msgstr "باران و برف آمیخته. در ساعات بعد، باران یخ‌زننده"
+
+msgid "snow and rain"
+msgstr "باران و برف"
+
+msgid "snow and rain in the morning"
+msgstr "صبح، باران و برف"
+
+msgid "snow and rain late"
+msgstr "در ساعات بعد، باران و برف"
+
+msgid "snow and rain this morning"
+msgstr "امروز صبح، باران و برف"
+
+msgid "snow and sleet at times"
+msgstr "گاهی برف و دانه‌های یخ"
+
+msgid "snow at times"
+msgstr "بارش متناوب برف"
+
+msgid "snow in the evening"
+msgstr "عصر، برف"
+
+msgid "snow late in the p.m."
+msgstr "بعدازظهر، در ساعات بعد، برف"
+
+msgid "snow late this afternoon"
+msgstr "اواخر بعدازظهر، برف"
+
+msgid "snow late this morning"
+msgstr "اواخر صبح، برف"
+
+msgid "snow much of the time"
+msgstr "در بیشتر ساعات برف می‌بارد"
+
+msgid "snow of varying rates"
+msgstr "بارش برف با شدت متغیر"
+
+msgid "snow showers in the afternoon"
+msgstr "بعدازظهر، رگبار برف"
+
+msgid "snow showers in the morning"
+msgstr "صبح، رگبار برف"
+
+msgid "snow showers late"
+msgstr "در ساعات بعد، رگبار برف"
+
+msgid "snow showers this evening"
+msgstr "امروز عصر، رگبار برف"
+
+msgid "snow tapering off"
+msgstr "بارش برف کم می‌شود"
+
+msgid "snow tapering to flurries"
+msgstr "بارش برف به رگبارهای خفیف برف تبدیل می‌شود"
+
+msgid "some brightening"
+msgstr "کمی باز شدن آسمان"
+
+msgid "some brightening and hot"
+msgstr "کمی باز شدن آسمان، هوای داغ"
+
+msgid "some brightening and humid"
+msgstr "کمی باز شدن آسمان، مرطوب"
+
+msgid "some brightening and warm"
+msgstr "کمی باز شدن آسمان، گرم"
+
+msgid "some brightening and warmer"
+msgstr "کمی باز شدن آسمان، گرم‌تر"
+
+msgid "some clouds"
+msgstr "کمی ابر"
+
+msgid "some clouds with a shower"
+msgstr "کمی ابر، رگبار باران"
+
+msgid "some clouds with a t-storm"
+msgstr "کمی ابر، توفان تندری"
+
+msgid "some clouds with rain late"
+msgstr "کمی ابر. در ساعات بعد، باران"
+
+msgid "some ice early"
+msgstr "در ابتدای دوره، یخ‌زدگی پراکنده"
+
+msgid "some rain and a t-storm early"
+msgstr "کمی باران. در ابتدای دوره، توفان تندری"
+
+msgid "some rain and a t-storm late"
+msgstr "کمی باران. در ساعات بعد، توفان تندری"
+
+msgid "some rain and a thunderstorm"
+msgstr "کمی باران، توفان تندری"
+
+msgid "some snow"
+msgstr "کمی برف"
+
+msgid "some sun"
+msgstr "گاه آفتابی"
+
+msgid "some sun and pleasant"
+msgstr "گاه آفتابی، هوای مطبوع"
+
+msgid "some sun returning"
+msgstr "کمی باز شدن آسمان"
+
+msgid "some sun with a brief shower"
+msgstr "گاه آفتابی، رگبارهای کوتاه"
+
+msgid "some sun with a cool breeze"
+msgstr "گاه آفتابی، نسیم خنک"
+
+msgid "some sun with a few showers"
+msgstr "گاه آفتابی، چند رگبار"
+
+msgid "some sun with a gusty breeze"
+msgstr "گاه آفتابی، وزش تندباد لحظه‌ای"
+
+msgid "some sun with a heavy t-storm"
+msgstr "گاه آفتابی، توفان تندری شدید"
+
+msgid "some sun with a little rain"
+msgstr "گاه آفتابی، کمی باران"
+
+msgid "some sun with a quick shower"
+msgstr "گاه آفتابی، رگبارهای کوتاه"
+
+msgid "some sun with a shower"
+msgstr "گاه آفتابی، رگبار باران"
+
+msgid "some sun with a shower or two"
+msgstr "گاه آفتابی، یک یا دو رگبار"
+
+msgid "some sun with a stray shower"
+msgstr "گاه آفتابی، رگبار پراکنده"
+
+msgid "some sun with a stray t-storm"
+msgstr "گاه آفتابی، توفان تندری پراکنده"
+
+msgid "some sun with a t-storm"
+msgstr "گاه آفتابی، توفان تندری"
+
+msgid "some sun with a thundershower"
+msgstr "گاه آفتابی، رگبار همراه با رعدوبرق"
+
+msgid "some sun with a thunderstorm"
+msgstr "گاه آفتابی، توفان تندری"
+
+msgid "some sun with low humidity"
+msgstr "گاه آفتابی، رطوبت کم"
+
+msgid "some sun with occasional rain"
+msgstr "گاه آفتابی، باران متناوب"
+
+msgid "some sun with showers"
+msgstr "گاه آفتابی، رگبار"
+
+msgid "some sun with showers around"
+msgstr "گاه آفتابی، رگبار پراکنده"
+
+msgid "some sun with spotty showers"
+msgstr "گاه آفتابی، رگبار پراکنده"
+
+msgid "some sunshine"
+msgstr "گاه آفتابی"
+
+msgid "some sunshine with a shower"
+msgstr "گاه آفتابی، رگبار باران"
+
+msgid "spotty afternoon showers"
+msgstr "بعدازظهر، رگبار پراکنده"
+
+msgid "spotty drizzle in the morning"
+msgstr "صبح، نم‌نم باران در برخی نقاط"
+
+msgid "spotty drizzle this morning"
+msgstr "امروز صبح، نم‌نم باران در برخی نقاط"
+
+msgid "spotty evening showers"
+msgstr "عصر، رگبار پراکنده"
+
+msgid "spotty late-night showers"
+msgstr "اواخر شب، رگبار پراکنده"
+
+msgid "spotty morning showers"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "spotty showers"
+msgstr "رگبار پراکنده"
+
+msgid "spotty showers in the evening"
+msgstr "عصر، رگبار پراکنده"
+
+msgid "spotty showers in the morning"
+msgstr "صبح، رگبار پراکنده"
+
+msgid "spotty showers late"
+msgstr "در ساعات بعد، رگبار پراکنده"
+
+msgid "spotty showers this afternoon"
+msgstr "امروز بعدازظهر، رگبار پراکنده"
+
+msgid "spotty showers this morning"
+msgstr "امروز صبح، رگبار پراکنده"
+
+msgid "still cloudy"
+msgstr "هوا همچنان ابری است"
+
+msgid "still cloudy and warmer"
+msgstr "هوا همچنان ابری است، گرم‌تر"
+
+msgid "still cloudy with a shower"
+msgstr "هوا همچنان ابری است، رگبار باران"
+
+msgid "still cloudy with showers"
+msgstr "هوا همچنان ابری است، رگبار"
+
+msgid "strong afternoon t-storms"
+msgstr "بعدازظهر، توفان تندری شدید"
+
+msgid "strong evening thunderstorms"
+msgstr "عصر، توفان تندری شدید"
+
+msgid "strong late"
+msgstr "در ساعات بعد، شدید"
+
+msgid "strong late-night t-storms"
+msgstr "اواخر شب، توفان تندری شدید"
+
+msgid "strong t-storms"
+msgstr "توفان تندری شدید"
+
+msgid "strong thunderstorms"
+msgstr "توفان تندری شدید"
+
+msgid "strong thunderstorms late"
+msgstr "در ساعات بعد، توفان تندری شدید"
+
+msgid "strong thunderstorms possible"
+msgstr "احتمال توفان تندری شدید"
+
+msgid "strong winds subsiding"
+msgstr "باد شدید فروکش می‌کند"
+
+msgid "summerlike"
+msgstr "هوای تابستانی"
+
+msgid "summerlike with a few showers"
+msgstr "هوای تابستانی، چند رگبار"
+
+msgid "summerlike with a shower"
+msgstr "هوای تابستانی، رگبار باران"
+
+msgid "summerlike with a t-storm"
+msgstr "هوای تابستانی، توفان تندری"
+
+msgid "summerlike with hazy sun"
+msgstr "هوای تابستانی، آفتاب در غبار"
+
+msgid "summerlike with high clouds"
+msgstr "هوای تابستانی، ابرهای مرتفع"
+
+msgid "summerlike with lots of sun"
+msgstr "هوای تابستانی، آفتاب فراوان"
+
+msgid "summerlike with some sun"
+msgstr "هوای تابستانی، گاه آفتابی"
+
+msgid "summerlike with sunshine"
+msgstr "هوای تابستانی، آفتابی"
+
+msgid "sun and areas of high clouds"
+msgstr "آفتابی، ابرهای مرتفع در برخی نقاط"
+
+msgid "sun and areas of low clouds"
+msgstr "آفتابی، ابرهای کم‌ارتفاع در بعضی مناطق"
+
+msgid "sun and clouds"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "sun and clouds with a shower"
+msgstr "تناوب آفتاب و ابر، رگبار باران"
+
+msgid "sun and clouds with a t-storm"
+msgstr "تناوب آفتاب و ابر، توفان تندری"
+
+msgid "sun and some clouds"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "sun followed by clouds"
+msgstr "پس از آفتاب، هوا ابری می‌شود"
+
+msgid "sun followed by some clouds"
+msgstr "ابتدا آفتابی، سپس کمی ابری"
+
+msgid "sun giving way to clouds"
+msgstr "پس از آفتاب، هوا ابری می‌شود"
+
+msgid "sun mixing with clouds"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "sun through high clouds"
+msgstr "تابش آفتاب از لابه‌لای ابرهای مرتفع"
+
+msgid "sun yielding to clouds"
+msgstr "پس از آفتاب، هوا ابری می‌شود"
+
+msgid "sunlit"
+msgstr "آفتابی"
+
+msgid "sunlit and beautiful"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunlit and comfortable"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunlit and delightful"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunlit and pleasant"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunlit and unseasonably hot"
+msgstr "آفتابی، گرمای غیرمعمول برای این فصل"
+
+msgid "sunlit and very warm"
+msgstr "آفتابی، بسیار گرم"
+
+msgid "sunlit and warmer"
+msgstr "آفتابی، گرم‌تر"
+
+msgid "sunny and beautiful"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunny and breezy"
+msgstr "آفتابی، کمی بادخیز"
+
+msgid "sunny and cold"
+msgstr "آفتابی، سرد"
+
+msgid "sunny and comfortable"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunny and cool"
+msgstr "آفتابی، خنک"
+
+msgid "sunny and cooler"
+msgstr "آفتابی، خنک‌تر"
+
+msgid "sunny and cooler but pleasant"
+msgstr "آفتابی، خنک‌تر، هوای مطبوع"
+
+msgid "sunny and delightful"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunny and hot"
+msgstr "آفتابی، هوای داغ"
+
+msgid "sunny and hotter"
+msgstr "آفتابی، گرمای بیشتر"
+
+msgid "sunny and humid"
+msgstr "آفتابی، مرطوب"
+
+msgid "sunny and less humid"
+msgstr "آفتابی، رطوبت کمتر"
+
+msgid "sunny and mild"
+msgstr "آفتابی، هوای ملایم"
+
+msgid "sunny and milder"
+msgstr "آفتابی، ملایم‌تر"
+
+msgid "sunny and nice"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunny and not as cold"
+msgstr "آفتابی، از شدت سرما کاسته می‌شود"
+
+msgid "sunny and not as cool"
+msgstr "آفتابی، از خنکی هوا کاسته می‌شود"
+
+msgid "sunny and not as hot"
+msgstr "آفتابی، کاهش شدت گرما"
+
+msgid "sunny and not as warm"
+msgstr "آفتابی، اندکی خنک‌تر"
+
+msgid "sunny and pleasant"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunny and pleasantly cool"
+msgstr "آفتابی، خنک و مطبوع"
+
+msgid "sunny and pleasantly warm"
+msgstr "آفتابی، گرمای مطبوع"
+
+msgid "sunny and remaining cool"
+msgstr "آفتابی، هوا همچنان خنک است"
+
+msgid "sunny and remaining very warm"
+msgstr "آفتابی، هوا همچنان بسیار گرم است"
+
+msgid "sunny and remaining warm"
+msgstr "آفتابی، هوا همچنان گرم است"
+
+msgid "sunny and seasonably cold"
+msgstr "آفتابی، سرمای معمول فصل"
+
+msgid "sunny and seasonably warm"
+msgstr "آفتابی، گرمای معمول فصل"
+
+msgid "sunny and unseasonably hot"
+msgstr "آفتابی، گرمای غیرمعمول برای این فصل"
+
+msgid "sunny and very cold"
+msgstr "آفتابی، بسیار سرد"
+
+msgid "sunny and very humid"
+msgstr "آفتابی، بسیار مرطوب"
+
+msgid "sunny and very warm"
+msgstr "آفتابی، بسیار گرم"
+
+msgid "sunny and warm"
+msgstr "آفتابی، گرم"
+
+msgid "sunny and warmer"
+msgstr "آفتابی، گرم‌تر"
+
+msgid "sunny and windy"
+msgstr "آفتابی، وزش باد"
+
+msgid "sunny intervals"
+msgstr "گاه آفتابی"
+
+msgid "sunny intervals with a shower"
+msgstr "گاه آفتابی، رگبار باران"
+
+msgid "sunny much of the time"
+msgstr "عمدتاً آفتابی"
+
+msgid "sunny to partly cloudy"
+msgstr "صاف تا قسمتی ابری"
+
+msgid "sunny with a gusty breeze"
+msgstr "آفتابی، وزش تندباد لحظه‌ای"
+
+msgid "sunny with a warm breeze"
+msgstr "آفتابی، نسیم گرم"
+
+msgid "sunny with low humidity"
+msgstr "آفتابی، رطوبت کم"
+
+msgid "sunshine"
+msgstr "آفتابی"
+
+msgid "sunshine and a few clouds"
+msgstr "آفتابی، کمی ابر"
+
+msgid "sunshine and beautiful"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunshine and bitterly cold"
+msgstr "آفتابی، سرمای شدید"
+
+msgid "sunshine and breezy"
+msgstr "آفتابی، کمی بادخیز"
+
+msgid "sunshine and cold"
+msgstr "آفتابی، سرد"
+
+msgid "sunshine and comfortable"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunshine and cooler"
+msgstr "آفتابی، خنک‌تر"
+
+msgid "sunshine and delightful"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunshine and hot"
+msgstr "آفتابی، هوای داغ"
+
+msgid "sunshine and hotter"
+msgstr "آفتابی، گرمای بیشتر"
+
+msgid "sunshine and humid"
+msgstr "آفتابی، مرطوب"
+
+msgid "sunshine and less humid"
+msgstr "آفتابی، رطوبت کمتر"
+
+msgid "sunshine and mild"
+msgstr "آفتابی، هوای ملایم"
+
+msgid "sunshine and nice"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunshine and not as cold"
+msgstr "آفتابی، از شدت سرما کاسته می‌شود"
+
+msgid "sunshine and not as hot"
+msgstr "آفتابی، کاهش شدت گرما"
+
+msgid "sunshine and not as warm"
+msgstr "آفتابی، اندکی خنک‌تر"
+
+msgid "sunshine and patchy clouds"
+msgstr "آفتابی، ابرهای پراکنده"
+
+msgid "sunshine and pleasant"
+msgstr "آفتابی، هوای مطبوع"
+
+msgid "sunshine and pleasantly warm"
+msgstr "آفتابی، گرمای مطبوع"
+
+msgid "sunshine and remaining warm"
+msgstr "آفتابی، هوا همچنان گرم است"
+
+msgid "sunshine and seasonably cold"
+msgstr "آفتابی، سرمای معمول فصل"
+
+msgid "sunshine and seasonably warm"
+msgstr "آفتابی، گرمای معمول فصل"
+
+msgid "sunshine and some clouds"
+msgstr "آفتابی، کمی ابر"
+
+msgid "sunshine and summerlike"
+msgstr "آفتابی، هوای تابستانی"
+
+msgid "sunshine and unseasonably hot"
+msgstr "آفتابی، گرمای غیرمعمول برای این فصل"
+
+msgid "sunshine and very hot"
+msgstr "آفتابی، گرمای شدید"
+
+msgid "sunshine and very warm"
+msgstr "آفتابی، بسیار گرم"
+
+msgid "sunshine and warm"
+msgstr "آفتابی، گرم"
+
+msgid "sunshine and warmer"
+msgstr "آفتابی، گرم‌تر"
+
+msgid "sunshine mixing with clouds"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "sunshine with a shower"
+msgstr "آفتابی، رگبار باران"
+
+msgid "sunshine with a snow shower"
+msgstr "آفتابی، رگبار برف"
+
+msgid "sunshine with a stray shower"
+msgstr "آفتابی، رگبار پراکنده"
+
+msgid "sunshine with a stray t-storm"
+msgstr "آفتابی، توفان تندری پراکنده"
+
+msgid "sunshine with a thundershower"
+msgstr "آفتابی، رگبار همراه با رعدوبرق"
+
+msgid "sunshine with a thunderstorm"
+msgstr "آفتابی، توفان تندری"
+
+msgid "sunshine with low humidity"
+msgstr "آفتابی، رطوبت کم"
+
+msgid "t-storms"
+msgstr "طوفان‌های تندری"
+
+msgid "t-storms in the afternoon"
+msgstr "بعدازظهر، طوفان‌های تندری"
+
+msgid "t-storms possible in the a.m."
+msgstr "صبح، احتمال توفان تندری"
+
+msgid "then a bit of ice"
+msgstr "سپس یخ‌زدگی پراکنده"
+
+msgid "then a shower"
+msgstr "سپس رگبار باران"
+
+msgid "then clouds"
+msgstr "سپس ابری"
+
+msgid "then flurries"
+msgstr "سپس رگبارهای خفیف برف"
+
+msgid "then ice"
+msgstr "سپس یخ"
+
+msgid "then rain"
+msgstr "سپس باران"
+
+msgid "then showers"
+msgstr "سپس رگبار"
+
+msgid "then snow"
+msgstr "سپس برف"
+
+msgid "then some sun"
+msgstr "سپس گاه آفتابی"
+
+msgid "then sun"
+msgstr "سپس آفتابی"
+
+msgid "then t-storms"
+msgstr "سپس طوفان‌های تندری"
+
+msgid "then turning cloudy"
+msgstr "سپس آسمان ابری می‌شود"
+
+msgid "thickening clouds"
+msgstr "ابرها متراکم‌تر می‌شوند"
+
+msgid "thickening clouds and hot"
+msgstr "ابرها متراکم‌تر می‌شوند، هوای داغ"
+
+msgid "thundershower"
+msgstr "رگبار همراه با رعدوبرق"
+
+msgid "thunderstorms in the evening"
+msgstr "عصر، طوفان‌های تندری"
+
+msgid "thunderstorms late"
+msgstr "در ساعات بعد، طوفان‌های تندری"
+
+msgid "thunderstorms this afternoon"
+msgstr "امروز بعدازظهر، طوفان‌های تندری"
+
+msgid "thunderstorms this morning"
+msgstr "امروز صبح، طوفان‌های تندری"
+
+msgid "times of clouds and sun"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "times of clouds and sunshine"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "times of rain"
+msgstr "باران متناوب"
+
+msgid "times of sun and clouds"
+msgstr "تناوب آفتاب و ابر"
+
+msgid "to rain"
+msgstr "به باران تبدیل می‌شود"
+
+msgid "turning clear"
+msgstr "آسمان به‌تدریج صاف می‌شود"
+
+msgid "turning clear and very warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، بسیار گرم"
+
+msgid "turning cloudy"
+msgstr "آسمان ابری می‌شود"
+
+msgid "turning cloudy and breezy"
+msgstr "آسمان ابری می‌شود، کمی بادخیز"
+
+msgid "turning cloudy and chilly"
+msgstr "آسمان ابری می‌شود، سرمای محسوس"
+
+msgid "turning cloudy and cold"
+msgstr "آسمان ابری می‌شود، سرد"
+
+msgid "turning cloudy and colder"
+msgstr "آسمان ابری می‌شود، سردتر"
+
+msgid "turning cloudy and cooler"
+msgstr "آسمان ابری می‌شود، خنک‌تر"
+
+msgid "turning cloudy and hot"
+msgstr "آسمان ابری می‌شود، هوای داغ"
+
+msgid "turning cloudy and hotter"
+msgstr "آسمان ابری می‌شود، گرمای بیشتر"
+
+msgid "turning cloudy and humid"
+msgstr "آسمان ابری می‌شود، مرطوب"
+
+msgid "turning cloudy and less humid"
+msgstr "آسمان ابری می‌شود، رطوبت کمتر"
+
+msgid "turning cloudy and mild"
+msgstr "آسمان ابری می‌شود، هوای ملایم"
+
+msgid "turning cloudy and milder"
+msgstr "آسمان ابری می‌شود، ملایم‌تر"
+
+msgid "turning cloudy and pleasant"
+msgstr "آسمان ابری می‌شود، هوای مطبوع"
+
+msgid "turning cloudy and summerlike"
+msgstr "آسمان ابری می‌شود، هوای تابستانی"
+
+msgid "turning cloudy and very hot"
+msgstr "آسمان ابری می‌شود، گرمای شدید"
+
+msgid "turning cloudy and very warm"
+msgstr "آسمان ابری می‌شود، بسیار گرم"
+
+msgid "turning cloudy and warm"
+msgstr "آسمان ابری می‌شود، گرم"
+
+msgid "turning cloudy and warmer"
+msgstr "آسمان ابری می‌شود، گرم‌تر"
+
+msgid "turning cloudy with a shower"
+msgstr "آسمان ابری می‌شود، رگبار باران"
+
+msgid "turning cloudy with a t-storm"
+msgstr "آسمان ابری می‌شود، توفان تندری"
+
+msgid "turning cloudy with rain late"
+msgstr "آسمان ابری می‌شود. در ساعات بعد، باران"
+
+msgid "turning colder in the morning"
+msgstr "صبح، سردتر"
+
+msgid "turning colder this afternoon"
+msgstr "امروز بعدازظهر، سردتر"
+
+msgid "turning colder this morning"
+msgstr "امروز صبح، سردتر"
+
+msgid "turning out clear"
+msgstr "آسمان به‌تدریج صاف می‌شود"
+
+msgid "turning out clear and breezy"
+msgstr "آسمان به‌تدریج صاف می‌شود، کمی بادخیز"
+
+msgid "turning out clear and chilly"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرمای محسوس"
+
+msgid "turning out clear and cold"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرد"
+
+msgid "turning out clear and frigid"
+msgstr "آسمان به‌تدریج صاف می‌شود، سرمای شدید"
+
+msgid "turning out clear and mild"
+msgstr "آسمان به‌تدریج صاف می‌شود، هوای ملایم"
+
+msgid "turning out clear and warm"
+msgstr "آسمان به‌تدریج صاف می‌شود، گرم"
+
+msgid "turning out cloudy"
+msgstr "آسمان ابری می‌شود"
+
+msgid "turning out cloudy and warmer"
+msgstr "آسمان ابری می‌شود، گرم‌تر"
+
+msgid "turning sunny"
+msgstr "هوا آفتابی می‌شود"
+
+msgid "turning sunny and beautiful"
+msgstr "هوا آفتابی می‌شود، هوای مطبوع"
+
+msgid "turning sunny and cooler"
+msgstr "هوا آفتابی می‌شود، خنک‌تر"
+
+msgid "turning sunny and delightful"
+msgstr "هوا آفتابی می‌شود، هوای مطبوع"
+
+msgid "turning sunny and hot"
+msgstr "هوا آفتابی می‌شود، هوای داغ"
+
+msgid "turning sunny and humid"
+msgstr "هوا آفتابی می‌شود، مرطوب"
+
+msgid "turning sunny and nice"
+msgstr "هوا آفتابی می‌شود، هوای مطبوع"
+
+msgid "turning sunny and not as warm"
+msgstr "هوا آفتابی می‌شود، اندکی خنک‌تر"
+
+msgid "turning sunny and pleasant"
+msgstr "هوا آفتابی می‌شود، هوای مطبوع"
+
+msgid "turning sunny and summerlike"
+msgstr "هوا آفتابی می‌شود، هوای تابستانی"
+
+msgid "turning sunny and very hot"
+msgstr "هوا آفتابی می‌شود، گرمای شدید"
+
+msgid "turning sunny and very warm"
+msgstr "هوا آفتابی می‌شود، بسیار گرم"
+
+msgid "unseasonably hot"
+msgstr "گرمای غیرمعمول برای این فصل"
+
+msgid "up to 1in"
+msgstr "تا ۲٫۵۴ سانتی‌متر"
+
+msgid "uranus"
+msgstr "اورانوس"
+
+msgid "variable cloudiness"
+msgstr "ابرناکی متغیر"
+
+msgid "variable clouds"
+msgstr "ابرناکی متغیر"
+
+msgid "variable clouds with a shower"
+msgstr "ابرناکی متغیر، رگبار باران"
+
+msgid "variable clouds with showers"
+msgstr "ابرناکی متغیر، رگبار"
+
+msgid "variable clouds with t-storms"
+msgstr "ابرناکی متغیر، طوفان‌های تندری"
+
+msgid "variably cloudy"
+msgstr "ابرناکی متغیر"
+
+msgid "variably cloudy and breezy"
+msgstr "ابرناکی متغیر، کمی بادخیز"
+
+msgid "variably cloudy and chilly"
+msgstr "ابرناکی متغیر، سرمای محسوس"
+
+msgid "variably cloudy and cooler"
+msgstr "ابرناکی متغیر، خنک‌تر"
+
+msgid "variably cloudy and humid"
+msgstr "ابرناکی متغیر، مرطوب"
+
+msgid "variably cloudy and nice"
+msgstr "ابرناکی متغیر، هوای مطبوع"
+
+msgid "variably cloudy and pleasant"
+msgstr "ابرناکی متغیر، هوای مطبوع"
+
+msgid "variably cloudy and very warm"
+msgstr "ابرناکی متغیر، بسیار گرم"
+
+msgid "variably cloudy and warmer"
+msgstr "ابرناکی متغیر، گرم‌تر"
+
+msgid "variably cloudy with a shower"
+msgstr "ابرناکی متغیر، رگبار باران"
+
+msgid "variably cloudy with showers"
+msgstr "ابرناکی متغیر، رگبار"
+
+msgid "variably cloudy with t-storms"
+msgstr "ابرناکی متغیر، طوفان‌های تندری"
+
+msgid "venus"
+msgstr "زهره"
+
+msgid "very cold"
+msgstr "بسیار سرد"
+
+msgid "very cold with a few flurries"
+msgstr "بسیار سرد، چند رگبار خفیف برف"
+
+msgid "very cold with clouds and sun"
+msgstr "بسیار سرد، تناوب آفتاب و ابر"
+
+msgid "very cold with snow"
+msgstr "بسیار سرد، برف"
+
+msgid "very cold with snow at times"
+msgstr "بسیار سرد، بارش متناوب برف"
+
+msgid "very hot"
+msgstr "گرمای شدید"
+
+msgid "very hot with a few showers"
+msgstr "گرمای شدید، چند رگبار"
+
+msgid "very hot with a shower"
+msgstr "گرمای شدید، رگبار باران"
+
+msgid "very hot with clouds and sun"
+msgstr "گرمای شدید، تناوب آفتاب و ابر"
+
+msgid "very hot with hazy sun"
+msgstr "گرمای شدید، آفتاب در غبار"
+
+msgid "very hot with high clouds"
+msgstr "گرمای شدید، ابرهای مرتفع"
+
+msgid "very hot with some sun"
+msgstr "گرمای شدید، گاه آفتابی"
+
+msgid "very hot with sunshine"
+msgstr "گرمای شدید، آفتابی"
+
+msgid "very warm"
+msgstr "بسیار گرم"
+
+msgid "very warm and humid with rain"
+msgstr "بسیار گرم، مرطوب، باران"
+
+msgid "very warm with clearing"
+msgstr "بسیار گرم، آسمان به‌تدریج صاف می‌شود"
+
+msgid "very warm with clouds"
+msgstr "بسیار گرم، ابری"
+
+msgid "very warm with clouds and sun"
+msgstr "بسیار گرم، تناوب آفتاب و ابر"
+
+msgid "very warm with hazy sun"
+msgstr "بسیار گرم، آفتاب در غبار"
+
+msgid "very warm with hazy sunshine"
+msgstr "بسیار گرم، آفتاب در غبار"
+
+msgid "very warm with high clouds"
+msgstr "بسیار گرم، ابرهای مرتفع"
+
+msgid "very warm with lots of sun"
+msgstr "بسیار گرم، آفتاب فراوان"
+
+msgid "very warm with patchy clouds"
+msgstr "بسیار گرم، ابرهای پراکنده"
+
+msgid "very warm with periods of sun"
+msgstr "بسیار گرم، گاه آفتابی"
+
+msgid "very warm with plenty of sun"
+msgstr "بسیار گرم، آفتاب فراوان"
+
+msgid "very warm with some sun"
+msgstr "بسیار گرم، گاه آفتابی"
+
+msgid "very warm with sun and clouds"
+msgstr "بسیار گرم، تناوب آفتاب و ابر"
+
+msgid "very warm with sunshine"
+msgstr "بسیار گرم، آفتابی"
+
+msgid "very windy"
+msgstr "وزش باد شدید"
+
+msgid "very windy in the a.m."
+msgstr "صبح، وزش باد شدید"
+
+msgid "very windy in the morning"
+msgstr "صبح، وزش باد شدید"
+
+msgid "very windy this evening"
+msgstr "امروز عصر، وزش باد شدید"
+
+msgid "very windy this morning"
+msgstr "امروز صبح، وزش باد شدید"
+
+msgid "warm"
+msgstr "گرم"
+
+msgid "warm and hamid"
+msgstr "گرم، مرطوب"
+
+msgid "warm and humid"
+msgstr "گرم، مرطوب"
+
+msgid "warm and humid with clearing"
+msgstr "گرم، مرطوب، آسمان به‌تدریج صاف می‌شود"
+
+msgid "warm and humid with some sun"
+msgstr "گرم، مرطوب، گاه آفتابی"
+
+msgid "warm with abundant sunshine"
+msgstr "گرم، آفتاب فراوان"
+
+msgid "warm with clearing"
+msgstr "گرم، آسمان به‌تدریج صاف می‌شود"
+
+msgid "warm with clouds and sun"
+msgstr "گرم، تناوب آفتاب و ابر"
+
+msgid "warm with clouds and sunshine"
+msgstr "گرم، تناوب آفتاب و ابر"
+
+msgid "warm with clouds breaking"
+msgstr "گرم، کاهش ابرناکی"
+
+msgid "warm with clouds limiting sun"
+msgstr "گرم، ابرها مانع تابش آفتاب می‌شوند"
+
+msgid "warm with decreasing clouds"
+msgstr "گرم، کاهش ابرناکی"
+
+msgid "warm with high clouds"
+msgstr "گرم، ابرهای مرتفع"
+
+msgid "warm with increasing clouds"
+msgstr "گرم، افزایش ابرناکی"
+
+msgid "warm with occasional rain"
+msgstr "گرم، باران متناوب"
+
+msgid "warm with partial sunshine"
+msgstr "گرم، گاه آفتابی"
+
+msgid "warm with patchy clouds"
+msgstr "گرم، ابرهای پراکنده"
+
+msgid "warm with periods of sun"
+msgstr "گرم، گاه آفتابی"
+
+msgid "warm with plenty of clouds"
+msgstr "گرم، عمدتاً ابری"
+
+msgid "warm with plenty of sun"
+msgstr "گرم، آفتاب فراوان"
+
+msgid "warm with plenty of sunshine"
+msgstr "گرم، آفتاب فراوان"
+
+msgid "warm with rain and drizzle"
+msgstr "گرم، باران و نم‌نم باران"
+
+msgid "warm with some brightening"
+msgstr "گرم، کمی باز شدن آسمان"
+
+msgid "warm with some sun"
+msgstr "گرم، گاه آفتابی"
+
+msgid "warm with some sun returning"
+msgstr "گرم، کمی باز شدن آسمان"
+
+msgid "warm with sun"
+msgstr "گرم، آفتابی"
+
+msgid "warm with sun and clouds"
+msgstr "گرم، تناوب آفتاب و ابر"
+
+msgid "warm with sunny intervals"
+msgstr "گرم، گاه آفتابی"
+
+msgid "warm with sunshine"
+msgstr "گرم، آفتابی"
+
+msgid "warm with variable cloudiness"
+msgstr "گرم، ابرناکی متغیر"
+
+msgid "warm with variable clouds"
+msgstr "گرم، ابرناکی متغیر"
+
+msgid "warmer"
+msgstr "گرم‌تر"
+
+msgid "warmer late"
+msgstr "در ساعات بعد، گرم‌تر"
+
+msgid "warmer with a bit of rain"
+msgstr "گرم‌تر، کمی باران"
+
+msgid "warmer with a brief shower"
+msgstr "گرم‌تر، رگبارهای کوتاه"
+
+msgid "warmer with a few showers"
+msgstr "گرم‌تر، چند رگبار"
+
+msgid "warmer with a heavy t-storm"
+msgstr "گرم‌تر، توفان تندری شدید"
+
+msgid "warmer with a passing shower"
+msgstr "گرم‌تر، رگبارهای کوتاه"
+
+msgid "warmer with a shower"
+msgstr "گرم‌تر، رگبار باران"
+
+msgid "warmer with a shower in spots"
+msgstr "گرم‌تر، رگبار پراکنده"
+
+msgid "warmer with a shower or two"
+msgstr "گرم‌تر، یک یا دو رگبار"
+
+msgid "warmer with a stray shower"
+msgstr "گرم‌تر، رگبار پراکنده"
+
+msgid "warmer with a stray t-storm"
+msgstr "گرم‌تر، توفان تندری پراکنده"
+
+msgid "warmer with a thunderstorm"
+msgstr "گرم‌تر، توفان تندری"
+
+msgid "warmer with abundant sunshine"
+msgstr "گرم‌تر، آفتاب فراوان"
+
+msgid "warmer with clearing"
+msgstr "گرم‌تر، آسمان به‌تدریج صاف می‌شود"
+
+msgid "warmer with clouds"
+msgstr "گرم‌تر، ابری"
+
+msgid "warmer with clouds and sun"
+msgstr "گرم‌تر، تناوب آفتاب و ابر"
+
+msgid "warmer with decreasing clouds"
+msgstr "گرم‌تر، کاهش ابرناکی"
+
+msgid "warmer with high clouds"
+msgstr "گرم‌تر، ابرهای مرتفع"
+
+msgid "warmer with increasing clouds"
+msgstr "گرم‌تر، افزایش ابرناکی"
+
+msgid "warmer with low clouds"
+msgstr "گرم‌تر، ابرهای کم‌ارتفاع"
+
+msgid "warmer with partial sunshine"
+msgstr "گرم‌تر، گاه آفتابی"
+
+msgid "warmer with periods of rain"
+msgstr "گرم‌تر، باران متناوب"
+
+msgid "warmer with periods of sun"
+msgstr "گرم‌تر، گاه آفتابی"
+
+msgid "warmer with plenty of sun"
+msgstr "گرم‌تر، آفتاب فراوان"
+
+msgid "warmer with showers"
+msgstr "گرم‌تر، رگبار"
+
+msgid "warmer with showers around"
+msgstr "گرم‌تر، رگبار پراکنده"
+
+msgid "warmer with some brightening"
+msgstr "گرم‌تر، کمی باز شدن آسمان"
+
+msgid "warmer with some sun"
+msgstr "گرم‌تر، گاه آفتابی"
+
+msgid "warmer with some sunshine"
+msgstr "گرم‌تر، گاه آفتابی"
+
+msgid "warmer with spotty showers"
+msgstr "گرم‌تر، رگبار پراکنده"
+
+msgid "warmer with sun"
+msgstr "گرم‌تر، آفتابی"
+
+msgid "warmer with sun and clouds"
+msgstr "گرم‌تر، تناوب آفتاب و ابر"
+
+msgid "warmer with sunny intervals"
+msgstr "گرم‌تر، گاه آفتابی"
+
+msgid "warmer with sunshine"
+msgstr "گرم‌تر، آفتابی"
+
+msgid "warmer with variable clouds"
+msgstr "گرم‌تر، ابرناکی متغیر"
+
+msgid "watch for ice early"
+msgstr "در ابتدای دوره، مراقب یخ‌زدگی باشید"
+
+msgid "watch for ice late"
+msgstr "در ساعات بعد، مراقب یخ‌زدگی باشید"
+
+msgid "wet snow"
+msgstr "برف مرطوب"
+
+msgid "winds gradually subsiding"
+msgstr "باد به‌تدریج فروکش می‌کند"
+
+msgid "windy"
+msgstr "وزش باد"
+
+msgid "windy and cold"
+msgstr "وزش باد، سرد"
+
+msgid "windy and cooler"
+msgstr "وزش باد، خنک‌تر"
+
+msgid "windy and cooler with rain"
+msgstr "وزش باد، خنک‌تر، باران"
+
+msgid "windy and cooler with showers"
+msgstr "وزش باد، خنک‌تر، رگبار"
+
+msgid "windy and frigid"
+msgstr "وزش باد، سرمای شدید"
+
+msgid "windy and humid with rain"
+msgstr "وزش باد، مرطوب، باران"
+
+msgid "windy and very cold"
+msgstr "وزش باد، بسیار سرد"
+
+msgid "windy early"
+msgstr "در ابتدای دوره، وزش باد"
+
+msgid "windy in the a.m."
+msgstr "صبح، وزش باد"
+
+msgid "windy in the afternoon"
+msgstr "بعدازظهر، وزش باد"
+
+msgid "windy in the morning"
+msgstr "صبح، وزش باد"
+
+msgid "windy this afternoon"
+msgstr "امروز بعدازظهر، وزش باد"
+
+msgid "windy this morning"
+msgstr "امروز صبح، وزش باد"
+
+msgid "windy with a bit of ice"
+msgstr "وزش باد، یخ‌زدگی پراکنده"
+
+msgid "windy with a little rain"
+msgstr "وزش باد، کمی باران"
+
+msgid "windy with a passing shower"
+msgstr "وزش باد، رگبارهای کوتاه"
+
+msgid "windy with a shower in places"
+msgstr "وزش باد، رگبار پراکنده"
+
+msgid "windy with a shower in spots"
+msgstr "وزش باد، رگبار پراکنده"
+
+msgid "windy with a shower or two"
+msgstr "وزش باد، یک یا دو رگبار"
+
+msgid "windy with a stray shower"
+msgstr "وزش باد، رگبار پراکنده"
+
+msgid "windy with brilliant sunshine"
+msgstr "وزش باد، آفتاب درخشان"
+
+msgid "windy with clouds and sun"
+msgstr "وزش باد، تناوب آفتاب و ابر"
+
+msgid "windy with decreasing clouds"
+msgstr "وزش باد، کاهش ابرناکی"
+
+msgid "windy with increasing clouds"
+msgstr "وزش باد، افزایش ابرناکی"
+
+msgid "windy with occasional rain"
+msgstr "وزش باد، باران متناوب"
+
+msgid "windy with periods of rain"
+msgstr "وزش باد، باران متناوب"
+
+msgid "windy with periods of snow"
+msgstr "وزش باد، بارش متناوب برف"
+
+msgid "windy with plenty of sun"
+msgstr "وزش باد، آفتاب فراوان"
+
+msgid "windy with plenty of sunshine"
+msgstr "وزش باد، آفتاب فراوان"
+
+msgid "windy with rain and a t-storm"
+msgstr "وزش باد، باران، توفان تندری"
+
+msgid "windy with showers"
+msgstr "وزش باد، رگبار"
+
+msgid "windy with showers around"
+msgstr "وزش باد، رگبار پراکنده"
+
+msgid "windy with snow"
+msgstr "وزش باد، برف"
+
+msgid "windy with some sun"
+msgstr "وزش باد، گاه آفتابی"
+
+msgid "windy with spotty showers"
+msgstr "وزش باد، رگبار پراکنده"
+
+msgid "windy with sunshine"
+msgstr "وزش باد، آفتابی"

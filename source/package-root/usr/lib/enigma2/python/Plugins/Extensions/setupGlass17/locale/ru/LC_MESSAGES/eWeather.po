@@ -241,3 +241,6126 @@ msgstr "Ошибка"
 
 msgid "Select country"
 msgstr "Выбрать страну"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "Добавить город"
+
+msgid "Change Temperature Unit"
+msgstr "Изменить единицу температуры"
+
+msgid "Change Units to"
+msgstr "Изменить единицы на"
+
+msgid "Change city"
+msgstr "Сменить город"
+
+msgid "Daytime"
+msgstr "Днём"
+
+msgid "Decreasing"
+msgstr "Снижается"
+
+msgid "Delete City"
+msgstr "Удалить город"
+
+msgid "Forecast for"
+msgstr "Прогноз для"
+
+msgid "Friday"
+msgstr "Пятница"
+
+msgid "High"
+msgstr "Высокий"
+
+msgid "Latitude"
+msgstr "Широта"
+
+msgid "Longtitude"
+msgstr "Долгота"
+
+msgid "Low"
+msgstr "Низкий"
+
+msgid "Moderate"
+msgstr "Умеренный"
+
+msgid "Monday"
+msgstr "Понедельник"
+
+msgid "Nighttime"
+msgstr "Ночью"
+
+msgid "None city founded"
+msgstr "Город не найден"
+
+msgid "Precip"
+msgstr "Осадки"
+
+msgid "Realfeel"
+msgstr "Ощущаемая температура"
+
+msgid "Rising"
+msgstr "Повышается"
+
+msgid "Saturday"
+msgstr "Суббота"
+
+msgid "Select City"
+msgstr "Выбрать город"
+
+msgid "Steady"
+msgstr "Без изменений"
+
+msgid "Sunday"
+msgstr "Воскресенье"
+
+msgid "Thursday"
+msgstr "Четверг"
+
+msgid "Tuesday"
+msgstr "Вторник"
+
+msgid "Updated at"
+msgstr "Обновлено в"
+
+msgid "Uvindex"
+msgstr "УФ-индекс"
+
+msgid "Very high"
+msgstr "Очень высокий"
+
+msgid "Wednesday"
+msgstr "Среда"
+
+msgid "a bit of afternoon rain"
+msgstr "Днём: небольшой дождь"
+
+msgid "a bit of afternoon snow"
+msgstr "Днём: небольшой снег"
+
+msgid "a bit of evening rain"
+msgstr "Вечером: небольшой дождь"
+
+msgid "a bit of evening snow"
+msgstr "Вечером: небольшой снег"
+
+msgid "a bit of ice"
+msgstr "Местами гололёд"
+
+msgid "a bit of ice and rain"
+msgstr "Местами гололёд, дождь"
+
+msgid "a bit of ice early"
+msgstr "В начале периода: местами гололёд"
+
+msgid "a bit of ice in the afternoon"
+msgstr "Днём: местами гололёд"
+
+msgid "a bit of ice in the morning"
+msgstr "Утром: местами гололёд"
+
+msgid "a bit of ice late"
+msgstr "Позднее: местами гололёд"
+
+msgid "a bit of late-night rain"
+msgstr "Поздно ночью: небольшой дождь"
+
+msgid "a bit of late-night snow"
+msgstr "Поздно ночью: небольшой снег"
+
+msgid "a bit of morning rain"
+msgstr "Утром: небольшой дождь"
+
+msgid "a bit of morning snow"
+msgstr "Утром: небольшой снег"
+
+msgid "a bit of rain"
+msgstr "Небольшой дождь"
+
+msgid "a bit of rain and ice late"
+msgstr "Небольшой дождь. Позднее: лёд"
+
+msgid "a bit of rain and sleet"
+msgstr "Небольшой дождь, мокрый снег"
+
+msgid "a bit of rain and sleet later"
+msgstr "Небольшой дождь. Позднее: мокрый снег"
+
+msgid "a bit of rain and snow"
+msgstr "Небольшой дождь, снег"
+
+msgid "a bit of rain in the evening"
+msgstr "Вечером: небольшой дождь"
+
+msgid "a bit of rain in the morning"
+msgstr "Утром: небольшой дождь"
+
+msgid "a bit of rain late"
+msgstr "Позднее: небольшой дождь"
+
+msgid "a bit of rain this evening"
+msgstr "Сегодня вечером: небольшой дождь"
+
+msgid "a bit of snow"
+msgstr "Небольшой снег"
+
+msgid "a bit of snow and ice later"
+msgstr "Небольшой снег. Позднее: лёд"
+
+msgid "a bit of snow and rain"
+msgstr "Небольшой снег, дождь"
+
+msgid "a bit of snow and rain late"
+msgstr "Небольшой снег. Позднее: дождь"
+
+msgid "a bit of snow and sleet late"
+msgstr "Небольшой снег. Позднее: мокрый снег"
+
+msgid "a bit of snow early"
+msgstr "В начале периода: небольшой снег"
+
+msgid "a bit of snow in the evening"
+msgstr "Вечером: небольшой снег"
+
+msgid "a bit of snow in the morning"
+msgstr "Утром: небольшой снег"
+
+msgid "a bit of snow late"
+msgstr "Позднее: небольшой снег"
+
+msgid "a bit of wintry mix"
+msgstr "Небольшие смешанные зимние осадки"
+
+msgid "a blend of sun and clouds"
+msgstr "Облачность с прояснениями"
+
+msgid "a brief afternoon shower"
+msgstr "Днём: непродолжительные дожди"
+
+msgid "a brief evening shower or two"
+msgstr "Вечером: один-два непродолжительных дождя"
+
+msgid "a brief morning shower or two"
+msgstr "Утром: один-два непродолжительных дождя"
+
+msgid "a brief shower"
+msgstr "Непродолжительные дожди"
+
+msgid "a brief shower in the morning"
+msgstr "Утром: непродолжительные дожди"
+
+msgid "a brief shower or two"
+msgstr "Один-два непродолжительных дождя"
+
+msgid "a brief shower or two late"
+msgstr "Позднее: один-два непродолжительных дождя"
+
+msgid "a brief shower this afternoon"
+msgstr "Сегодня днём: непродолжительные дожди"
+
+msgid "a brief t-storm early"
+msgstr "В начале периода: кратковременная гроза"
+
+msgid "a brief t-storm in the p.m."
+msgstr "Днём: кратковременная гроза"
+
+msgid "a chance for snow"
+msgstr "Возможен снег"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "Днём: гроза принесёт прохладу"
+
+msgid "a couple of a.m. snow showers"
+msgstr "Утром: отдельные кратковременные снегопады"
+
+msgid "a couple of afternoon showers"
+msgstr "Днём: один-два кратковременных дождя"
+
+msgid "a couple of downpours late"
+msgstr "Позднее: отдельные ливни"
+
+msgid "a couple of evening downpours"
+msgstr "Вечером: отдельные ливни"
+
+msgid "a couple of evening showers"
+msgstr "Вечером: один-два кратковременных дождя"
+
+msgid "a couple of evening t-showers"
+msgstr "Вечером: отдельные грозовые ливни"
+
+msgid "a couple of evening t-storms"
+msgstr "Вечером: отдельные грозы"
+
+msgid "a couple of flurries"
+msgstr "Местами слабый кратковременный снег"
+
+msgid "a couple of heavy t-storms"
+msgstr "Отдельные сильные грозы"
+
+msgid "a couple of morning showers"
+msgstr "Утром: один-два кратковременных дождя"
+
+msgid "a couple of morning t-showers"
+msgstr "Утром: отдельные грозовые ливни"
+
+msgid "a couple of morning t-storms"
+msgstr "Утром: отдельные грозы"
+
+msgid "a couple of p.m. snow showers"
+msgstr "Днём: отдельные кратковременные снегопады"
+
+msgid "a couple of p.m. t-showers"
+msgstr "Днём: отдельные грозовые ливни"
+
+msgid "a couple of showers"
+msgstr "Один-два кратковременных дождя"
+
+msgid "a couple of showers late"
+msgstr "Позднее: один-два кратковременных дождя"
+
+msgid "a couple of showers possible"
+msgstr "Возможны отдельные кратковременные дожди"
+
+msgid "a couple of snow showers"
+msgstr "Отдельные кратковременные снегопады"
+
+msgid "a couple of snow showers late"
+msgstr "Позднее: отдельные кратковременные снегопады"
+
+msgid "a couple of strong t-storms"
+msgstr "Отдельные сильные грозы"
+
+msgid "a couple of t-showers"
+msgstr "Отдельные грозовые ливни"
+
+msgid "a couple of t-showers early"
+msgstr "В начале периода: отдельные грозовые ливни"
+
+msgid "a couple of t-showers late"
+msgstr "Позднее: отдельные грозовые ливни"
+
+msgid "a couple of t-storms late"
+msgstr "Позднее: отдельные грозы"
+
+msgid "a couple of thundershowers"
+msgstr "Отдельные грозовые ливни"
+
+msgid "a damaging thunderstorm"
+msgstr "Гроза может вызвать разрушения"
+
+msgid "a downpour early"
+msgstr "В начале периода: ливни"
+
+msgid "a downpour in the afternoon"
+msgstr "Днём: ливни"
+
+msgid "a downpour in the morning"
+msgstr "Утром: ливни"
+
+msgid "a downpour this morning"
+msgstr "Сегодня утром: ливни"
+
+msgid "a drenching morning shower"
+msgstr "Утром: сильные ливневые дожди"
+
+msgid "a drenching shower late"
+msgstr "Позднее: сильные ливневые дожди"
+
+msgid "a drenching t-storm early"
+msgstr "В начале периода: гроза с ливнем"
+
+msgid "a drenching thunderstorm late"
+msgstr "Позднее: гроза с ливнем"
+
+msgid "a few a.m. showers"
+msgstr "Утром: отдельные кратковременные дожди"
+
+msgid "a few afternoon showers"
+msgstr "Днём: отдельные кратковременные дожди"
+
+msgid "a few evening showers"
+msgstr "Вечером: отдельные кратковременные дожди"
+
+msgid "a few flurries"
+msgstr "Местами слабый кратковременный снег"
+
+msgid "a few flurries in the morning"
+msgstr "Утром: местами слабый кратковременный снег"
+
+msgid "a few late-night showers"
+msgstr "Поздно ночью: отдельные кратковременные дожди"
+
+msgid "a few morning showers"
+msgstr "Утром: отдельные кратковременные дожди"
+
+msgid "a few showers"
+msgstr "Отдельные кратковременные дожди"
+
+msgid "a few showers in the evening"
+msgstr "Вечером: отдельные кратковременные дожди"
+
+msgid "a few showers in the morning"
+msgstr "Утром: отдельные кратковременные дожди"
+
+msgid "a few showers late"
+msgstr "Позднее: отдельные кратковременные дожди"
+
+msgid "a few showers this afternoon"
+msgstr "Сегодня днём: отдельные кратковременные дожди"
+
+msgid "a few showers this evening"
+msgstr "Сегодня вечером: отдельные кратковременные дожди"
+
+msgid "a few snowflakes late"
+msgstr "Позднее: отдельные снежинки"
+
+msgid "a few strong p.m. t-storms"
+msgstr "Днём: отдельные сильные грозы"
+
+msgid "a few t-storms"
+msgstr "Отдельные грозы"
+
+msgid "a flurry early"
+msgstr "В начале периода: кратковременный слабый снег"
+
+msgid "a flurry in the p.m."
+msgstr "Днём: кратковременный слабый снег"
+
+msgid "a flurry late"
+msgstr "Позднее: кратковременный слабый снег"
+
+msgid "a gusty breeze with clearing"
+msgstr "Порывистый ветер, прояснение"
+
+msgid "a gusty morning breeze"
+msgstr "Утром: порывистый ветер"
+
+msgid "a heavy afternoon shower"
+msgstr "Днём: сильные ливневые дожди"
+
+msgid "a heavy afternoon t-storm"
+msgstr "Днём: сильные грозы"
+
+msgid "a heavy morning shower or two"
+msgstr "Утром: отдельные сильные ливни"
+
+msgid "a heavy shower in the morning"
+msgstr "Утром: сильные ливневые дожди"
+
+msgid "a heavy t-storm"
+msgstr "Сильные грозы"
+
+msgid "a heavy t-storm early"
+msgstr "В начале периода: сильные грозы"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "Утром: сильные грозы"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "Днём: сильные грозы"
+
+msgid "a heavy thunderstorm"
+msgstr "Сильные грозы"
+
+msgid "a late-night shower"
+msgstr "Поздно ночью: кратковременный дождь"
+
+msgid "a late-night shower in places"
+msgstr "Поздно ночью: местами кратковременный дождь"
+
+msgid "a late-night shower in spots"
+msgstr "Поздно ночью: местами кратковременный дождь"
+
+msgid "a late-night shower or two"
+msgstr "Поздно ночью: один-два кратковременных дождя"
+
+msgid "a late-night t-storm in spots"
+msgstr "Поздно ночью: местами грозы"
+
+msgid "a late-night t-storm or two"
+msgstr "Поздно ночью: отдельные грозы"
+
+msgid "a late-night thunderstorm"
+msgstr "Поздно ночью: гроза"
+
+msgid "a little a.m. rain"
+msgstr "Утром: небольшой дождь"
+
+msgid "a little afternoon rain"
+msgstr "Днём: небольшой дождь"
+
+msgid "a little afternoon snow"
+msgstr "Днём: небольшой снег"
+
+msgid "a little evening rain"
+msgstr "Вечером: небольшой дождь"
+
+msgid "a little evening snow"
+msgstr "Вечером: небольшой снег"
+
+msgid "a little icy mix early"
+msgstr "В начале периода: небольшие смешанные осадки с обледенением"
+
+msgid "a little icy mix in the a.m."
+msgstr "Утром: небольшие смешанные осадки с обледенением"
+
+msgid "a little icy mix this morning"
+msgstr "Сегодня утром: небольшие смешанные осадки с обледенением"
+
+msgid "a little late-night rain"
+msgstr "Поздно ночью: небольшой дождь"
+
+msgid "a little late-night snow"
+msgstr "Поздно ночью: небольшой снег"
+
+msgid "a little morning rain"
+msgstr "Утром: небольшой дождь"
+
+msgid "a little morning snow"
+msgstr "Утром: небольшой снег"
+
+msgid "a little rain"
+msgstr "Небольшой дождь"
+
+msgid "a little rain early"
+msgstr "В начале периода: небольшой дождь"
+
+msgid "a little rain in the evening"
+msgstr "Вечером: небольшой дождь"
+
+msgid "a little rain in the morning"
+msgstr "Утром: небольшой дождь"
+
+msgid "a little rain late"
+msgstr "Позднее: небольшой дождь"
+
+msgid "a little rain this afternoon"
+msgstr "Сегодня днём: небольшой дождь"
+
+msgid "a little rain this morning"
+msgstr "Сегодня утром: небольшой дождь"
+
+msgid "a little snow"
+msgstr "Небольшой снег"
+
+msgid "a little snow and sleet early"
+msgstr "Небольшой снег. В начале периода: мокрый снег"
+
+msgid "a little snow and sleet late"
+msgstr "Небольшой снег. Позднее: мокрый снег"
+
+msgid "a little snow at times"
+msgstr "Временами небольшой снег"
+
+msgid "a little snow at times late"
+msgstr "Позднее: временами небольшой снег"
+
+msgid "a little snow early"
+msgstr "В начале периода: небольшой снег"
+
+msgid "a little snow in the evening"
+msgstr "Вечером: небольшой снег"
+
+msgid "a little snow late"
+msgstr "Позднее: небольшой снег"
+
+msgid "a little snow this afternoon"
+msgstr "Сегодня днём: небольшой снег"
+
+msgid "a little wintry mix"
+msgstr "Небольшие смешанные зимние осадки"
+
+msgid "a little wintry mix late"
+msgstr "Позднее: небольшие смешанные зимние осадки"
+
+msgid "a morning flurry"
+msgstr "Утром: кратковременный слабый снег"
+
+msgid "a morning rain or snow shower"
+msgstr "Утром: кратковременный дождь или снег"
+
+msgid "a morning shower"
+msgstr "Утром: кратковременный дождь"
+
+msgid "a morning shower in places"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "a morning shower in spots"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "a morning shower in the area"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "a morning shower or t-storm"
+msgstr "Утром: кратковременный дождь или гроза"
+
+msgid "a morning shower or two"
+msgstr "Утром: один-два кратковременных дождя"
+
+msgid "a morning snow shower around"
+msgstr "Утром: кратковременный снег"
+
+msgid "a morning t-storm"
+msgstr "Утром: гроза"
+
+msgid "a morning t-storm in spots"
+msgstr "Утром: местами грозы"
+
+msgid "a morning t-storm in the area"
+msgstr "Утром: местами грозы"
+
+msgid "a morning thunderstorm"
+msgstr "Утром: гроза"
+
+msgid "a morning thunderstorm or two"
+msgstr "Утром: отдельные грозы"
+
+msgid "a p.m. rain or snow shower"
+msgstr "Днём: кратковременный дождь или снег"
+
+msgid "a p.m. shower"
+msgstr "Днём: кратковременный дождь"
+
+msgid "a p.m. shower in places"
+msgstr "Днём: местами кратковременный дождь"
+
+msgid "a p.m. shower in the area"
+msgstr "Днём: местами кратковременный дождь"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "Днём: кратковременный дождь или гроза"
+
+msgid "a p.m. snow shower in spots"
+msgstr "Днём: местами кратковременный снег"
+
+msgid "a p.m. t-storm"
+msgstr "Днём: гроза"
+
+msgid "a p.m. t-storm in spots"
+msgstr "Днём: местами грозы"
+
+msgid "a p.m. t-storm in the area"
+msgstr "Днём: местами грозы"
+
+msgid "a p.m. t-storm possible"
+msgstr "Днём: возможны грозы"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "Днём: местами грозы"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "Днём: отдельные грозы"
+
+msgid "a passing afternoon shower"
+msgstr "Днём: непродолжительные дожди"
+
+msgid "a passing flurry late"
+msgstr "Позднее: кратковременный слабый снег"
+
+msgid "a passing late-night shower"
+msgstr "Поздно ночью: непродолжительные дожди"
+
+msgid "a passing morning shower"
+msgstr "Утром: непродолжительные дожди"
+
+msgid "a passing shower"
+msgstr "Непродолжительные дожди"
+
+msgid "a passing shower late"
+msgstr "Позднее: непродолжительные дожди"
+
+msgid "a passing shower or two"
+msgstr "Один-два непродолжительных дождя"
+
+msgid "a passing shower this morning"
+msgstr "Сегодня утром: непродолжительные дожди"
+
+msgid "a quick afternoon shower"
+msgstr "Днём: непродолжительные дожди"
+
+msgid "a quick shower"
+msgstr "Непродолжительные дожди"
+
+msgid "a rain and sleet shower"
+msgstr "Кратковременный дождь с мокрым снегом"
+
+msgid "a rain and sleet shower late"
+msgstr "Позднее: кратковременный дождь с мокрым снегом"
+
+msgid "a rain or snow shower"
+msgstr "Кратковременный дождь или снег"
+
+msgid "a rain or snow shower early"
+msgstr "В начале периода: кратковременный дождь или снег"
+
+msgid "a rain or snow shower late"
+msgstr "Позднее: кратковременный дождь или снег"
+
+msgid "a severe afternoon t-storm"
+msgstr "Днём: сильные грозы"
+
+msgid "a severe thunderstorm"
+msgstr "Сильные грозы"
+
+msgid "a shower"
+msgstr "Кратковременный дождь"
+
+msgid "a shower and t-storm around"
+msgstr "Кратковременный дождь, местами грозы"
+
+msgid "a shower around"
+msgstr "Местами кратковременный дождь"
+
+msgid "a shower early"
+msgstr "В начале периода: кратковременный дождь"
+
+msgid "a shower in places"
+msgstr "Местами кратковременный дождь"
+
+msgid "a shower in places late"
+msgstr "Позднее: местами кратковременный дождь"
+
+msgid "a shower in spots"
+msgstr "Местами кратковременный дождь"
+
+msgid "a shower in spots late"
+msgstr "Позднее: местами кратковременный дождь"
+
+msgid "a shower in the a.m."
+msgstr "Утром: кратковременный дождь"
+
+msgid "a shower in the afternoon"
+msgstr "Днём: кратковременный дождь"
+
+msgid "a shower in the area"
+msgstr "Местами кратковременный дождь"
+
+msgid "a shower in the area late"
+msgstr "Позднее: местами кратковременный дождь"
+
+msgid "a shower in the evening"
+msgstr "Вечером: кратковременный дождь"
+
+msgid "a shower in the morning"
+msgstr "Утром: кратковременный дождь"
+
+msgid "a shower in the p.m."
+msgstr "Днём: кратковременный дождь"
+
+msgid "a shower late"
+msgstr "Позднее: кратковременный дождь"
+
+msgid "a shower late this afternoon"
+msgstr "Ближе к вечеру: кратковременный дождь"
+
+msgid "a shower late this morning"
+msgstr "Ближе к полудню: кратковременный дождь"
+
+msgid "a shower or heavy t-storm"
+msgstr "Ливень или сильная гроза"
+
+msgid "a shower or t-storm"
+msgstr "Кратковременный дождь или гроза"
+
+msgid "a shower or t-storm early"
+msgstr "В начале периода: кратковременный дождь или гроза"
+
+msgid "a shower or t-storm in spots"
+msgstr "Местами ливень или гроза"
+
+msgid "a shower or thunderstorm"
+msgstr "Кратковременный дождь или гроза"
+
+msgid "a shower or two"
+msgstr "Один-два кратковременных дождя"
+
+msgid "a shower or two early"
+msgstr "В начале периода: один-два кратковременных дождя"
+
+msgid "a shower or two late"
+msgstr "Позднее: один-два кратковременных дождя"
+
+msgid "a shower possible"
+msgstr "Возможны кратковременные дожди"
+
+msgid "a shower this afternoon"
+msgstr "Сегодня днём: кратковременный дождь"
+
+msgid "a shower this morning"
+msgstr "Сегодня утром: кратковременный дождь"
+
+msgid "a shower toward dawn"
+msgstr "К рассвету: кратковременный дождь"
+
+msgid "a snow shower"
+msgstr "Кратковременный снег"
+
+msgid "a snow shower around"
+msgstr "Кратковременный снег"
+
+msgid "a snow shower around late"
+msgstr "Позднее: кратковременный снег"
+
+msgid "a snow shower in the morning"
+msgstr "Утром: кратковременный снег"
+
+msgid "a snow shower in the p.m."
+msgstr "Днём: кратковременный снег"
+
+msgid "a snow shower late"
+msgstr "Позднее: кратковременный снег"
+
+msgid "a snow shower this afternoon"
+msgstr "Сегодня днём: кратковременный снег"
+
+msgid "a snow shower this evening"
+msgstr "Сегодня вечером: кратковременный снег"
+
+msgid "a snow shower with low clouds"
+msgstr "Кратковременный снег, низкая облачность"
+
+msgid "a snow squall early"
+msgstr "В начале периода: снежный шквал"
+
+msgid "a snow squall in the evening"
+msgstr "Вечером: снежный шквал"
+
+msgid "a snow squall in the morning"
+msgstr "Утром: снежный шквал"
+
+msgid "a snow squall in the p.m."
+msgstr "Днём: снежный шквал"
+
+msgid "a snow squall late"
+msgstr "Позднее: снежный шквал"
+
+msgid "a stray a.m. t-shower"
+msgstr "Утром: местами грозовые ливни"
+
+msgid "a stray a.m. t-storm"
+msgstr "Утром: местами грозы"
+
+msgid "a stray afternoon shower"
+msgstr "Днём: местами кратковременный дождь"
+
+msgid "a stray afternoon t-shower"
+msgstr "Днём: местами грозовые ливни"
+
+msgid "a stray afternoon t-storm"
+msgstr "Днём: местами грозы"
+
+msgid "a stray evening thunderstorm"
+msgstr "Вечером: местами грозы"
+
+msgid "a stray late-night t-storm"
+msgstr "Поздно ночью: местами грозы"
+
+msgid "a stray morning shower"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "a stray morning thunderstorm"
+msgstr "Утром: местами грозы"
+
+msgid "a stray shower in the morning"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "a stray shower late"
+msgstr "Позднее: местами кратковременный дождь"
+
+msgid "a stray t-shower"
+msgstr "Местами грозовые ливни"
+
+msgid "a stray t-storm"
+msgstr "Местами грозы"
+
+msgid "a stray t-storm early"
+msgstr "В начале периода: местами грозы"
+
+msgid "a stray t-storm this evening"
+msgstr "Сегодня вечером: местами грозы"
+
+msgid "a stray thundershower"
+msgstr "Местами грозовые ливни"
+
+msgid "a stray thunderstorm"
+msgstr "Местами грозы"
+
+msgid "a stray thunderstorm early"
+msgstr "В начале периода: местами грозы"
+
+msgid "a stray thunderstorm late"
+msgstr "Позднее: местами грозы"
+
+msgid "a strong a.m. t-storm"
+msgstr "Утром: сильные грозы"
+
+msgid "a strong afternoon t-storm"
+msgstr "Днём: сильные грозы"
+
+msgid "a strong evening thunderstorm"
+msgstr "Вечером: сильные грозы"
+
+msgid "a strong late-night t-storm"
+msgstr "Поздно ночью: сильные грозы"
+
+msgid "a strong morning thunderstorm"
+msgstr "Утром: сильные грозы"
+
+msgid "a strong t-storm"
+msgstr "Сильные грозы"
+
+msgid "a strong t-storm in spots"
+msgstr "Местами сильные грозы"
+
+msgid "a strong t-storm late"
+msgstr "Позднее: сильные грозы"
+
+msgid "a strong t-storm possible"
+msgstr "Возможны сильные грозы"
+
+msgid "a strong t-storm this evening"
+msgstr "Сегодня вечером: сильные грозы"
+
+msgid "a strong thunderstorm"
+msgstr "Сильные грозы"
+
+msgid "a strong thunderstorm early"
+msgstr "В начале периода: сильные грозы"
+
+msgid "a strong thunderstorm late"
+msgstr "Позднее: сильные грозы"
+
+msgid "a t-shower in spots"
+msgstr "Местами грозовые ливни"
+
+msgid "a t-shower in spots early"
+msgstr "В начале периода: местами грозовые ливни"
+
+msgid "a t-shower in the afternoon"
+msgstr "Днём: грозовой ливень"
+
+msgid "a t-storm"
+msgstr "Гроза"
+
+msgid "a t-storm around in the a.m."
+msgstr "Утром: местами грозы"
+
+msgid "a t-storm around in the p.m."
+msgstr "Днём: местами грозы"
+
+msgid "a t-storm around late"
+msgstr "Позднее: местами грозы"
+
+msgid "a t-storm around this evening"
+msgstr "Сегодня вечером: местами грозы"
+
+msgid "a t-storm early"
+msgstr "В начале периода: гроза"
+
+msgid "a t-storm in spots"
+msgstr "Местами грозы"
+
+msgid "a t-storm in the afternoon"
+msgstr "Днём: гроза"
+
+msgid "a t-storm in the area late"
+msgstr "Позднее: местами грозы"
+
+msgid "a t-storm in the p.m."
+msgstr "Днём: гроза"
+
+msgid "a t-storm late"
+msgstr "Позднее: гроза"
+
+msgid "a t-storm late this afternoon"
+msgstr "Ближе к вечеру: гроза"
+
+msgid "a t-storm late this evening"
+msgstr "Поздним вечером: гроза"
+
+msgid "a t-storm late this morning"
+msgstr "Ближе к полудню: гроза"
+
+msgid "a t-storm or two"
+msgstr "Отдельные грозы"
+
+msgid "a t-storm possible"
+msgstr "Возможны грозы"
+
+msgid "a thick cloud cover"
+msgstr "Пасмурно"
+
+msgid "a thick cloud cover and hot"
+msgstr "Пасмурно, жарко"
+
+msgid "a thundershower"
+msgstr "Грозовой ливень"
+
+msgid "a thundershower in spots"
+msgstr "Местами грозовые ливни"
+
+msgid "a thundershower in spots late"
+msgstr "Позднее: местами грозовые ливни"
+
+msgid "a thundershower late"
+msgstr "Позднее: грозовой ливень"
+
+msgid "a thundershower on the prowl"
+msgstr "Местами грозовые ливни"
+
+msgid "a thunderstorm"
+msgstr "Гроза"
+
+msgid "a thunderstorm around"
+msgstr "Местами грозы"
+
+msgid "a thunderstorm around early"
+msgstr "В начале периода: местами грозы"
+
+msgid "a thunderstorm around late"
+msgstr "Позднее: местами грозы"
+
+msgid "a thunderstorm early"
+msgstr "В начале периода: гроза"
+
+msgid "a thunderstorm in spots"
+msgstr "Местами грозы"
+
+msgid "a thunderstorm in spots early"
+msgstr "В начале периода: местами грозы"
+
+msgid "a thunderstorm in spots late"
+msgstr "Позднее: местами грозы"
+
+msgid "a thunderstorm in the area"
+msgstr "Местами грозы"
+
+msgid "a thunderstorm in the evening"
+msgstr "Вечером: гроза"
+
+msgid "a thunderstorm in the morning"
+msgstr "Утром: гроза"
+
+msgid "a thunderstorm late"
+msgstr "Позднее: гроза"
+
+msgid "a thunderstorm or two"
+msgstr "Отдельные грозы"
+
+msgid "a thunderstorm or two early"
+msgstr "В начале периода: отдельные грозы"
+
+msgid "a thunderstorm or two late"
+msgstr "Позднее: отдельные грозы"
+
+msgid "a thunderstorm possible"
+msgstr "Возможны грозы"
+
+msgid "a thunderstorm this afternoon"
+msgstr "Сегодня днём: гроза"
+
+msgid "a thunderstorm this evening"
+msgstr "Сегодня вечером: гроза"
+
+msgid "a thunderstorm this morning"
+msgstr "Сегодня утром: гроза"
+
+msgid "a touch of afternoon rain"
+msgstr "Днём: небольшой дождь"
+
+msgid "a touch of evening rain"
+msgstr "Вечером: небольшой дождь"
+
+msgid "a touch of late-night rain"
+msgstr "Поздно ночью: небольшой дождь"
+
+msgid "a touch of morning rain"
+msgstr "Утром: небольшой дождь"
+
+msgid "a touch of rain"
+msgstr "Небольшой дождь"
+
+msgid "a touch of rain late"
+msgstr "Позднее: небольшой дождь"
+
+msgid "a wintry mix"
+msgstr "Смешанные зимние осадки"
+
+msgid "a wintry mix in the morning"
+msgstr "Утром: смешанные зимние осадки"
+
+msgid "a wintry mix late"
+msgstr "Позднее: смешанные зимние осадки"
+
+msgid "a wintry mix this morning"
+msgstr "Сегодня утром: смешанные зимние осадки"
+
+msgid "a.m. flurries"
+msgstr "Утром: кратковременный слабый снег"
+
+msgid "a.m. rain"
+msgstr "Утром: дождь"
+
+msgid "a.m. showers"
+msgstr "Утром: кратковременные дожди"
+
+msgid "abundant sunshine"
+msgstr "Много солнца"
+
+msgid "abundant sunshine and breezy"
+msgstr "Много солнца, небольшой ветер"
+
+msgid "abundant sunshine and hot"
+msgstr "Много солнца, жарко"
+
+msgid "abundant sunshine and nice"
+msgstr "Много солнца, комфортная погода"
+
+msgid "abundant sunshine and warm"
+msgstr "Много солнца, тепло"
+
+msgid "abundant sunshine and warmer"
+msgstr "Много солнца, теплее"
+
+msgid "afternoon flurries"
+msgstr "Днём: кратковременный слабый снег"
+
+msgid "afternoon rain"
+msgstr "Днём: дождь"
+
+msgid "afternoon showers"
+msgstr "Днём: кратковременные дожди"
+
+msgid "afternoon snow"
+msgstr "Днём: снег"
+
+msgid "afternoon snow showers"
+msgstr "Днём: кратковременный снег"
+
+msgid "afternoon t-storms"
+msgstr "Днём: грозы"
+
+msgid "afternoon thundershowers"
+msgstr "Днём: грозовой ливень"
+
+msgid "afternoon thunderstorms"
+msgstr "Днём: грозы"
+
+msgid "an a.m. flurry"
+msgstr "Утром: кратковременный слабый снег"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "Утром: кратковременный дождь с мокрым снегом"
+
+msgid "an a.m. rain or snow shower"
+msgstr "Утром: кратковременный дождь или снег"
+
+msgid "an a.m. shower"
+msgstr "Утром: кратковременный дождь"
+
+msgid "an a.m. shower or two"
+msgstr "Утром: один-два кратковременных дождя"
+
+msgid "an a.m. t-storm"
+msgstr "Утром: гроза"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "Утром: местами грозы"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "Утром: отдельные грозы"
+
+msgid "an afternoon shower"
+msgstr "Днём: кратковременный дождь"
+
+msgid "an afternoon shower in spots"
+msgstr "Днём: местами кратковременный дождь"
+
+msgid "an afternoon shower or two"
+msgstr "Днём: один-два кратковременных дождя"
+
+msgid "an afternoon shower possible"
+msgstr "Днём: возможны кратковременные дожди"
+
+msgid "an afternoon snow showers"
+msgstr "Днём: кратковременный снег"
+
+msgid "an afternoon t-storm"
+msgstr "Днём: гроза"
+
+msgid "an afternoon t-storm or two"
+msgstr "Днём: отдельные грозы"
+
+msgid "an afternoon thundershower"
+msgstr "Днём: грозовой ливень"
+
+msgid "an afternoon thunderstorm"
+msgstr "Днём: гроза"
+
+msgid "an evening shower"
+msgstr "Вечером: кратковременный дождь"
+
+msgid "an evening shower in the area"
+msgstr "Вечером: местами кратковременный дождь"
+
+msgid "an evening shower or t-storm"
+msgstr "Вечером: кратковременный дождь или гроза"
+
+msgid "an evening shower or two"
+msgstr "Вечером: один-два кратковременных дождя"
+
+msgid "an evening t-storm in spots"
+msgstr "Вечером: местами грозы"
+
+msgid "an evening t-storm or two"
+msgstr "Вечером: отдельные грозы"
+
+msgid "an evening thundershower"
+msgstr "Вечером: грозовой ливень"
+
+msgid "an evening thunderstorm"
+msgstr "Вечером: гроза"
+
+msgid "areas of fog"
+msgstr "Местами туман"
+
+msgid "areas of fog in the morning"
+msgstr "Утром: местами туман"
+
+msgid "areas of low clouds"
+msgstr "Местами низкая облачность"
+
+msgid "areas of low clouds and cold"
+msgstr "Местами низкая облачность, холодно"
+
+msgid "areas of low clouds and fog"
+msgstr "Местами низкая облачность, туман"
+
+msgid "be advised for strong winds"
+msgstr "Осторожно, сильный ветер"
+
+msgid "beautiful"
+msgstr "Комфортная погода"
+
+msgid "beautiful with clouds and sun"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "beautiful with periods of sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "beautiful with plenty of sun"
+msgstr "Комфортная погода, много солнца"
+
+msgid "beautiful with some sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "beautiful with sun and clouds"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "beautiful with sunshine"
+msgstr "Комфортная погода, солнечно"
+
+msgid "becoming clear"
+msgstr "Прояснение"
+
+msgid "becoming clear and chilly"
+msgstr "Прояснение, зябко"
+
+msgid "becoming clear and cold"
+msgstr "Прояснение, холодно"
+
+msgid "becoming clear and colder"
+msgstr "Прояснение, холоднее"
+
+msgid "becoming clear and cool"
+msgstr "Прояснение, прохладно"
+
+msgid "becoming clear and cooler"
+msgstr "Прояснение, прохладнее"
+
+msgid "becoming clear and mild"
+msgstr "Прояснение, мягкая погода"
+
+msgid "becoming clear and very warm"
+msgstr "Прояснение, очень тепло"
+
+msgid "becoming clear and warm"
+msgstr "Прояснение, тепло"
+
+msgid "becoming clear with a shower"
+msgstr "Прояснение, кратковременный дождь"
+
+msgid "becoming cloudy"
+msgstr "Небо затягивает облаками"
+
+msgid "becoming cloudy and breezy"
+msgstr "Небо затягивает облаками, небольшой ветер"
+
+msgid "becoming cloudy and chilly"
+msgstr "Небо затягивает облаками, зябко"
+
+msgid "becoming cloudy and cold"
+msgstr "Небо затягивает облаками, холодно"
+
+msgid "becoming cloudy and cooler"
+msgstr "Небо затягивает облаками, прохладнее"
+
+msgid "becoming cloudy and hot"
+msgstr "Небо затягивает облаками, жарко"
+
+msgid "becoming cloudy and humid"
+msgstr "Небо затягивает облаками, влажно"
+
+msgid "becoming cloudy and mild"
+msgstr "Небо затягивает облаками, мягкая погода"
+
+msgid "becoming cloudy and very warm"
+msgstr "Небо затягивает облаками, очень тепло"
+
+msgid "becoming cloudy and warm"
+msgstr "Небо затягивает облаками, тепло"
+
+msgid "becoming cloudy and warmer"
+msgstr "Небо затягивает облаками, теплее"
+
+msgid "becoming cloudy with a shower"
+msgstr "Небо затягивает облаками, кратковременный дождь"
+
+msgid "becoming partly cloudy"
+msgstr "В дальнейшем переменная облачность"
+
+msgid "becoming windier and colder"
+msgstr "Ветер усиливается, холоднее"
+
+msgid "becoming windier and cooler"
+msgstr "Ветер усиливается, прохладнее"
+
+msgid "bitterly cold"
+msgstr "Сильный мороз"
+
+msgid "bitterly cold in the evening"
+msgstr "Вечером: сильный мороз"
+
+msgid "bitterly cold with clearing"
+msgstr "Сильный мороз, прояснение"
+
+msgid "bitterly cold with low clouds"
+msgstr "Сильный мороз, низкая облачность"
+
+msgid "blazing sunshine and hot"
+msgstr "Палящее солнце, жарко"
+
+msgid "blazing sunshine and warmer"
+msgstr "Палящее солнце, теплее"
+
+msgid "blowing dust"
+msgstr "Пыль, поднятая ветром"
+
+msgid "blowing dust with high clouds"
+msgstr "Пыль, поднятая ветром, высокая облачность"
+
+msgid "blowing snow"
+msgstr "Позёмка"
+
+msgid "breezy and cold"
+msgstr "Небольшой ветер, холодно"
+
+msgid "breezy and colder with rain"
+msgstr "Небольшой ветер, холоднее, дождь"
+
+msgid "breezy and cool"
+msgstr "Небольшой ветер, прохладно"
+
+msgid "breezy and cool with some sun"
+msgstr "Небольшой ветер, прохладно, временами солнечно"
+
+msgid "breezy and cooler with clouds"
+msgstr "Небольшой ветер, прохладнее, облачно"
+
+msgid "breezy and cooler with rain"
+msgstr "Небольшой ветер, прохладнее, дождь"
+
+msgid "breezy and hot with sunshine"
+msgstr "Небольшой ветер, жарко, солнечно"
+
+msgid "breezy and humid"
+msgstr "Небольшой ветер, влажно"
+
+msgid "breezy and mild"
+msgstr "Небольшой ветер, мягкая погода"
+
+msgid "breezy and mild with rain"
+msgstr "Небольшой ветер, мягкая погода, дождь"
+
+msgid "breezy and nice"
+msgstr "Небольшой ветер, комфортная погода"
+
+msgid "breezy and nice with some sun"
+msgstr "Небольшой ветер, комфортная погода, временами солнечно"
+
+msgid "breezy and nice with sunshine"
+msgstr "Небольшой ветер, комфортная погода, солнечно"
+
+msgid "breezy and pleasant"
+msgstr "Небольшой ветер, комфортная погода"
+
+msgid "breezy and quite cold"
+msgstr "Небольшой ветер, довольно холодно"
+
+msgid "breezy and very cold"
+msgstr "Небольшой ветер, очень холодно"
+
+msgid "breezy and warm with some sun"
+msgstr "Небольшой ветер, тепло, временами солнечно"
+
+msgid "breezy early"
+msgstr "В начале периода: небольшой ветер"
+
+msgid "breezy in the a.m."
+msgstr "Утром: небольшой ветер"
+
+msgid "breezy in the afternoon"
+msgstr "Днём: небольшой ветер"
+
+msgid "breezy in the morning"
+msgstr "Утром: небольшой ветер"
+
+msgid "breezy this morning"
+msgstr "Сегодня утром: небольшой ветер"
+
+msgid "breezy with clearing"
+msgstr "Небольшой ветер, прояснение"
+
+msgid "breezy with clouds and sun"
+msgstr "Небольшой ветер, облачность с прояснениями"
+
+msgid "breezy with decreasing clouds"
+msgstr "Небольшой ветер, облачность уменьшается"
+
+msgid "breezy with high clouds"
+msgstr "Небольшой ветер, высокая облачность"
+
+msgid "breezy with increasing clouds"
+msgstr "Небольшой ветер, облачность увеличивается"
+
+msgid "breezy with lots of sun"
+msgstr "Небольшой ветер, много солнца"
+
+msgid "breezy with partial sunshine"
+msgstr "Небольшой ветер, временами солнечно"
+
+msgid "breezy with patchy clouds"
+msgstr "Небольшой ветер, местами облачно"
+
+msgid "breezy with periods of rain"
+msgstr "Небольшой ветер, временами дождь"
+
+msgid "breezy with periods of snow"
+msgstr "Небольшой ветер, временами снег"
+
+msgid "breezy with periods of sun"
+msgstr "Небольшой ветер, временами солнечно"
+
+msgid "breezy with plenty of sun"
+msgstr "Небольшой ветер, много солнца"
+
+msgid "breezy with rain"
+msgstr "Небольшой ветер, дождь"
+
+msgid "breezy with rain and drizzle"
+msgstr "Небольшой ветер, дождь и морось"
+
+msgid "breezy with snow"
+msgstr "Небольшой ветер, снег"
+
+msgid "breezy with some sun"
+msgstr "Небольшой ветер, временами солнечно"
+
+msgid "breezy with sun and clouds"
+msgstr "Небольшой ветер, облачность с прояснениями"
+
+msgid "breezy with sunny intervals"
+msgstr "Небольшой ветер, временами солнечно"
+
+msgid "breezy with sunshine"
+msgstr "Небольшой ветер, солнечно"
+
+msgid "breezy with variable clouds"
+msgstr "Небольшой ветер, переменная облачность"
+
+msgid "brief a.m. showers"
+msgstr "Утром: непродолжительные дожди"
+
+msgid "brief afternoon showers"
+msgstr "Днём: непродолжительные дожди"
+
+msgid "brief evening showers"
+msgstr "Вечером: непродолжительные дожди"
+
+msgid "brief late-night showers"
+msgstr "Поздно ночью: непродолжительные дожди"
+
+msgid "brief morning showers"
+msgstr "Утром: непродолжительные дожди"
+
+msgid "brief showers"
+msgstr "Непродолжительные дожди"
+
+msgid "brief showers early"
+msgstr "В начале периода: непродолжительные дожди"
+
+msgid "brief showers in the evening"
+msgstr "Вечером: непродолжительные дожди"
+
+msgid "brief showers in the morning"
+msgstr "Утром: непродолжительные дожди"
+
+msgid "brief showers late"
+msgstr "Позднее: непродолжительные дожди"
+
+msgid "brief showers this afternoon"
+msgstr "Сегодня днём: непродолжительные дожди"
+
+msgid "brilliant sunshine"
+msgstr "Яркое солнце"
+
+msgid "brilliant sunshine and breezy"
+msgstr "Яркое солнце, небольшой ветер"
+
+msgid "brilliant sunshine and hot"
+msgstr "Яркое солнце, жарко"
+
+msgid "brilliant sunshine and hotter"
+msgstr "Яркое солнце, жарче"
+
+msgid "brilliant sunshine and nice"
+msgstr "Яркое солнце, комфортная погода"
+
+msgid "brilliant sunshine and warm"
+msgstr "Яркое солнце, тепло"
+
+msgid "brilliant sunshine and warmer"
+msgstr "Яркое солнце, теплее"
+
+msgid "brisk and chilly"
+msgstr "Свежий ветер, зябко"
+
+msgid "brisk and cold"
+msgstr "Свежий ветер, холодно"
+
+msgid "brisk and very cold"
+msgstr "Свежий ветер, очень холодно"
+
+msgid "but chilly"
+msgstr "Но зябко"
+
+msgid "but cold"
+msgstr "Но холодно"
+
+msgid "but very cold"
+msgstr "Но очень холодно"
+
+msgid "chance for a strong t-storm"
+msgstr "Возможны сильные грозы"
+
+msgid "chance for a thunderstorm"
+msgstr "Возможны грозы"
+
+msgid "chance for rain"
+msgstr "Возможен дождь"
+
+msgid "chance of a little a.m. rain"
+msgstr "Утром: возможен небольшой дождь"
+
+msgid "chance of a little p.m. rain"
+msgstr "Днём: возможен небольшой дождь"
+
+msgid "chance of a shower"
+msgstr "Возможны кратковременные дожди"
+
+msgid "chance of a thunderstorm"
+msgstr "Возможны грозы"
+
+msgid "chilly"
+msgstr "Зябко"
+
+msgid "chilly whit partial sunshine"
+msgstr "Зябко, временами солнечно"
+
+msgid "chilly whit some sun"
+msgstr "Зябко, временами солнечно"
+
+msgid "chilly with a little snow"
+msgstr "Зябко, небольшой снег"
+
+msgid "chilly with clearing"
+msgstr "Зябко, прояснение"
+
+msgid "chilly with clouds and sun"
+msgstr "Зябко, облачность с прояснениями"
+
+msgid "chilly with increasing clouds"
+msgstr "Зябко, облачность увеличивается"
+
+msgid "chilly with low clouds"
+msgstr "Зябко, низкая облачность"
+
+msgid "chilly with occasional rain"
+msgstr "Зябко, временами дождь"
+
+msgid "chilly with partial sunshine"
+msgstr "Зябко, временами солнечно"
+
+msgid "chilly with patchy clouds"
+msgstr "Зябко, местами облачно"
+
+msgid "chilly with periods of rain"
+msgstr "Зябко, временами дождь"
+
+msgid "chilly with periods of snow"
+msgstr "Зябко, временами снег"
+
+msgid "chilly with periods of sun"
+msgstr "Зябко, временами солнечно"
+
+msgid "chilly with plenty of sun"
+msgstr "Зябко, много солнца"
+
+msgid "chilly with rain"
+msgstr "Зябко, дождь"
+
+msgid "chilly with rain and drizzle"
+msgstr "Зябко, дождь и морось"
+
+msgid "chilly with snow and rain"
+msgstr "Зябко, дождь и снег"
+
+msgid "chilly with some sun"
+msgstr "Зябко, временами солнечно"
+
+msgid "chilly with sun and clouds"
+msgstr "Зябко, облачность с прояснениями"
+
+msgid "chilly with variable clouds"
+msgstr "Зябко, переменная облачность"
+
+msgid "clear and bitterly cold"
+msgstr "Ясно, сильный мороз"
+
+msgid "clear and breezy"
+msgstr "Ясно, небольшой ветер"
+
+msgid "clear and chilly"
+msgstr "Ясно, зябко"
+
+msgid "clear and cold"
+msgstr "Ясно, холодно"
+
+msgid "clear and colder"
+msgstr "Ясно, холоднее"
+
+msgid "clear and cool"
+msgstr "Ясно, прохладно"
+
+msgid "clear and cooler"
+msgstr "Ясно, прохладнее"
+
+msgid "clear and dry"
+msgstr "Ясно, сухо"
+
+msgid "clear and frigid"
+msgstr "Ясно, сильный мороз"
+
+msgid "clear and humid"
+msgstr "Ясно, влажно"
+
+msgid "clear and mild"
+msgstr "Ясно, мягкая погода"
+
+msgid "clear and much colder"
+msgstr "Ясно, значительно холоднее"
+
+msgid "clear and not as warm"
+msgstr "Ясно, не так тепло"
+
+msgid "clear and quite cold"
+msgstr "Ясно, довольно холодно"
+
+msgid "clear and seasonably cool"
+msgstr "Ясно, прохладно, как обычно в это время года"
+
+msgid "clear and seasonably warm"
+msgstr "Ясно, по сезону тепло"
+
+msgid "clear and unseasonably cold"
+msgstr "Ясно, необычно холодно для этого времени года"
+
+msgid "clear and very cold"
+msgstr "Ясно, очень холодно"
+
+msgid "clear and very humid"
+msgstr "Ясно, очень влажно"
+
+msgid "clear and very warm"
+msgstr "Ясно, очень тепло"
+
+msgid "clear and warm"
+msgstr "Ясно, тепло"
+
+msgid "clear and warmer"
+msgstr "Ясно, теплее"
+
+msgid "clear to partly cloudy"
+msgstr "Ясно или переменная облачность"
+
+msgid "clear with a gusty breeze"
+msgstr "Ясно, порывистый ветер"
+
+msgid "clearing"
+msgstr "Прояснение"
+
+msgid "clearing and a few showers"
+msgstr "Прояснение, отдельные кратковременные дожди"
+
+msgid "clearing and a stray t-storm"
+msgstr "Прояснение, местами грозы"
+
+msgid "clearing and chilly"
+msgstr "Прояснение, зябко"
+
+msgid "clearing and cold"
+msgstr "Прояснение, холодно"
+
+msgid "clearing and colder"
+msgstr "Прояснение, холоднее"
+
+msgid "clearing and cool"
+msgstr "Прояснение, прохладно"
+
+msgid "clearing and cooler"
+msgstr "Прояснение, прохладнее"
+
+msgid "clearing and hot"
+msgstr "Прояснение, жарко"
+
+msgid "clearing and humid"
+msgstr "Прояснение, влажно"
+
+msgid "clearing and mild"
+msgstr "Прояснение, мягкая погода"
+
+msgid "clearing and nice"
+msgstr "Прояснение, комфортная погода"
+
+msgid "clearing and not as warm"
+msgstr "Прояснение, не так тепло"
+
+msgid "clearing and pleasant"
+msgstr "Прояснение, комфортная погода"
+
+msgid "clearing and showers around"
+msgstr "Прояснение, местами кратковременный дождь"
+
+msgid "clearing and spotty showers"
+msgstr "Прояснение, местами кратковременный дождь"
+
+msgid "clearing and summerlike"
+msgstr "Прояснение, по-летнему тепло"
+
+msgid "clearing and unseasonably hot"
+msgstr "Прояснение, не по сезону жарко"
+
+msgid "clearing and very cold"
+msgstr "Прояснение, очень холодно"
+
+msgid "clearing and very warm"
+msgstr "Прояснение, очень тепло"
+
+msgid "clearing and warm"
+msgstr "Прояснение, тепло"
+
+msgid "clearing and warmer"
+msgstr "Прояснение, теплее"
+
+msgid "clearing with a shower late"
+msgstr "Прояснение. Позднее: кратковременный дождь"
+
+msgid "clouding up"
+msgstr "Облачность увеличивается"
+
+msgid "clouding up with a shower"
+msgstr "Облачность увеличивается, кратковременный дождь"
+
+msgid "clouds"
+msgstr "Облачно"
+
+msgid "clouds and a few showers"
+msgstr "Облачно, отдельные кратковременные дожди"
+
+msgid "clouds and a stray t-storm"
+msgstr "Облачно, местами грозы"
+
+msgid "clouds and a t-storm in spots"
+msgstr "Облачно, местами грозы"
+
+msgid "clouds and becoming rainy"
+msgstr "Облачно, начинается дождь"
+
+msgid "clouds and breaks of sun"
+msgstr "Облачно, временами солнечно"
+
+msgid "clouds and fog"
+msgstr "Облачно, туман"
+
+msgid "clouds and limited sun"
+msgstr "Облачно, мало солнца"
+
+msgid "clouds and showers"
+msgstr "Облачно, кратковременные дожди"
+
+msgid "clouds and showers around"
+msgstr "Облачно, местами кратковременный дождь"
+
+msgid "clouds and spotty showers"
+msgstr "Облачно, местами кратковременный дождь"
+
+msgid "clouds and sun"
+msgstr "Облачность с прояснениями"
+
+msgid "clouds and sun with a shower"
+msgstr "Облачность с прояснениями, кратковременный дождь"
+
+msgid "clouds and sun with a t-storm"
+msgstr "Облачность с прояснениями, гроза"
+
+msgid "clouds and sun with showers"
+msgstr "Облачность с прояснениями, кратковременные дожди"
+
+msgid "clouds and sunshine"
+msgstr "Облачность с прояснениями"
+
+msgid "clouds and very warm"
+msgstr "Облачно, очень тепло"
+
+msgid "clouds and warm"
+msgstr "Облачно, тепло"
+
+msgid "clouds and warm with a shower"
+msgstr "Облачно, тепло, кратковременный дождь"
+
+msgid "clouds break for sun"
+msgstr "Облачность уменьшается"
+
+msgid "clouds breaking"
+msgstr "Облачность уменьшается"
+
+msgid "clouds breaking and beautiful"
+msgstr "Облачность уменьшается, комфортная погода"
+
+msgid "clouds breaking and chilly"
+msgstr "Облачность уменьшается, зябко"
+
+msgid "clouds breaking and pleasant"
+msgstr "Облачность уменьшается, комфортная погода"
+
+msgid "clouds breaking and very warm"
+msgstr "Облачность уменьшается, очень тепло"
+
+msgid "clouds breaking for some sun"
+msgstr "Облачность уменьшается"
+
+msgid "clouds breaking for sun"
+msgstr "Облачность уменьшается"
+
+msgid "clouds breaking with a shower"
+msgstr "Облачность уменьшается, кратковременный дождь"
+
+msgid "clouds giving way to some sun"
+msgstr "Облачность уменьшается"
+
+msgid "clouds giving way to sun"
+msgstr "Облачность уменьшается"
+
+msgid "clouds limiting sun"
+msgstr "Облака закрывают солнце"
+
+msgid "clouds limiting sunshine"
+msgstr "Облака закрывают солнце"
+
+msgid "clouds rolling in"
+msgstr "Надвигаются облака"
+
+msgid "clouds rolling in and humid"
+msgstr "Надвигаются облака, влажно"
+
+msgid "clouds with a shower late"
+msgstr "Облачно. Позднее: кратковременный дождь"
+
+msgid "clouds with downpours late"
+msgstr "Облачно. Позднее: ливни"
+
+msgid "clouds with snow late"
+msgstr "Облачно. Позднее: снег"
+
+msgid "clouds yielding to some sun"
+msgstr "Облачность уменьшается"
+
+msgid "clouds yielding to sun"
+msgstr "Облачность уменьшается"
+
+msgid "cloudy and becoming rainy"
+msgstr "Облачно, начинается дождь"
+
+msgid "cloudy and bitterly cold"
+msgstr "Облачно, сильный мороз"
+
+msgid "cloudy and breezy"
+msgstr "Облачно, небольшой ветер"
+
+msgid "cloudy and chilly"
+msgstr "Облачно, зябко"
+
+msgid "cloudy and cold"
+msgstr "Облачно, холодно"
+
+msgid "cloudy and colder"
+msgstr "Облачно, холоднее"
+
+msgid "cloudy and comfortable"
+msgstr "Облачно, комфортная погода"
+
+msgid "cloudy and cool"
+msgstr "Облачно, прохладно"
+
+msgid "cloudy and cool with a shower"
+msgstr "Облачно, прохладно, кратковременный дождь"
+
+msgid "cloudy and cool with showers"
+msgstr "Облачно, прохладно, кратковременные дожди"
+
+msgid "cloudy and cooler"
+msgstr "Облачно, прохладнее"
+
+msgid "cloudy and frigid"
+msgstr "Облачно, сильный мороз"
+
+msgid "cloudy and hot"
+msgstr "Облачно, жарко"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "Облачно, жарко, гроза"
+
+msgid "cloudy and humid"
+msgstr "Облачно, влажно"
+
+msgid "cloudy and humid with showers"
+msgstr "Облачно, влажно, кратковременные дожди"
+
+msgid "cloudy and less humid"
+msgstr "Облачно, менее влажно"
+
+msgid "cloudy and mild"
+msgstr "Облачно, мягкая погода"
+
+msgid "cloudy and mild with a shower"
+msgstr "Облачно, мягкая погода, кратковременный дождь"
+
+msgid "cloudy and milder"
+msgstr "Облачно, мягче"
+
+msgid "cloudy and not as cold"
+msgstr "Облачно, не так холодно"
+
+msgid "cloudy and not as cool"
+msgstr "Облачно, не так прохладно"
+
+msgid "cloudy and not as hot"
+msgstr "Облачно, не так жарко"
+
+msgid "cloudy and not as warm"
+msgstr "Облачно, не так тепло"
+
+msgid "cloudy and remaining cool"
+msgstr "Облачно, по-прежнему прохладно"
+
+msgid "cloudy and remaining warm"
+msgstr "Облачно, по-прежнему тепло"
+
+msgid "cloudy and seasonably cold"
+msgstr "Облачно, по сезону холодно"
+
+msgid "cloudy and seasonably cool"
+msgstr "Облачно, прохладно, как обычно в это время года"
+
+msgid "cloudy and seasonably warm"
+msgstr "Облачно, по сезону тепло"
+
+msgid "cloudy and turning colder"
+msgstr "Облачно, холоднее"
+
+msgid "cloudy and very cold"
+msgstr "Облачно, очень холодно"
+
+msgid "cloudy and very humid"
+msgstr "Облачно, очень влажно"
+
+msgid "cloudy and very warm"
+msgstr "Облачно, очень тепло"
+
+msgid "cloudy and warm"
+msgstr "Облачно, тепло"
+
+msgid "cloudy and warm with a shower"
+msgstr "Облачно, тепло, кратковременный дождь"
+
+msgid "cloudy and warmer"
+msgstr "Облачно, теплее"
+
+msgid "cloudy and windy"
+msgstr "Облачно, ветрено"
+
+msgid "cloudy and windy with showers"
+msgstr "Облачно, ветрено, кратковременные дожди"
+
+msgid "cloudy most of the time"
+msgstr "Преимущественно облачно"
+
+msgid "cloudy spells with a t-storm"
+msgstr "Временами облачно, гроза"
+
+msgid "cloudy to partly sunny"
+msgstr "Облачно, затем с прояснениями"
+
+msgid "cloudy with a bit of ice"
+msgstr "Облачно, местами гололёд"
+
+msgid "cloudy with a bit of ice late"
+msgstr "Облачно. Позднее: местами гололёд"
+
+msgid "cloudy with a bit of rain"
+msgstr "Облачно, небольшой дождь"
+
+msgid "cloudy with a bit of snow"
+msgstr "Облачно, небольшой снег"
+
+msgid "cloudy with a brief shower"
+msgstr "Облачно, непродолжительные дожди"
+
+msgid "cloudy with a chance of rain"
+msgstr "Облачно, возможен дождь"
+
+msgid "cloudy with a downpour late"
+msgstr "Облачно. Позднее: ливни"
+
+msgid "cloudy with a few flurries"
+msgstr "Облачно, местами слабый кратковременный снег"
+
+msgid "cloudy with a few showers"
+msgstr "Облачно, отдельные кратковременные дожди"
+
+msgid "cloudy with a few snowflakes"
+msgstr "Облачно, отдельные снежинки"
+
+msgid "cloudy with a flurry"
+msgstr "Облачно, кратковременный слабый снег"
+
+msgid "cloudy with a flurry late"
+msgstr "Облачно. Позднее: кратковременный слабый снег"
+
+msgid "cloudy with a flurry or two"
+msgstr "Облачно, местами слабый кратковременный снег"
+
+msgid "cloudy with a heavy shower"
+msgstr "Облачно, сильные ливневые дожди"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "Облачно, сильные грозы"
+
+msgid "cloudy with a little rain"
+msgstr "Облачно, небольшой дождь"
+
+msgid "cloudy with a little snow"
+msgstr "Облачно, небольшой снег"
+
+msgid "cloudy with a passing shower"
+msgstr "Облачно, непродолжительные дожди"
+
+msgid "cloudy with a quick shower"
+msgstr "Облачно, непродолжительные дожди"
+
+msgid "cloudy with a shower"
+msgstr "Облачно, кратковременный дождь"
+
+msgid "cloudy with a shower in spots"
+msgstr "Облачно, местами кратковременный дождь"
+
+msgid "cloudy with a shower late"
+msgstr "Облачно. Позднее: кратковременный дождь"
+
+msgid "cloudy with a shower or two"
+msgstr "Облачно, один-два кратковременных дождя"
+
+msgid "cloudy with a shower possible"
+msgstr "Облачно, возможны кратковременные дожди"
+
+msgid "cloudy with a snow shower"
+msgstr "Облачно, кратковременный снег"
+
+msgid "cloudy with a stray flurry"
+msgstr "Облачно, местами слабый кратковременный снег"
+
+msgid "cloudy with a stray shower"
+msgstr "Облачно, местами кратковременный дождь"
+
+msgid "cloudy with a stray t-shower"
+msgstr "Облачно, местами грозовые ливни"
+
+msgid "cloudy with a stray t-storm"
+msgstr "Облачно, местами грозы"
+
+msgid "cloudy with a strong t-storm"
+msgstr "Облачно, сильные грозы"
+
+msgid "cloudy with a t-storm"
+msgstr "Облачно, гроза"
+
+msgid "cloudy with a t-storm around"
+msgstr "Облачно, местами грозы"
+
+msgid "cloudy with a t-storm late"
+msgstr "Облачно. Позднее: гроза"
+
+msgid "cloudy with a t-storm or two"
+msgstr "Облачно, отдельные грозы"
+
+msgid "cloudy with a thundershower"
+msgstr "Облачно, грозовой ливень"
+
+msgid "cloudy with a thunderstorm"
+msgstr "Облачно, гроза"
+
+msgid "cloudy with a touch of rain"
+msgstr "Облачно, небольшой дождь"
+
+msgid "cloudy with afternoon rain"
+msgstr "Облачно. Днём: дождь"
+
+msgid "cloudy with afternoon showers"
+msgstr "Облачно. Днём: кратковременные дожди"
+
+msgid "cloudy with blowing dust"
+msgstr "Облачно, пыль, поднятая ветром"
+
+msgid "cloudy with brief showers"
+msgstr "Облачно, непродолжительные дожди"
+
+msgid "cloudy with downpours"
+msgstr "Облачно, ливни"
+
+msgid "cloudy with downpours late"
+msgstr "Облачно. Позднее: ливни"
+
+msgid "cloudy with flurries"
+msgstr "Облачно, кратковременный слабый снег"
+
+msgid "cloudy with flurries late"
+msgstr "Облачно. Позднее: кратковременный слабый снег"
+
+msgid "cloudy with heavy rain late"
+msgstr "Облачно. Позднее: сильный дождь"
+
+msgid "cloudy with heavy showers"
+msgstr "Облачно, сильные ливневые дожди"
+
+msgid "cloudy with late-night rain"
+msgstr "Облачно. Поздно ночью: дождь"
+
+msgid "cloudy with occasional rain"
+msgstr "Облачно, временами дождь"
+
+msgid "cloudy with pouring rain late"
+msgstr "Облачно. Позднее: сильный дождь"
+
+msgid "cloudy with rain"
+msgstr "Облачно, дождь"
+
+msgid "cloudy with rain and drizzle"
+msgstr "Облачно, дождь и морось"
+
+msgid "cloudy with rain and ice late"
+msgstr "Облачно. Позднее: дождь и лёд"
+
+msgid "cloudy with rain beginning"
+msgstr "Облачно, начинается дождь"
+
+msgid "cloudy with rain developing"
+msgstr "Облачно, начинается дождь"
+
+msgid "cloudy with rain ending"
+msgstr "Облачно, дождь прекращается"
+
+msgid "cloudy with rain tapering off"
+msgstr "Облачно, дождь ослабевает"
+
+msgid "cloudy with showers"
+msgstr "Облачно, кратковременные дожди"
+
+msgid "cloudy with showers around"
+msgstr "Облачно, местами кратковременный дождь"
+
+msgid "cloudy with showers late"
+msgstr "Облачно. Позднее: кратковременные дожди"
+
+msgid "cloudy with snow"
+msgstr "Облачно, снег"
+
+msgid "cloudy with snow and ice"
+msgstr "Облачно, снег и лёд"
+
+msgid "cloudy with snow at times"
+msgstr "Облачно, временами снег"
+
+msgid "cloudy with snow showers"
+msgstr "Облачно, кратковременный снег"
+
+msgid "cloudy with snow showers late"
+msgstr "Облачно. Позднее: кратковременный снег"
+
+msgid "cloudy with snow tapering off"
+msgstr "Облачно, снегопад ослабевает"
+
+msgid "cloudy with spotty showers"
+msgstr "Облачно, местами кратковременный дождь"
+
+msgid "cloudy with t-storms"
+msgstr "Облачно, грозы"
+
+msgid "cloudy with thundershowers"
+msgstr "Облачно, грозовой ливень"
+
+msgid "cloudy with thunderstorms"
+msgstr "Облачно, грозы"
+
+msgid "cloudy with times of rain"
+msgstr "Облачно, временами дождь"
+
+msgid "cold"
+msgstr "Холодно"
+
+msgid "cold whit rain and drizzle"
+msgstr "Холодно, дождь и морось"
+
+msgid "cold with areas of low clouds"
+msgstr "Холодно, местами низкая облачность"
+
+msgid "cold with clearing"
+msgstr "Холодно, прояснение"
+
+msgid "cold with clouds and sun"
+msgstr "Холодно, облачность с прояснениями"
+
+msgid "cold with clouds and sunshine"
+msgstr "Холодно, облачность с прояснениями"
+
+msgid "cold with clouds breaking"
+msgstr "Холодно, облачность уменьшается"
+
+msgid "cold with considerable clouds"
+msgstr "Холодно, преимущественно облачно"
+
+msgid "cold with icy mix"
+msgstr "Холодно, смешанные осадки с ледяным дождём"
+
+msgid "cold with increasing clouds"
+msgstr "Холодно, облачность увеличивается"
+
+msgid "cold with low clouds"
+msgstr "Холодно, низкая облачность"
+
+msgid "cold with partial sunshine"
+msgstr "Холодно, временами солнечно"
+
+msgid "cold with patchy clouds"
+msgstr "Холодно, местами облачно"
+
+msgid "cold with periods of sun"
+msgstr "Холодно, временами солнечно"
+
+msgid "cold with plenty of clouds"
+msgstr "Холодно, преимущественно облачно"
+
+msgid "cold with plenty of sunshine"
+msgstr "Холодно, много солнца"
+
+msgid "cold with snow"
+msgstr "Холодно, снег"
+
+msgid "cold with snow and rain"
+msgstr "Холодно, дождь и снег"
+
+msgid "cold with snow at times"
+msgstr "Холодно, временами снег"
+
+msgid "cold with some sun"
+msgstr "Холодно, временами солнечно"
+
+msgid "cold with sun"
+msgstr "Холодно, солнечно"
+
+msgid "cold with variable clouds"
+msgstr "Холодно, переменная облачность"
+
+msgid "colder"
+msgstr "Холоднее"
+
+msgid "colder in the afternoon"
+msgstr "Днём: холоднее"
+
+msgid "colder in the morning"
+msgstr "Утром: холоднее"
+
+msgid "colder with a bit of snow"
+msgstr "Холоднее, небольшой снег"
+
+msgid "colder with a few showers"
+msgstr "Холоднее, отдельные кратковременные дожди"
+
+msgid "colder with a few snowflakes"
+msgstr "Холоднее, отдельные снежинки"
+
+msgid "colder with a little rain"
+msgstr "Холоднее, небольшой дождь"
+
+msgid "colder with a little snow"
+msgstr "Холоднее, небольшой снег"
+
+msgid "colder with a shower or two"
+msgstr "Холоднее, один-два кратковременных дождя"
+
+msgid "colder with a snow squall"
+msgstr "Холоднее, снежный шквал"
+
+msgid "colder with a stray shower"
+msgstr "Холоднее, местами кратковременный дождь"
+
+msgid "colder with increasing clouds"
+msgstr "Холоднее, облачность увеличивается"
+
+msgid "colder with low clouds"
+msgstr "Холоднее, низкая облачность"
+
+msgid "colder with occasional rain"
+msgstr "Холоднее, временами дождь"
+
+msgid "colder with partial sunshine"
+msgstr "Холоднее, временами солнечно"
+
+msgid "colder with periods of sun"
+msgstr "Холоднее, временами солнечно"
+
+msgid "colder with rain"
+msgstr "Холоднее, дождь"
+
+msgid "colder with showers around"
+msgstr "Холоднее, местами кратковременный дождь"
+
+msgid "colder with snow"
+msgstr "Холоднее, снег"
+
+msgid "colder with snow and rain"
+msgstr "Холоднее, дождь и снег"
+
+msgid "colder with snow at times"
+msgstr "Холоднее, временами снег"
+
+msgid "colder with snow showers"
+msgstr "Холоднее, кратковременный снег"
+
+msgid "colder with some sun"
+msgstr "Холоднее, временами солнечно"
+
+msgid "colder with spotty showers"
+msgstr "Холоднее, местами кратковременный дождь"
+
+msgid "comfortable"
+msgstr "Комфортная погода"
+
+msgid "comfortable with some sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "comfortable with sunshine"
+msgstr "Комфортная погода, солнечно"
+
+msgid "considerable cloudiness"
+msgstr "Преимущественно облачно"
+
+msgid "considerable clouds"
+msgstr "Преимущественно облачно"
+
+msgid "considerable clouds and humid"
+msgstr "Преимущественно облачно, влажно"
+
+msgid "considerable clouds and mild"
+msgstr "Преимущественно облачно, мягкая погода"
+
+msgid "considerable clouds and warm"
+msgstr "Преимущественно облачно, тепло"
+
+msgid "continued cloudy"
+msgstr "По-прежнему облачно"
+
+msgid "continued cloudy with showers"
+msgstr "По-прежнему облачно, кратковременные дожди"
+
+msgid "cool"
+msgstr "Прохладно"
+
+msgid "cool with a thick cloud cover"
+msgstr "Прохладно, пасмурно"
+
+msgid "cool with areas of low clouds"
+msgstr "Прохладно, местами низкая облачность"
+
+msgid "cool with clearing"
+msgstr "Прохладно, прояснение"
+
+msgid "cool with clouds and sun"
+msgstr "Прохладно, облачность с прояснениями"
+
+msgid "cool with clouds breaking"
+msgstr "Прохладно, облачность уменьшается"
+
+msgid "cool with decreasing clouds"
+msgstr "Прохладно, облачность уменьшается"
+
+msgid "cool with increasing clouds"
+msgstr "Прохладно, облачность увеличивается"
+
+msgid "cool with low clouds"
+msgstr "Прохладно, низкая облачность"
+
+msgid "cool with occasional rain"
+msgstr "Прохладно, временами дождь"
+
+msgid "cool with partial sunshine"
+msgstr "Прохладно, временами солнечно"
+
+msgid "cool with patchy clouds"
+msgstr "Прохладно, местами облачно"
+
+msgid "cool with periods of rain"
+msgstr "Прохладно, временами дождь"
+
+msgid "cool with periods of sun"
+msgstr "Прохладно, временами солнечно"
+
+msgid "cool with plenty of sun"
+msgstr "Прохладно, много солнца"
+
+msgid "cool with plenty of sunshine"
+msgstr "Прохладно, много солнца"
+
+msgid "cool with rain"
+msgstr "Прохладно, дождь"
+
+msgid "cool with rain and a t-storm"
+msgstr "Прохладно, дождь, гроза"
+
+msgid "cool with rain and drizzle"
+msgstr "Прохладно, дождь и морось"
+
+msgid "cool with some sun"
+msgstr "Прохладно, временами солнечно"
+
+msgid "cool with sun and clouds"
+msgstr "Прохладно, облачность с прояснениями"
+
+msgid "cool with sun and some clouds"
+msgstr "Прохладно, облачность с прояснениями"
+
+msgid "cool with sunny intervals"
+msgstr "Прохладно, временами солнечно"
+
+msgid "cool with thickening clouds"
+msgstr "Прохладно, облака сгущаются"
+
+msgid "cool with variable cloudiness"
+msgstr "Прохладно, переменная облачность"
+
+msgid "cool with variable clouds"
+msgstr "Прохладно, переменная облачность"
+
+msgid "cooler"
+msgstr "Прохладнее"
+
+msgid "cooler with a brief shower"
+msgstr "Прохладнее, непродолжительные дожди"
+
+msgid "cooler with a few showers"
+msgstr "Прохладнее, отдельные кратковременные дожди"
+
+msgid "cooler with a little rain"
+msgstr "Прохладнее, небольшой дождь"
+
+msgid "cooler with a little snow"
+msgstr "Прохладнее, небольшой снег"
+
+msgid "cooler with a passing shower"
+msgstr "Прохладнее, непродолжительные дожди"
+
+msgid "cooler with a shower"
+msgstr "Прохладнее, кратковременный дождь"
+
+msgid "cooler with a shower in spots"
+msgstr "Прохладнее, местами кратковременный дождь"
+
+msgid "cooler with a shower or two"
+msgstr "Прохладнее, один-два кратковременных дождя"
+
+msgid "cooler with a shower possible"
+msgstr "Прохладнее, возможны кратковременные дожди"
+
+msgid "cooler with a stray shower"
+msgstr "Прохладнее, местами кратковременный дождь"
+
+msgid "cooler with a stray t-shower"
+msgstr "Прохладнее, местами грозовые ливни"
+
+msgid "cooler with a stray t-storm"
+msgstr "Прохладнее, местами грозы"
+
+msgid "cooler with a t-storm or two"
+msgstr "Прохладнее, отдельные грозы"
+
+msgid "cooler with a thundershower"
+msgstr "Прохладнее, грозовой ливень"
+
+msgid "cooler with a thunderstorm"
+msgstr "Прохладнее, гроза"
+
+msgid "cooler with a touch of rain"
+msgstr "Прохладнее, небольшой дождь"
+
+msgid "cooler with clearing"
+msgstr "Прохладнее, прояснение"
+
+msgid "cooler with clouds and sun"
+msgstr "Прохладнее, облачность с прояснениями"
+
+msgid "cooler with clouds breaking"
+msgstr "Прохладнее, облачность уменьшается"
+
+msgid "cooler with decreasing clouds"
+msgstr "Прохладнее, облачность уменьшается"
+
+msgid "cooler with downpours"
+msgstr "Прохладнее, ливни"
+
+msgid "cooler with heavy showers"
+msgstr "Прохладнее, сильные ливневые дожди"
+
+msgid "cooler with high clouds"
+msgstr "Прохладнее, высокая облачность"
+
+msgid "cooler with increasing clouds"
+msgstr "Прохладнее, облачность увеличивается"
+
+msgid "cooler with low clouds"
+msgstr "Прохладнее, низкая облачность"
+
+msgid "cooler with morning showers"
+msgstr "Прохладнее. Утром: кратковременные дожди"
+
+msgid "cooler with occasional rain"
+msgstr "Прохладнее, временами дождь"
+
+msgid "cooler with partial sunshine"
+msgstr "Прохладнее, временами солнечно"
+
+msgid "cooler with periods of rain"
+msgstr "Прохладнее, временами дождь"
+
+msgid "cooler with periods of sun"
+msgstr "Прохладнее, временами солнечно"
+
+msgid "cooler with plenty of clouds"
+msgstr "Прохладнее, преимущественно облачно"
+
+msgid "cooler with plenty of sun"
+msgstr "Прохладнее, много солнца"
+
+msgid "cooler with rain"
+msgstr "Прохладнее, дождь"
+
+msgid "cooler with rain and drizzle"
+msgstr "Прохладнее, дождь и морось"
+
+msgid "cooler with rain at times"
+msgstr "Прохладнее, временами дождь"
+
+msgid "cooler with rain beginning"
+msgstr "Прохладнее, начинается дождь"
+
+msgid "cooler with rain tapering off"
+msgstr "Прохладнее, дождь ослабевает"
+
+msgid "cooler with showers"
+msgstr "Прохладнее, кратковременные дожди"
+
+msgid "cooler with showers around"
+msgstr "Прохладнее, местами кратковременный дождь"
+
+msgid "cooler with some brightening"
+msgstr "Прохладнее, небольшие прояснения"
+
+msgid "cooler with some sun"
+msgstr "Прохладнее, временами солнечно"
+
+msgid "cooler with spotty showers"
+msgstr "Прохладнее, местами кратковременный дождь"
+
+msgid "cooler with sun"
+msgstr "Прохладнее, солнечно"
+
+msgid "cooler with sun and clouds"
+msgstr "Прохладнее, облачность с прояснениями"
+
+msgid "cooler with sunny intervals"
+msgstr "Прохладнее, временами солнечно"
+
+msgid "cooler with thunderstorms"
+msgstr "Прохладнее, грозы"
+
+msgid "cooler with variable clouds"
+msgstr "Прохладнее, переменная облачность"
+
+msgid "couple of showers"
+msgstr "Один-два кратковременных дождя"
+
+msgid "couple of thunderstorms"
+msgstr "Отдельные грозы"
+
+msgid "damp early"
+msgstr "В начале периода: сыро"
+
+msgid "decreasing clouds"
+msgstr "Облачность уменьшается"
+
+msgid "decreasing clouds and breezy"
+msgstr "Облачность уменьшается, небольшой ветер"
+
+msgid "decreasing clouds and colder"
+msgstr "Облачность уменьшается, холоднее"
+
+msgid "decreasing clouds and cool"
+msgstr "Облачность уменьшается, прохладно"
+
+msgid "decreasing clouds and cooler"
+msgstr "Облачность уменьшается, прохладнее"
+
+msgid "decreasing clouds and humid"
+msgstr "Облачность уменьшается, влажно"
+
+msgid "decreasing clouds and warm"
+msgstr "Облачность уменьшается, тепло"
+
+msgid "decreasing clouds and warmer"
+msgstr "Облачность уменьшается, теплее"
+
+msgid "delightful"
+msgstr "Комфортная погода"
+
+msgid "delightful with plenty of sun"
+msgstr "Комфортная погода, много солнца"
+
+msgid "delightful with some sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "delightful with sunshine"
+msgstr "Комфортная погода, солнечно"
+
+msgid "dense fog"
+msgstr "Густой туман"
+
+msgid "downpours"
+msgstr "Ливни"
+
+msgid "downpours early"
+msgstr "В начале периода: ливни"
+
+msgid "downpours in the a.m."
+msgstr "Утром: ливни"
+
+msgid "downpours in the afternoon"
+msgstr "Днём: ливни"
+
+msgid "downpours in the evening"
+msgstr "Вечером: ливни"
+
+msgid "downpours in the morning"
+msgstr "Утром: ливни"
+
+msgid "downpours in the p.m."
+msgstr "Днём: ливни"
+
+msgid "downpours this evening"
+msgstr "Сегодня вечером: ливни"
+
+msgid "drizzle/rain"
+msgstr "Дождь и морось"
+
+msgid "dull and dreary"
+msgstr "Пасмурно и сумрачно"
+
+msgid "dull and dreary with showers"
+msgstr "Пасмурно и сумрачно, кратковременные дожди"
+
+msgid "early downpours"
+msgstr "В начале периода: ливни"
+
+msgid "early flurries"
+msgstr "В начале периода: кратковременный слабый снег"
+
+msgid "early rain"
+msgstr "В начале периода: дождь"
+
+msgid "early showers"
+msgstr "В начале периода: кратковременные дожди"
+
+msgid "early snow"
+msgstr "В начале периода: снег"
+
+msgid "early snow showers"
+msgstr "В начале периода: кратковременный снег"
+
+msgid "early t-showers"
+msgstr "В начале периода: грозовой ливень"
+
+msgid "early thunderstorms"
+msgstr "В начале периода: грозы"
+
+msgid "episodes of sunshine"
+msgstr "Временами солнечно"
+
+msgid "evening downpours"
+msgstr "Вечером: ливни"
+
+msgid "evening rain"
+msgstr "Вечером: дождь"
+
+msgid "evening rain and drizzle"
+msgstr "Вечером: дождь, морось"
+
+msgid "evening showers"
+msgstr "Вечером: кратковременные дожди"
+
+msgid "evening showers and t-storms"
+msgstr "Вечером: кратковременные дожди, грозы"
+
+msgid "evening snow showers"
+msgstr "Вечером: кратковременный снег"
+
+msgid "evening thundershowers"
+msgstr "Вечером: грозовой ливень"
+
+msgid "evening thunderstorms"
+msgstr "Вечером: грозы"
+
+msgid "flurries"
+msgstr "Кратковременный слабый снег"
+
+msgid "fog forming"
+msgstr "Образуется туман"
+
+msgid "fog in the a.m."
+msgstr "Утром: туман"
+
+msgid "fog in the morning"
+msgstr "Утром: туман"
+
+msgid "fog to sun"
+msgstr "После тумана солнечно"
+
+msgid "fog will lift this morning"
+msgstr "Сегодня утром: туман рассеется"
+
+msgid "foggy"
+msgstr "Туман"
+
+msgid "freezing early"
+msgstr "В начале периода: мороз"
+
+msgid "freezing fog"
+msgstr "Переохлаждённый туман"
+
+msgid "freezing fog this morning"
+msgstr "Сегодня утром: переохлаждённый туман"
+
+msgid "freezing late"
+msgstr "Позднее: мороз"
+
+msgid "frigid"
+msgstr "Сильный мороз"
+
+msgid "frigid in the evening"
+msgstr "Вечером: сильный мороз"
+
+msgid "frigid with a bit of snow"
+msgstr "Сильный мороз, небольшой снег"
+
+msgid "frigid with clouds and sun"
+msgstr "Сильный мороз, облачность с прояснениями"
+
+msgid "frigid with increasing clouds"
+msgstr "Сильный мороз, облачность увеличивается"
+
+msgid "frigid with low clouds"
+msgstr "Сильный мороз, низкая облачность"
+
+msgid "frigid with patchy clouds"
+msgstr "Сильный мороз, местами облачно"
+
+msgid "frigid with periods of snow"
+msgstr "Сильный мороз, временами снег"
+
+msgid "frigid with some sun"
+msgstr "Сильный мороз, временами солнечно"
+
+msgid "frigid with tapering off"
+msgstr "Сильный мороз, постепенно ослабевает"
+
+msgid "ground fog"
+msgstr "Поземный туман"
+
+msgid "gusty thunderstorms possible"
+msgstr "Возможны грозы с порывами ветра"
+
+msgid "hazy"
+msgstr "Дымка"
+
+msgid "hazy and humid"
+msgstr "Дымка, влажно"
+
+msgid "hazy and remaining very warm"
+msgstr "Дымка, по-прежнему очень тепло"
+
+msgid "hazy and seasonably warm"
+msgstr "Дымка, по сезону тепло"
+
+msgid "hazy and unseasonably hot"
+msgstr "Дымка, не по сезону жарко"
+
+msgid "hazy and very warm"
+msgstr "Дымка, очень тепло"
+
+msgid "hazy and warm"
+msgstr "Дымка, тепло"
+
+msgid "hazy clouds"
+msgstr "Облака и дымка"
+
+msgid "hazy sun"
+msgstr "Солнце в дымке"
+
+msgid "hazy sun and hot"
+msgstr "Солнце в дымке, жарко"
+
+msgid "hazy sun and summerlike"
+msgstr "Солнце в дымке, по-летнему тепло"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "Солнце в дымке, не по сезону жарко"
+
+msgid "hazy sun and very warm"
+msgstr "Солнце в дымке, очень тепло"
+
+msgid "hazy sunshine"
+msgstr "Солнце в дымке"
+
+msgid "hazy sunshine and hot"
+msgstr "Солнце в дымке, жарко"
+
+msgid "hazy sunshine and less humid"
+msgstr "Солнце в дымке, менее влажно"
+
+msgid "hazy sunshine and very warm"
+msgstr "Солнце в дымке, очень тепло"
+
+msgid "hazy with a t-storm in spots"
+msgstr "Дымка, местами грозы"
+
+msgid "heavy a.m. rain"
+msgstr "Утром: сильный дождь"
+
+msgid "heavy a.m. showers"
+msgstr "Утром: сильные ливневые дожди"
+
+msgid "heavy afternoon rain"
+msgstr "Днём: сильный дождь"
+
+msgid "heavy afternoon showers"
+msgstr "Днём: сильные ливневые дожди"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "Днём: сильные грозы"
+
+msgid "heavy evening rain"
+msgstr "Вечером: сильный дождь"
+
+msgid "heavy evening thunderstorms"
+msgstr "Вечером: сильные грозы"
+
+msgid "heavy late-night rain"
+msgstr "Поздно ночью: сильный дождь"
+
+msgid "heavy morning rain"
+msgstr "Утром: сильный дождь"
+
+msgid "heavy morning showers"
+msgstr "Утром: сильные ливневые дожди"
+
+msgid "heavy morning thunderstorms"
+msgstr "Утром: сильные грозы"
+
+msgid "heavy rain and a t-storm late"
+msgstr "Сильный дождь. Позднее: гроза"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "Сильный дождь, гроза"
+
+msgid "heavy rain and ice late"
+msgstr "Сильный дождь. Позднее: лёд"
+
+msgid "heavy rain developing"
+msgstr "Начинается сильный дождь"
+
+msgid "heavy rain in the afternoon"
+msgstr "Днём: сильный дождь"
+
+msgid "heavy rain shower"
+msgstr "Сильные ливневые дожди"
+
+msgid "heavy rain tapering off"
+msgstr "Сильный дождь ослабевает"
+
+msgid "heavy showers early"
+msgstr "В начале периода: сильные ливневые дожди"
+
+msgid "heavy showers in the evening"
+msgstr "Вечером: сильные ливневые дожди"
+
+msgid "heavy showers in the morning"
+msgstr "Утром: сильные ливневые дожди"
+
+msgid "heavy showers late"
+msgstr "Позднее: сильные ливневые дожди"
+
+msgid "heavy showers this afternoon"
+msgstr "Сегодня днём: сильные ливневые дожди"
+
+msgid "heavy showers this evening"
+msgstr "Сегодня вечером: сильные ливневые дожди"
+
+msgid "heavy showers this morning"
+msgstr "Сегодня утром: сильные ливневые дожди"
+
+msgid "heavy t-storms"
+msgstr "Сильные грозы"
+
+msgid "heavy t-storms early"
+msgstr "В начале периода: сильные грозы"
+
+msgid "heavy t-storms in the evening"
+msgstr "Вечером: сильные грозы"
+
+msgid "heavy t-storms late"
+msgstr "Позднее: сильные грозы"
+
+msgid "heavy thunderstorm"
+msgstr "Сильные грозы"
+
+msgid "heavy thunderstorms"
+msgstr "Сильные грозы"
+
+msgid "high clouds"
+msgstr "Высокая облачность"
+
+msgid "high clouds and breezy"
+msgstr "Высокая облачность, небольшой ветер"
+
+msgid "high clouds and chilly"
+msgstr "Высокая облачность, зябко"
+
+msgid "high clouds and cooler"
+msgstr "Высокая облачность, прохладнее"
+
+msgid "high clouds and hot"
+msgstr "Высокая облачность, жарко"
+
+msgid "high clouds and nice"
+msgstr "Высокая облачность, комфортная погода"
+
+msgid "high clouds and pleasant"
+msgstr "Высокая облачность, комфортная погода"
+
+msgid "high clouds and summerlike"
+msgstr "Высокая облачность, по-летнему тепло"
+
+msgid "high clouds and very warm"
+msgstr "Высокая облачность, очень тепло"
+
+msgid "high clouds and warm"
+msgstr "Высокая облачность, тепло"
+
+msgid "high clouds and warmer"
+msgstr "Высокая облачность, теплее"
+
+msgid "hot and humid with some sun"
+msgstr "Жарко, влажно, временами солнечно"
+
+msgid "hot with abundant sunshine"
+msgstr "Жарко, много солнца"
+
+msgid "hot with blazing sunshine"
+msgstr "Жарко, палящее солнце"
+
+msgid "hot with brilliant sunshine"
+msgstr "Жарко, яркое солнце"
+
+msgid "hot with clearing"
+msgstr "Жарко, прояснение"
+
+msgid "hot with clouds and sun"
+msgstr "Жарко, облачность с прояснениями"
+
+msgid "hot with clouds and sunshine"
+msgstr "Жарко, облачность с прояснениями"
+
+msgid "hot with clouds rolling in"
+msgstr "Жарко, надвигаются облака"
+
+msgid "hot with considerable clouds"
+msgstr "Жарко, преимущественно облачно"
+
+msgid "hot with decreasing clouds"
+msgstr "Жарко, облачность уменьшается"
+
+msgid "hot with hazy sun"
+msgstr "Жарко, солнце в дымке"
+
+msgid "hot with hazy sunshine"
+msgstr "Жарко, солнце в дымке"
+
+msgid "hot with high clouds"
+msgstr "Жарко, высокая облачность"
+
+msgid "hot with increasing clouds"
+msgstr "Жарко, облачность увеличивается"
+
+msgid "hot with more clouds than sun"
+msgstr "Жарко, преимущественно облачно"
+
+msgid "hot with more sun than clouds"
+msgstr "Жарко, преимущественно солнечно"
+
+msgid "hot with partial sunshine"
+msgstr "Жарко, временами солнечно"
+
+msgid "hot with periods of sun"
+msgstr "Жарко, временами солнечно"
+
+msgid "hot with periods of sunshine"
+msgstr "Жарко, временами солнечно"
+
+msgid "hot with plenty of sun"
+msgstr "Жарко, много солнца"
+
+msgid "hot with plenty of sunshine"
+msgstr "Жарко, много солнца"
+
+msgid "hot with rain and drizzle"
+msgstr "Жарко, дождь и морось"
+
+msgid "hot with some sun"
+msgstr "Жарко, временами солнечно"
+
+msgid "hot with some sunshine"
+msgstr "Жарко, временами солнечно"
+
+msgid "hot with sun"
+msgstr "Жарко, солнечно"
+
+msgid "hot with sun and clouds"
+msgstr "Жарко, облачность с прояснениями"
+
+msgid "hot with sun and some clouds"
+msgstr "Жарко, облачность с прояснениями"
+
+msgid "hot with sunny intervals"
+msgstr "Жарко, временами солнечно"
+
+msgid "hot with sunshine"
+msgstr "Жарко, солнечно"
+
+msgid "hot with variable cloudiness"
+msgstr "Жарко, переменная облачность"
+
+msgid "hot with variable clouds"
+msgstr "Жарко, переменная облачность"
+
+msgid "hotter"
+msgstr "Жарче"
+
+msgid "hotter with a stray t-storm"
+msgstr "Жарче, местами грозы"
+
+msgid "hotter with a t-storm around"
+msgstr "Жарче, местами грозы"
+
+msgid "hotter with a thunderstorm"
+msgstr "Жарче, гроза"
+
+msgid "hotter with abundant sunshine"
+msgstr "Жарче, много солнца"
+
+msgid "hotter with blazing sunshine"
+msgstr "Жарче, палящее солнце"
+
+msgid "hotter with partial sunshine"
+msgstr "Жарче, временами солнечно"
+
+msgid "hotter with plenty of sun"
+msgstr "Жарче, много солнца"
+
+msgid "hotter with sunshine"
+msgstr "Жарче, солнечно"
+
+msgid "humid"
+msgstr "Влажно"
+
+msgid "humid with a t-storm in spots"
+msgstr "Влажно, местами грозы"
+
+msgid "humid with clouds"
+msgstr "Влажно, облачно"
+
+msgid "humid with clouds and sun"
+msgstr "Влажно, облачность с прояснениями"
+
+msgid "humid with clouds breaking"
+msgstr "Влажно, облачность уменьшается"
+
+msgid "humid with cloudy spells"
+msgstr "Влажно, временами облачно"
+
+msgid "humid with high clouds"
+msgstr "Влажно, высокая облачность"
+
+msgid "humid with increasing clouds"
+msgstr "Влажно, облачность увеличивается"
+
+msgid "humid with low clouds"
+msgstr "Влажно, низкая облачность"
+
+msgid "humid with partial sunshine"
+msgstr "Влажно, временами солнечно"
+
+msgid "humid with patchy clouds"
+msgstr "Влажно, местами облачно"
+
+msgid "humid with periods of rain"
+msgstr "Влажно, временами дождь"
+
+msgid "humid with periods of sun"
+msgstr "Влажно, временами солнечно"
+
+msgid "humid with plenty of clouds"
+msgstr "Влажно, преимущественно облачно"
+
+msgid "humid with plenty of sun"
+msgstr "Влажно, много солнца"
+
+msgid "humid with plenty of sunshine"
+msgstr "Влажно, много солнца"
+
+msgid "humid with rain"
+msgstr "Влажно, дождь"
+
+msgid "humid with rain and a t-storm"
+msgstr "Влажно, дождь, гроза"
+
+msgid "humid with rain and drizzle"
+msgstr "Влажно, дождь и морось"
+
+msgid "humid with rain at times"
+msgstr "Влажно, временами дождь"
+
+msgid "humid with some brightening"
+msgstr "Влажно, небольшие прояснения"
+
+msgid "humid with some sun"
+msgstr "Влажно, временами солнечно"
+
+msgid "humid with sunny intervals"
+msgstr "Влажно, временами солнечно"
+
+msgid "humid with thickening clouds"
+msgstr "Влажно, облака сгущаются"
+
+msgid "humid with variable clouds"
+msgstr "Влажно, переменная облачность"
+
+msgid "ice and rain at times"
+msgstr "Лёд, временами дождь"
+
+msgid "increasing amounts of clouds"
+msgstr "Облачность увеличивается"
+
+msgid "increasing amounts of sun"
+msgstr "Всё больше солнца"
+
+msgid "increasing cloudiness"
+msgstr "Облачность увеличивается"
+
+msgid "increasing cloudiness and hot"
+msgstr "Облачность увеличивается, жарко"
+
+msgid "increasing clouds"
+msgstr "Облачность увеличивается"
+
+msgid "increasing clouds and chilly"
+msgstr "Облачность увеличивается, зябко"
+
+msgid "increasing clouds and cold"
+msgstr "Облачность увеличивается, холодно"
+
+msgid "increasing clouds and cool"
+msgstr "Облачность увеличивается, прохладно"
+
+msgid "increasing clouds and hot"
+msgstr "Облачность увеличивается, жарко"
+
+msgid "increasing clouds and hotter"
+msgstr "Облачность увеличивается, жарче"
+
+msgid "increasing clouds and humid"
+msgstr "Облачность увеличивается, влажно"
+
+msgid "increasing clouds and milder"
+msgstr "Облачность увеличивается, мягче"
+
+msgid "increasing clouds and warm"
+msgstr "Облачность увеличивается, тепло"
+
+msgid "increasing clouds and warmer"
+msgstr "Облачность увеличивается, теплее"
+
+msgid "increasingly windy"
+msgstr "Ветер усиливается"
+
+msgid "intermittent snow"
+msgstr "Временами снег"
+
+msgid "intervals of clouds and sun"
+msgstr "Облачность с прояснениями"
+
+msgid "jupiter"
+msgstr "Юпитер"
+
+msgid "late downpours"
+msgstr "Позднее: ливни"
+
+msgid "late flurries"
+msgstr "Позднее: кратковременный слабый снег"
+
+msgid "late rain"
+msgstr "Позднее: дождь"
+
+msgid "late snow"
+msgstr "Позднее: снег"
+
+msgid "late snow showers"
+msgstr "Позднее: кратковременный снег"
+
+msgid "late-night rain"
+msgstr "Поздно ночью: дождь"
+
+msgid "late-night showers"
+msgstr "Поздно ночью: кратковременные дожди"
+
+msgid "late-night snow"
+msgstr "Поздно ночью: снег"
+
+msgid "late-night thunderstorms"
+msgstr "Поздно ночью: грозы"
+
+msgid "less humid with plenty of sun"
+msgstr "Менее влажно, много солнца"
+
+msgid "less humid with some sun"
+msgstr "Менее влажно, временами солнечно"
+
+msgid "light fog"
+msgstr "Лёгкий туман"
+
+msgid "light snow"
+msgstr "Слабый снег"
+
+msgid "lots of sun"
+msgstr "Много солнца"
+
+msgid "lots of sun with a shower"
+msgstr "Много солнца, кратковременный дождь"
+
+msgid "low clouds"
+msgstr "Низкая облачность"
+
+msgid "low clouds and bitterly cold"
+msgstr "Низкая облачность, сильный мороз"
+
+msgid "low clouds and breezy"
+msgstr "Низкая облачность, небольшой ветер"
+
+msgid "low clouds and chilly"
+msgstr "Низкая облачность, зябко"
+
+msgid "low clouds and cold"
+msgstr "Низкая облачность, холодно"
+
+msgid "low clouds and colder"
+msgstr "Низкая облачность, холоднее"
+
+msgid "low clouds and cool"
+msgstr "Низкая облачность, прохладно"
+
+msgid "low clouds and cooler"
+msgstr "Низкая облачность, прохладнее"
+
+msgid "low clouds and fog"
+msgstr "Низкая облачность, туман"
+
+msgid "low clouds and fog and cooler"
+msgstr "Низкая облачность, туман, прохладнее"
+
+msgid "low clouds and freezing fog"
+msgstr "Низкая облачность, переохлаждённый туман"
+
+msgid "low clouds and frigid"
+msgstr "Низкая облачность, сильный мороз"
+
+msgid "low clouds and humid"
+msgstr "Низкая облачность, влажно"
+
+msgid "low clouds and mild"
+msgstr "Низкая облачность, мягкая погода"
+
+msgid "low clouds and not as cold"
+msgstr "Низкая облачность, не так холодно"
+
+msgid "low clouds and remaining cool"
+msgstr "Низкая облачность, по-прежнему прохладно"
+
+msgid "low clouds and spotty showers"
+msgstr "Низкая облачность, местами кратковременный дождь"
+
+msgid "low clouds and warmer"
+msgstr "Низкая облачность, теплее"
+
+msgid "low clouds break for some sun"
+msgstr "Низкие облака рассеиваются"
+
+msgid "low clouds breaking"
+msgstr "Низкие облака рассеиваются"
+
+msgid "low clouds breaking and humid"
+msgstr "Низкие облака рассеиваются, влажно"
+
+msgid "low clouds followed by sun"
+msgstr "Низкие облака рассеиваются"
+
+msgid "low clouds may break"
+msgstr "Низкая облачность может рассеяться"
+
+msgid "low clouds with a flurry late"
+msgstr "Низкая облачность. Позднее: кратковременный слабый снег"
+
+msgid "low clouds with rain late"
+msgstr "Низкая облачность. Позднее: дождь"
+
+msgid "low humidity with some sun"
+msgstr "Низкая влажность, временами солнечно"
+
+msgid "low humidity with sunshine"
+msgstr "Низкая влажность, солнечно"
+
+msgid "mainly clear and breezy"
+msgstr "Преимущественно ясно, небольшой ветер"
+
+msgid "mainly clear and chilly"
+msgstr "Преимущественно ясно, зябко"
+
+msgid "mainly clear and cold"
+msgstr "Преимущественно ясно, холодно"
+
+msgid "mainly clear and colder"
+msgstr "Преимущественно ясно, холоднее"
+
+msgid "mainly clear and cool"
+msgstr "Преимущественно ясно, прохладно"
+
+msgid "mainly clear and cooler"
+msgstr "Преимущественно ясно, прохладнее"
+
+msgid "mainly clear and frigid"
+msgstr "Преимущественно ясно, сильный мороз"
+
+msgid "mainly clear and humid"
+msgstr "Преимущественно ясно, влажно"
+
+msgid "mainly clear and mild"
+msgstr "Преимущественно ясно, мягкая погода"
+
+msgid "mainly clear and much colder"
+msgstr "Преимущественно ясно, значительно холоднее"
+
+msgid "mainly clear and not as warm"
+msgstr "Преимущественно ясно, не так тепло"
+
+msgid "mainly clear and very cold"
+msgstr "Преимущественно ясно, очень холодно"
+
+msgid "mainly clear and very humid"
+msgstr "Преимущественно ясно, очень влажно"
+
+msgid "mainly clear and very warm"
+msgstr "Преимущественно ясно, очень тепло"
+
+msgid "mainly clear and warm"
+msgstr "Преимущественно ясно, тепло"
+
+msgid "mainly clear and warmer"
+msgstr "Преимущественно ясно, теплее"
+
+msgid "mainly clear with a shower"
+msgstr "Преимущественно ясно, кратковременный дождь"
+
+msgid "mainly clear with a t-storm"
+msgstr "Преимущественно ясно, гроза"
+
+msgid "mainly cloudy"
+msgstr "Преимущественно облачно"
+
+msgid "mainly cloudy and chilly"
+msgstr "Преимущественно облачно, зябко"
+
+msgid "mainly cloudy and cold"
+msgstr "Преимущественно облачно, холодно"
+
+msgid "mainly cloudy and colder"
+msgstr "Преимущественно облачно, холоднее"
+
+msgid "mainly cloudy and cool"
+msgstr "Преимущественно облачно, прохладно"
+
+msgid "mainly cloudy and cooler"
+msgstr "Преимущественно облачно, прохладнее"
+
+msgid "mainly cloudy and frigid"
+msgstr "Преимущественно облачно, сильный мороз"
+
+msgid "mainly cloudy and hot"
+msgstr "Преимущественно облачно, жарко"
+
+msgid "mainly cloudy and humid"
+msgstr "Преимущественно облачно, влажно"
+
+msgid "mainly cloudy and summerlike"
+msgstr "Преимущественно облачно, по-летнему тепло"
+
+msgid "mainly cloudy and very warm"
+msgstr "Преимущественно облачно, очень тепло"
+
+msgid "mainly cloudy and warm"
+msgstr "Преимущественно облачно, тепло"
+
+msgid "mainly cloudy and warmer"
+msgstr "Преимущественно облачно, теплее"
+
+msgid "mainly cloudy with a shower"
+msgstr "Преимущественно облачно, кратковременный дождь"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "Преимущественно облачно, гроза"
+
+msgid "mainly cloudy with flurries"
+msgstr "Преимущественно облачно, кратковременный слабый снег"
+
+msgid "mainly cloudy with showers"
+msgstr "Преимущественно облачно, кратковременные дожди"
+
+msgid "mainly early"
+msgstr "Преимущественно в начале периода"
+
+msgid "mainly later"
+msgstr "Преимущественно в конце периода"
+
+msgid "mars"
+msgstr "Марс"
+
+msgid "mercury"
+msgstr "Меркурий"
+
+msgid "mild"
+msgstr "Мягкая погода"
+
+msgid "mild with abundant sunshine"
+msgstr "Мягкая погода, много солнца"
+
+msgid "mild with clouds and sun"
+msgstr "Мягкая погода, облачность с прояснениями"
+
+msgid "mild with clouds and sunshine"
+msgstr "Мягкая погода, облачность с прояснениями"
+
+msgid "mild with considerable clouds"
+msgstr "Мягкая погода, преимущественно облачно"
+
+msgid "mild with increasing clouds"
+msgstr "Мягкая погода, облачность увеличивается"
+
+msgid "mild with partial sunshine"
+msgstr "Мягкая погода, временами солнечно"
+
+msgid "mild with patchy clouds"
+msgstr "Мягкая погода, местами облачно"
+
+msgid "mild with periods of rain"
+msgstr "Мягкая погода, временами дождь"
+
+msgid "mild with periods of sun"
+msgstr "Мягкая погода, временами солнечно"
+
+msgid "mild with plenty of clouds"
+msgstr "Мягкая погода, преимущественно облачно"
+
+msgid "mild with plenty of sun"
+msgstr "Мягкая погода, много солнца"
+
+msgid "mild with plenty of sunshine"
+msgstr "Мягкая погода, много солнца"
+
+msgid "mild with some sun"
+msgstr "Мягкая погода, временами солнечно"
+
+msgid "mild with sun and clouds"
+msgstr "Мягкая погода, облачность с прояснениями"
+
+msgid "mild with sun and some clouds"
+msgstr "Мягкая погода, облачность с прояснениями"
+
+msgid "mild with sunny intervals"
+msgstr "Мягкая погода, временами солнечно"
+
+msgid "mild with sunshine"
+msgstr "Мягкая погода, солнечно"
+
+msgid "mild with thickening clouds"
+msgstr "Мягкая погода, облака сгущаются"
+
+msgid "mild with variable cloudiness"
+msgstr "Мягкая погода, переменная облачность"
+
+msgid "milder"
+msgstr "Мягче"
+
+msgid "milder with a shower in spots"
+msgstr "Мягче, местами кратковременный дождь"
+
+msgid "milder with brief showers"
+msgstr "Мягче, непродолжительные дожди"
+
+msgid "milder with clouds and sun"
+msgstr "Мягче, облачность с прояснениями"
+
+msgid "milder with increasing clouds"
+msgstr "Мягче, облачность увеличивается"
+
+msgid "milder with low clouds"
+msgstr "Мягче, низкая облачность"
+
+msgid "milder with periods of rain"
+msgstr "Мягче, временами дождь"
+
+msgid "milder with periods of sun"
+msgstr "Мягче, временами солнечно"
+
+msgid "milder with sun"
+msgstr "Мягче, солнечно"
+
+msgid "milder with thickening clouds"
+msgstr "Мягче, облака сгущаются"
+
+msgid "mist"
+msgstr "Лёгкий туман"
+
+msgid "mixed with snow early"
+msgstr "В начале периода: вперемешку со снегом"
+
+msgid "moderate rain"
+msgstr "Умеренный дождь"
+
+msgid "moon"
+msgstr "Луна"
+
+msgid "more clouds than sun"
+msgstr "Преимущественно облачно"
+
+msgid "more clouds than sunshine"
+msgstr "Преимущественно облачно"
+
+msgid "more sun than clouds"
+msgstr "Преимущественно солнечно"
+
+msgid "more sunshine than clouds"
+msgstr "Преимущественно солнечно"
+
+msgid "morning downpours"
+msgstr "Утром: ливни"
+
+msgid "morning flurries"
+msgstr "Утром: кратковременный слабый снег"
+
+msgid "morning rain"
+msgstr "Утром: дождь"
+
+msgid "morning showers"
+msgstr "Утром: кратковременные дожди"
+
+msgid "morning snow"
+msgstr "Утром: снег"
+
+msgid "morning snow showers"
+msgstr "Утром: кратковременный снег"
+
+msgid "morning t-showers"
+msgstr "Утром: грозовой ливень"
+
+msgid "morning thunderstorms"
+msgstr "Утром: грозы"
+
+msgid "mostly clear and chilly"
+msgstr "Преимущественно ясно, зябко"
+
+msgid "mostly clear and cold"
+msgstr "Преимущественно ясно, холодно"
+
+msgid "mostly clear and cool"
+msgstr "Преимущественно ясно, прохладно"
+
+msgid "mostly clear and cooler"
+msgstr "Преимущественно ясно, прохладнее"
+
+msgid "mostly clear and humid"
+msgstr "Преимущественно ясно, влажно"
+
+msgid "mostly clear and mild"
+msgstr "Преимущественно ясно, мягкая погода"
+
+msgid "mostly clear and very warm"
+msgstr "Преимущественно ясно, очень тепло"
+
+msgid "mostly clear with a shower"
+msgstr "Преимущественно ясно, кратковременный дождь"
+
+msgid "mostly cloudy and breezy"
+msgstr "Преимущественно облачно, небольшой ветер"
+
+msgid "mostly cloudy and chilly"
+msgstr "Преимущественно облачно, зябко"
+
+msgid "mostly cloudy and cold"
+msgstr "Преимущественно облачно, холодно"
+
+msgid "mostly cloudy and colder"
+msgstr "Преимущественно облачно, холоднее"
+
+msgid "mostly cloudy and comfortable"
+msgstr "Преимущественно облачно, комфортная погода"
+
+msgid "mostly cloudy and cool"
+msgstr "Преимущественно облачно, прохладно"
+
+msgid "mostly cloudy and cooler"
+msgstr "Преимущественно облачно, прохладнее"
+
+msgid "mostly cloudy and frigid"
+msgstr "Преимущественно облачно, сильный мороз"
+
+msgid "mostly cloudy and hot"
+msgstr "Преимущественно облачно, жарко"
+
+msgid "mostly cloudy and hotter"
+msgstr "Преимущественно облачно, жарче"
+
+msgid "mostly cloudy and humid"
+msgstr "Преимущественно облачно, влажно"
+
+msgid "mostly cloudy and less humid"
+msgstr "Преимущественно облачно, менее влажно"
+
+msgid "mostly cloudy and mild"
+msgstr "Преимущественно облачно, мягкая погода"
+
+msgid "mostly cloudy and milder"
+msgstr "Преимущественно облачно, мягче"
+
+msgid "mostly cloudy and misty"
+msgstr "Преимущественно облачно, лёгкий туман"
+
+msgid "mostly cloudy and misty late"
+msgstr "Преимущественно облачно. Позднее: лёгкий туман"
+
+msgid "mostly cloudy and not as cold"
+msgstr "Преимущественно облачно, не так холодно"
+
+msgid "mostly cloudy and not as cool"
+msgstr "Преимущественно облачно, не так прохладно"
+
+msgid "mostly cloudy and not as hot"
+msgstr "Преимущественно облачно, не так жарко"
+
+msgid "mostly cloudy and not as warm"
+msgstr "Преимущественно облачно, не так тепло"
+
+msgid "mostly cloudy and seasonable"
+msgstr "Преимущественно облачно, температура соответствует сезону"
+
+msgid "mostly cloudy and summerlike"
+msgstr "Преимущественно облачно, по-летнему тепло"
+
+msgid "mostly cloudy and very cold"
+msgstr "Преимущественно облачно, очень холодно"
+
+msgid "mostly cloudy and very hot"
+msgstr "Преимущественно облачно, очень жарко"
+
+msgid "mostly cloudy and very humid"
+msgstr "Преимущественно облачно, очень влажно"
+
+msgid "mostly cloudy and very warm"
+msgstr "Преимущественно облачно, очень тепло"
+
+msgid "mostly cloudy and warm"
+msgstr "Преимущественно облачно, тепло"
+
+msgid "mostly cloudy and warmer"
+msgstr "Преимущественно облачно, теплее"
+
+msgid "mostly cloudy and windy"
+msgstr "Преимущественно облачно, ветрено"
+
+msgid "mostly cloudy with a downpour"
+msgstr "Преимущественно облачно, ливни"
+
+msgid "mostly cloudy with a shower"
+msgstr "Преимущественно облачно, кратковременный дождь"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "Преимущественно облачно, грозовой ливень"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "Преимущественно облачно, гроза"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "Преимущественно облачно, смешанные осадки с ледяным дождём"
+
+msgid "mostly cloudy with downpours"
+msgstr "Преимущественно облачно, ливни"
+
+msgid "mostly cloudy with flurries"
+msgstr "Преимущественно облачно, кратковременный слабый снег"
+
+msgid "mostly cloudy with mist late"
+msgstr "Преимущественно облачно. Позднее: лёгкий туман"
+
+msgid "mostly cloudy with rain"
+msgstr "Преимущественно облачно, дождь"
+
+msgid "mostly cloudy with rain late"
+msgstr "Преимущественно облачно. Позднее: дождь"
+
+msgid "mostly cloudy with showers"
+msgstr "Преимущественно облачно, кратковременные дожди"
+
+msgid "mostly cloudy with snow late"
+msgstr "Преимущественно облачно. Позднее: снег"
+
+msgid "mostly cloudy with t-showers"
+msgstr "Преимущественно облачно, грозовой ливень"
+
+msgid "mostly cloudy with t-storms"
+msgstr "Преимущественно облачно, грозы"
+
+msgid "mostly sunny and beautiful"
+msgstr "Преимущественно солнечно, комфортная погода"
+
+msgid "mostly sunny and breezy"
+msgstr "Преимущественно солнечно, небольшой ветер"
+
+msgid "mostly sunny and chilly"
+msgstr "Преимущественно солнечно, зябко"
+
+msgid "mostly sunny and cold"
+msgstr "Преимущественно солнечно, холодно"
+
+msgid "mostly sunny and colder"
+msgstr "Преимущественно солнечно, холоднее"
+
+msgid "mostly sunny and comfortable"
+msgstr "Преимущественно солнечно, комфортная погода"
+
+msgid "mostly sunny and cool"
+msgstr "Преимущественно солнечно, прохладно"
+
+msgid "mostly sunny and cooler"
+msgstr "Преимущественно солнечно, прохладнее"
+
+msgid "mostly sunny and delightful"
+msgstr "Преимущественно солнечно, комфортная погода"
+
+msgid "mostly sunny and frigid"
+msgstr "Преимущественно солнечно, сильный мороз"
+
+msgid "mostly sunny and hot"
+msgstr "Преимущественно солнечно, жарко"
+
+msgid "mostly sunny and hotter"
+msgstr "Преимущественно солнечно, жарче"
+
+msgid "mostly sunny and humid"
+msgstr "Преимущественно солнечно, влажно"
+
+msgid "mostly sunny and less humid"
+msgstr "Преимущественно солнечно, менее влажно"
+
+msgid "mostly sunny and mild"
+msgstr "Преимущественно солнечно, мягкая погода"
+
+msgid "mostly sunny and milder"
+msgstr "Преимущественно солнечно, мягче"
+
+msgid "mostly sunny and nice"
+msgstr "Преимущественно солнечно, комфортная погода"
+
+msgid "mostly sunny and not as cold"
+msgstr "Преимущественно солнечно, не так холодно"
+
+msgid "mostly sunny and not as hot"
+msgstr "Преимущественно солнечно, не так жарко"
+
+msgid "mostly sunny and not as warm"
+msgstr "Преимущественно солнечно, не так тепло"
+
+msgid "mostly sunny and pleasant"
+msgstr "Преимущественно солнечно, комфортная погода"
+
+msgid "mostly sunny and quite cold"
+msgstr "Преимущественно солнечно, довольно холодно"
+
+msgid "mostly sunny and summerlike"
+msgstr "Преимущественно солнечно, по-летнему тепло"
+
+msgid "mostly sunny and very cold"
+msgstr "Преимущественно солнечно, очень холодно"
+
+msgid "mostly sunny and very hot"
+msgstr "Преимущественно солнечно, очень жарко"
+
+msgid "mostly sunny and very humid"
+msgstr "Преимущественно солнечно, очень влажно"
+
+msgid "mostly sunny and very warm"
+msgstr "Преимущественно солнечно, очень тепло"
+
+msgid "mostly sunny and warm"
+msgstr "Преимущественно солнечно, тепло"
+
+msgid "mostly sunny and warmer"
+msgstr "Преимущественно солнечно, теплее"
+
+msgid "mostly sunny and windy"
+msgstr "Преимущественно солнечно, ветрено"
+
+msgid "mostly sunny with a shower"
+msgstr "Преимущественно солнечно, кратковременный дождь"
+
+msgid "mostly sunny with a t-shower"
+msgstr "Преимущественно солнечно, грозовой ливень"
+
+msgid "mostly sunny with a t-storm"
+msgstr "Преимущественно солнечно, гроза"
+
+msgid "much colder"
+msgstr "Значительно холоднее"
+
+msgid "much colder with low clouds"
+msgstr "Значительно холоднее, низкая облачность"
+
+msgid "neptune"
+msgstr "Нептун"
+
+msgid "nice"
+msgstr "Комфортная погода"
+
+msgid "nice and warm"
+msgstr "Комфортная погода, тепло"
+
+msgid "nice and warm with some sun"
+msgstr "Комфортная погода, тепло, временами солнечно"
+
+msgid "nice and warm with sunshine"
+msgstr "Комфортная погода, тепло, солнечно"
+
+msgid "nice with abundant sunshine"
+msgstr "Комфортная погода, много солнца"
+
+msgid "nice with brilliant sunshine"
+msgstr "Комфортная погода, яркое солнце"
+
+msgid "nice with clouds"
+msgstr "Комфортная погода, облачно"
+
+msgid "nice with clouds and sun"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "nice with clouds and sunshine"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "nice with partial sunshine"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "nice with periods of sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "nice with periods of sunshine"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "nice with plenty of sun"
+msgstr "Комфортная погода, много солнца"
+
+msgid "nice with plenty of sunshine"
+msgstr "Комфортная погода, много солнца"
+
+msgid "nice with some sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "nice with some sunshine"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "nice with sun"
+msgstr "Комфортная погода, солнечно"
+
+msgid "nice with sun and clouds"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "nice with sun and some clouds"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "nice with sunny intervals"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "nice with sunshine"
+msgstr "Комфортная погода, солнечно"
+
+msgid "nice with variable cloudiness"
+msgstr "Комфортная погода, переменная облачность"
+
+msgid "nice with variable clouds"
+msgstr "Комфортная погода, переменная облачность"
+
+msgid "not as cold"
+msgstr "Не так холодно"
+
+msgid "not as cold with clearing"
+msgstr "Не так холодно, прояснение"
+
+msgid "not as cold with flurries"
+msgstr "Не так холодно, кратковременный слабый снег"
+
+msgid "not as cold with low clouds"
+msgstr "Не так холодно, низкая облачность"
+
+msgid "not as cold with snow showers"
+msgstr "Не так холодно, кратковременный снег"
+
+msgid "not as cold with some sun"
+msgstr "Не так холодно, временами солнечно"
+
+msgid "not as cool"
+msgstr "Не так прохладно"
+
+msgid "not as cool late"
+msgstr "Позднее: не так прохладно"
+
+msgid "not as cool with clearing"
+msgstr "Не так прохладно, прояснение"
+
+msgid "not as hot"
+msgstr "Не так жарко"
+
+msgid "not as hot with a shower"
+msgstr "Не так жарко, кратковременный дождь"
+
+msgid "not as hot with a t-storm"
+msgstr "Не так жарко, гроза"
+
+msgid "not as hot with some sun"
+msgstr "Не так жарко, временами солнечно"
+
+msgid "not as warm"
+msgstr "Не так тепло"
+
+msgid "not as warm but pleasant"
+msgstr "Не так тепло, комфортная погода"
+
+msgid "not as warm in the afternoon"
+msgstr "Днём: не так тепло"
+
+msgid "not as warm this afternoon"
+msgstr "Сегодня днём: не так тепло"
+
+msgid "not as warm with a shower"
+msgstr "Не так тепло, кратковременный дождь"
+
+msgid "not as warm with a t-shower"
+msgstr "Не так тепло, грозовой ливень"
+
+msgid "not as warm with a t-storm"
+msgstr "Не так тепло, гроза"
+
+msgid "not as warm with clearing"
+msgstr "Не так тепло, прояснение"
+
+msgid "not as warm with downpours"
+msgstr "Не так тепло, ливни"
+
+msgid "not as warm with high clouds"
+msgstr "Не так тепло, высокая облачность"
+
+msgid "not as warm with low clouds"
+msgstr "Не так тепло, низкая облачность"
+
+msgid "not as warm with morning rain"
+msgstr "Не так тепло. Утром: дождь"
+
+msgid "not as warm with rain"
+msgstr "Не так тепло, дождь"
+
+msgid "not as warm with rain ending"
+msgstr "Не так тепло, дождь прекращается"
+
+msgid "not as warm with showers"
+msgstr "Не так тепло, кратковременные дожди"
+
+msgid "not as warm with some sun"
+msgstr "Не так тепло, временами солнечно"
+
+msgid "occasional afternoon rain"
+msgstr "Днём: временами дождь"
+
+msgid "occasional evening rain"
+msgstr "Вечером: временами дождь"
+
+msgid "occasional late-night rain"
+msgstr "Поздно ночью: временами дождь"
+
+msgid "occasional morning rain"
+msgstr "Утром: временами дождь"
+
+msgid "occasional rain"
+msgstr "Временами дождь"
+
+msgid "occasional rain and a t-storm"
+msgstr "Временами дождь, гроза"
+
+msgid "occasional rain and drizzle"
+msgstr "Временами дождь, морось"
+
+msgid "occasional rain late"
+msgstr "Позднее: временами дождь"
+
+msgid "occasional snow and flurries"
+msgstr "Временами снег, кратковременный слабый снег"
+
+msgid "on-and-off rain and drizzle"
+msgstr "Временами дождь, морось"
+
+msgid "on-and-off snow"
+msgstr "Временами снег"
+
+msgid "otherwise"
+msgstr "В остальном"
+
+msgid "overcast and becoming rainy"
+msgstr "Пасмурно, начинается дождь"
+
+msgid "overcast and chilly"
+msgstr "Пасмурно, зябко"
+
+msgid "overcast and cold"
+msgstr "Пасмурно, холодно"
+
+msgid "overcast and cooler"
+msgstr "Пасмурно, прохладнее"
+
+msgid "overcast and frigid"
+msgstr "Пасмурно, сильный мороз"
+
+msgid "overcast and humid"
+msgstr "Пасмурно, влажно"
+
+msgid "overcast and mild"
+msgstr "Пасмурно, мягкая погода"
+
+msgid "overcast and not as warm"
+msgstr "Пасмурно, не так тепло"
+
+msgid "overcast and seasonably cold"
+msgstr "Пасмурно, по сезону холодно"
+
+msgid "overcast and seasonably warm"
+msgstr "Пасмурно, по сезону тепло"
+
+msgid "overcast and very warm"
+msgstr "Пасмурно, очень тепло"
+
+msgid "overcast and warm"
+msgstr "Пасмурно, тепло"
+
+msgid "overcast and windy"
+msgstr "Пасмурно, ветрено"
+
+msgid "overcast with a bit of rain"
+msgstr "Пасмурно, небольшой дождь"
+
+msgid "overcast with a bit of snow"
+msgstr "Пасмурно, небольшой снег"
+
+msgid "overcast with a brief shower"
+msgstr "Пасмурно, непродолжительные дожди"
+
+msgid "overcast with a few showers"
+msgstr "Пасмурно, отдельные кратковременные дожди"
+
+msgid "overcast with a little rain"
+msgstr "Пасмурно, небольшой дождь"
+
+msgid "overcast with a little snow"
+msgstr "Пасмурно, небольшой снег"
+
+msgid "overcast with a quick shower"
+msgstr "Пасмурно, непродолжительные дожди"
+
+msgid "overcast with a shower"
+msgstr "Пасмурно, кратковременный дождь"
+
+msgid "overcast with a shower late"
+msgstr "Пасмурно. Позднее: кратковременный дождь"
+
+msgid "overcast with a shower or two"
+msgstr "Пасмурно, один-два кратковременных дождя"
+
+msgid "overcast with a stray shower"
+msgstr "Пасмурно, местами кратковременный дождь"
+
+msgid "overcast with a stray t-storm"
+msgstr "Пасмурно, местами грозы"
+
+msgid "overcast with a t-storm late"
+msgstr "Пасмурно. Позднее: гроза"
+
+msgid "overcast with a thundershower"
+msgstr "Пасмурно, грозовой ливень"
+
+msgid "overcast with a thunderstorm"
+msgstr "Пасмурно, гроза"
+
+msgid "overcast with a touch of rain"
+msgstr "Пасмурно, небольшой дождь"
+
+msgid "overcast with brief showers"
+msgstr "Пасмурно, непродолжительные дожди"
+
+msgid "overcast with downpours"
+msgstr "Пасмурно, ливни"
+
+msgid "overcast with downpours late"
+msgstr "Пасмурно. Позднее: ливни"
+
+msgid "overcast with flurries"
+msgstr "Пасмурно, кратковременный слабый снег"
+
+msgid "overcast with heavy rain late"
+msgstr "Пасмурно. Позднее: сильный дождь"
+
+msgid "overcast with heavy showers"
+msgstr "Пасмурно, сильные ливневые дожди"
+
+msgid "overcast with late-night rain"
+msgstr "Пасмурно. Поздно ночью: дождь"
+
+msgid "overcast with occasional rain"
+msgstr "Пасмурно, временами дождь"
+
+msgid "overcast with rain developing"
+msgstr "Пасмурно, начинается дождь"
+
+msgid "overcast with rain late"
+msgstr "Пасмурно. Позднее: дождь"
+
+msgid "overcast with showers"
+msgstr "Пасмурно, кратковременные дожди"
+
+msgid "overcast with showers around"
+msgstr "Пасмурно, местами кратковременный дождь"
+
+msgid "overcast with showers late"
+msgstr "Пасмурно. Позднее: кратковременные дожди"
+
+msgid "overcast with snow showers"
+msgstr "Пасмурно, кратковременный снег"
+
+msgid "overcast with spotty showers"
+msgstr "Пасмурно, местами кратковременный дождь"
+
+msgid "overcast with thunderstorms"
+msgstr "Пасмурно, грозы"
+
+msgid "p.m. downpours"
+msgstr "Днём: ливни"
+
+msgid "p.m. flurries"
+msgstr "Днём: кратковременный слабый снег"
+
+msgid "p.m. snow"
+msgstr "Днём: снег"
+
+msgid "p.m. snow showers"
+msgstr "Днём: кратковременный снег"
+
+msgid "partial sunshine"
+msgstr "Временами солнечно"
+
+msgid "partly cloudy and breezy"
+msgstr "Небольшая облачность, небольшой ветер"
+
+msgid "partly cloudy and chilly"
+msgstr "Небольшая облачность, зябко"
+
+msgid "partly cloudy and cold"
+msgstr "Небольшая облачность, холодно"
+
+msgid "partly cloudy and colder"
+msgstr "Небольшая облачность, холоднее"
+
+msgid "partly cloudy and cool"
+msgstr "Небольшая облачность, прохладно"
+
+msgid "partly cloudy and cooler"
+msgstr "Небольшая облачность, прохладнее"
+
+msgid "partly cloudy and frigid"
+msgstr "Небольшая облачность, сильный мороз"
+
+msgid "partly cloudy and humid"
+msgstr "Небольшая облачность, влажно"
+
+msgid "partly cloudy and mild"
+msgstr "Небольшая облачность, мягкая погода"
+
+msgid "partly cloudy and much colder"
+msgstr "Небольшая облачность, значительно холоднее"
+
+msgid "partly cloudy and seasonable"
+msgstr "Небольшая облачность, температура соответствует сезону"
+
+msgid "partly cloudy and very cold"
+msgstr "Небольшая облачность, очень холодно"
+
+msgid "partly cloudy and very humid"
+msgstr "Небольшая облачность, очень влажно"
+
+msgid "partly cloudy and very warm"
+msgstr "Небольшая облачность, очень тепло"
+
+msgid "partly cloudy and warm"
+msgstr "Небольшая облачность, тепло"
+
+msgid "partly cloudy and windy"
+msgstr "Небольшая облачность, ветрено"
+
+msgid "partly cloudy with a shower"
+msgstr "Небольшая облачность, кратковременный дождь"
+
+msgid "partly cloudy with a t-storm"
+msgstr "Небольшая облачность, гроза"
+
+msgid "partly cloudy with flurries"
+msgstr "Небольшая облачность, кратковременный слабый снег"
+
+msgid "partly sunny"
+msgstr "Временами солнечно"
+
+msgid "partly sunny and beautiful"
+msgstr "Временами солнечно, комфортная погода"
+
+msgid "partly sunny and breezy"
+msgstr "Временами солнечно, небольшой ветер"
+
+msgid "partly sunny and chilly"
+msgstr "Временами солнечно, зябко"
+
+msgid "partly sunny and cold"
+msgstr "Временами солнечно, холодно"
+
+msgid "partly sunny and colder"
+msgstr "Временами солнечно, холоднее"
+
+msgid "partly sunny and comfortable"
+msgstr "Временами солнечно, комфортная погода"
+
+msgid "partly sunny and cool"
+msgstr "Временами солнечно, прохладно"
+
+msgid "partly sunny and cooler"
+msgstr "Временами солнечно, прохладнее"
+
+msgid "partly sunny and delightful"
+msgstr "Временами солнечно, комфортная погода"
+
+msgid "partly sunny and frigid"
+msgstr "Временами солнечно, сильный мороз"
+
+msgid "partly sunny and hot"
+msgstr "Временами солнечно, жарко"
+
+msgid "partly sunny and hotter"
+msgstr "Временами солнечно, жарче"
+
+msgid "partly sunny and humid"
+msgstr "Временами солнечно, влажно"
+
+msgid "partly sunny and less humid"
+msgstr "Временами солнечно, менее влажно"
+
+msgid "partly sunny and mild"
+msgstr "Временами солнечно, мягкая погода"
+
+msgid "partly sunny and milder"
+msgstr "Временами солнечно, мягче"
+
+msgid "partly sunny and nice"
+msgstr "Временами солнечно, комфортная погода"
+
+msgid "partly sunny and not as cold"
+msgstr "Временами солнечно, не так холодно"
+
+msgid "partly sunny and not as cool"
+msgstr "Временами солнечно, не так прохладно"
+
+msgid "partly sunny and not as hot"
+msgstr "Временами солнечно, не так жарко"
+
+msgid "partly sunny and not as warm"
+msgstr "Временами солнечно, не так тепло"
+
+msgid "partly sunny and pleasant"
+msgstr "Временами солнечно, комфортная погода"
+
+msgid "partly sunny and quite cold"
+msgstr "Временами солнечно, довольно холодно"
+
+msgid "partly sunny and seasonable"
+msgstr "Временами солнечно, температура соответствует сезону"
+
+msgid "partly sunny and summerlike"
+msgstr "Временами солнечно, по-летнему тепло"
+
+msgid "partly sunny and very cold"
+msgstr "Временами солнечно, очень холодно"
+
+msgid "partly sunny and very hot"
+msgstr "Временами солнечно, очень жарко"
+
+msgid "partly sunny and very humid"
+msgstr "Временами солнечно, очень влажно"
+
+msgid "partly sunny and very warm"
+msgstr "Временами солнечно, очень тепло"
+
+msgid "partly sunny and warm"
+msgstr "Временами солнечно, тепло"
+
+msgid "partly sunny and warmer"
+msgstr "Временами солнечно, теплее"
+
+msgid "partly sunny and windy"
+msgstr "Временами солнечно, ветрено"
+
+msgid "partly sunny with a shower"
+msgstr "Временами солнечно, кратковременный дождь"
+
+msgid "partly sunny with a t-shower"
+msgstr "Временами солнечно, грозовой ливень"
+
+msgid "partly sunny with a t-storm"
+msgstr "Временами солнечно, гроза"
+
+msgid "partly sunny with flurries"
+msgstr "Временами солнечно, кратковременный слабый снег"
+
+msgid "partly to mostly cloudy"
+msgstr "Переменная или значительная облачность"
+
+msgid "partly to mostly sunny"
+msgstr "Отчасти или преимущественно солнечно"
+
+msgid "patchy clouds"
+msgstr "Местами облачно"
+
+msgid "patchy clouds and breezy"
+msgstr "Местами облачно, небольшой ветер"
+
+msgid "patchy clouds and chilly"
+msgstr "Местами облачно, зябко"
+
+msgid "patchy clouds and cold"
+msgstr "Местами облачно, холодно"
+
+msgid "patchy clouds and cool"
+msgstr "Местами облачно, прохладно"
+
+msgid "patchy clouds and frigid"
+msgstr "Местами облачно, сильный мороз"
+
+msgid "patchy clouds and humid"
+msgstr "Местами облачно, влажно"
+
+msgid "patchy clouds and mild"
+msgstr "Местами облачно, мягкая погода"
+
+msgid "patchy clouds and very warm"
+msgstr "Местами облачно, очень тепло"
+
+msgid "patchy clouds and warm"
+msgstr "Местами облачно, тепло"
+
+msgid "patchy clouds with a shower"
+msgstr "Местами облачно, кратковременный дождь"
+
+msgid "patchy fog"
+msgstr "Местами туман"
+
+msgid "patchy fog freezing late"
+msgstr "Позднее: местами туман образует изморозь"
+
+msgid "patchy freezing fog"
+msgstr "Местами переохлаждённый туман"
+
+msgid "patchy low clouds and fog"
+msgstr "Местами низкая облачность, туман"
+
+msgid "perhaps snow late"
+msgstr "Позднее: возможен снег"
+
+msgid "periods of clouds and sun"
+msgstr "Облачность с прояснениями"
+
+msgid "periods of rain"
+msgstr "Временами дождь"
+
+msgid "periods of rain and a t-storm"
+msgstr "Временами дождь, гроза"
+
+msgid "periods of rain late"
+msgstr "Позднее: временами дождь"
+
+msgid "periods of rain this morning"
+msgstr "Сегодня утром: временами дождь"
+
+msgid "periods of snow"
+msgstr "Временами снег"
+
+msgid "periods of snow and rain"
+msgstr "Временами снег, дождь"
+
+msgid "periods of sun"
+msgstr "Временами солнечно"
+
+msgid "periods of sun with a shower"
+msgstr "Временами солнечно, кратковременный дождь"
+
+msgid "periods of sun with a t-storm"
+msgstr "Временами солнечно, гроза"
+
+msgid "periods of sunshine"
+msgstr "Временами солнечно"
+
+msgid "periods of wet snow"
+msgstr "Временами мокрый снег"
+
+msgid "pleasant"
+msgstr "Комфортная погода"
+
+msgid "pleasant and not as cool"
+msgstr "Комфортная погода, не так прохладно"
+
+msgid "pleasant and warmer"
+msgstr "Комфортная погода, теплее"
+
+msgid "pleasant with clouds and sun"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "pleasant with clouds breaking"
+msgstr "Комфортная погода, облачность уменьшается"
+
+msgid "pleasant with lots of sun"
+msgstr "Комфортная погода, много солнца"
+
+msgid "pleasant with periods of sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "pleasant with plenty of sun"
+msgstr "Комфортная погода, много солнца"
+
+msgid "pleasant with some sun"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "pleasant with some sunshine"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "pleasant with sun and clouds"
+msgstr "Комфортная погода, облачность с прояснениями"
+
+msgid "pleasant with sunny intervals"
+msgstr "Комфортная погода, временами солнечно"
+
+msgid "pleasant with sunshine"
+msgstr "Комфортная погода, солнечно"
+
+msgid "pleasant with variable clouds"
+msgstr "Комфортная погода, переменная облачность"
+
+msgid "pleasantly warm"
+msgstr "Приятно тепло"
+
+msgid "pleasantly warm with some sun"
+msgstr "Приятно тепло, временами солнечно"
+
+msgid "pleasantly warm with sunshine"
+msgstr "Приятно тепло, солнечно"
+
+msgid "plenty of clouds"
+msgstr "Преимущественно облачно"
+
+msgid "plenty of clouds with showers"
+msgstr "Преимущественно облачно, кратковременные дожди"
+
+msgid "plenty of sun"
+msgstr "Много солнца"
+
+msgid "plenty of sunshine"
+msgstr "Много солнца"
+
+msgid "pluto"
+msgstr "Плутон"
+
+msgid "quite cold"
+msgstr "Довольно холодно"
+
+msgid "rain and a t-storm"
+msgstr "Дождь, гроза"
+
+msgid "rain and a thunderstorm"
+msgstr "Дождь, гроза"
+
+msgid "rain and a thunderstorm early"
+msgstr "Дождь. В начале периода: гроза"
+
+msgid "rain and a thunderstorm late"
+msgstr "Дождь. Позднее: гроза"
+
+msgid "rain and drizzle"
+msgstr "Дождь и морось"
+
+msgid "rain and drizzle early"
+msgstr "В начале периода: дождь и морось"
+
+msgid "rain and drizzle in the a.m."
+msgstr "Утром: дождь и морось"
+
+msgid "rain and drizzle in the p.m."
+msgstr "Днём: дождь и морось"
+
+msgid "rain and drizzle late"
+msgstr "Позднее: дождь и морось"
+
+msgid "rain and drizzle this evening"
+msgstr "Сегодня вечером: дождь и морось"
+
+msgid "rain and drizzle this morning"
+msgstr "Сегодня утром: дождь и морось"
+
+msgid "rain and ice in the evening"
+msgstr "Вечером: дождь и лёд"
+
+msgid "rain and snow"
+msgstr "Дождь и снег"
+
+msgid "rain and snow shower"
+msgstr "Кратковременные дожди и снег"
+
+msgid "rain and snow showers"
+msgstr "Кратковременные дожди и снег"
+
+msgid "rain and snow showers early"
+msgstr "В начале периода: кратковременные дожди и снег"
+
+msgid "rain and snow showers late"
+msgstr "Позднее: кратковременные дожди и снег"
+
+msgid "rain at times"
+msgstr "Временами дождь"
+
+msgid "rain at times in the evening"
+msgstr "Вечером: временами дождь"
+
+msgid "rain at times late"
+msgstr "Позднее: временами дождь"
+
+msgid "rain becoming heavier"
+msgstr "Дождь усиливается"
+
+msgid "rain becoming steadier"
+msgstr "Дождь становится более продолжительным"
+
+msgid "rain ending"
+msgstr "Дождь прекращается"
+
+msgid "rain in the afternoon"
+msgstr "Днём: дождь"
+
+msgid "rain in the evening"
+msgstr "Вечером: дождь"
+
+msgid "rain in the morning"
+msgstr "Утром: дождь"
+
+msgid "rain late in the afternoon"
+msgstr "Ближе к вечеру: дождь"
+
+msgid "rain mixing in"
+msgstr "Примешивается дождь"
+
+msgid "rain tapering off"
+msgstr "Дождь ослабевает"
+
+msgid "rain tapering to showers"
+msgstr "Дождь ослабевает и становится кратковременным"
+
+msgid "rain this morning"
+msgstr "Сегодня утром: дождь"
+
+msgid "rain to ice"
+msgstr "После дождя образуется лёд"
+
+msgid "rain to snow"
+msgstr "Дождь переходит в снег"
+
+msgid "rain/drizzle"
+msgstr "Дождь и морось"
+
+msgid "rain/snow"
+msgstr "Дождь и снег"
+
+msgid "rainy spells in the morning"
+msgstr "Утром: временами дождь"
+
+msgid "rainy times in the afternoon"
+msgstr "Днём: временами дождь"
+
+msgid "rainy times in the morning"
+msgstr "Утром: временами дождь"
+
+msgid "rainy times late"
+msgstr "Позднее: временами дождь"
+
+msgid "rather cloudy"
+msgstr "Довольно облачно"
+
+msgid "rather cloudy and breezy"
+msgstr "Довольно облачно, небольшой ветер"
+
+msgid "rather cloudy and chilly"
+msgstr "Довольно облачно, зябко"
+
+msgid "rather cloudy and cold"
+msgstr "Довольно облачно, холодно"
+
+msgid "rather cloudy and cool"
+msgstr "Довольно облачно, прохладно"
+
+msgid "rather cloudy and cooler"
+msgstr "Довольно облачно, прохладнее"
+
+msgid "rather cloudy and hot"
+msgstr "Довольно облачно, жарко"
+
+msgid "rather cloudy and humid"
+msgstr "Довольно облачно, влажно"
+
+msgid "rather cloudy and mild"
+msgstr "Довольно облачно, мягкая погода"
+
+msgid "rather cloudy and not as cold"
+msgstr "Довольно облачно, не так холодно"
+
+msgid "rather cloudy and not as warm"
+msgstr "Довольно облачно, не так тепло"
+
+msgid "rather cloudy and summerlike"
+msgstr "Довольно облачно, по-летнему тепло"
+
+msgid "rather cloudy and very cold"
+msgstr "Довольно облачно, очень холодно"
+
+msgid "rather cloudy and very warm"
+msgstr "Довольно облачно, очень тепло"
+
+msgid "rather cloudy and warm"
+msgstr "Довольно облачно, тепло"
+
+msgid "rather cloudy and warmer"
+msgstr "Довольно облачно, теплее"
+
+msgid "rather cloudy with a shower"
+msgstr "Довольно облачно, кратковременный дождь"
+
+msgid "rather cloudy with a t-storm"
+msgstr "Довольно облачно, гроза"
+
+msgid "rather cloudy with rain late"
+msgstr "Довольно облачно. Позднее: дождь"
+
+msgid "rather cloudy with showers"
+msgstr "Довольно облачно, кратковременные дожди"
+
+msgid "remaining cloudy"
+msgstr "По-прежнему облачно"
+
+msgid "remaining cloudy and cold"
+msgstr "По-прежнему облачно, холодно"
+
+msgid "remaining cloudy and warmer"
+msgstr "По-прежнему облачно, теплее"
+
+msgid "remaining cloudy with showers"
+msgstr "По-прежнему облачно, кратковременные дожди"
+
+msgid "remaining cool with some sun"
+msgstr "По-прежнему прохладно, временами солнечно"
+
+msgid "remaining warm"
+msgstr "По-прежнему тепло"
+
+msgid "remaining warm with some sun"
+msgstr "По-прежнему тепло, временами солнечно"
+
+msgid "remaining warm with sunshine"
+msgstr "По-прежнему тепло, солнечно"
+
+msgid "rising temperatures"
+msgstr "Температура повышается"
+
+msgid "rising temperatures early"
+msgstr "В начале периода: температура повышается"
+
+msgid "rising temperatures late"
+msgstr "Позднее: температура повышается"
+
+msgid "saturn"
+msgstr "Сатурн"
+
+msgid "seasonably warm"
+msgstr "По сезону тепло"
+
+msgid "seasonably warm with sunshine"
+msgstr "По сезону тепло, солнечно"
+
+msgid "shower"
+msgstr "Кратковременный дождь"
+
+msgid "shower and thunderstorm"
+msgstr "Кратковременный дождь, гроза"
+
+msgid "showers and a heavier t-storm"
+msgstr "Кратковременные дожди, сильные грозы"
+
+msgid "showers and heavy t-storms"
+msgstr "Кратковременные дожди, сильные грозы"
+
+msgid "showers and thunderstorm"
+msgstr "Кратковременные дожди, гроза"
+
+msgid "showers and thunderstorms"
+msgstr "Кратковременные дожди, грозы"
+
+msgid "showers around"
+msgstr "Местами кратковременный дождь"
+
+msgid "showers around early"
+msgstr "В начале периода: местами кратковременный дождь"
+
+msgid "showers around in the evening"
+msgstr "Вечером: местами кратковременный дождь"
+
+msgid "showers around in the morning"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "showers around in the p.m."
+msgstr "Днём: местами кратковременный дождь"
+
+msgid "showers around late"
+msgstr "Позднее: местами кратковременный дождь"
+
+msgid "showers around this afternoon"
+msgstr "Сегодня днём: местами кратковременный дождь"
+
+msgid "showers around this evening"
+msgstr "Сегодня вечером: местами кратковременный дождь"
+
+msgid "showers early in the morning"
+msgstr "Ранним утром: кратковременные дожди"
+
+msgid "showers early this morning"
+msgstr "Ранним утром: кратковременные дожди"
+
+msgid "showers in the afternoon"
+msgstr "Днём: кратковременные дожди"
+
+msgid "showers in the evening"
+msgstr "Вечером: кратковременные дожди"
+
+msgid "showers in the morning"
+msgstr "Утром: кратковременные дожди"
+
+msgid "showers late"
+msgstr "Позднее: кратковременные дожди"
+
+msgid "showers late in the afternoon"
+msgstr "Ближе к вечеру: кратковременные дожди"
+
+msgid "showers late this afternoon"
+msgstr "Ближе к вечеру: кратковременные дожди"
+
+msgid "showers late this morning"
+msgstr "Ближе к полудню: кратковременные дожди"
+
+msgid "showers of rain and snow"
+msgstr "Кратковременные дожди и снег"
+
+msgid "showers of rain and snow late"
+msgstr "Позднее: кратковременные дожди и снег"
+
+msgid "showers possible"
+msgstr "Возможны кратковременные дожди"
+
+msgid "showers this evening"
+msgstr "Сегодня вечером: кратковременные дожди"
+
+msgid "showers this morning"
+msgstr "Сегодня утром: кратковременные дожди"
+
+msgid "sleet and freezing rain late"
+msgstr "Мокрый снег. Позднее: ледяной дождь"
+
+msgid "snow and rain"
+msgstr "Дождь и снег"
+
+msgid "snow and rain in the morning"
+msgstr "Утром: дождь и снег"
+
+msgid "snow and rain late"
+msgstr "Позднее: дождь и снег"
+
+msgid "snow and rain this morning"
+msgstr "Сегодня утром: дождь и снег"
+
+msgid "snow and sleet at times"
+msgstr "Временами снег и ледяная крупа"
+
+msgid "snow at times"
+msgstr "Временами снег"
+
+msgid "snow in the evening"
+msgstr "Вечером: снег"
+
+msgid "snow late in the p.m."
+msgstr "Днём: позднее: снег"
+
+msgid "snow late this afternoon"
+msgstr "Ближе к вечеру: снег"
+
+msgid "snow late this morning"
+msgstr "Ближе к полудню: снег"
+
+msgid "snow much of the time"
+msgstr "Снег большую часть времени"
+
+msgid "snow of varying rates"
+msgstr "Снег разной интенсивности"
+
+msgid "snow showers in the afternoon"
+msgstr "Днём: кратковременный снег"
+
+msgid "snow showers in the morning"
+msgstr "Утром: кратковременный снег"
+
+msgid "snow showers late"
+msgstr "Позднее: кратковременный снег"
+
+msgid "snow showers this evening"
+msgstr "Сегодня вечером: кратковременный снег"
+
+msgid "snow tapering off"
+msgstr "Снегопад ослабевает"
+
+msgid "snow tapering to flurries"
+msgstr "Снегопад ослабевает до небольших кратковременных осадков"
+
+msgid "some brightening"
+msgstr "Небольшие прояснения"
+
+msgid "some brightening and hot"
+msgstr "Небольшие прояснения, жарко"
+
+msgid "some brightening and humid"
+msgstr "Небольшие прояснения, влажно"
+
+msgid "some brightening and warm"
+msgstr "Небольшие прояснения, тепло"
+
+msgid "some brightening and warmer"
+msgstr "Небольшие прояснения, теплее"
+
+msgid "some clouds"
+msgstr "Немного облаков"
+
+msgid "some clouds with a shower"
+msgstr "Немного облаков, кратковременный дождь"
+
+msgid "some clouds with a t-storm"
+msgstr "Немного облаков, гроза"
+
+msgid "some clouds with rain late"
+msgstr "Немного облаков. Позднее: дождь"
+
+msgid "some ice early"
+msgstr "В начале периода: местами гололёд"
+
+msgid "some rain and a t-storm early"
+msgstr "Небольшой дождь. В начале периода: гроза"
+
+msgid "some rain and a t-storm late"
+msgstr "Небольшой дождь. Позднее: гроза"
+
+msgid "some rain and a thunderstorm"
+msgstr "Небольшой дождь, гроза"
+
+msgid "some snow"
+msgstr "Небольшой снег"
+
+msgid "some sun"
+msgstr "Временами солнечно"
+
+msgid "some sun and pleasant"
+msgstr "Временами солнечно, комфортная погода"
+
+msgid "some sun returning"
+msgstr "Небольшие прояснения"
+
+msgid "some sun with a brief shower"
+msgstr "Временами солнечно, непродолжительные дожди"
+
+msgid "some sun with a cool breeze"
+msgstr "Временами солнечно, прохладный ветерок"
+
+msgid "some sun with a few showers"
+msgstr "Временами солнечно, отдельные кратковременные дожди"
+
+msgid "some sun with a gusty breeze"
+msgstr "Временами солнечно, порывистый ветер"
+
+msgid "some sun with a heavy t-storm"
+msgstr "Временами солнечно, сильные грозы"
+
+msgid "some sun with a little rain"
+msgstr "Временами солнечно, небольшой дождь"
+
+msgid "some sun with a quick shower"
+msgstr "Временами солнечно, непродолжительные дожди"
+
+msgid "some sun with a shower"
+msgstr "Временами солнечно, кратковременный дождь"
+
+msgid "some sun with a shower or two"
+msgstr "Временами солнечно, один-два кратковременных дождя"
+
+msgid "some sun with a stray shower"
+msgstr "Временами солнечно, местами кратковременный дождь"
+
+msgid "some sun with a stray t-storm"
+msgstr "Временами солнечно, местами грозы"
+
+msgid "some sun with a t-storm"
+msgstr "Временами солнечно, гроза"
+
+msgid "some sun with a thundershower"
+msgstr "Временами солнечно, грозовой ливень"
+
+msgid "some sun with a thunderstorm"
+msgstr "Временами солнечно, гроза"
+
+msgid "some sun with low humidity"
+msgstr "Временами солнечно, низкая влажность"
+
+msgid "some sun with occasional rain"
+msgstr "Временами солнечно, временами дождь"
+
+msgid "some sun with showers"
+msgstr "Временами солнечно, кратковременные дожди"
+
+msgid "some sun with showers around"
+msgstr "Временами солнечно, местами кратковременный дождь"
+
+msgid "some sun with spotty showers"
+msgstr "Временами солнечно, местами кратковременный дождь"
+
+msgid "some sunshine"
+msgstr "Временами солнечно"
+
+msgid "some sunshine with a shower"
+msgstr "Временами солнечно, кратковременный дождь"
+
+msgid "spotty afternoon showers"
+msgstr "Днём: местами кратковременный дождь"
+
+msgid "spotty drizzle in the morning"
+msgstr "Утром: местами морось"
+
+msgid "spotty drizzle this morning"
+msgstr "Сегодня утром: местами морось"
+
+msgid "spotty evening showers"
+msgstr "Вечером: местами кратковременный дождь"
+
+msgid "spotty late-night showers"
+msgstr "Поздно ночью: местами кратковременный дождь"
+
+msgid "spotty morning showers"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "spotty showers"
+msgstr "Местами кратковременный дождь"
+
+msgid "spotty showers in the evening"
+msgstr "Вечером: местами кратковременный дождь"
+
+msgid "spotty showers in the morning"
+msgstr "Утром: местами кратковременный дождь"
+
+msgid "spotty showers late"
+msgstr "Позднее: местами кратковременный дождь"
+
+msgid "spotty showers this afternoon"
+msgstr "Сегодня днём: местами кратковременный дождь"
+
+msgid "spotty showers this morning"
+msgstr "Сегодня утром: местами кратковременный дождь"
+
+msgid "still cloudy"
+msgstr "По-прежнему облачно"
+
+msgid "still cloudy and warmer"
+msgstr "По-прежнему облачно, теплее"
+
+msgid "still cloudy with a shower"
+msgstr "По-прежнему облачно, кратковременный дождь"
+
+msgid "still cloudy with showers"
+msgstr "По-прежнему облачно, кратковременные дожди"
+
+msgid "strong afternoon t-storms"
+msgstr "Днём: сильные грозы"
+
+msgid "strong evening thunderstorms"
+msgstr "Вечером: сильные грозы"
+
+msgid "strong late"
+msgstr "Позднее: сильный"
+
+msgid "strong late-night t-storms"
+msgstr "Поздно ночью: сильные грозы"
+
+msgid "strong t-storms"
+msgstr "Сильные грозы"
+
+msgid "strong thunderstorms"
+msgstr "Сильные грозы"
+
+msgid "strong thunderstorms late"
+msgstr "Позднее: сильные грозы"
+
+msgid "strong thunderstorms possible"
+msgstr "Возможны сильные грозы"
+
+msgid "strong winds subsiding"
+msgstr "Сильный ветер стихает"
+
+msgid "summerlike"
+msgstr "По-летнему тепло"
+
+msgid "summerlike with a few showers"
+msgstr "По-летнему тепло, отдельные кратковременные дожди"
+
+msgid "summerlike with a shower"
+msgstr "По-летнему тепло, кратковременный дождь"
+
+msgid "summerlike with a t-storm"
+msgstr "По-летнему тепло, гроза"
+
+msgid "summerlike with hazy sun"
+msgstr "По-летнему тепло, солнце в дымке"
+
+msgid "summerlike with high clouds"
+msgstr "По-летнему тепло, высокая облачность"
+
+msgid "summerlike with lots of sun"
+msgstr "По-летнему тепло, много солнца"
+
+msgid "summerlike with some sun"
+msgstr "По-летнему тепло, временами солнечно"
+
+msgid "summerlike with sunshine"
+msgstr "По-летнему тепло, солнечно"
+
+msgid "sun and areas of high clouds"
+msgstr "Солнечно, местами облака верхнего яруса"
+
+msgid "sun and areas of low clouds"
+msgstr "Солнечно, местами низкая облачность"
+
+msgid "sun and clouds"
+msgstr "Облачность с прояснениями"
+
+msgid "sun and clouds with a shower"
+msgstr "Облачность с прояснениями, кратковременный дождь"
+
+msgid "sun and clouds with a t-storm"
+msgstr "Облачность с прояснениями, гроза"
+
+msgid "sun and some clouds"
+msgstr "Облачность с прояснениями"
+
+msgid "sun followed by clouds"
+msgstr "Солнце сменится облачностью"
+
+msgid "sun followed by some clouds"
+msgstr "Сначала солнечно, затем небольшая облачность"
+
+msgid "sun giving way to clouds"
+msgstr "Солнце сменится облачностью"
+
+msgid "sun mixing with clouds"
+msgstr "Облачность с прояснениями"
+
+msgid "sun through high clouds"
+msgstr "Солнце просвечивает сквозь высокие облака"
+
+msgid "sun yielding to clouds"
+msgstr "Солнце сменится облачностью"
+
+msgid "sunlit"
+msgstr "Солнечно"
+
+msgid "sunlit and beautiful"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunlit and comfortable"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunlit and delightful"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunlit and pleasant"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunlit and unseasonably hot"
+msgstr "Солнечно, не по сезону жарко"
+
+msgid "sunlit and very warm"
+msgstr "Солнечно, очень тепло"
+
+msgid "sunlit and warmer"
+msgstr "Солнечно, теплее"
+
+msgid "sunny and beautiful"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunny and breezy"
+msgstr "Солнечно, небольшой ветер"
+
+msgid "sunny and cold"
+msgstr "Солнечно, холодно"
+
+msgid "sunny and comfortable"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunny and cool"
+msgstr "Солнечно, прохладно"
+
+msgid "sunny and cooler"
+msgstr "Солнечно, прохладнее"
+
+msgid "sunny and cooler but pleasant"
+msgstr "Солнечно, прохладнее, комфортная погода"
+
+msgid "sunny and delightful"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunny and hot"
+msgstr "Солнечно, жарко"
+
+msgid "sunny and hotter"
+msgstr "Солнечно, жарче"
+
+msgid "sunny and humid"
+msgstr "Солнечно, влажно"
+
+msgid "sunny and less humid"
+msgstr "Солнечно, менее влажно"
+
+msgid "sunny and mild"
+msgstr "Солнечно, мягкая погода"
+
+msgid "sunny and milder"
+msgstr "Солнечно, мягче"
+
+msgid "sunny and nice"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunny and not as cold"
+msgstr "Солнечно, не так холодно"
+
+msgid "sunny and not as cool"
+msgstr "Солнечно, не так прохладно"
+
+msgid "sunny and not as hot"
+msgstr "Солнечно, не так жарко"
+
+msgid "sunny and not as warm"
+msgstr "Солнечно, не так тепло"
+
+msgid "sunny and pleasant"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunny and pleasantly cool"
+msgstr "Солнечно, приятная прохлада"
+
+msgid "sunny and pleasantly warm"
+msgstr "Солнечно, приятно тепло"
+
+msgid "sunny and remaining cool"
+msgstr "Солнечно, по-прежнему прохладно"
+
+msgid "sunny and remaining very warm"
+msgstr "Солнечно, по-прежнему очень тепло"
+
+msgid "sunny and remaining warm"
+msgstr "Солнечно, по-прежнему тепло"
+
+msgid "sunny and seasonably cold"
+msgstr "Солнечно, по сезону холодно"
+
+msgid "sunny and seasonably warm"
+msgstr "Солнечно, по сезону тепло"
+
+msgid "sunny and unseasonably hot"
+msgstr "Солнечно, не по сезону жарко"
+
+msgid "sunny and very cold"
+msgstr "Солнечно, очень холодно"
+
+msgid "sunny and very humid"
+msgstr "Солнечно, очень влажно"
+
+msgid "sunny and very warm"
+msgstr "Солнечно, очень тепло"
+
+msgid "sunny and warm"
+msgstr "Солнечно, тепло"
+
+msgid "sunny and warmer"
+msgstr "Солнечно, теплее"
+
+msgid "sunny and windy"
+msgstr "Солнечно, ветрено"
+
+msgid "sunny intervals"
+msgstr "Временами солнечно"
+
+msgid "sunny intervals with a shower"
+msgstr "Временами солнечно, кратковременный дождь"
+
+msgid "sunny much of the time"
+msgstr "Преимущественно солнечно"
+
+msgid "sunny to partly cloudy"
+msgstr "Ясно или переменная облачность"
+
+msgid "sunny with a gusty breeze"
+msgstr "Солнечно, порывистый ветер"
+
+msgid "sunny with a warm breeze"
+msgstr "Солнечно, тёплый ветерок"
+
+msgid "sunny with low humidity"
+msgstr "Солнечно, низкая влажность"
+
+msgid "sunshine"
+msgstr "Солнечно"
+
+msgid "sunshine and a few clouds"
+msgstr "Солнечно, немного облаков"
+
+msgid "sunshine and beautiful"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunshine and bitterly cold"
+msgstr "Солнечно, сильный мороз"
+
+msgid "sunshine and breezy"
+msgstr "Солнечно, небольшой ветер"
+
+msgid "sunshine and cold"
+msgstr "Солнечно, холодно"
+
+msgid "sunshine and comfortable"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunshine and cooler"
+msgstr "Солнечно, прохладнее"
+
+msgid "sunshine and delightful"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunshine and hot"
+msgstr "Солнечно, жарко"
+
+msgid "sunshine and hotter"
+msgstr "Солнечно, жарче"
+
+msgid "sunshine and humid"
+msgstr "Солнечно, влажно"
+
+msgid "sunshine and less humid"
+msgstr "Солнечно, менее влажно"
+
+msgid "sunshine and mild"
+msgstr "Солнечно, мягкая погода"
+
+msgid "sunshine and nice"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunshine and not as cold"
+msgstr "Солнечно, не так холодно"
+
+msgid "sunshine and not as hot"
+msgstr "Солнечно, не так жарко"
+
+msgid "sunshine and not as warm"
+msgstr "Солнечно, не так тепло"
+
+msgid "sunshine and patchy clouds"
+msgstr "Солнечно, местами облачно"
+
+msgid "sunshine and pleasant"
+msgstr "Солнечно, комфортная погода"
+
+msgid "sunshine and pleasantly warm"
+msgstr "Солнечно, приятно тепло"
+
+msgid "sunshine and remaining warm"
+msgstr "Солнечно, по-прежнему тепло"
+
+msgid "sunshine and seasonably cold"
+msgstr "Солнечно, по сезону холодно"
+
+msgid "sunshine and seasonably warm"
+msgstr "Солнечно, по сезону тепло"
+
+msgid "sunshine and some clouds"
+msgstr "Солнечно, немного облаков"
+
+msgid "sunshine and summerlike"
+msgstr "Солнечно, по-летнему тепло"
+
+msgid "sunshine and unseasonably hot"
+msgstr "Солнечно, не по сезону жарко"
+
+msgid "sunshine and very hot"
+msgstr "Солнечно, очень жарко"
+
+msgid "sunshine and very warm"
+msgstr "Солнечно, очень тепло"
+
+msgid "sunshine and warm"
+msgstr "Солнечно, тепло"
+
+msgid "sunshine and warmer"
+msgstr "Солнечно, теплее"
+
+msgid "sunshine mixing with clouds"
+msgstr "Облачность с прояснениями"
+
+msgid "sunshine with a shower"
+msgstr "Солнечно, кратковременный дождь"
+
+msgid "sunshine with a snow shower"
+msgstr "Солнечно, кратковременный снег"
+
+msgid "sunshine with a stray shower"
+msgstr "Солнечно, местами кратковременный дождь"
+
+msgid "sunshine with a stray t-storm"
+msgstr "Солнечно, местами грозы"
+
+msgid "sunshine with a thundershower"
+msgstr "Солнечно, грозовой ливень"
+
+msgid "sunshine with a thunderstorm"
+msgstr "Солнечно, гроза"
+
+msgid "sunshine with low humidity"
+msgstr "Солнечно, низкая влажность"
+
+msgid "t-storms"
+msgstr "Грозы"
+
+msgid "t-storms in the afternoon"
+msgstr "Днём: грозы"
+
+msgid "t-storms possible in the a.m."
+msgstr "Утром: возможны грозы"
+
+msgid "then a bit of ice"
+msgstr "Затем местами гололёд"
+
+msgid "then a shower"
+msgstr "Затем кратковременный дождь"
+
+msgid "then clouds"
+msgstr "Затем облачно"
+
+msgid "then flurries"
+msgstr "Затем кратковременный слабый снег"
+
+msgid "then ice"
+msgstr "Затем лёд"
+
+msgid "then rain"
+msgstr "Затем дождь"
+
+msgid "then showers"
+msgstr "Затем кратковременные дожди"
+
+msgid "then snow"
+msgstr "Затем снег"
+
+msgid "then some sun"
+msgstr "Затем временами солнечно"
+
+msgid "then sun"
+msgstr "Затем солнечно"
+
+msgid "then t-storms"
+msgstr "Затем грозы"
+
+msgid "then turning cloudy"
+msgstr "Затем небо затягивает облаками"
+
+msgid "thickening clouds"
+msgstr "Облака сгущаются"
+
+msgid "thickening clouds and hot"
+msgstr "Облака сгущаются, жарко"
+
+msgid "thundershower"
+msgstr "Грозовой ливень"
+
+msgid "thunderstorms in the evening"
+msgstr "Вечером: грозы"
+
+msgid "thunderstorms late"
+msgstr "Позднее: грозы"
+
+msgid "thunderstorms this afternoon"
+msgstr "Сегодня днём: грозы"
+
+msgid "thunderstorms this morning"
+msgstr "Сегодня утром: грозы"
+
+msgid "times of clouds and sun"
+msgstr "Облачность с прояснениями"
+
+msgid "times of clouds and sunshine"
+msgstr "Облачность с прояснениями"
+
+msgid "times of rain"
+msgstr "Временами дождь"
+
+msgid "times of sun and clouds"
+msgstr "Облачность с прояснениями"
+
+msgid "to rain"
+msgstr "Переходит в дождь"
+
+msgid "turning clear"
+msgstr "Прояснение"
+
+msgid "turning clear and very warm"
+msgstr "Прояснение, очень тепло"
+
+msgid "turning cloudy"
+msgstr "Небо затягивает облаками"
+
+msgid "turning cloudy and breezy"
+msgstr "Небо затягивает облаками, небольшой ветер"
+
+msgid "turning cloudy and chilly"
+msgstr "Небо затягивает облаками, зябко"
+
+msgid "turning cloudy and cold"
+msgstr "Небо затягивает облаками, холодно"
+
+msgid "turning cloudy and colder"
+msgstr "Небо затягивает облаками, холоднее"
+
+msgid "turning cloudy and cooler"
+msgstr "Небо затягивает облаками, прохладнее"
+
+msgid "turning cloudy and hot"
+msgstr "Небо затягивает облаками, жарко"
+
+msgid "turning cloudy and hotter"
+msgstr "Небо затягивает облаками, жарче"
+
+msgid "turning cloudy and humid"
+msgstr "Небо затягивает облаками, влажно"
+
+msgid "turning cloudy and less humid"
+msgstr "Небо затягивает облаками, менее влажно"
+
+msgid "turning cloudy and mild"
+msgstr "Небо затягивает облаками, мягкая погода"
+
+msgid "turning cloudy and milder"
+msgstr "Небо затягивает облаками, мягче"
+
+msgid "turning cloudy and pleasant"
+msgstr "Небо затягивает облаками, комфортная погода"
+
+msgid "turning cloudy and summerlike"
+msgstr "Небо затягивает облаками, по-летнему тепло"
+
+msgid "turning cloudy and very hot"
+msgstr "Небо затягивает облаками, очень жарко"
+
+msgid "turning cloudy and very warm"
+msgstr "Небо затягивает облаками, очень тепло"
+
+msgid "turning cloudy and warm"
+msgstr "Небо затягивает облаками, тепло"
+
+msgid "turning cloudy and warmer"
+msgstr "Небо затягивает облаками, теплее"
+
+msgid "turning cloudy with a shower"
+msgstr "Небо затягивает облаками, кратковременный дождь"
+
+msgid "turning cloudy with a t-storm"
+msgstr "Небо затягивает облаками, гроза"
+
+msgid "turning cloudy with rain late"
+msgstr "Небо затягивает облаками. Позднее: дождь"
+
+msgid "turning colder in the morning"
+msgstr "Утром: холоднее"
+
+msgid "turning colder this afternoon"
+msgstr "Сегодня днём: холоднее"
+
+msgid "turning colder this morning"
+msgstr "Сегодня утром: холоднее"
+
+msgid "turning out clear"
+msgstr "Прояснение"
+
+msgid "turning out clear and breezy"
+msgstr "Прояснение, небольшой ветер"
+
+msgid "turning out clear and chilly"
+msgstr "Прояснение, зябко"
+
+msgid "turning out clear and cold"
+msgstr "Прояснение, холодно"
+
+msgid "turning out clear and frigid"
+msgstr "Прояснение, сильный мороз"
+
+msgid "turning out clear and mild"
+msgstr "Прояснение, мягкая погода"
+
+msgid "turning out clear and warm"
+msgstr "Прояснение, тепло"
+
+msgid "turning out cloudy"
+msgstr "Небо затягивает облаками"
+
+msgid "turning out cloudy and warmer"
+msgstr "Небо затягивает облаками, теплее"
+
+msgid "turning sunny"
+msgstr "Погода становится солнечной"
+
+msgid "turning sunny and beautiful"
+msgstr "Погода становится солнечной, комфортная погода"
+
+msgid "turning sunny and cooler"
+msgstr "Погода становится солнечной, прохладнее"
+
+msgid "turning sunny and delightful"
+msgstr "Погода становится солнечной, комфортная погода"
+
+msgid "turning sunny and hot"
+msgstr "Погода становится солнечной, жарко"
+
+msgid "turning sunny and humid"
+msgstr "Погода становится солнечной, влажно"
+
+msgid "turning sunny and nice"
+msgstr "Погода становится солнечной, комфортная погода"
+
+msgid "turning sunny and not as warm"
+msgstr "Погода становится солнечной, не так тепло"
+
+msgid "turning sunny and pleasant"
+msgstr "Погода становится солнечной, комфортная погода"
+
+msgid "turning sunny and summerlike"
+msgstr "Погода становится солнечной, по-летнему тепло"
+
+msgid "turning sunny and very hot"
+msgstr "Погода становится солнечной, очень жарко"
+
+msgid "turning sunny and very warm"
+msgstr "Погода становится солнечной, очень тепло"
+
+msgid "unseasonably hot"
+msgstr "Не по сезону жарко"
+
+msgid "up to 1in"
+msgstr "До 2,54 см"
+
+msgid "uranus"
+msgstr "Уран"
+
+msgid "variable cloudiness"
+msgstr "Переменная облачность"
+
+msgid "variable clouds"
+msgstr "Переменная облачность"
+
+msgid "variable clouds with a shower"
+msgstr "Переменная облачность, кратковременный дождь"
+
+msgid "variable clouds with showers"
+msgstr "Переменная облачность, кратковременные дожди"
+
+msgid "variable clouds with t-storms"
+msgstr "Переменная облачность, грозы"
+
+msgid "variably cloudy"
+msgstr "Переменная облачность"
+
+msgid "variably cloudy and breezy"
+msgstr "Переменная облачность, небольшой ветер"
+
+msgid "variably cloudy and chilly"
+msgstr "Переменная облачность, зябко"
+
+msgid "variably cloudy and cooler"
+msgstr "Переменная облачность, прохладнее"
+
+msgid "variably cloudy and humid"
+msgstr "Переменная облачность, влажно"
+
+msgid "variably cloudy and nice"
+msgstr "Переменная облачность, комфортная погода"
+
+msgid "variably cloudy and pleasant"
+msgstr "Переменная облачность, комфортная погода"
+
+msgid "variably cloudy and very warm"
+msgstr "Переменная облачность, очень тепло"
+
+msgid "variably cloudy and warmer"
+msgstr "Переменная облачность, теплее"
+
+msgid "variably cloudy with a shower"
+msgstr "Переменная облачность, кратковременный дождь"
+
+msgid "variably cloudy with showers"
+msgstr "Переменная облачность, кратковременные дожди"
+
+msgid "variably cloudy with t-storms"
+msgstr "Переменная облачность, грозы"
+
+msgid "venus"
+msgstr "Венера"
+
+msgid "very cold"
+msgstr "Очень холодно"
+
+msgid "very cold with a few flurries"
+msgstr "Очень холодно, местами слабый кратковременный снег"
+
+msgid "very cold with clouds and sun"
+msgstr "Очень холодно, облачность с прояснениями"
+
+msgid "very cold with snow"
+msgstr "Очень холодно, снег"
+
+msgid "very cold with snow at times"
+msgstr "Очень холодно, временами снег"
+
+msgid "very hot"
+msgstr "Очень жарко"
+
+msgid "very hot with a few showers"
+msgstr "Очень жарко, отдельные кратковременные дожди"
+
+msgid "very hot with a shower"
+msgstr "Очень жарко, кратковременный дождь"
+
+msgid "very hot with clouds and sun"
+msgstr "Очень жарко, облачность с прояснениями"
+
+msgid "very hot with hazy sun"
+msgstr "Очень жарко, солнце в дымке"
+
+msgid "very hot with high clouds"
+msgstr "Очень жарко, высокая облачность"
+
+msgid "very hot with some sun"
+msgstr "Очень жарко, временами солнечно"
+
+msgid "very hot with sunshine"
+msgstr "Очень жарко, солнечно"
+
+msgid "very warm"
+msgstr "Очень тепло"
+
+msgid "very warm and humid with rain"
+msgstr "Очень тепло, влажно, дождь"
+
+msgid "very warm with clearing"
+msgstr "Очень тепло, прояснение"
+
+msgid "very warm with clouds"
+msgstr "Очень тепло, облачно"
+
+msgid "very warm with clouds and sun"
+msgstr "Очень тепло, облачность с прояснениями"
+
+msgid "very warm with hazy sun"
+msgstr "Очень тепло, солнце в дымке"
+
+msgid "very warm with hazy sunshine"
+msgstr "Очень тепло, солнце в дымке"
+
+msgid "very warm with high clouds"
+msgstr "Очень тепло, высокая облачность"
+
+msgid "very warm with lots of sun"
+msgstr "Очень тепло, много солнца"
+
+msgid "very warm with patchy clouds"
+msgstr "Очень тепло, местами облачно"
+
+msgid "very warm with periods of sun"
+msgstr "Очень тепло, временами солнечно"
+
+msgid "very warm with plenty of sun"
+msgstr "Очень тепло, много солнца"
+
+msgid "very warm with some sun"
+msgstr "Очень тепло, временами солнечно"
+
+msgid "very warm with sun and clouds"
+msgstr "Очень тепло, облачность с прояснениями"
+
+msgid "very warm with sunshine"
+msgstr "Очень тепло, солнечно"
+
+msgid "very windy"
+msgstr "Очень ветрено"
+
+msgid "very windy in the a.m."
+msgstr "Утром: очень ветрено"
+
+msgid "very windy in the morning"
+msgstr "Утром: очень ветрено"
+
+msgid "very windy this evening"
+msgstr "Сегодня вечером: очень ветрено"
+
+msgid "very windy this morning"
+msgstr "Сегодня утром: очень ветрено"
+
+msgid "warm"
+msgstr "Тепло"
+
+msgid "warm and hamid"
+msgstr "Тепло, влажно"
+
+msgid "warm and humid"
+msgstr "Тепло, влажно"
+
+msgid "warm and humid with clearing"
+msgstr "Тепло, влажно, прояснение"
+
+msgid "warm and humid with some sun"
+msgstr "Тепло, влажно, временами солнечно"
+
+msgid "warm with abundant sunshine"
+msgstr "Тепло, много солнца"
+
+msgid "warm with clearing"
+msgstr "Тепло, прояснение"
+
+msgid "warm with clouds and sun"
+msgstr "Тепло, облачность с прояснениями"
+
+msgid "warm with clouds and sunshine"
+msgstr "Тепло, облачность с прояснениями"
+
+msgid "warm with clouds breaking"
+msgstr "Тепло, облачность уменьшается"
+
+msgid "warm with clouds limiting sun"
+msgstr "Тепло, облака закрывают солнце"
+
+msgid "warm with decreasing clouds"
+msgstr "Тепло, облачность уменьшается"
+
+msgid "warm with high clouds"
+msgstr "Тепло, высокая облачность"
+
+msgid "warm with increasing clouds"
+msgstr "Тепло, облачность увеличивается"
+
+msgid "warm with occasional rain"
+msgstr "Тепло, временами дождь"
+
+msgid "warm with partial sunshine"
+msgstr "Тепло, временами солнечно"
+
+msgid "warm with patchy clouds"
+msgstr "Тепло, местами облачно"
+
+msgid "warm with periods of sun"
+msgstr "Тепло, временами солнечно"
+
+msgid "warm with plenty of clouds"
+msgstr "Тепло, преимущественно облачно"
+
+msgid "warm with plenty of sun"
+msgstr "Тепло, много солнца"
+
+msgid "warm with plenty of sunshine"
+msgstr "Тепло, много солнца"
+
+msgid "warm with rain and drizzle"
+msgstr "Тепло, дождь и морось"
+
+msgid "warm with some brightening"
+msgstr "Тепло, небольшие прояснения"
+
+msgid "warm with some sun"
+msgstr "Тепло, временами солнечно"
+
+msgid "warm with some sun returning"
+msgstr "Тепло, небольшие прояснения"
+
+msgid "warm with sun"
+msgstr "Тепло, солнечно"
+
+msgid "warm with sun and clouds"
+msgstr "Тепло, облачность с прояснениями"
+
+msgid "warm with sunny intervals"
+msgstr "Тепло, временами солнечно"
+
+msgid "warm with sunshine"
+msgstr "Тепло, солнечно"
+
+msgid "warm with variable cloudiness"
+msgstr "Тепло, переменная облачность"
+
+msgid "warm with variable clouds"
+msgstr "Тепло, переменная облачность"
+
+msgid "warmer"
+msgstr "Теплее"
+
+msgid "warmer late"
+msgstr "Позднее: теплее"
+
+msgid "warmer with a bit of rain"
+msgstr "Теплее, небольшой дождь"
+
+msgid "warmer with a brief shower"
+msgstr "Теплее, непродолжительные дожди"
+
+msgid "warmer with a few showers"
+msgstr "Теплее, отдельные кратковременные дожди"
+
+msgid "warmer with a heavy t-storm"
+msgstr "Теплее, сильные грозы"
+
+msgid "warmer with a passing shower"
+msgstr "Теплее, непродолжительные дожди"
+
+msgid "warmer with a shower"
+msgstr "Теплее, кратковременный дождь"
+
+msgid "warmer with a shower in spots"
+msgstr "Теплее, местами кратковременный дождь"
+
+msgid "warmer with a shower or two"
+msgstr "Теплее, один-два кратковременных дождя"
+
+msgid "warmer with a stray shower"
+msgstr "Теплее, местами кратковременный дождь"
+
+msgid "warmer with a stray t-storm"
+msgstr "Теплее, местами грозы"
+
+msgid "warmer with a thunderstorm"
+msgstr "Теплее, гроза"
+
+msgid "warmer with abundant sunshine"
+msgstr "Теплее, много солнца"
+
+msgid "warmer with clearing"
+msgstr "Теплее, прояснение"
+
+msgid "warmer with clouds"
+msgstr "Теплее, облачно"
+
+msgid "warmer with clouds and sun"
+msgstr "Теплее, облачность с прояснениями"
+
+msgid "warmer with decreasing clouds"
+msgstr "Теплее, облачность уменьшается"
+
+msgid "warmer with high clouds"
+msgstr "Теплее, высокая облачность"
+
+msgid "warmer with increasing clouds"
+msgstr "Теплее, облачность увеличивается"
+
+msgid "warmer with low clouds"
+msgstr "Теплее, низкая облачность"
+
+msgid "warmer with partial sunshine"
+msgstr "Теплее, временами солнечно"
+
+msgid "warmer with periods of rain"
+msgstr "Теплее, временами дождь"
+
+msgid "warmer with periods of sun"
+msgstr "Теплее, временами солнечно"
+
+msgid "warmer with plenty of sun"
+msgstr "Теплее, много солнца"
+
+msgid "warmer with showers"
+msgstr "Теплее, кратковременные дожди"
+
+msgid "warmer with showers around"
+msgstr "Теплее, местами кратковременный дождь"
+
+msgid "warmer with some brightening"
+msgstr "Теплее, небольшие прояснения"
+
+msgid "warmer with some sun"
+msgstr "Теплее, временами солнечно"
+
+msgid "warmer with some sunshine"
+msgstr "Теплее, временами солнечно"
+
+msgid "warmer with spotty showers"
+msgstr "Теплее, местами кратковременный дождь"
+
+msgid "warmer with sun"
+msgstr "Теплее, солнечно"
+
+msgid "warmer with sun and clouds"
+msgstr "Теплее, облачность с прояснениями"
+
+msgid "warmer with sunny intervals"
+msgstr "Теплее, временами солнечно"
+
+msgid "warmer with sunshine"
+msgstr "Теплее, солнечно"
+
+msgid "warmer with variable clouds"
+msgstr "Теплее, переменная облачность"
+
+msgid "watch for ice early"
+msgstr "В начале периода: осторожно, гололедица"
+
+msgid "watch for ice late"
+msgstr "Позднее: осторожно, гололедица"
+
+msgid "wet snow"
+msgstr "Мокрый снег"
+
+msgid "winds gradually subsiding"
+msgstr "Ветер постепенно стихает"
+
+msgid "windy"
+msgstr "Ветрено"
+
+msgid "windy and cold"
+msgstr "Ветрено, холодно"
+
+msgid "windy and cooler"
+msgstr "Ветрено, прохладнее"
+
+msgid "windy and cooler with rain"
+msgstr "Ветрено, прохладнее, дождь"
+
+msgid "windy and cooler with showers"
+msgstr "Ветрено, прохладнее, кратковременные дожди"
+
+msgid "windy and frigid"
+msgstr "Ветрено, сильный мороз"
+
+msgid "windy and humid with rain"
+msgstr "Ветрено, влажно, дождь"
+
+msgid "windy and very cold"
+msgstr "Ветрено, очень холодно"
+
+msgid "windy early"
+msgstr "В начале периода: ветрено"
+
+msgid "windy in the a.m."
+msgstr "Утром: ветрено"
+
+msgid "windy in the afternoon"
+msgstr "Днём: ветрено"
+
+msgid "windy in the morning"
+msgstr "Утром: ветрено"
+
+msgid "windy this afternoon"
+msgstr "Сегодня днём: ветрено"
+
+msgid "windy this morning"
+msgstr "Сегодня утром: ветрено"
+
+msgid "windy with a bit of ice"
+msgstr "Ветрено, местами гололёд"
+
+msgid "windy with a little rain"
+msgstr "Ветрено, небольшой дождь"
+
+msgid "windy with a passing shower"
+msgstr "Ветрено, непродолжительные дожди"
+
+msgid "windy with a shower in places"
+msgstr "Ветрено, местами кратковременный дождь"
+
+msgid "windy with a shower in spots"
+msgstr "Ветрено, местами кратковременный дождь"
+
+msgid "windy with a shower or two"
+msgstr "Ветрено, один-два кратковременных дождя"
+
+msgid "windy with a stray shower"
+msgstr "Ветрено, местами кратковременный дождь"
+
+msgid "windy with brilliant sunshine"
+msgstr "Ветрено, яркое солнце"
+
+msgid "windy with clouds and sun"
+msgstr "Ветрено, облачность с прояснениями"
+
+msgid "windy with decreasing clouds"
+msgstr "Ветрено, облачность уменьшается"
+
+msgid "windy with increasing clouds"
+msgstr "Ветрено, облачность увеличивается"
+
+msgid "windy with occasional rain"
+msgstr "Ветрено, временами дождь"
+
+msgid "windy with periods of rain"
+msgstr "Ветрено, временами дождь"
+
+msgid "windy with periods of snow"
+msgstr "Ветрено, временами снег"
+
+msgid "windy with plenty of sun"
+msgstr "Ветрено, много солнца"
+
+msgid "windy with plenty of sunshine"
+msgstr "Ветрено, много солнца"
+
+msgid "windy with rain and a t-storm"
+msgstr "Ветрено, дождь, гроза"
+
+msgid "windy with showers"
+msgstr "Ветрено, кратковременные дожди"
+
+msgid "windy with showers around"
+msgstr "Ветрено, местами кратковременный дождь"
+
+msgid "windy with snow"
+msgstr "Ветрено, снег"
+
+msgid "windy with some sun"
+msgstr "Ветрено, временами солнечно"
+
+msgid "windy with spotty showers"
+msgstr "Ветрено, местами кратковременный дождь"
+
+msgid "windy with sunshine"
+msgstr "Ветрено, солнечно"

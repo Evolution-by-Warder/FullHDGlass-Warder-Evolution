@@ -97,8 +97,6 @@ class CatalogIntegrity(unittest.TestCase):
                                            'System spinner provided by the image is used',
                                            'Weather data is provided by Open-Meteo; no API key is required'}:
                                 continue
-                        if domain == 'eWeather' and len(values) < len(reference) and key not in ('Error', 'Select country'):
-                            continue
                         self.assertTrue(values.get(key, '').strip(), (domain, language, key))
 
     def test_locale_count_and_complete_main_keys(self):
@@ -149,14 +147,13 @@ class CatalogIntegrity(unittest.TestCase):
         for lang in LANGS:
             for domain in DOMAINS:
                 path = ROOT / lang / 'LC_MESSAGES' / (domain + '.po')
-                if not path.is_file():
-                    continue  # Missing auxiliary catalogs are tracked in the audit.
                 with self.subTest(lang=lang, domain=domain):
                     binary = path.with_suffix('.mo')
                     self.assertTrue(binary.is_file(), str(binary))
                     with binary.open('rb') as stream:
                         translations = gettext.GNUTranslations(stream)
                     catalog = po_entries(path)
+                    self.assertEqual(set(translations._catalog), set(catalog))
                     tag = translations.info().get('language')
                     self.assertIn(tag, (LANGUAGE_TAGS[lang], LANGUAGE_TAGS[lang].split('_')[0]))
                     self.assertIn('Language: %s\n' % tag, catalog[''])
@@ -169,8 +166,6 @@ class CatalogIntegrity(unittest.TestCase):
         for lang in LANGS:
             for domain in DOMAINS:
                 path = ROOT / lang / 'LC_MESSAGES' / (domain + '.po')
-                if not path.exists():
-                    continue
                 with self.subTest(lang=lang, domain=domain):
                     for key, value in po_entries(path).items():
                         if key and value:
@@ -442,8 +437,7 @@ class CatalogIntegrity(unittest.TestCase):
                 path = ROOT / lang / 'LC_MESSAGES' / 'eWeather.po'
                 catalog = po_entries(path)
                 keys = set(catalog) - {''}
-                self.assertTrue(keys <= expected)
-                self.assertGreaterEqual(len(keys), 76)
+                self.assertEqual(keys, expected)
                 self.assertTrue(all(catalog[key].strip() for key in keys))
                 self.assertEqual(catalog['sun'], translation)
                 with path.with_suffix('.mo').open('rb') as stream:

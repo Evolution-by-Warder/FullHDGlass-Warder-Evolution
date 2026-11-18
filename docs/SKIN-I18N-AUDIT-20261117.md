@@ -2,38 +2,39 @@
 
 ## Aktuálny stav — 18. 11. 2026
 
-**Zostáva 31 560 prekladových položiek**, z toho 945 v `helpTxt` a 30 615 v `eWeather`.
+**Zostáva 945 prekladových položiek**, z toho 945 v `helpTxt` a 0 v `eWeather`.
 
 Tabuľka počíta aktívne neprázdne preklady z referenčných katalógov, ktoré majú rovnakú hodnotu priamo v binárnom GNU gettext katalógu. Angličtina používa zdrojové texty. Historické kľúče mimo referenčného inventára sú v katalógoch zachované.
 
 | Jazyk | setupGlass17 | helpTxt | weather | netatmo | eWeather |
 |---|---:|---:|---:|---:|---:|
 | en | zdroj 552 | zdroj 195 | zdroj 108 | zdroj 42 | zdroj 2119 |
-| al | 552/552 | 6/195 | 108/108 | 42/42 | 78/2119 |
+| al | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
 | cs | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| de | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
+| de | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | el | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| es | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
+| es | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | et | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
-| fa | 552/552 | 6/195 | 108/108 | 42/42 | 78/2119 |
-| fr | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
-| hu | 552/552 | 6/195 | 108/108 | 42/42 | 78/2119 |
-| it | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
+| fa | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| fr | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| hu | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| it | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | lt | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| nl | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
-| pl | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
-| pt | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
-| ro | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
-| ru | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
+| nl | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| pl | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| pt | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| ro | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| ru | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | sk | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| tr | 552/552 | 6/195 | 108/108 | 42/42 | 78/2119 |
-| uk | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
-| zh | 552/552 | 195/195 | 108/108 | 42/42 | 78/2119 |
+| tr | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| uk | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| zh | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 
 - Nezávislé porovnanie všetkých katalógov na commite `5194ca6` potvrdilo 32 505 chýbajúcich položiek v pôvodnom inventári. Predchádzajúci úvod auditu uvádzal o 189 viac, pretože nezohľadnil už skompilovanú taliansku nápovedu.
 - Súbežne pribudlo 945 historických nápovied v holandčine, poľštine, portugalčine, rumunčine a ukrajinčine. Všetkých päť katalógov je zahrnutých vo výpočte.
 - Rozšírený inventár obsahuje aj 43 kľúčov z priamych volaní gettext v zdrojových moduloch. Všetkých 20 jazykov má 35 nových prekladov nastavení, 6 nápovied a 2 texty rozšíreného počasia. Spolu pribudlo 860 prekladov. Skontrolovala sa úplnosť kľúčov, hlavičky UTF-8, placeholdery a načítanie skompilovaných katalógov.
 - [Testy sťahovania a uchovávania jazykov](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44256787078) prešli. Priamy test piatich gréckych katalógov na commite `095497e` overil SHA-256, načítanie v gettext a druhú synchronizáciu bez prenosu. Fyzická skúška na prijímači zatiaľ neprebehla.
+- Historické eWeather získalo 30 615 prekladov v 15 jazykoch. Každý z 20 prekladových jazykov teraz obsahuje v zdroji aj binárnom katalógu všetkých 2 119 referenčných kľúčov.
 
 ## Staršie záznamy
 

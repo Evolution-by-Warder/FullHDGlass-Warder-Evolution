@@ -241,3 +241,6126 @@ msgstr "Eroare"
 
 msgid "Select country"
 msgstr "Selectați țara"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "Adaugă un oraș"
+
+msgid "Change Temperature Unit"
+msgstr "Schimbă unitatea de temperatură"
+
+msgid "Change Units to"
+msgstr "Schimbă unitățile în"
+
+msgid "Change city"
+msgstr "Schimbă orașul"
+
+msgid "Daytime"
+msgstr "În timpul zilei"
+
+msgid "Decreasing"
+msgstr "În scădere"
+
+msgid "Delete City"
+msgstr "Șterge orașul"
+
+msgid "Forecast for"
+msgstr "Prognoza pentru"
+
+msgid "Friday"
+msgstr "Vineri"
+
+msgid "High"
+msgstr "Ridicat"
+
+msgid "Latitude"
+msgstr "Latitudine"
+
+msgid "Longtitude"
+msgstr "Longitudine"
+
+msgid "Low"
+msgstr "Scăzut"
+
+msgid "Moderate"
+msgstr "Moderat"
+
+msgid "Monday"
+msgstr "Luni"
+
+msgid "Nighttime"
+msgstr "În timpul nopții"
+
+msgid "None city founded"
+msgstr "Niciun oraș găsit"
+
+msgid "Precip"
+msgstr "Precipitații"
+
+msgid "Realfeel"
+msgstr "Temperatura resimțită"
+
+msgid "Rising"
+msgstr "În creștere"
+
+msgid "Saturday"
+msgstr "Sâmbătă"
+
+msgid "Select City"
+msgstr "Selectează orașul"
+
+msgid "Steady"
+msgstr "Stabil"
+
+msgid "Sunday"
+msgstr "Duminică"
+
+msgid "Thursday"
+msgstr "Joi"
+
+msgid "Tuesday"
+msgstr "Marți"
+
+msgid "Updated at"
+msgstr "Actualizat la ora"
+
+msgid "Uvindex"
+msgstr "Indice UV"
+
+msgid "Very high"
+msgstr "Foarte ridicat"
+
+msgid "Wednesday"
+msgstr "Miercuri"
+
+msgid "a bit of afternoon rain"
+msgstr "Puțină ploaie după-amiaza"
+
+msgid "a bit of afternoon snow"
+msgstr "Puțină ninsoare după-amiaza"
+
+msgid "a bit of evening rain"
+msgstr "Puțină ploaie seara"
+
+msgid "a bit of evening snow"
+msgstr "Puțină ninsoare seara"
+
+msgid "a bit of ice"
+msgstr "Pe alocuri polei"
+
+msgid "a bit of ice and rain"
+msgstr "Pe alocuri polei, ploaie"
+
+msgid "a bit of ice early"
+msgstr "Pe alocuri polei la început"
+
+msgid "a bit of ice in the afternoon"
+msgstr "Pe alocuri polei după-amiaza"
+
+msgid "a bit of ice in the morning"
+msgstr "Pe alocuri polei dimineața"
+
+msgid "a bit of ice late"
+msgstr "Pe alocuri polei mai târziu"
+
+msgid "a bit of late-night rain"
+msgstr "Puțină ploaie noaptea târziu"
+
+msgid "a bit of late-night snow"
+msgstr "Puțină ninsoare noaptea târziu"
+
+msgid "a bit of morning rain"
+msgstr "Puțină ploaie dimineața"
+
+msgid "a bit of morning snow"
+msgstr "Puțină ninsoare dimineața"
+
+msgid "a bit of rain"
+msgstr "Puțină ploaie"
+
+msgid "a bit of rain and ice late"
+msgstr "Puțină ploaie, gheață mai târziu"
+
+msgid "a bit of rain and sleet"
+msgstr "Puțină ploaie, lapoviță"
+
+msgid "a bit of rain and sleet later"
+msgstr "Puțină ploaie, lapoviță mai târziu"
+
+msgid "a bit of rain and snow"
+msgstr "Puțină ploaie, ninsoare"
+
+msgid "a bit of rain in the evening"
+msgstr "Puțină ploaie seara"
+
+msgid "a bit of rain in the morning"
+msgstr "Puțină ploaie dimineața"
+
+msgid "a bit of rain late"
+msgstr "Puțină ploaie mai târziu"
+
+msgid "a bit of rain this evening"
+msgstr "Puțină ploaie în această seară"
+
+msgid "a bit of snow"
+msgstr "Puțină ninsoare"
+
+msgid "a bit of snow and ice later"
+msgstr "Puțină ninsoare, gheață mai târziu"
+
+msgid "a bit of snow and rain"
+msgstr "Puțină ninsoare, ploaie"
+
+msgid "a bit of snow and rain late"
+msgstr "Puțină ninsoare, ploaie mai târziu"
+
+msgid "a bit of snow and sleet late"
+msgstr "Puțină ninsoare, lapoviță mai târziu"
+
+msgid "a bit of snow early"
+msgstr "Puțină ninsoare la început"
+
+msgid "a bit of snow in the evening"
+msgstr "Puțină ninsoare seara"
+
+msgid "a bit of snow in the morning"
+msgstr "Puțină ninsoare dimineața"
+
+msgid "a bit of snow late"
+msgstr "Puțină ninsoare mai târziu"
+
+msgid "a bit of wintry mix"
+msgstr "Precipitații mixte slabe de iarnă"
+
+msgid "a blend of sun and clouds"
+msgstr "Alternanțe de soare și nori"
+
+msgid "a brief afternoon shower"
+msgstr "Averse de scurtă durată după-amiaza"
+
+msgid "a brief evening shower or two"
+msgstr "Una sau două averse scurte seara"
+
+msgid "a brief morning shower or two"
+msgstr "Una sau două averse scurte dimineața"
+
+msgid "a brief shower"
+msgstr "Averse de scurtă durată"
+
+msgid "a brief shower in the morning"
+msgstr "Averse de scurtă durată dimineața"
+
+msgid "a brief shower or two"
+msgstr "Una sau două averse scurte"
+
+msgid "a brief shower or two late"
+msgstr "Una sau două averse scurte mai târziu"
+
+msgid "a brief shower this afternoon"
+msgstr "Averse de scurtă durată în această după-amiază"
+
+msgid "a brief t-storm early"
+msgstr "Furtună scurtă cu descărcări electrice la început"
+
+msgid "a brief t-storm in the p.m."
+msgstr "Furtună scurtă cu descărcări electrice după-amiaza"
+
+msgid "a chance for snow"
+msgstr "Posibile ninsori"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "Furtună cu răcorirea vremii după-amiaza"
+
+msgid "a couple of a.m. snow showers"
+msgstr "Câteva averse de ninsoare dimineața"
+
+msgid "a couple of afternoon showers"
+msgstr "Una sau două averse după-amiaza"
+
+msgid "a couple of downpours late"
+msgstr "Câteva averse torențiale mai târziu"
+
+msgid "a couple of evening downpours"
+msgstr "Câteva averse torențiale seara"
+
+msgid "a couple of evening showers"
+msgstr "Una sau două averse seara"
+
+msgid "a couple of evening t-showers"
+msgstr "Câteva averse cu descărcări electrice seara"
+
+msgid "a couple of evening t-storms"
+msgstr "Câteva furtuni cu descărcări electrice seara"
+
+msgid "a couple of flurries"
+msgstr "Câteva fulguieli"
+
+msgid "a couple of heavy t-storms"
+msgstr "Câteva furtuni puternice cu descărcări electrice"
+
+msgid "a couple of morning showers"
+msgstr "Una sau două averse dimineața"
+
+msgid "a couple of morning t-showers"
+msgstr "Câteva averse cu descărcări electrice dimineața"
+
+msgid "a couple of morning t-storms"
+msgstr "Câteva furtuni cu descărcări electrice dimineața"
+
+msgid "a couple of p.m. snow showers"
+msgstr "Câteva averse de ninsoare după-amiaza"
+
+msgid "a couple of p.m. t-showers"
+msgstr "Câteva averse cu descărcări electrice după-amiaza"
+
+msgid "a couple of showers"
+msgstr "Una sau două averse"
+
+msgid "a couple of showers late"
+msgstr "Una sau două averse mai târziu"
+
+msgid "a couple of showers possible"
+msgstr "Posibile câteva averse"
+
+msgid "a couple of snow showers"
+msgstr "Câteva averse de ninsoare"
+
+msgid "a couple of snow showers late"
+msgstr "Câteva averse de ninsoare mai târziu"
+
+msgid "a couple of strong t-storms"
+msgstr "Câteva furtuni puternice cu descărcări electrice"
+
+msgid "a couple of t-showers"
+msgstr "Câteva averse cu descărcări electrice"
+
+msgid "a couple of t-showers early"
+msgstr "Câteva averse cu descărcări electrice la început"
+
+msgid "a couple of t-showers late"
+msgstr "Câteva averse cu descărcări electrice mai târziu"
+
+msgid "a couple of t-storms late"
+msgstr "Câteva furtuni cu descărcări electrice mai târziu"
+
+msgid "a couple of thundershowers"
+msgstr "Câteva averse cu descărcări electrice"
+
+msgid "a damaging thunderstorm"
+msgstr "Furtună care poate provoca pagube"
+
+msgid "a downpour early"
+msgstr "Ploi torențiale la început"
+
+msgid "a downpour in the afternoon"
+msgstr "Ploi torențiale după-amiaza"
+
+msgid "a downpour in the morning"
+msgstr "Ploi torențiale dimineața"
+
+msgid "a downpour this morning"
+msgstr "Ploi torențiale în această dimineață"
+
+msgid "a drenching morning shower"
+msgstr "Averse puternice dimineața"
+
+msgid "a drenching shower late"
+msgstr "Averse puternice mai târziu"
+
+msgid "a drenching t-storm early"
+msgstr "Furtună cu ploaie torențială la început"
+
+msgid "a drenching thunderstorm late"
+msgstr "Furtună cu ploaie torențială mai târziu"
+
+msgid "a few a.m. showers"
+msgstr "Câteva averse dimineața"
+
+msgid "a few afternoon showers"
+msgstr "Câteva averse după-amiaza"
+
+msgid "a few evening showers"
+msgstr "Câteva averse seara"
+
+msgid "a few flurries"
+msgstr "Câteva fulguieli"
+
+msgid "a few flurries in the morning"
+msgstr "Câteva fulguieli dimineața"
+
+msgid "a few late-night showers"
+msgstr "Câteva averse noaptea târziu"
+
+msgid "a few morning showers"
+msgstr "Câteva averse dimineața"
+
+msgid "a few showers"
+msgstr "Câteva averse"
+
+msgid "a few showers in the evening"
+msgstr "Câteva averse seara"
+
+msgid "a few showers in the morning"
+msgstr "Câteva averse dimineața"
+
+msgid "a few showers late"
+msgstr "Câteva averse mai târziu"
+
+msgid "a few showers this afternoon"
+msgstr "Câteva averse în această după-amiază"
+
+msgid "a few showers this evening"
+msgstr "Câteva averse în această seară"
+
+msgid "a few snowflakes late"
+msgstr "Câțiva fulgi de zăpadă mai târziu"
+
+msgid "a few strong p.m. t-storms"
+msgstr "Câteva furtuni puternice cu descărcări electrice după-amiaza"
+
+msgid "a few t-storms"
+msgstr "Câteva furtuni cu descărcări electrice"
+
+msgid "a flurry early"
+msgstr "Fulguieli trecătoare la început"
+
+msgid "a flurry in the p.m."
+msgstr "Fulguieli trecătoare după-amiaza"
+
+msgid "a flurry late"
+msgstr "Fulguieli trecătoare mai târziu"
+
+msgid "a gusty breeze with clearing"
+msgstr "Vânt în rafale, cerul se înseninează"
+
+msgid "a gusty morning breeze"
+msgstr "Vânt în rafale dimineața"
+
+msgid "a heavy afternoon shower"
+msgstr "Averse puternice după-amiaza"
+
+msgid "a heavy afternoon t-storm"
+msgstr "Furtuni puternice cu descărcări electrice după-amiaza"
+
+msgid "a heavy morning shower or two"
+msgstr "Câteva averse puternice dimineața"
+
+msgid "a heavy shower in the morning"
+msgstr "Averse puternice dimineața"
+
+msgid "a heavy t-storm"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "a heavy t-storm early"
+msgstr "Furtuni puternice cu descărcări electrice la început"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "Furtuni puternice cu descărcări electrice dimineața"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "Furtuni puternice cu descărcări electrice după-amiaza"
+
+msgid "a heavy thunderstorm"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "a late-night shower"
+msgstr "O aversă noaptea târziu"
+
+msgid "a late-night shower in places"
+msgstr "Averse pe alocuri noaptea târziu"
+
+msgid "a late-night shower in spots"
+msgstr "Averse pe alocuri noaptea târziu"
+
+msgid "a late-night shower or two"
+msgstr "Una sau două averse noaptea târziu"
+
+msgid "a late-night t-storm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri noaptea târziu"
+
+msgid "a late-night t-storm or two"
+msgstr "Câteva furtuni cu descărcări electrice noaptea târziu"
+
+msgid "a late-night thunderstorm"
+msgstr "O furtună cu descărcări electrice noaptea târziu"
+
+msgid "a little a.m. rain"
+msgstr "Puțină ploaie dimineața"
+
+msgid "a little afternoon rain"
+msgstr "Puțină ploaie după-amiaza"
+
+msgid "a little afternoon snow"
+msgstr "Puțină ninsoare după-amiaza"
+
+msgid "a little evening rain"
+msgstr "Puțină ploaie seara"
+
+msgid "a little evening snow"
+msgstr "Puțină ninsoare seara"
+
+msgid "a little icy mix early"
+msgstr "Precipitații mixte slabe cu polei la început"
+
+msgid "a little icy mix in the a.m."
+msgstr "Precipitații mixte slabe cu polei dimineața"
+
+msgid "a little icy mix this morning"
+msgstr "Precipitații mixte slabe cu polei în această dimineață"
+
+msgid "a little late-night rain"
+msgstr "Puțină ploaie noaptea târziu"
+
+msgid "a little late-night snow"
+msgstr "Puțină ninsoare noaptea târziu"
+
+msgid "a little morning rain"
+msgstr "Puțină ploaie dimineața"
+
+msgid "a little morning snow"
+msgstr "Puțină ninsoare dimineața"
+
+msgid "a little rain"
+msgstr "Puțină ploaie"
+
+msgid "a little rain early"
+msgstr "Puțină ploaie la început"
+
+msgid "a little rain in the evening"
+msgstr "Puțină ploaie seara"
+
+msgid "a little rain in the morning"
+msgstr "Puțină ploaie dimineața"
+
+msgid "a little rain late"
+msgstr "Puțină ploaie mai târziu"
+
+msgid "a little rain this afternoon"
+msgstr "Puțină ploaie în această după-amiază"
+
+msgid "a little rain this morning"
+msgstr "Puțină ploaie în această dimineață"
+
+msgid "a little snow"
+msgstr "Puțină ninsoare"
+
+msgid "a little snow and sleet early"
+msgstr "Puțină ninsoare, lapoviță la început"
+
+msgid "a little snow and sleet late"
+msgstr "Puțină ninsoare, lapoviță mai târziu"
+
+msgid "a little snow at times"
+msgstr "Câte puțină ninsoare din când în când"
+
+msgid "a little snow at times late"
+msgstr "Câte puțină ninsoare din când în când mai târziu"
+
+msgid "a little snow early"
+msgstr "Puțină ninsoare la început"
+
+msgid "a little snow in the evening"
+msgstr "Puțină ninsoare seara"
+
+msgid "a little snow late"
+msgstr "Puțină ninsoare mai târziu"
+
+msgid "a little snow this afternoon"
+msgstr "Puțină ninsoare în această după-amiază"
+
+msgid "a little wintry mix"
+msgstr "Precipitații mixte slabe de iarnă"
+
+msgid "a little wintry mix late"
+msgstr "Precipitații mixte slabe de iarnă mai târziu"
+
+msgid "a morning flurry"
+msgstr "Fulguieli trecătoare dimineața"
+
+msgid "a morning rain or snow shower"
+msgstr "Aversă de ploaie sau ninsoare dimineața"
+
+msgid "a morning shower"
+msgstr "O aversă dimineața"
+
+msgid "a morning shower in places"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "a morning shower in spots"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "a morning shower in the area"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "a morning shower or t-storm"
+msgstr "Aversă sau furtună cu descărcări electrice dimineața"
+
+msgid "a morning shower or two"
+msgstr "Una sau două averse dimineața"
+
+msgid "a morning snow shower around"
+msgstr "O aversă de ninsoare dimineața"
+
+msgid "a morning t-storm"
+msgstr "O furtună cu descărcări electrice dimineața"
+
+msgid "a morning t-storm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri dimineața"
+
+msgid "a morning t-storm in the area"
+msgstr "Furtuni cu descărcări electrice pe alocuri dimineața"
+
+msgid "a morning thunderstorm"
+msgstr "O furtună cu descărcări electrice dimineața"
+
+msgid "a morning thunderstorm or two"
+msgstr "Câteva furtuni cu descărcări electrice dimineața"
+
+msgid "a p.m. rain or snow shower"
+msgstr "Aversă de ploaie sau ninsoare după-amiaza"
+
+msgid "a p.m. shower"
+msgstr "O aversă după-amiaza"
+
+msgid "a p.m. shower in places"
+msgstr "Averse pe alocuri după-amiaza"
+
+msgid "a p.m. shower in the area"
+msgstr "Averse pe alocuri după-amiaza"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "Aversă sau furtună cu descărcări electrice după-amiaza"
+
+msgid "a p.m. snow shower in spots"
+msgstr "Averse de ninsoare pe alocuri după-amiaza"
+
+msgid "a p.m. t-storm"
+msgstr "O furtună cu descărcări electrice după-amiaza"
+
+msgid "a p.m. t-storm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri după-amiaza"
+
+msgid "a p.m. t-storm in the area"
+msgstr "Furtuni cu descărcări electrice pe alocuri după-amiaza"
+
+msgid "a p.m. t-storm possible"
+msgstr "Posibile furtuni cu descărcări electrice după-amiaza"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri după-amiaza"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "Câteva furtuni cu descărcări electrice după-amiaza"
+
+msgid "a passing afternoon shower"
+msgstr "Averse de scurtă durată după-amiaza"
+
+msgid "a passing flurry late"
+msgstr "Fulguieli trecătoare mai târziu"
+
+msgid "a passing late-night shower"
+msgstr "Averse de scurtă durată noaptea târziu"
+
+msgid "a passing morning shower"
+msgstr "Averse de scurtă durată dimineața"
+
+msgid "a passing shower"
+msgstr "Averse de scurtă durată"
+
+msgid "a passing shower late"
+msgstr "Averse de scurtă durată mai târziu"
+
+msgid "a passing shower or two"
+msgstr "Una sau două averse scurte"
+
+msgid "a passing shower this morning"
+msgstr "Averse de scurtă durată în această dimineață"
+
+msgid "a quick afternoon shower"
+msgstr "Averse de scurtă durată după-amiaza"
+
+msgid "a quick shower"
+msgstr "Averse de scurtă durată"
+
+msgid "a rain and sleet shower"
+msgstr "Aversă de ploaie și lapoviță"
+
+msgid "a rain and sleet shower late"
+msgstr "Aversă de ploaie și lapoviță mai târziu"
+
+msgid "a rain or snow shower"
+msgstr "Aversă de ploaie sau ninsoare"
+
+msgid "a rain or snow shower early"
+msgstr "Aversă de ploaie sau ninsoare la început"
+
+msgid "a rain or snow shower late"
+msgstr "Aversă de ploaie sau ninsoare mai târziu"
+
+msgid "a severe afternoon t-storm"
+msgstr "Furtuni violente cu descărcări electrice după-amiaza"
+
+msgid "a severe thunderstorm"
+msgstr "Furtuni violente cu descărcări electrice"
+
+msgid "a shower"
+msgstr "O aversă"
+
+msgid "a shower and t-storm around"
+msgstr "O aversă, furtuni cu descărcări electrice pe alocuri"
+
+msgid "a shower around"
+msgstr "Averse pe alocuri"
+
+msgid "a shower early"
+msgstr "O aversă la început"
+
+msgid "a shower in places"
+msgstr "Averse pe alocuri"
+
+msgid "a shower in places late"
+msgstr "Averse pe alocuri mai târziu"
+
+msgid "a shower in spots"
+msgstr "Averse pe alocuri"
+
+msgid "a shower in spots late"
+msgstr "Averse pe alocuri mai târziu"
+
+msgid "a shower in the a.m."
+msgstr "O aversă dimineața"
+
+msgid "a shower in the afternoon"
+msgstr "O aversă după-amiaza"
+
+msgid "a shower in the area"
+msgstr "Averse pe alocuri"
+
+msgid "a shower in the area late"
+msgstr "Averse pe alocuri mai târziu"
+
+msgid "a shower in the evening"
+msgstr "O aversă seara"
+
+msgid "a shower in the morning"
+msgstr "O aversă dimineața"
+
+msgid "a shower in the p.m."
+msgstr "O aversă după-amiaza"
+
+msgid "a shower late"
+msgstr "O aversă mai târziu"
+
+msgid "a shower late this afternoon"
+msgstr "O aversă spre sfârșitul după-amiezii"
+
+msgid "a shower late this morning"
+msgstr "O aversă spre sfârșitul dimineții"
+
+msgid "a shower or heavy t-storm"
+msgstr "Aversă sau furtună puternică"
+
+msgid "a shower or t-storm"
+msgstr "Aversă sau furtună cu descărcări electrice"
+
+msgid "a shower or t-storm early"
+msgstr "Aversă sau furtună cu descărcări electrice la început"
+
+msgid "a shower or t-storm in spots"
+msgstr "Averse sau furtuni pe alocuri"
+
+msgid "a shower or thunderstorm"
+msgstr "Aversă sau furtună cu descărcări electrice"
+
+msgid "a shower or two"
+msgstr "Una sau două averse"
+
+msgid "a shower or two early"
+msgstr "Una sau două averse la început"
+
+msgid "a shower or two late"
+msgstr "Una sau două averse mai târziu"
+
+msgid "a shower possible"
+msgstr "Averse posibile"
+
+msgid "a shower this afternoon"
+msgstr "O aversă în această după-amiază"
+
+msgid "a shower this morning"
+msgstr "O aversă în această dimineață"
+
+msgid "a shower toward dawn"
+msgstr "O aversă spre zori"
+
+msgid "a snow shower"
+msgstr "O aversă de ninsoare"
+
+msgid "a snow shower around"
+msgstr "O aversă de ninsoare"
+
+msgid "a snow shower around late"
+msgstr "O aversă de ninsoare mai târziu"
+
+msgid "a snow shower in the morning"
+msgstr "O aversă de ninsoare dimineața"
+
+msgid "a snow shower in the p.m."
+msgstr "O aversă de ninsoare după-amiaza"
+
+msgid "a snow shower late"
+msgstr "O aversă de ninsoare mai târziu"
+
+msgid "a snow shower this afternoon"
+msgstr "O aversă de ninsoare în această după-amiază"
+
+msgid "a snow shower this evening"
+msgstr "O aversă de ninsoare în această seară"
+
+msgid "a snow shower with low clouds"
+msgstr "O aversă de ninsoare, nori joși"
+
+msgid "a snow squall early"
+msgstr "Aversă de ninsoare cu rafale la început"
+
+msgid "a snow squall in the evening"
+msgstr "Aversă de ninsoare cu rafale seara"
+
+msgid "a snow squall in the morning"
+msgstr "Aversă de ninsoare cu rafale dimineața"
+
+msgid "a snow squall in the p.m."
+msgstr "Aversă de ninsoare cu rafale după-amiaza"
+
+msgid "a snow squall late"
+msgstr "Aversă de ninsoare cu rafale mai târziu"
+
+msgid "a stray a.m. t-shower"
+msgstr "Pe alocuri averse cu descărcări electrice dimineața"
+
+msgid "a stray a.m. t-storm"
+msgstr "Furtuni cu descărcări electrice pe alocuri dimineața"
+
+msgid "a stray afternoon shower"
+msgstr "Averse pe alocuri după-amiaza"
+
+msgid "a stray afternoon t-shower"
+msgstr "Pe alocuri averse cu descărcări electrice după-amiaza"
+
+msgid "a stray afternoon t-storm"
+msgstr "Furtuni cu descărcări electrice pe alocuri după-amiaza"
+
+msgid "a stray evening thunderstorm"
+msgstr "Furtuni cu descărcări electrice pe alocuri seara"
+
+msgid "a stray late-night t-storm"
+msgstr "Furtuni cu descărcări electrice pe alocuri noaptea târziu"
+
+msgid "a stray morning shower"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "a stray morning thunderstorm"
+msgstr "Furtuni cu descărcări electrice pe alocuri dimineața"
+
+msgid "a stray shower in the morning"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "a stray shower late"
+msgstr "Averse pe alocuri mai târziu"
+
+msgid "a stray t-shower"
+msgstr "Pe alocuri averse cu descărcări electrice"
+
+msgid "a stray t-storm"
+msgstr "Furtuni cu descărcări electrice pe alocuri"
+
+msgid "a stray t-storm early"
+msgstr "Furtuni cu descărcări electrice pe alocuri la început"
+
+msgid "a stray t-storm this evening"
+msgstr "Furtuni cu descărcări electrice pe alocuri în această seară"
+
+msgid "a stray thundershower"
+msgstr "Pe alocuri averse cu descărcări electrice"
+
+msgid "a stray thunderstorm"
+msgstr "Furtuni cu descărcări electrice pe alocuri"
+
+msgid "a stray thunderstorm early"
+msgstr "Furtuni cu descărcări electrice pe alocuri la început"
+
+msgid "a stray thunderstorm late"
+msgstr "Furtuni cu descărcări electrice pe alocuri mai târziu"
+
+msgid "a strong a.m. t-storm"
+msgstr "Furtuni puternice cu descărcări electrice dimineața"
+
+msgid "a strong afternoon t-storm"
+msgstr "Furtuni puternice cu descărcări electrice după-amiaza"
+
+msgid "a strong evening thunderstorm"
+msgstr "Furtuni puternice cu descărcări electrice seara"
+
+msgid "a strong late-night t-storm"
+msgstr "Furtuni puternice cu descărcări electrice noaptea târziu"
+
+msgid "a strong morning thunderstorm"
+msgstr "Furtuni puternice cu descărcări electrice dimineața"
+
+msgid "a strong t-storm"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "a strong t-storm in spots"
+msgstr "Furtuni puternice pe alocuri"
+
+msgid "a strong t-storm late"
+msgstr "Furtuni puternice cu descărcări electrice mai târziu"
+
+msgid "a strong t-storm possible"
+msgstr "Posibile furtuni puternice cu descărcări electrice"
+
+msgid "a strong t-storm this evening"
+msgstr "Furtuni puternice cu descărcări electrice în această seară"
+
+msgid "a strong thunderstorm"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "a strong thunderstorm early"
+msgstr "Furtuni puternice cu descărcări electrice la început"
+
+msgid "a strong thunderstorm late"
+msgstr "Furtuni puternice cu descărcări electrice mai târziu"
+
+msgid "a t-shower in spots"
+msgstr "Pe alocuri averse cu descărcări electrice"
+
+msgid "a t-shower in spots early"
+msgstr "Pe alocuri averse cu descărcări electrice la început"
+
+msgid "a t-shower in the afternoon"
+msgstr "Aversă cu descărcări electrice după-amiaza"
+
+msgid "a t-storm"
+msgstr "O furtună cu descărcări electrice"
+
+msgid "a t-storm around in the a.m."
+msgstr "Furtuni cu descărcări electrice pe alocuri dimineața"
+
+msgid "a t-storm around in the p.m."
+msgstr "Furtuni cu descărcări electrice pe alocuri după-amiaza"
+
+msgid "a t-storm around late"
+msgstr "Furtuni cu descărcări electrice pe alocuri mai târziu"
+
+msgid "a t-storm around this evening"
+msgstr "Furtuni cu descărcări electrice pe alocuri în această seară"
+
+msgid "a t-storm early"
+msgstr "O furtună cu descărcări electrice la început"
+
+msgid "a t-storm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri"
+
+msgid "a t-storm in the afternoon"
+msgstr "O furtună cu descărcări electrice după-amiaza"
+
+msgid "a t-storm in the area late"
+msgstr "Furtuni cu descărcări electrice pe alocuri mai târziu"
+
+msgid "a t-storm in the p.m."
+msgstr "O furtună cu descărcări electrice după-amiaza"
+
+msgid "a t-storm late"
+msgstr "O furtună cu descărcări electrice mai târziu"
+
+msgid "a t-storm late this afternoon"
+msgstr "O furtună cu descărcări electrice spre sfârșitul după-amiezii"
+
+msgid "a t-storm late this evening"
+msgstr "O furtună cu descărcări electrice seara târziu"
+
+msgid "a t-storm late this morning"
+msgstr "O furtună cu descărcări electrice spre sfârșitul dimineții"
+
+msgid "a t-storm or two"
+msgstr "Câteva furtuni cu descărcări electrice"
+
+msgid "a t-storm possible"
+msgstr "Posibile furtuni cu descărcări electrice"
+
+msgid "a thick cloud cover"
+msgstr "Acoperit"
+
+msgid "a thick cloud cover and hot"
+msgstr "Acoperit, vreme călduroasă"
+
+msgid "a thundershower"
+msgstr "Aversă cu descărcări electrice"
+
+msgid "a thundershower in spots"
+msgstr "Pe alocuri averse cu descărcări electrice"
+
+msgid "a thundershower in spots late"
+msgstr "Pe alocuri averse cu descărcări electrice mai târziu"
+
+msgid "a thundershower late"
+msgstr "Aversă cu descărcări electrice mai târziu"
+
+msgid "a thundershower on the prowl"
+msgstr "Pe alocuri averse cu descărcări electrice"
+
+msgid "a thunderstorm"
+msgstr "O furtună cu descărcări electrice"
+
+msgid "a thunderstorm around"
+msgstr "Furtuni cu descărcări electrice pe alocuri"
+
+msgid "a thunderstorm around early"
+msgstr "Furtuni cu descărcări electrice pe alocuri la început"
+
+msgid "a thunderstorm around late"
+msgstr "Furtuni cu descărcări electrice pe alocuri mai târziu"
+
+msgid "a thunderstorm early"
+msgstr "O furtună cu descărcări electrice la început"
+
+msgid "a thunderstorm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri"
+
+msgid "a thunderstorm in spots early"
+msgstr "Furtuni cu descărcări electrice pe alocuri la început"
+
+msgid "a thunderstorm in spots late"
+msgstr "Furtuni cu descărcări electrice pe alocuri mai târziu"
+
+msgid "a thunderstorm in the area"
+msgstr "Furtuni cu descărcări electrice pe alocuri"
+
+msgid "a thunderstorm in the evening"
+msgstr "O furtună cu descărcări electrice seara"
+
+msgid "a thunderstorm in the morning"
+msgstr "O furtună cu descărcări electrice dimineața"
+
+msgid "a thunderstorm late"
+msgstr "O furtună cu descărcări electrice mai târziu"
+
+msgid "a thunderstorm or two"
+msgstr "Câteva furtuni cu descărcări electrice"
+
+msgid "a thunderstorm or two early"
+msgstr "Câteva furtuni cu descărcări electrice la început"
+
+msgid "a thunderstorm or two late"
+msgstr "Câteva furtuni cu descărcări electrice mai târziu"
+
+msgid "a thunderstorm possible"
+msgstr "Posibile furtuni cu descărcări electrice"
+
+msgid "a thunderstorm this afternoon"
+msgstr "O furtună cu descărcări electrice în această după-amiază"
+
+msgid "a thunderstorm this evening"
+msgstr "O furtună cu descărcări electrice în această seară"
+
+msgid "a thunderstorm this morning"
+msgstr "O furtună cu descărcări electrice în această dimineață"
+
+msgid "a touch of afternoon rain"
+msgstr "Puțină ploaie după-amiaza"
+
+msgid "a touch of evening rain"
+msgstr "Puțină ploaie seara"
+
+msgid "a touch of late-night rain"
+msgstr "Puțină ploaie noaptea târziu"
+
+msgid "a touch of morning rain"
+msgstr "Puțină ploaie dimineața"
+
+msgid "a touch of rain"
+msgstr "Puțină ploaie"
+
+msgid "a touch of rain late"
+msgstr "Puțină ploaie mai târziu"
+
+msgid "a wintry mix"
+msgstr "Precipitații mixte de iarnă"
+
+msgid "a wintry mix in the morning"
+msgstr "Precipitații mixte de iarnă dimineața"
+
+msgid "a wintry mix late"
+msgstr "Precipitații mixte de iarnă mai târziu"
+
+msgid "a wintry mix this morning"
+msgstr "Precipitații mixte de iarnă în această dimineață"
+
+msgid "a.m. flurries"
+msgstr "Fulguieli trecătoare dimineața"
+
+msgid "a.m. rain"
+msgstr "Ploaie dimineața"
+
+msgid "a.m. showers"
+msgstr "Averse dimineața"
+
+msgid "abundant sunshine"
+msgstr "Mult soare"
+
+msgid "abundant sunshine and breezy"
+msgstr "Mult soare, adiere de vânt"
+
+msgid "abundant sunshine and hot"
+msgstr "Mult soare, vreme călduroasă"
+
+msgid "abundant sunshine and nice"
+msgstr "Mult soare, vreme plăcută"
+
+msgid "abundant sunshine and warm"
+msgstr "Mult soare, cald"
+
+msgid "abundant sunshine and warmer"
+msgstr "Mult soare, mai cald"
+
+msgid "afternoon flurries"
+msgstr "Fulguieli trecătoare după-amiaza"
+
+msgid "afternoon rain"
+msgstr "Ploaie după-amiaza"
+
+msgid "afternoon showers"
+msgstr "Averse după-amiaza"
+
+msgid "afternoon snow"
+msgstr "Ninsoare după-amiaza"
+
+msgid "afternoon snow showers"
+msgstr "Averse de ninsoare după-amiaza"
+
+msgid "afternoon t-storms"
+msgstr "Furtuni cu descărcări electrice după-amiaza"
+
+msgid "afternoon thundershowers"
+msgstr "Aversă cu descărcări electrice după-amiaza"
+
+msgid "afternoon thunderstorms"
+msgstr "Furtuni cu descărcări electrice după-amiaza"
+
+msgid "an a.m. flurry"
+msgstr "Fulguieli trecătoare dimineața"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "Aversă de ploaie și lapoviță dimineața"
+
+msgid "an a.m. rain or snow shower"
+msgstr "Aversă de ploaie sau ninsoare dimineața"
+
+msgid "an a.m. shower"
+msgstr "O aversă dimineața"
+
+msgid "an a.m. shower or two"
+msgstr "Una sau două averse dimineața"
+
+msgid "an a.m. t-storm"
+msgstr "O furtună cu descărcări electrice dimineața"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri dimineața"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "Câteva furtuni cu descărcări electrice dimineața"
+
+msgid "an afternoon shower"
+msgstr "O aversă după-amiaza"
+
+msgid "an afternoon shower in spots"
+msgstr "Averse pe alocuri după-amiaza"
+
+msgid "an afternoon shower or two"
+msgstr "Una sau două averse după-amiaza"
+
+msgid "an afternoon shower possible"
+msgstr "Averse posibile după-amiaza"
+
+msgid "an afternoon snow showers"
+msgstr "O aversă de ninsoare după-amiaza"
+
+msgid "an afternoon t-storm"
+msgstr "O furtună cu descărcări electrice după-amiaza"
+
+msgid "an afternoon t-storm or two"
+msgstr "Câteva furtuni cu descărcări electrice după-amiaza"
+
+msgid "an afternoon thundershower"
+msgstr "Aversă cu descărcări electrice după-amiaza"
+
+msgid "an afternoon thunderstorm"
+msgstr "O furtună cu descărcări electrice după-amiaza"
+
+msgid "an evening shower"
+msgstr "O aversă seara"
+
+msgid "an evening shower in the area"
+msgstr "Averse pe alocuri seara"
+
+msgid "an evening shower or t-storm"
+msgstr "Aversă sau furtună cu descărcări electrice seara"
+
+msgid "an evening shower or two"
+msgstr "Una sau două averse seara"
+
+msgid "an evening t-storm in spots"
+msgstr "Furtuni cu descărcări electrice pe alocuri seara"
+
+msgid "an evening t-storm or two"
+msgstr "Câteva furtuni cu descărcări electrice seara"
+
+msgid "an evening thundershower"
+msgstr "Aversă cu descărcări electrice seara"
+
+msgid "an evening thunderstorm"
+msgstr "O furtună cu descărcări electrice seara"
+
+msgid "areas of fog"
+msgstr "Ceață pe alocuri"
+
+msgid "areas of fog in the morning"
+msgstr "Ceață pe alocuri dimineața"
+
+msgid "areas of low clouds"
+msgstr "Pe alocuri nori joși"
+
+msgid "areas of low clouds and cold"
+msgstr "Pe alocuri nori joși, frig"
+
+msgid "areas of low clouds and fog"
+msgstr "Pe alocuri nori joși, ceață"
+
+msgid "be advised for strong winds"
+msgstr "Atenție la vântul puternic"
+
+msgid "beautiful"
+msgstr "Vreme plăcută"
+
+msgid "beautiful with clouds and sun"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "beautiful with periods of sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "beautiful with plenty of sun"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "beautiful with some sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "beautiful with sun and clouds"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "beautiful with sunshine"
+msgstr "Vreme plăcută, însorit"
+
+msgid "becoming clear"
+msgstr "Cerul se înseninează"
+
+msgid "becoming clear and chilly"
+msgstr "Cerul se înseninează, vreme rece"
+
+msgid "becoming clear and cold"
+msgstr "Cerul se înseninează, frig"
+
+msgid "becoming clear and colder"
+msgstr "Cerul se înseninează, mai frig"
+
+msgid "becoming clear and cool"
+msgstr "Cerul se înseninează, răcoare"
+
+msgid "becoming clear and cooler"
+msgstr "Cerul se înseninează, mai răcoros"
+
+msgid "becoming clear and mild"
+msgstr "Cerul se înseninează, vreme blândă"
+
+msgid "becoming clear and very warm"
+msgstr "Cerul se înseninează, foarte cald"
+
+msgid "becoming clear and warm"
+msgstr "Cerul se înseninează, cald"
+
+msgid "becoming clear with a shower"
+msgstr "Cerul se înseninează, o aversă"
+
+msgid "becoming cloudy"
+msgstr "Cerul se înnorează"
+
+msgid "becoming cloudy and breezy"
+msgstr "Cerul se înnorează, adiere de vânt"
+
+msgid "becoming cloudy and chilly"
+msgstr "Cerul se înnorează, vreme rece"
+
+msgid "becoming cloudy and cold"
+msgstr "Cerul se înnorează, frig"
+
+msgid "becoming cloudy and cooler"
+msgstr "Cerul se înnorează, mai răcoros"
+
+msgid "becoming cloudy and hot"
+msgstr "Cerul se înnorează, vreme călduroasă"
+
+msgid "becoming cloudy and humid"
+msgstr "Cerul se înnorează, umiditate ridicată"
+
+msgid "becoming cloudy and mild"
+msgstr "Cerul se înnorează, vreme blândă"
+
+msgid "becoming cloudy and very warm"
+msgstr "Cerul se înnorează, foarte cald"
+
+msgid "becoming cloudy and warm"
+msgstr "Cerul se înnorează, cald"
+
+msgid "becoming cloudy and warmer"
+msgstr "Cerul se înnorează, mai cald"
+
+msgid "becoming cloudy with a shower"
+msgstr "Cerul se înnorează, o aversă"
+
+msgid "becoming partly cloudy"
+msgstr "Cerul devine parțial noros"
+
+msgid "becoming windier and colder"
+msgstr "Vânt în intensificare, mai frig"
+
+msgid "becoming windier and cooler"
+msgstr "Vânt în intensificare, mai răcoros"
+
+msgid "bitterly cold"
+msgstr "Ger puternic"
+
+msgid "bitterly cold in the evening"
+msgstr "Ger puternic seara"
+
+msgid "bitterly cold with clearing"
+msgstr "Ger puternic, cerul se înseninează"
+
+msgid "bitterly cold with low clouds"
+msgstr "Ger puternic, nori joși"
+
+msgid "blazing sunshine and hot"
+msgstr "Soare arzător, vreme călduroasă"
+
+msgid "blazing sunshine and warmer"
+msgstr "Soare arzător, mai cald"
+
+msgid "blowing dust"
+msgstr "Praf spulberat de vânt"
+
+msgid "blowing dust with high clouds"
+msgstr "Praf spulberat de vânt, nori înalți"
+
+msgid "blowing snow"
+msgstr "Zăpadă spulberată de vânt"
+
+msgid "breezy and cold"
+msgstr "Adiere de vânt, frig"
+
+msgid "breezy and colder with rain"
+msgstr "Adiere de vânt, mai frig, ploaie"
+
+msgid "breezy and cool"
+msgstr "Adiere de vânt, răcoare"
+
+msgid "breezy and cool with some sun"
+msgstr "Adiere de vânt, răcoare, intervale însorite"
+
+msgid "breezy and cooler with clouds"
+msgstr "Adiere de vânt, mai răcoros, cer noros"
+
+msgid "breezy and cooler with rain"
+msgstr "Adiere de vânt, mai răcoros, ploaie"
+
+msgid "breezy and hot with sunshine"
+msgstr "Adiere de vânt, vreme călduroasă, însorit"
+
+msgid "breezy and humid"
+msgstr "Adiere de vânt, umiditate ridicată"
+
+msgid "breezy and mild"
+msgstr "Adiere de vânt, vreme blândă"
+
+msgid "breezy and mild with rain"
+msgstr "Adiere de vânt, vreme blândă, ploaie"
+
+msgid "breezy and nice"
+msgstr "Adiere de vânt, vreme plăcută"
+
+msgid "breezy and nice with some sun"
+msgstr "Adiere de vânt, vreme plăcută, intervale însorite"
+
+msgid "breezy and nice with sunshine"
+msgstr "Adiere de vânt, vreme plăcută, însorit"
+
+msgid "breezy and pleasant"
+msgstr "Adiere de vânt, vreme plăcută"
+
+msgid "breezy and quite cold"
+msgstr "Adiere de vânt, destul de frig"
+
+msgid "breezy and very cold"
+msgstr "Adiere de vânt, foarte frig"
+
+msgid "breezy and warm with some sun"
+msgstr "Adiere de vânt, cald, intervale însorite"
+
+msgid "breezy early"
+msgstr "Adiere de vânt la început"
+
+msgid "breezy in the a.m."
+msgstr "Adiere de vânt dimineața"
+
+msgid "breezy in the afternoon"
+msgstr "Adiere de vânt după-amiaza"
+
+msgid "breezy in the morning"
+msgstr "Adiere de vânt dimineața"
+
+msgid "breezy this morning"
+msgstr "Adiere de vânt în această dimineață"
+
+msgid "breezy with clearing"
+msgstr "Adiere de vânt, cerul se înseninează"
+
+msgid "breezy with clouds and sun"
+msgstr "Adiere de vânt, alternanțe de soare și nori"
+
+msgid "breezy with decreasing clouds"
+msgstr "Adiere de vânt, norii se risipesc"
+
+msgid "breezy with high clouds"
+msgstr "Adiere de vânt, nori înalți"
+
+msgid "breezy with increasing clouds"
+msgstr "Adiere de vânt, nebulozitate în creștere"
+
+msgid "breezy with lots of sun"
+msgstr "Adiere de vânt, mult soare"
+
+msgid "breezy with partial sunshine"
+msgstr "Adiere de vânt, intervale însorite"
+
+msgid "breezy with patchy clouds"
+msgstr "Adiere de vânt, nori răzleți"
+
+msgid "breezy with periods of rain"
+msgstr "Adiere de vânt, ploaie din când în când"
+
+msgid "breezy with periods of snow"
+msgstr "Adiere de vânt, ninsori intermitente"
+
+msgid "breezy with periods of sun"
+msgstr "Adiere de vânt, intervale însorite"
+
+msgid "breezy with plenty of sun"
+msgstr "Adiere de vânt, mult soare"
+
+msgid "breezy with rain"
+msgstr "Adiere de vânt, ploaie"
+
+msgid "breezy with rain and drizzle"
+msgstr "Adiere de vânt, ploaie și burniță"
+
+msgid "breezy with snow"
+msgstr "Adiere de vânt, ninsoare"
+
+msgid "breezy with some sun"
+msgstr "Adiere de vânt, intervale însorite"
+
+msgid "breezy with sun and clouds"
+msgstr "Adiere de vânt, alternanțe de soare și nori"
+
+msgid "breezy with sunny intervals"
+msgstr "Adiere de vânt, intervale însorite"
+
+msgid "breezy with sunshine"
+msgstr "Adiere de vânt, însorit"
+
+msgid "breezy with variable clouds"
+msgstr "Adiere de vânt, nebulozitate variabilă"
+
+msgid "brief a.m. showers"
+msgstr "Averse de scurtă durată dimineața"
+
+msgid "brief afternoon showers"
+msgstr "Averse de scurtă durată după-amiaza"
+
+msgid "brief evening showers"
+msgstr "Averse de scurtă durată seara"
+
+msgid "brief late-night showers"
+msgstr "Averse de scurtă durată noaptea târziu"
+
+msgid "brief morning showers"
+msgstr "Averse de scurtă durată dimineața"
+
+msgid "brief showers"
+msgstr "Averse de scurtă durată"
+
+msgid "brief showers early"
+msgstr "Averse de scurtă durată la început"
+
+msgid "brief showers in the evening"
+msgstr "Averse de scurtă durată seara"
+
+msgid "brief showers in the morning"
+msgstr "Averse de scurtă durată dimineața"
+
+msgid "brief showers late"
+msgstr "Averse de scurtă durată mai târziu"
+
+msgid "brief showers this afternoon"
+msgstr "Averse de scurtă durată în această după-amiază"
+
+msgid "brilliant sunshine"
+msgstr "Soare strălucitor"
+
+msgid "brilliant sunshine and breezy"
+msgstr "Soare strălucitor, adiere de vânt"
+
+msgid "brilliant sunshine and hot"
+msgstr "Soare strălucitor, vreme călduroasă"
+
+msgid "brilliant sunshine and hotter"
+msgstr "Soare strălucitor, mai călduros"
+
+msgid "brilliant sunshine and nice"
+msgstr "Soare strălucitor, vreme plăcută"
+
+msgid "brilliant sunshine and warm"
+msgstr "Soare strălucitor, cald"
+
+msgid "brilliant sunshine and warmer"
+msgstr "Soare strălucitor, mai cald"
+
+msgid "brisk and chilly"
+msgstr "Vânt vioi, vreme rece"
+
+msgid "brisk and cold"
+msgstr "Vânt vioi, frig"
+
+msgid "brisk and very cold"
+msgstr "Vânt vioi, foarte frig"
+
+msgid "but chilly"
+msgstr "Dar vreme rece"
+
+msgid "but cold"
+msgstr "Dar frig"
+
+msgid "but very cold"
+msgstr "Dar foarte frig"
+
+msgid "chance for a strong t-storm"
+msgstr "Posibile furtuni puternice cu descărcări electrice"
+
+msgid "chance for a thunderstorm"
+msgstr "Posibile furtuni cu descărcări electrice"
+
+msgid "chance for rain"
+msgstr "Posibilitate de ploaie"
+
+msgid "chance of a little a.m. rain"
+msgstr "Posibilă ploaie slabă dimineața"
+
+msgid "chance of a little p.m. rain"
+msgstr "Posibilă ploaie slabă după-amiaza"
+
+msgid "chance of a shower"
+msgstr "Averse posibile"
+
+msgid "chance of a thunderstorm"
+msgstr "Posibile furtuni cu descărcări electrice"
+
+msgid "chilly"
+msgstr "Vreme rece"
+
+msgid "chilly whit partial sunshine"
+msgstr "Vreme rece, intervale însorite"
+
+msgid "chilly whit some sun"
+msgstr "Vreme rece, intervale însorite"
+
+msgid "chilly with a little snow"
+msgstr "Vreme rece, puțină ninsoare"
+
+msgid "chilly with clearing"
+msgstr "Vreme rece, cerul se înseninează"
+
+msgid "chilly with clouds and sun"
+msgstr "Vreme rece, alternanțe de soare și nori"
+
+msgid "chilly with increasing clouds"
+msgstr "Vreme rece, nebulozitate în creștere"
+
+msgid "chilly with low clouds"
+msgstr "Vreme rece, nori joși"
+
+msgid "chilly with occasional rain"
+msgstr "Vreme rece, ploaie din când în când"
+
+msgid "chilly with partial sunshine"
+msgstr "Vreme rece, intervale însorite"
+
+msgid "chilly with patchy clouds"
+msgstr "Vreme rece, nori răzleți"
+
+msgid "chilly with periods of rain"
+msgstr "Vreme rece, ploaie din când în când"
+
+msgid "chilly with periods of snow"
+msgstr "Vreme rece, ninsori intermitente"
+
+msgid "chilly with periods of sun"
+msgstr "Vreme rece, intervale însorite"
+
+msgid "chilly with plenty of sun"
+msgstr "Vreme rece, mult soare"
+
+msgid "chilly with rain"
+msgstr "Vreme rece, ploaie"
+
+msgid "chilly with rain and drizzle"
+msgstr "Vreme rece, ploaie și burniță"
+
+msgid "chilly with snow and rain"
+msgstr "Vreme rece, ploaie și ninsoare"
+
+msgid "chilly with some sun"
+msgstr "Vreme rece, intervale însorite"
+
+msgid "chilly with sun and clouds"
+msgstr "Vreme rece, alternanțe de soare și nori"
+
+msgid "chilly with variable clouds"
+msgstr "Vreme rece, nebulozitate variabilă"
+
+msgid "clear and bitterly cold"
+msgstr "Senin, ger puternic"
+
+msgid "clear and breezy"
+msgstr "Senin, adiere de vânt"
+
+msgid "clear and chilly"
+msgstr "Senin, vreme rece"
+
+msgid "clear and cold"
+msgstr "Senin, frig"
+
+msgid "clear and colder"
+msgstr "Senin, mai frig"
+
+msgid "clear and cool"
+msgstr "Senin, răcoare"
+
+msgid "clear and cooler"
+msgstr "Senin, mai răcoros"
+
+msgid "clear and dry"
+msgstr "Senin, vreme uscată"
+
+msgid "clear and frigid"
+msgstr "Senin, ger puternic"
+
+msgid "clear and humid"
+msgstr "Senin, umiditate ridicată"
+
+msgid "clear and mild"
+msgstr "Senin, vreme blândă"
+
+msgid "clear and much colder"
+msgstr "Senin, mult mai frig"
+
+msgid "clear and not as warm"
+msgstr "Senin, mai puțin cald"
+
+msgid "clear and quite cold"
+msgstr "Senin, destul de frig"
+
+msgid "clear and seasonably cool"
+msgstr "Senin, răcoare normală pentru sezon"
+
+msgid "clear and seasonably warm"
+msgstr "Senin, cald, normal pentru sezon"
+
+msgid "clear and unseasonably cold"
+msgstr "Senin, neobișnuit de rece pentru acest sezon"
+
+msgid "clear and very cold"
+msgstr "Senin, foarte frig"
+
+msgid "clear and very humid"
+msgstr "Senin, umiditate foarte ridicată"
+
+msgid "clear and very warm"
+msgstr "Senin, foarte cald"
+
+msgid "clear and warm"
+msgstr "Senin, cald"
+
+msgid "clear and warmer"
+msgstr "Senin, mai cald"
+
+msgid "clear to partly cloudy"
+msgstr "Senin până la parțial noros"
+
+msgid "clear with a gusty breeze"
+msgstr "Senin, vânt în rafale"
+
+msgid "clearing"
+msgstr "Cerul se înseninează"
+
+msgid "clearing and a few showers"
+msgstr "Cerul se înseninează, câteva averse"
+
+msgid "clearing and a stray t-storm"
+msgstr "Cerul se înseninează, furtuni cu descărcări electrice pe alocuri"
+
+msgid "clearing and chilly"
+msgstr "Cerul se înseninează, vreme rece"
+
+msgid "clearing and cold"
+msgstr "Cerul se înseninează, frig"
+
+msgid "clearing and colder"
+msgstr "Cerul se înseninează, mai frig"
+
+msgid "clearing and cool"
+msgstr "Cerul se înseninează, răcoare"
+
+msgid "clearing and cooler"
+msgstr "Cerul se înseninează, mai răcoros"
+
+msgid "clearing and hot"
+msgstr "Cerul se înseninează, vreme călduroasă"
+
+msgid "clearing and humid"
+msgstr "Cerul se înseninează, umiditate ridicată"
+
+msgid "clearing and mild"
+msgstr "Cerul se înseninează, vreme blândă"
+
+msgid "clearing and nice"
+msgstr "Cerul se înseninează, vreme plăcută"
+
+msgid "clearing and not as warm"
+msgstr "Cerul se înseninează, mai puțin cald"
+
+msgid "clearing and pleasant"
+msgstr "Cerul se înseninează, vreme plăcută"
+
+msgid "clearing and showers around"
+msgstr "Cerul se înseninează, averse pe alocuri"
+
+msgid "clearing and spotty showers"
+msgstr "Cerul se înseninează, averse pe alocuri"
+
+msgid "clearing and summerlike"
+msgstr "Cerul se înseninează, vreme de vară"
+
+msgid "clearing and unseasonably hot"
+msgstr "Cerul se înseninează, neobișnuit de cald pentru sezon"
+
+msgid "clearing and very cold"
+msgstr "Cerul se înseninează, foarte frig"
+
+msgid "clearing and very warm"
+msgstr "Cerul se înseninează, foarte cald"
+
+msgid "clearing and warm"
+msgstr "Cerul se înseninează, cald"
+
+msgid "clearing and warmer"
+msgstr "Cerul se înseninează, mai cald"
+
+msgid "clearing with a shower late"
+msgstr "Cerul se înseninează, o aversă mai târziu"
+
+msgid "clouding up"
+msgstr "Nebulozitate în creștere"
+
+msgid "clouding up with a shower"
+msgstr "Nebulozitate în creștere, o aversă"
+
+msgid "clouds"
+msgstr "Cer noros"
+
+msgid "clouds and a few showers"
+msgstr "Cer noros, câteva averse"
+
+msgid "clouds and a stray t-storm"
+msgstr "Cer noros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "clouds and a t-storm in spots"
+msgstr "Cer noros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "clouds and becoming rainy"
+msgstr "Cer noros, începe să plouă"
+
+msgid "clouds and breaks of sun"
+msgstr "Cer noros, intervale însorite"
+
+msgid "clouds and fog"
+msgstr "Cer noros, ceață"
+
+msgid "clouds and limited sun"
+msgstr "Cer noros, puțin soare"
+
+msgid "clouds and showers"
+msgstr "Cer noros, averse"
+
+msgid "clouds and showers around"
+msgstr "Cer noros, averse pe alocuri"
+
+msgid "clouds and spotty showers"
+msgstr "Cer noros, averse pe alocuri"
+
+msgid "clouds and sun"
+msgstr "Alternanțe de soare și nori"
+
+msgid "clouds and sun with a shower"
+msgstr "Alternanțe de soare și nori, o aversă"
+
+msgid "clouds and sun with a t-storm"
+msgstr "Alternanțe de soare și nori, o furtună cu descărcări electrice"
+
+msgid "clouds and sun with showers"
+msgstr "Alternanțe de soare și nori, averse"
+
+msgid "clouds and sunshine"
+msgstr "Alternanțe de soare și nori"
+
+msgid "clouds and very warm"
+msgstr "Cer noros, foarte cald"
+
+msgid "clouds and warm"
+msgstr "Cer noros, cald"
+
+msgid "clouds and warm with a shower"
+msgstr "Cer noros, cald, o aversă"
+
+msgid "clouds break for sun"
+msgstr "Norii se risipesc"
+
+msgid "clouds breaking"
+msgstr "Norii se risipesc"
+
+msgid "clouds breaking and beautiful"
+msgstr "Norii se risipesc, vreme plăcută"
+
+msgid "clouds breaking and chilly"
+msgstr "Norii se risipesc, vreme rece"
+
+msgid "clouds breaking and pleasant"
+msgstr "Norii se risipesc, vreme plăcută"
+
+msgid "clouds breaking and very warm"
+msgstr "Norii se risipesc, foarte cald"
+
+msgid "clouds breaking for some sun"
+msgstr "Norii se risipesc"
+
+msgid "clouds breaking for sun"
+msgstr "Norii se risipesc"
+
+msgid "clouds breaking with a shower"
+msgstr "Norii se risipesc, o aversă"
+
+msgid "clouds giving way to some sun"
+msgstr "Norii se risipesc"
+
+msgid "clouds giving way to sun"
+msgstr "Norii se risipesc"
+
+msgid "clouds limiting sun"
+msgstr "Nori care acoperă soarele"
+
+msgid "clouds limiting sunshine"
+msgstr "Nori care acoperă soarele"
+
+msgid "clouds rolling in"
+msgstr "Se adună nori"
+
+msgid "clouds rolling in and humid"
+msgstr "Se adună nori, umiditate ridicată"
+
+msgid "clouds with a shower late"
+msgstr "Cer noros, o aversă mai târziu"
+
+msgid "clouds with downpours late"
+msgstr "Cer noros, ploi torențiale mai târziu"
+
+msgid "clouds with snow late"
+msgstr "Cer noros, ninsoare mai târziu"
+
+msgid "clouds yielding to some sun"
+msgstr "Norii se risipesc"
+
+msgid "clouds yielding to sun"
+msgstr "Norii se risipesc"
+
+msgid "cloudy and becoming rainy"
+msgstr "Cer noros, începe să plouă"
+
+msgid "cloudy and bitterly cold"
+msgstr "Cer noros, ger puternic"
+
+msgid "cloudy and breezy"
+msgstr "Cer noros, adiere de vânt"
+
+msgid "cloudy and chilly"
+msgstr "Cer noros, vreme rece"
+
+msgid "cloudy and cold"
+msgstr "Cer noros, frig"
+
+msgid "cloudy and colder"
+msgstr "Cer noros, mai frig"
+
+msgid "cloudy and comfortable"
+msgstr "Cer noros, vreme plăcută"
+
+msgid "cloudy and cool"
+msgstr "Cer noros, răcoare"
+
+msgid "cloudy and cool with a shower"
+msgstr "Cer noros, răcoare, o aversă"
+
+msgid "cloudy and cool with showers"
+msgstr "Cer noros, răcoare, averse"
+
+msgid "cloudy and cooler"
+msgstr "Cer noros, mai răcoros"
+
+msgid "cloudy and frigid"
+msgstr "Cer noros, ger puternic"
+
+msgid "cloudy and hot"
+msgstr "Cer noros, vreme călduroasă"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "Cer noros, vreme călduroasă, o furtună cu descărcări electrice"
+
+msgid "cloudy and humid"
+msgstr "Cer noros, umiditate ridicată"
+
+msgid "cloudy and humid with showers"
+msgstr "Cer noros, umiditate ridicată, averse"
+
+msgid "cloudy and less humid"
+msgstr "Cer noros, umiditate mai scăzută"
+
+msgid "cloudy and mild"
+msgstr "Cer noros, vreme blândă"
+
+msgid "cloudy and mild with a shower"
+msgstr "Cer noros, vreme blândă, o aversă"
+
+msgid "cloudy and milder"
+msgstr "Cer noros, vreme mai blândă"
+
+msgid "cloudy and not as cold"
+msgstr "Cer noros, mai puțin frig"
+
+msgid "cloudy and not as cool"
+msgstr "Cer noros, mai puțin răcoros"
+
+msgid "cloudy and not as hot"
+msgstr "Cer noros, mai puțin călduros"
+
+msgid "cloudy and not as warm"
+msgstr "Cer noros, mai puțin cald"
+
+msgid "cloudy and remaining cool"
+msgstr "Cer noros, se menține răcoros"
+
+msgid "cloudy and remaining warm"
+msgstr "Cer noros, se menține cald"
+
+msgid "cloudy and seasonably cold"
+msgstr "Cer noros, frig normal pentru sezon"
+
+msgid "cloudy and seasonably cool"
+msgstr "Cer noros, răcoare normală pentru sezon"
+
+msgid "cloudy and seasonably warm"
+msgstr "Cer noros, cald, normal pentru sezon"
+
+msgid "cloudy and turning colder"
+msgstr "Cer noros, mai frig"
+
+msgid "cloudy and very cold"
+msgstr "Cer noros, foarte frig"
+
+msgid "cloudy and very humid"
+msgstr "Cer noros, umiditate foarte ridicată"
+
+msgid "cloudy and very warm"
+msgstr "Cer noros, foarte cald"
+
+msgid "cloudy and warm"
+msgstr "Cer noros, cald"
+
+msgid "cloudy and warm with a shower"
+msgstr "Cer noros, cald, o aversă"
+
+msgid "cloudy and warmer"
+msgstr "Cer noros, mai cald"
+
+msgid "cloudy and windy"
+msgstr "Cer noros, vânt puternic"
+
+msgid "cloudy and windy with showers"
+msgstr "Cer noros, vânt puternic, averse"
+
+msgid "cloudy most of the time"
+msgstr "Predominant noros"
+
+msgid "cloudy spells with a t-storm"
+msgstr "Intervale cu cer noros, o furtună cu descărcări electrice"
+
+msgid "cloudy to partly sunny"
+msgstr "Înnorat, apoi apar și perioade însorite"
+
+msgid "cloudy with a bit of ice"
+msgstr "Cer noros, pe alocuri polei"
+
+msgid "cloudy with a bit of ice late"
+msgstr "Cer noros, pe alocuri polei mai târziu"
+
+msgid "cloudy with a bit of rain"
+msgstr "Cer noros, puțină ploaie"
+
+msgid "cloudy with a bit of snow"
+msgstr "Cer noros, puțină ninsoare"
+
+msgid "cloudy with a brief shower"
+msgstr "Cer noros, averse de scurtă durată"
+
+msgid "cloudy with a chance of rain"
+msgstr "Cer noros, posibilitate de ploaie"
+
+msgid "cloudy with a downpour late"
+msgstr "Cer noros, ploi torențiale mai târziu"
+
+msgid "cloudy with a few flurries"
+msgstr "Cer noros, câteva fulguieli"
+
+msgid "cloudy with a few showers"
+msgstr "Cer noros, câteva averse"
+
+msgid "cloudy with a few snowflakes"
+msgstr "Cer noros, câțiva fulgi de zăpadă"
+
+msgid "cloudy with a flurry"
+msgstr "Cer noros, fulguieli trecătoare"
+
+msgid "cloudy with a flurry late"
+msgstr "Cer noros, fulguieli trecătoare mai târziu"
+
+msgid "cloudy with a flurry or two"
+msgstr "Cer noros, câteva fulguieli"
+
+msgid "cloudy with a heavy shower"
+msgstr "Cer noros, averse puternice"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "Cer noros, furtuni puternice cu descărcări electrice"
+
+msgid "cloudy with a little rain"
+msgstr "Cer noros, puțină ploaie"
+
+msgid "cloudy with a little snow"
+msgstr "Cer noros, puțină ninsoare"
+
+msgid "cloudy with a passing shower"
+msgstr "Cer noros, averse de scurtă durată"
+
+msgid "cloudy with a quick shower"
+msgstr "Cer noros, averse de scurtă durată"
+
+msgid "cloudy with a shower"
+msgstr "Cer noros, o aversă"
+
+msgid "cloudy with a shower in spots"
+msgstr "Cer noros, averse pe alocuri"
+
+msgid "cloudy with a shower late"
+msgstr "Cer noros, o aversă mai târziu"
+
+msgid "cloudy with a shower or two"
+msgstr "Cer noros, una sau două averse"
+
+msgid "cloudy with a shower possible"
+msgstr "Cer noros, averse posibile"
+
+msgid "cloudy with a snow shower"
+msgstr "Cer noros, o aversă de ninsoare"
+
+msgid "cloudy with a stray flurry"
+msgstr "Cer noros, câteva fulguieli"
+
+msgid "cloudy with a stray shower"
+msgstr "Cer noros, averse pe alocuri"
+
+msgid "cloudy with a stray t-shower"
+msgstr "Cer noros, pe alocuri averse cu descărcări electrice"
+
+msgid "cloudy with a stray t-storm"
+msgstr "Cer noros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "cloudy with a strong t-storm"
+msgstr "Cer noros, furtuni puternice cu descărcări electrice"
+
+msgid "cloudy with a t-storm"
+msgstr "Cer noros, o furtună cu descărcări electrice"
+
+msgid "cloudy with a t-storm around"
+msgstr "Cer noros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "cloudy with a t-storm late"
+msgstr "Cer noros, o furtună cu descărcări electrice mai târziu"
+
+msgid "cloudy with a t-storm or two"
+msgstr "Cer noros, câteva furtuni cu descărcări electrice"
+
+msgid "cloudy with a thundershower"
+msgstr "Cer noros, aversă cu descărcări electrice"
+
+msgid "cloudy with a thunderstorm"
+msgstr "Cer noros, o furtună cu descărcări electrice"
+
+msgid "cloudy with a touch of rain"
+msgstr "Cer noros, puțină ploaie"
+
+msgid "cloudy with afternoon rain"
+msgstr "Cer noros, ploaie după-amiaza"
+
+msgid "cloudy with afternoon showers"
+msgstr "Cer noros, averse după-amiaza"
+
+msgid "cloudy with blowing dust"
+msgstr "Cer noros, praf spulberat de vânt"
+
+msgid "cloudy with brief showers"
+msgstr "Cer noros, averse de scurtă durată"
+
+msgid "cloudy with downpours"
+msgstr "Cer noros, ploi torențiale"
+
+msgid "cloudy with downpours late"
+msgstr "Cer noros, ploi torențiale mai târziu"
+
+msgid "cloudy with flurries"
+msgstr "Cer noros, fulguieli trecătoare"
+
+msgid "cloudy with flurries late"
+msgstr "Cer noros, fulguieli trecătoare mai târziu"
+
+msgid "cloudy with heavy rain late"
+msgstr "Cer noros, ploaie puternică mai târziu"
+
+msgid "cloudy with heavy showers"
+msgstr "Cer noros, averse puternice"
+
+msgid "cloudy with late-night rain"
+msgstr "Cer noros, ploaie noaptea târziu"
+
+msgid "cloudy with occasional rain"
+msgstr "Cer noros, ploaie din când în când"
+
+msgid "cloudy with pouring rain late"
+msgstr "Cer noros, ploaie puternică mai târziu"
+
+msgid "cloudy with rain"
+msgstr "Cer noros, ploaie"
+
+msgid "cloudy with rain and drizzle"
+msgstr "Cer noros, ploaie și burniță"
+
+msgid "cloudy with rain and ice late"
+msgstr "Cer noros, ploaie și gheață mai târziu"
+
+msgid "cloudy with rain beginning"
+msgstr "Cer noros, începe să plouă"
+
+msgid "cloudy with rain developing"
+msgstr "Cer noros, începe să plouă"
+
+msgid "cloudy with rain ending"
+msgstr "Cer noros, ploaia se oprește"
+
+msgid "cloudy with rain tapering off"
+msgstr "Cer noros, ploaia slăbește"
+
+msgid "cloudy with showers"
+msgstr "Cer noros, averse"
+
+msgid "cloudy with showers around"
+msgstr "Cer noros, averse pe alocuri"
+
+msgid "cloudy with showers late"
+msgstr "Cer noros, averse mai târziu"
+
+msgid "cloudy with snow"
+msgstr "Cer noros, ninsoare"
+
+msgid "cloudy with snow and ice"
+msgstr "Cer noros, zăpadă și gheață"
+
+msgid "cloudy with snow at times"
+msgstr "Cer noros, ninsori intermitente"
+
+msgid "cloudy with snow showers"
+msgstr "Cer noros, averse de ninsoare"
+
+msgid "cloudy with snow showers late"
+msgstr "Cer noros, averse de ninsoare mai târziu"
+
+msgid "cloudy with snow tapering off"
+msgstr "Cer noros, ninsoarea slăbește"
+
+msgid "cloudy with spotty showers"
+msgstr "Cer noros, averse pe alocuri"
+
+msgid "cloudy with t-storms"
+msgstr "Cer noros, furtuni cu descărcări electrice"
+
+msgid "cloudy with thundershowers"
+msgstr "Cer noros, aversă cu descărcări electrice"
+
+msgid "cloudy with thunderstorms"
+msgstr "Cer noros, furtuni cu descărcări electrice"
+
+msgid "cloudy with times of rain"
+msgstr "Cer noros, ploaie din când în când"
+
+msgid "cold"
+msgstr "Frig"
+
+msgid "cold whit rain and drizzle"
+msgstr "Frig, ploaie și burniță"
+
+msgid "cold with areas of low clouds"
+msgstr "Frig, pe alocuri nori joși"
+
+msgid "cold with clearing"
+msgstr "Frig, cerul se înseninează"
+
+msgid "cold with clouds and sun"
+msgstr "Frig, alternanțe de soare și nori"
+
+msgid "cold with clouds and sunshine"
+msgstr "Frig, alternanțe de soare și nori"
+
+msgid "cold with clouds breaking"
+msgstr "Frig, norii se risipesc"
+
+msgid "cold with considerable clouds"
+msgstr "Frig, predominant noros"
+
+msgid "cold with icy mix"
+msgstr "Frig, precipitații mixte cu ploaie înghețată și granule de gheață"
+
+msgid "cold with increasing clouds"
+msgstr "Frig, nebulozitate în creștere"
+
+msgid "cold with low clouds"
+msgstr "Frig, nori joși"
+
+msgid "cold with partial sunshine"
+msgstr "Frig, intervale însorite"
+
+msgid "cold with patchy clouds"
+msgstr "Frig, nori răzleți"
+
+msgid "cold with periods of sun"
+msgstr "Frig, intervale însorite"
+
+msgid "cold with plenty of clouds"
+msgstr "Frig, predominant noros"
+
+msgid "cold with plenty of sunshine"
+msgstr "Frig, mult soare"
+
+msgid "cold with snow"
+msgstr "Frig, ninsoare"
+
+msgid "cold with snow and rain"
+msgstr "Frig, ploaie și ninsoare"
+
+msgid "cold with snow at times"
+msgstr "Frig, ninsori intermitente"
+
+msgid "cold with some sun"
+msgstr "Frig, intervale însorite"
+
+msgid "cold with sun"
+msgstr "Frig, însorit"
+
+msgid "cold with variable clouds"
+msgstr "Frig, nebulozitate variabilă"
+
+msgid "colder"
+msgstr "Mai frig"
+
+msgid "colder in the afternoon"
+msgstr "Mai frig după-amiaza"
+
+msgid "colder in the morning"
+msgstr "Mai frig dimineața"
+
+msgid "colder with a bit of snow"
+msgstr "Mai frig, puțină ninsoare"
+
+msgid "colder with a few showers"
+msgstr "Mai frig, câteva averse"
+
+msgid "colder with a few snowflakes"
+msgstr "Mai frig, câțiva fulgi de zăpadă"
+
+msgid "colder with a little rain"
+msgstr "Mai frig, puțină ploaie"
+
+msgid "colder with a little snow"
+msgstr "Mai frig, puțină ninsoare"
+
+msgid "colder with a shower or two"
+msgstr "Mai frig, una sau două averse"
+
+msgid "colder with a snow squall"
+msgstr "Mai frig, aversă de ninsoare cu rafale"
+
+msgid "colder with a stray shower"
+msgstr "Mai frig, averse pe alocuri"
+
+msgid "colder with increasing clouds"
+msgstr "Mai frig, nebulozitate în creștere"
+
+msgid "colder with low clouds"
+msgstr "Mai frig, nori joși"
+
+msgid "colder with occasional rain"
+msgstr "Mai frig, ploaie din când în când"
+
+msgid "colder with partial sunshine"
+msgstr "Mai frig, intervale însorite"
+
+msgid "colder with periods of sun"
+msgstr "Mai frig, intervale însorite"
+
+msgid "colder with rain"
+msgstr "Mai frig, ploaie"
+
+msgid "colder with showers around"
+msgstr "Mai frig, averse pe alocuri"
+
+msgid "colder with snow"
+msgstr "Mai frig, ninsoare"
+
+msgid "colder with snow and rain"
+msgstr "Mai frig, ploaie și ninsoare"
+
+msgid "colder with snow at times"
+msgstr "Mai frig, ninsori intermitente"
+
+msgid "colder with snow showers"
+msgstr "Mai frig, averse de ninsoare"
+
+msgid "colder with some sun"
+msgstr "Mai frig, intervale însorite"
+
+msgid "colder with spotty showers"
+msgstr "Mai frig, averse pe alocuri"
+
+msgid "comfortable"
+msgstr "Vreme plăcută"
+
+msgid "comfortable with some sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "comfortable with sunshine"
+msgstr "Vreme plăcută, însorit"
+
+msgid "considerable cloudiness"
+msgstr "Predominant noros"
+
+msgid "considerable clouds"
+msgstr "Predominant noros"
+
+msgid "considerable clouds and humid"
+msgstr "Predominant noros, umiditate ridicată"
+
+msgid "considerable clouds and mild"
+msgstr "Predominant noros, vreme blândă"
+
+msgid "considerable clouds and warm"
+msgstr "Predominant noros, cald"
+
+msgid "continued cloudy"
+msgstr "Cerul rămâne noros"
+
+msgid "continued cloudy with showers"
+msgstr "Cerul rămâne noros, averse"
+
+msgid "cool"
+msgstr "Răcoare"
+
+msgid "cool with a thick cloud cover"
+msgstr "Răcoare, acoperit"
+
+msgid "cool with areas of low clouds"
+msgstr "Răcoare, pe alocuri nori joși"
+
+msgid "cool with clearing"
+msgstr "Răcoare, cerul se înseninează"
+
+msgid "cool with clouds and sun"
+msgstr "Răcoare, alternanțe de soare și nori"
+
+msgid "cool with clouds breaking"
+msgstr "Răcoare, norii se risipesc"
+
+msgid "cool with decreasing clouds"
+msgstr "Răcoare, norii se risipesc"
+
+msgid "cool with increasing clouds"
+msgstr "Răcoare, nebulozitate în creștere"
+
+msgid "cool with low clouds"
+msgstr "Răcoare, nori joși"
+
+msgid "cool with occasional rain"
+msgstr "Răcoare, ploaie din când în când"
+
+msgid "cool with partial sunshine"
+msgstr "Răcoare, intervale însorite"
+
+msgid "cool with patchy clouds"
+msgstr "Răcoare, nori răzleți"
+
+msgid "cool with periods of rain"
+msgstr "Răcoare, ploaie din când în când"
+
+msgid "cool with periods of sun"
+msgstr "Răcoare, intervale însorite"
+
+msgid "cool with plenty of sun"
+msgstr "Răcoare, mult soare"
+
+msgid "cool with plenty of sunshine"
+msgstr "Răcoare, mult soare"
+
+msgid "cool with rain"
+msgstr "Răcoare, ploaie"
+
+msgid "cool with rain and a t-storm"
+msgstr "Răcoare, ploaie, o furtună cu descărcări electrice"
+
+msgid "cool with rain and drizzle"
+msgstr "Răcoare, ploaie și burniță"
+
+msgid "cool with some sun"
+msgstr "Răcoare, intervale însorite"
+
+msgid "cool with sun and clouds"
+msgstr "Răcoare, alternanțe de soare și nori"
+
+msgid "cool with sun and some clouds"
+msgstr "Răcoare, alternanțe de soare și nori"
+
+msgid "cool with sunny intervals"
+msgstr "Răcoare, intervale însorite"
+
+msgid "cool with thickening clouds"
+msgstr "Răcoare, norii se îndesesc"
+
+msgid "cool with variable cloudiness"
+msgstr "Răcoare, nebulozitate variabilă"
+
+msgid "cool with variable clouds"
+msgstr "Răcoare, nebulozitate variabilă"
+
+msgid "cooler"
+msgstr "Mai răcoros"
+
+msgid "cooler with a brief shower"
+msgstr "Mai răcoros, averse de scurtă durată"
+
+msgid "cooler with a few showers"
+msgstr "Mai răcoros, câteva averse"
+
+msgid "cooler with a little rain"
+msgstr "Mai răcoros, puțină ploaie"
+
+msgid "cooler with a little snow"
+msgstr "Mai răcoros, puțină ninsoare"
+
+msgid "cooler with a passing shower"
+msgstr "Mai răcoros, averse de scurtă durată"
+
+msgid "cooler with a shower"
+msgstr "Mai răcoros, o aversă"
+
+msgid "cooler with a shower in spots"
+msgstr "Mai răcoros, averse pe alocuri"
+
+msgid "cooler with a shower or two"
+msgstr "Mai răcoros, una sau două averse"
+
+msgid "cooler with a shower possible"
+msgstr "Mai răcoros, averse posibile"
+
+msgid "cooler with a stray shower"
+msgstr "Mai răcoros, averse pe alocuri"
+
+msgid "cooler with a stray t-shower"
+msgstr "Mai răcoros, pe alocuri averse cu descărcări electrice"
+
+msgid "cooler with a stray t-storm"
+msgstr "Mai răcoros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "cooler with a t-storm or two"
+msgstr "Mai răcoros, câteva furtuni cu descărcări electrice"
+
+msgid "cooler with a thundershower"
+msgstr "Mai răcoros, aversă cu descărcări electrice"
+
+msgid "cooler with a thunderstorm"
+msgstr "Mai răcoros, o furtună cu descărcări electrice"
+
+msgid "cooler with a touch of rain"
+msgstr "Mai răcoros, puțină ploaie"
+
+msgid "cooler with clearing"
+msgstr "Mai răcoros, cerul se înseninează"
+
+msgid "cooler with clouds and sun"
+msgstr "Mai răcoros, alternanțe de soare și nori"
+
+msgid "cooler with clouds breaking"
+msgstr "Mai răcoros, norii se risipesc"
+
+msgid "cooler with decreasing clouds"
+msgstr "Mai răcoros, norii se risipesc"
+
+msgid "cooler with downpours"
+msgstr "Mai răcoros, ploi torențiale"
+
+msgid "cooler with heavy showers"
+msgstr "Mai răcoros, averse puternice"
+
+msgid "cooler with high clouds"
+msgstr "Mai răcoros, nori înalți"
+
+msgid "cooler with increasing clouds"
+msgstr "Mai răcoros, nebulozitate în creștere"
+
+msgid "cooler with low clouds"
+msgstr "Mai răcoros, nori joși"
+
+msgid "cooler with morning showers"
+msgstr "Mai răcoros, averse dimineața"
+
+msgid "cooler with occasional rain"
+msgstr "Mai răcoros, ploaie din când în când"
+
+msgid "cooler with partial sunshine"
+msgstr "Mai răcoros, intervale însorite"
+
+msgid "cooler with periods of rain"
+msgstr "Mai răcoros, ploaie din când în când"
+
+msgid "cooler with periods of sun"
+msgstr "Mai răcoros, intervale însorite"
+
+msgid "cooler with plenty of clouds"
+msgstr "Mai răcoros, predominant noros"
+
+msgid "cooler with plenty of sun"
+msgstr "Mai răcoros, mult soare"
+
+msgid "cooler with rain"
+msgstr "Mai răcoros, ploaie"
+
+msgid "cooler with rain and drizzle"
+msgstr "Mai răcoros, ploaie și burniță"
+
+msgid "cooler with rain at times"
+msgstr "Mai răcoros, ploaie din când în când"
+
+msgid "cooler with rain beginning"
+msgstr "Mai răcoros, începe să plouă"
+
+msgid "cooler with rain tapering off"
+msgstr "Mai răcoros, ploaia slăbește"
+
+msgid "cooler with showers"
+msgstr "Mai răcoros, averse"
+
+msgid "cooler with showers around"
+msgstr "Mai răcoros, averse pe alocuri"
+
+msgid "cooler with some brightening"
+msgstr "Mai răcoros, câteva înseninări"
+
+msgid "cooler with some sun"
+msgstr "Mai răcoros, intervale însorite"
+
+msgid "cooler with spotty showers"
+msgstr "Mai răcoros, averse pe alocuri"
+
+msgid "cooler with sun"
+msgstr "Mai răcoros, însorit"
+
+msgid "cooler with sun and clouds"
+msgstr "Mai răcoros, alternanțe de soare și nori"
+
+msgid "cooler with sunny intervals"
+msgstr "Mai răcoros, intervale însorite"
+
+msgid "cooler with thunderstorms"
+msgstr "Mai răcoros, furtuni cu descărcări electrice"
+
+msgid "cooler with variable clouds"
+msgstr "Mai răcoros, nebulozitate variabilă"
+
+msgid "couple of showers"
+msgstr "Una sau două averse"
+
+msgid "couple of thunderstorms"
+msgstr "Câteva furtuni cu descărcări electrice"
+
+msgid "damp early"
+msgstr "Vreme umedă la început"
+
+msgid "decreasing clouds"
+msgstr "Norii se risipesc"
+
+msgid "decreasing clouds and breezy"
+msgstr "Norii se risipesc, adiere de vânt"
+
+msgid "decreasing clouds and colder"
+msgstr "Norii se risipesc, mai frig"
+
+msgid "decreasing clouds and cool"
+msgstr "Norii se risipesc, răcoare"
+
+msgid "decreasing clouds and cooler"
+msgstr "Norii se risipesc, mai răcoros"
+
+msgid "decreasing clouds and humid"
+msgstr "Norii se risipesc, umiditate ridicată"
+
+msgid "decreasing clouds and warm"
+msgstr "Norii se risipesc, cald"
+
+msgid "decreasing clouds and warmer"
+msgstr "Norii se risipesc, mai cald"
+
+msgid "delightful"
+msgstr "Vreme plăcută"
+
+msgid "delightful with plenty of sun"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "delightful with some sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "delightful with sunshine"
+msgstr "Vreme plăcută, însorit"
+
+msgid "dense fog"
+msgstr "Ceață densă"
+
+msgid "downpours"
+msgstr "Ploi torențiale"
+
+msgid "downpours early"
+msgstr "Ploi torențiale la început"
+
+msgid "downpours in the a.m."
+msgstr "Ploi torențiale dimineața"
+
+msgid "downpours in the afternoon"
+msgstr "Ploi torențiale după-amiaza"
+
+msgid "downpours in the evening"
+msgstr "Ploi torențiale seara"
+
+msgid "downpours in the morning"
+msgstr "Ploi torențiale dimineața"
+
+msgid "downpours in the p.m."
+msgstr "Ploi torențiale după-amiaza"
+
+msgid "downpours this evening"
+msgstr "Ploi torențiale în această seară"
+
+msgid "drizzle/rain"
+msgstr "Ploaie și burniță"
+
+msgid "dull and dreary"
+msgstr "Vreme cenușie și mohorâtă"
+
+msgid "dull and dreary with showers"
+msgstr "Vreme cenușie și mohorâtă, averse"
+
+msgid "early downpours"
+msgstr "Ploi torențiale la început"
+
+msgid "early flurries"
+msgstr "Fulguieli trecătoare la început"
+
+msgid "early rain"
+msgstr "Ploaie la început"
+
+msgid "early showers"
+msgstr "Averse la început"
+
+msgid "early snow"
+msgstr "Ninsoare la început"
+
+msgid "early snow showers"
+msgstr "Averse de ninsoare la început"
+
+msgid "early t-showers"
+msgstr "Aversă cu descărcări electrice la început"
+
+msgid "early thunderstorms"
+msgstr "Furtuni cu descărcări electrice la început"
+
+msgid "episodes of sunshine"
+msgstr "Intervale însorite"
+
+msgid "evening downpours"
+msgstr "Ploi torențiale seara"
+
+msgid "evening rain"
+msgstr "Ploaie seara"
+
+msgid "evening rain and drizzle"
+msgstr "Ploaie seara, burniță"
+
+msgid "evening showers"
+msgstr "Averse seara"
+
+msgid "evening showers and t-storms"
+msgstr "Averse seara, furtuni cu descărcări electrice"
+
+msgid "evening snow showers"
+msgstr "Averse de ninsoare seara"
+
+msgid "evening thundershowers"
+msgstr "Aversă cu descărcări electrice seara"
+
+msgid "evening thunderstorms"
+msgstr "Furtuni cu descărcări electrice seara"
+
+msgid "flurries"
+msgstr "Fulguieli trecătoare"
+
+msgid "fog forming"
+msgstr "Se formează ceață"
+
+msgid "fog in the a.m."
+msgstr "Ceață dimineața"
+
+msgid "fog in the morning"
+msgstr "Ceață dimineața"
+
+msgid "fog to sun"
+msgstr "Ceață urmată de soare"
+
+msgid "fog will lift this morning"
+msgstr "Ceața se va risipi în această dimineață"
+
+msgid "foggy"
+msgstr "Ceață"
+
+msgid "freezing early"
+msgstr "Îngheț la început"
+
+msgid "freezing fog"
+msgstr "Ceață care îngheață"
+
+msgid "freezing fog this morning"
+msgstr "Ceață care îngheață în această dimineață"
+
+msgid "freezing late"
+msgstr "Îngheț mai târziu"
+
+msgid "frigid"
+msgstr "Ger puternic"
+
+msgid "frigid in the evening"
+msgstr "Ger puternic seara"
+
+msgid "frigid with a bit of snow"
+msgstr "Ger puternic, puțină ninsoare"
+
+msgid "frigid with clouds and sun"
+msgstr "Ger puternic, alternanțe de soare și nori"
+
+msgid "frigid with increasing clouds"
+msgstr "Ger puternic, nebulozitate în creștere"
+
+msgid "frigid with low clouds"
+msgstr "Ger puternic, nori joși"
+
+msgid "frigid with patchy clouds"
+msgstr "Ger puternic, nori răzleți"
+
+msgid "frigid with periods of snow"
+msgstr "Ger puternic, ninsori intermitente"
+
+msgid "frigid with some sun"
+msgstr "Ger puternic, intervale însorite"
+
+msgid "frigid with tapering off"
+msgstr "Ger puternic, în diminuare treptată"
+
+msgid "ground fog"
+msgstr "Ceață la sol"
+
+msgid "gusty thunderstorms possible"
+msgstr "Posibile furtuni cu rafale"
+
+msgid "hazy"
+msgstr "Pâclă"
+
+msgid "hazy and humid"
+msgstr "Pâclă, umiditate ridicată"
+
+msgid "hazy and remaining very warm"
+msgstr "Pâclă, se menține foarte cald"
+
+msgid "hazy and seasonably warm"
+msgstr "Pâclă, cald, normal pentru sezon"
+
+msgid "hazy and unseasonably hot"
+msgstr "Pâclă, neobișnuit de cald pentru sezon"
+
+msgid "hazy and very warm"
+msgstr "Pâclă, foarte cald"
+
+msgid "hazy and warm"
+msgstr "Pâclă, cald"
+
+msgid "hazy clouds"
+msgstr "Nori și pâclă"
+
+msgid "hazy sun"
+msgstr "Soare prin pâclă"
+
+msgid "hazy sun and hot"
+msgstr "Soare prin pâclă, vreme călduroasă"
+
+msgid "hazy sun and summerlike"
+msgstr "Soare prin pâclă, vreme de vară"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "Soare prin pâclă, neobișnuit de cald pentru sezon"
+
+msgid "hazy sun and very warm"
+msgstr "Soare prin pâclă, foarte cald"
+
+msgid "hazy sunshine"
+msgstr "Soare prin pâclă"
+
+msgid "hazy sunshine and hot"
+msgstr "Soare prin pâclă, vreme călduroasă"
+
+msgid "hazy sunshine and less humid"
+msgstr "Soare prin pâclă, umiditate mai scăzută"
+
+msgid "hazy sunshine and very warm"
+msgstr "Soare prin pâclă, foarte cald"
+
+msgid "hazy with a t-storm in spots"
+msgstr "Pâclă, furtuni cu descărcări electrice pe alocuri"
+
+msgid "heavy a.m. rain"
+msgstr "Ploaie puternică dimineața"
+
+msgid "heavy a.m. showers"
+msgstr "Averse puternice dimineața"
+
+msgid "heavy afternoon rain"
+msgstr "Ploaie puternică după-amiaza"
+
+msgid "heavy afternoon showers"
+msgstr "Averse puternice după-amiaza"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "Furtuni puternice cu descărcări electrice după-amiaza"
+
+msgid "heavy evening rain"
+msgstr "Ploaie puternică seara"
+
+msgid "heavy evening thunderstorms"
+msgstr "Furtuni puternice cu descărcări electrice seara"
+
+msgid "heavy late-night rain"
+msgstr "Ploaie puternică noaptea târziu"
+
+msgid "heavy morning rain"
+msgstr "Ploaie puternică dimineața"
+
+msgid "heavy morning showers"
+msgstr "Averse puternice dimineața"
+
+msgid "heavy morning thunderstorms"
+msgstr "Furtuni puternice cu descărcări electrice dimineața"
+
+msgid "heavy rain and a t-storm late"
+msgstr "Ploaie puternică, o furtună cu descărcări electrice mai târziu"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "Ploaie puternică, o furtună cu descărcări electrice"
+
+msgid "heavy rain and ice late"
+msgstr "Ploaie puternică, gheață mai târziu"
+
+msgid "heavy rain developing"
+msgstr "Încep ploi abundente"
+
+msgid "heavy rain in the afternoon"
+msgstr "Ploaie puternică după-amiaza"
+
+msgid "heavy rain shower"
+msgstr "Averse puternice"
+
+msgid "heavy rain tapering off"
+msgstr "Ploaia puternică slăbește"
+
+msgid "heavy showers early"
+msgstr "Averse puternice la început"
+
+msgid "heavy showers in the evening"
+msgstr "Averse puternice seara"
+
+msgid "heavy showers in the morning"
+msgstr "Averse puternice dimineața"
+
+msgid "heavy showers late"
+msgstr "Averse puternice mai târziu"
+
+msgid "heavy showers this afternoon"
+msgstr "Averse puternice în această după-amiază"
+
+msgid "heavy showers this evening"
+msgstr "Averse puternice în această seară"
+
+msgid "heavy showers this morning"
+msgstr "Averse puternice în această dimineață"
+
+msgid "heavy t-storms"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "heavy t-storms early"
+msgstr "Furtuni puternice cu descărcări electrice la început"
+
+msgid "heavy t-storms in the evening"
+msgstr "Furtuni puternice cu descărcări electrice seara"
+
+msgid "heavy t-storms late"
+msgstr "Furtuni puternice cu descărcări electrice mai târziu"
+
+msgid "heavy thunderstorm"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "heavy thunderstorms"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "high clouds"
+msgstr "Nori înalți"
+
+msgid "high clouds and breezy"
+msgstr "Nori înalți, adiere de vânt"
+
+msgid "high clouds and chilly"
+msgstr "Nori înalți, vreme rece"
+
+msgid "high clouds and cooler"
+msgstr "Nori înalți, mai răcoros"
+
+msgid "high clouds and hot"
+msgstr "Nori înalți, vreme călduroasă"
+
+msgid "high clouds and nice"
+msgstr "Nori înalți, vreme plăcută"
+
+msgid "high clouds and pleasant"
+msgstr "Nori înalți, vreme plăcută"
+
+msgid "high clouds and summerlike"
+msgstr "Nori înalți, vreme de vară"
+
+msgid "high clouds and very warm"
+msgstr "Nori înalți, foarte cald"
+
+msgid "high clouds and warm"
+msgstr "Nori înalți, cald"
+
+msgid "high clouds and warmer"
+msgstr "Nori înalți, mai cald"
+
+msgid "hot and humid with some sun"
+msgstr "Vreme călduroasă, umiditate ridicată, intervale însorite"
+
+msgid "hot with abundant sunshine"
+msgstr "Vreme călduroasă, mult soare"
+
+msgid "hot with blazing sunshine"
+msgstr "Vreme călduroasă, soare arzător"
+
+msgid "hot with brilliant sunshine"
+msgstr "Vreme călduroasă, soare strălucitor"
+
+msgid "hot with clearing"
+msgstr "Vreme călduroasă, cerul se înseninează"
+
+msgid "hot with clouds and sun"
+msgstr "Vreme călduroasă, alternanțe de soare și nori"
+
+msgid "hot with clouds and sunshine"
+msgstr "Vreme călduroasă, alternanțe de soare și nori"
+
+msgid "hot with clouds rolling in"
+msgstr "Vreme călduroasă, se adună nori"
+
+msgid "hot with considerable clouds"
+msgstr "Vreme călduroasă, predominant noros"
+
+msgid "hot with decreasing clouds"
+msgstr "Vreme călduroasă, norii se risipesc"
+
+msgid "hot with hazy sun"
+msgstr "Vreme călduroasă, soare prin pâclă"
+
+msgid "hot with hazy sunshine"
+msgstr "Vreme călduroasă, soare prin pâclă"
+
+msgid "hot with high clouds"
+msgstr "Vreme călduroasă, nori înalți"
+
+msgid "hot with increasing clouds"
+msgstr "Vreme călduroasă, nebulozitate în creștere"
+
+msgid "hot with more clouds than sun"
+msgstr "Vreme călduroasă, predominant noros"
+
+msgid "hot with more sun than clouds"
+msgstr "Vreme călduroasă, predominant însorit"
+
+msgid "hot with partial sunshine"
+msgstr "Vreme călduroasă, intervale însorite"
+
+msgid "hot with periods of sun"
+msgstr "Vreme călduroasă, intervale însorite"
+
+msgid "hot with periods of sunshine"
+msgstr "Vreme călduroasă, intervale însorite"
+
+msgid "hot with plenty of sun"
+msgstr "Vreme călduroasă, mult soare"
+
+msgid "hot with plenty of sunshine"
+msgstr "Vreme călduroasă, mult soare"
+
+msgid "hot with rain and drizzle"
+msgstr "Vreme călduroasă, ploaie și burniță"
+
+msgid "hot with some sun"
+msgstr "Vreme călduroasă, intervale însorite"
+
+msgid "hot with some sunshine"
+msgstr "Vreme călduroasă, intervale însorite"
+
+msgid "hot with sun"
+msgstr "Vreme călduroasă, însorit"
+
+msgid "hot with sun and clouds"
+msgstr "Vreme călduroasă, alternanțe de soare și nori"
+
+msgid "hot with sun and some clouds"
+msgstr "Vreme călduroasă, alternanțe de soare și nori"
+
+msgid "hot with sunny intervals"
+msgstr "Vreme călduroasă, intervale însorite"
+
+msgid "hot with sunshine"
+msgstr "Vreme călduroasă, însorit"
+
+msgid "hot with variable cloudiness"
+msgstr "Vreme călduroasă, nebulozitate variabilă"
+
+msgid "hot with variable clouds"
+msgstr "Vreme călduroasă, nebulozitate variabilă"
+
+msgid "hotter"
+msgstr "Mai călduros"
+
+msgid "hotter with a stray t-storm"
+msgstr "Mai călduros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "hotter with a t-storm around"
+msgstr "Mai călduros, furtuni cu descărcări electrice pe alocuri"
+
+msgid "hotter with a thunderstorm"
+msgstr "Mai călduros, o furtună cu descărcări electrice"
+
+msgid "hotter with abundant sunshine"
+msgstr "Mai călduros, mult soare"
+
+msgid "hotter with blazing sunshine"
+msgstr "Mai călduros, soare arzător"
+
+msgid "hotter with partial sunshine"
+msgstr "Mai călduros, intervale însorite"
+
+msgid "hotter with plenty of sun"
+msgstr "Mai călduros, mult soare"
+
+msgid "hotter with sunshine"
+msgstr "Mai călduros, însorit"
+
+msgid "humid"
+msgstr "Umiditate ridicată"
+
+msgid "humid with a t-storm in spots"
+msgstr "Umiditate ridicată, furtuni cu descărcări electrice pe alocuri"
+
+msgid "humid with clouds"
+msgstr "Umiditate ridicată, cer noros"
+
+msgid "humid with clouds and sun"
+msgstr "Umiditate ridicată, alternanțe de soare și nori"
+
+msgid "humid with clouds breaking"
+msgstr "Umiditate ridicată, norii se risipesc"
+
+msgid "humid with cloudy spells"
+msgstr "Umiditate ridicată, intervale cu cer noros"
+
+msgid "humid with high clouds"
+msgstr "Umiditate ridicată, nori înalți"
+
+msgid "humid with increasing clouds"
+msgstr "Umiditate ridicată, nebulozitate în creștere"
+
+msgid "humid with low clouds"
+msgstr "Umiditate ridicată, nori joși"
+
+msgid "humid with partial sunshine"
+msgstr "Umiditate ridicată, intervale însorite"
+
+msgid "humid with patchy clouds"
+msgstr "Umiditate ridicată, nori răzleți"
+
+msgid "humid with periods of rain"
+msgstr "Umiditate ridicată, ploaie din când în când"
+
+msgid "humid with periods of sun"
+msgstr "Umiditate ridicată, intervale însorite"
+
+msgid "humid with plenty of clouds"
+msgstr "Umiditate ridicată, predominant noros"
+
+msgid "humid with plenty of sun"
+msgstr "Umiditate ridicată, mult soare"
+
+msgid "humid with plenty of sunshine"
+msgstr "Umiditate ridicată, mult soare"
+
+msgid "humid with rain"
+msgstr "Umiditate ridicată, ploaie"
+
+msgid "humid with rain and a t-storm"
+msgstr "Umiditate ridicată, ploaie, o furtună cu descărcări electrice"
+
+msgid "humid with rain and drizzle"
+msgstr "Umiditate ridicată, ploaie și burniță"
+
+msgid "humid with rain at times"
+msgstr "Umiditate ridicată, ploaie din când în când"
+
+msgid "humid with some brightening"
+msgstr "Umiditate ridicată, câteva înseninări"
+
+msgid "humid with some sun"
+msgstr "Umiditate ridicată, intervale însorite"
+
+msgid "humid with sunny intervals"
+msgstr "Umiditate ridicată, intervale însorite"
+
+msgid "humid with thickening clouds"
+msgstr "Umiditate ridicată, norii se îndesesc"
+
+msgid "humid with variable clouds"
+msgstr "Umiditate ridicată, nebulozitate variabilă"
+
+msgid "ice and rain at times"
+msgstr "Gheață, ploaie din când în când"
+
+msgid "increasing amounts of clouds"
+msgstr "Nebulozitate în creștere"
+
+msgid "increasing amounts of sun"
+msgstr "Tot mai mult soare"
+
+msgid "increasing cloudiness"
+msgstr "Nebulozitate în creștere"
+
+msgid "increasing cloudiness and hot"
+msgstr "Nebulozitate în creștere, vreme călduroasă"
+
+msgid "increasing clouds"
+msgstr "Nebulozitate în creștere"
+
+msgid "increasing clouds and chilly"
+msgstr "Nebulozitate în creștere, vreme rece"
+
+msgid "increasing clouds and cold"
+msgstr "Nebulozitate în creștere, frig"
+
+msgid "increasing clouds and cool"
+msgstr "Nebulozitate în creștere, răcoare"
+
+msgid "increasing clouds and hot"
+msgstr "Nebulozitate în creștere, vreme călduroasă"
+
+msgid "increasing clouds and hotter"
+msgstr "Nebulozitate în creștere, mai călduros"
+
+msgid "increasing clouds and humid"
+msgstr "Nebulozitate în creștere, umiditate ridicată"
+
+msgid "increasing clouds and milder"
+msgstr "Nebulozitate în creștere, vreme mai blândă"
+
+msgid "increasing clouds and warm"
+msgstr "Nebulozitate în creștere, cald"
+
+msgid "increasing clouds and warmer"
+msgstr "Nebulozitate în creștere, mai cald"
+
+msgid "increasingly windy"
+msgstr "Vânt în intensificare"
+
+msgid "intermittent snow"
+msgstr "Ninsori intermitente"
+
+msgid "intervals of clouds and sun"
+msgstr "Alternanțe de soare și nori"
+
+msgid "jupiter"
+msgstr "Jupiter"
+
+msgid "late downpours"
+msgstr "Ploi torențiale mai târziu"
+
+msgid "late flurries"
+msgstr "Fulguieli trecătoare mai târziu"
+
+msgid "late rain"
+msgstr "Ploaie mai târziu"
+
+msgid "late snow"
+msgstr "Ninsoare mai târziu"
+
+msgid "late snow showers"
+msgstr "Averse de ninsoare mai târziu"
+
+msgid "late-night rain"
+msgstr "Ploaie noaptea târziu"
+
+msgid "late-night showers"
+msgstr "Averse noaptea târziu"
+
+msgid "late-night snow"
+msgstr "Ninsoare noaptea târziu"
+
+msgid "late-night thunderstorms"
+msgstr "Furtuni cu descărcări electrice noaptea târziu"
+
+msgid "less humid with plenty of sun"
+msgstr "Umiditate mai scăzută, mult soare"
+
+msgid "less humid with some sun"
+msgstr "Umiditate mai scăzută, intervale însorite"
+
+msgid "light fog"
+msgstr "Ceață ușoară"
+
+msgid "light snow"
+msgstr "Ninsoare slabă"
+
+msgid "lots of sun"
+msgstr "Mult soare"
+
+msgid "lots of sun with a shower"
+msgstr "Mult soare, o aversă"
+
+msgid "low clouds"
+msgstr "Nori joși"
+
+msgid "low clouds and bitterly cold"
+msgstr "Nori joși, ger puternic"
+
+msgid "low clouds and breezy"
+msgstr "Nori joși, adiere de vânt"
+
+msgid "low clouds and chilly"
+msgstr "Nori joși, vreme rece"
+
+msgid "low clouds and cold"
+msgstr "Nori joși, frig"
+
+msgid "low clouds and colder"
+msgstr "Nori joși, mai frig"
+
+msgid "low clouds and cool"
+msgstr "Nori joși, răcoare"
+
+msgid "low clouds and cooler"
+msgstr "Nori joși, mai răcoros"
+
+msgid "low clouds and fog"
+msgstr "Nori joși, ceață"
+
+msgid "low clouds and fog and cooler"
+msgstr "Nori joși, ceață, mai răcoros"
+
+msgid "low clouds and freezing fog"
+msgstr "Nori joși, ceață care îngheață"
+
+msgid "low clouds and frigid"
+msgstr "Nori joși, ger puternic"
+
+msgid "low clouds and humid"
+msgstr "Nori joși, umiditate ridicată"
+
+msgid "low clouds and mild"
+msgstr "Nori joși, vreme blândă"
+
+msgid "low clouds and not as cold"
+msgstr "Nori joși, mai puțin frig"
+
+msgid "low clouds and remaining cool"
+msgstr "Nori joși, se menține răcoros"
+
+msgid "low clouds and spotty showers"
+msgstr "Nori joși, averse pe alocuri"
+
+msgid "low clouds and warmer"
+msgstr "Nori joși, mai cald"
+
+msgid "low clouds break for some sun"
+msgstr "Norii joși se risipesc"
+
+msgid "low clouds breaking"
+msgstr "Norii joși se risipesc"
+
+msgid "low clouds breaking and humid"
+msgstr "Norii joși se risipesc, umiditate ridicată"
+
+msgid "low clouds followed by sun"
+msgstr "Norii joși se risipesc"
+
+msgid "low clouds may break"
+msgstr "Norii joși s-ar putea risipi"
+
+msgid "low clouds with a flurry late"
+msgstr "Nori joși, fulguieli trecătoare mai târziu"
+
+msgid "low clouds with rain late"
+msgstr "Nori joși, ploaie mai târziu"
+
+msgid "low humidity with some sun"
+msgstr "Umiditate scăzută, intervale însorite"
+
+msgid "low humidity with sunshine"
+msgstr "Umiditate scăzută, însorit"
+
+msgid "mainly clear and breezy"
+msgstr "Predominant senin, adiere de vânt"
+
+msgid "mainly clear and chilly"
+msgstr "Predominant senin, vreme rece"
+
+msgid "mainly clear and cold"
+msgstr "Predominant senin, frig"
+
+msgid "mainly clear and colder"
+msgstr "Predominant senin, mai frig"
+
+msgid "mainly clear and cool"
+msgstr "Predominant senin, răcoare"
+
+msgid "mainly clear and cooler"
+msgstr "Predominant senin, mai răcoros"
+
+msgid "mainly clear and frigid"
+msgstr "Predominant senin, ger puternic"
+
+msgid "mainly clear and humid"
+msgstr "Predominant senin, umiditate ridicată"
+
+msgid "mainly clear and mild"
+msgstr "Predominant senin, vreme blândă"
+
+msgid "mainly clear and much colder"
+msgstr "Predominant senin, mult mai frig"
+
+msgid "mainly clear and not as warm"
+msgstr "Predominant senin, mai puțin cald"
+
+msgid "mainly clear and very cold"
+msgstr "Predominant senin, foarte frig"
+
+msgid "mainly clear and very humid"
+msgstr "Predominant senin, umiditate foarte ridicată"
+
+msgid "mainly clear and very warm"
+msgstr "Predominant senin, foarte cald"
+
+msgid "mainly clear and warm"
+msgstr "Predominant senin, cald"
+
+msgid "mainly clear and warmer"
+msgstr "Predominant senin, mai cald"
+
+msgid "mainly clear with a shower"
+msgstr "Predominant senin, o aversă"
+
+msgid "mainly clear with a t-storm"
+msgstr "Predominant senin, o furtună cu descărcări electrice"
+
+msgid "mainly cloudy"
+msgstr "Predominant noros"
+
+msgid "mainly cloudy and chilly"
+msgstr "Predominant noros, vreme rece"
+
+msgid "mainly cloudy and cold"
+msgstr "Predominant noros, frig"
+
+msgid "mainly cloudy and colder"
+msgstr "Predominant noros, mai frig"
+
+msgid "mainly cloudy and cool"
+msgstr "Predominant noros, răcoare"
+
+msgid "mainly cloudy and cooler"
+msgstr "Predominant noros, mai răcoros"
+
+msgid "mainly cloudy and frigid"
+msgstr "Predominant noros, ger puternic"
+
+msgid "mainly cloudy and hot"
+msgstr "Predominant noros, vreme călduroasă"
+
+msgid "mainly cloudy and humid"
+msgstr "Predominant noros, umiditate ridicată"
+
+msgid "mainly cloudy and summerlike"
+msgstr "Predominant noros, vreme de vară"
+
+msgid "mainly cloudy and very warm"
+msgstr "Predominant noros, foarte cald"
+
+msgid "mainly cloudy and warm"
+msgstr "Predominant noros, cald"
+
+msgid "mainly cloudy and warmer"
+msgstr "Predominant noros, mai cald"
+
+msgid "mainly cloudy with a shower"
+msgstr "Predominant noros, o aversă"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "Predominant noros, o furtună cu descărcări electrice"
+
+msgid "mainly cloudy with flurries"
+msgstr "Predominant noros, fulguieli trecătoare"
+
+msgid "mainly cloudy with showers"
+msgstr "Predominant noros, averse"
+
+msgid "mainly early"
+msgstr "Mai ales la început"
+
+msgid "mainly later"
+msgstr "Mai ales mai târziu"
+
+msgid "mars"
+msgstr "Marte"
+
+msgid "mercury"
+msgstr "Mercur"
+
+msgid "mild"
+msgstr "Vreme blândă"
+
+msgid "mild with abundant sunshine"
+msgstr "Vreme blândă, mult soare"
+
+msgid "mild with clouds and sun"
+msgstr "Vreme blândă, alternanțe de soare și nori"
+
+msgid "mild with clouds and sunshine"
+msgstr "Vreme blândă, alternanțe de soare și nori"
+
+msgid "mild with considerable clouds"
+msgstr "Vreme blândă, predominant noros"
+
+msgid "mild with increasing clouds"
+msgstr "Vreme blândă, nebulozitate în creștere"
+
+msgid "mild with partial sunshine"
+msgstr "Vreme blândă, intervale însorite"
+
+msgid "mild with patchy clouds"
+msgstr "Vreme blândă, nori răzleți"
+
+msgid "mild with periods of rain"
+msgstr "Vreme blândă, ploaie din când în când"
+
+msgid "mild with periods of sun"
+msgstr "Vreme blândă, intervale însorite"
+
+msgid "mild with plenty of clouds"
+msgstr "Vreme blândă, predominant noros"
+
+msgid "mild with plenty of sun"
+msgstr "Vreme blândă, mult soare"
+
+msgid "mild with plenty of sunshine"
+msgstr "Vreme blândă, mult soare"
+
+msgid "mild with some sun"
+msgstr "Vreme blândă, intervale însorite"
+
+msgid "mild with sun and clouds"
+msgstr "Vreme blândă, alternanțe de soare și nori"
+
+msgid "mild with sun and some clouds"
+msgstr "Vreme blândă, alternanțe de soare și nori"
+
+msgid "mild with sunny intervals"
+msgstr "Vreme blândă, intervale însorite"
+
+msgid "mild with sunshine"
+msgstr "Vreme blândă, însorit"
+
+msgid "mild with thickening clouds"
+msgstr "Vreme blândă, norii se îndesesc"
+
+msgid "mild with variable cloudiness"
+msgstr "Vreme blândă, nebulozitate variabilă"
+
+msgid "milder"
+msgstr "Vreme mai blândă"
+
+msgid "milder with a shower in spots"
+msgstr "Vreme mai blândă, averse pe alocuri"
+
+msgid "milder with brief showers"
+msgstr "Vreme mai blândă, averse de scurtă durată"
+
+msgid "milder with clouds and sun"
+msgstr "Vreme mai blândă, alternanțe de soare și nori"
+
+msgid "milder with increasing clouds"
+msgstr "Vreme mai blândă, nebulozitate în creștere"
+
+msgid "milder with low clouds"
+msgstr "Vreme mai blândă, nori joși"
+
+msgid "milder with periods of rain"
+msgstr "Vreme mai blândă, ploaie din când în când"
+
+msgid "milder with periods of sun"
+msgstr "Vreme mai blândă, intervale însorite"
+
+msgid "milder with sun"
+msgstr "Vreme mai blândă, însorit"
+
+msgid "milder with thickening clouds"
+msgstr "Vreme mai blândă, norii se îndesesc"
+
+msgid "mist"
+msgstr "Ceață ușoară"
+
+msgid "mixed with snow early"
+msgstr "În amestec cu ninsoare la început"
+
+msgid "moderate rain"
+msgstr "Ploaie moderată"
+
+msgid "moon"
+msgstr "Luna"
+
+msgid "more clouds than sun"
+msgstr "Predominant noros"
+
+msgid "more clouds than sunshine"
+msgstr "Predominant noros"
+
+msgid "more sun than clouds"
+msgstr "Predominant însorit"
+
+msgid "more sunshine than clouds"
+msgstr "Predominant însorit"
+
+msgid "morning downpours"
+msgstr "Ploi torențiale dimineața"
+
+msgid "morning flurries"
+msgstr "Fulguieli trecătoare dimineața"
+
+msgid "morning rain"
+msgstr "Ploaie dimineața"
+
+msgid "morning showers"
+msgstr "Averse dimineața"
+
+msgid "morning snow"
+msgstr "Ninsoare dimineața"
+
+msgid "morning snow showers"
+msgstr "Averse de ninsoare dimineața"
+
+msgid "morning t-showers"
+msgstr "Aversă cu descărcări electrice dimineața"
+
+msgid "morning thunderstorms"
+msgstr "Furtuni cu descărcări electrice dimineața"
+
+msgid "mostly clear and chilly"
+msgstr "Predominant senin, vreme rece"
+
+msgid "mostly clear and cold"
+msgstr "Predominant senin, frig"
+
+msgid "mostly clear and cool"
+msgstr "Predominant senin, răcoare"
+
+msgid "mostly clear and cooler"
+msgstr "Predominant senin, mai răcoros"
+
+msgid "mostly clear and humid"
+msgstr "Predominant senin, umiditate ridicată"
+
+msgid "mostly clear and mild"
+msgstr "Predominant senin, vreme blândă"
+
+msgid "mostly clear and very warm"
+msgstr "Predominant senin, foarte cald"
+
+msgid "mostly clear with a shower"
+msgstr "Predominant senin, o aversă"
+
+msgid "mostly cloudy and breezy"
+msgstr "Predominant noros, adiere de vânt"
+
+msgid "mostly cloudy and chilly"
+msgstr "Predominant noros, vreme rece"
+
+msgid "mostly cloudy and cold"
+msgstr "Predominant noros, frig"
+
+msgid "mostly cloudy and colder"
+msgstr "Predominant noros, mai frig"
+
+msgid "mostly cloudy and comfortable"
+msgstr "Predominant noros, vreme plăcută"
+
+msgid "mostly cloudy and cool"
+msgstr "Predominant noros, răcoare"
+
+msgid "mostly cloudy and cooler"
+msgstr "Predominant noros, mai răcoros"
+
+msgid "mostly cloudy and frigid"
+msgstr "Predominant noros, ger puternic"
+
+msgid "mostly cloudy and hot"
+msgstr "Predominant noros, vreme călduroasă"
+
+msgid "mostly cloudy and hotter"
+msgstr "Predominant noros, mai călduros"
+
+msgid "mostly cloudy and humid"
+msgstr "Predominant noros, umiditate ridicată"
+
+msgid "mostly cloudy and less humid"
+msgstr "Predominant noros, umiditate mai scăzută"
+
+msgid "mostly cloudy and mild"
+msgstr "Predominant noros, vreme blândă"
+
+msgid "mostly cloudy and milder"
+msgstr "Predominant noros, vreme mai blândă"
+
+msgid "mostly cloudy and misty"
+msgstr "Predominant noros, ceață ușoară"
+
+msgid "mostly cloudy and misty late"
+msgstr "Predominant noros, ceață ușoară mai târziu"
+
+msgid "mostly cloudy and not as cold"
+msgstr "Predominant noros, mai puțin frig"
+
+msgid "mostly cloudy and not as cool"
+msgstr "Predominant noros, mai puțin răcoros"
+
+msgid "mostly cloudy and not as hot"
+msgstr "Predominant noros, mai puțin călduros"
+
+msgid "mostly cloudy and not as warm"
+msgstr "Predominant noros, mai puțin cald"
+
+msgid "mostly cloudy and seasonable"
+msgstr "Predominant noros, temperaturi normale pentru sezon"
+
+msgid "mostly cloudy and summerlike"
+msgstr "Predominant noros, vreme de vară"
+
+msgid "mostly cloudy and very cold"
+msgstr "Predominant noros, foarte frig"
+
+msgid "mostly cloudy and very hot"
+msgstr "Predominant noros, foarte cald"
+
+msgid "mostly cloudy and very humid"
+msgstr "Predominant noros, umiditate foarte ridicată"
+
+msgid "mostly cloudy and very warm"
+msgstr "Predominant noros, foarte cald"
+
+msgid "mostly cloudy and warm"
+msgstr "Predominant noros, cald"
+
+msgid "mostly cloudy and warmer"
+msgstr "Predominant noros, mai cald"
+
+msgid "mostly cloudy and windy"
+msgstr "Predominant noros, vânt puternic"
+
+msgid "mostly cloudy with a downpour"
+msgstr "Predominant noros, ploi torențiale"
+
+msgid "mostly cloudy with a shower"
+msgstr "Predominant noros, o aversă"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "Predominant noros, aversă cu descărcări electrice"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "Predominant noros, o furtună cu descărcări electrice"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "Predominant noros, precipitații mixte cu ploaie înghețată și granule de gheață"
+
+msgid "mostly cloudy with downpours"
+msgstr "Predominant noros, ploi torențiale"
+
+msgid "mostly cloudy with flurries"
+msgstr "Predominant noros, fulguieli trecătoare"
+
+msgid "mostly cloudy with mist late"
+msgstr "Predominant noros, ceață ușoară mai târziu"
+
+msgid "mostly cloudy with rain"
+msgstr "Predominant noros, ploaie"
+
+msgid "mostly cloudy with rain late"
+msgstr "Predominant noros, ploaie mai târziu"
+
+msgid "mostly cloudy with showers"
+msgstr "Predominant noros, averse"
+
+msgid "mostly cloudy with snow late"
+msgstr "Predominant noros, ninsoare mai târziu"
+
+msgid "mostly cloudy with t-showers"
+msgstr "Predominant noros, aversă cu descărcări electrice"
+
+msgid "mostly cloudy with t-storms"
+msgstr "Predominant noros, furtuni cu descărcări electrice"
+
+msgid "mostly sunny and beautiful"
+msgstr "Predominant însorit, vreme plăcută"
+
+msgid "mostly sunny and breezy"
+msgstr "Predominant însorit, adiere de vânt"
+
+msgid "mostly sunny and chilly"
+msgstr "Predominant însorit, vreme rece"
+
+msgid "mostly sunny and cold"
+msgstr "Predominant însorit, frig"
+
+msgid "mostly sunny and colder"
+msgstr "Predominant însorit, mai frig"
+
+msgid "mostly sunny and comfortable"
+msgstr "Predominant însorit, vreme plăcută"
+
+msgid "mostly sunny and cool"
+msgstr "Predominant însorit, răcoare"
+
+msgid "mostly sunny and cooler"
+msgstr "Predominant însorit, mai răcoros"
+
+msgid "mostly sunny and delightful"
+msgstr "Predominant însorit, vreme plăcută"
+
+msgid "mostly sunny and frigid"
+msgstr "Predominant însorit, ger puternic"
+
+msgid "mostly sunny and hot"
+msgstr "Predominant însorit, vreme călduroasă"
+
+msgid "mostly sunny and hotter"
+msgstr "Predominant însorit, mai călduros"
+
+msgid "mostly sunny and humid"
+msgstr "Predominant însorit, umiditate ridicată"
+
+msgid "mostly sunny and less humid"
+msgstr "Predominant însorit, umiditate mai scăzută"
+
+msgid "mostly sunny and mild"
+msgstr "Predominant însorit, vreme blândă"
+
+msgid "mostly sunny and milder"
+msgstr "Predominant însorit, vreme mai blândă"
+
+msgid "mostly sunny and nice"
+msgstr "Predominant însorit, vreme plăcută"
+
+msgid "mostly sunny and not as cold"
+msgstr "Predominant însorit, mai puțin frig"
+
+msgid "mostly sunny and not as hot"
+msgstr "Predominant însorit, mai puțin călduros"
+
+msgid "mostly sunny and not as warm"
+msgstr "Predominant însorit, mai puțin cald"
+
+msgid "mostly sunny and pleasant"
+msgstr "Predominant însorit, vreme plăcută"
+
+msgid "mostly sunny and quite cold"
+msgstr "Predominant însorit, destul de frig"
+
+msgid "mostly sunny and summerlike"
+msgstr "Predominant însorit, vreme de vară"
+
+msgid "mostly sunny and very cold"
+msgstr "Predominant însorit, foarte frig"
+
+msgid "mostly sunny and very hot"
+msgstr "Predominant însorit, foarte cald"
+
+msgid "mostly sunny and very humid"
+msgstr "Predominant însorit, umiditate foarte ridicată"
+
+msgid "mostly sunny and very warm"
+msgstr "Predominant însorit, foarte cald"
+
+msgid "mostly sunny and warm"
+msgstr "Predominant însorit, cald"
+
+msgid "mostly sunny and warmer"
+msgstr "Predominant însorit, mai cald"
+
+msgid "mostly sunny and windy"
+msgstr "Predominant însorit, vânt puternic"
+
+msgid "mostly sunny with a shower"
+msgstr "Predominant însorit, o aversă"
+
+msgid "mostly sunny with a t-shower"
+msgstr "Predominant însorit, aversă cu descărcări electrice"
+
+msgid "mostly sunny with a t-storm"
+msgstr "Predominant însorit, o furtună cu descărcări electrice"
+
+msgid "much colder"
+msgstr "Mult mai frig"
+
+msgid "much colder with low clouds"
+msgstr "Mult mai frig, nori joși"
+
+msgid "neptune"
+msgstr "Neptun"
+
+msgid "nice"
+msgstr "Vreme plăcută"
+
+msgid "nice and warm"
+msgstr "Vreme plăcută, cald"
+
+msgid "nice and warm with some sun"
+msgstr "Vreme plăcută, cald, intervale însorite"
+
+msgid "nice and warm with sunshine"
+msgstr "Vreme plăcută, cald, însorit"
+
+msgid "nice with abundant sunshine"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "nice with brilliant sunshine"
+msgstr "Vreme plăcută, soare strălucitor"
+
+msgid "nice with clouds"
+msgstr "Vreme plăcută, cer noros"
+
+msgid "nice with clouds and sun"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "nice with clouds and sunshine"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "nice with partial sunshine"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "nice with periods of sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "nice with periods of sunshine"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "nice with plenty of sun"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "nice with plenty of sunshine"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "nice with some sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "nice with some sunshine"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "nice with sun"
+msgstr "Vreme plăcută, însorit"
+
+msgid "nice with sun and clouds"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "nice with sun and some clouds"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "nice with sunny intervals"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "nice with sunshine"
+msgstr "Vreme plăcută, însorit"
+
+msgid "nice with variable cloudiness"
+msgstr "Vreme plăcută, nebulozitate variabilă"
+
+msgid "nice with variable clouds"
+msgstr "Vreme plăcută, nebulozitate variabilă"
+
+msgid "not as cold"
+msgstr "Mai puțin frig"
+
+msgid "not as cold with clearing"
+msgstr "Mai puțin frig, cerul se înseninează"
+
+msgid "not as cold with flurries"
+msgstr "Mai puțin frig, fulguieli trecătoare"
+
+msgid "not as cold with low clouds"
+msgstr "Mai puțin frig, nori joși"
+
+msgid "not as cold with snow showers"
+msgstr "Mai puțin frig, averse de ninsoare"
+
+msgid "not as cold with some sun"
+msgstr "Mai puțin frig, intervale însorite"
+
+msgid "not as cool"
+msgstr "Mai puțin răcoros"
+
+msgid "not as cool late"
+msgstr "Mai puțin răcoros mai târziu"
+
+msgid "not as cool with clearing"
+msgstr "Mai puțin răcoros, cerul se înseninează"
+
+msgid "not as hot"
+msgstr "Mai puțin călduros"
+
+msgid "not as hot with a shower"
+msgstr "Mai puțin călduros, o aversă"
+
+msgid "not as hot with a t-storm"
+msgstr "Mai puțin călduros, o furtună cu descărcări electrice"
+
+msgid "not as hot with some sun"
+msgstr "Mai puțin călduros, intervale însorite"
+
+msgid "not as warm"
+msgstr "Mai puțin cald"
+
+msgid "not as warm but pleasant"
+msgstr "Mai puțin cald, vreme plăcută"
+
+msgid "not as warm in the afternoon"
+msgstr "Mai puțin cald după-amiaza"
+
+msgid "not as warm this afternoon"
+msgstr "Mai puțin cald în această după-amiază"
+
+msgid "not as warm with a shower"
+msgstr "Mai puțin cald, o aversă"
+
+msgid "not as warm with a t-shower"
+msgstr "Mai puțin cald, aversă cu descărcări electrice"
+
+msgid "not as warm with a t-storm"
+msgstr "Mai puțin cald, o furtună cu descărcări electrice"
+
+msgid "not as warm with clearing"
+msgstr "Mai puțin cald, cerul se înseninează"
+
+msgid "not as warm with downpours"
+msgstr "Mai puțin cald, ploi torențiale"
+
+msgid "not as warm with high clouds"
+msgstr "Mai puțin cald, nori înalți"
+
+msgid "not as warm with low clouds"
+msgstr "Mai puțin cald, nori joși"
+
+msgid "not as warm with morning rain"
+msgstr "Mai puțin cald, ploaie dimineața"
+
+msgid "not as warm with rain"
+msgstr "Mai puțin cald, ploaie"
+
+msgid "not as warm with rain ending"
+msgstr "Mai puțin cald, ploaia se oprește"
+
+msgid "not as warm with showers"
+msgstr "Mai puțin cald, averse"
+
+msgid "not as warm with some sun"
+msgstr "Mai puțin cald, intervale însorite"
+
+msgid "occasional afternoon rain"
+msgstr "Ploaie din când în când după-amiaza"
+
+msgid "occasional evening rain"
+msgstr "Ploaie din când în când seara"
+
+msgid "occasional late-night rain"
+msgstr "Ploaie din când în când noaptea târziu"
+
+msgid "occasional morning rain"
+msgstr "Ploaie din când în când dimineața"
+
+msgid "occasional rain"
+msgstr "Ploaie din când în când"
+
+msgid "occasional rain and a t-storm"
+msgstr "Ploaie din când în când, o furtună cu descărcări electrice"
+
+msgid "occasional rain and drizzle"
+msgstr "Ploaie din când în când, burniță"
+
+msgid "occasional rain late"
+msgstr "Ploaie din când în când mai târziu"
+
+msgid "occasional snow and flurries"
+msgstr "Ninsori intermitente, fulguieli trecătoare"
+
+msgid "on-and-off rain and drizzle"
+msgstr "Ploaie din când în când, burniță"
+
+msgid "on-and-off snow"
+msgstr "Ninsori intermitente"
+
+msgid "otherwise"
+msgstr "În rest"
+
+msgid "overcast and becoming rainy"
+msgstr "Acoperit, începe să plouă"
+
+msgid "overcast and chilly"
+msgstr "Acoperit, vreme rece"
+
+msgid "overcast and cold"
+msgstr "Acoperit, frig"
+
+msgid "overcast and cooler"
+msgstr "Acoperit, mai răcoros"
+
+msgid "overcast and frigid"
+msgstr "Acoperit, ger puternic"
+
+msgid "overcast and humid"
+msgstr "Acoperit, umiditate ridicată"
+
+msgid "overcast and mild"
+msgstr "Acoperit, vreme blândă"
+
+msgid "overcast and not as warm"
+msgstr "Acoperit, mai puțin cald"
+
+msgid "overcast and seasonably cold"
+msgstr "Acoperit, frig normal pentru sezon"
+
+msgid "overcast and seasonably warm"
+msgstr "Acoperit, cald, normal pentru sezon"
+
+msgid "overcast and very warm"
+msgstr "Acoperit, foarte cald"
+
+msgid "overcast and warm"
+msgstr "Acoperit, cald"
+
+msgid "overcast and windy"
+msgstr "Acoperit, vânt puternic"
+
+msgid "overcast with a bit of rain"
+msgstr "Acoperit, puțină ploaie"
+
+msgid "overcast with a bit of snow"
+msgstr "Acoperit, puțină ninsoare"
+
+msgid "overcast with a brief shower"
+msgstr "Acoperit, averse de scurtă durată"
+
+msgid "overcast with a few showers"
+msgstr "Acoperit, câteva averse"
+
+msgid "overcast with a little rain"
+msgstr "Acoperit, puțină ploaie"
+
+msgid "overcast with a little snow"
+msgstr "Acoperit, puțină ninsoare"
+
+msgid "overcast with a quick shower"
+msgstr "Acoperit, averse de scurtă durată"
+
+msgid "overcast with a shower"
+msgstr "Acoperit, o aversă"
+
+msgid "overcast with a shower late"
+msgstr "Acoperit, o aversă mai târziu"
+
+msgid "overcast with a shower or two"
+msgstr "Acoperit, una sau două averse"
+
+msgid "overcast with a stray shower"
+msgstr "Acoperit, averse pe alocuri"
+
+msgid "overcast with a stray t-storm"
+msgstr "Acoperit, furtuni cu descărcări electrice pe alocuri"
+
+msgid "overcast with a t-storm late"
+msgstr "Acoperit, o furtună cu descărcări electrice mai târziu"
+
+msgid "overcast with a thundershower"
+msgstr "Acoperit, aversă cu descărcări electrice"
+
+msgid "overcast with a thunderstorm"
+msgstr "Acoperit, o furtună cu descărcări electrice"
+
+msgid "overcast with a touch of rain"
+msgstr "Acoperit, puțină ploaie"
+
+msgid "overcast with brief showers"
+msgstr "Acoperit, averse de scurtă durată"
+
+msgid "overcast with downpours"
+msgstr "Acoperit, ploi torențiale"
+
+msgid "overcast with downpours late"
+msgstr "Acoperit, ploi torențiale mai târziu"
+
+msgid "overcast with flurries"
+msgstr "Acoperit, fulguieli trecătoare"
+
+msgid "overcast with heavy rain late"
+msgstr "Acoperit, ploaie puternică mai târziu"
+
+msgid "overcast with heavy showers"
+msgstr "Acoperit, averse puternice"
+
+msgid "overcast with late-night rain"
+msgstr "Acoperit, ploaie noaptea târziu"
+
+msgid "overcast with occasional rain"
+msgstr "Acoperit, ploaie din când în când"
+
+msgid "overcast with rain developing"
+msgstr "Acoperit, începe să plouă"
+
+msgid "overcast with rain late"
+msgstr "Acoperit, ploaie mai târziu"
+
+msgid "overcast with showers"
+msgstr "Acoperit, averse"
+
+msgid "overcast with showers around"
+msgstr "Acoperit, averse pe alocuri"
+
+msgid "overcast with showers late"
+msgstr "Acoperit, averse mai târziu"
+
+msgid "overcast with snow showers"
+msgstr "Acoperit, averse de ninsoare"
+
+msgid "overcast with spotty showers"
+msgstr "Acoperit, averse pe alocuri"
+
+msgid "overcast with thunderstorms"
+msgstr "Acoperit, furtuni cu descărcări electrice"
+
+msgid "p.m. downpours"
+msgstr "Ploi torențiale după-amiaza"
+
+msgid "p.m. flurries"
+msgstr "Fulguieli trecătoare după-amiaza"
+
+msgid "p.m. snow"
+msgstr "Ninsoare după-amiaza"
+
+msgid "p.m. snow showers"
+msgstr "Averse de ninsoare după-amiaza"
+
+msgid "partial sunshine"
+msgstr "Intervale însorite"
+
+msgid "partly cloudy and breezy"
+msgstr "Parțial noros, adiere de vânt"
+
+msgid "partly cloudy and chilly"
+msgstr "Parțial noros, vreme rece"
+
+msgid "partly cloudy and cold"
+msgstr "Parțial noros, frig"
+
+msgid "partly cloudy and colder"
+msgstr "Parțial noros, mai frig"
+
+msgid "partly cloudy and cool"
+msgstr "Parțial noros, răcoare"
+
+msgid "partly cloudy and cooler"
+msgstr "Parțial noros, mai răcoros"
+
+msgid "partly cloudy and frigid"
+msgstr "Parțial noros, ger puternic"
+
+msgid "partly cloudy and humid"
+msgstr "Parțial noros, umiditate ridicată"
+
+msgid "partly cloudy and mild"
+msgstr "Parțial noros, vreme blândă"
+
+msgid "partly cloudy and much colder"
+msgstr "Parțial noros, mult mai frig"
+
+msgid "partly cloudy and seasonable"
+msgstr "Parțial noros, temperaturi normale pentru sezon"
+
+msgid "partly cloudy and very cold"
+msgstr "Parțial noros, foarte frig"
+
+msgid "partly cloudy and very humid"
+msgstr "Parțial noros, umiditate foarte ridicată"
+
+msgid "partly cloudy and very warm"
+msgstr "Parțial noros, foarte cald"
+
+msgid "partly cloudy and warm"
+msgstr "Parțial noros, cald"
+
+msgid "partly cloudy and windy"
+msgstr "Parțial noros, vânt puternic"
+
+msgid "partly cloudy with a shower"
+msgstr "Parțial noros, o aversă"
+
+msgid "partly cloudy with a t-storm"
+msgstr "Parțial noros, o furtună cu descărcări electrice"
+
+msgid "partly cloudy with flurries"
+msgstr "Parțial noros, fulguieli trecătoare"
+
+msgid "partly sunny"
+msgstr "Intervale însorite"
+
+msgid "partly sunny and beautiful"
+msgstr "Intervale însorite, vreme plăcută"
+
+msgid "partly sunny and breezy"
+msgstr "Intervale însorite, adiere de vânt"
+
+msgid "partly sunny and chilly"
+msgstr "Intervale însorite, vreme rece"
+
+msgid "partly sunny and cold"
+msgstr "Intervale însorite, frig"
+
+msgid "partly sunny and colder"
+msgstr "Intervale însorite, mai frig"
+
+msgid "partly sunny and comfortable"
+msgstr "Intervale însorite, vreme plăcută"
+
+msgid "partly sunny and cool"
+msgstr "Intervale însorite, răcoare"
+
+msgid "partly sunny and cooler"
+msgstr "Intervale însorite, mai răcoros"
+
+msgid "partly sunny and delightful"
+msgstr "Intervale însorite, vreme plăcută"
+
+msgid "partly sunny and frigid"
+msgstr "Intervale însorite, ger puternic"
+
+msgid "partly sunny and hot"
+msgstr "Intervale însorite, vreme călduroasă"
+
+msgid "partly sunny and hotter"
+msgstr "Intervale însorite, mai călduros"
+
+msgid "partly sunny and humid"
+msgstr "Intervale însorite, umiditate ridicată"
+
+msgid "partly sunny and less humid"
+msgstr "Intervale însorite, umiditate mai scăzută"
+
+msgid "partly sunny and mild"
+msgstr "Intervale însorite, vreme blândă"
+
+msgid "partly sunny and milder"
+msgstr "Intervale însorite, vreme mai blândă"
+
+msgid "partly sunny and nice"
+msgstr "Intervale însorite, vreme plăcută"
+
+msgid "partly sunny and not as cold"
+msgstr "Intervale însorite, mai puțin frig"
+
+msgid "partly sunny and not as cool"
+msgstr "Intervale însorite, mai puțin răcoros"
+
+msgid "partly sunny and not as hot"
+msgstr "Intervale însorite, mai puțin călduros"
+
+msgid "partly sunny and not as warm"
+msgstr "Intervale însorite, mai puțin cald"
+
+msgid "partly sunny and pleasant"
+msgstr "Intervale însorite, vreme plăcută"
+
+msgid "partly sunny and quite cold"
+msgstr "Intervale însorite, destul de frig"
+
+msgid "partly sunny and seasonable"
+msgstr "Intervale însorite, temperaturi normale pentru sezon"
+
+msgid "partly sunny and summerlike"
+msgstr "Intervale însorite, vreme de vară"
+
+msgid "partly sunny and very cold"
+msgstr "Intervale însorite, foarte frig"
+
+msgid "partly sunny and very hot"
+msgstr "Intervale însorite, foarte cald"
+
+msgid "partly sunny and very humid"
+msgstr "Intervale însorite, umiditate foarte ridicată"
+
+msgid "partly sunny and very warm"
+msgstr "Intervale însorite, foarte cald"
+
+msgid "partly sunny and warm"
+msgstr "Intervale însorite, cald"
+
+msgid "partly sunny and warmer"
+msgstr "Intervale însorite, mai cald"
+
+msgid "partly sunny and windy"
+msgstr "Intervale însorite, vânt puternic"
+
+msgid "partly sunny with a shower"
+msgstr "Intervale însorite, o aversă"
+
+msgid "partly sunny with a t-shower"
+msgstr "Intervale însorite, aversă cu descărcări electrice"
+
+msgid "partly sunny with a t-storm"
+msgstr "Intervale însorite, o furtună cu descărcări electrice"
+
+msgid "partly sunny with flurries"
+msgstr "Intervale însorite, fulguieli trecătoare"
+
+msgid "partly to mostly cloudy"
+msgstr "Cer parțial până la predominant noros"
+
+msgid "partly to mostly sunny"
+msgstr "Parțial până la predominant însorit"
+
+msgid "patchy clouds"
+msgstr "Nori răzleți"
+
+msgid "patchy clouds and breezy"
+msgstr "Nori răzleți, adiere de vânt"
+
+msgid "patchy clouds and chilly"
+msgstr "Nori răzleți, vreme rece"
+
+msgid "patchy clouds and cold"
+msgstr "Nori răzleți, frig"
+
+msgid "patchy clouds and cool"
+msgstr "Nori răzleți, răcoare"
+
+msgid "patchy clouds and frigid"
+msgstr "Nori răzleți, ger puternic"
+
+msgid "patchy clouds and humid"
+msgstr "Nori răzleți, umiditate ridicată"
+
+msgid "patchy clouds and mild"
+msgstr "Nori răzleți, vreme blândă"
+
+msgid "patchy clouds and very warm"
+msgstr "Nori răzleți, foarte cald"
+
+msgid "patchy clouds and warm"
+msgstr "Nori răzleți, cald"
+
+msgid "patchy clouds with a shower"
+msgstr "Nori răzleți, o aversă"
+
+msgid "patchy fog"
+msgstr "Ceață pe alocuri"
+
+msgid "patchy fog freezing late"
+msgstr "Ceața îngheață pe alocuri mai târziu"
+
+msgid "patchy freezing fog"
+msgstr "Ceață care îngheață pe alocuri"
+
+msgid "patchy low clouds and fog"
+msgstr "Pe alocuri nori joși, ceață"
+
+msgid "perhaps snow late"
+msgstr "Posibile ninsori mai târziu"
+
+msgid "periods of clouds and sun"
+msgstr "Alternanțe de soare și nori"
+
+msgid "periods of rain"
+msgstr "Ploaie din când în când"
+
+msgid "periods of rain and a t-storm"
+msgstr "Ploaie din când în când, o furtună cu descărcări electrice"
+
+msgid "periods of rain late"
+msgstr "Ploaie din când în când mai târziu"
+
+msgid "periods of rain this morning"
+msgstr "Ploaie din când în când în această dimineață"
+
+msgid "periods of snow"
+msgstr "Ninsori intermitente"
+
+msgid "periods of snow and rain"
+msgstr "Ninsori intermitente, ploaie"
+
+msgid "periods of sun"
+msgstr "Intervale însorite"
+
+msgid "periods of sun with a shower"
+msgstr "Intervale însorite, o aversă"
+
+msgid "periods of sun with a t-storm"
+msgstr "Intervale însorite, o furtună cu descărcări electrice"
+
+msgid "periods of sunshine"
+msgstr "Intervale însorite"
+
+msgid "periods of wet snow"
+msgstr "Perioade cu ninsoare umedă"
+
+msgid "pleasant"
+msgstr "Vreme plăcută"
+
+msgid "pleasant and not as cool"
+msgstr "Vreme plăcută, mai puțin răcoros"
+
+msgid "pleasant and warmer"
+msgstr "Vreme plăcută, mai cald"
+
+msgid "pleasant with clouds and sun"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "pleasant with clouds breaking"
+msgstr "Vreme plăcută, norii se risipesc"
+
+msgid "pleasant with lots of sun"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "pleasant with periods of sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "pleasant with plenty of sun"
+msgstr "Vreme plăcută, mult soare"
+
+msgid "pleasant with some sun"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "pleasant with some sunshine"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "pleasant with sun and clouds"
+msgstr "Vreme plăcută, alternanțe de soare și nori"
+
+msgid "pleasant with sunny intervals"
+msgstr "Vreme plăcută, intervale însorite"
+
+msgid "pleasant with sunshine"
+msgstr "Vreme plăcută, însorit"
+
+msgid "pleasant with variable clouds"
+msgstr "Vreme plăcută, nebulozitate variabilă"
+
+msgid "pleasantly warm"
+msgstr "Plăcut de cald"
+
+msgid "pleasantly warm with some sun"
+msgstr "Plăcut de cald, intervale însorite"
+
+msgid "pleasantly warm with sunshine"
+msgstr "Plăcut de cald, însorit"
+
+msgid "plenty of clouds"
+msgstr "Predominant noros"
+
+msgid "plenty of clouds with showers"
+msgstr "Predominant noros, averse"
+
+msgid "plenty of sun"
+msgstr "Mult soare"
+
+msgid "plenty of sunshine"
+msgstr "Mult soare"
+
+msgid "pluto"
+msgstr "Pluto"
+
+msgid "quite cold"
+msgstr "Destul de frig"
+
+msgid "rain and a t-storm"
+msgstr "Ploaie, o furtună cu descărcări electrice"
+
+msgid "rain and a thunderstorm"
+msgstr "Ploaie, o furtună cu descărcări electrice"
+
+msgid "rain and a thunderstorm early"
+msgstr "Ploaie, o furtună cu descărcări electrice la început"
+
+msgid "rain and a thunderstorm late"
+msgstr "Ploaie, o furtună cu descărcări electrice mai târziu"
+
+msgid "rain and drizzle"
+msgstr "Ploaie și burniță"
+
+msgid "rain and drizzle early"
+msgstr "Ploaie și burniță la început"
+
+msgid "rain and drizzle in the a.m."
+msgstr "Ploaie și burniță dimineața"
+
+msgid "rain and drizzle in the p.m."
+msgstr "Ploaie și burniță după-amiaza"
+
+msgid "rain and drizzle late"
+msgstr "Ploaie și burniță mai târziu"
+
+msgid "rain and drizzle this evening"
+msgstr "Ploaie și burniță în această seară"
+
+msgid "rain and drizzle this morning"
+msgstr "Ploaie și burniță în această dimineață"
+
+msgid "rain and ice in the evening"
+msgstr "Ploaie și gheață seara"
+
+msgid "rain and snow"
+msgstr "Ploaie și ninsoare"
+
+msgid "rain and snow shower"
+msgstr "Averse de ploaie și ninsoare"
+
+msgid "rain and snow showers"
+msgstr "Averse de ploaie și ninsoare"
+
+msgid "rain and snow showers early"
+msgstr "Averse de ploaie și ninsoare la început"
+
+msgid "rain and snow showers late"
+msgstr "Averse de ploaie și ninsoare mai târziu"
+
+msgid "rain at times"
+msgstr "Ploaie din când în când"
+
+msgid "rain at times in the evening"
+msgstr "Ploaie din când în când seara"
+
+msgid "rain at times late"
+msgstr "Ploaie din când în când mai târziu"
+
+msgid "rain becoming heavier"
+msgstr "Ploaia se intensifică"
+
+msgid "rain becoming steadier"
+msgstr "Ploaia devine tot mai persistentă"
+
+msgid "rain ending"
+msgstr "Ploaia se oprește"
+
+msgid "rain in the afternoon"
+msgstr "Ploaie după-amiaza"
+
+msgid "rain in the evening"
+msgstr "Ploaie seara"
+
+msgid "rain in the morning"
+msgstr "Ploaie dimineața"
+
+msgid "rain late in the afternoon"
+msgstr "Ploaie spre sfârșitul după-amiezii"
+
+msgid "rain mixing in"
+msgstr "În amestec cu ploaie"
+
+msgid "rain tapering off"
+msgstr "Ploaia slăbește"
+
+msgid "rain tapering to showers"
+msgstr "Ploaia slăbește și devine trecătoare"
+
+msgid "rain this morning"
+msgstr "Ploaie în această dimineață"
+
+msgid "rain to ice"
+msgstr "Ploaie urmată de îngheț"
+
+msgid "rain to snow"
+msgstr "Ploaia se transformă în ninsoare"
+
+msgid "rain/drizzle"
+msgstr "Ploaie și burniță"
+
+msgid "rain/snow"
+msgstr "Ploaie și ninsoare"
+
+msgid "rainy spells in the morning"
+msgstr "Ploaie din când în când dimineața"
+
+msgid "rainy times in the afternoon"
+msgstr "Ploaie din când în când după-amiaza"
+
+msgid "rainy times in the morning"
+msgstr "Ploaie din când în când dimineața"
+
+msgid "rainy times late"
+msgstr "Ploaie din când în când mai târziu"
+
+msgid "rather cloudy"
+msgstr "Destul de noros"
+
+msgid "rather cloudy and breezy"
+msgstr "Destul de noros, adiere de vânt"
+
+msgid "rather cloudy and chilly"
+msgstr "Destul de noros, vreme rece"
+
+msgid "rather cloudy and cold"
+msgstr "Destul de noros, frig"
+
+msgid "rather cloudy and cool"
+msgstr "Destul de noros, răcoare"
+
+msgid "rather cloudy and cooler"
+msgstr "Destul de noros, mai răcoros"
+
+msgid "rather cloudy and hot"
+msgstr "Destul de noros, vreme călduroasă"
+
+msgid "rather cloudy and humid"
+msgstr "Destul de noros, umiditate ridicată"
+
+msgid "rather cloudy and mild"
+msgstr "Destul de noros, vreme blândă"
+
+msgid "rather cloudy and not as cold"
+msgstr "Destul de noros, mai puțin frig"
+
+msgid "rather cloudy and not as warm"
+msgstr "Destul de noros, mai puțin cald"
+
+msgid "rather cloudy and summerlike"
+msgstr "Destul de noros, vreme de vară"
+
+msgid "rather cloudy and very cold"
+msgstr "Destul de noros, foarte frig"
+
+msgid "rather cloudy and very warm"
+msgstr "Destul de noros, foarte cald"
+
+msgid "rather cloudy and warm"
+msgstr "Destul de noros, cald"
+
+msgid "rather cloudy and warmer"
+msgstr "Destul de noros, mai cald"
+
+msgid "rather cloudy with a shower"
+msgstr "Destul de noros, o aversă"
+
+msgid "rather cloudy with a t-storm"
+msgstr "Destul de noros, o furtună cu descărcări electrice"
+
+msgid "rather cloudy with rain late"
+msgstr "Destul de noros, ploaie mai târziu"
+
+msgid "rather cloudy with showers"
+msgstr "Destul de noros, averse"
+
+msgid "remaining cloudy"
+msgstr "Cerul rămâne noros"
+
+msgid "remaining cloudy and cold"
+msgstr "Cerul rămâne noros, frig"
+
+msgid "remaining cloudy and warmer"
+msgstr "Cerul rămâne noros, mai cald"
+
+msgid "remaining cloudy with showers"
+msgstr "Cerul rămâne noros, averse"
+
+msgid "remaining cool with some sun"
+msgstr "Se menține răcoros, intervale însorite"
+
+msgid "remaining warm"
+msgstr "Se menține cald"
+
+msgid "remaining warm with some sun"
+msgstr "Se menține cald, intervale însorite"
+
+msgid "remaining warm with sunshine"
+msgstr "Se menține cald, însorit"
+
+msgid "rising temperatures"
+msgstr "Temperaturi în creștere"
+
+msgid "rising temperatures early"
+msgstr "Temperaturi în creștere la început"
+
+msgid "rising temperatures late"
+msgstr "Temperaturi în creștere mai târziu"
+
+msgid "saturn"
+msgstr "Saturn"
+
+msgid "seasonably warm"
+msgstr "Cald, normal pentru sezon"
+
+msgid "seasonably warm with sunshine"
+msgstr "Cald, normal pentru sezon, însorit"
+
+msgid "shower"
+msgstr "O aversă"
+
+msgid "shower and thunderstorm"
+msgstr "O aversă, o furtună cu descărcări electrice"
+
+msgid "showers and a heavier t-storm"
+msgstr "Averse, furtuni puternice cu descărcări electrice"
+
+msgid "showers and heavy t-storms"
+msgstr "Averse, furtuni puternice cu descărcări electrice"
+
+msgid "showers and thunderstorm"
+msgstr "Averse, o furtună cu descărcări electrice"
+
+msgid "showers and thunderstorms"
+msgstr "Averse, furtuni cu descărcări electrice"
+
+msgid "showers around"
+msgstr "Averse pe alocuri"
+
+msgid "showers around early"
+msgstr "Averse pe alocuri la început"
+
+msgid "showers around in the evening"
+msgstr "Averse pe alocuri seara"
+
+msgid "showers around in the morning"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "showers around in the p.m."
+msgstr "Averse pe alocuri după-amiaza"
+
+msgid "showers around late"
+msgstr "Averse pe alocuri mai târziu"
+
+msgid "showers around this afternoon"
+msgstr "Averse pe alocuri în această după-amiază"
+
+msgid "showers around this evening"
+msgstr "Averse pe alocuri în această seară"
+
+msgid "showers early in the morning"
+msgstr "Averse dis-de-dimineață"
+
+msgid "showers early this morning"
+msgstr "Averse dis-de-dimineață"
+
+msgid "showers in the afternoon"
+msgstr "Averse după-amiaza"
+
+msgid "showers in the evening"
+msgstr "Averse seara"
+
+msgid "showers in the morning"
+msgstr "Averse dimineața"
+
+msgid "showers late"
+msgstr "Averse mai târziu"
+
+msgid "showers late in the afternoon"
+msgstr "Averse spre sfârșitul după-amiezii"
+
+msgid "showers late this afternoon"
+msgstr "Averse spre sfârșitul după-amiezii"
+
+msgid "showers late this morning"
+msgstr "Averse spre sfârșitul dimineții"
+
+msgid "showers of rain and snow"
+msgstr "Averse de ploaie și ninsoare"
+
+msgid "showers of rain and snow late"
+msgstr "Averse de ploaie și ninsoare mai târziu"
+
+msgid "showers possible"
+msgstr "Averse posibile"
+
+msgid "showers this evening"
+msgstr "Averse în această seară"
+
+msgid "showers this morning"
+msgstr "Averse în această dimineață"
+
+msgid "sleet and freezing rain late"
+msgstr "Lapoviță, ploaie care îngheață la contact mai târziu"
+
+msgid "snow and rain"
+msgstr "Ploaie și ninsoare"
+
+msgid "snow and rain in the morning"
+msgstr "Ploaie și ninsoare dimineața"
+
+msgid "snow and rain late"
+msgstr "Ploaie și ninsoare mai târziu"
+
+msgid "snow and rain this morning"
+msgstr "Ploaie și ninsoare în această dimineață"
+
+msgid "snow and sleet at times"
+msgstr "Intervale cu ninsoare și granule de gheață"
+
+msgid "snow at times"
+msgstr "Ninsori intermitente"
+
+msgid "snow in the evening"
+msgstr "Ninsoare seara"
+
+msgid "snow late in the p.m."
+msgstr "Ninsoare mai târziu după-amiaza"
+
+msgid "snow late this afternoon"
+msgstr "Ninsoare spre sfârșitul după-amiezii"
+
+msgid "snow late this morning"
+msgstr "Ninsoare spre sfârșitul dimineții"
+
+msgid "snow much of the time"
+msgstr "Ninsoare în cea mai mare parte a intervalului"
+
+msgid "snow of varying rates"
+msgstr "Ninsoare de intensitate variabilă"
+
+msgid "snow showers in the afternoon"
+msgstr "Averse de ninsoare după-amiaza"
+
+msgid "snow showers in the morning"
+msgstr "Averse de ninsoare dimineața"
+
+msgid "snow showers late"
+msgstr "Averse de ninsoare mai târziu"
+
+msgid "snow showers this evening"
+msgstr "Averse de ninsoare în această seară"
+
+msgid "snow tapering off"
+msgstr "Ninsoarea slăbește"
+
+msgid "snow tapering to flurries"
+msgstr "Ninsoarea slăbește și devine trecătoare"
+
+msgid "some brightening"
+msgstr "Câteva înseninări"
+
+msgid "some brightening and hot"
+msgstr "Câteva înseninări, vreme călduroasă"
+
+msgid "some brightening and humid"
+msgstr "Câteva înseninări, umiditate ridicată"
+
+msgid "some brightening and warm"
+msgstr "Câteva înseninări, cald"
+
+msgid "some brightening and warmer"
+msgstr "Câteva înseninări, mai cald"
+
+msgid "some clouds"
+msgstr "Câțiva nori"
+
+msgid "some clouds with a shower"
+msgstr "Câțiva nori, o aversă"
+
+msgid "some clouds with a t-storm"
+msgstr "Câțiva nori, o furtună cu descărcări electrice"
+
+msgid "some clouds with rain late"
+msgstr "Câțiva nori, ploaie mai târziu"
+
+msgid "some ice early"
+msgstr "Pe alocuri polei la început"
+
+msgid "some rain and a t-storm early"
+msgstr "Puțină ploaie, o furtună cu descărcări electrice la început"
+
+msgid "some rain and a t-storm late"
+msgstr "Puțină ploaie, o furtună cu descărcări electrice mai târziu"
+
+msgid "some rain and a thunderstorm"
+msgstr "Puțină ploaie, o furtună cu descărcări electrice"
+
+msgid "some snow"
+msgstr "Puțină ninsoare"
+
+msgid "some sun"
+msgstr "Intervale însorite"
+
+msgid "some sun and pleasant"
+msgstr "Intervale însorite, vreme plăcută"
+
+msgid "some sun returning"
+msgstr "Câteva înseninări"
+
+msgid "some sun with a brief shower"
+msgstr "Intervale însorite, averse de scurtă durată"
+
+msgid "some sun with a cool breeze"
+msgstr "Intervale însorite, briză răcoroasă"
+
+msgid "some sun with a few showers"
+msgstr "Intervale însorite, câteva averse"
+
+msgid "some sun with a gusty breeze"
+msgstr "Intervale însorite, vânt în rafale"
+
+msgid "some sun with a heavy t-storm"
+msgstr "Intervale însorite, furtuni puternice cu descărcări electrice"
+
+msgid "some sun with a little rain"
+msgstr "Intervale însorite, puțină ploaie"
+
+msgid "some sun with a quick shower"
+msgstr "Intervale însorite, averse de scurtă durată"
+
+msgid "some sun with a shower"
+msgstr "Intervale însorite, o aversă"
+
+msgid "some sun with a shower or two"
+msgstr "Intervale însorite, una sau două averse"
+
+msgid "some sun with a stray shower"
+msgstr "Intervale însorite, averse pe alocuri"
+
+msgid "some sun with a stray t-storm"
+msgstr "Intervale însorite, furtuni cu descărcări electrice pe alocuri"
+
+msgid "some sun with a t-storm"
+msgstr "Intervale însorite, o furtună cu descărcări electrice"
+
+msgid "some sun with a thundershower"
+msgstr "Intervale însorite, aversă cu descărcări electrice"
+
+msgid "some sun with a thunderstorm"
+msgstr "Intervale însorite, o furtună cu descărcări electrice"
+
+msgid "some sun with low humidity"
+msgstr "Intervale însorite, umiditate scăzută"
+
+msgid "some sun with occasional rain"
+msgstr "Intervale însorite, ploaie din când în când"
+
+msgid "some sun with showers"
+msgstr "Intervale însorite, averse"
+
+msgid "some sun with showers around"
+msgstr "Intervale însorite, averse pe alocuri"
+
+msgid "some sun with spotty showers"
+msgstr "Intervale însorite, averse pe alocuri"
+
+msgid "some sunshine"
+msgstr "Intervale însorite"
+
+msgid "some sunshine with a shower"
+msgstr "Intervale însorite, o aversă"
+
+msgid "spotty afternoon showers"
+msgstr "Averse pe alocuri după-amiaza"
+
+msgid "spotty drizzle in the morning"
+msgstr "Burniță pe alocuri dimineața"
+
+msgid "spotty drizzle this morning"
+msgstr "Burniță pe alocuri în această dimineață"
+
+msgid "spotty evening showers"
+msgstr "Averse pe alocuri seara"
+
+msgid "spotty late-night showers"
+msgstr "Averse pe alocuri noaptea târziu"
+
+msgid "spotty morning showers"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "spotty showers"
+msgstr "Averse pe alocuri"
+
+msgid "spotty showers in the evening"
+msgstr "Averse pe alocuri seara"
+
+msgid "spotty showers in the morning"
+msgstr "Averse pe alocuri dimineața"
+
+msgid "spotty showers late"
+msgstr "Averse pe alocuri mai târziu"
+
+msgid "spotty showers this afternoon"
+msgstr "Averse pe alocuri în această după-amiază"
+
+msgid "spotty showers this morning"
+msgstr "Averse pe alocuri în această dimineață"
+
+msgid "still cloudy"
+msgstr "Cerul rămâne noros"
+
+msgid "still cloudy and warmer"
+msgstr "Cerul rămâne noros, mai cald"
+
+msgid "still cloudy with a shower"
+msgstr "Cerul rămâne noros, o aversă"
+
+msgid "still cloudy with showers"
+msgstr "Cerul rămâne noros, averse"
+
+msgid "strong afternoon t-storms"
+msgstr "Furtuni puternice cu descărcări electrice după-amiaza"
+
+msgid "strong evening thunderstorms"
+msgstr "Furtuni puternice cu descărcări electrice seara"
+
+msgid "strong late"
+msgstr "Puternic mai târziu"
+
+msgid "strong late-night t-storms"
+msgstr "Furtuni puternice cu descărcări electrice noaptea târziu"
+
+msgid "strong t-storms"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "strong thunderstorms"
+msgstr "Furtuni puternice cu descărcări electrice"
+
+msgid "strong thunderstorms late"
+msgstr "Furtuni puternice cu descărcări electrice mai târziu"
+
+msgid "strong thunderstorms possible"
+msgstr "Posibile furtuni puternice cu descărcări electrice"
+
+msgid "strong winds subsiding"
+msgstr "Vântul puternic slăbește"
+
+msgid "summerlike"
+msgstr "Vreme de vară"
+
+msgid "summerlike with a few showers"
+msgstr "Vreme de vară, câteva averse"
+
+msgid "summerlike with a shower"
+msgstr "Vreme de vară, o aversă"
+
+msgid "summerlike with a t-storm"
+msgstr "Vreme de vară, o furtună cu descărcări electrice"
+
+msgid "summerlike with hazy sun"
+msgstr "Vreme de vară, soare prin pâclă"
+
+msgid "summerlike with high clouds"
+msgstr "Vreme de vară, nori înalți"
+
+msgid "summerlike with lots of sun"
+msgstr "Vreme de vară, mult soare"
+
+msgid "summerlike with some sun"
+msgstr "Vreme de vară, intervale însorite"
+
+msgid "summerlike with sunshine"
+msgstr "Vreme de vară, însorit"
+
+msgid "sun and areas of high clouds"
+msgstr "Însorit, nori înalți pe alocuri"
+
+msgid "sun and areas of low clouds"
+msgstr "Însorit, pe alocuri nori joși"
+
+msgid "sun and clouds"
+msgstr "Alternanțe de soare și nori"
+
+msgid "sun and clouds with a shower"
+msgstr "Alternanțe de soare și nori, o aversă"
+
+msgid "sun and clouds with a t-storm"
+msgstr "Alternanțe de soare și nori, o furtună cu descărcări electrice"
+
+msgid "sun and some clouds"
+msgstr "Alternanțe de soare și nori"
+
+msgid "sun followed by clouds"
+msgstr "Soare urmat de nori"
+
+msgid "sun followed by some clouds"
+msgstr "Soare urmat de câțiva nori"
+
+msgid "sun giving way to clouds"
+msgstr "Soare urmat de nori"
+
+msgid "sun mixing with clouds"
+msgstr "Alternanțe de soare și nori"
+
+msgid "sun through high clouds"
+msgstr "Soare printre norii înalți"
+
+msgid "sun yielding to clouds"
+msgstr "Soare urmat de nori"
+
+msgid "sunlit"
+msgstr "Însorit"
+
+msgid "sunlit and beautiful"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunlit and comfortable"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunlit and delightful"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunlit and pleasant"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunlit and unseasonably hot"
+msgstr "Însorit, neobișnuit de cald pentru sezon"
+
+msgid "sunlit and very warm"
+msgstr "Însorit, foarte cald"
+
+msgid "sunlit and warmer"
+msgstr "Însorit, mai cald"
+
+msgid "sunny and beautiful"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunny and breezy"
+msgstr "Însorit, adiere de vânt"
+
+msgid "sunny and cold"
+msgstr "Însorit, frig"
+
+msgid "sunny and comfortable"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunny and cool"
+msgstr "Însorit, răcoare"
+
+msgid "sunny and cooler"
+msgstr "Însorit, mai răcoros"
+
+msgid "sunny and cooler but pleasant"
+msgstr "Însorit, mai răcoros, vreme plăcută"
+
+msgid "sunny and delightful"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunny and hot"
+msgstr "Însorit, vreme călduroasă"
+
+msgid "sunny and hotter"
+msgstr "Însorit, mai călduros"
+
+msgid "sunny and humid"
+msgstr "Însorit, umiditate ridicată"
+
+msgid "sunny and less humid"
+msgstr "Însorit, umiditate mai scăzută"
+
+msgid "sunny and mild"
+msgstr "Însorit, vreme blândă"
+
+msgid "sunny and milder"
+msgstr "Însorit, vreme mai blândă"
+
+msgid "sunny and nice"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunny and not as cold"
+msgstr "Însorit, mai puțin frig"
+
+msgid "sunny and not as cool"
+msgstr "Însorit, mai puțin răcoros"
+
+msgid "sunny and not as hot"
+msgstr "Însorit, mai puțin călduros"
+
+msgid "sunny and not as warm"
+msgstr "Însorit, mai puțin cald"
+
+msgid "sunny and pleasant"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunny and pleasantly cool"
+msgstr "Însorit, plăcut de răcoros"
+
+msgid "sunny and pleasantly warm"
+msgstr "Însorit, plăcut de cald"
+
+msgid "sunny and remaining cool"
+msgstr "Însorit, se menține răcoros"
+
+msgid "sunny and remaining very warm"
+msgstr "Însorit, se menține foarte cald"
+
+msgid "sunny and remaining warm"
+msgstr "Însorit, se menține cald"
+
+msgid "sunny and seasonably cold"
+msgstr "Însorit, frig normal pentru sezon"
+
+msgid "sunny and seasonably warm"
+msgstr "Însorit, cald, normal pentru sezon"
+
+msgid "sunny and unseasonably hot"
+msgstr "Însorit, neobișnuit de cald pentru sezon"
+
+msgid "sunny and very cold"
+msgstr "Însorit, foarte frig"
+
+msgid "sunny and very humid"
+msgstr "Însorit, umiditate foarte ridicată"
+
+msgid "sunny and very warm"
+msgstr "Însorit, foarte cald"
+
+msgid "sunny and warm"
+msgstr "Însorit, cald"
+
+msgid "sunny and warmer"
+msgstr "Însorit, mai cald"
+
+msgid "sunny and windy"
+msgstr "Însorit, vânt puternic"
+
+msgid "sunny intervals"
+msgstr "Intervale însorite"
+
+msgid "sunny intervals with a shower"
+msgstr "Intervale însorite, o aversă"
+
+msgid "sunny much of the time"
+msgstr "Predominant însorit"
+
+msgid "sunny to partly cloudy"
+msgstr "Senin până la parțial noros"
+
+msgid "sunny with a gusty breeze"
+msgstr "Însorit, vânt în rafale"
+
+msgid "sunny with a warm breeze"
+msgstr "Însorit, briză caldă"
+
+msgid "sunny with low humidity"
+msgstr "Însorit, umiditate scăzută"
+
+msgid "sunshine"
+msgstr "Însorit"
+
+msgid "sunshine and a few clouds"
+msgstr "Însorit, câțiva nori"
+
+msgid "sunshine and beautiful"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunshine and bitterly cold"
+msgstr "Însorit, ger puternic"
+
+msgid "sunshine and breezy"
+msgstr "Însorit, adiere de vânt"
+
+msgid "sunshine and cold"
+msgstr "Însorit, frig"
+
+msgid "sunshine and comfortable"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunshine and cooler"
+msgstr "Însorit, mai răcoros"
+
+msgid "sunshine and delightful"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunshine and hot"
+msgstr "Însorit, vreme călduroasă"
+
+msgid "sunshine and hotter"
+msgstr "Însorit, mai călduros"
+
+msgid "sunshine and humid"
+msgstr "Însorit, umiditate ridicată"
+
+msgid "sunshine and less humid"
+msgstr "Însorit, umiditate mai scăzută"
+
+msgid "sunshine and mild"
+msgstr "Însorit, vreme blândă"
+
+msgid "sunshine and nice"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunshine and not as cold"
+msgstr "Însorit, mai puțin frig"
+
+msgid "sunshine and not as hot"
+msgstr "Însorit, mai puțin călduros"
+
+msgid "sunshine and not as warm"
+msgstr "Însorit, mai puțin cald"
+
+msgid "sunshine and patchy clouds"
+msgstr "Însorit, nori răzleți"
+
+msgid "sunshine and pleasant"
+msgstr "Însorit, vreme plăcută"
+
+msgid "sunshine and pleasantly warm"
+msgstr "Însorit, plăcut de cald"
+
+msgid "sunshine and remaining warm"
+msgstr "Însorit, se menține cald"
+
+msgid "sunshine and seasonably cold"
+msgstr "Însorit, frig normal pentru sezon"
+
+msgid "sunshine and seasonably warm"
+msgstr "Însorit, cald, normal pentru sezon"
+
+msgid "sunshine and some clouds"
+msgstr "Însorit, câțiva nori"
+
+msgid "sunshine and summerlike"
+msgstr "Însorit, vreme de vară"
+
+msgid "sunshine and unseasonably hot"
+msgstr "Însorit, neobișnuit de cald pentru sezon"
+
+msgid "sunshine and very hot"
+msgstr "Însorit, foarte cald"
+
+msgid "sunshine and very warm"
+msgstr "Însorit, foarte cald"
+
+msgid "sunshine and warm"
+msgstr "Însorit, cald"
+
+msgid "sunshine and warmer"
+msgstr "Însorit, mai cald"
+
+msgid "sunshine mixing with clouds"
+msgstr "Alternanțe de soare și nori"
+
+msgid "sunshine with a shower"
+msgstr "Însorit, o aversă"
+
+msgid "sunshine with a snow shower"
+msgstr "Însorit, o aversă de ninsoare"
+
+msgid "sunshine with a stray shower"
+msgstr "Însorit, averse pe alocuri"
+
+msgid "sunshine with a stray t-storm"
+msgstr "Însorit, furtuni cu descărcări electrice pe alocuri"
+
+msgid "sunshine with a thundershower"
+msgstr "Însorit, aversă cu descărcări electrice"
+
+msgid "sunshine with a thunderstorm"
+msgstr "Însorit, o furtună cu descărcări electrice"
+
+msgid "sunshine with low humidity"
+msgstr "Însorit, umiditate scăzută"
+
+msgid "t-storms"
+msgstr "Furtuni cu descărcări electrice"
+
+msgid "t-storms in the afternoon"
+msgstr "Furtuni cu descărcări electrice după-amiaza"
+
+msgid "t-storms possible in the a.m."
+msgstr "Posibile furtuni cu descărcări electrice dimineața"
+
+msgid "then a bit of ice"
+msgstr "Apoi pe alocuri polei"
+
+msgid "then a shower"
+msgstr "Apoi o aversă"
+
+msgid "then clouds"
+msgstr "Apoi cer noros"
+
+msgid "then flurries"
+msgstr "Apoi fulguieli trecătoare"
+
+msgid "then ice"
+msgstr "Apoi gheață"
+
+msgid "then rain"
+msgstr "Apoi ploaie"
+
+msgid "then showers"
+msgstr "Apoi averse"
+
+msgid "then snow"
+msgstr "Apoi ninsoare"
+
+msgid "then some sun"
+msgstr "Apoi intervale însorite"
+
+msgid "then sun"
+msgstr "Apoi însorit"
+
+msgid "then t-storms"
+msgstr "Apoi furtuni cu descărcări electrice"
+
+msgid "then turning cloudy"
+msgstr "Apoi cerul se înnorează"
+
+msgid "thickening clouds"
+msgstr "Norii se îndesesc"
+
+msgid "thickening clouds and hot"
+msgstr "Norii se îndesesc, vreme călduroasă"
+
+msgid "thundershower"
+msgstr "Aversă cu descărcări electrice"
+
+msgid "thunderstorms in the evening"
+msgstr "Furtuni cu descărcări electrice seara"
+
+msgid "thunderstorms late"
+msgstr "Furtuni cu descărcări electrice mai târziu"
+
+msgid "thunderstorms this afternoon"
+msgstr "Furtuni cu descărcări electrice în această după-amiază"
+
+msgid "thunderstorms this morning"
+msgstr "Furtuni cu descărcări electrice în această dimineață"
+
+msgid "times of clouds and sun"
+msgstr "Alternanțe de soare și nori"
+
+msgid "times of clouds and sunshine"
+msgstr "Alternanțe de soare și nori"
+
+msgid "times of rain"
+msgstr "Ploaie din când în când"
+
+msgid "times of sun and clouds"
+msgstr "Alternanțe de soare și nori"
+
+msgid "to rain"
+msgstr "Se transformă în ploaie"
+
+msgid "turning clear"
+msgstr "Cerul se înseninează"
+
+msgid "turning clear and very warm"
+msgstr "Cerul se înseninează, foarte cald"
+
+msgid "turning cloudy"
+msgstr "Cerul se înnorează"
+
+msgid "turning cloudy and breezy"
+msgstr "Cerul se înnorează, adiere de vânt"
+
+msgid "turning cloudy and chilly"
+msgstr "Cerul se înnorează, vreme rece"
+
+msgid "turning cloudy and cold"
+msgstr "Cerul se înnorează, frig"
+
+msgid "turning cloudy and colder"
+msgstr "Cerul se înnorează, mai frig"
+
+msgid "turning cloudy and cooler"
+msgstr "Cerul se înnorează, mai răcoros"
+
+msgid "turning cloudy and hot"
+msgstr "Cerul se înnorează, vreme călduroasă"
+
+msgid "turning cloudy and hotter"
+msgstr "Cerul se înnorează, mai călduros"
+
+msgid "turning cloudy and humid"
+msgstr "Cerul se înnorează, umiditate ridicată"
+
+msgid "turning cloudy and less humid"
+msgstr "Cerul se înnorează, umiditate mai scăzută"
+
+msgid "turning cloudy and mild"
+msgstr "Cerul se înnorează, vreme blândă"
+
+msgid "turning cloudy and milder"
+msgstr "Cerul se înnorează, vreme mai blândă"
+
+msgid "turning cloudy and pleasant"
+msgstr "Cerul se înnorează, vreme plăcută"
+
+msgid "turning cloudy and summerlike"
+msgstr "Cerul se înnorează, vreme de vară"
+
+msgid "turning cloudy and very hot"
+msgstr "Cerul se înnorează, foarte cald"
+
+msgid "turning cloudy and very warm"
+msgstr "Cerul se înnorează, foarte cald"
+
+msgid "turning cloudy and warm"
+msgstr "Cerul se înnorează, cald"
+
+msgid "turning cloudy and warmer"
+msgstr "Cerul se înnorează, mai cald"
+
+msgid "turning cloudy with a shower"
+msgstr "Cerul se înnorează, o aversă"
+
+msgid "turning cloudy with a t-storm"
+msgstr "Cerul se înnorează, o furtună cu descărcări electrice"
+
+msgid "turning cloudy with rain late"
+msgstr "Cerul se înnorează, ploaie mai târziu"
+
+msgid "turning colder in the morning"
+msgstr "Mai frig dimineața"
+
+msgid "turning colder this afternoon"
+msgstr "Mai frig în această după-amiază"
+
+msgid "turning colder this morning"
+msgstr "Mai frig în această dimineață"
+
+msgid "turning out clear"
+msgstr "Cerul se înseninează"
+
+msgid "turning out clear and breezy"
+msgstr "Cerul se înseninează, adiere de vânt"
+
+msgid "turning out clear and chilly"
+msgstr "Cerul se înseninează, vreme rece"
+
+msgid "turning out clear and cold"
+msgstr "Cerul se înseninează, frig"
+
+msgid "turning out clear and frigid"
+msgstr "Cerul se înseninează, ger puternic"
+
+msgid "turning out clear and mild"
+msgstr "Cerul se înseninează, vreme blândă"
+
+msgid "turning out clear and warm"
+msgstr "Cerul se înseninează, cald"
+
+msgid "turning out cloudy"
+msgstr "Cerul se înnorează"
+
+msgid "turning out cloudy and warmer"
+msgstr "Cerul se înnorează, mai cald"
+
+msgid "turning sunny"
+msgstr "Iese soarele"
+
+msgid "turning sunny and beautiful"
+msgstr "Iese soarele, vreme plăcută"
+
+msgid "turning sunny and cooler"
+msgstr "Iese soarele, mai răcoros"
+
+msgid "turning sunny and delightful"
+msgstr "Iese soarele, vreme plăcută"
+
+msgid "turning sunny and hot"
+msgstr "Iese soarele, vreme călduroasă"
+
+msgid "turning sunny and humid"
+msgstr "Iese soarele, umiditate ridicată"
+
+msgid "turning sunny and nice"
+msgstr "Iese soarele, vreme plăcută"
+
+msgid "turning sunny and not as warm"
+msgstr "Iese soarele, mai puțin cald"
+
+msgid "turning sunny and pleasant"
+msgstr "Iese soarele, vreme plăcută"
+
+msgid "turning sunny and summerlike"
+msgstr "Iese soarele, vreme de vară"
+
+msgid "turning sunny and very hot"
+msgstr "Iese soarele, foarte cald"
+
+msgid "turning sunny and very warm"
+msgstr "Iese soarele, foarte cald"
+
+msgid "unseasonably hot"
+msgstr "Neobișnuit de cald pentru sezon"
+
+msgid "up to 1in"
+msgstr "Până la 2,54 cm"
+
+msgid "uranus"
+msgstr "Uranus"
+
+msgid "variable cloudiness"
+msgstr "Nebulozitate variabilă"
+
+msgid "variable clouds"
+msgstr "Nebulozitate variabilă"
+
+msgid "variable clouds with a shower"
+msgstr "Nebulozitate variabilă, o aversă"
+
+msgid "variable clouds with showers"
+msgstr "Nebulozitate variabilă, averse"
+
+msgid "variable clouds with t-storms"
+msgstr "Nebulozitate variabilă, furtuni cu descărcări electrice"
+
+msgid "variably cloudy"
+msgstr "Nebulozitate variabilă"
+
+msgid "variably cloudy and breezy"
+msgstr "Nebulozitate variabilă, adiere de vânt"
+
+msgid "variably cloudy and chilly"
+msgstr "Nebulozitate variabilă, vreme rece"
+
+msgid "variably cloudy and cooler"
+msgstr "Nebulozitate variabilă, mai răcoros"
+
+msgid "variably cloudy and humid"
+msgstr "Nebulozitate variabilă, umiditate ridicată"
+
+msgid "variably cloudy and nice"
+msgstr "Nebulozitate variabilă, vreme plăcută"
+
+msgid "variably cloudy and pleasant"
+msgstr "Nebulozitate variabilă, vreme plăcută"
+
+msgid "variably cloudy and very warm"
+msgstr "Nebulozitate variabilă, foarte cald"
+
+msgid "variably cloudy and warmer"
+msgstr "Nebulozitate variabilă, mai cald"
+
+msgid "variably cloudy with a shower"
+msgstr "Nebulozitate variabilă, o aversă"
+
+msgid "variably cloudy with showers"
+msgstr "Nebulozitate variabilă, averse"
+
+msgid "variably cloudy with t-storms"
+msgstr "Nebulozitate variabilă, furtuni cu descărcări electrice"
+
+msgid "venus"
+msgstr "Venus"
+
+msgid "very cold"
+msgstr "Foarte frig"
+
+msgid "very cold with a few flurries"
+msgstr "Foarte frig, câteva fulguieli"
+
+msgid "very cold with clouds and sun"
+msgstr "Foarte frig, alternanțe de soare și nori"
+
+msgid "very cold with snow"
+msgstr "Foarte frig, ninsoare"
+
+msgid "very cold with snow at times"
+msgstr "Foarte frig, ninsori intermitente"
+
+msgid "very hot"
+msgstr "Foarte cald"
+
+msgid "very hot with a few showers"
+msgstr "Foarte cald, câteva averse"
+
+msgid "very hot with a shower"
+msgstr "Foarte cald, o aversă"
+
+msgid "very hot with clouds and sun"
+msgstr "Foarte cald, alternanțe de soare și nori"
+
+msgid "very hot with hazy sun"
+msgstr "Foarte cald, soare prin pâclă"
+
+msgid "very hot with high clouds"
+msgstr "Foarte cald, nori înalți"
+
+msgid "very hot with some sun"
+msgstr "Foarte cald, intervale însorite"
+
+msgid "very hot with sunshine"
+msgstr "Foarte cald, însorit"
+
+msgid "very warm"
+msgstr "Foarte cald"
+
+msgid "very warm and humid with rain"
+msgstr "Foarte cald, umiditate ridicată, ploaie"
+
+msgid "very warm with clearing"
+msgstr "Foarte cald, cerul se înseninează"
+
+msgid "very warm with clouds"
+msgstr "Foarte cald, cer noros"
+
+msgid "very warm with clouds and sun"
+msgstr "Foarte cald, alternanțe de soare și nori"
+
+msgid "very warm with hazy sun"
+msgstr "Foarte cald, soare prin pâclă"
+
+msgid "very warm with hazy sunshine"
+msgstr "Foarte cald, soare prin pâclă"
+
+msgid "very warm with high clouds"
+msgstr "Foarte cald, nori înalți"
+
+msgid "very warm with lots of sun"
+msgstr "Foarte cald, mult soare"
+
+msgid "very warm with patchy clouds"
+msgstr "Foarte cald, nori răzleți"
+
+msgid "very warm with periods of sun"
+msgstr "Foarte cald, intervale însorite"
+
+msgid "very warm with plenty of sun"
+msgstr "Foarte cald, mult soare"
+
+msgid "very warm with some sun"
+msgstr "Foarte cald, intervale însorite"
+
+msgid "very warm with sun and clouds"
+msgstr "Foarte cald, alternanțe de soare și nori"
+
+msgid "very warm with sunshine"
+msgstr "Foarte cald, însorit"
+
+msgid "very windy"
+msgstr "Vânt foarte puternic"
+
+msgid "very windy in the a.m."
+msgstr "Vânt foarte puternic dimineața"
+
+msgid "very windy in the morning"
+msgstr "Vânt foarte puternic dimineața"
+
+msgid "very windy this evening"
+msgstr "Vânt foarte puternic în această seară"
+
+msgid "very windy this morning"
+msgstr "Vânt foarte puternic în această dimineață"
+
+msgid "warm"
+msgstr "Cald"
+
+msgid "warm and hamid"
+msgstr "Cald, umiditate ridicată"
+
+msgid "warm and humid"
+msgstr "Cald, umiditate ridicată"
+
+msgid "warm and humid with clearing"
+msgstr "Cald, umiditate ridicată, cerul se înseninează"
+
+msgid "warm and humid with some sun"
+msgstr "Cald, umiditate ridicată, intervale însorite"
+
+msgid "warm with abundant sunshine"
+msgstr "Cald, mult soare"
+
+msgid "warm with clearing"
+msgstr "Cald, cerul se înseninează"
+
+msgid "warm with clouds and sun"
+msgstr "Cald, alternanțe de soare și nori"
+
+msgid "warm with clouds and sunshine"
+msgstr "Cald, alternanțe de soare și nori"
+
+msgid "warm with clouds breaking"
+msgstr "Cald, norii se risipesc"
+
+msgid "warm with clouds limiting sun"
+msgstr "Cald, nori care acoperă soarele"
+
+msgid "warm with decreasing clouds"
+msgstr "Cald, norii se risipesc"
+
+msgid "warm with high clouds"
+msgstr "Cald, nori înalți"
+
+msgid "warm with increasing clouds"
+msgstr "Cald, nebulozitate în creștere"
+
+msgid "warm with occasional rain"
+msgstr "Cald, ploaie din când în când"
+
+msgid "warm with partial sunshine"
+msgstr "Cald, intervale însorite"
+
+msgid "warm with patchy clouds"
+msgstr "Cald, nori răzleți"
+
+msgid "warm with periods of sun"
+msgstr "Cald, intervale însorite"
+
+msgid "warm with plenty of clouds"
+msgstr "Cald, predominant noros"
+
+msgid "warm with plenty of sun"
+msgstr "Cald, mult soare"
+
+msgid "warm with plenty of sunshine"
+msgstr "Cald, mult soare"
+
+msgid "warm with rain and drizzle"
+msgstr "Cald, ploaie și burniță"
+
+msgid "warm with some brightening"
+msgstr "Cald, câteva înseninări"
+
+msgid "warm with some sun"
+msgstr "Cald, intervale însorite"
+
+msgid "warm with some sun returning"
+msgstr "Cald, câteva înseninări"
+
+msgid "warm with sun"
+msgstr "Cald, însorit"
+
+msgid "warm with sun and clouds"
+msgstr "Cald, alternanțe de soare și nori"
+
+msgid "warm with sunny intervals"
+msgstr "Cald, intervale însorite"
+
+msgid "warm with sunshine"
+msgstr "Cald, însorit"
+
+msgid "warm with variable cloudiness"
+msgstr "Cald, nebulozitate variabilă"
+
+msgid "warm with variable clouds"
+msgstr "Cald, nebulozitate variabilă"
+
+msgid "warmer"
+msgstr "Mai cald"
+
+msgid "warmer late"
+msgstr "Mai cald mai târziu"
+
+msgid "warmer with a bit of rain"
+msgstr "Mai cald, puțină ploaie"
+
+msgid "warmer with a brief shower"
+msgstr "Mai cald, averse de scurtă durată"
+
+msgid "warmer with a few showers"
+msgstr "Mai cald, câteva averse"
+
+msgid "warmer with a heavy t-storm"
+msgstr "Mai cald, furtuni puternice cu descărcări electrice"
+
+msgid "warmer with a passing shower"
+msgstr "Mai cald, averse de scurtă durată"
+
+msgid "warmer with a shower"
+msgstr "Mai cald, o aversă"
+
+msgid "warmer with a shower in spots"
+msgstr "Mai cald, averse pe alocuri"
+
+msgid "warmer with a shower or two"
+msgstr "Mai cald, una sau două averse"
+
+msgid "warmer with a stray shower"
+msgstr "Mai cald, averse pe alocuri"
+
+msgid "warmer with a stray t-storm"
+msgstr "Mai cald, furtuni cu descărcări electrice pe alocuri"
+
+msgid "warmer with a thunderstorm"
+msgstr "Mai cald, o furtună cu descărcări electrice"
+
+msgid "warmer with abundant sunshine"
+msgstr "Mai cald, mult soare"
+
+msgid "warmer with clearing"
+msgstr "Mai cald, cerul se înseninează"
+
+msgid "warmer with clouds"
+msgstr "Mai cald, cer noros"
+
+msgid "warmer with clouds and sun"
+msgstr "Mai cald, alternanțe de soare și nori"
+
+msgid "warmer with decreasing clouds"
+msgstr "Mai cald, norii se risipesc"
+
+msgid "warmer with high clouds"
+msgstr "Mai cald, nori înalți"
+
+msgid "warmer with increasing clouds"
+msgstr "Mai cald, nebulozitate în creștere"
+
+msgid "warmer with low clouds"
+msgstr "Mai cald, nori joși"
+
+msgid "warmer with partial sunshine"
+msgstr "Mai cald, intervale însorite"
+
+msgid "warmer with periods of rain"
+msgstr "Mai cald, ploaie din când în când"
+
+msgid "warmer with periods of sun"
+msgstr "Mai cald, intervale însorite"
+
+msgid "warmer with plenty of sun"
+msgstr "Mai cald, mult soare"
+
+msgid "warmer with showers"
+msgstr "Mai cald, averse"
+
+msgid "warmer with showers around"
+msgstr "Mai cald, averse pe alocuri"
+
+msgid "warmer with some brightening"
+msgstr "Mai cald, câteva înseninări"
+
+msgid "warmer with some sun"
+msgstr "Mai cald, intervale însorite"
+
+msgid "warmer with some sunshine"
+msgstr "Mai cald, intervale însorite"
+
+msgid "warmer with spotty showers"
+msgstr "Mai cald, averse pe alocuri"
+
+msgid "warmer with sun"
+msgstr "Mai cald, însorit"
+
+msgid "warmer with sun and clouds"
+msgstr "Mai cald, alternanțe de soare și nori"
+
+msgid "warmer with sunny intervals"
+msgstr "Mai cald, intervale însorite"
+
+msgid "warmer with sunshine"
+msgstr "Mai cald, însorit"
+
+msgid "warmer with variable clouds"
+msgstr "Mai cald, nebulozitate variabilă"
+
+msgid "watch for ice early"
+msgstr "Atenție la polei la început"
+
+msgid "watch for ice late"
+msgstr "Atenție la polei mai târziu"
+
+msgid "wet snow"
+msgstr "Zăpadă umedă"
+
+msgid "winds gradually subsiding"
+msgstr "Vântul slăbește treptat"
+
+msgid "windy"
+msgstr "Vânt puternic"
+
+msgid "windy and cold"
+msgstr "Vânt puternic, frig"
+
+msgid "windy and cooler"
+msgstr "Vânt puternic, mai răcoros"
+
+msgid "windy and cooler with rain"
+msgstr "Vânt puternic, mai răcoros, ploaie"
+
+msgid "windy and cooler with showers"
+msgstr "Vânt puternic, mai răcoros, averse"
+
+msgid "windy and frigid"
+msgstr "Vânt puternic, ger puternic"
+
+msgid "windy and humid with rain"
+msgstr "Vânt puternic, umiditate ridicată, ploaie"
+
+msgid "windy and very cold"
+msgstr "Vânt puternic, foarte frig"
+
+msgid "windy early"
+msgstr "Vânt puternic la început"
+
+msgid "windy in the a.m."
+msgstr "Vânt puternic dimineața"
+
+msgid "windy in the afternoon"
+msgstr "Vânt puternic după-amiaza"
+
+msgid "windy in the morning"
+msgstr "Vânt puternic dimineața"
+
+msgid "windy this afternoon"
+msgstr "Vânt puternic în această după-amiază"
+
+msgid "windy this morning"
+msgstr "Vânt puternic în această dimineață"
+
+msgid "windy with a bit of ice"
+msgstr "Vânt puternic, pe alocuri polei"
+
+msgid "windy with a little rain"
+msgstr "Vânt puternic, puțină ploaie"
+
+msgid "windy with a passing shower"
+msgstr "Vânt puternic, averse de scurtă durată"
+
+msgid "windy with a shower in places"
+msgstr "Vânt puternic, averse pe alocuri"
+
+msgid "windy with a shower in spots"
+msgstr "Vânt puternic, averse pe alocuri"
+
+msgid "windy with a shower or two"
+msgstr "Vânt puternic, una sau două averse"
+
+msgid "windy with a stray shower"
+msgstr "Vânt puternic, averse pe alocuri"
+
+msgid "windy with brilliant sunshine"
+msgstr "Vânt puternic, soare strălucitor"
+
+msgid "windy with clouds and sun"
+msgstr "Vânt puternic, alternanțe de soare și nori"
+
+msgid "windy with decreasing clouds"
+msgstr "Vânt puternic, norii se risipesc"
+
+msgid "windy with increasing clouds"
+msgstr "Vânt puternic, nebulozitate în creștere"
+
+msgid "windy with occasional rain"
+msgstr "Vânt puternic, ploaie din când în când"
+
+msgid "windy with periods of rain"
+msgstr "Vânt puternic, ploaie din când în când"
+
+msgid "windy with periods of snow"
+msgstr "Vânt puternic, ninsori intermitente"
+
+msgid "windy with plenty of sun"
+msgstr "Vânt puternic, mult soare"
+
+msgid "windy with plenty of sunshine"
+msgstr "Vânt puternic, mult soare"
+
+msgid "windy with rain and a t-storm"
+msgstr "Vânt puternic, ploaie, o furtună cu descărcări electrice"
+
+msgid "windy with showers"
+msgstr "Vânt puternic, averse"
+
+msgid "windy with showers around"
+msgstr "Vânt puternic, averse pe alocuri"
+
+msgid "windy with snow"
+msgstr "Vânt puternic, ninsoare"
+
+msgid "windy with some sun"
+msgstr "Vânt puternic, intervale însorite"
+
+msgid "windy with spotty showers"
+msgstr "Vânt puternic, averse pe alocuri"
+
+msgid "windy with sunshine"
+msgstr "Vânt puternic, însorit"

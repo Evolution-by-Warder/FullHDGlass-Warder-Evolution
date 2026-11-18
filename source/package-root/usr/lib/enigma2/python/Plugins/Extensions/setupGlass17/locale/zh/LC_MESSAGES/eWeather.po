@@ -241,3 +241,6126 @@ msgstr "错误"
 
 msgid "Select country"
 msgstr "选择国家或地区"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "添加城市"
+
+msgid "Change Temperature Unit"
+msgstr "更改温度单位"
+
+msgid "Change Units to"
+msgstr "将单位更改为"
+
+msgid "Change city"
+msgstr "切换城市"
+
+msgid "Daytime"
+msgstr "白天"
+
+msgid "Decreasing"
+msgstr "下降"
+
+msgid "Delete City"
+msgstr "删除城市"
+
+msgid "Forecast for"
+msgstr "天气预报"
+
+msgid "Friday"
+msgstr "星期五"
+
+msgid "High"
+msgstr "高"
+
+msgid "Latitude"
+msgstr "纬度"
+
+msgid "Longtitude"
+msgstr "经度"
+
+msgid "Low"
+msgstr "低"
+
+msgid "Moderate"
+msgstr "中等"
+
+msgid "Monday"
+msgstr "星期一"
+
+msgid "Nighttime"
+msgstr "夜间"
+
+msgid "None city founded"
+msgstr "未找到城市"
+
+msgid "Precip"
+msgstr "降水"
+
+msgid "Realfeel"
+msgstr "体感温度"
+
+msgid "Rising"
+msgstr "上升"
+
+msgid "Saturday"
+msgstr "星期六"
+
+msgid "Select City"
+msgstr "选择城市"
+
+msgid "Steady"
+msgstr "稳定"
+
+msgid "Sunday"
+msgstr "星期日"
+
+msgid "Thursday"
+msgstr "星期四"
+
+msgid "Tuesday"
+msgstr "星期二"
+
+msgid "Updated at"
+msgstr "更新时间"
+
+msgid "Uvindex"
+msgstr "紫外线指数"
+
+msgid "Very high"
+msgstr "很高"
+
+msgid "Wednesday"
+msgstr "星期三"
+
+msgid "a bit of afternoon rain"
+msgstr "午后少量降雨"
+
+msgid "a bit of afternoon snow"
+msgstr "午后少量降雪"
+
+msgid "a bit of evening rain"
+msgstr "傍晚少量降雨"
+
+msgid "a bit of evening snow"
+msgstr "傍晚少量降雪"
+
+msgid "a bit of ice"
+msgstr "局部结冰"
+
+msgid "a bit of ice and rain"
+msgstr "局部结冰，雨"
+
+msgid "a bit of ice early"
+msgstr "初期局部结冰"
+
+msgid "a bit of ice in the afternoon"
+msgstr "午后局部结冰"
+
+msgid "a bit of ice in the morning"
+msgstr "早晨局部结冰"
+
+msgid "a bit of ice late"
+msgstr "晚些时候局部结冰"
+
+msgid "a bit of late-night rain"
+msgstr "深夜少量降雨"
+
+msgid "a bit of late-night snow"
+msgstr "深夜少量降雪"
+
+msgid "a bit of morning rain"
+msgstr "早晨少量降雨"
+
+msgid "a bit of morning snow"
+msgstr "早晨少量降雪"
+
+msgid "a bit of rain"
+msgstr "少量降雨"
+
+msgid "a bit of rain and ice late"
+msgstr "少量降雨，晚些时候冰"
+
+msgid "a bit of rain and sleet"
+msgstr "少量降雨，雨夹雪"
+
+msgid "a bit of rain and sleet later"
+msgstr "少量降雨，晚些时候雨夹雪"
+
+msgid "a bit of rain and snow"
+msgstr "少量降雨，雪"
+
+msgid "a bit of rain in the evening"
+msgstr "傍晚少量降雨"
+
+msgid "a bit of rain in the morning"
+msgstr "早晨少量降雨"
+
+msgid "a bit of rain late"
+msgstr "晚些时候少量降雨"
+
+msgid "a bit of rain this evening"
+msgstr "今天傍晚少量降雨"
+
+msgid "a bit of snow"
+msgstr "少量降雪"
+
+msgid "a bit of snow and ice later"
+msgstr "少量降雪，晚些时候冰"
+
+msgid "a bit of snow and rain"
+msgstr "少量降雪，雨"
+
+msgid "a bit of snow and rain late"
+msgstr "少量降雪，晚些时候雨"
+
+msgid "a bit of snow and sleet late"
+msgstr "少量降雪，晚些时候雨夹雪"
+
+msgid "a bit of snow early"
+msgstr "初期少量降雪"
+
+msgid "a bit of snow in the evening"
+msgstr "傍晚少量降雪"
+
+msgid "a bit of snow in the morning"
+msgstr "早晨少量降雪"
+
+msgid "a bit of snow late"
+msgstr "晚些时候少量降雪"
+
+msgid "a bit of wintry mix"
+msgstr "少量混合性冬季降水"
+
+msgid "a blend of sun and clouds"
+msgstr "晴间多云"
+
+msgid "a brief afternoon shower"
+msgstr "午后短时阵雨"
+
+msgid "a brief evening shower or two"
+msgstr "傍晚一两场短时阵雨"
+
+msgid "a brief morning shower or two"
+msgstr "早晨一两场短时阵雨"
+
+msgid "a brief shower"
+msgstr "短时阵雨"
+
+msgid "a brief shower in the morning"
+msgstr "早晨短时阵雨"
+
+msgid "a brief shower or two"
+msgstr "一两场短时阵雨"
+
+msgid "a brief shower or two late"
+msgstr "晚些时候一两场短时阵雨"
+
+msgid "a brief shower this afternoon"
+msgstr "今天下午短时阵雨"
+
+msgid "a brief t-storm early"
+msgstr "初期短时雷雨"
+
+msgid "a brief t-storm in the p.m."
+msgstr "午后短时雷雨"
+
+msgid "a chance for snow"
+msgstr "可能有雪"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "午后雷雨带来降温"
+
+msgid "a couple of a.m. snow showers"
+msgstr "早晨零星阵雪"
+
+msgid "a couple of afternoon showers"
+msgstr "午后一两场阵雨"
+
+msgid "a couple of downpours late"
+msgstr "晚些时候几场强降雨"
+
+msgid "a couple of evening downpours"
+msgstr "傍晚几场强降雨"
+
+msgid "a couple of evening showers"
+msgstr "傍晚一两场阵雨"
+
+msgid "a couple of evening t-showers"
+msgstr "傍晚零星雷阵雨"
+
+msgid "a couple of evening t-storms"
+msgstr "傍晚零星雷暴"
+
+msgid "a couple of flurries"
+msgstr "零星小阵雪"
+
+msgid "a couple of heavy t-storms"
+msgstr "零星强雷暴"
+
+msgid "a couple of morning showers"
+msgstr "早晨一两场阵雨"
+
+msgid "a couple of morning t-showers"
+msgstr "早晨零星雷阵雨"
+
+msgid "a couple of morning t-storms"
+msgstr "早晨零星雷暴"
+
+msgid "a couple of p.m. snow showers"
+msgstr "午后零星阵雪"
+
+msgid "a couple of p.m. t-showers"
+msgstr "午后零星雷阵雨"
+
+msgid "a couple of showers"
+msgstr "一两场阵雨"
+
+msgid "a couple of showers late"
+msgstr "晚些时候一两场阵雨"
+
+msgid "a couple of showers possible"
+msgstr "可能有几场阵雨"
+
+msgid "a couple of snow showers"
+msgstr "零星阵雪"
+
+msgid "a couple of snow showers late"
+msgstr "晚些时候零星阵雪"
+
+msgid "a couple of strong t-storms"
+msgstr "零星强雷暴"
+
+msgid "a couple of t-showers"
+msgstr "零星雷阵雨"
+
+msgid "a couple of t-showers early"
+msgstr "初期零星雷阵雨"
+
+msgid "a couple of t-showers late"
+msgstr "晚些时候零星雷阵雨"
+
+msgid "a couple of t-storms late"
+msgstr "晚些时候零星雷暴"
+
+msgid "a couple of thundershowers"
+msgstr "零星雷阵雨"
+
+msgid "a damaging thunderstorm"
+msgstr "可能造成破坏的雷暴"
+
+msgid "a downpour early"
+msgstr "初期倾盆大雨"
+
+msgid "a downpour in the afternoon"
+msgstr "午后倾盆大雨"
+
+msgid "a downpour in the morning"
+msgstr "早晨倾盆大雨"
+
+msgid "a downpour this morning"
+msgstr "今晨倾盆大雨"
+
+msgid "a drenching morning shower"
+msgstr "早晨强阵雨"
+
+msgid "a drenching shower late"
+msgstr "晚些时候强阵雨"
+
+msgid "a drenching t-storm early"
+msgstr "初期雷雨伴强降水"
+
+msgid "a drenching thunderstorm late"
+msgstr "晚些时候雷雨伴强降水"
+
+msgid "a few a.m. showers"
+msgstr "早晨零星阵雨"
+
+msgid "a few afternoon showers"
+msgstr "午后零星阵雨"
+
+msgid "a few evening showers"
+msgstr "傍晚零星阵雨"
+
+msgid "a few flurries"
+msgstr "零星小阵雪"
+
+msgid "a few flurries in the morning"
+msgstr "早晨零星小阵雪"
+
+msgid "a few late-night showers"
+msgstr "深夜零星阵雨"
+
+msgid "a few morning showers"
+msgstr "早晨零星阵雨"
+
+msgid "a few showers"
+msgstr "零星阵雨"
+
+msgid "a few showers in the evening"
+msgstr "傍晚零星阵雨"
+
+msgid "a few showers in the morning"
+msgstr "早晨零星阵雨"
+
+msgid "a few showers late"
+msgstr "晚些时候零星阵雨"
+
+msgid "a few showers this afternoon"
+msgstr "今天下午零星阵雨"
+
+msgid "a few showers this evening"
+msgstr "今天傍晚零星阵雨"
+
+msgid "a few snowflakes late"
+msgstr "晚些时候零星雪花"
+
+msgid "a few strong p.m. t-storms"
+msgstr "午后零星强雷暴"
+
+msgid "a few t-storms"
+msgstr "零星雷暴"
+
+msgid "a flurry early"
+msgstr "初期短时小阵雪"
+
+msgid "a flurry in the p.m."
+msgstr "午后短时小阵雪"
+
+msgid "a flurry late"
+msgstr "晚些时候短时小阵雪"
+
+msgid "a gusty breeze with clearing"
+msgstr "有阵风，逐渐放晴"
+
+msgid "a gusty morning breeze"
+msgstr "早晨有阵风"
+
+msgid "a heavy afternoon shower"
+msgstr "午后强阵雨"
+
+msgid "a heavy afternoon t-storm"
+msgstr "午后强雷暴"
+
+msgid "a heavy morning shower or two"
+msgstr "早晨几场强阵雨"
+
+msgid "a heavy shower in the morning"
+msgstr "早晨强阵雨"
+
+msgid "a heavy t-storm"
+msgstr "强雷暴"
+
+msgid "a heavy t-storm early"
+msgstr "初期强雷暴"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "早晨强雷暴"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "午后强雷暴"
+
+msgid "a heavy thunderstorm"
+msgstr "强雷暴"
+
+msgid "a late-night shower"
+msgstr "深夜有阵雨"
+
+msgid "a late-night shower in places"
+msgstr "深夜局地阵雨"
+
+msgid "a late-night shower in spots"
+msgstr "深夜局地阵雨"
+
+msgid "a late-night shower or two"
+msgstr "深夜一两场阵雨"
+
+msgid "a late-night t-storm in spots"
+msgstr "深夜局地雷暴"
+
+msgid "a late-night t-storm or two"
+msgstr "深夜零星雷暴"
+
+msgid "a late-night thunderstorm"
+msgstr "深夜雷暴"
+
+msgid "a little a.m. rain"
+msgstr "早晨少量降雨"
+
+msgid "a little afternoon rain"
+msgstr "午后少量降雨"
+
+msgid "a little afternoon snow"
+msgstr "午后少量降雪"
+
+msgid "a little evening rain"
+msgstr "傍晚少量降雨"
+
+msgid "a little evening snow"
+msgstr "傍晚少量降雪"
+
+msgid "a little icy mix early"
+msgstr "初期少量混合降水并伴结冰"
+
+msgid "a little icy mix in the a.m."
+msgstr "早晨少量混合降水并伴结冰"
+
+msgid "a little icy mix this morning"
+msgstr "今晨少量混合降水并伴结冰"
+
+msgid "a little late-night rain"
+msgstr "深夜少量降雨"
+
+msgid "a little late-night snow"
+msgstr "深夜少量降雪"
+
+msgid "a little morning rain"
+msgstr "早晨少量降雨"
+
+msgid "a little morning snow"
+msgstr "早晨少量降雪"
+
+msgid "a little rain"
+msgstr "少量降雨"
+
+msgid "a little rain early"
+msgstr "初期少量降雨"
+
+msgid "a little rain in the evening"
+msgstr "傍晚少量降雨"
+
+msgid "a little rain in the morning"
+msgstr "早晨少量降雨"
+
+msgid "a little rain late"
+msgstr "晚些时候少量降雨"
+
+msgid "a little rain this afternoon"
+msgstr "今天下午少量降雨"
+
+msgid "a little rain this morning"
+msgstr "今晨少量降雨"
+
+msgid "a little snow"
+msgstr "少量降雪"
+
+msgid "a little snow and sleet early"
+msgstr "少量降雪，初期雨夹雪"
+
+msgid "a little snow and sleet late"
+msgstr "少量降雪，晚些时候雨夹雪"
+
+msgid "a little snow at times"
+msgstr "间或有小雪"
+
+msgid "a little snow at times late"
+msgstr "晚些时候间或有小雪"
+
+msgid "a little snow early"
+msgstr "初期少量降雪"
+
+msgid "a little snow in the evening"
+msgstr "傍晚少量降雪"
+
+msgid "a little snow late"
+msgstr "晚些时候少量降雪"
+
+msgid "a little snow this afternoon"
+msgstr "今天下午少量降雪"
+
+msgid "a little wintry mix"
+msgstr "少量混合性冬季降水"
+
+msgid "a little wintry mix late"
+msgstr "晚些时候少量混合性冬季降水"
+
+msgid "a morning flurry"
+msgstr "早晨短时小阵雪"
+
+msgid "a morning rain or snow shower"
+msgstr "早晨阵雨或阵雪"
+
+msgid "a morning shower"
+msgstr "早晨有阵雨"
+
+msgid "a morning shower in places"
+msgstr "早晨局地阵雨"
+
+msgid "a morning shower in spots"
+msgstr "早晨局地阵雨"
+
+msgid "a morning shower in the area"
+msgstr "早晨局地阵雨"
+
+msgid "a morning shower or t-storm"
+msgstr "早晨阵雨或雷暴"
+
+msgid "a morning shower or two"
+msgstr "早晨一两场阵雨"
+
+msgid "a morning snow shower around"
+msgstr "早晨有阵雪"
+
+msgid "a morning t-storm"
+msgstr "早晨雷暴"
+
+msgid "a morning t-storm in spots"
+msgstr "早晨局地雷暴"
+
+msgid "a morning t-storm in the area"
+msgstr "早晨局地雷暴"
+
+msgid "a morning thunderstorm"
+msgstr "早晨雷暴"
+
+msgid "a morning thunderstorm or two"
+msgstr "早晨零星雷暴"
+
+msgid "a p.m. rain or snow shower"
+msgstr "午后阵雨或阵雪"
+
+msgid "a p.m. shower"
+msgstr "午后有阵雨"
+
+msgid "a p.m. shower in places"
+msgstr "午后局地阵雨"
+
+msgid "a p.m. shower in the area"
+msgstr "午后局地阵雨"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "午后阵雨或雷暴"
+
+msgid "a p.m. snow shower in spots"
+msgstr "午后局地阵雪"
+
+msgid "a p.m. t-storm"
+msgstr "午后雷暴"
+
+msgid "a p.m. t-storm in spots"
+msgstr "午后局地雷暴"
+
+msgid "a p.m. t-storm in the area"
+msgstr "午后局地雷暴"
+
+msgid "a p.m. t-storm possible"
+msgstr "午后可能有雷暴"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "午后局地雷暴"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "午后零星雷暴"
+
+msgid "a passing afternoon shower"
+msgstr "午后短时阵雨"
+
+msgid "a passing flurry late"
+msgstr "晚些时候短时小阵雪"
+
+msgid "a passing late-night shower"
+msgstr "深夜短时阵雨"
+
+msgid "a passing morning shower"
+msgstr "早晨短时阵雨"
+
+msgid "a passing shower"
+msgstr "短时阵雨"
+
+msgid "a passing shower late"
+msgstr "晚些时候短时阵雨"
+
+msgid "a passing shower or two"
+msgstr "一两场短时阵雨"
+
+msgid "a passing shower this morning"
+msgstr "今晨短时阵雨"
+
+msgid "a quick afternoon shower"
+msgstr "午后短时阵雨"
+
+msgid "a quick shower"
+msgstr "短时阵雨"
+
+msgid "a rain and sleet shower"
+msgstr "阵雨夹雨夹雪"
+
+msgid "a rain and sleet shower late"
+msgstr "晚些时候阵雨夹雨夹雪"
+
+msgid "a rain or snow shower"
+msgstr "阵雨或阵雪"
+
+msgid "a rain or snow shower early"
+msgstr "初期阵雨或阵雪"
+
+msgid "a rain or snow shower late"
+msgstr "晚些时候阵雨或阵雪"
+
+msgid "a severe afternoon t-storm"
+msgstr "午后强雷暴"
+
+msgid "a severe thunderstorm"
+msgstr "强雷暴"
+
+msgid "a shower"
+msgstr "有阵雨"
+
+msgid "a shower and t-storm around"
+msgstr "有阵雨，局地雷暴"
+
+msgid "a shower around"
+msgstr "局地阵雨"
+
+msgid "a shower early"
+msgstr "初期有阵雨"
+
+msgid "a shower in places"
+msgstr "局地阵雨"
+
+msgid "a shower in places late"
+msgstr "晚些时候局地阵雨"
+
+msgid "a shower in spots"
+msgstr "局地阵雨"
+
+msgid "a shower in spots late"
+msgstr "晚些时候局地阵雨"
+
+msgid "a shower in the a.m."
+msgstr "早晨有阵雨"
+
+msgid "a shower in the afternoon"
+msgstr "午后有阵雨"
+
+msgid "a shower in the area"
+msgstr "局地阵雨"
+
+msgid "a shower in the area late"
+msgstr "晚些时候局地阵雨"
+
+msgid "a shower in the evening"
+msgstr "傍晚有阵雨"
+
+msgid "a shower in the morning"
+msgstr "早晨有阵雨"
+
+msgid "a shower in the p.m."
+msgstr "午后有阵雨"
+
+msgid "a shower late"
+msgstr "晚些时候有阵雨"
+
+msgid "a shower late this afternoon"
+msgstr "下午稍晚有阵雨"
+
+msgid "a shower late this morning"
+msgstr "近中午有阵雨"
+
+msgid "a shower or heavy t-storm"
+msgstr "阵雨或强雷暴"
+
+msgid "a shower or t-storm"
+msgstr "阵雨或雷暴"
+
+msgid "a shower or t-storm early"
+msgstr "初期阵雨或雷暴"
+
+msgid "a shower or t-storm in spots"
+msgstr "局地阵雨或雷雨"
+
+msgid "a shower or thunderstorm"
+msgstr "阵雨或雷暴"
+
+msgid "a shower or two"
+msgstr "一两场阵雨"
+
+msgid "a shower or two early"
+msgstr "初期一两场阵雨"
+
+msgid "a shower or two late"
+msgstr "晚些时候一两场阵雨"
+
+msgid "a shower possible"
+msgstr "可能有阵雨"
+
+msgid "a shower this afternoon"
+msgstr "今天下午有阵雨"
+
+msgid "a shower this morning"
+msgstr "今晨有阵雨"
+
+msgid "a shower toward dawn"
+msgstr "黎明前后有阵雨"
+
+msgid "a snow shower"
+msgstr "有阵雪"
+
+msgid "a snow shower around"
+msgstr "有阵雪"
+
+msgid "a snow shower around late"
+msgstr "晚些时候有阵雪"
+
+msgid "a snow shower in the morning"
+msgstr "早晨有阵雪"
+
+msgid "a snow shower in the p.m."
+msgstr "午后有阵雪"
+
+msgid "a snow shower late"
+msgstr "晚些时候有阵雪"
+
+msgid "a snow shower this afternoon"
+msgstr "今天下午有阵雪"
+
+msgid "a snow shower this evening"
+msgstr "今天傍晚有阵雪"
+
+msgid "a snow shower with low clouds"
+msgstr "有阵雪，低云"
+
+msgid "a snow squall early"
+msgstr "初期强阵风伴阵雪"
+
+msgid "a snow squall in the evening"
+msgstr "傍晚强阵风伴阵雪"
+
+msgid "a snow squall in the morning"
+msgstr "早晨强阵风伴阵雪"
+
+msgid "a snow squall in the p.m."
+msgstr "午后强阵风伴阵雪"
+
+msgid "a snow squall late"
+msgstr "晚些时候强阵风伴阵雪"
+
+msgid "a stray a.m. t-shower"
+msgstr "早晨局地雷阵雨"
+
+msgid "a stray a.m. t-storm"
+msgstr "早晨局地雷暴"
+
+msgid "a stray afternoon shower"
+msgstr "午后局地阵雨"
+
+msgid "a stray afternoon t-shower"
+msgstr "午后局地雷阵雨"
+
+msgid "a stray afternoon t-storm"
+msgstr "午后局地雷暴"
+
+msgid "a stray evening thunderstorm"
+msgstr "傍晚局地雷暴"
+
+msgid "a stray late-night t-storm"
+msgstr "深夜局地雷暴"
+
+msgid "a stray morning shower"
+msgstr "早晨局地阵雨"
+
+msgid "a stray morning thunderstorm"
+msgstr "早晨局地雷暴"
+
+msgid "a stray shower in the morning"
+msgstr "早晨局地阵雨"
+
+msgid "a stray shower late"
+msgstr "晚些时候局地阵雨"
+
+msgid "a stray t-shower"
+msgstr "局地雷阵雨"
+
+msgid "a stray t-storm"
+msgstr "局地雷暴"
+
+msgid "a stray t-storm early"
+msgstr "初期局地雷暴"
+
+msgid "a stray t-storm this evening"
+msgstr "今天傍晚局地雷暴"
+
+msgid "a stray thundershower"
+msgstr "局地雷阵雨"
+
+msgid "a stray thunderstorm"
+msgstr "局地雷暴"
+
+msgid "a stray thunderstorm early"
+msgstr "初期局地雷暴"
+
+msgid "a stray thunderstorm late"
+msgstr "晚些时候局地雷暴"
+
+msgid "a strong a.m. t-storm"
+msgstr "早晨强雷暴"
+
+msgid "a strong afternoon t-storm"
+msgstr "午后强雷暴"
+
+msgid "a strong evening thunderstorm"
+msgstr "傍晚强雷暴"
+
+msgid "a strong late-night t-storm"
+msgstr "深夜强雷暴"
+
+msgid "a strong morning thunderstorm"
+msgstr "早晨强雷暴"
+
+msgid "a strong t-storm"
+msgstr "强雷暴"
+
+msgid "a strong t-storm in spots"
+msgstr "局地强雷暴"
+
+msgid "a strong t-storm late"
+msgstr "晚些时候强雷暴"
+
+msgid "a strong t-storm possible"
+msgstr "可能有强雷暴"
+
+msgid "a strong t-storm this evening"
+msgstr "今天傍晚强雷暴"
+
+msgid "a strong thunderstorm"
+msgstr "强雷暴"
+
+msgid "a strong thunderstorm early"
+msgstr "初期强雷暴"
+
+msgid "a strong thunderstorm late"
+msgstr "晚些时候强雷暴"
+
+msgid "a t-shower in spots"
+msgstr "局地雷阵雨"
+
+msgid "a t-shower in spots early"
+msgstr "初期局地雷阵雨"
+
+msgid "a t-shower in the afternoon"
+msgstr "午后雷阵雨"
+
+msgid "a t-storm"
+msgstr "雷暴"
+
+msgid "a t-storm around in the a.m."
+msgstr "早晨局地雷暴"
+
+msgid "a t-storm around in the p.m."
+msgstr "午后局地雷暴"
+
+msgid "a t-storm around late"
+msgstr "晚些时候局地雷暴"
+
+msgid "a t-storm around this evening"
+msgstr "今天傍晚局地雷暴"
+
+msgid "a t-storm early"
+msgstr "初期雷暴"
+
+msgid "a t-storm in spots"
+msgstr "局地雷暴"
+
+msgid "a t-storm in the afternoon"
+msgstr "午后雷暴"
+
+msgid "a t-storm in the area late"
+msgstr "晚些时候局地雷暴"
+
+msgid "a t-storm in the p.m."
+msgstr "午后雷暴"
+
+msgid "a t-storm late"
+msgstr "晚些时候雷暴"
+
+msgid "a t-storm late this afternoon"
+msgstr "下午稍晚雷暴"
+
+msgid "a t-storm late this evening"
+msgstr "晚间较迟时雷暴"
+
+msgid "a t-storm late this morning"
+msgstr "近中午雷暴"
+
+msgid "a t-storm or two"
+msgstr "零星雷暴"
+
+msgid "a t-storm possible"
+msgstr "可能有雷暴"
+
+msgid "a thick cloud cover"
+msgstr "阴天"
+
+msgid "a thick cloud cover and hot"
+msgstr "阴天，炎热"
+
+msgid "a thundershower"
+msgstr "雷阵雨"
+
+msgid "a thundershower in spots"
+msgstr "局地雷阵雨"
+
+msgid "a thundershower in spots late"
+msgstr "晚些时候局地雷阵雨"
+
+msgid "a thundershower late"
+msgstr "晚些时候雷阵雨"
+
+msgid "a thundershower on the prowl"
+msgstr "局地雷阵雨"
+
+msgid "a thunderstorm"
+msgstr "雷暴"
+
+msgid "a thunderstorm around"
+msgstr "局地雷暴"
+
+msgid "a thunderstorm around early"
+msgstr "初期局地雷暴"
+
+msgid "a thunderstorm around late"
+msgstr "晚些时候局地雷暴"
+
+msgid "a thunderstorm early"
+msgstr "初期雷暴"
+
+msgid "a thunderstorm in spots"
+msgstr "局地雷暴"
+
+msgid "a thunderstorm in spots early"
+msgstr "初期局地雷暴"
+
+msgid "a thunderstorm in spots late"
+msgstr "晚些时候局地雷暴"
+
+msgid "a thunderstorm in the area"
+msgstr "局地雷暴"
+
+msgid "a thunderstorm in the evening"
+msgstr "傍晚雷暴"
+
+msgid "a thunderstorm in the morning"
+msgstr "早晨雷暴"
+
+msgid "a thunderstorm late"
+msgstr "晚些时候雷暴"
+
+msgid "a thunderstorm or two"
+msgstr "零星雷暴"
+
+msgid "a thunderstorm or two early"
+msgstr "初期零星雷暴"
+
+msgid "a thunderstorm or two late"
+msgstr "晚些时候零星雷暴"
+
+msgid "a thunderstorm possible"
+msgstr "可能有雷暴"
+
+msgid "a thunderstorm this afternoon"
+msgstr "今天下午雷暴"
+
+msgid "a thunderstorm this evening"
+msgstr "今天傍晚雷暴"
+
+msgid "a thunderstorm this morning"
+msgstr "今晨雷暴"
+
+msgid "a touch of afternoon rain"
+msgstr "午后少量降雨"
+
+msgid "a touch of evening rain"
+msgstr "傍晚少量降雨"
+
+msgid "a touch of late-night rain"
+msgstr "深夜少量降雨"
+
+msgid "a touch of morning rain"
+msgstr "早晨少量降雨"
+
+msgid "a touch of rain"
+msgstr "少量降雨"
+
+msgid "a touch of rain late"
+msgstr "晚些时候少量降雨"
+
+msgid "a wintry mix"
+msgstr "多种冬季降水混合"
+
+msgid "a wintry mix in the morning"
+msgstr "早晨多种冬季降水混合"
+
+msgid "a wintry mix late"
+msgstr "晚些时候多种冬季降水混合"
+
+msgid "a wintry mix this morning"
+msgstr "今晨多种冬季降水混合"
+
+msgid "a.m. flurries"
+msgstr "早晨短时小阵雪"
+
+msgid "a.m. rain"
+msgstr "早晨雨"
+
+msgid "a.m. showers"
+msgstr "早晨阵雨"
+
+msgid "abundant sunshine"
+msgstr "阳光充足"
+
+msgid "abundant sunshine and breezy"
+msgstr "阳光充足，微风"
+
+msgid "abundant sunshine and hot"
+msgstr "阳光充足，炎热"
+
+msgid "abundant sunshine and nice"
+msgstr "阳光充足，天气宜人"
+
+msgid "abundant sunshine and warm"
+msgstr "阳光充足，温暖"
+
+msgid "abundant sunshine and warmer"
+msgstr "阳光充足，气温回升"
+
+msgid "afternoon flurries"
+msgstr "午后短时小阵雪"
+
+msgid "afternoon rain"
+msgstr "午后雨"
+
+msgid "afternoon showers"
+msgstr "午后阵雨"
+
+msgid "afternoon snow"
+msgstr "午后雪"
+
+msgid "afternoon snow showers"
+msgstr "午后阵雪"
+
+msgid "afternoon t-storms"
+msgstr "午后雷暴"
+
+msgid "afternoon thundershowers"
+msgstr "午后雷阵雨"
+
+msgid "afternoon thunderstorms"
+msgstr "午后雷暴"
+
+msgid "an a.m. flurry"
+msgstr "早晨短时小阵雪"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "早晨阵雨夹雨夹雪"
+
+msgid "an a.m. rain or snow shower"
+msgstr "早晨阵雨或阵雪"
+
+msgid "an a.m. shower"
+msgstr "早晨有阵雨"
+
+msgid "an a.m. shower or two"
+msgstr "早晨一两场阵雨"
+
+msgid "an a.m. t-storm"
+msgstr "早晨雷暴"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "早晨局地雷暴"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "早晨零星雷暴"
+
+msgid "an afternoon shower"
+msgstr "午后有阵雨"
+
+msgid "an afternoon shower in spots"
+msgstr "午后局地阵雨"
+
+msgid "an afternoon shower or two"
+msgstr "午后一两场阵雨"
+
+msgid "an afternoon shower possible"
+msgstr "午后可能有阵雨"
+
+msgid "an afternoon snow showers"
+msgstr "午后有阵雪"
+
+msgid "an afternoon t-storm"
+msgstr "午后雷暴"
+
+msgid "an afternoon t-storm or two"
+msgstr "午后零星雷暴"
+
+msgid "an afternoon thundershower"
+msgstr "午后雷阵雨"
+
+msgid "an afternoon thunderstorm"
+msgstr "午后雷暴"
+
+msgid "an evening shower"
+msgstr "傍晚有阵雨"
+
+msgid "an evening shower in the area"
+msgstr "傍晚局地阵雨"
+
+msgid "an evening shower or t-storm"
+msgstr "傍晚阵雨或雷暴"
+
+msgid "an evening shower or two"
+msgstr "傍晚一两场阵雨"
+
+msgid "an evening t-storm in spots"
+msgstr "傍晚局地雷暴"
+
+msgid "an evening t-storm or two"
+msgstr "傍晚零星雷暴"
+
+msgid "an evening thundershower"
+msgstr "傍晚雷阵雨"
+
+msgid "an evening thunderstorm"
+msgstr "傍晚雷暴"
+
+msgid "areas of fog"
+msgstr "局地有雾"
+
+msgid "areas of fog in the morning"
+msgstr "早晨局地有雾"
+
+msgid "areas of low clouds"
+msgstr "局地有低云"
+
+msgid "areas of low clouds and cold"
+msgstr "局地有低云，寒冷"
+
+msgid "areas of low clouds and fog"
+msgstr "局地有低云，雾"
+
+msgid "be advised for strong winds"
+msgstr "注意防范大风"
+
+msgid "beautiful"
+msgstr "天气宜人"
+
+msgid "beautiful with clouds and sun"
+msgstr "天气宜人，晴间多云"
+
+msgid "beautiful with periods of sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "beautiful with plenty of sun"
+msgstr "天气宜人，阳光充足"
+
+msgid "beautiful with some sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "beautiful with sun and clouds"
+msgstr "天气宜人，晴间多云"
+
+msgid "beautiful with sunshine"
+msgstr "天气宜人，晴天"
+
+msgid "becoming clear"
+msgstr "逐渐放晴"
+
+msgid "becoming clear and chilly"
+msgstr "逐渐放晴，天气偏冷"
+
+msgid "becoming clear and cold"
+msgstr "逐渐放晴，寒冷"
+
+msgid "becoming clear and colder"
+msgstr "逐渐放晴，气温下降"
+
+msgid "becoming clear and cool"
+msgstr "逐渐放晴，凉爽"
+
+msgid "becoming clear and cooler"
+msgstr "逐渐放晴，天气转凉"
+
+msgid "becoming clear and mild"
+msgstr "逐渐放晴，气候温和"
+
+msgid "becoming clear and very warm"
+msgstr "逐渐放晴，很暖和"
+
+msgid "becoming clear and warm"
+msgstr "逐渐放晴，温暖"
+
+msgid "becoming clear with a shower"
+msgstr "逐渐放晴，有阵雨"
+
+msgid "becoming cloudy"
+msgstr "逐渐转阴"
+
+msgid "becoming cloudy and breezy"
+msgstr "逐渐转阴，微风"
+
+msgid "becoming cloudy and chilly"
+msgstr "逐渐转阴，天气偏冷"
+
+msgid "becoming cloudy and cold"
+msgstr "逐渐转阴，寒冷"
+
+msgid "becoming cloudy and cooler"
+msgstr "逐渐转阴，天气转凉"
+
+msgid "becoming cloudy and hot"
+msgstr "逐渐转阴，炎热"
+
+msgid "becoming cloudy and humid"
+msgstr "逐渐转阴，空气潮湿"
+
+msgid "becoming cloudy and mild"
+msgstr "逐渐转阴，气候温和"
+
+msgid "becoming cloudy and very warm"
+msgstr "逐渐转阴，很暖和"
+
+msgid "becoming cloudy and warm"
+msgstr "逐渐转阴，温暖"
+
+msgid "becoming cloudy and warmer"
+msgstr "逐渐转阴，气温回升"
+
+msgid "becoming cloudy with a shower"
+msgstr "逐渐转阴，有阵雨"
+
+msgid "becoming partly cloudy"
+msgstr "转为局部多云"
+
+msgid "becoming windier and colder"
+msgstr "风力增强，气温下降"
+
+msgid "becoming windier and cooler"
+msgstr "风力增强，天气转凉"
+
+msgid "bitterly cold"
+msgstr "严寒"
+
+msgid "bitterly cold in the evening"
+msgstr "傍晚严寒"
+
+msgid "bitterly cold with clearing"
+msgstr "严寒，逐渐放晴"
+
+msgid "bitterly cold with low clouds"
+msgstr "严寒，低云"
+
+msgid "blazing sunshine and hot"
+msgstr "烈日当空，炎热"
+
+msgid "blazing sunshine and warmer"
+msgstr "烈日当空，气温回升"
+
+msgid "blowing dust"
+msgstr "扬沙"
+
+msgid "blowing dust with high clouds"
+msgstr "扬沙，高云"
+
+msgid "blowing snow"
+msgstr "风吹雪"
+
+msgid "breezy and cold"
+msgstr "微风，寒冷"
+
+msgid "breezy and colder with rain"
+msgstr "微风，气温下降，雨"
+
+msgid "breezy and cool"
+msgstr "微风，凉爽"
+
+msgid "breezy and cool with some sun"
+msgstr "微风，凉爽，间有阳光"
+
+msgid "breezy and cooler with clouds"
+msgstr "微风，天气转凉，多云"
+
+msgid "breezy and cooler with rain"
+msgstr "微风，天气转凉，雨"
+
+msgid "breezy and hot with sunshine"
+msgstr "微风，炎热，晴天"
+
+msgid "breezy and humid"
+msgstr "微风，空气潮湿"
+
+msgid "breezy and mild"
+msgstr "微风，气候温和"
+
+msgid "breezy and mild with rain"
+msgstr "微风，气候温和，雨"
+
+msgid "breezy and nice"
+msgstr "微风，天气宜人"
+
+msgid "breezy and nice with some sun"
+msgstr "微风，天气宜人，间有阳光"
+
+msgid "breezy and nice with sunshine"
+msgstr "微风，天气宜人，晴天"
+
+msgid "breezy and pleasant"
+msgstr "微风，天气宜人"
+
+msgid "breezy and quite cold"
+msgstr "微风，较为寒冷"
+
+msgid "breezy and very cold"
+msgstr "微风，非常寒冷"
+
+msgid "breezy and warm with some sun"
+msgstr "微风，温暖，间有阳光"
+
+msgid "breezy early"
+msgstr "初期微风"
+
+msgid "breezy in the a.m."
+msgstr "早晨微风"
+
+msgid "breezy in the afternoon"
+msgstr "午后微风"
+
+msgid "breezy in the morning"
+msgstr "早晨微风"
+
+msgid "breezy this morning"
+msgstr "今晨微风"
+
+msgid "breezy with clearing"
+msgstr "微风，逐渐放晴"
+
+msgid "breezy with clouds and sun"
+msgstr "微风，晴间多云"
+
+msgid "breezy with decreasing clouds"
+msgstr "微风，云量减少"
+
+msgid "breezy with high clouds"
+msgstr "微风，高云"
+
+msgid "breezy with increasing clouds"
+msgstr "微风，云量增加"
+
+msgid "breezy with lots of sun"
+msgstr "微风，阳光充足"
+
+msgid "breezy with partial sunshine"
+msgstr "微风，间有阳光"
+
+msgid "breezy with patchy clouds"
+msgstr "微风，局部有云"
+
+msgid "breezy with periods of rain"
+msgstr "微风，间歇性降雨"
+
+msgid "breezy with periods of snow"
+msgstr "微风，间歇性降雪"
+
+msgid "breezy with periods of sun"
+msgstr "微风，间有阳光"
+
+msgid "breezy with plenty of sun"
+msgstr "微风，阳光充足"
+
+msgid "breezy with rain"
+msgstr "微风，雨"
+
+msgid "breezy with rain and drizzle"
+msgstr "微风，雨和毛毛雨"
+
+msgid "breezy with snow"
+msgstr "微风，雪"
+
+msgid "breezy with some sun"
+msgstr "微风，间有阳光"
+
+msgid "breezy with sun and clouds"
+msgstr "微风，晴间多云"
+
+msgid "breezy with sunny intervals"
+msgstr "微风，间有阳光"
+
+msgid "breezy with sunshine"
+msgstr "微风，晴天"
+
+msgid "breezy with variable clouds"
+msgstr "微风，云量多变"
+
+msgid "brief a.m. showers"
+msgstr "早晨短时阵雨"
+
+msgid "brief afternoon showers"
+msgstr "午后短时阵雨"
+
+msgid "brief evening showers"
+msgstr "傍晚短时阵雨"
+
+msgid "brief late-night showers"
+msgstr "深夜短时阵雨"
+
+msgid "brief morning showers"
+msgstr "早晨短时阵雨"
+
+msgid "brief showers"
+msgstr "短时阵雨"
+
+msgid "brief showers early"
+msgstr "初期短时阵雨"
+
+msgid "brief showers in the evening"
+msgstr "傍晚短时阵雨"
+
+msgid "brief showers in the morning"
+msgstr "早晨短时阵雨"
+
+msgid "brief showers late"
+msgstr "晚些时候短时阵雨"
+
+msgid "brief showers this afternoon"
+msgstr "今天下午短时阵雨"
+
+msgid "brilliant sunshine"
+msgstr "阳光灿烂"
+
+msgid "brilliant sunshine and breezy"
+msgstr "阳光灿烂，微风"
+
+msgid "brilliant sunshine and hot"
+msgstr "阳光灿烂，炎热"
+
+msgid "brilliant sunshine and hotter"
+msgstr "阳光灿烂，更炎热"
+
+msgid "brilliant sunshine and nice"
+msgstr "阳光灿烂，天气宜人"
+
+msgid "brilliant sunshine and warm"
+msgstr "阳光灿烂，温暖"
+
+msgid "brilliant sunshine and warmer"
+msgstr "阳光灿烂，气温回升"
+
+msgid "brisk and chilly"
+msgstr "风力较劲，天气偏冷"
+
+msgid "brisk and cold"
+msgstr "风力较劲，寒冷"
+
+msgid "brisk and very cold"
+msgstr "风力较劲，非常寒冷"
+
+msgid "but chilly"
+msgstr "但天气偏冷"
+
+msgid "but cold"
+msgstr "但寒冷"
+
+msgid "but very cold"
+msgstr "但非常寒冷"
+
+msgid "chance for a strong t-storm"
+msgstr "可能有强雷暴"
+
+msgid "chance for a thunderstorm"
+msgstr "可能有雷暴"
+
+msgid "chance for rain"
+msgstr "可能有雨"
+
+msgid "chance of a little a.m. rain"
+msgstr "早晨可能有小雨"
+
+msgid "chance of a little p.m. rain"
+msgstr "午后可能有小雨"
+
+msgid "chance of a shower"
+msgstr "可能有阵雨"
+
+msgid "chance of a thunderstorm"
+msgstr "可能有雷暴"
+
+msgid "chilly"
+msgstr "天气偏冷"
+
+msgid "chilly whit partial sunshine"
+msgstr "天气偏冷，间有阳光"
+
+msgid "chilly whit some sun"
+msgstr "天气偏冷，间有阳光"
+
+msgid "chilly with a little snow"
+msgstr "天气偏冷，少量降雪"
+
+msgid "chilly with clearing"
+msgstr "天气偏冷，逐渐放晴"
+
+msgid "chilly with clouds and sun"
+msgstr "天气偏冷，晴间多云"
+
+msgid "chilly with increasing clouds"
+msgstr "天气偏冷，云量增加"
+
+msgid "chilly with low clouds"
+msgstr "天气偏冷，低云"
+
+msgid "chilly with occasional rain"
+msgstr "天气偏冷，间歇性降雨"
+
+msgid "chilly with partial sunshine"
+msgstr "天气偏冷，间有阳光"
+
+msgid "chilly with patchy clouds"
+msgstr "天气偏冷，局部有云"
+
+msgid "chilly with periods of rain"
+msgstr "天气偏冷，间歇性降雨"
+
+msgid "chilly with periods of snow"
+msgstr "天气偏冷，间歇性降雪"
+
+msgid "chilly with periods of sun"
+msgstr "天气偏冷，间有阳光"
+
+msgid "chilly with plenty of sun"
+msgstr "天气偏冷，阳光充足"
+
+msgid "chilly with rain"
+msgstr "天气偏冷，雨"
+
+msgid "chilly with rain and drizzle"
+msgstr "天气偏冷，雨和毛毛雨"
+
+msgid "chilly with snow and rain"
+msgstr "天气偏冷，有雨和雪"
+
+msgid "chilly with some sun"
+msgstr "天气偏冷，间有阳光"
+
+msgid "chilly with sun and clouds"
+msgstr "天气偏冷，晴间多云"
+
+msgid "chilly with variable clouds"
+msgstr "天气偏冷，云量多变"
+
+msgid "clear and bitterly cold"
+msgstr "晴，严寒"
+
+msgid "clear and breezy"
+msgstr "晴，微风"
+
+msgid "clear and chilly"
+msgstr "晴，天气偏冷"
+
+msgid "clear and cold"
+msgstr "晴，寒冷"
+
+msgid "clear and colder"
+msgstr "晴，气温下降"
+
+msgid "clear and cool"
+msgstr "晴，凉爽"
+
+msgid "clear and cooler"
+msgstr "晴，天气转凉"
+
+msgid "clear and dry"
+msgstr "晴，干燥"
+
+msgid "clear and frigid"
+msgstr "晴，严寒"
+
+msgid "clear and humid"
+msgstr "晴，空气潮湿"
+
+msgid "clear and mild"
+msgstr "晴，气候温和"
+
+msgid "clear and much colder"
+msgstr "晴，气温明显下降"
+
+msgid "clear and not as warm"
+msgstr "晴，暖意减弱"
+
+msgid "clear and quite cold"
+msgstr "晴，较为寒冷"
+
+msgid "clear and seasonably cool"
+msgstr "晴，凉爽，符合时令"
+
+msgid "clear and seasonably warm"
+msgstr "晴，气温温暖，符合时令"
+
+msgid "clear and unseasonably cold"
+msgstr "晴，异常寒冷，低于同期常年水平"
+
+msgid "clear and very cold"
+msgstr "晴，非常寒冷"
+
+msgid "clear and very humid"
+msgstr "晴，空气非常潮湿"
+
+msgid "clear and very warm"
+msgstr "晴，很暖和"
+
+msgid "clear and warm"
+msgstr "晴，温暖"
+
+msgid "clear and warmer"
+msgstr "晴，气温回升"
+
+msgid "clear to partly cloudy"
+msgstr "晴到少云"
+
+msgid "clear with a gusty breeze"
+msgstr "晴，有阵风"
+
+msgid "clearing"
+msgstr "逐渐放晴"
+
+msgid "clearing and a few showers"
+msgstr "逐渐放晴，零星阵雨"
+
+msgid "clearing and a stray t-storm"
+msgstr "逐渐放晴，局地雷暴"
+
+msgid "clearing and chilly"
+msgstr "逐渐放晴，天气偏冷"
+
+msgid "clearing and cold"
+msgstr "逐渐放晴，寒冷"
+
+msgid "clearing and colder"
+msgstr "逐渐放晴，气温下降"
+
+msgid "clearing and cool"
+msgstr "逐渐放晴，凉爽"
+
+msgid "clearing and cooler"
+msgstr "逐渐放晴，天气转凉"
+
+msgid "clearing and hot"
+msgstr "逐渐放晴，炎热"
+
+msgid "clearing and humid"
+msgstr "逐渐放晴，空气潮湿"
+
+msgid "clearing and mild"
+msgstr "逐渐放晴，气候温和"
+
+msgid "clearing and nice"
+msgstr "逐渐放晴，天气宜人"
+
+msgid "clearing and not as warm"
+msgstr "逐渐放晴，暖意减弱"
+
+msgid "clearing and pleasant"
+msgstr "逐渐放晴，天气宜人"
+
+msgid "clearing and showers around"
+msgstr "逐渐放晴，局地阵雨"
+
+msgid "clearing and spotty showers"
+msgstr "逐渐放晴，局地阵雨"
+
+msgid "clearing and summerlike"
+msgstr "逐渐放晴，夏日般的天气"
+
+msgid "clearing and unseasonably hot"
+msgstr "逐渐放晴，异常炎热"
+
+msgid "clearing and very cold"
+msgstr "逐渐放晴，非常寒冷"
+
+msgid "clearing and very warm"
+msgstr "逐渐放晴，很暖和"
+
+msgid "clearing and warm"
+msgstr "逐渐放晴，温暖"
+
+msgid "clearing and warmer"
+msgstr "逐渐放晴，气温回升"
+
+msgid "clearing with a shower late"
+msgstr "逐渐放晴，晚些时候有阵雨"
+
+msgid "clouding up"
+msgstr "云量增加"
+
+msgid "clouding up with a shower"
+msgstr "云量增加，有阵雨"
+
+msgid "clouds"
+msgstr "多云"
+
+msgid "clouds and a few showers"
+msgstr "多云，零星阵雨"
+
+msgid "clouds and a stray t-storm"
+msgstr "多云，局地雷暴"
+
+msgid "clouds and a t-storm in spots"
+msgstr "多云，局地雷暴"
+
+msgid "clouds and becoming rainy"
+msgstr "多云，开始下雨"
+
+msgid "clouds and breaks of sun"
+msgstr "多云，间有阳光"
+
+msgid "clouds and fog"
+msgstr "多云，雾"
+
+msgid "clouds and limited sun"
+msgstr "多云，日照较少"
+
+msgid "clouds and showers"
+msgstr "多云，阵雨"
+
+msgid "clouds and showers around"
+msgstr "多云，局地阵雨"
+
+msgid "clouds and spotty showers"
+msgstr "多云，局地阵雨"
+
+msgid "clouds and sun"
+msgstr "晴间多云"
+
+msgid "clouds and sun with a shower"
+msgstr "晴间多云，有阵雨"
+
+msgid "clouds and sun with a t-storm"
+msgstr "晴间多云，雷暴"
+
+msgid "clouds and sun with showers"
+msgstr "晴间多云，阵雨"
+
+msgid "clouds and sunshine"
+msgstr "晴间多云"
+
+msgid "clouds and very warm"
+msgstr "多云，很暖和"
+
+msgid "clouds and warm"
+msgstr "多云，温暖"
+
+msgid "clouds and warm with a shower"
+msgstr "多云，温暖，有阵雨"
+
+msgid "clouds break for sun"
+msgstr "云量减少"
+
+msgid "clouds breaking"
+msgstr "云量减少"
+
+msgid "clouds breaking and beautiful"
+msgstr "云量减少，天气宜人"
+
+msgid "clouds breaking and chilly"
+msgstr "云量减少，天气偏冷"
+
+msgid "clouds breaking and pleasant"
+msgstr "云量减少，天气宜人"
+
+msgid "clouds breaking and very warm"
+msgstr "云量减少，很暖和"
+
+msgid "clouds breaking for some sun"
+msgstr "云量减少"
+
+msgid "clouds breaking for sun"
+msgstr "云量减少"
+
+msgid "clouds breaking with a shower"
+msgstr "云量减少，有阵雨"
+
+msgid "clouds giving way to some sun"
+msgstr "云量减少"
+
+msgid "clouds giving way to sun"
+msgstr "云量减少"
+
+msgid "clouds limiting sun"
+msgstr "云层遮挡阳光"
+
+msgid "clouds limiting sunshine"
+msgstr "云层遮挡阳光"
+
+msgid "clouds rolling in"
+msgstr "云层移入"
+
+msgid "clouds rolling in and humid"
+msgstr "云层移入，空气潮湿"
+
+msgid "clouds with a shower late"
+msgstr "多云，晚些时候有阵雨"
+
+msgid "clouds with downpours late"
+msgstr "多云，晚些时候倾盆大雨"
+
+msgid "clouds with snow late"
+msgstr "多云，晚些时候雪"
+
+msgid "clouds yielding to some sun"
+msgstr "云量减少"
+
+msgid "clouds yielding to sun"
+msgstr "云量减少"
+
+msgid "cloudy and becoming rainy"
+msgstr "多云，开始下雨"
+
+msgid "cloudy and bitterly cold"
+msgstr "多云，严寒"
+
+msgid "cloudy and breezy"
+msgstr "多云，微风"
+
+msgid "cloudy and chilly"
+msgstr "多云，天气偏冷"
+
+msgid "cloudy and cold"
+msgstr "多云，寒冷"
+
+msgid "cloudy and colder"
+msgstr "多云，气温下降"
+
+msgid "cloudy and comfortable"
+msgstr "多云，天气宜人"
+
+msgid "cloudy and cool"
+msgstr "多云，凉爽"
+
+msgid "cloudy and cool with a shower"
+msgstr "多云，凉爽，有阵雨"
+
+msgid "cloudy and cool with showers"
+msgstr "多云，凉爽，阵雨"
+
+msgid "cloudy and cooler"
+msgstr "多云，天气转凉"
+
+msgid "cloudy and frigid"
+msgstr "多云，严寒"
+
+msgid "cloudy and hot"
+msgstr "多云，炎热"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "多云，炎热，雷暴"
+
+msgid "cloudy and humid"
+msgstr "多云，空气潮湿"
+
+msgid "cloudy and humid with showers"
+msgstr "多云，空气潮湿，阵雨"
+
+msgid "cloudy and less humid"
+msgstr "多云，湿度下降"
+
+msgid "cloudy and mild"
+msgstr "多云，气候温和"
+
+msgid "cloudy and mild with a shower"
+msgstr "多云，气候温和，有阵雨"
+
+msgid "cloudy and milder"
+msgstr "多云，气温趋于温和"
+
+msgid "cloudy and not as cold"
+msgstr "多云，寒意减弱"
+
+msgid "cloudy and not as cool"
+msgstr "多云，凉意减弱"
+
+msgid "cloudy and not as hot"
+msgstr "多云，热势减弱"
+
+msgid "cloudy and not as warm"
+msgstr "多云，暖意减弱"
+
+msgid "cloudy and remaining cool"
+msgstr "多云，持续凉爽"
+
+msgid "cloudy and remaining warm"
+msgstr "多云，持续温暖"
+
+msgid "cloudy and seasonably cold"
+msgstr "多云，寒冷程度符合时令"
+
+msgid "cloudy and seasonably cool"
+msgstr "多云，凉爽，符合时令"
+
+msgid "cloudy and seasonably warm"
+msgstr "多云，气温温暖，符合时令"
+
+msgid "cloudy and turning colder"
+msgstr "多云，气温下降"
+
+msgid "cloudy and very cold"
+msgstr "多云，非常寒冷"
+
+msgid "cloudy and very humid"
+msgstr "多云，空气非常潮湿"
+
+msgid "cloudy and very warm"
+msgstr "多云，很暖和"
+
+msgid "cloudy and warm"
+msgstr "多云，温暖"
+
+msgid "cloudy and warm with a shower"
+msgstr "多云，温暖，有阵雨"
+
+msgid "cloudy and warmer"
+msgstr "多云，气温回升"
+
+msgid "cloudy and windy"
+msgstr "多云，风较大"
+
+msgid "cloudy and windy with showers"
+msgstr "多云，风较大，阵雨"
+
+msgid "cloudy most of the time"
+msgstr "多云"
+
+msgid "cloudy spells with a t-storm"
+msgstr "间或多云，雷暴"
+
+msgid "cloudy to partly sunny"
+msgstr "先阴后间晴"
+
+msgid "cloudy with a bit of ice"
+msgstr "多云，局部结冰"
+
+msgid "cloudy with a bit of ice late"
+msgstr "多云，晚些时候局部结冰"
+
+msgid "cloudy with a bit of rain"
+msgstr "多云，少量降雨"
+
+msgid "cloudy with a bit of snow"
+msgstr "多云，少量降雪"
+
+msgid "cloudy with a brief shower"
+msgstr "多云，短时阵雨"
+
+msgid "cloudy with a chance of rain"
+msgstr "多云，可能有雨"
+
+msgid "cloudy with a downpour late"
+msgstr "多云，晚些时候倾盆大雨"
+
+msgid "cloudy with a few flurries"
+msgstr "多云，零星小阵雪"
+
+msgid "cloudy with a few showers"
+msgstr "多云，零星阵雨"
+
+msgid "cloudy with a few snowflakes"
+msgstr "多云，零星雪花"
+
+msgid "cloudy with a flurry"
+msgstr "多云，短时小阵雪"
+
+msgid "cloudy with a flurry late"
+msgstr "多云，晚些时候短时小阵雪"
+
+msgid "cloudy with a flurry or two"
+msgstr "多云，零星小阵雪"
+
+msgid "cloudy with a heavy shower"
+msgstr "多云，强阵雨"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "多云，强雷暴"
+
+msgid "cloudy with a little rain"
+msgstr "多云，少量降雨"
+
+msgid "cloudy with a little snow"
+msgstr "多云，少量降雪"
+
+msgid "cloudy with a passing shower"
+msgstr "多云，短时阵雨"
+
+msgid "cloudy with a quick shower"
+msgstr "多云，短时阵雨"
+
+msgid "cloudy with a shower"
+msgstr "多云，有阵雨"
+
+msgid "cloudy with a shower in spots"
+msgstr "多云，局地阵雨"
+
+msgid "cloudy with a shower late"
+msgstr "多云，晚些时候有阵雨"
+
+msgid "cloudy with a shower or two"
+msgstr "多云，一两场阵雨"
+
+msgid "cloudy with a shower possible"
+msgstr "多云，可能有阵雨"
+
+msgid "cloudy with a snow shower"
+msgstr "多云，有阵雪"
+
+msgid "cloudy with a stray flurry"
+msgstr "多云，零星小阵雪"
+
+msgid "cloudy with a stray shower"
+msgstr "多云，局地阵雨"
+
+msgid "cloudy with a stray t-shower"
+msgstr "多云，局地雷阵雨"
+
+msgid "cloudy with a stray t-storm"
+msgstr "多云，局地雷暴"
+
+msgid "cloudy with a strong t-storm"
+msgstr "多云，强雷暴"
+
+msgid "cloudy with a t-storm"
+msgstr "多云，雷暴"
+
+msgid "cloudy with a t-storm around"
+msgstr "多云，局地雷暴"
+
+msgid "cloudy with a t-storm late"
+msgstr "多云，晚些时候雷暴"
+
+msgid "cloudy with a t-storm or two"
+msgstr "多云，零星雷暴"
+
+msgid "cloudy with a thundershower"
+msgstr "多云，雷阵雨"
+
+msgid "cloudy with a thunderstorm"
+msgstr "多云，雷暴"
+
+msgid "cloudy with a touch of rain"
+msgstr "多云，少量降雨"
+
+msgid "cloudy with afternoon rain"
+msgstr "多云，午后雨"
+
+msgid "cloudy with afternoon showers"
+msgstr "多云，午后阵雨"
+
+msgid "cloudy with blowing dust"
+msgstr "多云，扬沙"
+
+msgid "cloudy with brief showers"
+msgstr "多云，短时阵雨"
+
+msgid "cloudy with downpours"
+msgstr "多云，倾盆大雨"
+
+msgid "cloudy with downpours late"
+msgstr "多云，晚些时候倾盆大雨"
+
+msgid "cloudy with flurries"
+msgstr "多云，短时小阵雪"
+
+msgid "cloudy with flurries late"
+msgstr "多云，晚些时候短时小阵雪"
+
+msgid "cloudy with heavy rain late"
+msgstr "多云，晚些时候大雨"
+
+msgid "cloudy with heavy showers"
+msgstr "多云，强阵雨"
+
+msgid "cloudy with late-night rain"
+msgstr "多云，深夜雨"
+
+msgid "cloudy with occasional rain"
+msgstr "多云，间歇性降雨"
+
+msgid "cloudy with pouring rain late"
+msgstr "多云，晚些时候大雨"
+
+msgid "cloudy with rain"
+msgstr "多云，雨"
+
+msgid "cloudy with rain and drizzle"
+msgstr "多云，雨和毛毛雨"
+
+msgid "cloudy with rain and ice late"
+msgstr "多云，晚些时候雨和结冰"
+
+msgid "cloudy with rain beginning"
+msgstr "多云，开始下雨"
+
+msgid "cloudy with rain developing"
+msgstr "多云，开始下雨"
+
+msgid "cloudy with rain ending"
+msgstr "多云，雨停"
+
+msgid "cloudy with rain tapering off"
+msgstr "多云，雨势减弱"
+
+msgid "cloudy with showers"
+msgstr "多云，阵雨"
+
+msgid "cloudy with showers around"
+msgstr "多云，局地阵雨"
+
+msgid "cloudy with showers late"
+msgstr "多云，晚些时候阵雨"
+
+msgid "cloudy with snow"
+msgstr "多云，雪"
+
+msgid "cloudy with snow and ice"
+msgstr "多云，降雪和结冰"
+
+msgid "cloudy with snow at times"
+msgstr "多云，间歇性降雪"
+
+msgid "cloudy with snow showers"
+msgstr "多云，阵雪"
+
+msgid "cloudy with snow showers late"
+msgstr "多云，晚些时候阵雪"
+
+msgid "cloudy with snow tapering off"
+msgstr "多云，雪势减弱"
+
+msgid "cloudy with spotty showers"
+msgstr "多云，局地阵雨"
+
+msgid "cloudy with t-storms"
+msgstr "多云，雷暴"
+
+msgid "cloudy with thundershowers"
+msgstr "多云，雷阵雨"
+
+msgid "cloudy with thunderstorms"
+msgstr "多云，雷暴"
+
+msgid "cloudy with times of rain"
+msgstr "多云，间歇性降雨"
+
+msgid "cold"
+msgstr "寒冷"
+
+msgid "cold whit rain and drizzle"
+msgstr "寒冷，雨和毛毛雨"
+
+msgid "cold with areas of low clouds"
+msgstr "寒冷，局地有低云"
+
+msgid "cold with clearing"
+msgstr "寒冷，逐渐放晴"
+
+msgid "cold with clouds and sun"
+msgstr "寒冷，晴间多云"
+
+msgid "cold with clouds and sunshine"
+msgstr "寒冷，晴间多云"
+
+msgid "cold with clouds breaking"
+msgstr "寒冷，云量减少"
+
+msgid "cold with considerable clouds"
+msgstr "寒冷，多云"
+
+msgid "cold with icy mix"
+msgstr "寒冷，冻雨和冰粒混合"
+
+msgid "cold with increasing clouds"
+msgstr "寒冷，云量增加"
+
+msgid "cold with low clouds"
+msgstr "寒冷，低云"
+
+msgid "cold with partial sunshine"
+msgstr "寒冷，间有阳光"
+
+msgid "cold with patchy clouds"
+msgstr "寒冷，局部有云"
+
+msgid "cold with periods of sun"
+msgstr "寒冷，间有阳光"
+
+msgid "cold with plenty of clouds"
+msgstr "寒冷，多云"
+
+msgid "cold with plenty of sunshine"
+msgstr "寒冷，阳光充足"
+
+msgid "cold with snow"
+msgstr "寒冷，雪"
+
+msgid "cold with snow and rain"
+msgstr "寒冷，有雨和雪"
+
+msgid "cold with snow at times"
+msgstr "寒冷，间歇性降雪"
+
+msgid "cold with some sun"
+msgstr "寒冷，间有阳光"
+
+msgid "cold with sun"
+msgstr "寒冷，晴天"
+
+msgid "cold with variable clouds"
+msgstr "寒冷，云量多变"
+
+msgid "colder"
+msgstr "气温下降"
+
+msgid "colder in the afternoon"
+msgstr "午后气温下降"
+
+msgid "colder in the morning"
+msgstr "早晨气温下降"
+
+msgid "colder with a bit of snow"
+msgstr "气温下降，少量降雪"
+
+msgid "colder with a few showers"
+msgstr "气温下降，零星阵雨"
+
+msgid "colder with a few snowflakes"
+msgstr "气温下降，零星雪花"
+
+msgid "colder with a little rain"
+msgstr "气温下降，少量降雨"
+
+msgid "colder with a little snow"
+msgstr "气温下降，少量降雪"
+
+msgid "colder with a shower or two"
+msgstr "气温下降，一两场阵雨"
+
+msgid "colder with a snow squall"
+msgstr "气温下降，强阵风伴阵雪"
+
+msgid "colder with a stray shower"
+msgstr "气温下降，局地阵雨"
+
+msgid "colder with increasing clouds"
+msgstr "气温下降，云量增加"
+
+msgid "colder with low clouds"
+msgstr "气温下降，低云"
+
+msgid "colder with occasional rain"
+msgstr "气温下降，间歇性降雨"
+
+msgid "colder with partial sunshine"
+msgstr "气温下降，间有阳光"
+
+msgid "colder with periods of sun"
+msgstr "气温下降，间有阳光"
+
+msgid "colder with rain"
+msgstr "气温下降，雨"
+
+msgid "colder with showers around"
+msgstr "气温下降，局地阵雨"
+
+msgid "colder with snow"
+msgstr "气温下降，雪"
+
+msgid "colder with snow and rain"
+msgstr "气温下降，有雨和雪"
+
+msgid "colder with snow at times"
+msgstr "气温下降，间歇性降雪"
+
+msgid "colder with snow showers"
+msgstr "气温下降，阵雪"
+
+msgid "colder with some sun"
+msgstr "气温下降，间有阳光"
+
+msgid "colder with spotty showers"
+msgstr "气温下降，局地阵雨"
+
+msgid "comfortable"
+msgstr "天气宜人"
+
+msgid "comfortable with some sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "comfortable with sunshine"
+msgstr "天气宜人，晴天"
+
+msgid "considerable cloudiness"
+msgstr "多云"
+
+msgid "considerable clouds"
+msgstr "多云"
+
+msgid "considerable clouds and humid"
+msgstr "多云，空气潮湿"
+
+msgid "considerable clouds and mild"
+msgstr "多云，气候温和"
+
+msgid "considerable clouds and warm"
+msgstr "多云，温暖"
+
+msgid "continued cloudy"
+msgstr "持续多云"
+
+msgid "continued cloudy with showers"
+msgstr "持续多云，阵雨"
+
+msgid "cool"
+msgstr "凉爽"
+
+msgid "cool with a thick cloud cover"
+msgstr "凉爽，阴天"
+
+msgid "cool with areas of low clouds"
+msgstr "凉爽，局地有低云"
+
+msgid "cool with clearing"
+msgstr "凉爽，逐渐放晴"
+
+msgid "cool with clouds and sun"
+msgstr "凉爽，晴间多云"
+
+msgid "cool with clouds breaking"
+msgstr "凉爽，云量减少"
+
+msgid "cool with decreasing clouds"
+msgstr "凉爽，云量减少"
+
+msgid "cool with increasing clouds"
+msgstr "凉爽，云量增加"
+
+msgid "cool with low clouds"
+msgstr "凉爽，低云"
+
+msgid "cool with occasional rain"
+msgstr "凉爽，间歇性降雨"
+
+msgid "cool with partial sunshine"
+msgstr "凉爽，间有阳光"
+
+msgid "cool with patchy clouds"
+msgstr "凉爽，局部有云"
+
+msgid "cool with periods of rain"
+msgstr "凉爽，间歇性降雨"
+
+msgid "cool with periods of sun"
+msgstr "凉爽，间有阳光"
+
+msgid "cool with plenty of sun"
+msgstr "凉爽，阳光充足"
+
+msgid "cool with plenty of sunshine"
+msgstr "凉爽，阳光充足"
+
+msgid "cool with rain"
+msgstr "凉爽，雨"
+
+msgid "cool with rain and a t-storm"
+msgstr "凉爽，雨，雷暴"
+
+msgid "cool with rain and drizzle"
+msgstr "凉爽，雨和毛毛雨"
+
+msgid "cool with some sun"
+msgstr "凉爽，间有阳光"
+
+msgid "cool with sun and clouds"
+msgstr "凉爽，晴间多云"
+
+msgid "cool with sun and some clouds"
+msgstr "凉爽，晴间多云"
+
+msgid "cool with sunny intervals"
+msgstr "凉爽，间有阳光"
+
+msgid "cool with thickening clouds"
+msgstr "凉爽，云层逐渐增厚"
+
+msgid "cool with variable cloudiness"
+msgstr "凉爽，云量多变"
+
+msgid "cool with variable clouds"
+msgstr "凉爽，云量多变"
+
+msgid "cooler"
+msgstr "天气转凉"
+
+msgid "cooler with a brief shower"
+msgstr "天气转凉，短时阵雨"
+
+msgid "cooler with a few showers"
+msgstr "天气转凉，零星阵雨"
+
+msgid "cooler with a little rain"
+msgstr "天气转凉，少量降雨"
+
+msgid "cooler with a little snow"
+msgstr "天气转凉，少量降雪"
+
+msgid "cooler with a passing shower"
+msgstr "天气转凉，短时阵雨"
+
+msgid "cooler with a shower"
+msgstr "天气转凉，有阵雨"
+
+msgid "cooler with a shower in spots"
+msgstr "天气转凉，局地阵雨"
+
+msgid "cooler with a shower or two"
+msgstr "天气转凉，一两场阵雨"
+
+msgid "cooler with a shower possible"
+msgstr "天气转凉，可能有阵雨"
+
+msgid "cooler with a stray shower"
+msgstr "天气转凉，局地阵雨"
+
+msgid "cooler with a stray t-shower"
+msgstr "天气转凉，局地雷阵雨"
+
+msgid "cooler with a stray t-storm"
+msgstr "天气转凉，局地雷暴"
+
+msgid "cooler with a t-storm or two"
+msgstr "天气转凉，零星雷暴"
+
+msgid "cooler with a thundershower"
+msgstr "天气转凉，雷阵雨"
+
+msgid "cooler with a thunderstorm"
+msgstr "天气转凉，雷暴"
+
+msgid "cooler with a touch of rain"
+msgstr "天气转凉，少量降雨"
+
+msgid "cooler with clearing"
+msgstr "天气转凉，逐渐放晴"
+
+msgid "cooler with clouds and sun"
+msgstr "天气转凉，晴间多云"
+
+msgid "cooler with clouds breaking"
+msgstr "天气转凉，云量减少"
+
+msgid "cooler with decreasing clouds"
+msgstr "天气转凉，云量减少"
+
+msgid "cooler with downpours"
+msgstr "天气转凉，倾盆大雨"
+
+msgid "cooler with heavy showers"
+msgstr "天气转凉，强阵雨"
+
+msgid "cooler with high clouds"
+msgstr "天气转凉，高云"
+
+msgid "cooler with increasing clouds"
+msgstr "天气转凉，云量增加"
+
+msgid "cooler with low clouds"
+msgstr "天气转凉，低云"
+
+msgid "cooler with morning showers"
+msgstr "天气转凉，早晨阵雨"
+
+msgid "cooler with occasional rain"
+msgstr "天气转凉，间歇性降雨"
+
+msgid "cooler with partial sunshine"
+msgstr "天气转凉，间有阳光"
+
+msgid "cooler with periods of rain"
+msgstr "天气转凉，间歇性降雨"
+
+msgid "cooler with periods of sun"
+msgstr "天气转凉，间有阳光"
+
+msgid "cooler with plenty of clouds"
+msgstr "天气转凉，多云"
+
+msgid "cooler with plenty of sun"
+msgstr "天气转凉，阳光充足"
+
+msgid "cooler with rain"
+msgstr "天气转凉，雨"
+
+msgid "cooler with rain and drizzle"
+msgstr "天气转凉，雨和毛毛雨"
+
+msgid "cooler with rain at times"
+msgstr "天气转凉，间歇性降雨"
+
+msgid "cooler with rain beginning"
+msgstr "天气转凉，开始下雨"
+
+msgid "cooler with rain tapering off"
+msgstr "天气转凉，雨势减弱"
+
+msgid "cooler with showers"
+msgstr "天气转凉，阵雨"
+
+msgid "cooler with showers around"
+msgstr "天气转凉，局地阵雨"
+
+msgid "cooler with some brightening"
+msgstr "天气转凉，略有放晴"
+
+msgid "cooler with some sun"
+msgstr "天气转凉，间有阳光"
+
+msgid "cooler with spotty showers"
+msgstr "天气转凉，局地阵雨"
+
+msgid "cooler with sun"
+msgstr "天气转凉，晴天"
+
+msgid "cooler with sun and clouds"
+msgstr "天气转凉，晴间多云"
+
+msgid "cooler with sunny intervals"
+msgstr "天气转凉，间有阳光"
+
+msgid "cooler with thunderstorms"
+msgstr "天气转凉，雷暴"
+
+msgid "cooler with variable clouds"
+msgstr "天气转凉，云量多变"
+
+msgid "couple of showers"
+msgstr "一两场阵雨"
+
+msgid "couple of thunderstorms"
+msgstr "零星雷暴"
+
+msgid "damp early"
+msgstr "初期潮湿"
+
+msgid "decreasing clouds"
+msgstr "云量减少"
+
+msgid "decreasing clouds and breezy"
+msgstr "云量减少，微风"
+
+msgid "decreasing clouds and colder"
+msgstr "云量减少，气温下降"
+
+msgid "decreasing clouds and cool"
+msgstr "云量减少，凉爽"
+
+msgid "decreasing clouds and cooler"
+msgstr "云量减少，天气转凉"
+
+msgid "decreasing clouds and humid"
+msgstr "云量减少，空气潮湿"
+
+msgid "decreasing clouds and warm"
+msgstr "云量减少，温暖"
+
+msgid "decreasing clouds and warmer"
+msgstr "云量减少，气温回升"
+
+msgid "delightful"
+msgstr "天气宜人"
+
+msgid "delightful with plenty of sun"
+msgstr "天气宜人，阳光充足"
+
+msgid "delightful with some sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "delightful with sunshine"
+msgstr "天气宜人，晴天"
+
+msgid "dense fog"
+msgstr "浓雾"
+
+msgid "downpours"
+msgstr "倾盆大雨"
+
+msgid "downpours early"
+msgstr "初期倾盆大雨"
+
+msgid "downpours in the a.m."
+msgstr "早晨倾盆大雨"
+
+msgid "downpours in the afternoon"
+msgstr "午后倾盆大雨"
+
+msgid "downpours in the evening"
+msgstr "傍晚倾盆大雨"
+
+msgid "downpours in the morning"
+msgstr "早晨倾盆大雨"
+
+msgid "downpours in the p.m."
+msgstr "午后倾盆大雨"
+
+msgid "downpours this evening"
+msgstr "今天傍晚倾盆大雨"
+
+msgid "drizzle/rain"
+msgstr "雨和毛毛雨"
+
+msgid "dull and dreary"
+msgstr "天色阴沉"
+
+msgid "dull and dreary with showers"
+msgstr "天色阴沉，阵雨"
+
+msgid "early downpours"
+msgstr "初期倾盆大雨"
+
+msgid "early flurries"
+msgstr "初期短时小阵雪"
+
+msgid "early rain"
+msgstr "初期雨"
+
+msgid "early showers"
+msgstr "初期阵雨"
+
+msgid "early snow"
+msgstr "初期雪"
+
+msgid "early snow showers"
+msgstr "初期阵雪"
+
+msgid "early t-showers"
+msgstr "初期雷阵雨"
+
+msgid "early thunderstorms"
+msgstr "初期雷暴"
+
+msgid "episodes of sunshine"
+msgstr "间有阳光"
+
+msgid "evening downpours"
+msgstr "傍晚倾盆大雨"
+
+msgid "evening rain"
+msgstr "傍晚雨"
+
+msgid "evening rain and drizzle"
+msgstr "傍晚雨，毛毛雨"
+
+msgid "evening showers"
+msgstr "傍晚阵雨"
+
+msgid "evening showers and t-storms"
+msgstr "傍晚阵雨，雷暴"
+
+msgid "evening snow showers"
+msgstr "傍晚阵雪"
+
+msgid "evening thundershowers"
+msgstr "傍晚雷阵雨"
+
+msgid "evening thunderstorms"
+msgstr "傍晚雷暴"
+
+msgid "flurries"
+msgstr "短时小阵雪"
+
+msgid "fog forming"
+msgstr "逐渐起雾"
+
+msgid "fog in the a.m."
+msgstr "早晨雾"
+
+msgid "fog in the morning"
+msgstr "早晨雾"
+
+msgid "fog to sun"
+msgstr "雾散转晴"
+
+msgid "fog will lift this morning"
+msgstr "今晨雾将消散"
+
+msgid "foggy"
+msgstr "雾"
+
+msgid "freezing early"
+msgstr "初期冰冻"
+
+msgid "freezing fog"
+msgstr "冻雾"
+
+msgid "freezing fog this morning"
+msgstr "今晨冻雾"
+
+msgid "freezing late"
+msgstr "晚些时候冰冻"
+
+msgid "frigid"
+msgstr "严寒"
+
+msgid "frigid in the evening"
+msgstr "傍晚严寒"
+
+msgid "frigid with a bit of snow"
+msgstr "严寒，少量降雪"
+
+msgid "frigid with clouds and sun"
+msgstr "严寒，晴间多云"
+
+msgid "frigid with increasing clouds"
+msgstr "严寒，云量增加"
+
+msgid "frigid with low clouds"
+msgstr "严寒，低云"
+
+msgid "frigid with patchy clouds"
+msgstr "严寒，局部有云"
+
+msgid "frigid with periods of snow"
+msgstr "严寒，间歇性降雪"
+
+msgid "frigid with some sun"
+msgstr "严寒，间有阳光"
+
+msgid "frigid with tapering off"
+msgstr "严寒，逐渐减弱"
+
+msgid "ground fog"
+msgstr "近地雾"
+
+msgid "gusty thunderstorms possible"
+msgstr "可能有雷暴并伴阵风"
+
+msgid "hazy"
+msgstr "轻霾"
+
+msgid "hazy and humid"
+msgstr "轻霾，空气潮湿"
+
+msgid "hazy and remaining very warm"
+msgstr "轻霾，持续十分温暖"
+
+msgid "hazy and seasonably warm"
+msgstr "轻霾，气温温暖，符合时令"
+
+msgid "hazy and unseasonably hot"
+msgstr "轻霾，异常炎热"
+
+msgid "hazy and very warm"
+msgstr "轻霾，很暖和"
+
+msgid "hazy and warm"
+msgstr "轻霾，温暖"
+
+msgid "hazy clouds"
+msgstr "云多，有轻霾"
+
+msgid "hazy sun"
+msgstr "阳光朦胧"
+
+msgid "hazy sun and hot"
+msgstr "阳光朦胧，炎热"
+
+msgid "hazy sun and summerlike"
+msgstr "阳光朦胧，夏日般的天气"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "阳光朦胧，异常炎热"
+
+msgid "hazy sun and very warm"
+msgstr "阳光朦胧，很暖和"
+
+msgid "hazy sunshine"
+msgstr "阳光朦胧"
+
+msgid "hazy sunshine and hot"
+msgstr "阳光朦胧，炎热"
+
+msgid "hazy sunshine and less humid"
+msgstr "阳光朦胧，湿度下降"
+
+msgid "hazy sunshine and very warm"
+msgstr "阳光朦胧，很暖和"
+
+msgid "hazy with a t-storm in spots"
+msgstr "轻霾，局地雷暴"
+
+msgid "heavy a.m. rain"
+msgstr "早晨大雨"
+
+msgid "heavy a.m. showers"
+msgstr "早晨强阵雨"
+
+msgid "heavy afternoon rain"
+msgstr "午后大雨"
+
+msgid "heavy afternoon showers"
+msgstr "午后强阵雨"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "午后强雷暴"
+
+msgid "heavy evening rain"
+msgstr "傍晚大雨"
+
+msgid "heavy evening thunderstorms"
+msgstr "傍晚强雷暴"
+
+msgid "heavy late-night rain"
+msgstr "深夜大雨"
+
+msgid "heavy morning rain"
+msgstr "早晨大雨"
+
+msgid "heavy morning showers"
+msgstr "早晨强阵雨"
+
+msgid "heavy morning thunderstorms"
+msgstr "早晨强雷暴"
+
+msgid "heavy rain and a t-storm late"
+msgstr "大雨，晚些时候雷暴"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "大雨，雷暴"
+
+msgid "heavy rain and ice late"
+msgstr "大雨，晚些时候冰"
+
+msgid "heavy rain developing"
+msgstr "开始下大雨"
+
+msgid "heavy rain in the afternoon"
+msgstr "午后大雨"
+
+msgid "heavy rain shower"
+msgstr "强阵雨"
+
+msgid "heavy rain tapering off"
+msgstr "强降雨减弱"
+
+msgid "heavy showers early"
+msgstr "初期强阵雨"
+
+msgid "heavy showers in the evening"
+msgstr "傍晚强阵雨"
+
+msgid "heavy showers in the morning"
+msgstr "早晨强阵雨"
+
+msgid "heavy showers late"
+msgstr "晚些时候强阵雨"
+
+msgid "heavy showers this afternoon"
+msgstr "今天下午强阵雨"
+
+msgid "heavy showers this evening"
+msgstr "今天傍晚强阵雨"
+
+msgid "heavy showers this morning"
+msgstr "今晨强阵雨"
+
+msgid "heavy t-storms"
+msgstr "强雷暴"
+
+msgid "heavy t-storms early"
+msgstr "初期强雷暴"
+
+msgid "heavy t-storms in the evening"
+msgstr "傍晚强雷暴"
+
+msgid "heavy t-storms late"
+msgstr "晚些时候强雷暴"
+
+msgid "heavy thunderstorm"
+msgstr "强雷暴"
+
+msgid "heavy thunderstorms"
+msgstr "强雷暴"
+
+msgid "high clouds"
+msgstr "高云"
+
+msgid "high clouds and breezy"
+msgstr "高云，微风"
+
+msgid "high clouds and chilly"
+msgstr "高云，天气偏冷"
+
+msgid "high clouds and cooler"
+msgstr "高云，天气转凉"
+
+msgid "high clouds and hot"
+msgstr "高云，炎热"
+
+msgid "high clouds and nice"
+msgstr "高云，天气宜人"
+
+msgid "high clouds and pleasant"
+msgstr "高云，天气宜人"
+
+msgid "high clouds and summerlike"
+msgstr "高云，夏日般的天气"
+
+msgid "high clouds and very warm"
+msgstr "高云，很暖和"
+
+msgid "high clouds and warm"
+msgstr "高云，温暖"
+
+msgid "high clouds and warmer"
+msgstr "高云，气温回升"
+
+msgid "hot and humid with some sun"
+msgstr "炎热，空气潮湿，间有阳光"
+
+msgid "hot with abundant sunshine"
+msgstr "炎热，阳光充足"
+
+msgid "hot with blazing sunshine"
+msgstr "炎热，烈日当空"
+
+msgid "hot with brilliant sunshine"
+msgstr "炎热，阳光灿烂"
+
+msgid "hot with clearing"
+msgstr "炎热，逐渐放晴"
+
+msgid "hot with clouds and sun"
+msgstr "炎热，晴间多云"
+
+msgid "hot with clouds and sunshine"
+msgstr "炎热，晴间多云"
+
+msgid "hot with clouds rolling in"
+msgstr "炎热，云层移入"
+
+msgid "hot with considerable clouds"
+msgstr "炎热，多云"
+
+msgid "hot with decreasing clouds"
+msgstr "炎热，云量减少"
+
+msgid "hot with hazy sun"
+msgstr "炎热，阳光朦胧"
+
+msgid "hot with hazy sunshine"
+msgstr "炎热，阳光朦胧"
+
+msgid "hot with high clouds"
+msgstr "炎热，高云"
+
+msgid "hot with increasing clouds"
+msgstr "炎热，云量增加"
+
+msgid "hot with more clouds than sun"
+msgstr "炎热，多云"
+
+msgid "hot with more sun than clouds"
+msgstr "炎热，多为晴天"
+
+msgid "hot with partial sunshine"
+msgstr "炎热，间有阳光"
+
+msgid "hot with periods of sun"
+msgstr "炎热，间有阳光"
+
+msgid "hot with periods of sunshine"
+msgstr "炎热，间有阳光"
+
+msgid "hot with plenty of sun"
+msgstr "炎热，阳光充足"
+
+msgid "hot with plenty of sunshine"
+msgstr "炎热，阳光充足"
+
+msgid "hot with rain and drizzle"
+msgstr "炎热，雨和毛毛雨"
+
+msgid "hot with some sun"
+msgstr "炎热，间有阳光"
+
+msgid "hot with some sunshine"
+msgstr "炎热，间有阳光"
+
+msgid "hot with sun"
+msgstr "炎热，晴天"
+
+msgid "hot with sun and clouds"
+msgstr "炎热，晴间多云"
+
+msgid "hot with sun and some clouds"
+msgstr "炎热，晴间多云"
+
+msgid "hot with sunny intervals"
+msgstr "炎热，间有阳光"
+
+msgid "hot with sunshine"
+msgstr "炎热，晴天"
+
+msgid "hot with variable cloudiness"
+msgstr "炎热，云量多变"
+
+msgid "hot with variable clouds"
+msgstr "炎热，云量多变"
+
+msgid "hotter"
+msgstr "更炎热"
+
+msgid "hotter with a stray t-storm"
+msgstr "更炎热，局地雷暴"
+
+msgid "hotter with a t-storm around"
+msgstr "更炎热，局地雷暴"
+
+msgid "hotter with a thunderstorm"
+msgstr "更炎热，雷暴"
+
+msgid "hotter with abundant sunshine"
+msgstr "更炎热，阳光充足"
+
+msgid "hotter with blazing sunshine"
+msgstr "更炎热，烈日当空"
+
+msgid "hotter with partial sunshine"
+msgstr "更炎热，间有阳光"
+
+msgid "hotter with plenty of sun"
+msgstr "更炎热，阳光充足"
+
+msgid "hotter with sunshine"
+msgstr "更炎热，晴天"
+
+msgid "humid"
+msgstr "空气潮湿"
+
+msgid "humid with a t-storm in spots"
+msgstr "空气潮湿，局地雷暴"
+
+msgid "humid with clouds"
+msgstr "空气潮湿，多云"
+
+msgid "humid with clouds and sun"
+msgstr "空气潮湿，晴间多云"
+
+msgid "humid with clouds breaking"
+msgstr "空气潮湿，云量减少"
+
+msgid "humid with cloudy spells"
+msgstr "空气潮湿，间或多云"
+
+msgid "humid with high clouds"
+msgstr "空气潮湿，高云"
+
+msgid "humid with increasing clouds"
+msgstr "空气潮湿，云量增加"
+
+msgid "humid with low clouds"
+msgstr "空气潮湿，低云"
+
+msgid "humid with partial sunshine"
+msgstr "空气潮湿，间有阳光"
+
+msgid "humid with patchy clouds"
+msgstr "空气潮湿，局部有云"
+
+msgid "humid with periods of rain"
+msgstr "空气潮湿，间歇性降雨"
+
+msgid "humid with periods of sun"
+msgstr "空气潮湿，间有阳光"
+
+msgid "humid with plenty of clouds"
+msgstr "空气潮湿，多云"
+
+msgid "humid with plenty of sun"
+msgstr "空气潮湿，阳光充足"
+
+msgid "humid with plenty of sunshine"
+msgstr "空气潮湿，阳光充足"
+
+msgid "humid with rain"
+msgstr "空气潮湿，雨"
+
+msgid "humid with rain and a t-storm"
+msgstr "空气潮湿，雨，雷暴"
+
+msgid "humid with rain and drizzle"
+msgstr "空气潮湿，雨和毛毛雨"
+
+msgid "humid with rain at times"
+msgstr "空气潮湿，间歇性降雨"
+
+msgid "humid with some brightening"
+msgstr "空气潮湿，略有放晴"
+
+msgid "humid with some sun"
+msgstr "空气潮湿，间有阳光"
+
+msgid "humid with sunny intervals"
+msgstr "空气潮湿，间有阳光"
+
+msgid "humid with thickening clouds"
+msgstr "空气潮湿，云层逐渐增厚"
+
+msgid "humid with variable clouds"
+msgstr "空气潮湿，云量多变"
+
+msgid "ice and rain at times"
+msgstr "冰，间歇性降雨"
+
+msgid "increasing amounts of clouds"
+msgstr "云量增加"
+
+msgid "increasing amounts of sun"
+msgstr "日照逐渐增多"
+
+msgid "increasing cloudiness"
+msgstr "云量增加"
+
+msgid "increasing cloudiness and hot"
+msgstr "云量增加，炎热"
+
+msgid "increasing clouds"
+msgstr "云量增加"
+
+msgid "increasing clouds and chilly"
+msgstr "云量增加，天气偏冷"
+
+msgid "increasing clouds and cold"
+msgstr "云量增加，寒冷"
+
+msgid "increasing clouds and cool"
+msgstr "云量增加，凉爽"
+
+msgid "increasing clouds and hot"
+msgstr "云量增加，炎热"
+
+msgid "increasing clouds and hotter"
+msgstr "云量增加，更炎热"
+
+msgid "increasing clouds and humid"
+msgstr "云量增加，空气潮湿"
+
+msgid "increasing clouds and milder"
+msgstr "云量增加，气温趋于温和"
+
+msgid "increasing clouds and warm"
+msgstr "云量增加，温暖"
+
+msgid "increasing clouds and warmer"
+msgstr "云量增加，气温回升"
+
+msgid "increasingly windy"
+msgstr "风力增强"
+
+msgid "intermittent snow"
+msgstr "间歇性降雪"
+
+msgid "intervals of clouds and sun"
+msgstr "晴间多云"
+
+msgid "jupiter"
+msgstr "木星"
+
+msgid "late downpours"
+msgstr "晚些时候倾盆大雨"
+
+msgid "late flurries"
+msgstr "晚些时候短时小阵雪"
+
+msgid "late rain"
+msgstr "晚些时候雨"
+
+msgid "late snow"
+msgstr "晚些时候雪"
+
+msgid "late snow showers"
+msgstr "晚些时候阵雪"
+
+msgid "late-night rain"
+msgstr "深夜雨"
+
+msgid "late-night showers"
+msgstr "深夜阵雨"
+
+msgid "late-night snow"
+msgstr "深夜雪"
+
+msgid "late-night thunderstorms"
+msgstr "深夜雷暴"
+
+msgid "less humid with plenty of sun"
+msgstr "湿度下降，阳光充足"
+
+msgid "less humid with some sun"
+msgstr "湿度下降，间有阳光"
+
+msgid "light fog"
+msgstr "薄雾"
+
+msgid "light snow"
+msgstr "小雪"
+
+msgid "lots of sun"
+msgstr "阳光充足"
+
+msgid "lots of sun with a shower"
+msgstr "阳光充足，有阵雨"
+
+msgid "low clouds"
+msgstr "低云"
+
+msgid "low clouds and bitterly cold"
+msgstr "低云，严寒"
+
+msgid "low clouds and breezy"
+msgstr "低云，微风"
+
+msgid "low clouds and chilly"
+msgstr "低云，天气偏冷"
+
+msgid "low clouds and cold"
+msgstr "低云，寒冷"
+
+msgid "low clouds and colder"
+msgstr "低云，气温下降"
+
+msgid "low clouds and cool"
+msgstr "低云，凉爽"
+
+msgid "low clouds and cooler"
+msgstr "低云，天气转凉"
+
+msgid "low clouds and fog"
+msgstr "低云，雾"
+
+msgid "low clouds and fog and cooler"
+msgstr "低云，雾，天气转凉"
+
+msgid "low clouds and freezing fog"
+msgstr "低云，冻雾"
+
+msgid "low clouds and frigid"
+msgstr "低云，严寒"
+
+msgid "low clouds and humid"
+msgstr "低云，空气潮湿"
+
+msgid "low clouds and mild"
+msgstr "低云，气候温和"
+
+msgid "low clouds and not as cold"
+msgstr "低云，寒意减弱"
+
+msgid "low clouds and remaining cool"
+msgstr "低云，持续凉爽"
+
+msgid "low clouds and spotty showers"
+msgstr "低云，局地阵雨"
+
+msgid "low clouds and warmer"
+msgstr "低云，气温回升"
+
+msgid "low clouds break for some sun"
+msgstr "低云逐渐消散"
+
+msgid "low clouds breaking"
+msgstr "低云逐渐消散"
+
+msgid "low clouds breaking and humid"
+msgstr "低云逐渐消散，空气潮湿"
+
+msgid "low clouds followed by sun"
+msgstr "低云逐渐消散"
+
+msgid "low clouds may break"
+msgstr "低云可能散开"
+
+msgid "low clouds with a flurry late"
+msgstr "低云，晚些时候短时小阵雪"
+
+msgid "low clouds with rain late"
+msgstr "低云，晚些时候雨"
+
+msgid "low humidity with some sun"
+msgstr "湿度低，间有阳光"
+
+msgid "low humidity with sunshine"
+msgstr "湿度低，晴天"
+
+msgid "mainly clear and breezy"
+msgstr "大部晴朗，微风"
+
+msgid "mainly clear and chilly"
+msgstr "大部晴朗，天气偏冷"
+
+msgid "mainly clear and cold"
+msgstr "大部晴朗，寒冷"
+
+msgid "mainly clear and colder"
+msgstr "大部晴朗，气温下降"
+
+msgid "mainly clear and cool"
+msgstr "大部晴朗，凉爽"
+
+msgid "mainly clear and cooler"
+msgstr "大部晴朗，天气转凉"
+
+msgid "mainly clear and frigid"
+msgstr "大部晴朗，严寒"
+
+msgid "mainly clear and humid"
+msgstr "大部晴朗，空气潮湿"
+
+msgid "mainly clear and mild"
+msgstr "大部晴朗，气候温和"
+
+msgid "mainly clear and much colder"
+msgstr "大部晴朗，气温明显下降"
+
+msgid "mainly clear and not as warm"
+msgstr "大部晴朗，暖意减弱"
+
+msgid "mainly clear and very cold"
+msgstr "大部晴朗，非常寒冷"
+
+msgid "mainly clear and very humid"
+msgstr "大部晴朗，空气非常潮湿"
+
+msgid "mainly clear and very warm"
+msgstr "大部晴朗，很暖和"
+
+msgid "mainly clear and warm"
+msgstr "大部晴朗，温暖"
+
+msgid "mainly clear and warmer"
+msgstr "大部晴朗，气温回升"
+
+msgid "mainly clear with a shower"
+msgstr "大部晴朗，有阵雨"
+
+msgid "mainly clear with a t-storm"
+msgstr "大部晴朗，雷暴"
+
+msgid "mainly cloudy"
+msgstr "多云"
+
+msgid "mainly cloudy and chilly"
+msgstr "多云，天气偏冷"
+
+msgid "mainly cloudy and cold"
+msgstr "多云，寒冷"
+
+msgid "mainly cloudy and colder"
+msgstr "多云，气温下降"
+
+msgid "mainly cloudy and cool"
+msgstr "多云，凉爽"
+
+msgid "mainly cloudy and cooler"
+msgstr "多云，天气转凉"
+
+msgid "mainly cloudy and frigid"
+msgstr "多云，严寒"
+
+msgid "mainly cloudy and hot"
+msgstr "多云，炎热"
+
+msgid "mainly cloudy and humid"
+msgstr "多云，空气潮湿"
+
+msgid "mainly cloudy and summerlike"
+msgstr "多云，夏日般的天气"
+
+msgid "mainly cloudy and very warm"
+msgstr "多云，很暖和"
+
+msgid "mainly cloudy and warm"
+msgstr "多云，温暖"
+
+msgid "mainly cloudy and warmer"
+msgstr "多云，气温回升"
+
+msgid "mainly cloudy with a shower"
+msgstr "多云，有阵雨"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "多云，雷暴"
+
+msgid "mainly cloudy with flurries"
+msgstr "多云，短时小阵雪"
+
+msgid "mainly cloudy with showers"
+msgstr "多云，阵雨"
+
+msgid "mainly early"
+msgstr "主要在前期"
+
+msgid "mainly later"
+msgstr "主要在后期"
+
+msgid "mars"
+msgstr "火星"
+
+msgid "mercury"
+msgstr "水星"
+
+msgid "mild"
+msgstr "气候温和"
+
+msgid "mild with abundant sunshine"
+msgstr "气候温和，阳光充足"
+
+msgid "mild with clouds and sun"
+msgstr "气候温和，晴间多云"
+
+msgid "mild with clouds and sunshine"
+msgstr "气候温和，晴间多云"
+
+msgid "mild with considerable clouds"
+msgstr "气候温和，多云"
+
+msgid "mild with increasing clouds"
+msgstr "气候温和，云量增加"
+
+msgid "mild with partial sunshine"
+msgstr "气候温和，间有阳光"
+
+msgid "mild with patchy clouds"
+msgstr "气候温和，局部有云"
+
+msgid "mild with periods of rain"
+msgstr "气候温和，间歇性降雨"
+
+msgid "mild with periods of sun"
+msgstr "气候温和，间有阳光"
+
+msgid "mild with plenty of clouds"
+msgstr "气候温和，多云"
+
+msgid "mild with plenty of sun"
+msgstr "气候温和，阳光充足"
+
+msgid "mild with plenty of sunshine"
+msgstr "气候温和，阳光充足"
+
+msgid "mild with some sun"
+msgstr "气候温和，间有阳光"
+
+msgid "mild with sun and clouds"
+msgstr "气候温和，晴间多云"
+
+msgid "mild with sun and some clouds"
+msgstr "气候温和，晴间多云"
+
+msgid "mild with sunny intervals"
+msgstr "气候温和，间有阳光"
+
+msgid "mild with sunshine"
+msgstr "气候温和，晴天"
+
+msgid "mild with thickening clouds"
+msgstr "气候温和，云层逐渐增厚"
+
+msgid "mild with variable cloudiness"
+msgstr "气候温和，云量多变"
+
+msgid "milder"
+msgstr "气温趋于温和"
+
+msgid "milder with a shower in spots"
+msgstr "气温趋于温和，局地阵雨"
+
+msgid "milder with brief showers"
+msgstr "气温趋于温和，短时阵雨"
+
+msgid "milder with clouds and sun"
+msgstr "气温趋于温和，晴间多云"
+
+msgid "milder with increasing clouds"
+msgstr "气温趋于温和，云量增加"
+
+msgid "milder with low clouds"
+msgstr "气温趋于温和，低云"
+
+msgid "milder with periods of rain"
+msgstr "气温趋于温和，间歇性降雨"
+
+msgid "milder with periods of sun"
+msgstr "气温趋于温和，间有阳光"
+
+msgid "milder with sun"
+msgstr "气温趋于温和，晴天"
+
+msgid "milder with thickening clouds"
+msgstr "气温趋于温和，云层逐渐增厚"
+
+msgid "mist"
+msgstr "薄雾"
+
+msgid "mixed with snow early"
+msgstr "初期夹雪"
+
+msgid "moderate rain"
+msgstr "中雨"
+
+msgid "moon"
+msgstr "月球"
+
+msgid "more clouds than sun"
+msgstr "多云"
+
+msgid "more clouds than sunshine"
+msgstr "多云"
+
+msgid "more sun than clouds"
+msgstr "多为晴天"
+
+msgid "more sunshine than clouds"
+msgstr "多为晴天"
+
+msgid "morning downpours"
+msgstr "早晨倾盆大雨"
+
+msgid "morning flurries"
+msgstr "早晨短时小阵雪"
+
+msgid "morning rain"
+msgstr "早晨雨"
+
+msgid "morning showers"
+msgstr "早晨阵雨"
+
+msgid "morning snow"
+msgstr "早晨雪"
+
+msgid "morning snow showers"
+msgstr "早晨阵雪"
+
+msgid "morning t-showers"
+msgstr "早晨雷阵雨"
+
+msgid "morning thunderstorms"
+msgstr "早晨雷暴"
+
+msgid "mostly clear and chilly"
+msgstr "大部晴朗，天气偏冷"
+
+msgid "mostly clear and cold"
+msgstr "大部晴朗，寒冷"
+
+msgid "mostly clear and cool"
+msgstr "大部晴朗，凉爽"
+
+msgid "mostly clear and cooler"
+msgstr "大部晴朗，天气转凉"
+
+msgid "mostly clear and humid"
+msgstr "大部晴朗，空气潮湿"
+
+msgid "mostly clear and mild"
+msgstr "大部晴朗，气候温和"
+
+msgid "mostly clear and very warm"
+msgstr "大部晴朗，很暖和"
+
+msgid "mostly clear with a shower"
+msgstr "大部晴朗，有阵雨"
+
+msgid "mostly cloudy and breezy"
+msgstr "多云，微风"
+
+msgid "mostly cloudy and chilly"
+msgstr "多云，天气偏冷"
+
+msgid "mostly cloudy and cold"
+msgstr "多云，寒冷"
+
+msgid "mostly cloudy and colder"
+msgstr "多云，气温下降"
+
+msgid "mostly cloudy and comfortable"
+msgstr "多云，天气宜人"
+
+msgid "mostly cloudy and cool"
+msgstr "多云，凉爽"
+
+msgid "mostly cloudy and cooler"
+msgstr "多云，天气转凉"
+
+msgid "mostly cloudy and frigid"
+msgstr "多云，严寒"
+
+msgid "mostly cloudy and hot"
+msgstr "多云，炎热"
+
+msgid "mostly cloudy and hotter"
+msgstr "多云，更炎热"
+
+msgid "mostly cloudy and humid"
+msgstr "多云，空气潮湿"
+
+msgid "mostly cloudy and less humid"
+msgstr "多云，湿度下降"
+
+msgid "mostly cloudy and mild"
+msgstr "多云，气候温和"
+
+msgid "mostly cloudy and milder"
+msgstr "多云，气温趋于温和"
+
+msgid "mostly cloudy and misty"
+msgstr "多云，薄雾"
+
+msgid "mostly cloudy and misty late"
+msgstr "多云，晚些时候薄雾"
+
+msgid "mostly cloudy and not as cold"
+msgstr "多云，寒意减弱"
+
+msgid "mostly cloudy and not as cool"
+msgstr "多云，凉意减弱"
+
+msgid "mostly cloudy and not as hot"
+msgstr "多云，热势减弱"
+
+msgid "mostly cloudy and not as warm"
+msgstr "多云，暖意减弱"
+
+msgid "mostly cloudy and seasonable"
+msgstr "多云，气温符合时令"
+
+msgid "mostly cloudy and summerlike"
+msgstr "多云，夏日般的天气"
+
+msgid "mostly cloudy and very cold"
+msgstr "多云，非常寒冷"
+
+msgid "mostly cloudy and very hot"
+msgstr "多云，酷热"
+
+msgid "mostly cloudy and very humid"
+msgstr "多云，空气非常潮湿"
+
+msgid "mostly cloudy and very warm"
+msgstr "多云，很暖和"
+
+msgid "mostly cloudy and warm"
+msgstr "多云，温暖"
+
+msgid "mostly cloudy and warmer"
+msgstr "多云，气温回升"
+
+msgid "mostly cloudy and windy"
+msgstr "多云，风较大"
+
+msgid "mostly cloudy with a downpour"
+msgstr "多云，倾盆大雨"
+
+msgid "mostly cloudy with a shower"
+msgstr "多云，有阵雨"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "多云，雷阵雨"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "多云，雷暴"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "多云，冻雨和冰粒混合"
+
+msgid "mostly cloudy with downpours"
+msgstr "多云，倾盆大雨"
+
+msgid "mostly cloudy with flurries"
+msgstr "多云，短时小阵雪"
+
+msgid "mostly cloudy with mist late"
+msgstr "多云，晚些时候薄雾"
+
+msgid "mostly cloudy with rain"
+msgstr "多云，雨"
+
+msgid "mostly cloudy with rain late"
+msgstr "多云，晚些时候雨"
+
+msgid "mostly cloudy with showers"
+msgstr "多云，阵雨"
+
+msgid "mostly cloudy with snow late"
+msgstr "多云，晚些时候雪"
+
+msgid "mostly cloudy with t-showers"
+msgstr "多云，雷阵雨"
+
+msgid "mostly cloudy with t-storms"
+msgstr "多云，雷暴"
+
+msgid "mostly sunny and beautiful"
+msgstr "多为晴天，天气宜人"
+
+msgid "mostly sunny and breezy"
+msgstr "多为晴天，微风"
+
+msgid "mostly sunny and chilly"
+msgstr "多为晴天，天气偏冷"
+
+msgid "mostly sunny and cold"
+msgstr "多为晴天，寒冷"
+
+msgid "mostly sunny and colder"
+msgstr "多为晴天，气温下降"
+
+msgid "mostly sunny and comfortable"
+msgstr "多为晴天，天气宜人"
+
+msgid "mostly sunny and cool"
+msgstr "多为晴天，凉爽"
+
+msgid "mostly sunny and cooler"
+msgstr "多为晴天，天气转凉"
+
+msgid "mostly sunny and delightful"
+msgstr "多为晴天，天气宜人"
+
+msgid "mostly sunny and frigid"
+msgstr "多为晴天，严寒"
+
+msgid "mostly sunny and hot"
+msgstr "多为晴天，炎热"
+
+msgid "mostly sunny and hotter"
+msgstr "多为晴天，更炎热"
+
+msgid "mostly sunny and humid"
+msgstr "多为晴天，空气潮湿"
+
+msgid "mostly sunny and less humid"
+msgstr "多为晴天，湿度下降"
+
+msgid "mostly sunny and mild"
+msgstr "多为晴天，气候温和"
+
+msgid "mostly sunny and milder"
+msgstr "多为晴天，气温趋于温和"
+
+msgid "mostly sunny and nice"
+msgstr "多为晴天，天气宜人"
+
+msgid "mostly sunny and not as cold"
+msgstr "多为晴天，寒意减弱"
+
+msgid "mostly sunny and not as hot"
+msgstr "多为晴天，热势减弱"
+
+msgid "mostly sunny and not as warm"
+msgstr "多为晴天，暖意减弱"
+
+msgid "mostly sunny and pleasant"
+msgstr "多为晴天，天气宜人"
+
+msgid "mostly sunny and quite cold"
+msgstr "多为晴天，较为寒冷"
+
+msgid "mostly sunny and summerlike"
+msgstr "多为晴天，夏日般的天气"
+
+msgid "mostly sunny and very cold"
+msgstr "多为晴天，非常寒冷"
+
+msgid "mostly sunny and very hot"
+msgstr "多为晴天，酷热"
+
+msgid "mostly sunny and very humid"
+msgstr "多为晴天，空气非常潮湿"
+
+msgid "mostly sunny and very warm"
+msgstr "多为晴天，很暖和"
+
+msgid "mostly sunny and warm"
+msgstr "多为晴天，温暖"
+
+msgid "mostly sunny and warmer"
+msgstr "多为晴天，气温回升"
+
+msgid "mostly sunny and windy"
+msgstr "多为晴天，风较大"
+
+msgid "mostly sunny with a shower"
+msgstr "多为晴天，有阵雨"
+
+msgid "mostly sunny with a t-shower"
+msgstr "多为晴天，雷阵雨"
+
+msgid "mostly sunny with a t-storm"
+msgstr "多为晴天，雷暴"
+
+msgid "much colder"
+msgstr "气温明显下降"
+
+msgid "much colder with low clouds"
+msgstr "气温明显下降，低云"
+
+msgid "neptune"
+msgstr "海王星"
+
+msgid "nice"
+msgstr "天气宜人"
+
+msgid "nice and warm"
+msgstr "天气宜人，温暖"
+
+msgid "nice and warm with some sun"
+msgstr "天气宜人，温暖，间有阳光"
+
+msgid "nice and warm with sunshine"
+msgstr "天气宜人，温暖，晴天"
+
+msgid "nice with abundant sunshine"
+msgstr "天气宜人，阳光充足"
+
+msgid "nice with brilliant sunshine"
+msgstr "天气宜人，阳光灿烂"
+
+msgid "nice with clouds"
+msgstr "天气宜人，多云"
+
+msgid "nice with clouds and sun"
+msgstr "天气宜人，晴间多云"
+
+msgid "nice with clouds and sunshine"
+msgstr "天气宜人，晴间多云"
+
+msgid "nice with partial sunshine"
+msgstr "天气宜人，间有阳光"
+
+msgid "nice with periods of sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "nice with periods of sunshine"
+msgstr "天气宜人，间有阳光"
+
+msgid "nice with plenty of sun"
+msgstr "天气宜人，阳光充足"
+
+msgid "nice with plenty of sunshine"
+msgstr "天气宜人，阳光充足"
+
+msgid "nice with some sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "nice with some sunshine"
+msgstr "天气宜人，间有阳光"
+
+msgid "nice with sun"
+msgstr "天气宜人，晴天"
+
+msgid "nice with sun and clouds"
+msgstr "天气宜人，晴间多云"
+
+msgid "nice with sun and some clouds"
+msgstr "天气宜人，晴间多云"
+
+msgid "nice with sunny intervals"
+msgstr "天气宜人，间有阳光"
+
+msgid "nice with sunshine"
+msgstr "天气宜人，晴天"
+
+msgid "nice with variable cloudiness"
+msgstr "天气宜人，云量多变"
+
+msgid "nice with variable clouds"
+msgstr "天气宜人，云量多变"
+
+msgid "not as cold"
+msgstr "寒意减弱"
+
+msgid "not as cold with clearing"
+msgstr "寒意减弱，逐渐放晴"
+
+msgid "not as cold with flurries"
+msgstr "寒意减弱，短时小阵雪"
+
+msgid "not as cold with low clouds"
+msgstr "寒意减弱，低云"
+
+msgid "not as cold with snow showers"
+msgstr "寒意减弱，阵雪"
+
+msgid "not as cold with some sun"
+msgstr "寒意减弱，间有阳光"
+
+msgid "not as cool"
+msgstr "凉意减弱"
+
+msgid "not as cool late"
+msgstr "晚些时候凉意减弱"
+
+msgid "not as cool with clearing"
+msgstr "凉意减弱，逐渐放晴"
+
+msgid "not as hot"
+msgstr "热势减弱"
+
+msgid "not as hot with a shower"
+msgstr "热势减弱，有阵雨"
+
+msgid "not as hot with a t-storm"
+msgstr "热势减弱，雷暴"
+
+msgid "not as hot with some sun"
+msgstr "热势减弱，间有阳光"
+
+msgid "not as warm"
+msgstr "暖意减弱"
+
+msgid "not as warm but pleasant"
+msgstr "暖意减弱，天气宜人"
+
+msgid "not as warm in the afternoon"
+msgstr "午后暖意减弱"
+
+msgid "not as warm this afternoon"
+msgstr "今天下午暖意减弱"
+
+msgid "not as warm with a shower"
+msgstr "暖意减弱，有阵雨"
+
+msgid "not as warm with a t-shower"
+msgstr "暖意减弱，雷阵雨"
+
+msgid "not as warm with a t-storm"
+msgstr "暖意减弱，雷暴"
+
+msgid "not as warm with clearing"
+msgstr "暖意减弱，逐渐放晴"
+
+msgid "not as warm with downpours"
+msgstr "暖意减弱，倾盆大雨"
+
+msgid "not as warm with high clouds"
+msgstr "暖意减弱，高云"
+
+msgid "not as warm with low clouds"
+msgstr "暖意减弱，低云"
+
+msgid "not as warm with morning rain"
+msgstr "暖意减弱，早晨雨"
+
+msgid "not as warm with rain"
+msgstr "暖意减弱，雨"
+
+msgid "not as warm with rain ending"
+msgstr "暖意减弱，雨停"
+
+msgid "not as warm with showers"
+msgstr "暖意减弱，阵雨"
+
+msgid "not as warm with some sun"
+msgstr "暖意减弱，间有阳光"
+
+msgid "occasional afternoon rain"
+msgstr "午后间歇性降雨"
+
+msgid "occasional evening rain"
+msgstr "傍晚间歇性降雨"
+
+msgid "occasional late-night rain"
+msgstr "深夜间歇性降雨"
+
+msgid "occasional morning rain"
+msgstr "早晨间歇性降雨"
+
+msgid "occasional rain"
+msgstr "间歇性降雨"
+
+msgid "occasional rain and a t-storm"
+msgstr "间歇性降雨，雷暴"
+
+msgid "occasional rain and drizzle"
+msgstr "间歇性降雨，毛毛雨"
+
+msgid "occasional rain late"
+msgstr "晚些时候间歇性降雨"
+
+msgid "occasional snow and flurries"
+msgstr "间歇性降雪，短时小阵雪"
+
+msgid "on-and-off rain and drizzle"
+msgstr "间歇性降雨，毛毛雨"
+
+msgid "on-and-off snow"
+msgstr "间歇性降雪"
+
+msgid "otherwise"
+msgstr "其他时段"
+
+msgid "overcast and becoming rainy"
+msgstr "阴天，开始下雨"
+
+msgid "overcast and chilly"
+msgstr "阴天，天气偏冷"
+
+msgid "overcast and cold"
+msgstr "阴天，寒冷"
+
+msgid "overcast and cooler"
+msgstr "阴天，天气转凉"
+
+msgid "overcast and frigid"
+msgstr "阴天，严寒"
+
+msgid "overcast and humid"
+msgstr "阴天，空气潮湿"
+
+msgid "overcast and mild"
+msgstr "阴天，气候温和"
+
+msgid "overcast and not as warm"
+msgstr "阴天，暖意减弱"
+
+msgid "overcast and seasonably cold"
+msgstr "阴天，寒冷程度符合时令"
+
+msgid "overcast and seasonably warm"
+msgstr "阴天，气温温暖，符合时令"
+
+msgid "overcast and very warm"
+msgstr "阴天，很暖和"
+
+msgid "overcast and warm"
+msgstr "阴天，温暖"
+
+msgid "overcast and windy"
+msgstr "阴天，风较大"
+
+msgid "overcast with a bit of rain"
+msgstr "阴天，少量降雨"
+
+msgid "overcast with a bit of snow"
+msgstr "阴天，少量降雪"
+
+msgid "overcast with a brief shower"
+msgstr "阴天，短时阵雨"
+
+msgid "overcast with a few showers"
+msgstr "阴天，零星阵雨"
+
+msgid "overcast with a little rain"
+msgstr "阴天，少量降雨"
+
+msgid "overcast with a little snow"
+msgstr "阴天，少量降雪"
+
+msgid "overcast with a quick shower"
+msgstr "阴天，短时阵雨"
+
+msgid "overcast with a shower"
+msgstr "阴天，有阵雨"
+
+msgid "overcast with a shower late"
+msgstr "阴天，晚些时候有阵雨"
+
+msgid "overcast with a shower or two"
+msgstr "阴天，一两场阵雨"
+
+msgid "overcast with a stray shower"
+msgstr "阴天，局地阵雨"
+
+msgid "overcast with a stray t-storm"
+msgstr "阴天，局地雷暴"
+
+msgid "overcast with a t-storm late"
+msgstr "阴天，晚些时候雷暴"
+
+msgid "overcast with a thundershower"
+msgstr "阴天，雷阵雨"
+
+msgid "overcast with a thunderstorm"
+msgstr "阴天，雷暴"
+
+msgid "overcast with a touch of rain"
+msgstr "阴天，少量降雨"
+
+msgid "overcast with brief showers"
+msgstr "阴天，短时阵雨"
+
+msgid "overcast with downpours"
+msgstr "阴天，倾盆大雨"
+
+msgid "overcast with downpours late"
+msgstr "阴天，晚些时候倾盆大雨"
+
+msgid "overcast with flurries"
+msgstr "阴天，短时小阵雪"
+
+msgid "overcast with heavy rain late"
+msgstr "阴天，晚些时候大雨"
+
+msgid "overcast with heavy showers"
+msgstr "阴天，强阵雨"
+
+msgid "overcast with late-night rain"
+msgstr "阴天，深夜雨"
+
+msgid "overcast with occasional rain"
+msgstr "阴天，间歇性降雨"
+
+msgid "overcast with rain developing"
+msgstr "阴天，开始下雨"
+
+msgid "overcast with rain late"
+msgstr "阴天，晚些时候雨"
+
+msgid "overcast with showers"
+msgstr "阴天，阵雨"
+
+msgid "overcast with showers around"
+msgstr "阴天，局地阵雨"
+
+msgid "overcast with showers late"
+msgstr "阴天，晚些时候阵雨"
+
+msgid "overcast with snow showers"
+msgstr "阴天，阵雪"
+
+msgid "overcast with spotty showers"
+msgstr "阴天，局地阵雨"
+
+msgid "overcast with thunderstorms"
+msgstr "阴天，雷暴"
+
+msgid "p.m. downpours"
+msgstr "午后倾盆大雨"
+
+msgid "p.m. flurries"
+msgstr "午后短时小阵雪"
+
+msgid "p.m. snow"
+msgstr "午后雪"
+
+msgid "p.m. snow showers"
+msgstr "午后阵雪"
+
+msgid "partial sunshine"
+msgstr "间有阳光"
+
+msgid "partly cloudy and breezy"
+msgstr "晴间多云，微风"
+
+msgid "partly cloudy and chilly"
+msgstr "晴间多云，天气偏冷"
+
+msgid "partly cloudy and cold"
+msgstr "晴间多云，寒冷"
+
+msgid "partly cloudy and colder"
+msgstr "晴间多云，气温下降"
+
+msgid "partly cloudy and cool"
+msgstr "晴间多云，凉爽"
+
+msgid "partly cloudy and cooler"
+msgstr "晴间多云，天气转凉"
+
+msgid "partly cloudy and frigid"
+msgstr "晴间多云，严寒"
+
+msgid "partly cloudy and humid"
+msgstr "晴间多云，空气潮湿"
+
+msgid "partly cloudy and mild"
+msgstr "晴间多云，气候温和"
+
+msgid "partly cloudy and much colder"
+msgstr "晴间多云，气温明显下降"
+
+msgid "partly cloudy and seasonable"
+msgstr "晴间多云，气温符合时令"
+
+msgid "partly cloudy and very cold"
+msgstr "晴间多云，非常寒冷"
+
+msgid "partly cloudy and very humid"
+msgstr "晴间多云，空气非常潮湿"
+
+msgid "partly cloudy and very warm"
+msgstr "晴间多云，很暖和"
+
+msgid "partly cloudy and warm"
+msgstr "晴间多云，温暖"
+
+msgid "partly cloudy and windy"
+msgstr "晴间多云，风较大"
+
+msgid "partly cloudy with a shower"
+msgstr "晴间多云，有阵雨"
+
+msgid "partly cloudy with a t-storm"
+msgstr "晴间多云，雷暴"
+
+msgid "partly cloudy with flurries"
+msgstr "晴间多云，短时小阵雪"
+
+msgid "partly sunny"
+msgstr "间有阳光"
+
+msgid "partly sunny and beautiful"
+msgstr "间有阳光，天气宜人"
+
+msgid "partly sunny and breezy"
+msgstr "间有阳光，微风"
+
+msgid "partly sunny and chilly"
+msgstr "间有阳光，天气偏冷"
+
+msgid "partly sunny and cold"
+msgstr "间有阳光，寒冷"
+
+msgid "partly sunny and colder"
+msgstr "间有阳光，气温下降"
+
+msgid "partly sunny and comfortable"
+msgstr "间有阳光，天气宜人"
+
+msgid "partly sunny and cool"
+msgstr "间有阳光，凉爽"
+
+msgid "partly sunny and cooler"
+msgstr "间有阳光，天气转凉"
+
+msgid "partly sunny and delightful"
+msgstr "间有阳光，天气宜人"
+
+msgid "partly sunny and frigid"
+msgstr "间有阳光，严寒"
+
+msgid "partly sunny and hot"
+msgstr "间有阳光，炎热"
+
+msgid "partly sunny and hotter"
+msgstr "间有阳光，更炎热"
+
+msgid "partly sunny and humid"
+msgstr "间有阳光，空气潮湿"
+
+msgid "partly sunny and less humid"
+msgstr "间有阳光，湿度下降"
+
+msgid "partly sunny and mild"
+msgstr "间有阳光，气候温和"
+
+msgid "partly sunny and milder"
+msgstr "间有阳光，气温趋于温和"
+
+msgid "partly sunny and nice"
+msgstr "间有阳光，天气宜人"
+
+msgid "partly sunny and not as cold"
+msgstr "间有阳光，寒意减弱"
+
+msgid "partly sunny and not as cool"
+msgstr "间有阳光，凉意减弱"
+
+msgid "partly sunny and not as hot"
+msgstr "间有阳光，热势减弱"
+
+msgid "partly sunny and not as warm"
+msgstr "间有阳光，暖意减弱"
+
+msgid "partly sunny and pleasant"
+msgstr "间有阳光，天气宜人"
+
+msgid "partly sunny and quite cold"
+msgstr "间有阳光，较为寒冷"
+
+msgid "partly sunny and seasonable"
+msgstr "间有阳光，气温符合时令"
+
+msgid "partly sunny and summerlike"
+msgstr "间有阳光，夏日般的天气"
+
+msgid "partly sunny and very cold"
+msgstr "间有阳光，非常寒冷"
+
+msgid "partly sunny and very hot"
+msgstr "间有阳光，酷热"
+
+msgid "partly sunny and very humid"
+msgstr "间有阳光，空气非常潮湿"
+
+msgid "partly sunny and very warm"
+msgstr "间有阳光，很暖和"
+
+msgid "partly sunny and warm"
+msgstr "间有阳光，温暖"
+
+msgid "partly sunny and warmer"
+msgstr "间有阳光，气温回升"
+
+msgid "partly sunny and windy"
+msgstr "间有阳光，风较大"
+
+msgid "partly sunny with a shower"
+msgstr "间有阳光，有阵雨"
+
+msgid "partly sunny with a t-shower"
+msgstr "间有阳光，雷阵雨"
+
+msgid "partly sunny with a t-storm"
+msgstr "间有阳光，雷暴"
+
+msgid "partly sunny with flurries"
+msgstr "间有阳光，短时小阵雪"
+
+msgid "partly to mostly cloudy"
+msgstr "局部多云到大部多云"
+
+msgid "partly to mostly sunny"
+msgstr "间晴到大部晴朗"
+
+msgid "patchy clouds"
+msgstr "局部有云"
+
+msgid "patchy clouds and breezy"
+msgstr "局部有云，微风"
+
+msgid "patchy clouds and chilly"
+msgstr "局部有云，天气偏冷"
+
+msgid "patchy clouds and cold"
+msgstr "局部有云，寒冷"
+
+msgid "patchy clouds and cool"
+msgstr "局部有云，凉爽"
+
+msgid "patchy clouds and frigid"
+msgstr "局部有云，严寒"
+
+msgid "patchy clouds and humid"
+msgstr "局部有云，空气潮湿"
+
+msgid "patchy clouds and mild"
+msgstr "局部有云，气候温和"
+
+msgid "patchy clouds and very warm"
+msgstr "局部有云，很暖和"
+
+msgid "patchy clouds and warm"
+msgstr "局部有云，温暖"
+
+msgid "patchy clouds with a shower"
+msgstr "局部有云，有阵雨"
+
+msgid "patchy fog"
+msgstr "局地有雾"
+
+msgid "patchy fog freezing late"
+msgstr "晚些时候局地雾滴冻结"
+
+msgid "patchy freezing fog"
+msgstr "局地冻雾"
+
+msgid "patchy low clouds and fog"
+msgstr "局地有低云，雾"
+
+msgid "perhaps snow late"
+msgstr "晚些时候可能有雪"
+
+msgid "periods of clouds and sun"
+msgstr "晴间多云"
+
+msgid "periods of rain"
+msgstr "间歇性降雨"
+
+msgid "periods of rain and a t-storm"
+msgstr "间歇性降雨，雷暴"
+
+msgid "periods of rain late"
+msgstr "晚些时候间歇性降雨"
+
+msgid "periods of rain this morning"
+msgstr "今晨间歇性降雨"
+
+msgid "periods of snow"
+msgstr "间歇性降雪"
+
+msgid "periods of snow and rain"
+msgstr "间歇性降雪，雨"
+
+msgid "periods of sun"
+msgstr "间有阳光"
+
+msgid "periods of sun with a shower"
+msgstr "间有阳光，有阵雨"
+
+msgid "periods of sun with a t-storm"
+msgstr "间有阳光，雷暴"
+
+msgid "periods of sunshine"
+msgstr "间有阳光"
+
+msgid "periods of wet snow"
+msgstr "间歇性湿雪"
+
+msgid "pleasant"
+msgstr "天气宜人"
+
+msgid "pleasant and not as cool"
+msgstr "天气宜人，凉意减弱"
+
+msgid "pleasant and warmer"
+msgstr "天气宜人，气温回升"
+
+msgid "pleasant with clouds and sun"
+msgstr "天气宜人，晴间多云"
+
+msgid "pleasant with clouds breaking"
+msgstr "天气宜人，云量减少"
+
+msgid "pleasant with lots of sun"
+msgstr "天气宜人，阳光充足"
+
+msgid "pleasant with periods of sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "pleasant with plenty of sun"
+msgstr "天气宜人，阳光充足"
+
+msgid "pleasant with some sun"
+msgstr "天气宜人，间有阳光"
+
+msgid "pleasant with some sunshine"
+msgstr "天气宜人，间有阳光"
+
+msgid "pleasant with sun and clouds"
+msgstr "天气宜人，晴间多云"
+
+msgid "pleasant with sunny intervals"
+msgstr "天气宜人，间有阳光"
+
+msgid "pleasant with sunshine"
+msgstr "天气宜人，晴天"
+
+msgid "pleasant with variable clouds"
+msgstr "天气宜人，云量多变"
+
+msgid "pleasantly warm"
+msgstr "温暖宜人"
+
+msgid "pleasantly warm with some sun"
+msgstr "温暖宜人，间有阳光"
+
+msgid "pleasantly warm with sunshine"
+msgstr "温暖宜人，晴天"
+
+msgid "plenty of clouds"
+msgstr "多云"
+
+msgid "plenty of clouds with showers"
+msgstr "多云，阵雨"
+
+msgid "plenty of sun"
+msgstr "阳光充足"
+
+msgid "plenty of sunshine"
+msgstr "阳光充足"
+
+msgid "pluto"
+msgstr "冥王星"
+
+msgid "quite cold"
+msgstr "较为寒冷"
+
+msgid "rain and a t-storm"
+msgstr "雨，雷暴"
+
+msgid "rain and a thunderstorm"
+msgstr "雨，雷暴"
+
+msgid "rain and a thunderstorm early"
+msgstr "雨，初期雷暴"
+
+msgid "rain and a thunderstorm late"
+msgstr "雨，晚些时候雷暴"
+
+msgid "rain and drizzle"
+msgstr "雨和毛毛雨"
+
+msgid "rain and drizzle early"
+msgstr "初期雨和毛毛雨"
+
+msgid "rain and drizzle in the a.m."
+msgstr "早晨雨和毛毛雨"
+
+msgid "rain and drizzle in the p.m."
+msgstr "午后雨和毛毛雨"
+
+msgid "rain and drizzle late"
+msgstr "晚些时候雨和毛毛雨"
+
+msgid "rain and drizzle this evening"
+msgstr "今天傍晚雨和毛毛雨"
+
+msgid "rain and drizzle this morning"
+msgstr "今晨雨和毛毛雨"
+
+msgid "rain and ice in the evening"
+msgstr "傍晚雨和结冰"
+
+msgid "rain and snow"
+msgstr "有雨和雪"
+
+msgid "rain and snow shower"
+msgstr "阵雨和阵雪"
+
+msgid "rain and snow showers"
+msgstr "阵雨和阵雪"
+
+msgid "rain and snow showers early"
+msgstr "初期阵雨和阵雪"
+
+msgid "rain and snow showers late"
+msgstr "晚些时候阵雨和阵雪"
+
+msgid "rain at times"
+msgstr "间歇性降雨"
+
+msgid "rain at times in the evening"
+msgstr "傍晚间歇性降雨"
+
+msgid "rain at times late"
+msgstr "晚些时候间歇性降雨"
+
+msgid "rain becoming heavier"
+msgstr "雨势增强"
+
+msgid "rain becoming steadier"
+msgstr "雨势趋于持续"
+
+msgid "rain ending"
+msgstr "雨停"
+
+msgid "rain in the afternoon"
+msgstr "午后雨"
+
+msgid "rain in the evening"
+msgstr "傍晚雨"
+
+msgid "rain in the morning"
+msgstr "早晨雨"
+
+msgid "rain late in the afternoon"
+msgstr "下午稍晚雨"
+
+msgid "rain mixing in"
+msgstr "夹有降雨"
+
+msgid "rain tapering off"
+msgstr "雨势减弱"
+
+msgid "rain tapering to showers"
+msgstr "持续降雨减弱转为阵雨"
+
+msgid "rain this morning"
+msgstr "今晨雨"
+
+msgid "rain to ice"
+msgstr "雨后结冰"
+
+msgid "rain to snow"
+msgstr "雨转雪"
+
+msgid "rain/drizzle"
+msgstr "雨和毛毛雨"
+
+msgid "rain/snow"
+msgstr "有雨和雪"
+
+msgid "rainy spells in the morning"
+msgstr "早晨间歇性降雨"
+
+msgid "rainy times in the afternoon"
+msgstr "午后间歇性降雨"
+
+msgid "rainy times in the morning"
+msgstr "早晨间歇性降雨"
+
+msgid "rainy times late"
+msgstr "晚些时候间歇性降雨"
+
+msgid "rather cloudy"
+msgstr "云量较多"
+
+msgid "rather cloudy and breezy"
+msgstr "云量较多，微风"
+
+msgid "rather cloudy and chilly"
+msgstr "云量较多，天气偏冷"
+
+msgid "rather cloudy and cold"
+msgstr "云量较多，寒冷"
+
+msgid "rather cloudy and cool"
+msgstr "云量较多，凉爽"
+
+msgid "rather cloudy and cooler"
+msgstr "云量较多，天气转凉"
+
+msgid "rather cloudy and hot"
+msgstr "云量较多，炎热"
+
+msgid "rather cloudy and humid"
+msgstr "云量较多，空气潮湿"
+
+msgid "rather cloudy and mild"
+msgstr "云量较多，气候温和"
+
+msgid "rather cloudy and not as cold"
+msgstr "云量较多，寒意减弱"
+
+msgid "rather cloudy and not as warm"
+msgstr "云量较多，暖意减弱"
+
+msgid "rather cloudy and summerlike"
+msgstr "云量较多，夏日般的天气"
+
+msgid "rather cloudy and very cold"
+msgstr "云量较多，非常寒冷"
+
+msgid "rather cloudy and very warm"
+msgstr "云量较多，很暖和"
+
+msgid "rather cloudy and warm"
+msgstr "云量较多，温暖"
+
+msgid "rather cloudy and warmer"
+msgstr "云量较多，气温回升"
+
+msgid "rather cloudy with a shower"
+msgstr "云量较多，有阵雨"
+
+msgid "rather cloudy with a t-storm"
+msgstr "云量较多，雷暴"
+
+msgid "rather cloudy with rain late"
+msgstr "云量较多，晚些时候雨"
+
+msgid "rather cloudy with showers"
+msgstr "云量较多，阵雨"
+
+msgid "remaining cloudy"
+msgstr "持续多云"
+
+msgid "remaining cloudy and cold"
+msgstr "持续多云，寒冷"
+
+msgid "remaining cloudy and warmer"
+msgstr "持续多云，气温回升"
+
+msgid "remaining cloudy with showers"
+msgstr "持续多云，阵雨"
+
+msgid "remaining cool with some sun"
+msgstr "持续凉爽，间有阳光"
+
+msgid "remaining warm"
+msgstr "持续温暖"
+
+msgid "remaining warm with some sun"
+msgstr "持续温暖，间有阳光"
+
+msgid "remaining warm with sunshine"
+msgstr "持续温暖，晴天"
+
+msgid "rising temperatures"
+msgstr "气温上升"
+
+msgid "rising temperatures early"
+msgstr "初期气温上升"
+
+msgid "rising temperatures late"
+msgstr "晚些时候气温上升"
+
+msgid "saturn"
+msgstr "土星"
+
+msgid "seasonably warm"
+msgstr "气温温暖，符合时令"
+
+msgid "seasonably warm with sunshine"
+msgstr "气温温暖，符合时令，晴天"
+
+msgid "shower"
+msgstr "有阵雨"
+
+msgid "shower and thunderstorm"
+msgstr "有阵雨，雷暴"
+
+msgid "showers and a heavier t-storm"
+msgstr "阵雨，强雷暴"
+
+msgid "showers and heavy t-storms"
+msgstr "阵雨，强雷暴"
+
+msgid "showers and thunderstorm"
+msgstr "阵雨，雷暴"
+
+msgid "showers and thunderstorms"
+msgstr "阵雨，雷暴"
+
+msgid "showers around"
+msgstr "局地阵雨"
+
+msgid "showers around early"
+msgstr "初期局地阵雨"
+
+msgid "showers around in the evening"
+msgstr "傍晚局地阵雨"
+
+msgid "showers around in the morning"
+msgstr "早晨局地阵雨"
+
+msgid "showers around in the p.m."
+msgstr "午后局地阵雨"
+
+msgid "showers around late"
+msgstr "晚些时候局地阵雨"
+
+msgid "showers around this afternoon"
+msgstr "今天下午局地阵雨"
+
+msgid "showers around this evening"
+msgstr "今天傍晚局地阵雨"
+
+msgid "showers early in the morning"
+msgstr "清晨阵雨"
+
+msgid "showers early this morning"
+msgstr "清晨阵雨"
+
+msgid "showers in the afternoon"
+msgstr "午后阵雨"
+
+msgid "showers in the evening"
+msgstr "傍晚阵雨"
+
+msgid "showers in the morning"
+msgstr "早晨阵雨"
+
+msgid "showers late"
+msgstr "晚些时候阵雨"
+
+msgid "showers late in the afternoon"
+msgstr "下午稍晚阵雨"
+
+msgid "showers late this afternoon"
+msgstr "下午稍晚阵雨"
+
+msgid "showers late this morning"
+msgstr "近中午阵雨"
+
+msgid "showers of rain and snow"
+msgstr "阵雨和阵雪"
+
+msgid "showers of rain and snow late"
+msgstr "晚些时候阵雨和阵雪"
+
+msgid "showers possible"
+msgstr "可能有阵雨"
+
+msgid "showers this evening"
+msgstr "今天傍晚阵雨"
+
+msgid "showers this morning"
+msgstr "今晨阵雨"
+
+msgid "sleet and freezing rain late"
+msgstr "雨夹雪，晚些时候冻雨"
+
+msgid "snow and rain"
+msgstr "有雨和雪"
+
+msgid "snow and rain in the morning"
+msgstr "早晨有雨和雪"
+
+msgid "snow and rain late"
+msgstr "晚些时候有雨和雪"
+
+msgid "snow and rain this morning"
+msgstr "今晨有雨和雪"
+
+msgid "snow and sleet at times"
+msgstr "间或有雪和冰粒"
+
+msgid "snow at times"
+msgstr "间歇性降雪"
+
+msgid "snow in the evening"
+msgstr "傍晚雪"
+
+msgid "snow late in the p.m."
+msgstr "午后晚些时候雪"
+
+msgid "snow late this afternoon"
+msgstr "下午稍晚雪"
+
+msgid "snow late this morning"
+msgstr "近中午雪"
+
+msgid "snow much of the time"
+msgstr "大部分时段有雪"
+
+msgid "snow of varying rates"
+msgstr "降雪时强时弱"
+
+msgid "snow showers in the afternoon"
+msgstr "午后阵雪"
+
+msgid "snow showers in the morning"
+msgstr "早晨阵雪"
+
+msgid "snow showers late"
+msgstr "晚些时候阵雪"
+
+msgid "snow showers this evening"
+msgstr "今天傍晚阵雪"
+
+msgid "snow tapering off"
+msgstr "雪势减弱"
+
+msgid "snow tapering to flurries"
+msgstr "降雪减弱转为零星小雪"
+
+msgid "some brightening"
+msgstr "略有放晴"
+
+msgid "some brightening and hot"
+msgstr "略有放晴，炎热"
+
+msgid "some brightening and humid"
+msgstr "略有放晴，空气潮湿"
+
+msgid "some brightening and warm"
+msgstr "略有放晴，温暖"
+
+msgid "some brightening and warmer"
+msgstr "略有放晴，气温回升"
+
+msgid "some clouds"
+msgstr "少云"
+
+msgid "some clouds with a shower"
+msgstr "少云，有阵雨"
+
+msgid "some clouds with a t-storm"
+msgstr "少云，雷暴"
+
+msgid "some clouds with rain late"
+msgstr "少云，晚些时候雨"
+
+msgid "some ice early"
+msgstr "初期局部结冰"
+
+msgid "some rain and a t-storm early"
+msgstr "少量降雨，初期雷暴"
+
+msgid "some rain and a t-storm late"
+msgstr "少量降雨，晚些时候雷暴"
+
+msgid "some rain and a thunderstorm"
+msgstr "少量降雨，雷暴"
+
+msgid "some snow"
+msgstr "少量降雪"
+
+msgid "some sun"
+msgstr "间有阳光"
+
+msgid "some sun and pleasant"
+msgstr "间有阳光，天气宜人"
+
+msgid "some sun returning"
+msgstr "略有放晴"
+
+msgid "some sun with a brief shower"
+msgstr "间有阳光，短时阵雨"
+
+msgid "some sun with a cool breeze"
+msgstr "间有阳光，凉风"
+
+msgid "some sun with a few showers"
+msgstr "间有阳光，零星阵雨"
+
+msgid "some sun with a gusty breeze"
+msgstr "间有阳光，有阵风"
+
+msgid "some sun with a heavy t-storm"
+msgstr "间有阳光，强雷暴"
+
+msgid "some sun with a little rain"
+msgstr "间有阳光，少量降雨"
+
+msgid "some sun with a quick shower"
+msgstr "间有阳光，短时阵雨"
+
+msgid "some sun with a shower"
+msgstr "间有阳光，有阵雨"
+
+msgid "some sun with a shower or two"
+msgstr "间有阳光，一两场阵雨"
+
+msgid "some sun with a stray shower"
+msgstr "间有阳光，局地阵雨"
+
+msgid "some sun with a stray t-storm"
+msgstr "间有阳光，局地雷暴"
+
+msgid "some sun with a t-storm"
+msgstr "间有阳光，雷暴"
+
+msgid "some sun with a thundershower"
+msgstr "间有阳光，雷阵雨"
+
+msgid "some sun with a thunderstorm"
+msgstr "间有阳光，雷暴"
+
+msgid "some sun with low humidity"
+msgstr "间有阳光，湿度低"
+
+msgid "some sun with occasional rain"
+msgstr "间有阳光，间歇性降雨"
+
+msgid "some sun with showers"
+msgstr "间有阳光，阵雨"
+
+msgid "some sun with showers around"
+msgstr "间有阳光，局地阵雨"
+
+msgid "some sun with spotty showers"
+msgstr "间有阳光，局地阵雨"
+
+msgid "some sunshine"
+msgstr "间有阳光"
+
+msgid "some sunshine with a shower"
+msgstr "间有阳光，有阵雨"
+
+msgid "spotty afternoon showers"
+msgstr "午后局地阵雨"
+
+msgid "spotty drizzle in the morning"
+msgstr "早晨局地毛毛雨"
+
+msgid "spotty drizzle this morning"
+msgstr "今晨局地毛毛雨"
+
+msgid "spotty evening showers"
+msgstr "傍晚局地阵雨"
+
+msgid "spotty late-night showers"
+msgstr "深夜局地阵雨"
+
+msgid "spotty morning showers"
+msgstr "早晨局地阵雨"
+
+msgid "spotty showers"
+msgstr "局地阵雨"
+
+msgid "spotty showers in the evening"
+msgstr "傍晚局地阵雨"
+
+msgid "spotty showers in the morning"
+msgstr "早晨局地阵雨"
+
+msgid "spotty showers late"
+msgstr "晚些时候局地阵雨"
+
+msgid "spotty showers this afternoon"
+msgstr "今天下午局地阵雨"
+
+msgid "spotty showers this morning"
+msgstr "今晨局地阵雨"
+
+msgid "still cloudy"
+msgstr "持续多云"
+
+msgid "still cloudy and warmer"
+msgstr "持续多云，气温回升"
+
+msgid "still cloudy with a shower"
+msgstr "持续多云，有阵雨"
+
+msgid "still cloudy with showers"
+msgstr "持续多云，阵雨"
+
+msgid "strong afternoon t-storms"
+msgstr "午后强雷暴"
+
+msgid "strong evening thunderstorms"
+msgstr "傍晚强雷暴"
+
+msgid "strong late"
+msgstr "晚些时候强"
+
+msgid "strong late-night t-storms"
+msgstr "深夜强雷暴"
+
+msgid "strong t-storms"
+msgstr "强雷暴"
+
+msgid "strong thunderstorms"
+msgstr "强雷暴"
+
+msgid "strong thunderstorms late"
+msgstr "晚些时候强雷暴"
+
+msgid "strong thunderstorms possible"
+msgstr "可能有强雷暴"
+
+msgid "strong winds subsiding"
+msgstr "大风减弱"
+
+msgid "summerlike"
+msgstr "夏日般的天气"
+
+msgid "summerlike with a few showers"
+msgstr "夏日般的天气，零星阵雨"
+
+msgid "summerlike with a shower"
+msgstr "夏日般的天气，有阵雨"
+
+msgid "summerlike with a t-storm"
+msgstr "夏日般的天气，雷暴"
+
+msgid "summerlike with hazy sun"
+msgstr "夏日般的天气，阳光朦胧"
+
+msgid "summerlike with high clouds"
+msgstr "夏日般的天气，高云"
+
+msgid "summerlike with lots of sun"
+msgstr "夏日般的天气，阳光充足"
+
+msgid "summerlike with some sun"
+msgstr "夏日般的天气，间有阳光"
+
+msgid "summerlike with sunshine"
+msgstr "夏日般的天气，晴天"
+
+msgid "sun and areas of high clouds"
+msgstr "晴天，部分地区有高云"
+
+msgid "sun and areas of low clouds"
+msgstr "晴天，局地有低云"
+
+msgid "sun and clouds"
+msgstr "晴间多云"
+
+msgid "sun and clouds with a shower"
+msgstr "晴间多云，有阵雨"
+
+msgid "sun and clouds with a t-storm"
+msgstr "晴间多云，雷暴"
+
+msgid "sun and some clouds"
+msgstr "晴间多云"
+
+msgid "sun followed by clouds"
+msgstr "晴转多云"
+
+msgid "sun followed by some clouds"
+msgstr "先晴后有少量云"
+
+msgid "sun giving way to clouds"
+msgstr "晴转多云"
+
+msgid "sun mixing with clouds"
+msgstr "晴间多云"
+
+msgid "sun through high clouds"
+msgstr "阳光透过高云"
+
+msgid "sun yielding to clouds"
+msgstr "晴转多云"
+
+msgid "sunlit"
+msgstr "晴天"
+
+msgid "sunlit and beautiful"
+msgstr "晴天，天气宜人"
+
+msgid "sunlit and comfortable"
+msgstr "晴天，天气宜人"
+
+msgid "sunlit and delightful"
+msgstr "晴天，天气宜人"
+
+msgid "sunlit and pleasant"
+msgstr "晴天，天气宜人"
+
+msgid "sunlit and unseasonably hot"
+msgstr "晴天，异常炎热"
+
+msgid "sunlit and very warm"
+msgstr "晴天，很暖和"
+
+msgid "sunlit and warmer"
+msgstr "晴天，气温回升"
+
+msgid "sunny and beautiful"
+msgstr "晴天，天气宜人"
+
+msgid "sunny and breezy"
+msgstr "晴天，微风"
+
+msgid "sunny and cold"
+msgstr "晴天，寒冷"
+
+msgid "sunny and comfortable"
+msgstr "晴天，天气宜人"
+
+msgid "sunny and cool"
+msgstr "晴天，凉爽"
+
+msgid "sunny and cooler"
+msgstr "晴天，天气转凉"
+
+msgid "sunny and cooler but pleasant"
+msgstr "晴天，天气转凉，天气宜人"
+
+msgid "sunny and delightful"
+msgstr "晴天，天气宜人"
+
+msgid "sunny and hot"
+msgstr "晴天，炎热"
+
+msgid "sunny and hotter"
+msgstr "晴天，更炎热"
+
+msgid "sunny and humid"
+msgstr "晴天，空气潮湿"
+
+msgid "sunny and less humid"
+msgstr "晴天，湿度下降"
+
+msgid "sunny and mild"
+msgstr "晴天，气候温和"
+
+msgid "sunny and milder"
+msgstr "晴天，气温趋于温和"
+
+msgid "sunny and nice"
+msgstr "晴天，天气宜人"
+
+msgid "sunny and not as cold"
+msgstr "晴天，寒意减弱"
+
+msgid "sunny and not as cool"
+msgstr "晴天，凉意减弱"
+
+msgid "sunny and not as hot"
+msgstr "晴天，热势减弱"
+
+msgid "sunny and not as warm"
+msgstr "晴天，暖意减弱"
+
+msgid "sunny and pleasant"
+msgstr "晴天，天气宜人"
+
+msgid "sunny and pleasantly cool"
+msgstr "晴天，凉爽舒适"
+
+msgid "sunny and pleasantly warm"
+msgstr "晴天，温暖宜人"
+
+msgid "sunny and remaining cool"
+msgstr "晴天，持续凉爽"
+
+msgid "sunny and remaining very warm"
+msgstr "晴天，持续十分温暖"
+
+msgid "sunny and remaining warm"
+msgstr "晴天，持续温暖"
+
+msgid "sunny and seasonably cold"
+msgstr "晴天，寒冷程度符合时令"
+
+msgid "sunny and seasonably warm"
+msgstr "晴天，气温温暖，符合时令"
+
+msgid "sunny and unseasonably hot"
+msgstr "晴天，异常炎热"
+
+msgid "sunny and very cold"
+msgstr "晴天，非常寒冷"
+
+msgid "sunny and very humid"
+msgstr "晴天，空气非常潮湿"
+
+msgid "sunny and very warm"
+msgstr "晴天，很暖和"
+
+msgid "sunny and warm"
+msgstr "晴天，温暖"
+
+msgid "sunny and warmer"
+msgstr "晴天，气温回升"
+
+msgid "sunny and windy"
+msgstr "晴天，风较大"
+
+msgid "sunny intervals"
+msgstr "间有阳光"
+
+msgid "sunny intervals with a shower"
+msgstr "间有阳光，有阵雨"
+
+msgid "sunny much of the time"
+msgstr "多为晴天"
+
+msgid "sunny to partly cloudy"
+msgstr "晴到少云"
+
+msgid "sunny with a gusty breeze"
+msgstr "晴天，有阵风"
+
+msgid "sunny with a warm breeze"
+msgstr "晴天，暖风"
+
+msgid "sunny with low humidity"
+msgstr "晴天，湿度低"
+
+msgid "sunshine"
+msgstr "晴天"
+
+msgid "sunshine and a few clouds"
+msgstr "晴天，少云"
+
+msgid "sunshine and beautiful"
+msgstr "晴天，天气宜人"
+
+msgid "sunshine and bitterly cold"
+msgstr "晴天，严寒"
+
+msgid "sunshine and breezy"
+msgstr "晴天，微风"
+
+msgid "sunshine and cold"
+msgstr "晴天，寒冷"
+
+msgid "sunshine and comfortable"
+msgstr "晴天，天气宜人"
+
+msgid "sunshine and cooler"
+msgstr "晴天，天气转凉"
+
+msgid "sunshine and delightful"
+msgstr "晴天，天气宜人"
+
+msgid "sunshine and hot"
+msgstr "晴天，炎热"
+
+msgid "sunshine and hotter"
+msgstr "晴天，更炎热"
+
+msgid "sunshine and humid"
+msgstr "晴天，空气潮湿"
+
+msgid "sunshine and less humid"
+msgstr "晴天，湿度下降"
+
+msgid "sunshine and mild"
+msgstr "晴天，气候温和"
+
+msgid "sunshine and nice"
+msgstr "晴天，天气宜人"
+
+msgid "sunshine and not as cold"
+msgstr "晴天，寒意减弱"
+
+msgid "sunshine and not as hot"
+msgstr "晴天，热势减弱"
+
+msgid "sunshine and not as warm"
+msgstr "晴天，暖意减弱"
+
+msgid "sunshine and patchy clouds"
+msgstr "晴天，局部有云"
+
+msgid "sunshine and pleasant"
+msgstr "晴天，天气宜人"
+
+msgid "sunshine and pleasantly warm"
+msgstr "晴天，温暖宜人"
+
+msgid "sunshine and remaining warm"
+msgstr "晴天，持续温暖"
+
+msgid "sunshine and seasonably cold"
+msgstr "晴天，寒冷程度符合时令"
+
+msgid "sunshine and seasonably warm"
+msgstr "晴天，气温温暖，符合时令"
+
+msgid "sunshine and some clouds"
+msgstr "晴天，少云"
+
+msgid "sunshine and summerlike"
+msgstr "晴天，夏日般的天气"
+
+msgid "sunshine and unseasonably hot"
+msgstr "晴天，异常炎热"
+
+msgid "sunshine and very hot"
+msgstr "晴天，酷热"
+
+msgid "sunshine and very warm"
+msgstr "晴天，很暖和"
+
+msgid "sunshine and warm"
+msgstr "晴天，温暖"
+
+msgid "sunshine and warmer"
+msgstr "晴天，气温回升"
+
+msgid "sunshine mixing with clouds"
+msgstr "晴间多云"
+
+msgid "sunshine with a shower"
+msgstr "晴天，有阵雨"
+
+msgid "sunshine with a snow shower"
+msgstr "晴天，有阵雪"
+
+msgid "sunshine with a stray shower"
+msgstr "晴天，局地阵雨"
+
+msgid "sunshine with a stray t-storm"
+msgstr "晴天，局地雷暴"
+
+msgid "sunshine with a thundershower"
+msgstr "晴天，雷阵雨"
+
+msgid "sunshine with a thunderstorm"
+msgstr "晴天，雷暴"
+
+msgid "sunshine with low humidity"
+msgstr "晴天，湿度低"
+
+msgid "t-storms"
+msgstr "雷暴"
+
+msgid "t-storms in the afternoon"
+msgstr "午后雷暴"
+
+msgid "t-storms possible in the a.m."
+msgstr "早晨可能有雷暴"
+
+msgid "then a bit of ice"
+msgstr "随后局部结冰"
+
+msgid "then a shower"
+msgstr "随后有阵雨"
+
+msgid "then clouds"
+msgstr "随后多云"
+
+msgid "then flurries"
+msgstr "随后短时小阵雪"
+
+msgid "then ice"
+msgstr "随后冰"
+
+msgid "then rain"
+msgstr "随后雨"
+
+msgid "then showers"
+msgstr "随后阵雨"
+
+msgid "then snow"
+msgstr "随后雪"
+
+msgid "then some sun"
+msgstr "随后间有阳光"
+
+msgid "then sun"
+msgstr "随后晴天"
+
+msgid "then t-storms"
+msgstr "随后雷暴"
+
+msgid "then turning cloudy"
+msgstr "随后逐渐转阴"
+
+msgid "thickening clouds"
+msgstr "云层逐渐增厚"
+
+msgid "thickening clouds and hot"
+msgstr "云层逐渐增厚，炎热"
+
+msgid "thundershower"
+msgstr "雷阵雨"
+
+msgid "thunderstorms in the evening"
+msgstr "傍晚雷暴"
+
+msgid "thunderstorms late"
+msgstr "晚些时候雷暴"
+
+msgid "thunderstorms this afternoon"
+msgstr "今天下午雷暴"
+
+msgid "thunderstorms this morning"
+msgstr "今晨雷暴"
+
+msgid "times of clouds and sun"
+msgstr "晴间多云"
+
+msgid "times of clouds and sunshine"
+msgstr "晴间多云"
+
+msgid "times of rain"
+msgstr "间歇性降雨"
+
+msgid "times of sun and clouds"
+msgstr "晴间多云"
+
+msgid "to rain"
+msgstr "转雨"
+
+msgid "turning clear"
+msgstr "逐渐放晴"
+
+msgid "turning clear and very warm"
+msgstr "逐渐放晴，很暖和"
+
+msgid "turning cloudy"
+msgstr "逐渐转阴"
+
+msgid "turning cloudy and breezy"
+msgstr "逐渐转阴，微风"
+
+msgid "turning cloudy and chilly"
+msgstr "逐渐转阴，天气偏冷"
+
+msgid "turning cloudy and cold"
+msgstr "逐渐转阴，寒冷"
+
+msgid "turning cloudy and colder"
+msgstr "逐渐转阴，气温下降"
+
+msgid "turning cloudy and cooler"
+msgstr "逐渐转阴，天气转凉"
+
+msgid "turning cloudy and hot"
+msgstr "逐渐转阴，炎热"
+
+msgid "turning cloudy and hotter"
+msgstr "逐渐转阴，更炎热"
+
+msgid "turning cloudy and humid"
+msgstr "逐渐转阴，空气潮湿"
+
+msgid "turning cloudy and less humid"
+msgstr "逐渐转阴，湿度下降"
+
+msgid "turning cloudy and mild"
+msgstr "逐渐转阴，气候温和"
+
+msgid "turning cloudy and milder"
+msgstr "逐渐转阴，气温趋于温和"
+
+msgid "turning cloudy and pleasant"
+msgstr "逐渐转阴，天气宜人"
+
+msgid "turning cloudy and summerlike"
+msgstr "逐渐转阴，夏日般的天气"
+
+msgid "turning cloudy and very hot"
+msgstr "逐渐转阴，酷热"
+
+msgid "turning cloudy and very warm"
+msgstr "逐渐转阴，很暖和"
+
+msgid "turning cloudy and warm"
+msgstr "逐渐转阴，温暖"
+
+msgid "turning cloudy and warmer"
+msgstr "逐渐转阴，气温回升"
+
+msgid "turning cloudy with a shower"
+msgstr "逐渐转阴，有阵雨"
+
+msgid "turning cloudy with a t-storm"
+msgstr "逐渐转阴，雷暴"
+
+msgid "turning cloudy with rain late"
+msgstr "逐渐转阴，晚些时候雨"
+
+msgid "turning colder in the morning"
+msgstr "早晨气温下降"
+
+msgid "turning colder this afternoon"
+msgstr "今天下午气温下降"
+
+msgid "turning colder this morning"
+msgstr "今晨气温下降"
+
+msgid "turning out clear"
+msgstr "逐渐放晴"
+
+msgid "turning out clear and breezy"
+msgstr "逐渐放晴，微风"
+
+msgid "turning out clear and chilly"
+msgstr "逐渐放晴，天气偏冷"
+
+msgid "turning out clear and cold"
+msgstr "逐渐放晴，寒冷"
+
+msgid "turning out clear and frigid"
+msgstr "逐渐放晴，严寒"
+
+msgid "turning out clear and mild"
+msgstr "逐渐放晴，气候温和"
+
+msgid "turning out clear and warm"
+msgstr "逐渐放晴，温暖"
+
+msgid "turning out cloudy"
+msgstr "逐渐转阴"
+
+msgid "turning out cloudy and warmer"
+msgstr "逐渐转阴，气温回升"
+
+msgid "turning sunny"
+msgstr "转晴"
+
+msgid "turning sunny and beautiful"
+msgstr "转晴，天气宜人"
+
+msgid "turning sunny and cooler"
+msgstr "转晴，天气转凉"
+
+msgid "turning sunny and delightful"
+msgstr "转晴，天气宜人"
+
+msgid "turning sunny and hot"
+msgstr "转晴，炎热"
+
+msgid "turning sunny and humid"
+msgstr "转晴，空气潮湿"
+
+msgid "turning sunny and nice"
+msgstr "转晴，天气宜人"
+
+msgid "turning sunny and not as warm"
+msgstr "转晴，暖意减弱"
+
+msgid "turning sunny and pleasant"
+msgstr "转晴，天气宜人"
+
+msgid "turning sunny and summerlike"
+msgstr "转晴，夏日般的天气"
+
+msgid "turning sunny and very hot"
+msgstr "转晴，酷热"
+
+msgid "turning sunny and very warm"
+msgstr "转晴，很暖和"
+
+msgid "unseasonably hot"
+msgstr "异常炎热"
+
+msgid "up to 1in"
+msgstr "最多2.54厘米"
+
+msgid "uranus"
+msgstr "天王星"
+
+msgid "variable cloudiness"
+msgstr "云量多变"
+
+msgid "variable clouds"
+msgstr "云量多变"
+
+msgid "variable clouds with a shower"
+msgstr "云量多变，有阵雨"
+
+msgid "variable clouds with showers"
+msgstr "云量多变，阵雨"
+
+msgid "variable clouds with t-storms"
+msgstr "云量多变，雷暴"
+
+msgid "variably cloudy"
+msgstr "云量多变"
+
+msgid "variably cloudy and breezy"
+msgstr "云量多变，微风"
+
+msgid "variably cloudy and chilly"
+msgstr "云量多变，天气偏冷"
+
+msgid "variably cloudy and cooler"
+msgstr "云量多变，天气转凉"
+
+msgid "variably cloudy and humid"
+msgstr "云量多变，空气潮湿"
+
+msgid "variably cloudy and nice"
+msgstr "云量多变，天气宜人"
+
+msgid "variably cloudy and pleasant"
+msgstr "云量多变，天气宜人"
+
+msgid "variably cloudy and very warm"
+msgstr "云量多变，很暖和"
+
+msgid "variably cloudy and warmer"
+msgstr "云量多变，气温回升"
+
+msgid "variably cloudy with a shower"
+msgstr "云量多变，有阵雨"
+
+msgid "variably cloudy with showers"
+msgstr "云量多变，阵雨"
+
+msgid "variably cloudy with t-storms"
+msgstr "云量多变，雷暴"
+
+msgid "venus"
+msgstr "金星"
+
+msgid "very cold"
+msgstr "非常寒冷"
+
+msgid "very cold with a few flurries"
+msgstr "非常寒冷，零星小阵雪"
+
+msgid "very cold with clouds and sun"
+msgstr "非常寒冷，晴间多云"
+
+msgid "very cold with snow"
+msgstr "非常寒冷，雪"
+
+msgid "very cold with snow at times"
+msgstr "非常寒冷，间歇性降雪"
+
+msgid "very hot"
+msgstr "酷热"
+
+msgid "very hot with a few showers"
+msgstr "酷热，零星阵雨"
+
+msgid "very hot with a shower"
+msgstr "酷热，有阵雨"
+
+msgid "very hot with clouds and sun"
+msgstr "酷热，晴间多云"
+
+msgid "very hot with hazy sun"
+msgstr "酷热，阳光朦胧"
+
+msgid "very hot with high clouds"
+msgstr "酷热，高云"
+
+msgid "very hot with some sun"
+msgstr "酷热，间有阳光"
+
+msgid "very hot with sunshine"
+msgstr "酷热，晴天"
+
+msgid "very warm"
+msgstr "很暖和"
+
+msgid "very warm and humid with rain"
+msgstr "很暖和，空气潮湿，雨"
+
+msgid "very warm with clearing"
+msgstr "很暖和，逐渐放晴"
+
+msgid "very warm with clouds"
+msgstr "很暖和，多云"
+
+msgid "very warm with clouds and sun"
+msgstr "很暖和，晴间多云"
+
+msgid "very warm with hazy sun"
+msgstr "很暖和，阳光朦胧"
+
+msgid "very warm with hazy sunshine"
+msgstr "很暖和，阳光朦胧"
+
+msgid "very warm with high clouds"
+msgstr "很暖和，高云"
+
+msgid "very warm with lots of sun"
+msgstr "很暖和，阳光充足"
+
+msgid "very warm with patchy clouds"
+msgstr "很暖和，局部有云"
+
+msgid "very warm with periods of sun"
+msgstr "很暖和，间有阳光"
+
+msgid "very warm with plenty of sun"
+msgstr "很暖和，阳光充足"
+
+msgid "very warm with some sun"
+msgstr "很暖和，间有阳光"
+
+msgid "very warm with sun and clouds"
+msgstr "很暖和，晴间多云"
+
+msgid "very warm with sunshine"
+msgstr "很暖和，晴天"
+
+msgid "very windy"
+msgstr "风很大"
+
+msgid "very windy in the a.m."
+msgstr "早晨风很大"
+
+msgid "very windy in the morning"
+msgstr "早晨风很大"
+
+msgid "very windy this evening"
+msgstr "今天傍晚风很大"
+
+msgid "very windy this morning"
+msgstr "今晨风很大"
+
+msgid "warm"
+msgstr "温暖"
+
+msgid "warm and hamid"
+msgstr "温暖，空气潮湿"
+
+msgid "warm and humid"
+msgstr "温暖，空气潮湿"
+
+msgid "warm and humid with clearing"
+msgstr "温暖，空气潮湿，逐渐放晴"
+
+msgid "warm and humid with some sun"
+msgstr "温暖，空气潮湿，间有阳光"
+
+msgid "warm with abundant sunshine"
+msgstr "温暖，阳光充足"
+
+msgid "warm with clearing"
+msgstr "温暖，逐渐放晴"
+
+msgid "warm with clouds and sun"
+msgstr "温暖，晴间多云"
+
+msgid "warm with clouds and sunshine"
+msgstr "温暖，晴间多云"
+
+msgid "warm with clouds breaking"
+msgstr "温暖，云量减少"
+
+msgid "warm with clouds limiting sun"
+msgstr "温暖，云层遮挡阳光"
+
+msgid "warm with decreasing clouds"
+msgstr "温暖，云量减少"
+
+msgid "warm with high clouds"
+msgstr "温暖，高云"
+
+msgid "warm with increasing clouds"
+msgstr "温暖，云量增加"
+
+msgid "warm with occasional rain"
+msgstr "温暖，间歇性降雨"
+
+msgid "warm with partial sunshine"
+msgstr "温暖，间有阳光"
+
+msgid "warm with patchy clouds"
+msgstr "温暖，局部有云"
+
+msgid "warm with periods of sun"
+msgstr "温暖，间有阳光"
+
+msgid "warm with plenty of clouds"
+msgstr "温暖，多云"
+
+msgid "warm with plenty of sun"
+msgstr "温暖，阳光充足"
+
+msgid "warm with plenty of sunshine"
+msgstr "温暖，阳光充足"
+
+msgid "warm with rain and drizzle"
+msgstr "温暖，雨和毛毛雨"
+
+msgid "warm with some brightening"
+msgstr "温暖，略有放晴"
+
+msgid "warm with some sun"
+msgstr "温暖，间有阳光"
+
+msgid "warm with some sun returning"
+msgstr "温暖，略有放晴"
+
+msgid "warm with sun"
+msgstr "温暖，晴天"
+
+msgid "warm with sun and clouds"
+msgstr "温暖，晴间多云"
+
+msgid "warm with sunny intervals"
+msgstr "温暖，间有阳光"
+
+msgid "warm with sunshine"
+msgstr "温暖，晴天"
+
+msgid "warm with variable cloudiness"
+msgstr "温暖，云量多变"
+
+msgid "warm with variable clouds"
+msgstr "温暖，云量多变"
+
+msgid "warmer"
+msgstr "气温回升"
+
+msgid "warmer late"
+msgstr "晚些时候气温回升"
+
+msgid "warmer with a bit of rain"
+msgstr "气温回升，少量降雨"
+
+msgid "warmer with a brief shower"
+msgstr "气温回升，短时阵雨"
+
+msgid "warmer with a few showers"
+msgstr "气温回升，零星阵雨"
+
+msgid "warmer with a heavy t-storm"
+msgstr "气温回升，强雷暴"
+
+msgid "warmer with a passing shower"
+msgstr "气温回升，短时阵雨"
+
+msgid "warmer with a shower"
+msgstr "气温回升，有阵雨"
+
+msgid "warmer with a shower in spots"
+msgstr "气温回升，局地阵雨"
+
+msgid "warmer with a shower or two"
+msgstr "气温回升，一两场阵雨"
+
+msgid "warmer with a stray shower"
+msgstr "气温回升，局地阵雨"
+
+msgid "warmer with a stray t-storm"
+msgstr "气温回升，局地雷暴"
+
+msgid "warmer with a thunderstorm"
+msgstr "气温回升，雷暴"
+
+msgid "warmer with abundant sunshine"
+msgstr "气温回升，阳光充足"
+
+msgid "warmer with clearing"
+msgstr "气温回升，逐渐放晴"
+
+msgid "warmer with clouds"
+msgstr "气温回升，多云"
+
+msgid "warmer with clouds and sun"
+msgstr "气温回升，晴间多云"
+
+msgid "warmer with decreasing clouds"
+msgstr "气温回升，云量减少"
+
+msgid "warmer with high clouds"
+msgstr "气温回升，高云"
+
+msgid "warmer with increasing clouds"
+msgstr "气温回升，云量增加"
+
+msgid "warmer with low clouds"
+msgstr "气温回升，低云"
+
+msgid "warmer with partial sunshine"
+msgstr "气温回升，间有阳光"
+
+msgid "warmer with periods of rain"
+msgstr "气温回升，间歇性降雨"
+
+msgid "warmer with periods of sun"
+msgstr "气温回升，间有阳光"
+
+msgid "warmer with plenty of sun"
+msgstr "气温回升，阳光充足"
+
+msgid "warmer with showers"
+msgstr "气温回升，阵雨"
+
+msgid "warmer with showers around"
+msgstr "气温回升，局地阵雨"
+
+msgid "warmer with some brightening"
+msgstr "气温回升，略有放晴"
+
+msgid "warmer with some sun"
+msgstr "气温回升，间有阳光"
+
+msgid "warmer with some sunshine"
+msgstr "气温回升，间有阳光"
+
+msgid "warmer with spotty showers"
+msgstr "气温回升，局地阵雨"
+
+msgid "warmer with sun"
+msgstr "气温回升，晴天"
+
+msgid "warmer with sun and clouds"
+msgstr "气温回升，晴间多云"
+
+msgid "warmer with sunny intervals"
+msgstr "气温回升，间有阳光"
+
+msgid "warmer with sunshine"
+msgstr "气温回升，晴天"
+
+msgid "warmer with variable clouds"
+msgstr "气温回升，云量多变"
+
+msgid "watch for ice early"
+msgstr "初期注意结冰"
+
+msgid "watch for ice late"
+msgstr "晚些时候注意结冰"
+
+msgid "wet snow"
+msgstr "湿雪"
+
+msgid "winds gradually subsiding"
+msgstr "风力逐渐减弱"
+
+msgid "windy"
+msgstr "风较大"
+
+msgid "windy and cold"
+msgstr "风较大，寒冷"
+
+msgid "windy and cooler"
+msgstr "风较大，天气转凉"
+
+msgid "windy and cooler with rain"
+msgstr "风较大，天气转凉，雨"
+
+msgid "windy and cooler with showers"
+msgstr "风较大，天气转凉，阵雨"
+
+msgid "windy and frigid"
+msgstr "风较大，严寒"
+
+msgid "windy and humid with rain"
+msgstr "风较大，空气潮湿，雨"
+
+msgid "windy and very cold"
+msgstr "风较大，非常寒冷"
+
+msgid "windy early"
+msgstr "初期风较大"
+
+msgid "windy in the a.m."
+msgstr "早晨风较大"
+
+msgid "windy in the afternoon"
+msgstr "午后风较大"
+
+msgid "windy in the morning"
+msgstr "早晨风较大"
+
+msgid "windy this afternoon"
+msgstr "今天下午风较大"
+
+msgid "windy this morning"
+msgstr "今晨风较大"
+
+msgid "windy with a bit of ice"
+msgstr "风较大，局部结冰"
+
+msgid "windy with a little rain"
+msgstr "风较大，少量降雨"
+
+msgid "windy with a passing shower"
+msgstr "风较大，短时阵雨"
+
+msgid "windy with a shower in places"
+msgstr "风较大，局地阵雨"
+
+msgid "windy with a shower in spots"
+msgstr "风较大，局地阵雨"
+
+msgid "windy with a shower or two"
+msgstr "风较大，一两场阵雨"
+
+msgid "windy with a stray shower"
+msgstr "风较大，局地阵雨"
+
+msgid "windy with brilliant sunshine"
+msgstr "风较大，阳光灿烂"
+
+msgid "windy with clouds and sun"
+msgstr "风较大，晴间多云"
+
+msgid "windy with decreasing clouds"
+msgstr "风较大，云量减少"
+
+msgid "windy with increasing clouds"
+msgstr "风较大，云量增加"
+
+msgid "windy with occasional rain"
+msgstr "风较大，间歇性降雨"
+
+msgid "windy with periods of rain"
+msgstr "风较大，间歇性降雨"
+
+msgid "windy with periods of snow"
+msgstr "风较大，间歇性降雪"
+
+msgid "windy with plenty of sun"
+msgstr "风较大，阳光充足"
+
+msgid "windy with plenty of sunshine"
+msgstr "风较大，阳光充足"
+
+msgid "windy with rain and a t-storm"
+msgstr "风较大，雨，雷暴"
+
+msgid "windy with showers"
+msgstr "风较大，阵雨"
+
+msgid "windy with showers around"
+msgstr "风较大，局地阵雨"
+
+msgid "windy with snow"
+msgstr "风较大，雪"
+
+msgid "windy with some sun"
+msgstr "风较大，间有阳光"
+
+msgid "windy with spotty showers"
+msgstr "风较大，局地阵雨"
+
+msgid "windy with sunshine"
+msgstr "风较大，晴天"

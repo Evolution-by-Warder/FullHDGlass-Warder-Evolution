@@ -241,3 +241,6126 @@ msgstr "Fout"
 
 msgid "Select country"
 msgstr "Land kiezen"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "Stad toevoegen"
+
+msgid "Change Temperature Unit"
+msgstr "Temperatuureenheid wijzigen"
+
+msgid "Change Units to"
+msgstr "Eenheden wijzigen in"
+
+msgid "Change city"
+msgstr "Andere stad kiezen"
+
+msgid "Daytime"
+msgstr "Overdag"
+
+msgid "Decreasing"
+msgstr "Dalend"
+
+msgid "Delete City"
+msgstr "Stad verwijderen"
+
+msgid "Forecast for"
+msgstr "Verwachting voor"
+
+msgid "Friday"
+msgstr "Vrijdag"
+
+msgid "High"
+msgstr "Hoog"
+
+msgid "Latitude"
+msgstr "Breedtegraad"
+
+msgid "Longtitude"
+msgstr "Lengtegraad"
+
+msgid "Low"
+msgstr "Laag"
+
+msgid "Moderate"
+msgstr "Matig"
+
+msgid "Monday"
+msgstr "Maandag"
+
+msgid "Nighttime"
+msgstr "'s nachts"
+
+msgid "None city founded"
+msgstr "Geen stad gevonden"
+
+msgid "Precip"
+msgstr "Neerslag"
+
+msgid "Realfeel"
+msgstr "Gevoelstemperatuur"
+
+msgid "Rising"
+msgstr "Stijgend"
+
+msgid "Saturday"
+msgstr "Zaterdag"
+
+msgid "Select City"
+msgstr "Stad kiezen"
+
+msgid "Steady"
+msgstr "Stabiel"
+
+msgid "Sunday"
+msgstr "Zondag"
+
+msgid "Thursday"
+msgstr "Donderdag"
+
+msgid "Tuesday"
+msgstr "Dinsdag"
+
+msgid "Updated at"
+msgstr "Bijgewerkt om"
+
+msgid "Uvindex"
+msgstr "UV-index"
+
+msgid "Very high"
+msgstr "Zeer hoog"
+
+msgid "Wednesday"
+msgstr "Woensdag"
+
+msgid "a bit of afternoon rain"
+msgstr "In de middag: wat regen"
+
+msgid "a bit of afternoon snow"
+msgstr "In de middag: wat sneeuw"
+
+msgid "a bit of evening rain"
+msgstr "In de avond: wat regen"
+
+msgid "a bit of evening snow"
+msgstr "In de avond: wat sneeuw"
+
+msgid "a bit of ice"
+msgstr "Plaatselijk ijsvorming"
+
+msgid "a bit of ice and rain"
+msgstr "Plaatselijk ijsvorming, regen"
+
+msgid "a bit of ice early"
+msgstr "Aanvankelijk: plaatselijk ijsvorming"
+
+msgid "a bit of ice in the afternoon"
+msgstr "In de middag: plaatselijk ijsvorming"
+
+msgid "a bit of ice in the morning"
+msgstr "In de ochtend: plaatselijk ijsvorming"
+
+msgid "a bit of ice late"
+msgstr "Later: plaatselijk ijsvorming"
+
+msgid "a bit of late-night rain"
+msgstr "Laat in de nacht: wat regen"
+
+msgid "a bit of late-night snow"
+msgstr "Laat in de nacht: wat sneeuw"
+
+msgid "a bit of morning rain"
+msgstr "In de ochtend: wat regen"
+
+msgid "a bit of morning snow"
+msgstr "In de ochtend: wat sneeuw"
+
+msgid "a bit of rain"
+msgstr "Wat regen"
+
+msgid "a bit of rain and ice late"
+msgstr "Wat regen. Later: iJzel"
+
+msgid "a bit of rain and sleet"
+msgstr "Wat regen, natte sneeuw"
+
+msgid "a bit of rain and sleet later"
+msgstr "Wat regen. Later: natte sneeuw"
+
+msgid "a bit of rain and snow"
+msgstr "Wat regen, sneeuw"
+
+msgid "a bit of rain in the evening"
+msgstr "In de avond: wat regen"
+
+msgid "a bit of rain in the morning"
+msgstr "In de ochtend: wat regen"
+
+msgid "a bit of rain late"
+msgstr "Later: wat regen"
+
+msgid "a bit of rain this evening"
+msgstr "Vanavond: wat regen"
+
+msgid "a bit of snow"
+msgstr "Wat sneeuw"
+
+msgid "a bit of snow and ice later"
+msgstr "Wat sneeuw. Later: iJzel"
+
+msgid "a bit of snow and rain"
+msgstr "Wat sneeuw, regen"
+
+msgid "a bit of snow and rain late"
+msgstr "Wat sneeuw. Later: regen"
+
+msgid "a bit of snow and sleet late"
+msgstr "Wat sneeuw. Later: natte sneeuw"
+
+msgid "a bit of snow early"
+msgstr "Aanvankelijk: wat sneeuw"
+
+msgid "a bit of snow in the evening"
+msgstr "In de avond: wat sneeuw"
+
+msgid "a bit of snow in the morning"
+msgstr "In de ochtend: wat sneeuw"
+
+msgid "a bit of snow late"
+msgstr "Later: wat sneeuw"
+
+msgid "a bit of wintry mix"
+msgstr "Lichte gemengde winterse neerslag"
+
+msgid "a blend of sun and clouds"
+msgstr "Afwisselend zon en wolken"
+
+msgid "a brief afternoon shower"
+msgstr "In de middag: korte regenbuien"
+
+msgid "a brief evening shower or two"
+msgstr "In de avond: een of twee korte buien"
+
+msgid "a brief morning shower or two"
+msgstr "In de ochtend: een of twee korte buien"
+
+msgid "a brief shower"
+msgstr "Korte regenbuien"
+
+msgid "a brief shower in the morning"
+msgstr "In de ochtend: korte regenbuien"
+
+msgid "a brief shower or two"
+msgstr "Een of twee korte buien"
+
+msgid "a brief shower or two late"
+msgstr "Later: een of twee korte buien"
+
+msgid "a brief shower this afternoon"
+msgstr "Vanmiddag: korte regenbuien"
+
+msgid "a brief t-storm early"
+msgstr "Aanvankelijk: korte onweersbui"
+
+msgid "a brief t-storm in the p.m."
+msgstr "In de middag: korte onweersbui"
+
+msgid "a chance for snow"
+msgstr "Kans op sneeuw"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "In de middag: onweer dat afkoeling brengt"
+
+msgid "a couple of a.m. snow showers"
+msgstr "In de ochtend: enkele sneeuwbuien"
+
+msgid "a couple of afternoon showers"
+msgstr "In de middag: een of twee regenbuien"
+
+msgid "a couple of downpours late"
+msgstr "Later: enkele stortbuien"
+
+msgid "a couple of evening downpours"
+msgstr "In de avond: enkele stortbuien"
+
+msgid "a couple of evening showers"
+msgstr "In de avond: een of twee regenbuien"
+
+msgid "a couple of evening t-showers"
+msgstr "In de avond: enkele onweersbuien"
+
+msgid "a couple of evening t-storms"
+msgstr "In de avond: enkele onweersbuien"
+
+msgid "a couple of flurries"
+msgstr "Enkele lichte sneeuwbuien"
+
+msgid "a couple of heavy t-storms"
+msgstr "Enkele zware onweersbuien"
+
+msgid "a couple of morning showers"
+msgstr "In de ochtend: een of twee regenbuien"
+
+msgid "a couple of morning t-showers"
+msgstr "In de ochtend: enkele onweersbuien"
+
+msgid "a couple of morning t-storms"
+msgstr "In de ochtend: enkele onweersbuien"
+
+msgid "a couple of p.m. snow showers"
+msgstr "In de middag: enkele sneeuwbuien"
+
+msgid "a couple of p.m. t-showers"
+msgstr "In de middag: enkele onweersbuien"
+
+msgid "a couple of showers"
+msgstr "Een of twee regenbuien"
+
+msgid "a couple of showers late"
+msgstr "Later: een of twee regenbuien"
+
+msgid "a couple of showers possible"
+msgstr "Kans op enkele buien"
+
+msgid "a couple of snow showers"
+msgstr "Enkele sneeuwbuien"
+
+msgid "a couple of snow showers late"
+msgstr "Later: enkele sneeuwbuien"
+
+msgid "a couple of strong t-storms"
+msgstr "Enkele zware onweersbuien"
+
+msgid "a couple of t-showers"
+msgstr "Enkele onweersbuien"
+
+msgid "a couple of t-showers early"
+msgstr "Aanvankelijk: enkele onweersbuien"
+
+msgid "a couple of t-showers late"
+msgstr "Later: enkele onweersbuien"
+
+msgid "a couple of t-storms late"
+msgstr "Later: enkele onweersbuien"
+
+msgid "a couple of thundershowers"
+msgstr "Enkele onweersbuien"
+
+msgid "a damaging thunderstorm"
+msgstr "Onweer met kans op schade"
+
+msgid "a downpour early"
+msgstr "Aanvankelijk: stortbuien"
+
+msgid "a downpour in the afternoon"
+msgstr "In de middag: stortbuien"
+
+msgid "a downpour in the morning"
+msgstr "In de ochtend: stortbuien"
+
+msgid "a downpour this morning"
+msgstr "Vanochtend: stortbuien"
+
+msgid "a drenching morning shower"
+msgstr "In de ochtend: zware regenbuien"
+
+msgid "a drenching shower late"
+msgstr "Later: zware regenbuien"
+
+msgid "a drenching t-storm early"
+msgstr "Aanvankelijk: onweersbui met stortregen"
+
+msgid "a drenching thunderstorm late"
+msgstr "Later: onweersbui met stortregen"
+
+msgid "a few a.m. showers"
+msgstr "In de ochtend: enkele regenbuien"
+
+msgid "a few afternoon showers"
+msgstr "In de middag: enkele regenbuien"
+
+msgid "a few evening showers"
+msgstr "In de avond: enkele regenbuien"
+
+msgid "a few flurries"
+msgstr "Enkele lichte sneeuwbuien"
+
+msgid "a few flurries in the morning"
+msgstr "In de ochtend: enkele lichte sneeuwbuien"
+
+msgid "a few late-night showers"
+msgstr "Laat in de nacht: enkele regenbuien"
+
+msgid "a few morning showers"
+msgstr "In de ochtend: enkele regenbuien"
+
+msgid "a few showers"
+msgstr "Enkele regenbuien"
+
+msgid "a few showers in the evening"
+msgstr "In de avond: enkele regenbuien"
+
+msgid "a few showers in the morning"
+msgstr "In de ochtend: enkele regenbuien"
+
+msgid "a few showers late"
+msgstr "Later: enkele regenbuien"
+
+msgid "a few showers this afternoon"
+msgstr "Vanmiddag: enkele regenbuien"
+
+msgid "a few showers this evening"
+msgstr "Vanavond: enkele regenbuien"
+
+msgid "a few snowflakes late"
+msgstr "Later: enkele sneeuwvlokken"
+
+msgid "a few strong p.m. t-storms"
+msgstr "In de middag: enkele zware onweersbuien"
+
+msgid "a few t-storms"
+msgstr "Enkele onweersbuien"
+
+msgid "a flurry early"
+msgstr "Aanvankelijk: korte lichte sneeuwbuien"
+
+msgid "a flurry in the p.m."
+msgstr "In de middag: korte lichte sneeuwbuien"
+
+msgid "a flurry late"
+msgstr "Later: korte lichte sneeuwbuien"
+
+msgid "a gusty breeze with clearing"
+msgstr "Windvlagen, opklaringen"
+
+msgid "a gusty morning breeze"
+msgstr "In de ochtend: windvlagen"
+
+msgid "a heavy afternoon shower"
+msgstr "In de middag: zware regenbuien"
+
+msgid "a heavy afternoon t-storm"
+msgstr "In de middag: zware onweersbuien"
+
+msgid "a heavy morning shower or two"
+msgstr "In de ochtend: enkele zware buien"
+
+msgid "a heavy shower in the morning"
+msgstr "In de ochtend: zware regenbuien"
+
+msgid "a heavy t-storm"
+msgstr "Zware onweersbuien"
+
+msgid "a heavy t-storm early"
+msgstr "Aanvankelijk: zware onweersbuien"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "In de ochtend: zware onweersbuien"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "In de middag: zware onweersbuien"
+
+msgid "a heavy thunderstorm"
+msgstr "Zware onweersbuien"
+
+msgid "a late-night shower"
+msgstr "Laat in de nacht: een regenbui"
+
+msgid "a late-night shower in places"
+msgstr "Laat in de nacht: plaatselijk een regenbui"
+
+msgid "a late-night shower in spots"
+msgstr "Laat in de nacht: plaatselijk een regenbui"
+
+msgid "a late-night shower or two"
+msgstr "Laat in de nacht: een of twee regenbuien"
+
+msgid "a late-night t-storm in spots"
+msgstr "Laat in de nacht: plaatselijk onweer"
+
+msgid "a late-night t-storm or two"
+msgstr "Laat in de nacht: enkele onweersbuien"
+
+msgid "a late-night thunderstorm"
+msgstr "Laat in de nacht: een onweersbui"
+
+msgid "a little a.m. rain"
+msgstr "In de ochtend: wat regen"
+
+msgid "a little afternoon rain"
+msgstr "In de middag: wat regen"
+
+msgid "a little afternoon snow"
+msgstr "In de middag: wat sneeuw"
+
+msgid "a little evening rain"
+msgstr "In de avond: wat regen"
+
+msgid "a little evening snow"
+msgstr "In de avond: wat sneeuw"
+
+msgid "a little icy mix early"
+msgstr "Aanvankelijk: lichte gemengde neerslag met ijsvorming"
+
+msgid "a little icy mix in the a.m."
+msgstr "In de ochtend: lichte gemengde neerslag met ijsvorming"
+
+msgid "a little icy mix this morning"
+msgstr "Vanochtend: lichte gemengde neerslag met ijsvorming"
+
+msgid "a little late-night rain"
+msgstr "Laat in de nacht: wat regen"
+
+msgid "a little late-night snow"
+msgstr "Laat in de nacht: wat sneeuw"
+
+msgid "a little morning rain"
+msgstr "In de ochtend: wat regen"
+
+msgid "a little morning snow"
+msgstr "In de ochtend: wat sneeuw"
+
+msgid "a little rain"
+msgstr "Wat regen"
+
+msgid "a little rain early"
+msgstr "Aanvankelijk: wat regen"
+
+msgid "a little rain in the evening"
+msgstr "In de avond: wat regen"
+
+msgid "a little rain in the morning"
+msgstr "In de ochtend: wat regen"
+
+msgid "a little rain late"
+msgstr "Later: wat regen"
+
+msgid "a little rain this afternoon"
+msgstr "Vanmiddag: wat regen"
+
+msgid "a little rain this morning"
+msgstr "Vanochtend: wat regen"
+
+msgid "a little snow"
+msgstr "Wat sneeuw"
+
+msgid "a little snow and sleet early"
+msgstr "Wat sneeuw. Aanvankelijk: natte sneeuw"
+
+msgid "a little snow and sleet late"
+msgstr "Wat sneeuw. Later: natte sneeuw"
+
+msgid "a little snow at times"
+msgstr "Af en toe wat sneeuw"
+
+msgid "a little snow at times late"
+msgstr "Later: af en toe wat sneeuw"
+
+msgid "a little snow early"
+msgstr "Aanvankelijk: wat sneeuw"
+
+msgid "a little snow in the evening"
+msgstr "In de avond: wat sneeuw"
+
+msgid "a little snow late"
+msgstr "Later: wat sneeuw"
+
+msgid "a little snow this afternoon"
+msgstr "Vanmiddag: wat sneeuw"
+
+msgid "a little wintry mix"
+msgstr "Lichte gemengde winterse neerslag"
+
+msgid "a little wintry mix late"
+msgstr "Later: lichte gemengde winterse neerslag"
+
+msgid "a morning flurry"
+msgstr "In de ochtend: korte lichte sneeuwbuien"
+
+msgid "a morning rain or snow shower"
+msgstr "In de ochtend: regen- of sneeuwbui"
+
+msgid "a morning shower"
+msgstr "In de ochtend: een regenbui"
+
+msgid "a morning shower in places"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "a morning shower in spots"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "a morning shower in the area"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "a morning shower or t-storm"
+msgstr "In de ochtend: regenbui of onweer"
+
+msgid "a morning shower or two"
+msgstr "In de ochtend: een of twee regenbuien"
+
+msgid "a morning snow shower around"
+msgstr "In de ochtend: een sneeuwbui"
+
+msgid "a morning t-storm"
+msgstr "In de ochtend: een onweersbui"
+
+msgid "a morning t-storm in spots"
+msgstr "In de ochtend: plaatselijk onweer"
+
+msgid "a morning t-storm in the area"
+msgstr "In de ochtend: plaatselijk onweer"
+
+msgid "a morning thunderstorm"
+msgstr "In de ochtend: een onweersbui"
+
+msgid "a morning thunderstorm or two"
+msgstr "In de ochtend: enkele onweersbuien"
+
+msgid "a p.m. rain or snow shower"
+msgstr "In de middag: regen- of sneeuwbui"
+
+msgid "a p.m. shower"
+msgstr "In de middag: een regenbui"
+
+msgid "a p.m. shower in places"
+msgstr "In de middag: plaatselijk een regenbui"
+
+msgid "a p.m. shower in the area"
+msgstr "In de middag: plaatselijk een regenbui"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "In de middag: regenbui of onweer"
+
+msgid "a p.m. snow shower in spots"
+msgstr "In de middag: plaatselijk een sneeuwbui"
+
+msgid "a p.m. t-storm"
+msgstr "In de middag: een onweersbui"
+
+msgid "a p.m. t-storm in spots"
+msgstr "In de middag: plaatselijk onweer"
+
+msgid "a p.m. t-storm in the area"
+msgstr "In de middag: plaatselijk onweer"
+
+msgid "a p.m. t-storm possible"
+msgstr "In de middag: kans op onweer"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "In de middag: plaatselijk onweer"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "In de middag: enkele onweersbuien"
+
+msgid "a passing afternoon shower"
+msgstr "In de middag: korte regenbuien"
+
+msgid "a passing flurry late"
+msgstr "Later: korte lichte sneeuwbuien"
+
+msgid "a passing late-night shower"
+msgstr "Laat in de nacht: korte regenbuien"
+
+msgid "a passing morning shower"
+msgstr "In de ochtend: korte regenbuien"
+
+msgid "a passing shower"
+msgstr "Korte regenbuien"
+
+msgid "a passing shower late"
+msgstr "Later: korte regenbuien"
+
+msgid "a passing shower or two"
+msgstr "Een of twee korte buien"
+
+msgid "a passing shower this morning"
+msgstr "Vanochtend: korte regenbuien"
+
+msgid "a quick afternoon shower"
+msgstr "In de middag: korte regenbuien"
+
+msgid "a quick shower"
+msgstr "Korte regenbuien"
+
+msgid "a rain and sleet shower"
+msgstr "Bui met regen en natte sneeuw"
+
+msgid "a rain and sleet shower late"
+msgstr "Later: bui met regen en natte sneeuw"
+
+msgid "a rain or snow shower"
+msgstr "Regen- of sneeuwbui"
+
+msgid "a rain or snow shower early"
+msgstr "Aanvankelijk: regen- of sneeuwbui"
+
+msgid "a rain or snow shower late"
+msgstr "Later: regen- of sneeuwbui"
+
+msgid "a severe afternoon t-storm"
+msgstr "In de middag: zwaar onweer"
+
+msgid "a severe thunderstorm"
+msgstr "Zwaar onweer"
+
+msgid "a shower"
+msgstr "Een regenbui"
+
+msgid "a shower and t-storm around"
+msgstr "Een regenbui, plaatselijk onweer"
+
+msgid "a shower around"
+msgstr "Plaatselijk een regenbui"
+
+msgid "a shower early"
+msgstr "Aanvankelijk: een regenbui"
+
+msgid "a shower in places"
+msgstr "Plaatselijk een regenbui"
+
+msgid "a shower in places late"
+msgstr "Later: plaatselijk een regenbui"
+
+msgid "a shower in spots"
+msgstr "Plaatselijk een regenbui"
+
+msgid "a shower in spots late"
+msgstr "Later: plaatselijk een regenbui"
+
+msgid "a shower in the a.m."
+msgstr "In de ochtend: een regenbui"
+
+msgid "a shower in the afternoon"
+msgstr "In de middag: een regenbui"
+
+msgid "a shower in the area"
+msgstr "Plaatselijk een regenbui"
+
+msgid "a shower in the area late"
+msgstr "Later: plaatselijk een regenbui"
+
+msgid "a shower in the evening"
+msgstr "In de avond: een regenbui"
+
+msgid "a shower in the morning"
+msgstr "In de ochtend: een regenbui"
+
+msgid "a shower in the p.m."
+msgstr "In de middag: een regenbui"
+
+msgid "a shower late"
+msgstr "Later: een regenbui"
+
+msgid "a shower late this afternoon"
+msgstr "Laat in de middag: een regenbui"
+
+msgid "a shower late this morning"
+msgstr "Laat in de ochtend: een regenbui"
+
+msgid "a shower or heavy t-storm"
+msgstr "Een bui of zwaar onweer"
+
+msgid "a shower or t-storm"
+msgstr "Regenbui of onweer"
+
+msgid "a shower or t-storm early"
+msgstr "Aanvankelijk: regenbui of onweer"
+
+msgid "a shower or t-storm in spots"
+msgstr "Plaatselijk een bui of onweer"
+
+msgid "a shower or thunderstorm"
+msgstr "Regenbui of onweer"
+
+msgid "a shower or two"
+msgstr "Een of twee regenbuien"
+
+msgid "a shower or two early"
+msgstr "Aanvankelijk: een of twee regenbuien"
+
+msgid "a shower or two late"
+msgstr "Later: een of twee regenbuien"
+
+msgid "a shower possible"
+msgstr "Kans op een regenbui"
+
+msgid "a shower this afternoon"
+msgstr "Vanmiddag: een regenbui"
+
+msgid "a shower this morning"
+msgstr "Vanochtend: een regenbui"
+
+msgid "a shower toward dawn"
+msgstr "Tegen het aanbreken van de dag: een regenbui"
+
+msgid "a snow shower"
+msgstr "Een sneeuwbui"
+
+msgid "a snow shower around"
+msgstr "Een sneeuwbui"
+
+msgid "a snow shower around late"
+msgstr "Later: een sneeuwbui"
+
+msgid "a snow shower in the morning"
+msgstr "In de ochtend: een sneeuwbui"
+
+msgid "a snow shower in the p.m."
+msgstr "In de middag: een sneeuwbui"
+
+msgid "a snow shower late"
+msgstr "Later: een sneeuwbui"
+
+msgid "a snow shower this afternoon"
+msgstr "Vanmiddag: een sneeuwbui"
+
+msgid "a snow shower this evening"
+msgstr "Vanavond: een sneeuwbui"
+
+msgid "a snow shower with low clouds"
+msgstr "Een sneeuwbui, laaghangende bewolking"
+
+msgid "a snow squall early"
+msgstr "Aanvankelijk: sneeuwbui met windstoten"
+
+msgid "a snow squall in the evening"
+msgstr "In de avond: sneeuwbui met windstoten"
+
+msgid "a snow squall in the morning"
+msgstr "In de ochtend: sneeuwbui met windstoten"
+
+msgid "a snow squall in the p.m."
+msgstr "In de middag: sneeuwbui met windstoten"
+
+msgid "a snow squall late"
+msgstr "Later: sneeuwbui met windstoten"
+
+msgid "a stray a.m. t-shower"
+msgstr "In de ochtend: plaatselijk een onweersbui"
+
+msgid "a stray a.m. t-storm"
+msgstr "In de ochtend: plaatselijk onweer"
+
+msgid "a stray afternoon shower"
+msgstr "In de middag: plaatselijk een regenbui"
+
+msgid "a stray afternoon t-shower"
+msgstr "In de middag: plaatselijk een onweersbui"
+
+msgid "a stray afternoon t-storm"
+msgstr "In de middag: plaatselijk onweer"
+
+msgid "a stray evening thunderstorm"
+msgstr "In de avond: plaatselijk onweer"
+
+msgid "a stray late-night t-storm"
+msgstr "Laat in de nacht: plaatselijk onweer"
+
+msgid "a stray morning shower"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "a stray morning thunderstorm"
+msgstr "In de ochtend: plaatselijk onweer"
+
+msgid "a stray shower in the morning"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "a stray shower late"
+msgstr "Later: plaatselijk een regenbui"
+
+msgid "a stray t-shower"
+msgstr "Plaatselijk een onweersbui"
+
+msgid "a stray t-storm"
+msgstr "Plaatselijk onweer"
+
+msgid "a stray t-storm early"
+msgstr "Aanvankelijk: plaatselijk onweer"
+
+msgid "a stray t-storm this evening"
+msgstr "Vanavond: plaatselijk onweer"
+
+msgid "a stray thundershower"
+msgstr "Plaatselijk een onweersbui"
+
+msgid "a stray thunderstorm"
+msgstr "Plaatselijk onweer"
+
+msgid "a stray thunderstorm early"
+msgstr "Aanvankelijk: plaatselijk onweer"
+
+msgid "a stray thunderstorm late"
+msgstr "Later: plaatselijk onweer"
+
+msgid "a strong a.m. t-storm"
+msgstr "In de ochtend: zware onweersbuien"
+
+msgid "a strong afternoon t-storm"
+msgstr "In de middag: zware onweersbuien"
+
+msgid "a strong evening thunderstorm"
+msgstr "In de avond: zware onweersbuien"
+
+msgid "a strong late-night t-storm"
+msgstr "Laat in de nacht: zware onweersbuien"
+
+msgid "a strong morning thunderstorm"
+msgstr "In de ochtend: zware onweersbuien"
+
+msgid "a strong t-storm"
+msgstr "Zware onweersbuien"
+
+msgid "a strong t-storm in spots"
+msgstr "Plaatselijk zwaar onweer"
+
+msgid "a strong t-storm late"
+msgstr "Later: zware onweersbuien"
+
+msgid "a strong t-storm possible"
+msgstr "Kans op zwaar onweer"
+
+msgid "a strong t-storm this evening"
+msgstr "Vanavond: zware onweersbuien"
+
+msgid "a strong thunderstorm"
+msgstr "Zware onweersbuien"
+
+msgid "a strong thunderstorm early"
+msgstr "Aanvankelijk: zware onweersbuien"
+
+msgid "a strong thunderstorm late"
+msgstr "Later: zware onweersbuien"
+
+msgid "a t-shower in spots"
+msgstr "Plaatselijk een onweersbui"
+
+msgid "a t-shower in spots early"
+msgstr "Aanvankelijk: plaatselijk een onweersbui"
+
+msgid "a t-shower in the afternoon"
+msgstr "In de middag: onweersbui"
+
+msgid "a t-storm"
+msgstr "Een onweersbui"
+
+msgid "a t-storm around in the a.m."
+msgstr "In de ochtend: plaatselijk onweer"
+
+msgid "a t-storm around in the p.m."
+msgstr "In de middag: plaatselijk onweer"
+
+msgid "a t-storm around late"
+msgstr "Later: plaatselijk onweer"
+
+msgid "a t-storm around this evening"
+msgstr "Vanavond: plaatselijk onweer"
+
+msgid "a t-storm early"
+msgstr "Aanvankelijk: een onweersbui"
+
+msgid "a t-storm in spots"
+msgstr "Plaatselijk onweer"
+
+msgid "a t-storm in the afternoon"
+msgstr "In de middag: een onweersbui"
+
+msgid "a t-storm in the area late"
+msgstr "Later: plaatselijk onweer"
+
+msgid "a t-storm in the p.m."
+msgstr "In de middag: een onweersbui"
+
+msgid "a t-storm late"
+msgstr "Later: een onweersbui"
+
+msgid "a t-storm late this afternoon"
+msgstr "Laat in de middag: een onweersbui"
+
+msgid "a t-storm late this evening"
+msgstr "Laat in de avond: een onweersbui"
+
+msgid "a t-storm late this morning"
+msgstr "Laat in de ochtend: een onweersbui"
+
+msgid "a t-storm or two"
+msgstr "Enkele onweersbuien"
+
+msgid "a t-storm possible"
+msgstr "Kans op onweer"
+
+msgid "a thick cloud cover"
+msgstr "Geheel bewolkt"
+
+msgid "a thick cloud cover and hot"
+msgstr "Geheel bewolkt, heet"
+
+msgid "a thundershower"
+msgstr "Onweersbui"
+
+msgid "a thundershower in spots"
+msgstr "Plaatselijk een onweersbui"
+
+msgid "a thundershower in spots late"
+msgstr "Later: plaatselijk een onweersbui"
+
+msgid "a thundershower late"
+msgstr "Later: onweersbui"
+
+msgid "a thundershower on the prowl"
+msgstr "Plaatselijk een onweersbui"
+
+msgid "a thunderstorm"
+msgstr "Een onweersbui"
+
+msgid "a thunderstorm around"
+msgstr "Plaatselijk onweer"
+
+msgid "a thunderstorm around early"
+msgstr "Aanvankelijk: plaatselijk onweer"
+
+msgid "a thunderstorm around late"
+msgstr "Later: plaatselijk onweer"
+
+msgid "a thunderstorm early"
+msgstr "Aanvankelijk: een onweersbui"
+
+msgid "a thunderstorm in spots"
+msgstr "Plaatselijk onweer"
+
+msgid "a thunderstorm in spots early"
+msgstr "Aanvankelijk: plaatselijk onweer"
+
+msgid "a thunderstorm in spots late"
+msgstr "Later: plaatselijk onweer"
+
+msgid "a thunderstorm in the area"
+msgstr "Plaatselijk onweer"
+
+msgid "a thunderstorm in the evening"
+msgstr "In de avond: een onweersbui"
+
+msgid "a thunderstorm in the morning"
+msgstr "In de ochtend: een onweersbui"
+
+msgid "a thunderstorm late"
+msgstr "Later: een onweersbui"
+
+msgid "a thunderstorm or two"
+msgstr "Enkele onweersbuien"
+
+msgid "a thunderstorm or two early"
+msgstr "Aanvankelijk: enkele onweersbuien"
+
+msgid "a thunderstorm or two late"
+msgstr "Later: enkele onweersbuien"
+
+msgid "a thunderstorm possible"
+msgstr "Kans op onweer"
+
+msgid "a thunderstorm this afternoon"
+msgstr "Vanmiddag: een onweersbui"
+
+msgid "a thunderstorm this evening"
+msgstr "Vanavond: een onweersbui"
+
+msgid "a thunderstorm this morning"
+msgstr "Vanochtend: een onweersbui"
+
+msgid "a touch of afternoon rain"
+msgstr "In de middag: wat regen"
+
+msgid "a touch of evening rain"
+msgstr "In de avond: wat regen"
+
+msgid "a touch of late-night rain"
+msgstr "Laat in de nacht: wat regen"
+
+msgid "a touch of morning rain"
+msgstr "In de ochtend: wat regen"
+
+msgid "a touch of rain"
+msgstr "Wat regen"
+
+msgid "a touch of rain late"
+msgstr "Later: wat regen"
+
+msgid "a wintry mix"
+msgstr "Gemengde winterse neerslag"
+
+msgid "a wintry mix in the morning"
+msgstr "In de ochtend: gemengde winterse neerslag"
+
+msgid "a wintry mix late"
+msgstr "Later: gemengde winterse neerslag"
+
+msgid "a wintry mix this morning"
+msgstr "Vanochtend: gemengde winterse neerslag"
+
+msgid "a.m. flurries"
+msgstr "In de ochtend: korte lichte sneeuwbuien"
+
+msgid "a.m. rain"
+msgstr "In de ochtend: regen"
+
+msgid "a.m. showers"
+msgstr "In de ochtend: buiig"
+
+msgid "abundant sunshine"
+msgstr "Veel zon"
+
+msgid "abundant sunshine and breezy"
+msgstr "Veel zon, licht winderig"
+
+msgid "abundant sunshine and hot"
+msgstr "Veel zon, heet"
+
+msgid "abundant sunshine and nice"
+msgstr "Veel zon, aangenaam weer"
+
+msgid "abundant sunshine and warm"
+msgstr "Veel zon, warm"
+
+msgid "abundant sunshine and warmer"
+msgstr "Veel zon, warmer"
+
+msgid "afternoon flurries"
+msgstr "In de middag: korte lichte sneeuwbuien"
+
+msgid "afternoon rain"
+msgstr "In de middag: regen"
+
+msgid "afternoon showers"
+msgstr "In de middag: buiig"
+
+msgid "afternoon snow"
+msgstr "In de middag: sneeuw"
+
+msgid "afternoon snow showers"
+msgstr "In de middag: sneeuwbuien"
+
+msgid "afternoon t-storms"
+msgstr "In de middag: onweer"
+
+msgid "afternoon thundershowers"
+msgstr "In de middag: onweersbui"
+
+msgid "afternoon thunderstorms"
+msgstr "In de middag: onweer"
+
+msgid "an a.m. flurry"
+msgstr "In de ochtend: korte lichte sneeuwbuien"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "In de ochtend: bui met regen en natte sneeuw"
+
+msgid "an a.m. rain or snow shower"
+msgstr "In de ochtend: regen- of sneeuwbui"
+
+msgid "an a.m. shower"
+msgstr "In de ochtend: een regenbui"
+
+msgid "an a.m. shower or two"
+msgstr "In de ochtend: een of twee regenbuien"
+
+msgid "an a.m. t-storm"
+msgstr "In de ochtend: een onweersbui"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "In de ochtend: plaatselijk onweer"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "In de ochtend: enkele onweersbuien"
+
+msgid "an afternoon shower"
+msgstr "In de middag: een regenbui"
+
+msgid "an afternoon shower in spots"
+msgstr "In de middag: plaatselijk een regenbui"
+
+msgid "an afternoon shower or two"
+msgstr "In de middag: een of twee regenbuien"
+
+msgid "an afternoon shower possible"
+msgstr "In de middag: kans op een regenbui"
+
+msgid "an afternoon snow showers"
+msgstr "In de middag: een sneeuwbui"
+
+msgid "an afternoon t-storm"
+msgstr "In de middag: een onweersbui"
+
+msgid "an afternoon t-storm or two"
+msgstr "In de middag: enkele onweersbuien"
+
+msgid "an afternoon thundershower"
+msgstr "In de middag: onweersbui"
+
+msgid "an afternoon thunderstorm"
+msgstr "In de middag: een onweersbui"
+
+msgid "an evening shower"
+msgstr "In de avond: een regenbui"
+
+msgid "an evening shower in the area"
+msgstr "In de avond: plaatselijk een regenbui"
+
+msgid "an evening shower or t-storm"
+msgstr "In de avond: regenbui of onweer"
+
+msgid "an evening shower or two"
+msgstr "In de avond: een of twee regenbuien"
+
+msgid "an evening t-storm in spots"
+msgstr "In de avond: plaatselijk onweer"
+
+msgid "an evening t-storm or two"
+msgstr "In de avond: enkele onweersbuien"
+
+msgid "an evening thundershower"
+msgstr "In de avond: onweersbui"
+
+msgid "an evening thunderstorm"
+msgstr "In de avond: een onweersbui"
+
+msgid "areas of fog"
+msgstr "Plaatselijk mist"
+
+msgid "areas of fog in the morning"
+msgstr "In de ochtend: plaatselijk mist"
+
+msgid "areas of low clouds"
+msgstr "Plaatselijk laaghangende bewolking"
+
+msgid "areas of low clouds and cold"
+msgstr "Plaatselijk laaghangende bewolking, koud"
+
+msgid "areas of low clouds and fog"
+msgstr "Plaatselijk laaghangende bewolking, mist"
+
+msgid "be advised for strong winds"
+msgstr "Let op voor harde wind"
+
+msgid "beautiful"
+msgstr "Aangenaam weer"
+
+msgid "beautiful with clouds and sun"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "beautiful with periods of sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "beautiful with plenty of sun"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "beautiful with some sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "beautiful with sun and clouds"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "beautiful with sunshine"
+msgstr "Aangenaam weer, zonnig"
+
+msgid "becoming clear"
+msgstr "Opklaringen"
+
+msgid "becoming clear and chilly"
+msgstr "Opklaringen, kil"
+
+msgid "becoming clear and cold"
+msgstr "Opklaringen, koud"
+
+msgid "becoming clear and colder"
+msgstr "Opklaringen, kouder"
+
+msgid "becoming clear and cool"
+msgstr "Opklaringen, koel"
+
+msgid "becoming clear and cooler"
+msgstr "Opklaringen, koeler"
+
+msgid "becoming clear and mild"
+msgstr "Opklaringen, zacht"
+
+msgid "becoming clear and very warm"
+msgstr "Opklaringen, erg warm"
+
+msgid "becoming clear and warm"
+msgstr "Opklaringen, warm"
+
+msgid "becoming clear with a shower"
+msgstr "Opklaringen, een regenbui"
+
+msgid "becoming cloudy"
+msgstr "Toenemende bewolking"
+
+msgid "becoming cloudy and breezy"
+msgstr "Toenemende bewolking, licht winderig"
+
+msgid "becoming cloudy and chilly"
+msgstr "Toenemende bewolking, kil"
+
+msgid "becoming cloudy and cold"
+msgstr "Toenemende bewolking, koud"
+
+msgid "becoming cloudy and cooler"
+msgstr "Toenemende bewolking, koeler"
+
+msgid "becoming cloudy and hot"
+msgstr "Toenemende bewolking, heet"
+
+msgid "becoming cloudy and humid"
+msgstr "Toenemende bewolking, vochtig"
+
+msgid "becoming cloudy and mild"
+msgstr "Toenemende bewolking, zacht"
+
+msgid "becoming cloudy and very warm"
+msgstr "Toenemende bewolking, erg warm"
+
+msgid "becoming cloudy and warm"
+msgstr "Toenemende bewolking, warm"
+
+msgid "becoming cloudy and warmer"
+msgstr "Toenemende bewolking, warmer"
+
+msgid "becoming cloudy with a shower"
+msgstr "Toenemende bewolking, een regenbui"
+
+msgid "becoming partly cloudy"
+msgstr "Het wordt lichtbewolkt"
+
+msgid "becoming windier and colder"
+msgstr "Toenemende wind, kouder"
+
+msgid "becoming windier and cooler"
+msgstr "Toenemende wind, koeler"
+
+msgid "bitterly cold"
+msgstr "Ijskoud"
+
+msgid "bitterly cold in the evening"
+msgstr "In de avond: ijskoud"
+
+msgid "bitterly cold with clearing"
+msgstr "Ijskoud, opklaringen"
+
+msgid "bitterly cold with low clouds"
+msgstr "Ijskoud, laaghangende bewolking"
+
+msgid "blazing sunshine and hot"
+msgstr "Felle zon, heet"
+
+msgid "blazing sunshine and warmer"
+msgstr "Felle zon, warmer"
+
+msgid "blowing dust"
+msgstr "Opwaaiend stof"
+
+msgid "blowing dust with high clouds"
+msgstr "Opwaaiend stof, hoge bewolking"
+
+msgid "blowing snow"
+msgstr "Opwaaiende sneeuw"
+
+msgid "breezy and cold"
+msgstr "Licht winderig, koud"
+
+msgid "breezy and colder with rain"
+msgstr "Licht winderig, kouder, regen"
+
+msgid "breezy and cool"
+msgstr "Licht winderig, koel"
+
+msgid "breezy and cool with some sun"
+msgstr "Licht winderig, koel, af en toe zon"
+
+msgid "breezy and cooler with clouds"
+msgstr "Licht winderig, koeler, bewolkt"
+
+msgid "breezy and cooler with rain"
+msgstr "Licht winderig, koeler, regen"
+
+msgid "breezy and hot with sunshine"
+msgstr "Licht winderig, heet, zonnig"
+
+msgid "breezy and humid"
+msgstr "Licht winderig, vochtig"
+
+msgid "breezy and mild"
+msgstr "Licht winderig, zacht"
+
+msgid "breezy and mild with rain"
+msgstr "Licht winderig, zacht, regen"
+
+msgid "breezy and nice"
+msgstr "Licht winderig, aangenaam weer"
+
+msgid "breezy and nice with some sun"
+msgstr "Licht winderig, aangenaam weer, af en toe zon"
+
+msgid "breezy and nice with sunshine"
+msgstr "Licht winderig, aangenaam weer, zonnig"
+
+msgid "breezy and pleasant"
+msgstr "Licht winderig, aangenaam weer"
+
+msgid "breezy and quite cold"
+msgstr "Licht winderig, vrij koud"
+
+msgid "breezy and very cold"
+msgstr "Licht winderig, erg koud"
+
+msgid "breezy and warm with some sun"
+msgstr "Licht winderig, warm, af en toe zon"
+
+msgid "breezy early"
+msgstr "Aanvankelijk: licht winderig"
+
+msgid "breezy in the a.m."
+msgstr "In de ochtend: licht winderig"
+
+msgid "breezy in the afternoon"
+msgstr "In de middag: licht winderig"
+
+msgid "breezy in the morning"
+msgstr "In de ochtend: licht winderig"
+
+msgid "breezy this morning"
+msgstr "Vanochtend: licht winderig"
+
+msgid "breezy with clearing"
+msgstr "Licht winderig, opklaringen"
+
+msgid "breezy with clouds and sun"
+msgstr "Licht winderig, afwisselend zon en wolken"
+
+msgid "breezy with decreasing clouds"
+msgstr "Licht winderig, afnemende bewolking"
+
+msgid "breezy with high clouds"
+msgstr "Licht winderig, hoge bewolking"
+
+msgid "breezy with increasing clouds"
+msgstr "Licht winderig, toenemende bewolking"
+
+msgid "breezy with lots of sun"
+msgstr "Licht winderig, veel zon"
+
+msgid "breezy with partial sunshine"
+msgstr "Licht winderig, af en toe zon"
+
+msgid "breezy with patchy clouds"
+msgstr "Licht winderig, verspreide wolken"
+
+msgid "breezy with periods of rain"
+msgstr "Licht winderig, af en toe regen"
+
+msgid "breezy with periods of snow"
+msgstr "Licht winderig, af en toe sneeuw"
+
+msgid "breezy with periods of sun"
+msgstr "Licht winderig, af en toe zon"
+
+msgid "breezy with plenty of sun"
+msgstr "Licht winderig, veel zon"
+
+msgid "breezy with rain"
+msgstr "Licht winderig, regen"
+
+msgid "breezy with rain and drizzle"
+msgstr "Licht winderig, regen en motregen"
+
+msgid "breezy with snow"
+msgstr "Licht winderig, sneeuw"
+
+msgid "breezy with some sun"
+msgstr "Licht winderig, af en toe zon"
+
+msgid "breezy with sun and clouds"
+msgstr "Licht winderig, afwisselend zon en wolken"
+
+msgid "breezy with sunny intervals"
+msgstr "Licht winderig, af en toe zon"
+
+msgid "breezy with sunshine"
+msgstr "Licht winderig, zonnig"
+
+msgid "breezy with variable clouds"
+msgstr "Licht winderig, wisselende bewolking"
+
+msgid "brief a.m. showers"
+msgstr "In de ochtend: korte regenbuien"
+
+msgid "brief afternoon showers"
+msgstr "In de middag: korte regenbuien"
+
+msgid "brief evening showers"
+msgstr "In de avond: korte regenbuien"
+
+msgid "brief late-night showers"
+msgstr "Laat in de nacht: korte regenbuien"
+
+msgid "brief morning showers"
+msgstr "In de ochtend: korte regenbuien"
+
+msgid "brief showers"
+msgstr "Korte regenbuien"
+
+msgid "brief showers early"
+msgstr "Aanvankelijk: korte regenbuien"
+
+msgid "brief showers in the evening"
+msgstr "In de avond: korte regenbuien"
+
+msgid "brief showers in the morning"
+msgstr "In de ochtend: korte regenbuien"
+
+msgid "brief showers late"
+msgstr "Later: korte regenbuien"
+
+msgid "brief showers this afternoon"
+msgstr "Vanmiddag: korte regenbuien"
+
+msgid "brilliant sunshine"
+msgstr "Stralende zon"
+
+msgid "brilliant sunshine and breezy"
+msgstr "Stralende zon, licht winderig"
+
+msgid "brilliant sunshine and hot"
+msgstr "Stralende zon, heet"
+
+msgid "brilliant sunshine and hotter"
+msgstr "Stralende zon, heter"
+
+msgid "brilliant sunshine and nice"
+msgstr "Stralende zon, aangenaam weer"
+
+msgid "brilliant sunshine and warm"
+msgstr "Stralende zon, warm"
+
+msgid "brilliant sunshine and warmer"
+msgstr "Stralende zon, warmer"
+
+msgid "brisk and chilly"
+msgstr "Frisse stevige wind, kil"
+
+msgid "brisk and cold"
+msgstr "Frisse stevige wind, koud"
+
+msgid "brisk and very cold"
+msgstr "Frisse stevige wind, erg koud"
+
+msgid "but chilly"
+msgstr "Maar kil"
+
+msgid "but cold"
+msgstr "Maar koud"
+
+msgid "but very cold"
+msgstr "Maar erg koud"
+
+msgid "chance for a strong t-storm"
+msgstr "Kans op zwaar onweer"
+
+msgid "chance for a thunderstorm"
+msgstr "Kans op onweer"
+
+msgid "chance for rain"
+msgstr "Kans op regen"
+
+msgid "chance of a little a.m. rain"
+msgstr "In de ochtend: kans op wat regen"
+
+msgid "chance of a little p.m. rain"
+msgstr "In de middag: kans op wat regen"
+
+msgid "chance of a shower"
+msgstr "Kans op een regenbui"
+
+msgid "chance of a thunderstorm"
+msgstr "Kans op onweer"
+
+msgid "chilly"
+msgstr "Kil"
+
+msgid "chilly whit partial sunshine"
+msgstr "Kil, af en toe zon"
+
+msgid "chilly whit some sun"
+msgstr "Kil, af en toe zon"
+
+msgid "chilly with a little snow"
+msgstr "Kil, wat sneeuw"
+
+msgid "chilly with clearing"
+msgstr "Kil, opklaringen"
+
+msgid "chilly with clouds and sun"
+msgstr "Kil, afwisselend zon en wolken"
+
+msgid "chilly with increasing clouds"
+msgstr "Kil, toenemende bewolking"
+
+msgid "chilly with low clouds"
+msgstr "Kil, laaghangende bewolking"
+
+msgid "chilly with occasional rain"
+msgstr "Kil, af en toe regen"
+
+msgid "chilly with partial sunshine"
+msgstr "Kil, af en toe zon"
+
+msgid "chilly with patchy clouds"
+msgstr "Kil, verspreide wolken"
+
+msgid "chilly with periods of rain"
+msgstr "Kil, af en toe regen"
+
+msgid "chilly with periods of snow"
+msgstr "Kil, af en toe sneeuw"
+
+msgid "chilly with periods of sun"
+msgstr "Kil, af en toe zon"
+
+msgid "chilly with plenty of sun"
+msgstr "Kil, veel zon"
+
+msgid "chilly with rain"
+msgstr "Kil, regen"
+
+msgid "chilly with rain and drizzle"
+msgstr "Kil, regen en motregen"
+
+msgid "chilly with snow and rain"
+msgstr "Kil, regen en sneeuw"
+
+msgid "chilly with some sun"
+msgstr "Kil, af en toe zon"
+
+msgid "chilly with sun and clouds"
+msgstr "Kil, afwisselend zon en wolken"
+
+msgid "chilly with variable clouds"
+msgstr "Kil, wisselende bewolking"
+
+msgid "clear and bitterly cold"
+msgstr "Helder, ijskoud"
+
+msgid "clear and breezy"
+msgstr "Helder, licht winderig"
+
+msgid "clear and chilly"
+msgstr "Helder, kil"
+
+msgid "clear and cold"
+msgstr "Helder, koud"
+
+msgid "clear and colder"
+msgstr "Helder, kouder"
+
+msgid "clear and cool"
+msgstr "Helder, koel"
+
+msgid "clear and cooler"
+msgstr "Helder, koeler"
+
+msgid "clear and dry"
+msgstr "Helder, droog"
+
+msgid "clear and frigid"
+msgstr "Helder, ijskoud"
+
+msgid "clear and humid"
+msgstr "Helder, vochtig"
+
+msgid "clear and mild"
+msgstr "Helder, zacht"
+
+msgid "clear and much colder"
+msgstr "Helder, veel kouder"
+
+msgid "clear and not as warm"
+msgstr "Helder, minder warm"
+
+msgid "clear and quite cold"
+msgstr "Helder, vrij koud"
+
+msgid "clear and seasonably cool"
+msgstr "Helder, koel zoals gebruikelijk voor het seizoen"
+
+msgid "clear and seasonably warm"
+msgstr "Helder, warmte passend bij het seizoen"
+
+msgid "clear and unseasonably cold"
+msgstr "Helder, ongewoon koud voor de tijd van het jaar"
+
+msgid "clear and very cold"
+msgstr "Helder, erg koud"
+
+msgid "clear and very humid"
+msgstr "Helder, zeer vochtig"
+
+msgid "clear and very warm"
+msgstr "Helder, erg warm"
+
+msgid "clear and warm"
+msgstr "Helder, warm"
+
+msgid "clear and warmer"
+msgstr "Helder, warmer"
+
+msgid "clear to partly cloudy"
+msgstr "Helder tot lichtbewolkt"
+
+msgid "clear with a gusty breeze"
+msgstr "Helder, windvlagen"
+
+msgid "clearing"
+msgstr "Opklaringen"
+
+msgid "clearing and a few showers"
+msgstr "Opklaringen, enkele regenbuien"
+
+msgid "clearing and a stray t-storm"
+msgstr "Opklaringen, plaatselijk onweer"
+
+msgid "clearing and chilly"
+msgstr "Opklaringen, kil"
+
+msgid "clearing and cold"
+msgstr "Opklaringen, koud"
+
+msgid "clearing and colder"
+msgstr "Opklaringen, kouder"
+
+msgid "clearing and cool"
+msgstr "Opklaringen, koel"
+
+msgid "clearing and cooler"
+msgstr "Opklaringen, koeler"
+
+msgid "clearing and hot"
+msgstr "Opklaringen, heet"
+
+msgid "clearing and humid"
+msgstr "Opklaringen, vochtig"
+
+msgid "clearing and mild"
+msgstr "Opklaringen, zacht"
+
+msgid "clearing and nice"
+msgstr "Opklaringen, aangenaam weer"
+
+msgid "clearing and not as warm"
+msgstr "Opklaringen, minder warm"
+
+msgid "clearing and pleasant"
+msgstr "Opklaringen, aangenaam weer"
+
+msgid "clearing and showers around"
+msgstr "Opklaringen, plaatselijk een regenbui"
+
+msgid "clearing and spotty showers"
+msgstr "Opklaringen, plaatselijk een regenbui"
+
+msgid "clearing and summerlike"
+msgstr "Opklaringen, zomers"
+
+msgid "clearing and unseasonably hot"
+msgstr "Opklaringen, ongewoon heet voor de tijd van het jaar"
+
+msgid "clearing and very cold"
+msgstr "Opklaringen, erg koud"
+
+msgid "clearing and very warm"
+msgstr "Opklaringen, erg warm"
+
+msgid "clearing and warm"
+msgstr "Opklaringen, warm"
+
+msgid "clearing and warmer"
+msgstr "Opklaringen, warmer"
+
+msgid "clearing with a shower late"
+msgstr "Opklaringen. Later: een regenbui"
+
+msgid "clouding up"
+msgstr "Toenemende bewolking"
+
+msgid "clouding up with a shower"
+msgstr "Toenemende bewolking, een regenbui"
+
+msgid "clouds"
+msgstr "Bewolkt"
+
+msgid "clouds and a few showers"
+msgstr "Bewolkt, enkele regenbuien"
+
+msgid "clouds and a stray t-storm"
+msgstr "Bewolkt, plaatselijk onweer"
+
+msgid "clouds and a t-storm in spots"
+msgstr "Bewolkt, plaatselijk onweer"
+
+msgid "clouds and becoming rainy"
+msgstr "Bewolkt, het gaat regenen"
+
+msgid "clouds and breaks of sun"
+msgstr "Bewolkt, af en toe zon"
+
+msgid "clouds and fog"
+msgstr "Bewolkt, mist"
+
+msgid "clouds and limited sun"
+msgstr "Bewolkt, weinig zon"
+
+msgid "clouds and showers"
+msgstr "Bewolkt, buiig"
+
+msgid "clouds and showers around"
+msgstr "Bewolkt, plaatselijk een regenbui"
+
+msgid "clouds and spotty showers"
+msgstr "Bewolkt, plaatselijk een regenbui"
+
+msgid "clouds and sun"
+msgstr "Afwisselend zon en wolken"
+
+msgid "clouds and sun with a shower"
+msgstr "Afwisselend zon en wolken, een regenbui"
+
+msgid "clouds and sun with a t-storm"
+msgstr "Afwisselend zon en wolken, een onweersbui"
+
+msgid "clouds and sun with showers"
+msgstr "Afwisselend zon en wolken, buiig"
+
+msgid "clouds and sunshine"
+msgstr "Afwisselend zon en wolken"
+
+msgid "clouds and very warm"
+msgstr "Bewolkt, erg warm"
+
+msgid "clouds and warm"
+msgstr "Bewolkt, warm"
+
+msgid "clouds and warm with a shower"
+msgstr "Bewolkt, warm, een regenbui"
+
+msgid "clouds break for sun"
+msgstr "Afnemende bewolking"
+
+msgid "clouds breaking"
+msgstr "Afnemende bewolking"
+
+msgid "clouds breaking and beautiful"
+msgstr "Afnemende bewolking, aangenaam weer"
+
+msgid "clouds breaking and chilly"
+msgstr "Afnemende bewolking, kil"
+
+msgid "clouds breaking and pleasant"
+msgstr "Afnemende bewolking, aangenaam weer"
+
+msgid "clouds breaking and very warm"
+msgstr "Afnemende bewolking, erg warm"
+
+msgid "clouds breaking for some sun"
+msgstr "Afnemende bewolking"
+
+msgid "clouds breaking for sun"
+msgstr "Afnemende bewolking"
+
+msgid "clouds breaking with a shower"
+msgstr "Afnemende bewolking, een regenbui"
+
+msgid "clouds giving way to some sun"
+msgstr "Afnemende bewolking"
+
+msgid "clouds giving way to sun"
+msgstr "Afnemende bewolking"
+
+msgid "clouds limiting sun"
+msgstr "Wolken houden veel zon tegen"
+
+msgid "clouds limiting sunshine"
+msgstr "Wolken houden veel zon tegen"
+
+msgid "clouds rolling in"
+msgstr "Wolken trekken binnen"
+
+msgid "clouds rolling in and humid"
+msgstr "Wolken trekken binnen, vochtig"
+
+msgid "clouds with a shower late"
+msgstr "Bewolkt. Later: een regenbui"
+
+msgid "clouds with downpours late"
+msgstr "Bewolkt. Later: stortbuien"
+
+msgid "clouds with snow late"
+msgstr "Bewolkt. Later: sneeuw"
+
+msgid "clouds yielding to some sun"
+msgstr "Afnemende bewolking"
+
+msgid "clouds yielding to sun"
+msgstr "Afnemende bewolking"
+
+msgid "cloudy and becoming rainy"
+msgstr "Bewolkt, het gaat regenen"
+
+msgid "cloudy and bitterly cold"
+msgstr "Bewolkt, ijskoud"
+
+msgid "cloudy and breezy"
+msgstr "Bewolkt, licht winderig"
+
+msgid "cloudy and chilly"
+msgstr "Bewolkt, kil"
+
+msgid "cloudy and cold"
+msgstr "Bewolkt, koud"
+
+msgid "cloudy and colder"
+msgstr "Bewolkt, kouder"
+
+msgid "cloudy and comfortable"
+msgstr "Bewolkt, aangenaam weer"
+
+msgid "cloudy and cool"
+msgstr "Bewolkt, koel"
+
+msgid "cloudy and cool with a shower"
+msgstr "Bewolkt, koel, een regenbui"
+
+msgid "cloudy and cool with showers"
+msgstr "Bewolkt, koel, buiig"
+
+msgid "cloudy and cooler"
+msgstr "Bewolkt, koeler"
+
+msgid "cloudy and frigid"
+msgstr "Bewolkt, ijskoud"
+
+msgid "cloudy and hot"
+msgstr "Bewolkt, heet"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "Bewolkt, heet, een onweersbui"
+
+msgid "cloudy and humid"
+msgstr "Bewolkt, vochtig"
+
+msgid "cloudy and humid with showers"
+msgstr "Bewolkt, vochtig, buiig"
+
+msgid "cloudy and less humid"
+msgstr "Bewolkt, minder vochtig"
+
+msgid "cloudy and mild"
+msgstr "Bewolkt, zacht"
+
+msgid "cloudy and mild with a shower"
+msgstr "Bewolkt, zacht, een regenbui"
+
+msgid "cloudy and milder"
+msgstr "Bewolkt, zachter"
+
+msgid "cloudy and not as cold"
+msgstr "Bewolkt, minder koud"
+
+msgid "cloudy and not as cool"
+msgstr "Bewolkt, minder koel"
+
+msgid "cloudy and not as hot"
+msgstr "Bewolkt, minder heet"
+
+msgid "cloudy and not as warm"
+msgstr "Bewolkt, minder warm"
+
+msgid "cloudy and remaining cool"
+msgstr "Bewolkt, het blijft koel"
+
+msgid "cloudy and remaining warm"
+msgstr "Bewolkt, het blijft warm"
+
+msgid "cloudy and seasonably cold"
+msgstr "Bewolkt, koud zoals gebruikelijk in dit seizoen"
+
+msgid "cloudy and seasonably cool"
+msgstr "Bewolkt, koel zoals gebruikelijk voor het seizoen"
+
+msgid "cloudy and seasonably warm"
+msgstr "Bewolkt, warmte passend bij het seizoen"
+
+msgid "cloudy and turning colder"
+msgstr "Bewolkt, kouder"
+
+msgid "cloudy and very cold"
+msgstr "Bewolkt, erg koud"
+
+msgid "cloudy and very humid"
+msgstr "Bewolkt, zeer vochtig"
+
+msgid "cloudy and very warm"
+msgstr "Bewolkt, erg warm"
+
+msgid "cloudy and warm"
+msgstr "Bewolkt, warm"
+
+msgid "cloudy and warm with a shower"
+msgstr "Bewolkt, warm, een regenbui"
+
+msgid "cloudy and warmer"
+msgstr "Bewolkt, warmer"
+
+msgid "cloudy and windy"
+msgstr "Bewolkt, winderig"
+
+msgid "cloudy and windy with showers"
+msgstr "Bewolkt, winderig, buiig"
+
+msgid "cloudy most of the time"
+msgstr "Overwegend bewolkt"
+
+msgid "cloudy spells with a t-storm"
+msgstr "Af en toe bewolkt, een onweersbui"
+
+msgid "cloudy to partly sunny"
+msgstr "Eerst bewolkt, later af en toe zon"
+
+msgid "cloudy with a bit of ice"
+msgstr "Bewolkt, plaatselijk ijsvorming"
+
+msgid "cloudy with a bit of ice late"
+msgstr "Bewolkt. Later: plaatselijk ijsvorming"
+
+msgid "cloudy with a bit of rain"
+msgstr "Bewolkt, wat regen"
+
+msgid "cloudy with a bit of snow"
+msgstr "Bewolkt, wat sneeuw"
+
+msgid "cloudy with a brief shower"
+msgstr "Bewolkt, korte regenbuien"
+
+msgid "cloudy with a chance of rain"
+msgstr "Bewolkt, kans op regen"
+
+msgid "cloudy with a downpour late"
+msgstr "Bewolkt. Later: stortbuien"
+
+msgid "cloudy with a few flurries"
+msgstr "Bewolkt, enkele lichte sneeuwbuien"
+
+msgid "cloudy with a few showers"
+msgstr "Bewolkt, enkele regenbuien"
+
+msgid "cloudy with a few snowflakes"
+msgstr "Bewolkt, enkele sneeuwvlokken"
+
+msgid "cloudy with a flurry"
+msgstr "Bewolkt, korte lichte sneeuwbuien"
+
+msgid "cloudy with a flurry late"
+msgstr "Bewolkt. Later: korte lichte sneeuwbuien"
+
+msgid "cloudy with a flurry or two"
+msgstr "Bewolkt, enkele lichte sneeuwbuien"
+
+msgid "cloudy with a heavy shower"
+msgstr "Bewolkt, zware regenbuien"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "Bewolkt, zware onweersbuien"
+
+msgid "cloudy with a little rain"
+msgstr "Bewolkt, wat regen"
+
+msgid "cloudy with a little snow"
+msgstr "Bewolkt, wat sneeuw"
+
+msgid "cloudy with a passing shower"
+msgstr "Bewolkt, korte regenbuien"
+
+msgid "cloudy with a quick shower"
+msgstr "Bewolkt, korte regenbuien"
+
+msgid "cloudy with a shower"
+msgstr "Bewolkt, een regenbui"
+
+msgid "cloudy with a shower in spots"
+msgstr "Bewolkt, plaatselijk een regenbui"
+
+msgid "cloudy with a shower late"
+msgstr "Bewolkt. Later: een regenbui"
+
+msgid "cloudy with a shower or two"
+msgstr "Bewolkt, een of twee regenbuien"
+
+msgid "cloudy with a shower possible"
+msgstr "Bewolkt, kans op een regenbui"
+
+msgid "cloudy with a snow shower"
+msgstr "Bewolkt, een sneeuwbui"
+
+msgid "cloudy with a stray flurry"
+msgstr "Bewolkt, enkele lichte sneeuwbuien"
+
+msgid "cloudy with a stray shower"
+msgstr "Bewolkt, plaatselijk een regenbui"
+
+msgid "cloudy with a stray t-shower"
+msgstr "Bewolkt, plaatselijk een onweersbui"
+
+msgid "cloudy with a stray t-storm"
+msgstr "Bewolkt, plaatselijk onweer"
+
+msgid "cloudy with a strong t-storm"
+msgstr "Bewolkt, zware onweersbuien"
+
+msgid "cloudy with a t-storm"
+msgstr "Bewolkt, een onweersbui"
+
+msgid "cloudy with a t-storm around"
+msgstr "Bewolkt, plaatselijk onweer"
+
+msgid "cloudy with a t-storm late"
+msgstr "Bewolkt. Later: een onweersbui"
+
+msgid "cloudy with a t-storm or two"
+msgstr "Bewolkt, enkele onweersbuien"
+
+msgid "cloudy with a thundershower"
+msgstr "Bewolkt, onweersbui"
+
+msgid "cloudy with a thunderstorm"
+msgstr "Bewolkt, een onweersbui"
+
+msgid "cloudy with a touch of rain"
+msgstr "Bewolkt, wat regen"
+
+msgid "cloudy with afternoon rain"
+msgstr "Bewolkt. In de middag: regen"
+
+msgid "cloudy with afternoon showers"
+msgstr "Bewolkt. In de middag: buiig"
+
+msgid "cloudy with blowing dust"
+msgstr "Bewolkt, opwaaiend stof"
+
+msgid "cloudy with brief showers"
+msgstr "Bewolkt, korte regenbuien"
+
+msgid "cloudy with downpours"
+msgstr "Bewolkt, stortbuien"
+
+msgid "cloudy with downpours late"
+msgstr "Bewolkt. Later: stortbuien"
+
+msgid "cloudy with flurries"
+msgstr "Bewolkt, korte lichte sneeuwbuien"
+
+msgid "cloudy with flurries late"
+msgstr "Bewolkt. Later: korte lichte sneeuwbuien"
+
+msgid "cloudy with heavy rain late"
+msgstr "Bewolkt. Later: zware regen"
+
+msgid "cloudy with heavy showers"
+msgstr "Bewolkt, zware regenbuien"
+
+msgid "cloudy with late-night rain"
+msgstr "Bewolkt. Laat in de nacht: regen"
+
+msgid "cloudy with occasional rain"
+msgstr "Bewolkt, af en toe regen"
+
+msgid "cloudy with pouring rain late"
+msgstr "Bewolkt. Later: zware regen"
+
+msgid "cloudy with rain"
+msgstr "Bewolkt, regen"
+
+msgid "cloudy with rain and drizzle"
+msgstr "Bewolkt, regen en motregen"
+
+msgid "cloudy with rain and ice late"
+msgstr "Bewolkt. Later: regen en ijs"
+
+msgid "cloudy with rain beginning"
+msgstr "Bewolkt, het gaat regenen"
+
+msgid "cloudy with rain developing"
+msgstr "Bewolkt, het gaat regenen"
+
+msgid "cloudy with rain ending"
+msgstr "Bewolkt, de regen stopt"
+
+msgid "cloudy with rain tapering off"
+msgstr "Bewolkt, de regen neemt af"
+
+msgid "cloudy with showers"
+msgstr "Bewolkt, buiig"
+
+msgid "cloudy with showers around"
+msgstr "Bewolkt, plaatselijk een regenbui"
+
+msgid "cloudy with showers late"
+msgstr "Bewolkt. Later: buiig"
+
+msgid "cloudy with snow"
+msgstr "Bewolkt, sneeuw"
+
+msgid "cloudy with snow and ice"
+msgstr "Bewolkt, sneeuw en ijs"
+
+msgid "cloudy with snow at times"
+msgstr "Bewolkt, af en toe sneeuw"
+
+msgid "cloudy with snow showers"
+msgstr "Bewolkt, sneeuwbuien"
+
+msgid "cloudy with snow showers late"
+msgstr "Bewolkt. Later: sneeuwbuien"
+
+msgid "cloudy with snow tapering off"
+msgstr "Bewolkt, de sneeuwval neemt af"
+
+msgid "cloudy with spotty showers"
+msgstr "Bewolkt, plaatselijk een regenbui"
+
+msgid "cloudy with t-storms"
+msgstr "Bewolkt, onweer"
+
+msgid "cloudy with thundershowers"
+msgstr "Bewolkt, onweersbui"
+
+msgid "cloudy with thunderstorms"
+msgstr "Bewolkt, onweer"
+
+msgid "cloudy with times of rain"
+msgstr "Bewolkt, af en toe regen"
+
+msgid "cold"
+msgstr "Koud"
+
+msgid "cold whit rain and drizzle"
+msgstr "Koud, regen en motregen"
+
+msgid "cold with areas of low clouds"
+msgstr "Koud, plaatselijk laaghangende bewolking"
+
+msgid "cold with clearing"
+msgstr "Koud, opklaringen"
+
+msgid "cold with clouds and sun"
+msgstr "Koud, afwisselend zon en wolken"
+
+msgid "cold with clouds and sunshine"
+msgstr "Koud, afwisselend zon en wolken"
+
+msgid "cold with clouds breaking"
+msgstr "Koud, afnemende bewolking"
+
+msgid "cold with considerable clouds"
+msgstr "Koud, overwegend bewolkt"
+
+msgid "cold with icy mix"
+msgstr "Koud, mix van ijzel en ijsregen"
+
+msgid "cold with increasing clouds"
+msgstr "Koud, toenemende bewolking"
+
+msgid "cold with low clouds"
+msgstr "Koud, laaghangende bewolking"
+
+msgid "cold with partial sunshine"
+msgstr "Koud, af en toe zon"
+
+msgid "cold with patchy clouds"
+msgstr "Koud, verspreide wolken"
+
+msgid "cold with periods of sun"
+msgstr "Koud, af en toe zon"
+
+msgid "cold with plenty of clouds"
+msgstr "Koud, overwegend bewolkt"
+
+msgid "cold with plenty of sunshine"
+msgstr "Koud, veel zon"
+
+msgid "cold with snow"
+msgstr "Koud, sneeuw"
+
+msgid "cold with snow and rain"
+msgstr "Koud, regen en sneeuw"
+
+msgid "cold with snow at times"
+msgstr "Koud, af en toe sneeuw"
+
+msgid "cold with some sun"
+msgstr "Koud, af en toe zon"
+
+msgid "cold with sun"
+msgstr "Koud, zonnig"
+
+msgid "cold with variable clouds"
+msgstr "Koud, wisselende bewolking"
+
+msgid "colder"
+msgstr "Kouder"
+
+msgid "colder in the afternoon"
+msgstr "In de middag: kouder"
+
+msgid "colder in the morning"
+msgstr "In de ochtend: kouder"
+
+msgid "colder with a bit of snow"
+msgstr "Kouder, wat sneeuw"
+
+msgid "colder with a few showers"
+msgstr "Kouder, enkele regenbuien"
+
+msgid "colder with a few snowflakes"
+msgstr "Kouder, enkele sneeuwvlokken"
+
+msgid "colder with a little rain"
+msgstr "Kouder, wat regen"
+
+msgid "colder with a little snow"
+msgstr "Kouder, wat sneeuw"
+
+msgid "colder with a shower or two"
+msgstr "Kouder, een of twee regenbuien"
+
+msgid "colder with a snow squall"
+msgstr "Kouder, sneeuwbui met windstoten"
+
+msgid "colder with a stray shower"
+msgstr "Kouder, plaatselijk een regenbui"
+
+msgid "colder with increasing clouds"
+msgstr "Kouder, toenemende bewolking"
+
+msgid "colder with low clouds"
+msgstr "Kouder, laaghangende bewolking"
+
+msgid "colder with occasional rain"
+msgstr "Kouder, af en toe regen"
+
+msgid "colder with partial sunshine"
+msgstr "Kouder, af en toe zon"
+
+msgid "colder with periods of sun"
+msgstr "Kouder, af en toe zon"
+
+msgid "colder with rain"
+msgstr "Kouder, regen"
+
+msgid "colder with showers around"
+msgstr "Kouder, plaatselijk een regenbui"
+
+msgid "colder with snow"
+msgstr "Kouder, sneeuw"
+
+msgid "colder with snow and rain"
+msgstr "Kouder, regen en sneeuw"
+
+msgid "colder with snow at times"
+msgstr "Kouder, af en toe sneeuw"
+
+msgid "colder with snow showers"
+msgstr "Kouder, sneeuwbuien"
+
+msgid "colder with some sun"
+msgstr "Kouder, af en toe zon"
+
+msgid "colder with spotty showers"
+msgstr "Kouder, plaatselijk een regenbui"
+
+msgid "comfortable"
+msgstr "Aangenaam weer"
+
+msgid "comfortable with some sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "comfortable with sunshine"
+msgstr "Aangenaam weer, zonnig"
+
+msgid "considerable cloudiness"
+msgstr "Overwegend bewolkt"
+
+msgid "considerable clouds"
+msgstr "Overwegend bewolkt"
+
+msgid "considerable clouds and humid"
+msgstr "Overwegend bewolkt, vochtig"
+
+msgid "considerable clouds and mild"
+msgstr "Overwegend bewolkt, zacht"
+
+msgid "considerable clouds and warm"
+msgstr "Overwegend bewolkt, warm"
+
+msgid "continued cloudy"
+msgstr "Het blijft bewolkt"
+
+msgid "continued cloudy with showers"
+msgstr "Het blijft bewolkt, buiig"
+
+msgid "cool"
+msgstr "Koel"
+
+msgid "cool with a thick cloud cover"
+msgstr "Koel, geheel bewolkt"
+
+msgid "cool with areas of low clouds"
+msgstr "Koel, plaatselijk laaghangende bewolking"
+
+msgid "cool with clearing"
+msgstr "Koel, opklaringen"
+
+msgid "cool with clouds and sun"
+msgstr "Koel, afwisselend zon en wolken"
+
+msgid "cool with clouds breaking"
+msgstr "Koel, afnemende bewolking"
+
+msgid "cool with decreasing clouds"
+msgstr "Koel, afnemende bewolking"
+
+msgid "cool with increasing clouds"
+msgstr "Koel, toenemende bewolking"
+
+msgid "cool with low clouds"
+msgstr "Koel, laaghangende bewolking"
+
+msgid "cool with occasional rain"
+msgstr "Koel, af en toe regen"
+
+msgid "cool with partial sunshine"
+msgstr "Koel, af en toe zon"
+
+msgid "cool with patchy clouds"
+msgstr "Koel, verspreide wolken"
+
+msgid "cool with periods of rain"
+msgstr "Koel, af en toe regen"
+
+msgid "cool with periods of sun"
+msgstr "Koel, af en toe zon"
+
+msgid "cool with plenty of sun"
+msgstr "Koel, veel zon"
+
+msgid "cool with plenty of sunshine"
+msgstr "Koel, veel zon"
+
+msgid "cool with rain"
+msgstr "Koel, regen"
+
+msgid "cool with rain and a t-storm"
+msgstr "Koel, regen, een onweersbui"
+
+msgid "cool with rain and drizzle"
+msgstr "Koel, regen en motregen"
+
+msgid "cool with some sun"
+msgstr "Koel, af en toe zon"
+
+msgid "cool with sun and clouds"
+msgstr "Koel, afwisselend zon en wolken"
+
+msgid "cool with sun and some clouds"
+msgstr "Koel, afwisselend zon en wolken"
+
+msgid "cool with sunny intervals"
+msgstr "Koel, af en toe zon"
+
+msgid "cool with thickening clouds"
+msgstr "Koel, de bewolking wordt dichter"
+
+msgid "cool with variable cloudiness"
+msgstr "Koel, wisselende bewolking"
+
+msgid "cool with variable clouds"
+msgstr "Koel, wisselende bewolking"
+
+msgid "cooler"
+msgstr "Koeler"
+
+msgid "cooler with a brief shower"
+msgstr "Koeler, korte regenbuien"
+
+msgid "cooler with a few showers"
+msgstr "Koeler, enkele regenbuien"
+
+msgid "cooler with a little rain"
+msgstr "Koeler, wat regen"
+
+msgid "cooler with a little snow"
+msgstr "Koeler, wat sneeuw"
+
+msgid "cooler with a passing shower"
+msgstr "Koeler, korte regenbuien"
+
+msgid "cooler with a shower"
+msgstr "Koeler, een regenbui"
+
+msgid "cooler with a shower in spots"
+msgstr "Koeler, plaatselijk een regenbui"
+
+msgid "cooler with a shower or two"
+msgstr "Koeler, een of twee regenbuien"
+
+msgid "cooler with a shower possible"
+msgstr "Koeler, kans op een regenbui"
+
+msgid "cooler with a stray shower"
+msgstr "Koeler, plaatselijk een regenbui"
+
+msgid "cooler with a stray t-shower"
+msgstr "Koeler, plaatselijk een onweersbui"
+
+msgid "cooler with a stray t-storm"
+msgstr "Koeler, plaatselijk onweer"
+
+msgid "cooler with a t-storm or two"
+msgstr "Koeler, enkele onweersbuien"
+
+msgid "cooler with a thundershower"
+msgstr "Koeler, onweersbui"
+
+msgid "cooler with a thunderstorm"
+msgstr "Koeler, een onweersbui"
+
+msgid "cooler with a touch of rain"
+msgstr "Koeler, wat regen"
+
+msgid "cooler with clearing"
+msgstr "Koeler, opklaringen"
+
+msgid "cooler with clouds and sun"
+msgstr "Koeler, afwisselend zon en wolken"
+
+msgid "cooler with clouds breaking"
+msgstr "Koeler, afnemende bewolking"
+
+msgid "cooler with decreasing clouds"
+msgstr "Koeler, afnemende bewolking"
+
+msgid "cooler with downpours"
+msgstr "Koeler, stortbuien"
+
+msgid "cooler with heavy showers"
+msgstr "Koeler, zware regenbuien"
+
+msgid "cooler with high clouds"
+msgstr "Koeler, hoge bewolking"
+
+msgid "cooler with increasing clouds"
+msgstr "Koeler, toenemende bewolking"
+
+msgid "cooler with low clouds"
+msgstr "Koeler, laaghangende bewolking"
+
+msgid "cooler with morning showers"
+msgstr "Koeler. In de ochtend: buiig"
+
+msgid "cooler with occasional rain"
+msgstr "Koeler, af en toe regen"
+
+msgid "cooler with partial sunshine"
+msgstr "Koeler, af en toe zon"
+
+msgid "cooler with periods of rain"
+msgstr "Koeler, af en toe regen"
+
+msgid "cooler with periods of sun"
+msgstr "Koeler, af en toe zon"
+
+msgid "cooler with plenty of clouds"
+msgstr "Koeler, overwegend bewolkt"
+
+msgid "cooler with plenty of sun"
+msgstr "Koeler, veel zon"
+
+msgid "cooler with rain"
+msgstr "Koeler, regen"
+
+msgid "cooler with rain and drizzle"
+msgstr "Koeler, regen en motregen"
+
+msgid "cooler with rain at times"
+msgstr "Koeler, af en toe regen"
+
+msgid "cooler with rain beginning"
+msgstr "Koeler, het gaat regenen"
+
+msgid "cooler with rain tapering off"
+msgstr "Koeler, de regen neemt af"
+
+msgid "cooler with showers"
+msgstr "Koeler, buiig"
+
+msgid "cooler with showers around"
+msgstr "Koeler, plaatselijk een regenbui"
+
+msgid "cooler with some brightening"
+msgstr "Koeler, enkele opklaringen"
+
+msgid "cooler with some sun"
+msgstr "Koeler, af en toe zon"
+
+msgid "cooler with spotty showers"
+msgstr "Koeler, plaatselijk een regenbui"
+
+msgid "cooler with sun"
+msgstr "Koeler, zonnig"
+
+msgid "cooler with sun and clouds"
+msgstr "Koeler, afwisselend zon en wolken"
+
+msgid "cooler with sunny intervals"
+msgstr "Koeler, af en toe zon"
+
+msgid "cooler with thunderstorms"
+msgstr "Koeler, onweer"
+
+msgid "cooler with variable clouds"
+msgstr "Koeler, wisselende bewolking"
+
+msgid "couple of showers"
+msgstr "Een of twee regenbuien"
+
+msgid "couple of thunderstorms"
+msgstr "Enkele onweersbuien"
+
+msgid "damp early"
+msgstr "Aanvankelijk: vochtig"
+
+msgid "decreasing clouds"
+msgstr "Afnemende bewolking"
+
+msgid "decreasing clouds and breezy"
+msgstr "Afnemende bewolking, licht winderig"
+
+msgid "decreasing clouds and colder"
+msgstr "Afnemende bewolking, kouder"
+
+msgid "decreasing clouds and cool"
+msgstr "Afnemende bewolking, koel"
+
+msgid "decreasing clouds and cooler"
+msgstr "Afnemende bewolking, koeler"
+
+msgid "decreasing clouds and humid"
+msgstr "Afnemende bewolking, vochtig"
+
+msgid "decreasing clouds and warm"
+msgstr "Afnemende bewolking, warm"
+
+msgid "decreasing clouds and warmer"
+msgstr "Afnemende bewolking, warmer"
+
+msgid "delightful"
+msgstr "Aangenaam weer"
+
+msgid "delightful with plenty of sun"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "delightful with some sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "delightful with sunshine"
+msgstr "Aangenaam weer, zonnig"
+
+msgid "dense fog"
+msgstr "Dichte mist"
+
+msgid "downpours"
+msgstr "Stortbuien"
+
+msgid "downpours early"
+msgstr "Aanvankelijk: stortbuien"
+
+msgid "downpours in the a.m."
+msgstr "In de ochtend: stortbuien"
+
+msgid "downpours in the afternoon"
+msgstr "In de middag: stortbuien"
+
+msgid "downpours in the evening"
+msgstr "In de avond: stortbuien"
+
+msgid "downpours in the morning"
+msgstr "In de ochtend: stortbuien"
+
+msgid "downpours in the p.m."
+msgstr "In de middag: stortbuien"
+
+msgid "downpours this evening"
+msgstr "Vanavond: stortbuien"
+
+msgid "drizzle/rain"
+msgstr "Regen en motregen"
+
+msgid "dull and dreary"
+msgstr "Grijs en somber"
+
+msgid "dull and dreary with showers"
+msgstr "Grijs en somber, buiig"
+
+msgid "early downpours"
+msgstr "Aanvankelijk: stortbuien"
+
+msgid "early flurries"
+msgstr "Aanvankelijk: korte lichte sneeuwbuien"
+
+msgid "early rain"
+msgstr "Aanvankelijk: regen"
+
+msgid "early showers"
+msgstr "Aanvankelijk: buiig"
+
+msgid "early snow"
+msgstr "Aanvankelijk: sneeuw"
+
+msgid "early snow showers"
+msgstr "Aanvankelijk: sneeuwbuien"
+
+msgid "early t-showers"
+msgstr "Aanvankelijk: onweersbui"
+
+msgid "early thunderstorms"
+msgstr "Aanvankelijk: onweer"
+
+msgid "episodes of sunshine"
+msgstr "Af en toe zon"
+
+msgid "evening downpours"
+msgstr "In de avond: stortbuien"
+
+msgid "evening rain"
+msgstr "In de avond: regen"
+
+msgid "evening rain and drizzle"
+msgstr "In de avond: regen, motregen"
+
+msgid "evening showers"
+msgstr "In de avond: buiig"
+
+msgid "evening showers and t-storms"
+msgstr "In de avond: buiig, onweer"
+
+msgid "evening snow showers"
+msgstr "In de avond: sneeuwbuien"
+
+msgid "evening thundershowers"
+msgstr "In de avond: onweersbui"
+
+msgid "evening thunderstorms"
+msgstr "In de avond: onweer"
+
+msgid "flurries"
+msgstr "Korte lichte sneeuwbuien"
+
+msgid "fog forming"
+msgstr "Er ontstaat mist"
+
+msgid "fog in the a.m."
+msgstr "In de ochtend: mist"
+
+msgid "fog in the morning"
+msgstr "In de ochtend: mist"
+
+msgid "fog to sun"
+msgstr "Eerst mist, daarna zon"
+
+msgid "fog will lift this morning"
+msgstr "Vanochtend: de mist trekt op"
+
+msgid "foggy"
+msgstr "Mist"
+
+msgid "freezing early"
+msgstr "Aanvankelijk: vorst"
+
+msgid "freezing fog"
+msgstr "Aanvriezende mist"
+
+msgid "freezing fog this morning"
+msgstr "Vanochtend: aanvriezende mist"
+
+msgid "freezing late"
+msgstr "Later: vorst"
+
+msgid "frigid"
+msgstr "Ijskoud"
+
+msgid "frigid in the evening"
+msgstr "In de avond: ijskoud"
+
+msgid "frigid with a bit of snow"
+msgstr "Ijskoud, wat sneeuw"
+
+msgid "frigid with clouds and sun"
+msgstr "Ijskoud, afwisselend zon en wolken"
+
+msgid "frigid with increasing clouds"
+msgstr "Ijskoud, toenemende bewolking"
+
+msgid "frigid with low clouds"
+msgstr "Ijskoud, laaghangende bewolking"
+
+msgid "frigid with patchy clouds"
+msgstr "Ijskoud, verspreide wolken"
+
+msgid "frigid with periods of snow"
+msgstr "Ijskoud, af en toe sneeuw"
+
+msgid "frigid with some sun"
+msgstr "Ijskoud, af en toe zon"
+
+msgid "frigid with tapering off"
+msgstr "Ijskoud, geleidelijk afnemend"
+
+msgid "ground fog"
+msgstr "Grondmist"
+
+msgid "gusty thunderstorms possible"
+msgstr "Kans op onweer met windstoten"
+
+msgid "hazy"
+msgstr "Heiig"
+
+msgid "hazy and humid"
+msgstr "Heiig, vochtig"
+
+msgid "hazy and remaining very warm"
+msgstr "Heiig, het blijft zeer warm"
+
+msgid "hazy and seasonably warm"
+msgstr "Heiig, warmte passend bij het seizoen"
+
+msgid "hazy and unseasonably hot"
+msgstr "Heiig, ongewoon heet voor de tijd van het jaar"
+
+msgid "hazy and very warm"
+msgstr "Heiig, erg warm"
+
+msgid "hazy and warm"
+msgstr "Heiig, warm"
+
+msgid "hazy clouds"
+msgstr "Wolken en nevel"
+
+msgid "hazy sun"
+msgstr "Zon door de nevel"
+
+msgid "hazy sun and hot"
+msgstr "Zon door de nevel, heet"
+
+msgid "hazy sun and summerlike"
+msgstr "Zon door de nevel, zomers"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "Zon door de nevel, ongewoon heet voor de tijd van het jaar"
+
+msgid "hazy sun and very warm"
+msgstr "Zon door de nevel, erg warm"
+
+msgid "hazy sunshine"
+msgstr "Zon door de nevel"
+
+msgid "hazy sunshine and hot"
+msgstr "Zon door de nevel, heet"
+
+msgid "hazy sunshine and less humid"
+msgstr "Zon door de nevel, minder vochtig"
+
+msgid "hazy sunshine and very warm"
+msgstr "Zon door de nevel, erg warm"
+
+msgid "hazy with a t-storm in spots"
+msgstr "Heiig, plaatselijk onweer"
+
+msgid "heavy a.m. rain"
+msgstr "In de ochtend: zware regen"
+
+msgid "heavy a.m. showers"
+msgstr "In de ochtend: zware regenbuien"
+
+msgid "heavy afternoon rain"
+msgstr "In de middag: zware regen"
+
+msgid "heavy afternoon showers"
+msgstr "In de middag: zware regenbuien"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "In de middag: zware onweersbuien"
+
+msgid "heavy evening rain"
+msgstr "In de avond: zware regen"
+
+msgid "heavy evening thunderstorms"
+msgstr "In de avond: zware onweersbuien"
+
+msgid "heavy late-night rain"
+msgstr "Laat in de nacht: zware regen"
+
+msgid "heavy morning rain"
+msgstr "In de ochtend: zware regen"
+
+msgid "heavy morning showers"
+msgstr "In de ochtend: zware regenbuien"
+
+msgid "heavy morning thunderstorms"
+msgstr "In de ochtend: zware onweersbuien"
+
+msgid "heavy rain and a t-storm late"
+msgstr "Zware regen. Later: een onweersbui"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "Zware regen, een onweersbui"
+
+msgid "heavy rain and ice late"
+msgstr "Zware regen. Later: iJzel"
+
+msgid "heavy rain developing"
+msgstr "Het begint hard te regenen"
+
+msgid "heavy rain in the afternoon"
+msgstr "In de middag: zware regen"
+
+msgid "heavy rain shower"
+msgstr "Zware regenbuien"
+
+msgid "heavy rain tapering off"
+msgstr "De zware regen neemt af"
+
+msgid "heavy showers early"
+msgstr "Aanvankelijk: zware regenbuien"
+
+msgid "heavy showers in the evening"
+msgstr "In de avond: zware regenbuien"
+
+msgid "heavy showers in the morning"
+msgstr "In de ochtend: zware regenbuien"
+
+msgid "heavy showers late"
+msgstr "Later: zware regenbuien"
+
+msgid "heavy showers this afternoon"
+msgstr "Vanmiddag: zware regenbuien"
+
+msgid "heavy showers this evening"
+msgstr "Vanavond: zware regenbuien"
+
+msgid "heavy showers this morning"
+msgstr "Vanochtend: zware regenbuien"
+
+msgid "heavy t-storms"
+msgstr "Zware onweersbuien"
+
+msgid "heavy t-storms early"
+msgstr "Aanvankelijk: zware onweersbuien"
+
+msgid "heavy t-storms in the evening"
+msgstr "In de avond: zware onweersbuien"
+
+msgid "heavy t-storms late"
+msgstr "Later: zware onweersbuien"
+
+msgid "heavy thunderstorm"
+msgstr "Zware onweersbuien"
+
+msgid "heavy thunderstorms"
+msgstr "Zware onweersbuien"
+
+msgid "high clouds"
+msgstr "Hoge bewolking"
+
+msgid "high clouds and breezy"
+msgstr "Hoge bewolking, licht winderig"
+
+msgid "high clouds and chilly"
+msgstr "Hoge bewolking, kil"
+
+msgid "high clouds and cooler"
+msgstr "Hoge bewolking, koeler"
+
+msgid "high clouds and hot"
+msgstr "Hoge bewolking, heet"
+
+msgid "high clouds and nice"
+msgstr "Hoge bewolking, aangenaam weer"
+
+msgid "high clouds and pleasant"
+msgstr "Hoge bewolking, aangenaam weer"
+
+msgid "high clouds and summerlike"
+msgstr "Hoge bewolking, zomers"
+
+msgid "high clouds and very warm"
+msgstr "Hoge bewolking, erg warm"
+
+msgid "high clouds and warm"
+msgstr "Hoge bewolking, warm"
+
+msgid "high clouds and warmer"
+msgstr "Hoge bewolking, warmer"
+
+msgid "hot and humid with some sun"
+msgstr "Heet, vochtig, af en toe zon"
+
+msgid "hot with abundant sunshine"
+msgstr "Heet, veel zon"
+
+msgid "hot with blazing sunshine"
+msgstr "Heet, felle zon"
+
+msgid "hot with brilliant sunshine"
+msgstr "Heet, stralende zon"
+
+msgid "hot with clearing"
+msgstr "Heet, opklaringen"
+
+msgid "hot with clouds and sun"
+msgstr "Heet, afwisselend zon en wolken"
+
+msgid "hot with clouds and sunshine"
+msgstr "Heet, afwisselend zon en wolken"
+
+msgid "hot with clouds rolling in"
+msgstr "Heet, wolken trekken binnen"
+
+msgid "hot with considerable clouds"
+msgstr "Heet, overwegend bewolkt"
+
+msgid "hot with decreasing clouds"
+msgstr "Heet, afnemende bewolking"
+
+msgid "hot with hazy sun"
+msgstr "Heet, zon door de nevel"
+
+msgid "hot with hazy sunshine"
+msgstr "Heet, zon door de nevel"
+
+msgid "hot with high clouds"
+msgstr "Heet, hoge bewolking"
+
+msgid "hot with increasing clouds"
+msgstr "Heet, toenemende bewolking"
+
+msgid "hot with more clouds than sun"
+msgstr "Heet, overwegend bewolkt"
+
+msgid "hot with more sun than clouds"
+msgstr "Heet, overwegend zonnig"
+
+msgid "hot with partial sunshine"
+msgstr "Heet, af en toe zon"
+
+msgid "hot with periods of sun"
+msgstr "Heet, af en toe zon"
+
+msgid "hot with periods of sunshine"
+msgstr "Heet, af en toe zon"
+
+msgid "hot with plenty of sun"
+msgstr "Heet, veel zon"
+
+msgid "hot with plenty of sunshine"
+msgstr "Heet, veel zon"
+
+msgid "hot with rain and drizzle"
+msgstr "Heet, regen en motregen"
+
+msgid "hot with some sun"
+msgstr "Heet, af en toe zon"
+
+msgid "hot with some sunshine"
+msgstr "Heet, af en toe zon"
+
+msgid "hot with sun"
+msgstr "Heet, zonnig"
+
+msgid "hot with sun and clouds"
+msgstr "Heet, afwisselend zon en wolken"
+
+msgid "hot with sun and some clouds"
+msgstr "Heet, afwisselend zon en wolken"
+
+msgid "hot with sunny intervals"
+msgstr "Heet, af en toe zon"
+
+msgid "hot with sunshine"
+msgstr "Heet, zonnig"
+
+msgid "hot with variable cloudiness"
+msgstr "Heet, wisselende bewolking"
+
+msgid "hot with variable clouds"
+msgstr "Heet, wisselende bewolking"
+
+msgid "hotter"
+msgstr "Heter"
+
+msgid "hotter with a stray t-storm"
+msgstr "Heter, plaatselijk onweer"
+
+msgid "hotter with a t-storm around"
+msgstr "Heter, plaatselijk onweer"
+
+msgid "hotter with a thunderstorm"
+msgstr "Heter, een onweersbui"
+
+msgid "hotter with abundant sunshine"
+msgstr "Heter, veel zon"
+
+msgid "hotter with blazing sunshine"
+msgstr "Heter, felle zon"
+
+msgid "hotter with partial sunshine"
+msgstr "Heter, af en toe zon"
+
+msgid "hotter with plenty of sun"
+msgstr "Heter, veel zon"
+
+msgid "hotter with sunshine"
+msgstr "Heter, zonnig"
+
+msgid "humid"
+msgstr "Vochtig"
+
+msgid "humid with a t-storm in spots"
+msgstr "Vochtig, plaatselijk onweer"
+
+msgid "humid with clouds"
+msgstr "Vochtig, bewolkt"
+
+msgid "humid with clouds and sun"
+msgstr "Vochtig, afwisselend zon en wolken"
+
+msgid "humid with clouds breaking"
+msgstr "Vochtig, afnemende bewolking"
+
+msgid "humid with cloudy spells"
+msgstr "Vochtig, af en toe bewolkt"
+
+msgid "humid with high clouds"
+msgstr "Vochtig, hoge bewolking"
+
+msgid "humid with increasing clouds"
+msgstr "Vochtig, toenemende bewolking"
+
+msgid "humid with low clouds"
+msgstr "Vochtig, laaghangende bewolking"
+
+msgid "humid with partial sunshine"
+msgstr "Vochtig, af en toe zon"
+
+msgid "humid with patchy clouds"
+msgstr "Vochtig, verspreide wolken"
+
+msgid "humid with periods of rain"
+msgstr "Vochtig, af en toe regen"
+
+msgid "humid with periods of sun"
+msgstr "Vochtig, af en toe zon"
+
+msgid "humid with plenty of clouds"
+msgstr "Vochtig, overwegend bewolkt"
+
+msgid "humid with plenty of sun"
+msgstr "Vochtig, veel zon"
+
+msgid "humid with plenty of sunshine"
+msgstr "Vochtig, veel zon"
+
+msgid "humid with rain"
+msgstr "Vochtig, regen"
+
+msgid "humid with rain and a t-storm"
+msgstr "Vochtig, regen, een onweersbui"
+
+msgid "humid with rain and drizzle"
+msgstr "Vochtig, regen en motregen"
+
+msgid "humid with rain at times"
+msgstr "Vochtig, af en toe regen"
+
+msgid "humid with some brightening"
+msgstr "Vochtig, enkele opklaringen"
+
+msgid "humid with some sun"
+msgstr "Vochtig, af en toe zon"
+
+msgid "humid with sunny intervals"
+msgstr "Vochtig, af en toe zon"
+
+msgid "humid with thickening clouds"
+msgstr "Vochtig, de bewolking wordt dichter"
+
+msgid "humid with variable clouds"
+msgstr "Vochtig, wisselende bewolking"
+
+msgid "ice and rain at times"
+msgstr "IJzel, af en toe regen"
+
+msgid "increasing amounts of clouds"
+msgstr "Toenemende bewolking"
+
+msgid "increasing amounts of sun"
+msgstr "Steeds meer zon"
+
+msgid "increasing cloudiness"
+msgstr "Toenemende bewolking"
+
+msgid "increasing cloudiness and hot"
+msgstr "Toenemende bewolking, heet"
+
+msgid "increasing clouds"
+msgstr "Toenemende bewolking"
+
+msgid "increasing clouds and chilly"
+msgstr "Toenemende bewolking, kil"
+
+msgid "increasing clouds and cold"
+msgstr "Toenemende bewolking, koud"
+
+msgid "increasing clouds and cool"
+msgstr "Toenemende bewolking, koel"
+
+msgid "increasing clouds and hot"
+msgstr "Toenemende bewolking, heet"
+
+msgid "increasing clouds and hotter"
+msgstr "Toenemende bewolking, heter"
+
+msgid "increasing clouds and humid"
+msgstr "Toenemende bewolking, vochtig"
+
+msgid "increasing clouds and milder"
+msgstr "Toenemende bewolking, zachter"
+
+msgid "increasing clouds and warm"
+msgstr "Toenemende bewolking, warm"
+
+msgid "increasing clouds and warmer"
+msgstr "Toenemende bewolking, warmer"
+
+msgid "increasingly windy"
+msgstr "Toenemende wind"
+
+msgid "intermittent snow"
+msgstr "Af en toe sneeuw"
+
+msgid "intervals of clouds and sun"
+msgstr "Afwisselend zon en wolken"
+
+msgid "jupiter"
+msgstr "Jupiter"
+
+msgid "late downpours"
+msgstr "Later: stortbuien"
+
+msgid "late flurries"
+msgstr "Later: korte lichte sneeuwbuien"
+
+msgid "late rain"
+msgstr "Later: regen"
+
+msgid "late snow"
+msgstr "Later: sneeuw"
+
+msgid "late snow showers"
+msgstr "Later: sneeuwbuien"
+
+msgid "late-night rain"
+msgstr "Laat in de nacht: regen"
+
+msgid "late-night showers"
+msgstr "Laat in de nacht: buiig"
+
+msgid "late-night snow"
+msgstr "Laat in de nacht: sneeuw"
+
+msgid "late-night thunderstorms"
+msgstr "Laat in de nacht: onweer"
+
+msgid "less humid with plenty of sun"
+msgstr "Minder vochtig, veel zon"
+
+msgid "less humid with some sun"
+msgstr "Minder vochtig, af en toe zon"
+
+msgid "light fog"
+msgstr "Lichte mist"
+
+msgid "light snow"
+msgstr "Lichte sneeuw"
+
+msgid "lots of sun"
+msgstr "Veel zon"
+
+msgid "lots of sun with a shower"
+msgstr "Veel zon, een regenbui"
+
+msgid "low clouds"
+msgstr "Laaghangende bewolking"
+
+msgid "low clouds and bitterly cold"
+msgstr "Laaghangende bewolking, ijskoud"
+
+msgid "low clouds and breezy"
+msgstr "Laaghangende bewolking, licht winderig"
+
+msgid "low clouds and chilly"
+msgstr "Laaghangende bewolking, kil"
+
+msgid "low clouds and cold"
+msgstr "Laaghangende bewolking, koud"
+
+msgid "low clouds and colder"
+msgstr "Laaghangende bewolking, kouder"
+
+msgid "low clouds and cool"
+msgstr "Laaghangende bewolking, koel"
+
+msgid "low clouds and cooler"
+msgstr "Laaghangende bewolking, koeler"
+
+msgid "low clouds and fog"
+msgstr "Laaghangende bewolking, mist"
+
+msgid "low clouds and fog and cooler"
+msgstr "Laaghangende bewolking, mist, koeler"
+
+msgid "low clouds and freezing fog"
+msgstr "Laaghangende bewolking, aanvriezende mist"
+
+msgid "low clouds and frigid"
+msgstr "Laaghangende bewolking, ijskoud"
+
+msgid "low clouds and humid"
+msgstr "Laaghangende bewolking, vochtig"
+
+msgid "low clouds and mild"
+msgstr "Laaghangende bewolking, zacht"
+
+msgid "low clouds and not as cold"
+msgstr "Laaghangende bewolking, minder koud"
+
+msgid "low clouds and remaining cool"
+msgstr "Laaghangende bewolking, het blijft koel"
+
+msgid "low clouds and spotty showers"
+msgstr "Laaghangende bewolking, plaatselijk een regenbui"
+
+msgid "low clouds and warmer"
+msgstr "Laaghangende bewolking, warmer"
+
+msgid "low clouds break for some sun"
+msgstr "Laaghangende bewolking trekt op"
+
+msgid "low clouds breaking"
+msgstr "Laaghangende bewolking trekt op"
+
+msgid "low clouds breaking and humid"
+msgstr "Laaghangende bewolking trekt op, vochtig"
+
+msgid "low clouds followed by sun"
+msgstr "Laaghangende bewolking trekt op"
+
+msgid "low clouds may break"
+msgstr "De lage bewolking kan openbreken"
+
+msgid "low clouds with a flurry late"
+msgstr "Laaghangende bewolking. Later: korte lichte sneeuwbuien"
+
+msgid "low clouds with rain late"
+msgstr "Laaghangende bewolking. Later: regen"
+
+msgid "low humidity with some sun"
+msgstr "Lage luchtvochtigheid, af en toe zon"
+
+msgid "low humidity with sunshine"
+msgstr "Lage luchtvochtigheid, zonnig"
+
+msgid "mainly clear and breezy"
+msgstr "Overwegend helder, licht winderig"
+
+msgid "mainly clear and chilly"
+msgstr "Overwegend helder, kil"
+
+msgid "mainly clear and cold"
+msgstr "Overwegend helder, koud"
+
+msgid "mainly clear and colder"
+msgstr "Overwegend helder, kouder"
+
+msgid "mainly clear and cool"
+msgstr "Overwegend helder, koel"
+
+msgid "mainly clear and cooler"
+msgstr "Overwegend helder, koeler"
+
+msgid "mainly clear and frigid"
+msgstr "Overwegend helder, ijskoud"
+
+msgid "mainly clear and humid"
+msgstr "Overwegend helder, vochtig"
+
+msgid "mainly clear and mild"
+msgstr "Overwegend helder, zacht"
+
+msgid "mainly clear and much colder"
+msgstr "Overwegend helder, veel kouder"
+
+msgid "mainly clear and not as warm"
+msgstr "Overwegend helder, minder warm"
+
+msgid "mainly clear and very cold"
+msgstr "Overwegend helder, erg koud"
+
+msgid "mainly clear and very humid"
+msgstr "Overwegend helder, zeer vochtig"
+
+msgid "mainly clear and very warm"
+msgstr "Overwegend helder, erg warm"
+
+msgid "mainly clear and warm"
+msgstr "Overwegend helder, warm"
+
+msgid "mainly clear and warmer"
+msgstr "Overwegend helder, warmer"
+
+msgid "mainly clear with a shower"
+msgstr "Overwegend helder, een regenbui"
+
+msgid "mainly clear with a t-storm"
+msgstr "Overwegend helder, een onweersbui"
+
+msgid "mainly cloudy"
+msgstr "Overwegend bewolkt"
+
+msgid "mainly cloudy and chilly"
+msgstr "Overwegend bewolkt, kil"
+
+msgid "mainly cloudy and cold"
+msgstr "Overwegend bewolkt, koud"
+
+msgid "mainly cloudy and colder"
+msgstr "Overwegend bewolkt, kouder"
+
+msgid "mainly cloudy and cool"
+msgstr "Overwegend bewolkt, koel"
+
+msgid "mainly cloudy and cooler"
+msgstr "Overwegend bewolkt, koeler"
+
+msgid "mainly cloudy and frigid"
+msgstr "Overwegend bewolkt, ijskoud"
+
+msgid "mainly cloudy and hot"
+msgstr "Overwegend bewolkt, heet"
+
+msgid "mainly cloudy and humid"
+msgstr "Overwegend bewolkt, vochtig"
+
+msgid "mainly cloudy and summerlike"
+msgstr "Overwegend bewolkt, zomers"
+
+msgid "mainly cloudy and very warm"
+msgstr "Overwegend bewolkt, erg warm"
+
+msgid "mainly cloudy and warm"
+msgstr "Overwegend bewolkt, warm"
+
+msgid "mainly cloudy and warmer"
+msgstr "Overwegend bewolkt, warmer"
+
+msgid "mainly cloudy with a shower"
+msgstr "Overwegend bewolkt, een regenbui"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "Overwegend bewolkt, een onweersbui"
+
+msgid "mainly cloudy with flurries"
+msgstr "Overwegend bewolkt, korte lichte sneeuwbuien"
+
+msgid "mainly cloudy with showers"
+msgstr "Overwegend bewolkt, buiig"
+
+msgid "mainly early"
+msgstr "Vooral in het begin"
+
+msgid "mainly later"
+msgstr "Vooral later"
+
+msgid "mars"
+msgstr "Mars"
+
+msgid "mercury"
+msgstr "Mercurius"
+
+msgid "mild"
+msgstr "Zacht"
+
+msgid "mild with abundant sunshine"
+msgstr "Zacht, veel zon"
+
+msgid "mild with clouds and sun"
+msgstr "Zacht, afwisselend zon en wolken"
+
+msgid "mild with clouds and sunshine"
+msgstr "Zacht, afwisselend zon en wolken"
+
+msgid "mild with considerable clouds"
+msgstr "Zacht, overwegend bewolkt"
+
+msgid "mild with increasing clouds"
+msgstr "Zacht, toenemende bewolking"
+
+msgid "mild with partial sunshine"
+msgstr "Zacht, af en toe zon"
+
+msgid "mild with patchy clouds"
+msgstr "Zacht, verspreide wolken"
+
+msgid "mild with periods of rain"
+msgstr "Zacht, af en toe regen"
+
+msgid "mild with periods of sun"
+msgstr "Zacht, af en toe zon"
+
+msgid "mild with plenty of clouds"
+msgstr "Zacht, overwegend bewolkt"
+
+msgid "mild with plenty of sun"
+msgstr "Zacht, veel zon"
+
+msgid "mild with plenty of sunshine"
+msgstr "Zacht, veel zon"
+
+msgid "mild with some sun"
+msgstr "Zacht, af en toe zon"
+
+msgid "mild with sun and clouds"
+msgstr "Zacht, afwisselend zon en wolken"
+
+msgid "mild with sun and some clouds"
+msgstr "Zacht, afwisselend zon en wolken"
+
+msgid "mild with sunny intervals"
+msgstr "Zacht, af en toe zon"
+
+msgid "mild with sunshine"
+msgstr "Zacht, zonnig"
+
+msgid "mild with thickening clouds"
+msgstr "Zacht, de bewolking wordt dichter"
+
+msgid "mild with variable cloudiness"
+msgstr "Zacht, wisselende bewolking"
+
+msgid "milder"
+msgstr "Zachter"
+
+msgid "milder with a shower in spots"
+msgstr "Zachter, plaatselijk een regenbui"
+
+msgid "milder with brief showers"
+msgstr "Zachter, korte regenbuien"
+
+msgid "milder with clouds and sun"
+msgstr "Zachter, afwisselend zon en wolken"
+
+msgid "milder with increasing clouds"
+msgstr "Zachter, toenemende bewolking"
+
+msgid "milder with low clouds"
+msgstr "Zachter, laaghangende bewolking"
+
+msgid "milder with periods of rain"
+msgstr "Zachter, af en toe regen"
+
+msgid "milder with periods of sun"
+msgstr "Zachter, af en toe zon"
+
+msgid "milder with sun"
+msgstr "Zachter, zonnig"
+
+msgid "milder with thickening clouds"
+msgstr "Zachter, de bewolking wordt dichter"
+
+msgid "mist"
+msgstr "Nevel"
+
+msgid "mixed with snow early"
+msgstr "Aanvankelijk: gemengd met sneeuw"
+
+msgid "moderate rain"
+msgstr "Matige regen"
+
+msgid "moon"
+msgstr "Maan"
+
+msgid "more clouds than sun"
+msgstr "Overwegend bewolkt"
+
+msgid "more clouds than sunshine"
+msgstr "Overwegend bewolkt"
+
+msgid "more sun than clouds"
+msgstr "Overwegend zonnig"
+
+msgid "more sunshine than clouds"
+msgstr "Overwegend zonnig"
+
+msgid "morning downpours"
+msgstr "In de ochtend: stortbuien"
+
+msgid "morning flurries"
+msgstr "In de ochtend: korte lichte sneeuwbuien"
+
+msgid "morning rain"
+msgstr "In de ochtend: regen"
+
+msgid "morning showers"
+msgstr "In de ochtend: buiig"
+
+msgid "morning snow"
+msgstr "In de ochtend: sneeuw"
+
+msgid "morning snow showers"
+msgstr "In de ochtend: sneeuwbuien"
+
+msgid "morning t-showers"
+msgstr "In de ochtend: onweersbui"
+
+msgid "morning thunderstorms"
+msgstr "In de ochtend: onweer"
+
+msgid "mostly clear and chilly"
+msgstr "Overwegend helder, kil"
+
+msgid "mostly clear and cold"
+msgstr "Overwegend helder, koud"
+
+msgid "mostly clear and cool"
+msgstr "Overwegend helder, koel"
+
+msgid "mostly clear and cooler"
+msgstr "Overwegend helder, koeler"
+
+msgid "mostly clear and humid"
+msgstr "Overwegend helder, vochtig"
+
+msgid "mostly clear and mild"
+msgstr "Overwegend helder, zacht"
+
+msgid "mostly clear and very warm"
+msgstr "Overwegend helder, erg warm"
+
+msgid "mostly clear with a shower"
+msgstr "Overwegend helder, een regenbui"
+
+msgid "mostly cloudy and breezy"
+msgstr "Overwegend bewolkt, licht winderig"
+
+msgid "mostly cloudy and chilly"
+msgstr "Overwegend bewolkt, kil"
+
+msgid "mostly cloudy and cold"
+msgstr "Overwegend bewolkt, koud"
+
+msgid "mostly cloudy and colder"
+msgstr "Overwegend bewolkt, kouder"
+
+msgid "mostly cloudy and comfortable"
+msgstr "Overwegend bewolkt, aangenaam weer"
+
+msgid "mostly cloudy and cool"
+msgstr "Overwegend bewolkt, koel"
+
+msgid "mostly cloudy and cooler"
+msgstr "Overwegend bewolkt, koeler"
+
+msgid "mostly cloudy and frigid"
+msgstr "Overwegend bewolkt, ijskoud"
+
+msgid "mostly cloudy and hot"
+msgstr "Overwegend bewolkt, heet"
+
+msgid "mostly cloudy and hotter"
+msgstr "Overwegend bewolkt, heter"
+
+msgid "mostly cloudy and humid"
+msgstr "Overwegend bewolkt, vochtig"
+
+msgid "mostly cloudy and less humid"
+msgstr "Overwegend bewolkt, minder vochtig"
+
+msgid "mostly cloudy and mild"
+msgstr "Overwegend bewolkt, zacht"
+
+msgid "mostly cloudy and milder"
+msgstr "Overwegend bewolkt, zachter"
+
+msgid "mostly cloudy and misty"
+msgstr "Overwegend bewolkt, nevel"
+
+msgid "mostly cloudy and misty late"
+msgstr "Overwegend bewolkt. Later: nevel"
+
+msgid "mostly cloudy and not as cold"
+msgstr "Overwegend bewolkt, minder koud"
+
+msgid "mostly cloudy and not as cool"
+msgstr "Overwegend bewolkt, minder koel"
+
+msgid "mostly cloudy and not as hot"
+msgstr "Overwegend bewolkt, minder heet"
+
+msgid "mostly cloudy and not as warm"
+msgstr "Overwegend bewolkt, minder warm"
+
+msgid "mostly cloudy and seasonable"
+msgstr "Overwegend bewolkt, temperaturen normaal voor het seizoen"
+
+msgid "mostly cloudy and summerlike"
+msgstr "Overwegend bewolkt, zomers"
+
+msgid "mostly cloudy and very cold"
+msgstr "Overwegend bewolkt, erg koud"
+
+msgid "mostly cloudy and very hot"
+msgstr "Overwegend bewolkt, zeer heet"
+
+msgid "mostly cloudy and very humid"
+msgstr "Overwegend bewolkt, zeer vochtig"
+
+msgid "mostly cloudy and very warm"
+msgstr "Overwegend bewolkt, erg warm"
+
+msgid "mostly cloudy and warm"
+msgstr "Overwegend bewolkt, warm"
+
+msgid "mostly cloudy and warmer"
+msgstr "Overwegend bewolkt, warmer"
+
+msgid "mostly cloudy and windy"
+msgstr "Overwegend bewolkt, winderig"
+
+msgid "mostly cloudy with a downpour"
+msgstr "Overwegend bewolkt, stortbuien"
+
+msgid "mostly cloudy with a shower"
+msgstr "Overwegend bewolkt, een regenbui"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "Overwegend bewolkt, onweersbui"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "Overwegend bewolkt, een onweersbui"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "Overwegend bewolkt, mix van ijzel en ijsregen"
+
+msgid "mostly cloudy with downpours"
+msgstr "Overwegend bewolkt, stortbuien"
+
+msgid "mostly cloudy with flurries"
+msgstr "Overwegend bewolkt, korte lichte sneeuwbuien"
+
+msgid "mostly cloudy with mist late"
+msgstr "Overwegend bewolkt. Later: nevel"
+
+msgid "mostly cloudy with rain"
+msgstr "Overwegend bewolkt, regen"
+
+msgid "mostly cloudy with rain late"
+msgstr "Overwegend bewolkt. Later: regen"
+
+msgid "mostly cloudy with showers"
+msgstr "Overwegend bewolkt, buiig"
+
+msgid "mostly cloudy with snow late"
+msgstr "Overwegend bewolkt. Later: sneeuw"
+
+msgid "mostly cloudy with t-showers"
+msgstr "Overwegend bewolkt, onweersbui"
+
+msgid "mostly cloudy with t-storms"
+msgstr "Overwegend bewolkt, onweer"
+
+msgid "mostly sunny and beautiful"
+msgstr "Overwegend zonnig, aangenaam weer"
+
+msgid "mostly sunny and breezy"
+msgstr "Overwegend zonnig, licht winderig"
+
+msgid "mostly sunny and chilly"
+msgstr "Overwegend zonnig, kil"
+
+msgid "mostly sunny and cold"
+msgstr "Overwegend zonnig, koud"
+
+msgid "mostly sunny and colder"
+msgstr "Overwegend zonnig, kouder"
+
+msgid "mostly sunny and comfortable"
+msgstr "Overwegend zonnig, aangenaam weer"
+
+msgid "mostly sunny and cool"
+msgstr "Overwegend zonnig, koel"
+
+msgid "mostly sunny and cooler"
+msgstr "Overwegend zonnig, koeler"
+
+msgid "mostly sunny and delightful"
+msgstr "Overwegend zonnig, aangenaam weer"
+
+msgid "mostly sunny and frigid"
+msgstr "Overwegend zonnig, ijskoud"
+
+msgid "mostly sunny and hot"
+msgstr "Overwegend zonnig, heet"
+
+msgid "mostly sunny and hotter"
+msgstr "Overwegend zonnig, heter"
+
+msgid "mostly sunny and humid"
+msgstr "Overwegend zonnig, vochtig"
+
+msgid "mostly sunny and less humid"
+msgstr "Overwegend zonnig, minder vochtig"
+
+msgid "mostly sunny and mild"
+msgstr "Overwegend zonnig, zacht"
+
+msgid "mostly sunny and milder"
+msgstr "Overwegend zonnig, zachter"
+
+msgid "mostly sunny and nice"
+msgstr "Overwegend zonnig, aangenaam weer"
+
+msgid "mostly sunny and not as cold"
+msgstr "Overwegend zonnig, minder koud"
+
+msgid "mostly sunny and not as hot"
+msgstr "Overwegend zonnig, minder heet"
+
+msgid "mostly sunny and not as warm"
+msgstr "Overwegend zonnig, minder warm"
+
+msgid "mostly sunny and pleasant"
+msgstr "Overwegend zonnig, aangenaam weer"
+
+msgid "mostly sunny and quite cold"
+msgstr "Overwegend zonnig, vrij koud"
+
+msgid "mostly sunny and summerlike"
+msgstr "Overwegend zonnig, zomers"
+
+msgid "mostly sunny and very cold"
+msgstr "Overwegend zonnig, erg koud"
+
+msgid "mostly sunny and very hot"
+msgstr "Overwegend zonnig, zeer heet"
+
+msgid "mostly sunny and very humid"
+msgstr "Overwegend zonnig, zeer vochtig"
+
+msgid "mostly sunny and very warm"
+msgstr "Overwegend zonnig, erg warm"
+
+msgid "mostly sunny and warm"
+msgstr "Overwegend zonnig, warm"
+
+msgid "mostly sunny and warmer"
+msgstr "Overwegend zonnig, warmer"
+
+msgid "mostly sunny and windy"
+msgstr "Overwegend zonnig, winderig"
+
+msgid "mostly sunny with a shower"
+msgstr "Overwegend zonnig, een regenbui"
+
+msgid "mostly sunny with a t-shower"
+msgstr "Overwegend zonnig, onweersbui"
+
+msgid "mostly sunny with a t-storm"
+msgstr "Overwegend zonnig, een onweersbui"
+
+msgid "much colder"
+msgstr "Veel kouder"
+
+msgid "much colder with low clouds"
+msgstr "Veel kouder, laaghangende bewolking"
+
+msgid "neptune"
+msgstr "Neptunus"
+
+msgid "nice"
+msgstr "Aangenaam weer"
+
+msgid "nice and warm"
+msgstr "Aangenaam weer, warm"
+
+msgid "nice and warm with some sun"
+msgstr "Aangenaam weer, warm, af en toe zon"
+
+msgid "nice and warm with sunshine"
+msgstr "Aangenaam weer, warm, zonnig"
+
+msgid "nice with abundant sunshine"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "nice with brilliant sunshine"
+msgstr "Aangenaam weer, stralende zon"
+
+msgid "nice with clouds"
+msgstr "Aangenaam weer, bewolkt"
+
+msgid "nice with clouds and sun"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "nice with clouds and sunshine"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "nice with partial sunshine"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "nice with periods of sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "nice with periods of sunshine"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "nice with plenty of sun"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "nice with plenty of sunshine"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "nice with some sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "nice with some sunshine"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "nice with sun"
+msgstr "Aangenaam weer, zonnig"
+
+msgid "nice with sun and clouds"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "nice with sun and some clouds"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "nice with sunny intervals"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "nice with sunshine"
+msgstr "Aangenaam weer, zonnig"
+
+msgid "nice with variable cloudiness"
+msgstr "Aangenaam weer, wisselende bewolking"
+
+msgid "nice with variable clouds"
+msgstr "Aangenaam weer, wisselende bewolking"
+
+msgid "not as cold"
+msgstr "Minder koud"
+
+msgid "not as cold with clearing"
+msgstr "Minder koud, opklaringen"
+
+msgid "not as cold with flurries"
+msgstr "Minder koud, korte lichte sneeuwbuien"
+
+msgid "not as cold with low clouds"
+msgstr "Minder koud, laaghangende bewolking"
+
+msgid "not as cold with snow showers"
+msgstr "Minder koud, sneeuwbuien"
+
+msgid "not as cold with some sun"
+msgstr "Minder koud, af en toe zon"
+
+msgid "not as cool"
+msgstr "Minder koel"
+
+msgid "not as cool late"
+msgstr "Later: minder koel"
+
+msgid "not as cool with clearing"
+msgstr "Minder koel, opklaringen"
+
+msgid "not as hot"
+msgstr "Minder heet"
+
+msgid "not as hot with a shower"
+msgstr "Minder heet, een regenbui"
+
+msgid "not as hot with a t-storm"
+msgstr "Minder heet, een onweersbui"
+
+msgid "not as hot with some sun"
+msgstr "Minder heet, af en toe zon"
+
+msgid "not as warm"
+msgstr "Minder warm"
+
+msgid "not as warm but pleasant"
+msgstr "Minder warm, aangenaam weer"
+
+msgid "not as warm in the afternoon"
+msgstr "In de middag: minder warm"
+
+msgid "not as warm this afternoon"
+msgstr "Vanmiddag: minder warm"
+
+msgid "not as warm with a shower"
+msgstr "Minder warm, een regenbui"
+
+msgid "not as warm with a t-shower"
+msgstr "Minder warm, onweersbui"
+
+msgid "not as warm with a t-storm"
+msgstr "Minder warm, een onweersbui"
+
+msgid "not as warm with clearing"
+msgstr "Minder warm, opklaringen"
+
+msgid "not as warm with downpours"
+msgstr "Minder warm, stortbuien"
+
+msgid "not as warm with high clouds"
+msgstr "Minder warm, hoge bewolking"
+
+msgid "not as warm with low clouds"
+msgstr "Minder warm, laaghangende bewolking"
+
+msgid "not as warm with morning rain"
+msgstr "Minder warm. In de ochtend: regen"
+
+msgid "not as warm with rain"
+msgstr "Minder warm, regen"
+
+msgid "not as warm with rain ending"
+msgstr "Minder warm, de regen stopt"
+
+msgid "not as warm with showers"
+msgstr "Minder warm, buiig"
+
+msgid "not as warm with some sun"
+msgstr "Minder warm, af en toe zon"
+
+msgid "occasional afternoon rain"
+msgstr "In de middag: af en toe regen"
+
+msgid "occasional evening rain"
+msgstr "In de avond: af en toe regen"
+
+msgid "occasional late-night rain"
+msgstr "Laat in de nacht: af en toe regen"
+
+msgid "occasional morning rain"
+msgstr "In de ochtend: af en toe regen"
+
+msgid "occasional rain"
+msgstr "Af en toe regen"
+
+msgid "occasional rain and a t-storm"
+msgstr "Af en toe regen, een onweersbui"
+
+msgid "occasional rain and drizzle"
+msgstr "Af en toe regen, motregen"
+
+msgid "occasional rain late"
+msgstr "Later: af en toe regen"
+
+msgid "occasional snow and flurries"
+msgstr "Af en toe sneeuw, korte lichte sneeuwbuien"
+
+msgid "on-and-off rain and drizzle"
+msgstr "Af en toe regen, motregen"
+
+msgid "on-and-off snow"
+msgstr "Af en toe sneeuw"
+
+msgid "otherwise"
+msgstr "Verder"
+
+msgid "overcast and becoming rainy"
+msgstr "Geheel bewolkt, het gaat regenen"
+
+msgid "overcast and chilly"
+msgstr "Geheel bewolkt, kil"
+
+msgid "overcast and cold"
+msgstr "Geheel bewolkt, koud"
+
+msgid "overcast and cooler"
+msgstr "Geheel bewolkt, koeler"
+
+msgid "overcast and frigid"
+msgstr "Geheel bewolkt, ijskoud"
+
+msgid "overcast and humid"
+msgstr "Geheel bewolkt, vochtig"
+
+msgid "overcast and mild"
+msgstr "Geheel bewolkt, zacht"
+
+msgid "overcast and not as warm"
+msgstr "Geheel bewolkt, minder warm"
+
+msgid "overcast and seasonably cold"
+msgstr "Geheel bewolkt, koud zoals gebruikelijk in dit seizoen"
+
+msgid "overcast and seasonably warm"
+msgstr "Geheel bewolkt, warmte passend bij het seizoen"
+
+msgid "overcast and very warm"
+msgstr "Geheel bewolkt, erg warm"
+
+msgid "overcast and warm"
+msgstr "Geheel bewolkt, warm"
+
+msgid "overcast and windy"
+msgstr "Geheel bewolkt, winderig"
+
+msgid "overcast with a bit of rain"
+msgstr "Geheel bewolkt, wat regen"
+
+msgid "overcast with a bit of snow"
+msgstr "Geheel bewolkt, wat sneeuw"
+
+msgid "overcast with a brief shower"
+msgstr "Geheel bewolkt, korte regenbuien"
+
+msgid "overcast with a few showers"
+msgstr "Geheel bewolkt, enkele regenbuien"
+
+msgid "overcast with a little rain"
+msgstr "Geheel bewolkt, wat regen"
+
+msgid "overcast with a little snow"
+msgstr "Geheel bewolkt, wat sneeuw"
+
+msgid "overcast with a quick shower"
+msgstr "Geheel bewolkt, korte regenbuien"
+
+msgid "overcast with a shower"
+msgstr "Geheel bewolkt, een regenbui"
+
+msgid "overcast with a shower late"
+msgstr "Geheel bewolkt. Later: een regenbui"
+
+msgid "overcast with a shower or two"
+msgstr "Geheel bewolkt, een of twee regenbuien"
+
+msgid "overcast with a stray shower"
+msgstr "Geheel bewolkt, plaatselijk een regenbui"
+
+msgid "overcast with a stray t-storm"
+msgstr "Geheel bewolkt, plaatselijk onweer"
+
+msgid "overcast with a t-storm late"
+msgstr "Geheel bewolkt. Later: een onweersbui"
+
+msgid "overcast with a thundershower"
+msgstr "Geheel bewolkt, onweersbui"
+
+msgid "overcast with a thunderstorm"
+msgstr "Geheel bewolkt, een onweersbui"
+
+msgid "overcast with a touch of rain"
+msgstr "Geheel bewolkt, wat regen"
+
+msgid "overcast with brief showers"
+msgstr "Geheel bewolkt, korte regenbuien"
+
+msgid "overcast with downpours"
+msgstr "Geheel bewolkt, stortbuien"
+
+msgid "overcast with downpours late"
+msgstr "Geheel bewolkt. Later: stortbuien"
+
+msgid "overcast with flurries"
+msgstr "Geheel bewolkt, korte lichte sneeuwbuien"
+
+msgid "overcast with heavy rain late"
+msgstr "Geheel bewolkt. Later: zware regen"
+
+msgid "overcast with heavy showers"
+msgstr "Geheel bewolkt, zware regenbuien"
+
+msgid "overcast with late-night rain"
+msgstr "Geheel bewolkt. Laat in de nacht: regen"
+
+msgid "overcast with occasional rain"
+msgstr "Geheel bewolkt, af en toe regen"
+
+msgid "overcast with rain developing"
+msgstr "Geheel bewolkt, het gaat regenen"
+
+msgid "overcast with rain late"
+msgstr "Geheel bewolkt. Later: regen"
+
+msgid "overcast with showers"
+msgstr "Geheel bewolkt, buiig"
+
+msgid "overcast with showers around"
+msgstr "Geheel bewolkt, plaatselijk een regenbui"
+
+msgid "overcast with showers late"
+msgstr "Geheel bewolkt. Later: buiig"
+
+msgid "overcast with snow showers"
+msgstr "Geheel bewolkt, sneeuwbuien"
+
+msgid "overcast with spotty showers"
+msgstr "Geheel bewolkt, plaatselijk een regenbui"
+
+msgid "overcast with thunderstorms"
+msgstr "Geheel bewolkt, onweer"
+
+msgid "p.m. downpours"
+msgstr "In de middag: stortbuien"
+
+msgid "p.m. flurries"
+msgstr "In de middag: korte lichte sneeuwbuien"
+
+msgid "p.m. snow"
+msgstr "In de middag: sneeuw"
+
+msgid "p.m. snow showers"
+msgstr "In de middag: sneeuwbuien"
+
+msgid "partial sunshine"
+msgstr "Af en toe zon"
+
+msgid "partly cloudy and breezy"
+msgstr "Gedeeltelijk bewolkt, licht winderig"
+
+msgid "partly cloudy and chilly"
+msgstr "Gedeeltelijk bewolkt, kil"
+
+msgid "partly cloudy and cold"
+msgstr "Gedeeltelijk bewolkt, koud"
+
+msgid "partly cloudy and colder"
+msgstr "Gedeeltelijk bewolkt, kouder"
+
+msgid "partly cloudy and cool"
+msgstr "Gedeeltelijk bewolkt, koel"
+
+msgid "partly cloudy and cooler"
+msgstr "Gedeeltelijk bewolkt, koeler"
+
+msgid "partly cloudy and frigid"
+msgstr "Gedeeltelijk bewolkt, ijskoud"
+
+msgid "partly cloudy and humid"
+msgstr "Gedeeltelijk bewolkt, vochtig"
+
+msgid "partly cloudy and mild"
+msgstr "Gedeeltelijk bewolkt, zacht"
+
+msgid "partly cloudy and much colder"
+msgstr "Gedeeltelijk bewolkt, veel kouder"
+
+msgid "partly cloudy and seasonable"
+msgstr "Gedeeltelijk bewolkt, temperaturen normaal voor het seizoen"
+
+msgid "partly cloudy and very cold"
+msgstr "Gedeeltelijk bewolkt, erg koud"
+
+msgid "partly cloudy and very humid"
+msgstr "Gedeeltelijk bewolkt, zeer vochtig"
+
+msgid "partly cloudy and very warm"
+msgstr "Gedeeltelijk bewolkt, erg warm"
+
+msgid "partly cloudy and warm"
+msgstr "Gedeeltelijk bewolkt, warm"
+
+msgid "partly cloudy and windy"
+msgstr "Gedeeltelijk bewolkt, winderig"
+
+msgid "partly cloudy with a shower"
+msgstr "Gedeeltelijk bewolkt, een regenbui"
+
+msgid "partly cloudy with a t-storm"
+msgstr "Gedeeltelijk bewolkt, een onweersbui"
+
+msgid "partly cloudy with flurries"
+msgstr "Gedeeltelijk bewolkt, korte lichte sneeuwbuien"
+
+msgid "partly sunny"
+msgstr "Af en toe zon"
+
+msgid "partly sunny and beautiful"
+msgstr "Af en toe zon, aangenaam weer"
+
+msgid "partly sunny and breezy"
+msgstr "Af en toe zon, licht winderig"
+
+msgid "partly sunny and chilly"
+msgstr "Af en toe zon, kil"
+
+msgid "partly sunny and cold"
+msgstr "Af en toe zon, koud"
+
+msgid "partly sunny and colder"
+msgstr "Af en toe zon, kouder"
+
+msgid "partly sunny and comfortable"
+msgstr "Af en toe zon, aangenaam weer"
+
+msgid "partly sunny and cool"
+msgstr "Af en toe zon, koel"
+
+msgid "partly sunny and cooler"
+msgstr "Af en toe zon, koeler"
+
+msgid "partly sunny and delightful"
+msgstr "Af en toe zon, aangenaam weer"
+
+msgid "partly sunny and frigid"
+msgstr "Af en toe zon, ijskoud"
+
+msgid "partly sunny and hot"
+msgstr "Af en toe zon, heet"
+
+msgid "partly sunny and hotter"
+msgstr "Af en toe zon, heter"
+
+msgid "partly sunny and humid"
+msgstr "Af en toe zon, vochtig"
+
+msgid "partly sunny and less humid"
+msgstr "Af en toe zon, minder vochtig"
+
+msgid "partly sunny and mild"
+msgstr "Af en toe zon, zacht"
+
+msgid "partly sunny and milder"
+msgstr "Af en toe zon, zachter"
+
+msgid "partly sunny and nice"
+msgstr "Af en toe zon, aangenaam weer"
+
+msgid "partly sunny and not as cold"
+msgstr "Af en toe zon, minder koud"
+
+msgid "partly sunny and not as cool"
+msgstr "Af en toe zon, minder koel"
+
+msgid "partly sunny and not as hot"
+msgstr "Af en toe zon, minder heet"
+
+msgid "partly sunny and not as warm"
+msgstr "Af en toe zon, minder warm"
+
+msgid "partly sunny and pleasant"
+msgstr "Af en toe zon, aangenaam weer"
+
+msgid "partly sunny and quite cold"
+msgstr "Af en toe zon, vrij koud"
+
+msgid "partly sunny and seasonable"
+msgstr "Af en toe zon, temperaturen normaal voor het seizoen"
+
+msgid "partly sunny and summerlike"
+msgstr "Af en toe zon, zomers"
+
+msgid "partly sunny and very cold"
+msgstr "Af en toe zon, erg koud"
+
+msgid "partly sunny and very hot"
+msgstr "Af en toe zon, zeer heet"
+
+msgid "partly sunny and very humid"
+msgstr "Af en toe zon, zeer vochtig"
+
+msgid "partly sunny and very warm"
+msgstr "Af en toe zon, erg warm"
+
+msgid "partly sunny and warm"
+msgstr "Af en toe zon, warm"
+
+msgid "partly sunny and warmer"
+msgstr "Af en toe zon, warmer"
+
+msgid "partly sunny and windy"
+msgstr "Af en toe zon, winderig"
+
+msgid "partly sunny with a shower"
+msgstr "Af en toe zon, een regenbui"
+
+msgid "partly sunny with a t-shower"
+msgstr "Af en toe zon, onweersbui"
+
+msgid "partly sunny with a t-storm"
+msgstr "Af en toe zon, een onweersbui"
+
+msgid "partly sunny with flurries"
+msgstr "Af en toe zon, korte lichte sneeuwbuien"
+
+msgid "partly to mostly cloudy"
+msgstr "Licht tot zwaar bewolkt"
+
+msgid "partly to mostly sunny"
+msgstr "Nu en dan tot overwegend zonnig"
+
+msgid "patchy clouds"
+msgstr "Verspreide wolken"
+
+msgid "patchy clouds and breezy"
+msgstr "Verspreide wolken, licht winderig"
+
+msgid "patchy clouds and chilly"
+msgstr "Verspreide wolken, kil"
+
+msgid "patchy clouds and cold"
+msgstr "Verspreide wolken, koud"
+
+msgid "patchy clouds and cool"
+msgstr "Verspreide wolken, koel"
+
+msgid "patchy clouds and frigid"
+msgstr "Verspreide wolken, ijskoud"
+
+msgid "patchy clouds and humid"
+msgstr "Verspreide wolken, vochtig"
+
+msgid "patchy clouds and mild"
+msgstr "Verspreide wolken, zacht"
+
+msgid "patchy clouds and very warm"
+msgstr "Verspreide wolken, erg warm"
+
+msgid "patchy clouds and warm"
+msgstr "Verspreide wolken, warm"
+
+msgid "patchy clouds with a shower"
+msgstr "Verspreide wolken, een regenbui"
+
+msgid "patchy fog"
+msgstr "Plaatselijk mist"
+
+msgid "patchy fog freezing late"
+msgstr "Later: mistbanken die plaatselijk aanvriezen"
+
+msgid "patchy freezing fog"
+msgstr "Plaatselijk aanvriezende mist"
+
+msgid "patchy low clouds and fog"
+msgstr "Plaatselijk laaghangende bewolking, mist"
+
+msgid "perhaps snow late"
+msgstr "Later: kans op sneeuw"
+
+msgid "periods of clouds and sun"
+msgstr "Afwisselend zon en wolken"
+
+msgid "periods of rain"
+msgstr "Af en toe regen"
+
+msgid "periods of rain and a t-storm"
+msgstr "Af en toe regen, een onweersbui"
+
+msgid "periods of rain late"
+msgstr "Later: af en toe regen"
+
+msgid "periods of rain this morning"
+msgstr "Vanochtend: af en toe regen"
+
+msgid "periods of snow"
+msgstr "Af en toe sneeuw"
+
+msgid "periods of snow and rain"
+msgstr "Af en toe sneeuw, regen"
+
+msgid "periods of sun"
+msgstr "Af en toe zon"
+
+msgid "periods of sun with a shower"
+msgstr "Af en toe zon, een regenbui"
+
+msgid "periods of sun with a t-storm"
+msgstr "Af en toe zon, een onweersbui"
+
+msgid "periods of sunshine"
+msgstr "Af en toe zon"
+
+msgid "periods of wet snow"
+msgstr "Perioden met natte sneeuw"
+
+msgid "pleasant"
+msgstr "Aangenaam weer"
+
+msgid "pleasant and not as cool"
+msgstr "Aangenaam weer, minder koel"
+
+msgid "pleasant and warmer"
+msgstr "Aangenaam weer, warmer"
+
+msgid "pleasant with clouds and sun"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "pleasant with clouds breaking"
+msgstr "Aangenaam weer, afnemende bewolking"
+
+msgid "pleasant with lots of sun"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "pleasant with periods of sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "pleasant with plenty of sun"
+msgstr "Aangenaam weer, veel zon"
+
+msgid "pleasant with some sun"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "pleasant with some sunshine"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "pleasant with sun and clouds"
+msgstr "Aangenaam weer, afwisselend zon en wolken"
+
+msgid "pleasant with sunny intervals"
+msgstr "Aangenaam weer, af en toe zon"
+
+msgid "pleasant with sunshine"
+msgstr "Aangenaam weer, zonnig"
+
+msgid "pleasant with variable clouds"
+msgstr "Aangenaam weer, wisselende bewolking"
+
+msgid "pleasantly warm"
+msgstr "Aangenaam warm"
+
+msgid "pleasantly warm with some sun"
+msgstr "Aangenaam warm, af en toe zon"
+
+msgid "pleasantly warm with sunshine"
+msgstr "Aangenaam warm, zonnig"
+
+msgid "plenty of clouds"
+msgstr "Overwegend bewolkt"
+
+msgid "plenty of clouds with showers"
+msgstr "Overwegend bewolkt, buiig"
+
+msgid "plenty of sun"
+msgstr "Veel zon"
+
+msgid "plenty of sunshine"
+msgstr "Veel zon"
+
+msgid "pluto"
+msgstr "Pluto"
+
+msgid "quite cold"
+msgstr "Vrij koud"
+
+msgid "rain and a t-storm"
+msgstr "Regen, een onweersbui"
+
+msgid "rain and a thunderstorm"
+msgstr "Regen, een onweersbui"
+
+msgid "rain and a thunderstorm early"
+msgstr "Regen. Aanvankelijk: een onweersbui"
+
+msgid "rain and a thunderstorm late"
+msgstr "Regen. Later: een onweersbui"
+
+msgid "rain and drizzle"
+msgstr "Regen en motregen"
+
+msgid "rain and drizzle early"
+msgstr "Aanvankelijk: regen en motregen"
+
+msgid "rain and drizzle in the a.m."
+msgstr "In de ochtend: regen en motregen"
+
+msgid "rain and drizzle in the p.m."
+msgstr "In de middag: regen en motregen"
+
+msgid "rain and drizzle late"
+msgstr "Later: regen en motregen"
+
+msgid "rain and drizzle this evening"
+msgstr "Vanavond: regen en motregen"
+
+msgid "rain and drizzle this morning"
+msgstr "Vanochtend: regen en motregen"
+
+msgid "rain and ice in the evening"
+msgstr "In de avond: regen en ijs"
+
+msgid "rain and snow"
+msgstr "Regen en sneeuw"
+
+msgid "rain and snow shower"
+msgstr "Regen- en sneeuwbuien"
+
+msgid "rain and snow showers"
+msgstr "Regen- en sneeuwbuien"
+
+msgid "rain and snow showers early"
+msgstr "Aanvankelijk: regen- en sneeuwbuien"
+
+msgid "rain and snow showers late"
+msgstr "Later: regen- en sneeuwbuien"
+
+msgid "rain at times"
+msgstr "Af en toe regen"
+
+msgid "rain at times in the evening"
+msgstr "In de avond: af en toe regen"
+
+msgid "rain at times late"
+msgstr "Later: af en toe regen"
+
+msgid "rain becoming heavier"
+msgstr "Het gaat harder regenen"
+
+msgid "rain becoming steadier"
+msgstr "Het gaat aanhoudender regenen"
+
+msgid "rain ending"
+msgstr "De regen stopt"
+
+msgid "rain in the afternoon"
+msgstr "In de middag: regen"
+
+msgid "rain in the evening"
+msgstr "In de avond: regen"
+
+msgid "rain in the morning"
+msgstr "In de ochtend: regen"
+
+msgid "rain late in the afternoon"
+msgstr "Laat in de middag: regen"
+
+msgid "rain mixing in"
+msgstr "Er komt regen bij"
+
+msgid "rain tapering off"
+msgstr "De regen neemt af"
+
+msgid "rain tapering to showers"
+msgstr "De regen wordt buiig en neemt af"
+
+msgid "rain this morning"
+msgstr "Vanochtend: regen"
+
+msgid "rain to ice"
+msgstr "Eerst regen, daarna ijsvorming"
+
+msgid "rain to snow"
+msgstr "Regen gaat over in sneeuw"
+
+msgid "rain/drizzle"
+msgstr "Regen en motregen"
+
+msgid "rain/snow"
+msgstr "Regen en sneeuw"
+
+msgid "rainy spells in the morning"
+msgstr "In de ochtend: af en toe regen"
+
+msgid "rainy times in the afternoon"
+msgstr "In de middag: af en toe regen"
+
+msgid "rainy times in the morning"
+msgstr "In de ochtend: af en toe regen"
+
+msgid "rainy times late"
+msgstr "Later: af en toe regen"
+
+msgid "rather cloudy"
+msgstr "Vrij bewolkt"
+
+msgid "rather cloudy and breezy"
+msgstr "Vrij bewolkt, licht winderig"
+
+msgid "rather cloudy and chilly"
+msgstr "Vrij bewolkt, kil"
+
+msgid "rather cloudy and cold"
+msgstr "Vrij bewolkt, koud"
+
+msgid "rather cloudy and cool"
+msgstr "Vrij bewolkt, koel"
+
+msgid "rather cloudy and cooler"
+msgstr "Vrij bewolkt, koeler"
+
+msgid "rather cloudy and hot"
+msgstr "Vrij bewolkt, heet"
+
+msgid "rather cloudy and humid"
+msgstr "Vrij bewolkt, vochtig"
+
+msgid "rather cloudy and mild"
+msgstr "Vrij bewolkt, zacht"
+
+msgid "rather cloudy and not as cold"
+msgstr "Vrij bewolkt, minder koud"
+
+msgid "rather cloudy and not as warm"
+msgstr "Vrij bewolkt, minder warm"
+
+msgid "rather cloudy and summerlike"
+msgstr "Vrij bewolkt, zomers"
+
+msgid "rather cloudy and very cold"
+msgstr "Vrij bewolkt, erg koud"
+
+msgid "rather cloudy and very warm"
+msgstr "Vrij bewolkt, erg warm"
+
+msgid "rather cloudy and warm"
+msgstr "Vrij bewolkt, warm"
+
+msgid "rather cloudy and warmer"
+msgstr "Vrij bewolkt, warmer"
+
+msgid "rather cloudy with a shower"
+msgstr "Vrij bewolkt, een regenbui"
+
+msgid "rather cloudy with a t-storm"
+msgstr "Vrij bewolkt, een onweersbui"
+
+msgid "rather cloudy with rain late"
+msgstr "Vrij bewolkt. Later: regen"
+
+msgid "rather cloudy with showers"
+msgstr "Vrij bewolkt, buiig"
+
+msgid "remaining cloudy"
+msgstr "Het blijft bewolkt"
+
+msgid "remaining cloudy and cold"
+msgstr "Het blijft bewolkt, koud"
+
+msgid "remaining cloudy and warmer"
+msgstr "Het blijft bewolkt, warmer"
+
+msgid "remaining cloudy with showers"
+msgstr "Het blijft bewolkt, buiig"
+
+msgid "remaining cool with some sun"
+msgstr "Het blijft koel, af en toe zon"
+
+msgid "remaining warm"
+msgstr "Het blijft warm"
+
+msgid "remaining warm with some sun"
+msgstr "Het blijft warm, af en toe zon"
+
+msgid "remaining warm with sunshine"
+msgstr "Het blijft warm, zonnig"
+
+msgid "rising temperatures"
+msgstr "Stijgende temperaturen"
+
+msgid "rising temperatures early"
+msgstr "Aanvankelijk: stijgende temperaturen"
+
+msgid "rising temperatures late"
+msgstr "Later: stijgende temperaturen"
+
+msgid "saturn"
+msgstr "Saturnus"
+
+msgid "seasonably warm"
+msgstr "Warmte passend bij het seizoen"
+
+msgid "seasonably warm with sunshine"
+msgstr "Warmte passend bij het seizoen, zonnig"
+
+msgid "shower"
+msgstr "Een regenbui"
+
+msgid "shower and thunderstorm"
+msgstr "Een regenbui, een onweersbui"
+
+msgid "showers and a heavier t-storm"
+msgstr "Buiig, zware onweersbuien"
+
+msgid "showers and heavy t-storms"
+msgstr "Buiig, zware onweersbuien"
+
+msgid "showers and thunderstorm"
+msgstr "Buiig, een onweersbui"
+
+msgid "showers and thunderstorms"
+msgstr "Buiig, onweer"
+
+msgid "showers around"
+msgstr "Plaatselijk een regenbui"
+
+msgid "showers around early"
+msgstr "Aanvankelijk: plaatselijk een regenbui"
+
+msgid "showers around in the evening"
+msgstr "In de avond: plaatselijk een regenbui"
+
+msgid "showers around in the morning"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "showers around in the p.m."
+msgstr "In de middag: plaatselijk een regenbui"
+
+msgid "showers around late"
+msgstr "Later: plaatselijk een regenbui"
+
+msgid "showers around this afternoon"
+msgstr "Vanmiddag: plaatselijk een regenbui"
+
+msgid "showers around this evening"
+msgstr "Vanavond: plaatselijk een regenbui"
+
+msgid "showers early in the morning"
+msgstr "Vroeg in de ochtend: buiig"
+
+msgid "showers early this morning"
+msgstr "Vroeg in de ochtend: buiig"
+
+msgid "showers in the afternoon"
+msgstr "In de middag: buiig"
+
+msgid "showers in the evening"
+msgstr "In de avond: buiig"
+
+msgid "showers in the morning"
+msgstr "In de ochtend: buiig"
+
+msgid "showers late"
+msgstr "Later: buiig"
+
+msgid "showers late in the afternoon"
+msgstr "Laat in de middag: buiig"
+
+msgid "showers late this afternoon"
+msgstr "Laat in de middag: buiig"
+
+msgid "showers late this morning"
+msgstr "Laat in de ochtend: buiig"
+
+msgid "showers of rain and snow"
+msgstr "Regen- en sneeuwbuien"
+
+msgid "showers of rain and snow late"
+msgstr "Later: regen- en sneeuwbuien"
+
+msgid "showers possible"
+msgstr "Kans op een regenbui"
+
+msgid "showers this evening"
+msgstr "Vanavond: buiig"
+
+msgid "showers this morning"
+msgstr "Vanochtend: buiig"
+
+msgid "sleet and freezing rain late"
+msgstr "Natte sneeuw. Later: iJzel"
+
+msgid "snow and rain"
+msgstr "Regen en sneeuw"
+
+msgid "snow and rain in the morning"
+msgstr "In de ochtend: regen en sneeuw"
+
+msgid "snow and rain late"
+msgstr "Later: regen en sneeuw"
+
+msgid "snow and rain this morning"
+msgstr "Vanochtend: regen en sneeuw"
+
+msgid "snow and sleet at times"
+msgstr "Af en toe sneeuw en ijsregen"
+
+msgid "snow at times"
+msgstr "Af en toe sneeuw"
+
+msgid "snow in the evening"
+msgstr "In de avond: sneeuw"
+
+msgid "snow late in the p.m."
+msgstr "In de middag: later: sneeuw"
+
+msgid "snow late this afternoon"
+msgstr "Laat in de middag: sneeuw"
+
+msgid "snow late this morning"
+msgstr "Laat in de ochtend: sneeuw"
+
+msgid "snow much of the time"
+msgstr "Het sneeuwt een groot deel van de tijd"
+
+msgid "snow of varying rates"
+msgstr "Sneeuwval van wisselende intensiteit"
+
+msgid "snow showers in the afternoon"
+msgstr "In de middag: sneeuwbuien"
+
+msgid "snow showers in the morning"
+msgstr "In de ochtend: sneeuwbuien"
+
+msgid "snow showers late"
+msgstr "Later: sneeuwbuien"
+
+msgid "snow showers this evening"
+msgstr "Vanavond: sneeuwbuien"
+
+msgid "snow tapering off"
+msgstr "De sneeuwval neemt af"
+
+msgid "snow tapering to flurries"
+msgstr "De sneeuwval neemt af tot lichte sneeuwbuitjes"
+
+msgid "some brightening"
+msgstr "Enkele opklaringen"
+
+msgid "some brightening and hot"
+msgstr "Enkele opklaringen, heet"
+
+msgid "some brightening and humid"
+msgstr "Enkele opklaringen, vochtig"
+
+msgid "some brightening and warm"
+msgstr "Enkele opklaringen, warm"
+
+msgid "some brightening and warmer"
+msgstr "Enkele opklaringen, warmer"
+
+msgid "some clouds"
+msgstr "Enkele wolken"
+
+msgid "some clouds with a shower"
+msgstr "Enkele wolken, een regenbui"
+
+msgid "some clouds with a t-storm"
+msgstr "Enkele wolken, een onweersbui"
+
+msgid "some clouds with rain late"
+msgstr "Enkele wolken. Later: regen"
+
+msgid "some ice early"
+msgstr "Aanvankelijk: plaatselijk ijsvorming"
+
+msgid "some rain and a t-storm early"
+msgstr "Wat regen. Aanvankelijk: een onweersbui"
+
+msgid "some rain and a t-storm late"
+msgstr "Wat regen. Later: een onweersbui"
+
+msgid "some rain and a thunderstorm"
+msgstr "Wat regen, een onweersbui"
+
+msgid "some snow"
+msgstr "Wat sneeuw"
+
+msgid "some sun"
+msgstr "Af en toe zon"
+
+msgid "some sun and pleasant"
+msgstr "Af en toe zon, aangenaam weer"
+
+msgid "some sun returning"
+msgstr "Enkele opklaringen"
+
+msgid "some sun with a brief shower"
+msgstr "Af en toe zon, korte regenbuien"
+
+msgid "some sun with a cool breeze"
+msgstr "Af en toe zon, koele bries"
+
+msgid "some sun with a few showers"
+msgstr "Af en toe zon, enkele regenbuien"
+
+msgid "some sun with a gusty breeze"
+msgstr "Af en toe zon, windvlagen"
+
+msgid "some sun with a heavy t-storm"
+msgstr "Af en toe zon, zware onweersbuien"
+
+msgid "some sun with a little rain"
+msgstr "Af en toe zon, wat regen"
+
+msgid "some sun with a quick shower"
+msgstr "Af en toe zon, korte regenbuien"
+
+msgid "some sun with a shower"
+msgstr "Af en toe zon, een regenbui"
+
+msgid "some sun with a shower or two"
+msgstr "Af en toe zon, een of twee regenbuien"
+
+msgid "some sun with a stray shower"
+msgstr "Af en toe zon, plaatselijk een regenbui"
+
+msgid "some sun with a stray t-storm"
+msgstr "Af en toe zon, plaatselijk onweer"
+
+msgid "some sun with a t-storm"
+msgstr "Af en toe zon, een onweersbui"
+
+msgid "some sun with a thundershower"
+msgstr "Af en toe zon, onweersbui"
+
+msgid "some sun with a thunderstorm"
+msgstr "Af en toe zon, een onweersbui"
+
+msgid "some sun with low humidity"
+msgstr "Af en toe zon, lage luchtvochtigheid"
+
+msgid "some sun with occasional rain"
+msgstr "Af en toe zon, af en toe regen"
+
+msgid "some sun with showers"
+msgstr "Af en toe zon, buiig"
+
+msgid "some sun with showers around"
+msgstr "Af en toe zon, plaatselijk een regenbui"
+
+msgid "some sun with spotty showers"
+msgstr "Af en toe zon, plaatselijk een regenbui"
+
+msgid "some sunshine"
+msgstr "Af en toe zon"
+
+msgid "some sunshine with a shower"
+msgstr "Af en toe zon, een regenbui"
+
+msgid "spotty afternoon showers"
+msgstr "In de middag: plaatselijk een regenbui"
+
+msgid "spotty drizzle in the morning"
+msgstr "In de ochtend: plaatselijk motregen"
+
+msgid "spotty drizzle this morning"
+msgstr "Vanochtend: plaatselijk motregen"
+
+msgid "spotty evening showers"
+msgstr "In de avond: plaatselijk een regenbui"
+
+msgid "spotty late-night showers"
+msgstr "Laat in de nacht: plaatselijk een regenbui"
+
+msgid "spotty morning showers"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "spotty showers"
+msgstr "Plaatselijk een regenbui"
+
+msgid "spotty showers in the evening"
+msgstr "In de avond: plaatselijk een regenbui"
+
+msgid "spotty showers in the morning"
+msgstr "In de ochtend: plaatselijk een regenbui"
+
+msgid "spotty showers late"
+msgstr "Later: plaatselijk een regenbui"
+
+msgid "spotty showers this afternoon"
+msgstr "Vanmiddag: plaatselijk een regenbui"
+
+msgid "spotty showers this morning"
+msgstr "Vanochtend: plaatselijk een regenbui"
+
+msgid "still cloudy"
+msgstr "Het blijft bewolkt"
+
+msgid "still cloudy and warmer"
+msgstr "Het blijft bewolkt, warmer"
+
+msgid "still cloudy with a shower"
+msgstr "Het blijft bewolkt, een regenbui"
+
+msgid "still cloudy with showers"
+msgstr "Het blijft bewolkt, buiig"
+
+msgid "strong afternoon t-storms"
+msgstr "In de middag: zware onweersbuien"
+
+msgid "strong evening thunderstorms"
+msgstr "In de avond: zware onweersbuien"
+
+msgid "strong late"
+msgstr "Later: sterk"
+
+msgid "strong late-night t-storms"
+msgstr "Laat in de nacht: zware onweersbuien"
+
+msgid "strong t-storms"
+msgstr "Zware onweersbuien"
+
+msgid "strong thunderstorms"
+msgstr "Zware onweersbuien"
+
+msgid "strong thunderstorms late"
+msgstr "Later: zware onweersbuien"
+
+msgid "strong thunderstorms possible"
+msgstr "Kans op zwaar onweer"
+
+msgid "strong winds subsiding"
+msgstr "De harde wind neemt af"
+
+msgid "summerlike"
+msgstr "Zomers"
+
+msgid "summerlike with a few showers"
+msgstr "Zomers, enkele regenbuien"
+
+msgid "summerlike with a shower"
+msgstr "Zomers, een regenbui"
+
+msgid "summerlike with a t-storm"
+msgstr "Zomers, een onweersbui"
+
+msgid "summerlike with hazy sun"
+msgstr "Zomers, zon door de nevel"
+
+msgid "summerlike with high clouds"
+msgstr "Zomers, hoge bewolking"
+
+msgid "summerlike with lots of sun"
+msgstr "Zomers, veel zon"
+
+msgid "summerlike with some sun"
+msgstr "Zomers, af en toe zon"
+
+msgid "summerlike with sunshine"
+msgstr "Zomers, zonnig"
+
+msgid "sun and areas of high clouds"
+msgstr "Zonnig, plaatselijk hoge bewolking"
+
+msgid "sun and areas of low clouds"
+msgstr "Zonnig, plaatselijk laaghangende bewolking"
+
+msgid "sun and clouds"
+msgstr "Afwisselend zon en wolken"
+
+msgid "sun and clouds with a shower"
+msgstr "Afwisselend zon en wolken, een regenbui"
+
+msgid "sun and clouds with a t-storm"
+msgstr "Afwisselend zon en wolken, een onweersbui"
+
+msgid "sun and some clouds"
+msgstr "Afwisselend zon en wolken"
+
+msgid "sun followed by clouds"
+msgstr "Eerst zon, later bewolkt"
+
+msgid "sun followed by some clouds"
+msgstr "Eerst zon, later wat wolken"
+
+msgid "sun giving way to clouds"
+msgstr "Eerst zon, later bewolkt"
+
+msgid "sun mixing with clouds"
+msgstr "Afwisselend zon en wolken"
+
+msgid "sun through high clouds"
+msgstr "Zon door hoge bewolking"
+
+msgid "sun yielding to clouds"
+msgstr "Eerst zon, later bewolkt"
+
+msgid "sunlit"
+msgstr "Zonnig"
+
+msgid "sunlit and beautiful"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunlit and comfortable"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunlit and delightful"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunlit and pleasant"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunlit and unseasonably hot"
+msgstr "Zonnig, ongewoon heet voor de tijd van het jaar"
+
+msgid "sunlit and very warm"
+msgstr "Zonnig, erg warm"
+
+msgid "sunlit and warmer"
+msgstr "Zonnig, warmer"
+
+msgid "sunny and beautiful"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunny and breezy"
+msgstr "Zonnig, licht winderig"
+
+msgid "sunny and cold"
+msgstr "Zonnig, koud"
+
+msgid "sunny and comfortable"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunny and cool"
+msgstr "Zonnig, koel"
+
+msgid "sunny and cooler"
+msgstr "Zonnig, koeler"
+
+msgid "sunny and cooler but pleasant"
+msgstr "Zonnig, koeler, aangenaam weer"
+
+msgid "sunny and delightful"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunny and hot"
+msgstr "Zonnig, heet"
+
+msgid "sunny and hotter"
+msgstr "Zonnig, heter"
+
+msgid "sunny and humid"
+msgstr "Zonnig, vochtig"
+
+msgid "sunny and less humid"
+msgstr "Zonnig, minder vochtig"
+
+msgid "sunny and mild"
+msgstr "Zonnig, zacht"
+
+msgid "sunny and milder"
+msgstr "Zonnig, zachter"
+
+msgid "sunny and nice"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunny and not as cold"
+msgstr "Zonnig, minder koud"
+
+msgid "sunny and not as cool"
+msgstr "Zonnig, minder koel"
+
+msgid "sunny and not as hot"
+msgstr "Zonnig, minder heet"
+
+msgid "sunny and not as warm"
+msgstr "Zonnig, minder warm"
+
+msgid "sunny and pleasant"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunny and pleasantly cool"
+msgstr "Zonnig, aangenaam koel"
+
+msgid "sunny and pleasantly warm"
+msgstr "Zonnig, aangenaam warm"
+
+msgid "sunny and remaining cool"
+msgstr "Zonnig, het blijft koel"
+
+msgid "sunny and remaining very warm"
+msgstr "Zonnig, het blijft zeer warm"
+
+msgid "sunny and remaining warm"
+msgstr "Zonnig, het blijft warm"
+
+msgid "sunny and seasonably cold"
+msgstr "Zonnig, koud zoals gebruikelijk in dit seizoen"
+
+msgid "sunny and seasonably warm"
+msgstr "Zonnig, warmte passend bij het seizoen"
+
+msgid "sunny and unseasonably hot"
+msgstr "Zonnig, ongewoon heet voor de tijd van het jaar"
+
+msgid "sunny and very cold"
+msgstr "Zonnig, erg koud"
+
+msgid "sunny and very humid"
+msgstr "Zonnig, zeer vochtig"
+
+msgid "sunny and very warm"
+msgstr "Zonnig, erg warm"
+
+msgid "sunny and warm"
+msgstr "Zonnig, warm"
+
+msgid "sunny and warmer"
+msgstr "Zonnig, warmer"
+
+msgid "sunny and windy"
+msgstr "Zonnig, winderig"
+
+msgid "sunny intervals"
+msgstr "Af en toe zon"
+
+msgid "sunny intervals with a shower"
+msgstr "Af en toe zon, een regenbui"
+
+msgid "sunny much of the time"
+msgstr "Overwegend zonnig"
+
+msgid "sunny to partly cloudy"
+msgstr "Helder tot lichtbewolkt"
+
+msgid "sunny with a gusty breeze"
+msgstr "Zonnig, windvlagen"
+
+msgid "sunny with a warm breeze"
+msgstr "Zonnig, warme bries"
+
+msgid "sunny with low humidity"
+msgstr "Zonnig, lage luchtvochtigheid"
+
+msgid "sunshine"
+msgstr "Zonnig"
+
+msgid "sunshine and a few clouds"
+msgstr "Zonnig, enkele wolken"
+
+msgid "sunshine and beautiful"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunshine and bitterly cold"
+msgstr "Zonnig, ijskoud"
+
+msgid "sunshine and breezy"
+msgstr "Zonnig, licht winderig"
+
+msgid "sunshine and cold"
+msgstr "Zonnig, koud"
+
+msgid "sunshine and comfortable"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunshine and cooler"
+msgstr "Zonnig, koeler"
+
+msgid "sunshine and delightful"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunshine and hot"
+msgstr "Zonnig, heet"
+
+msgid "sunshine and hotter"
+msgstr "Zonnig, heter"
+
+msgid "sunshine and humid"
+msgstr "Zonnig, vochtig"
+
+msgid "sunshine and less humid"
+msgstr "Zonnig, minder vochtig"
+
+msgid "sunshine and mild"
+msgstr "Zonnig, zacht"
+
+msgid "sunshine and nice"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunshine and not as cold"
+msgstr "Zonnig, minder koud"
+
+msgid "sunshine and not as hot"
+msgstr "Zonnig, minder heet"
+
+msgid "sunshine and not as warm"
+msgstr "Zonnig, minder warm"
+
+msgid "sunshine and patchy clouds"
+msgstr "Zonnig, verspreide wolken"
+
+msgid "sunshine and pleasant"
+msgstr "Zonnig, aangenaam weer"
+
+msgid "sunshine and pleasantly warm"
+msgstr "Zonnig, aangenaam warm"
+
+msgid "sunshine and remaining warm"
+msgstr "Zonnig, het blijft warm"
+
+msgid "sunshine and seasonably cold"
+msgstr "Zonnig, koud zoals gebruikelijk in dit seizoen"
+
+msgid "sunshine and seasonably warm"
+msgstr "Zonnig, warmte passend bij het seizoen"
+
+msgid "sunshine and some clouds"
+msgstr "Zonnig, enkele wolken"
+
+msgid "sunshine and summerlike"
+msgstr "Zonnig, zomers"
+
+msgid "sunshine and unseasonably hot"
+msgstr "Zonnig, ongewoon heet voor de tijd van het jaar"
+
+msgid "sunshine and very hot"
+msgstr "Zonnig, zeer heet"
+
+msgid "sunshine and very warm"
+msgstr "Zonnig, erg warm"
+
+msgid "sunshine and warm"
+msgstr "Zonnig, warm"
+
+msgid "sunshine and warmer"
+msgstr "Zonnig, warmer"
+
+msgid "sunshine mixing with clouds"
+msgstr "Afwisselend zon en wolken"
+
+msgid "sunshine with a shower"
+msgstr "Zonnig, een regenbui"
+
+msgid "sunshine with a snow shower"
+msgstr "Zonnig, een sneeuwbui"
+
+msgid "sunshine with a stray shower"
+msgstr "Zonnig, plaatselijk een regenbui"
+
+msgid "sunshine with a stray t-storm"
+msgstr "Zonnig, plaatselijk onweer"
+
+msgid "sunshine with a thundershower"
+msgstr "Zonnig, onweersbui"
+
+msgid "sunshine with a thunderstorm"
+msgstr "Zonnig, een onweersbui"
+
+msgid "sunshine with low humidity"
+msgstr "Zonnig, lage luchtvochtigheid"
+
+msgid "t-storms"
+msgstr "Onweer"
+
+msgid "t-storms in the afternoon"
+msgstr "In de middag: onweer"
+
+msgid "t-storms possible in the a.m."
+msgstr "In de ochtend: kans op onweer"
+
+msgid "then a bit of ice"
+msgstr "Daarna plaatselijk ijsvorming"
+
+msgid "then a shower"
+msgstr "Daarna een regenbui"
+
+msgid "then clouds"
+msgstr "Daarna bewolkt"
+
+msgid "then flurries"
+msgstr "Daarna korte lichte sneeuwbuien"
+
+msgid "then ice"
+msgstr "Daarna iJzel"
+
+msgid "then rain"
+msgstr "Daarna regen"
+
+msgid "then showers"
+msgstr "Daarna buiig"
+
+msgid "then snow"
+msgstr "Daarna sneeuw"
+
+msgid "then some sun"
+msgstr "Daarna af en toe zon"
+
+msgid "then sun"
+msgstr "Daarna zonnig"
+
+msgid "then t-storms"
+msgstr "Daarna onweer"
+
+msgid "then turning cloudy"
+msgstr "Daarna toenemende bewolking"
+
+msgid "thickening clouds"
+msgstr "De bewolking wordt dichter"
+
+msgid "thickening clouds and hot"
+msgstr "De bewolking wordt dichter, heet"
+
+msgid "thundershower"
+msgstr "Onweersbui"
+
+msgid "thunderstorms in the evening"
+msgstr "In de avond: onweer"
+
+msgid "thunderstorms late"
+msgstr "Later: onweer"
+
+msgid "thunderstorms this afternoon"
+msgstr "Vanmiddag: onweer"
+
+msgid "thunderstorms this morning"
+msgstr "Vanochtend: onweer"
+
+msgid "times of clouds and sun"
+msgstr "Afwisselend zon en wolken"
+
+msgid "times of clouds and sunshine"
+msgstr "Afwisselend zon en wolken"
+
+msgid "times of rain"
+msgstr "Af en toe regen"
+
+msgid "times of sun and clouds"
+msgstr "Afwisselend zon en wolken"
+
+msgid "to rain"
+msgstr "Overgaand in regen"
+
+msgid "turning clear"
+msgstr "Opklaringen"
+
+msgid "turning clear and very warm"
+msgstr "Opklaringen, erg warm"
+
+msgid "turning cloudy"
+msgstr "Toenemende bewolking"
+
+msgid "turning cloudy and breezy"
+msgstr "Toenemende bewolking, licht winderig"
+
+msgid "turning cloudy and chilly"
+msgstr "Toenemende bewolking, kil"
+
+msgid "turning cloudy and cold"
+msgstr "Toenemende bewolking, koud"
+
+msgid "turning cloudy and colder"
+msgstr "Toenemende bewolking, kouder"
+
+msgid "turning cloudy and cooler"
+msgstr "Toenemende bewolking, koeler"
+
+msgid "turning cloudy and hot"
+msgstr "Toenemende bewolking, heet"
+
+msgid "turning cloudy and hotter"
+msgstr "Toenemende bewolking, heter"
+
+msgid "turning cloudy and humid"
+msgstr "Toenemende bewolking, vochtig"
+
+msgid "turning cloudy and less humid"
+msgstr "Toenemende bewolking, minder vochtig"
+
+msgid "turning cloudy and mild"
+msgstr "Toenemende bewolking, zacht"
+
+msgid "turning cloudy and milder"
+msgstr "Toenemende bewolking, zachter"
+
+msgid "turning cloudy and pleasant"
+msgstr "Toenemende bewolking, aangenaam weer"
+
+msgid "turning cloudy and summerlike"
+msgstr "Toenemende bewolking, zomers"
+
+msgid "turning cloudy and very hot"
+msgstr "Toenemende bewolking, zeer heet"
+
+msgid "turning cloudy and very warm"
+msgstr "Toenemende bewolking, erg warm"
+
+msgid "turning cloudy and warm"
+msgstr "Toenemende bewolking, warm"
+
+msgid "turning cloudy and warmer"
+msgstr "Toenemende bewolking, warmer"
+
+msgid "turning cloudy with a shower"
+msgstr "Toenemende bewolking, een regenbui"
+
+msgid "turning cloudy with a t-storm"
+msgstr "Toenemende bewolking, een onweersbui"
+
+msgid "turning cloudy with rain late"
+msgstr "Toenemende bewolking. Later: regen"
+
+msgid "turning colder in the morning"
+msgstr "In de ochtend: kouder"
+
+msgid "turning colder this afternoon"
+msgstr "Vanmiddag: kouder"
+
+msgid "turning colder this morning"
+msgstr "Vanochtend: kouder"
+
+msgid "turning out clear"
+msgstr "Opklaringen"
+
+msgid "turning out clear and breezy"
+msgstr "Opklaringen, licht winderig"
+
+msgid "turning out clear and chilly"
+msgstr "Opklaringen, kil"
+
+msgid "turning out clear and cold"
+msgstr "Opklaringen, koud"
+
+msgid "turning out clear and frigid"
+msgstr "Opklaringen, ijskoud"
+
+msgid "turning out clear and mild"
+msgstr "Opklaringen, zacht"
+
+msgid "turning out clear and warm"
+msgstr "Opklaringen, warm"
+
+msgid "turning out cloudy"
+msgstr "Toenemende bewolking"
+
+msgid "turning out cloudy and warmer"
+msgstr "Toenemende bewolking, warmer"
+
+msgid "turning sunny"
+msgstr "Het wordt zonnig"
+
+msgid "turning sunny and beautiful"
+msgstr "Het wordt zonnig, aangenaam weer"
+
+msgid "turning sunny and cooler"
+msgstr "Het wordt zonnig, koeler"
+
+msgid "turning sunny and delightful"
+msgstr "Het wordt zonnig, aangenaam weer"
+
+msgid "turning sunny and hot"
+msgstr "Het wordt zonnig, heet"
+
+msgid "turning sunny and humid"
+msgstr "Het wordt zonnig, vochtig"
+
+msgid "turning sunny and nice"
+msgstr "Het wordt zonnig, aangenaam weer"
+
+msgid "turning sunny and not as warm"
+msgstr "Het wordt zonnig, minder warm"
+
+msgid "turning sunny and pleasant"
+msgstr "Het wordt zonnig, aangenaam weer"
+
+msgid "turning sunny and summerlike"
+msgstr "Het wordt zonnig, zomers"
+
+msgid "turning sunny and very hot"
+msgstr "Het wordt zonnig, zeer heet"
+
+msgid "turning sunny and very warm"
+msgstr "Het wordt zonnig, erg warm"
+
+msgid "unseasonably hot"
+msgstr "Ongewoon heet voor de tijd van het jaar"
+
+msgid "up to 1in"
+msgstr "Tot 2,54 cm"
+
+msgid "uranus"
+msgstr "Uranus"
+
+msgid "variable cloudiness"
+msgstr "Wisselende bewolking"
+
+msgid "variable clouds"
+msgstr "Wisselende bewolking"
+
+msgid "variable clouds with a shower"
+msgstr "Wisselende bewolking, een regenbui"
+
+msgid "variable clouds with showers"
+msgstr "Wisselende bewolking, buiig"
+
+msgid "variable clouds with t-storms"
+msgstr "Wisselende bewolking, onweer"
+
+msgid "variably cloudy"
+msgstr "Wisselende bewolking"
+
+msgid "variably cloudy and breezy"
+msgstr "Wisselende bewolking, licht winderig"
+
+msgid "variably cloudy and chilly"
+msgstr "Wisselende bewolking, kil"
+
+msgid "variably cloudy and cooler"
+msgstr "Wisselende bewolking, koeler"
+
+msgid "variably cloudy and humid"
+msgstr "Wisselende bewolking, vochtig"
+
+msgid "variably cloudy and nice"
+msgstr "Wisselende bewolking, aangenaam weer"
+
+msgid "variably cloudy and pleasant"
+msgstr "Wisselende bewolking, aangenaam weer"
+
+msgid "variably cloudy and very warm"
+msgstr "Wisselende bewolking, erg warm"
+
+msgid "variably cloudy and warmer"
+msgstr "Wisselende bewolking, warmer"
+
+msgid "variably cloudy with a shower"
+msgstr "Wisselende bewolking, een regenbui"
+
+msgid "variably cloudy with showers"
+msgstr "Wisselende bewolking, buiig"
+
+msgid "variably cloudy with t-storms"
+msgstr "Wisselende bewolking, onweer"
+
+msgid "venus"
+msgstr "Venus"
+
+msgid "very cold"
+msgstr "Erg koud"
+
+msgid "very cold with a few flurries"
+msgstr "Erg koud, enkele lichte sneeuwbuien"
+
+msgid "very cold with clouds and sun"
+msgstr "Erg koud, afwisselend zon en wolken"
+
+msgid "very cold with snow"
+msgstr "Erg koud, sneeuw"
+
+msgid "very cold with snow at times"
+msgstr "Erg koud, af en toe sneeuw"
+
+msgid "very hot"
+msgstr "Zeer heet"
+
+msgid "very hot with a few showers"
+msgstr "Zeer heet, enkele regenbuien"
+
+msgid "very hot with a shower"
+msgstr "Zeer heet, een regenbui"
+
+msgid "very hot with clouds and sun"
+msgstr "Zeer heet, afwisselend zon en wolken"
+
+msgid "very hot with hazy sun"
+msgstr "Zeer heet, zon door de nevel"
+
+msgid "very hot with high clouds"
+msgstr "Zeer heet, hoge bewolking"
+
+msgid "very hot with some sun"
+msgstr "Zeer heet, af en toe zon"
+
+msgid "very hot with sunshine"
+msgstr "Zeer heet, zonnig"
+
+msgid "very warm"
+msgstr "Erg warm"
+
+msgid "very warm and humid with rain"
+msgstr "Erg warm, vochtig, regen"
+
+msgid "very warm with clearing"
+msgstr "Erg warm, opklaringen"
+
+msgid "very warm with clouds"
+msgstr "Erg warm, bewolkt"
+
+msgid "very warm with clouds and sun"
+msgstr "Erg warm, afwisselend zon en wolken"
+
+msgid "very warm with hazy sun"
+msgstr "Erg warm, zon door de nevel"
+
+msgid "very warm with hazy sunshine"
+msgstr "Erg warm, zon door de nevel"
+
+msgid "very warm with high clouds"
+msgstr "Erg warm, hoge bewolking"
+
+msgid "very warm with lots of sun"
+msgstr "Erg warm, veel zon"
+
+msgid "very warm with patchy clouds"
+msgstr "Erg warm, verspreide wolken"
+
+msgid "very warm with periods of sun"
+msgstr "Erg warm, af en toe zon"
+
+msgid "very warm with plenty of sun"
+msgstr "Erg warm, veel zon"
+
+msgid "very warm with some sun"
+msgstr "Erg warm, af en toe zon"
+
+msgid "very warm with sun and clouds"
+msgstr "Erg warm, afwisselend zon en wolken"
+
+msgid "very warm with sunshine"
+msgstr "Erg warm, zonnig"
+
+msgid "very windy"
+msgstr "Zeer winderig"
+
+msgid "very windy in the a.m."
+msgstr "In de ochtend: zeer winderig"
+
+msgid "very windy in the morning"
+msgstr "In de ochtend: zeer winderig"
+
+msgid "very windy this evening"
+msgstr "Vanavond: zeer winderig"
+
+msgid "very windy this morning"
+msgstr "Vanochtend: zeer winderig"
+
+msgid "warm"
+msgstr "Warm"
+
+msgid "warm and hamid"
+msgstr "Warm, vochtig"
+
+msgid "warm and humid"
+msgstr "Warm, vochtig"
+
+msgid "warm and humid with clearing"
+msgstr "Warm, vochtig, opklaringen"
+
+msgid "warm and humid with some sun"
+msgstr "Warm, vochtig, af en toe zon"
+
+msgid "warm with abundant sunshine"
+msgstr "Warm, veel zon"
+
+msgid "warm with clearing"
+msgstr "Warm, opklaringen"
+
+msgid "warm with clouds and sun"
+msgstr "Warm, afwisselend zon en wolken"
+
+msgid "warm with clouds and sunshine"
+msgstr "Warm, afwisselend zon en wolken"
+
+msgid "warm with clouds breaking"
+msgstr "Warm, afnemende bewolking"
+
+msgid "warm with clouds limiting sun"
+msgstr "Warm, wolken houden veel zon tegen"
+
+msgid "warm with decreasing clouds"
+msgstr "Warm, afnemende bewolking"
+
+msgid "warm with high clouds"
+msgstr "Warm, hoge bewolking"
+
+msgid "warm with increasing clouds"
+msgstr "Warm, toenemende bewolking"
+
+msgid "warm with occasional rain"
+msgstr "Warm, af en toe regen"
+
+msgid "warm with partial sunshine"
+msgstr "Warm, af en toe zon"
+
+msgid "warm with patchy clouds"
+msgstr "Warm, verspreide wolken"
+
+msgid "warm with periods of sun"
+msgstr "Warm, af en toe zon"
+
+msgid "warm with plenty of clouds"
+msgstr "Warm, overwegend bewolkt"
+
+msgid "warm with plenty of sun"
+msgstr "Warm, veel zon"
+
+msgid "warm with plenty of sunshine"
+msgstr "Warm, veel zon"
+
+msgid "warm with rain and drizzle"
+msgstr "Warm, regen en motregen"
+
+msgid "warm with some brightening"
+msgstr "Warm, enkele opklaringen"
+
+msgid "warm with some sun"
+msgstr "Warm, af en toe zon"
+
+msgid "warm with some sun returning"
+msgstr "Warm, enkele opklaringen"
+
+msgid "warm with sun"
+msgstr "Warm, zonnig"
+
+msgid "warm with sun and clouds"
+msgstr "Warm, afwisselend zon en wolken"
+
+msgid "warm with sunny intervals"
+msgstr "Warm, af en toe zon"
+
+msgid "warm with sunshine"
+msgstr "Warm, zonnig"
+
+msgid "warm with variable cloudiness"
+msgstr "Warm, wisselende bewolking"
+
+msgid "warm with variable clouds"
+msgstr "Warm, wisselende bewolking"
+
+msgid "warmer"
+msgstr "Warmer"
+
+msgid "warmer late"
+msgstr "Later: warmer"
+
+msgid "warmer with a bit of rain"
+msgstr "Warmer, wat regen"
+
+msgid "warmer with a brief shower"
+msgstr "Warmer, korte regenbuien"
+
+msgid "warmer with a few showers"
+msgstr "Warmer, enkele regenbuien"
+
+msgid "warmer with a heavy t-storm"
+msgstr "Warmer, zware onweersbuien"
+
+msgid "warmer with a passing shower"
+msgstr "Warmer, korte regenbuien"
+
+msgid "warmer with a shower"
+msgstr "Warmer, een regenbui"
+
+msgid "warmer with a shower in spots"
+msgstr "Warmer, plaatselijk een regenbui"
+
+msgid "warmer with a shower or two"
+msgstr "Warmer, een of twee regenbuien"
+
+msgid "warmer with a stray shower"
+msgstr "Warmer, plaatselijk een regenbui"
+
+msgid "warmer with a stray t-storm"
+msgstr "Warmer, plaatselijk onweer"
+
+msgid "warmer with a thunderstorm"
+msgstr "Warmer, een onweersbui"
+
+msgid "warmer with abundant sunshine"
+msgstr "Warmer, veel zon"
+
+msgid "warmer with clearing"
+msgstr "Warmer, opklaringen"
+
+msgid "warmer with clouds"
+msgstr "Warmer, bewolkt"
+
+msgid "warmer with clouds and sun"
+msgstr "Warmer, afwisselend zon en wolken"
+
+msgid "warmer with decreasing clouds"
+msgstr "Warmer, afnemende bewolking"
+
+msgid "warmer with high clouds"
+msgstr "Warmer, hoge bewolking"
+
+msgid "warmer with increasing clouds"
+msgstr "Warmer, toenemende bewolking"
+
+msgid "warmer with low clouds"
+msgstr "Warmer, laaghangende bewolking"
+
+msgid "warmer with partial sunshine"
+msgstr "Warmer, af en toe zon"
+
+msgid "warmer with periods of rain"
+msgstr "Warmer, af en toe regen"
+
+msgid "warmer with periods of sun"
+msgstr "Warmer, af en toe zon"
+
+msgid "warmer with plenty of sun"
+msgstr "Warmer, veel zon"
+
+msgid "warmer with showers"
+msgstr "Warmer, buiig"
+
+msgid "warmer with showers around"
+msgstr "Warmer, plaatselijk een regenbui"
+
+msgid "warmer with some brightening"
+msgstr "Warmer, enkele opklaringen"
+
+msgid "warmer with some sun"
+msgstr "Warmer, af en toe zon"
+
+msgid "warmer with some sunshine"
+msgstr "Warmer, af en toe zon"
+
+msgid "warmer with spotty showers"
+msgstr "Warmer, plaatselijk een regenbui"
+
+msgid "warmer with sun"
+msgstr "Warmer, zonnig"
+
+msgid "warmer with sun and clouds"
+msgstr "Warmer, afwisselend zon en wolken"
+
+msgid "warmer with sunny intervals"
+msgstr "Warmer, af en toe zon"
+
+msgid "warmer with sunshine"
+msgstr "Warmer, zonnig"
+
+msgid "warmer with variable clouds"
+msgstr "Warmer, wisselende bewolking"
+
+msgid "watch for ice early"
+msgstr "Aanvankelijk: pas op voor gladheid"
+
+msgid "watch for ice late"
+msgstr "Later: pas op voor gladheid"
+
+msgid "wet snow"
+msgstr "Natte sneeuw"
+
+msgid "winds gradually subsiding"
+msgstr "De wind neemt geleidelijk af"
+
+msgid "windy"
+msgstr "Winderig"
+
+msgid "windy and cold"
+msgstr "Winderig, koud"
+
+msgid "windy and cooler"
+msgstr "Winderig, koeler"
+
+msgid "windy and cooler with rain"
+msgstr "Winderig, koeler, regen"
+
+msgid "windy and cooler with showers"
+msgstr "Winderig, koeler, buiig"
+
+msgid "windy and frigid"
+msgstr "Winderig, ijskoud"
+
+msgid "windy and humid with rain"
+msgstr "Winderig, vochtig, regen"
+
+msgid "windy and very cold"
+msgstr "Winderig, erg koud"
+
+msgid "windy early"
+msgstr "Aanvankelijk: winderig"
+
+msgid "windy in the a.m."
+msgstr "In de ochtend: winderig"
+
+msgid "windy in the afternoon"
+msgstr "In de middag: winderig"
+
+msgid "windy in the morning"
+msgstr "In de ochtend: winderig"
+
+msgid "windy this afternoon"
+msgstr "Vanmiddag: winderig"
+
+msgid "windy this morning"
+msgstr "Vanochtend: winderig"
+
+msgid "windy with a bit of ice"
+msgstr "Winderig, plaatselijk ijsvorming"
+
+msgid "windy with a little rain"
+msgstr "Winderig, wat regen"
+
+msgid "windy with a passing shower"
+msgstr "Winderig, korte regenbuien"
+
+msgid "windy with a shower in places"
+msgstr "Winderig, plaatselijk een regenbui"
+
+msgid "windy with a shower in spots"
+msgstr "Winderig, plaatselijk een regenbui"
+
+msgid "windy with a shower or two"
+msgstr "Winderig, een of twee regenbuien"
+
+msgid "windy with a stray shower"
+msgstr "Winderig, plaatselijk een regenbui"
+
+msgid "windy with brilliant sunshine"
+msgstr "Winderig, stralende zon"
+
+msgid "windy with clouds and sun"
+msgstr "Winderig, afwisselend zon en wolken"
+
+msgid "windy with decreasing clouds"
+msgstr "Winderig, afnemende bewolking"
+
+msgid "windy with increasing clouds"
+msgstr "Winderig, toenemende bewolking"
+
+msgid "windy with occasional rain"
+msgstr "Winderig, af en toe regen"
+
+msgid "windy with periods of rain"
+msgstr "Winderig, af en toe regen"
+
+msgid "windy with periods of snow"
+msgstr "Winderig, af en toe sneeuw"
+
+msgid "windy with plenty of sun"
+msgstr "Winderig, veel zon"
+
+msgid "windy with plenty of sunshine"
+msgstr "Winderig, veel zon"
+
+msgid "windy with rain and a t-storm"
+msgstr "Winderig, regen, een onweersbui"
+
+msgid "windy with showers"
+msgstr "Winderig, buiig"
+
+msgid "windy with showers around"
+msgstr "Winderig, plaatselijk een regenbui"
+
+msgid "windy with snow"
+msgstr "Winderig, sneeuw"
+
+msgid "windy with some sun"
+msgstr "Winderig, af en toe zon"
+
+msgid "windy with spotty showers"
+msgstr "Winderig, plaatselijk een regenbui"
+
+msgid "windy with sunshine"
+msgstr "Winderig, zonnig"

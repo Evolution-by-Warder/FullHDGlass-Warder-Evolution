@@ -241,3 +241,6126 @@ msgstr "Gabim"
 
 msgid "Select country"
 msgstr "Zgjidh shtetin"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "Shto qytet"
+
+msgid "Change Temperature Unit"
+msgstr "Ndrysho njësinë e temperaturës"
+
+msgid "Change Units to"
+msgstr "Ndrysho njësitë në"
+
+msgid "Change city"
+msgstr "Ndrysho qytetin"
+
+msgid "Daytime"
+msgstr "Gjatë ditës"
+
+msgid "Decreasing"
+msgstr "Në rënie"
+
+msgid "Delete City"
+msgstr "Fshi qytetin"
+
+msgid "Forecast for"
+msgstr "Parashikimi për"
+
+msgid "Friday"
+msgstr "E premte"
+
+msgid "High"
+msgstr "I lartë"
+
+msgid "Latitude"
+msgstr "Gjerësi gjeografike"
+
+msgid "Longtitude"
+msgstr "Gjatësi gjeografike"
+
+msgid "Low"
+msgstr "I ulët"
+
+msgid "Moderate"
+msgstr "Mesatar"
+
+msgid "Monday"
+msgstr "E hënë"
+
+msgid "Nighttime"
+msgstr "Gjatë natës"
+
+msgid "None city founded"
+msgstr "Nuk u gjet asnjë qytet"
+
+msgid "Precip"
+msgstr "Reshje"
+
+msgid "Realfeel"
+msgstr "Temperatura e ndier"
+
+msgid "Rising"
+msgstr "Në rritje"
+
+msgid "Saturday"
+msgstr "E shtunë"
+
+msgid "Select City"
+msgstr "Zgjidh qytetin"
+
+msgid "Steady"
+msgstr "I qëndrueshëm"
+
+msgid "Sunday"
+msgstr "E diel"
+
+msgid "Thursday"
+msgstr "E enjte"
+
+msgid "Tuesday"
+msgstr "E martë"
+
+msgid "Updated at"
+msgstr "Përditësuar në orën"
+
+msgid "Uvindex"
+msgstr "Indeksi UV"
+
+msgid "Very high"
+msgstr "Shumë i lartë"
+
+msgid "Wednesday"
+msgstr "E mërkurë"
+
+msgid "a bit of afternoon rain"
+msgstr "Pak shi pasdite"
+
+msgid "a bit of afternoon snow"
+msgstr "Pak borë pasdite"
+
+msgid "a bit of evening rain"
+msgstr "Pak shi në mbrëmje"
+
+msgid "a bit of evening snow"
+msgstr "Pak borë në mbrëmje"
+
+msgid "a bit of ice"
+msgstr "Ngricë vende-vende"
+
+msgid "a bit of ice and rain"
+msgstr "Ngricë vende-vende, shi"
+
+msgid "a bit of ice early"
+msgstr "Ngricë vende-vende në fillim"
+
+msgid "a bit of ice in the afternoon"
+msgstr "Ngricë vende-vende pasdite"
+
+msgid "a bit of ice in the morning"
+msgstr "Ngricë vende-vende në mëngjes"
+
+msgid "a bit of ice late"
+msgstr "Ngricë vende-vende më vonë"
+
+msgid "a bit of late-night rain"
+msgstr "Pak shi natën vonë"
+
+msgid "a bit of late-night snow"
+msgstr "Pak borë natën vonë"
+
+msgid "a bit of morning rain"
+msgstr "Pak shi në mëngjes"
+
+msgid "a bit of morning snow"
+msgstr "Pak borë në mëngjes"
+
+msgid "a bit of rain"
+msgstr "Pak shi"
+
+msgid "a bit of rain and ice late"
+msgstr "Pak shi, akull më vonë"
+
+msgid "a bit of rain and sleet"
+msgstr "Pak shi, shi i përzier me borë"
+
+msgid "a bit of rain and sleet later"
+msgstr "Pak shi, shi i përzier me borë më vonë"
+
+msgid "a bit of rain and snow"
+msgstr "Pak shi, dëborë"
+
+msgid "a bit of rain in the evening"
+msgstr "Pak shi në mbrëmje"
+
+msgid "a bit of rain in the morning"
+msgstr "Pak shi në mëngjes"
+
+msgid "a bit of rain late"
+msgstr "Pak shi më vonë"
+
+msgid "a bit of rain this evening"
+msgstr "Pak shi këtë mbrëmje"
+
+msgid "a bit of snow"
+msgstr "Pak borë"
+
+msgid "a bit of snow and ice later"
+msgstr "Pak borë, akull më vonë"
+
+msgid "a bit of snow and rain"
+msgstr "Pak borë, shi"
+
+msgid "a bit of snow and rain late"
+msgstr "Pak borë, shi më vonë"
+
+msgid "a bit of snow and sleet late"
+msgstr "Pak borë, shi i përzier me borë më vonë"
+
+msgid "a bit of snow early"
+msgstr "Pak borë në fillim"
+
+msgid "a bit of snow in the evening"
+msgstr "Pak borë në mbrëmje"
+
+msgid "a bit of snow in the morning"
+msgstr "Pak borë në mëngjes"
+
+msgid "a bit of snow late"
+msgstr "Pak borë më vonë"
+
+msgid "a bit of wintry mix"
+msgstr "Reshje të lehta të përziera dimërore"
+
+msgid "a blend of sun and clouds"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "a brief afternoon shower"
+msgstr "Rrebeshe të shkurtra pasdite"
+
+msgid "a brief evening shower or two"
+msgstr "Një ose dy rrebeshe të shkurtra në mbrëmje"
+
+msgid "a brief morning shower or two"
+msgstr "Një ose dy rrebeshe të shkurtra në mëngjes"
+
+msgid "a brief shower"
+msgstr "Rrebeshe të shkurtra"
+
+msgid "a brief shower in the morning"
+msgstr "Rrebeshe të shkurtra në mëngjes"
+
+msgid "a brief shower or two"
+msgstr "Një ose dy rrebeshe të shkurtra"
+
+msgid "a brief shower or two late"
+msgstr "Një ose dy rrebeshe të shkurtra më vonë"
+
+msgid "a brief shower this afternoon"
+msgstr "Rrebeshe të shkurtra këtë pasdite"
+
+msgid "a brief t-storm early"
+msgstr "Stuhi e shkurtër me vetëtima në fillim"
+
+msgid "a brief t-storm in the p.m."
+msgstr "Stuhi e shkurtër me vetëtima pasdite"
+
+msgid "a chance for snow"
+msgstr "Mundësi për borë"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "Stuhi që sjell freskim pasdite"
+
+msgid "a couple of a.m. snow showers"
+msgstr "Disa rrebeshe dëbore në mëngjes"
+
+msgid "a couple of afternoon showers"
+msgstr "Një ose dy rrebeshe pasdite"
+
+msgid "a couple of downpours late"
+msgstr "Disa rrebeshe të forta më vonë"
+
+msgid "a couple of evening downpours"
+msgstr "Disa rrebeshe të forta në mbrëmje"
+
+msgid "a couple of evening showers"
+msgstr "Një ose dy rrebeshe në mbrëmje"
+
+msgid "a couple of evening t-showers"
+msgstr "Disa rrebeshe me bubullima në mbrëmje"
+
+msgid "a couple of evening t-storms"
+msgstr "Disa stuhi me bubullima në mbrëmje"
+
+msgid "a couple of flurries"
+msgstr "Disa reshje të lehta e të shkurtra dëbore"
+
+msgid "a couple of heavy t-storms"
+msgstr "Disa stuhi të forta me bubullima"
+
+msgid "a couple of morning showers"
+msgstr "Një ose dy rrebeshe në mëngjes"
+
+msgid "a couple of morning t-showers"
+msgstr "Disa rrebeshe me bubullima në mëngjes"
+
+msgid "a couple of morning t-storms"
+msgstr "Disa stuhi me bubullima në mëngjes"
+
+msgid "a couple of p.m. snow showers"
+msgstr "Disa rrebeshe dëbore pasdite"
+
+msgid "a couple of p.m. t-showers"
+msgstr "Disa rrebeshe me bubullima pasdite"
+
+msgid "a couple of showers"
+msgstr "Një ose dy rrebeshe"
+
+msgid "a couple of showers late"
+msgstr "Një ose dy rrebeshe më vonë"
+
+msgid "a couple of showers possible"
+msgstr "Mund të ketë disa rrebeshe"
+
+msgid "a couple of snow showers"
+msgstr "Disa rrebeshe dëbore"
+
+msgid "a couple of snow showers late"
+msgstr "Disa rrebeshe dëbore më vonë"
+
+msgid "a couple of strong t-storms"
+msgstr "Disa stuhi të forta me bubullima"
+
+msgid "a couple of t-showers"
+msgstr "Disa rrebeshe me bubullima"
+
+msgid "a couple of t-showers early"
+msgstr "Disa rrebeshe me bubullima në fillim"
+
+msgid "a couple of t-showers late"
+msgstr "Disa rrebeshe me bubullima më vonë"
+
+msgid "a couple of t-storms late"
+msgstr "Disa stuhi me bubullima më vonë"
+
+msgid "a couple of thundershowers"
+msgstr "Disa rrebeshe me bubullima"
+
+msgid "a damaging thunderstorm"
+msgstr "Stuhi me rrezik dëmesh"
+
+msgid "a downpour early"
+msgstr "Shi i rrëmbyeshëm në fillim"
+
+msgid "a downpour in the afternoon"
+msgstr "Shi i rrëmbyeshëm pasdite"
+
+msgid "a downpour in the morning"
+msgstr "Shi i rrëmbyeshëm në mëngjes"
+
+msgid "a downpour this morning"
+msgstr "Shi i rrëmbyeshëm këtë mëngjes"
+
+msgid "a drenching morning shower"
+msgstr "Rrebeshe të forta në mëngjes"
+
+msgid "a drenching shower late"
+msgstr "Rrebeshe të forta më vonë"
+
+msgid "a drenching t-storm early"
+msgstr "Stuhi me reshje të rrëmbyeshme në fillim"
+
+msgid "a drenching thunderstorm late"
+msgstr "Stuhi me reshje të rrëmbyeshme më vonë"
+
+msgid "a few a.m. showers"
+msgstr "Disa rrebeshe në mëngjes"
+
+msgid "a few afternoon showers"
+msgstr "Disa rrebeshe pasdite"
+
+msgid "a few evening showers"
+msgstr "Disa rrebeshe në mbrëmje"
+
+msgid "a few flurries"
+msgstr "Disa reshje të lehta e të shkurtra dëbore"
+
+msgid "a few flurries in the morning"
+msgstr "Disa reshje të lehta e të shkurtra dëbore në mëngjes"
+
+msgid "a few late-night showers"
+msgstr "Disa rrebeshe natën vonë"
+
+msgid "a few morning showers"
+msgstr "Disa rrebeshe në mëngjes"
+
+msgid "a few showers"
+msgstr "Disa rrebeshe"
+
+msgid "a few showers in the evening"
+msgstr "Disa rrebeshe në mbrëmje"
+
+msgid "a few showers in the morning"
+msgstr "Disa rrebeshe në mëngjes"
+
+msgid "a few showers late"
+msgstr "Disa rrebeshe më vonë"
+
+msgid "a few showers this afternoon"
+msgstr "Disa rrebeshe këtë pasdite"
+
+msgid "a few showers this evening"
+msgstr "Disa rrebeshe këtë mbrëmje"
+
+msgid "a few snowflakes late"
+msgstr "Pak flokë bore më vonë"
+
+msgid "a few strong p.m. t-storms"
+msgstr "Disa stuhi të forta me bubullima pasdite"
+
+msgid "a few t-storms"
+msgstr "Disa stuhi me bubullima"
+
+msgid "a flurry early"
+msgstr "Reshje të shkurtra dëbore të lehtë në fillim"
+
+msgid "a flurry in the p.m."
+msgstr "Reshje të shkurtra dëbore të lehtë pasdite"
+
+msgid "a flurry late"
+msgstr "Reshje të shkurtra dëbore të lehtë më vonë"
+
+msgid "a gusty breeze with clearing"
+msgstr "Erë me shkulme, mot në kthjellim"
+
+msgid "a gusty morning breeze"
+msgstr "Erë me shkulme në mëngjes"
+
+msgid "a heavy afternoon shower"
+msgstr "Rrebeshe të forta pasdite"
+
+msgid "a heavy afternoon t-storm"
+msgstr "Stuhi të forta me bubullima pasdite"
+
+msgid "a heavy morning shower or two"
+msgstr "Disa rrebeshe të forta në mëngjes"
+
+msgid "a heavy shower in the morning"
+msgstr "Rrebeshe të forta në mëngjes"
+
+msgid "a heavy t-storm"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "a heavy t-storm early"
+msgstr "Stuhi të forta me bubullima në fillim"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "Stuhi të forta me bubullima në mëngjes"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "Stuhi të forta me bubullima pasdite"
+
+msgid "a heavy thunderstorm"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "a late-night shower"
+msgstr "Një rrebesh shiu natën vonë"
+
+msgid "a late-night shower in places"
+msgstr "Rrebeshe lokale natën vonë"
+
+msgid "a late-night shower in spots"
+msgstr "Rrebeshe lokale natën vonë"
+
+msgid "a late-night shower or two"
+msgstr "Një ose dy rrebeshe natën vonë"
+
+msgid "a late-night t-storm in spots"
+msgstr "Stuhi lokale me bubullima natën vonë"
+
+msgid "a late-night t-storm or two"
+msgstr "Disa stuhi me bubullima natën vonë"
+
+msgid "a late-night thunderstorm"
+msgstr "Stuhi me bubullima natën vonë"
+
+msgid "a little a.m. rain"
+msgstr "Pak shi në mëngjes"
+
+msgid "a little afternoon rain"
+msgstr "Pak shi pasdite"
+
+msgid "a little afternoon snow"
+msgstr "Pak borë pasdite"
+
+msgid "a little evening rain"
+msgstr "Pak shi në mbrëmje"
+
+msgid "a little evening snow"
+msgstr "Pak borë në mbrëmje"
+
+msgid "a little icy mix early"
+msgstr "Reshje të lehta të përziera me ngricë në fillim"
+
+msgid "a little icy mix in the a.m."
+msgstr "Reshje të lehta të përziera me ngricë në mëngjes"
+
+msgid "a little icy mix this morning"
+msgstr "Reshje të lehta të përziera me ngricë këtë mëngjes"
+
+msgid "a little late-night rain"
+msgstr "Pak shi natën vonë"
+
+msgid "a little late-night snow"
+msgstr "Pak borë natën vonë"
+
+msgid "a little morning rain"
+msgstr "Pak shi në mëngjes"
+
+msgid "a little morning snow"
+msgstr "Pak borë në mëngjes"
+
+msgid "a little rain"
+msgstr "Pak shi"
+
+msgid "a little rain early"
+msgstr "Pak shi në fillim"
+
+msgid "a little rain in the evening"
+msgstr "Pak shi në mbrëmje"
+
+msgid "a little rain in the morning"
+msgstr "Pak shi në mëngjes"
+
+msgid "a little rain late"
+msgstr "Pak shi më vonë"
+
+msgid "a little rain this afternoon"
+msgstr "Pak shi këtë pasdite"
+
+msgid "a little rain this morning"
+msgstr "Pak shi këtë mëngjes"
+
+msgid "a little snow"
+msgstr "Pak borë"
+
+msgid "a little snow and sleet early"
+msgstr "Pak borë, shi i përzier me borë në fillim"
+
+msgid "a little snow and sleet late"
+msgstr "Pak borë, shi i përzier me borë më vonë"
+
+msgid "a little snow at times"
+msgstr "Herë pas here pak borë"
+
+msgid "a little snow at times late"
+msgstr "Herë pas here pak borë më vonë"
+
+msgid "a little snow early"
+msgstr "Pak borë në fillim"
+
+msgid "a little snow in the evening"
+msgstr "Pak borë në mbrëmje"
+
+msgid "a little snow late"
+msgstr "Pak borë më vonë"
+
+msgid "a little snow this afternoon"
+msgstr "Pak borë këtë pasdite"
+
+msgid "a little wintry mix"
+msgstr "Reshje të lehta të përziera dimërore"
+
+msgid "a little wintry mix late"
+msgstr "Reshje të lehta të përziera dimërore më vonë"
+
+msgid "a morning flurry"
+msgstr "Reshje të shkurtra dëbore të lehtë në mëngjes"
+
+msgid "a morning rain or snow shower"
+msgstr "Rrebesh shiu ose dëbore në mëngjes"
+
+msgid "a morning shower"
+msgstr "Një rrebesh shiu në mëngjes"
+
+msgid "a morning shower in places"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "a morning shower in spots"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "a morning shower in the area"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "a morning shower or t-storm"
+msgstr "Rrebesh ose stuhi me bubullima në mëngjes"
+
+msgid "a morning shower or two"
+msgstr "Një ose dy rrebeshe në mëngjes"
+
+msgid "a morning snow shower around"
+msgstr "Një rrebesh dëbore në mëngjes"
+
+msgid "a morning t-storm"
+msgstr "Stuhi me bubullima në mëngjes"
+
+msgid "a morning t-storm in spots"
+msgstr "Stuhi lokale me bubullima në mëngjes"
+
+msgid "a morning t-storm in the area"
+msgstr "Stuhi lokale me bubullima në mëngjes"
+
+msgid "a morning thunderstorm"
+msgstr "Stuhi me bubullima në mëngjes"
+
+msgid "a morning thunderstorm or two"
+msgstr "Disa stuhi me bubullima në mëngjes"
+
+msgid "a p.m. rain or snow shower"
+msgstr "Rrebesh shiu ose dëbore pasdite"
+
+msgid "a p.m. shower"
+msgstr "Një rrebesh shiu pasdite"
+
+msgid "a p.m. shower in places"
+msgstr "Rrebeshe lokale pasdite"
+
+msgid "a p.m. shower in the area"
+msgstr "Rrebeshe lokale pasdite"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "Rrebesh ose stuhi me bubullima pasdite"
+
+msgid "a p.m. snow shower in spots"
+msgstr "Rrebeshe bore vende-vende pasdite"
+
+msgid "a p.m. t-storm"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "a p.m. t-storm in spots"
+msgstr "Stuhi lokale me bubullima pasdite"
+
+msgid "a p.m. t-storm in the area"
+msgstr "Stuhi lokale me bubullima pasdite"
+
+msgid "a p.m. t-storm possible"
+msgstr "Mundësi për stuhi me bubullima pasdite"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "Stuhi lokale me bubullima pasdite"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "Disa stuhi me bubullima pasdite"
+
+msgid "a passing afternoon shower"
+msgstr "Rrebeshe të shkurtra pasdite"
+
+msgid "a passing flurry late"
+msgstr "Reshje të shkurtra dëbore të lehtë më vonë"
+
+msgid "a passing late-night shower"
+msgstr "Rrebeshe të shkurtra natën vonë"
+
+msgid "a passing morning shower"
+msgstr "Rrebeshe të shkurtra në mëngjes"
+
+msgid "a passing shower"
+msgstr "Rrebeshe të shkurtra"
+
+msgid "a passing shower late"
+msgstr "Rrebeshe të shkurtra më vonë"
+
+msgid "a passing shower or two"
+msgstr "Një ose dy rrebeshe të shkurtra"
+
+msgid "a passing shower this morning"
+msgstr "Rrebeshe të shkurtra këtë mëngjes"
+
+msgid "a quick afternoon shower"
+msgstr "Rrebeshe të shkurtra pasdite"
+
+msgid "a quick shower"
+msgstr "Rrebeshe të shkurtra"
+
+msgid "a rain and sleet shower"
+msgstr "Rrebesh shiu e bore të lagësht"
+
+msgid "a rain and sleet shower late"
+msgstr "Rrebesh shiu e bore të lagësht më vonë"
+
+msgid "a rain or snow shower"
+msgstr "Rrebesh shiu ose dëbore"
+
+msgid "a rain or snow shower early"
+msgstr "Rrebesh shiu ose dëbore në fillim"
+
+msgid "a rain or snow shower late"
+msgstr "Rrebesh shiu ose dëbore më vonë"
+
+msgid "a severe afternoon t-storm"
+msgstr "Stuhi të fuqishme me vetëtima pasdite"
+
+msgid "a severe thunderstorm"
+msgstr "Stuhi të fuqishme me vetëtima"
+
+msgid "a shower"
+msgstr "Një rrebesh shiu"
+
+msgid "a shower and t-storm around"
+msgstr "Një rrebesh shiu, stuhi lokale me bubullima"
+
+msgid "a shower around"
+msgstr "Rrebeshe lokale"
+
+msgid "a shower early"
+msgstr "Një rrebesh shiu në fillim"
+
+msgid "a shower in places"
+msgstr "Rrebeshe lokale"
+
+msgid "a shower in places late"
+msgstr "Rrebeshe lokale më vonë"
+
+msgid "a shower in spots"
+msgstr "Rrebeshe lokale"
+
+msgid "a shower in spots late"
+msgstr "Rrebeshe lokale më vonë"
+
+msgid "a shower in the a.m."
+msgstr "Një rrebesh shiu në mëngjes"
+
+msgid "a shower in the afternoon"
+msgstr "Një rrebesh shiu pasdite"
+
+msgid "a shower in the area"
+msgstr "Rrebeshe lokale"
+
+msgid "a shower in the area late"
+msgstr "Rrebeshe lokale më vonë"
+
+msgid "a shower in the evening"
+msgstr "Një rrebesh shiu në mbrëmje"
+
+msgid "a shower in the morning"
+msgstr "Një rrebesh shiu në mëngjes"
+
+msgid "a shower in the p.m."
+msgstr "Një rrebesh shiu pasdite"
+
+msgid "a shower late"
+msgstr "Një rrebesh shiu më vonë"
+
+msgid "a shower late this afternoon"
+msgstr "Një rrebesh shiu në fund të pasdites"
+
+msgid "a shower late this morning"
+msgstr "Një rrebesh shiu nga fundi i mëngjesit"
+
+msgid "a shower or heavy t-storm"
+msgstr "Rrebesh ose stuhi e fortë"
+
+msgid "a shower or t-storm"
+msgstr "Rrebesh ose stuhi me bubullima"
+
+msgid "a shower or t-storm early"
+msgstr "Rrebesh ose stuhi me bubullima në fillim"
+
+msgid "a shower or t-storm in spots"
+msgstr "Vende-vende rrebeshe ose stuhi"
+
+msgid "a shower or thunderstorm"
+msgstr "Rrebesh ose stuhi me bubullima"
+
+msgid "a shower or two"
+msgstr "Një ose dy rrebeshe"
+
+msgid "a shower or two early"
+msgstr "Një ose dy rrebeshe në fillim"
+
+msgid "a shower or two late"
+msgstr "Një ose dy rrebeshe më vonë"
+
+msgid "a shower possible"
+msgstr "Mundësi për rrebeshe"
+
+msgid "a shower this afternoon"
+msgstr "Një rrebesh shiu këtë pasdite"
+
+msgid "a shower this morning"
+msgstr "Një rrebesh shiu këtë mëngjes"
+
+msgid "a shower toward dawn"
+msgstr "Një rrebesh shiu pranë agimit"
+
+msgid "a snow shower"
+msgstr "Një rrebesh dëbore"
+
+msgid "a snow shower around"
+msgstr "Një rrebesh dëbore"
+
+msgid "a snow shower around late"
+msgstr "Një rrebesh dëbore më vonë"
+
+msgid "a snow shower in the morning"
+msgstr "Një rrebesh dëbore në mëngjes"
+
+msgid "a snow shower in the p.m."
+msgstr "Një rrebesh dëbore pasdite"
+
+msgid "a snow shower late"
+msgstr "Një rrebesh dëbore më vonë"
+
+msgid "a snow shower this afternoon"
+msgstr "Një rrebesh dëbore këtë pasdite"
+
+msgid "a snow shower this evening"
+msgstr "Një rrebesh dëbore këtë mbrëmje"
+
+msgid "a snow shower with low clouds"
+msgstr "Një rrebesh dëbore, re të ulëta"
+
+msgid "a snow squall early"
+msgstr "Rrebesh bore me erë të fortë në fillim"
+
+msgid "a snow squall in the evening"
+msgstr "Rrebesh bore me erë të fortë në mbrëmje"
+
+msgid "a snow squall in the morning"
+msgstr "Rrebesh bore me erë të fortë në mëngjes"
+
+msgid "a snow squall in the p.m."
+msgstr "Rrebesh bore me erë të fortë pasdite"
+
+msgid "a snow squall late"
+msgstr "Rrebesh bore me erë të fortë më vonë"
+
+msgid "a stray a.m. t-shower"
+msgstr "Rrebeshe lokale me bubullima në mëngjes"
+
+msgid "a stray a.m. t-storm"
+msgstr "Stuhi lokale me bubullima në mëngjes"
+
+msgid "a stray afternoon shower"
+msgstr "Rrebeshe lokale pasdite"
+
+msgid "a stray afternoon t-shower"
+msgstr "Rrebeshe lokale me bubullima pasdite"
+
+msgid "a stray afternoon t-storm"
+msgstr "Stuhi lokale me bubullima pasdite"
+
+msgid "a stray evening thunderstorm"
+msgstr "Stuhi lokale me bubullima në mbrëmje"
+
+msgid "a stray late-night t-storm"
+msgstr "Stuhi lokale me bubullima natën vonë"
+
+msgid "a stray morning shower"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "a stray morning thunderstorm"
+msgstr "Stuhi lokale me bubullima në mëngjes"
+
+msgid "a stray shower in the morning"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "a stray shower late"
+msgstr "Rrebeshe lokale më vonë"
+
+msgid "a stray t-shower"
+msgstr "Rrebeshe lokale me bubullima"
+
+msgid "a stray t-storm"
+msgstr "Stuhi lokale me bubullima"
+
+msgid "a stray t-storm early"
+msgstr "Stuhi lokale me bubullima në fillim"
+
+msgid "a stray t-storm this evening"
+msgstr "Stuhi lokale me bubullima këtë mbrëmje"
+
+msgid "a stray thundershower"
+msgstr "Rrebeshe lokale me bubullima"
+
+msgid "a stray thunderstorm"
+msgstr "Stuhi lokale me bubullima"
+
+msgid "a stray thunderstorm early"
+msgstr "Stuhi lokale me bubullima në fillim"
+
+msgid "a stray thunderstorm late"
+msgstr "Stuhi lokale me bubullima më vonë"
+
+msgid "a strong a.m. t-storm"
+msgstr "Stuhi të forta me bubullima në mëngjes"
+
+msgid "a strong afternoon t-storm"
+msgstr "Stuhi të forta me bubullima pasdite"
+
+msgid "a strong evening thunderstorm"
+msgstr "Stuhi të forta me bubullima në mbrëmje"
+
+msgid "a strong late-night t-storm"
+msgstr "Stuhi të forta me bubullima natën vonë"
+
+msgid "a strong morning thunderstorm"
+msgstr "Stuhi të forta me bubullima në mëngjes"
+
+msgid "a strong t-storm"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "a strong t-storm in spots"
+msgstr "Stuhi të forta vende-vende"
+
+msgid "a strong t-storm late"
+msgstr "Stuhi të forta me bubullima më vonë"
+
+msgid "a strong t-storm possible"
+msgstr "Mundësi për stuhi të forta me bubullima"
+
+msgid "a strong t-storm this evening"
+msgstr "Stuhi të forta me bubullima këtë mbrëmje"
+
+msgid "a strong thunderstorm"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "a strong thunderstorm early"
+msgstr "Stuhi të forta me bubullima në fillim"
+
+msgid "a strong thunderstorm late"
+msgstr "Stuhi të forta me bubullima më vonë"
+
+msgid "a t-shower in spots"
+msgstr "Rrebeshe lokale me bubullima"
+
+msgid "a t-shower in spots early"
+msgstr "Rrebeshe lokale me bubullima në fillim"
+
+msgid "a t-shower in the afternoon"
+msgstr "Rrebesh me bubullima pasdite"
+
+msgid "a t-storm"
+msgstr "Stuhi me bubullima"
+
+msgid "a t-storm around in the a.m."
+msgstr "Stuhi lokale me bubullima në mëngjes"
+
+msgid "a t-storm around in the p.m."
+msgstr "Stuhi lokale me bubullima pasdite"
+
+msgid "a t-storm around late"
+msgstr "Stuhi lokale me bubullima më vonë"
+
+msgid "a t-storm around this evening"
+msgstr "Stuhi lokale me bubullima këtë mbrëmje"
+
+msgid "a t-storm early"
+msgstr "Stuhi me bubullima në fillim"
+
+msgid "a t-storm in spots"
+msgstr "Stuhi lokale me bubullima"
+
+msgid "a t-storm in the afternoon"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "a t-storm in the area late"
+msgstr "Stuhi lokale me bubullima më vonë"
+
+msgid "a t-storm in the p.m."
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "a t-storm late"
+msgstr "Stuhi me bubullima më vonë"
+
+msgid "a t-storm late this afternoon"
+msgstr "Stuhi me bubullima në fund të pasdites"
+
+msgid "a t-storm late this evening"
+msgstr "Stuhi me bubullima vonë në mbrëmje"
+
+msgid "a t-storm late this morning"
+msgstr "Stuhi me bubullima nga fundi i mëngjesit"
+
+msgid "a t-storm or two"
+msgstr "Disa stuhi me bubullima"
+
+msgid "a t-storm possible"
+msgstr "Mundësi për stuhi me bubullima"
+
+msgid "a thick cloud cover"
+msgstr "I vranët"
+
+msgid "a thick cloud cover and hot"
+msgstr "I vranët, nxehtë"
+
+msgid "a thundershower"
+msgstr "Rrebesh me bubullima"
+
+msgid "a thundershower in spots"
+msgstr "Rrebeshe lokale me bubullima"
+
+msgid "a thundershower in spots late"
+msgstr "Rrebeshe lokale me bubullima më vonë"
+
+msgid "a thundershower late"
+msgstr "Rrebesh me bubullima më vonë"
+
+msgid "a thundershower on the prowl"
+msgstr "Rrebeshe lokale me bubullima"
+
+msgid "a thunderstorm"
+msgstr "Stuhi me bubullima"
+
+msgid "a thunderstorm around"
+msgstr "Stuhi lokale me bubullima"
+
+msgid "a thunderstorm around early"
+msgstr "Stuhi lokale me bubullima në fillim"
+
+msgid "a thunderstorm around late"
+msgstr "Stuhi lokale me bubullima më vonë"
+
+msgid "a thunderstorm early"
+msgstr "Stuhi me bubullima në fillim"
+
+msgid "a thunderstorm in spots"
+msgstr "Stuhi lokale me bubullima"
+
+msgid "a thunderstorm in spots early"
+msgstr "Stuhi lokale me bubullima në fillim"
+
+msgid "a thunderstorm in spots late"
+msgstr "Stuhi lokale me bubullima më vonë"
+
+msgid "a thunderstorm in the area"
+msgstr "Stuhi lokale me bubullima"
+
+msgid "a thunderstorm in the evening"
+msgstr "Stuhi me bubullima në mbrëmje"
+
+msgid "a thunderstorm in the morning"
+msgstr "Stuhi me bubullima në mëngjes"
+
+msgid "a thunderstorm late"
+msgstr "Stuhi me bubullima më vonë"
+
+msgid "a thunderstorm or two"
+msgstr "Disa stuhi me bubullima"
+
+msgid "a thunderstorm or two early"
+msgstr "Disa stuhi me bubullima në fillim"
+
+msgid "a thunderstorm or two late"
+msgstr "Disa stuhi me bubullima më vonë"
+
+msgid "a thunderstorm possible"
+msgstr "Mundësi për stuhi me bubullima"
+
+msgid "a thunderstorm this afternoon"
+msgstr "Stuhi me bubullima këtë pasdite"
+
+msgid "a thunderstorm this evening"
+msgstr "Stuhi me bubullima këtë mbrëmje"
+
+msgid "a thunderstorm this morning"
+msgstr "Stuhi me bubullima këtë mëngjes"
+
+msgid "a touch of afternoon rain"
+msgstr "Pak shi pasdite"
+
+msgid "a touch of evening rain"
+msgstr "Pak shi në mbrëmje"
+
+msgid "a touch of late-night rain"
+msgstr "Pak shi natën vonë"
+
+msgid "a touch of morning rain"
+msgstr "Pak shi në mëngjes"
+
+msgid "a touch of rain"
+msgstr "Pak shi"
+
+msgid "a touch of rain late"
+msgstr "Pak shi më vonë"
+
+msgid "a wintry mix"
+msgstr "Reshje të përziera dimërore"
+
+msgid "a wintry mix in the morning"
+msgstr "Reshje të përziera dimërore në mëngjes"
+
+msgid "a wintry mix late"
+msgstr "Reshje të përziera dimërore më vonë"
+
+msgid "a wintry mix this morning"
+msgstr "Reshje të përziera dimërore këtë mëngjes"
+
+msgid "a.m. flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë në mëngjes"
+
+msgid "a.m. rain"
+msgstr "Shi në mëngjes"
+
+msgid "a.m. showers"
+msgstr "Reshje të shkurtra në mëngjes"
+
+msgid "abundant sunshine"
+msgstr "Diell me bollëk"
+
+msgid "abundant sunshine and breezy"
+msgstr "Diell me bollëk, me erë të lehtë"
+
+msgid "abundant sunshine and hot"
+msgstr "Diell me bollëk, nxehtë"
+
+msgid "abundant sunshine and nice"
+msgstr "Diell me bollëk, mot i këndshëm"
+
+msgid "abundant sunshine and warm"
+msgstr "Diell me bollëk, ngrohtë"
+
+msgid "abundant sunshine and warmer"
+msgstr "Diell me bollëk, më ngrohtë"
+
+msgid "afternoon flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë pasdite"
+
+msgid "afternoon rain"
+msgstr "Shi pasdite"
+
+msgid "afternoon showers"
+msgstr "Reshje të shkurtra pasdite"
+
+msgid "afternoon snow"
+msgstr "Dëborë pasdite"
+
+msgid "afternoon snow showers"
+msgstr "Reshje të shkurtra dëbore pasdite"
+
+msgid "afternoon t-storms"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "afternoon thundershowers"
+msgstr "Rrebesh me bubullima pasdite"
+
+msgid "afternoon thunderstorms"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "an a.m. flurry"
+msgstr "Reshje të shkurtra dëbore të lehtë në mëngjes"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "Rrebesh shiu e bore të lagësht në mëngjes"
+
+msgid "an a.m. rain or snow shower"
+msgstr "Rrebesh shiu ose dëbore në mëngjes"
+
+msgid "an a.m. shower"
+msgstr "Një rrebesh shiu në mëngjes"
+
+msgid "an a.m. shower or two"
+msgstr "Një ose dy rrebeshe në mëngjes"
+
+msgid "an a.m. t-storm"
+msgstr "Stuhi me bubullima në mëngjes"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "Stuhi lokale me bubullima në mëngjes"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "Disa stuhi me bubullima në mëngjes"
+
+msgid "an afternoon shower"
+msgstr "Një rrebesh shiu pasdite"
+
+msgid "an afternoon shower in spots"
+msgstr "Rrebeshe lokale pasdite"
+
+msgid "an afternoon shower or two"
+msgstr "Një ose dy rrebeshe pasdite"
+
+msgid "an afternoon shower possible"
+msgstr "Mundësi për rrebeshe pasdite"
+
+msgid "an afternoon snow showers"
+msgstr "Një rrebesh dëbore pasdite"
+
+msgid "an afternoon t-storm"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "an afternoon t-storm or two"
+msgstr "Disa stuhi me bubullima pasdite"
+
+msgid "an afternoon thundershower"
+msgstr "Rrebesh me bubullima pasdite"
+
+msgid "an afternoon thunderstorm"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "an evening shower"
+msgstr "Një rrebesh shiu në mbrëmje"
+
+msgid "an evening shower in the area"
+msgstr "Rrebeshe lokale në mbrëmje"
+
+msgid "an evening shower or t-storm"
+msgstr "Rrebesh ose stuhi me bubullima në mbrëmje"
+
+msgid "an evening shower or two"
+msgstr "Një ose dy rrebeshe në mbrëmje"
+
+msgid "an evening t-storm in spots"
+msgstr "Stuhi lokale me bubullima në mbrëmje"
+
+msgid "an evening t-storm or two"
+msgstr "Disa stuhi me bubullima në mbrëmje"
+
+msgid "an evening thundershower"
+msgstr "Rrebesh me bubullima në mbrëmje"
+
+msgid "an evening thunderstorm"
+msgstr "Stuhi me bubullima në mbrëmje"
+
+msgid "areas of fog"
+msgstr "Mjegull vende-vende"
+
+msgid "areas of fog in the morning"
+msgstr "Mjegull vende-vende në mëngjes"
+
+msgid "areas of low clouds"
+msgstr "Re të ulëta në disa zona"
+
+msgid "areas of low clouds and cold"
+msgstr "Re të ulëta në disa zona, ftohtë"
+
+msgid "areas of low clouds and fog"
+msgstr "Re të ulëta në disa zona, mjegull"
+
+msgid "be advised for strong winds"
+msgstr "Kujdes nga erërat e forta"
+
+msgid "beautiful"
+msgstr "Mot i këndshëm"
+
+msgid "beautiful with clouds and sun"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "beautiful with periods of sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "beautiful with plenty of sun"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "beautiful with some sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "beautiful with sun and clouds"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "beautiful with sunshine"
+msgstr "Mot i këndshëm, me diell"
+
+msgid "becoming clear"
+msgstr "Mot në kthjellim"
+
+msgid "becoming clear and chilly"
+msgstr "Mot në kthjellim, mot i ftohtë"
+
+msgid "becoming clear and cold"
+msgstr "Mot në kthjellim, ftohtë"
+
+msgid "becoming clear and colder"
+msgstr "Mot në kthjellim, më ftohtë"
+
+msgid "becoming clear and cool"
+msgstr "Mot në kthjellim, freskët"
+
+msgid "becoming clear and cooler"
+msgstr "Mot në kthjellim, më freskët"
+
+msgid "becoming clear and mild"
+msgstr "Mot në kthjellim, mot i butë"
+
+msgid "becoming clear and very warm"
+msgstr "Mot në kthjellim, shumë ngrohtë"
+
+msgid "becoming clear and warm"
+msgstr "Mot në kthjellim, ngrohtë"
+
+msgid "becoming clear with a shower"
+msgstr "Mot në kthjellim, një rrebesh shiu"
+
+msgid "becoming cloudy"
+msgstr "Mot në vranësim"
+
+msgid "becoming cloudy and breezy"
+msgstr "Mot në vranësim, me erë të lehtë"
+
+msgid "becoming cloudy and chilly"
+msgstr "Mot në vranësim, mot i ftohtë"
+
+msgid "becoming cloudy and cold"
+msgstr "Mot në vranësim, ftohtë"
+
+msgid "becoming cloudy and cooler"
+msgstr "Mot në vranësim, më freskët"
+
+msgid "becoming cloudy and hot"
+msgstr "Mot në vranësim, nxehtë"
+
+msgid "becoming cloudy and humid"
+msgstr "Mot në vranësim, lagështi e lartë"
+
+msgid "becoming cloudy and mild"
+msgstr "Mot në vranësim, mot i butë"
+
+msgid "becoming cloudy and very warm"
+msgstr "Mot në vranësim, shumë ngrohtë"
+
+msgid "becoming cloudy and warm"
+msgstr "Mot në vranësim, ngrohtë"
+
+msgid "becoming cloudy and warmer"
+msgstr "Mot në vranësim, më ngrohtë"
+
+msgid "becoming cloudy with a shower"
+msgstr "Mot në vranësim, një rrebesh shiu"
+
+msgid "becoming partly cloudy"
+msgstr "Qielli bëhet pjesërisht i vranët"
+
+msgid "becoming windier and colder"
+msgstr "Era forcohet, më ftohtë"
+
+msgid "becoming windier and cooler"
+msgstr "Era forcohet, më freskët"
+
+msgid "bitterly cold"
+msgstr "Acar"
+
+msgid "bitterly cold in the evening"
+msgstr "Acar në mbrëmje"
+
+msgid "bitterly cold with clearing"
+msgstr "Acar, mot në kthjellim"
+
+msgid "bitterly cold with low clouds"
+msgstr "Acar, re të ulëta"
+
+msgid "blazing sunshine and hot"
+msgstr "Diell përvëlues, nxehtë"
+
+msgid "blazing sunshine and warmer"
+msgstr "Diell përvëlues, më ngrohtë"
+
+msgid "blowing dust"
+msgstr "Pluhur i ngritur nga era"
+
+msgid "blowing dust with high clouds"
+msgstr "Pluhur i ngritur nga era, re të larta"
+
+msgid "blowing snow"
+msgstr "Borë e ngritur nga era"
+
+msgid "breezy and cold"
+msgstr "Me erë të lehtë, ftohtë"
+
+msgid "breezy and colder with rain"
+msgstr "Me erë të lehtë, më ftohtë, shi"
+
+msgid "breezy and cool"
+msgstr "Me erë të lehtë, freskët"
+
+msgid "breezy and cool with some sun"
+msgstr "Me erë të lehtë, freskët, herë pas here diell"
+
+msgid "breezy and cooler with clouds"
+msgstr "Me erë të lehtë, më freskët, me re"
+
+msgid "breezy and cooler with rain"
+msgstr "Me erë të lehtë, më freskët, shi"
+
+msgid "breezy and hot with sunshine"
+msgstr "Me erë të lehtë, nxehtë, me diell"
+
+msgid "breezy and humid"
+msgstr "Me erë të lehtë, lagështi e lartë"
+
+msgid "breezy and mild"
+msgstr "Me erë të lehtë, mot i butë"
+
+msgid "breezy and mild with rain"
+msgstr "Me erë të lehtë, mot i butë, shi"
+
+msgid "breezy and nice"
+msgstr "Me erë të lehtë, mot i këndshëm"
+
+msgid "breezy and nice with some sun"
+msgstr "Me erë të lehtë, mot i këndshëm, herë pas here diell"
+
+msgid "breezy and nice with sunshine"
+msgstr "Me erë të lehtë, mot i këndshëm, me diell"
+
+msgid "breezy and pleasant"
+msgstr "Me erë të lehtë, mot i këndshëm"
+
+msgid "breezy and quite cold"
+msgstr "Me erë të lehtë, mjaft ftohtë"
+
+msgid "breezy and very cold"
+msgstr "Me erë të lehtë, shumë ftohtë"
+
+msgid "breezy and warm with some sun"
+msgstr "Me erë të lehtë, ngrohtë, herë pas here diell"
+
+msgid "breezy early"
+msgstr "Me erë të lehtë në fillim"
+
+msgid "breezy in the a.m."
+msgstr "Me erë të lehtë në mëngjes"
+
+msgid "breezy in the afternoon"
+msgstr "Me erë të lehtë pasdite"
+
+msgid "breezy in the morning"
+msgstr "Me erë të lehtë në mëngjes"
+
+msgid "breezy this morning"
+msgstr "Me erë të lehtë këtë mëngjes"
+
+msgid "breezy with clearing"
+msgstr "Me erë të lehtë, mot në kthjellim"
+
+msgid "breezy with clouds and sun"
+msgstr "Me erë të lehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "breezy with decreasing clouds"
+msgstr "Me erë të lehtë, vranësirat pakësohen"
+
+msgid "breezy with high clouds"
+msgstr "Me erë të lehtë, re të larta"
+
+msgid "breezy with increasing clouds"
+msgstr "Me erë të lehtë, vranësirat shtohen"
+
+msgid "breezy with lots of sun"
+msgstr "Me erë të lehtë, diell me bollëk"
+
+msgid "breezy with partial sunshine"
+msgstr "Me erë të lehtë, herë pas here diell"
+
+msgid "breezy with patchy clouds"
+msgstr "Me erë të lehtë, re të shpërndara"
+
+msgid "breezy with periods of rain"
+msgstr "Me erë të lehtë, shi me ndërprerje"
+
+msgid "breezy with periods of snow"
+msgstr "Me erë të lehtë, borë me ndërprerje"
+
+msgid "breezy with periods of sun"
+msgstr "Me erë të lehtë, herë pas here diell"
+
+msgid "breezy with plenty of sun"
+msgstr "Me erë të lehtë, diell me bollëk"
+
+msgid "breezy with rain"
+msgstr "Me erë të lehtë, shi"
+
+msgid "breezy with rain and drizzle"
+msgstr "Me erë të lehtë, shi dhe rigë"
+
+msgid "breezy with snow"
+msgstr "Me erë të lehtë, dëborë"
+
+msgid "breezy with some sun"
+msgstr "Me erë të lehtë, herë pas here diell"
+
+msgid "breezy with sun and clouds"
+msgstr "Me erë të lehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "breezy with sunny intervals"
+msgstr "Me erë të lehtë, herë pas here diell"
+
+msgid "breezy with sunshine"
+msgstr "Me erë të lehtë, me diell"
+
+msgid "breezy with variable clouds"
+msgstr "Me erë të lehtë, vranësira të ndryshueshme"
+
+msgid "brief a.m. showers"
+msgstr "Rrebeshe të shkurtra në mëngjes"
+
+msgid "brief afternoon showers"
+msgstr "Rrebeshe të shkurtra pasdite"
+
+msgid "brief evening showers"
+msgstr "Rrebeshe të shkurtra në mbrëmje"
+
+msgid "brief late-night showers"
+msgstr "Rrebeshe të shkurtra natën vonë"
+
+msgid "brief morning showers"
+msgstr "Rrebeshe të shkurtra në mëngjes"
+
+msgid "brief showers"
+msgstr "Rrebeshe të shkurtra"
+
+msgid "brief showers early"
+msgstr "Rrebeshe të shkurtra në fillim"
+
+msgid "brief showers in the evening"
+msgstr "Rrebeshe të shkurtra në mbrëmje"
+
+msgid "brief showers in the morning"
+msgstr "Rrebeshe të shkurtra në mëngjes"
+
+msgid "brief showers late"
+msgstr "Rrebeshe të shkurtra më vonë"
+
+msgid "brief showers this afternoon"
+msgstr "Rrebeshe të shkurtra këtë pasdite"
+
+msgid "brilliant sunshine"
+msgstr "Diell i shndritshëm"
+
+msgid "brilliant sunshine and breezy"
+msgstr "Diell i shndritshëm, me erë të lehtë"
+
+msgid "brilliant sunshine and hot"
+msgstr "Diell i shndritshëm, nxehtë"
+
+msgid "brilliant sunshine and hotter"
+msgstr "Diell i shndritshëm, më nxehtë"
+
+msgid "brilliant sunshine and nice"
+msgstr "Diell i shndritshëm, mot i këndshëm"
+
+msgid "brilliant sunshine and warm"
+msgstr "Diell i shndritshëm, ngrohtë"
+
+msgid "brilliant sunshine and warmer"
+msgstr "Diell i shndritshëm, më ngrohtë"
+
+msgid "brisk and chilly"
+msgstr "Erë e freskët e fortë, mot i ftohtë"
+
+msgid "brisk and cold"
+msgstr "Erë e freskët e fortë, ftohtë"
+
+msgid "brisk and very cold"
+msgstr "Erë e freskët e fortë, shumë ftohtë"
+
+msgid "but chilly"
+msgstr "Por mot i ftohtë"
+
+msgid "but cold"
+msgstr "Por ftohtë"
+
+msgid "but very cold"
+msgstr "Por shumë ftohtë"
+
+msgid "chance for a strong t-storm"
+msgstr "Mundësi për stuhi të forta me bubullima"
+
+msgid "chance for a thunderstorm"
+msgstr "Mundësi për stuhi me bubullima"
+
+msgid "chance for rain"
+msgstr "Mundësi për shi"
+
+msgid "chance of a little a.m. rain"
+msgstr "Mundësi për pak shi në mëngjes"
+
+msgid "chance of a little p.m. rain"
+msgstr "Mundësi për pak shi pasdite"
+
+msgid "chance of a shower"
+msgstr "Mundësi për rrebeshe"
+
+msgid "chance of a thunderstorm"
+msgstr "Mundësi për stuhi me bubullima"
+
+msgid "chilly"
+msgstr "Mot i ftohtë"
+
+msgid "chilly whit partial sunshine"
+msgstr "Mot i ftohtë, herë pas here diell"
+
+msgid "chilly whit some sun"
+msgstr "Mot i ftohtë, herë pas here diell"
+
+msgid "chilly with a little snow"
+msgstr "Mot i ftohtë, pak borë"
+
+msgid "chilly with clearing"
+msgstr "Mot i ftohtë, mot në kthjellim"
+
+msgid "chilly with clouds and sun"
+msgstr "Mot i ftohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "chilly with increasing clouds"
+msgstr "Mot i ftohtë, vranësirat shtohen"
+
+msgid "chilly with low clouds"
+msgstr "Mot i ftohtë, re të ulëta"
+
+msgid "chilly with occasional rain"
+msgstr "Mot i ftohtë, shi me ndërprerje"
+
+msgid "chilly with partial sunshine"
+msgstr "Mot i ftohtë, herë pas here diell"
+
+msgid "chilly with patchy clouds"
+msgstr "Mot i ftohtë, re të shpërndara"
+
+msgid "chilly with periods of rain"
+msgstr "Mot i ftohtë, shi me ndërprerje"
+
+msgid "chilly with periods of snow"
+msgstr "Mot i ftohtë, borë me ndërprerje"
+
+msgid "chilly with periods of sun"
+msgstr "Mot i ftohtë, herë pas here diell"
+
+msgid "chilly with plenty of sun"
+msgstr "Mot i ftohtë, diell me bollëk"
+
+msgid "chilly with rain"
+msgstr "Mot i ftohtë, shi"
+
+msgid "chilly with rain and drizzle"
+msgstr "Mot i ftohtë, shi dhe rigë"
+
+msgid "chilly with snow and rain"
+msgstr "Mot i ftohtë, shi dhe borë"
+
+msgid "chilly with some sun"
+msgstr "Mot i ftohtë, herë pas here diell"
+
+msgid "chilly with sun and clouds"
+msgstr "Mot i ftohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "chilly with variable clouds"
+msgstr "Mot i ftohtë, vranësira të ndryshueshme"
+
+msgid "clear and bitterly cold"
+msgstr "I kthjellët, acar"
+
+msgid "clear and breezy"
+msgstr "I kthjellët, me erë të lehtë"
+
+msgid "clear and chilly"
+msgstr "I kthjellët, mot i ftohtë"
+
+msgid "clear and cold"
+msgstr "I kthjellët, ftohtë"
+
+msgid "clear and colder"
+msgstr "I kthjellët, më ftohtë"
+
+msgid "clear and cool"
+msgstr "I kthjellët, freskët"
+
+msgid "clear and cooler"
+msgstr "I kthjellët, më freskët"
+
+msgid "clear and dry"
+msgstr "I kthjellët, thatë"
+
+msgid "clear and frigid"
+msgstr "I kthjellët, acar"
+
+msgid "clear and humid"
+msgstr "I kthjellët, lagështi e lartë"
+
+msgid "clear and mild"
+msgstr "I kthjellët, mot i butë"
+
+msgid "clear and much colder"
+msgstr "I kthjellët, shumë më ftohtë"
+
+msgid "clear and not as warm"
+msgstr "I kthjellët, më pak ngrohtë"
+
+msgid "clear and quite cold"
+msgstr "I kthjellët, mjaft ftohtë"
+
+msgid "clear and seasonably cool"
+msgstr "I kthjellët, freskët si zakonisht në këtë stinë"
+
+msgid "clear and seasonably warm"
+msgstr "I kthjellët, ngrohtë si zakonisht për stinën"
+
+msgid "clear and unseasonably cold"
+msgstr "I kthjellët, jashtëzakonisht ftohtë për stinën"
+
+msgid "clear and very cold"
+msgstr "I kthjellët, shumë ftohtë"
+
+msgid "clear and very humid"
+msgstr "I kthjellët, lagështi shumë e lartë"
+
+msgid "clear and very warm"
+msgstr "I kthjellët, shumë ngrohtë"
+
+msgid "clear and warm"
+msgstr "I kthjellët, ngrohtë"
+
+msgid "clear and warmer"
+msgstr "I kthjellët, më ngrohtë"
+
+msgid "clear to partly cloudy"
+msgstr "Kthjellët deri pjesërisht vranët"
+
+msgid "clear with a gusty breeze"
+msgstr "I kthjellët, erë me shkulme"
+
+msgid "clearing"
+msgstr "Mot në kthjellim"
+
+msgid "clearing and a few showers"
+msgstr "Mot në kthjellim, disa rrebeshe"
+
+msgid "clearing and a stray t-storm"
+msgstr "Mot në kthjellim, stuhi lokale me bubullima"
+
+msgid "clearing and chilly"
+msgstr "Mot në kthjellim, mot i ftohtë"
+
+msgid "clearing and cold"
+msgstr "Mot në kthjellim, ftohtë"
+
+msgid "clearing and colder"
+msgstr "Mot në kthjellim, më ftohtë"
+
+msgid "clearing and cool"
+msgstr "Mot në kthjellim, freskët"
+
+msgid "clearing and cooler"
+msgstr "Mot në kthjellim, më freskët"
+
+msgid "clearing and hot"
+msgstr "Mot në kthjellim, nxehtë"
+
+msgid "clearing and humid"
+msgstr "Mot në kthjellim, lagështi e lartë"
+
+msgid "clearing and mild"
+msgstr "Mot në kthjellim, mot i butë"
+
+msgid "clearing and nice"
+msgstr "Mot në kthjellim, mot i këndshëm"
+
+msgid "clearing and not as warm"
+msgstr "Mot në kthjellim, më pak ngrohtë"
+
+msgid "clearing and pleasant"
+msgstr "Mot në kthjellim, mot i këndshëm"
+
+msgid "clearing and showers around"
+msgstr "Mot në kthjellim, rrebeshe lokale"
+
+msgid "clearing and spotty showers"
+msgstr "Mot në kthjellim, rrebeshe lokale"
+
+msgid "clearing and summerlike"
+msgstr "Mot në kthjellim, mot veror"
+
+msgid "clearing and unseasonably hot"
+msgstr "Mot në kthjellim, nxehtësi e pazakontë për stinën"
+
+msgid "clearing and very cold"
+msgstr "Mot në kthjellim, shumë ftohtë"
+
+msgid "clearing and very warm"
+msgstr "Mot në kthjellim, shumë ngrohtë"
+
+msgid "clearing and warm"
+msgstr "Mot në kthjellim, ngrohtë"
+
+msgid "clearing and warmer"
+msgstr "Mot në kthjellim, më ngrohtë"
+
+msgid "clearing with a shower late"
+msgstr "Mot në kthjellim, një rrebesh shiu më vonë"
+
+msgid "clouding up"
+msgstr "Vranësirat shtohen"
+
+msgid "clouding up with a shower"
+msgstr "Vranësirat shtohen, një rrebesh shiu"
+
+msgid "clouds"
+msgstr "Me re"
+
+msgid "clouds and a few showers"
+msgstr "Me re, disa rrebeshe"
+
+msgid "clouds and a stray t-storm"
+msgstr "Me re, stuhi lokale me bubullima"
+
+msgid "clouds and a t-storm in spots"
+msgstr "Me re, stuhi lokale me bubullima"
+
+msgid "clouds and becoming rainy"
+msgstr "Me re, nis shiu"
+
+msgid "clouds and breaks of sun"
+msgstr "Me re, herë pas here diell"
+
+msgid "clouds and fog"
+msgstr "Me re, mjegull"
+
+msgid "clouds and limited sun"
+msgstr "Me re, pak diell"
+
+msgid "clouds and showers"
+msgstr "Me re, reshje të shkurtra"
+
+msgid "clouds and showers around"
+msgstr "Me re, rrebeshe lokale"
+
+msgid "clouds and spotty showers"
+msgstr "Me re, rrebeshe lokale"
+
+msgid "clouds and sun"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "clouds and sun with a shower"
+msgstr "Alternime kthjellimesh dhe vranësirash, një rrebesh shiu"
+
+msgid "clouds and sun with a t-storm"
+msgstr "Alternime kthjellimesh dhe vranësirash, stuhi me bubullima"
+
+msgid "clouds and sun with showers"
+msgstr "Alternime kthjellimesh dhe vranësirash, reshje të shkurtra"
+
+msgid "clouds and sunshine"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "clouds and very warm"
+msgstr "Me re, shumë ngrohtë"
+
+msgid "clouds and warm"
+msgstr "Me re, ngrohtë"
+
+msgid "clouds and warm with a shower"
+msgstr "Me re, ngrohtë, një rrebesh shiu"
+
+msgid "clouds break for sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds breaking"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds breaking and beautiful"
+msgstr "Vranësirat pakësohen, mot i këndshëm"
+
+msgid "clouds breaking and chilly"
+msgstr "Vranësirat pakësohen, mot i ftohtë"
+
+msgid "clouds breaking and pleasant"
+msgstr "Vranësirat pakësohen, mot i këndshëm"
+
+msgid "clouds breaking and very warm"
+msgstr "Vranësirat pakësohen, shumë ngrohtë"
+
+msgid "clouds breaking for some sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds breaking for sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds breaking with a shower"
+msgstr "Vranësirat pakësohen, një rrebesh shiu"
+
+msgid "clouds giving way to some sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds giving way to sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds limiting sun"
+msgstr "Retë pengojnë diellin"
+
+msgid "clouds limiting sunshine"
+msgstr "Retë pengojnë diellin"
+
+msgid "clouds rolling in"
+msgstr "Afrohen re"
+
+msgid "clouds rolling in and humid"
+msgstr "Afrohen re, lagështi e lartë"
+
+msgid "clouds with a shower late"
+msgstr "Me re, një rrebesh shiu më vonë"
+
+msgid "clouds with downpours late"
+msgstr "Me re, shi i rrëmbyeshëm më vonë"
+
+msgid "clouds with snow late"
+msgstr "Me re, dëborë më vonë"
+
+msgid "clouds yielding to some sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "clouds yielding to sun"
+msgstr "Vranësirat pakësohen"
+
+msgid "cloudy and becoming rainy"
+msgstr "Me re, nis shiu"
+
+msgid "cloudy and bitterly cold"
+msgstr "Me re, acar"
+
+msgid "cloudy and breezy"
+msgstr "Me re, me erë të lehtë"
+
+msgid "cloudy and chilly"
+msgstr "Me re, mot i ftohtë"
+
+msgid "cloudy and cold"
+msgstr "Me re, ftohtë"
+
+msgid "cloudy and colder"
+msgstr "Me re, më ftohtë"
+
+msgid "cloudy and comfortable"
+msgstr "Me re, mot i këndshëm"
+
+msgid "cloudy and cool"
+msgstr "Me re, freskët"
+
+msgid "cloudy and cool with a shower"
+msgstr "Me re, freskët, një rrebesh shiu"
+
+msgid "cloudy and cool with showers"
+msgstr "Me re, freskët, reshje të shkurtra"
+
+msgid "cloudy and cooler"
+msgstr "Me re, më freskët"
+
+msgid "cloudy and frigid"
+msgstr "Me re, acar"
+
+msgid "cloudy and hot"
+msgstr "Me re, nxehtë"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "Me re, nxehtë, stuhi me bubullima"
+
+msgid "cloudy and humid"
+msgstr "Me re, lagështi e lartë"
+
+msgid "cloudy and humid with showers"
+msgstr "Me re, lagështi e lartë, reshje të shkurtra"
+
+msgid "cloudy and less humid"
+msgstr "Me re, lagështi më e ulët"
+
+msgid "cloudy and mild"
+msgstr "Me re, mot i butë"
+
+msgid "cloudy and mild with a shower"
+msgstr "Me re, mot i butë, një rrebesh shiu"
+
+msgid "cloudy and milder"
+msgstr "Me re, më butë"
+
+msgid "cloudy and not as cold"
+msgstr "Me re, më pak ftohtë"
+
+msgid "cloudy and not as cool"
+msgstr "Me re, më pak freskët"
+
+msgid "cloudy and not as hot"
+msgstr "Me re, më pak nxehtë"
+
+msgid "cloudy and not as warm"
+msgstr "Me re, më pak ngrohtë"
+
+msgid "cloudy and remaining cool"
+msgstr "Me re, mbetet freskët"
+
+msgid "cloudy and remaining warm"
+msgstr "Me re, mbetet ngrohtë"
+
+msgid "cloudy and seasonably cold"
+msgstr "Me re, ftohtë si zakonisht për stinën"
+
+msgid "cloudy and seasonably cool"
+msgstr "Me re, freskët si zakonisht në këtë stinë"
+
+msgid "cloudy and seasonably warm"
+msgstr "Me re, ngrohtë si zakonisht për stinën"
+
+msgid "cloudy and turning colder"
+msgstr "Me re, më ftohtë"
+
+msgid "cloudy and very cold"
+msgstr "Me re, shumë ftohtë"
+
+msgid "cloudy and very humid"
+msgstr "Me re, lagështi shumë e lartë"
+
+msgid "cloudy and very warm"
+msgstr "Me re, shumë ngrohtë"
+
+msgid "cloudy and warm"
+msgstr "Me re, ngrohtë"
+
+msgid "cloudy and warm with a shower"
+msgstr "Me re, ngrohtë, një rrebesh shiu"
+
+msgid "cloudy and warmer"
+msgstr "Me re, më ngrohtë"
+
+msgid "cloudy and windy"
+msgstr "Me re, me erë"
+
+msgid "cloudy and windy with showers"
+msgstr "Me re, me erë, reshje të shkurtra"
+
+msgid "cloudy most of the time"
+msgstr "Kryesisht me re"
+
+msgid "cloudy spells with a t-storm"
+msgstr "Herë pas here vranët, stuhi me bubullima"
+
+msgid "cloudy to partly sunny"
+msgstr "Fillimisht vranët, pastaj intervale me diell"
+
+msgid "cloudy with a bit of ice"
+msgstr "Me re, ngricë vende-vende"
+
+msgid "cloudy with a bit of ice late"
+msgstr "Me re, ngricë vende-vende më vonë"
+
+msgid "cloudy with a bit of rain"
+msgstr "Me re, pak shi"
+
+msgid "cloudy with a bit of snow"
+msgstr "Me re, pak borë"
+
+msgid "cloudy with a brief shower"
+msgstr "Me re, rrebeshe të shkurtra"
+
+msgid "cloudy with a chance of rain"
+msgstr "Me re, mundësi për shi"
+
+msgid "cloudy with a downpour late"
+msgstr "Me re, shi i rrëmbyeshëm më vonë"
+
+msgid "cloudy with a few flurries"
+msgstr "Me re, disa reshje të lehta e të shkurtra dëbore"
+
+msgid "cloudy with a few showers"
+msgstr "Me re, disa rrebeshe"
+
+msgid "cloudy with a few snowflakes"
+msgstr "Me re, pak flokë bore"
+
+msgid "cloudy with a flurry"
+msgstr "Me re, reshje të shkurtra dëbore të lehtë"
+
+msgid "cloudy with a flurry late"
+msgstr "Me re, reshje të shkurtra dëbore të lehtë më vonë"
+
+msgid "cloudy with a flurry or two"
+msgstr "Me re, disa reshje të lehta e të shkurtra dëbore"
+
+msgid "cloudy with a heavy shower"
+msgstr "Me re, rrebeshe të forta"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "Me re, stuhi të forta me bubullima"
+
+msgid "cloudy with a little rain"
+msgstr "Me re, pak shi"
+
+msgid "cloudy with a little snow"
+msgstr "Me re, pak borë"
+
+msgid "cloudy with a passing shower"
+msgstr "Me re, rrebeshe të shkurtra"
+
+msgid "cloudy with a quick shower"
+msgstr "Me re, rrebeshe të shkurtra"
+
+msgid "cloudy with a shower"
+msgstr "Me re, një rrebesh shiu"
+
+msgid "cloudy with a shower in spots"
+msgstr "Me re, rrebeshe lokale"
+
+msgid "cloudy with a shower late"
+msgstr "Me re, një rrebesh shiu më vonë"
+
+msgid "cloudy with a shower or two"
+msgstr "Me re, një ose dy rrebeshe"
+
+msgid "cloudy with a shower possible"
+msgstr "Me re, mundësi për rrebeshe"
+
+msgid "cloudy with a snow shower"
+msgstr "Me re, një rrebesh dëbore"
+
+msgid "cloudy with a stray flurry"
+msgstr "Me re, disa reshje të lehta e të shkurtra dëbore"
+
+msgid "cloudy with a stray shower"
+msgstr "Me re, rrebeshe lokale"
+
+msgid "cloudy with a stray t-shower"
+msgstr "Me re, rrebeshe lokale me bubullima"
+
+msgid "cloudy with a stray t-storm"
+msgstr "Me re, stuhi lokale me bubullima"
+
+msgid "cloudy with a strong t-storm"
+msgstr "Me re, stuhi të forta me bubullima"
+
+msgid "cloudy with a t-storm"
+msgstr "Me re, stuhi me bubullima"
+
+msgid "cloudy with a t-storm around"
+msgstr "Me re, stuhi lokale me bubullima"
+
+msgid "cloudy with a t-storm late"
+msgstr "Me re, stuhi me bubullima më vonë"
+
+msgid "cloudy with a t-storm or two"
+msgstr "Me re, disa stuhi me bubullima"
+
+msgid "cloudy with a thundershower"
+msgstr "Me re, rrebesh me bubullima"
+
+msgid "cloudy with a thunderstorm"
+msgstr "Me re, stuhi me bubullima"
+
+msgid "cloudy with a touch of rain"
+msgstr "Me re, pak shi"
+
+msgid "cloudy with afternoon rain"
+msgstr "Me re, shi pasdite"
+
+msgid "cloudy with afternoon showers"
+msgstr "Me re, reshje të shkurtra pasdite"
+
+msgid "cloudy with blowing dust"
+msgstr "Me re, pluhur i ngritur nga era"
+
+msgid "cloudy with brief showers"
+msgstr "Me re, rrebeshe të shkurtra"
+
+msgid "cloudy with downpours"
+msgstr "Me re, shi i rrëmbyeshëm"
+
+msgid "cloudy with downpours late"
+msgstr "Me re, shi i rrëmbyeshëm më vonë"
+
+msgid "cloudy with flurries"
+msgstr "Me re, reshje të shkurtra dëbore të lehtë"
+
+msgid "cloudy with flurries late"
+msgstr "Me re, reshje të shkurtra dëbore të lehtë më vonë"
+
+msgid "cloudy with heavy rain late"
+msgstr "Me re, shi i rrëmbyeshëm më vonë"
+
+msgid "cloudy with heavy showers"
+msgstr "Me re, rrebeshe të forta"
+
+msgid "cloudy with late-night rain"
+msgstr "Me re, shi natën vonë"
+
+msgid "cloudy with occasional rain"
+msgstr "Me re, shi me ndërprerje"
+
+msgid "cloudy with pouring rain late"
+msgstr "Me re, shi i rrëmbyeshëm më vonë"
+
+msgid "cloudy with rain"
+msgstr "Me re, shi"
+
+msgid "cloudy with rain and drizzle"
+msgstr "Me re, shi dhe rigë"
+
+msgid "cloudy with rain and ice late"
+msgstr "Me re, shi dhe akull më vonë"
+
+msgid "cloudy with rain beginning"
+msgstr "Me re, nis shiu"
+
+msgid "cloudy with rain developing"
+msgstr "Me re, nis shiu"
+
+msgid "cloudy with rain ending"
+msgstr "Me re, shiu pushon"
+
+msgid "cloudy with rain tapering off"
+msgstr "Me re, shiu dobësohet"
+
+msgid "cloudy with showers"
+msgstr "Me re, reshje të shkurtra"
+
+msgid "cloudy with showers around"
+msgstr "Me re, rrebeshe lokale"
+
+msgid "cloudy with showers late"
+msgstr "Me re, reshje të shkurtra më vonë"
+
+msgid "cloudy with snow"
+msgstr "Me re, dëborë"
+
+msgid "cloudy with snow and ice"
+msgstr "Me re, borë dhe akull"
+
+msgid "cloudy with snow at times"
+msgstr "Me re, borë me ndërprerje"
+
+msgid "cloudy with snow showers"
+msgstr "Me re, reshje të shkurtra dëbore"
+
+msgid "cloudy with snow showers late"
+msgstr "Me re, reshje të shkurtra dëbore më vonë"
+
+msgid "cloudy with snow tapering off"
+msgstr "Me re, reshjet e borës dobësohen"
+
+msgid "cloudy with spotty showers"
+msgstr "Me re, rrebeshe lokale"
+
+msgid "cloudy with t-storms"
+msgstr "Me re, stuhi me bubullima"
+
+msgid "cloudy with thundershowers"
+msgstr "Me re, rrebesh me bubullima"
+
+msgid "cloudy with thunderstorms"
+msgstr "Me re, stuhi me bubullima"
+
+msgid "cloudy with times of rain"
+msgstr "Me re, shi me ndërprerje"
+
+msgid "cold"
+msgstr "Ftohtë"
+
+msgid "cold whit rain and drizzle"
+msgstr "Ftohtë, shi dhe rigë"
+
+msgid "cold with areas of low clouds"
+msgstr "Ftohtë, re të ulëta në disa zona"
+
+msgid "cold with clearing"
+msgstr "Ftohtë, mot në kthjellim"
+
+msgid "cold with clouds and sun"
+msgstr "Ftohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "cold with clouds and sunshine"
+msgstr "Ftohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "cold with clouds breaking"
+msgstr "Ftohtë, vranësirat pakësohen"
+
+msgid "cold with considerable clouds"
+msgstr "Ftohtë, kryesisht me re"
+
+msgid "cold with icy mix"
+msgstr "Ftohtë, reshje të përziera me shi ngrirës dhe kokrriza akulli"
+
+msgid "cold with increasing clouds"
+msgstr "Ftohtë, vranësirat shtohen"
+
+msgid "cold with low clouds"
+msgstr "Ftohtë, re të ulëta"
+
+msgid "cold with partial sunshine"
+msgstr "Ftohtë, herë pas here diell"
+
+msgid "cold with patchy clouds"
+msgstr "Ftohtë, re të shpërndara"
+
+msgid "cold with periods of sun"
+msgstr "Ftohtë, herë pas here diell"
+
+msgid "cold with plenty of clouds"
+msgstr "Ftohtë, kryesisht me re"
+
+msgid "cold with plenty of sunshine"
+msgstr "Ftohtë, diell me bollëk"
+
+msgid "cold with snow"
+msgstr "Ftohtë, dëborë"
+
+msgid "cold with snow and rain"
+msgstr "Ftohtë, shi dhe borë"
+
+msgid "cold with snow at times"
+msgstr "Ftohtë, borë me ndërprerje"
+
+msgid "cold with some sun"
+msgstr "Ftohtë, herë pas here diell"
+
+msgid "cold with sun"
+msgstr "Ftohtë, me diell"
+
+msgid "cold with variable clouds"
+msgstr "Ftohtë, vranësira të ndryshueshme"
+
+msgid "colder"
+msgstr "Më ftohtë"
+
+msgid "colder in the afternoon"
+msgstr "Më ftohtë pasdite"
+
+msgid "colder in the morning"
+msgstr "Më ftohtë në mëngjes"
+
+msgid "colder with a bit of snow"
+msgstr "Më ftohtë, pak borë"
+
+msgid "colder with a few showers"
+msgstr "Më ftohtë, disa rrebeshe"
+
+msgid "colder with a few snowflakes"
+msgstr "Më ftohtë, pak flokë bore"
+
+msgid "colder with a little rain"
+msgstr "Më ftohtë, pak shi"
+
+msgid "colder with a little snow"
+msgstr "Më ftohtë, pak borë"
+
+msgid "colder with a shower or two"
+msgstr "Më ftohtë, një ose dy rrebeshe"
+
+msgid "colder with a snow squall"
+msgstr "Më ftohtë, rrebesh bore me erë të fortë"
+
+msgid "colder with a stray shower"
+msgstr "Më ftohtë, rrebeshe lokale"
+
+msgid "colder with increasing clouds"
+msgstr "Më ftohtë, vranësirat shtohen"
+
+msgid "colder with low clouds"
+msgstr "Më ftohtë, re të ulëta"
+
+msgid "colder with occasional rain"
+msgstr "Më ftohtë, shi me ndërprerje"
+
+msgid "colder with partial sunshine"
+msgstr "Më ftohtë, herë pas here diell"
+
+msgid "colder with periods of sun"
+msgstr "Më ftohtë, herë pas here diell"
+
+msgid "colder with rain"
+msgstr "Më ftohtë, shi"
+
+msgid "colder with showers around"
+msgstr "Më ftohtë, rrebeshe lokale"
+
+msgid "colder with snow"
+msgstr "Më ftohtë, dëborë"
+
+msgid "colder with snow and rain"
+msgstr "Më ftohtë, shi dhe borë"
+
+msgid "colder with snow at times"
+msgstr "Më ftohtë, borë me ndërprerje"
+
+msgid "colder with snow showers"
+msgstr "Më ftohtë, reshje të shkurtra dëbore"
+
+msgid "colder with some sun"
+msgstr "Më ftohtë, herë pas here diell"
+
+msgid "colder with spotty showers"
+msgstr "Më ftohtë, rrebeshe lokale"
+
+msgid "comfortable"
+msgstr "Mot i këndshëm"
+
+msgid "comfortable with some sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "comfortable with sunshine"
+msgstr "Mot i këndshëm, me diell"
+
+msgid "considerable cloudiness"
+msgstr "Kryesisht me re"
+
+msgid "considerable clouds"
+msgstr "Kryesisht me re"
+
+msgid "considerable clouds and humid"
+msgstr "Kryesisht me re, lagështi e lartë"
+
+msgid "considerable clouds and mild"
+msgstr "Kryesisht me re, mot i butë"
+
+msgid "considerable clouds and warm"
+msgstr "Kryesisht me re, ngrohtë"
+
+msgid "continued cloudy"
+msgstr "Mbetet vranët"
+
+msgid "continued cloudy with showers"
+msgstr "Mbetet vranët, reshje të shkurtra"
+
+msgid "cool"
+msgstr "Freskët"
+
+msgid "cool with a thick cloud cover"
+msgstr "Freskët, i vranët"
+
+msgid "cool with areas of low clouds"
+msgstr "Freskët, re të ulëta në disa zona"
+
+msgid "cool with clearing"
+msgstr "Freskët, mot në kthjellim"
+
+msgid "cool with clouds and sun"
+msgstr "Freskët, alternime kthjellimesh dhe vranësirash"
+
+msgid "cool with clouds breaking"
+msgstr "Freskët, vranësirat pakësohen"
+
+msgid "cool with decreasing clouds"
+msgstr "Freskët, vranësirat pakësohen"
+
+msgid "cool with increasing clouds"
+msgstr "Freskët, vranësirat shtohen"
+
+msgid "cool with low clouds"
+msgstr "Freskët, re të ulëta"
+
+msgid "cool with occasional rain"
+msgstr "Freskët, shi me ndërprerje"
+
+msgid "cool with partial sunshine"
+msgstr "Freskët, herë pas here diell"
+
+msgid "cool with patchy clouds"
+msgstr "Freskët, re të shpërndara"
+
+msgid "cool with periods of rain"
+msgstr "Freskët, shi me ndërprerje"
+
+msgid "cool with periods of sun"
+msgstr "Freskët, herë pas here diell"
+
+msgid "cool with plenty of sun"
+msgstr "Freskët, diell me bollëk"
+
+msgid "cool with plenty of sunshine"
+msgstr "Freskët, diell me bollëk"
+
+msgid "cool with rain"
+msgstr "Freskët, shi"
+
+msgid "cool with rain and a t-storm"
+msgstr "Freskët, shi, stuhi me bubullima"
+
+msgid "cool with rain and drizzle"
+msgstr "Freskët, shi dhe rigë"
+
+msgid "cool with some sun"
+msgstr "Freskët, herë pas here diell"
+
+msgid "cool with sun and clouds"
+msgstr "Freskët, alternime kthjellimesh dhe vranësirash"
+
+msgid "cool with sun and some clouds"
+msgstr "Freskët, alternime kthjellimesh dhe vranësirash"
+
+msgid "cool with sunny intervals"
+msgstr "Freskët, herë pas here diell"
+
+msgid "cool with thickening clouds"
+msgstr "Freskët, retë dendësohen"
+
+msgid "cool with variable cloudiness"
+msgstr "Freskët, vranësira të ndryshueshme"
+
+msgid "cool with variable clouds"
+msgstr "Freskët, vranësira të ndryshueshme"
+
+msgid "cooler"
+msgstr "Më freskët"
+
+msgid "cooler with a brief shower"
+msgstr "Më freskët, rrebeshe të shkurtra"
+
+msgid "cooler with a few showers"
+msgstr "Më freskët, disa rrebeshe"
+
+msgid "cooler with a little rain"
+msgstr "Më freskët, pak shi"
+
+msgid "cooler with a little snow"
+msgstr "Më freskët, pak borë"
+
+msgid "cooler with a passing shower"
+msgstr "Më freskët, rrebeshe të shkurtra"
+
+msgid "cooler with a shower"
+msgstr "Më freskët, një rrebesh shiu"
+
+msgid "cooler with a shower in spots"
+msgstr "Më freskët, rrebeshe lokale"
+
+msgid "cooler with a shower or two"
+msgstr "Më freskët, një ose dy rrebeshe"
+
+msgid "cooler with a shower possible"
+msgstr "Më freskët, mundësi për rrebeshe"
+
+msgid "cooler with a stray shower"
+msgstr "Më freskët, rrebeshe lokale"
+
+msgid "cooler with a stray t-shower"
+msgstr "Më freskët, rrebeshe lokale me bubullima"
+
+msgid "cooler with a stray t-storm"
+msgstr "Më freskët, stuhi lokale me bubullima"
+
+msgid "cooler with a t-storm or two"
+msgstr "Më freskët, disa stuhi me bubullima"
+
+msgid "cooler with a thundershower"
+msgstr "Më freskët, rrebesh me bubullima"
+
+msgid "cooler with a thunderstorm"
+msgstr "Më freskët, stuhi me bubullima"
+
+msgid "cooler with a touch of rain"
+msgstr "Më freskët, pak shi"
+
+msgid "cooler with clearing"
+msgstr "Më freskët, mot në kthjellim"
+
+msgid "cooler with clouds and sun"
+msgstr "Më freskët, alternime kthjellimesh dhe vranësirash"
+
+msgid "cooler with clouds breaking"
+msgstr "Më freskët, vranësirat pakësohen"
+
+msgid "cooler with decreasing clouds"
+msgstr "Më freskët, vranësirat pakësohen"
+
+msgid "cooler with downpours"
+msgstr "Më freskët, shi i rrëmbyeshëm"
+
+msgid "cooler with heavy showers"
+msgstr "Më freskët, rrebeshe të forta"
+
+msgid "cooler with high clouds"
+msgstr "Më freskët, re të larta"
+
+msgid "cooler with increasing clouds"
+msgstr "Më freskët, vranësirat shtohen"
+
+msgid "cooler with low clouds"
+msgstr "Më freskët, re të ulëta"
+
+msgid "cooler with morning showers"
+msgstr "Më freskët, reshje të shkurtra në mëngjes"
+
+msgid "cooler with occasional rain"
+msgstr "Më freskët, shi me ndërprerje"
+
+msgid "cooler with partial sunshine"
+msgstr "Më freskët, herë pas here diell"
+
+msgid "cooler with periods of rain"
+msgstr "Më freskët, shi me ndërprerje"
+
+msgid "cooler with periods of sun"
+msgstr "Më freskët, herë pas here diell"
+
+msgid "cooler with plenty of clouds"
+msgstr "Më freskët, kryesisht me re"
+
+msgid "cooler with plenty of sun"
+msgstr "Më freskët, diell me bollëk"
+
+msgid "cooler with rain"
+msgstr "Më freskët, shi"
+
+msgid "cooler with rain and drizzle"
+msgstr "Më freskët, shi dhe rigë"
+
+msgid "cooler with rain at times"
+msgstr "Më freskët, shi me ndërprerje"
+
+msgid "cooler with rain beginning"
+msgstr "Më freskët, nis shiu"
+
+msgid "cooler with rain tapering off"
+msgstr "Më freskët, shiu dobësohet"
+
+msgid "cooler with showers"
+msgstr "Më freskët, reshje të shkurtra"
+
+msgid "cooler with showers around"
+msgstr "Më freskët, rrebeshe lokale"
+
+msgid "cooler with some brightening"
+msgstr "Më freskët, disa kthjellime"
+
+msgid "cooler with some sun"
+msgstr "Më freskët, herë pas here diell"
+
+msgid "cooler with spotty showers"
+msgstr "Më freskët, rrebeshe lokale"
+
+msgid "cooler with sun"
+msgstr "Më freskët, me diell"
+
+msgid "cooler with sun and clouds"
+msgstr "Më freskët, alternime kthjellimesh dhe vranësirash"
+
+msgid "cooler with sunny intervals"
+msgstr "Më freskët, herë pas here diell"
+
+msgid "cooler with thunderstorms"
+msgstr "Më freskët, stuhi me bubullima"
+
+msgid "cooler with variable clouds"
+msgstr "Më freskët, vranësira të ndryshueshme"
+
+msgid "couple of showers"
+msgstr "Një ose dy rrebeshe"
+
+msgid "couple of thunderstorms"
+msgstr "Disa stuhi me bubullima"
+
+msgid "damp early"
+msgstr "Mot i lagësht në fillim"
+
+msgid "decreasing clouds"
+msgstr "Vranësirat pakësohen"
+
+msgid "decreasing clouds and breezy"
+msgstr "Vranësirat pakësohen, me erë të lehtë"
+
+msgid "decreasing clouds and colder"
+msgstr "Vranësirat pakësohen, më ftohtë"
+
+msgid "decreasing clouds and cool"
+msgstr "Vranësirat pakësohen, freskët"
+
+msgid "decreasing clouds and cooler"
+msgstr "Vranësirat pakësohen, më freskët"
+
+msgid "decreasing clouds and humid"
+msgstr "Vranësirat pakësohen, lagështi e lartë"
+
+msgid "decreasing clouds and warm"
+msgstr "Vranësirat pakësohen, ngrohtë"
+
+msgid "decreasing clouds and warmer"
+msgstr "Vranësirat pakësohen, më ngrohtë"
+
+msgid "delightful"
+msgstr "Mot i këndshëm"
+
+msgid "delightful with plenty of sun"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "delightful with some sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "delightful with sunshine"
+msgstr "Mot i këndshëm, me diell"
+
+msgid "dense fog"
+msgstr "Mjegull e dendur"
+
+msgid "downpours"
+msgstr "Shi i rrëmbyeshëm"
+
+msgid "downpours early"
+msgstr "Shi i rrëmbyeshëm në fillim"
+
+msgid "downpours in the a.m."
+msgstr "Shi i rrëmbyeshëm në mëngjes"
+
+msgid "downpours in the afternoon"
+msgstr "Shi i rrëmbyeshëm pasdite"
+
+msgid "downpours in the evening"
+msgstr "Shi i rrëmbyeshëm në mbrëmje"
+
+msgid "downpours in the morning"
+msgstr "Shi i rrëmbyeshëm në mëngjes"
+
+msgid "downpours in the p.m."
+msgstr "Shi i rrëmbyeshëm pasdite"
+
+msgid "downpours this evening"
+msgstr "Shi i rrëmbyeshëm këtë mbrëmje"
+
+msgid "drizzle/rain"
+msgstr "Shi dhe rigë"
+
+msgid "dull and dreary"
+msgstr "Mot i zymtë e i vranët"
+
+msgid "dull and dreary with showers"
+msgstr "Mot i zymtë e i vranët, reshje të shkurtra"
+
+msgid "early downpours"
+msgstr "Shi i rrëmbyeshëm në fillim"
+
+msgid "early flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë në fillim"
+
+msgid "early rain"
+msgstr "Shi në fillim"
+
+msgid "early showers"
+msgstr "Reshje të shkurtra në fillim"
+
+msgid "early snow"
+msgstr "Dëborë në fillim"
+
+msgid "early snow showers"
+msgstr "Reshje të shkurtra dëbore në fillim"
+
+msgid "early t-showers"
+msgstr "Rrebesh me bubullima në fillim"
+
+msgid "early thunderstorms"
+msgstr "Stuhi me bubullima në fillim"
+
+msgid "episodes of sunshine"
+msgstr "Herë pas here diell"
+
+msgid "evening downpours"
+msgstr "Shi i rrëmbyeshëm në mbrëmje"
+
+msgid "evening rain"
+msgstr "Shi në mbrëmje"
+
+msgid "evening rain and drizzle"
+msgstr "Shi në mbrëmje, rigë"
+
+msgid "evening showers"
+msgstr "Reshje të shkurtra në mbrëmje"
+
+msgid "evening showers and t-storms"
+msgstr "Reshje të shkurtra në mbrëmje, stuhi me bubullima"
+
+msgid "evening snow showers"
+msgstr "Reshje të shkurtra dëbore në mbrëmje"
+
+msgid "evening thundershowers"
+msgstr "Rrebesh me bubullima në mbrëmje"
+
+msgid "evening thunderstorms"
+msgstr "Stuhi me bubullima në mbrëmje"
+
+msgid "flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë"
+
+msgid "fog forming"
+msgstr "Formohet mjegull"
+
+msgid "fog in the a.m."
+msgstr "Mjegull në mëngjes"
+
+msgid "fog in the morning"
+msgstr "Mjegull në mëngjes"
+
+msgid "fog to sun"
+msgstr "Pas mjegullës del dielli"
+
+msgid "fog will lift this morning"
+msgstr "Mjegulla do të shpërndahet këtë mëngjes"
+
+msgid "foggy"
+msgstr "Mjegull"
+
+msgid "freezing early"
+msgstr "Ngricë në fillim"
+
+msgid "freezing fog"
+msgstr "Mjegull ngrirëse"
+
+msgid "freezing fog this morning"
+msgstr "Mjegull ngrirëse këtë mëngjes"
+
+msgid "freezing late"
+msgstr "Ngricë më vonë"
+
+msgid "frigid"
+msgstr "Acar"
+
+msgid "frigid in the evening"
+msgstr "Acar në mbrëmje"
+
+msgid "frigid with a bit of snow"
+msgstr "Acar, pak borë"
+
+msgid "frigid with clouds and sun"
+msgstr "Acar, alternime kthjellimesh dhe vranësirash"
+
+msgid "frigid with increasing clouds"
+msgstr "Acar, vranësirat shtohen"
+
+msgid "frigid with low clouds"
+msgstr "Acar, re të ulëta"
+
+msgid "frigid with patchy clouds"
+msgstr "Acar, re të shpërndara"
+
+msgid "frigid with periods of snow"
+msgstr "Acar, borë me ndërprerje"
+
+msgid "frigid with some sun"
+msgstr "Acar, herë pas here diell"
+
+msgid "frigid with tapering off"
+msgstr "Acar, duke u dobësuar gradualisht"
+
+msgid "ground fog"
+msgstr "Mjegull pranë tokës"
+
+msgid "gusty thunderstorms possible"
+msgstr "Mundësi për stuhi me shkulme ere"
+
+msgid "hazy"
+msgstr "Mjegullinë"
+
+msgid "hazy and humid"
+msgstr "Mjegullinë, lagështi e lartë"
+
+msgid "hazy and remaining very warm"
+msgstr "Mjegullinë, mbetet shumë ngrohtë"
+
+msgid "hazy and seasonably warm"
+msgstr "Mjegullinë, ngrohtë si zakonisht për stinën"
+
+msgid "hazy and unseasonably hot"
+msgstr "Mjegullinë, nxehtësi e pazakontë për stinën"
+
+msgid "hazy and very warm"
+msgstr "Mjegullinë, shumë ngrohtë"
+
+msgid "hazy and warm"
+msgstr "Mjegullinë, ngrohtë"
+
+msgid "hazy clouds"
+msgstr "Re dhe mjegullinë"
+
+msgid "hazy sun"
+msgstr "Diell përmes mjegullinës"
+
+msgid "hazy sun and hot"
+msgstr "Diell përmes mjegullinës, nxehtë"
+
+msgid "hazy sun and summerlike"
+msgstr "Diell përmes mjegullinës, mot veror"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "Diell përmes mjegullinës, nxehtësi e pazakontë për stinën"
+
+msgid "hazy sun and very warm"
+msgstr "Diell përmes mjegullinës, shumë ngrohtë"
+
+msgid "hazy sunshine"
+msgstr "Diell përmes mjegullinës"
+
+msgid "hazy sunshine and hot"
+msgstr "Diell përmes mjegullinës, nxehtë"
+
+msgid "hazy sunshine and less humid"
+msgstr "Diell përmes mjegullinës, lagështi më e ulët"
+
+msgid "hazy sunshine and very warm"
+msgstr "Diell përmes mjegullinës, shumë ngrohtë"
+
+msgid "hazy with a t-storm in spots"
+msgstr "Mjegullinë, stuhi lokale me bubullima"
+
+msgid "heavy a.m. rain"
+msgstr "Shi i rrëmbyeshëm në mëngjes"
+
+msgid "heavy a.m. showers"
+msgstr "Rrebeshe të forta në mëngjes"
+
+msgid "heavy afternoon rain"
+msgstr "Shi i rrëmbyeshëm pasdite"
+
+msgid "heavy afternoon showers"
+msgstr "Rrebeshe të forta pasdite"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "Stuhi të forta me bubullima pasdite"
+
+msgid "heavy evening rain"
+msgstr "Shi i rrëmbyeshëm në mbrëmje"
+
+msgid "heavy evening thunderstorms"
+msgstr "Stuhi të forta me bubullima në mbrëmje"
+
+msgid "heavy late-night rain"
+msgstr "Shi i rrëmbyeshëm natën vonë"
+
+msgid "heavy morning rain"
+msgstr "Shi i rrëmbyeshëm në mëngjes"
+
+msgid "heavy morning showers"
+msgstr "Rrebeshe të forta në mëngjes"
+
+msgid "heavy morning thunderstorms"
+msgstr "Stuhi të forta me bubullima në mëngjes"
+
+msgid "heavy rain and a t-storm late"
+msgstr "Shi i rrëmbyeshëm, stuhi me bubullima më vonë"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "Shi i rrëmbyeshëm, stuhi me bubullima"
+
+msgid "heavy rain and ice late"
+msgstr "Shi i rrëmbyeshëm, akull më vonë"
+
+msgid "heavy rain developing"
+msgstr "Nis shi i dendur"
+
+msgid "heavy rain in the afternoon"
+msgstr "Shi i rrëmbyeshëm pasdite"
+
+msgid "heavy rain shower"
+msgstr "Rrebeshe të forta"
+
+msgid "heavy rain tapering off"
+msgstr "Shiu i dendur dobësohet"
+
+msgid "heavy showers early"
+msgstr "Rrebeshe të forta në fillim"
+
+msgid "heavy showers in the evening"
+msgstr "Rrebeshe të forta në mbrëmje"
+
+msgid "heavy showers in the morning"
+msgstr "Rrebeshe të forta në mëngjes"
+
+msgid "heavy showers late"
+msgstr "Rrebeshe të forta më vonë"
+
+msgid "heavy showers this afternoon"
+msgstr "Rrebeshe të forta këtë pasdite"
+
+msgid "heavy showers this evening"
+msgstr "Rrebeshe të forta këtë mbrëmje"
+
+msgid "heavy showers this morning"
+msgstr "Rrebeshe të forta këtë mëngjes"
+
+msgid "heavy t-storms"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "heavy t-storms early"
+msgstr "Stuhi të forta me bubullima në fillim"
+
+msgid "heavy t-storms in the evening"
+msgstr "Stuhi të forta me bubullima në mbrëmje"
+
+msgid "heavy t-storms late"
+msgstr "Stuhi të forta me bubullima më vonë"
+
+msgid "heavy thunderstorm"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "heavy thunderstorms"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "high clouds"
+msgstr "Re të larta"
+
+msgid "high clouds and breezy"
+msgstr "Re të larta, me erë të lehtë"
+
+msgid "high clouds and chilly"
+msgstr "Re të larta, mot i ftohtë"
+
+msgid "high clouds and cooler"
+msgstr "Re të larta, më freskët"
+
+msgid "high clouds and hot"
+msgstr "Re të larta, nxehtë"
+
+msgid "high clouds and nice"
+msgstr "Re të larta, mot i këndshëm"
+
+msgid "high clouds and pleasant"
+msgstr "Re të larta, mot i këndshëm"
+
+msgid "high clouds and summerlike"
+msgstr "Re të larta, mot veror"
+
+msgid "high clouds and very warm"
+msgstr "Re të larta, shumë ngrohtë"
+
+msgid "high clouds and warm"
+msgstr "Re të larta, ngrohtë"
+
+msgid "high clouds and warmer"
+msgstr "Re të larta, më ngrohtë"
+
+msgid "hot and humid with some sun"
+msgstr "Nxehtë, lagështi e lartë, herë pas here diell"
+
+msgid "hot with abundant sunshine"
+msgstr "Nxehtë, diell me bollëk"
+
+msgid "hot with blazing sunshine"
+msgstr "Nxehtë, diell përvëlues"
+
+msgid "hot with brilliant sunshine"
+msgstr "Nxehtë, diell i shndritshëm"
+
+msgid "hot with clearing"
+msgstr "Nxehtë, mot në kthjellim"
+
+msgid "hot with clouds and sun"
+msgstr "Nxehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "hot with clouds and sunshine"
+msgstr "Nxehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "hot with clouds rolling in"
+msgstr "Nxehtë, afrohen re"
+
+msgid "hot with considerable clouds"
+msgstr "Nxehtë, kryesisht me re"
+
+msgid "hot with decreasing clouds"
+msgstr "Nxehtë, vranësirat pakësohen"
+
+msgid "hot with hazy sun"
+msgstr "Nxehtë, diell përmes mjegullinës"
+
+msgid "hot with hazy sunshine"
+msgstr "Nxehtë, diell përmes mjegullinës"
+
+msgid "hot with high clouds"
+msgstr "Nxehtë, re të larta"
+
+msgid "hot with increasing clouds"
+msgstr "Nxehtë, vranësirat shtohen"
+
+msgid "hot with more clouds than sun"
+msgstr "Nxehtë, kryesisht me re"
+
+msgid "hot with more sun than clouds"
+msgstr "Nxehtë, kryesisht me diell"
+
+msgid "hot with partial sunshine"
+msgstr "Nxehtë, herë pas here diell"
+
+msgid "hot with periods of sun"
+msgstr "Nxehtë, herë pas here diell"
+
+msgid "hot with periods of sunshine"
+msgstr "Nxehtë, herë pas here diell"
+
+msgid "hot with plenty of sun"
+msgstr "Nxehtë, diell me bollëk"
+
+msgid "hot with plenty of sunshine"
+msgstr "Nxehtë, diell me bollëk"
+
+msgid "hot with rain and drizzle"
+msgstr "Nxehtë, shi dhe rigë"
+
+msgid "hot with some sun"
+msgstr "Nxehtë, herë pas here diell"
+
+msgid "hot with some sunshine"
+msgstr "Nxehtë, herë pas here diell"
+
+msgid "hot with sun"
+msgstr "Nxehtë, me diell"
+
+msgid "hot with sun and clouds"
+msgstr "Nxehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "hot with sun and some clouds"
+msgstr "Nxehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "hot with sunny intervals"
+msgstr "Nxehtë, herë pas here diell"
+
+msgid "hot with sunshine"
+msgstr "Nxehtë, me diell"
+
+msgid "hot with variable cloudiness"
+msgstr "Nxehtë, vranësira të ndryshueshme"
+
+msgid "hot with variable clouds"
+msgstr "Nxehtë, vranësira të ndryshueshme"
+
+msgid "hotter"
+msgstr "Më nxehtë"
+
+msgid "hotter with a stray t-storm"
+msgstr "Më nxehtë, stuhi lokale me bubullima"
+
+msgid "hotter with a t-storm around"
+msgstr "Më nxehtë, stuhi lokale me bubullima"
+
+msgid "hotter with a thunderstorm"
+msgstr "Më nxehtë, stuhi me bubullima"
+
+msgid "hotter with abundant sunshine"
+msgstr "Më nxehtë, diell me bollëk"
+
+msgid "hotter with blazing sunshine"
+msgstr "Më nxehtë, diell përvëlues"
+
+msgid "hotter with partial sunshine"
+msgstr "Më nxehtë, herë pas here diell"
+
+msgid "hotter with plenty of sun"
+msgstr "Më nxehtë, diell me bollëk"
+
+msgid "hotter with sunshine"
+msgstr "Më nxehtë, me diell"
+
+msgid "humid"
+msgstr "Lagështi e lartë"
+
+msgid "humid with a t-storm in spots"
+msgstr "Lagështi e lartë, stuhi lokale me bubullima"
+
+msgid "humid with clouds"
+msgstr "Lagështi e lartë, me re"
+
+msgid "humid with clouds and sun"
+msgstr "Lagështi e lartë, alternime kthjellimesh dhe vranësirash"
+
+msgid "humid with clouds breaking"
+msgstr "Lagështi e lartë, vranësirat pakësohen"
+
+msgid "humid with cloudy spells"
+msgstr "Lagështi e lartë, herë pas here vranët"
+
+msgid "humid with high clouds"
+msgstr "Lagështi e lartë, re të larta"
+
+msgid "humid with increasing clouds"
+msgstr "Lagështi e lartë, vranësirat shtohen"
+
+msgid "humid with low clouds"
+msgstr "Lagështi e lartë, re të ulëta"
+
+msgid "humid with partial sunshine"
+msgstr "Lagështi e lartë, herë pas here diell"
+
+msgid "humid with patchy clouds"
+msgstr "Lagështi e lartë, re të shpërndara"
+
+msgid "humid with periods of rain"
+msgstr "Lagështi e lartë, shi me ndërprerje"
+
+msgid "humid with periods of sun"
+msgstr "Lagështi e lartë, herë pas here diell"
+
+msgid "humid with plenty of clouds"
+msgstr "Lagështi e lartë, kryesisht me re"
+
+msgid "humid with plenty of sun"
+msgstr "Lagështi e lartë, diell me bollëk"
+
+msgid "humid with plenty of sunshine"
+msgstr "Lagështi e lartë, diell me bollëk"
+
+msgid "humid with rain"
+msgstr "Lagështi e lartë, shi"
+
+msgid "humid with rain and a t-storm"
+msgstr "Lagështi e lartë, shi, stuhi me bubullima"
+
+msgid "humid with rain and drizzle"
+msgstr "Lagështi e lartë, shi dhe rigë"
+
+msgid "humid with rain at times"
+msgstr "Lagështi e lartë, shi me ndërprerje"
+
+msgid "humid with some brightening"
+msgstr "Lagështi e lartë, disa kthjellime"
+
+msgid "humid with some sun"
+msgstr "Lagështi e lartë, herë pas here diell"
+
+msgid "humid with sunny intervals"
+msgstr "Lagështi e lartë, herë pas here diell"
+
+msgid "humid with thickening clouds"
+msgstr "Lagështi e lartë, retë dendësohen"
+
+msgid "humid with variable clouds"
+msgstr "Lagështi e lartë, vranësira të ndryshueshme"
+
+msgid "ice and rain at times"
+msgstr "Akull, shi me ndërprerje"
+
+msgid "increasing amounts of clouds"
+msgstr "Vranësirat shtohen"
+
+msgid "increasing amounts of sun"
+msgstr "Gjithnjë e më shumë diell"
+
+msgid "increasing cloudiness"
+msgstr "Vranësirat shtohen"
+
+msgid "increasing cloudiness and hot"
+msgstr "Vranësirat shtohen, nxehtë"
+
+msgid "increasing clouds"
+msgstr "Vranësirat shtohen"
+
+msgid "increasing clouds and chilly"
+msgstr "Vranësirat shtohen, mot i ftohtë"
+
+msgid "increasing clouds and cold"
+msgstr "Vranësirat shtohen, ftohtë"
+
+msgid "increasing clouds and cool"
+msgstr "Vranësirat shtohen, freskët"
+
+msgid "increasing clouds and hot"
+msgstr "Vranësirat shtohen, nxehtë"
+
+msgid "increasing clouds and hotter"
+msgstr "Vranësirat shtohen, më nxehtë"
+
+msgid "increasing clouds and humid"
+msgstr "Vranësirat shtohen, lagështi e lartë"
+
+msgid "increasing clouds and milder"
+msgstr "Vranësirat shtohen, më butë"
+
+msgid "increasing clouds and warm"
+msgstr "Vranësirat shtohen, ngrohtë"
+
+msgid "increasing clouds and warmer"
+msgstr "Vranësirat shtohen, më ngrohtë"
+
+msgid "increasingly windy"
+msgstr "Era forcohet"
+
+msgid "intermittent snow"
+msgstr "Borë me ndërprerje"
+
+msgid "intervals of clouds and sun"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "jupiter"
+msgstr "Jupiteri"
+
+msgid "late downpours"
+msgstr "Shi i rrëmbyeshëm më vonë"
+
+msgid "late flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë më vonë"
+
+msgid "late rain"
+msgstr "Shi më vonë"
+
+msgid "late snow"
+msgstr "Dëborë më vonë"
+
+msgid "late snow showers"
+msgstr "Reshje të shkurtra dëbore më vonë"
+
+msgid "late-night rain"
+msgstr "Shi natën vonë"
+
+msgid "late-night showers"
+msgstr "Reshje të shkurtra natën vonë"
+
+msgid "late-night snow"
+msgstr "Dëborë natën vonë"
+
+msgid "late-night thunderstorms"
+msgstr "Stuhi me bubullima natën vonë"
+
+msgid "less humid with plenty of sun"
+msgstr "Lagështi më e ulët, diell me bollëk"
+
+msgid "less humid with some sun"
+msgstr "Lagështi më e ulët, herë pas here diell"
+
+msgid "light fog"
+msgstr "Mjegull e lehtë"
+
+msgid "light snow"
+msgstr "Dëborë e lehtë"
+
+msgid "lots of sun"
+msgstr "Diell me bollëk"
+
+msgid "lots of sun with a shower"
+msgstr "Diell me bollëk, një rrebesh shiu"
+
+msgid "low clouds"
+msgstr "Re të ulëta"
+
+msgid "low clouds and bitterly cold"
+msgstr "Re të ulëta, acar"
+
+msgid "low clouds and breezy"
+msgstr "Re të ulëta, me erë të lehtë"
+
+msgid "low clouds and chilly"
+msgstr "Re të ulëta, mot i ftohtë"
+
+msgid "low clouds and cold"
+msgstr "Re të ulëta, ftohtë"
+
+msgid "low clouds and colder"
+msgstr "Re të ulëta, më ftohtë"
+
+msgid "low clouds and cool"
+msgstr "Re të ulëta, freskët"
+
+msgid "low clouds and cooler"
+msgstr "Re të ulëta, më freskët"
+
+msgid "low clouds and fog"
+msgstr "Re të ulëta, mjegull"
+
+msgid "low clouds and fog and cooler"
+msgstr "Re të ulëta, mjegull, më freskët"
+
+msgid "low clouds and freezing fog"
+msgstr "Re të ulëta, mjegull ngrirëse"
+
+msgid "low clouds and frigid"
+msgstr "Re të ulëta, acar"
+
+msgid "low clouds and humid"
+msgstr "Re të ulëta, lagështi e lartë"
+
+msgid "low clouds and mild"
+msgstr "Re të ulëta, mot i butë"
+
+msgid "low clouds and not as cold"
+msgstr "Re të ulëta, më pak ftohtë"
+
+msgid "low clouds and remaining cool"
+msgstr "Re të ulëta, mbetet freskët"
+
+msgid "low clouds and spotty showers"
+msgstr "Re të ulëta, rrebeshe lokale"
+
+msgid "low clouds and warmer"
+msgstr "Re të ulëta, më ngrohtë"
+
+msgid "low clouds break for some sun"
+msgstr "Retë e ulëta shpërndahen"
+
+msgid "low clouds breaking"
+msgstr "Retë e ulëta shpërndahen"
+
+msgid "low clouds breaking and humid"
+msgstr "Retë e ulëta shpërndahen, lagështi e lartë"
+
+msgid "low clouds followed by sun"
+msgstr "Retë e ulëta shpërndahen"
+
+msgid "low clouds may break"
+msgstr "Retë e ulëta mund të shpërndahen"
+
+msgid "low clouds with a flurry late"
+msgstr "Re të ulëta, reshje të shkurtra dëbore të lehtë më vonë"
+
+msgid "low clouds with rain late"
+msgstr "Re të ulëta, shi më vonë"
+
+msgid "low humidity with some sun"
+msgstr "Lagështi e ulët, herë pas here diell"
+
+msgid "low humidity with sunshine"
+msgstr "Lagështi e ulët, me diell"
+
+msgid "mainly clear and breezy"
+msgstr "Kryesisht i kthjellët, me erë të lehtë"
+
+msgid "mainly clear and chilly"
+msgstr "Kryesisht i kthjellët, mot i ftohtë"
+
+msgid "mainly clear and cold"
+msgstr "Kryesisht i kthjellët, ftohtë"
+
+msgid "mainly clear and colder"
+msgstr "Kryesisht i kthjellët, më ftohtë"
+
+msgid "mainly clear and cool"
+msgstr "Kryesisht i kthjellët, freskët"
+
+msgid "mainly clear and cooler"
+msgstr "Kryesisht i kthjellët, më freskët"
+
+msgid "mainly clear and frigid"
+msgstr "Kryesisht i kthjellët, acar"
+
+msgid "mainly clear and humid"
+msgstr "Kryesisht i kthjellët, lagështi e lartë"
+
+msgid "mainly clear and mild"
+msgstr "Kryesisht i kthjellët, mot i butë"
+
+msgid "mainly clear and much colder"
+msgstr "Kryesisht i kthjellët, shumë më ftohtë"
+
+msgid "mainly clear and not as warm"
+msgstr "Kryesisht i kthjellët, më pak ngrohtë"
+
+msgid "mainly clear and very cold"
+msgstr "Kryesisht i kthjellët, shumë ftohtë"
+
+msgid "mainly clear and very humid"
+msgstr "Kryesisht i kthjellët, lagështi shumë e lartë"
+
+msgid "mainly clear and very warm"
+msgstr "Kryesisht i kthjellët, shumë ngrohtë"
+
+msgid "mainly clear and warm"
+msgstr "Kryesisht i kthjellët, ngrohtë"
+
+msgid "mainly clear and warmer"
+msgstr "Kryesisht i kthjellët, më ngrohtë"
+
+msgid "mainly clear with a shower"
+msgstr "Kryesisht i kthjellët, një rrebesh shiu"
+
+msgid "mainly clear with a t-storm"
+msgstr "Kryesisht i kthjellët, stuhi me bubullima"
+
+msgid "mainly cloudy"
+msgstr "Kryesisht me re"
+
+msgid "mainly cloudy and chilly"
+msgstr "Kryesisht me re, mot i ftohtë"
+
+msgid "mainly cloudy and cold"
+msgstr "Kryesisht me re, ftohtë"
+
+msgid "mainly cloudy and colder"
+msgstr "Kryesisht me re, më ftohtë"
+
+msgid "mainly cloudy and cool"
+msgstr "Kryesisht me re, freskët"
+
+msgid "mainly cloudy and cooler"
+msgstr "Kryesisht me re, më freskët"
+
+msgid "mainly cloudy and frigid"
+msgstr "Kryesisht me re, acar"
+
+msgid "mainly cloudy and hot"
+msgstr "Kryesisht me re, nxehtë"
+
+msgid "mainly cloudy and humid"
+msgstr "Kryesisht me re, lagështi e lartë"
+
+msgid "mainly cloudy and summerlike"
+msgstr "Kryesisht me re, mot veror"
+
+msgid "mainly cloudy and very warm"
+msgstr "Kryesisht me re, shumë ngrohtë"
+
+msgid "mainly cloudy and warm"
+msgstr "Kryesisht me re, ngrohtë"
+
+msgid "mainly cloudy and warmer"
+msgstr "Kryesisht me re, më ngrohtë"
+
+msgid "mainly cloudy with a shower"
+msgstr "Kryesisht me re, një rrebesh shiu"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "Kryesisht me re, stuhi me bubullima"
+
+msgid "mainly cloudy with flurries"
+msgstr "Kryesisht me re, reshje të shkurtra dëbore të lehtë"
+
+msgid "mainly cloudy with showers"
+msgstr "Kryesisht me re, reshje të shkurtra"
+
+msgid "mainly early"
+msgstr "Kryesisht në fillim"
+
+msgid "mainly later"
+msgstr "Kryesisht më vonë"
+
+msgid "mars"
+msgstr "Marsi"
+
+msgid "mercury"
+msgstr "Mërkuri"
+
+msgid "mild"
+msgstr "Mot i butë"
+
+msgid "mild with abundant sunshine"
+msgstr "Mot i butë, diell me bollëk"
+
+msgid "mild with clouds and sun"
+msgstr "Mot i butë, alternime kthjellimesh dhe vranësirash"
+
+msgid "mild with clouds and sunshine"
+msgstr "Mot i butë, alternime kthjellimesh dhe vranësirash"
+
+msgid "mild with considerable clouds"
+msgstr "Mot i butë, kryesisht me re"
+
+msgid "mild with increasing clouds"
+msgstr "Mot i butë, vranësirat shtohen"
+
+msgid "mild with partial sunshine"
+msgstr "Mot i butë, herë pas here diell"
+
+msgid "mild with patchy clouds"
+msgstr "Mot i butë, re të shpërndara"
+
+msgid "mild with periods of rain"
+msgstr "Mot i butë, shi me ndërprerje"
+
+msgid "mild with periods of sun"
+msgstr "Mot i butë, herë pas here diell"
+
+msgid "mild with plenty of clouds"
+msgstr "Mot i butë, kryesisht me re"
+
+msgid "mild with plenty of sun"
+msgstr "Mot i butë, diell me bollëk"
+
+msgid "mild with plenty of sunshine"
+msgstr "Mot i butë, diell me bollëk"
+
+msgid "mild with some sun"
+msgstr "Mot i butë, herë pas here diell"
+
+msgid "mild with sun and clouds"
+msgstr "Mot i butë, alternime kthjellimesh dhe vranësirash"
+
+msgid "mild with sun and some clouds"
+msgstr "Mot i butë, alternime kthjellimesh dhe vranësirash"
+
+msgid "mild with sunny intervals"
+msgstr "Mot i butë, herë pas here diell"
+
+msgid "mild with sunshine"
+msgstr "Mot i butë, me diell"
+
+msgid "mild with thickening clouds"
+msgstr "Mot i butë, retë dendësohen"
+
+msgid "mild with variable cloudiness"
+msgstr "Mot i butë, vranësira të ndryshueshme"
+
+msgid "milder"
+msgstr "Më butë"
+
+msgid "milder with a shower in spots"
+msgstr "Më butë, rrebeshe lokale"
+
+msgid "milder with brief showers"
+msgstr "Më butë, rrebeshe të shkurtra"
+
+msgid "milder with clouds and sun"
+msgstr "Më butë, alternime kthjellimesh dhe vranësirash"
+
+msgid "milder with increasing clouds"
+msgstr "Më butë, vranësirat shtohen"
+
+msgid "milder with low clouds"
+msgstr "Më butë, re të ulëta"
+
+msgid "milder with periods of rain"
+msgstr "Më butë, shi me ndërprerje"
+
+msgid "milder with periods of sun"
+msgstr "Më butë, herë pas here diell"
+
+msgid "milder with sun"
+msgstr "Më butë, me diell"
+
+msgid "milder with thickening clouds"
+msgstr "Më butë, retë dendësohen"
+
+msgid "mist"
+msgstr "Mjegullinë"
+
+msgid "mixed with snow early"
+msgstr "Përzier me borë në fillim"
+
+msgid "moderate rain"
+msgstr "Shi mesatar"
+
+msgid "moon"
+msgstr "Hëna"
+
+msgid "more clouds than sun"
+msgstr "Kryesisht me re"
+
+msgid "more clouds than sunshine"
+msgstr "Kryesisht me re"
+
+msgid "more sun than clouds"
+msgstr "Kryesisht me diell"
+
+msgid "more sunshine than clouds"
+msgstr "Kryesisht me diell"
+
+msgid "morning downpours"
+msgstr "Shi i rrëmbyeshëm në mëngjes"
+
+msgid "morning flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë në mëngjes"
+
+msgid "morning rain"
+msgstr "Shi në mëngjes"
+
+msgid "morning showers"
+msgstr "Reshje të shkurtra në mëngjes"
+
+msgid "morning snow"
+msgstr "Dëborë në mëngjes"
+
+msgid "morning snow showers"
+msgstr "Reshje të shkurtra dëbore në mëngjes"
+
+msgid "morning t-showers"
+msgstr "Rrebesh me bubullima në mëngjes"
+
+msgid "morning thunderstorms"
+msgstr "Stuhi me bubullima në mëngjes"
+
+msgid "mostly clear and chilly"
+msgstr "Kryesisht i kthjellët, mot i ftohtë"
+
+msgid "mostly clear and cold"
+msgstr "Kryesisht i kthjellët, ftohtë"
+
+msgid "mostly clear and cool"
+msgstr "Kryesisht i kthjellët, freskët"
+
+msgid "mostly clear and cooler"
+msgstr "Kryesisht i kthjellët, më freskët"
+
+msgid "mostly clear and humid"
+msgstr "Kryesisht i kthjellët, lagështi e lartë"
+
+msgid "mostly clear and mild"
+msgstr "Kryesisht i kthjellët, mot i butë"
+
+msgid "mostly clear and very warm"
+msgstr "Kryesisht i kthjellët, shumë ngrohtë"
+
+msgid "mostly clear with a shower"
+msgstr "Kryesisht i kthjellët, një rrebesh shiu"
+
+msgid "mostly cloudy and breezy"
+msgstr "Kryesisht me re, me erë të lehtë"
+
+msgid "mostly cloudy and chilly"
+msgstr "Kryesisht me re, mot i ftohtë"
+
+msgid "mostly cloudy and cold"
+msgstr "Kryesisht me re, ftohtë"
+
+msgid "mostly cloudy and colder"
+msgstr "Kryesisht me re, më ftohtë"
+
+msgid "mostly cloudy and comfortable"
+msgstr "Kryesisht me re, mot i këndshëm"
+
+msgid "mostly cloudy and cool"
+msgstr "Kryesisht me re, freskët"
+
+msgid "mostly cloudy and cooler"
+msgstr "Kryesisht me re, më freskët"
+
+msgid "mostly cloudy and frigid"
+msgstr "Kryesisht me re, acar"
+
+msgid "mostly cloudy and hot"
+msgstr "Kryesisht me re, nxehtë"
+
+msgid "mostly cloudy and hotter"
+msgstr "Kryesisht me re, më nxehtë"
+
+msgid "mostly cloudy and humid"
+msgstr "Kryesisht me re, lagështi e lartë"
+
+msgid "mostly cloudy and less humid"
+msgstr "Kryesisht me re, lagështi më e ulët"
+
+msgid "mostly cloudy and mild"
+msgstr "Kryesisht me re, mot i butë"
+
+msgid "mostly cloudy and milder"
+msgstr "Kryesisht me re, më butë"
+
+msgid "mostly cloudy and misty"
+msgstr "Kryesisht me re, mjegullinë"
+
+msgid "mostly cloudy and misty late"
+msgstr "Kryesisht me re, mjegullinë më vonë"
+
+msgid "mostly cloudy and not as cold"
+msgstr "Kryesisht me re, më pak ftohtë"
+
+msgid "mostly cloudy and not as cool"
+msgstr "Kryesisht me re, më pak freskët"
+
+msgid "mostly cloudy and not as hot"
+msgstr "Kryesisht me re, më pak nxehtë"
+
+msgid "mostly cloudy and not as warm"
+msgstr "Kryesisht me re, më pak ngrohtë"
+
+msgid "mostly cloudy and seasonable"
+msgstr "Kryesisht me re, temperatura të zakonshme për stinën"
+
+msgid "mostly cloudy and summerlike"
+msgstr "Kryesisht me re, mot veror"
+
+msgid "mostly cloudy and very cold"
+msgstr "Kryesisht me re, shumë ftohtë"
+
+msgid "mostly cloudy and very hot"
+msgstr "Kryesisht me re, shumë nxehtë"
+
+msgid "mostly cloudy and very humid"
+msgstr "Kryesisht me re, lagështi shumë e lartë"
+
+msgid "mostly cloudy and very warm"
+msgstr "Kryesisht me re, shumë ngrohtë"
+
+msgid "mostly cloudy and warm"
+msgstr "Kryesisht me re, ngrohtë"
+
+msgid "mostly cloudy and warmer"
+msgstr "Kryesisht me re, më ngrohtë"
+
+msgid "mostly cloudy and windy"
+msgstr "Kryesisht me re, me erë"
+
+msgid "mostly cloudy with a downpour"
+msgstr "Kryesisht me re, shi i rrëmbyeshëm"
+
+msgid "mostly cloudy with a shower"
+msgstr "Kryesisht me re, një rrebesh shiu"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "Kryesisht me re, rrebesh me bubullima"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "Kryesisht me re, stuhi me bubullima"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "Kryesisht me re, reshje të përziera me shi ngrirës dhe kokrriza akulli"
+
+msgid "mostly cloudy with downpours"
+msgstr "Kryesisht me re, shi i rrëmbyeshëm"
+
+msgid "mostly cloudy with flurries"
+msgstr "Kryesisht me re, reshje të shkurtra dëbore të lehtë"
+
+msgid "mostly cloudy with mist late"
+msgstr "Kryesisht me re, mjegullinë më vonë"
+
+msgid "mostly cloudy with rain"
+msgstr "Kryesisht me re, shi"
+
+msgid "mostly cloudy with rain late"
+msgstr "Kryesisht me re, shi më vonë"
+
+msgid "mostly cloudy with showers"
+msgstr "Kryesisht me re, reshje të shkurtra"
+
+msgid "mostly cloudy with snow late"
+msgstr "Kryesisht me re, dëborë më vonë"
+
+msgid "mostly cloudy with t-showers"
+msgstr "Kryesisht me re, rrebesh me bubullima"
+
+msgid "mostly cloudy with t-storms"
+msgstr "Kryesisht me re, stuhi me bubullima"
+
+msgid "mostly sunny and beautiful"
+msgstr "Kryesisht me diell, mot i këndshëm"
+
+msgid "mostly sunny and breezy"
+msgstr "Kryesisht me diell, me erë të lehtë"
+
+msgid "mostly sunny and chilly"
+msgstr "Kryesisht me diell, mot i ftohtë"
+
+msgid "mostly sunny and cold"
+msgstr "Kryesisht me diell, ftohtë"
+
+msgid "mostly sunny and colder"
+msgstr "Kryesisht me diell, më ftohtë"
+
+msgid "mostly sunny and comfortable"
+msgstr "Kryesisht me diell, mot i këndshëm"
+
+msgid "mostly sunny and cool"
+msgstr "Kryesisht me diell, freskët"
+
+msgid "mostly sunny and cooler"
+msgstr "Kryesisht me diell, më freskët"
+
+msgid "mostly sunny and delightful"
+msgstr "Kryesisht me diell, mot i këndshëm"
+
+msgid "mostly sunny and frigid"
+msgstr "Kryesisht me diell, acar"
+
+msgid "mostly sunny and hot"
+msgstr "Kryesisht me diell, nxehtë"
+
+msgid "mostly sunny and hotter"
+msgstr "Kryesisht me diell, më nxehtë"
+
+msgid "mostly sunny and humid"
+msgstr "Kryesisht me diell, lagështi e lartë"
+
+msgid "mostly sunny and less humid"
+msgstr "Kryesisht me diell, lagështi më e ulët"
+
+msgid "mostly sunny and mild"
+msgstr "Kryesisht me diell, mot i butë"
+
+msgid "mostly sunny and milder"
+msgstr "Kryesisht me diell, më butë"
+
+msgid "mostly sunny and nice"
+msgstr "Kryesisht me diell, mot i këndshëm"
+
+msgid "mostly sunny and not as cold"
+msgstr "Kryesisht me diell, më pak ftohtë"
+
+msgid "mostly sunny and not as hot"
+msgstr "Kryesisht me diell, më pak nxehtë"
+
+msgid "mostly sunny and not as warm"
+msgstr "Kryesisht me diell, më pak ngrohtë"
+
+msgid "mostly sunny and pleasant"
+msgstr "Kryesisht me diell, mot i këndshëm"
+
+msgid "mostly sunny and quite cold"
+msgstr "Kryesisht me diell, mjaft ftohtë"
+
+msgid "mostly sunny and summerlike"
+msgstr "Kryesisht me diell, mot veror"
+
+msgid "mostly sunny and very cold"
+msgstr "Kryesisht me diell, shumë ftohtë"
+
+msgid "mostly sunny and very hot"
+msgstr "Kryesisht me diell, shumë nxehtë"
+
+msgid "mostly sunny and very humid"
+msgstr "Kryesisht me diell, lagështi shumë e lartë"
+
+msgid "mostly sunny and very warm"
+msgstr "Kryesisht me diell, shumë ngrohtë"
+
+msgid "mostly sunny and warm"
+msgstr "Kryesisht me diell, ngrohtë"
+
+msgid "mostly sunny and warmer"
+msgstr "Kryesisht me diell, më ngrohtë"
+
+msgid "mostly sunny and windy"
+msgstr "Kryesisht me diell, me erë"
+
+msgid "mostly sunny with a shower"
+msgstr "Kryesisht me diell, një rrebesh shiu"
+
+msgid "mostly sunny with a t-shower"
+msgstr "Kryesisht me diell, rrebesh me bubullima"
+
+msgid "mostly sunny with a t-storm"
+msgstr "Kryesisht me diell, stuhi me bubullima"
+
+msgid "much colder"
+msgstr "Shumë më ftohtë"
+
+msgid "much colder with low clouds"
+msgstr "Shumë më ftohtë, re të ulëta"
+
+msgid "neptune"
+msgstr "Neptuni"
+
+msgid "nice"
+msgstr "Mot i këndshëm"
+
+msgid "nice and warm"
+msgstr "Mot i këndshëm, ngrohtë"
+
+msgid "nice and warm with some sun"
+msgstr "Mot i këndshëm, ngrohtë, herë pas here diell"
+
+msgid "nice and warm with sunshine"
+msgstr "Mot i këndshëm, ngrohtë, me diell"
+
+msgid "nice with abundant sunshine"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "nice with brilliant sunshine"
+msgstr "Mot i këndshëm, diell i shndritshëm"
+
+msgid "nice with clouds"
+msgstr "Mot i këndshëm, me re"
+
+msgid "nice with clouds and sun"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "nice with clouds and sunshine"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "nice with partial sunshine"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "nice with periods of sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "nice with periods of sunshine"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "nice with plenty of sun"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "nice with plenty of sunshine"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "nice with some sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "nice with some sunshine"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "nice with sun"
+msgstr "Mot i këndshëm, me diell"
+
+msgid "nice with sun and clouds"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "nice with sun and some clouds"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "nice with sunny intervals"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "nice with sunshine"
+msgstr "Mot i këndshëm, me diell"
+
+msgid "nice with variable cloudiness"
+msgstr "Mot i këndshëm, vranësira të ndryshueshme"
+
+msgid "nice with variable clouds"
+msgstr "Mot i këndshëm, vranësira të ndryshueshme"
+
+msgid "not as cold"
+msgstr "Më pak ftohtë"
+
+msgid "not as cold with clearing"
+msgstr "Më pak ftohtë, mot në kthjellim"
+
+msgid "not as cold with flurries"
+msgstr "Më pak ftohtë, reshje të shkurtra dëbore të lehtë"
+
+msgid "not as cold with low clouds"
+msgstr "Më pak ftohtë, re të ulëta"
+
+msgid "not as cold with snow showers"
+msgstr "Më pak ftohtë, reshje të shkurtra dëbore"
+
+msgid "not as cold with some sun"
+msgstr "Më pak ftohtë, herë pas here diell"
+
+msgid "not as cool"
+msgstr "Më pak freskët"
+
+msgid "not as cool late"
+msgstr "Më pak freskët më vonë"
+
+msgid "not as cool with clearing"
+msgstr "Më pak freskët, mot në kthjellim"
+
+msgid "not as hot"
+msgstr "Më pak nxehtë"
+
+msgid "not as hot with a shower"
+msgstr "Më pak nxehtë, një rrebesh shiu"
+
+msgid "not as hot with a t-storm"
+msgstr "Më pak nxehtë, stuhi me bubullima"
+
+msgid "not as hot with some sun"
+msgstr "Më pak nxehtë, herë pas here diell"
+
+msgid "not as warm"
+msgstr "Më pak ngrohtë"
+
+msgid "not as warm but pleasant"
+msgstr "Më pak ngrohtë, mot i këndshëm"
+
+msgid "not as warm in the afternoon"
+msgstr "Më pak ngrohtë pasdite"
+
+msgid "not as warm this afternoon"
+msgstr "Më pak ngrohtë këtë pasdite"
+
+msgid "not as warm with a shower"
+msgstr "Më pak ngrohtë, një rrebesh shiu"
+
+msgid "not as warm with a t-shower"
+msgstr "Më pak ngrohtë, rrebesh me bubullima"
+
+msgid "not as warm with a t-storm"
+msgstr "Më pak ngrohtë, stuhi me bubullima"
+
+msgid "not as warm with clearing"
+msgstr "Më pak ngrohtë, mot në kthjellim"
+
+msgid "not as warm with downpours"
+msgstr "Më pak ngrohtë, shi i rrëmbyeshëm"
+
+msgid "not as warm with high clouds"
+msgstr "Më pak ngrohtë, re të larta"
+
+msgid "not as warm with low clouds"
+msgstr "Më pak ngrohtë, re të ulëta"
+
+msgid "not as warm with morning rain"
+msgstr "Më pak ngrohtë, shi në mëngjes"
+
+msgid "not as warm with rain"
+msgstr "Më pak ngrohtë, shi"
+
+msgid "not as warm with rain ending"
+msgstr "Më pak ngrohtë, shiu pushon"
+
+msgid "not as warm with showers"
+msgstr "Më pak ngrohtë, reshje të shkurtra"
+
+msgid "not as warm with some sun"
+msgstr "Më pak ngrohtë, herë pas here diell"
+
+msgid "occasional afternoon rain"
+msgstr "Shi me ndërprerje pasdite"
+
+msgid "occasional evening rain"
+msgstr "Shi me ndërprerje në mbrëmje"
+
+msgid "occasional late-night rain"
+msgstr "Shi me ndërprerje natën vonë"
+
+msgid "occasional morning rain"
+msgstr "Shi me ndërprerje në mëngjes"
+
+msgid "occasional rain"
+msgstr "Shi me ndërprerje"
+
+msgid "occasional rain and a t-storm"
+msgstr "Shi me ndërprerje, stuhi me bubullima"
+
+msgid "occasional rain and drizzle"
+msgstr "Shi me ndërprerje, rigë"
+
+msgid "occasional rain late"
+msgstr "Shi me ndërprerje më vonë"
+
+msgid "occasional snow and flurries"
+msgstr "Borë me ndërprerje, reshje të shkurtra dëbore të lehtë"
+
+msgid "on-and-off rain and drizzle"
+msgstr "Shi me ndërprerje, rigë"
+
+msgid "on-and-off snow"
+msgstr "Borë me ndërprerje"
+
+msgid "otherwise"
+msgstr "Përndryshe"
+
+msgid "overcast and becoming rainy"
+msgstr "I vranët, nis shiu"
+
+msgid "overcast and chilly"
+msgstr "I vranët, mot i ftohtë"
+
+msgid "overcast and cold"
+msgstr "I vranët, ftohtë"
+
+msgid "overcast and cooler"
+msgstr "I vranët, më freskët"
+
+msgid "overcast and frigid"
+msgstr "I vranët, acar"
+
+msgid "overcast and humid"
+msgstr "I vranët, lagështi e lartë"
+
+msgid "overcast and mild"
+msgstr "I vranët, mot i butë"
+
+msgid "overcast and not as warm"
+msgstr "I vranët, më pak ngrohtë"
+
+msgid "overcast and seasonably cold"
+msgstr "I vranët, ftohtë si zakonisht për stinën"
+
+msgid "overcast and seasonably warm"
+msgstr "I vranët, ngrohtë si zakonisht për stinën"
+
+msgid "overcast and very warm"
+msgstr "I vranët, shumë ngrohtë"
+
+msgid "overcast and warm"
+msgstr "I vranët, ngrohtë"
+
+msgid "overcast and windy"
+msgstr "I vranët, me erë"
+
+msgid "overcast with a bit of rain"
+msgstr "I vranët, pak shi"
+
+msgid "overcast with a bit of snow"
+msgstr "I vranët, pak borë"
+
+msgid "overcast with a brief shower"
+msgstr "I vranët, rrebeshe të shkurtra"
+
+msgid "overcast with a few showers"
+msgstr "I vranët, disa rrebeshe"
+
+msgid "overcast with a little rain"
+msgstr "I vranët, pak shi"
+
+msgid "overcast with a little snow"
+msgstr "I vranët, pak borë"
+
+msgid "overcast with a quick shower"
+msgstr "I vranët, rrebeshe të shkurtra"
+
+msgid "overcast with a shower"
+msgstr "I vranët, një rrebesh shiu"
+
+msgid "overcast with a shower late"
+msgstr "I vranët, një rrebesh shiu më vonë"
+
+msgid "overcast with a shower or two"
+msgstr "I vranët, një ose dy rrebeshe"
+
+msgid "overcast with a stray shower"
+msgstr "I vranët, rrebeshe lokale"
+
+msgid "overcast with a stray t-storm"
+msgstr "I vranët, stuhi lokale me bubullima"
+
+msgid "overcast with a t-storm late"
+msgstr "I vranët, stuhi me bubullima më vonë"
+
+msgid "overcast with a thundershower"
+msgstr "I vranët, rrebesh me bubullima"
+
+msgid "overcast with a thunderstorm"
+msgstr "I vranët, stuhi me bubullima"
+
+msgid "overcast with a touch of rain"
+msgstr "I vranët, pak shi"
+
+msgid "overcast with brief showers"
+msgstr "I vranët, rrebeshe të shkurtra"
+
+msgid "overcast with downpours"
+msgstr "I vranët, shi i rrëmbyeshëm"
+
+msgid "overcast with downpours late"
+msgstr "I vranët, shi i rrëmbyeshëm më vonë"
+
+msgid "overcast with flurries"
+msgstr "I vranët, reshje të shkurtra dëbore të lehtë"
+
+msgid "overcast with heavy rain late"
+msgstr "I vranët, shi i rrëmbyeshëm më vonë"
+
+msgid "overcast with heavy showers"
+msgstr "I vranët, rrebeshe të forta"
+
+msgid "overcast with late-night rain"
+msgstr "I vranët, shi natën vonë"
+
+msgid "overcast with occasional rain"
+msgstr "I vranët, shi me ndërprerje"
+
+msgid "overcast with rain developing"
+msgstr "I vranët, nis shiu"
+
+msgid "overcast with rain late"
+msgstr "I vranët, shi më vonë"
+
+msgid "overcast with showers"
+msgstr "I vranët, reshje të shkurtra"
+
+msgid "overcast with showers around"
+msgstr "I vranët, rrebeshe lokale"
+
+msgid "overcast with showers late"
+msgstr "I vranët, reshje të shkurtra më vonë"
+
+msgid "overcast with snow showers"
+msgstr "I vranët, reshje të shkurtra dëbore"
+
+msgid "overcast with spotty showers"
+msgstr "I vranët, rrebeshe lokale"
+
+msgid "overcast with thunderstorms"
+msgstr "I vranët, stuhi me bubullima"
+
+msgid "p.m. downpours"
+msgstr "Shi i rrëmbyeshëm pasdite"
+
+msgid "p.m. flurries"
+msgstr "Reshje të shkurtra dëbore të lehtë pasdite"
+
+msgid "p.m. snow"
+msgstr "Dëborë pasdite"
+
+msgid "p.m. snow showers"
+msgstr "Reshje të shkurtra dëbore pasdite"
+
+msgid "partial sunshine"
+msgstr "Herë pas here diell"
+
+msgid "partly cloudy and breezy"
+msgstr "Pjesërisht me re, me erë të lehtë"
+
+msgid "partly cloudy and chilly"
+msgstr "Pjesërisht me re, mot i ftohtë"
+
+msgid "partly cloudy and cold"
+msgstr "Pjesërisht me re, ftohtë"
+
+msgid "partly cloudy and colder"
+msgstr "Pjesërisht me re, më ftohtë"
+
+msgid "partly cloudy and cool"
+msgstr "Pjesërisht me re, freskët"
+
+msgid "partly cloudy and cooler"
+msgstr "Pjesërisht me re, më freskët"
+
+msgid "partly cloudy and frigid"
+msgstr "Pjesërisht me re, acar"
+
+msgid "partly cloudy and humid"
+msgstr "Pjesërisht me re, lagështi e lartë"
+
+msgid "partly cloudy and mild"
+msgstr "Pjesërisht me re, mot i butë"
+
+msgid "partly cloudy and much colder"
+msgstr "Pjesërisht me re, shumë më ftohtë"
+
+msgid "partly cloudy and seasonable"
+msgstr "Pjesërisht me re, temperatura të zakonshme për stinën"
+
+msgid "partly cloudy and very cold"
+msgstr "Pjesërisht me re, shumë ftohtë"
+
+msgid "partly cloudy and very humid"
+msgstr "Pjesërisht me re, lagështi shumë e lartë"
+
+msgid "partly cloudy and very warm"
+msgstr "Pjesërisht me re, shumë ngrohtë"
+
+msgid "partly cloudy and warm"
+msgstr "Pjesërisht me re, ngrohtë"
+
+msgid "partly cloudy and windy"
+msgstr "Pjesërisht me re, me erë"
+
+msgid "partly cloudy with a shower"
+msgstr "Pjesërisht me re, një rrebesh shiu"
+
+msgid "partly cloudy with a t-storm"
+msgstr "Pjesërisht me re, stuhi me bubullima"
+
+msgid "partly cloudy with flurries"
+msgstr "Pjesërisht me re, reshje të shkurtra dëbore të lehtë"
+
+msgid "partly sunny"
+msgstr "Herë pas here diell"
+
+msgid "partly sunny and beautiful"
+msgstr "Herë pas here diell, mot i këndshëm"
+
+msgid "partly sunny and breezy"
+msgstr "Herë pas here diell, me erë të lehtë"
+
+msgid "partly sunny and chilly"
+msgstr "Herë pas here diell, mot i ftohtë"
+
+msgid "partly sunny and cold"
+msgstr "Herë pas here diell, ftohtë"
+
+msgid "partly sunny and colder"
+msgstr "Herë pas here diell, më ftohtë"
+
+msgid "partly sunny and comfortable"
+msgstr "Herë pas here diell, mot i këndshëm"
+
+msgid "partly sunny and cool"
+msgstr "Herë pas here diell, freskët"
+
+msgid "partly sunny and cooler"
+msgstr "Herë pas here diell, më freskët"
+
+msgid "partly sunny and delightful"
+msgstr "Herë pas here diell, mot i këndshëm"
+
+msgid "partly sunny and frigid"
+msgstr "Herë pas here diell, acar"
+
+msgid "partly sunny and hot"
+msgstr "Herë pas here diell, nxehtë"
+
+msgid "partly sunny and hotter"
+msgstr "Herë pas here diell, më nxehtë"
+
+msgid "partly sunny and humid"
+msgstr "Herë pas here diell, lagështi e lartë"
+
+msgid "partly sunny and less humid"
+msgstr "Herë pas here diell, lagështi më e ulët"
+
+msgid "partly sunny and mild"
+msgstr "Herë pas here diell, mot i butë"
+
+msgid "partly sunny and milder"
+msgstr "Herë pas here diell, më butë"
+
+msgid "partly sunny and nice"
+msgstr "Herë pas here diell, mot i këndshëm"
+
+msgid "partly sunny and not as cold"
+msgstr "Herë pas here diell, më pak ftohtë"
+
+msgid "partly sunny and not as cool"
+msgstr "Herë pas here diell, më pak freskët"
+
+msgid "partly sunny and not as hot"
+msgstr "Herë pas here diell, më pak nxehtë"
+
+msgid "partly sunny and not as warm"
+msgstr "Herë pas here diell, më pak ngrohtë"
+
+msgid "partly sunny and pleasant"
+msgstr "Herë pas here diell, mot i këndshëm"
+
+msgid "partly sunny and quite cold"
+msgstr "Herë pas here diell, mjaft ftohtë"
+
+msgid "partly sunny and seasonable"
+msgstr "Herë pas here diell, temperatura të zakonshme për stinën"
+
+msgid "partly sunny and summerlike"
+msgstr "Herë pas here diell, mot veror"
+
+msgid "partly sunny and very cold"
+msgstr "Herë pas here diell, shumë ftohtë"
+
+msgid "partly sunny and very hot"
+msgstr "Herë pas here diell, shumë nxehtë"
+
+msgid "partly sunny and very humid"
+msgstr "Herë pas here diell, lagështi shumë e lartë"
+
+msgid "partly sunny and very warm"
+msgstr "Herë pas here diell, shumë ngrohtë"
+
+msgid "partly sunny and warm"
+msgstr "Herë pas here diell, ngrohtë"
+
+msgid "partly sunny and warmer"
+msgstr "Herë pas here diell, më ngrohtë"
+
+msgid "partly sunny and windy"
+msgstr "Herë pas here diell, me erë"
+
+msgid "partly sunny with a shower"
+msgstr "Herë pas here diell, një rrebesh shiu"
+
+msgid "partly sunny with a t-shower"
+msgstr "Herë pas here diell, rrebesh me bubullima"
+
+msgid "partly sunny with a t-storm"
+msgstr "Herë pas here diell, stuhi me bubullima"
+
+msgid "partly sunny with flurries"
+msgstr "Herë pas here diell, reshje të shkurtra dëbore të lehtë"
+
+msgid "partly to mostly cloudy"
+msgstr "Pjesërisht deri kryesisht vranët"
+
+msgid "partly to mostly sunny"
+msgstr "Pjesërisht deri kryesisht me diell"
+
+msgid "patchy clouds"
+msgstr "Re të shpërndara"
+
+msgid "patchy clouds and breezy"
+msgstr "Re të shpërndara, me erë të lehtë"
+
+msgid "patchy clouds and chilly"
+msgstr "Re të shpërndara, mot i ftohtë"
+
+msgid "patchy clouds and cold"
+msgstr "Re të shpërndara, ftohtë"
+
+msgid "patchy clouds and cool"
+msgstr "Re të shpërndara, freskët"
+
+msgid "patchy clouds and frigid"
+msgstr "Re të shpërndara, acar"
+
+msgid "patchy clouds and humid"
+msgstr "Re të shpërndara, lagështi e lartë"
+
+msgid "patchy clouds and mild"
+msgstr "Re të shpërndara, mot i butë"
+
+msgid "patchy clouds and very warm"
+msgstr "Re të shpërndara, shumë ngrohtë"
+
+msgid "patchy clouds and warm"
+msgstr "Re të shpërndara, ngrohtë"
+
+msgid "patchy clouds with a shower"
+msgstr "Re të shpërndara, një rrebesh shiu"
+
+msgid "patchy fog"
+msgstr "Mjegull vende-vende"
+
+msgid "patchy fog freezing late"
+msgstr "Vende-vende mjegulla ngrin më vonë"
+
+msgid "patchy freezing fog"
+msgstr "Mjegull ngrirëse vende-vende"
+
+msgid "patchy low clouds and fog"
+msgstr "Re të ulëta në disa zona, mjegull"
+
+msgid "perhaps snow late"
+msgstr "Mundësi për borë më vonë"
+
+msgid "periods of clouds and sun"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "periods of rain"
+msgstr "Shi me ndërprerje"
+
+msgid "periods of rain and a t-storm"
+msgstr "Shi me ndërprerje, stuhi me bubullima"
+
+msgid "periods of rain late"
+msgstr "Shi me ndërprerje më vonë"
+
+msgid "periods of rain this morning"
+msgstr "Shi me ndërprerje këtë mëngjes"
+
+msgid "periods of snow"
+msgstr "Borë me ndërprerje"
+
+msgid "periods of snow and rain"
+msgstr "Borë me ndërprerje, shi"
+
+msgid "periods of sun"
+msgstr "Herë pas here diell"
+
+msgid "periods of sun with a shower"
+msgstr "Herë pas here diell, një rrebesh shiu"
+
+msgid "periods of sun with a t-storm"
+msgstr "Herë pas here diell, stuhi me bubullima"
+
+msgid "periods of sunshine"
+msgstr "Herë pas here diell"
+
+msgid "periods of wet snow"
+msgstr "Herë pas here borë e lagësht"
+
+msgid "pleasant"
+msgstr "Mot i këndshëm"
+
+msgid "pleasant and not as cool"
+msgstr "Mot i këndshëm, më pak freskët"
+
+msgid "pleasant and warmer"
+msgstr "Mot i këndshëm, më ngrohtë"
+
+msgid "pleasant with clouds and sun"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "pleasant with clouds breaking"
+msgstr "Mot i këndshëm, vranësirat pakësohen"
+
+msgid "pleasant with lots of sun"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "pleasant with periods of sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "pleasant with plenty of sun"
+msgstr "Mot i këndshëm, diell me bollëk"
+
+msgid "pleasant with some sun"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "pleasant with some sunshine"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "pleasant with sun and clouds"
+msgstr "Mot i këndshëm, alternime kthjellimesh dhe vranësirash"
+
+msgid "pleasant with sunny intervals"
+msgstr "Mot i këndshëm, herë pas here diell"
+
+msgid "pleasant with sunshine"
+msgstr "Mot i këndshëm, me diell"
+
+msgid "pleasant with variable clouds"
+msgstr "Mot i këndshëm, vranësira të ndryshueshme"
+
+msgid "pleasantly warm"
+msgstr "Ngrohtë dhe këndshëm"
+
+msgid "pleasantly warm with some sun"
+msgstr "Ngrohtë dhe këndshëm, herë pas here diell"
+
+msgid "pleasantly warm with sunshine"
+msgstr "Ngrohtë dhe këndshëm, me diell"
+
+msgid "plenty of clouds"
+msgstr "Kryesisht me re"
+
+msgid "plenty of clouds with showers"
+msgstr "Kryesisht me re, reshje të shkurtra"
+
+msgid "plenty of sun"
+msgstr "Diell me bollëk"
+
+msgid "plenty of sunshine"
+msgstr "Diell me bollëk"
+
+msgid "pluto"
+msgstr "Plutoni"
+
+msgid "quite cold"
+msgstr "Mjaft ftohtë"
+
+msgid "rain and a t-storm"
+msgstr "Shi, stuhi me bubullima"
+
+msgid "rain and a thunderstorm"
+msgstr "Shi, stuhi me bubullima"
+
+msgid "rain and a thunderstorm early"
+msgstr "Shi, stuhi me bubullima në fillim"
+
+msgid "rain and a thunderstorm late"
+msgstr "Shi, stuhi me bubullima më vonë"
+
+msgid "rain and drizzle"
+msgstr "Shi dhe rigë"
+
+msgid "rain and drizzle early"
+msgstr "Shi dhe rigë në fillim"
+
+msgid "rain and drizzle in the a.m."
+msgstr "Shi dhe rigë në mëngjes"
+
+msgid "rain and drizzle in the p.m."
+msgstr "Shi dhe rigë pasdite"
+
+msgid "rain and drizzle late"
+msgstr "Shi dhe rigë më vonë"
+
+msgid "rain and drizzle this evening"
+msgstr "Shi dhe rigë këtë mbrëmje"
+
+msgid "rain and drizzle this morning"
+msgstr "Shi dhe rigë këtë mëngjes"
+
+msgid "rain and ice in the evening"
+msgstr "Shi dhe akull në mbrëmje"
+
+msgid "rain and snow"
+msgstr "Shi dhe borë"
+
+msgid "rain and snow shower"
+msgstr "Rrebeshe shiu dhe bore"
+
+msgid "rain and snow showers"
+msgstr "Rrebeshe shiu dhe bore"
+
+msgid "rain and snow showers early"
+msgstr "Rrebeshe shiu dhe bore në fillim"
+
+msgid "rain and snow showers late"
+msgstr "Rrebeshe shiu dhe bore më vonë"
+
+msgid "rain at times"
+msgstr "Shi me ndërprerje"
+
+msgid "rain at times in the evening"
+msgstr "Shi me ndërprerje në mbrëmje"
+
+msgid "rain at times late"
+msgstr "Shi me ndërprerje më vonë"
+
+msgid "rain becoming heavier"
+msgstr "Shiu bëhet më i dendur"
+
+msgid "rain becoming steadier"
+msgstr "Shiu bëhet më i vazhdueshëm"
+
+msgid "rain ending"
+msgstr "Shiu pushon"
+
+msgid "rain in the afternoon"
+msgstr "Shi pasdite"
+
+msgid "rain in the evening"
+msgstr "Shi në mbrëmje"
+
+msgid "rain in the morning"
+msgstr "Shi në mëngjes"
+
+msgid "rain late in the afternoon"
+msgstr "Shi në fund të pasdites"
+
+msgid "rain mixing in"
+msgstr "Përzihet me shi"
+
+msgid "rain tapering off"
+msgstr "Shiu dobësohet"
+
+msgid "rain tapering to showers"
+msgstr "Shiu dobësohet dhe kthehet në reshje kalimtare"
+
+msgid "rain this morning"
+msgstr "Shi këtë mëngjes"
+
+msgid "rain to ice"
+msgstr "Pas shiut formohet akull"
+
+msgid "rain to snow"
+msgstr "Shiu kthehet në borë"
+
+msgid "rain/drizzle"
+msgstr "Shi dhe rigë"
+
+msgid "rain/snow"
+msgstr "Shi dhe borë"
+
+msgid "rainy spells in the morning"
+msgstr "Shi me ndërprerje në mëngjes"
+
+msgid "rainy times in the afternoon"
+msgstr "Shi me ndërprerje pasdite"
+
+msgid "rainy times in the morning"
+msgstr "Shi me ndërprerje në mëngjes"
+
+msgid "rainy times late"
+msgstr "Shi me ndërprerje më vonë"
+
+msgid "rather cloudy"
+msgstr "Mjaft vranët"
+
+msgid "rather cloudy and breezy"
+msgstr "Mjaft vranët, me erë të lehtë"
+
+msgid "rather cloudy and chilly"
+msgstr "Mjaft vranët, mot i ftohtë"
+
+msgid "rather cloudy and cold"
+msgstr "Mjaft vranët, ftohtë"
+
+msgid "rather cloudy and cool"
+msgstr "Mjaft vranët, freskët"
+
+msgid "rather cloudy and cooler"
+msgstr "Mjaft vranët, më freskët"
+
+msgid "rather cloudy and hot"
+msgstr "Mjaft vranët, nxehtë"
+
+msgid "rather cloudy and humid"
+msgstr "Mjaft vranët, lagështi e lartë"
+
+msgid "rather cloudy and mild"
+msgstr "Mjaft vranët, mot i butë"
+
+msgid "rather cloudy and not as cold"
+msgstr "Mjaft vranët, më pak ftohtë"
+
+msgid "rather cloudy and not as warm"
+msgstr "Mjaft vranët, më pak ngrohtë"
+
+msgid "rather cloudy and summerlike"
+msgstr "Mjaft vranët, mot veror"
+
+msgid "rather cloudy and very cold"
+msgstr "Mjaft vranët, shumë ftohtë"
+
+msgid "rather cloudy and very warm"
+msgstr "Mjaft vranët, shumë ngrohtë"
+
+msgid "rather cloudy and warm"
+msgstr "Mjaft vranët, ngrohtë"
+
+msgid "rather cloudy and warmer"
+msgstr "Mjaft vranët, më ngrohtë"
+
+msgid "rather cloudy with a shower"
+msgstr "Mjaft vranët, një rrebesh shiu"
+
+msgid "rather cloudy with a t-storm"
+msgstr "Mjaft vranët, stuhi me bubullima"
+
+msgid "rather cloudy with rain late"
+msgstr "Mjaft vranët, shi më vonë"
+
+msgid "rather cloudy with showers"
+msgstr "Mjaft vranët, reshje të shkurtra"
+
+msgid "remaining cloudy"
+msgstr "Mbetet vranët"
+
+msgid "remaining cloudy and cold"
+msgstr "Mbetet vranët, ftohtë"
+
+msgid "remaining cloudy and warmer"
+msgstr "Mbetet vranët, më ngrohtë"
+
+msgid "remaining cloudy with showers"
+msgstr "Mbetet vranët, reshje të shkurtra"
+
+msgid "remaining cool with some sun"
+msgstr "Mbetet freskët, herë pas here diell"
+
+msgid "remaining warm"
+msgstr "Mbetet ngrohtë"
+
+msgid "remaining warm with some sun"
+msgstr "Mbetet ngrohtë, herë pas here diell"
+
+msgid "remaining warm with sunshine"
+msgstr "Mbetet ngrohtë, me diell"
+
+msgid "rising temperatures"
+msgstr "Temperaturat rriten"
+
+msgid "rising temperatures early"
+msgstr "Temperaturat rriten në fillim"
+
+msgid "rising temperatures late"
+msgstr "Temperaturat rriten më vonë"
+
+msgid "saturn"
+msgstr "Saturni"
+
+msgid "seasonably warm"
+msgstr "Ngrohtë si zakonisht për stinën"
+
+msgid "seasonably warm with sunshine"
+msgstr "Ngrohtë si zakonisht për stinën, me diell"
+
+msgid "shower"
+msgstr "Një rrebesh shiu"
+
+msgid "shower and thunderstorm"
+msgstr "Një rrebesh shiu, stuhi me bubullima"
+
+msgid "showers and a heavier t-storm"
+msgstr "Reshje të shkurtra, stuhi të forta me bubullima"
+
+msgid "showers and heavy t-storms"
+msgstr "Reshje të shkurtra, stuhi të forta me bubullima"
+
+msgid "showers and thunderstorm"
+msgstr "Reshje të shkurtra, stuhi me bubullima"
+
+msgid "showers and thunderstorms"
+msgstr "Reshje të shkurtra, stuhi me bubullima"
+
+msgid "showers around"
+msgstr "Rrebeshe lokale"
+
+msgid "showers around early"
+msgstr "Rrebeshe lokale në fillim"
+
+msgid "showers around in the evening"
+msgstr "Rrebeshe lokale në mbrëmje"
+
+msgid "showers around in the morning"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "showers around in the p.m."
+msgstr "Rrebeshe lokale pasdite"
+
+msgid "showers around late"
+msgstr "Rrebeshe lokale më vonë"
+
+msgid "showers around this afternoon"
+msgstr "Rrebeshe lokale këtë pasdite"
+
+msgid "showers around this evening"
+msgstr "Rrebeshe lokale këtë mbrëmje"
+
+msgid "showers early in the morning"
+msgstr "Reshje të shkurtra herët në mëngjes"
+
+msgid "showers early this morning"
+msgstr "Reshje të shkurtra herët në mëngjes"
+
+msgid "showers in the afternoon"
+msgstr "Reshje të shkurtra pasdite"
+
+msgid "showers in the evening"
+msgstr "Reshje të shkurtra në mbrëmje"
+
+msgid "showers in the morning"
+msgstr "Reshje të shkurtra në mëngjes"
+
+msgid "showers late"
+msgstr "Reshje të shkurtra më vonë"
+
+msgid "showers late in the afternoon"
+msgstr "Reshje të shkurtra në fund të pasdites"
+
+msgid "showers late this afternoon"
+msgstr "Reshje të shkurtra në fund të pasdites"
+
+msgid "showers late this morning"
+msgstr "Reshje të shkurtra nga fundi i mëngjesit"
+
+msgid "showers of rain and snow"
+msgstr "Rrebeshe shiu dhe bore"
+
+msgid "showers of rain and snow late"
+msgstr "Rrebeshe shiu dhe bore më vonë"
+
+msgid "showers possible"
+msgstr "Mundësi për rrebeshe"
+
+msgid "showers this evening"
+msgstr "Reshje të shkurtra këtë mbrëmje"
+
+msgid "showers this morning"
+msgstr "Reshje të shkurtra këtë mëngjes"
+
+msgid "sleet and freezing rain late"
+msgstr "Shi i përzier me borë, shi që ngrin më vonë"
+
+msgid "snow and rain"
+msgstr "Shi dhe borë"
+
+msgid "snow and rain in the morning"
+msgstr "Shi dhe borë në mëngjes"
+
+msgid "snow and rain late"
+msgstr "Shi dhe borë më vonë"
+
+msgid "snow and rain this morning"
+msgstr "Shi dhe borë këtë mëngjes"
+
+msgid "snow and sleet at times"
+msgstr "Herë pas here borë dhe kokrriza akulli"
+
+msgid "snow at times"
+msgstr "Borë me ndërprerje"
+
+msgid "snow in the evening"
+msgstr "Dëborë në mbrëmje"
+
+msgid "snow late in the p.m."
+msgstr "Dëborë më vonë pasdite"
+
+msgid "snow late this afternoon"
+msgstr "Dëborë në fund të pasdites"
+
+msgid "snow late this morning"
+msgstr "Dëborë nga fundi i mëngjesit"
+
+msgid "snow much of the time"
+msgstr "Borë për pjesën më të madhe të kohës"
+
+msgid "snow of varying rates"
+msgstr "Borë me intensitet të ndryshueshëm"
+
+msgid "snow showers in the afternoon"
+msgstr "Reshje të shkurtra dëbore pasdite"
+
+msgid "snow showers in the morning"
+msgstr "Reshje të shkurtra dëbore në mëngjes"
+
+msgid "snow showers late"
+msgstr "Reshje të shkurtra dëbore më vonë"
+
+msgid "snow showers this evening"
+msgstr "Reshje të shkurtra dëbore këtë mbrëmje"
+
+msgid "snow tapering off"
+msgstr "Reshjet e borës dobësohen"
+
+msgid "snow tapering to flurries"
+msgstr "Reshjet e borës dobësohen në reshje të lehta kalimtare"
+
+msgid "some brightening"
+msgstr "Disa kthjellime"
+
+msgid "some brightening and hot"
+msgstr "Disa kthjellime, nxehtë"
+
+msgid "some brightening and humid"
+msgstr "Disa kthjellime, lagështi e lartë"
+
+msgid "some brightening and warm"
+msgstr "Disa kthjellime, ngrohtë"
+
+msgid "some brightening and warmer"
+msgstr "Disa kthjellime, më ngrohtë"
+
+msgid "some clouds"
+msgstr "Pak re"
+
+msgid "some clouds with a shower"
+msgstr "Pak re, një rrebesh shiu"
+
+msgid "some clouds with a t-storm"
+msgstr "Pak re, stuhi me bubullima"
+
+msgid "some clouds with rain late"
+msgstr "Pak re, shi më vonë"
+
+msgid "some ice early"
+msgstr "Ngricë vende-vende në fillim"
+
+msgid "some rain and a t-storm early"
+msgstr "Pak shi, stuhi me bubullima në fillim"
+
+msgid "some rain and a t-storm late"
+msgstr "Pak shi, stuhi me bubullima më vonë"
+
+msgid "some rain and a thunderstorm"
+msgstr "Pak shi, stuhi me bubullima"
+
+msgid "some snow"
+msgstr "Pak borë"
+
+msgid "some sun"
+msgstr "Herë pas here diell"
+
+msgid "some sun and pleasant"
+msgstr "Herë pas here diell, mot i këndshëm"
+
+msgid "some sun returning"
+msgstr "Disa kthjellime"
+
+msgid "some sun with a brief shower"
+msgstr "Herë pas here diell, rrebeshe të shkurtra"
+
+msgid "some sun with a cool breeze"
+msgstr "Herë pas here diell, fllad i freskët"
+
+msgid "some sun with a few showers"
+msgstr "Herë pas here diell, disa rrebeshe"
+
+msgid "some sun with a gusty breeze"
+msgstr "Herë pas here diell, erë me shkulme"
+
+msgid "some sun with a heavy t-storm"
+msgstr "Herë pas here diell, stuhi të forta me bubullima"
+
+msgid "some sun with a little rain"
+msgstr "Herë pas here diell, pak shi"
+
+msgid "some sun with a quick shower"
+msgstr "Herë pas here diell, rrebeshe të shkurtra"
+
+msgid "some sun with a shower"
+msgstr "Herë pas here diell, një rrebesh shiu"
+
+msgid "some sun with a shower or two"
+msgstr "Herë pas here diell, një ose dy rrebeshe"
+
+msgid "some sun with a stray shower"
+msgstr "Herë pas here diell, rrebeshe lokale"
+
+msgid "some sun with a stray t-storm"
+msgstr "Herë pas here diell, stuhi lokale me bubullima"
+
+msgid "some sun with a t-storm"
+msgstr "Herë pas here diell, stuhi me bubullima"
+
+msgid "some sun with a thundershower"
+msgstr "Herë pas here diell, rrebesh me bubullima"
+
+msgid "some sun with a thunderstorm"
+msgstr "Herë pas here diell, stuhi me bubullima"
+
+msgid "some sun with low humidity"
+msgstr "Herë pas here diell, lagështi e ulët"
+
+msgid "some sun with occasional rain"
+msgstr "Herë pas here diell, shi me ndërprerje"
+
+msgid "some sun with showers"
+msgstr "Herë pas here diell, reshje të shkurtra"
+
+msgid "some sun with showers around"
+msgstr "Herë pas here diell, rrebeshe lokale"
+
+msgid "some sun with spotty showers"
+msgstr "Herë pas here diell, rrebeshe lokale"
+
+msgid "some sunshine"
+msgstr "Herë pas here diell"
+
+msgid "some sunshine with a shower"
+msgstr "Herë pas here diell, një rrebesh shiu"
+
+msgid "spotty afternoon showers"
+msgstr "Rrebeshe lokale pasdite"
+
+msgid "spotty drizzle in the morning"
+msgstr "Rigon vende-vende në mëngjes"
+
+msgid "spotty drizzle this morning"
+msgstr "Rigon vende-vende këtë mëngjes"
+
+msgid "spotty evening showers"
+msgstr "Rrebeshe lokale në mbrëmje"
+
+msgid "spotty late-night showers"
+msgstr "Rrebeshe lokale natën vonë"
+
+msgid "spotty morning showers"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "spotty showers"
+msgstr "Rrebeshe lokale"
+
+msgid "spotty showers in the evening"
+msgstr "Rrebeshe lokale në mbrëmje"
+
+msgid "spotty showers in the morning"
+msgstr "Rrebeshe lokale në mëngjes"
+
+msgid "spotty showers late"
+msgstr "Rrebeshe lokale më vonë"
+
+msgid "spotty showers this afternoon"
+msgstr "Rrebeshe lokale këtë pasdite"
+
+msgid "spotty showers this morning"
+msgstr "Rrebeshe lokale këtë mëngjes"
+
+msgid "still cloudy"
+msgstr "Mbetet vranët"
+
+msgid "still cloudy and warmer"
+msgstr "Mbetet vranët, më ngrohtë"
+
+msgid "still cloudy with a shower"
+msgstr "Mbetet vranët, një rrebesh shiu"
+
+msgid "still cloudy with showers"
+msgstr "Mbetet vranët, reshje të shkurtra"
+
+msgid "strong afternoon t-storms"
+msgstr "Stuhi të forta me bubullima pasdite"
+
+msgid "strong evening thunderstorms"
+msgstr "Stuhi të forta me bubullima në mbrëmje"
+
+msgid "strong late"
+msgstr "I fortë më vonë"
+
+msgid "strong late-night t-storms"
+msgstr "Stuhi të forta me bubullima natën vonë"
+
+msgid "strong t-storms"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "strong thunderstorms"
+msgstr "Stuhi të forta me bubullima"
+
+msgid "strong thunderstorms late"
+msgstr "Stuhi të forta me bubullima më vonë"
+
+msgid "strong thunderstorms possible"
+msgstr "Mundësi për stuhi të forta me bubullima"
+
+msgid "strong winds subsiding"
+msgstr "Erërat e forta dobësohen"
+
+msgid "summerlike"
+msgstr "Mot veror"
+
+msgid "summerlike with a few showers"
+msgstr "Mot veror, disa rrebeshe"
+
+msgid "summerlike with a shower"
+msgstr "Mot veror, një rrebesh shiu"
+
+msgid "summerlike with a t-storm"
+msgstr "Mot veror, stuhi me bubullima"
+
+msgid "summerlike with hazy sun"
+msgstr "Mot veror, diell përmes mjegullinës"
+
+msgid "summerlike with high clouds"
+msgstr "Mot veror, re të larta"
+
+msgid "summerlike with lots of sun"
+msgstr "Mot veror, diell me bollëk"
+
+msgid "summerlike with some sun"
+msgstr "Mot veror, herë pas here diell"
+
+msgid "summerlike with sunshine"
+msgstr "Mot veror, me diell"
+
+msgid "sun and areas of high clouds"
+msgstr "Me diell, re të larta vende-vende"
+
+msgid "sun and areas of low clouds"
+msgstr "Me diell, re të ulëta në disa zona"
+
+msgid "sun and clouds"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "sun and clouds with a shower"
+msgstr "Alternime kthjellimesh dhe vranësirash, një rrebesh shiu"
+
+msgid "sun and clouds with a t-storm"
+msgstr "Alternime kthjellimesh dhe vranësirash, stuhi me bubullima"
+
+msgid "sun and some clouds"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "sun followed by clouds"
+msgstr "Diell, pastaj vranësira"
+
+msgid "sun followed by some clouds"
+msgstr "Fillimisht diell, pastaj disa re"
+
+msgid "sun giving way to clouds"
+msgstr "Diell, pastaj vranësira"
+
+msgid "sun mixing with clouds"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "sun through high clouds"
+msgstr "Diell përmes reve të larta"
+
+msgid "sun yielding to clouds"
+msgstr "Diell, pastaj vranësira"
+
+msgid "sunlit"
+msgstr "Me diell"
+
+msgid "sunlit and beautiful"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunlit and comfortable"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunlit and delightful"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunlit and pleasant"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunlit and unseasonably hot"
+msgstr "Me diell, nxehtësi e pazakontë për stinën"
+
+msgid "sunlit and very warm"
+msgstr "Me diell, shumë ngrohtë"
+
+msgid "sunlit and warmer"
+msgstr "Me diell, më ngrohtë"
+
+msgid "sunny and beautiful"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunny and breezy"
+msgstr "Me diell, me erë të lehtë"
+
+msgid "sunny and cold"
+msgstr "Me diell, ftohtë"
+
+msgid "sunny and comfortable"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunny and cool"
+msgstr "Me diell, freskët"
+
+msgid "sunny and cooler"
+msgstr "Me diell, më freskët"
+
+msgid "sunny and cooler but pleasant"
+msgstr "Me diell, më freskët, mot i këndshëm"
+
+msgid "sunny and delightful"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunny and hot"
+msgstr "Me diell, nxehtë"
+
+msgid "sunny and hotter"
+msgstr "Me diell, më nxehtë"
+
+msgid "sunny and humid"
+msgstr "Me diell, lagështi e lartë"
+
+msgid "sunny and less humid"
+msgstr "Me diell, lagështi më e ulët"
+
+msgid "sunny and mild"
+msgstr "Me diell, mot i butë"
+
+msgid "sunny and milder"
+msgstr "Me diell, më butë"
+
+msgid "sunny and nice"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunny and not as cold"
+msgstr "Me diell, më pak ftohtë"
+
+msgid "sunny and not as cool"
+msgstr "Me diell, më pak freskët"
+
+msgid "sunny and not as hot"
+msgstr "Me diell, më pak nxehtë"
+
+msgid "sunny and not as warm"
+msgstr "Me diell, më pak ngrohtë"
+
+msgid "sunny and pleasant"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunny and pleasantly cool"
+msgstr "Me diell, freskët dhe këndshëm"
+
+msgid "sunny and pleasantly warm"
+msgstr "Me diell, ngrohtë dhe këndshëm"
+
+msgid "sunny and remaining cool"
+msgstr "Me diell, mbetet freskët"
+
+msgid "sunny and remaining very warm"
+msgstr "Me diell, mbetet shumë ngrohtë"
+
+msgid "sunny and remaining warm"
+msgstr "Me diell, mbetet ngrohtë"
+
+msgid "sunny and seasonably cold"
+msgstr "Me diell, ftohtë si zakonisht për stinën"
+
+msgid "sunny and seasonably warm"
+msgstr "Me diell, ngrohtë si zakonisht për stinën"
+
+msgid "sunny and unseasonably hot"
+msgstr "Me diell, nxehtësi e pazakontë për stinën"
+
+msgid "sunny and very cold"
+msgstr "Me diell, shumë ftohtë"
+
+msgid "sunny and very humid"
+msgstr "Me diell, lagështi shumë e lartë"
+
+msgid "sunny and very warm"
+msgstr "Me diell, shumë ngrohtë"
+
+msgid "sunny and warm"
+msgstr "Me diell, ngrohtë"
+
+msgid "sunny and warmer"
+msgstr "Me diell, më ngrohtë"
+
+msgid "sunny and windy"
+msgstr "Me diell, me erë"
+
+msgid "sunny intervals"
+msgstr "Herë pas here diell"
+
+msgid "sunny intervals with a shower"
+msgstr "Herë pas here diell, një rrebesh shiu"
+
+msgid "sunny much of the time"
+msgstr "Kryesisht me diell"
+
+msgid "sunny to partly cloudy"
+msgstr "Kthjellët deri pjesërisht vranët"
+
+msgid "sunny with a gusty breeze"
+msgstr "Me diell, erë me shkulme"
+
+msgid "sunny with a warm breeze"
+msgstr "Me diell, fllad i ngrohtë"
+
+msgid "sunny with low humidity"
+msgstr "Me diell, lagështi e ulët"
+
+msgid "sunshine"
+msgstr "Me diell"
+
+msgid "sunshine and a few clouds"
+msgstr "Me diell, pak re"
+
+msgid "sunshine and beautiful"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunshine and bitterly cold"
+msgstr "Me diell, acar"
+
+msgid "sunshine and breezy"
+msgstr "Me diell, me erë të lehtë"
+
+msgid "sunshine and cold"
+msgstr "Me diell, ftohtë"
+
+msgid "sunshine and comfortable"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunshine and cooler"
+msgstr "Me diell, më freskët"
+
+msgid "sunshine and delightful"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunshine and hot"
+msgstr "Me diell, nxehtë"
+
+msgid "sunshine and hotter"
+msgstr "Me diell, më nxehtë"
+
+msgid "sunshine and humid"
+msgstr "Me diell, lagështi e lartë"
+
+msgid "sunshine and less humid"
+msgstr "Me diell, lagështi më e ulët"
+
+msgid "sunshine and mild"
+msgstr "Me diell, mot i butë"
+
+msgid "sunshine and nice"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunshine and not as cold"
+msgstr "Me diell, më pak ftohtë"
+
+msgid "sunshine and not as hot"
+msgstr "Me diell, më pak nxehtë"
+
+msgid "sunshine and not as warm"
+msgstr "Me diell, më pak ngrohtë"
+
+msgid "sunshine and patchy clouds"
+msgstr "Me diell, re të shpërndara"
+
+msgid "sunshine and pleasant"
+msgstr "Me diell, mot i këndshëm"
+
+msgid "sunshine and pleasantly warm"
+msgstr "Me diell, ngrohtë dhe këndshëm"
+
+msgid "sunshine and remaining warm"
+msgstr "Me diell, mbetet ngrohtë"
+
+msgid "sunshine and seasonably cold"
+msgstr "Me diell, ftohtë si zakonisht për stinën"
+
+msgid "sunshine and seasonably warm"
+msgstr "Me diell, ngrohtë si zakonisht për stinën"
+
+msgid "sunshine and some clouds"
+msgstr "Me diell, pak re"
+
+msgid "sunshine and summerlike"
+msgstr "Me diell, mot veror"
+
+msgid "sunshine and unseasonably hot"
+msgstr "Me diell, nxehtësi e pazakontë për stinën"
+
+msgid "sunshine and very hot"
+msgstr "Me diell, shumë nxehtë"
+
+msgid "sunshine and very warm"
+msgstr "Me diell, shumë ngrohtë"
+
+msgid "sunshine and warm"
+msgstr "Me diell, ngrohtë"
+
+msgid "sunshine and warmer"
+msgstr "Me diell, më ngrohtë"
+
+msgid "sunshine mixing with clouds"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "sunshine with a shower"
+msgstr "Me diell, një rrebesh shiu"
+
+msgid "sunshine with a snow shower"
+msgstr "Me diell, një rrebesh dëbore"
+
+msgid "sunshine with a stray shower"
+msgstr "Me diell, rrebeshe lokale"
+
+msgid "sunshine with a stray t-storm"
+msgstr "Me diell, stuhi lokale me bubullima"
+
+msgid "sunshine with a thundershower"
+msgstr "Me diell, rrebesh me bubullima"
+
+msgid "sunshine with a thunderstorm"
+msgstr "Me diell, stuhi me bubullima"
+
+msgid "sunshine with low humidity"
+msgstr "Me diell, lagështi e ulët"
+
+msgid "t-storms"
+msgstr "Stuhi me bubullima"
+
+msgid "t-storms in the afternoon"
+msgstr "Stuhi me bubullima pasdite"
+
+msgid "t-storms possible in the a.m."
+msgstr "Mundësi për stuhi me bubullima në mëngjes"
+
+msgid "then a bit of ice"
+msgstr "Pastaj ngricë vende-vende"
+
+msgid "then a shower"
+msgstr "Pastaj një rrebesh shiu"
+
+msgid "then clouds"
+msgstr "Pastaj me re"
+
+msgid "then flurries"
+msgstr "Pastaj reshje të shkurtra dëbore të lehtë"
+
+msgid "then ice"
+msgstr "Pastaj akull"
+
+msgid "then rain"
+msgstr "Pastaj shi"
+
+msgid "then showers"
+msgstr "Pastaj reshje të shkurtra"
+
+msgid "then snow"
+msgstr "Pastaj dëborë"
+
+msgid "then some sun"
+msgstr "Pastaj herë pas here diell"
+
+msgid "then sun"
+msgstr "Pastaj me diell"
+
+msgid "then t-storms"
+msgstr "Pastaj stuhi me bubullima"
+
+msgid "then turning cloudy"
+msgstr "Pastaj mot në vranësim"
+
+msgid "thickening clouds"
+msgstr "Retë dendësohen"
+
+msgid "thickening clouds and hot"
+msgstr "Retë dendësohen, nxehtë"
+
+msgid "thundershower"
+msgstr "Rrebesh me bubullima"
+
+msgid "thunderstorms in the evening"
+msgstr "Stuhi me bubullima në mbrëmje"
+
+msgid "thunderstorms late"
+msgstr "Stuhi me bubullima më vonë"
+
+msgid "thunderstorms this afternoon"
+msgstr "Stuhi me bubullima këtë pasdite"
+
+msgid "thunderstorms this morning"
+msgstr "Stuhi me bubullima këtë mëngjes"
+
+msgid "times of clouds and sun"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "times of clouds and sunshine"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "times of rain"
+msgstr "Shi me ndërprerje"
+
+msgid "times of sun and clouds"
+msgstr "Alternime kthjellimesh dhe vranësirash"
+
+msgid "to rain"
+msgstr "Kthehet në shi"
+
+msgid "turning clear"
+msgstr "Mot në kthjellim"
+
+msgid "turning clear and very warm"
+msgstr "Mot në kthjellim, shumë ngrohtë"
+
+msgid "turning cloudy"
+msgstr "Mot në vranësim"
+
+msgid "turning cloudy and breezy"
+msgstr "Mot në vranësim, me erë të lehtë"
+
+msgid "turning cloudy and chilly"
+msgstr "Mot në vranësim, mot i ftohtë"
+
+msgid "turning cloudy and cold"
+msgstr "Mot në vranësim, ftohtë"
+
+msgid "turning cloudy and colder"
+msgstr "Mot në vranësim, më ftohtë"
+
+msgid "turning cloudy and cooler"
+msgstr "Mot në vranësim, më freskët"
+
+msgid "turning cloudy and hot"
+msgstr "Mot në vranësim, nxehtë"
+
+msgid "turning cloudy and hotter"
+msgstr "Mot në vranësim, më nxehtë"
+
+msgid "turning cloudy and humid"
+msgstr "Mot në vranësim, lagështi e lartë"
+
+msgid "turning cloudy and less humid"
+msgstr "Mot në vranësim, lagështi më e ulët"
+
+msgid "turning cloudy and mild"
+msgstr "Mot në vranësim, mot i butë"
+
+msgid "turning cloudy and milder"
+msgstr "Mot në vranësim, më butë"
+
+msgid "turning cloudy and pleasant"
+msgstr "Mot në vranësim, mot i këndshëm"
+
+msgid "turning cloudy and summerlike"
+msgstr "Mot në vranësim, mot veror"
+
+msgid "turning cloudy and very hot"
+msgstr "Mot në vranësim, shumë nxehtë"
+
+msgid "turning cloudy and very warm"
+msgstr "Mot në vranësim, shumë ngrohtë"
+
+msgid "turning cloudy and warm"
+msgstr "Mot në vranësim, ngrohtë"
+
+msgid "turning cloudy and warmer"
+msgstr "Mot në vranësim, më ngrohtë"
+
+msgid "turning cloudy with a shower"
+msgstr "Mot në vranësim, një rrebesh shiu"
+
+msgid "turning cloudy with a t-storm"
+msgstr "Mot në vranësim, stuhi me bubullima"
+
+msgid "turning cloudy with rain late"
+msgstr "Mot në vranësim, shi më vonë"
+
+msgid "turning colder in the morning"
+msgstr "Më ftohtë në mëngjes"
+
+msgid "turning colder this afternoon"
+msgstr "Më ftohtë këtë pasdite"
+
+msgid "turning colder this morning"
+msgstr "Më ftohtë këtë mëngjes"
+
+msgid "turning out clear"
+msgstr "Mot në kthjellim"
+
+msgid "turning out clear and breezy"
+msgstr "Mot në kthjellim, me erë të lehtë"
+
+msgid "turning out clear and chilly"
+msgstr "Mot në kthjellim, mot i ftohtë"
+
+msgid "turning out clear and cold"
+msgstr "Mot në kthjellim, ftohtë"
+
+msgid "turning out clear and frigid"
+msgstr "Mot në kthjellim, acar"
+
+msgid "turning out clear and mild"
+msgstr "Mot në kthjellim, mot i butë"
+
+msgid "turning out clear and warm"
+msgstr "Mot në kthjellim, ngrohtë"
+
+msgid "turning out cloudy"
+msgstr "Mot në vranësim"
+
+msgid "turning out cloudy and warmer"
+msgstr "Mot në vranësim, më ngrohtë"
+
+msgid "turning sunny"
+msgstr "Del dielli"
+
+msgid "turning sunny and beautiful"
+msgstr "Del dielli, mot i këndshëm"
+
+msgid "turning sunny and cooler"
+msgstr "Del dielli, më freskët"
+
+msgid "turning sunny and delightful"
+msgstr "Del dielli, mot i këndshëm"
+
+msgid "turning sunny and hot"
+msgstr "Del dielli, nxehtë"
+
+msgid "turning sunny and humid"
+msgstr "Del dielli, lagështi e lartë"
+
+msgid "turning sunny and nice"
+msgstr "Del dielli, mot i këndshëm"
+
+msgid "turning sunny and not as warm"
+msgstr "Del dielli, më pak ngrohtë"
+
+msgid "turning sunny and pleasant"
+msgstr "Del dielli, mot i këndshëm"
+
+msgid "turning sunny and summerlike"
+msgstr "Del dielli, mot veror"
+
+msgid "turning sunny and very hot"
+msgstr "Del dielli, shumë nxehtë"
+
+msgid "turning sunny and very warm"
+msgstr "Del dielli, shumë ngrohtë"
+
+msgid "unseasonably hot"
+msgstr "Nxehtësi e pazakontë për stinën"
+
+msgid "up to 1in"
+msgstr "Deri në 2,54 cm"
+
+msgid "uranus"
+msgstr "Urani"
+
+msgid "variable cloudiness"
+msgstr "Vranësira të ndryshueshme"
+
+msgid "variable clouds"
+msgstr "Vranësira të ndryshueshme"
+
+msgid "variable clouds with a shower"
+msgstr "Vranësira të ndryshueshme, një rrebesh shiu"
+
+msgid "variable clouds with showers"
+msgstr "Vranësira të ndryshueshme, reshje të shkurtra"
+
+msgid "variable clouds with t-storms"
+msgstr "Vranësira të ndryshueshme, stuhi me bubullima"
+
+msgid "variably cloudy"
+msgstr "Vranësira të ndryshueshme"
+
+msgid "variably cloudy and breezy"
+msgstr "Vranësira të ndryshueshme, me erë të lehtë"
+
+msgid "variably cloudy and chilly"
+msgstr "Vranësira të ndryshueshme, mot i ftohtë"
+
+msgid "variably cloudy and cooler"
+msgstr "Vranësira të ndryshueshme, më freskët"
+
+msgid "variably cloudy and humid"
+msgstr "Vranësira të ndryshueshme, lagështi e lartë"
+
+msgid "variably cloudy and nice"
+msgstr "Vranësira të ndryshueshme, mot i këndshëm"
+
+msgid "variably cloudy and pleasant"
+msgstr "Vranësira të ndryshueshme, mot i këndshëm"
+
+msgid "variably cloudy and very warm"
+msgstr "Vranësira të ndryshueshme, shumë ngrohtë"
+
+msgid "variably cloudy and warmer"
+msgstr "Vranësira të ndryshueshme, më ngrohtë"
+
+msgid "variably cloudy with a shower"
+msgstr "Vranësira të ndryshueshme, një rrebesh shiu"
+
+msgid "variably cloudy with showers"
+msgstr "Vranësira të ndryshueshme, reshje të shkurtra"
+
+msgid "variably cloudy with t-storms"
+msgstr "Vranësira të ndryshueshme, stuhi me bubullima"
+
+msgid "venus"
+msgstr "Afërdita"
+
+msgid "very cold"
+msgstr "Shumë ftohtë"
+
+msgid "very cold with a few flurries"
+msgstr "Shumë ftohtë, disa reshje të lehta e të shkurtra dëbore"
+
+msgid "very cold with clouds and sun"
+msgstr "Shumë ftohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "very cold with snow"
+msgstr "Shumë ftohtë, dëborë"
+
+msgid "very cold with snow at times"
+msgstr "Shumë ftohtë, borë me ndërprerje"
+
+msgid "very hot"
+msgstr "Shumë nxehtë"
+
+msgid "very hot with a few showers"
+msgstr "Shumë nxehtë, disa rrebeshe"
+
+msgid "very hot with a shower"
+msgstr "Shumë nxehtë, një rrebesh shiu"
+
+msgid "very hot with clouds and sun"
+msgstr "Shumë nxehtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "very hot with hazy sun"
+msgstr "Shumë nxehtë, diell përmes mjegullinës"
+
+msgid "very hot with high clouds"
+msgstr "Shumë nxehtë, re të larta"
+
+msgid "very hot with some sun"
+msgstr "Shumë nxehtë, herë pas here diell"
+
+msgid "very hot with sunshine"
+msgstr "Shumë nxehtë, me diell"
+
+msgid "very warm"
+msgstr "Shumë ngrohtë"
+
+msgid "very warm and humid with rain"
+msgstr "Shumë ngrohtë, lagështi e lartë, shi"
+
+msgid "very warm with clearing"
+msgstr "Shumë ngrohtë, mot në kthjellim"
+
+msgid "very warm with clouds"
+msgstr "Shumë ngrohtë, me re"
+
+msgid "very warm with clouds and sun"
+msgstr "Shumë ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "very warm with hazy sun"
+msgstr "Shumë ngrohtë, diell përmes mjegullinës"
+
+msgid "very warm with hazy sunshine"
+msgstr "Shumë ngrohtë, diell përmes mjegullinës"
+
+msgid "very warm with high clouds"
+msgstr "Shumë ngrohtë, re të larta"
+
+msgid "very warm with lots of sun"
+msgstr "Shumë ngrohtë, diell me bollëk"
+
+msgid "very warm with patchy clouds"
+msgstr "Shumë ngrohtë, re të shpërndara"
+
+msgid "very warm with periods of sun"
+msgstr "Shumë ngrohtë, herë pas here diell"
+
+msgid "very warm with plenty of sun"
+msgstr "Shumë ngrohtë, diell me bollëk"
+
+msgid "very warm with some sun"
+msgstr "Shumë ngrohtë, herë pas here diell"
+
+msgid "very warm with sun and clouds"
+msgstr "Shumë ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "very warm with sunshine"
+msgstr "Shumë ngrohtë, me diell"
+
+msgid "very windy"
+msgstr "Erë shumë e fortë"
+
+msgid "very windy in the a.m."
+msgstr "Erë shumë e fortë në mëngjes"
+
+msgid "very windy in the morning"
+msgstr "Erë shumë e fortë në mëngjes"
+
+msgid "very windy this evening"
+msgstr "Erë shumë e fortë këtë mbrëmje"
+
+msgid "very windy this morning"
+msgstr "Erë shumë e fortë këtë mëngjes"
+
+msgid "warm"
+msgstr "Ngrohtë"
+
+msgid "warm and hamid"
+msgstr "Ngrohtë, lagështi e lartë"
+
+msgid "warm and humid"
+msgstr "Ngrohtë, lagështi e lartë"
+
+msgid "warm and humid with clearing"
+msgstr "Ngrohtë, lagështi e lartë, mot në kthjellim"
+
+msgid "warm and humid with some sun"
+msgstr "Ngrohtë, lagështi e lartë, herë pas here diell"
+
+msgid "warm with abundant sunshine"
+msgstr "Ngrohtë, diell me bollëk"
+
+msgid "warm with clearing"
+msgstr "Ngrohtë, mot në kthjellim"
+
+msgid "warm with clouds and sun"
+msgstr "Ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "warm with clouds and sunshine"
+msgstr "Ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "warm with clouds breaking"
+msgstr "Ngrohtë, vranësirat pakësohen"
+
+msgid "warm with clouds limiting sun"
+msgstr "Ngrohtë, retë pengojnë diellin"
+
+msgid "warm with decreasing clouds"
+msgstr "Ngrohtë, vranësirat pakësohen"
+
+msgid "warm with high clouds"
+msgstr "Ngrohtë, re të larta"
+
+msgid "warm with increasing clouds"
+msgstr "Ngrohtë, vranësirat shtohen"
+
+msgid "warm with occasional rain"
+msgstr "Ngrohtë, shi me ndërprerje"
+
+msgid "warm with partial sunshine"
+msgstr "Ngrohtë, herë pas here diell"
+
+msgid "warm with patchy clouds"
+msgstr "Ngrohtë, re të shpërndara"
+
+msgid "warm with periods of sun"
+msgstr "Ngrohtë, herë pas here diell"
+
+msgid "warm with plenty of clouds"
+msgstr "Ngrohtë, kryesisht me re"
+
+msgid "warm with plenty of sun"
+msgstr "Ngrohtë, diell me bollëk"
+
+msgid "warm with plenty of sunshine"
+msgstr "Ngrohtë, diell me bollëk"
+
+msgid "warm with rain and drizzle"
+msgstr "Ngrohtë, shi dhe rigë"
+
+msgid "warm with some brightening"
+msgstr "Ngrohtë, disa kthjellime"
+
+msgid "warm with some sun"
+msgstr "Ngrohtë, herë pas here diell"
+
+msgid "warm with some sun returning"
+msgstr "Ngrohtë, disa kthjellime"
+
+msgid "warm with sun"
+msgstr "Ngrohtë, me diell"
+
+msgid "warm with sun and clouds"
+msgstr "Ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "warm with sunny intervals"
+msgstr "Ngrohtë, herë pas here diell"
+
+msgid "warm with sunshine"
+msgstr "Ngrohtë, me diell"
+
+msgid "warm with variable cloudiness"
+msgstr "Ngrohtë, vranësira të ndryshueshme"
+
+msgid "warm with variable clouds"
+msgstr "Ngrohtë, vranësira të ndryshueshme"
+
+msgid "warmer"
+msgstr "Më ngrohtë"
+
+msgid "warmer late"
+msgstr "Më ngrohtë më vonë"
+
+msgid "warmer with a bit of rain"
+msgstr "Më ngrohtë, pak shi"
+
+msgid "warmer with a brief shower"
+msgstr "Më ngrohtë, rrebeshe të shkurtra"
+
+msgid "warmer with a few showers"
+msgstr "Më ngrohtë, disa rrebeshe"
+
+msgid "warmer with a heavy t-storm"
+msgstr "Më ngrohtë, stuhi të forta me bubullima"
+
+msgid "warmer with a passing shower"
+msgstr "Më ngrohtë, rrebeshe të shkurtra"
+
+msgid "warmer with a shower"
+msgstr "Më ngrohtë, një rrebesh shiu"
+
+msgid "warmer with a shower in spots"
+msgstr "Më ngrohtë, rrebeshe lokale"
+
+msgid "warmer with a shower or two"
+msgstr "Më ngrohtë, një ose dy rrebeshe"
+
+msgid "warmer with a stray shower"
+msgstr "Më ngrohtë, rrebeshe lokale"
+
+msgid "warmer with a stray t-storm"
+msgstr "Më ngrohtë, stuhi lokale me bubullima"
+
+msgid "warmer with a thunderstorm"
+msgstr "Më ngrohtë, stuhi me bubullima"
+
+msgid "warmer with abundant sunshine"
+msgstr "Më ngrohtë, diell me bollëk"
+
+msgid "warmer with clearing"
+msgstr "Më ngrohtë, mot në kthjellim"
+
+msgid "warmer with clouds"
+msgstr "Më ngrohtë, me re"
+
+msgid "warmer with clouds and sun"
+msgstr "Më ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "warmer with decreasing clouds"
+msgstr "Më ngrohtë, vranësirat pakësohen"
+
+msgid "warmer with high clouds"
+msgstr "Më ngrohtë, re të larta"
+
+msgid "warmer with increasing clouds"
+msgstr "Më ngrohtë, vranësirat shtohen"
+
+msgid "warmer with low clouds"
+msgstr "Më ngrohtë, re të ulëta"
+
+msgid "warmer with partial sunshine"
+msgstr "Më ngrohtë, herë pas here diell"
+
+msgid "warmer with periods of rain"
+msgstr "Më ngrohtë, shi me ndërprerje"
+
+msgid "warmer with periods of sun"
+msgstr "Më ngrohtë, herë pas here diell"
+
+msgid "warmer with plenty of sun"
+msgstr "Më ngrohtë, diell me bollëk"
+
+msgid "warmer with showers"
+msgstr "Më ngrohtë, reshje të shkurtra"
+
+msgid "warmer with showers around"
+msgstr "Më ngrohtë, rrebeshe lokale"
+
+msgid "warmer with some brightening"
+msgstr "Më ngrohtë, disa kthjellime"
+
+msgid "warmer with some sun"
+msgstr "Më ngrohtë, herë pas here diell"
+
+msgid "warmer with some sunshine"
+msgstr "Më ngrohtë, herë pas here diell"
+
+msgid "warmer with spotty showers"
+msgstr "Më ngrohtë, rrebeshe lokale"
+
+msgid "warmer with sun"
+msgstr "Më ngrohtë, me diell"
+
+msgid "warmer with sun and clouds"
+msgstr "Më ngrohtë, alternime kthjellimesh dhe vranësirash"
+
+msgid "warmer with sunny intervals"
+msgstr "Më ngrohtë, herë pas here diell"
+
+msgid "warmer with sunshine"
+msgstr "Më ngrohtë, me diell"
+
+msgid "warmer with variable clouds"
+msgstr "Më ngrohtë, vranësira të ndryshueshme"
+
+msgid "watch for ice early"
+msgstr "Kujdes nga akulli në fillim"
+
+msgid "watch for ice late"
+msgstr "Kujdes nga akulli më vonë"
+
+msgid "wet snow"
+msgstr "Borë e lagësht"
+
+msgid "winds gradually subsiding"
+msgstr "Era dobësohet gradualisht"
+
+msgid "windy"
+msgstr "Me erë"
+
+msgid "windy and cold"
+msgstr "Me erë, ftohtë"
+
+msgid "windy and cooler"
+msgstr "Me erë, më freskët"
+
+msgid "windy and cooler with rain"
+msgstr "Me erë, më freskët, shi"
+
+msgid "windy and cooler with showers"
+msgstr "Me erë, më freskët, reshje të shkurtra"
+
+msgid "windy and frigid"
+msgstr "Me erë, acar"
+
+msgid "windy and humid with rain"
+msgstr "Me erë, lagështi e lartë, shi"
+
+msgid "windy and very cold"
+msgstr "Me erë, shumë ftohtë"
+
+msgid "windy early"
+msgstr "Me erë në fillim"
+
+msgid "windy in the a.m."
+msgstr "Me erë në mëngjes"
+
+msgid "windy in the afternoon"
+msgstr "Me erë pasdite"
+
+msgid "windy in the morning"
+msgstr "Me erë në mëngjes"
+
+msgid "windy this afternoon"
+msgstr "Me erë këtë pasdite"
+
+msgid "windy this morning"
+msgstr "Me erë këtë mëngjes"
+
+msgid "windy with a bit of ice"
+msgstr "Me erë, ngricë vende-vende"
+
+msgid "windy with a little rain"
+msgstr "Me erë, pak shi"
+
+msgid "windy with a passing shower"
+msgstr "Me erë, rrebeshe të shkurtra"
+
+msgid "windy with a shower in places"
+msgstr "Me erë, rrebeshe lokale"
+
+msgid "windy with a shower in spots"
+msgstr "Me erë, rrebeshe lokale"
+
+msgid "windy with a shower or two"
+msgstr "Me erë, një ose dy rrebeshe"
+
+msgid "windy with a stray shower"
+msgstr "Me erë, rrebeshe lokale"
+
+msgid "windy with brilliant sunshine"
+msgstr "Me erë, diell i shndritshëm"
+
+msgid "windy with clouds and sun"
+msgstr "Me erë, alternime kthjellimesh dhe vranësirash"
+
+msgid "windy with decreasing clouds"
+msgstr "Me erë, vranësirat pakësohen"
+
+msgid "windy with increasing clouds"
+msgstr "Me erë, vranësirat shtohen"
+
+msgid "windy with occasional rain"
+msgstr "Me erë, shi me ndërprerje"
+
+msgid "windy with periods of rain"
+msgstr "Me erë, shi me ndërprerje"
+
+msgid "windy with periods of snow"
+msgstr "Me erë, borë me ndërprerje"
+
+msgid "windy with plenty of sun"
+msgstr "Me erë, diell me bollëk"
+
+msgid "windy with plenty of sunshine"
+msgstr "Me erë, diell me bollëk"
+
+msgid "windy with rain and a t-storm"
+msgstr "Me erë, shi, stuhi me bubullima"
+
+msgid "windy with showers"
+msgstr "Me erë, reshje të shkurtra"
+
+msgid "windy with showers around"
+msgstr "Me erë, rrebeshe lokale"
+
+msgid "windy with snow"
+msgstr "Me erë, dëborë"
+
+msgid "windy with some sun"
+msgstr "Me erë, herë pas here diell"
+
+msgid "windy with spotty showers"
+msgstr "Me erë, rrebeshe lokale"
+
+msgid "windy with sunshine"
+msgstr "Me erë, me diell"

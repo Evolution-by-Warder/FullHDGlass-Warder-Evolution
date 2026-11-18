@@ -241,3 +241,6126 @@ msgstr "Błąd"
 
 msgid "Select country"
 msgstr "Wybierz kraj"
+
+msgid "----"
+msgstr "----"
+
+msgid "Add City"
+msgstr "Dodaj miasto"
+
+msgid "Change Temperature Unit"
+msgstr "Zmień jednostkę temperatury"
+
+msgid "Change Units to"
+msgstr "Zmień jednostki na"
+
+msgid "Change city"
+msgstr "Zmień miasto"
+
+msgid "Daytime"
+msgstr "W dzień"
+
+msgid "Decreasing"
+msgstr "Spadek"
+
+msgid "Delete City"
+msgstr "Usuń miasto"
+
+msgid "Forecast for"
+msgstr "Prognoza dla"
+
+msgid "Friday"
+msgstr "Piątek"
+
+msgid "High"
+msgstr "Wysoki"
+
+msgid "Latitude"
+msgstr "Szerokość geograficzna"
+
+msgid "Longtitude"
+msgstr "Długość geograficzna"
+
+msgid "Low"
+msgstr "Niski"
+
+msgid "Moderate"
+msgstr "Umiarkowany"
+
+msgid "Monday"
+msgstr "Poniedziałek"
+
+msgid "Nighttime"
+msgstr "W nocy"
+
+msgid "None city founded"
+msgstr "Nie znaleziono miasta"
+
+msgid "Precip"
+msgstr "Opady"
+
+msgid "Realfeel"
+msgstr "Temperatura odczuwalna"
+
+msgid "Rising"
+msgstr "Wzrost"
+
+msgid "Saturday"
+msgstr "Sobota"
+
+msgid "Select City"
+msgstr "Wybierz miasto"
+
+msgid "Steady"
+msgstr "Bez zmian"
+
+msgid "Sunday"
+msgstr "Niedziela"
+
+msgid "Thursday"
+msgstr "Czwartek"
+
+msgid "Tuesday"
+msgstr "Wtorek"
+
+msgid "Updated at"
+msgstr "Zaktualizowano o"
+
+msgid "Uvindex"
+msgstr "Indeks UV"
+
+msgid "Very high"
+msgstr "Bardzo wysoki"
+
+msgid "Wednesday"
+msgstr "Środa"
+
+msgid "a bit of afternoon rain"
+msgstr "Po południu: niewielki deszcz"
+
+msgid "a bit of afternoon snow"
+msgstr "Po południu: niewielkie opady śniegu"
+
+msgid "a bit of evening rain"
+msgstr "Wieczorem: niewielki deszcz"
+
+msgid "a bit of evening snow"
+msgstr "Wieczorem: niewielkie opady śniegu"
+
+msgid "a bit of ice"
+msgstr "Miejscami oblodzenie"
+
+msgid "a bit of ice and rain"
+msgstr "Miejscami oblodzenie, deszcz"
+
+msgid "a bit of ice early"
+msgstr "Początkowo: miejscami oblodzenie"
+
+msgid "a bit of ice in the afternoon"
+msgstr "Po południu: miejscami oblodzenie"
+
+msgid "a bit of ice in the morning"
+msgstr "Rano: miejscami oblodzenie"
+
+msgid "a bit of ice late"
+msgstr "Później: miejscami oblodzenie"
+
+msgid "a bit of late-night rain"
+msgstr "Późną nocą: niewielki deszcz"
+
+msgid "a bit of late-night snow"
+msgstr "Późną nocą: niewielkie opady śniegu"
+
+msgid "a bit of morning rain"
+msgstr "Rano: niewielki deszcz"
+
+msgid "a bit of morning snow"
+msgstr "Rano: niewielkie opady śniegu"
+
+msgid "a bit of rain"
+msgstr "Niewielki deszcz"
+
+msgid "a bit of rain and ice late"
+msgstr "Niewielki deszcz. Później: lód"
+
+msgid "a bit of rain and sleet"
+msgstr "Niewielki deszcz, deszcz ze śniegiem"
+
+msgid "a bit of rain and sleet later"
+msgstr "Niewielki deszcz. Później: deszcz ze śniegiem"
+
+msgid "a bit of rain and snow"
+msgstr "Niewielki deszcz, śnieg"
+
+msgid "a bit of rain in the evening"
+msgstr "Wieczorem: niewielki deszcz"
+
+msgid "a bit of rain in the morning"
+msgstr "Rano: niewielki deszcz"
+
+msgid "a bit of rain late"
+msgstr "Później: niewielki deszcz"
+
+msgid "a bit of rain this evening"
+msgstr "Dziś wieczorem: niewielki deszcz"
+
+msgid "a bit of snow"
+msgstr "Niewielkie opady śniegu"
+
+msgid "a bit of snow and ice later"
+msgstr "Niewielkie opady śniegu. Później: lód"
+
+msgid "a bit of snow and rain"
+msgstr "Niewielkie opady śniegu, deszcz"
+
+msgid "a bit of snow and rain late"
+msgstr "Niewielkie opady śniegu. Później: deszcz"
+
+msgid "a bit of snow and sleet late"
+msgstr "Niewielkie opady śniegu. Później: deszcz ze śniegiem"
+
+msgid "a bit of snow early"
+msgstr "Początkowo: niewielkie opady śniegu"
+
+msgid "a bit of snow in the evening"
+msgstr "Wieczorem: niewielkie opady śniegu"
+
+msgid "a bit of snow in the morning"
+msgstr "Rano: niewielkie opady śniegu"
+
+msgid "a bit of snow late"
+msgstr "Później: niewielkie opady śniegu"
+
+msgid "a bit of wintry mix"
+msgstr "Słabe mieszane opady zimowe"
+
+msgid "a blend of sun and clouds"
+msgstr "Na przemian słońce i chmury"
+
+msgid "a brief afternoon shower"
+msgstr "Po południu: krótkotrwałe przelotne deszcze"
+
+msgid "a brief evening shower or two"
+msgstr "Wieczorem: jeden lub dwa krótkie przelotne deszcze"
+
+msgid "a brief morning shower or two"
+msgstr "Rano: jeden lub dwa krótkie przelotne deszcze"
+
+msgid "a brief shower"
+msgstr "Krótkotrwałe przelotne deszcze"
+
+msgid "a brief shower in the morning"
+msgstr "Rano: krótkotrwałe przelotne deszcze"
+
+msgid "a brief shower or two"
+msgstr "Jeden lub dwa krótkie przelotne deszcze"
+
+msgid "a brief shower or two late"
+msgstr "Później: jeden lub dwa krótkie przelotne deszcze"
+
+msgid "a brief shower this afternoon"
+msgstr "Dziś po południu: krótkotrwałe przelotne deszcze"
+
+msgid "a brief t-storm early"
+msgstr "Początkowo: krótka burza"
+
+msgid "a brief t-storm in the p.m."
+msgstr "Po południu: krótka burza"
+
+msgid "a chance for snow"
+msgstr "Możliwe opady śniegu"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "Po południu: burza przynosząca ochłodzenie"
+
+msgid "a couple of a.m. snow showers"
+msgstr "Rano: pojedyncze przelotne opady śniegu"
+
+msgid "a couple of afternoon showers"
+msgstr "Po południu: jeden lub dwa przelotne deszcze"
+
+msgid "a couple of downpours late"
+msgstr "Później: kilka ulew"
+
+msgid "a couple of evening downpours"
+msgstr "Wieczorem: kilka ulew"
+
+msgid "a couple of evening showers"
+msgstr "Wieczorem: jeden lub dwa przelotne deszcze"
+
+msgid "a couple of evening t-showers"
+msgstr "Wieczorem: pojedyncze przelotne opady z burzami"
+
+msgid "a couple of evening t-storms"
+msgstr "Wieczorem: pojedyncze burze"
+
+msgid "a couple of flurries"
+msgstr "Pojedyncze słabe przelotne opady śniegu"
+
+msgid "a couple of heavy t-storms"
+msgstr "Pojedyncze silne burze"
+
+msgid "a couple of morning showers"
+msgstr "Rano: jeden lub dwa przelotne deszcze"
+
+msgid "a couple of morning t-showers"
+msgstr "Rano: pojedyncze przelotne opady z burzami"
+
+msgid "a couple of morning t-storms"
+msgstr "Rano: pojedyncze burze"
+
+msgid "a couple of p.m. snow showers"
+msgstr "Po południu: pojedyncze przelotne opady śniegu"
+
+msgid "a couple of p.m. t-showers"
+msgstr "Po południu: pojedyncze przelotne opady z burzami"
+
+msgid "a couple of showers"
+msgstr "Jeden lub dwa przelotne deszcze"
+
+msgid "a couple of showers late"
+msgstr "Później: jeden lub dwa przelotne deszcze"
+
+msgid "a couple of showers possible"
+msgstr "Możliwych kilka przelotnych opadów"
+
+msgid "a couple of snow showers"
+msgstr "Pojedyncze przelotne opady śniegu"
+
+msgid "a couple of snow showers late"
+msgstr "Później: pojedyncze przelotne opady śniegu"
+
+msgid "a couple of strong t-storms"
+msgstr "Pojedyncze silne burze"
+
+msgid "a couple of t-showers"
+msgstr "Pojedyncze przelotne opady z burzami"
+
+msgid "a couple of t-showers early"
+msgstr "Początkowo: pojedyncze przelotne opady z burzami"
+
+msgid "a couple of t-showers late"
+msgstr "Później: pojedyncze przelotne opady z burzami"
+
+msgid "a couple of t-storms late"
+msgstr "Później: pojedyncze burze"
+
+msgid "a couple of thundershowers"
+msgstr "Pojedyncze przelotne opady z burzami"
+
+msgid "a damaging thunderstorm"
+msgstr "Burza mogąca wyrządzić szkody"
+
+msgid "a downpour early"
+msgstr "Początkowo: ulewy"
+
+msgid "a downpour in the afternoon"
+msgstr "Po południu: ulewy"
+
+msgid "a downpour in the morning"
+msgstr "Rano: ulewy"
+
+msgid "a downpour this morning"
+msgstr "Dziś rano: ulewy"
+
+msgid "a drenching morning shower"
+msgstr "Rano: silne przelotne deszcze"
+
+msgid "a drenching shower late"
+msgstr "Później: silne przelotne deszcze"
+
+msgid "a drenching t-storm early"
+msgstr "Początkowo: burza z ulewą"
+
+msgid "a drenching thunderstorm late"
+msgstr "Później: burza z ulewą"
+
+msgid "a few a.m. showers"
+msgstr "Rano: pojedyncze przelotne deszcze"
+
+msgid "a few afternoon showers"
+msgstr "Po południu: pojedyncze przelotne deszcze"
+
+msgid "a few evening showers"
+msgstr "Wieczorem: pojedyncze przelotne deszcze"
+
+msgid "a few flurries"
+msgstr "Pojedyncze słabe przelotne opady śniegu"
+
+msgid "a few flurries in the morning"
+msgstr "Rano: pojedyncze słabe przelotne opady śniegu"
+
+msgid "a few late-night showers"
+msgstr "Późną nocą: pojedyncze przelotne deszcze"
+
+msgid "a few morning showers"
+msgstr "Rano: pojedyncze przelotne deszcze"
+
+msgid "a few showers"
+msgstr "Pojedyncze przelotne deszcze"
+
+msgid "a few showers in the evening"
+msgstr "Wieczorem: pojedyncze przelotne deszcze"
+
+msgid "a few showers in the morning"
+msgstr "Rano: pojedyncze przelotne deszcze"
+
+msgid "a few showers late"
+msgstr "Później: pojedyncze przelotne deszcze"
+
+msgid "a few showers this afternoon"
+msgstr "Dziś po południu: pojedyncze przelotne deszcze"
+
+msgid "a few showers this evening"
+msgstr "Dziś wieczorem: pojedyncze przelotne deszcze"
+
+msgid "a few snowflakes late"
+msgstr "Później: pojedyncze płatki śniegu"
+
+msgid "a few strong p.m. t-storms"
+msgstr "Po południu: pojedyncze silne burze"
+
+msgid "a few t-storms"
+msgstr "Pojedyncze burze"
+
+msgid "a flurry early"
+msgstr "Początkowo: przelotne słabe opady śniegu"
+
+msgid "a flurry in the p.m."
+msgstr "Po południu: przelotne słabe opady śniegu"
+
+msgid "a flurry late"
+msgstr "Później: przelotne słabe opady śniegu"
+
+msgid "a gusty breeze with clearing"
+msgstr "Porywisty wiatr, rozpogodzenia"
+
+msgid "a gusty morning breeze"
+msgstr "Rano: porywisty wiatr"
+
+msgid "a heavy afternoon shower"
+msgstr "Po południu: silne przelotne deszcze"
+
+msgid "a heavy afternoon t-storm"
+msgstr "Po południu: silne burze"
+
+msgid "a heavy morning shower or two"
+msgstr "Rano: kilka silnych przelotnych opadów"
+
+msgid "a heavy shower in the morning"
+msgstr "Rano: silne przelotne deszcze"
+
+msgid "a heavy t-storm"
+msgstr "Silne burze"
+
+msgid "a heavy t-storm early"
+msgstr "Początkowo: silne burze"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "Rano: silne burze"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "Po południu: silne burze"
+
+msgid "a heavy thunderstorm"
+msgstr "Silne burze"
+
+msgid "a late-night shower"
+msgstr "Późną nocą: przelotny deszcz"
+
+msgid "a late-night shower in places"
+msgstr "Późną nocą: miejscami przelotny deszcz"
+
+msgid "a late-night shower in spots"
+msgstr "Późną nocą: miejscami przelotny deszcz"
+
+msgid "a late-night shower or two"
+msgstr "Późną nocą: jeden lub dwa przelotne deszcze"
+
+msgid "a late-night t-storm in spots"
+msgstr "Późną nocą: miejscami burze"
+
+msgid "a late-night t-storm or two"
+msgstr "Późną nocą: pojedyncze burze"
+
+msgid "a late-night thunderstorm"
+msgstr "Późną nocą: burza"
+
+msgid "a little a.m. rain"
+msgstr "Rano: niewielki deszcz"
+
+msgid "a little afternoon rain"
+msgstr "Po południu: niewielki deszcz"
+
+msgid "a little afternoon snow"
+msgstr "Po południu: niewielkie opady śniegu"
+
+msgid "a little evening rain"
+msgstr "Wieczorem: niewielki deszcz"
+
+msgid "a little evening snow"
+msgstr "Wieczorem: niewielkie opady śniegu"
+
+msgid "a little icy mix early"
+msgstr "Początkowo: słabe opady mieszane z oblodzeniem"
+
+msgid "a little icy mix in the a.m."
+msgstr "Rano: słabe opady mieszane z oblodzeniem"
+
+msgid "a little icy mix this morning"
+msgstr "Dziś rano: słabe opady mieszane z oblodzeniem"
+
+msgid "a little late-night rain"
+msgstr "Późną nocą: niewielki deszcz"
+
+msgid "a little late-night snow"
+msgstr "Późną nocą: niewielkie opady śniegu"
+
+msgid "a little morning rain"
+msgstr "Rano: niewielki deszcz"
+
+msgid "a little morning snow"
+msgstr "Rano: niewielkie opady śniegu"
+
+msgid "a little rain"
+msgstr "Niewielki deszcz"
+
+msgid "a little rain early"
+msgstr "Początkowo: niewielki deszcz"
+
+msgid "a little rain in the evening"
+msgstr "Wieczorem: niewielki deszcz"
+
+msgid "a little rain in the morning"
+msgstr "Rano: niewielki deszcz"
+
+msgid "a little rain late"
+msgstr "Później: niewielki deszcz"
+
+msgid "a little rain this afternoon"
+msgstr "Dziś po południu: niewielki deszcz"
+
+msgid "a little rain this morning"
+msgstr "Dziś rano: niewielki deszcz"
+
+msgid "a little snow"
+msgstr "Niewielkie opady śniegu"
+
+msgid "a little snow and sleet early"
+msgstr "Niewielkie opady śniegu. Początkowo: deszcz ze śniegiem"
+
+msgid "a little snow and sleet late"
+msgstr "Niewielkie opady śniegu. Później: deszcz ze śniegiem"
+
+msgid "a little snow at times"
+msgstr "Chwilami niewielkie opady śniegu"
+
+msgid "a little snow at times late"
+msgstr "Później: chwilami niewielkie opady śniegu"
+
+msgid "a little snow early"
+msgstr "Początkowo: niewielkie opady śniegu"
+
+msgid "a little snow in the evening"
+msgstr "Wieczorem: niewielkie opady śniegu"
+
+msgid "a little snow late"
+msgstr "Później: niewielkie opady śniegu"
+
+msgid "a little snow this afternoon"
+msgstr "Dziś po południu: niewielkie opady śniegu"
+
+msgid "a little wintry mix"
+msgstr "Słabe mieszane opady zimowe"
+
+msgid "a little wintry mix late"
+msgstr "Później: słabe mieszane opady zimowe"
+
+msgid "a morning flurry"
+msgstr "Rano: przelotne słabe opady śniegu"
+
+msgid "a morning rain or snow shower"
+msgstr "Rano: przelotny deszcz lub śnieg"
+
+msgid "a morning shower"
+msgstr "Rano: przelotny deszcz"
+
+msgid "a morning shower in places"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "a morning shower in spots"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "a morning shower in the area"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "a morning shower or t-storm"
+msgstr "Rano: przelotny deszcz lub burza"
+
+msgid "a morning shower or two"
+msgstr "Rano: jeden lub dwa przelotne deszcze"
+
+msgid "a morning snow shower around"
+msgstr "Rano: przelotny opad śniegu"
+
+msgid "a morning t-storm"
+msgstr "Rano: burza"
+
+msgid "a morning t-storm in spots"
+msgstr "Rano: miejscami burze"
+
+msgid "a morning t-storm in the area"
+msgstr "Rano: miejscami burze"
+
+msgid "a morning thunderstorm"
+msgstr "Rano: burza"
+
+msgid "a morning thunderstorm or two"
+msgstr "Rano: pojedyncze burze"
+
+msgid "a p.m. rain or snow shower"
+msgstr "Po południu: przelotny deszcz lub śnieg"
+
+msgid "a p.m. shower"
+msgstr "Po południu: przelotny deszcz"
+
+msgid "a p.m. shower in places"
+msgstr "Po południu: miejscami przelotny deszcz"
+
+msgid "a p.m. shower in the area"
+msgstr "Po południu: miejscami przelotny deszcz"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "Po południu: przelotny deszcz lub burza"
+
+msgid "a p.m. snow shower in spots"
+msgstr "Po południu: miejscami przelotny śnieg"
+
+msgid "a p.m. t-storm"
+msgstr "Po południu: burza"
+
+msgid "a p.m. t-storm in spots"
+msgstr "Po południu: miejscami burze"
+
+msgid "a p.m. t-storm in the area"
+msgstr "Po południu: miejscami burze"
+
+msgid "a p.m. t-storm possible"
+msgstr "Po południu: możliwe burze"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "Po południu: miejscami burze"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "Po południu: pojedyncze burze"
+
+msgid "a passing afternoon shower"
+msgstr "Po południu: krótkotrwałe przelotne deszcze"
+
+msgid "a passing flurry late"
+msgstr "Później: przelotne słabe opady śniegu"
+
+msgid "a passing late-night shower"
+msgstr "Późną nocą: krótkotrwałe przelotne deszcze"
+
+msgid "a passing morning shower"
+msgstr "Rano: krótkotrwałe przelotne deszcze"
+
+msgid "a passing shower"
+msgstr "Krótkotrwałe przelotne deszcze"
+
+msgid "a passing shower late"
+msgstr "Później: krótkotrwałe przelotne deszcze"
+
+msgid "a passing shower or two"
+msgstr "Jeden lub dwa krótkie przelotne deszcze"
+
+msgid "a passing shower this morning"
+msgstr "Dziś rano: krótkotrwałe przelotne deszcze"
+
+msgid "a quick afternoon shower"
+msgstr "Po południu: krótkotrwałe przelotne deszcze"
+
+msgid "a quick shower"
+msgstr "Krótkotrwałe przelotne deszcze"
+
+msgid "a rain and sleet shower"
+msgstr "Przelotny deszcz i deszcz ze śniegiem"
+
+msgid "a rain and sleet shower late"
+msgstr "Później: przelotny deszcz i deszcz ze śniegiem"
+
+msgid "a rain or snow shower"
+msgstr "Przelotny deszcz lub śnieg"
+
+msgid "a rain or snow shower early"
+msgstr "Początkowo: przelotny deszcz lub śnieg"
+
+msgid "a rain or snow shower late"
+msgstr "Później: przelotny deszcz lub śnieg"
+
+msgid "a severe afternoon t-storm"
+msgstr "Po południu: gwałtowne burze"
+
+msgid "a severe thunderstorm"
+msgstr "Gwałtowne burze"
+
+msgid "a shower"
+msgstr "Przelotny deszcz"
+
+msgid "a shower and t-storm around"
+msgstr "Przelotny deszcz, miejscami burze"
+
+msgid "a shower around"
+msgstr "Miejscami przelotny deszcz"
+
+msgid "a shower early"
+msgstr "Początkowo: przelotny deszcz"
+
+msgid "a shower in places"
+msgstr "Miejscami przelotny deszcz"
+
+msgid "a shower in places late"
+msgstr "Później: miejscami przelotny deszcz"
+
+msgid "a shower in spots"
+msgstr "Miejscami przelotny deszcz"
+
+msgid "a shower in spots late"
+msgstr "Później: miejscami przelotny deszcz"
+
+msgid "a shower in the a.m."
+msgstr "Rano: przelotny deszcz"
+
+msgid "a shower in the afternoon"
+msgstr "Po południu: przelotny deszcz"
+
+msgid "a shower in the area"
+msgstr "Miejscami przelotny deszcz"
+
+msgid "a shower in the area late"
+msgstr "Później: miejscami przelotny deszcz"
+
+msgid "a shower in the evening"
+msgstr "Wieczorem: przelotny deszcz"
+
+msgid "a shower in the morning"
+msgstr "Rano: przelotny deszcz"
+
+msgid "a shower in the p.m."
+msgstr "Po południu: przelotny deszcz"
+
+msgid "a shower late"
+msgstr "Później: przelotny deszcz"
+
+msgid "a shower late this afternoon"
+msgstr "Późnym popołudniem: przelotny deszcz"
+
+msgid "a shower late this morning"
+msgstr "Późnym rankiem: przelotny deszcz"
+
+msgid "a shower or heavy t-storm"
+msgstr "Przelotny deszcz lub silna burza"
+
+msgid "a shower or t-storm"
+msgstr "Przelotny deszcz lub burza"
+
+msgid "a shower or t-storm early"
+msgstr "Początkowo: przelotny deszcz lub burza"
+
+msgid "a shower or t-storm in spots"
+msgstr "Miejscami przelotny deszcz lub burza"
+
+msgid "a shower or thunderstorm"
+msgstr "Przelotny deszcz lub burza"
+
+msgid "a shower or two"
+msgstr "Jeden lub dwa przelotne deszcze"
+
+msgid "a shower or two early"
+msgstr "Początkowo: jeden lub dwa przelotne deszcze"
+
+msgid "a shower or two late"
+msgstr "Później: jeden lub dwa przelotne deszcze"
+
+msgid "a shower possible"
+msgstr "Możliwy przelotny deszcz"
+
+msgid "a shower this afternoon"
+msgstr "Dziś po południu: przelotny deszcz"
+
+msgid "a shower this morning"
+msgstr "Dziś rano: przelotny deszcz"
+
+msgid "a shower toward dawn"
+msgstr "Nad ranem: przelotny deszcz"
+
+msgid "a snow shower"
+msgstr "Przelotny opad śniegu"
+
+msgid "a snow shower around"
+msgstr "Przelotny opad śniegu"
+
+msgid "a snow shower around late"
+msgstr "Później: przelotny opad śniegu"
+
+msgid "a snow shower in the morning"
+msgstr "Rano: przelotny opad śniegu"
+
+msgid "a snow shower in the p.m."
+msgstr "Po południu: przelotny opad śniegu"
+
+msgid "a snow shower late"
+msgstr "Później: przelotny opad śniegu"
+
+msgid "a snow shower this afternoon"
+msgstr "Dziś po południu: przelotny opad śniegu"
+
+msgid "a snow shower this evening"
+msgstr "Dziś wieczorem: przelotny opad śniegu"
+
+msgid "a snow shower with low clouds"
+msgstr "Przelotny opad śniegu, niskie chmury"
+
+msgid "a snow squall early"
+msgstr "Początkowo: gwałtowny opad śniegu z porywami wiatru"
+
+msgid "a snow squall in the evening"
+msgstr "Wieczorem: gwałtowny opad śniegu z porywami wiatru"
+
+msgid "a snow squall in the morning"
+msgstr "Rano: gwałtowny opad śniegu z porywami wiatru"
+
+msgid "a snow squall in the p.m."
+msgstr "Po południu: gwałtowny opad śniegu z porywami wiatru"
+
+msgid "a snow squall late"
+msgstr "Później: gwałtowny opad śniegu z porywami wiatru"
+
+msgid "a stray a.m. t-shower"
+msgstr "Rano: miejscami przelotny deszcz z burzą"
+
+msgid "a stray a.m. t-storm"
+msgstr "Rano: miejscami burze"
+
+msgid "a stray afternoon shower"
+msgstr "Po południu: miejscami przelotny deszcz"
+
+msgid "a stray afternoon t-shower"
+msgstr "Po południu: miejscami przelotny deszcz z burzą"
+
+msgid "a stray afternoon t-storm"
+msgstr "Po południu: miejscami burze"
+
+msgid "a stray evening thunderstorm"
+msgstr "Wieczorem: miejscami burze"
+
+msgid "a stray late-night t-storm"
+msgstr "Późną nocą: miejscami burze"
+
+msgid "a stray morning shower"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "a stray morning thunderstorm"
+msgstr "Rano: miejscami burze"
+
+msgid "a stray shower in the morning"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "a stray shower late"
+msgstr "Później: miejscami przelotny deszcz"
+
+msgid "a stray t-shower"
+msgstr "Miejscami przelotny deszcz z burzą"
+
+msgid "a stray t-storm"
+msgstr "Miejscami burze"
+
+msgid "a stray t-storm early"
+msgstr "Początkowo: miejscami burze"
+
+msgid "a stray t-storm this evening"
+msgstr "Dziś wieczorem: miejscami burze"
+
+msgid "a stray thundershower"
+msgstr "Miejscami przelotny deszcz z burzą"
+
+msgid "a stray thunderstorm"
+msgstr "Miejscami burze"
+
+msgid "a stray thunderstorm early"
+msgstr "Początkowo: miejscami burze"
+
+msgid "a stray thunderstorm late"
+msgstr "Później: miejscami burze"
+
+msgid "a strong a.m. t-storm"
+msgstr "Rano: silne burze"
+
+msgid "a strong afternoon t-storm"
+msgstr "Po południu: silne burze"
+
+msgid "a strong evening thunderstorm"
+msgstr "Wieczorem: silne burze"
+
+msgid "a strong late-night t-storm"
+msgstr "Późną nocą: silne burze"
+
+msgid "a strong morning thunderstorm"
+msgstr "Rano: silne burze"
+
+msgid "a strong t-storm"
+msgstr "Silne burze"
+
+msgid "a strong t-storm in spots"
+msgstr "Miejscami silne burze"
+
+msgid "a strong t-storm late"
+msgstr "Później: silne burze"
+
+msgid "a strong t-storm possible"
+msgstr "Możliwe silne burze"
+
+msgid "a strong t-storm this evening"
+msgstr "Dziś wieczorem: silne burze"
+
+msgid "a strong thunderstorm"
+msgstr "Silne burze"
+
+msgid "a strong thunderstorm early"
+msgstr "Początkowo: silne burze"
+
+msgid "a strong thunderstorm late"
+msgstr "Później: silne burze"
+
+msgid "a t-shower in spots"
+msgstr "Miejscami przelotny deszcz z burzą"
+
+msgid "a t-shower in spots early"
+msgstr "Początkowo: miejscami przelotny deszcz z burzą"
+
+msgid "a t-shower in the afternoon"
+msgstr "Po południu: przelotny deszcz z burzą"
+
+msgid "a t-storm"
+msgstr "Burza"
+
+msgid "a t-storm around in the a.m."
+msgstr "Rano: miejscami burze"
+
+msgid "a t-storm around in the p.m."
+msgstr "Po południu: miejscami burze"
+
+msgid "a t-storm around late"
+msgstr "Później: miejscami burze"
+
+msgid "a t-storm around this evening"
+msgstr "Dziś wieczorem: miejscami burze"
+
+msgid "a t-storm early"
+msgstr "Początkowo: burza"
+
+msgid "a t-storm in spots"
+msgstr "Miejscami burze"
+
+msgid "a t-storm in the afternoon"
+msgstr "Po południu: burza"
+
+msgid "a t-storm in the area late"
+msgstr "Później: miejscami burze"
+
+msgid "a t-storm in the p.m."
+msgstr "Po południu: burza"
+
+msgid "a t-storm late"
+msgstr "Później: burza"
+
+msgid "a t-storm late this afternoon"
+msgstr "Późnym popołudniem: burza"
+
+msgid "a t-storm late this evening"
+msgstr "Późnym wieczorem: burza"
+
+msgid "a t-storm late this morning"
+msgstr "Późnym rankiem: burza"
+
+msgid "a t-storm or two"
+msgstr "Pojedyncze burze"
+
+msgid "a t-storm possible"
+msgstr "Możliwe burze"
+
+msgid "a thick cloud cover"
+msgstr "Pochmurno"
+
+msgid "a thick cloud cover and hot"
+msgstr "Pochmurno, gorąco"
+
+msgid "a thundershower"
+msgstr "Przelotny deszcz z burzą"
+
+msgid "a thundershower in spots"
+msgstr "Miejscami przelotny deszcz z burzą"
+
+msgid "a thundershower in spots late"
+msgstr "Później: miejscami przelotny deszcz z burzą"
+
+msgid "a thundershower late"
+msgstr "Później: przelotny deszcz z burzą"
+
+msgid "a thundershower on the prowl"
+msgstr "Miejscami przelotny deszcz z burzą"
+
+msgid "a thunderstorm"
+msgstr "Burza"
+
+msgid "a thunderstorm around"
+msgstr "Miejscami burze"
+
+msgid "a thunderstorm around early"
+msgstr "Początkowo: miejscami burze"
+
+msgid "a thunderstorm around late"
+msgstr "Później: miejscami burze"
+
+msgid "a thunderstorm early"
+msgstr "Początkowo: burza"
+
+msgid "a thunderstorm in spots"
+msgstr "Miejscami burze"
+
+msgid "a thunderstorm in spots early"
+msgstr "Początkowo: miejscami burze"
+
+msgid "a thunderstorm in spots late"
+msgstr "Później: miejscami burze"
+
+msgid "a thunderstorm in the area"
+msgstr "Miejscami burze"
+
+msgid "a thunderstorm in the evening"
+msgstr "Wieczorem: burza"
+
+msgid "a thunderstorm in the morning"
+msgstr "Rano: burza"
+
+msgid "a thunderstorm late"
+msgstr "Później: burza"
+
+msgid "a thunderstorm or two"
+msgstr "Pojedyncze burze"
+
+msgid "a thunderstorm or two early"
+msgstr "Początkowo: pojedyncze burze"
+
+msgid "a thunderstorm or two late"
+msgstr "Później: pojedyncze burze"
+
+msgid "a thunderstorm possible"
+msgstr "Możliwe burze"
+
+msgid "a thunderstorm this afternoon"
+msgstr "Dziś po południu: burza"
+
+msgid "a thunderstorm this evening"
+msgstr "Dziś wieczorem: burza"
+
+msgid "a thunderstorm this morning"
+msgstr "Dziś rano: burza"
+
+msgid "a touch of afternoon rain"
+msgstr "Po południu: niewielki deszcz"
+
+msgid "a touch of evening rain"
+msgstr "Wieczorem: niewielki deszcz"
+
+msgid "a touch of late-night rain"
+msgstr "Późną nocą: niewielki deszcz"
+
+msgid "a touch of morning rain"
+msgstr "Rano: niewielki deszcz"
+
+msgid "a touch of rain"
+msgstr "Niewielki deszcz"
+
+msgid "a touch of rain late"
+msgstr "Później: niewielki deszcz"
+
+msgid "a wintry mix"
+msgstr "Mieszane opady zimowe"
+
+msgid "a wintry mix in the morning"
+msgstr "Rano: mieszane opady zimowe"
+
+msgid "a wintry mix late"
+msgstr "Później: mieszane opady zimowe"
+
+msgid "a wintry mix this morning"
+msgstr "Dziś rano: mieszane opady zimowe"
+
+msgid "a.m. flurries"
+msgstr "Rano: przelotne słabe opady śniegu"
+
+msgid "a.m. rain"
+msgstr "Rano: deszcz"
+
+msgid "a.m. showers"
+msgstr "Rano: przelotne opady deszczu"
+
+msgid "abundant sunshine"
+msgstr "Dużo słońca"
+
+msgid "abundant sunshine and breezy"
+msgstr "Dużo słońca, lekko wietrznie"
+
+msgid "abundant sunshine and hot"
+msgstr "Dużo słońca, gorąco"
+
+msgid "abundant sunshine and nice"
+msgstr "Dużo słońca, przyjemna pogoda"
+
+msgid "abundant sunshine and warm"
+msgstr "Dużo słońca, ciepło"
+
+msgid "abundant sunshine and warmer"
+msgstr "Dużo słońca, cieplej"
+
+msgid "afternoon flurries"
+msgstr "Po południu: przelotne słabe opady śniegu"
+
+msgid "afternoon rain"
+msgstr "Po południu: deszcz"
+
+msgid "afternoon showers"
+msgstr "Po południu: przelotne opady deszczu"
+
+msgid "afternoon snow"
+msgstr "Po południu: śnieg"
+
+msgid "afternoon snow showers"
+msgstr "Po południu: przelotny śnieg"
+
+msgid "afternoon t-storms"
+msgstr "Po południu: burze"
+
+msgid "afternoon thundershowers"
+msgstr "Po południu: przelotny deszcz z burzą"
+
+msgid "afternoon thunderstorms"
+msgstr "Po południu: burze"
+
+msgid "an a.m. flurry"
+msgstr "Rano: przelotne słabe opady śniegu"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "Rano: przelotny deszcz i deszcz ze śniegiem"
+
+msgid "an a.m. rain or snow shower"
+msgstr "Rano: przelotny deszcz lub śnieg"
+
+msgid "an a.m. shower"
+msgstr "Rano: przelotny deszcz"
+
+msgid "an a.m. shower or two"
+msgstr "Rano: jeden lub dwa przelotne deszcze"
+
+msgid "an a.m. t-storm"
+msgstr "Rano: burza"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "Rano: miejscami burze"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "Rano: pojedyncze burze"
+
+msgid "an afternoon shower"
+msgstr "Po południu: przelotny deszcz"
+
+msgid "an afternoon shower in spots"
+msgstr "Po południu: miejscami przelotny deszcz"
+
+msgid "an afternoon shower or two"
+msgstr "Po południu: jeden lub dwa przelotne deszcze"
+
+msgid "an afternoon shower possible"
+msgstr "Po południu: możliwy przelotny deszcz"
+
+msgid "an afternoon snow showers"
+msgstr "Po południu: przelotny opad śniegu"
+
+msgid "an afternoon t-storm"
+msgstr "Po południu: burza"
+
+msgid "an afternoon t-storm or two"
+msgstr "Po południu: pojedyncze burze"
+
+msgid "an afternoon thundershower"
+msgstr "Po południu: przelotny deszcz z burzą"
+
+msgid "an afternoon thunderstorm"
+msgstr "Po południu: burza"
+
+msgid "an evening shower"
+msgstr "Wieczorem: przelotny deszcz"
+
+msgid "an evening shower in the area"
+msgstr "Wieczorem: miejscami przelotny deszcz"
+
+msgid "an evening shower or t-storm"
+msgstr "Wieczorem: przelotny deszcz lub burza"
+
+msgid "an evening shower or two"
+msgstr "Wieczorem: jeden lub dwa przelotne deszcze"
+
+msgid "an evening t-storm in spots"
+msgstr "Wieczorem: miejscami burze"
+
+msgid "an evening t-storm or two"
+msgstr "Wieczorem: pojedyncze burze"
+
+msgid "an evening thundershower"
+msgstr "Wieczorem: przelotny deszcz z burzą"
+
+msgid "an evening thunderstorm"
+msgstr "Wieczorem: burza"
+
+msgid "areas of fog"
+msgstr "Miejscami mgła"
+
+msgid "areas of fog in the morning"
+msgstr "Rano: miejscami mgła"
+
+msgid "areas of low clouds"
+msgstr "Miejscami niskie chmury"
+
+msgid "areas of low clouds and cold"
+msgstr "Miejscami niskie chmury, zimno"
+
+msgid "areas of low clouds and fog"
+msgstr "Miejscami niskie chmury, mgła"
+
+msgid "be advised for strong winds"
+msgstr "Uwaga na silny wiatr"
+
+msgid "beautiful"
+msgstr "Przyjemna pogoda"
+
+msgid "beautiful with clouds and sun"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "beautiful with periods of sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "beautiful with plenty of sun"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "beautiful with some sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "beautiful with sun and clouds"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "beautiful with sunshine"
+msgstr "Przyjemna pogoda, słonecznie"
+
+msgid "becoming clear"
+msgstr "Rozpogodzenia"
+
+msgid "becoming clear and chilly"
+msgstr "Rozpogodzenia, przenikliwy chłód"
+
+msgid "becoming clear and cold"
+msgstr "Rozpogodzenia, zimno"
+
+msgid "becoming clear and colder"
+msgstr "Rozpogodzenia, zimniej"
+
+msgid "becoming clear and cool"
+msgstr "Rozpogodzenia, chłodno"
+
+msgid "becoming clear and cooler"
+msgstr "Rozpogodzenia, chłodniej"
+
+msgid "becoming clear and mild"
+msgstr "Rozpogodzenia, łagodna temperatura"
+
+msgid "becoming clear and very warm"
+msgstr "Rozpogodzenia, bardzo ciepło"
+
+msgid "becoming clear and warm"
+msgstr "Rozpogodzenia, ciepło"
+
+msgid "becoming clear with a shower"
+msgstr "Rozpogodzenia, przelotny deszcz"
+
+msgid "becoming cloudy"
+msgstr "Wzrost zachmurzenia"
+
+msgid "becoming cloudy and breezy"
+msgstr "Wzrost zachmurzenia, lekko wietrznie"
+
+msgid "becoming cloudy and chilly"
+msgstr "Wzrost zachmurzenia, przenikliwy chłód"
+
+msgid "becoming cloudy and cold"
+msgstr "Wzrost zachmurzenia, zimno"
+
+msgid "becoming cloudy and cooler"
+msgstr "Wzrost zachmurzenia, chłodniej"
+
+msgid "becoming cloudy and hot"
+msgstr "Wzrost zachmurzenia, gorąco"
+
+msgid "becoming cloudy and humid"
+msgstr "Wzrost zachmurzenia, wilgotno"
+
+msgid "becoming cloudy and mild"
+msgstr "Wzrost zachmurzenia, łagodna temperatura"
+
+msgid "becoming cloudy and very warm"
+msgstr "Wzrost zachmurzenia, bardzo ciepło"
+
+msgid "becoming cloudy and warm"
+msgstr "Wzrost zachmurzenia, ciepło"
+
+msgid "becoming cloudy and warmer"
+msgstr "Wzrost zachmurzenia, cieplej"
+
+msgid "becoming cloudy with a shower"
+msgstr "Wzrost zachmurzenia, przelotny deszcz"
+
+msgid "becoming partly cloudy"
+msgstr "Z czasem częściowe zachmurzenie"
+
+msgid "becoming windier and colder"
+msgstr "Wiatr się nasila, zimniej"
+
+msgid "becoming windier and cooler"
+msgstr "Wiatr się nasila, chłodniej"
+
+msgid "bitterly cold"
+msgstr "Siarczysty mróz"
+
+msgid "bitterly cold in the evening"
+msgstr "Wieczorem: siarczysty mróz"
+
+msgid "bitterly cold with clearing"
+msgstr "Siarczysty mróz, rozpogodzenia"
+
+msgid "bitterly cold with low clouds"
+msgstr "Siarczysty mróz, niskie chmury"
+
+msgid "blazing sunshine and hot"
+msgstr "Palące słońce, gorąco"
+
+msgid "blazing sunshine and warmer"
+msgstr "Palące słońce, cieplej"
+
+msgid "blowing dust"
+msgstr "Pył unoszony przez wiatr"
+
+msgid "blowing dust with high clouds"
+msgstr "Pył unoszony przez wiatr, wysokie chmury"
+
+msgid "blowing snow"
+msgstr "Zamieć śnieżna"
+
+msgid "breezy and cold"
+msgstr "Lekko wietrznie, zimno"
+
+msgid "breezy and colder with rain"
+msgstr "Lekko wietrznie, zimniej, deszcz"
+
+msgid "breezy and cool"
+msgstr "Lekko wietrznie, chłodno"
+
+msgid "breezy and cool with some sun"
+msgstr "Lekko wietrznie, chłodno, chwilami słońce"
+
+msgid "breezy and cooler with clouds"
+msgstr "Lekko wietrznie, chłodniej, pochmurno"
+
+msgid "breezy and cooler with rain"
+msgstr "Lekko wietrznie, chłodniej, deszcz"
+
+msgid "breezy and hot with sunshine"
+msgstr "Lekko wietrznie, gorąco, słonecznie"
+
+msgid "breezy and humid"
+msgstr "Lekko wietrznie, wilgotno"
+
+msgid "breezy and mild"
+msgstr "Lekko wietrznie, łagodna temperatura"
+
+msgid "breezy and mild with rain"
+msgstr "Lekko wietrznie, łagodna temperatura, deszcz"
+
+msgid "breezy and nice"
+msgstr "Lekko wietrznie, przyjemna pogoda"
+
+msgid "breezy and nice with some sun"
+msgstr "Lekko wietrznie, przyjemna pogoda, chwilami słońce"
+
+msgid "breezy and nice with sunshine"
+msgstr "Lekko wietrznie, przyjemna pogoda, słonecznie"
+
+msgid "breezy and pleasant"
+msgstr "Lekko wietrznie, przyjemna pogoda"
+
+msgid "breezy and quite cold"
+msgstr "Lekko wietrznie, dość zimno"
+
+msgid "breezy and very cold"
+msgstr "Lekko wietrznie, bardzo zimno"
+
+msgid "breezy and warm with some sun"
+msgstr "Lekko wietrznie, ciepło, chwilami słońce"
+
+msgid "breezy early"
+msgstr "Początkowo: lekko wietrznie"
+
+msgid "breezy in the a.m."
+msgstr "Rano: lekko wietrznie"
+
+msgid "breezy in the afternoon"
+msgstr "Po południu: lekko wietrznie"
+
+msgid "breezy in the morning"
+msgstr "Rano: lekko wietrznie"
+
+msgid "breezy this morning"
+msgstr "Dziś rano: lekko wietrznie"
+
+msgid "breezy with clearing"
+msgstr "Lekko wietrznie, rozpogodzenia"
+
+msgid "breezy with clouds and sun"
+msgstr "Lekko wietrznie, na przemian słońce i chmury"
+
+msgid "breezy with decreasing clouds"
+msgstr "Lekko wietrznie, zachmurzenie maleje"
+
+msgid "breezy with high clouds"
+msgstr "Lekko wietrznie, wysokie chmury"
+
+msgid "breezy with increasing clouds"
+msgstr "Lekko wietrznie, wzrost zachmurzenia"
+
+msgid "breezy with lots of sun"
+msgstr "Lekko wietrznie, dużo słońca"
+
+msgid "breezy with partial sunshine"
+msgstr "Lekko wietrznie, chwilami słońce"
+
+msgid "breezy with patchy clouds"
+msgstr "Lekko wietrznie, miejscami zachmurzenie"
+
+msgid "breezy with periods of rain"
+msgstr "Lekko wietrznie, okresami deszcz"
+
+msgid "breezy with periods of snow"
+msgstr "Lekko wietrznie, okresami śnieg"
+
+msgid "breezy with periods of sun"
+msgstr "Lekko wietrznie, chwilami słońce"
+
+msgid "breezy with plenty of sun"
+msgstr "Lekko wietrznie, dużo słońca"
+
+msgid "breezy with rain"
+msgstr "Lekko wietrznie, deszcz"
+
+msgid "breezy with rain and drizzle"
+msgstr "Lekko wietrznie, deszcz i mżawka"
+
+msgid "breezy with snow"
+msgstr "Lekko wietrznie, śnieg"
+
+msgid "breezy with some sun"
+msgstr "Lekko wietrznie, chwilami słońce"
+
+msgid "breezy with sun and clouds"
+msgstr "Lekko wietrznie, na przemian słońce i chmury"
+
+msgid "breezy with sunny intervals"
+msgstr "Lekko wietrznie, chwilami słońce"
+
+msgid "breezy with sunshine"
+msgstr "Lekko wietrznie, słonecznie"
+
+msgid "breezy with variable clouds"
+msgstr "Lekko wietrznie, zmienne zachmurzenie"
+
+msgid "brief a.m. showers"
+msgstr "Rano: krótkotrwałe przelotne deszcze"
+
+msgid "brief afternoon showers"
+msgstr "Po południu: krótkotrwałe przelotne deszcze"
+
+msgid "brief evening showers"
+msgstr "Wieczorem: krótkotrwałe przelotne deszcze"
+
+msgid "brief late-night showers"
+msgstr "Późną nocą: krótkotrwałe przelotne deszcze"
+
+msgid "brief morning showers"
+msgstr "Rano: krótkotrwałe przelotne deszcze"
+
+msgid "brief showers"
+msgstr "Krótkotrwałe przelotne deszcze"
+
+msgid "brief showers early"
+msgstr "Początkowo: krótkotrwałe przelotne deszcze"
+
+msgid "brief showers in the evening"
+msgstr "Wieczorem: krótkotrwałe przelotne deszcze"
+
+msgid "brief showers in the morning"
+msgstr "Rano: krótkotrwałe przelotne deszcze"
+
+msgid "brief showers late"
+msgstr "Później: krótkotrwałe przelotne deszcze"
+
+msgid "brief showers this afternoon"
+msgstr "Dziś po południu: krótkotrwałe przelotne deszcze"
+
+msgid "brilliant sunshine"
+msgstr "Pełne słońce"
+
+msgid "brilliant sunshine and breezy"
+msgstr "Pełne słońce, lekko wietrznie"
+
+msgid "brilliant sunshine and hot"
+msgstr "Pełne słońce, gorąco"
+
+msgid "brilliant sunshine and hotter"
+msgstr "Pełne słońce, goręcej"
+
+msgid "brilliant sunshine and nice"
+msgstr "Pełne słońce, przyjemna pogoda"
+
+msgid "brilliant sunshine and warm"
+msgstr "Pełne słońce, ciepło"
+
+msgid "brilliant sunshine and warmer"
+msgstr "Pełne słońce, cieplej"
+
+msgid "brisk and chilly"
+msgstr "Dość silny wiatr, przenikliwy chłód"
+
+msgid "brisk and cold"
+msgstr "Dość silny wiatr, zimno"
+
+msgid "brisk and very cold"
+msgstr "Dość silny wiatr, bardzo zimno"
+
+msgid "but chilly"
+msgstr "Ale przenikliwy chłód"
+
+msgid "but cold"
+msgstr "Ale zimno"
+
+msgid "but very cold"
+msgstr "Ale bardzo zimno"
+
+msgid "chance for a strong t-storm"
+msgstr "Możliwe silne burze"
+
+msgid "chance for a thunderstorm"
+msgstr "Możliwe burze"
+
+msgid "chance for rain"
+msgstr "Możliwy deszcz"
+
+msgid "chance of a little a.m. rain"
+msgstr "Rano: możliwy niewielki deszcz"
+
+msgid "chance of a little p.m. rain"
+msgstr "Po południu: możliwy niewielki deszcz"
+
+msgid "chance of a shower"
+msgstr "Możliwy przelotny deszcz"
+
+msgid "chance of a thunderstorm"
+msgstr "Możliwe burze"
+
+msgid "chilly"
+msgstr "Przenikliwy chłód"
+
+msgid "chilly whit partial sunshine"
+msgstr "Przenikliwy chłód, chwilami słońce"
+
+msgid "chilly whit some sun"
+msgstr "Przenikliwy chłód, chwilami słońce"
+
+msgid "chilly with a little snow"
+msgstr "Przenikliwy chłód, niewielkie opady śniegu"
+
+msgid "chilly with clearing"
+msgstr "Przenikliwy chłód, rozpogodzenia"
+
+msgid "chilly with clouds and sun"
+msgstr "Przenikliwy chłód, na przemian słońce i chmury"
+
+msgid "chilly with increasing clouds"
+msgstr "Przenikliwy chłód, wzrost zachmurzenia"
+
+msgid "chilly with low clouds"
+msgstr "Przenikliwy chłód, niskie chmury"
+
+msgid "chilly with occasional rain"
+msgstr "Przenikliwy chłód, okresami deszcz"
+
+msgid "chilly with partial sunshine"
+msgstr "Przenikliwy chłód, chwilami słońce"
+
+msgid "chilly with patchy clouds"
+msgstr "Przenikliwy chłód, miejscami zachmurzenie"
+
+msgid "chilly with periods of rain"
+msgstr "Przenikliwy chłód, okresami deszcz"
+
+msgid "chilly with periods of snow"
+msgstr "Przenikliwy chłód, okresami śnieg"
+
+msgid "chilly with periods of sun"
+msgstr "Przenikliwy chłód, chwilami słońce"
+
+msgid "chilly with plenty of sun"
+msgstr "Przenikliwy chłód, dużo słońca"
+
+msgid "chilly with rain"
+msgstr "Przenikliwy chłód, deszcz"
+
+msgid "chilly with rain and drizzle"
+msgstr "Przenikliwy chłód, deszcz i mżawka"
+
+msgid "chilly with snow and rain"
+msgstr "Przenikliwy chłód, deszcz i śnieg"
+
+msgid "chilly with some sun"
+msgstr "Przenikliwy chłód, chwilami słońce"
+
+msgid "chilly with sun and clouds"
+msgstr "Przenikliwy chłód, na przemian słońce i chmury"
+
+msgid "chilly with variable clouds"
+msgstr "Przenikliwy chłód, zmienne zachmurzenie"
+
+msgid "clear and bitterly cold"
+msgstr "Pogodnie, siarczysty mróz"
+
+msgid "clear and breezy"
+msgstr "Pogodnie, lekko wietrznie"
+
+msgid "clear and chilly"
+msgstr "Pogodnie, przenikliwy chłód"
+
+msgid "clear and cold"
+msgstr "Pogodnie, zimno"
+
+msgid "clear and colder"
+msgstr "Pogodnie, zimniej"
+
+msgid "clear and cool"
+msgstr "Pogodnie, chłodno"
+
+msgid "clear and cooler"
+msgstr "Pogodnie, chłodniej"
+
+msgid "clear and dry"
+msgstr "Pogodnie, sucho"
+
+msgid "clear and frigid"
+msgstr "Pogodnie, siarczysty mróz"
+
+msgid "clear and humid"
+msgstr "Pogodnie, wilgotno"
+
+msgid "clear and mild"
+msgstr "Pogodnie, łagodna temperatura"
+
+msgid "clear and much colder"
+msgstr "Pogodnie, znacznie zimniej"
+
+msgid "clear and not as warm"
+msgstr "Pogodnie, nie tak ciepło"
+
+msgid "clear and quite cold"
+msgstr "Pogodnie, dość zimno"
+
+msgid "clear and seasonably cool"
+msgstr "Pogodnie, chłodno jak zwykle o tej porze roku"
+
+msgid "clear and seasonably warm"
+msgstr "Pogodnie, ciepło typowe dla pory roku"
+
+msgid "clear and unseasonably cold"
+msgstr "Pogodnie, nietypowo zimno jak na tę porę roku"
+
+msgid "clear and very cold"
+msgstr "Pogodnie, bardzo zimno"
+
+msgid "clear and very humid"
+msgstr "Pogodnie, bardzo wilgotno"
+
+msgid "clear and very warm"
+msgstr "Pogodnie, bardzo ciepło"
+
+msgid "clear and warm"
+msgstr "Pogodnie, ciepło"
+
+msgid "clear and warmer"
+msgstr "Pogodnie, cieplej"
+
+msgid "clear to partly cloudy"
+msgstr "Bezchmurnie lub częściowe zachmurzenie"
+
+msgid "clear with a gusty breeze"
+msgstr "Pogodnie, porywisty wiatr"
+
+msgid "clearing"
+msgstr "Rozpogodzenia"
+
+msgid "clearing and a few showers"
+msgstr "Rozpogodzenia, pojedyncze przelotne deszcze"
+
+msgid "clearing and a stray t-storm"
+msgstr "Rozpogodzenia, miejscami burze"
+
+msgid "clearing and chilly"
+msgstr "Rozpogodzenia, przenikliwy chłód"
+
+msgid "clearing and cold"
+msgstr "Rozpogodzenia, zimno"
+
+msgid "clearing and colder"
+msgstr "Rozpogodzenia, zimniej"
+
+msgid "clearing and cool"
+msgstr "Rozpogodzenia, chłodno"
+
+msgid "clearing and cooler"
+msgstr "Rozpogodzenia, chłodniej"
+
+msgid "clearing and hot"
+msgstr "Rozpogodzenia, gorąco"
+
+msgid "clearing and humid"
+msgstr "Rozpogodzenia, wilgotno"
+
+msgid "clearing and mild"
+msgstr "Rozpogodzenia, łagodna temperatura"
+
+msgid "clearing and nice"
+msgstr "Rozpogodzenia, przyjemna pogoda"
+
+msgid "clearing and not as warm"
+msgstr "Rozpogodzenia, nie tak ciepło"
+
+msgid "clearing and pleasant"
+msgstr "Rozpogodzenia, przyjemna pogoda"
+
+msgid "clearing and showers around"
+msgstr "Rozpogodzenia, miejscami przelotny deszcz"
+
+msgid "clearing and spotty showers"
+msgstr "Rozpogodzenia, miejscami przelotny deszcz"
+
+msgid "clearing and summerlike"
+msgstr "Rozpogodzenia, letnia pogoda"
+
+msgid "clearing and unseasonably hot"
+msgstr "Rozpogodzenia, wyjątkowo gorąco jak na tę porę roku"
+
+msgid "clearing and very cold"
+msgstr "Rozpogodzenia, bardzo zimno"
+
+msgid "clearing and very warm"
+msgstr "Rozpogodzenia, bardzo ciepło"
+
+msgid "clearing and warm"
+msgstr "Rozpogodzenia, ciepło"
+
+msgid "clearing and warmer"
+msgstr "Rozpogodzenia, cieplej"
+
+msgid "clearing with a shower late"
+msgstr "Rozpogodzenia. Później: przelotny deszcz"
+
+msgid "clouding up"
+msgstr "Wzrost zachmurzenia"
+
+msgid "clouding up with a shower"
+msgstr "Wzrost zachmurzenia, przelotny deszcz"
+
+msgid "clouds"
+msgstr "Pochmurno"
+
+msgid "clouds and a few showers"
+msgstr "Pochmurno, pojedyncze przelotne deszcze"
+
+msgid "clouds and a stray t-storm"
+msgstr "Pochmurno, miejscami burze"
+
+msgid "clouds and a t-storm in spots"
+msgstr "Pochmurno, miejscami burze"
+
+msgid "clouds and becoming rainy"
+msgstr "Pochmurno, zacznie padać deszcz"
+
+msgid "clouds and breaks of sun"
+msgstr "Pochmurno, chwilami słońce"
+
+msgid "clouds and fog"
+msgstr "Pochmurno, mgła"
+
+msgid "clouds and limited sun"
+msgstr "Pochmurno, niewiele słońca"
+
+msgid "clouds and showers"
+msgstr "Pochmurno, przelotne opady deszczu"
+
+msgid "clouds and showers around"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "clouds and spotty showers"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "clouds and sun"
+msgstr "Na przemian słońce i chmury"
+
+msgid "clouds and sun with a shower"
+msgstr "Na przemian słońce i chmury, przelotny deszcz"
+
+msgid "clouds and sun with a t-storm"
+msgstr "Na przemian słońce i chmury, burza"
+
+msgid "clouds and sun with showers"
+msgstr "Na przemian słońce i chmury, przelotne opady deszczu"
+
+msgid "clouds and sunshine"
+msgstr "Na przemian słońce i chmury"
+
+msgid "clouds and very warm"
+msgstr "Pochmurno, bardzo ciepło"
+
+msgid "clouds and warm"
+msgstr "Pochmurno, ciepło"
+
+msgid "clouds and warm with a shower"
+msgstr "Pochmurno, ciepło, przelotny deszcz"
+
+msgid "clouds break for sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds breaking"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds breaking and beautiful"
+msgstr "Zachmurzenie maleje, przyjemna pogoda"
+
+msgid "clouds breaking and chilly"
+msgstr "Zachmurzenie maleje, przenikliwy chłód"
+
+msgid "clouds breaking and pleasant"
+msgstr "Zachmurzenie maleje, przyjemna pogoda"
+
+msgid "clouds breaking and very warm"
+msgstr "Zachmurzenie maleje, bardzo ciepło"
+
+msgid "clouds breaking for some sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds breaking for sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds breaking with a shower"
+msgstr "Zachmurzenie maleje, przelotny deszcz"
+
+msgid "clouds giving way to some sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds giving way to sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds limiting sun"
+msgstr "Chmury przesłaniają słońce"
+
+msgid "clouds limiting sunshine"
+msgstr "Chmury przesłaniają słońce"
+
+msgid "clouds rolling in"
+msgstr "Nadciągają chmury"
+
+msgid "clouds rolling in and humid"
+msgstr "Nadciągają chmury, wilgotno"
+
+msgid "clouds with a shower late"
+msgstr "Pochmurno. Później: przelotny deszcz"
+
+msgid "clouds with downpours late"
+msgstr "Pochmurno. Później: ulewy"
+
+msgid "clouds with snow late"
+msgstr "Pochmurno. Później: śnieg"
+
+msgid "clouds yielding to some sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "clouds yielding to sun"
+msgstr "Zachmurzenie maleje"
+
+msgid "cloudy and becoming rainy"
+msgstr "Pochmurno, zacznie padać deszcz"
+
+msgid "cloudy and bitterly cold"
+msgstr "Pochmurno, siarczysty mróz"
+
+msgid "cloudy and breezy"
+msgstr "Pochmurno, lekko wietrznie"
+
+msgid "cloudy and chilly"
+msgstr "Pochmurno, przenikliwy chłód"
+
+msgid "cloudy and cold"
+msgstr "Pochmurno, zimno"
+
+msgid "cloudy and colder"
+msgstr "Pochmurno, zimniej"
+
+msgid "cloudy and comfortable"
+msgstr "Pochmurno, przyjemna pogoda"
+
+msgid "cloudy and cool"
+msgstr "Pochmurno, chłodno"
+
+msgid "cloudy and cool with a shower"
+msgstr "Pochmurno, chłodno, przelotny deszcz"
+
+msgid "cloudy and cool with showers"
+msgstr "Pochmurno, chłodno, przelotne opady deszczu"
+
+msgid "cloudy and cooler"
+msgstr "Pochmurno, chłodniej"
+
+msgid "cloudy and frigid"
+msgstr "Pochmurno, siarczysty mróz"
+
+msgid "cloudy and hot"
+msgstr "Pochmurno, gorąco"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "Pochmurno, gorąco, burza"
+
+msgid "cloudy and humid"
+msgstr "Pochmurno, wilgotno"
+
+msgid "cloudy and humid with showers"
+msgstr "Pochmurno, wilgotno, przelotne opady deszczu"
+
+msgid "cloudy and less humid"
+msgstr "Pochmurno, mniejsza wilgotność"
+
+msgid "cloudy and mild"
+msgstr "Pochmurno, łagodna temperatura"
+
+msgid "cloudy and mild with a shower"
+msgstr "Pochmurno, łagodna temperatura, przelotny deszcz"
+
+msgid "cloudy and milder"
+msgstr "Pochmurno, łagodniejsza temperatura"
+
+msgid "cloudy and not as cold"
+msgstr "Pochmurno, nie tak zimno"
+
+msgid "cloudy and not as cool"
+msgstr "Pochmurno, nie tak chłodno"
+
+msgid "cloudy and not as hot"
+msgstr "Pochmurno, mniej gorąco"
+
+msgid "cloudy and not as warm"
+msgstr "Pochmurno, nie tak ciepło"
+
+msgid "cloudy and remaining cool"
+msgstr "Pochmurno, nadal chłodno"
+
+msgid "cloudy and remaining warm"
+msgstr "Pochmurno, nadal ciepło"
+
+msgid "cloudy and seasonably cold"
+msgstr "Pochmurno, zimno typowe dla pory roku"
+
+msgid "cloudy and seasonably cool"
+msgstr "Pochmurno, chłodno jak zwykle o tej porze roku"
+
+msgid "cloudy and seasonably warm"
+msgstr "Pochmurno, ciepło typowe dla pory roku"
+
+msgid "cloudy and turning colder"
+msgstr "Pochmurno, zimniej"
+
+msgid "cloudy and very cold"
+msgstr "Pochmurno, bardzo zimno"
+
+msgid "cloudy and very humid"
+msgstr "Pochmurno, bardzo wilgotno"
+
+msgid "cloudy and very warm"
+msgstr "Pochmurno, bardzo ciepło"
+
+msgid "cloudy and warm"
+msgstr "Pochmurno, ciepło"
+
+msgid "cloudy and warm with a shower"
+msgstr "Pochmurno, ciepło, przelotny deszcz"
+
+msgid "cloudy and warmer"
+msgstr "Pochmurno, cieplej"
+
+msgid "cloudy and windy"
+msgstr "Pochmurno, wietrznie"
+
+msgid "cloudy and windy with showers"
+msgstr "Pochmurno, wietrznie, przelotne opady deszczu"
+
+msgid "cloudy most of the time"
+msgstr "Przeważnie pochmurno"
+
+msgid "cloudy spells with a t-storm"
+msgstr "Okresami pochmurno, burza"
+
+msgid "cloudy to partly sunny"
+msgstr "Początkowo pochmurno, później przejaśnienia"
+
+msgid "cloudy with a bit of ice"
+msgstr "Pochmurno, miejscami oblodzenie"
+
+msgid "cloudy with a bit of ice late"
+msgstr "Pochmurno. Później: miejscami oblodzenie"
+
+msgid "cloudy with a bit of rain"
+msgstr "Pochmurno, niewielki deszcz"
+
+msgid "cloudy with a bit of snow"
+msgstr "Pochmurno, niewielkie opady śniegu"
+
+msgid "cloudy with a brief shower"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "cloudy with a chance of rain"
+msgstr "Pochmurno, możliwy deszcz"
+
+msgid "cloudy with a downpour late"
+msgstr "Pochmurno. Później: ulewy"
+
+msgid "cloudy with a few flurries"
+msgstr "Pochmurno, pojedyncze słabe przelotne opady śniegu"
+
+msgid "cloudy with a few showers"
+msgstr "Pochmurno, pojedyncze przelotne deszcze"
+
+msgid "cloudy with a few snowflakes"
+msgstr "Pochmurno, pojedyncze płatki śniegu"
+
+msgid "cloudy with a flurry"
+msgstr "Pochmurno, przelotne słabe opady śniegu"
+
+msgid "cloudy with a flurry late"
+msgstr "Pochmurno. Później: przelotne słabe opady śniegu"
+
+msgid "cloudy with a flurry or two"
+msgstr "Pochmurno, pojedyncze słabe przelotne opady śniegu"
+
+msgid "cloudy with a heavy shower"
+msgstr "Pochmurno, silne przelotne deszcze"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "Pochmurno, silne burze"
+
+msgid "cloudy with a little rain"
+msgstr "Pochmurno, niewielki deszcz"
+
+msgid "cloudy with a little snow"
+msgstr "Pochmurno, niewielkie opady śniegu"
+
+msgid "cloudy with a passing shower"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "cloudy with a quick shower"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "cloudy with a shower"
+msgstr "Pochmurno, przelotny deszcz"
+
+msgid "cloudy with a shower in spots"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "cloudy with a shower late"
+msgstr "Pochmurno. Później: przelotny deszcz"
+
+msgid "cloudy with a shower or two"
+msgstr "Pochmurno, jeden lub dwa przelotne deszcze"
+
+msgid "cloudy with a shower possible"
+msgstr "Pochmurno, możliwy przelotny deszcz"
+
+msgid "cloudy with a snow shower"
+msgstr "Pochmurno, przelotny opad śniegu"
+
+msgid "cloudy with a stray flurry"
+msgstr "Pochmurno, pojedyncze słabe przelotne opady śniegu"
+
+msgid "cloudy with a stray shower"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "cloudy with a stray t-shower"
+msgstr "Pochmurno, miejscami przelotny deszcz z burzą"
+
+msgid "cloudy with a stray t-storm"
+msgstr "Pochmurno, miejscami burze"
+
+msgid "cloudy with a strong t-storm"
+msgstr "Pochmurno, silne burze"
+
+msgid "cloudy with a t-storm"
+msgstr "Pochmurno, burza"
+
+msgid "cloudy with a t-storm around"
+msgstr "Pochmurno, miejscami burze"
+
+msgid "cloudy with a t-storm late"
+msgstr "Pochmurno. Później: burza"
+
+msgid "cloudy with a t-storm or two"
+msgstr "Pochmurno, pojedyncze burze"
+
+msgid "cloudy with a thundershower"
+msgstr "Pochmurno, przelotny deszcz z burzą"
+
+msgid "cloudy with a thunderstorm"
+msgstr "Pochmurno, burza"
+
+msgid "cloudy with a touch of rain"
+msgstr "Pochmurno, niewielki deszcz"
+
+msgid "cloudy with afternoon rain"
+msgstr "Pochmurno. Po południu: deszcz"
+
+msgid "cloudy with afternoon showers"
+msgstr "Pochmurno. Po południu: przelotne opady deszczu"
+
+msgid "cloudy with blowing dust"
+msgstr "Pochmurno, pył unoszony przez wiatr"
+
+msgid "cloudy with brief showers"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "cloudy with downpours"
+msgstr "Pochmurno, ulewy"
+
+msgid "cloudy with downpours late"
+msgstr "Pochmurno. Później: ulewy"
+
+msgid "cloudy with flurries"
+msgstr "Pochmurno, przelotne słabe opady śniegu"
+
+msgid "cloudy with flurries late"
+msgstr "Pochmurno. Później: przelotne słabe opady śniegu"
+
+msgid "cloudy with heavy rain late"
+msgstr "Pochmurno. Później: silny deszcz"
+
+msgid "cloudy with heavy showers"
+msgstr "Pochmurno, silne przelotne deszcze"
+
+msgid "cloudy with late-night rain"
+msgstr "Pochmurno. Późną nocą: deszcz"
+
+msgid "cloudy with occasional rain"
+msgstr "Pochmurno, okresami deszcz"
+
+msgid "cloudy with pouring rain late"
+msgstr "Pochmurno. Później: silny deszcz"
+
+msgid "cloudy with rain"
+msgstr "Pochmurno, deszcz"
+
+msgid "cloudy with rain and drizzle"
+msgstr "Pochmurno, deszcz i mżawka"
+
+msgid "cloudy with rain and ice late"
+msgstr "Pochmurno. Później: deszcz i lód"
+
+msgid "cloudy with rain beginning"
+msgstr "Pochmurno, zacznie padać deszcz"
+
+msgid "cloudy with rain developing"
+msgstr "Pochmurno, zacznie padać deszcz"
+
+msgid "cloudy with rain ending"
+msgstr "Pochmurno, deszcz ustaje"
+
+msgid "cloudy with rain tapering off"
+msgstr "Pochmurno, deszcz słabnie"
+
+msgid "cloudy with showers"
+msgstr "Pochmurno, przelotne opady deszczu"
+
+msgid "cloudy with showers around"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "cloudy with showers late"
+msgstr "Pochmurno. Później: przelotne opady deszczu"
+
+msgid "cloudy with snow"
+msgstr "Pochmurno, śnieg"
+
+msgid "cloudy with snow and ice"
+msgstr "Pochmurno, śnieg i lód"
+
+msgid "cloudy with snow at times"
+msgstr "Pochmurno, okresami śnieg"
+
+msgid "cloudy with snow showers"
+msgstr "Pochmurno, przelotny śnieg"
+
+msgid "cloudy with snow showers late"
+msgstr "Pochmurno. Później: przelotny śnieg"
+
+msgid "cloudy with snow tapering off"
+msgstr "Pochmurno, opady śniegu słabną"
+
+msgid "cloudy with spotty showers"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "cloudy with t-storms"
+msgstr "Pochmurno, burze"
+
+msgid "cloudy with thundershowers"
+msgstr "Pochmurno, przelotny deszcz z burzą"
+
+msgid "cloudy with thunderstorms"
+msgstr "Pochmurno, burze"
+
+msgid "cloudy with times of rain"
+msgstr "Pochmurno, okresami deszcz"
+
+msgid "cold"
+msgstr "Zimno"
+
+msgid "cold whit rain and drizzle"
+msgstr "Zimno, deszcz i mżawka"
+
+msgid "cold with areas of low clouds"
+msgstr "Zimno, miejscami niskie chmury"
+
+msgid "cold with clearing"
+msgstr "Zimno, rozpogodzenia"
+
+msgid "cold with clouds and sun"
+msgstr "Zimno, na przemian słońce i chmury"
+
+msgid "cold with clouds and sunshine"
+msgstr "Zimno, na przemian słońce i chmury"
+
+msgid "cold with clouds breaking"
+msgstr "Zimno, zachmurzenie maleje"
+
+msgid "cold with considerable clouds"
+msgstr "Zimno, przeważnie pochmurno"
+
+msgid "cold with icy mix"
+msgstr "Zimno, opad mieszany z marznącym deszczem i ziarnami lodu"
+
+msgid "cold with increasing clouds"
+msgstr "Zimno, wzrost zachmurzenia"
+
+msgid "cold with low clouds"
+msgstr "Zimno, niskie chmury"
+
+msgid "cold with partial sunshine"
+msgstr "Zimno, chwilami słońce"
+
+msgid "cold with patchy clouds"
+msgstr "Zimno, miejscami zachmurzenie"
+
+msgid "cold with periods of sun"
+msgstr "Zimno, chwilami słońce"
+
+msgid "cold with plenty of clouds"
+msgstr "Zimno, przeważnie pochmurno"
+
+msgid "cold with plenty of sunshine"
+msgstr "Zimno, dużo słońca"
+
+msgid "cold with snow"
+msgstr "Zimno, śnieg"
+
+msgid "cold with snow and rain"
+msgstr "Zimno, deszcz i śnieg"
+
+msgid "cold with snow at times"
+msgstr "Zimno, okresami śnieg"
+
+msgid "cold with some sun"
+msgstr "Zimno, chwilami słońce"
+
+msgid "cold with sun"
+msgstr "Zimno, słonecznie"
+
+msgid "cold with variable clouds"
+msgstr "Zimno, zmienne zachmurzenie"
+
+msgid "colder"
+msgstr "Zimniej"
+
+msgid "colder in the afternoon"
+msgstr "Po południu: zimniej"
+
+msgid "colder in the morning"
+msgstr "Rano: zimniej"
+
+msgid "colder with a bit of snow"
+msgstr "Zimniej, niewielkie opady śniegu"
+
+msgid "colder with a few showers"
+msgstr "Zimniej, pojedyncze przelotne deszcze"
+
+msgid "colder with a few snowflakes"
+msgstr "Zimniej, pojedyncze płatki śniegu"
+
+msgid "colder with a little rain"
+msgstr "Zimniej, niewielki deszcz"
+
+msgid "colder with a little snow"
+msgstr "Zimniej, niewielkie opady śniegu"
+
+msgid "colder with a shower or two"
+msgstr "Zimniej, jeden lub dwa przelotne deszcze"
+
+msgid "colder with a snow squall"
+msgstr "Zimniej, gwałtowny opad śniegu z porywami wiatru"
+
+msgid "colder with a stray shower"
+msgstr "Zimniej, miejscami przelotny deszcz"
+
+msgid "colder with increasing clouds"
+msgstr "Zimniej, wzrost zachmurzenia"
+
+msgid "colder with low clouds"
+msgstr "Zimniej, niskie chmury"
+
+msgid "colder with occasional rain"
+msgstr "Zimniej, okresami deszcz"
+
+msgid "colder with partial sunshine"
+msgstr "Zimniej, chwilami słońce"
+
+msgid "colder with periods of sun"
+msgstr "Zimniej, chwilami słońce"
+
+msgid "colder with rain"
+msgstr "Zimniej, deszcz"
+
+msgid "colder with showers around"
+msgstr "Zimniej, miejscami przelotny deszcz"
+
+msgid "colder with snow"
+msgstr "Zimniej, śnieg"
+
+msgid "colder with snow and rain"
+msgstr "Zimniej, deszcz i śnieg"
+
+msgid "colder with snow at times"
+msgstr "Zimniej, okresami śnieg"
+
+msgid "colder with snow showers"
+msgstr "Zimniej, przelotny śnieg"
+
+msgid "colder with some sun"
+msgstr "Zimniej, chwilami słońce"
+
+msgid "colder with spotty showers"
+msgstr "Zimniej, miejscami przelotny deszcz"
+
+msgid "comfortable"
+msgstr "Przyjemna pogoda"
+
+msgid "comfortable with some sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "comfortable with sunshine"
+msgstr "Przyjemna pogoda, słonecznie"
+
+msgid "considerable cloudiness"
+msgstr "Przeważnie pochmurno"
+
+msgid "considerable clouds"
+msgstr "Przeważnie pochmurno"
+
+msgid "considerable clouds and humid"
+msgstr "Przeważnie pochmurno, wilgotno"
+
+msgid "considerable clouds and mild"
+msgstr "Przeważnie pochmurno, łagodna temperatura"
+
+msgid "considerable clouds and warm"
+msgstr "Przeważnie pochmurno, ciepło"
+
+msgid "continued cloudy"
+msgstr "Nadal pochmurno"
+
+msgid "continued cloudy with showers"
+msgstr "Nadal pochmurno, przelotne opady deszczu"
+
+msgid "cool"
+msgstr "Chłodno"
+
+msgid "cool with a thick cloud cover"
+msgstr "Chłodno, pochmurno"
+
+msgid "cool with areas of low clouds"
+msgstr "Chłodno, miejscami niskie chmury"
+
+msgid "cool with clearing"
+msgstr "Chłodno, rozpogodzenia"
+
+msgid "cool with clouds and sun"
+msgstr "Chłodno, na przemian słońce i chmury"
+
+msgid "cool with clouds breaking"
+msgstr "Chłodno, zachmurzenie maleje"
+
+msgid "cool with decreasing clouds"
+msgstr "Chłodno, zachmurzenie maleje"
+
+msgid "cool with increasing clouds"
+msgstr "Chłodno, wzrost zachmurzenia"
+
+msgid "cool with low clouds"
+msgstr "Chłodno, niskie chmury"
+
+msgid "cool with occasional rain"
+msgstr "Chłodno, okresami deszcz"
+
+msgid "cool with partial sunshine"
+msgstr "Chłodno, chwilami słońce"
+
+msgid "cool with patchy clouds"
+msgstr "Chłodno, miejscami zachmurzenie"
+
+msgid "cool with periods of rain"
+msgstr "Chłodno, okresami deszcz"
+
+msgid "cool with periods of sun"
+msgstr "Chłodno, chwilami słońce"
+
+msgid "cool with plenty of sun"
+msgstr "Chłodno, dużo słońca"
+
+msgid "cool with plenty of sunshine"
+msgstr "Chłodno, dużo słońca"
+
+msgid "cool with rain"
+msgstr "Chłodno, deszcz"
+
+msgid "cool with rain and a t-storm"
+msgstr "Chłodno, deszcz, burza"
+
+msgid "cool with rain and drizzle"
+msgstr "Chłodno, deszcz i mżawka"
+
+msgid "cool with some sun"
+msgstr "Chłodno, chwilami słońce"
+
+msgid "cool with sun and clouds"
+msgstr "Chłodno, na przemian słońce i chmury"
+
+msgid "cool with sun and some clouds"
+msgstr "Chłodno, na przemian słońce i chmury"
+
+msgid "cool with sunny intervals"
+msgstr "Chłodno, chwilami słońce"
+
+msgid "cool with thickening clouds"
+msgstr "Chłodno, chmury gęstnieją"
+
+msgid "cool with variable cloudiness"
+msgstr "Chłodno, zmienne zachmurzenie"
+
+msgid "cool with variable clouds"
+msgstr "Chłodno, zmienne zachmurzenie"
+
+msgid "cooler"
+msgstr "Chłodniej"
+
+msgid "cooler with a brief shower"
+msgstr "Chłodniej, krótkotrwałe przelotne deszcze"
+
+msgid "cooler with a few showers"
+msgstr "Chłodniej, pojedyncze przelotne deszcze"
+
+msgid "cooler with a little rain"
+msgstr "Chłodniej, niewielki deszcz"
+
+msgid "cooler with a little snow"
+msgstr "Chłodniej, niewielkie opady śniegu"
+
+msgid "cooler with a passing shower"
+msgstr "Chłodniej, krótkotrwałe przelotne deszcze"
+
+msgid "cooler with a shower"
+msgstr "Chłodniej, przelotny deszcz"
+
+msgid "cooler with a shower in spots"
+msgstr "Chłodniej, miejscami przelotny deszcz"
+
+msgid "cooler with a shower or two"
+msgstr "Chłodniej, jeden lub dwa przelotne deszcze"
+
+msgid "cooler with a shower possible"
+msgstr "Chłodniej, możliwy przelotny deszcz"
+
+msgid "cooler with a stray shower"
+msgstr "Chłodniej, miejscami przelotny deszcz"
+
+msgid "cooler with a stray t-shower"
+msgstr "Chłodniej, miejscami przelotny deszcz z burzą"
+
+msgid "cooler with a stray t-storm"
+msgstr "Chłodniej, miejscami burze"
+
+msgid "cooler with a t-storm or two"
+msgstr "Chłodniej, pojedyncze burze"
+
+msgid "cooler with a thundershower"
+msgstr "Chłodniej, przelotny deszcz z burzą"
+
+msgid "cooler with a thunderstorm"
+msgstr "Chłodniej, burza"
+
+msgid "cooler with a touch of rain"
+msgstr "Chłodniej, niewielki deszcz"
+
+msgid "cooler with clearing"
+msgstr "Chłodniej, rozpogodzenia"
+
+msgid "cooler with clouds and sun"
+msgstr "Chłodniej, na przemian słońce i chmury"
+
+msgid "cooler with clouds breaking"
+msgstr "Chłodniej, zachmurzenie maleje"
+
+msgid "cooler with decreasing clouds"
+msgstr "Chłodniej, zachmurzenie maleje"
+
+msgid "cooler with downpours"
+msgstr "Chłodniej, ulewy"
+
+msgid "cooler with heavy showers"
+msgstr "Chłodniej, silne przelotne deszcze"
+
+msgid "cooler with high clouds"
+msgstr "Chłodniej, wysokie chmury"
+
+msgid "cooler with increasing clouds"
+msgstr "Chłodniej, wzrost zachmurzenia"
+
+msgid "cooler with low clouds"
+msgstr "Chłodniej, niskie chmury"
+
+msgid "cooler with morning showers"
+msgstr "Chłodniej. Rano: przelotne opady deszczu"
+
+msgid "cooler with occasional rain"
+msgstr "Chłodniej, okresami deszcz"
+
+msgid "cooler with partial sunshine"
+msgstr "Chłodniej, chwilami słońce"
+
+msgid "cooler with periods of rain"
+msgstr "Chłodniej, okresami deszcz"
+
+msgid "cooler with periods of sun"
+msgstr "Chłodniej, chwilami słońce"
+
+msgid "cooler with plenty of clouds"
+msgstr "Chłodniej, przeważnie pochmurno"
+
+msgid "cooler with plenty of sun"
+msgstr "Chłodniej, dużo słońca"
+
+msgid "cooler with rain"
+msgstr "Chłodniej, deszcz"
+
+msgid "cooler with rain and drizzle"
+msgstr "Chłodniej, deszcz i mżawka"
+
+msgid "cooler with rain at times"
+msgstr "Chłodniej, okresami deszcz"
+
+msgid "cooler with rain beginning"
+msgstr "Chłodniej, zacznie padać deszcz"
+
+msgid "cooler with rain tapering off"
+msgstr "Chłodniej, deszcz słabnie"
+
+msgid "cooler with showers"
+msgstr "Chłodniej, przelotne opady deszczu"
+
+msgid "cooler with showers around"
+msgstr "Chłodniej, miejscami przelotny deszcz"
+
+msgid "cooler with some brightening"
+msgstr "Chłodniej, niewielkie przejaśnienia"
+
+msgid "cooler with some sun"
+msgstr "Chłodniej, chwilami słońce"
+
+msgid "cooler with spotty showers"
+msgstr "Chłodniej, miejscami przelotny deszcz"
+
+msgid "cooler with sun"
+msgstr "Chłodniej, słonecznie"
+
+msgid "cooler with sun and clouds"
+msgstr "Chłodniej, na przemian słońce i chmury"
+
+msgid "cooler with sunny intervals"
+msgstr "Chłodniej, chwilami słońce"
+
+msgid "cooler with thunderstorms"
+msgstr "Chłodniej, burze"
+
+msgid "cooler with variable clouds"
+msgstr "Chłodniej, zmienne zachmurzenie"
+
+msgid "couple of showers"
+msgstr "Jeden lub dwa przelotne deszcze"
+
+msgid "couple of thunderstorms"
+msgstr "Pojedyncze burze"
+
+msgid "damp early"
+msgstr "Początkowo: wilgotno"
+
+msgid "decreasing clouds"
+msgstr "Zachmurzenie maleje"
+
+msgid "decreasing clouds and breezy"
+msgstr "Zachmurzenie maleje, lekko wietrznie"
+
+msgid "decreasing clouds and colder"
+msgstr "Zachmurzenie maleje, zimniej"
+
+msgid "decreasing clouds and cool"
+msgstr "Zachmurzenie maleje, chłodno"
+
+msgid "decreasing clouds and cooler"
+msgstr "Zachmurzenie maleje, chłodniej"
+
+msgid "decreasing clouds and humid"
+msgstr "Zachmurzenie maleje, wilgotno"
+
+msgid "decreasing clouds and warm"
+msgstr "Zachmurzenie maleje, ciepło"
+
+msgid "decreasing clouds and warmer"
+msgstr "Zachmurzenie maleje, cieplej"
+
+msgid "delightful"
+msgstr "Przyjemna pogoda"
+
+msgid "delightful with plenty of sun"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "delightful with some sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "delightful with sunshine"
+msgstr "Przyjemna pogoda, słonecznie"
+
+msgid "dense fog"
+msgstr "Gęsta mgła"
+
+msgid "downpours"
+msgstr "Ulewy"
+
+msgid "downpours early"
+msgstr "Początkowo: ulewy"
+
+msgid "downpours in the a.m."
+msgstr "Rano: ulewy"
+
+msgid "downpours in the afternoon"
+msgstr "Po południu: ulewy"
+
+msgid "downpours in the evening"
+msgstr "Wieczorem: ulewy"
+
+msgid "downpours in the morning"
+msgstr "Rano: ulewy"
+
+msgid "downpours in the p.m."
+msgstr "Po południu: ulewy"
+
+msgid "downpours this evening"
+msgstr "Dziś wieczorem: ulewy"
+
+msgid "drizzle/rain"
+msgstr "Deszcz i mżawka"
+
+msgid "dull and dreary"
+msgstr "Szaro i ponuro"
+
+msgid "dull and dreary with showers"
+msgstr "Szaro i ponuro, przelotne opady deszczu"
+
+msgid "early downpours"
+msgstr "Początkowo: ulewy"
+
+msgid "early flurries"
+msgstr "Początkowo: przelotne słabe opady śniegu"
+
+msgid "early rain"
+msgstr "Początkowo: deszcz"
+
+msgid "early showers"
+msgstr "Początkowo: przelotne opady deszczu"
+
+msgid "early snow"
+msgstr "Początkowo: śnieg"
+
+msgid "early snow showers"
+msgstr "Początkowo: przelotny śnieg"
+
+msgid "early t-showers"
+msgstr "Początkowo: przelotny deszcz z burzą"
+
+msgid "early thunderstorms"
+msgstr "Początkowo: burze"
+
+msgid "episodes of sunshine"
+msgstr "Chwilami słońce"
+
+msgid "evening downpours"
+msgstr "Wieczorem: ulewy"
+
+msgid "evening rain"
+msgstr "Wieczorem: deszcz"
+
+msgid "evening rain and drizzle"
+msgstr "Wieczorem: deszcz, mżawka"
+
+msgid "evening showers"
+msgstr "Wieczorem: przelotne opady deszczu"
+
+msgid "evening showers and t-storms"
+msgstr "Wieczorem: przelotne opady deszczu, burze"
+
+msgid "evening snow showers"
+msgstr "Wieczorem: przelotny śnieg"
+
+msgid "evening thundershowers"
+msgstr "Wieczorem: przelotny deszcz z burzą"
+
+msgid "evening thunderstorms"
+msgstr "Wieczorem: burze"
+
+msgid "flurries"
+msgstr "Przelotne słabe opady śniegu"
+
+msgid "fog forming"
+msgstr "Tworzy się mgła"
+
+msgid "fog in the a.m."
+msgstr "Rano: mgła"
+
+msgid "fog in the morning"
+msgstr "Rano: mgła"
+
+msgid "fog to sun"
+msgstr "Po mgle słonecznie"
+
+msgid "fog will lift this morning"
+msgstr "Dziś rano: mgła ustąpi"
+
+msgid "foggy"
+msgstr "Mgła"
+
+msgid "freezing early"
+msgstr "Początkowo: mróz"
+
+msgid "freezing fog"
+msgstr "Marznąca mgła"
+
+msgid "freezing fog this morning"
+msgstr "Dziś rano: marznąca mgła"
+
+msgid "freezing late"
+msgstr "Później: mróz"
+
+msgid "frigid"
+msgstr "Siarczysty mróz"
+
+msgid "frigid in the evening"
+msgstr "Wieczorem: siarczysty mróz"
+
+msgid "frigid with a bit of snow"
+msgstr "Siarczysty mróz, niewielkie opady śniegu"
+
+msgid "frigid with clouds and sun"
+msgstr "Siarczysty mróz, na przemian słońce i chmury"
+
+msgid "frigid with increasing clouds"
+msgstr "Siarczysty mróz, wzrost zachmurzenia"
+
+msgid "frigid with low clouds"
+msgstr "Siarczysty mróz, niskie chmury"
+
+msgid "frigid with patchy clouds"
+msgstr "Siarczysty mróz, miejscami zachmurzenie"
+
+msgid "frigid with periods of snow"
+msgstr "Siarczysty mróz, okresami śnieg"
+
+msgid "frigid with some sun"
+msgstr "Siarczysty mróz, chwilami słońce"
+
+msgid "frigid with tapering off"
+msgstr "Siarczysty mróz, stopniowo coraz słabiej"
+
+msgid "ground fog"
+msgstr "Mgła przyziemna"
+
+msgid "gusty thunderstorms possible"
+msgstr "Możliwe burze z porywistym wiatrem"
+
+msgid "hazy"
+msgstr "Zamglenie"
+
+msgid "hazy and humid"
+msgstr "Zamglenie, wilgotno"
+
+msgid "hazy and remaining very warm"
+msgstr "Zamglenie, nadal bardzo ciepło"
+
+msgid "hazy and seasonably warm"
+msgstr "Zamglenie, ciepło typowe dla pory roku"
+
+msgid "hazy and unseasonably hot"
+msgstr "Zamglenie, wyjątkowo gorąco jak na tę porę roku"
+
+msgid "hazy and very warm"
+msgstr "Zamglenie, bardzo ciepło"
+
+msgid "hazy and warm"
+msgstr "Zamglenie, ciepło"
+
+msgid "hazy clouds"
+msgstr "Chmury i zamglenie"
+
+msgid "hazy sun"
+msgstr "Słońce za zamgleniem"
+
+msgid "hazy sun and hot"
+msgstr "Słońce za zamgleniem, gorąco"
+
+msgid "hazy sun and summerlike"
+msgstr "Słońce za zamgleniem, letnia pogoda"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "Słońce za zamgleniem, wyjątkowo gorąco jak na tę porę roku"
+
+msgid "hazy sun and very warm"
+msgstr "Słońce za zamgleniem, bardzo ciepło"
+
+msgid "hazy sunshine"
+msgstr "Słońce za zamgleniem"
+
+msgid "hazy sunshine and hot"
+msgstr "Słońce za zamgleniem, gorąco"
+
+msgid "hazy sunshine and less humid"
+msgstr "Słońce za zamgleniem, mniejsza wilgotność"
+
+msgid "hazy sunshine and very warm"
+msgstr "Słońce za zamgleniem, bardzo ciepło"
+
+msgid "hazy with a t-storm in spots"
+msgstr "Zamglenie, miejscami burze"
+
+msgid "heavy a.m. rain"
+msgstr "Rano: silny deszcz"
+
+msgid "heavy a.m. showers"
+msgstr "Rano: silne przelotne deszcze"
+
+msgid "heavy afternoon rain"
+msgstr "Po południu: silny deszcz"
+
+msgid "heavy afternoon showers"
+msgstr "Po południu: silne przelotne deszcze"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "Po południu: silne burze"
+
+msgid "heavy evening rain"
+msgstr "Wieczorem: silny deszcz"
+
+msgid "heavy evening thunderstorms"
+msgstr "Wieczorem: silne burze"
+
+msgid "heavy late-night rain"
+msgstr "Późną nocą: silny deszcz"
+
+msgid "heavy morning rain"
+msgstr "Rano: silny deszcz"
+
+msgid "heavy morning showers"
+msgstr "Rano: silne przelotne deszcze"
+
+msgid "heavy morning thunderstorms"
+msgstr "Rano: silne burze"
+
+msgid "heavy rain and a t-storm late"
+msgstr "Silny deszcz. Później: burza"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "Silny deszcz, burza"
+
+msgid "heavy rain and ice late"
+msgstr "Silny deszcz. Później: lód"
+
+msgid "heavy rain developing"
+msgstr "Zaczyna się silny deszcz"
+
+msgid "heavy rain in the afternoon"
+msgstr "Po południu: silny deszcz"
+
+msgid "heavy rain shower"
+msgstr "Silne przelotne deszcze"
+
+msgid "heavy rain tapering off"
+msgstr "Silny deszcz słabnie"
+
+msgid "heavy showers early"
+msgstr "Początkowo: silne przelotne deszcze"
+
+msgid "heavy showers in the evening"
+msgstr "Wieczorem: silne przelotne deszcze"
+
+msgid "heavy showers in the morning"
+msgstr "Rano: silne przelotne deszcze"
+
+msgid "heavy showers late"
+msgstr "Później: silne przelotne deszcze"
+
+msgid "heavy showers this afternoon"
+msgstr "Dziś po południu: silne przelotne deszcze"
+
+msgid "heavy showers this evening"
+msgstr "Dziś wieczorem: silne przelotne deszcze"
+
+msgid "heavy showers this morning"
+msgstr "Dziś rano: silne przelotne deszcze"
+
+msgid "heavy t-storms"
+msgstr "Silne burze"
+
+msgid "heavy t-storms early"
+msgstr "Początkowo: silne burze"
+
+msgid "heavy t-storms in the evening"
+msgstr "Wieczorem: silne burze"
+
+msgid "heavy t-storms late"
+msgstr "Później: silne burze"
+
+msgid "heavy thunderstorm"
+msgstr "Silne burze"
+
+msgid "heavy thunderstorms"
+msgstr "Silne burze"
+
+msgid "high clouds"
+msgstr "Wysokie chmury"
+
+msgid "high clouds and breezy"
+msgstr "Wysokie chmury, lekko wietrznie"
+
+msgid "high clouds and chilly"
+msgstr "Wysokie chmury, przenikliwy chłód"
+
+msgid "high clouds and cooler"
+msgstr "Wysokie chmury, chłodniej"
+
+msgid "high clouds and hot"
+msgstr "Wysokie chmury, gorąco"
+
+msgid "high clouds and nice"
+msgstr "Wysokie chmury, przyjemna pogoda"
+
+msgid "high clouds and pleasant"
+msgstr "Wysokie chmury, przyjemna pogoda"
+
+msgid "high clouds and summerlike"
+msgstr "Wysokie chmury, letnia pogoda"
+
+msgid "high clouds and very warm"
+msgstr "Wysokie chmury, bardzo ciepło"
+
+msgid "high clouds and warm"
+msgstr "Wysokie chmury, ciepło"
+
+msgid "high clouds and warmer"
+msgstr "Wysokie chmury, cieplej"
+
+msgid "hot and humid with some sun"
+msgstr "Gorąco, wilgotno, chwilami słońce"
+
+msgid "hot with abundant sunshine"
+msgstr "Gorąco, dużo słońca"
+
+msgid "hot with blazing sunshine"
+msgstr "Gorąco, palące słońce"
+
+msgid "hot with brilliant sunshine"
+msgstr "Gorąco, pełne słońce"
+
+msgid "hot with clearing"
+msgstr "Gorąco, rozpogodzenia"
+
+msgid "hot with clouds and sun"
+msgstr "Gorąco, na przemian słońce i chmury"
+
+msgid "hot with clouds and sunshine"
+msgstr "Gorąco, na przemian słońce i chmury"
+
+msgid "hot with clouds rolling in"
+msgstr "Gorąco, nadciągają chmury"
+
+msgid "hot with considerable clouds"
+msgstr "Gorąco, przeważnie pochmurno"
+
+msgid "hot with decreasing clouds"
+msgstr "Gorąco, zachmurzenie maleje"
+
+msgid "hot with hazy sun"
+msgstr "Gorąco, słońce za zamgleniem"
+
+msgid "hot with hazy sunshine"
+msgstr "Gorąco, słońce za zamgleniem"
+
+msgid "hot with high clouds"
+msgstr "Gorąco, wysokie chmury"
+
+msgid "hot with increasing clouds"
+msgstr "Gorąco, wzrost zachmurzenia"
+
+msgid "hot with more clouds than sun"
+msgstr "Gorąco, przeważnie pochmurno"
+
+msgid "hot with more sun than clouds"
+msgstr "Gorąco, przeważnie słonecznie"
+
+msgid "hot with partial sunshine"
+msgstr "Gorąco, chwilami słońce"
+
+msgid "hot with periods of sun"
+msgstr "Gorąco, chwilami słońce"
+
+msgid "hot with periods of sunshine"
+msgstr "Gorąco, chwilami słońce"
+
+msgid "hot with plenty of sun"
+msgstr "Gorąco, dużo słońca"
+
+msgid "hot with plenty of sunshine"
+msgstr "Gorąco, dużo słońca"
+
+msgid "hot with rain and drizzle"
+msgstr "Gorąco, deszcz i mżawka"
+
+msgid "hot with some sun"
+msgstr "Gorąco, chwilami słońce"
+
+msgid "hot with some sunshine"
+msgstr "Gorąco, chwilami słońce"
+
+msgid "hot with sun"
+msgstr "Gorąco, słonecznie"
+
+msgid "hot with sun and clouds"
+msgstr "Gorąco, na przemian słońce i chmury"
+
+msgid "hot with sun and some clouds"
+msgstr "Gorąco, na przemian słońce i chmury"
+
+msgid "hot with sunny intervals"
+msgstr "Gorąco, chwilami słońce"
+
+msgid "hot with sunshine"
+msgstr "Gorąco, słonecznie"
+
+msgid "hot with variable cloudiness"
+msgstr "Gorąco, zmienne zachmurzenie"
+
+msgid "hot with variable clouds"
+msgstr "Gorąco, zmienne zachmurzenie"
+
+msgid "hotter"
+msgstr "Goręcej"
+
+msgid "hotter with a stray t-storm"
+msgstr "Goręcej, miejscami burze"
+
+msgid "hotter with a t-storm around"
+msgstr "Goręcej, miejscami burze"
+
+msgid "hotter with a thunderstorm"
+msgstr "Goręcej, burza"
+
+msgid "hotter with abundant sunshine"
+msgstr "Goręcej, dużo słońca"
+
+msgid "hotter with blazing sunshine"
+msgstr "Goręcej, palące słońce"
+
+msgid "hotter with partial sunshine"
+msgstr "Goręcej, chwilami słońce"
+
+msgid "hotter with plenty of sun"
+msgstr "Goręcej, dużo słońca"
+
+msgid "hotter with sunshine"
+msgstr "Goręcej, słonecznie"
+
+msgid "humid"
+msgstr "Wilgotno"
+
+msgid "humid with a t-storm in spots"
+msgstr "Wilgotno, miejscami burze"
+
+msgid "humid with clouds"
+msgstr "Wilgotno, pochmurno"
+
+msgid "humid with clouds and sun"
+msgstr "Wilgotno, na przemian słońce i chmury"
+
+msgid "humid with clouds breaking"
+msgstr "Wilgotno, zachmurzenie maleje"
+
+msgid "humid with cloudy spells"
+msgstr "Wilgotno, okresami pochmurno"
+
+msgid "humid with high clouds"
+msgstr "Wilgotno, wysokie chmury"
+
+msgid "humid with increasing clouds"
+msgstr "Wilgotno, wzrost zachmurzenia"
+
+msgid "humid with low clouds"
+msgstr "Wilgotno, niskie chmury"
+
+msgid "humid with partial sunshine"
+msgstr "Wilgotno, chwilami słońce"
+
+msgid "humid with patchy clouds"
+msgstr "Wilgotno, miejscami zachmurzenie"
+
+msgid "humid with periods of rain"
+msgstr "Wilgotno, okresami deszcz"
+
+msgid "humid with periods of sun"
+msgstr "Wilgotno, chwilami słońce"
+
+msgid "humid with plenty of clouds"
+msgstr "Wilgotno, przeważnie pochmurno"
+
+msgid "humid with plenty of sun"
+msgstr "Wilgotno, dużo słońca"
+
+msgid "humid with plenty of sunshine"
+msgstr "Wilgotno, dużo słońca"
+
+msgid "humid with rain"
+msgstr "Wilgotno, deszcz"
+
+msgid "humid with rain and a t-storm"
+msgstr "Wilgotno, deszcz, burza"
+
+msgid "humid with rain and drizzle"
+msgstr "Wilgotno, deszcz i mżawka"
+
+msgid "humid with rain at times"
+msgstr "Wilgotno, okresami deszcz"
+
+msgid "humid with some brightening"
+msgstr "Wilgotno, niewielkie przejaśnienia"
+
+msgid "humid with some sun"
+msgstr "Wilgotno, chwilami słońce"
+
+msgid "humid with sunny intervals"
+msgstr "Wilgotno, chwilami słońce"
+
+msgid "humid with thickening clouds"
+msgstr "Wilgotno, chmury gęstnieją"
+
+msgid "humid with variable clouds"
+msgstr "Wilgotno, zmienne zachmurzenie"
+
+msgid "ice and rain at times"
+msgstr "Lód, okresami deszcz"
+
+msgid "increasing amounts of clouds"
+msgstr "Wzrost zachmurzenia"
+
+msgid "increasing amounts of sun"
+msgstr "Coraz więcej słońca"
+
+msgid "increasing cloudiness"
+msgstr "Wzrost zachmurzenia"
+
+msgid "increasing cloudiness and hot"
+msgstr "Wzrost zachmurzenia, gorąco"
+
+msgid "increasing clouds"
+msgstr "Wzrost zachmurzenia"
+
+msgid "increasing clouds and chilly"
+msgstr "Wzrost zachmurzenia, przenikliwy chłód"
+
+msgid "increasing clouds and cold"
+msgstr "Wzrost zachmurzenia, zimno"
+
+msgid "increasing clouds and cool"
+msgstr "Wzrost zachmurzenia, chłodno"
+
+msgid "increasing clouds and hot"
+msgstr "Wzrost zachmurzenia, gorąco"
+
+msgid "increasing clouds and hotter"
+msgstr "Wzrost zachmurzenia, goręcej"
+
+msgid "increasing clouds and humid"
+msgstr "Wzrost zachmurzenia, wilgotno"
+
+msgid "increasing clouds and milder"
+msgstr "Wzrost zachmurzenia, łagodniejsza temperatura"
+
+msgid "increasing clouds and warm"
+msgstr "Wzrost zachmurzenia, ciepło"
+
+msgid "increasing clouds and warmer"
+msgstr "Wzrost zachmurzenia, cieplej"
+
+msgid "increasingly windy"
+msgstr "Wiatr się nasila"
+
+msgid "intermittent snow"
+msgstr "Okresami śnieg"
+
+msgid "intervals of clouds and sun"
+msgstr "Na przemian słońce i chmury"
+
+msgid "jupiter"
+msgstr "Jowisz"
+
+msgid "late downpours"
+msgstr "Później: ulewy"
+
+msgid "late flurries"
+msgstr "Później: przelotne słabe opady śniegu"
+
+msgid "late rain"
+msgstr "Później: deszcz"
+
+msgid "late snow"
+msgstr "Później: śnieg"
+
+msgid "late snow showers"
+msgstr "Później: przelotny śnieg"
+
+msgid "late-night rain"
+msgstr "Późną nocą: deszcz"
+
+msgid "late-night showers"
+msgstr "Późną nocą: przelotne opady deszczu"
+
+msgid "late-night snow"
+msgstr "Późną nocą: śnieg"
+
+msgid "late-night thunderstorms"
+msgstr "Późną nocą: burze"
+
+msgid "less humid with plenty of sun"
+msgstr "Mniejsza wilgotność, dużo słońca"
+
+msgid "less humid with some sun"
+msgstr "Mniejsza wilgotność, chwilami słońce"
+
+msgid "light fog"
+msgstr "Lekka mgła"
+
+msgid "light snow"
+msgstr "Słabe opady śniegu"
+
+msgid "lots of sun"
+msgstr "Dużo słońca"
+
+msgid "lots of sun with a shower"
+msgstr "Dużo słońca, przelotny deszcz"
+
+msgid "low clouds"
+msgstr "Niskie chmury"
+
+msgid "low clouds and bitterly cold"
+msgstr "Niskie chmury, siarczysty mróz"
+
+msgid "low clouds and breezy"
+msgstr "Niskie chmury, lekko wietrznie"
+
+msgid "low clouds and chilly"
+msgstr "Niskie chmury, przenikliwy chłód"
+
+msgid "low clouds and cold"
+msgstr "Niskie chmury, zimno"
+
+msgid "low clouds and colder"
+msgstr "Niskie chmury, zimniej"
+
+msgid "low clouds and cool"
+msgstr "Niskie chmury, chłodno"
+
+msgid "low clouds and cooler"
+msgstr "Niskie chmury, chłodniej"
+
+msgid "low clouds and fog"
+msgstr "Niskie chmury, mgła"
+
+msgid "low clouds and fog and cooler"
+msgstr "Niskie chmury, mgła, chłodniej"
+
+msgid "low clouds and freezing fog"
+msgstr "Niskie chmury, marznąca mgła"
+
+msgid "low clouds and frigid"
+msgstr "Niskie chmury, siarczysty mróz"
+
+msgid "low clouds and humid"
+msgstr "Niskie chmury, wilgotno"
+
+msgid "low clouds and mild"
+msgstr "Niskie chmury, łagodna temperatura"
+
+msgid "low clouds and not as cold"
+msgstr "Niskie chmury, nie tak zimno"
+
+msgid "low clouds and remaining cool"
+msgstr "Niskie chmury, nadal chłodno"
+
+msgid "low clouds and spotty showers"
+msgstr "Niskie chmury, miejscami przelotny deszcz"
+
+msgid "low clouds and warmer"
+msgstr "Niskie chmury, cieplej"
+
+msgid "low clouds break for some sun"
+msgstr "Niskie chmury ustępują"
+
+msgid "low clouds breaking"
+msgstr "Niskie chmury ustępują"
+
+msgid "low clouds breaking and humid"
+msgstr "Niskie chmury ustępują, wilgotno"
+
+msgid "low clouds followed by sun"
+msgstr "Niskie chmury ustępują"
+
+msgid "low clouds may break"
+msgstr "Możliwe przejaśnienia wśród niskich chmur"
+
+msgid "low clouds with a flurry late"
+msgstr "Niskie chmury. Później: przelotne słabe opady śniegu"
+
+msgid "low clouds with rain late"
+msgstr "Niskie chmury. Później: deszcz"
+
+msgid "low humidity with some sun"
+msgstr "Niska wilgotność, chwilami słońce"
+
+msgid "low humidity with sunshine"
+msgstr "Niska wilgotność, słonecznie"
+
+msgid "mainly clear and breezy"
+msgstr "Przeważnie bezchmurnie, lekko wietrznie"
+
+msgid "mainly clear and chilly"
+msgstr "Przeważnie bezchmurnie, przenikliwy chłód"
+
+msgid "mainly clear and cold"
+msgstr "Przeważnie bezchmurnie, zimno"
+
+msgid "mainly clear and colder"
+msgstr "Przeważnie bezchmurnie, zimniej"
+
+msgid "mainly clear and cool"
+msgstr "Przeważnie bezchmurnie, chłodno"
+
+msgid "mainly clear and cooler"
+msgstr "Przeważnie bezchmurnie, chłodniej"
+
+msgid "mainly clear and frigid"
+msgstr "Przeważnie bezchmurnie, siarczysty mróz"
+
+msgid "mainly clear and humid"
+msgstr "Przeważnie bezchmurnie, wilgotno"
+
+msgid "mainly clear and mild"
+msgstr "Przeważnie bezchmurnie, łagodna temperatura"
+
+msgid "mainly clear and much colder"
+msgstr "Przeważnie bezchmurnie, znacznie zimniej"
+
+msgid "mainly clear and not as warm"
+msgstr "Przeważnie bezchmurnie, nie tak ciepło"
+
+msgid "mainly clear and very cold"
+msgstr "Przeważnie bezchmurnie, bardzo zimno"
+
+msgid "mainly clear and very humid"
+msgstr "Przeważnie bezchmurnie, bardzo wilgotno"
+
+msgid "mainly clear and very warm"
+msgstr "Przeważnie bezchmurnie, bardzo ciepło"
+
+msgid "mainly clear and warm"
+msgstr "Przeważnie bezchmurnie, ciepło"
+
+msgid "mainly clear and warmer"
+msgstr "Przeważnie bezchmurnie, cieplej"
+
+msgid "mainly clear with a shower"
+msgstr "Przeważnie bezchmurnie, przelotny deszcz"
+
+msgid "mainly clear with a t-storm"
+msgstr "Przeważnie bezchmurnie, burza"
+
+msgid "mainly cloudy"
+msgstr "Przeważnie pochmurno"
+
+msgid "mainly cloudy and chilly"
+msgstr "Przeważnie pochmurno, przenikliwy chłód"
+
+msgid "mainly cloudy and cold"
+msgstr "Przeważnie pochmurno, zimno"
+
+msgid "mainly cloudy and colder"
+msgstr "Przeważnie pochmurno, zimniej"
+
+msgid "mainly cloudy and cool"
+msgstr "Przeważnie pochmurno, chłodno"
+
+msgid "mainly cloudy and cooler"
+msgstr "Przeważnie pochmurno, chłodniej"
+
+msgid "mainly cloudy and frigid"
+msgstr "Przeważnie pochmurno, siarczysty mróz"
+
+msgid "mainly cloudy and hot"
+msgstr "Przeważnie pochmurno, gorąco"
+
+msgid "mainly cloudy and humid"
+msgstr "Przeważnie pochmurno, wilgotno"
+
+msgid "mainly cloudy and summerlike"
+msgstr "Przeważnie pochmurno, letnia pogoda"
+
+msgid "mainly cloudy and very warm"
+msgstr "Przeważnie pochmurno, bardzo ciepło"
+
+msgid "mainly cloudy and warm"
+msgstr "Przeważnie pochmurno, ciepło"
+
+msgid "mainly cloudy and warmer"
+msgstr "Przeważnie pochmurno, cieplej"
+
+msgid "mainly cloudy with a shower"
+msgstr "Przeważnie pochmurno, przelotny deszcz"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "Przeważnie pochmurno, burza"
+
+msgid "mainly cloudy with flurries"
+msgstr "Przeważnie pochmurno, przelotne słabe opady śniegu"
+
+msgid "mainly cloudy with showers"
+msgstr "Przeważnie pochmurno, przelotne opady deszczu"
+
+msgid "mainly early"
+msgstr "Głównie na początku"
+
+msgid "mainly later"
+msgstr "Głównie później"
+
+msgid "mars"
+msgstr "Mars"
+
+msgid "mercury"
+msgstr "Merkury"
+
+msgid "mild"
+msgstr "Łagodna temperatura"
+
+msgid "mild with abundant sunshine"
+msgstr "Łagodna temperatura, dużo słońca"
+
+msgid "mild with clouds and sun"
+msgstr "Łagodna temperatura, na przemian słońce i chmury"
+
+msgid "mild with clouds and sunshine"
+msgstr "Łagodna temperatura, na przemian słońce i chmury"
+
+msgid "mild with considerable clouds"
+msgstr "Łagodna temperatura, przeważnie pochmurno"
+
+msgid "mild with increasing clouds"
+msgstr "Łagodna temperatura, wzrost zachmurzenia"
+
+msgid "mild with partial sunshine"
+msgstr "Łagodna temperatura, chwilami słońce"
+
+msgid "mild with patchy clouds"
+msgstr "Łagodna temperatura, miejscami zachmurzenie"
+
+msgid "mild with periods of rain"
+msgstr "Łagodna temperatura, okresami deszcz"
+
+msgid "mild with periods of sun"
+msgstr "Łagodna temperatura, chwilami słońce"
+
+msgid "mild with plenty of clouds"
+msgstr "Łagodna temperatura, przeważnie pochmurno"
+
+msgid "mild with plenty of sun"
+msgstr "Łagodna temperatura, dużo słońca"
+
+msgid "mild with plenty of sunshine"
+msgstr "Łagodna temperatura, dużo słońca"
+
+msgid "mild with some sun"
+msgstr "Łagodna temperatura, chwilami słońce"
+
+msgid "mild with sun and clouds"
+msgstr "Łagodna temperatura, na przemian słońce i chmury"
+
+msgid "mild with sun and some clouds"
+msgstr "Łagodna temperatura, na przemian słońce i chmury"
+
+msgid "mild with sunny intervals"
+msgstr "Łagodna temperatura, chwilami słońce"
+
+msgid "mild with sunshine"
+msgstr "Łagodna temperatura, słonecznie"
+
+msgid "mild with thickening clouds"
+msgstr "Łagodna temperatura, chmury gęstnieją"
+
+msgid "mild with variable cloudiness"
+msgstr "Łagodna temperatura, zmienne zachmurzenie"
+
+msgid "milder"
+msgstr "Łagodniejsza temperatura"
+
+msgid "milder with a shower in spots"
+msgstr "Łagodniejsza temperatura, miejscami przelotny deszcz"
+
+msgid "milder with brief showers"
+msgstr "Łagodniejsza temperatura, krótkotrwałe przelotne deszcze"
+
+msgid "milder with clouds and sun"
+msgstr "Łagodniejsza temperatura, na przemian słońce i chmury"
+
+msgid "milder with increasing clouds"
+msgstr "Łagodniejsza temperatura, wzrost zachmurzenia"
+
+msgid "milder with low clouds"
+msgstr "Łagodniejsza temperatura, niskie chmury"
+
+msgid "milder with periods of rain"
+msgstr "Łagodniejsza temperatura, okresami deszcz"
+
+msgid "milder with periods of sun"
+msgstr "Łagodniejsza temperatura, chwilami słońce"
+
+msgid "milder with sun"
+msgstr "Łagodniejsza temperatura, słonecznie"
+
+msgid "milder with thickening clouds"
+msgstr "Łagodniejsza temperatura, chmury gęstnieją"
+
+msgid "mist"
+msgstr "Zamglenie"
+
+msgid "mixed with snow early"
+msgstr "Początkowo: z domieszką śniegu"
+
+msgid "moderate rain"
+msgstr "Umiarkowany deszcz"
+
+msgid "moon"
+msgstr "Księżyc"
+
+msgid "more clouds than sun"
+msgstr "Przeważnie pochmurno"
+
+msgid "more clouds than sunshine"
+msgstr "Przeważnie pochmurno"
+
+msgid "more sun than clouds"
+msgstr "Przeważnie słonecznie"
+
+msgid "more sunshine than clouds"
+msgstr "Przeważnie słonecznie"
+
+msgid "morning downpours"
+msgstr "Rano: ulewy"
+
+msgid "morning flurries"
+msgstr "Rano: przelotne słabe opady śniegu"
+
+msgid "morning rain"
+msgstr "Rano: deszcz"
+
+msgid "morning showers"
+msgstr "Rano: przelotne opady deszczu"
+
+msgid "morning snow"
+msgstr "Rano: śnieg"
+
+msgid "morning snow showers"
+msgstr "Rano: przelotny śnieg"
+
+msgid "morning t-showers"
+msgstr "Rano: przelotny deszcz z burzą"
+
+msgid "morning thunderstorms"
+msgstr "Rano: burze"
+
+msgid "mostly clear and chilly"
+msgstr "Przeważnie bezchmurnie, przenikliwy chłód"
+
+msgid "mostly clear and cold"
+msgstr "Przeważnie bezchmurnie, zimno"
+
+msgid "mostly clear and cool"
+msgstr "Przeważnie bezchmurnie, chłodno"
+
+msgid "mostly clear and cooler"
+msgstr "Przeważnie bezchmurnie, chłodniej"
+
+msgid "mostly clear and humid"
+msgstr "Przeważnie bezchmurnie, wilgotno"
+
+msgid "mostly clear and mild"
+msgstr "Przeważnie bezchmurnie, łagodna temperatura"
+
+msgid "mostly clear and very warm"
+msgstr "Przeważnie bezchmurnie, bardzo ciepło"
+
+msgid "mostly clear with a shower"
+msgstr "Przeważnie bezchmurnie, przelotny deszcz"
+
+msgid "mostly cloudy and breezy"
+msgstr "Przeważnie pochmurno, lekko wietrznie"
+
+msgid "mostly cloudy and chilly"
+msgstr "Przeważnie pochmurno, przenikliwy chłód"
+
+msgid "mostly cloudy and cold"
+msgstr "Przeważnie pochmurno, zimno"
+
+msgid "mostly cloudy and colder"
+msgstr "Przeważnie pochmurno, zimniej"
+
+msgid "mostly cloudy and comfortable"
+msgstr "Przeważnie pochmurno, przyjemna pogoda"
+
+msgid "mostly cloudy and cool"
+msgstr "Przeważnie pochmurno, chłodno"
+
+msgid "mostly cloudy and cooler"
+msgstr "Przeważnie pochmurno, chłodniej"
+
+msgid "mostly cloudy and frigid"
+msgstr "Przeważnie pochmurno, siarczysty mróz"
+
+msgid "mostly cloudy and hot"
+msgstr "Przeważnie pochmurno, gorąco"
+
+msgid "mostly cloudy and hotter"
+msgstr "Przeważnie pochmurno, goręcej"
+
+msgid "mostly cloudy and humid"
+msgstr "Przeważnie pochmurno, wilgotno"
+
+msgid "mostly cloudy and less humid"
+msgstr "Przeważnie pochmurno, mniejsza wilgotność"
+
+msgid "mostly cloudy and mild"
+msgstr "Przeważnie pochmurno, łagodna temperatura"
+
+msgid "mostly cloudy and milder"
+msgstr "Przeważnie pochmurno, łagodniejsza temperatura"
+
+msgid "mostly cloudy and misty"
+msgstr "Przeważnie pochmurno, zamglenie"
+
+msgid "mostly cloudy and misty late"
+msgstr "Przeważnie pochmurno. Później: zamglenie"
+
+msgid "mostly cloudy and not as cold"
+msgstr "Przeważnie pochmurno, nie tak zimno"
+
+msgid "mostly cloudy and not as cool"
+msgstr "Przeważnie pochmurno, nie tak chłodno"
+
+msgid "mostly cloudy and not as hot"
+msgstr "Przeważnie pochmurno, mniej gorąco"
+
+msgid "mostly cloudy and not as warm"
+msgstr "Przeważnie pochmurno, nie tak ciepło"
+
+msgid "mostly cloudy and seasonable"
+msgstr "Przeważnie pochmurno, temperatura typowa dla pory roku"
+
+msgid "mostly cloudy and summerlike"
+msgstr "Przeważnie pochmurno, letnia pogoda"
+
+msgid "mostly cloudy and very cold"
+msgstr "Przeważnie pochmurno, bardzo zimno"
+
+msgid "mostly cloudy and very hot"
+msgstr "Przeważnie pochmurno, bardzo gorąco"
+
+msgid "mostly cloudy and very humid"
+msgstr "Przeważnie pochmurno, bardzo wilgotno"
+
+msgid "mostly cloudy and very warm"
+msgstr "Przeważnie pochmurno, bardzo ciepło"
+
+msgid "mostly cloudy and warm"
+msgstr "Przeważnie pochmurno, ciepło"
+
+msgid "mostly cloudy and warmer"
+msgstr "Przeważnie pochmurno, cieplej"
+
+msgid "mostly cloudy and windy"
+msgstr "Przeważnie pochmurno, wietrznie"
+
+msgid "mostly cloudy with a downpour"
+msgstr "Przeważnie pochmurno, ulewy"
+
+msgid "mostly cloudy with a shower"
+msgstr "Przeważnie pochmurno, przelotny deszcz"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "Przeważnie pochmurno, przelotny deszcz z burzą"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "Przeważnie pochmurno, burza"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "Przeważnie pochmurno, opad mieszany z marznącym deszczem i ziarnami lodu"
+
+msgid "mostly cloudy with downpours"
+msgstr "Przeważnie pochmurno, ulewy"
+
+msgid "mostly cloudy with flurries"
+msgstr "Przeważnie pochmurno, przelotne słabe opady śniegu"
+
+msgid "mostly cloudy with mist late"
+msgstr "Przeważnie pochmurno. Później: zamglenie"
+
+msgid "mostly cloudy with rain"
+msgstr "Przeważnie pochmurno, deszcz"
+
+msgid "mostly cloudy with rain late"
+msgstr "Przeważnie pochmurno. Później: deszcz"
+
+msgid "mostly cloudy with showers"
+msgstr "Przeważnie pochmurno, przelotne opady deszczu"
+
+msgid "mostly cloudy with snow late"
+msgstr "Przeważnie pochmurno. Później: śnieg"
+
+msgid "mostly cloudy with t-showers"
+msgstr "Przeważnie pochmurno, przelotny deszcz z burzą"
+
+msgid "mostly cloudy with t-storms"
+msgstr "Przeważnie pochmurno, burze"
+
+msgid "mostly sunny and beautiful"
+msgstr "Przeważnie słonecznie, przyjemna pogoda"
+
+msgid "mostly sunny and breezy"
+msgstr "Przeważnie słonecznie, lekko wietrznie"
+
+msgid "mostly sunny and chilly"
+msgstr "Przeważnie słonecznie, przenikliwy chłód"
+
+msgid "mostly sunny and cold"
+msgstr "Przeważnie słonecznie, zimno"
+
+msgid "mostly sunny and colder"
+msgstr "Przeważnie słonecznie, zimniej"
+
+msgid "mostly sunny and comfortable"
+msgstr "Przeważnie słonecznie, przyjemna pogoda"
+
+msgid "mostly sunny and cool"
+msgstr "Przeważnie słonecznie, chłodno"
+
+msgid "mostly sunny and cooler"
+msgstr "Przeważnie słonecznie, chłodniej"
+
+msgid "mostly sunny and delightful"
+msgstr "Przeważnie słonecznie, przyjemna pogoda"
+
+msgid "mostly sunny and frigid"
+msgstr "Przeważnie słonecznie, siarczysty mróz"
+
+msgid "mostly sunny and hot"
+msgstr "Przeważnie słonecznie, gorąco"
+
+msgid "mostly sunny and hotter"
+msgstr "Przeważnie słonecznie, goręcej"
+
+msgid "mostly sunny and humid"
+msgstr "Przeważnie słonecznie, wilgotno"
+
+msgid "mostly sunny and less humid"
+msgstr "Przeważnie słonecznie, mniejsza wilgotność"
+
+msgid "mostly sunny and mild"
+msgstr "Przeważnie słonecznie, łagodna temperatura"
+
+msgid "mostly sunny and milder"
+msgstr "Przeważnie słonecznie, łagodniejsza temperatura"
+
+msgid "mostly sunny and nice"
+msgstr "Przeważnie słonecznie, przyjemna pogoda"
+
+msgid "mostly sunny and not as cold"
+msgstr "Przeważnie słonecznie, nie tak zimno"
+
+msgid "mostly sunny and not as hot"
+msgstr "Przeważnie słonecznie, mniej gorąco"
+
+msgid "mostly sunny and not as warm"
+msgstr "Przeważnie słonecznie, nie tak ciepło"
+
+msgid "mostly sunny and pleasant"
+msgstr "Przeważnie słonecznie, przyjemna pogoda"
+
+msgid "mostly sunny and quite cold"
+msgstr "Przeważnie słonecznie, dość zimno"
+
+msgid "mostly sunny and summerlike"
+msgstr "Przeważnie słonecznie, letnia pogoda"
+
+msgid "mostly sunny and very cold"
+msgstr "Przeważnie słonecznie, bardzo zimno"
+
+msgid "mostly sunny and very hot"
+msgstr "Przeważnie słonecznie, bardzo gorąco"
+
+msgid "mostly sunny and very humid"
+msgstr "Przeważnie słonecznie, bardzo wilgotno"
+
+msgid "mostly sunny and very warm"
+msgstr "Przeważnie słonecznie, bardzo ciepło"
+
+msgid "mostly sunny and warm"
+msgstr "Przeważnie słonecznie, ciepło"
+
+msgid "mostly sunny and warmer"
+msgstr "Przeważnie słonecznie, cieplej"
+
+msgid "mostly sunny and windy"
+msgstr "Przeważnie słonecznie, wietrznie"
+
+msgid "mostly sunny with a shower"
+msgstr "Przeważnie słonecznie, przelotny deszcz"
+
+msgid "mostly sunny with a t-shower"
+msgstr "Przeważnie słonecznie, przelotny deszcz z burzą"
+
+msgid "mostly sunny with a t-storm"
+msgstr "Przeważnie słonecznie, burza"
+
+msgid "much colder"
+msgstr "Znacznie zimniej"
+
+msgid "much colder with low clouds"
+msgstr "Znacznie zimniej, niskie chmury"
+
+msgid "neptune"
+msgstr "Neptun"
+
+msgid "nice"
+msgstr "Przyjemna pogoda"
+
+msgid "nice and warm"
+msgstr "Przyjemna pogoda, ciepło"
+
+msgid "nice and warm with some sun"
+msgstr "Przyjemna pogoda, ciepło, chwilami słońce"
+
+msgid "nice and warm with sunshine"
+msgstr "Przyjemna pogoda, ciepło, słonecznie"
+
+msgid "nice with abundant sunshine"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "nice with brilliant sunshine"
+msgstr "Przyjemna pogoda, pełne słońce"
+
+msgid "nice with clouds"
+msgstr "Przyjemna pogoda, pochmurno"
+
+msgid "nice with clouds and sun"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "nice with clouds and sunshine"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "nice with partial sunshine"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "nice with periods of sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "nice with periods of sunshine"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "nice with plenty of sun"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "nice with plenty of sunshine"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "nice with some sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "nice with some sunshine"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "nice with sun"
+msgstr "Przyjemna pogoda, słonecznie"
+
+msgid "nice with sun and clouds"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "nice with sun and some clouds"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "nice with sunny intervals"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "nice with sunshine"
+msgstr "Przyjemna pogoda, słonecznie"
+
+msgid "nice with variable cloudiness"
+msgstr "Przyjemna pogoda, zmienne zachmurzenie"
+
+msgid "nice with variable clouds"
+msgstr "Przyjemna pogoda, zmienne zachmurzenie"
+
+msgid "not as cold"
+msgstr "Nie tak zimno"
+
+msgid "not as cold with clearing"
+msgstr "Nie tak zimno, rozpogodzenia"
+
+msgid "not as cold with flurries"
+msgstr "Nie tak zimno, przelotne słabe opady śniegu"
+
+msgid "not as cold with low clouds"
+msgstr "Nie tak zimno, niskie chmury"
+
+msgid "not as cold with snow showers"
+msgstr "Nie tak zimno, przelotny śnieg"
+
+msgid "not as cold with some sun"
+msgstr "Nie tak zimno, chwilami słońce"
+
+msgid "not as cool"
+msgstr "Nie tak chłodno"
+
+msgid "not as cool late"
+msgstr "Później: nie tak chłodno"
+
+msgid "not as cool with clearing"
+msgstr "Nie tak chłodno, rozpogodzenia"
+
+msgid "not as hot"
+msgstr "Mniej gorąco"
+
+msgid "not as hot with a shower"
+msgstr "Mniej gorąco, przelotny deszcz"
+
+msgid "not as hot with a t-storm"
+msgstr "Mniej gorąco, burza"
+
+msgid "not as hot with some sun"
+msgstr "Mniej gorąco, chwilami słońce"
+
+msgid "not as warm"
+msgstr "Nie tak ciepło"
+
+msgid "not as warm but pleasant"
+msgstr "Nie tak ciepło, przyjemna pogoda"
+
+msgid "not as warm in the afternoon"
+msgstr "Po południu: nie tak ciepło"
+
+msgid "not as warm this afternoon"
+msgstr "Dziś po południu: nie tak ciepło"
+
+msgid "not as warm with a shower"
+msgstr "Nie tak ciepło, przelotny deszcz"
+
+msgid "not as warm with a t-shower"
+msgstr "Nie tak ciepło, przelotny deszcz z burzą"
+
+msgid "not as warm with a t-storm"
+msgstr "Nie tak ciepło, burza"
+
+msgid "not as warm with clearing"
+msgstr "Nie tak ciepło, rozpogodzenia"
+
+msgid "not as warm with downpours"
+msgstr "Nie tak ciepło, ulewy"
+
+msgid "not as warm with high clouds"
+msgstr "Nie tak ciepło, wysokie chmury"
+
+msgid "not as warm with low clouds"
+msgstr "Nie tak ciepło, niskie chmury"
+
+msgid "not as warm with morning rain"
+msgstr "Nie tak ciepło. Rano: deszcz"
+
+msgid "not as warm with rain"
+msgstr "Nie tak ciepło, deszcz"
+
+msgid "not as warm with rain ending"
+msgstr "Nie tak ciepło, deszcz ustaje"
+
+msgid "not as warm with showers"
+msgstr "Nie tak ciepło, przelotne opady deszczu"
+
+msgid "not as warm with some sun"
+msgstr "Nie tak ciepło, chwilami słońce"
+
+msgid "occasional afternoon rain"
+msgstr "Po południu: okresami deszcz"
+
+msgid "occasional evening rain"
+msgstr "Wieczorem: okresami deszcz"
+
+msgid "occasional late-night rain"
+msgstr "Późną nocą: okresami deszcz"
+
+msgid "occasional morning rain"
+msgstr "Rano: okresami deszcz"
+
+msgid "occasional rain"
+msgstr "Okresami deszcz"
+
+msgid "occasional rain and a t-storm"
+msgstr "Okresami deszcz, burza"
+
+msgid "occasional rain and drizzle"
+msgstr "Okresami deszcz, mżawka"
+
+msgid "occasional rain late"
+msgstr "Później: okresami deszcz"
+
+msgid "occasional snow and flurries"
+msgstr "Okresami śnieg, przelotne słabe opady śniegu"
+
+msgid "on-and-off rain and drizzle"
+msgstr "Okresami deszcz, mżawka"
+
+msgid "on-and-off snow"
+msgstr "Okresami śnieg"
+
+msgid "otherwise"
+msgstr "Poza tym"
+
+msgid "overcast and becoming rainy"
+msgstr "Pochmurno, zacznie padać deszcz"
+
+msgid "overcast and chilly"
+msgstr "Pochmurno, przenikliwy chłód"
+
+msgid "overcast and cold"
+msgstr "Pochmurno, zimno"
+
+msgid "overcast and cooler"
+msgstr "Pochmurno, chłodniej"
+
+msgid "overcast and frigid"
+msgstr "Pochmurno, siarczysty mróz"
+
+msgid "overcast and humid"
+msgstr "Pochmurno, wilgotno"
+
+msgid "overcast and mild"
+msgstr "Pochmurno, łagodna temperatura"
+
+msgid "overcast and not as warm"
+msgstr "Pochmurno, nie tak ciepło"
+
+msgid "overcast and seasonably cold"
+msgstr "Pochmurno, zimno typowe dla pory roku"
+
+msgid "overcast and seasonably warm"
+msgstr "Pochmurno, ciepło typowe dla pory roku"
+
+msgid "overcast and very warm"
+msgstr "Pochmurno, bardzo ciepło"
+
+msgid "overcast and warm"
+msgstr "Pochmurno, ciepło"
+
+msgid "overcast and windy"
+msgstr "Pochmurno, wietrznie"
+
+msgid "overcast with a bit of rain"
+msgstr "Pochmurno, niewielki deszcz"
+
+msgid "overcast with a bit of snow"
+msgstr "Pochmurno, niewielkie opady śniegu"
+
+msgid "overcast with a brief shower"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "overcast with a few showers"
+msgstr "Pochmurno, pojedyncze przelotne deszcze"
+
+msgid "overcast with a little rain"
+msgstr "Pochmurno, niewielki deszcz"
+
+msgid "overcast with a little snow"
+msgstr "Pochmurno, niewielkie opady śniegu"
+
+msgid "overcast with a quick shower"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "overcast with a shower"
+msgstr "Pochmurno, przelotny deszcz"
+
+msgid "overcast with a shower late"
+msgstr "Pochmurno. Później: przelotny deszcz"
+
+msgid "overcast with a shower or two"
+msgstr "Pochmurno, jeden lub dwa przelotne deszcze"
+
+msgid "overcast with a stray shower"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "overcast with a stray t-storm"
+msgstr "Pochmurno, miejscami burze"
+
+msgid "overcast with a t-storm late"
+msgstr "Pochmurno. Później: burza"
+
+msgid "overcast with a thundershower"
+msgstr "Pochmurno, przelotny deszcz z burzą"
+
+msgid "overcast with a thunderstorm"
+msgstr "Pochmurno, burza"
+
+msgid "overcast with a touch of rain"
+msgstr "Pochmurno, niewielki deszcz"
+
+msgid "overcast with brief showers"
+msgstr "Pochmurno, krótkotrwałe przelotne deszcze"
+
+msgid "overcast with downpours"
+msgstr "Pochmurno, ulewy"
+
+msgid "overcast with downpours late"
+msgstr "Pochmurno. Później: ulewy"
+
+msgid "overcast with flurries"
+msgstr "Pochmurno, przelotne słabe opady śniegu"
+
+msgid "overcast with heavy rain late"
+msgstr "Pochmurno. Później: silny deszcz"
+
+msgid "overcast with heavy showers"
+msgstr "Pochmurno, silne przelotne deszcze"
+
+msgid "overcast with late-night rain"
+msgstr "Pochmurno. Późną nocą: deszcz"
+
+msgid "overcast with occasional rain"
+msgstr "Pochmurno, okresami deszcz"
+
+msgid "overcast with rain developing"
+msgstr "Pochmurno, zacznie padać deszcz"
+
+msgid "overcast with rain late"
+msgstr "Pochmurno. Później: deszcz"
+
+msgid "overcast with showers"
+msgstr "Pochmurno, przelotne opady deszczu"
+
+msgid "overcast with showers around"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "overcast with showers late"
+msgstr "Pochmurno. Później: przelotne opady deszczu"
+
+msgid "overcast with snow showers"
+msgstr "Pochmurno, przelotny śnieg"
+
+msgid "overcast with spotty showers"
+msgstr "Pochmurno, miejscami przelotny deszcz"
+
+msgid "overcast with thunderstorms"
+msgstr "Pochmurno, burze"
+
+msgid "p.m. downpours"
+msgstr "Po południu: ulewy"
+
+msgid "p.m. flurries"
+msgstr "Po południu: przelotne słabe opady śniegu"
+
+msgid "p.m. snow"
+msgstr "Po południu: śnieg"
+
+msgid "p.m. snow showers"
+msgstr "Po południu: przelotny śnieg"
+
+msgid "partial sunshine"
+msgstr "Chwilami słońce"
+
+msgid "partly cloudy and breezy"
+msgstr "Częściowe zachmurzenie, lekko wietrznie"
+
+msgid "partly cloudy and chilly"
+msgstr "Częściowe zachmurzenie, przenikliwy chłód"
+
+msgid "partly cloudy and cold"
+msgstr "Częściowe zachmurzenie, zimno"
+
+msgid "partly cloudy and colder"
+msgstr "Częściowe zachmurzenie, zimniej"
+
+msgid "partly cloudy and cool"
+msgstr "Częściowe zachmurzenie, chłodno"
+
+msgid "partly cloudy and cooler"
+msgstr "Częściowe zachmurzenie, chłodniej"
+
+msgid "partly cloudy and frigid"
+msgstr "Częściowe zachmurzenie, siarczysty mróz"
+
+msgid "partly cloudy and humid"
+msgstr "Częściowe zachmurzenie, wilgotno"
+
+msgid "partly cloudy and mild"
+msgstr "Częściowe zachmurzenie, łagodna temperatura"
+
+msgid "partly cloudy and much colder"
+msgstr "Częściowe zachmurzenie, znacznie zimniej"
+
+msgid "partly cloudy and seasonable"
+msgstr "Częściowe zachmurzenie, temperatura typowa dla pory roku"
+
+msgid "partly cloudy and very cold"
+msgstr "Częściowe zachmurzenie, bardzo zimno"
+
+msgid "partly cloudy and very humid"
+msgstr "Częściowe zachmurzenie, bardzo wilgotno"
+
+msgid "partly cloudy and very warm"
+msgstr "Częściowe zachmurzenie, bardzo ciepło"
+
+msgid "partly cloudy and warm"
+msgstr "Częściowe zachmurzenie, ciepło"
+
+msgid "partly cloudy and windy"
+msgstr "Częściowe zachmurzenie, wietrznie"
+
+msgid "partly cloudy with a shower"
+msgstr "Częściowe zachmurzenie, przelotny deszcz"
+
+msgid "partly cloudy with a t-storm"
+msgstr "Częściowe zachmurzenie, burza"
+
+msgid "partly cloudy with flurries"
+msgstr "Częściowe zachmurzenie, przelotne słabe opady śniegu"
+
+msgid "partly sunny"
+msgstr "Chwilami słońce"
+
+msgid "partly sunny and beautiful"
+msgstr "Chwilami słońce, przyjemna pogoda"
+
+msgid "partly sunny and breezy"
+msgstr "Chwilami słońce, lekko wietrznie"
+
+msgid "partly sunny and chilly"
+msgstr "Chwilami słońce, przenikliwy chłód"
+
+msgid "partly sunny and cold"
+msgstr "Chwilami słońce, zimno"
+
+msgid "partly sunny and colder"
+msgstr "Chwilami słońce, zimniej"
+
+msgid "partly sunny and comfortable"
+msgstr "Chwilami słońce, przyjemna pogoda"
+
+msgid "partly sunny and cool"
+msgstr "Chwilami słońce, chłodno"
+
+msgid "partly sunny and cooler"
+msgstr "Chwilami słońce, chłodniej"
+
+msgid "partly sunny and delightful"
+msgstr "Chwilami słońce, przyjemna pogoda"
+
+msgid "partly sunny and frigid"
+msgstr "Chwilami słońce, siarczysty mróz"
+
+msgid "partly sunny and hot"
+msgstr "Chwilami słońce, gorąco"
+
+msgid "partly sunny and hotter"
+msgstr "Chwilami słońce, goręcej"
+
+msgid "partly sunny and humid"
+msgstr "Chwilami słońce, wilgotno"
+
+msgid "partly sunny and less humid"
+msgstr "Chwilami słońce, mniejsza wilgotność"
+
+msgid "partly sunny and mild"
+msgstr "Chwilami słońce, łagodna temperatura"
+
+msgid "partly sunny and milder"
+msgstr "Chwilami słońce, łagodniejsza temperatura"
+
+msgid "partly sunny and nice"
+msgstr "Chwilami słońce, przyjemna pogoda"
+
+msgid "partly sunny and not as cold"
+msgstr "Chwilami słońce, nie tak zimno"
+
+msgid "partly sunny and not as cool"
+msgstr "Chwilami słońce, nie tak chłodno"
+
+msgid "partly sunny and not as hot"
+msgstr "Chwilami słońce, mniej gorąco"
+
+msgid "partly sunny and not as warm"
+msgstr "Chwilami słońce, nie tak ciepło"
+
+msgid "partly sunny and pleasant"
+msgstr "Chwilami słońce, przyjemna pogoda"
+
+msgid "partly sunny and quite cold"
+msgstr "Chwilami słońce, dość zimno"
+
+msgid "partly sunny and seasonable"
+msgstr "Chwilami słońce, temperatura typowa dla pory roku"
+
+msgid "partly sunny and summerlike"
+msgstr "Chwilami słońce, letnia pogoda"
+
+msgid "partly sunny and very cold"
+msgstr "Chwilami słońce, bardzo zimno"
+
+msgid "partly sunny and very hot"
+msgstr "Chwilami słońce, bardzo gorąco"
+
+msgid "partly sunny and very humid"
+msgstr "Chwilami słońce, bardzo wilgotno"
+
+msgid "partly sunny and very warm"
+msgstr "Chwilami słońce, bardzo ciepło"
+
+msgid "partly sunny and warm"
+msgstr "Chwilami słońce, ciepło"
+
+msgid "partly sunny and warmer"
+msgstr "Chwilami słońce, cieplej"
+
+msgid "partly sunny and windy"
+msgstr "Chwilami słońce, wietrznie"
+
+msgid "partly sunny with a shower"
+msgstr "Chwilami słońce, przelotny deszcz"
+
+msgid "partly sunny with a t-shower"
+msgstr "Chwilami słońce, przelotny deszcz z burzą"
+
+msgid "partly sunny with a t-storm"
+msgstr "Chwilami słońce, burza"
+
+msgid "partly sunny with flurries"
+msgstr "Chwilami słońce, przelotne słabe opady śniegu"
+
+msgid "partly to mostly cloudy"
+msgstr "Zachmurzenie umiarkowane lub duże"
+
+msgid "partly to mostly sunny"
+msgstr "Okresami lub przeważnie słonecznie"
+
+msgid "patchy clouds"
+msgstr "Miejscami zachmurzenie"
+
+msgid "patchy clouds and breezy"
+msgstr "Miejscami zachmurzenie, lekko wietrznie"
+
+msgid "patchy clouds and chilly"
+msgstr "Miejscami zachmurzenie, przenikliwy chłód"
+
+msgid "patchy clouds and cold"
+msgstr "Miejscami zachmurzenie, zimno"
+
+msgid "patchy clouds and cool"
+msgstr "Miejscami zachmurzenie, chłodno"
+
+msgid "patchy clouds and frigid"
+msgstr "Miejscami zachmurzenie, siarczysty mróz"
+
+msgid "patchy clouds and humid"
+msgstr "Miejscami zachmurzenie, wilgotno"
+
+msgid "patchy clouds and mild"
+msgstr "Miejscami zachmurzenie, łagodna temperatura"
+
+msgid "patchy clouds and very warm"
+msgstr "Miejscami zachmurzenie, bardzo ciepło"
+
+msgid "patchy clouds and warm"
+msgstr "Miejscami zachmurzenie, ciepło"
+
+msgid "patchy clouds with a shower"
+msgstr "Miejscami zachmurzenie, przelotny deszcz"
+
+msgid "patchy fog"
+msgstr "Miejscami mgła"
+
+msgid "patchy fog freezing late"
+msgstr "Później: miejscami mgła zacznie zamarzać"
+
+msgid "patchy freezing fog"
+msgstr "Miejscami marznąca mgła"
+
+msgid "patchy low clouds and fog"
+msgstr "Miejscami niskie chmury, mgła"
+
+msgid "perhaps snow late"
+msgstr "Później: możliwe opady śniegu"
+
+msgid "periods of clouds and sun"
+msgstr "Na przemian słońce i chmury"
+
+msgid "periods of rain"
+msgstr "Okresami deszcz"
+
+msgid "periods of rain and a t-storm"
+msgstr "Okresami deszcz, burza"
+
+msgid "periods of rain late"
+msgstr "Później: okresami deszcz"
+
+msgid "periods of rain this morning"
+msgstr "Dziś rano: okresami deszcz"
+
+msgid "periods of snow"
+msgstr "Okresami śnieg"
+
+msgid "periods of snow and rain"
+msgstr "Okresami śnieg, deszcz"
+
+msgid "periods of sun"
+msgstr "Chwilami słońce"
+
+msgid "periods of sun with a shower"
+msgstr "Chwilami słońce, przelotny deszcz"
+
+msgid "periods of sun with a t-storm"
+msgstr "Chwilami słońce, burza"
+
+msgid "periods of sunshine"
+msgstr "Chwilami słońce"
+
+msgid "periods of wet snow"
+msgstr "Okresami mokry śnieg"
+
+msgid "pleasant"
+msgstr "Przyjemna pogoda"
+
+msgid "pleasant and not as cool"
+msgstr "Przyjemna pogoda, nie tak chłodno"
+
+msgid "pleasant and warmer"
+msgstr "Przyjemna pogoda, cieplej"
+
+msgid "pleasant with clouds and sun"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "pleasant with clouds breaking"
+msgstr "Przyjemna pogoda, zachmurzenie maleje"
+
+msgid "pleasant with lots of sun"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "pleasant with periods of sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "pleasant with plenty of sun"
+msgstr "Przyjemna pogoda, dużo słońca"
+
+msgid "pleasant with some sun"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "pleasant with some sunshine"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "pleasant with sun and clouds"
+msgstr "Przyjemna pogoda, na przemian słońce i chmury"
+
+msgid "pleasant with sunny intervals"
+msgstr "Przyjemna pogoda, chwilami słońce"
+
+msgid "pleasant with sunshine"
+msgstr "Przyjemna pogoda, słonecznie"
+
+msgid "pleasant with variable clouds"
+msgstr "Przyjemna pogoda, zmienne zachmurzenie"
+
+msgid "pleasantly warm"
+msgstr "Przyjemnie ciepło"
+
+msgid "pleasantly warm with some sun"
+msgstr "Przyjemnie ciepło, chwilami słońce"
+
+msgid "pleasantly warm with sunshine"
+msgstr "Przyjemnie ciepło, słonecznie"
+
+msgid "plenty of clouds"
+msgstr "Przeważnie pochmurno"
+
+msgid "plenty of clouds with showers"
+msgstr "Przeważnie pochmurno, przelotne opady deszczu"
+
+msgid "plenty of sun"
+msgstr "Dużo słońca"
+
+msgid "plenty of sunshine"
+msgstr "Dużo słońca"
+
+msgid "pluto"
+msgstr "Pluton"
+
+msgid "quite cold"
+msgstr "Dość zimno"
+
+msgid "rain and a t-storm"
+msgstr "Deszcz, burza"
+
+msgid "rain and a thunderstorm"
+msgstr "Deszcz, burza"
+
+msgid "rain and a thunderstorm early"
+msgstr "Deszcz. Początkowo: burza"
+
+msgid "rain and a thunderstorm late"
+msgstr "Deszcz. Później: burza"
+
+msgid "rain and drizzle"
+msgstr "Deszcz i mżawka"
+
+msgid "rain and drizzle early"
+msgstr "Początkowo: deszcz i mżawka"
+
+msgid "rain and drizzle in the a.m."
+msgstr "Rano: deszcz i mżawka"
+
+msgid "rain and drizzle in the p.m."
+msgstr "Po południu: deszcz i mżawka"
+
+msgid "rain and drizzle late"
+msgstr "Później: deszcz i mżawka"
+
+msgid "rain and drizzle this evening"
+msgstr "Dziś wieczorem: deszcz i mżawka"
+
+msgid "rain and drizzle this morning"
+msgstr "Dziś rano: deszcz i mżawka"
+
+msgid "rain and ice in the evening"
+msgstr "Wieczorem: deszcz i lód"
+
+msgid "rain and snow"
+msgstr "Deszcz i śnieg"
+
+msgid "rain and snow shower"
+msgstr "Przelotne opady deszczu i śniegu"
+
+msgid "rain and snow showers"
+msgstr "Przelotne opady deszczu i śniegu"
+
+msgid "rain and snow showers early"
+msgstr "Początkowo: przelotne opady deszczu i śniegu"
+
+msgid "rain and snow showers late"
+msgstr "Później: przelotne opady deszczu i śniegu"
+
+msgid "rain at times"
+msgstr "Okresami deszcz"
+
+msgid "rain at times in the evening"
+msgstr "Wieczorem: okresami deszcz"
+
+msgid "rain at times late"
+msgstr "Później: okresami deszcz"
+
+msgid "rain becoming heavier"
+msgstr "Deszcz przybiera na sile"
+
+msgid "rain becoming steadier"
+msgstr "Deszcz staje się bardziej ciągły"
+
+msgid "rain ending"
+msgstr "Deszcz ustaje"
+
+msgid "rain in the afternoon"
+msgstr "Po południu: deszcz"
+
+msgid "rain in the evening"
+msgstr "Wieczorem: deszcz"
+
+msgid "rain in the morning"
+msgstr "Rano: deszcz"
+
+msgid "rain late in the afternoon"
+msgstr "Późnym popołudniem: deszcz"
+
+msgid "rain mixing in"
+msgstr "Z domieszką deszczu"
+
+msgid "rain tapering off"
+msgstr "Deszcz słabnie"
+
+msgid "rain tapering to showers"
+msgstr "Deszcz słabnie i staje się przelotny"
+
+msgid "rain this morning"
+msgstr "Dziś rano: deszcz"
+
+msgid "rain to ice"
+msgstr "Deszcz, a następnie oblodzenie"
+
+msgid "rain to snow"
+msgstr "Deszcz przechodzi w śnieg"
+
+msgid "rain/drizzle"
+msgstr "Deszcz i mżawka"
+
+msgid "rain/snow"
+msgstr "Deszcz i śnieg"
+
+msgid "rainy spells in the morning"
+msgstr "Rano: okresami deszcz"
+
+msgid "rainy times in the afternoon"
+msgstr "Po południu: okresami deszcz"
+
+msgid "rainy times in the morning"
+msgstr "Rano: okresami deszcz"
+
+msgid "rainy times late"
+msgstr "Później: okresami deszcz"
+
+msgid "rather cloudy"
+msgstr "Dość pochmurno"
+
+msgid "rather cloudy and breezy"
+msgstr "Dość pochmurno, lekko wietrznie"
+
+msgid "rather cloudy and chilly"
+msgstr "Dość pochmurno, przenikliwy chłód"
+
+msgid "rather cloudy and cold"
+msgstr "Dość pochmurno, zimno"
+
+msgid "rather cloudy and cool"
+msgstr "Dość pochmurno, chłodno"
+
+msgid "rather cloudy and cooler"
+msgstr "Dość pochmurno, chłodniej"
+
+msgid "rather cloudy and hot"
+msgstr "Dość pochmurno, gorąco"
+
+msgid "rather cloudy and humid"
+msgstr "Dość pochmurno, wilgotno"
+
+msgid "rather cloudy and mild"
+msgstr "Dość pochmurno, łagodna temperatura"
+
+msgid "rather cloudy and not as cold"
+msgstr "Dość pochmurno, nie tak zimno"
+
+msgid "rather cloudy and not as warm"
+msgstr "Dość pochmurno, nie tak ciepło"
+
+msgid "rather cloudy and summerlike"
+msgstr "Dość pochmurno, letnia pogoda"
+
+msgid "rather cloudy and very cold"
+msgstr "Dość pochmurno, bardzo zimno"
+
+msgid "rather cloudy and very warm"
+msgstr "Dość pochmurno, bardzo ciepło"
+
+msgid "rather cloudy and warm"
+msgstr "Dość pochmurno, ciepło"
+
+msgid "rather cloudy and warmer"
+msgstr "Dość pochmurno, cieplej"
+
+msgid "rather cloudy with a shower"
+msgstr "Dość pochmurno, przelotny deszcz"
+
+msgid "rather cloudy with a t-storm"
+msgstr "Dość pochmurno, burza"
+
+msgid "rather cloudy with rain late"
+msgstr "Dość pochmurno. Później: deszcz"
+
+msgid "rather cloudy with showers"
+msgstr "Dość pochmurno, przelotne opady deszczu"
+
+msgid "remaining cloudy"
+msgstr "Nadal pochmurno"
+
+msgid "remaining cloudy and cold"
+msgstr "Nadal pochmurno, zimno"
+
+msgid "remaining cloudy and warmer"
+msgstr "Nadal pochmurno, cieplej"
+
+msgid "remaining cloudy with showers"
+msgstr "Nadal pochmurno, przelotne opady deszczu"
+
+msgid "remaining cool with some sun"
+msgstr "Nadal chłodno, chwilami słońce"
+
+msgid "remaining warm"
+msgstr "Nadal ciepło"
+
+msgid "remaining warm with some sun"
+msgstr "Nadal ciepło, chwilami słońce"
+
+msgid "remaining warm with sunshine"
+msgstr "Nadal ciepło, słonecznie"
+
+msgid "rising temperatures"
+msgstr "Wzrost temperatury"
+
+msgid "rising temperatures early"
+msgstr "Początkowo: wzrost temperatury"
+
+msgid "rising temperatures late"
+msgstr "Później: wzrost temperatury"
+
+msgid "saturn"
+msgstr "Saturn"
+
+msgid "seasonably warm"
+msgstr "Ciepło typowe dla pory roku"
+
+msgid "seasonably warm with sunshine"
+msgstr "Ciepło typowe dla pory roku, słonecznie"
+
+msgid "shower"
+msgstr "Przelotny deszcz"
+
+msgid "shower and thunderstorm"
+msgstr "Przelotny deszcz, burza"
+
+msgid "showers and a heavier t-storm"
+msgstr "Przelotne opady deszczu, silne burze"
+
+msgid "showers and heavy t-storms"
+msgstr "Przelotne opady deszczu, silne burze"
+
+msgid "showers and thunderstorm"
+msgstr "Przelotne opady deszczu, burza"
+
+msgid "showers and thunderstorms"
+msgstr "Przelotne opady deszczu, burze"
+
+msgid "showers around"
+msgstr "Miejscami przelotny deszcz"
+
+msgid "showers around early"
+msgstr "Początkowo: miejscami przelotny deszcz"
+
+msgid "showers around in the evening"
+msgstr "Wieczorem: miejscami przelotny deszcz"
+
+msgid "showers around in the morning"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "showers around in the p.m."
+msgstr "Po południu: miejscami przelotny deszcz"
+
+msgid "showers around late"
+msgstr "Później: miejscami przelotny deszcz"
+
+msgid "showers around this afternoon"
+msgstr "Dziś po południu: miejscami przelotny deszcz"
+
+msgid "showers around this evening"
+msgstr "Dziś wieczorem: miejscami przelotny deszcz"
+
+msgid "showers early in the morning"
+msgstr "Wczesnym rankiem: przelotne opady deszczu"
+
+msgid "showers early this morning"
+msgstr "Wczesnym rankiem: przelotne opady deszczu"
+
+msgid "showers in the afternoon"
+msgstr "Po południu: przelotne opady deszczu"
+
+msgid "showers in the evening"
+msgstr "Wieczorem: przelotne opady deszczu"
+
+msgid "showers in the morning"
+msgstr "Rano: przelotne opady deszczu"
+
+msgid "showers late"
+msgstr "Później: przelotne opady deszczu"
+
+msgid "showers late in the afternoon"
+msgstr "Późnym popołudniem: przelotne opady deszczu"
+
+msgid "showers late this afternoon"
+msgstr "Późnym popołudniem: przelotne opady deszczu"
+
+msgid "showers late this morning"
+msgstr "Późnym rankiem: przelotne opady deszczu"
+
+msgid "showers of rain and snow"
+msgstr "Przelotne opady deszczu i śniegu"
+
+msgid "showers of rain and snow late"
+msgstr "Później: przelotne opady deszczu i śniegu"
+
+msgid "showers possible"
+msgstr "Możliwy przelotny deszcz"
+
+msgid "showers this evening"
+msgstr "Dziś wieczorem: przelotne opady deszczu"
+
+msgid "showers this morning"
+msgstr "Dziś rano: przelotne opady deszczu"
+
+msgid "sleet and freezing rain late"
+msgstr "Deszcz ze śniegiem. Później: marznący deszcz"
+
+msgid "snow and rain"
+msgstr "Deszcz i śnieg"
+
+msgid "snow and rain in the morning"
+msgstr "Rano: deszcz i śnieg"
+
+msgid "snow and rain late"
+msgstr "Później: deszcz i śnieg"
+
+msgid "snow and rain this morning"
+msgstr "Dziś rano: deszcz i śnieg"
+
+msgid "snow and sleet at times"
+msgstr "Okresami śnieg i ziarna lodowe"
+
+msgid "snow at times"
+msgstr "Okresami śnieg"
+
+msgid "snow in the evening"
+msgstr "Wieczorem: śnieg"
+
+msgid "snow late in the p.m."
+msgstr "Po południu: później: śnieg"
+
+msgid "snow late this afternoon"
+msgstr "Późnym popołudniem: śnieg"
+
+msgid "snow late this morning"
+msgstr "Późnym rankiem: śnieg"
+
+msgid "snow much of the time"
+msgstr "Śnieg przez większą część czasu"
+
+msgid "snow of varying rates"
+msgstr "Śnieg o zmiennym natężeniu"
+
+msgid "snow showers in the afternoon"
+msgstr "Po południu: przelotny śnieg"
+
+msgid "snow showers in the morning"
+msgstr "Rano: przelotny śnieg"
+
+msgid "snow showers late"
+msgstr "Później: przelotny śnieg"
+
+msgid "snow showers this evening"
+msgstr "Dziś wieczorem: przelotny śnieg"
+
+msgid "snow tapering off"
+msgstr "Opady śniegu słabną"
+
+msgid "snow tapering to flurries"
+msgstr "Opady śniegu słabną i stają się przelotne"
+
+msgid "some brightening"
+msgstr "Niewielkie przejaśnienia"
+
+msgid "some brightening and hot"
+msgstr "Niewielkie przejaśnienia, gorąco"
+
+msgid "some brightening and humid"
+msgstr "Niewielkie przejaśnienia, wilgotno"
+
+msgid "some brightening and warm"
+msgstr "Niewielkie przejaśnienia, ciepło"
+
+msgid "some brightening and warmer"
+msgstr "Niewielkie przejaśnienia, cieplej"
+
+msgid "some clouds"
+msgstr "Nieliczne chmury"
+
+msgid "some clouds with a shower"
+msgstr "Nieliczne chmury, przelotny deszcz"
+
+msgid "some clouds with a t-storm"
+msgstr "Nieliczne chmury, burza"
+
+msgid "some clouds with rain late"
+msgstr "Nieliczne chmury. Później: deszcz"
+
+msgid "some ice early"
+msgstr "Początkowo: miejscami oblodzenie"
+
+msgid "some rain and a t-storm early"
+msgstr "Niewielki deszcz. Początkowo: burza"
+
+msgid "some rain and a t-storm late"
+msgstr "Niewielki deszcz. Później: burza"
+
+msgid "some rain and a thunderstorm"
+msgstr "Niewielki deszcz, burza"
+
+msgid "some snow"
+msgstr "Niewielkie opady śniegu"
+
+msgid "some sun"
+msgstr "Chwilami słońce"
+
+msgid "some sun and pleasant"
+msgstr "Chwilami słońce, przyjemna pogoda"
+
+msgid "some sun returning"
+msgstr "Niewielkie przejaśnienia"
+
+msgid "some sun with a brief shower"
+msgstr "Chwilami słońce, krótkotrwałe przelotne deszcze"
+
+msgid "some sun with a cool breeze"
+msgstr "Chwilami słońce, chłodny wietrzyk"
+
+msgid "some sun with a few showers"
+msgstr "Chwilami słońce, pojedyncze przelotne deszcze"
+
+msgid "some sun with a gusty breeze"
+msgstr "Chwilami słońce, porywisty wiatr"
+
+msgid "some sun with a heavy t-storm"
+msgstr "Chwilami słońce, silne burze"
+
+msgid "some sun with a little rain"
+msgstr "Chwilami słońce, niewielki deszcz"
+
+msgid "some sun with a quick shower"
+msgstr "Chwilami słońce, krótkotrwałe przelotne deszcze"
+
+msgid "some sun with a shower"
+msgstr "Chwilami słońce, przelotny deszcz"
+
+msgid "some sun with a shower or two"
+msgstr "Chwilami słońce, jeden lub dwa przelotne deszcze"
+
+msgid "some sun with a stray shower"
+msgstr "Chwilami słońce, miejscami przelotny deszcz"
+
+msgid "some sun with a stray t-storm"
+msgstr "Chwilami słońce, miejscami burze"
+
+msgid "some sun with a t-storm"
+msgstr "Chwilami słońce, burza"
+
+msgid "some sun with a thundershower"
+msgstr "Chwilami słońce, przelotny deszcz z burzą"
+
+msgid "some sun with a thunderstorm"
+msgstr "Chwilami słońce, burza"
+
+msgid "some sun with low humidity"
+msgstr "Chwilami słońce, niska wilgotność"
+
+msgid "some sun with occasional rain"
+msgstr "Chwilami słońce, okresami deszcz"
+
+msgid "some sun with showers"
+msgstr "Chwilami słońce, przelotne opady deszczu"
+
+msgid "some sun with showers around"
+msgstr "Chwilami słońce, miejscami przelotny deszcz"
+
+msgid "some sun with spotty showers"
+msgstr "Chwilami słońce, miejscami przelotny deszcz"
+
+msgid "some sunshine"
+msgstr "Chwilami słońce"
+
+msgid "some sunshine with a shower"
+msgstr "Chwilami słońce, przelotny deszcz"
+
+msgid "spotty afternoon showers"
+msgstr "Po południu: miejscami przelotny deszcz"
+
+msgid "spotty drizzle in the morning"
+msgstr "Rano: miejscami mżawka"
+
+msgid "spotty drizzle this morning"
+msgstr "Dziś rano: miejscami mżawka"
+
+msgid "spotty evening showers"
+msgstr "Wieczorem: miejscami przelotny deszcz"
+
+msgid "spotty late-night showers"
+msgstr "Późną nocą: miejscami przelotny deszcz"
+
+msgid "spotty morning showers"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "spotty showers"
+msgstr "Miejscami przelotny deszcz"
+
+msgid "spotty showers in the evening"
+msgstr "Wieczorem: miejscami przelotny deszcz"
+
+msgid "spotty showers in the morning"
+msgstr "Rano: miejscami przelotny deszcz"
+
+msgid "spotty showers late"
+msgstr "Później: miejscami przelotny deszcz"
+
+msgid "spotty showers this afternoon"
+msgstr "Dziś po południu: miejscami przelotny deszcz"
+
+msgid "spotty showers this morning"
+msgstr "Dziś rano: miejscami przelotny deszcz"
+
+msgid "still cloudy"
+msgstr "Nadal pochmurno"
+
+msgid "still cloudy and warmer"
+msgstr "Nadal pochmurno, cieplej"
+
+msgid "still cloudy with a shower"
+msgstr "Nadal pochmurno, przelotny deszcz"
+
+msgid "still cloudy with showers"
+msgstr "Nadal pochmurno, przelotne opady deszczu"
+
+msgid "strong afternoon t-storms"
+msgstr "Po południu: silne burze"
+
+msgid "strong evening thunderstorms"
+msgstr "Wieczorem: silne burze"
+
+msgid "strong late"
+msgstr "Później: silny"
+
+msgid "strong late-night t-storms"
+msgstr "Późną nocą: silne burze"
+
+msgid "strong t-storms"
+msgstr "Silne burze"
+
+msgid "strong thunderstorms"
+msgstr "Silne burze"
+
+msgid "strong thunderstorms late"
+msgstr "Później: silne burze"
+
+msgid "strong thunderstorms possible"
+msgstr "Możliwe silne burze"
+
+msgid "strong winds subsiding"
+msgstr "Silny wiatr słabnie"
+
+msgid "summerlike"
+msgstr "Letnia pogoda"
+
+msgid "summerlike with a few showers"
+msgstr "Letnia pogoda, pojedyncze przelotne deszcze"
+
+msgid "summerlike with a shower"
+msgstr "Letnia pogoda, przelotny deszcz"
+
+msgid "summerlike with a t-storm"
+msgstr "Letnia pogoda, burza"
+
+msgid "summerlike with hazy sun"
+msgstr "Letnia pogoda, słońce za zamgleniem"
+
+msgid "summerlike with high clouds"
+msgstr "Letnia pogoda, wysokie chmury"
+
+msgid "summerlike with lots of sun"
+msgstr "Letnia pogoda, dużo słońca"
+
+msgid "summerlike with some sun"
+msgstr "Letnia pogoda, chwilami słońce"
+
+msgid "summerlike with sunshine"
+msgstr "Letnia pogoda, słonecznie"
+
+msgid "sun and areas of high clouds"
+msgstr "Słonecznie, miejscami chmury wysokie"
+
+msgid "sun and areas of low clouds"
+msgstr "Słonecznie, miejscami niskie chmury"
+
+msgid "sun and clouds"
+msgstr "Na przemian słońce i chmury"
+
+msgid "sun and clouds with a shower"
+msgstr "Na przemian słońce i chmury, przelotny deszcz"
+
+msgid "sun and clouds with a t-storm"
+msgstr "Na przemian słońce i chmury, burza"
+
+msgid "sun and some clouds"
+msgstr "Na przemian słońce i chmury"
+
+msgid "sun followed by clouds"
+msgstr "Po słońcu nadejdą chmury"
+
+msgid "sun followed by some clouds"
+msgstr "Początkowo słonecznie, potem nieco chmur"
+
+msgid "sun giving way to clouds"
+msgstr "Po słońcu nadejdą chmury"
+
+msgid "sun mixing with clouds"
+msgstr "Na przemian słońce i chmury"
+
+msgid "sun through high clouds"
+msgstr "Słońce prześwieca przez wysokie chmury"
+
+msgid "sun yielding to clouds"
+msgstr "Po słońcu nadejdą chmury"
+
+msgid "sunlit"
+msgstr "Słonecznie"
+
+msgid "sunlit and beautiful"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunlit and comfortable"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunlit and delightful"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunlit and pleasant"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunlit and unseasonably hot"
+msgstr "Słonecznie, wyjątkowo gorąco jak na tę porę roku"
+
+msgid "sunlit and very warm"
+msgstr "Słonecznie, bardzo ciepło"
+
+msgid "sunlit and warmer"
+msgstr "Słonecznie, cieplej"
+
+msgid "sunny and beautiful"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunny and breezy"
+msgstr "Słonecznie, lekko wietrznie"
+
+msgid "sunny and cold"
+msgstr "Słonecznie, zimno"
+
+msgid "sunny and comfortable"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunny and cool"
+msgstr "Słonecznie, chłodno"
+
+msgid "sunny and cooler"
+msgstr "Słonecznie, chłodniej"
+
+msgid "sunny and cooler but pleasant"
+msgstr "Słonecznie, chłodniej, przyjemna pogoda"
+
+msgid "sunny and delightful"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunny and hot"
+msgstr "Słonecznie, gorąco"
+
+msgid "sunny and hotter"
+msgstr "Słonecznie, goręcej"
+
+msgid "sunny and humid"
+msgstr "Słonecznie, wilgotno"
+
+msgid "sunny and less humid"
+msgstr "Słonecznie, mniejsza wilgotność"
+
+msgid "sunny and mild"
+msgstr "Słonecznie, łagodna temperatura"
+
+msgid "sunny and milder"
+msgstr "Słonecznie, łagodniejsza temperatura"
+
+msgid "sunny and nice"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunny and not as cold"
+msgstr "Słonecznie, nie tak zimno"
+
+msgid "sunny and not as cool"
+msgstr "Słonecznie, nie tak chłodno"
+
+msgid "sunny and not as hot"
+msgstr "Słonecznie, mniej gorąco"
+
+msgid "sunny and not as warm"
+msgstr "Słonecznie, nie tak ciepło"
+
+msgid "sunny and pleasant"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunny and pleasantly cool"
+msgstr "Słonecznie, przyjemnie chłodno"
+
+msgid "sunny and pleasantly warm"
+msgstr "Słonecznie, przyjemnie ciepło"
+
+msgid "sunny and remaining cool"
+msgstr "Słonecznie, nadal chłodno"
+
+msgid "sunny and remaining very warm"
+msgstr "Słonecznie, nadal bardzo ciepło"
+
+msgid "sunny and remaining warm"
+msgstr "Słonecznie, nadal ciepło"
+
+msgid "sunny and seasonably cold"
+msgstr "Słonecznie, zimno typowe dla pory roku"
+
+msgid "sunny and seasonably warm"
+msgstr "Słonecznie, ciepło typowe dla pory roku"
+
+msgid "sunny and unseasonably hot"
+msgstr "Słonecznie, wyjątkowo gorąco jak na tę porę roku"
+
+msgid "sunny and very cold"
+msgstr "Słonecznie, bardzo zimno"
+
+msgid "sunny and very humid"
+msgstr "Słonecznie, bardzo wilgotno"
+
+msgid "sunny and very warm"
+msgstr "Słonecznie, bardzo ciepło"
+
+msgid "sunny and warm"
+msgstr "Słonecznie, ciepło"
+
+msgid "sunny and warmer"
+msgstr "Słonecznie, cieplej"
+
+msgid "sunny and windy"
+msgstr "Słonecznie, wietrznie"
+
+msgid "sunny intervals"
+msgstr "Chwilami słońce"
+
+msgid "sunny intervals with a shower"
+msgstr "Chwilami słońce, przelotny deszcz"
+
+msgid "sunny much of the time"
+msgstr "Przeważnie słonecznie"
+
+msgid "sunny to partly cloudy"
+msgstr "Bezchmurnie lub częściowe zachmurzenie"
+
+msgid "sunny with a gusty breeze"
+msgstr "Słonecznie, porywisty wiatr"
+
+msgid "sunny with a warm breeze"
+msgstr "Słonecznie, ciepły wietrzyk"
+
+msgid "sunny with low humidity"
+msgstr "Słonecznie, niska wilgotność"
+
+msgid "sunshine"
+msgstr "Słonecznie"
+
+msgid "sunshine and a few clouds"
+msgstr "Słonecznie, nieliczne chmury"
+
+msgid "sunshine and beautiful"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunshine and bitterly cold"
+msgstr "Słonecznie, siarczysty mróz"
+
+msgid "sunshine and breezy"
+msgstr "Słonecznie, lekko wietrznie"
+
+msgid "sunshine and cold"
+msgstr "Słonecznie, zimno"
+
+msgid "sunshine and comfortable"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunshine and cooler"
+msgstr "Słonecznie, chłodniej"
+
+msgid "sunshine and delightful"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunshine and hot"
+msgstr "Słonecznie, gorąco"
+
+msgid "sunshine and hotter"
+msgstr "Słonecznie, goręcej"
+
+msgid "sunshine and humid"
+msgstr "Słonecznie, wilgotno"
+
+msgid "sunshine and less humid"
+msgstr "Słonecznie, mniejsza wilgotność"
+
+msgid "sunshine and mild"
+msgstr "Słonecznie, łagodna temperatura"
+
+msgid "sunshine and nice"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunshine and not as cold"
+msgstr "Słonecznie, nie tak zimno"
+
+msgid "sunshine and not as hot"
+msgstr "Słonecznie, mniej gorąco"
+
+msgid "sunshine and not as warm"
+msgstr "Słonecznie, nie tak ciepło"
+
+msgid "sunshine and patchy clouds"
+msgstr "Słonecznie, miejscami zachmurzenie"
+
+msgid "sunshine and pleasant"
+msgstr "Słonecznie, przyjemna pogoda"
+
+msgid "sunshine and pleasantly warm"
+msgstr "Słonecznie, przyjemnie ciepło"
+
+msgid "sunshine and remaining warm"
+msgstr "Słonecznie, nadal ciepło"
+
+msgid "sunshine and seasonably cold"
+msgstr "Słonecznie, zimno typowe dla pory roku"
+
+msgid "sunshine and seasonably warm"
+msgstr "Słonecznie, ciepło typowe dla pory roku"
+
+msgid "sunshine and some clouds"
+msgstr "Słonecznie, nieliczne chmury"
+
+msgid "sunshine and summerlike"
+msgstr "Słonecznie, letnia pogoda"
+
+msgid "sunshine and unseasonably hot"
+msgstr "Słonecznie, wyjątkowo gorąco jak na tę porę roku"
+
+msgid "sunshine and very hot"
+msgstr "Słonecznie, bardzo gorąco"
+
+msgid "sunshine and very warm"
+msgstr "Słonecznie, bardzo ciepło"
+
+msgid "sunshine and warm"
+msgstr "Słonecznie, ciepło"
+
+msgid "sunshine and warmer"
+msgstr "Słonecznie, cieplej"
+
+msgid "sunshine mixing with clouds"
+msgstr "Na przemian słońce i chmury"
+
+msgid "sunshine with a shower"
+msgstr "Słonecznie, przelotny deszcz"
+
+msgid "sunshine with a snow shower"
+msgstr "Słonecznie, przelotny opad śniegu"
+
+msgid "sunshine with a stray shower"
+msgstr "Słonecznie, miejscami przelotny deszcz"
+
+msgid "sunshine with a stray t-storm"
+msgstr "Słonecznie, miejscami burze"
+
+msgid "sunshine with a thundershower"
+msgstr "Słonecznie, przelotny deszcz z burzą"
+
+msgid "sunshine with a thunderstorm"
+msgstr "Słonecznie, burza"
+
+msgid "sunshine with low humidity"
+msgstr "Słonecznie, niska wilgotność"
+
+msgid "t-storms"
+msgstr "Burze"
+
+msgid "t-storms in the afternoon"
+msgstr "Po południu: burze"
+
+msgid "t-storms possible in the a.m."
+msgstr "Rano: możliwe burze"
+
+msgid "then a bit of ice"
+msgstr "Następnie miejscami oblodzenie"
+
+msgid "then a shower"
+msgstr "Następnie przelotny deszcz"
+
+msgid "then clouds"
+msgstr "Następnie pochmurno"
+
+msgid "then flurries"
+msgstr "Następnie przelotne słabe opady śniegu"
+
+msgid "then ice"
+msgstr "Następnie lód"
+
+msgid "then rain"
+msgstr "Następnie deszcz"
+
+msgid "then showers"
+msgstr "Następnie przelotne opady deszczu"
+
+msgid "then snow"
+msgstr "Następnie śnieg"
+
+msgid "then some sun"
+msgstr "Następnie chwilami słońce"
+
+msgid "then sun"
+msgstr "Następnie słonecznie"
+
+msgid "then t-storms"
+msgstr "Następnie burze"
+
+msgid "then turning cloudy"
+msgstr "Następnie wzrost zachmurzenia"
+
+msgid "thickening clouds"
+msgstr "Chmury gęstnieją"
+
+msgid "thickening clouds and hot"
+msgstr "Chmury gęstnieją, gorąco"
+
+msgid "thundershower"
+msgstr "Przelotny deszcz z burzą"
+
+msgid "thunderstorms in the evening"
+msgstr "Wieczorem: burze"
+
+msgid "thunderstorms late"
+msgstr "Później: burze"
+
+msgid "thunderstorms this afternoon"
+msgstr "Dziś po południu: burze"
+
+msgid "thunderstorms this morning"
+msgstr "Dziś rano: burze"
+
+msgid "times of clouds and sun"
+msgstr "Na przemian słońce i chmury"
+
+msgid "times of clouds and sunshine"
+msgstr "Na przemian słońce i chmury"
+
+msgid "times of rain"
+msgstr "Okresami deszcz"
+
+msgid "times of sun and clouds"
+msgstr "Na przemian słońce i chmury"
+
+msgid "to rain"
+msgstr "Przechodzi w deszcz"
+
+msgid "turning clear"
+msgstr "Rozpogodzenia"
+
+msgid "turning clear and very warm"
+msgstr "Rozpogodzenia, bardzo ciepło"
+
+msgid "turning cloudy"
+msgstr "Wzrost zachmurzenia"
+
+msgid "turning cloudy and breezy"
+msgstr "Wzrost zachmurzenia, lekko wietrznie"
+
+msgid "turning cloudy and chilly"
+msgstr "Wzrost zachmurzenia, przenikliwy chłód"
+
+msgid "turning cloudy and cold"
+msgstr "Wzrost zachmurzenia, zimno"
+
+msgid "turning cloudy and colder"
+msgstr "Wzrost zachmurzenia, zimniej"
+
+msgid "turning cloudy and cooler"
+msgstr "Wzrost zachmurzenia, chłodniej"
+
+msgid "turning cloudy and hot"
+msgstr "Wzrost zachmurzenia, gorąco"
+
+msgid "turning cloudy and hotter"
+msgstr "Wzrost zachmurzenia, goręcej"
+
+msgid "turning cloudy and humid"
+msgstr "Wzrost zachmurzenia, wilgotno"
+
+msgid "turning cloudy and less humid"
+msgstr "Wzrost zachmurzenia, mniejsza wilgotność"
+
+msgid "turning cloudy and mild"
+msgstr "Wzrost zachmurzenia, łagodna temperatura"
+
+msgid "turning cloudy and milder"
+msgstr "Wzrost zachmurzenia, łagodniejsza temperatura"
+
+msgid "turning cloudy and pleasant"
+msgstr "Wzrost zachmurzenia, przyjemna pogoda"
+
+msgid "turning cloudy and summerlike"
+msgstr "Wzrost zachmurzenia, letnia pogoda"
+
+msgid "turning cloudy and very hot"
+msgstr "Wzrost zachmurzenia, bardzo gorąco"
+
+msgid "turning cloudy and very warm"
+msgstr "Wzrost zachmurzenia, bardzo ciepło"
+
+msgid "turning cloudy and warm"
+msgstr "Wzrost zachmurzenia, ciepło"
+
+msgid "turning cloudy and warmer"
+msgstr "Wzrost zachmurzenia, cieplej"
+
+msgid "turning cloudy with a shower"
+msgstr "Wzrost zachmurzenia, przelotny deszcz"
+
+msgid "turning cloudy with a t-storm"
+msgstr "Wzrost zachmurzenia, burza"
+
+msgid "turning cloudy with rain late"
+msgstr "Wzrost zachmurzenia. Później: deszcz"
+
+msgid "turning colder in the morning"
+msgstr "Rano: zimniej"
+
+msgid "turning colder this afternoon"
+msgstr "Dziś po południu: zimniej"
+
+msgid "turning colder this morning"
+msgstr "Dziś rano: zimniej"
+
+msgid "turning out clear"
+msgstr "Rozpogodzenia"
+
+msgid "turning out clear and breezy"
+msgstr "Rozpogodzenia, lekko wietrznie"
+
+msgid "turning out clear and chilly"
+msgstr "Rozpogodzenia, przenikliwy chłód"
+
+msgid "turning out clear and cold"
+msgstr "Rozpogodzenia, zimno"
+
+msgid "turning out clear and frigid"
+msgstr "Rozpogodzenia, siarczysty mróz"
+
+msgid "turning out clear and mild"
+msgstr "Rozpogodzenia, łagodna temperatura"
+
+msgid "turning out clear and warm"
+msgstr "Rozpogodzenia, ciepło"
+
+msgid "turning out cloudy"
+msgstr "Wzrost zachmurzenia"
+
+msgid "turning out cloudy and warmer"
+msgstr "Wzrost zachmurzenia, cieplej"
+
+msgid "turning sunny"
+msgstr "Wychodzi słońce"
+
+msgid "turning sunny and beautiful"
+msgstr "Wychodzi słońce, przyjemna pogoda"
+
+msgid "turning sunny and cooler"
+msgstr "Wychodzi słońce, chłodniej"
+
+msgid "turning sunny and delightful"
+msgstr "Wychodzi słońce, przyjemna pogoda"
+
+msgid "turning sunny and hot"
+msgstr "Wychodzi słońce, gorąco"
+
+msgid "turning sunny and humid"
+msgstr "Wychodzi słońce, wilgotno"
+
+msgid "turning sunny and nice"
+msgstr "Wychodzi słońce, przyjemna pogoda"
+
+msgid "turning sunny and not as warm"
+msgstr "Wychodzi słońce, nie tak ciepło"
+
+msgid "turning sunny and pleasant"
+msgstr "Wychodzi słońce, przyjemna pogoda"
+
+msgid "turning sunny and summerlike"
+msgstr "Wychodzi słońce, letnia pogoda"
+
+msgid "turning sunny and very hot"
+msgstr "Wychodzi słońce, bardzo gorąco"
+
+msgid "turning sunny and very warm"
+msgstr "Wychodzi słońce, bardzo ciepło"
+
+msgid "unseasonably hot"
+msgstr "Wyjątkowo gorąco jak na tę porę roku"
+
+msgid "up to 1in"
+msgstr "Do 2,54 cm"
+
+msgid "uranus"
+msgstr "Uran"
+
+msgid "variable cloudiness"
+msgstr "Zmienne zachmurzenie"
+
+msgid "variable clouds"
+msgstr "Zmienne zachmurzenie"
+
+msgid "variable clouds with a shower"
+msgstr "Zmienne zachmurzenie, przelotny deszcz"
+
+msgid "variable clouds with showers"
+msgstr "Zmienne zachmurzenie, przelotne opady deszczu"
+
+msgid "variable clouds with t-storms"
+msgstr "Zmienne zachmurzenie, burze"
+
+msgid "variably cloudy"
+msgstr "Zmienne zachmurzenie"
+
+msgid "variably cloudy and breezy"
+msgstr "Zmienne zachmurzenie, lekko wietrznie"
+
+msgid "variably cloudy and chilly"
+msgstr "Zmienne zachmurzenie, przenikliwy chłód"
+
+msgid "variably cloudy and cooler"
+msgstr "Zmienne zachmurzenie, chłodniej"
+
+msgid "variably cloudy and humid"
+msgstr "Zmienne zachmurzenie, wilgotno"
+
+msgid "variably cloudy and nice"
+msgstr "Zmienne zachmurzenie, przyjemna pogoda"
+
+msgid "variably cloudy and pleasant"
+msgstr "Zmienne zachmurzenie, przyjemna pogoda"
+
+msgid "variably cloudy and very warm"
+msgstr "Zmienne zachmurzenie, bardzo ciepło"
+
+msgid "variably cloudy and warmer"
+msgstr "Zmienne zachmurzenie, cieplej"
+
+msgid "variably cloudy with a shower"
+msgstr "Zmienne zachmurzenie, przelotny deszcz"
+
+msgid "variably cloudy with showers"
+msgstr "Zmienne zachmurzenie, przelotne opady deszczu"
+
+msgid "variably cloudy with t-storms"
+msgstr "Zmienne zachmurzenie, burze"
+
+msgid "venus"
+msgstr "Wenus"
+
+msgid "very cold"
+msgstr "Bardzo zimno"
+
+msgid "very cold with a few flurries"
+msgstr "Bardzo zimno, pojedyncze słabe przelotne opady śniegu"
+
+msgid "very cold with clouds and sun"
+msgstr "Bardzo zimno, na przemian słońce i chmury"
+
+msgid "very cold with snow"
+msgstr "Bardzo zimno, śnieg"
+
+msgid "very cold with snow at times"
+msgstr "Bardzo zimno, okresami śnieg"
+
+msgid "very hot"
+msgstr "Bardzo gorąco"
+
+msgid "very hot with a few showers"
+msgstr "Bardzo gorąco, pojedyncze przelotne deszcze"
+
+msgid "very hot with a shower"
+msgstr "Bardzo gorąco, przelotny deszcz"
+
+msgid "very hot with clouds and sun"
+msgstr "Bardzo gorąco, na przemian słońce i chmury"
+
+msgid "very hot with hazy sun"
+msgstr "Bardzo gorąco, słońce za zamgleniem"
+
+msgid "very hot with high clouds"
+msgstr "Bardzo gorąco, wysokie chmury"
+
+msgid "very hot with some sun"
+msgstr "Bardzo gorąco, chwilami słońce"
+
+msgid "very hot with sunshine"
+msgstr "Bardzo gorąco, słonecznie"
+
+msgid "very warm"
+msgstr "Bardzo ciepło"
+
+msgid "very warm and humid with rain"
+msgstr "Bardzo ciepło, wilgotno, deszcz"
+
+msgid "very warm with clearing"
+msgstr "Bardzo ciepło, rozpogodzenia"
+
+msgid "very warm with clouds"
+msgstr "Bardzo ciepło, pochmurno"
+
+msgid "very warm with clouds and sun"
+msgstr "Bardzo ciepło, na przemian słońce i chmury"
+
+msgid "very warm with hazy sun"
+msgstr "Bardzo ciepło, słońce za zamgleniem"
+
+msgid "very warm with hazy sunshine"
+msgstr "Bardzo ciepło, słońce za zamgleniem"
+
+msgid "very warm with high clouds"
+msgstr "Bardzo ciepło, wysokie chmury"
+
+msgid "very warm with lots of sun"
+msgstr "Bardzo ciepło, dużo słońca"
+
+msgid "very warm with patchy clouds"
+msgstr "Bardzo ciepło, miejscami zachmurzenie"
+
+msgid "very warm with periods of sun"
+msgstr "Bardzo ciepło, chwilami słońce"
+
+msgid "very warm with plenty of sun"
+msgstr "Bardzo ciepło, dużo słońca"
+
+msgid "very warm with some sun"
+msgstr "Bardzo ciepło, chwilami słońce"
+
+msgid "very warm with sun and clouds"
+msgstr "Bardzo ciepło, na przemian słońce i chmury"
+
+msgid "very warm with sunshine"
+msgstr "Bardzo ciepło, słonecznie"
+
+msgid "very windy"
+msgstr "Bardzo wietrznie"
+
+msgid "very windy in the a.m."
+msgstr "Rano: bardzo wietrznie"
+
+msgid "very windy in the morning"
+msgstr "Rano: bardzo wietrznie"
+
+msgid "very windy this evening"
+msgstr "Dziś wieczorem: bardzo wietrznie"
+
+msgid "very windy this morning"
+msgstr "Dziś rano: bardzo wietrznie"
+
+msgid "warm"
+msgstr "Ciepło"
+
+msgid "warm and hamid"
+msgstr "Ciepło, wilgotno"
+
+msgid "warm and humid"
+msgstr "Ciepło, wilgotno"
+
+msgid "warm and humid with clearing"
+msgstr "Ciepło, wilgotno, rozpogodzenia"
+
+msgid "warm and humid with some sun"
+msgstr "Ciepło, wilgotno, chwilami słońce"
+
+msgid "warm with abundant sunshine"
+msgstr "Ciepło, dużo słońca"
+
+msgid "warm with clearing"
+msgstr "Ciepło, rozpogodzenia"
+
+msgid "warm with clouds and sun"
+msgstr "Ciepło, na przemian słońce i chmury"
+
+msgid "warm with clouds and sunshine"
+msgstr "Ciepło, na przemian słońce i chmury"
+
+msgid "warm with clouds breaking"
+msgstr "Ciepło, zachmurzenie maleje"
+
+msgid "warm with clouds limiting sun"
+msgstr "Ciepło, chmury przesłaniają słońce"
+
+msgid "warm with decreasing clouds"
+msgstr "Ciepło, zachmurzenie maleje"
+
+msgid "warm with high clouds"
+msgstr "Ciepło, wysokie chmury"
+
+msgid "warm with increasing clouds"
+msgstr "Ciepło, wzrost zachmurzenia"
+
+msgid "warm with occasional rain"
+msgstr "Ciepło, okresami deszcz"
+
+msgid "warm with partial sunshine"
+msgstr "Ciepło, chwilami słońce"
+
+msgid "warm with patchy clouds"
+msgstr "Ciepło, miejscami zachmurzenie"
+
+msgid "warm with periods of sun"
+msgstr "Ciepło, chwilami słońce"
+
+msgid "warm with plenty of clouds"
+msgstr "Ciepło, przeważnie pochmurno"
+
+msgid "warm with plenty of sun"
+msgstr "Ciepło, dużo słońca"
+
+msgid "warm with plenty of sunshine"
+msgstr "Ciepło, dużo słońca"
+
+msgid "warm with rain and drizzle"
+msgstr "Ciepło, deszcz i mżawka"
+
+msgid "warm with some brightening"
+msgstr "Ciepło, niewielkie przejaśnienia"
+
+msgid "warm with some sun"
+msgstr "Ciepło, chwilami słońce"
+
+msgid "warm with some sun returning"
+msgstr "Ciepło, niewielkie przejaśnienia"
+
+msgid "warm with sun"
+msgstr "Ciepło, słonecznie"
+
+msgid "warm with sun and clouds"
+msgstr "Ciepło, na przemian słońce i chmury"
+
+msgid "warm with sunny intervals"
+msgstr "Ciepło, chwilami słońce"
+
+msgid "warm with sunshine"
+msgstr "Ciepło, słonecznie"
+
+msgid "warm with variable cloudiness"
+msgstr "Ciepło, zmienne zachmurzenie"
+
+msgid "warm with variable clouds"
+msgstr "Ciepło, zmienne zachmurzenie"
+
+msgid "warmer"
+msgstr "Cieplej"
+
+msgid "warmer late"
+msgstr "Później: cieplej"
+
+msgid "warmer with a bit of rain"
+msgstr "Cieplej, niewielki deszcz"
+
+msgid "warmer with a brief shower"
+msgstr "Cieplej, krótkotrwałe przelotne deszcze"
+
+msgid "warmer with a few showers"
+msgstr "Cieplej, pojedyncze przelotne deszcze"
+
+msgid "warmer with a heavy t-storm"
+msgstr "Cieplej, silne burze"
+
+msgid "warmer with a passing shower"
+msgstr "Cieplej, krótkotrwałe przelotne deszcze"
+
+msgid "warmer with a shower"
+msgstr "Cieplej, przelotny deszcz"
+
+msgid "warmer with a shower in spots"
+msgstr "Cieplej, miejscami przelotny deszcz"
+
+msgid "warmer with a shower or two"
+msgstr "Cieplej, jeden lub dwa przelotne deszcze"
+
+msgid "warmer with a stray shower"
+msgstr "Cieplej, miejscami przelotny deszcz"
+
+msgid "warmer with a stray t-storm"
+msgstr "Cieplej, miejscami burze"
+
+msgid "warmer with a thunderstorm"
+msgstr "Cieplej, burza"
+
+msgid "warmer with abundant sunshine"
+msgstr "Cieplej, dużo słońca"
+
+msgid "warmer with clearing"
+msgstr "Cieplej, rozpogodzenia"
+
+msgid "warmer with clouds"
+msgstr "Cieplej, pochmurno"
+
+msgid "warmer with clouds and sun"
+msgstr "Cieplej, na przemian słońce i chmury"
+
+msgid "warmer with decreasing clouds"
+msgstr "Cieplej, zachmurzenie maleje"
+
+msgid "warmer with high clouds"
+msgstr "Cieplej, wysokie chmury"
+
+msgid "warmer with increasing clouds"
+msgstr "Cieplej, wzrost zachmurzenia"
+
+msgid "warmer with low clouds"
+msgstr "Cieplej, niskie chmury"
+
+msgid "warmer with partial sunshine"
+msgstr "Cieplej, chwilami słońce"
+
+msgid "warmer with periods of rain"
+msgstr "Cieplej, okresami deszcz"
+
+msgid "warmer with periods of sun"
+msgstr "Cieplej, chwilami słońce"
+
+msgid "warmer with plenty of sun"
+msgstr "Cieplej, dużo słońca"
+
+msgid "warmer with showers"
+msgstr "Cieplej, przelotne opady deszczu"
+
+msgid "warmer with showers around"
+msgstr "Cieplej, miejscami przelotny deszcz"
+
+msgid "warmer with some brightening"
+msgstr "Cieplej, niewielkie przejaśnienia"
+
+msgid "warmer with some sun"
+msgstr "Cieplej, chwilami słońce"
+
+msgid "warmer with some sunshine"
+msgstr "Cieplej, chwilami słońce"
+
+msgid "warmer with spotty showers"
+msgstr "Cieplej, miejscami przelotny deszcz"
+
+msgid "warmer with sun"
+msgstr "Cieplej, słonecznie"
+
+msgid "warmer with sun and clouds"
+msgstr "Cieplej, na przemian słońce i chmury"
+
+msgid "warmer with sunny intervals"
+msgstr "Cieplej, chwilami słońce"
+
+msgid "warmer with sunshine"
+msgstr "Cieplej, słonecznie"
+
+msgid "warmer with variable clouds"
+msgstr "Cieplej, zmienne zachmurzenie"
+
+msgid "watch for ice early"
+msgstr "Początkowo: uwaga na oblodzenie"
+
+msgid "watch for ice late"
+msgstr "Później: uwaga na oblodzenie"
+
+msgid "wet snow"
+msgstr "Mokry śnieg"
+
+msgid "winds gradually subsiding"
+msgstr "Wiatr stopniowo słabnie"
+
+msgid "windy"
+msgstr "Wietrznie"
+
+msgid "windy and cold"
+msgstr "Wietrznie, zimno"
+
+msgid "windy and cooler"
+msgstr "Wietrznie, chłodniej"
+
+msgid "windy and cooler with rain"
+msgstr "Wietrznie, chłodniej, deszcz"
+
+msgid "windy and cooler with showers"
+msgstr "Wietrznie, chłodniej, przelotne opady deszczu"
+
+msgid "windy and frigid"
+msgstr "Wietrznie, siarczysty mróz"
+
+msgid "windy and humid with rain"
+msgstr "Wietrznie, wilgotno, deszcz"
+
+msgid "windy and very cold"
+msgstr "Wietrznie, bardzo zimno"
+
+msgid "windy early"
+msgstr "Początkowo: wietrznie"
+
+msgid "windy in the a.m."
+msgstr "Rano: wietrznie"
+
+msgid "windy in the afternoon"
+msgstr "Po południu: wietrznie"
+
+msgid "windy in the morning"
+msgstr "Rano: wietrznie"
+
+msgid "windy this afternoon"
+msgstr "Dziś po południu: wietrznie"
+
+msgid "windy this morning"
+msgstr "Dziś rano: wietrznie"
+
+msgid "windy with a bit of ice"
+msgstr "Wietrznie, miejscami oblodzenie"
+
+msgid "windy with a little rain"
+msgstr "Wietrznie, niewielki deszcz"
+
+msgid "windy with a passing shower"
+msgstr "Wietrznie, krótkotrwałe przelotne deszcze"
+
+msgid "windy with a shower in places"
+msgstr "Wietrznie, miejscami przelotny deszcz"
+
+msgid "windy with a shower in spots"
+msgstr "Wietrznie, miejscami przelotny deszcz"
+
+msgid "windy with a shower or two"
+msgstr "Wietrznie, jeden lub dwa przelotne deszcze"
+
+msgid "windy with a stray shower"
+msgstr "Wietrznie, miejscami przelotny deszcz"
+
+msgid "windy with brilliant sunshine"
+msgstr "Wietrznie, pełne słońce"
+
+msgid "windy with clouds and sun"
+msgstr "Wietrznie, na przemian słońce i chmury"
+
+msgid "windy with decreasing clouds"
+msgstr "Wietrznie, zachmurzenie maleje"
+
+msgid "windy with increasing clouds"
+msgstr "Wietrznie, wzrost zachmurzenia"
+
+msgid "windy with occasional rain"
+msgstr "Wietrznie, okresami deszcz"
+
+msgid "windy with periods of rain"
+msgstr "Wietrznie, okresami deszcz"
+
+msgid "windy with periods of snow"
+msgstr "Wietrznie, okresami śnieg"
+
+msgid "windy with plenty of sun"
+msgstr "Wietrznie, dużo słońca"
+
+msgid "windy with plenty of sunshine"
+msgstr "Wietrznie, dużo słońca"
+
+msgid "windy with rain and a t-storm"
+msgstr "Wietrznie, deszcz, burza"
+
+msgid "windy with showers"
+msgstr "Wietrznie, przelotne opady deszczu"
+
+msgid "windy with showers around"
+msgstr "Wietrznie, miejscami przelotny deszcz"
+
+msgid "windy with snow"
+msgstr "Wietrznie, śnieg"
+
+msgid "windy with some sun"
+msgstr "Wietrznie, chwilami słońce"
+
+msgid "windy with spotty showers"
+msgstr "Wietrznie, miejscami przelotny deszcz"
+
+msgid "windy with sunshine"
+msgstr "Wietrznie, słonecznie"
