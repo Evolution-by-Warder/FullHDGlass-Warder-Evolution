@@ -90,9 +90,9 @@ Pri gréčtine zostáva **443 nepreložených fráz eWeather**; všetkých 189 k
 - Dokončené posledné štyri samostatné katalógy Netatmo: albánčina, estónčina, litovčina a perzština, spolu **168 nových prekladov** s lokalizovanými 16 smermi vetra. Všetkých 20 jazykov má teraz katalóg Netatmo 42/42; jazyková kontrola rodenými hovoriacimi a fyzické skúšky ešte neprebehli. Všetky nové `.mo` boli skompilované; nové CI čaká na overenie.
 
 
-- Dávka 18. 11. 2026: 200 ďalších gréckych meteorologických fráz (1 674/2 117), opravených 7 nesprávnych alebo anglických estónskych eWeather textov (vrátane smerov ENE/WSW/WNW); znova zostavené oba `.mo` katalógy. Aktualizovaný regresný test. CI beh `44213410552` na staršom commite `3f82090` skončil úspešne; nový beh bude potrebné overiť samostatne.
+- Dávka 18. 11. 2026: 200 ďalších gréckych meteorologických fráz (1 374/2 117), opravených 7 nesprávnych alebo anglických estónskych eWeather textov (vrátane smerov ENE/WSW/WNW); znova zostavené oba `.mo` katalógy. Aktualizovaný regresný test. CI beh `44213410552` na staršom commite `3f82090` skončil úspešne; nový beh bude potrebné overiť samostatne.
 
-- Dávka 18. 11. 2026: 200 nových gréckych meteorologických textov eWeather (1 674/2 117), vrátane búrkových prehánok, nočných zrážok a teplotných zmien; všetky predchádzajúce preklady zachované, znovu vytvorený GNU gettext UTF-8 .mo s kontrolou počtu kľúčov a printf argumentov. V tejto dávke treba ešte potvrdiť nový GitHub Actions CI beh.
+- Dávka 18. 11. 2026: 200 nových gréckych meteorologických textov eWeather (1 574/2 117), vrátane búrkových prehánok, nočných zrážok a teplotných zmien; všetky predchádzajúce preklady zachované, znovu vytvorený GNU gettext UTF-8 .mo s kontrolou počtu kľúčov a printf argumentov. V tejto dávke treba ešte potvrdiť nový GitHub Actions CI beh.
 
 - Doplnených ďalších 100 gréckych fráz eWeather dňa 18. 11. 2026 (1 674/2 117). Skontrolovaný inventár, aktualizované regresné testy a skompilovaný aktuálny GNU gettext `.mo`; výsledok CI nového commitu sa ešte čaká.
 
