@@ -9,6 +9,10 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocale.py'
       - 'tools/test-warder-skin-i18n.py'
       - 'tools/test-warder-catalog-integrity.py'
+      - 'tools/test-warder-locale-on-demand.py'
+      - 'tools/build-release-ipk.py'
+      - 'source/control/postinst'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocaleDownload.py'
       - '.github/workflows/verify-skin-i18n.yml'
   workflow_dispatch:
 
@@ -26,8 +30,10 @@ jobs:
           python-version: '3.11'
       - name: Compile Python 3 sources
         run: |
-          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/{warderLocale,plugin,txt,weather,E_weather,Netatmo,warderUiText}.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/{warderLocale,warderLocaleDownload,plugin,txt,weather,E_weather,Netatmo,warderUiText}.py
       - name: Run language regression tests
         run: |
           python tools/test-warder-skin-i18n.py
           python tools/test-warder-catalog-integrity.py
+          python tools/test-warder-locale-on-demand.py
+          sh -n source/control/postinst
