@@ -525,7 +525,7 @@ msgid "Save"
 msgstr "Rezervo"
 
 msgid "Cancel"
-msgstr "Anullo"
+msgstr "Anulo"
 
 msgid "Download menu"
 msgstr "Menuja e shkarkimit"
@@ -1817,3 +1817,78 @@ msgstr "Animacioni nuk mund të ndryshohej. Skedarët ekzistues u ruajtën."
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Ikonat e parazgjedhura nuk u rikthyen. Riinstaloni skin-in."
+
+msgid "Add Timer"
+msgstr "Shto kohëmatës"
+
+msgid "Available space"
+msgstr "Hapësira e lirë"
+
+msgid "Broadcast:"
+msgstr "Transmetimi:"
+
+msgid "Choose another location"
+msgstr "Zgjidh vendndodhje tjetër"
+
+msgid "Continue anyway"
+msgstr "Vazhdo gjithsesi"
+
+msgid "Country:"
+msgstr "Shteti:"
+
+msgid "Custom picon location"
+msgstr "Vendndodhja e personalizuar e piconëve"
+
+msgid "Duration:"
+msgstr "Kohëzgjatja:"
+
+msgid "EPG Search"
+msgstr "Kërko në EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Shtojca EPG Search nuk është instaluar."
+
+msgid "FullHDGlass skin storage"
+msgstr "Hapësira e skin-it FullHDGlass"
+
+msgid "Genre:"
+msgstr "Zhanri:"
+
+msgid "Goto Date/Time"
+msgstr "Kalo te data/ora"
+
+msgid "Internal storage download warning"
+msgstr "Kujdes! Shkarkim në hapësirën e brendshme"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Shkarkimet e mëdha mund të mbushin kujtesën e marrësit."
+
+msgid "Own picon folder"
+msgstr "Dosja e pikoneve"
+
+msgid "PROGRAM INFO"
+msgstr "Informacion për emisionin"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Shtigjet e të dhënave, piconëve dhe cilësimeve"
+
+msgid "Rating:"
+msgstr "Vlerësimi:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Dosja e zgjedhur e pikoneve nuk ekziston."
+
+msgid "Spinner"
+msgstr "Treguesi i pritjes"
+
+msgid "Station name:"
+msgstr "Emri i stacionit:"
+
+msgid "Station:"
+msgstr "Stacioni:"
+
+msgid "Use own channel picons"
+msgstr "Pikonet personale"
+
+msgid "Year:"
+msgstr "Viti:"

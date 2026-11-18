@@ -16,6 +16,11 @@ on:
       - 'tools/test-warder-skin-i18n.py'
       - 'tools/test-warder-catalog-integrity.py'
       - 'tools/test-warder-locale-on-demand.py'
+      - 'tools/test-channel-picon-settings.py'
+      - 'tools/test_warder_storage_safety.py'
+      - 'tools/test-history-radio-header.py'
+      - 'tools/test-dab-artwork-layout.py'
+      - 'tools/test-spinner-choice.py'
       - 'tools/build-release-ipk.py'
       - 'source/control/preinst'
       - 'source/control/postinst'
@@ -33,13 +38,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            source/control
-            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
-            tools
+            /source/control/
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/
+            /source/package-root/usr/share/fonts/prive7.ttf
+            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+            /tools/
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - run: python -m pip install Pillow
       - name: Compile Python 3 sources
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/{warderLocale,warderLocaleDownload,plugin,txt,weather,E_weather,Netatmo,warderUiText}.py
@@ -48,5 +58,10 @@ jobs:
           python tools/test-warder-skin-i18n.py
           python tools/test-warder-catalog-integrity.py
           python tools/test-warder-locale-on-demand.py
+          python tools/test_warder_storage_safety.py StorageSafetyTests.test_storage_warning_translated_into_all_21_skin_languages
+          python tools/test-channel-picon-settings.py SettingsTests.test_all_supported_languages_have_the_new_menu_text
+          python tools/test-spinner-choice.py AssetTests.test_exact_owner_labels_and_twenty_locales
+          python tools/test-history-radio-header.py RadioTitleTests.test_active_osd_language_changes_the_caption_without_cached_language RadioTitleTests.test_every_supported_language_has_a_translation_that_fits_the_header
+          python tools/test-dab-artwork-layout.py DabArtworkTests.test_active_language_changes_only_the_native_caption_not_the_bitmap DabArtworkTests.test_all_translated_information_captions_fit_the_default_image
           sh -n source/control/preinst
           sh -n source/control/postinst

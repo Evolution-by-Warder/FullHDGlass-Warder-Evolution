@@ -1821,3 +1821,78 @@ msgstr "Animacijos pakeisti nepavyko. Esami failai išsaugoti."
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Nepavyko atkurti numatytųjų piktogramų. Įdiekite apvalkalą iš naujo."
+
+msgid "Add Timer"
+msgstr "Pridėti laikmatį"
+
+msgid "Available space"
+msgstr "Laisva vieta"
+
+msgid "Broadcast:"
+msgstr "Transliacija:"
+
+msgid "Choose another location"
+msgstr "Pasirinkti kitą vietą"
+
+msgid "Continue anyway"
+msgstr "Vis tiek tęsti"
+
+msgid "Country:"
+msgstr "Šalis:"
+
+msgid "Custom picon location"
+msgstr "Pasirinktinė pikonų vieta"
+
+msgid "Duration:"
+msgstr "Trukmė:"
+
+msgid "EPG Search"
+msgstr "Paieška EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Papildinys EPG Search neįdiegtas."
+
+msgid "FullHDGlass skin storage"
+msgstr "FullHDGlass apvalkalo saugykla"
+
+msgid "Genre:"
+msgstr "Žanras:"
+
+msgid "Goto Date/Time"
+msgstr "Pereiti prie datos ir laiko"
+
+msgid "Internal storage download warning"
+msgstr "Dėmesio! Siunčiama į vidinę atmintį"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Dideli atsisiuntimai gali užpildyti imtuvo atmintį."
+
+msgid "Own picon folder"
+msgstr "Savų pikonų aplankas"
+
+msgid "PROGRAM INFO"
+msgstr "Laidos informacija"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Apvalkalo duomenų, pikonų ir nustatymų keliai"
+
+msgid "Rating:"
+msgstr "Įvertinimas:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Pasirinkto pikonų aplanko nėra."
+
+msgid "Spinner"
+msgstr "Laukimo animacija"
+
+msgid "Station name:"
+msgstr "Stoties pavadinimas:"
+
+msgid "Station:"
+msgstr "Stotis:"
+
+msgid "Use own channel picons"
+msgstr "Savi kanalų pikonai"
+
+msgid "Year:"
+msgstr "Metai:"

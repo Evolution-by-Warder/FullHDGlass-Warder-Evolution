@@ -2,38 +2,40 @@
 
 ## Aktuálny stav — 18. 11. 2026
 
-**Zostáva 0 nevyplnených referenčných prekladových položiek** vo všetkých 20 cieľových jazykoch a piatich katalógových doménach. Priamo v GNU gettext katalógoch je overených **60 880/60 880 položiek (100 %)** — 20 jazykov × (580 setupGlass17 + 195 helpTxt + 108 weather + 42 netatmo + 2 119 eWeather). Angličtina tvorí zdrojový jazyk, spolu teda **21 jazykov**.
+**Zostáva 0 nevyplnených referenčných prekladových položiek** vo všetkých 20 cieľových jazykoch a piatich katalógových doménach. Priamo v GNU gettext katalógoch je overených **61 380/61 380 položiek (100 %)** — 20 jazykov × (605 setupGlass17 + 195 helpTxt + 108 weather + 42 netatmo + 2 119 eWeather). Angličtina tvorí zdrojový jazyk, spolu teda **21 jazykov**.
 
 Tabuľka počíta aktívne neprázdne preklady z referenčných katalógov, ktoré majú rovnakú hodnotu priamo v binárnom GNU gettext katalógu. Angličtina používa zdrojové texty. Historické kľúče mimo referenčného inventára sú v katalógoch zachované.
 
 | Jazyk | setupGlass17 | helpTxt | weather | netatmo | eWeather |
 |---|---:|---:|---:|---:|---:|
-| en | zdroj 580 | zdroj 195 | zdroj 108 | zdroj 42 | zdroj 2119 |
-| al | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| cs | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| de | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| el | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| es | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| et | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| fa | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| fr | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| hu | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| it | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| lt | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| nl | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| pl | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| pt | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| ro | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| ru | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| sk | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| tr | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| uk | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| zh | 580/580 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| en | zdroj 605 | zdroj 195 | zdroj 108 | zdroj 42 | zdroj 2119 |
+| al | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| cs | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| de | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| el | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| es | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| et | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| fa | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| fr | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| hu | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| it | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| lt | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| nl | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| pl | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| pt | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| ro | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| ru | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| sk | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| tr | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| uk | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| zh | 605/605 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 
-- Od východiskového commitu `5194ca6` pribudlo 33 925 katalogizovaných prekladov. Z toho 32 505 doplnilo pôvodný inventár, 860 pokrylo 43 chýbajúcich zdrojových kľúčov a 560 pokrylo ďalších 28 textov nastavení, ktoré používa funkcia `ui_text`. Časť týchto 560 textov už mala preklad priamo v kóde a prevzala sa do katalógov. Pôvodný rozdiel 189 v úvode auditu zodpovedal už hotovej talianskej nápovede.
-- Porovnanie s pôvodnými binárnymi katalógmi potvrdilo zachovanie všetkých skorších kľúčov. Opravených bolo aj 1 175 už vyplnených hodnôt (1 167 v nastaveniach, 7 v počasí, 1 v eWeather). Kontrola porovnala hodnoty s anglickým zdrojom aj bez rozlíšenia veľkosti písmen. Technické názvy, značky, skratky a rovnaké výrazy v danom jazyku majú prirodzene zhodné zápisy.
+- Od východiskového commitu `5194ca6` pribudlo 34 425 katalogizovaných prekladov. Z toho 32 505 doplnilo pôvodný inventár, 860 pokrylo 43 chýbajúcich zdrojových kľúčov a 1 060 pokrylo 53 textov nastavení a EPG z pomocných funkcií rozhrania. Časť týchto textov už mala preklad priamo v kóde a prevzala sa do katalógov. Dialógy nastavení, informácie o programe a rádiové titulky teraz používajú vybraný gettext katalóg. Pôvodný rozdiel 189 v úvode auditu zodpovedal už hotovej talianskej nápovede.
+- Porovnanie s pôvodnými binárnymi katalógmi potvrdilo zachovanie všetkých skorších kľúčov. Opravených bolo aj 1 180 už vyplnených hodnôt (1 172 v nastaveniach, 7 v počasí, 1 v eWeather). Kontrola porovnala hodnoty s anglickým zdrojom aj bez rozlíšenia veľkosti písmen. Technické názvy, značky, skratky a rovnaké výrazy v danom jazyku majú prirodzene zhodné zápisy.
 - Pri štarte a zmene jazyka systém vyžiada katalógy aktuálneho jazyka Enigma2. Pri prepnutí na angličtinu použije zdrojové texty. Po stiahnutí sa znovu načítajú aj vopred vytvorené tabuľky nápovied a počasia. Súbory v trvalom úložisku sa overujú podľa SHA-256 a už platné súbory sa znovu neprenášajú.
 - Regresné testy kontrolujú zdrojové kľúče, zhodu každej hodnoty v `.po` s binárnym GNU gettext `.mo`, UTF-8, jazykové kódy, placeholdery, anglický základ, výmenu jazyka, režim offline a zachovanie katalógov pri aktualizácii a opakovanej inštalácii. Fyzická skúška na prijímači vrátane zobrazenia perzských textov zostáva otvorená.
+
+- Priamy test z [commitu 831fc08](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/831fc08ea1a4d68521968ea8ee94ca11e3f7eec0) stiahol päť katalógov z GitHubu pre albánčinu a päť pre perzštinu. Všetkých desať súborov prešlo kontrolou SHA-256 a načítalo sa v GNU gettext. Opätovná synchronizácia oboch jazykov aj výber angličtiny mali nula sieťových požiadaviek. [GitHub Actions](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44275743179) na tomto commite prešli.
 
 ## Staršie záznamy
 

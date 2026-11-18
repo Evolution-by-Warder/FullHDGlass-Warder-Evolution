@@ -79,7 +79,8 @@ class CatalogIntegrity(unittest.TestCase):
             source_keys = {
                 call.args[0].value for call in ast.walk(code)
                 if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)
-                and call.func.id == '_' and call.args and isinstance(call.args[0], ast.Constant)
+                and call.func.id in ('_', 'ui_text', '_warderUiText')
+                and call.args and isinstance(call.args[0], ast.Constant)
                 and isinstance(call.args[0].value, str)
             }
             reference = po_entries(ROOT / 'sk/LC_MESSAGES' / (domain + '.po'))
@@ -95,7 +96,7 @@ class CatalogIntegrity(unittest.TestCase):
         self.assertEqual(len(LANGS) + 1, 21)  # en: untranslated msgid source.
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'setupGlass17.po')
         expected = set(reference) - {''}
-        self.assertEqual(len(expected), 580)
+        self.assertEqual(len(expected), 605)
         for lang in LANGS:
             with self.subTest(lang=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
@@ -168,7 +169,7 @@ class CatalogIntegrity(unittest.TestCase):
 
     def test_full_five_domain_coverage_in_all_twenty_locales(self):
         """Enforce every reference key in every translated .po and .mo catalog."""
-        expected_counts = {'setupGlass17': 580, 'helpTxt': 195,
+        expected_counts = {'setupGlass17': 605, 'helpTxt': 195,
                            'weather': 108, 'netatmo': 42, 'eWeather': 2119}
         self.assertEqual(set(DOMAINS), set(expected_counts))
         for domain in DOMAINS:

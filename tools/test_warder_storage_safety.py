@@ -125,14 +125,17 @@ class StorageSafetyTests(unittest.TestCase):
         self.assertIn('self.dwnLoop(_("ERROR")', preamble)
 
     def test_storage_warning_translated_into_all_21_skin_languages(self):
-        text = TEXTS.read_text(encoding="utf-8")
-        tree = ast.parse(text)
-        found = next(node for node in tree.body if isinstance(node, ast.Assign)
-                     and any(isinstance(target, ast.Name) and target.id == "_STORAGE_WARNING_LABELS"
-                             for target in node.targets))
-        languages = ast.literal_eval(found.value)
-        self.assertEqual(len(languages), 21)
-        self.assertTrue(all(len(items) == 6 for items in languages.values()))
+        import gettext
+        locale = MODULE_DIR / 'locale'
+        self.assertEqual(len(list(locale.glob('*/LC_MESSAGES'))), 21)
+        for directory in locale.glob('*/LC_MESSAGES'):
+            if directory.parent.name == 'en':
+                continue  # English labels are supplied by the caller.
+            with (directory / 'setupGlass17.mo').open('rb') as stream:
+                binary = gettext.GNUTranslations(stream)
+            for key in ('Internal storage download warning', 'Large downloads can fill receiver memory.', 'Available space', 'Choose another location', 'Continue anyway', 'Cancel'):
+                self.assertTrue(binary._catalog.get(key, '').strip(), (directory, key))
+
 
 
 if __name__ == "__main__":

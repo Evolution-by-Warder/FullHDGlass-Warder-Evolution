@@ -176,11 +176,17 @@ class SettingsTests(unittest.TestCase):
         self.assertEqual(self.section.par231.value,'mini')
 
     def test_all_supported_languages_have_the_new_menu_text(self):
-        tree=ast.parse((PKG/'Plugins/Extensions/setupGlass17/warderUiText.py').read_text())
-        data=ast.literal_eval(next(n.value for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='TEXT' for t in n.targets)))
-        for lang in ('sk','cs','en','de','pl','hu','ru','fr','it','es'):
-            for key in ('Channel-list picon source','System setting','Prefer 50x30'):
-                self.assertTrue(data[lang][key],(lang,key))
+        import gettext
+        locale = (PKG / 'Plugins/Extensions/setupGlass17') / 'locale'
+        self.assertEqual(len(list(locale.glob('*/LC_MESSAGES'))), 21)
+        for directory in locale.glob('*/LC_MESSAGES'):
+            if directory.parent.name == 'en':
+                continue  # English labels are supplied by the caller.
+            with (directory / 'setupGlass17.mo').open('rb') as stream:
+                binary = gettext.GNUTranslations(stream)
+            for key in ('Channel-list picon source', 'System setting', 'Prefer 50x30'):
+                self.assertTrue(binary._catalog.get(key, '').strip(), (directory, key))
+
 
     def test_help_has_a_dedicated_description_and_no_image_lookup(self):
         method=next(n for n in OWNER.body if isinstance(n,ast.FunctionDef) and n.name=='doMyHelpWindow')

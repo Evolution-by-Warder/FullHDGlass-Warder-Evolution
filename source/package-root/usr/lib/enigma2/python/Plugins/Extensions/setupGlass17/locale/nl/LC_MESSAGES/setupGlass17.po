@@ -1817,3 +1817,78 @@ msgstr "De animatie kon niet worden gewijzigd. Uw bestaande bestanden zijn behou
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Standaardpictogrammen konden niet worden hersteld. Installeer de skin opnieuw."
+
+msgid "Add Timer"
+msgstr "Timer toevoegen"
+
+msgid "Available space"
+msgstr "Beschikbare ruimte"
+
+msgid "Broadcast:"
+msgstr "Uitzending:"
+
+msgid "Choose another location"
+msgstr "Andere locatie kiezen"
+
+msgid "Continue anyway"
+msgstr "Toch doorgaan"
+
+msgid "Country:"
+msgstr "Land:"
+
+msgid "Custom picon location"
+msgstr "Aangepaste piconlocatie"
+
+msgid "Duration:"
+msgstr "Duur:"
+
+msgid "EPG Search"
+msgstr "Zoeken in EPG"
+
+msgid "EPG Search is not installed."
+msgstr "De plug-in EPG Search is niet geïnstalleerd."
+
+msgid "FullHDGlass skin storage"
+msgstr "FullHDGlass-skinopslag"
+
+msgid "Genre:"
+msgstr "Genre:"
+
+msgid "Goto Date/Time"
+msgstr "Naar datum/tijd gaan"
+
+msgid "Internal storage download warning"
+msgstr "Let op! Download naar interne opslag"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Grote downloads kunnen het geheugen van de ontvanger vullen."
+
+msgid "Own picon folder"
+msgstr "Map eigen picons"
+
+msgid "PROGRAM INFO"
+msgstr "Programma-informatie"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Paden voor skingegevens, picons en instellingen"
+
+msgid "Rating:"
+msgstr "Waardering:"
+
+msgid "Selected picon folder does not exist."
+msgstr "De gekozen piconmap bestaat niet."
+
+msgid "Spinner"
+msgstr "Wachtanimatie"
+
+msgid "Station name:"
+msgstr "Zendernaam:"
+
+msgid "Station:"
+msgstr "Zender:"
+
+msgid "Use own channel picons"
+msgstr "Eigen zenderpicons"
+
+msgid "Year:"
+msgstr "Jaar:"

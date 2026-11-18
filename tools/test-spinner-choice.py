@@ -22,6 +22,10 @@ SKIN = ROOT / 'source/package-root/usr/share/enigma2/hd_glass17'
 PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
 
+sys.path.insert(0, str(PLUGIN.parent))
+from setupGlass17.warderLocale import LANGUAGES
+
+
 def load(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
@@ -94,12 +98,11 @@ class AssetTests(unittest.TestCase):
         self.assertNotIn('author_url', DATA['themes']['bakussa'])
         cfg = SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk_SK')))
         with patch.dict(sys.modules, {'Components.config': SimpleNamespace(config=cfg)}):
-            text = load('spinner_text', PLUGIN / 'warderUiText.py')
+            text = load('setupGlass17.ui_text_test', PLUGIN / 'warderUiText.py')
         self.assertEqual(spinner.choices(text.ui_text), [('system', 'Predvolený spinner image'), ('dove', 'Holubica'), ('bakussa', 'HDGlass - bakussa')])
-        for code in ('al','cs','de','en','es','et','fa','fr','hu','it','lt','nl','pl','pt','ro','ru','sk','tr','uk','zh'):
+        for code in LANGUAGES:
             cfg.osd.language.value = code + '_XX'
-            self.assertTrue(text.ui_text('Dove'))
-            self.assertIn('Dove', text.TEXT[code])
+            self.assertTrue(text.ui_text('Dove').strip(), code)
             self.assertTrue(text.ui_text('Default spinner of image'))
             self.assertEqual(spinner.choices(text.ui_text)[2][1], 'HDGlass - bakussa')
 

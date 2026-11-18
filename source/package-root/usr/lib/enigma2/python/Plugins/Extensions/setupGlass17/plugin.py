@@ -279,24 +279,7 @@ def Writelog(txt):
     return None
 ##########################################################################################################################
 def _warderUiText(text):
-	"""Warder UI strings follow the active Enigma2 OSD language without legacy gettext collisions."""
-	try:
-		lang = config.osd.language.value.split("_")[0].lower()
-	except Exception:
-		lang = "en"
-	warder = {
-		"sk": {"PROGRAM INFO": "Info o programe", "Station name:": "Názov stanice:", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Genre:": "Žáner:", "Year:": "Rok:", "Country:": "Krajina:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:", "Rating:": "Hodnotenie:", "EPG Search is not installed.": "Vyhľadávanie EPG nie je nainštalované."},
-		"cs": {"PROGRAM INFO": "Info o programu", "Station name:": "Název stanice:", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Genre:": "Žánr:", "Year:": "Rok:", "Country:": "Země:", "Duration:": "Délka:", "Broadcast:": "Vysílání:", "Rating:": "Hodnocení:", "EPG Search is not installed.": "Vyhledávání EPG není nainstalováno."}
-	}
-	if text in warder.get(lang, {}):
-		return warder[lang][text]
-	try:
-		translated = _(text)
-		if translated and translated != text:
-			return translated
-	except Exception:
-		pass
-	return text
+	return ui_text(text)
 
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""

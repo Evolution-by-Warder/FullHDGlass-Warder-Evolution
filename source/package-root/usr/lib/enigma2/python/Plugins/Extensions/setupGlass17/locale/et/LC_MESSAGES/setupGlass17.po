@@ -1817,3 +1817,78 @@ msgstr "Animatsiooni ei saanud muuta. Olemasolevad failid säilitati."
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Vaikimisi ikoonide taastamine ebaõnnestus. Paigaldage kujundus uuesti."
+
+msgid "Add Timer"
+msgstr "Lisa taimer"
+
+msgid "Available space"
+msgstr "Vaba ruum"
+
+msgid "Broadcast:"
+msgstr "Ülekanne:"
+
+msgid "Choose another location"
+msgstr "Vali teine asukoht"
+
+msgid "Continue anyway"
+msgstr "Jätka siiski"
+
+msgid "Country:"
+msgstr "Riik:"
+
+msgid "Custom picon location"
+msgstr "Kohandatud piconite asukoht"
+
+msgid "Duration:"
+msgstr "Kestus:"
+
+msgid "EPG Search"
+msgstr "EPG otsing"
+
+msgid "EPG Search is not installed."
+msgstr "Plugin EPG Search pole paigaldatud."
+
+msgid "FullHDGlass skin storage"
+msgstr "FullHDGlassi kujunduse salvestuskoht"
+
+msgid "Genre:"
+msgstr "Žanr:"
+
+msgid "Goto Date/Time"
+msgstr "Mine kuupäevale või kellaajale"
+
+msgid "Internal storage download warning"
+msgstr "Hoiatus! Allalaadimine sisemällu"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Suured allalaadimised võivad vastuvõtja mälu täita."
+
+msgid "Own picon folder"
+msgstr "Oma pikonite kaust"
+
+msgid "PROGRAM INFO"
+msgstr "Saate teave"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Kujunduse andmete, piconide ja seadete teed"
+
+msgid "Rating:"
+msgstr "Hinnang:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Valitud pikonikausta pole olemas."
+
+msgid "Spinner"
+msgstr "Ooteanimatsioon"
+
+msgid "Station name:"
+msgstr "Jaama nimi:"
+
+msgid "Station:"
+msgstr "Jaam:"
+
+msgid "Use own channel picons"
+msgstr "Oma kanalipikonid"
+
+msgid "Year:"
+msgstr "Aasta:"

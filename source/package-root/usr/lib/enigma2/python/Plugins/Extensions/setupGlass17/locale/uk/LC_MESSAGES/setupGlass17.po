@@ -1817,3 +1817,78 @@ msgstr "Не вдалося змінити анімацію. Ваші наявн
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Не вдалося відновити стандартні значки. Перевстановіть скін."
+
+msgid "Add Timer"
+msgstr "Додати таймер"
+
+msgid "Available space"
+msgstr "Вільне місце"
+
+msgid "Broadcast:"
+msgstr "Ефір:"
+
+msgid "Choose another location"
+msgstr "Вибрати інше сховище"
+
+msgid "Continue anyway"
+msgstr "Усе одно продовжити"
+
+msgid "Country:"
+msgstr "Країна:"
+
+msgid "Custom picon location"
+msgstr "Власне розташування піктограм"
+
+msgid "Duration:"
+msgstr "Тривалість:"
+
+msgid "EPG Search"
+msgstr "Пошук в EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Додаток EPG Search не встановлено."
+
+msgid "FullHDGlass skin storage"
+msgstr "Сховище скіна FullHDGlass"
+
+msgid "Genre:"
+msgstr "Жанр:"
+
+msgid "Goto Date/Time"
+msgstr "Перейти до дати й часу"
+
+msgid "Internal storage download warning"
+msgstr "Увага! Завантаження у внутрішню пам’ять"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Великі завантаження можуть заповнити пам’ять приймача."
+
+msgid "Own picon folder"
+msgstr "Тека власних піконів"
+
+msgid "PROGRAM INFO"
+msgstr "Інформація про передачу"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Шляхи до даних скіна, піктограм і налаштувань"
+
+msgid "Rating:"
+msgstr "Оцінка:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Вибраної теки піконів не існує."
+
+msgid "Spinner"
+msgstr "Індикатор очікування"
+
+msgid "Station name:"
+msgstr "Назва станції:"
+
+msgid "Station:"
+msgstr "Станція:"
+
+msgid "Use own channel picons"
+msgstr "Власні пікони каналів"
+
+msgid "Year:"
+msgstr "Рік:"

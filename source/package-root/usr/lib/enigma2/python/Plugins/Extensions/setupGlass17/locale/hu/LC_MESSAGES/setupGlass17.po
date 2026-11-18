@@ -525,7 +525,7 @@ msgid "Save"
 msgstr "Mentés"
 
 msgid "Cancel"
-msgstr "Kilépés"
+msgstr "Mégse"
 
 msgid "Download menu"
 msgstr "Letöltés menü"
@@ -1817,3 +1817,78 @@ msgstr "Az animáció nem módosítható. A meglévő fájlok megmaradtak."
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Az alapértelmezett ikonok visszaállítása sikertelen. Telepítse újra a skint."
+
+msgid "Add Timer"
+msgstr "Időzítő hozzáadása"
+
+msgid "Available space"
+msgstr "Szabad tárhely"
+
+msgid "Broadcast:"
+msgstr "Sugárzás:"
+
+msgid "Choose another location"
+msgstr "Másik hely kiválasztása"
+
+msgid "Continue anyway"
+msgstr "Folytatás mindenképpen"
+
+msgid "Country:"
+msgstr "Ország:"
+
+msgid "Custom picon location"
+msgstr "Egyéni piconhely"
+
+msgid "Duration:"
+msgstr "Időtartam:"
+
+msgid "EPG Search"
+msgstr "EPG-keresés"
+
+msgid "EPG Search is not installed."
+msgstr "Az EPG Search bővítmény nincs telepítve."
+
+msgid "FullHDGlass skin storage"
+msgstr "FullHDGlass skin tárhelye"
+
+msgid "Genre:"
+msgstr "Műfaj:"
+
+msgid "Goto Date/Time"
+msgstr "Ugrás dátumhoz/időponthoz"
+
+msgid "Internal storage download warning"
+msgstr "Figyelem! Letöltés a belső tárhelyre"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "A nagy letöltések megtölthetik a vevőegység memóriáját."
+
+msgid "Own picon folder"
+msgstr "Saját pikonmappa"
+
+msgid "PROGRAM INFO"
+msgstr "Műsorinformáció"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Skinadatok, piconok és beállítások útvonalai"
+
+msgid "Rating:"
+msgstr "Értékelés:"
+
+msgid "Selected picon folder does not exist."
+msgstr "A kiválasztott pikonmappa nem létezik."
+
+msgid "Spinner"
+msgstr "Várakozásjelző"
+
+msgid "Station name:"
+msgstr "Állomás neve:"
+
+msgid "Station:"
+msgstr "Állomás:"
+
+msgid "Use own channel picons"
+msgstr "Saját csatornapikonok"
+
+msgid "Year:"
+msgstr "Év:"

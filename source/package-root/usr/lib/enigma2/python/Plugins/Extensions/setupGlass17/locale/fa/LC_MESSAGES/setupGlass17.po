@@ -1821,3 +1821,78 @@ msgstr "تغییر پویانمایی ممکن نشد. پرونده‌های م�
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "بازیابی نمادهای پیش‌فرض ممکن نشد. پوسته را دوباره نصب کنید."
+
+msgid "Add Timer"
+msgstr "افزودن زمان‌بندی"
+
+msgid "Available space"
+msgstr "فضای آزاد"
+
+msgid "Broadcast:"
+msgstr "پخش:"
+
+msgid "Choose another location"
+msgstr "انتخاب محل دیگر"
+
+msgid "Continue anyway"
+msgstr "ادامه با این حال"
+
+msgid "Country:"
+msgstr "کشور:"
+
+msgid "Custom picon location"
+msgstr "مسیر دلخواه پیکون‌ها"
+
+msgid "Duration:"
+msgstr "مدت:"
+
+msgid "EPG Search"
+msgstr "جست‌وجو در EPG"
+
+msgid "EPG Search is not installed."
+msgstr "افزونهٔ EPG Search نصب نشده است."
+
+msgid "FullHDGlass skin storage"
+msgstr "فضای ذخیره‌سازی پوسته FullHDGlass"
+
+msgid "Genre:"
+msgstr "ژانر:"
+
+msgid "Goto Date/Time"
+msgstr "رفتن به تاریخ/زمان"
+
+msgid "Internal storage download warning"
+msgstr "هشدار! دانلود در حافظه داخلی"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "دانلودهای بزرگ ممکن است حافظه گیرنده را پر کنند."
+
+msgid "Own picon folder"
+msgstr "پوشه پیکون‌های شخصی"
+
+msgid "PROGRAM INFO"
+msgstr "اطلاعات برنامه"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "مسیر داده‌های پوسته، پیکون‌ها و تنظیمات"
+
+msgid "Rating:"
+msgstr "امتیاز:"
+
+msgid "Selected picon folder does not exist."
+msgstr "پوشه پیکون انتخاب‌شده وجود ندارد."
+
+msgid "Spinner"
+msgstr "نشانگر انتظار"
+
+msgid "Station name:"
+msgstr "نام ایستگاه:"
+
+msgid "Station:"
+msgstr "ایستگاه:"
+
+msgid "Use own channel picons"
+msgstr "پیکون‌های شخصی شبکه‌ها"
+
+msgid "Year:"
+msgstr "سال:"

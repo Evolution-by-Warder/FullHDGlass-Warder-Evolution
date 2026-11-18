@@ -1819,3 +1819,78 @@ msgstr "L’animation n’a pas pu être modifiée. Vos fichiers existants ont �
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Impossible de restaurer les icônes d'origine. Réinstallez le skin."
+
+msgid "Add Timer"
+msgstr "Ajouter une programmation"
+
+msgid "Available space"
+msgstr "Espace disponible"
+
+msgid "Broadcast:"
+msgstr "Diffusion :"
+
+msgid "Choose another location"
+msgstr "Choisir un autre emplacement"
+
+msgid "Continue anyway"
+msgstr "Continuer quand même"
+
+msgid "Country:"
+msgstr "Pays :"
+
+msgid "Custom picon location"
+msgstr "Emplacement personnalisé des picons"
+
+msgid "Duration:"
+msgstr "Durée :"
+
+msgid "EPG Search"
+msgstr "Recherche dans l’EPG"
+
+msgid "EPG Search is not installed."
+msgstr "L’extension EPG Search n’est pas installée."
+
+msgid "FullHDGlass skin storage"
+msgstr "Stockage du skin FullHDGlass"
+
+msgid "Genre:"
+msgstr "Genre :"
+
+msgid "Goto Date/Time"
+msgstr "Aller à une date/heure"
+
+msgid "Internal storage download warning"
+msgstr "Attention ! Téléchargement dans la mémoire interne"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Les gros téléchargements peuvent saturer la mémoire du récepteur."
+
+msgid "Own picon folder"
+msgstr "Dossier des picons perso"
+
+msgid "PROGRAM INFO"
+msgstr "Informations sur le programme"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Chemins des données, picons et réglages"
+
+msgid "Rating:"
+msgstr "Note :"
+
+msgid "Selected picon folder does not exist."
+msgstr "Le dossier de picons sélectionné est introuvable."
+
+msgid "Spinner"
+msgstr "Animation d’attente"
+
+msgid "Station name:"
+msgstr "Nom de la station :"
+
+msgid "Station:"
+msgstr "Station :"
+
+msgid "Use own channel picons"
+msgstr "Picons de chaînes perso"
+
+msgid "Year:"
+msgstr "Année :"

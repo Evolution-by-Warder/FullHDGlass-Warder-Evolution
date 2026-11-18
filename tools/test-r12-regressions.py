@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import gettext
 import json
 import re
 import subprocess
@@ -567,11 +568,11 @@ assert "self.timer_conn = None" in COND
 # TEST38-49 PROGRAM INFO / GraphicalEPGPIG consolidated contract.
 # Warder-owned labels follow active OSD language and must never collide with legacy CSFD gettext/state.
 uihelper = PLUGIN[PLUGIN.index('def _warderUiText(text):'):PLUGIN.index('class WarderProgramInfo', PLUGIN.index('def _warderUiText(text):'))]
-assert 'lang = config.osd.language.value.split("_")[0].lower()' in uihelper
-assert '"sk": {"PROGRAM INFO": "Info o programe"' in uihelper
-assert '"cs": {"PROGRAM INFO": "Info o programu"' in uihelper
-assert 'if text in warder.get(lang, {}):' in uihelper
-assert 'return warder[lang][text]' in uihelper
+assert 'return ui_text(text)' in uihelper
+for lang, expected in [('sk', 'Info o programe'), ('cs', 'Info o programu')]:
+    path = PKG / 'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale' / lang / 'LC_MESSAGES/setupGlass17.mo'
+    with path.open('rb') as stream:
+        assert gettext.GNUTranslations(stream).gettext('PROGRAM INFO') == expected
 assert 'if text == "PROGRAM INFO":' not in uihelper
 assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pigepg
 assert 'source="key_red" render="Label" position="30,930" size="420,42"' not in pigepg

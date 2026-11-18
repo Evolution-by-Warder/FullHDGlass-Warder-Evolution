@@ -1818,3 +1818,78 @@ msgstr "Nie udało się zmienić animacji. Dotychczasowe pliki zostały zachowan
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Nie udało się przywrócić domyślnych ikon. Zainstaluj skórkę ponownie."
+
+msgid "Add Timer"
+msgstr "Dodaj timer"
+
+msgid "Available space"
+msgstr "Wolne miejsce"
+
+msgid "Broadcast:"
+msgstr "Emisja:"
+
+msgid "Choose another location"
+msgstr "Wybierz inną lokalizację"
+
+msgid "Continue anyway"
+msgstr "Kontynuuj mimo to"
+
+msgid "Country:"
+msgstr "Kraj:"
+
+msgid "Custom picon location"
+msgstr "Własna lokalizacja pikon"
+
+msgid "Duration:"
+msgstr "Czas trwania:"
+
+msgid "EPG Search"
+msgstr "Wyszukaj w EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Wtyczka EPG Search nie jest zainstalowana."
+
+msgid "FullHDGlass skin storage"
+msgstr "Magazyn skina FullHDGlass"
+
+msgid "Genre:"
+msgstr "Gatunek:"
+
+msgid "Goto Date/Time"
+msgstr "Przejdź do daty/godziny"
+
+msgid "Internal storage download warning"
+msgstr "Uwaga! Pobieranie do pamięci wewnętrznej"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Duże pliki mogą zapełnić pamięć odbiornika."
+
+msgid "Own picon folder"
+msgstr "Folder własnych pikon"
+
+msgid "PROGRAM INFO"
+msgstr "Informacje o programie"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Ścieżki danych skórki, pikon i ustawień"
+
+msgid "Rating:"
+msgstr "Ocena:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Wybrany folder pikon nie istnieje."
+
+msgid "Spinner"
+msgstr "Animacja oczekiwania"
+
+msgid "Station name:"
+msgstr "Nazwa stacji:"
+
+msgid "Station:"
+msgstr "Stacja:"
+
+msgid "Use own channel picons"
+msgstr "Własne pikony kanałów"
+
+msgid "Year:"
+msgstr "Rok:"

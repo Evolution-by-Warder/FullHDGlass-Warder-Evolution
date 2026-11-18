@@ -1859,3 +1859,78 @@ msgstr "无法更改等待动画。现有文件已保留。"
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "无法恢复默认图标，请重新安装皮肤。"
+
+msgid "Add Timer"
+msgstr "添加定时任务"
+
+msgid "Available space"
+msgstr "可用空间"
+
+msgid "Broadcast:"
+msgstr "播出："
+
+msgid "Choose another location"
+msgstr "选择其他位置"
+
+msgid "Continue anyway"
+msgstr "仍然继续"
+
+msgid "Country:"
+msgstr "国家："
+
+msgid "Custom picon location"
+msgstr "自定义台标位置"
+
+msgid "Duration:"
+msgstr "时长："
+
+msgid "EPG Search"
+msgstr "搜索节目指南"
+
+msgid "EPG Search is not installed."
+msgstr "尚未安装 EPG Search 插件。"
+
+msgid "FullHDGlass skin storage"
+msgstr "FullHDGlass 皮肤存储位置"
+
+msgid "Genre:"
+msgstr "类型："
+
+msgid "Goto Date/Time"
+msgstr "跳转到日期和时间"
+
+msgid "Internal storage download warning"
+msgstr "警告！下载到内部存储"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "大量下载可能占满接收机的内部存储空间。"
+
+msgid "Own picon folder"
+msgstr "自定义台标目录"
+
+msgid "PROGRAM INFO"
+msgstr "节目信息"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "皮肤数据、台标和设置路径"
+
+msgid "Rating:"
+msgstr "评分："
+
+msgid "Selected picon folder does not exist."
+msgstr "所选台标目录不存在。"
+
+msgid "Spinner"
+msgstr "等待动画"
+
+msgid "Station name:"
+msgstr "电台名称："
+
+msgid "Station:"
+msgstr "电台："
+
+msgid "Use own channel picons"
+msgstr "使用自定义频道台标"
+
+msgid "Year:"
+msgstr "年份："

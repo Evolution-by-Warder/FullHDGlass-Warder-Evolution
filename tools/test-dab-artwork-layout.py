@@ -19,6 +19,10 @@ PYTHON = ROOT / 'source/package-root/usr/lib/enigma2/python'
 PLUGIN = PYTHON / 'Plugins/Extensions/setupGlass17'
 
 
+sys.path.insert(0, str(PLUGIN.parent))
+from setupGlass17.warderLocale import LANGUAGES
+
+
 def load(name, filename):
     spec = importlib.util.spec_from_file_location(name, filename)
     module = importlib.util.module_from_spec(spec)
@@ -112,7 +116,7 @@ class DabArtworkTests(unittest.TestCase):
         self.compact = load('dab_test_compact', PYTHON / 'Components/Renderer/WarderRadioCompactArtwork.py')
         self.compact_name = patch.dict(sys.modules, {'Components.Renderer.WarderRadioCompactArtwork': self.compact})
         self.compact_name.start(); self.addCleanup(self.compact_name.stop)
-        self.ui = load('dab_information_text', PLUGIN / 'warderUiText.py')
+        self.ui = load('setupGlass17.ui_text_test', PLUGIN / 'warderUiText.py')
         self.ui_name = patch.dict(sys.modules, {'Plugins.Extensions.setupGlass17.warderUiText':self.ui})
         self.ui_name.start(); self.addCleanup(self.ui_name.stop)
         self.slides = load('dab_test_slides', PYTHON / 'Components/Renderer/WarderRadioDabSlideshow.py')
@@ -270,10 +274,9 @@ class DabArtworkTests(unittest.TestCase):
     def test_all_translated_information_captions_fit_the_default_image(self):
         from PIL import ImageFont
         font=ImageFont.truetype(str(ROOT/'source/package-root/usr/share/fonts/prive7.ttf'),24)
-        for code in self.ui.TEXT:
-            if 'Radio mode' not in self.ui.TEXT[code]:continue
+        for code in LANGUAGES:
             self.config.osd.language.value=code+'_XX'
-            self.assertIn('DAB+ information',self.ui.TEXT[code])
+            self.assertTrue(self.ui.ui_text('DAB+ information').strip(), code)
             self.assertLessEqual(font.getlength(self.ui.ui_text('DAB+ information')),396)
 
     def test_portrait_and_square_images_fit_without_overlapping_the_two_slots(self):

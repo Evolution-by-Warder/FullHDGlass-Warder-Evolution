@@ -525,7 +525,7 @@ msgid "Save"
 msgstr "Salva"
 
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 msgid "Download menu"
 msgstr "Menu dei download"
@@ -1818,3 +1818,78 @@ msgstr "Impossibile cambiare l’animazione. I file esistenti sono stati conserv
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Impossibile ripristinare le icone predefinite. Reinstalla la skin."
+
+msgid "Add Timer"
+msgstr "Aggiungi timer"
+
+msgid "Available space"
+msgstr "Spazio disponibile"
+
+msgid "Broadcast:"
+msgstr "Trasmissione:"
+
+msgid "Choose another location"
+msgstr "Scegli un’altra posizione"
+
+msgid "Continue anyway"
+msgstr "Continua comunque"
+
+msgid "Country:"
+msgstr "Paese:"
+
+msgid "Custom picon location"
+msgstr "Posizione personalizzata dei picon"
+
+msgid "Duration:"
+msgstr "Durata:"
+
+msgid "EPG Search"
+msgstr "Cerca nell’EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Il plugin EPG Search non è installato."
+
+msgid "FullHDGlass skin storage"
+msgstr "Archivio dello skin FullHDGlass"
+
+msgid "Genre:"
+msgstr "Genere:"
+
+msgid "Goto Date/Time"
+msgstr "Vai a data/ora"
+
+msgid "Internal storage download warning"
+msgstr "Attenzione! Download nella memoria interna"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "I download di grandi dimensioni possono riempire la memoria del ricevitore."
+
+msgid "Own picon folder"
+msgstr "Cartella picon personali"
+
+msgid "PROGRAM INFO"
+msgstr "Informazioni sul programma"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Percorsi per dati skin, picon e impostazioni"
+
+msgid "Rating:"
+msgstr "Valutazione:"
+
+msgid "Selected picon folder does not exist."
+msgstr "La cartella picon selezionata non esiste."
+
+msgid "Spinner"
+msgstr "Animazione di attesa"
+
+msgid "Station name:"
+msgstr "Nome emittente:"
+
+msgid "Station:"
+msgstr "Emittente:"
+
+msgid "Use own channel picons"
+msgstr "Picon canali personali"
+
+msgid "Year:"
+msgstr "Anno:"

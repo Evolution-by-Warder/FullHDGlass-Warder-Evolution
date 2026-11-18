@@ -1820,3 +1820,78 @@ msgstr "Animasyon değiştirilemedi. Mevcut dosyalarınız korundu."
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Varsayılan simgeler geri yüklenemedi. Temayı yeniden yükleyin."
+
+msgid "Add Timer"
+msgstr "Zamanlayıcı ekle"
+
+msgid "Available space"
+msgstr "Boş alan"
+
+msgid "Broadcast:"
+msgstr "Yayın:"
+
+msgid "Choose another location"
+msgstr "Başka bir konum seç"
+
+msgid "Continue anyway"
+msgstr "Yine de devam et"
+
+msgid "Country:"
+msgstr "Ülke:"
+
+msgid "Custom picon location"
+msgstr "Özel picon konumu"
+
+msgid "Duration:"
+msgstr "Süre:"
+
+msgid "EPG Search"
+msgstr "EPG'de ara"
+
+msgid "EPG Search is not installed."
+msgstr "EPG Search eklentisi yüklü değil."
+
+msgid "FullHDGlass skin storage"
+msgstr "FullHDGlass tema depolama alanı"
+
+msgid "Genre:"
+msgstr "Tür:"
+
+msgid "Goto Date/Time"
+msgstr "Tarih/saate git"
+
+msgid "Internal storage download warning"
+msgstr "Uyarı! Dahili depolamaya indirme"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Büyük indirmeler alıcının hafızasını doldurabilir."
+
+msgid "Own picon folder"
+msgstr "Özel picon klasörü"
+
+msgid "PROGRAM INFO"
+msgstr "Program bilgileri"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Skin verileri, piconlar ve ayar yolları"
+
+msgid "Rating:"
+msgstr "Puan:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Seçilen picon klasörü mevcut değil."
+
+msgid "Spinner"
+msgstr "Bekleme simgesi"
+
+msgid "Station name:"
+msgstr "İstasyon adı:"
+
+msgid "Station:"
+msgstr "İstasyon:"
+
+msgid "Use own channel picons"
+msgstr "Özel kanal piconları"
+
+msgid "Year:"
+msgstr "Yıl:"

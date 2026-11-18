@@ -1816,3 +1816,78 @@ msgstr "Não foi possível alterar a animação. Os ficheiros existentes foram p
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Não foi possível restaurar os ícones padrão. Reinstale a skin."
+
+msgid "Add Timer"
+msgstr "Adicionar temporizador"
+
+msgid "Available space"
+msgstr "Espaço disponível"
+
+msgid "Broadcast:"
+msgstr "Emissão:"
+
+msgid "Choose another location"
+msgstr "Escolher outro local"
+
+msgid "Continue anyway"
+msgstr "Continuar na mesma"
+
+msgid "Country:"
+msgstr "País:"
+
+msgid "Custom picon location"
+msgstr "Localização personalizada dos picons"
+
+msgid "Duration:"
+msgstr "Duração:"
+
+msgid "EPG Search"
+msgstr "Pesquisar no EPG"
+
+msgid "EPG Search is not installed."
+msgstr "O plugin EPG Search não está instalado."
+
+msgid "FullHDGlass skin storage"
+msgstr "Armazenamento do skin FullHDGlass"
+
+msgid "Genre:"
+msgstr "Género:"
+
+msgid "Goto Date/Time"
+msgstr "Ir para a data/hora"
+
+msgid "Internal storage download warning"
+msgstr "Aviso: transferência para armazenamento interno"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Transferências grandes podem esgotar a memória do recetor."
+
+msgid "Own picon folder"
+msgstr "Pasta dos picons próprios"
+
+msgid "PROGRAM INFO"
+msgstr "Informações do programa"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Caminhos de dados, picons e definições"
+
+msgid "Rating:"
+msgstr "Classificação:"
+
+msgid "Selected picon folder does not exist."
+msgstr "A pasta de picons selecionada não existe."
+
+msgid "Spinner"
+msgstr "Animação de espera"
+
+msgid "Station name:"
+msgstr "Nome da estação:"
+
+msgid "Station:"
+msgstr "Estação:"
+
+msgid "Use own channel picons"
+msgstr "Picons de canais próprios"
+
+msgid "Year:"
+msgstr "Ano:"

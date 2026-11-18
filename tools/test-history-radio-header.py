@@ -16,6 +16,10 @@ PAYLOAD = ROOT / 'source/package-root'
 PLUGIN = PAYLOAD / 'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
 
+sys.path.insert(0, str(PLUGIN.parent))
+from setupGlass17.warderLocale import LANGUAGES
+
+
 def load(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
@@ -88,7 +92,7 @@ class RadioTitleTests(unittest.TestCase):
     def setUp(self):
         self.config = SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk_SK')))
         with patch.dict(sys.modules, {'Components.config': SimpleNamespace(config=self.config)}):
-            self.text = load('radio_title_translations', PLUGIN / 'warderUiText.py')
+            self.text = load('setupGlass17.ui_text_test', PLUGIN / 'warderUiText.py')
 
     def test_active_osd_language_changes_the_caption_without_cached_language(self):
         for locale, expected in [('sk_SK', 'REŽIM RÁDIA'), ('cs_CZ', 'REŽIM RÁDIA'), ('en_GB', 'RADIO MODE'), ('de_DE', 'RADIOMODUS')]:
@@ -97,9 +101,9 @@ class RadioTitleTests(unittest.TestCase):
 
     def test_every_supported_language_has_a_translation_that_fits_the_header(self):
         font = ImageFont.truetype(str(font_root / 'prive7.ttf'), 34)
-        for code in ('al','cs','de','en','es','et','fa','fr','hu','it','lt','nl','pl','pt','ro','ru','sk','tr','uk','zh'):
+        for code in LANGUAGES:
             self.config.osd.language.value = code + '_XX'
-            self.assertIn('Radio mode', self.text.TEXT[code])
+            self.assertTrue(self.text.ui_text('Radio mode').strip(), code)
             self.assertLessEqual(font.getlength(self.text.ui_text('Radio mode').upper()), 320, code)
 
     def test_one_centered_caption_in_each_radio_header_keeps_date_clock_and_brand(self):

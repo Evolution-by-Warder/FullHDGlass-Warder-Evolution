@@ -525,7 +525,7 @@ msgid "Save"
 msgstr "Salveaza"
 
 msgid "Cancel"
-msgstr "Anuleaza"
+msgstr "Anulează"
 
 msgid "Download menu"
 msgstr "Meniul de Download"
@@ -1816,3 +1816,78 @@ msgstr "Animația nu a putut fi schimbată. Fișierele existente au fost păstra
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Pictogramele implicite nu au putut fi restaurate. Reinstalați skinul."
+
+msgid "Add Timer"
+msgstr "Adaugă temporizator"
+
+msgid "Available space"
+msgstr "Spațiu disponibil"
+
+msgid "Broadcast:"
+msgstr "Difuzare:"
+
+msgid "Choose another location"
+msgstr "Alege altă locație"
+
+msgid "Continue anyway"
+msgstr "Continuă oricum"
+
+msgid "Country:"
+msgstr "Țară:"
+
+msgid "Custom picon location"
+msgstr "Locație personalizată pentru piconuri"
+
+msgid "Duration:"
+msgstr "Durată:"
+
+msgid "EPG Search"
+msgstr "Caută în EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Extensia EPG Search nu este instalată."
+
+msgid "FullHDGlass skin storage"
+msgstr "Spațiul de stocare al temei FullHDGlass"
+
+msgid "Genre:"
+msgstr "Gen:"
+
+msgid "Goto Date/Time"
+msgstr "Mergi la dată/oră"
+
+msgid "Internal storage download warning"
+msgstr "Atenție! Descărcare în memoria internă"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Descărcările mari pot umple memoria receptorului."
+
+msgid "Own picon folder"
+msgstr "Folder piconuri proprii"
+
+msgid "PROGRAM INFO"
+msgstr "Informații despre emisiune"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Căi pentru datele skinului, piconuri și setări"
+
+msgid "Rating:"
+msgstr "Evaluare:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Folderul de piconuri selectat nu există."
+
+msgid "Spinner"
+msgstr "Animație de așteptare"
+
+msgid "Station name:"
+msgstr "Numele postului:"
+
+msgid "Station:"
+msgstr "Post:"
+
+msgid "Use own channel picons"
+msgstr "Piconuri proprii canale"
+
+msgid "Year:"
+msgstr "An:"

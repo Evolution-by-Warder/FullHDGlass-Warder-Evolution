@@ -1816,3 +1816,78 @@ msgstr "Animaci se nepodařilo změnit. Vaše původní soubory zůstaly zachov�
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Nepodařilo se obnovit základní ikony. Přeinstalujte skin."
+
+msgid "Add Timer"
+msgstr "Přidat časovač"
+
+msgid "Available space"
+msgstr "Volné místo"
+
+msgid "Broadcast:"
+msgstr "Vysílání:"
+
+msgid "Choose another location"
+msgstr "Vybrat jiné úložiště"
+
+msgid "Continue anyway"
+msgstr "Přesto pokračovat"
+
+msgid "Country:"
+msgstr "Země:"
+
+msgid "Custom picon location"
+msgstr "Vlastní umístění piconů"
+
+msgid "Duration:"
+msgstr "Délka:"
+
+msgid "EPG Search"
+msgstr "Vyhledat v EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Vyhledávání EPG není nainstalováno."
+
+msgid "FullHDGlass skin storage"
+msgstr "Úložiště skinu FullHDGlass"
+
+msgid "Genre:"
+msgstr "Žánr:"
+
+msgid "Goto Date/Time"
+msgstr "Přejít na datum/čas"
+
+msgid "Internal storage download warning"
+msgstr "Pozor! Stahování do interní paměti"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Velké soubory mohou zaplnit paměť přijímače."
+
+msgid "Own picon folder"
+msgstr "Složka vlastních piconů"
+
+msgid "PROGRAM INFO"
+msgstr "Info o programu"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Cesty k datům skinu, piconům a nastavení"
+
+msgid "Rating:"
+msgstr "Hodnocení:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Vybraná složka piconů neexistuje."
+
+msgid "Spinner"
+msgstr "Animace čekání"
+
+msgid "Station name:"
+msgstr "Název stanice:"
+
+msgid "Station:"
+msgstr "Stanice:"
+
+msgid "Use own channel picons"
+msgstr "Vlastní picony stanic"
+
+msgid "Year:"
+msgstr "Rok:"

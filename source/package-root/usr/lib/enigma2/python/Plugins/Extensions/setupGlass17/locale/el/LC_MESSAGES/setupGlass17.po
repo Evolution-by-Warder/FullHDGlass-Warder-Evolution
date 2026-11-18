@@ -1719,7 +1719,7 @@ msgid "Press OK to choose a folder containing your channel picons. The skin only
 msgstr "Πατήστε OK για να επιλέξετε φάκελο με δικά σας εικονίδια καναλιών. Το θέμα διαβάζει μόνο τα PNG για τις μπάρες πληροφοριών και τις λίστες καναλιών. Δεν κατεβάζει, δεν τροποποιεί και δεν διαγράφει αρχεία στον φάκελο."
 
 msgid "Radio mode"
-msgstr "Λειτουργία ραδιοφώνου"
+msgstr "Ραδιόφωνο"
 
 msgid "Selected settings"
 msgstr "Επιλεγμένες ρυθμίσεις"
@@ -1744,3 +1744,78 @@ msgstr "Δεν ήταν δυνατή η αλλαγή της κίνησης αν�
 
 msgid "Unable to restore bundled default icons. Please reinstall the skin."
 msgstr "Δεν ήταν δυνατή η επαναφορά των προεγκατεστημένων εικονιδίων. Εγκαταστήστε ξανά το θέμα."
+
+msgid "Add Timer"
+msgstr "Προσθήκη χρονοδιακόπτη"
+
+msgid "Available space"
+msgstr "Ελεύθερος χώρος"
+
+msgid "Broadcast:"
+msgstr "Μετάδοση:"
+
+msgid "Choose another location"
+msgstr "Επιλογή άλλης θέσης"
+
+msgid "Continue anyway"
+msgstr "Συνέχεια ούτως ή άλλως"
+
+msgid "Country:"
+msgstr "Χώρα:"
+
+msgid "Custom picon location"
+msgstr "Προσαρμοσμένη θέση picon"
+
+msgid "Duration:"
+msgstr "Διάρκεια:"
+
+msgid "EPG Search"
+msgstr "Αναζήτηση στον EPG"
+
+msgid "EPG Search is not installed."
+msgstr "Το πρόσθετο EPG Search δεν είναι εγκατεστημένο."
+
+msgid "FullHDGlass skin storage"
+msgstr "Αποθήκευση του skin FullHDGlass"
+
+msgid "Genre:"
+msgstr "Είδος:"
+
+msgid "Goto Date/Time"
+msgstr "Μετάβαση σε ημερομηνία/ώρα"
+
+msgid "Internal storage download warning"
+msgstr "Προσοχή! Λήψη στην εσωτερική μνήμη"
+
+msgid "Large downloads can fill receiver memory."
+msgstr "Οι μεγάλες λήψεις μπορεί να γεμίσουν τη μνήμη του δέκτη."
+
+msgid "Own picon folder"
+msgstr "Φάκελος προσωπικών picons"
+
+msgid "PROGRAM INFO"
+msgstr "Πληροφορίες προγράμματος"
+
+msgid "Paths for Skin Data, Picons and Settings"
+msgstr "Διαδρομές δεδομένων, picons και ρυθμίσεων"
+
+msgid "Rating:"
+msgstr "Βαθμολογία:"
+
+msgid "Selected picon folder does not exist."
+msgstr "Ο επιλεγμένος φάκελος picons δεν υπάρχει."
+
+msgid "Spinner"
+msgstr "Κίνηση αναμονής"
+
+msgid "Station name:"
+msgstr "Όνομα σταθμού:"
+
+msgid "Station:"
+msgstr "Σταθμός:"
+
+msgid "Use own channel picons"
+msgstr "Προσωπικά picons καναλιών"
+
+msgid "Year:"
+msgstr "Έτος:"
