@@ -107,3 +107,13 @@ Pri gréčtine zostáva **0 nepreložených fráz eWeather**; všetkých 189 kľ
 ## Stále chýba
 
 Doplniť chýbajúce jazykové katalógy podľa tabuľky (weather zostáva pre al/fa/tr), 2 021 estónskych eWeather kľúčov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
+
+## Voliteľné jazykové katalógy – 18. 11. 2026
+
+**Implementácia v pracovnej vetve, bez vydania IPK:** ostrý zostavovací skript `tools/build-release-ipk.py` je upravený tak, aby do budúcej zostavy pridal iba anglické `.mo` (ak sú k dispozícii) a malý manifest SHA-256. Ostatné `.mo` zostávajú v zdrojovom repozitári, odkiaľ sa stiahnu iba pre jazyk zvolený v Enigma2. Zdrojové `.po` sa naďalej nebalí.
+
+- Manifest je vytvorený počas zostavenia z aktuálnych `.mo` a pripnutý na konkrétny 40-znakový Git commit. Sťahovač overuje SHA-256, binárny gettext formát, veľkostný limit a cieľový URL pred atómovým nahradením súboru.
+- `postinst` spustí iba neblokujúcu synchronizáciu aktuálneho jazyka; pri ďalšom otvorení obrazovky v novom jazyku môže gettext resolver spustiť doťahovanie na pozadí. Neúspech siete nezablokuje inštaláciu, pôvodné stiahnuté katalógy sa neodstraňujú a anglický zdrojový fallback zostáva.
+- Doplnený `tools/test-warder-locale-on-demand.py` a kontroly v `.github/workflows/verify-skin-i18n.yml`. Fyzický test na Enigma2 boxe ani úspech najnovšieho CI zatiaľ nie je potvrdený.
+- **Pokrytie prekladov sa týmto nemení:** setupGlass17 20 × 517/517, Netatmo 20 × 42/42; gréčtina eWeather 2117/2117, estónčina 96/2117 (zostáva 2021). Chýbajúce katalógy helpTxt, weather, eWeather ostatných jazykov sú stále rozpracované, nie „hotové“ vďaka anglickému fallbacku.
+- **Žiadne vydanie, IPK, feed, zlúčenie do main ani zmena verzie.** Nová politika balenia sa prejaví až pri budúcom schválenom zostavení.
