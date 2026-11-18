@@ -48,7 +48,21 @@ class WeatherHelpTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256(raw).hexdigest(), expected)
             self.assertTrue(raw.startswith(b"\x89PNG\r\n\x1a\n"))
             self.assertEqual(struct.unpack(">II", raw[16:24]), (882, 300))
-            self.assertEqual(raw[25], 6, "RGBA is required for transparent artwork")
+            # Approved PNGs may be RGBA (type 6) or losslessly palette-encoded
+            # with a tRNS alpha table (type 3). Do not regenerate artwork.
+            color_type = raw[25]
+            self.assertIn(color_type, (3, 6), "PNG must preserve transparency")
+            if color_type == 3:
+                cursor, chunks = 8, set()
+                while cursor + 12 <= len(raw):
+                    size = struct.unpack(">I", raw[cursor:cursor + 4])[0]
+                    chunk = raw[cursor + 4:cursor + 8]
+                    self.assertLessEqual(cursor + 12 + size, len(raw))
+                    chunks.add(chunk)
+                    cursor += size + 12
+                    if chunk == b"IEND":
+                        break
+                self.assertIn(b"tRNS", chunks, "Indexed PNG must declare transparent palette entries")
         self.assertNotEqual(EXPECTED["weather-uv-help.png"],
                             EXPECTED["weather-wind-help.png"])
 
