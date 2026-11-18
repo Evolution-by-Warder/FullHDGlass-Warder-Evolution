@@ -37,9 +37,9 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | Nápoveda helpTxt | 189/189 |
 | Počasie weather | 108/108 |
 | Netatmo | 42/42 |
-| Historické eWeather | 1 839/2 117 |
+| Historické eWeather | 1 989/2 117 |
 
-**Grécke eWeather:** aktuálne 1 839/2 117 skutočných prekladov; zostáva 278 prázdnych položiek.
+**Grécke eWeather:** aktuálne 1 989/2 117 skutočných prekladov; zostáva 128 prázdnych položiek.
 
 ## Inventár vedľajších katalógov
 Údaje sú **prítomné preložené kľúče / referenčný počet**: nápoveda 189, počasie 108, Netatmo 42 a rozšírené počasie eWeather 2 117. Znak **—** znamená, že pre daný jazyk úplne chýba samostatný katalóg `.po`; nie je to dokončený preklad. Kontrola sa týka súborov pracovnej vetvy a nenahrádza jazykovú ani fyzickú validáciu.
@@ -49,7 +49,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | al | — | — | 42/42 | — |
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | de | — | 108/108 | 42/42 | — |
-| el | 189/189 | 108/108 | 42/42 | 1839/2117 |
+| el | 189/189 | 108/108 | 42/42 | 1989/2117 |
 | es | — | — | 42/42 | — |
 | et | — | 108/108 | 42/42 | 96/2117 |
 | fa | — | — | 42/42 | — |
@@ -67,7 +67,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | uk | — | 108/108 | 42/42 | — |
 | zh | 189/189 | 108/108 | 42/42 | — |
 
-Pri gréčtine zostáva **278 nepreložených fráz eWeather**; všetkých 189 kľúčov helpTxt je už preložených. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
+Pri gréčtine zostáva **128 nepreložených fráz eWeather**; všetkých 189 kľúčov helpTxt je už preložených. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
 
 ## Čo je zapísané
 
@@ -94,10 +94,12 @@ Pri gréčtine zostáva **278 nepreložených fráz eWeather**; všetkých 189 k
 
 - Dávka 18. 11. 2026: 200 nových gréckych meteorologických textov eWeather (1 574/2 117), vrátane búrkových prehánok, nočných zrážok a teplotných zmien; všetky predchádzajúce preklady zachované, znovu vytvorený GNU gettext UTF-8 .mo s kontrolou počtu kľúčov a printf argumentov. V tejto dávke treba ešte potvrdiť nový GitHub Actions CI beh.
 
-- Doplnených ďalších 100 gréckych fráz eWeather dňa 18. 11. 2026 (1 839/2 117). Skontrolovaný inventár, aktualizované regresné testy a skompilovaný aktuálny GNU gettext `.mo`; výsledok CI nového commitu sa ešte čaká.
+- Doplnených ďalších 100 gréckych fráz eWeather dňa 18. 11. 2026 (1 989/2 117). Skontrolovaný inventár, aktualizované regresné testy a skompilovaný aktuálny GNU gettext `.mo`; výsledok CI nového commitu sa ešte čaká.
 
 - Dávka 18. 11. 2026: doplnených ďalších 165 originálnych gréckych meteorologických viet (eWeather 1839/2 117, zostáva 278). Zachovaných 1 674 doteraz preložených položiek, aktualizovaný GNU gettext UTF-8 .mo a kontrola súladu kľúčov a printf argumentov. Nový CI beh je potrebné overiť po commite.
 
+- Dávka 18. 11. 2026: ďalších 150 autenticky preložených gréckych fráz eWeather (aktuálne 1989/2 117, zostáva 128); aktualizované zdrojové .po a kompilované .mo, lokálne validované počty kľúčov aj zhodné printf argumenty; aktuálny GitHub Actions CI ešte nie je potvrdený.
+
 ## Stále chýba
 
-Doplniť chýbajúce jazykové katalógy podľa tabuľky, 2 021 estónskych eWeather kľúčov a 278 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
+Doplniť chýbajúce jazykové katalógy podľa tabuľky, 2 021 estónskych eWeather kľúčov a 128 gréckych eWeather prekladov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
