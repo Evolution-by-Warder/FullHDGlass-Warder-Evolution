@@ -1,0 +1,161 @@
+name: Personal FullHDGlass 1.0.80-2 test IPK (artifact only)
+
+# Owner-requested isolated test; never releases an IPK or edits main/update feeds.
+on:
+  push:
+    branches: [test/personal-skin-1080-r2-20261118]
+    paths: [.github/workflows/personal-skin-1080-r2-20261118.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  owner-receiver-build:
+    if: github.ref == 'refs/heads/test/personal-skin-1080-r2-20261118'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Checkout the precise merged main containing all approved corrections
+        uses: actions/checkout@v4
+        with:
+          ref: cca6407a949f668dfc60a75ded9fb9675e177e2b
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /reports/bitrate-test5-20261101.json
+
+      - name: Prepare source and offline helper audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "cca6407a949f668dfc60a75ded9fb9675e177e2b"
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.80"
+          grep -qx 'Version: 1.0.80-1' source/control/control
+          python3 tools/sync_header_version.py --check
+          for hook in preinst postinst prerm postrm; do sh -n "source/control/$hook"; done
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          proof=json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
+          assert len(proof['builds']) == 3
+          out=Path('packages/test')
+          out.mkdir(parents=True,exist_ok=True)
+          for machine,report in zip(('arm','mipsel','aarch64'),proof['builds']):
+              name='bitrate-helper-build.json' if machine=='arm' else 'bitrate-helper-'+machine+'-build.json'
+              (out/name).write_text(json.dumps(report,indent=2)+'\n')
+          import sys
+          sys.path.insert(0,'tools')
+          from bitrate_package import validate_helpers
+          validate_helpers(Path.cwd())
+          PY
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+
+      - name: Check owner-requested corrections
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tools -p 'test_warder_issue91_ipk_messages.py' -v
+          python3 -m unittest discover -s tools -p 'test_warder_storage_safety.py' -v
+          python3 -m unittest discover -s tools -p 'test_warder_menu_icon_bindings.py' -v
+          python3 -m unittest discover -s tools -p 'test_warder_mainmenu_toggle.py' -v
+          python3 -m unittest discover -s tools -p 'test_warder_epg_gles_policy.py' -v
+          python3 tools/test-weather-help-bubbles.py -q
+          python3 tools/test-warder-skin-i18n.py -q
+          python3 tools/test-classic-channel-fullscreen.py -q
+          python3 tools/test-shared-emc-epg-overlap.py -q
+          python3 tools/test-spinner-choice.py -q
+          python3 tools/test-setup-date-preview.py -q
+          python3 tools/test_warder_channel_epg_clip.py -q
+          python3 tools/test_warder_channelselection_layouts.py -q
+          python3 tools/test_warder_default_epg_panel_runtime.py -q
+          python3 tools/test_warder_storage_safety.py -q
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+
+      - name: Build exact main payload and repackage as personal revision only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/build-release-ipk.py
+          python3 - <<'PY'
+          import hashlib, io, subprocess, tarfile, tempfile
+          from pathlib import Path
+
+          stable=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.80_all.ipk')
+          assert stable.is_file() and stable.stat().st_size > 100000
+          raw_control=subprocess.check_output(['ar','p',str(stable),'control.tar.gz'])
+          members=[]
+          patched=False
+          with tarfile.open(fileobj=io.BytesIO(raw_control),mode='r:gz') as t:
+              for m in t.getmembers():
+                  content=t.extractfile(m).read() if m.isfile() else None
+                  if m.name.lstrip('./') == 'control':
+                      before=b'Version: 1.0.80-1\n'
+                      assert content.count(before)==1
+                      content=content.replace(before,b'Version: 1.0.80-2\n')
+                      content=content.replace(
+                          b'Description: FullHDGlass - Warder Evolution - modern Enigma2 skin continuation\n',
+                          b'Description: PRIVATE RECEIVER TEST - FullHDGlass Warder Evolution - all merged fixes\n')
+                      assert b'PRIVATE RECEIVER TEST' in content
+                      m.size=len(content)
+                      patched=True
+                  members.append((m,content))
+          assert patched
+          c=io.BytesIO()
+          with tarfile.open(fileobj=c,mode='w:gz') as t:
+              for m,content in members:
+                  t.addfile(m,io.BytesIO(content) if content is not None else None)
+          dest=Path('packages/test/enigma2-plugin-skins-fullhdglass_1.0.80-2_all.ipk')
+          dest.parent.mkdir(exist_ok=True,parents=True)
+          with tempfile.TemporaryDirectory() as tmp:
+              d=Path(tmp)
+              (d/'debian-binary').write_bytes(b'2.0\n')
+              (d/'control.tar.gz').write_bytes(c.getvalue())
+              (d/'data.tar.gz').write_bytes(subprocess.check_output(['ar','p',str(stable),'data.tar.gz']))
+              subprocess.run(['ar','rcsD',str(dest.resolve()),'debian-binary','control.tar.gz','data.tar.gz'],cwd=d,check=True)
+          final_control=subprocess.check_output(['ar','p',str(dest),'control.tar.gz'])
+          with tarfile.open(fileobj=io.BytesIO(final_control),mode='r:gz') as t:
+              control=t.extractfile('./control').read()
+              assert b'Version: 1.0.80-2\n' in control
+              assert b'Architecture: all\n' in control
+              assert b'PRIVATE RECEIVER TEST' in control
+          orig_data=subprocess.check_output(['ar','p',str(stable),'data.tar.gz'])
+          final_data=subprocess.check_output(['ar','p',str(dest),'data.tar.gz'])
+          assert orig_data==final_data, "TEST must contain exact unchanged 1.0.80 main payload"
+          with tarfile.open(fileobj=io.BytesIO(final_data),mode='r:gz') as t:
+              n=[x.name for x in t if x.isfile()]
+          assert any(x.endswith('/setupGlass17/version') for x in n)
+          assert any(x.endswith('/warderEpgRenderPolicy.py') for x in n)
+          assert any(x.endswith('/warder-locale-manifest.json') for x in n)
+          assert not any(x.endswith(('/warder_gsu.png','/warder_piconhub.png','/warder_radio.png','/warder_youtube.png')) for x in n)
+          digest=hashlib.sha256(dest.read_bytes()).hexdigest()
+          dest.with_suffix(dest.suffix+'.sha256').write_text(digest+'  '+dest.name+'\n')
+          Path('packages/test/OWNER-READ-ME.txt').write_text(
+              'FullHDGlass Warder Evolution personal test IPK\n'
+              'Package version: 1.0.80-2 (above stable 1.0.80-1)\n'
+              'Source main commit: cca6407a949f668dfc60a75ded9fb9675e177e2b\n'
+              'All main-source fixes included, no new public release.\n'
+              'Restart GUI after installation. Back up Enigma2 settings first.\n'
+              'Receiver OpenATV/OpenPLi hardware test is not performed by CI.\n'
+              'SHA256: '+digest+'\n'
+          )
+          print('PERSONAL TEST READY:', dest.name, 'bytes:',dest.stat().st_size,'SHA256:',digest)
+          PY
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.80-2_all.ipk.sha256)
+
+      - name: Retain personal test IPK as workflow artifact only (NOT release or update feed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Personal-FullHDGlass-1.0.80-2-all-main-fixes
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.80-2_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.80-2_all.ipk.sha256
+            packages/test/OWNER-READ-ME.txt
