@@ -110,6 +110,48 @@ def _remove_known(folder, themes):
     folder.rmdir()
 
 
+def _mixed_package_overlay(folder, themes):
+    """Detect the exact 20 packaged frames + 4 unrecognized PNG tail shape.
+
+    A private Warder 24-frame set can survive an opkg upgrade as four tail
+    images, while opkg overlays Bakussa's 20 package-owned frames. Those four
+    images cannot be classified as package-owned from the *current* catalog.
+    Never delete them or accept arbitrary unknown files.
+    """
+    if folder.is_symlink() or not folder.is_dir():
+        return False
+    paths = list(folder.iterdir())
+    expected = {'wait%d.png' % n for n in range(1, 25)}
+    if len(paths) != 24 or {path.name for path in paths} != expected:
+        return False
+    known = {}
+    for theme in themes.values():
+        for entry in theme['frames'] + theme.get('legacy_frames', []):
+            known.setdefault(entry['name'], set()).add(entry['sha256'])
+    for n in range(1, 21):
+        name = 'wait%d.png' % n
+        if _read_frame(folder / name)[1] not in known.get(name, ()):
+            return False
+    for n in range(21, 25):
+        name = 'wait%d.png' % n
+        raw, digest = _read_frame(folder / name)
+        if digest in known.get(name, ()):
+            return False
+        # Guard that the tail is actual PNG artwork, not arbitrary user data.
+        if len(raw) < 33 or len(raw) > 128 * 1024 or not raw.startswith(b'\\x89PNG\\r\\n\\x1a\\n'):
+            return False
+    return True
+
+
+def _preserved_slot(root):
+    """Allocate a new, never-overwritten path for displaced private frames."""
+    for number in range(1, 33):
+        path = root / ('.warder-spinner-preserved-%02d' % number)
+        if not path.exists() and not path.is_symlink():
+            return path
+    raise ValueError('Spinner recovery storage is full')
+
+
 def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOWNLOAD_ROOT):
     """Validate first, swap a complete private set, roll back failed swaps."""
     data = catalog(catalog_path, download_root)
@@ -135,6 +177,12 @@ def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOW
     if theme_id == 'system':
         if not active.exists() and not active.is_symlink():
             return False
+        if _mixed_package_overlay(active, themes):
+            # Preserve every byte of the mixed 24-frame overlay in its own
+            # directory. The native image spinner is then used at next GUI
+            # start; no unknown or personally authored PNG is ever deleted.
+            os.rename(active, _preserved_slot(root))
+            return True
         _known_files(active, themes)
         os.rename(active, previous)
         _remove_known(previous, themes)
@@ -149,11 +197,17 @@ def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOW
         if digest != entry['sha256']:
             raise ValueError('Spinner source verification failed')
         frames.append((entry['name'], raw, digest))
+    mixed_overlay = False
     if active.exists() or active.is_symlink():
-        current = _known_files(active, themes)
-        if {path.name for path in current} == {name for name, _, _ in frames} and all(
-                _read_frame(active / name)[1] == digest for name, _, digest in frames):
-            return False
+        mixed_overlay = _mixed_package_overlay(active, themes)
+        if not mixed_overlay:
+            current = _known_files(active, themes)
+            if {path.name for path in current} == {name for name, _, _ in frames} and all(
+                    _read_frame(active / name)[1] == digest for name, _, digest in frames):
+                return False
+    # Never start staging without a free recovery slot. No active files move
+    # until the destination has been checked.
+    preserved = _preserved_slot(root) if mixed_overlay else previous
     staging = Path(tempfile.mkdtemp(prefix='.warder-spinner-stage-', dir=str(root)))
     # mkdtemp is private while preparing; installed PNGs must remain readable.
     staging.chmod(0o755)
@@ -169,15 +223,16 @@ def apply(theme_id, skin_root=SKIN_ROOT, catalog_path=CATALOG, download_root=DOW
                 raise OSError('Spinner copy verification failed')
         moved = active.exists()
         if moved:
-            os.rename(active, previous)
+            os.rename(active, preserved)
         try:
             os.rename(staging, active)
         except OSError:
             if moved:
-                os.rename(previous, active)
+                os.rename(preserved, active)
             raise
-        if moved:
+        if moved and not mixed_overlay:
             _remove_known(previous, themes)
+        # Mixed overlays are deliberately left untouched in the recovery slot.
         return True
     finally:
         # Remove only our staging files, even after a partial write failure.
