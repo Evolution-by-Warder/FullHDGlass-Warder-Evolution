@@ -153,3 +153,10 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 - Stav ostatných jazykových katalógov sa v tejto dávke nemenil. **Celkovo zostáva 36 302 chýbajúcich položiek:** helpTxt 2 646 a eWeather 33 656. Hlavné nastavenia 20 × 517/517, weather 20 × 108/108 a Netatmo 20 × 42/42 podľa predchádzajúceho auditu.
 - Údaje sú merané podľa prítomnosti konkrétnych textov v katalógoch; jazyková korektúra rodeným hovoriacim, výsledok najnovšej CI a fyzické testy prijímača zostávajú samostatnou úlohou.
 - Žiadna IPK, release, feed, zlúčenie do main ani zmena verzie.
+
+## Dávka 18. 11. 2026 – ďalších 170 estónskych fráz eWeather
+
+- Overený aktuálny HEAD a obsah katalógov; z pôvodných **216/2 117** sa estónske eWeather posunulo na **386/2 117**, zostáva **1 731**. Nové preklady pokrývajú napríklad zimné zrážky, snehové a dažďové prehánky, oblačnosť, ochladenie, búrky a ovládacie texty počasia. Doterajšie správne preklady sa neprepisovali.
+- Aktualizovaný `et/LC_MESSAGES/eWeather.po`, samostatne zostavený binárny gettext UTF-8 `eWeather.mo` (387 záznamov vrátane hlavičky) a rozšírený regresný test v `tools/test-warder-catalog-integrity.py` na 386 kľúčov aj overenie známych estónskych formulácií.
+- **Zostáva presne 36 132 neobsadených položiek podľa existujúceho inventára**: helpTxt 2 646 a eWeather 33 486. Ostatné evidované katalógy: hlavné nastavenia 20 × 517/517, weather 20 × 108/108, Netatmo 20 × 42/42. Nové čísla vyjadrujú pokrytie kľúčov, nie jazykovú kontrolu rodenými hovoriacimi.
+- Testy GitHub Actions nového commitu a fyzické testy na Enigma2 sú ešte potrebné; žiadny úspech CI bez overenia netvrdíme. Žiadna IPK, feed, release, zmena verzie ani zlúčenie do main.
