@@ -1,3 +1,20 @@
+## Stav uzavretých opráv 1–6 (18. 11. 2026)
+
+**Zdrojovo dokončené v `main` – nezaraďovať znovu medzi otvorené úlohy.** Toto je jediný orientačný prehľad pre postup po bodoch. Staré pracovné PR z obdobia pred integráciou sa uzatvárajú ako nahradené aktuálnym `main`; neaplikovať ich znovu. Vydaná verzia a produkčný aktualizátor zostávajú **1.0.80**. **Nový IPK nebol vydaný.**
+
+| Bod | Vyriešená oprava | Zdroj integrácie alebo dôkaz | Stav |
+| --- | --- | --- | --- |
+| 1 | FastScan SK/CZ: prekrytie názvov kanálov a EPG, skryté riadky | [commit d7156bd](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/d7156bddba800019f03f44b1c1695e36ca23f994) | **Uzatvorené**, zdroj prenesený z odskúšanej kombinovanej opravy; pôvodný PR #113 zastaraný |
+| 2 | FullHDGlass Warder Evolution v menu, prepínač default `Nie`, menu Ostatné | [commit 6e416de](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/6e416de02c11828e4273e39ba17632ecdf03f5b4) | **Uzatvorené**, nastavenia a preklady zahrnuté; pôvodný PR #114 nahradený |
+| 3 | Spinner Warder (lebka), 24 RGBA PNG 100×100, náhľad, zachované bakussa/holubica | [commit 7b99043](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/7b99043dde1177bc91515cf0c3c8a4d8eac7809f) | **Uzatvorené ako integrácia zdrojov**, pôvodný issue #112; nový ZIP má iný SHA-256 než historicky spomenutý archív |
+| 4 | OpenATV 7.6: fullscreen klasický zoznam staníc, 12 riadkov | [test geometrie](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-classic-channel-fullscreen.py) | **Uzatvorené**, súčasť 1.0.80; PR #106 zastaraný |
+| 5 | EMC / Single EPG / EPG Search: oddelenie dátumov, názvov a priebehov | [test rozloženia](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-shared-emc-epg-overlap.py) | **Uzatvorené**, súčasť 1.0.80; PR #105 zastaraný |
+| 6 | Viditeľná ukážka formátu dátumu v nastaveniach, sedem kontextov | [test náhľadu](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-setup-date-preview.py) | **Uzatvorené**, súčasť 1.0.80; PR #90 zastaraný |
+
+**Rozsah overenia:** Zhodu kódu a statické predpoklady možno potvrdiť v repozitári; v tomto kole sa všetky regresné testy nespúšťali a nový fyzický test na prijímači sa nerobil (najmä body 2–3). Týmto sa netvrdí 100 % hardvérové potvrdenie. Ak sa objaví konkrétna regresia na prijímači, evidovať ju ako **nový** prípad, nie opätovne otvárať implementačné body 1–6.
+
+---
+
 ## 18. 11. 2026 — FullHDGlass, bod 9 (21 jazykov)
 
 - Bod 9 má 61 380 overených položiek v 100 cieľových katalógoch a anglický základ. Kontrola oproti [východiskovému commitu](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5194ca6a9c67ae884fdbeec61d7d433b06816b10) namerala 34 425 pridaných položiek a 1 180 opravených hodnôt. Zdroj je pripravený na skúšku na prijímači a následné schválenie vydania vlastníkom. [Úplný audit](docs/SKIN-I18N-AUDIT-20261117.md)
