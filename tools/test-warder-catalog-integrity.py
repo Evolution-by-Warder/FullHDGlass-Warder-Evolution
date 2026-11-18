@@ -146,5 +146,15 @@ class CatalogIntegrity(unittest.TestCase):
         self.assertEqual(catalog['drizzle'], 'Ψιχάλα')
         self.assertEqual(catalog['a thunderstorm'], 'Καταιγίδα')
 
+    def test_chinese_catalog_headers_and_enabled_speed_hint(self):
+        weather = po_entries(ROOT / 'zh' / 'LC_MESSAGES' / 'weather.po')
+        help_data = po_entries(ROOT / 'zh' / 'LC_MESSAGES' / 'helpTxt.po')
+        self.assertIn('nplurals=1; plural=0;', weather[''])
+        self.assertIn('Language: zh_CN', help_data[''])
+        self.assertIn('nplurals=1; plural=0;', help_data[''])
+        self.assertEqual(help_data['Measurement of current network speed is enabled and is displayed in kb/s'],
+                         '已启用当前网络速度测量，并以 kb/s 显示')
+        self.assertEqual([], [k for k, v in help_data.items() if k and not v])
+
 if __name__ == '__main__':
     unittest.main()

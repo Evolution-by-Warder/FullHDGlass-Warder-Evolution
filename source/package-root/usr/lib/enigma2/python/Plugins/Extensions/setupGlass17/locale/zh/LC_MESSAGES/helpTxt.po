@@ -6,15 +6,14 @@ msgstr ""
 "PO-Revision-Date: 2022-03-25 10:44+0100\n"
 "Last-Translator: lexlong <lexlong2007@163.com>\n"
 "Language-Team: \n"
-"Language: ru\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: C:/temp/to_locale\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.1.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -42,7 +41,7 @@ msgstr "按\"OK\"按钮选择收藏夹目录."
 msgid ""
 "Autocolor - use definition from skin.xml or g17Screens.py; selected color - "
 "display with selected color"
-msgstr ""
+msgstr "自动颜色：使用 skin.xml 或 g17Screens.py 中的定义；指定颜色：按选定的颜色显示"
 
 msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
 msgstr "来自所有卫星位置/cz地面通道的信道"
@@ -51,7 +50,7 @@ msgid "No plugin Netatmo installed"
 msgstr "未安装Netatmo插件"
 
 msgid "Your API-key"
-msgstr ""
+msgstr "您的 API 密钥"
 
 msgid ""
 "The layout is selected automatically calculating by picon size in the infobar"
@@ -60,17 +59,13 @@ msgstr ""
 msgid "Measurement of current network speed is disabled"
 msgstr "当前网络速度测量被禁用"
 
-#, fuzzy
-#| msgid "Measurement of current network speed is disabled"
 msgid ""
 "Measurement of current network speed is enabled and is displayed in kb/s"
-msgstr "当前网络速度测量被禁用"
+msgstr "已启用当前网络速度测量，并以 kb/s 显示"
 
-#, fuzzy
-#| msgid "Measurement of current network speed is disabled"
 msgid ""
 "Measurement of current network speed is enabled and is displayed in Mb/s"
-msgstr "当前网络速度测量被禁用"
+msgstr "已启用当前网络速度测量，并以 Mb/s 显示"
 
 msgid "Poster is displayed if exists"
 msgstr "如果存在，则显示海报"
@@ -86,12 +81,10 @@ msgstr "从\"互联网电影数据库（IMDb）\"搜索海报"
 msgid "Poster search from \"The Movie Database (TMDb)\""
 msgstr "从\"电影数据库（TMDb）\"搜索海报"
 
-#, fuzzy
-#| msgid "Poster search from \"Internet Movie Database (IMDb)\""
 msgid ""
 "Poster search from \"Internet Movie Database (IMDb) if not found then search "
 "from \"The Movie Database (TMDb)\""
-msgstr "从\"互联网电影数据库（IMDb）\"搜索海报"
+msgstr "先从互联网电影数据库（IMDb）搜索海报，未找到时再从电影数据库（TMDb）搜索"
 
 msgid "Poster search is started with selected delay"
 msgstr "海报搜索开始时选择延迟"
@@ -110,11 +103,9 @@ msgstr "从当前通道显示发动机控制模块信息"
 msgid "Bitrate is calculated by using included bitrate binary"
 msgstr "使用包含的比特率二进制文件计算比特率"
 
-#, fuzzy
-#| msgid "Bitrate is calculated by using included bitrate binary"
 msgid ""
 "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
-msgstr "使用包含的比特率二进制文件计算比特率"
+msgstr "使用 BitrateViewer 插件中的 eBitrateCalculator 计算码率"
 
 msgid ""
 "All available stations with their modules are displayed one by one with "
@@ -183,12 +174,10 @@ msgstr "将显示带有选定字体大小列表"
 msgid "PIP types of channel selections are unavailable"
 msgstr "PIP类型的频道选择不可用"
 
-#, fuzzy
-#| msgid "PIP types of channel selections are unavailable"
 msgid ""
 "PIP types of channel selections are available but it can generate GSOD in "
 "some images"
-msgstr "PIP类型的频道选择不可用"
+msgstr "画中画（PIP）频道列表可用，但在某些系统镜像中可能导致绿屏崩溃（GSOD）"
 
 msgid "Directory where is located the file: satellites.xml"
 msgstr "文件所在的目录:satellites.xml"
@@ -200,12 +189,10 @@ msgstr ""
 msgid "Display forecast for 5 days"
 msgstr "显示5天的天气预测"
 
-#, fuzzy
-#| msgid "Display forecast for yesterday, today and next 3 days"
 msgid ""
 "Display forecast for 10 days at first 5 days after timeout of switch time "
 "display next 5 days"
-msgstr "显示昨天、今天和未3天的预测"
+msgstr "显示未来 10 天的预报：先显示前 5 天，到达切换时间后显示后 5 天"
 
 msgid "Appears info about sunrise, sunset of planets, sun and moon"
 msgstr "出现关于日出，日落行星，太阳和月亮的信息"
@@ -242,11 +229,9 @@ msgid ""
 "transparency"
 msgstr ""
 
-#, fuzzy
-#| msgid "Infobar appears immediately and disapears immediately"
 msgid ""
 "Infobar appears immediately and disapears from defined to full transparency"
-msgstr "信息栏立即出现并立即消失"
+msgstr "信息栏立即出现，然后由设定的透明度逐渐变为完全透明"
 
 msgid "Show extra infobar and press 2xOK show User info"
 msgstr "显示第二信息栏并显示用户信息"
@@ -382,13 +367,10 @@ msgstr "按\">\" 显示下一个城市的天气"
 msgid "Special info screen (activated press \"help\") disappear press \"help\""
 msgstr "特殊信息屏幕（激活按\"帮助\"键）消失按\"帮助\""
 
-#, fuzzy
-#| msgid ""
-#| "Special info screen (activated press \"help\") disappear press \"help\""
 msgid ""
 "Special info screen (activated press \"help\") disappear automatically after "
 "20s"
-msgstr "特殊信息屏幕（激活按\"帮助\"键）消失按\"帮助\""
+msgstr "按“帮助”键打开特殊信息屏幕，20 秒后自动消失"
 
 msgid "Refresh time for reading ecm.info file"
 msgstr "阅读刷新时间电子控制模块信息文件"
@@ -458,13 +440,10 @@ msgstr "不显示在主菜单中选择特殊信息\"扩展\""
 msgid "Display selected special info \"extensions\" in main menu"
 msgstr "显示在主菜单中选择特殊信息\"扩展\""
 
-#, fuzzy
-#| msgid ""
-#| "Temperature will be displayed with units defined in eWea_city_Code.txt"
 msgid ""
 "Temperature will be displayed with units defined in my_city_Code.txt or "
 "city_Code.txt"
-msgstr "温度将以埃瓦乌市定义的单位显代"
+msgstr "温度使用 my_city_Code.txt 或 city_Code.txt 中设定的单位显示"
 
 msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
 msgstr "温度将以埃瓦乌市定义的单位显代"
@@ -499,12 +478,10 @@ msgstr "\"查找城市\"在菜单表中被禁用"
 msgid "Do not try get data from provider if an error is detected"
 msgstr "如果检测到错误，请不要尝试从提供程序获取数据"
 
-#, fuzzy
-#| msgid "Do not try get data from provider if an error is detected"
 msgid ""
 "Autoreconnect - try get data from provider if an error is detected - try "
 "with cycle in selected time while data are not ok"
-msgstr "如果检测到错误，请不要尝试从提供程序获取数据"
+msgstr "自动重连：检测到错误时向数据提供方重新获取数据，并按设定时间间隔重试，直到数据正常"
 
 msgid "Display forecast for today and next 3 days"
 msgstr "显示今天和未3天的预测"
@@ -654,36 +631,34 @@ msgstr "透明背景的提供商徽标"
 msgid "Satellite logos with transparent background"
 msgstr "透明背景卫星标志"
 
-#, fuzzy
-#| msgid "Channel logos with transparent background"
 msgid ""
 "Channelselection icons with transparent background used in some "
 "Channelselecion types"
-msgstr "透明背景的频道标识"
+msgstr "某些频道列表类型使用透明背景的频道列表图标"
 
 msgid "New Moon"
-msgstr ""
+msgstr "新月"
 
 msgid "First Quarter"
-msgstr ""
+msgstr "上弦月"
 
 msgid "Waxing Crescent"
-msgstr ""
+msgstr "娥眉月"
 
 msgid "Waxing Moon"
-msgstr ""
+msgstr "盈凸月"
 
 msgid "Full Moon"
-msgstr ""
+msgstr "满月"
 
 msgid "Waning Moon"
-msgstr ""
+msgstr "亏凸月"
 
 msgid "Waning Crescent"
-msgstr ""
+msgstr "残月"
 
 msgid "Last Quarter"
-msgstr ""
+msgstr "下弦月"
 
 
 
