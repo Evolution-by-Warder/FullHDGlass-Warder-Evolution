@@ -194,7 +194,7 @@ msgid "Wind direction"
 msgstr "Szélirány"
 
 msgid "Location"
-msgstr ""
+msgstr "Hely"
 
 msgid "Humidity"
 msgstr "Páratartalom"
@@ -227,13 +227,13 @@ msgid "Error"
 msgstr "Hiba"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Időtúllépés a weboldal adatainak olvasásakor"
 
 msgid "None data received from website"
-msgstr ""
+msgstr "Nem érkeztek adatok a weboldalról"
 
 msgid "Website is not responding"
-msgstr ""
+msgstr "A weboldal nem válaszol"
 
 msgid "is not defined"
 msgstr "nincs meghatározva"
@@ -263,13 +263,13 @@ msgid "E"
 msgstr "Keleti"
 
 msgid "Mishmash in the data"
-msgstr ""
+msgstr "Ellentmondásos adatok"
 
 msgid "Weather"
 msgstr "Időjárás"
 
 msgid "Attempt"
-msgstr ""
+msgstr "Próbálkozás"
 
 msgid "time to reconnect"
 msgstr "frissítésig"
