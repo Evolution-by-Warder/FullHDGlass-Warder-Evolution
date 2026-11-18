@@ -125,3 +125,23 @@ Doplniť chýbajúce jazykové katalógy podľa tabuľky (weather je teraz 108/1
 - **Aktuálne weather 20 × 108/108, Netatmo 20 × 42/42, hlavný setupGlass17 20 × 517/517.** Celkovo naďalej chýba **2 646 kľúčov helpTxt** (14 úplne chýbajúcich katalógov) a **33 776 kľúčov eWeather** (15 úplne chýbajúcich katalógov plus 2 021 v estónčine). Počty označujú obsah `.po`, nie fyzické jazykové overenie.
 - V novej logike voliteľných jazykov opravené generovanie koncového riadka JSON manifestu po skutočnom zlyhaní CI testu `test_package_contains_only_english_and_digest_inventory`. Zostáva potvrdiť nový beh GitHub Actions aj kontrolu na Enigma2 prijímači.
 - Bez IPK, feedu, release, zlúčenia do `main` a zmeny čísla verzie.
+
+## Doplňujúci audit weather – 18. 11. 2026
+
+Pri nezávislom opätovnom čítaní všetkých 20 katalógov `weather.po` sa ukázalo, že starší audit nesprávne stotožnil **prítomnosť kľúča** s **neprázdnym prekladom**. Zistených 32 prázdnych prekladov bolo opravených a existujúce hodnoty zostali zachované:
+
+| Jazyk | Doplnené prázdne položky | Skutočný stav po oprave |
+|---|---:|---:|
+| de | 6 | 108/108 |
+| et | 1 | 108/108 |
+| fr | 1 | 108/108 |
+| hu | 6 | 108/108 |
+| pl | 6 | 108/108 |
+| ro | 6 | 108/108 |
+| uk | 6 | 108/108 |
+
+Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the data` a `Attempt`. Opravené príslušné `.po` a nanovo zostavené binárne GNU gettext `.mo`. V teste `tools/test-warder-catalog-integrity.py` bola pridaná povinná kontrola všetkých 20 jazykov proti presným 108 referenčným kľúčom, neprázdnym textom a zhode načítaného `.mo` s `.po`.
+
+**Súhrn celej dávky:** 324 nových prekladov (`al`, `fa`, `tr`) + 32 doplnených starších prázdnych viet = **356 skutočne doplnených viet**. Merané pokrytie `weather` je **2 160/2 160** naprieč 20 jazykmi, 0 prázdnych `msgstr`. Hlavné nastavenia: 20 × 517/517. Netatmo: 20 × 42/42.
+
+**Zostáva 36 422 chýbajúcich jazykových položiek:** `helpTxt` 2 646 (14 chýbajúcich jazykových katalógov) a `eWeather` 33 776 (15 chýbajúcich jazykových katalógov a 2 021 chýbajúcich estónskych viet). Úplnosť nie je synonymum jazykovej korektnosti; korektúra rodenými hovoriacimi a testy na prijímačoch stále chýbajú. Výsledok najnovšej GitHub CI kontroly musí byť potvrdený samostatne. Bez IPK, feedu, verzie a zlúčenia.
