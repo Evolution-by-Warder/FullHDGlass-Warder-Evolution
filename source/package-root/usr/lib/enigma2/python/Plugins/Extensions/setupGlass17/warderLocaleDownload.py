@@ -111,10 +111,14 @@ def _settings_language():
 
 
 def main(argv):
-    if len(argv) != 2 or argv[1] != "--selected":
+    if len(argv) == 2 and argv[1] == "--selected":
+        language = _settings_language()
+    elif len(argv) == 3 and argv[1] == "--language":
+        language = argv[2]
+    else:
         return 2
     try:
-        sync(_settings_language())
+        sync(language)
         return 0
     except (OSError, ValueError, KeyError, TypeError):
         # Offline is normal. English fallback is always available.
