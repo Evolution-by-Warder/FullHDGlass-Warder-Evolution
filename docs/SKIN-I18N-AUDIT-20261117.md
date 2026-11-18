@@ -202,3 +202,12 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 - Aktuálne `helpTxt` existuje pre **8 z 20 lokalizovaných jazykov**: `cs, de, el, fr, lt, ru, sk, zh`; **12 chýbajúcich jazykov × 189 = 2 268 referenčných fráz**. Estónske `eWeather` bolo medzičasom samostatne rozšírené na **1 315/2 117** (zostáva **802**); `eWeather` chýba pre ďalších 15 jazykov (15 × 2 117 = 31 755). **Zostáva teda eWeather 32 557 a helpTxt 2 268, spolu presne 34 825 referenčných prekladových položiek.**
 - Hlavné `setupGlass17` (**20 × 517/517**), `weather` (**20 × 108/108**) a `netatmo` (**20 × 42/42**) zostávajú podľa existujúcich regresných inventárov vyplnené; neznamená to nezávislú korektúru všetkých viet rodenými hovoriacimi. Fyzický test na boxoch je stále otvorený.
 - Všetko iba v pracovnej vetve `fix/skin-i18n-21-languages-20261117`. **Žiadne IPK, feed, release, zmena verzie, zlúčenie do `main` ani neschválené grafiky.**
+
+## Tretia kompletná nápoveda 18. 11. 2026 – španielčina (+189)
+
+- Doplnený celý nový španielsky katalóg `es/LC_MESSAGES/helpTxt.po`: **189/189 skutočných prekladov**, všetky identické referenčné `msgid` voči `sk/helpTxt.po`, žiadny prázdny `msgstr`, bez prepisu starých prekladov.
+- Skompilované `es/LC_MESSAGES/helpTxt.mo` (**190 GNU gettext záznamov vrátane hlavičky**), platné UTF-8, `Language: es_ES`, korektná hlavička a pravidlá plurálu. Binárne kontrolované magic `0x950412de`, dĺžky/offsety a **190/190 presných prekladových dvojíc medzi `.po` a `.mo`**.
+- Pridaný regresný test všetkých 189 položiek, konkrétnych prekladov, hlavičky `es_ES` a test načítania `gettext.GNUTranslations`. Existujúci celoplošný test kontroluje bezpečnosť printf placeholderov `%s/%d`. Konečný výsledok nového CI behu musí byť ešte potvrdený, nemá vopred status PASS.
+- Spolu v tomto súvislom behu boli pridané **3 plné nové katalógy helpTxt: nemčina, francúzština a španielčina (3 × 189 = 567 skutočných prekladov)**, šesť nových `.po/.mo` súborov a regresné testy.
+- **Aktuálne helpTxt: 9 z 20 lokalizovaných jazykov** (`cs, de, el, es, fr, lt, ru, sk, zh`); chýba **11 × 189 = 2 079**. **eWeather** bez zmeny v tejto dávke: **32 557** chýbajúcich referenčných položiek (15 úplne chýbajúcich katalógov × 2 117 + 802 v estónčine). **Celkové zostávajúce množstvo: 34 636 presne podľa katalógového inventára**, nie percentuálny odhad.
+- Žiadna IPK, feed, release, zmena verzie, zlúčenie do `main` ani neschválená grafika. Zostáva jazyková korektúra a fyzické testy.
