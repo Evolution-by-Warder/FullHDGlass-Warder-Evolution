@@ -171,9 +171,9 @@ esac
 # preferences remain user data even when the skin package is removed.
 # Do not delete broad wildcards from Enigma2 system directories here;
 # the package manager removes files that belong to this package itself.
-echo "***************************************"
-echo "FullHDGlass removal finished."
+echo "******************************************************************"
+echo "Removal finished: FullHDGlass Warder Evolution"
 echo "Saved Enigma2 settings were left intact."
 echo "Please restart GUI to activate changes."
-echo "***************************************"
+echo "******************************************************************"
 exit 0
