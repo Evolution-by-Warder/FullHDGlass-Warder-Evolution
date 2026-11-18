@@ -150,6 +150,34 @@ class CatalogIntegrity(unittest.TestCase):
                 for key in expected:
                     self.assertEqual(compiled.gettext(key), values[key], (lang, key))
 
+    def test_german_help_translations_complete_and_loadable(self):
+        path = ROOT / 'de' / 'LC_MESSAGES' / 'helpTxt.po'
+        reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
+        german = po_entries(path)
+        self.assertEqual(len(set(reference) - {''}), 189)
+        self.assertEqual(set(german), set(reference))
+        self.assertEqual([], [key for key, value in german.items() if key and not value])
+        self.assertIn('Language: de_DE\\n', german[''])
+        self.assertIn('charset=UTF-8', german[''])
+        samples = {
+            'Please wait for the reading and processing of data':
+                'Bitte warten, während die Daten gelesen und verarbeitet werden',
+            'No plugin Netatmo installed':
+                'Das Netatmo-Plugin ist nicht installiert',
+            'Press button "OK" to activate selected function':
+                'Drücken Sie „OK“, um die ausgewählte Funktion zu aktivieren',
+            'Your API-key': 'Ihr API-Schlüssel',
+            'Last Quarter': 'Letztes Viertel',
+        }
+        with path.with_suffix('.mo').open('rb') as stream:
+            binary = gettext.GNUTranslations(stream)
+        self.assertEqual(binary.info().get('language'), 'de_DE')
+        for key in set(reference) - {''}:
+            self.assertEqual(binary.gettext(key), german[key], key)
+        for key, expected in samples.items():
+            self.assertEqual(german[key], expected)
+            self.assertEqual(binary.gettext(key), expected)
+
     def test_greek_help_is_complete(self):
         greek = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'helpTxt.po')
         slovak = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
