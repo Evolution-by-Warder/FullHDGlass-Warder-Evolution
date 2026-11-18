@@ -173,9 +173,9 @@ fi
 # only after opkg exits, because configure has not yet committed that state.
 /usr/bin/python3 -B /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderInstallHealth.py --payload-only || exit 1
 
-echo "************************************************"
-echo "Install/upgrade finished: FullHDGlass - Warder Evolution"
+echo "******************************************************************"
+echo "Install/upgrade/reinstall finished: FullHDGlass Warder Evolution"
 echo "Existing FullHDGlass settings were preserved."
 echo "Please restart GUI to activate changes."
-echo "************************************************"
+echo "******************************************************************"
 exit 0
