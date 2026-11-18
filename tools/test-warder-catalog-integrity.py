@@ -302,13 +302,14 @@ class CatalogIntegrity(unittest.TestCase):
         for key, translation in expected.items():
             self.assertEqual(binary.gettext(key), translation)
 
-    def test_estonian_eweather_new_batch(self):
+    def test_estonian_eweather_is_complete(self):
         catalog = po_entries(ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.po')
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'eWeather.po')
         keys = set(catalog) - {''}
-        self.assertEqual(len(keys), 1316)
-        self.assertEqual(keys - set(reference), {'Select city'})
-        self.assertEqual(len(keys & set(reference)), 1315)
+        expected_keys = set(reference) - {''}
+        self.assertEqual(len(expected_keys), 2117)
+        self.assertEqual(keys, expected_keys | {'Select city'})
+        self.assertTrue(all(catalog[key].strip() for key in keys))
         expected = {
             'a p.m. snow shower in spots': 'pärastlõunal kohati lumehooge',
             'a severe thunderstorm': 'tugev äikesetorm',
@@ -335,9 +336,17 @@ class CatalogIntegrity(unittest.TestCase):
             'a heavy thunderstorm': 'Tugev äikesetorm',
             'a snow squall in the morning': 'Hommikul tugev lumehoog',
             'a shower this afternoon': 'Täna pärastlõunal hoovihm',
+            'a shower late': 'hiljem hoovihm',
+            'low clouds and freezing fog': 'madalad pilved ja jäätuv udu',
+            'heavy showers this afternoon': 'täna pärastlõunal tugevad hoovihmad',
+            'a wintry mix': 'talvised segasademed',
         }
         with (ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.mo').open('rb') as stream:
             binary = gettext.GNUTranslations(stream)
+        self.assertEqual(binary.info().get('language'), 'et')
+        self.assertEqual(binary.charset().lower(), 'utf-8')
+        for key in keys:
+            self.assertEqual(binary.gettext(key), catalog[key], key)
         for key, value in expected.items():
             with self.subTest(key=key):
                 self.assertEqual(catalog[key], value)
