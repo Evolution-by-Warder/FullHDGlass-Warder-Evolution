@@ -1,4 +1,5 @@
 name: Verify channel catalogue for skin and PiconHub (no IPK)
+# Explicitly data-only CI: never call opkg, build an IPK, or publish a release.
 
 on:
   pull_request:
