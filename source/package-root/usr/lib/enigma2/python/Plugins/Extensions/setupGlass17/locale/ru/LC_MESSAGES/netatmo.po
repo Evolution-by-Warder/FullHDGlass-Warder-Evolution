@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "Outdoor"
+msgstr "На улице"
+
+msgid "Wind"
+msgstr "Ветер"
+
+msgid "Rain"
+msgstr "Дождь"
+
+msgid "Indoor"
+msgstr "В помещении"
+
+msgid "ENE"
+msgstr "ВСВ"
+
+msgid "ESE"
+msgstr "ВЮВ"
+
+msgid "WNW"
+msgstr "ЗСЗ"
+
+msgid "WSW"
+msgstr "ЗЮЗ"
+
+msgid "SSE"
+msgstr "ЮЮВ"
+
+msgid "SW"
+msgstr "ЮЗ"
+
+msgid "SSW"
+msgstr "ЮЮЗ"
+
+msgid "SE"
+msgstr "ЮВ"
+
+msgid "NW"
+msgstr "СЗ"
+
+msgid "NNW"
+msgstr "ССЗ"
+
+msgid "NNE"
+msgstr "ССВ"
+
+msgid "NE"
+msgstr "СВ"
+
+msgid "S"
+msgstr "Ю"
+
+msgid "W"
+msgstr "З"
+
+msgid "N"
+msgstr "С"
+
+msgid "E"
+msgstr "В"
+
+msgid "N/A"
+msgstr "Нет данных"
+
+msgid "No Netatmo station detected"
+msgstr "Станция Netatmo не обнаружена"
+
+msgid "Name"
+msgstr "Название"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Main station"
+msgstr "Основная станция"
+
+msgid "Temperature"
+msgstr "Температура"
+
+msgid "Humidity"
+msgstr "Влажность"
+
+msgid "Noise"
+msgstr "Уровень шума"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Состояние Wi-Fi"
+
+msgid "Index"
+msgstr "Индекс"
+
+msgid "Pressure"
+msgstr "Атмосферное давление"
+
+msgid "Rainfall"
+msgstr "Осадки"
+
+msgid "Summary 1 Hour"
+msgstr "Суммарно за 1 час"
+
+msgid "Summary 24 Hours"
+msgstr "Суммарно за 24 часа"
+
+msgid "Wind Strength"
+msgstr "Скорость ветра"
+
+msgid "Wind Angle"
+msgstr "Направление ветра"
+
+msgid "Gust Strength"
+msgstr "Скорость порывов"
+
+msgid "Gust Angle"
+msgstr "Направление порывов"
+
+msgid "Dew Point"
+msgstr "Точка росы"
+
+msgid "RF Status"
+msgstr "Состояние радиосвязи"
+
+msgid "Baterry"
+msgstr "Батарея"

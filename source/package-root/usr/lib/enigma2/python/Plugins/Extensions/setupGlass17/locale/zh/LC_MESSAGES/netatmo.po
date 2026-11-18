@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Outdoor"
+msgstr "室外"
+
+msgid "Wind"
+msgstr "风"
+
+msgid "Rain"
+msgstr "雨"
+
+msgid "Indoor"
+msgstr "室内"
+
+msgid "ENE"
+msgstr "东北偏东"
+
+msgid "ESE"
+msgstr "东南偏东"
+
+msgid "WNW"
+msgstr "西北偏西"
+
+msgid "WSW"
+msgstr "西南偏西"
+
+msgid "SSE"
+msgstr "东南偏南"
+
+msgid "SW"
+msgstr "西南"
+
+msgid "SSW"
+msgstr "西南偏南"
+
+msgid "SE"
+msgstr "东南"
+
+msgid "NW"
+msgstr "西北"
+
+msgid "NNW"
+msgstr "西北偏北"
+
+msgid "NNE"
+msgstr "东北偏北"
+
+msgid "NE"
+msgstr "东北"
+
+msgid "S"
+msgstr "南"
+
+msgid "W"
+msgstr "西"
+
+msgid "N"
+msgstr "北"
+
+msgid "E"
+msgstr "东"
+
+msgid "N/A"
+msgstr "无数据"
+
+msgid "No Netatmo station detected"
+msgstr "未检测到 Netatmo 气象站"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Main station"
+msgstr "主气象站"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Humidity"
+msgstr "湿度"
+
+msgid "Noise"
+msgstr "噪声"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Wi-Fi 状态"
+
+msgid "Index"
+msgstr "指数"
+
+msgid "Pressure"
+msgstr "气压"
+
+msgid "Rainfall"
+msgstr "降雨量"
+
+msgid "Summary 1 Hour"
+msgstr "过去 1 小时累计"
+
+msgid "Summary 24 Hours"
+msgstr "过去 24 小时累计"
+
+msgid "Wind Strength"
+msgstr "风速"
+
+msgid "Wind Angle"
+msgstr "风向"
+
+msgid "Gust Strength"
+msgstr "阵风速度"
+
+msgid "Gust Angle"
+msgstr "阵风方向"
+
+msgid "Dew Point"
+msgstr "露点"
+
+msgid "RF Status"
+msgstr "无线信号状态"
+
+msgid "Baterry"
+msgstr "电池"

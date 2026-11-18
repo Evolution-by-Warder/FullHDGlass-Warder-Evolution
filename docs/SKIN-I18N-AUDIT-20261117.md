@@ -61,11 +61,11 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | pl | — | 108/108 | 42/42 | — |
 | pt | — | — | 42/42 | — |
 | ro | — | 108/108 | 42/42 | — |
-| ru | 189/189 | 108/108 | — | — |
+| ru | 189/189 | 108/108 | 42/42 | — |
 | sk | 189/189 | 108/108 | 42/42 | 2117/2117 |
-| tr | — | — | — | — |
-| uk | — | 108/108 | — | — |
-| zh | 189/189 | 108/108 | — | — |
+| tr | — | — | 42/42 | — |
+| uk | — | 108/108 | 42/42 | — |
+| zh | 189/189 | 108/108 | 42/42 | — |
 
 Pri gréčtine zostáva **1 103 nepreložených fráz eWeather**; všetkých 189 kľúčov helpTxt je už preložených. Pri estónčine obsahuje eWeather iba 96 z 2 117 kľúčov, teda **2 021 chýba**. Väčšina ďalších jazykov potrebuje celé chýbajúce doplnkové katalógy.
 
@@ -82,6 +82,8 @@ Pri gréčtine zostáva **1 103 nepreložených fráz eWeather**; všetkých 189
 - Zdrojové zmeny bez zostavenia alebo vydania IPK.
 
 - Oprava CI: grécky setupGlass17 získal 2 chýbajúce kľúče (517/517), opravili sa 2 historické čínske katalógy (`zh/helpTxt`, `zh/weather`) vrátane nesprávnych plural pravidiel, 11 nepravdivých fuzzy textov a 9 prázdnych textov čínskej nápovedy. Aktualizované oba čínske a grécky binárny `.mo`; CI musí znova prebehnúť.
+
+- Nové kompletné preklady Netatmo pre ru/uk/tr/zh: **168 nových textov**, aktualizované binárne GNU gettext `.mo` a doplnené regresné kontroly. Čínske helpTxt doplnené o **20 chýbajúcich viacriadkových textov** na plných 189/189; ostatné preklady ostali zachované. Nový CI beh ešte treba potvrdiť.
 
 ## Stále chýba
 

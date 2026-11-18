@@ -129,6 +129,10 @@ class CatalogIntegrity(unittest.TestCase):
             'pt': ('Rainfall', 'Precipitação'),
             'ro': ('Wind Angle', 'Direcția vântului'),
             'hu': ('Humidity', 'Páratartalom'),
+            'ru': ('Wind Strength', 'Скорость ветра'),
+            'uk': ('Gust Angle', 'Напрям поривів'),
+            'tr': ('Wind Angle', 'Rüzgâr yönü'),
+            'zh': ('Dew Point', '露点'),
         }
         for lang, (key, expected) in samples.items():
             with self.subTest(lang=lang):

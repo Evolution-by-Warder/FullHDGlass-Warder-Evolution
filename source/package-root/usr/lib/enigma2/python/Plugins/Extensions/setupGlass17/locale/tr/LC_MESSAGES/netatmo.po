@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Dış ortam"
+
+msgid "Wind"
+msgstr "Rüzgâr"
+
+msgid "Rain"
+msgstr "Yağmur"
+
+msgid "Indoor"
+msgstr "İç ortam"
+
+msgid "ENE"
+msgstr "DKD"
+
+msgid "ESE"
+msgstr "DGD"
+
+msgid "WNW"
+msgstr "BKB"
+
+msgid "WSW"
+msgstr "BGB"
+
+msgid "SSE"
+msgstr "GGD"
+
+msgid "SW"
+msgstr "GB"
+
+msgid "SSW"
+msgstr "GGB"
+
+msgid "SE"
+msgstr "GD"
+
+msgid "NW"
+msgstr "KB"
+
+msgid "NNW"
+msgstr "KKB"
+
+msgid "NNE"
+msgstr "KKD"
+
+msgid "NE"
+msgstr "KD"
+
+msgid "S"
+msgstr "G"
+
+msgid "W"
+msgstr "B"
+
+msgid "N"
+msgstr "K"
+
+msgid "E"
+msgstr "D"
+
+msgid "N/A"
+msgstr "Veri yok"
+
+msgid "No Netatmo station detected"
+msgstr "Netatmo istasyonu algılanmadı"
+
+msgid "Name"
+msgstr "Ad"
+
+msgid "Type"
+msgstr "Tür"
+
+msgid "Main station"
+msgstr "Ana istasyon"
+
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+msgid "Humidity"
+msgstr "Nem"
+
+msgid "Noise"
+msgstr "Gürültü"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Wi-Fi durumu"
+
+msgid "Index"
+msgstr "İndeks"
+
+msgid "Pressure"
+msgstr "Hava basıncı"
+
+msgid "Rainfall"
+msgstr "Yağış miktarı"
+
+msgid "Summary 1 Hour"
+msgstr "Son 1 saatlik toplam"
+
+msgid "Summary 24 Hours"
+msgstr "Son 24 saatlik toplam"
+
+msgid "Wind Strength"
+msgstr "Rüzgâr hızı"
+
+msgid "Wind Angle"
+msgstr "Rüzgâr yönü"
+
+msgid "Gust Strength"
+msgstr "Rüzgâr hamlesi hızı"
+
+msgid "Gust Angle"
+msgstr "Rüzgâr hamlesi yönü"
+
+msgid "Dew Point"
+msgstr "Çiy noktası"
+
+msgid "RF Status"
+msgstr "Kablosuz bağlantı durumu"
+
+msgid "Baterry"
+msgstr "Pil"

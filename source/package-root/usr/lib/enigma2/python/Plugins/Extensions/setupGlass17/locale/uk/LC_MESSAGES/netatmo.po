@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "Outdoor"
+msgstr "Надворі"
+
+msgid "Wind"
+msgstr "Вітер"
+
+msgid "Rain"
+msgstr "Дощ"
+
+msgid "Indoor"
+msgstr "У приміщенні"
+
+msgid "ENE"
+msgstr "СхПнСх"
+
+msgid "ESE"
+msgstr "СхПдСх"
+
+msgid "WNW"
+msgstr "ЗхПнЗх"
+
+msgid "WSW"
+msgstr "ЗхПдЗх"
+
+msgid "SSE"
+msgstr "ПдПдСх"
+
+msgid "SW"
+msgstr "ПдЗх"
+
+msgid "SSW"
+msgstr "ПдПдЗх"
+
+msgid "SE"
+msgstr "ПдСх"
+
+msgid "NW"
+msgstr "ПнЗх"
+
+msgid "NNW"
+msgstr "ПнПнЗх"
+
+msgid "NNE"
+msgstr "ПнПнСх"
+
+msgid "NE"
+msgstr "ПнСх"
+
+msgid "S"
+msgstr "Пд"
+
+msgid "W"
+msgstr "Зх"
+
+msgid "N"
+msgstr "Пн"
+
+msgid "E"
+msgstr "Сх"
+
+msgid "N/A"
+msgstr "Немає даних"
+
+msgid "No Netatmo station detected"
+msgstr "Станцію Netatmo не виявлено"
+
+msgid "Name"
+msgstr "Назва"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Main station"
+msgstr "Головна станція"
+
+msgid "Temperature"
+msgstr "Температура"
+
+msgid "Humidity"
+msgstr "Вологість"
+
+msgid "Noise"
+msgstr "Рівень шуму"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Стан Wi-Fi"
+
+msgid "Index"
+msgstr "Індекс"
+
+msgid "Pressure"
+msgstr "Атмосферний тиск"
+
+msgid "Rainfall"
+msgstr "Опади"
+
+msgid "Summary 1 Hour"
+msgstr "Сума за 1 годину"
+
+msgid "Summary 24 Hours"
+msgstr "Сума за 24 години"
+
+msgid "Wind Strength"
+msgstr "Швидкість вітру"
+
+msgid "Wind Angle"
+msgstr "Напрям вітру"
+
+msgid "Gust Strength"
+msgstr "Швидкість поривів"
+
+msgid "Gust Angle"
+msgstr "Напрям поривів"
+
+msgid "Dew Point"
+msgstr "Точка роси"
+
+msgid "RF Status"
+msgstr "Стан радіозв’язку"
+
+msgid "Baterry"
+msgstr "Батарея"
