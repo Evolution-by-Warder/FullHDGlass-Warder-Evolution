@@ -3,6 +3,7 @@
 import gzip
 import hashlib
 import io
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -20,6 +21,10 @@ def archive(directory, output, payload=False):
                     raise SystemExit("Bytecode must not be packaged: %s" % path)
                 # Translation sources stay in Git; ship the receiver-confirmed MO files.
                 if payload and path.suffix == ".po":
+                    continue
+                # Only the English source locale is bundled. All other compiled
+                # catalogs are fetched by verified digest when selected.
+                if payload and path.suffix == ".mo" and "locale" in path.parts and "en" not in path.parts:
                     continue
                 # Never include these four unapproved Warder Menu graphics.
                 if payload and path.name.lower() in {
@@ -40,6 +45,29 @@ def archive(directory, output, payload=False):
                     tar.addfile(entry, io.BytesIO(data))
                 else:
                     tar.addfile(entry)
+            if payload:
+                # This is the *same* pinned source revision from which the
+                # catalog SHA-256 inventory was derived.
+                base = directory / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17"
+                revision = subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+                if not re.fullmatch(r"[0-9a-f]{40}", revision):
+                    raise SystemExit("Cannot pin language source revision")
+                files = {}
+                for mo in sorted((base / "locale").glob("*/LC_MESSAGES/*.mo")):
+                    lang = mo.parent.parent.name
+                    if lang == "en":
+                        continue
+                    files.setdefault(lang, {})[mo.stem] = hashlib.sha256(mo.read_bytes()).hexdigest()
+                manifest = json.dumps(
+                    {"schema": 1, "ref": revision, "files": files},
+                    sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\\n"
+                entry = tarfile.TarInfo(
+                    "./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-locale-manifest.json")
+                entry.mode = 0o644
+                entry.size = len(manifest)
+                entry.uid = entry.gid = entry.mtime = 0
+                tar.addfile(entry, io.BytesIO(manifest))
 
 
 def main():
