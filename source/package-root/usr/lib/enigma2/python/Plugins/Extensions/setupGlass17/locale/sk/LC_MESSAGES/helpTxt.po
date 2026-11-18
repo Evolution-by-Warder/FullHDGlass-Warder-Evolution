@@ -741,3 +741,21 @@ msgstr "Ubúdajúci polmesiac"
 
 msgid "Last Quarter"
 msgstr "Posledná štvrtina"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "Pôvodný vlastný indikátor činnosti FullHDGlass sa už nepoužíva. Zachová sa indikátor z image."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Pôvodný kľúč API pre počasie sa nepoužíva. Open-Meteo kľúč API nevyžaduje."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Pôvodné nastavenie poskytovateľa počasia sa už nepoužíva"
+
+msgid "Please install beautifulsoup4"
+msgstr "Nainštalujte beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "Používa sa systémový indikátor činnosti z image"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Údaje o počasí poskytuje Open-Meteo. Kľúč API sa nevyžaduje."

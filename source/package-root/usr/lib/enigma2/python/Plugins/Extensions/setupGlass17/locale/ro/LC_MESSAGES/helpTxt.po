@@ -567,3 +567,21 @@ msgstr "Seceră în descreștere"
 
 msgid "Last Quarter"
 msgstr "Ultimul pătrar"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "Vechea animație de așteptare personalizată FullHDGlass a fost retrasă. Se păstrează animația din imaginea sistemului."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Vechea cheie API pentru vreme nu se mai folosește. Open-Meteo nu necesită o cheie API."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Vechea setare pentru furnizorul de date meteo nu se mai folosește"
+
+msgid "Please install beautifulsoup4"
+msgstr "Instalați beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "Se folosește animația de așteptare furnizată de imaginea sistemului"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Datele meteo sunt furnizate de Open-Meteo. Nu este necesară o cheie API."

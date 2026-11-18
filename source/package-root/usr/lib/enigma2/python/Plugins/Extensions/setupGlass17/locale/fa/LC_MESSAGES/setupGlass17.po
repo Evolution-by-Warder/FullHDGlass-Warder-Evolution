@@ -1633,3 +1633,108 @@ msgstr "جایگزین %d/%d؛ لایه امن %d/%d؛ خطاها %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "جدول‌های FastScan انتخاب شدند"
+
+msgid "Archive extraction failed"
+msgstr "استخراج بایگانی انجام نشد"
+
+msgid "Catalog"
+msgstr "فهرست"
+
+msgid "Channel manifest verified"
+msgstr "فهرست مشخصات کانال‌ها تأیید شد"
+
+msgid "Channel picons"
+msgstr "نشان‌های کانال‌ها"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "پیش از بارگیری، وضوح، رنگ و روش به‌روزرسانی را انتخاب کنید."
+
+msgid "Completed steps"
+msgstr "مراحل انجام‌شده"
+
+msgid "Confirm selection"
+msgstr "تأیید انتخاب"
+
+msgid "Download catalog verified"
+msgstr "فهرست بارگیری‌ها تأیید شد"
+
+msgid "Download completed"
+msgstr "بارگیری به پایان رسید"
+
+msgid "Download completed with errors"
+msgstr "بارگیری با خطا به پایان رسید"
+
+msgid "Download is not available yet."
+msgstr "این فایل هنوز برای بارگیری در دسترس نیست."
+
+msgid "Download progress"
+msgstr "پیشرفت بارگیری"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "مجموع مقابله‌ای بستهٔ بارگیری‌شده مطابقت ندارد!"
+
+msgid "Downloading"
+msgstr "در حال بارگیری"
+
+msgid "Extracting"
+msgstr "در حال استخراج"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "مدخل نامعتبر در فهرست بارگیری‌های Warder."
+
+msgid "Invalid extraction path"
+msgstr "مسیر استخراج نامعتبر است"
+
+msgid "Invalid update metadata."
+msgstr "فراداده‌های به‌روزرسانی نامعتبر است."
+
+msgid "Preparing channel packages"
+msgstr "در حال آماده‌سازی بسته‌های کانال"
+
+msgid "Preparing downloads"
+msgstr "در حال آماده‌سازی بارگیری‌ها"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "بایگانی قدیمی نگه‌داشته‌شده در فهرست مهاجرت Warder موجود نیست"
+
+msgid "Prime Time clock"
+msgstr "ساعت شروع پربیننده‌ترین زمان پخش"
+
+msgid "Select country"
+msgstr "انتخاب کشور"
+
+msgid "Show Prime Time for selected channel"
+msgstr "نمایش زمان پربینندهٔ پخش برای کانال انتخاب‌شده"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "سرور بارگیری در دسترس نیست. اتصال اینترنت را بررسی کنید."
+
+msgid "System spinner restore failed"
+msgstr "بازیابی پویانمایی انتظار سیستم انجام نشد"
+
+msgid "System spinner restored"
+msgstr "پویانمایی انتظار سیستم بازیابی شد"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "این فایل هنوز در مخزن Warder در دسترس نیست."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "مدخل ناامن در فهرست بارگیری‌های Warder."
+
+msgid "Verifying"
+msgstr "در حال بررسی"
+
+msgid "Verifying and installing"
+msgstr "در حال بررسی و نصب"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "نشان‌های کانال منتشرشده توسط Warder در حال حاضر در دسترس نیستند."
+
+msgid "Warder channel picons"
+msgstr "نشان‌های کانال Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "از نشان‌های Warder صرف‌نظر شد. بارگیری سایر موارد انتخاب‌شده ادامه می‌یابد."
+
+msgid "picons"
+msgstr "نشان‌های کانال"

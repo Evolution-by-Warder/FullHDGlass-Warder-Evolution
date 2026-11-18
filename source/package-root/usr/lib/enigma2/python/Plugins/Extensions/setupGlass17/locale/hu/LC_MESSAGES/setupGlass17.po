@@ -1629,3 +1629,108 @@ msgstr "Tartalék %d/%d; biztonságos réteg %d/%d; hibák %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "FastScan-táblák kiválasztva"
+
+msgid "Archive extraction failed"
+msgstr "Nem sikerült kibontani az archívumot"
+
+msgid "Catalog"
+msgstr "Katalógus"
+
+msgid "Channel manifest verified"
+msgstr "A csatornajegyzék ellenőrzése sikerült"
+
+msgid "Channel picons"
+msgstr "Csatornapikonok"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Letöltés előtt válassza ki a felbontást, a színt és a frissítés módját."
+
+msgid "Completed steps"
+msgstr "Befejezett lépések"
+
+msgid "Confirm selection"
+msgstr "Kiválasztás megerősítése"
+
+msgid "Download catalog verified"
+msgstr "A letöltési katalógus ellenőrzése sikerült"
+
+msgid "Download completed"
+msgstr "A letöltés befejeződött"
+
+msgid "Download completed with errors"
+msgstr "A letöltés hibákkal fejeződött be"
+
+msgid "Download is not available yet."
+msgstr "A fájl még nem tölthető le."
+
+msgid "Download progress"
+msgstr "A letöltés állapota"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "A letöltött csomag ellenőrzőösszege nem egyezik!"
+
+msgid "Downloading"
+msgstr "Letöltés"
+
+msgid "Extracting"
+msgstr "Kibontás"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Érvénytelen bejegyzés a Warder letöltési katalógusában."
+
+msgid "Invalid extraction path"
+msgstr "Érvénytelen kibontási útvonal"
+
+msgid "Invalid update metadata."
+msgstr "Érvénytelen frissítési metaadatok."
+
+msgid "Preparing channel packages"
+msgstr "Csatornacsomagok előkészítése"
+
+msgid "Preparing downloads"
+msgstr "Letöltések előkészítése"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "A megőrzött régi archívum nem érhető el a Warder áttelepítési katalógusában"
+
+msgid "Prime Time clock"
+msgstr "A főműsoridő kezdete"
+
+msgid "Select country"
+msgstr "Ország kiválasztása"
+
+msgid "Show Prime Time for selected channel"
+msgstr "A kiválasztott csatorna főműsoridejének megjelenítése"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "A letöltési kiszolgáló nem érhető el. Ellenőrizze az internetkapcsolatot."
+
+msgid "System spinner restore failed"
+msgstr "Nem sikerült visszaállítani a rendszer várakozási animációját"
+
+msgid "System spinner restored"
+msgstr "A rendszer várakozási animációja visszaállítva"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Ez a fájl még nem érhető el a Warder tárolójában."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Nem biztonságos bejegyzés a Warder letöltési katalógusában."
+
+msgid "Verifying"
+msgstr "Ellenőrzés"
+
+msgid "Verifying and installing"
+msgstr "Ellenőrzés és telepítés"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "A Warder által közzétett csatornapikonok jelenleg nem érhetők el."
+
+msgid "Warder channel picons"
+msgstr "Warder csatornapikonok"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "A Warder pikonjai kimaradtak. A többi kijelölt fájl letöltése folytatódik."
+
+msgid "picons"
+msgstr "pikonok"

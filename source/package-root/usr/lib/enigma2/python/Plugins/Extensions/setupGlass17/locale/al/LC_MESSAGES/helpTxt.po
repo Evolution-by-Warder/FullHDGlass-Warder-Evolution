@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: sq_AL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "Animacioni i vjetër i pritjes i FullHDGlass nuk përdoret më. Ruhet animacioni i imazhit të sistemit."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Çelësi i vjetër API për motin nuk përdoret më. Open-Meteo nuk kërkon çelës API."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Cilësimi i vjetër i ofruesit të motit nuk përdoret më"
+
+msgid "Please install beautifulsoup4"
+msgstr "Instaloni beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "Përdoret animacioni i pritjes që përmban imazhi i sistemit"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Të dhënat e motit vijnë nga Open-Meteo. Nuk kërkohet çelës API."

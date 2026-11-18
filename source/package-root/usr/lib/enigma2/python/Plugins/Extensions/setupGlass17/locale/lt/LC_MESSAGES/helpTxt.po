@@ -741,3 +741,21 @@ msgstr "Delčios pabaiga"
 
 msgid "Last Quarter"
 msgstr "Paskutinis ketvirtis"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "Senoji pasirinktinė „FullHDGlass“ laukimo animacija nebenaudojama. Paliekama sistemos atvaizdo animacija."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Senasis orų API raktas nebenaudojamas. „Open-Meteo“ API rakto nereikia."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Senasis orų duomenų teikėjo nustatymas nebenaudojamas"
+
+msgid "Please install beautifulsoup4"
+msgstr "Įdiekite beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "Naudojama sistemos atvaizdo laukimo animacija"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Orų duomenis teikia „Open-Meteo“. API rakto nereikia."

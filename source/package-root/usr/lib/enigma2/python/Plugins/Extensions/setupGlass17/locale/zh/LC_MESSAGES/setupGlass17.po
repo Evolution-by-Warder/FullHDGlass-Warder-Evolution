@@ -1670,3 +1670,108 @@ msgstr "回退 %d/%d；安全覆盖层 %d/%d；错误 %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "已选择 FastScan 表"
+
+msgid "Archive extraction failed"
+msgstr "归档文件解压失败"
+
+msgid "Catalog"
+msgstr "目录"
+
+msgid "Channel manifest verified"
+msgstr "频道清单已验证"
+
+msgid "Channel picons"
+msgstr "频道台标"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "下载前请选择分辨率、颜色和更新方式。"
+
+msgid "Completed steps"
+msgstr "已完成的步骤"
+
+msgid "Confirm selection"
+msgstr "确认选择"
+
+msgid "Download catalog verified"
+msgstr "下载目录已通过验证"
+
+msgid "Download completed"
+msgstr "下载完成"
+
+msgid "Download completed with errors"
+msgstr "下载已完成，但出现了错误"
+
+msgid "Download is not available yet."
+msgstr "暂时无法下载此文件。"
+
+msgid "Download progress"
+msgstr "下载进度"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "下载的软件包校验和不匹配！"
+
+msgid "Downloading"
+msgstr "正在下载"
+
+msgid "Extracting"
+msgstr "正在解压"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Warder 下载目录中的条目无效。"
+
+msgid "Invalid extraction path"
+msgstr "解压路径无效"
+
+msgid "Invalid update metadata."
+msgstr "更新元数据无效。"
+
+msgid "Preparing channel packages"
+msgstr "正在准备频道包"
+
+msgid "Preparing downloads"
+msgstr "正在准备下载"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Warder 迁移目录中没有已保留的旧版归档文件"
+
+msgid "Prime Time clock"
+msgstr "黄金时段开始时间"
+
+msgid "Select country"
+msgstr "选择国家或地区"
+
+msgid "Show Prime Time for selected channel"
+msgstr "显示所选频道的黄金时段"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "无法连接下载服务器，请检查互联网连接。"
+
+msgid "System spinner restore failed"
+msgstr "恢复系统等待动画失败"
+
+msgid "System spinner restored"
+msgstr "系统等待动画已恢复"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Warder 仓库暂未提供此文件。"
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Warder 下载目录中存在不安全的条目。"
+
+msgid "Verifying"
+msgstr "正在验证"
+
+msgid "Verifying and installing"
+msgstr "正在验证并安装"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Warder 发布的频道台标暂不可用。"
+
+msgid "Warder channel picons"
+msgstr "Warder 频道台标"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "已跳过 Warder 台标。其他选中的文件将继续下载。"
+
+msgid "picons"
+msgstr "台标"

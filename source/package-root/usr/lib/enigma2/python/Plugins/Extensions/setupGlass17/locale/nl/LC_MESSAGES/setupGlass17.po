@@ -1628,3 +1628,108 @@ msgstr "Fallback %d/%d; veilige Warder-laag %d/%d; fouten %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "FastScan-tabellen geselecteerd"
+
+msgid "Archive extraction failed"
+msgstr "Uitpakken van het archief mislukt"
+
+msgid "Catalog"
+msgstr "Catalogus"
+
+msgid "Channel manifest verified"
+msgstr "Zendermanifest gecontroleerd"
+
+msgid "Channel picons"
+msgstr "Zenderpicons"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Kies vóór het downloaden de resolutie, de kleur en de manier van bijwerken."
+
+msgid "Completed steps"
+msgstr "Voltooide stappen"
+
+msgid "Confirm selection"
+msgstr "Selectie bevestigen"
+
+msgid "Download catalog verified"
+msgstr "Downloadcatalogus gecontroleerd"
+
+msgid "Download completed"
+msgstr "Download voltooid"
+
+msgid "Download completed with errors"
+msgstr "Download voltooid met fouten"
+
+msgid "Download is not available yet."
+msgstr "Dit bestand kan nog niet worden gedownload."
+
+msgid "Download progress"
+msgstr "Downloadvoortgang"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "De controlesom van het gedownloade pakket komt niet overeen!"
+
+msgid "Downloading"
+msgstr "Bezig met downloaden"
+
+msgid "Extracting"
+msgstr "Bezig met uitpakken"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Ongeldige vermelding in de downloadcatalogus van Warder."
+
+msgid "Invalid extraction path"
+msgstr "Ongeldig uitpakpad"
+
+msgid "Invalid update metadata."
+msgstr "Ongeldige updategegevens."
+
+msgid "Preparing channel packages"
+msgstr "Zenderpakketten voorbereiden"
+
+msgid "Preparing downloads"
+msgstr "Downloads voorbereiden"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Het bewaarde oude archief is niet beschikbaar in de migratiecatalogus van Warder"
+
+msgid "Prime Time clock"
+msgstr "Begintijd van primetime"
+
+msgid "Select country"
+msgstr "Land kiezen"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Primetime voor de geselecteerde zender tonen"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "De downloadserver is niet bereikbaar. Controleer de internetverbinding."
+
+msgid "System spinner restore failed"
+msgstr "Herstellen van de wachtanimatie van het systeem mislukt"
+
+msgid "System spinner restored"
+msgstr "Wachtanimatie van het systeem hersteld"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Dit bestand is nog niet beschikbaar in de repository van Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Onveilige vermelding in de downloadcatalogus van Warder."
+
+msgid "Verifying"
+msgstr "Bezig met controleren"
+
+msgid "Verifying and installing"
+msgstr "Bezig met controleren en installeren"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "De door Warder gepubliceerde zenderpicons zijn momenteel niet beschikbaar."
+
+msgid "Warder channel picons"
+msgstr "Zenderpicons van Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "De picons van Warder zijn overgeslagen. De overige geselecteerde downloads gaan door."
+
+msgid "picons"
+msgstr "zenderpicons"

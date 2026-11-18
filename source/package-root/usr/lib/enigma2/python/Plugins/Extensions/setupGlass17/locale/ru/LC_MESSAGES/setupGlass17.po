@@ -1638,3 +1638,108 @@ msgstr "Резерв %d/%d; безопасный слой %d/%d; ошибки %d
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "Таблицы FastScan выбраны"
+
+msgid "Archive extraction failed"
+msgstr "Не удалось распаковать архив"
+
+msgid "Catalog"
+msgstr "Каталог"
+
+msgid "Channel manifest verified"
+msgstr "Манифест каналов проверен"
+
+msgid "Channel picons"
+msgstr "Пиконы каналов"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Перед загрузкой выберите разрешение, цвет и способ обновления."
+
+msgid "Completed steps"
+msgstr "Выполненные шаги"
+
+msgid "Confirm selection"
+msgstr "Подтвердить выбор"
+
+msgid "Download catalog verified"
+msgstr "Каталог загрузок проверен"
+
+msgid "Download completed"
+msgstr "Загрузка завершена"
+
+msgid "Download completed with errors"
+msgstr "Загрузка завершена с ошибками"
+
+msgid "Download is not available yet."
+msgstr "Файл пока недоступен для загрузки."
+
+msgid "Download progress"
+msgstr "Ход загрузки"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Контрольная сумма загруженного пакета не совпадает!"
+
+msgid "Downloading"
+msgstr "Загрузка"
+
+msgid "Extracting"
+msgstr "Распаковка"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Недопустимая запись в каталоге загрузок Warder."
+
+msgid "Invalid extraction path"
+msgstr "Недопустимый путь распаковки"
+
+msgid "Invalid update metadata."
+msgstr "Некорректные метаданные обновления."
+
+msgid "Preparing channel packages"
+msgstr "Подготовка пакетов каналов"
+
+msgid "Preparing downloads"
+msgstr "Подготовка к загрузке"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Сохранённый старый архив недоступен в каталоге миграции Warder"
+
+msgid "Prime Time clock"
+msgstr "Время начала прайм-тайма"
+
+msgid "Select country"
+msgstr "Выбрать страну"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Показывать прайм-тайм выбранного канала"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Сервер загрузок недоступен. Проверьте подключение к интернету."
+
+msgid "System spinner restore failed"
+msgstr "Не удалось восстановить системную анимацию ожидания"
+
+msgid "System spinner restored"
+msgstr "Системная анимация ожидания восстановлена"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Этот файл пока недоступен в репозитории Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Небезопасная запись в каталоге загрузок Warder."
+
+msgid "Verifying"
+msgstr "Проверка"
+
+msgid "Verifying and installing"
+msgstr "Проверка и установка"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Опубликованные пиконы каналов Warder сейчас недоступны."
+
+msgid "Warder channel picons"
+msgstr "Пиконы каналов Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Пиконы Warder пропущены. Загрузка остальных выбранных файлов продолжится."
+
+msgid "picons"
+msgstr "пиконы"

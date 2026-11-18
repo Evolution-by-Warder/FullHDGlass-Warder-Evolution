@@ -740,3 +740,21 @@ msgstr "Убывающая Луна"
 
 msgid "Last Quarter"
 msgstr "Последняя четверть"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "Прежняя пользовательская анимация ожидания FullHDGlass больше не используется. Анимация из образа системы сохраняется."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Старый ключ API погоды больше не используется. Для Open-Meteo ключ API не нужен."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Прежняя настройка поставщика данных о погоде больше не используется"
+
+msgid "Please install beautifulsoup4"
+msgstr "Установите beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "Используется системная анимация ожидания из образа"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Данные о погоде предоставляет Open-Meteo. Ключ API не требуется."

@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "پویانمایی انتظار قدیمی FullHDGlass کنار گذاشته شده است. پویانمایی ایمیج حفظ می‌شود."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "کلید قدیمی API هواشناسی استفاده نمی‌شود. Open-Meteo به کلید API نیاز ندارد."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "تنظیم قدیمی ارائه‌دهندهٔ اطلاعات هواشناسی دیگر استفاده نمی‌شود"
+
+msgid "Please install beautifulsoup4"
+msgstr "لطفاً beautifulsoup4 را نصب کنید"
+
+msgid "System spinner provided by the image is used"
+msgstr "از پویانمایی انتظار سیستم که همراه ایمیج ارائه شده استفاده می‌شود"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "داده‌های هواشناسی را Open-Meteo ارائه می‌کند. نیازی به کلید API نیست."

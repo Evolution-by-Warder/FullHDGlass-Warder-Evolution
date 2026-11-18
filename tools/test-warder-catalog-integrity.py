@@ -71,11 +71,41 @@ class CatalogIntegrity(unittest.TestCase):
                     catalog = gettext.GNUTranslations(stream)
                 self.assertEqual(catalog.info().get('language'), expected)
 
+    def test_source_literals_are_present_in_each_catalog(self):
+        modules = {'setupGlass17': 'plugin', 'helpTxt': 'txt', 'weather': 'weather',
+                   'netatmo': 'Netatmo', 'eWeather': 'E_weather'}
+        for domain, module in modules.items():
+            code = ast.parse((ROOT.parent / (module + '.py')).read_bytes())
+            source_keys = {
+                call.args[0].value for call in ast.walk(code)
+                if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)
+                and call.func.id == '_' and call.args and isinstance(call.args[0], ast.Constant)
+                and isinstance(call.args[0].value, str)
+            }
+            reference = po_entries(ROOT / 'sk/LC_MESSAGES' / (domain + '.po'))
+            self.assertFalse(source_keys - reference.keys(), (domain, source_keys - reference.keys()))
+            # All new runtime keys are available even in partial auxiliary catalogs.
+            for language in LANGS:
+                with self.subTest(domain=domain, language=language):
+                    path = ROOT / language / 'LC_MESSAGES' / (domain + '.po')
+                    values = po_entries(path)
+                    for key in source_keys:
+                        if domain == 'helpTxt' and len(values) < len(reference):
+                            if key not in {'Legacy FullHDGlass custom spinner is retired; the image spinner is preserved',
+                                           'Legacy weather API key (unused; Open-Meteo needs no API key)',
+                                           'Legacy weather provider setting is no longer used', 'Please install beautifulsoup4',
+                                           'System spinner provided by the image is used',
+                                           'Weather data is provided by Open-Meteo; no API key is required'}:
+                                continue
+                        if domain == 'eWeather' and len(values) < len(reference) and key not in ('Error', 'Select country'):
+                            continue
+                        self.assertTrue(values.get(key, '').strip(), (domain, language, key))
+
     def test_locale_count_and_complete_main_keys(self):
         self.assertEqual(len(LANGS) + 1, 21)  # en: untranslated msgid source.
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'setupGlass17.po')
         expected = set(reference) - {''}
-        self.assertEqual(len(expected), 517)
+        self.assertEqual(len(expected), 552)
         for lang in LANGS:
             with self.subTest(lang=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
@@ -89,7 +119,7 @@ class CatalogIntegrity(unittest.TestCase):
         """Verify newly authored help for Ukrainian, Polish, Portuguese, Romanian and Dutch."""
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
         expected_keys = set(reference) - {''}
-        self.assertEqual(len(expected_keys), 189)
+        self.assertEqual(len(expected_keys), 195)
         samples = {
             'uk': ('Дані EPG недоступні', 'Остання чверть'),
             'pl': ('Brak dostępnych danych EPG', 'Ostatnia kwadra'),
@@ -208,7 +238,7 @@ class CatalogIntegrity(unittest.TestCase):
         path = ROOT / 'de' / 'LC_MESSAGES' / 'helpTxt.po'
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
         german = po_entries(path)
-        self.assertEqual(len(set(reference) - {''}), 189)
+        self.assertEqual(len(set(reference) - {''}), 195)
         self.assertEqual(set(german), set(reference))
         self.assertEqual([], [key for key, value in german.items() if key and not value])
         self.assertIn('Language: de_DE\n', german[''])
@@ -236,7 +266,7 @@ class CatalogIntegrity(unittest.TestCase):
         path = ROOT / 'fr' / 'LC_MESSAGES' / 'helpTxt.po'
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
         french = po_entries(path)
-        self.assertEqual(len(set(reference) - {''}), 189)
+        self.assertEqual(len(set(reference) - {''}), 195)
         self.assertEqual(set(french), set(reference))
         self.assertEqual([], [key for key, value in french.items() if key and not value])
         self.assertIn('Language: fr_FR\n', french[''])
@@ -261,7 +291,7 @@ class CatalogIntegrity(unittest.TestCase):
         path = ROOT / 'es' / 'LC_MESSAGES' / 'helpTxt.po'
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
         spanish = po_entries(path)
-        self.assertEqual(len(set(reference) - {''}), 189)
+        self.assertEqual(len(set(reference) - {''}), 195)
         self.assertEqual(set(spanish), set(reference))
         self.assertEqual([], [key for key, value in spanish.items() if key and not value])
         self.assertIn('Language: es_ES\n', spanish[''])
@@ -287,7 +317,7 @@ class CatalogIntegrity(unittest.TestCase):
         catalog = po_entries(path)
         reference = po_entries(ROOT / 'sk/LC_MESSAGES/helpTxt.po')
         keys = set(catalog) - {''}
-        self.assertEqual(len(keys), 189)
+        self.assertEqual(len(keys), 195)
         self.assertEqual(keys, set(reference) - {''})
         self.assertTrue(all(catalog[key].strip() for key in keys))
         self.assertEqual(catalog['No EPG data available'], 'Nessun dato EPG disponibile')
@@ -356,7 +386,7 @@ class CatalogIntegrity(unittest.TestCase):
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'eWeather.po')
         keys = set(catalog) - {''}
         expected_keys = set(reference) - {''}
-        self.assertEqual(len(expected_keys), 2117)
+        self.assertEqual(len(expected_keys), 2119)
         self.assertEqual(keys, expected_keys | {'Select city'})
         self.assertTrue(all(catalog[key].strip() for key in keys))
         expected = {
@@ -422,8 +452,8 @@ class CatalogIntegrity(unittest.TestCase):
 
     def test_extended_greek_weather_batch(self):
         catalog = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'eWeather.po')
-        self.assertEqual(len(catalog) - 1, 2117)
-        self.assertEqual(sum(bool(v) for k, v in catalog.items() if k), 2117)
+        self.assertEqual(len(catalog) - 1, 2119)
+        self.assertEqual(sum(bool(v) for k, v in catalog.items() if k), 2119)
         self.assertEqual([], [k for k, v in catalog.items() if k and not v])
         self.assertEqual(catalog['overcast with late-night rain'], 'συννεφιά με βροχή αργά τη νύχτα')
         self.assertEqual(catalog['heavy showers this afternoon'], 'έντονες μπόρες σήμερα το απόγευμα')

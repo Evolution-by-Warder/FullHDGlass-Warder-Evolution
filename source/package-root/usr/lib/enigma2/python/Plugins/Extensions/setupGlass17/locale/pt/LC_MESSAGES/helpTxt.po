@@ -567,3 +567,21 @@ msgstr "Lua em fase minguante"
 
 msgid "Last Quarter"
 msgstr "Quarto minguante"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "A antiga animação de espera personalizada do FullHDGlass foi descontinuada. Mantém-se a animação da imagem do sistema."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "A antiga chave de API meteorológica já não é utilizada. O Open-Meteo não requer uma chave de API."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "A antiga definição do fornecedor de dados meteorológicos já não é utilizada"
+
+msgid "Please install beautifulsoup4"
+msgstr "Instale o beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "É utilizada a animação de espera fornecida pela imagem do sistema"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Os dados meteorológicos são fornecidos pelo Open-Meteo. Não é necessária uma chave de API."

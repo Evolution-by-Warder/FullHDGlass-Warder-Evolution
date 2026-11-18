@@ -571,3 +571,21 @@ msgstr "Κινούμενα εικονίδια καιρού για τη γραμ�
 
 msgid "Channelselection icons with transparent background used in some Channelselecion types"
 msgstr "Εικονίδια επιλογής καναλιών με διαφανές φόντο, που χρησιμοποιούνται σε ορισμένους τύπους λίστας καναλιών."
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "Η παλιά προσαρμοσμένη ένδειξη αναμονής του FullHDGlass καταργήθηκε. Διατηρείται η ένδειξη της εικόνας συστήματος."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Το παλιό κλειδί API καιρού δεν χρησιμοποιείται. Το Open-Meteo δεν απαιτεί κλειδί API."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Η παλιά ρύθμιση παρόχου καιρού δεν χρησιμοποιείται πλέον"
+
+msgid "Please install beautifulsoup4"
+msgstr "Εγκαταστήστε το beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "Χρησιμοποιείται η ένδειξη αναμονής που παρέχει η εικόνα συστήματος"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Τα δεδομένα καιρού παρέχονται από το Open-Meteo. Δεν απαιτείται κλειδί API."

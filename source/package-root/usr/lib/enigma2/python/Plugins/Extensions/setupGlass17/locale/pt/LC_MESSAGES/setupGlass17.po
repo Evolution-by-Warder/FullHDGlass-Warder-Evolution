@@ -1628,3 +1628,108 @@ msgstr "Alternativa %d/%d; camada segura %d/%d; erros %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "Tabelas FastScan selecionadas"
+
+msgid "Archive extraction failed"
+msgstr "Falha ao extrair o arquivo"
+
+msgid "Catalog"
+msgstr "Catálogo"
+
+msgid "Channel manifest verified"
+msgstr "Manifesto dos canais verificado"
+
+msgid "Channel picons"
+msgstr "Picons dos canais"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Antes de transferir, escolha a resolução, a cor e o método de atualização."
+
+msgid "Completed steps"
+msgstr "Passos concluídos"
+
+msgid "Confirm selection"
+msgstr "Confirmar seleção"
+
+msgid "Download catalog verified"
+msgstr "Catálogo de transferências verificado"
+
+msgid "Download completed"
+msgstr "Transferência concluída"
+
+msgid "Download completed with errors"
+msgstr "Transferência concluída com erros"
+
+msgid "Download is not available yet."
+msgstr "O ficheiro ainda não está disponível para transferência."
+
+msgid "Download progress"
+msgstr "Progresso da transferência"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "A soma de verificação do pacote transferido não corresponde!"
+
+msgid "Downloading"
+msgstr "A transferir"
+
+msgid "Extracting"
+msgstr "A extrair"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Entrada inválida no catálogo de transferências Warder."
+
+msgid "Invalid extraction path"
+msgstr "Caminho de extração inválido"
+
+msgid "Invalid update metadata."
+msgstr "Metadados de atualização inválidos."
+
+msgid "Preparing channel packages"
+msgstr "A preparar os pacotes de canais"
+
+msgid "Preparing downloads"
+msgstr "A preparar as transferências"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "O arquivo antigo guardado não está disponível no catálogo de migração Warder"
+
+msgid "Prime Time clock"
+msgstr "Hora de início do horário nobre"
+
+msgid "Select country"
+msgstr "Selecionar país"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Mostrar o horário nobre do canal selecionado"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "O servidor de transferências está indisponível. Verifique a ligação à Internet."
+
+msgid "System spinner restore failed"
+msgstr "Falha ao repor a animação de espera do sistema"
+
+msgid "System spinner restored"
+msgstr "Animação de espera do sistema reposta"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Este ficheiro ainda não está disponível no repositório Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Entrada insegura no catálogo de transferências Warder."
+
+msgid "Verifying"
+msgstr "A verificar"
+
+msgid "Verifying and installing"
+msgstr "A verificar e instalar"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Os picons de canais publicados pela Warder estão de momento indisponíveis."
+
+msgid "Warder channel picons"
+msgstr "Picons de canais Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Os picons Warder foram ignorados. As restantes transferências selecionadas vão continuar."
+
+msgid "picons"
+msgstr "logótipos de canais (picons)"

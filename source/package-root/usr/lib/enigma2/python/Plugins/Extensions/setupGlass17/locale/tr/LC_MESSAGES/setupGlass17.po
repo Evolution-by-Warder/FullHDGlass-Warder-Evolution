@@ -1632,3 +1632,108 @@ msgstr "Yedek %d/%d; güvenli katman %d/%d; hata %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "FastScan tabloları seçildi"
+
+msgid "Archive extraction failed"
+msgstr "Arşiv çıkarılamadı"
+
+msgid "Catalog"
+msgstr "Katalog"
+
+msgid "Channel manifest verified"
+msgstr "Kanal bildirim dosyası doğrulandı"
+
+msgid "Channel picons"
+msgstr "Kanal logoları"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "İndirmeden önce çözünürlüğü, rengi ve güncelleme yöntemini seçin."
+
+msgid "Completed steps"
+msgstr "Tamamlanan adımlar"
+
+msgid "Confirm selection"
+msgstr "Seçimi onayla"
+
+msgid "Download catalog verified"
+msgstr "İndirme kataloğu doğrulandı"
+
+msgid "Download completed"
+msgstr "İndirme tamamlandı"
+
+msgid "Download completed with errors"
+msgstr "İndirme hatalarla tamamlandı"
+
+msgid "Download is not available yet."
+msgstr "Dosya henüz indirilemiyor."
+
+msgid "Download progress"
+msgstr "İndirme ilerlemesi"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "İndirilen paketin sağlama toplamı eşleşmiyor!"
+
+msgid "Downloading"
+msgstr "İndiriliyor"
+
+msgid "Extracting"
+msgstr "Çıkarılıyor"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Warder indirme kataloğunda geçersiz kayıt."
+
+msgid "Invalid extraction path"
+msgstr "Geçersiz çıkarma yolu"
+
+msgid "Invalid update metadata."
+msgstr "Güncelleme üst verileri geçersiz."
+
+msgid "Preparing channel packages"
+msgstr "Kanal paketleri hazırlanıyor"
+
+msgid "Preparing downloads"
+msgstr "İndirmeler hazırlanıyor"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Saklanan eski arşiv Warder geçiş kataloğunda bulunmuyor"
+
+msgid "Prime Time clock"
+msgstr "En çok izlenen kuşağın başlangıç saati"
+
+msgid "Select country"
+msgstr "Ülke seç"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Seçili kanalın en çok izlenen yayın kuşağını göster"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "İndirme sunucusuna ulaşılamıyor. İnternet bağlantınızı kontrol edin."
+
+msgid "System spinner restore failed"
+msgstr "Sistemin bekleme animasyonu geri yüklenemedi"
+
+msgid "System spinner restored"
+msgstr "Sistemin bekleme animasyonu geri yüklendi"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Bu dosya henüz Warder deposunda bulunmuyor."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Warder indirme kataloğunda güvenli olmayan kayıt."
+
+msgid "Verifying"
+msgstr "Doğrulanıyor"
+
+msgid "Verifying and installing"
+msgstr "Doğrulanıyor ve kuruluyor"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Warder tarafından yayımlanan kanal logolarına şu anda erişilemiyor."
+
+msgid "Warder channel picons"
+msgstr "Warder kanal logoları"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Warder kanal logoları atlandı. Seçilen diğer indirmeler devam edecek."
+
+msgid "picons"
+msgstr "kanal logoları"

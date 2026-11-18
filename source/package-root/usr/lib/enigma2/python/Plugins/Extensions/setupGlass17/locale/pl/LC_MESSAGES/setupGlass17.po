@@ -1630,3 +1630,108 @@ msgstr "Warstwa zapasowa %d/%d; bezpieczna nakładka %d/%d; błędy %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "Wybrano tabele FastScan"
+
+msgid "Archive extraction failed"
+msgstr "Nie udało się rozpakować archiwum"
+
+msgid "Catalog"
+msgstr "Katalog"
+
+msgid "Channel manifest verified"
+msgstr "Zweryfikowano manifest kanałów"
+
+msgid "Channel picons"
+msgstr "Pikony kanałów"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Przed pobraniem wybierz rozdzielczość, kolor i sposób aktualizacji."
+
+msgid "Completed steps"
+msgstr "Ukończone kroki"
+
+msgid "Confirm selection"
+msgstr "Potwierdź wybór"
+
+msgid "Download catalog verified"
+msgstr "Zweryfikowano katalog pobierania"
+
+msgid "Download completed"
+msgstr "Pobieranie zakończone"
+
+msgid "Download completed with errors"
+msgstr "Pobieranie zakończone z błędami"
+
+msgid "Download is not available yet."
+msgstr "Plik nie jest jeszcze dostępny do pobrania."
+
+msgid "Download progress"
+msgstr "Postęp pobierania"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Suma kontrolna pobranego pakietu jest niezgodna!"
+
+msgid "Downloading"
+msgstr "Pobieranie"
+
+msgid "Extracting"
+msgstr "Rozpakowywanie"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Nieprawidłowy wpis w katalogu pobierania Warder."
+
+msgid "Invalid extraction path"
+msgstr "Nieprawidłowa ścieżka rozpakowywania"
+
+msgid "Invalid update metadata."
+msgstr "Nieprawidłowe metadane aktualizacji."
+
+msgid "Preparing channel packages"
+msgstr "Przygotowywanie pakietów kanałów"
+
+msgid "Preparing downloads"
+msgstr "Przygotowywanie pobierania"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Zachowane stare archiwum nie jest dostępne w katalogu migracji Warder"
+
+msgid "Prime Time clock"
+msgstr "Godzina największej oglądalności"
+
+msgid "Select country"
+msgstr "Wybierz kraj"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Pokaż porę największej oglądalności dla wybranego kanału"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Serwer pobierania jest niedostępny. Sprawdź połączenie internetowe."
+
+msgid "System spinner restore failed"
+msgstr "Nie udało się przywrócić systemowej animacji oczekiwania"
+
+msgid "System spinner restored"
+msgstr "Przywrócono systemową animację oczekiwania"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Tego pliku nie ma jeszcze w repozytorium Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Niebezpieczny wpis w katalogu pobierania Warder."
+
+msgid "Verifying"
+msgstr "Weryfikowanie"
+
+msgid "Verifying and installing"
+msgstr "Weryfikowanie i instalowanie"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Opublikowane pikony kanałów Warder są obecnie niedostępne."
+
+msgid "Warder channel picons"
+msgstr "Pikony kanałów Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Pominięto pikony Warder. Pozostałe wybrane pliki będą pobierane dalej."
+
+msgid "picons"
+msgstr "pikony"

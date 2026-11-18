@@ -1629,3 +1629,108 @@ msgstr "Резерв %d/%d; безпечний шар %d/%d; помилки %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "Вибрано таблиці FastScan"
+
+msgid "Archive extraction failed"
+msgstr "Не вдалося розпакувати архів"
+
+msgid "Catalog"
+msgstr "Каталог"
+
+msgid "Channel manifest verified"
+msgstr "Маніфест каналів перевірено"
+
+msgid "Channel picons"
+msgstr "Пікони каналів"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Перед завантаженням виберіть роздільну здатність, колір і спосіб оновлення."
+
+msgid "Completed steps"
+msgstr "Виконані кроки"
+
+msgid "Confirm selection"
+msgstr "Підтвердити вибір"
+
+msgid "Download catalog verified"
+msgstr "Каталог завантажень перевірено"
+
+msgid "Download completed"
+msgstr "Завантаження завершено"
+
+msgid "Download completed with errors"
+msgstr "Завантаження завершено з помилками"
+
+msgid "Download is not available yet."
+msgstr "Файл поки що недоступний для завантаження."
+
+msgid "Download progress"
+msgstr "Перебіг завантаження"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Контрольна сума завантаженого пакунка не збігається!"
+
+msgid "Downloading"
+msgstr "Завантаження"
+
+msgid "Extracting"
+msgstr "Розпакування"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Некоректний запис у каталозі завантажень Warder."
+
+msgid "Invalid extraction path"
+msgstr "Некоректний шлях розпакування"
+
+msgid "Invalid update metadata."
+msgstr "Некоректні метадані оновлення."
+
+msgid "Preparing channel packages"
+msgstr "Підготовка пакунків каналів"
+
+msgid "Preparing downloads"
+msgstr "Підготовка завантажень"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Збережений старий архів недоступний у каталозі міграції Warder"
+
+msgid "Prime Time clock"
+msgstr "Час початку прайм-тайму"
+
+msgid "Select country"
+msgstr "Вибрати країну"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Показувати прайм-тайм вибраного каналу"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Сервер завантажень недоступний. Перевірте з’єднання з інтернетом."
+
+msgid "System spinner restore failed"
+msgstr "Не вдалося відновити системну анімацію очікування"
+
+msgid "System spinner restored"
+msgstr "Системну анімацію очікування відновлено"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Цей файл ще недоступний у сховищі Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Небезпечний запис у каталозі завантажень Warder."
+
+msgid "Verifying"
+msgstr "Перевірка"
+
+msgid "Verifying and installing"
+msgstr "Перевірка та встановлення"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Опубліковані пікони каналів Warder зараз недоступні."
+
+msgid "Warder channel picons"
+msgstr "Пікони каналів Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Пікони Warder пропущено. Решту вибраних файлів буде завантажено."
+
+msgid "picons"
+msgstr "пікони"

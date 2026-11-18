@@ -567,3 +567,21 @@ msgstr "Afnemende maansikkel"
 
 msgid "Last Quarter"
 msgstr "Laatste kwartier"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "De oude aangepaste wachtanimatie van FullHDGlass is vervallen. De wachtanimatie van het systeemimage blijft behouden."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "De oude weer-API-sleutel wordt niet gebruikt. Open-Meteo heeft geen API-sleutel nodig."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "De oude instelling voor de weerprovider wordt niet meer gebruikt"
+
+msgid "Please install beautifulsoup4"
+msgstr "Installeer beautifulsoup4"
+
+msgid "System spinner provided by the image is used"
+msgstr "De wachtanimatie uit het systeemimage wordt gebruikt"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "De weergegevens komen van Open-Meteo. Een API-sleutel is niet nodig."

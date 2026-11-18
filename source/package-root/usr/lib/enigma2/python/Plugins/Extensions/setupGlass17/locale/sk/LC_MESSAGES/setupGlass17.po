@@ -1629,3 +1629,108 @@ msgstr "Záloha %d/%d; bezpečná vrstva %d/%d; chyby %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "vybraté FastScan tabuľky"
+
+msgid "Archive extraction failed"
+msgstr "Archív sa nepodarilo rozbaliť"
+
+msgid "Catalog"
+msgstr "Katalóg"
+
+msgid "Channel manifest verified"
+msgstr "Manifest staníc bol overený"
+
+msgid "Channel picons"
+msgstr "Picony staníc"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Pred stiahnutím vyberte rozlíšenie, farbu a spôsob aktualizácie."
+
+msgid "Completed steps"
+msgstr "Dokončené kroky"
+
+msgid "Confirm selection"
+msgstr "Potvrdiť výber"
+
+msgid "Download catalog verified"
+msgstr "Katalóg na sťahovanie bol overený"
+
+msgid "Download completed"
+msgstr "Sťahovanie dokončené"
+
+msgid "Download completed with errors"
+msgstr "Sťahovanie sa skončilo s chybami"
+
+msgid "Download is not available yet."
+msgstr "Súbor zatiaľ nie je dostupný na stiahnutie."
+
+msgid "Download progress"
+msgstr "Priebeh sťahovania"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Kontrolný súčet stiahnutého balíka nesúhlasí!"
+
+msgid "Downloading"
+msgstr "Sťahovanie"
+
+msgid "Extracting"
+msgstr "Rozbaľovanie"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Neplatná položka v katalógu sťahovania Warder."
+
+msgid "Invalid extraction path"
+msgstr "Neplatná cesta na rozbalenie"
+
+msgid "Invalid update metadata."
+msgstr "Neplatné údaje o aktualizácii."
+
+msgid "Preparing channel packages"
+msgstr "Príprava balíkov staníc"
+
+msgid "Preparing downloads"
+msgstr "Príprava sťahovania"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Zachovaný pôvodný archív nie je dostupný v migračnom katalógu Warder"
+
+msgid "Prime Time clock"
+msgstr "Čas hlavného vysielania"
+
+msgid "Select country"
+msgstr "Vybrať krajinu"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Zobraziť hlavný vysielací čas pre vybranú stanicu"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Server na sťahovanie je nedostupný. Skontrolujte pripojenie na internet."
+
+msgid "System spinner restore failed"
+msgstr "Obnovenie systémového indikátora činnosti zlyhalo"
+
+msgid "System spinner restored"
+msgstr "Systémový indikátor činnosti bol obnovený"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Tento súbor zatiaľ nie je dostupný v repozitári Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Nebezpečná položka v katalógu sťahovania Warder."
+
+msgid "Verifying"
+msgstr "Overovanie"
+
+msgid "Verifying and installing"
+msgstr "Overovanie a inštalácia"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Publikované picony staníc Warder sú momentálne nedostupné."
+
+msgid "Warder channel picons"
+msgstr "Picony staníc Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Picony Warder sa preskočili. Sťahovanie ostatných vybraných súborov bude pokračovať."
+
+msgid "picons"
+msgstr "picony"

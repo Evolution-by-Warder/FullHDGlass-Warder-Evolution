@@ -1632,3 +1632,108 @@ msgstr "Atsarginė kopija %d/%d; saugus sluoksnis %d/%d; klaidos %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "Pasirinktos „FastScan“ lentelės"
+
+msgid "Archive extraction failed"
+msgstr "Nepavyko išskleisti archyvo"
+
+msgid "Catalog"
+msgstr "Katalogas"
+
+msgid "Channel manifest verified"
+msgstr "Kanalų manifestas patikrintas"
+
+msgid "Channel picons"
+msgstr "Kanalų logotipai"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Prieš atsiųsdami pasirinkite raišką, spalvą ir naujinimo būdą."
+
+msgid "Completed steps"
+msgstr "Atlikti veiksmai"
+
+msgid "Confirm selection"
+msgstr "Patvirtinti pasirinkimą"
+
+msgid "Download catalog verified"
+msgstr "Atsiuntimų katalogas patikrintas"
+
+msgid "Download completed"
+msgstr "Atsiuntimas baigtas"
+
+msgid "Download completed with errors"
+msgstr "Atsiuntimas baigtas su klaidomis"
+
+msgid "Download is not available yet."
+msgstr "Failo dar negalima atsisiųsti."
+
+msgid "Download progress"
+msgstr "Atsiuntimo eiga"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Atsiųsto paketo kontrolinė suma nesutampa!"
+
+msgid "Downloading"
+msgstr "Atsiunčiama"
+
+msgid "Extracting"
+msgstr "Išskleidžiama"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Netinkamas „Warder“ atsiuntimų katalogo įrašas."
+
+msgid "Invalid extraction path"
+msgstr "Netinkamas išskleidimo kelias"
+
+msgid "Invalid update metadata."
+msgstr "Netinkami naujinimo metaduomenys."
+
+msgid "Preparing channel packages"
+msgstr "Ruošiami kanalų paketai"
+
+msgid "Preparing downloads"
+msgstr "Ruošiami atsiuntimai"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Išsaugoto senojo archyvo nėra „Warder“ perkėlimo kataloge"
+
+msgid "Prime Time clock"
+msgstr "Žiūrimiausio laiko pradžia"
+
+msgid "Select country"
+msgstr "Pasirinkti šalį"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Rodyti pasirinkto kanalo žiūrimiausią laiką"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Atsiuntimų serveris nepasiekiamas. Patikrinkite interneto ryšį."
+
+msgid "System spinner restore failed"
+msgstr "Nepavyko atkurti sistemos laukimo animacijos"
+
+msgid "System spinner restored"
+msgstr "Sistemos laukimo animacija atkurta"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Šio failo dar nėra „Warder“ saugykloje."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Nesaugus „Warder“ atsiuntimų katalogo įrašas."
+
+msgid "Verifying"
+msgstr "Tikrinama"
+
+msgid "Verifying and installing"
+msgstr "Tikrinama ir diegiama"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "„Warder“ paskelbti kanalų logotipai šiuo metu nepasiekiami."
+
+msgid "Warder channel picons"
+msgstr "„Warder“ kanalų logotipai"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "„Warder“ kanalų logotipai praleisti. Kiti pasirinkti failai bus siunčiami toliau."
+
+msgid "picons"
+msgstr "kanalų logotipai"

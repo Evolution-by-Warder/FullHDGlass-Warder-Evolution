@@ -1555,3 +1555,108 @@ msgstr "Το FTP δεν είναι διαθέσιμο αυτή τη στιγμή
 
 msgid "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
 msgstr "Ιστότοπος: www.hdglass16.eu, δωρεές: λογαριασμός PayPal \"hd_glass@pobox.sk\""
+
+msgid "Archive extraction failed"
+msgstr "Αποτυχία αποσυμπίεσης του αρχείου"
+
+msgid "Catalog"
+msgstr "Κατάλογος"
+
+msgid "Channel manifest verified"
+msgstr "Επαληθεύτηκε το αρχείο καταγραφής καναλιών"
+
+msgid "Channel picons"
+msgstr "Λογότυπα καναλιών"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Πριν από τη λήψη, επιλέξτε ανάλυση, χρώμα και μέθοδο ενημέρωσης."
+
+msgid "Completed steps"
+msgstr "Ολοκληρωμένα βήματα"
+
+msgid "Confirm selection"
+msgstr "Επιβεβαίωση επιλογής"
+
+msgid "Download catalog verified"
+msgstr "Επαληθεύτηκε ο κατάλογος λήψεων"
+
+msgid "Download completed"
+msgstr "Η λήψη ολοκληρώθηκε"
+
+msgid "Download completed with errors"
+msgstr "Η λήψη ολοκληρώθηκε με σφάλματα"
+
+msgid "Download is not available yet."
+msgstr "Η λήψη δεν είναι ακόμη διαθέσιμη."
+
+msgid "Download progress"
+msgstr "Πρόοδος λήψης"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Το άθροισμα ελέγχου του πακέτου που λήφθηκε δεν ταιριάζει!"
+
+msgid "Downloading"
+msgstr "Λήψη σε εξέλιξη"
+
+msgid "Extracting"
+msgstr "Αποσυμπίεση"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Μη έγκυρη εγγραφή στον κατάλογο λήψεων Warder."
+
+msgid "Invalid extraction path"
+msgstr "Μη έγκυρη διαδρομή αποσυμπίεσης"
+
+msgid "Invalid update metadata."
+msgstr "Μη έγκυρα μεταδεδομένα ενημέρωσης."
+
+msgid "Preparing channel packages"
+msgstr "Προετοιμασία πακέτων καναλιών"
+
+msgid "Preparing downloads"
+msgstr "Προετοιμασία λήψεων"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Το παλιό αρχείο που διατηρήθηκε δεν είναι διαθέσιμο στον κατάλογο μετεγκατάστασης Warder"
+
+msgid "Prime Time clock"
+msgstr "Ώρα έναρξης ζώνης υψηλής τηλεθέασης"
+
+msgid "Select country"
+msgstr "Επιλογή χώρας"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Εμφάνιση της ζώνης υψηλής τηλεθέασης για το επιλεγμένο κανάλι"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Ο διακομιστής λήψεων δεν είναι διαθέσιμος. Ελέγξτε τη σύνδεση στο διαδίκτυο."
+
+msgid "System spinner restore failed"
+msgstr "Αποτυχία επαναφοράς της κινούμενης ένδειξης αναμονής του συστήματος"
+
+msgid "System spinner restored"
+msgstr "Έγινε επαναφορά της κινούμενης ένδειξης αναμονής του συστήματος"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Το αρχείο δεν είναι ακόμη διαθέσιμο στο αποθετήριο Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Μη ασφαλής εγγραφή στον κατάλογο λήψεων Warder."
+
+msgid "Verifying"
+msgstr "Επαλήθευση"
+
+msgid "Verifying and installing"
+msgstr "Επαλήθευση και εγκατάσταση"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Τα λογότυπα καναλιών που δημοσιεύει το Warder δεν είναι διαθέσιμα αυτήν τη στιγμή."
+
+msgid "Warder channel picons"
+msgstr "Λογότυπα καναλιών Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Τα λογότυπα Warder παραλείφθηκαν. Οι υπόλοιπες επιλεγμένες λήψεις θα συνεχιστούν."
+
+msgid "picons"
+msgstr "λογότυπα καναλιών"

@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "FullHDGlass’ın eski özel bekleme animasyonu kullanımdan kaldırıldı. Sistem imajındaki animasyon korunur."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "Eski hava durumu API anahtarı kullanılmıyor. Open-Meteo için API anahtarı gerekmez."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "Eski hava durumu sağlayıcısı ayarı artık kullanılmıyor"
+
+msgid "Please install beautifulsoup4"
+msgstr "Lütfen beautifulsoup4 paketini kurun"
+
+msgid "System spinner provided by the image is used"
+msgstr "Sistem imajıyla gelen bekleme animasyonu kullanılır"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Hava durumu verilerini Open-Meteo sağlar. API anahtarı gerekmez."

@@ -1628,3 +1628,108 @@ msgstr "Varukoopia %d/%d; Warderi turvaline kiht %d/%d; vigu %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "FastScani tabelid valitud"
+
+msgid "Archive extraction failed"
+msgstr "Arhiivi lahtipakkimine ebaõnnestus"
+
+msgid "Catalog"
+msgstr "Kataloog"
+
+msgid "Channel manifest verified"
+msgstr "Kanalite manifest on kontrollitud"
+
+msgid "Channel picons"
+msgstr "Kanalite logod"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Enne allalaadimist valige eraldusvõime, värv ja uuendusviis."
+
+msgid "Completed steps"
+msgstr "Lõpetatud toimingud"
+
+msgid "Confirm selection"
+msgstr "Kinnita valik"
+
+msgid "Download catalog verified"
+msgstr "Allalaadimiskataloog on kontrollitud"
+
+msgid "Download completed"
+msgstr "Allalaadimine on lõppenud"
+
+msgid "Download completed with errors"
+msgstr "Allalaadimine lõppes vigadega"
+
+msgid "Download is not available yet."
+msgstr "Faili ei saa veel alla laadida."
+
+msgid "Download progress"
+msgstr "Allalaadimise edenemine"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Allalaaditud paketi kontrollsumma ei klapi!"
+
+msgid "Downloading"
+msgstr "Allalaadimine"
+
+msgid "Extracting"
+msgstr "Lahtipakkimine"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Vigane kirje Warderi allalaadimiskataloogis."
+
+msgid "Invalid extraction path"
+msgstr "Vigane lahtipakkimistee"
+
+msgid "Invalid update metadata."
+msgstr "Vigased uuenduse metaandmed."
+
+msgid "Preparing channel packages"
+msgstr "Kanalipakettide ettevalmistamine"
+
+msgid "Preparing downloads"
+msgstr "Allalaadimiste ettevalmistamine"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Säilitatud vana arhiivi pole Warderi migreerimiskataloogis"
+
+msgid "Prime Time clock"
+msgstr "Tippaja alguskellaaeg"
+
+msgid "Select country"
+msgstr "Vali riik"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Näita valitud kanali tippaega"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Allalaadimisserver pole saadaval. Kontrollige internetiühendust."
+
+msgid "System spinner restore failed"
+msgstr "Süsteemi ooteanimatsiooni taastamine ebaõnnestus"
+
+msgid "System spinner restored"
+msgstr "Süsteemi ooteanimatsioon on taastatud"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "See fail pole veel Warderi hoidlas saadaval."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Ebaturvaline kirje Warderi allalaadimiskataloogis."
+
+msgid "Verifying"
+msgstr "Kontrollimine"
+
+msgid "Verifying and installing"
+msgstr "Kontrollimine ja paigaldamine"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Warderi avaldatud kanalilogod pole praegu saadaval."
+
+msgid "Warder channel picons"
+msgstr "Warderi kanalilogod"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Warderi kanalilogod jäeti vahele. Teiste valitud failide allalaadimine jätkub."
+
+msgid "picons"
+msgstr "kanalilogod"

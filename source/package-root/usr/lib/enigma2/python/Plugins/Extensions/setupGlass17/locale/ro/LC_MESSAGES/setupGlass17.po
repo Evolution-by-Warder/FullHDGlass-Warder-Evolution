@@ -1628,3 +1628,108 @@ msgstr "Rezervă %d/%d; strat sigur %d/%d; erori %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "Tabele FastScan selectate"
+
+msgid "Archive extraction failed"
+msgstr "Extragerea arhivei a eșuat"
+
+msgid "Catalog"
+msgstr "Catalog"
+
+msgid "Channel manifest verified"
+msgstr "Manifestul canalelor a fost verificat"
+
+msgid "Channel picons"
+msgstr "Sigle de canale"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Înainte de descărcare, alegeți rezoluția, culoarea și metoda de actualizare."
+
+msgid "Completed steps"
+msgstr "Pași finalizați"
+
+msgid "Confirm selection"
+msgstr "Confirmați selecția"
+
+msgid "Download catalog verified"
+msgstr "Catalogul de descărcări a fost verificat"
+
+msgid "Download completed"
+msgstr "Descărcare finalizată"
+
+msgid "Download completed with errors"
+msgstr "Descărcare finalizată cu erori"
+
+msgid "Download is not available yet."
+msgstr "Fișierul nu este încă disponibil pentru descărcare."
+
+msgid "Download progress"
+msgstr "Progresul descărcării"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Suma de control a pachetului descărcat nu corespunde!"
+
+msgid "Downloading"
+msgstr "Se descarcă"
+
+msgid "Extracting"
+msgstr "Se extrage"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Intrare nevalidă în catalogul de descărcări Warder."
+
+msgid "Invalid extraction path"
+msgstr "Cale de extragere nevalidă"
+
+msgid "Invalid update metadata."
+msgstr "Metadate de actualizare nevalide."
+
+msgid "Preparing channel packages"
+msgstr "Se pregătesc pachetele de canale"
+
+msgid "Preparing downloads"
+msgstr "Se pregătesc descărcările"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Arhiva veche păstrată nu este disponibilă în catalogul de migrare Warder"
+
+msgid "Prime Time clock"
+msgstr "Ora de începere a intervalului de maximă audiență"
+
+msgid "Select country"
+msgstr "Selectați țara"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Afișează intervalul de maximă audiență pentru canalul selectat"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Serverul de descărcare nu este disponibil. Verificați conexiunea la internet."
+
+msgid "System spinner restore failed"
+msgstr "Restabilirea animației de așteptare a sistemului a eșuat"
+
+msgid "System spinner restored"
+msgstr "Animația de așteptare a sistemului a fost restabilită"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Fișierul nu este încă disponibil în depozitul Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Intrare nesigură în catalogul de descărcări Warder."
+
+msgid "Verifying"
+msgstr "Se verifică"
+
+msgid "Verifying and installing"
+msgstr "Se verifică și se instalează"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Siglele de canale publicate de Warder nu sunt disponibile momentan."
+
+msgid "Warder channel picons"
+msgstr "Sigle de canale Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Siglele Warder au fost omise. Celelalte descărcări selectate vor continua."
+
+msgid "picons"
+msgstr "sigle de canale"

@@ -1629,3 +1629,108 @@ msgstr "Rezervë %d/%d; shtresë e sigurt %d/%d; gabime %d"
 # Warder selector summary
 msgid "FastScan tables selected"
 msgstr "U zgjodhën tabelat FastScan"
+
+msgid "Archive extraction failed"
+msgstr "Shpaketimi i arkivit dështoi"
+
+msgid "Catalog"
+msgstr "Katalogu"
+
+msgid "Channel manifest verified"
+msgstr "Manifesti i kanaleve u verifikua"
+
+msgid "Channel picons"
+msgstr "Logot e kanaleve"
+
+msgid "Choose a resolution, colour and update method before downloading."
+msgstr "Para shkarkimit, zgjidhni rezolucionin, ngjyrën dhe mënyrën e përditësimit."
+
+msgid "Completed steps"
+msgstr "Hapat e përfunduar"
+
+msgid "Confirm selection"
+msgstr "Konfirmo zgjedhjen"
+
+msgid "Download catalog verified"
+msgstr "Katalogu i shkarkimeve u verifikua"
+
+msgid "Download completed"
+msgstr "Shkarkimi përfundoi"
+
+msgid "Download completed with errors"
+msgstr "Shkarkimi përfundoi me gabime"
+
+msgid "Download is not available yet."
+msgstr "Skedari nuk mund të shkarkohet ende."
+
+msgid "Download progress"
+msgstr "Ecuria e shkarkimit"
+
+msgid "Downloaded package checksum does not match!"
+msgstr "Shuma e kontrollit e paketës së shkarkuar nuk përputhet!"
+
+msgid "Downloading"
+msgstr "Duke shkarkuar"
+
+msgid "Extracting"
+msgstr "Duke shpaketuar"
+
+msgid "Invalid Warder download catalog entry."
+msgstr "Zë i pavlefshëm në katalogun e shkarkimeve të Warder."
+
+msgid "Invalid extraction path"
+msgstr "Shteg i pavlefshëm për shpaketimin"
+
+msgid "Invalid update metadata."
+msgstr "Të dhëna të pavlefshme për përditësimin."
+
+msgid "Preparing channel packages"
+msgstr "Duke përgatitur paketat e kanaleve"
+
+msgid "Preparing downloads"
+msgstr "Duke përgatitur shkarkimet"
+
+msgid "Preserved legacy archive is not available in Warder migration catalogue"
+msgstr "Arkivi i vjetër i ruajtur nuk gjendet në katalogun e migrimit të Warder"
+
+msgid "Prime Time clock"
+msgstr "Ora e shikueshmërisë më të lartë"
+
+msgid "Select country"
+msgstr "Zgjidh shtetin"
+
+msgid "Show Prime Time for selected channel"
+msgstr "Shfaq orarin e shikueshmërisë më të lartë për kanalin e zgjedhur"
+
+msgid "Sorry, download server is unavailable, check your internet connection !!!"
+msgstr "Serveri i shkarkimeve nuk është i disponueshëm. Kontrolloni lidhjen me internetin."
+
+msgid "System spinner restore failed"
+msgstr "Rikthimi i animacionit të pritjes së sistemit dështoi"
+
+msgid "System spinner restored"
+msgstr "Animacioni i pritjes së sistemit u rikthye"
+
+msgid "This download is not available in Warder repository yet."
+msgstr "Ky skedar nuk gjendet ende në depon e Warder."
+
+msgid "Unsafe Warder download catalog entry."
+msgstr "Zë i pasigurt në katalogun e shkarkimeve të Warder."
+
+msgid "Verifying"
+msgstr "Duke verifikuar"
+
+msgid "Verifying and installing"
+msgstr "Duke verifikuar dhe instaluar"
+
+msgid "Warder channel picon publication is currently unavailable."
+msgstr "Logot e kanaleve të publikuara nga Warder nuk janë të disponueshme për momentin."
+
+msgid "Warder channel picons"
+msgstr "Logot e kanaleve të Warder"
+
+msgid "Warder picons were skipped; other selected downloads will continue."
+msgstr "Logot e Warder u anashkaluan. Shkarkimet e tjera të zgjedhura do të vazhdojnë."
+
+msgid "picons"
+msgstr "logo kanalesh"

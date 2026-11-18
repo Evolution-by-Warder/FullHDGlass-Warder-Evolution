@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Legacy FullHDGlass custom spinner is retired; the image spinner is preserved"
+msgstr "A FullHDGlass korábbi egyéni várakozási animációja megszűnt. A rendszerkép animációja megmarad."
+
+msgid "Legacy weather API key (unused; Open-Meteo needs no API key)"
+msgstr "A régi időjárási API-kulcs már nincs használatban. Az Open-Meteo nem igényel API-kulcsot."
+
+msgid "Legacy weather provider setting is no longer used"
+msgstr "A korábbi időjárási szolgáltató beállítása már nincs használatban"
+
+msgid "Please install beautifulsoup4"
+msgstr "Telepítse a beautifulsoup4 csomagot"
+
+msgid "System spinner provided by the image is used"
+msgstr "A rendszerképhez tartozó várakozási animáció van használatban"
+
+msgid "Weather data is provided by Open-Meteo; no API key is required"
+msgstr "Az időjárási adatokat az Open-Meteo szolgáltatja. API-kulcsra nincs szükség."
