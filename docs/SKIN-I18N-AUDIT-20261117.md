@@ -2,22 +2,22 @@
 
 ## Aktuálny stav — 18. 11. 2026
 
-**Zostáva 945 prekladových položiek**, z toho 945 v `helpTxt` a 0 v `eWeather`.
+**Zostáva 0 nevyplnených referenčných prekladových položiek** vo všetkých 20 cieľových jazykoch a piatich katalógových doménach. Formálne pokrytie referenčných kľúčov je **60 320/60 320 (100 %)**: 20 jazykov × (552 setupGlass17 + 195 helpTxt + 108 weather + 42 netatmo + 2 119 eWeather). Angličtina tvorí zdrojový jazyk, spolu teda **21 jazykov**.
 
 Tabuľka počíta aktívne neprázdne preklady z referenčných katalógov, ktoré majú rovnakú hodnotu priamo v binárnom GNU gettext katalógu. Angličtina používa zdrojové texty. Historické kľúče mimo referenčného inventára sú v katalógoch zachované.
 
 | Jazyk | setupGlass17 | helpTxt | weather | netatmo | eWeather |
 |---|---:|---:|---:|---:|---:|
 | en | zdroj 552 | zdroj 195 | zdroj 108 | zdroj 42 | zdroj 2119 |
-| al | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| al | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | cs | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | de | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | el | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | es | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| et | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
-| fa | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| et | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
+| fa | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | fr | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| hu | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| hu | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | it | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | lt | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | nl | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
@@ -26,7 +26,7 @@ Tabuľka počíta aktívne neprázdne preklady z referenčných katalógov, ktor
 | ro | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | ru | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | sk | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
-| tr | 552/552 | 6/195 | 108/108 | 42/42 | 2119/2119 |
+| tr | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | uk | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 | zh | 552/552 | 195/195 | 108/108 | 42/42 | 2119/2119 |
 
@@ -35,6 +35,16 @@ Tabuľka počíta aktívne neprázdne preklady z referenčných katalógov, ktor
 - Rozšírený inventár obsahuje aj 43 kľúčov z priamych volaní gettext v zdrojových moduloch. Všetkých 20 jazykov má 35 nových prekladov nastavení, 6 nápovied a 2 texty rozšíreného počasia. Spolu pribudlo 860 prekladov. Skontrolovala sa úplnosť kľúčov, hlavičky UTF-8, placeholdery a načítanie skompilovaných katalógov.
 - [Testy sťahovania a uchovávania jazykov](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44256787078) prešli. Priamy test piatich gréckych katalógov na commite `095497e` overil SHA-256, načítanie v gettext a druhú synchronizáciu bez prenosu. Fyzická skúška na prijímači zatiaľ neprebehla.
 - Historické eWeather získalo 30 615 prekladov v 15 jazykoch. Každý z 20 prekladových jazykov teraz obsahuje v zdroji aj binárnom katalógu všetkých 2 119 referenčných kľúčov.
+
+## Dokončenie zostávajúcich katalógov helpTxt – 18. 11. 2026
+
+- Pracovná vetva bola pred zápismi overená; päť doteraz nedokončených jazykov `tr, et, hu, al, fa` získalo po **189 nových, obsahovo preložených nápovedách**, spolu **945 nových textov**. Šesť predtým spracovaných nových nápovied v každom jazyku bolo zachovaných. Každý jazyk má presne **195/195** platných referenčných kľúčov.
+- Pre každý z piatich jazykov boli uložené úplné zdrojové katalógy `helpTxt.po` a skutočné binárne **GNU gettext `helpTxt.mo`**, vždy s **196 záznamami vrátane hlavičky**. Binárne veľkosti: tr 25 477 B, et 24 654 B, hu 27 540 B, al 26 598 B, fa 32 690 B.
+- Zosilnené regresné testy overujú úplnosť všetkých dvadsiatich nápovedných katalógov, súlad skutočných prekladov `.po ↔ .mo`, načítanie cez Python `gettext.GNUTranslations`, prítomnosť hlavičky, jazykové kódy vrátane historicky platného skráteného kódu `ru`, a zachovanie placeholderov `%s/%d`.
+- Doplnený je tiež **nezávislý regresný test pokrytia všetkých piatich domén × 20 jazykov** proti referenčným kľúčom. Referenčné počty sú 552, 195, 108, 42 a 2 119; celkový počet je 60 320. Regresné testy blokujú v budúcnosti stratu aj jedinej referenčnej lokalizovanej položky.
+- Posledný potvrdený úspešný beh pôvodnej aj kompletnej nápovednej regresie: [GitHub Actions #44272724702](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44272724702). Výsledok najnovšieho rozšíreného testu všetkých piatich domén musí byť overený samostatne (zatiaľ sa nepredpokladá automatický PASS).
+- **Nulový počet chýbajúcich prekladov** je meranie prítomnosti lokalizovaných hodnôt a binárnej funkčnosti; **nie je potvrdením štylistickej bezchybnosti ani reálnej skúšky na Enigma2 prijímači**. Zostáva fyzický test, vizuálna kontrola dlhých RTL textov v perzštine, terminologická korektúra rodilými hovoriacimi a schválenie pred vydaním.
+- Nič sa nezlučovalo do `main`, nevydalo sa IPK, testovací/ostrý balík, feed ani release. Verzia a grafika bez zmeny.
 
 ## Staršie záznamy
 
