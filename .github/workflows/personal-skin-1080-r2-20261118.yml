@@ -27,6 +27,7 @@ jobs:
           sparse-checkout: |
             /source/
             /tools/
+            /design/
             /reports/bitrate-test5-20261101.json
 
       - name: Prepare source and offline helper audit
@@ -55,6 +56,9 @@ jobs:
           PY
           find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
           find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+
+      - name: Install preview test dependency (not packaged)
+        run: python3 -m pip install --quiet 'Pillow==11.3.0'
 
       - name: Check owner-requested corrections
         shell: bash
