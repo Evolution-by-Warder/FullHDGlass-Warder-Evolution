@@ -11,4 +11,19 @@ if [ "${1:-}" = remove ]; then
         /usr/bin/python3 -B "$warder_spinner" --prepare-removal || true
     fi
 fi
+# Report a real removal only; deconfigure may belong to an upgrade.
+case "${1:-}" in
+    remove|purge)
+        echo "******************************************************************"
+        echo "                    FullHDGlass Warder Evolution"
+        echo "******************************************************************"
+        echo "Removing FullHDGlass Warder Evolution package files..."
+        echo "******************************************************************"
+        ;;
+    upgrade|deconfigure)
+        echo "******************************************************************"
+        echo "Preparing FullHDGlass Warder Evolution upgrade/reinstall..."
+        echo "******************************************************************"
+        ;;
+esac
 exit 0
