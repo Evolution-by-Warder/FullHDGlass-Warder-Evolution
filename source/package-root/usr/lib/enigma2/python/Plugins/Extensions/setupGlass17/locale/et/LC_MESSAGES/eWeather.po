@@ -3217,3 +3217,753 @@ msgstr "Hommikul kohati udu"
 
 msgid "windy in the morning"
 msgstr "Hommikul tuuline"
+
+msgid "windy in the afternoon"
+msgstr "Pärastlõunal tuuline"
+
+msgid "variably cloudy with showers"
+msgstr "Vahelduv pilvisus ja hoovihmad"
+
+msgid "humid with cloudy spells"
+msgstr "Niiske, aeg-ajalt pilves"
+
+msgid "hot with sunny intervals"
+msgstr "Kuum, päikeselised selgimised"
+
+msgid "sunshine and very hot"
+msgstr "Päikeseline ja väga kuum"
+
+msgid "very hot with clouds and sun"
+msgstr "Väga kuum, pilved ja päike"
+
+msgid "nice with sunny intervals"
+msgstr "Ilus, päikeselised selgimised"
+
+msgid "not as cool with clearing"
+msgstr "Selgineb ja pole enam nii jahe"
+
+msgid "rather cloudy with showers"
+msgstr "Üsna pilves, hoovihmad"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "Pärastlõunal äikesetorm toob jahedust"
+
+msgid "rather cloudy and mild"
+msgstr "Üsna pilves ja mahe"
+
+msgid "turning cloudy and colder"
+msgstr "Läheb pilviseks ja külmemaks"
+
+msgid "warmer with a stray shower"
+msgstr "Soojem, üksik hoovihm"
+
+msgid "cool with clearing"
+msgstr "Jahe, taevas selgineb"
+
+msgid "breezy and nice with sunshine"
+msgstr "Tuuline, ilus ja päikeseline"
+
+msgid "thunderstorms this morning"
+msgstr "Täna hommikul äikesetormid"
+
+msgid "sunny much of the time"
+msgstr "Suurema osa ajast päikeseline"
+
+msgid "high clouds and summerlike"
+msgstr "Kõrgpilved ja suviselt soe"
+
+msgid "occasional morning rain"
+msgstr "Hommikul aeg-ajalt vihma"
+
+msgid "milder with sun"
+msgstr "Mahedam ja päikeseline"
+
+msgid "colder with spotty showers"
+msgstr "Külmem, kohati hoovihmad"
+
+msgid "low humidity with sunshine"
+msgstr "Madal õhuniiskus ja päikesepaiste"
+
+msgid "warmer with sunshine"
+msgstr "Soojem ja päikeseline"
+
+msgid "breezy with sunshine"
+msgstr "Tuuline ja päikeseline"
+
+msgid "not as warm with rain"
+msgstr "Vihmane ja mitte enam nii soe"
+
+msgid "breezy with rain"
+msgstr "Tuuline ja vihmane"
+
+msgid "decreasing clouds and breezy"
+msgstr "Pilvisus väheneb, tuuline"
+
+msgid "warmer with sun and clouds"
+msgstr "Soojem, päike ja pilved"
+
+msgid "turning sunny and summerlike"
+msgstr "Läheb päikeseliseks ja suviselt soojaks"
+
+msgid "cool with partial sunshine"
+msgstr "Jahe, kohati päikeseline"
+
+msgid "a p.m. t-storm possible"
+msgstr "Pärastlõunal võimalik äikesetorm"
+
+msgid "cloudy and windy"
+msgstr "Pilves ja tuuline"
+
+msgid "chance of a thunderstorm"
+msgstr "Äikesetormi võimalus"
+
+msgid "periods of sunshine"
+msgstr "Aeg-ajalt päikesepaistet"
+
+msgid "a bit of snow and rain"
+msgstr "Veidi lund ja vihma"
+
+msgid "nice with sun and clouds"
+msgstr "Ilus, päike ja pilved"
+
+msgid "warmer with periods of sun"
+msgstr "Soojem, aeg-ajalt päikest"
+
+msgid "partly sunny and not as cool"
+msgstr "Osaliselt päikeseline ja mitte enam nii jahe"
+
+msgid "warm with periods of sun"
+msgstr "Soe, aeg-ajalt päikest"
+
+msgid "clouds breaking and very warm"
+msgstr "Pilved hajuvad, väga soe"
+
+msgid "sunshine and not as warm"
+msgstr "Päikeseline, kuid mitte enam nii soe"
+
+msgid "clearing and not as warm"
+msgstr "Selgineb, kuid pole enam nii soe"
+
+msgid "chance for rain"
+msgstr "Vihma võimalus"
+
+msgid "warmer with some sunshine"
+msgstr "Soojem, kohati päikesepaistet"
+
+msgid "showers in the morning"
+msgstr "Hommikul hoovihmad"
+
+msgid "a strong a.m. t-storm"
+msgstr "Hommikul tugev äikesetorm"
+
+msgid "mostly sunny and cooler"
+msgstr "Enamasti päikeseline ja jahedam"
+
+msgid "turning cloudy and hotter"
+msgstr "Läheb pilviseks ja kuumemaks"
+
+msgid "breezy in the a.m."
+msgstr "Hommikul tuuline"
+
+msgid "a little rain this afternoon"
+msgstr "Täna pärastlõunal veidi vihma"
+
+msgid "humid with variable clouds"
+msgstr "Niiske, vahelduv pilvisus"
+
+msgid "cold with clouds and sun"
+msgstr "Külm, pilved ja päike"
+
+msgid "windy with a passing shower"
+msgstr "Tuuline, mööduv hoovihm"
+
+msgid "windy with clouds and sun"
+msgstr "Tuuline, pilved ja päike"
+
+msgid "cloudy and windy with showers"
+msgstr "Pilves ja tuuline, hoovihmad"
+
+msgid "windy with periods of rain"
+msgstr "Tuuline, aeg-ajalt vihm"
+
+msgid "less humid with plenty of sun"
+msgstr "Vähem niiske ja päikeserohke"
+
+msgid "low clouds and cool"
+msgstr "Madalad pilved ja jahe"
+
+msgid "clouds and a t-storm in spots"
+msgstr "Kohati pilved ja äikesetorm"
+
+msgid "not as warm with showers"
+msgstr "Hoovihmad, pole enam nii soe"
+
+msgid "increasing clouds and warmer"
+msgstr "Pilvisus suureneb ja läheb soojemaks"
+
+msgid "hot with clearing"
+msgstr "Kuum, taevas selgineb"
+
+msgid "clearing and summerlike"
+msgstr "Selgineb, suviselt soe"
+
+msgid "overcast with a few showers"
+msgstr "Lauspilves, mõned hoovihmad"
+
+msgid "still cloudy"
+msgstr "Endiselt pilves"
+
+msgid "sunshine and summerlike"
+msgstr "Päikeseline ja suviselt soe"
+
+msgid "windy with rain and a t-storm"
+msgstr "Tuuline, vihm ja äikesetorm"
+
+msgid "hotter with blazing sunshine"
+msgstr "Kuumem ja särav päikesepaiste"
+
+msgid "mostly sunny and not as warm"
+msgstr "Enamasti päikeseline, mitte enam nii soe"
+
+msgid "breezy with plenty of sun"
+msgstr "Tuuline ja päikeserohke"
+
+msgid "turning cloudy with a shower"
+msgstr "Läheb pilviseks, hoovihm"
+
+msgid "a heavy afternoon t-storm"
+msgstr "Pärastlõunal tugev äikesetorm"
+
+msgid "milder with increasing clouds"
+msgstr "Mahedam, pilvisus suureneb"
+
+msgid "overcast with a little rain"
+msgstr "Lauspilves, veidi vihma"
+
+msgid "turning cloudy and very hot"
+msgstr "Läheb pilviseks ja väga kuumaks"
+
+msgid "humid with a t-storm in spots"
+msgstr "Niiske, kohati äikesetorm"
+
+msgid "very warm with hazy sun"
+msgstr "Väga soe, päike läbi vine"
+
+msgid "clouds and a stray t-storm"
+msgstr "Pilved ja üksik äikesetorm"
+
+msgid "not as warm with morning rain"
+msgstr "Hommikune vihm, mitte enam nii soe"
+
+msgid "some brightening and warm"
+msgstr "Kohati selgineb, soe"
+
+msgid "overcast with showers around"
+msgstr "Lauspilves, ümbruskonnas hoovihmad"
+
+msgid "a heavy thunderstorm"
+msgstr "Tugev äikesetorm"
+
+msgid "low clouds and cooler"
+msgstr "Madalad pilved ja jahedam"
+
+msgid "clouds giving way to sun"
+msgstr "Pilved taanduvad, ilmub päike"
+
+msgid "humid with rain"
+msgstr "Niiske ja vihmane"
+
+msgid "humid with rain and a t-storm"
+msgstr "Niiske, vihm ja äikesetorm"
+
+msgid "becoming cloudy and hot"
+msgstr "Läheb pilviseks ja kuumaks"
+
+msgid "a brief t-storm in the p.m."
+msgstr "Pärastlõunal lühike äikesetorm"
+
+msgid "hot and humid with some sun"
+msgstr "Kuum ja niiske, kohati päikest"
+
+msgid "a little morning snow"
+msgstr "Hommikul veidi lund"
+
+msgid "breezy with sun and clouds"
+msgstr "Tuuline, päike ja pilved"
+
+msgid "rain/drizzle"
+msgstr "Vihm/uduvihm"
+
+msgid "variably cloudy and very warm"
+msgstr "Vahelduva pilvisusega ja väga soe"
+
+msgid "very windy this morning"
+msgstr "Täna hommikul väga tuuline"
+
+msgid "breezy with rain and drizzle"
+msgstr "Tuuline, vihm ja uduvihm"
+
+msgid "a touch of afternoon rain"
+msgstr "Pärastlõunal veidi vihma"
+
+msgid "hazy clouds"
+msgstr "Pilved läbi vine"
+
+msgid "hotter with a t-storm around"
+msgstr "Kuumem, ümbruskonnas äikesetorm"
+
+msgid "sunny and milder"
+msgstr "Päikeseline ja mahedam"
+
+msgid "mild with sunny intervals"
+msgstr "Mahe, päikeselised selgimised"
+
+msgid "a little afternoon snow"
+msgstr "Pärastlõunal veidi lund"
+
+msgid "chilly with plenty of sun"
+msgstr "Jahe ja päikeserohke"
+
+msgid "remaining cloudy and warmer"
+msgstr "Püsib pilves ja läheb soojemaks"
+
+msgid "mostly cloudy with a downpour"
+msgstr "Enamasti pilves, paduvihmahoog"
+
+msgid "a downpour this morning"
+msgstr "Täna hommikul paduvihmahoog"
+
+msgid "cloudy and becoming rainy"
+msgstr "Pilves, hakkab sadama vihma"
+
+msgid "cooler with some sun"
+msgstr "Jahedam, kohati päikest"
+
+msgid "showers of rain and snow"
+msgstr "Vihma- ja lumehood"
+
+msgid "brief a.m. showers"
+msgstr "Hommikused lühikesed hoovihmad"
+
+msgid "mainly cloudy with showers"
+msgstr "Peamiselt pilves, hoovihmad"
+
+msgid "mostly cloudy and chilly"
+msgstr "Enamasti pilves ja jahe"
+
+msgid "abundant sunshine and warm"
+msgstr "Rohkelt päikest ja soe"
+
+msgid "cooler with a little rain"
+msgstr "Jahedam, veidi vihma"
+
+msgid "hotter"
+msgstr "Kuumem"
+
+msgid "winds gradually subsiding"
+msgstr "Tuul vaibub järk-järgult"
+
+msgid "beautiful with periods of sun"
+msgstr "Ilus, aeg-ajalt päikest"
+
+msgid "cloudy with a heavy shower"
+msgstr "Pilves, tugev hoovihm"
+
+msgid "heavy rain shower"
+msgstr "Tugev vihmahoog"
+
+msgid "milder with brief showers"
+msgstr "Mahedam, lühikesed hoovihmad"
+
+msgid "remaining warm with some sun"
+msgstr "Püsib soe, kohati päikest"
+
+msgid "mild with abundant sunshine"
+msgstr "Mahe ja väga päikeseline"
+
+msgid "hot with decreasing clouds"
+msgstr "Kuum, pilvisus väheneb"
+
+msgid "seasonably warm with sunshine"
+msgstr "Aastaajale omaselt soe ja päikeseline"
+
+msgid "cooler with a thundershower"
+msgstr "Jahedam, äikesevihm"
+
+msgid "turning cloudy and cooler"
+msgstr "Läheb pilviseks ja jahedamaks"
+
+msgid "warmer with a shower"
+msgstr "Soojem, hoovihm"
+
+msgid "mild with some sun"
+msgstr "Mahe, kohati päikest"
+
+msgid "windy with showers around"
+msgstr "Tuuline, ümbruskonnas hoovihmad"
+
+msgid "windy with a stray shower"
+msgstr "Tuuline, üksik hoovihm"
+
+msgid "overcast with showers"
+msgstr "Lauspilves, hoovihmad"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "Hommikul tugev äikesetorm"
+
+msgid "remaining cloudy with showers"
+msgstr "Püsib pilves, hoovihmad"
+
+msgid "warm with variable cloudiness"
+msgstr "Soe, vahelduv pilvisus"
+
+msgid "mainly cloudy and cooler"
+msgstr "Peamiselt pilves ja jahedam"
+
+msgid "warm with some brightening"
+msgstr "Soe, kohati selgineb"
+
+msgid "a few showers this afternoon"
+msgstr "Täna pärastlõunal mõned hoovihmad"
+
+msgid "a shower possible"
+msgstr "Võimalik hoovihm"
+
+msgid "clouds breaking and beautiful"
+msgstr "Pilved hajuvad, ilus ilm"
+
+msgid "low clouds and chilly"
+msgstr "Madalad pilved ja jahe"
+
+msgid "chilly with clouds and sun"
+msgstr "Jahe, pilved ja päike"
+
+msgid "windy with brilliant sunshine"
+msgstr "Tuuline ja särav päikesepaiste"
+
+msgid "high clouds and breezy"
+msgstr "Kõrgpilved ja tuuline"
+
+msgid "hot with sun and some clouds"
+msgstr "Kuum, päike ja mõned pilved"
+
+msgid "warm with occasional rain"
+msgstr "Soe, aeg-ajalt vihma"
+
+msgid "warmer with clearing"
+msgstr "Soojem, taevas selgineb"
+
+msgid "not as warm this afternoon"
+msgstr "Täna pärastlõunal mitte enam nii soe"
+
+msgid "warmer with a brief shower"
+msgstr "Soojem, lühike hoovihm"
+
+msgid "a brief shower"
+msgstr "Lühike hoovihm"
+
+msgid "windy this morning"
+msgstr "Täna hommikul tuuline"
+
+msgid "periods of rain this morning"
+msgstr "Täna hommikul aeg-ajalt vihma"
+
+msgid "cool with occasional rain"
+msgstr "Jahe, aeg-ajalt vihma"
+
+msgid "a shower late this morning"
+msgstr "Ennelõuna lõpus hoovihm"
+
+msgid "sunshine and pleasantly warm"
+msgstr "Päikeseline ja mõnusalt soe"
+
+msgid "heavy afternoon showers"
+msgstr "Pärastlõunal tugevad hoovihmad"
+
+msgid "warmer with a stray t-storm"
+msgstr "Soojem, üksik äikesetorm"
+
+msgid "mostly cloudy and not as cool"
+msgstr "Enamasti pilves, mitte enam nii jahe"
+
+msgid "an a.m. flurry"
+msgstr "Hommikul kerge lumehoog"
+
+msgid "turning colder this morning"
+msgstr "Täna hommikul läheb külmemaks"
+
+msgid "high clouds and nice"
+msgstr "Kõrgpilved ja ilus ilm"
+
+msgid "cloudy with downpours"
+msgstr "Pilves, paduvihmahood"
+
+msgid "cloudy with a shower possible"
+msgstr "Pilves, võimalik hoovihm"
+
+msgid "overcast with a bit of rain"
+msgstr "Lauspilves, veidi vihma"
+
+msgid "breezy and colder with rain"
+msgstr "Tuuline ja külmem, vihm"
+
+msgid "cloudy with afternoon rain"
+msgstr "Pilves, pärastlõunal vihm"
+
+msgid "overcast with a shower or two"
+msgstr "Lauspilves, üks või kaks hoovihma"
+
+msgid "sunshine and comfortable"
+msgstr "Päikeseline ja mõnus"
+
+msgid "clouds yielding to some sun"
+msgstr "Pilved taanduvad, kohati päikest"
+
+msgid "cool with periods of sun"
+msgstr "Jahe, aeg-ajalt päikest"
+
+msgid "high clouds and hot"
+msgstr "Kõrgpilved ja kuum"
+
+msgid "warmer with clouds"
+msgstr "Soojem, pilved"
+
+msgid "mostly sunny and cool"
+msgstr "Enamasti päikeseline ja jahe"
+
+msgid "cloudy spells with a t-storm"
+msgstr "Pilvised perioodid ja äikesetorm"
+
+msgid "humid"
+msgstr "Niiske"
+
+msgid "cloudy with rain beginning"
+msgstr "Pilves, hakkab sadama vihma"
+
+msgid "hot with rain and drizzle"
+msgstr "Kuum, vihm ja uduvihm"
+
+msgid "still cloudy with showers"
+msgstr "Endiselt pilves, hoovihmad"
+
+msgid "variably cloudy with t-storms"
+msgstr "Vahelduva pilvisusega, äikesetormid"
+
+msgid "decreasing clouds and cooler"
+msgstr "Pilvisus väheneb ja läheb jahedamaks"
+
+msgid "cooler with a shower possible"
+msgstr "Jahedam, võimalik hoovihm"
+
+msgid "afternoon t-storms"
+msgstr "Pärastlõunased äikesetormid"
+
+msgid "sunshine and seasonably warm"
+msgstr "Päikeseline ja aastaajale omaselt soe"
+
+msgid "very hot with high clouds"
+msgstr "Väga kuum, kõrgpilved"
+
+msgid "heavy a.m. showers"
+msgstr "Hommikul tugevad hoovihmad"
+
+msgid "milder with thickening clouds"
+msgstr "Mahedam, pilvisus tiheneb"
+
+msgid "overcast and windy"
+msgstr "Lauspilves ja tuuline"
+
+msgid "very warm and humid with rain"
+msgstr "Väga soe ja niiske, vihm"
+
+msgid "hot with clouds rolling in"
+msgstr "Kuum, pilved saabuvad"
+
+msgid "cloudy and cool"
+msgstr "Pilves ja jahe"
+
+msgid "clearing and showers around"
+msgstr "Selgineb, ümbruskonnas hoovihmad"
+
+msgid "breezy with decreasing clouds"
+msgstr "Tuuline, pilvisus väheneb"
+
+msgid "pleasant and not as cool"
+msgstr "Meeldiv ja mitte enam nii jahe"
+
+msgid "turning sunny and delightful"
+msgstr "Läheb päikeseliseks ja mõnusaks"
+
+msgid "pleasantly warm with some sun"
+msgstr "Mõnusalt soe, kohati päikest"
+
+msgid "not as warm with rain ending"
+msgstr "Vihm lõpeb, pole enam nii soe"
+
+msgid "becoming windier and colder"
+msgstr "Läheb tuulisemaks ja külmemaks"
+
+msgid "increasingly windy"
+msgstr "Tuul tugevneb"
+
+msgid "cool with low clouds"
+msgstr "Jahe, madalad pilved"
+
+msgid "a snow squall in the morning"
+msgstr "Hommikul tugev lumehoog"
+
+msgid "a shower in the area"
+msgstr "Piirkonnas hoovihm"
+
+msgid "mostly cloudy with t-storms"
+msgstr "Enamasti pilves, äikesetormid"
+
+msgid "sunshine and mild"
+msgstr "Päikeseline ja mahe"
+
+msgid "clearing and cooler"
+msgstr "Selgineb ja läheb jahedamaks"
+
+msgid "cloudy with rain ending"
+msgstr "Pilves, vihm lõpeb"
+
+msgid "mild with variable cloudiness"
+msgstr "Mahe, vahelduv pilvisus"
+
+msgid "cool with rain"
+msgstr "Jahe ja vihmane"
+
+msgid "clouds breaking and pleasant"
+msgstr "Pilved hajuvad, meeldiv ilm"
+
+msgid "windy and cooler"
+msgstr "Tuuline ja jahedam"
+
+msgid "still cloudy and warmer"
+msgstr "Endiselt pilves ja soojem"
+
+msgid "a brief morning shower or two"
+msgstr "Hommikul üks või kaks lühikest hoovihma"
+
+msgid "overcast with brief showers"
+msgstr "Lauspilves, lühikesed hoovihmad"
+
+msgid "sunlit and comfortable"
+msgstr "Päikeseline ja mõnus"
+
+msgid "clouds and sun with showers"
+msgstr "Pilved, päike ja hoovihmad"
+
+msgid "cooler with variable clouds"
+msgstr "Jahedam, vahelduv pilvisus"
+
+msgid "partly sunny and very hot"
+msgstr "Osaliselt päikeseline ja väga kuum"
+
+msgid "very windy in the morning"
+msgstr "Hommikul väga tuuline"
+
+msgid "rain in the morning"
+msgstr "Hommikul vihm"
+
+msgid "rather cloudy and hot"
+msgstr "Üsna pilves ja kuum"
+
+msgid "decreasing clouds and warm"
+msgstr "Pilvisus väheneb ja ilm on soe"
+
+msgid "hot with sun and clouds"
+msgstr "Kuum, päike ja pilved"
+
+msgid "increasing clouds and milder"
+msgstr "Pilvisus tiheneb ja läheb mahedamaks"
+
+msgid "a gusty morning breeze"
+msgstr "Hommikul puhanguline tuul"
+
+msgid "showers late this afternoon"
+msgstr "Hilisel pärastlõunal hoovihmad"
+
+msgid "cloudy with a brief shower"
+msgstr "Pilves, lühike hoovihm"
+
+msgid "a shower this afternoon"
+msgstr "Täna pärastlõunal hoovihm"
+
+msgid "a p.m. rain or snow shower"
+msgstr "Pärastlõunal vihma- või lumehoog"
+
+msgid "turning cloudy and milder"
+msgstr "Läheb pilviseks ja mahedamaks"
+
+msgid "couple of showers"
+msgstr "Paar hoovihma"
+
+msgid "warmer with showers"
+msgstr "Soojem, hoovihmad"
+
+msgid "breezy in the morning"
+msgstr "Hommikul tuuline"
+
+msgid "a t-shower in spots"
+msgstr "Kohati äikesevihm"
+
+msgid "cooler with a brief shower"
+msgstr "Jahedam, lühike hoovihm"
+
+msgid "mild with clouds and sunshine"
+msgstr "Mahe, pilved ja päikesepaiste"
+
+msgid "a couple of t-showers"
+msgstr "Paar äikesevihma"
+
+msgid "cooler with a stray t-storm"
+msgstr "Jahedam, üksik äikesetorm"
+
+msgid "strong winds subsiding"
+msgstr "Tugev tuul vaibub"
+
+msgid "windy with spotty showers"
+msgstr "Tuuline, kohati hoovihmad"
+
+msgid "becoming cloudy and cooler"
+msgstr "Läheb pilviseks ja jahedamaks"
+
+msgid "partly sunny with a t-shower"
+msgstr "Osaliselt päikeseline, äikesevihm"
+
+msgid "variably cloudy and breezy"
+msgstr "Vahelduva pilvisusega ja tuuline"
+
+msgid "chilly with low clouds"
+msgstr "Jahe, madalad pilved"
+
+msgid "cooler with sunny intervals"
+msgstr "Jahedam, päikeselised selgimised"
+
+msgid "cooler with high clouds"
+msgstr "Jahedam, kõrgpilved"
+
+msgid "an a.m. rain or snow shower"
+msgstr "Hommikul vihma- või lumehoog"
+
+msgid "sunny and cooler but pleasant"
+msgstr "Päikeseline ja jahedam, kuid meeldiv"
+
+msgid "a downpour in the morning"
+msgstr "Hommikul paduvihmahoog"
+
+msgid "windy with sunshine"
+msgstr "Tuuline ja päikeseline"
+
+msgid "sunshine with a thundershower"
+msgstr "Päikesepaiste ja äikesevihm"
+
+msgid "mostly sunny and milder"
+msgstr "Enamasti päikeseline ja mahedam"
+
+msgid "cooler with sun"
+msgstr "Jahedam ja päikeseline"
+
+msgid "warm with plenty of clouds"
+msgstr "Soe, rohkelt pilvi"
