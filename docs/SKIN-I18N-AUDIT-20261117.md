@@ -50,16 +50,16 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | de | — | 108/108 | 42/42 | — |
 | el | 189/189 | 108/108 | 42/42 | 2117/2117 |
-| es | — | — | 42/42 | — |
+| es | — | 108/108 | 42/42 | — |
 | et | — | 108/108 | 42/42 | 96/2117 |
 | fa | — | — | 42/42 | — |
 | fr | — | 108/108 | 42/42 | — |
 | hu | — | 108/108 | 42/42 | — |
-| it | — | — | 42/42 | — |
+| it | — | 108/108 | 42/42 | — |
 | lt | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | nl | — | 108/108 | 42/42 | — |
 | pl | — | 108/108 | 42/42 | — |
-| pt | — | — | 42/42 | — |
+| pt | — | 108/108 | 42/42 | — |
 | ro | — | 108/108 | 42/42 | — |
 | ru | 189/189 | 108/108 | 42/42 | — |
 | sk | 189/189 | 108/108 | 42/42 | 2117/2117 |
@@ -102,6 +102,8 @@ Pri gréčtine zostáva **0 nepreložených fráz eWeather**; všetkých 189 kľ
 
 - Dávka 18. 11. 2026: dokončených posledných 128 gréckych eWeather viet. Katalóg má **2 117/2 117 preložených kľúčov a nula prázdnych správ**, vygenerovaný binárny GNU gettext .mo (UTF-8), kontrola zhody kľúčov, formátovacích argumentov a počtov. Jazyková korektúra rodeným hovoriacim a CI nového commitu zatiaľ nie sú potvrdené.
 
+- Dávka 18. 11. 2026: tri nové kompletné katalógy `weather` pre es/it/pt, každý **108/108**, spolu **324 nových skutočných prekladov**. Zachovaných 108 referenčných kľúčov, nula prázdnych `msgstr`, overené printf argumenty a úplný spätný binárny prechod cez vytvorené UTF-8 GNU gettext `.mo`; doplnené regresné testy. CI a fyzické testovanie treba osobitne potvrdiť.
+
 ## Stále chýba
 
-Doplniť chýbajúce jazykové katalógy podľa tabuľky, 2 021 estónskych eWeather kľúčov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
+Doplniť chýbajúce jazykové katalógy podľa tabuľky (weather zostáva pre al/fa/tr), 2 021 estónskych eWeather kľúčov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.

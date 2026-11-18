@@ -111,6 +111,26 @@ class CatalogIntegrity(unittest.TestCase):
                     catalog = gettext.GNUTranslations(stream)
                 self.assertEqual(catalog.gettext(key), expected)
 
+    def test_romance_weather_catalogs_complete(self):
+        reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'weather.po')
+        keys = set(reference) - {''}
+        self.assertEqual(len(keys), 108)
+        samples = {
+            'es': ('Heavy rain', 'Lluvia intensa', 'Wind direction', 'Dirección del viento'),
+            'it': ('Heavy rain', 'Pioggia forte', 'Wind direction', 'Direzione del vento'),
+            'pt': ('Heavy rain', 'Chuva forte', 'Wind direction', 'Direção do vento'),
+        }
+        for lang, (key1, expected1, key2, expected2) in samples.items():
+            with self.subTest(lang=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'weather.po'
+                catalog = po_entries(path)
+                self.assertEqual(set(catalog) - {''}, keys)
+                self.assertEqual([], [key for key in keys if not catalog[key]])
+                with path.with_suffix('.mo').open('rb') as stream:
+                    binary = gettext.GNUTranslations(stream)
+                self.assertEqual(binary.gettext(key1), expected1)
+                self.assertEqual(binary.gettext(key2), expected2)
+
     def test_greek_help_is_complete(self):
         greek = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'helpTxt.po')
         slovak = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
