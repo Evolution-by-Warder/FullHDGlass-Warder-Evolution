@@ -20,7 +20,7 @@ jobs:
       - name: Checkout the precise merged main containing all approved corrections
         uses: actions/checkout@v4
         with:
-          ref: a0425745f64b5d38d337389c19ad95f866a01e62
+          ref: 82e988c9c500127444d8e9c5a179717ee0f01e33
           fetch-depth: 1
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = "a0425745f64b5d38d337389c19ad95f866a01e62"
+          test "$(git rev-parse HEAD)" = "82e988c9c500127444d8e9c5a179717ee0f01e33"
           test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.80"
           grep -qx 'Version: 1.0.80-1' source/control/control
           python3 tools/sync_header_version.py --check
@@ -139,7 +139,7 @@ jobs:
           Path('packages/test/OWNER-READ-ME.txt').write_text(
               'FullHDGlass Warder Evolution personal test IPK\n'
               'Package version: 1.0.80-2 (above stable 1.0.80-1)\n'
-              'Source main commit: a0425745f64b5d38d337389c19ad95f866a01e62\n'
+              'Source main commit: 82e988c9c500127444d8e9c5a179717ee0f01e33\n'
               'All main-source fixes included, no new public release.\n'
               'Restart GUI after installation. Back up Enigma2 settings first.\n'
               'Receiver OpenATV/OpenPLi hardware test is not performed by CI.\n'
