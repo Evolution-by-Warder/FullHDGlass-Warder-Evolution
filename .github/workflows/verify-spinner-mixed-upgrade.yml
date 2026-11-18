@@ -1,0 +1,50 @@
+name: Verify mixed spinner upgrade recovery (no IPK)
+
+on:
+  push:
+    branches: [fix/spinner-mixed-24-frame-preserve-20261118]
+    paths:
+      - 'tools/test_warder_spinner_overlay_recovery.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinner.py'
+      - '.github/workflows/verify-spinner-mixed-upgrade.yml'
+  pull_request:
+    paths:
+      - 'tools/test_warder_spinner_overlay_recovery.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinner.py'
+
+permissions:
+  contents: read
+
+jobs:
+  preserve-user-spinner:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+            /source/package-root/usr/share/enigma2/hd_glass17/spinner/
+            /source/package-root/usr/share/enigma2/hd_glass17/spinner-themes/
+            /tools/test_warder_spinner_overlay_recovery.py
+            /tools/test_warder_spinner_order.py
+            /tools/test-spinner-choice.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test receiver-diagnosed mixed tail, backup and rollback
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tools -p test_warder_spinner_overlay_recovery.py -v
+          python3 -m unittest discover -s tools -p test_warder_spinner_order.py -v
+      - name: Test original packaged spinner choices, images and rollback
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          python3 tools/test-spinner-choice.py SelectionTests -q
