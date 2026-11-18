@@ -2,7 +2,7 @@
 
 ## Aktuálny stav — 18. 11. 2026
 
-**Bod 9 je rozpracovaný. Zostáva 32 694 referenčných položiek:** `helpTxt` **2 079** a `eWeather` **30 615**.
+**Bod 9 je rozpracovaný. Zostáva 31 560 referenčných položiek:** `helpTxt` **945** a `eWeather` **30 615** (stav po novej dávke, vypočítaný z referenčných katalógov).
 
 Tabuľka počíta neprázdne hodnoty z referenčného inventára, ktoré majú rovnaký text v `.po` aj v načítanom `.mo`. Angličtina je zdrojový jazyk všetkých piatich oblastí. Historické kľúče mimo inventára, napríklad estónsky `Select city`, do počtu nevstupujú.
 
@@ -20,14 +20,14 @@ Tabuľka počíta neprázdne hodnoty z referenčného inventára, ktoré majú r
 | hu | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
 | it | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
 | lt | 517/517 | 189/189 | 108/108 | 42/42 | 2117/2117 |
-| nl | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
-| pl | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
-| pt | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
-| ro | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| nl | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| pl | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| pt | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| ro | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
 | ru | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
 | sk | 517/517 | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | tr | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
-| uk | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| uk | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
 | zh | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
 
 - Estónske `eWeather` doplnilo posledných **802** referenčných textov. Katalóg má **2 117/2 117** prekladov. Zachovalo sa všetkých 1 315 predchádzajúcich referenčných hodnôt a historický kľúč `Select city`. Binárny gettext súbor má 2 119 záznamov aj s hlavičkou. Výsledok [GitHub Actions](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44257450926) pre [commit 095497e](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/095497ec6f5b50e95c99d43c64d756ba88ac349b) je úspešný.
@@ -35,8 +35,17 @@ Tabuľka počíta neprázdne hodnoty z referenčného inventára, ktoré majú r
 - Pätnásť ďalších jazykov `eWeather` získalo po **76** záznamov, spolu **1 140**. Dávka využíva zhodné meteorologické hlásenia a skratky smerov z existujúcich katalógov. Pri prenose boli upravené kolízie významov a nevhodné výrazy, napríklad anglické `sun` v predpovedi pomenúva slnko. Vytvorených bolo 15 párov UTF-8 `.po` a gettext `.mo`. [CI tejto dávky](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44259535246) prešlo.
 - Opravené kódy jazyka v albánskom, českom, maďarskom, poľskom a ukrajinskom `weather` a českom `helpTxt`. Pre poľské `netatmo` a `eWeather` sú nastavené tri tvary množného čísla. Obsah existujúcich prekladových správ sa pri oprave hlavičiek nezmenil. Kontrola overuje jazykový kód aj UTF-8 všetkých prítomných binárnych katalógov.
 - [Automatické sťahovanie a zachovanie jazykov](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/7f6a51e626e3edc3939ab8973847789281d9a7e3) ukladá katalógy mimo inštalačného adresára a pred aktualizáciou zachováva katalógy zo staršej inštalácie. Zvolenie angličtiny nespúšťa sieťový prenos. Pri priamom teste sa z GitHubu stiahlo a podľa SHA-256 overilo všetkých päť gréckych katalógov. Opakovaná synchronizácia použila uložené súbory. [Jazykové CI opravy sťahovania](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44256787078) prešlo.
-- Kontrola literálov odovzdávaných priamo do gettext v piatich hlavných moduloch našla aj **43 doménových kľúčov mimo doterajšieho referenčného inventára**. Ide o 35 v `plugin.py`, 6 v `txt.py` a 2 v `E_weather.py`. Zahŕňajú napríklad hlásenia o sťahovaní, Open-Meteo, indikátor aktivity a výber krajiny. Treba ich zahrnúť do úplného inventára. Číslo 32 505 počíta iba medzery v existujúcej referencii.
+- Kontrola literálov odovzdávaných priamo do gettext v piatich hlavných moduloch našla aj **43 doménových kľúčov mimo doterajšieho referenčného inventára**. Ide o 35 v `plugin.py`, 6 v `txt.py` a 2 v `E_weather.py`. Zahŕňajú napríklad hlásenia o sťahovaní, Open-Meteo, indikátor aktivity a výber krajiny. Treba ich zahrnúť do úplného inventára. Historický údaj 32 505 počítal iba medzery v existujúcej referencii pred nasledujúcou dávkou.
 - Pokrytie v tabuľke vyjadruje technicky overený obsah. Fyzická skúška na Enigma2 a jazyková korektúra historických prekladov zostávajú otvorené.
+
+## Dávka 18. 11. 2026 – päť kompletných nových jazykov nápovedy (+945)
+
+- Po načítaní pracovného HEAD `5194ca6a9c67ae884fdbeec61d7d433b06816b10` a aktuálneho auditu boli **vytvorené nové, ručne formulované a významovo preložené katalógy `helpTxt`** pre ukrajinčinu (`uk`), poľštinu (`pl`), portugalčinu (`pt`), rumunčinu (`ro`) a holandčinu (`nl`).
+- Každý nový `.po` obsahuje **189/189 neprázdnych hodnôt** s presnou množinou pôvodných referenčných `msgid`, správnou UTF-8 hlavičkou a jazykovým kódom (`uk_UA`, `pl_PL`, `pt_PT`, `ro_RO`, `nl_NL`); **spolu +945 skutočných jazykových textov**. Existujúce správne katalógy zostali nezmenené.
+- Ku všetkým piatim `.po` bol skompilovaný skutočný malý-endian GNU gettext `.mo`: **190 dvojíc vrátane hlavičky na jazyk**, správna štruktúra tabuliek a UTF-8. V novom regresnom teste sa pre každý jazyk kontroluje zhoda kľúčov, neprázdne preklady, správny `Language:`, úspešné načítanie cez `gettext.GNUTranslations` a úplná zhoda `.po/.mo`; navyše kontrolné preklady hlásenia EPG a poslednej mesačnej štvrte. Na všetky `.po/.mo` sa vzťahuje aj existujúci test formátovacích argumentov `%s/%d`.
+- Regresné testy pre nové katalógy **GitHub Actions úspešne vykonalo** v [behu 44264073631](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44264073631) na commite `6ed7aa776e65fc2a953b0fbd91a577f12c57b896` (predchádzajúce zlyhanie spôsobené chybným escape nového testu bolo opravené; tento nový beh prešiel).
+- **Aktuálne `helpTxt`: 15/20 úplných jazykov; zostáva iba 5 chýbajúcich katalógov:** `al`, `et`, `fa`, `hu`, `tr` (5 × 189 = **945**). `eWeather`: 15 jazykov × (2 117 − 76) = **30 615**. **Spolu zostáva 31 560 chýbajúcich referenčných hodnôt.** To nevypovedá o kvalitnej jazykovej korektúre historických textov.
+- **43 gettext kľúčov mimo doterajšieho inventára je naďalej otvorených** a uvedené číslo 31 560 ich nezapočítava. Stále chýba aj fyzická skúška na Enigma2. Bez IPK, feed, release, verzie, zlúčenia do `main` a bez grafických zmien.
 
 ## Staršie záznamy
 
