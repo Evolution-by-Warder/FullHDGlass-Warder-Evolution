@@ -211,3 +211,12 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 - Spolu v tomto súvislom behu boli pridané **3 plné nové katalógy helpTxt: nemčina, francúzština a španielčina (3 × 189 = 567 skutočných prekladov)**, šesť nových `.po/.mo` súborov a regresné testy.
 - **Aktuálne helpTxt: 9 z 20 lokalizovaných jazykov** (`cs, de, el, es, fr, lt, ru, sk, zh`); chýba **11 × 189 = 2 079**. **eWeather** bez zmeny v tejto dávke: **32 557** chýbajúcich referenčných položiek (15 úplne chýbajúcich katalógov × 2 117 + 802 v estónčine). **Celkové zostávajúce množstvo: 34 636 presne podľa katalógového inventára**, nie percentuálny odhad.
 - Žiadna IPK, feed, release, zmena verzie, zlúčenie do `main` ani neschválená grafika. Zostáva jazyková korektúra a fyzické testy.
+
+## Oprava identifikátorov jazykov hlavného skinu – 18. 11. 2026
+
+- Preverené `Language:` hlavičky všetkých 20 `setupGlass17.po` katalógov. **Sedem historicky nesprávnych alebo neúplných hodnôt bolo opravených**: `de: sk_SK → de_DE`, `es: en_GB → es_ES`, `it: en_GB → it_IT`, `lt: lt → lt_LT`, `nl: nl → nl_NL`, `ru: ru → ru_RU`, `zh: zh → zh_CN`.
+- **Zmenených 14 súborov (`setupGlass17.po` a príslušné `setupGlass17.mo` v týchto siedmich jazykoch)**, zachovaných všetkých **517/517 referenčných prekladov na jazyk**, bez prekladu technických názvov a bez zmeny kľúčov.
+- Všetkých sedem binárnych katalógov má **518 GNU gettext správ vrátane hlavičky**, správny `Language:` a UTF-8. Priamou kontrolou celých binárnych tabuliek bolo potvrdených **7 × 518 = 3 626/3 626 presných zhodných dvojíc kľúč/hodnota `.mo` ↔ `.po`**; žiadne mimoriadne `.mo` kľúče neboli stratené.
+- Nový regresný test `test_main_gettext_language_headers_match_locale` kontroluje všetkých **20 jazykových kódov** priamo v `.po` aj načítanom `.mo`; kontrola 20 skompilovaných hlavičiek bola aj samostatne vykonaná a všetky boli zhodné.
+- **Množstvo chýbajúcich fráz sa nemení: 34 636** (`helpTxt` 2 079, `eWeather` 32 557). Korektnosť ostatných domén `Language:` nie je týmto konkrétnym testom uzavretá; nasledujúce dávky môžu preveriť aj tie.
+- Čaká sa na finálny výsledok CI posledných commitov; bez IPK, feed, release, zmeny verzie alebo zásahu do `main`.
