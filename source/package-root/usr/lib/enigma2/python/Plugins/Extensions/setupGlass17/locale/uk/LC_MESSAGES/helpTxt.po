@@ -1,0 +1,569 @@
+msgid ""
+msgstr "Project-Id-Version: FullHDGlass Warder Evolution\nLanguage: uk_UA\nLanguage-Team: Ukrainian\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "N/A"
+msgstr "Н/Д"
+
+msgid "free"
+msgstr "вільно"
+
+msgid "TP info is not detected"
+msgstr "Не вдалося визначити інформацію про транспондер"
+
+msgid "Reference is not detected"
+msgstr "Не вдалося визначити посилання на канал"
+
+msgid "No EPG data available"
+msgstr "Дані EPG недоступні"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Зачекайте, поки дані будуть зчитані й оброблені"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Натисніть «OK», щоб вибрати каталог обраного."
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Автоматичний колір — використовується визначення з skin.xml або g17Screens.py; вибраний колір — відображення вибраним кольором"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Канали з усіх супутникових позицій, а також словацькі й чеські ефірні канали"
+
+msgid "No plugin Netatmo installed"
+msgstr "Плагін Netatmo не встановлено"
+
+msgid "Your API-key"
+msgstr "Ваш API-ключ"
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "Розташування елементів автоматично визначається за розміром пікона в інфопанелі"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Вимірювання поточної швидкості мережі вимкнено"
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Вимірювання поточної швидкості мережі ввімкнено; показ у кб/с"
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Вимірювання поточної швидкості мережі ввімкнено; показ у Мб/с"
+
+msgid "Poster is displayed if exists"
+msgstr "Постер відображається, якщо він доступний"
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "Довге натискання «OK» видаляє поточний постер, після чого він більше не відображатиметься"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Пошук постерів у базі Internet Movie Database (IMDb)"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Пошук постерів у базі The Movie Database (TMDb)"
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Спочатку пошук постера в Internet Movie Database (IMDb), а якщо його не знайдено — у The Movie Database (TMDb)"
+
+msgid "Poster search is started with selected delay"
+msgstr "Пошук постера починається із заданою затримкою"
+
+msgid "Poster is displayed with the selected size"
+msgstr "Постер відображається у вибраному розмірі"
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "Відображати ECM-дані всіх каналів: поточного, фонового запису, потокового мовлення тощо"
+
+msgid "ECM info is displayed from current channel"
+msgstr "Відображати ECM-дані поточного каналу"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "Бітрейт обчислюється за допомогою вбудованої двійкової програми"
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "Бітрейт обчислюється за допомогою eBitrateCalculator із плагіна BitrateViewer"
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Усі доступні станції та їхні модулі показуються почергово із заданим інтервалом"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Відображати інформацію станції, вибраної у плагіні Netatmo"
+
+msgid "Time in seconds"
+msgstr "Час у секундах"
+
+msgid "Real tuner data are displayed"
+msgstr "Відображати фактичні дані тюнера"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Відображати дані з інформації про транспондер"
+
+msgid "Animations are disabled"
+msgstr "Анімації вимкнено"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Вибрані анімації застосовуються до вибраних об’єктів"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Не показувати інформацію про стан HDD/SSD"
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "Відображати температуру, обсяг і вільне місце HDD/SSD в інфопанелях EMC та Movieplayer"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Показувати лише 10 останніх знайдених каналів"
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Показувати знайдені канали довгим списком із можливістю перегляду"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Інтервал оновлення кадрів анімованого значка (типово 50 мс)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Застосовувати до всіх екранів, де використовується список"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Замінювати нічні значки денними"
+
+msgid "Nighttime icons are displayed"
+msgstr "Відображати нічні значки"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Натисніть «OK», щоб активувати вибрану функцію"
+
+msgid "Spinner will be used as default from image"
+msgstr "Використовувати стандартний індикатор завантаження з іміджу"
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "Використовувати індикатор завантаження Full HD Glass17. Оригінальний буде перенесено до каталогу spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "Показувати список EPG із вибраним розміром шрифту"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "Варіанти вибору каналів для PIP недоступні"
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "Варіанти вибору каналів для PIP доступні, але на деяких іміджах можуть спричинити GSOD"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Каталог, у якому розміщено файл satellites.xml"
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Каталог для збереження поточної конфігурації FHDG (файл hdg17.conf)"
+
+msgid "Display forecast for 5 days"
+msgstr "Показувати прогноз на 5 днів"
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Показувати прогноз на 10 днів: спочатку 5, а після заданого інтервалу — наступні 5"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Показувати час сходу й заходу Сонця, Місяця та планет"
+
+msgid "Sorry, help info is missing"
+msgstr "На жаль, довідка відсутня"
+
+msgid "Info is displayed with defined color"
+msgstr "Відображати інформацію заданим кольором"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Відображати інформацію автоматично вибраним кольором"
+
+msgid "Show extra screen only"
+msgstr "Показувати лише додатковий екран"
+
+msgid "None special info is selected"
+msgstr "Додаткову інформацію не вибрано"
+
+msgid "Show extra infobar only"
+msgstr "Показувати лише додаткову інфопанель"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Показувати бічну панель і додаткову інфопанель"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1 — найшвидше, 10 — найповільніше"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "Інфопанель з’являється та зникає миттєво"
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "Інфопанель плавно змінює прозорість від повної/заданої до заданої/повної"
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "Інфопанель з’являється миттєво й зникає, змінюючи прозорість від заданої до повної"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Показувати додаткову інфопанель; подвійне натискання «OK» відкриває інформацію користувача"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "Інформація користувача з’являється після подвійного натискання «OK» і зникає разом із додатковою інфопанеллю"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "Інформація користувача з’являється після подвійного натискання «OK» і зникає після натискання «OK» або «exit»"
+
+msgid "Show actual event(EPG) only"
+msgstr "Показувати лише поточну подію EPG"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Довге натискання «>» перемикає поточну та наступну подію EPG"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Відображати ECM PID у додатковій інфопанелі"
+
+msgid "Show events name in infobar as static text"
+msgstr "Показувати назву передачі в інфопанелі статичним текстом"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "Показувати назву передачі в інфопанелі посимвольно, з ефектом друкарської машинки"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Використовувати оформлення OLED із визначення «image»"
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Показувати «Btr too high - stopped», якщо поточний бітрейт перевищує задане значення"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "Використовуйте лише тоді, коли в іміджі вибрано «standard Enigma2» для призначення клавіш"
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Використовуйте лише тоді, коли в іміджі вибрано «Neutrino keymap type» для призначення клавіш"
+
+msgid "Show messages in default language - english"
+msgstr "Показувати повідомлення мовою за замовчуванням — англійською"
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Показувати локалізовані повідомлення відповідно до активної мови OSD"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "Інфопанель зникає після інтервалу, визначеного в системних налаштуваннях"
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "Інфопанель після перемикання каналу зникає за системним таймером. Відкрита клавішею «OK» залишається на екрані до натискання «exit» або «OK»"
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "Інфопанель, відкрита клавішею «OK», залишається на екрані до натискання «exit» або «OK»"
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Перевіряти доступність заданої IP-адреси в інтернеті"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "Пробудження HDD/SSD керується лише іміджем"
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "Пробуджувати HDD/SSD, якщо пристрій спить і функція не може прочитати потрібні дані"
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "auto — автоматично визначати тюнери приймача; значення 1–19 — показувати вибрану кількість тюнерів"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Не показувати блимаючий значок «R» в інфопанелі"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Показувати блимаючий значок «R» в інфопанелі"
+
+msgid "Leave memory management untouched"
+msgstr "Не змінювати керування пам’яттю"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Шукати AC3/Dolby в усіх доступних звукових доріжках"
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "Визначати AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC і MPEG у поточній звуковій доріжці"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Автоматичне очищення пам’яті кожні 3 хвилини"
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "IP-адреса для перевірки стану мережі та доступу до інтернету"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Використовувати стандартний encoding.conf з активного іміджу"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Використовувати encoding-user.conf із каталогу /usr/share/enigma2"
+
+msgid "Channel selection works with standard functionality"
+msgstr "Вибір каналів працює у стандартному режимі"
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "Натискання «OK» вмикає вибраний канал, але список залишається доступним. Повторне «OK» закриває список; «exit» повертає канал, що відтворювався до відкриття списку"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Натисніть «OK», щоб запустити вибраний елемент без анімації"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Натисніть «OK», щоб відтворити анімацію перед запуском вибраного елемента"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Показувати погоду для міста, вибраного в налаштуваннях"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Натисніть «>», щоб показати погоду наступного міста"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "Екран спеціальної інформації, відкритий клавішею «help», закривається тією самою клавішею"
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "Екран спеціальної інформації, відкритий клавішею «help», автоматично закривається через 20 секунд"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Інтервал повторного читання файлу ecm.info"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Вимкнути автоматичну перевірку нової версії HDG"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Увімкнути автоматичну перевірку нової версії HDG"
+
+msgid "Static text - no scrolling"
+msgstr "Статичний текст без прокручування"
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Прокрутити текст угору до кінця, зачекати задану кількість секунд і прокрутити назад униз"
+
+msgid "Roll up at end of text and stop"
+msgstr "Прокрутити текст угору до кінця та зупинитися"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Починати прокручування тексту із затримкою, визначеною в skin.xml"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Починати прокручування тексту з вибраною затримкою (с)"
+
+msgid "Show channel name only"
+msgstr "Показувати лише назву каналу"
+
+msgid "Show number and channel name"
+msgstr "Показувати номер і назву каналу"
+
+msgid "Show satellite position and channel name"
+msgstr "Показувати супутникову позицію та назву каналу"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Показувати номер, супутникову позицію та назву каналу"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Не показувати провайдера в інфопанелі"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Показувати провайдера в інфопанелі"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "Не показувати температуру та оберти (RPM) в інфопанелі"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Показувати температуру та оберти (RPM) в інфопанелі"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Не показувати завантаження процесора та використання пам’яті в інфопанелі"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Показувати завантаження процесора та використання пам’яті в інфопанелі"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Не показувати температуру HDD/SSD в інфопанелі"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Показувати температуру HDD/SSD в інфопанелі"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "Не показувати вибрані спеціальні розширення в головному меню"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Показувати вибрані спеціальні розширення в головному меню"
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Показувати температуру в одиницях, визначених у my_city_Code.txt або city_Code.txt"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Показувати температуру в одиницях, визначених у eWea_city_Code.txt"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Показувати температуру за Цельсієм"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Показувати температуру за Фаренгейтом"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Інтервал повторного підключення для отримання погодних даних із сайту, у хвилинах"
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Отримувати погодні дані з OpenWeatherMap. Потрібно ввести API-ключ, отриманий після реєстрації на openweathermap.org (реєстрація й базовий API-ключ безкоштовні). Ключ також можна прочитати з /etc/openweathermap.api"
+
+msgid "Reading weather data from MSN website"
+msgstr "Отримувати погодні дані із сайту MSN"
+
+msgid "\"Find a city\" is disabled"
+msgstr "Функцію «Знайти місто» вимкнено"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "Функцію «Знайти місто» вимкнено у списку розширень"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "Функцію «Знайти місто» вимкнено в головному меню"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Не звертатися до постачальника даних після виявлення помилки"
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Автоматичне повторне підключення: після помилки пробувати отримати дані із заданим інтервалом, доки не буде отримано коректну відповідь"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Показувати прогноз на сьогодні й наступні 3 дні"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Показувати прогноз на вчора, сьогодні й наступні 3 дні"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Показувати високу температуру автоматично вибраним кольором"
+
+msgid "High temperature appear in selected color"
+msgstr "Показувати високу температуру вибраним кольором"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Показувати низьку температуру автоматично вибраним кольором"
+
+msgid "Low temperature appear in selected color"
+msgstr "Показувати низьку температуру вибраним кольором"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "Показувати холодну й теплу температуру відповідними вибраними кольорами"
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "Холодна температура перевищує заданий поріг «Cold temperature» та/або тепла температура нижча за поріг «Warm temperature»"
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Межі теплої температури: 15–40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Межі холодної температури: 1–14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Межі теплої температури: 58–104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Межі холодної температури: 33–57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "HDD/SSD, визначений ядром як пристрій"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Шлях до всіх потрібних каталогів, зокрема picon, piconProv тощо"
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "Заданий користувачем шлях до всіх потрібних каталогів, зокрема picon, piconProv тощо"
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Номери каналів обчислюються під час запуску Enigma2, тому зміни порядку каналів не впливають на нумерацію"
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "Номер каналу обчислюється при кожному перемиканні, тому зміни порядку каналів враховуються одразу"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Формат дати визначається параметрами скіна"
+
+msgid "Date format will be used as follow"
+msgstr "Використовувати такий формат дати"
+
+msgid "Channel logos with white background"
+msgstr "Логотипи каналів із білим тлом"
+
+msgid "Channel logos with black background"
+msgstr "Логотипи каналів із чорним тлом"
+
+msgid "Channel logos for OLED display"
+msgstr "Логотипи каналів для дисплея OLED"
+
+msgid "Provider logos with white background"
+msgstr "Логотипи провайдерів із білим тлом"
+
+msgid "Provider logos with black background"
+msgstr "Логотипи провайдерів із чорним тлом"
+
+msgid "Satellite logos with white background"
+msgstr "Логотипи супутників із білим тлом"
+
+msgid "Satellite logos with black background"
+msgstr "Логотипи супутників із чорним тлом"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Логотипи систем умовного доступу та SoftCam із білим тлом"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Логотипи систем умовного доступу та SoftCam із чорним тлом"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Перегляд вибраних параметрів у налаштуваннях скіна"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Зразки додаткових екранів і набори значків для інфопанелі"
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Графіка для додаткового екрана; після її завантаження будуть доступні інші варіанти оформлення"
+
+msgid "Icons used in some menu types"
+msgstr "Значки для деяких типів меню"
+
+msgid "Big icons used in some menu types"
+msgstr "Великі значки для деяких типів меню"
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Погодні значки для спеціальних екранів та інформації користувача: Weather, Weather light і Extended weather"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "Білі piconWeather як другий тип пікона в інфопанелі, якщо його вибрано"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "Чорні piconWeather як другий тип пікона в інфопанелі, якщо його вибрано"
+
+msgid "Animated icons will be displayed"
+msgstr "Показувати анімовані значки"
+
+msgid "Static icons will be displayed"
+msgstr "Показувати статичні значки"
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Анімовані погодні значки для інфопанелі, спеціальних екранів та інформації користувача Weather або Enhanced Weather"
+
+msgid "Channel logos with picture background"
+msgstr "Логотипи каналів із графічним тлом"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Пакет лише каналів Skylink і Freesat"
+
+msgid "Channel logos with transparent background"
+msgstr "Логотипи каналів із прозорим тлом"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Інструмент, потрібний для розпакування пакетів піконів"
+
+msgid "Provider logos with transparent background"
+msgstr "Логотипи провайдерів із прозорим тлом"
+
+msgid "Satellite logos with transparent background"
+msgstr "Логотипи супутників із прозорим тлом"
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Значки вибору каналів із прозорим тлом для деяких типів списків каналів"
+
+msgid "New Moon"
+msgstr "Новий Місяць"
+
+msgid "First Quarter"
+msgstr "Перша чверть"
+
+msgid "Waxing Crescent"
+msgstr "Молодий серп Місяця"
+
+msgid "Waxing Moon"
+msgstr "Зростаючий Місяць"
+
+msgid "Full Moon"
+msgstr "Повний Місяць"
+
+msgid "Waning Moon"
+msgstr "Спадний Місяць"
+
+msgid "Waning Crescent"
+msgstr "Старий серп Місяця"
+
+msgid "Last Quarter"
+msgstr "Остання чверть"
