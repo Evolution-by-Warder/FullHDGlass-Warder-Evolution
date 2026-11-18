@@ -40,7 +40,7 @@ def _manifest():
 
 def _valid_mo(content):
     # GNU gettext MO magic, either byte order; parse fully before installation.
-    if len(content) < 28 or content[:4] not in (b"\\xde\\x12\\x04\\x95", b"\\x95\\x04\\x12\\xde"):
+    if len(content) < 28 or content[:4] not in (bytes.fromhex("de120495"), bytes.fromhex("950412de")):
         return False
     import gettext
     import io
@@ -49,12 +49,6 @@ def _valid_mo(content):
         return True
     except (OSError, ValueError, EOFError, UnicodeError, IndexError, struct.error):
         return False
-
-
-def struct_error():
-    # Lazy import is intentional: keep module lightweight on image boot.
-    import struct
-    return struct.error
 
 
 def sync(language):
