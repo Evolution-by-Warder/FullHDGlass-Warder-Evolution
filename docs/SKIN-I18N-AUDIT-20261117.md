@@ -160,3 +160,11 @@ Chýbali najmä `Location`, správy o čítaní dát z webu, `Mishmash in the da
 - Aktualizovaný `et/LC_MESSAGES/eWeather.po`, samostatne zostavený binárny gettext UTF-8 `eWeather.mo` (387 záznamov vrátane hlavičky) a rozšírený regresný test v `tools/test-warder-catalog-integrity.py` na 386 kľúčov aj overenie známych estónskych formulácií.
 - **Zostáva presne 36 132 neobsadených položiek podľa existujúceho inventára**: helpTxt 2 646 a eWeather 33 486. Ostatné evidované katalógy: hlavné nastavenia 20 × 517/517, weather 20 × 108/108, Netatmo 20 × 42/42. Nové čísla vyjadrujú pokrytie kľúčov, nie jazykovú kontrolu rodenými hovoriacimi.
 - Testy GitHub Actions nového commitu a fyzické testy na Enigma2 sú ešte potrebné; žiadny úspech CI bez overenia netvrdíme. Žiadna IPK, feed, release, zmena verzie ani zlúčenie do main.
+
+## Dávka 18. 11. 2026 – 170 estónskych prekladov, oprava metodiky inventára
+
+- Na aktuálnej pracovnej vetve pridaných **170 nových estónskych skutočných prekladov** eWeather: oblačnosť, dážď, popoludňajšie búrky, teplo, vlhkosť a premenlivé počasie. Zachovaných všetkých 386 dovtedajších preložených záznamov.
+- Estónsky `eWeather.po` má teraz **556 neprázdnych správ**: **555/2 117** sa zhoduje s referenčným inventárom a navyše je zachovaný historický estónsky záznam `Select city`, ktorý v slovenskom referenčnom inventári nefiguruje. Zostáva teda **1 562 referenčných fráz**, nie o jednu menej, ako uvádzali predchádzajúce audity.
+- Zostavený `et/LC_MESSAGES/eWeather.mo` (557 správ vrátane hlavičky), rozšírená kontrola gettext načítania, presných referenčných kľúčov a historického `Select city`. Predchádzajúci CI beh `44250310144` zlyhal preto, že test nesprávne požadoval neprítomnosť tohto historického kľúča; regresný test je opravený. Úspech nového CI behu treba potvrdiť po jeho ukončení.
+- **Presne zostáva 35 963 referenčných prekladových položiek**: `helpTxt` 2 646 (14 jazykov), `eWeather` 33 317 (15 × 2 117 absentujúcich katalógov + 1 562 estónskych). Hlavné nastavenia, weather a Netatmo majú podľa skoršieho auditu všetky plánované vyplnené referenčné kľúče. Vyplnenie neznamená jazykovú korektúru rodeným hovoriacim.
+- Fyzické overenie na prijímačoch zostáva otvorené. Žiadne vydanie IPK, feed, release, zmena verzie ani zlúčenie do `main`.
