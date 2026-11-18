@@ -85,6 +85,36 @@ class CatalogIntegrity(unittest.TestCase):
                 self.assertEqual(expected, actual)
                 self.assertEqual([], [key for key in expected if not catalog[key]])
 
+    def test_five_new_complete_help_catalogs(self):
+        """Verify newly authored help for Ukrainian, Polish, Portuguese, Romanian and Dutch."""
+        reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
+        expected_keys = set(reference) - {''}
+        self.assertEqual(len(expected_keys), 189)
+        samples = {
+            'uk': ('Дані EPG недоступні', 'Остання чверть'),
+            'pl': ('Brak dostępnych danych EPG', 'Ostatnia kwadra'),
+            'pt': ('Não existem dados EPG disponíveis', 'Quarto minguante'),
+            'ro': ('Nu sunt disponibile date EPG', 'Ultimul pătrar'),
+            'nl': ('Geen EPG-gegevens beschikbaar', 'Laatste kwartier'),
+        }
+        for lang, (no_epg, last_quarter) in samples.items():
+            with self.subTest(lang=lang):
+                po = ROOT / lang / 'LC_MESSAGES' / 'helpTxt.po'
+                entries = po_entries(po)
+                self.assertEqual(set(entries) - {''}, expected_keys)
+                self.assertFalse(any(not entries[key].strip() for key in expected_keys))
+                self.assertIn('Language: %s\\n' % LANGUAGE_TAGS[lang], entries[''])
+                self.assertIn('charset=UTF-8', entries[''])
+                with po.with_suffix('.mo').open('rb') as stream:
+                    compiled = gettext.GNUTranslations(stream)
+                self.assertEqual(compiled.info().get('language'), LANGUAGE_TAGS[lang])
+                self.assertEqual(set(compiled._catalog), set(entries))
+                for key, value in entries.items():
+                    if key:
+                        self.assertEqual(compiled.gettext(key), value, (lang, key))
+                self.assertEqual(compiled.gettext('No EPG data available'), no_epg)
+                self.assertEqual(compiled.gettext('Last Quarter'), last_quarter)
+
     def test_all_shipped_mo_files_load_and_match_po(self):
         for lang in LANGS:
             for domain in DOMAINS:
