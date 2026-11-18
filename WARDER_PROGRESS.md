@@ -1,4 +1,4 @@
-## Stav uzavretých opráv 1–7 (18. 11. 2026)
+## Stav uzavretých opráv 1–8 (18. 11. 2026)
 
 **Zdrojovo dokončené v `main` – nezaraďovať znovu medzi otvorené úlohy.** Toto je jediný orientačný prehľad pre postup po bodoch. Staré pracovné PR z obdobia pred integráciou sa uzatvárajú ako nahradené aktuálnym `main`; neaplikovať ich znovu. Vydaná verzia a produkčný aktualizátor zostávajú **1.0.80**. **Nový IPK nebol vydaný.**
 
@@ -11,8 +11,9 @@
 | 5 | EMC / Single EPG / EPG Search: oddelenie dátumov, názvov a priebehov | [test rozloženia](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-shared-emc-epg-overlap.py) | **Uzatvorené**, súčasť 1.0.80; PR #105 zastaraný |
 | 6 | Viditeľná ukážka formátu dátumu v nastaveniach, sedem kontextov | [test náhľadu](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-setup-date-preview.py) | **Uzatvorené**, súčasť 1.0.80; PR #90 zastaraný |
 | 7 | UV index / rýchlosť vetra: schválené grafické nápovedy 882×300 RGBA s odlišným zvýraznením, prepínanie podľa kurzora | [test nápovied](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-weather-help-bubbles.py) | **Zdrojovo uzatvorené**; pôvodná úloha #108. Fyzické GUI testy zostávajú pre budúce spoločné vydanie. |
+| 8 | Automatické rozpoznávanie aktívneho GLES/e2egl pre EPG: OpenATV 8.1 ON, bez GLES alebo OpenATV 7.6/8.0.x/OpenPLi natívny fallback; rolovanie a jeho prepínač povolené iba tam, kde je backend aktívny | [runtime policy](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py), [test policy](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test_warder_epg_gles_policy.py) | **Zdrojovo uzatvorené**; runtime politika je v `main` od v1.0.76, PR #82 je starý návrh nahradený novším kódom; bez nového fyzického testu konkrétnej OpenATV 8.1 zostavy. |
 
-**Rozsah overenia:** Zhodu kódu a statické predpoklady možno potvrdiť v repozitári; v tomto kole sa všetky regresné testy nespúšťali a nový fyzický test na prijímači sa nerobil (najmä body 2–3). Týmto sa netvrdí 100 % hardvérové potvrdenie. Ak sa objaví konkrétna regresia na prijímači, evidovať ju ako **nový** prípad, nie opätovne otvárať implementačné body 1–7.
+**Rozsah overenia:** Zhodu kódu a statické predpoklady možno potvrdiť v repozitári; v tomto kole sa všetky regresné testy nespúšťali a nový fyzický test na prijímači sa nerobil (najmä body 2–3). Týmto sa netvrdí 100 % hardvérové potvrdenie. Ak sa objaví konkrétna regresia na prijímači, evidovať ju ako **nový** prípad, nie opätovne otvárať implementačné body 1–8.
 
 ---
 
