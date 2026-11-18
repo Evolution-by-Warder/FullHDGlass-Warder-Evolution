@@ -94,6 +94,10 @@ class SpinnerChoice(Screen):
             image = source/theme.get('preview_frame', theme['frames'][0]['name'])
             rows.append({'id':key, 'title':theme['title'], 'author':theme['author'],
                          'local_id':key, 'local_picture':str(image)})
+        # Owner-approved cells: system | Warder / bakussa | Dove.
+        # This order applies offline as well as after online discovery.
+        order = {'system': 0, 'warder': 1, 'bakussa': 2, 'dove': 3}
+        rows.sort(key=lambda row: order.get(row['id'], len(order)))
         return rows
 
     def start(self):
@@ -126,8 +130,11 @@ class SpinnerChoice(Screen):
             key = row['id'] if row['id'] in available and online.frame_digest(available[row['id']]['frames'])==row['frames_sha256'] else 'dl-'+row['archive']['sha256'][:16]
             if key in local:
                 row.update(local_id=key, local_picture=local[key]['local_picture'])
-        # Keep the system entry visible even after the online list arrives.
-        self.rows = [local['system']] + [row for row in rows if row.get('id') != 'system']
+        # Keep every installed theme and the owner's requested first two rows.
+        # The system spinner remains at top-left; no theme is auto-activated.
+        ordered = ('system', 'warder', 'bakussa', 'dove')
+        self.rows = [local[key] for key in ordered if key in local]
+        self.rows.extend(row for row in rows if row.get('id') not in ordered)
         self.cursor = next((i for i,r in enumerate(self.rows) if r.get('local_id')==self.selected), 0)
         self.page = -1
         self.show_page()
