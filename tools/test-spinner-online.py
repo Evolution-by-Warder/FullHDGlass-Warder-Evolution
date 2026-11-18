@@ -122,7 +122,7 @@ class CacheTests(unittest.TestCase):
     def test_corrupted_cache_does_not_stop_bundled_settings_choices(self):
         key=self.install(ROWS[3]);(self.cache/key/'manifest.json').write_text('broken')
         data=backend.catalog(download_root=self.cache)
-        self.assertEqual(set(data['themes']),{'dove','bakussa'})
+        self.assertEqual(set(data['themes']),{'dove','bakussa','warder'})
 
     def test_symlink_cache_is_never_followed(self):
         target=Path(self.temp.name)/'user';target.mkdir();(target/'keep').write_text('safe')
@@ -200,7 +200,7 @@ class ScreenContractTests(unittest.TestCase):
         self.assertEqual(box.local_rows()[0]['id'], 'system')
         box.selected = 'system'
         box.loaded(copy.deepcopy(ROWS))
-        self.assertEqual(len(box.rows), len(ROWS) + 1)
+        self.assertEqual(len(box.rows), len(ROWS) + 2)
         self.assertEqual(box.rows[0]['local_id'], 'system')
         self.assertEqual(box.cursor, 0)
         box.choose()

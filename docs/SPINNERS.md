@@ -1,12 +1,15 @@
 # Spinner selection
 
-Prepared for the next FullHDGlass release. This feature has not been published
-in an IPK yet; the public updater remains on 1.0.49.
+Prepared in FullHDGlass source for the next authorized release. No new IPK or
+production update feed has been published as part of this source change.
 
 The skin configuration's Other settings section offers:
 
 * **Holubica** in Slovak (Dove in English): the exact receiver-confirmed dove.
-* **HDGlass - bakussa**: the animation contributed by **bakussa**. Thank you!
+* **HDGlass - bakussa**: the existing 20-frame animation by **bakussa**.
+* **Warder**: the 24-frame transparent 100 × 100 skull animation by **bakussa**.
+  The static preview is its own `wait1.png`; activation plays all 24 frames.
+  Bakussa remains the default and the Dove remains selectable.
 
 Press OK on Spinner to open the choice list, or change it with left/right.
 Save the selected animation and restart the GUI. Canceling the configuration
@@ -47,3 +50,11 @@ desktop tests cannot establish framebuffer correctness on every receiver.
 The menu, persistence and application helper read the generated catalog; adding
 a new approved definition requires no edits to those controllers. The regression
 suite explicitly exercises a third theme introduced through the catalog alone.
+
+## Warder provenance
+
+Reconstructed from the original user-provided skull archive with 24 RGBA
+100 x 100 frames; source ZIP SHA-256: `dfcf4c185be6f80c4ee9e890abc1b3f3a09bd7293ef6ff0caf24134ae5397dd2`.
+This reproducibly pinned source differs byte-for-byte from the previously
+recorded archive checksum in issue #112. Do not equate the two archives.
+Physical receiver validation remains pending.

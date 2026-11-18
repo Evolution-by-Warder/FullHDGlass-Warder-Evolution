@@ -62,6 +62,8 @@ def main():
             assert not module.apply('bakussa', skin, catalog)
             assert module.apply('dove', skin, catalog)
             assert len(list((skin / 'spinner').iterdir())) == 18
+            assert module.apply('warder', skin, catalog)
+            assert len(list((skin / 'spinner').iterdir())) == 24
             assert module.apply('bakussa', skin, catalog)
             assert module.apply('system', skin, catalog)
             assert not (skin / 'spinner').exists()

@@ -77,6 +77,11 @@ def build():
             catalog['themes'][theme]['source_sha256'] = source['sha256']
         if source['type'] == 'prepared':
             catalog['themes'][theme]['source_sha256'] = source['original_sha256']
+        if definition.get('preview_frame'):
+            preview = definition['preview_frame']
+            if preview not in {entry['name'] for entry in entries}:
+                raise ValueError('Spinner preview frame is not part of its animation')
+            catalog['themes'][theme]['preview_frame'] = preview
         if definition.get('legacy_frames'):
             catalog['themes'][theme]['legacy_frames'] = definition['legacy_frames']
     (PLUGIN / 'warder-spinners.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')

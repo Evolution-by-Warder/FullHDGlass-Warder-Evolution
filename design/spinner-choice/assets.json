@@ -152,8 +152,104 @@
     {
       "path": "usr/share/enigma2/hd_glass17/spinner-themes/bakussa/wait20.png",
       "sha256": "9470fd8dcaf3ae485b9f29733d37059638041062e1dd47255bfa2195d682d497"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait1.png",
+      "sha256": "7b6b50add4fc7fac936fbfffb1ed2a98843d607687fe50c7a7b10147ec4402d6"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait2.png",
+      "sha256": "4d286efe93e7a64b7af0b193c9dd2ce83045fb2eb7062d95d2cfed53b3ffd519"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait3.png",
+      "sha256": "243d0afcbb2bf6940e5ad985b8eca574bb61a30bff50e56d3eeee62796459dc2"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait4.png",
+      "sha256": "965cc56cfab198817c45067aa8bf12df7d4ef17965e686ca51acc9e1d449d88b"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait5.png",
+      "sha256": "57e38ed560dbfe7f01ef370b74381f5bbff69c844d31d52de0d6995fe8943c6d"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait6.png",
+      "sha256": "5bf9600c9b40c5d5b9d2334228eedef6642bc26d38c5a58e612bd946b52aff66"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait7.png",
+      "sha256": "b953d6c309f6368592a1ee0fff4bd4e95dd5f671ec36cd33c8498a71516ab144"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait8.png",
+      "sha256": "f0c8df3b3f41fa309aee5135f06bc1166cdbde45113aea230b791b3f153be7d8"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait9.png",
+      "sha256": "16f3eeb4362e6cd81d0a8988664f624fbaebe8b65c61fe3d6b350bce6d350fc0"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait10.png",
+      "sha256": "6600055fa1c4c5d238537c5d633b326d58b5087eac1eb80c385229e8a9ee69e9"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait11.png",
+      "sha256": "55f49f2f957e96bd005ad5d9b6eb1376f1cf7e887ec0c3ff9428ce8a3a51b8ee"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait12.png",
+      "sha256": "1dafb47c81456d92a1486891cff1c06917a1551c27120f609cc4793f52aa151c"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait13.png",
+      "sha256": "e5104422e2bccaad668e3f7b36fb16ed7d1adda5e3fd7679e0377fcefb220598"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait14.png",
+      "sha256": "8927f1f53c440d803ff50341fd35ef555bc63717f3c3012ed26cf21136057f3e"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait15.png",
+      "sha256": "2c3eb75095394e2d805350ea52cc394f21b5ec510e61aa0eae2c028548f58032"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait16.png",
+      "sha256": "e7769a2a0538ee0c7c6d63092b7a7c6461081cac00719095eb819b0ee86d77dc"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait17.png",
+      "sha256": "2f717c024038c4e06787b1c6f1b2eb579b43423b6580860d677a6f2501f774bd"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait18.png",
+      "sha256": "a68f55ab868c99cefb8a9b319368dbbaa98a1f71ff3c3ba4bde1440f87fb1882"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait19.png",
+      "sha256": "37f942040ae9bc373ef0297e2acef9d9c55e58c8f2f06197fc31b5784ea04fec"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait20.png",
+      "sha256": "2d94200386de89b9b46acf123c2f072572f8d5299021694f2550368f6f9e6d33"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait21.png",
+      "sha256": "15618ddaea4c6920c577ec9c8c959e2e3b08da0c4ee7920d99e7a6cf13c376f2"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait22.png",
+      "sha256": "112cde77bc5a823fef90602066684f7608dcb5bffb47758a1469d931989146b4"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait23.png",
+      "sha256": "d5947ca1dfe45b0e0096f3ccafc0c28af36ce68a406234135123fe2cc17ebc62"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner-themes/warder/wait24.png",
+      "sha256": "d0030546fbb85a44ea39fcd77bc22b053ecc42b276e71dd61a16044ecf2f00da"
     }
   ],
-  "catalog_sha256": "bc2a2097ab285f93d1da0b0f30ae69378ff8171feb5844ec78ef09f8fa444cc2",
+  "catalog_sha256": "30112207f0ed53c07f4e124098e66fee4d3937f4994b4974e3a992c092afa8b7",
   "physical_receiver_test": false
 }

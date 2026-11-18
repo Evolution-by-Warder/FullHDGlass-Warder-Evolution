@@ -99,12 +99,28 @@ class AssetTests(unittest.TestCase):
         cfg = SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk_SK')))
         with patch.dict(sys.modules, {'Components.config': SimpleNamespace(config=cfg)}):
             text = load('setupGlass17.ui_text_test', PLUGIN / 'warderUiText.py')
-        self.assertEqual(spinner.choices(text.ui_text), [('system', 'Predvolený spinner image'), ('dove', 'Holubica'), ('bakussa', 'HDGlass - bakussa')])
+        self.assertEqual(spinner.choices(text.ui_text), [('system', 'Predvolený spinner image'), ('dove', 'Holubica'), ('bakussa', 'HDGlass - bakussa'), ('warder', 'Warder')])
         for code in LANGUAGES:
             cfg.osd.language.value = code + '_XX'
             self.assertTrue(text.ui_text('Dove').strip(), code)
             self.assertTrue(text.ui_text('Default spinner of image'))
             self.assertEqual(spinner.choices(text.ui_text)[2][1], 'HDGlass - bakussa')
+
+
+    def test_warder_archive_is_complete_and_preview_is_its_first_frame(self):
+        source = ROOT / 'assets/warder/downloads/ui/spinners/wait_blink_transparent_100x100_clean.zip'
+        theme = DATA['themes']['warder']
+        self.assertEqual(len(theme['frames']), 24)
+        self.assertEqual(theme['size'], [100, 100])
+        self.assertEqual(theme['author'], 'bakussa')
+        self.assertEqual(theme['preview_frame'], 'wait1.png')
+        self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), theme['source_sha256'])
+        with zipfile.ZipFile(source) as archive:
+            self.assertEqual(set(archive.namelist()), {f['name'] for f in theme['frames']})
+            for entry in theme['frames']:
+                raw = archive.read(entry['name'])
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), entry['sha256'])
+                self.assertEqual(raw, (SKIN / 'spinner-themes/warder' / entry['name']).read_bytes())
 
 
 class SelectionTests(unittest.TestCase):
@@ -122,6 +138,14 @@ class SelectionTests(unittest.TestCase):
 
     def assert_clean(self):
         self.assertEqual({p.name for p in self.root.iterdir()}, {'spinner', 'spinner-themes'})
+
+    def test_warder_switch_has_24_frames_and_returns_without_orphans(self):
+        self.assertTrue(self.apply('warder'))
+        self.assertEqual(len(content(self.root / 'spinner')), 24)
+        self.assertEqual(content(self.root / 'spinner'), content(self.root / 'spinner-themes/warder'))
+        self.assertTrue(self.apply('bakussa'))
+        self.assertEqual(content(self.root / 'spinner'), self.before)
+        self.assert_clean()
 
     def test_switch_both_directions_and_remove_obsolete_twenty_frame_tail(self):
         self.assertTrue(self.apply('dove'))
@@ -281,7 +305,7 @@ class SelectionTests(unittest.TestCase):
     def test_saved_selection_defaults_without_modifying_settings(self):
         settings = Path(self.temp.name) / 'settings'
         self.assertEqual(spinner.saved_theme(settings), 'bakussa')
-        for value, expected in [('bakussa','bakussa'), ('dove','dove'), ('system','system'), ('../../../etc','bakussa')]:
+        for value, expected in [('bakussa','bakussa'), ('dove','dove'), ('warder','warder'), ('system','system'), ('../../../etc','bakussa')]:
             original = ('config.skin.primary_skin=hd_glass17/skin.xml\n' + spinner.SETTING + '=' + value + '\n').encode()
             settings.write_bytes(original)
             self.assertEqual(spinner.saved_theme(settings), expected)

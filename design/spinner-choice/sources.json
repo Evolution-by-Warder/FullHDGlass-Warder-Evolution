@@ -119,6 +119,27 @@
           "sha256": "1afa5b53790d816d2d4501a2cac422dea6cc4a33ffffe668ec0a1cc22d783bf3"
         }
       ]
+    },
+    {
+      "id": "warder",
+      "title": "Warder",
+      "author": "bakussa",
+      "frames": 24,
+      "size": [
+        100,
+        100
+      ],
+      "preview_frame": "wait1.png",
+      "source": {
+        "type": "zip",
+        "path": "assets/warder/downloads/ui/spinners/wait_blink_transparent_100x100_clean.zip",
+        "sha256": "dfcf4c185be6f80c4ee9e890abc1b3f3a09bd7293ef6ff0caf24134ae5397dd2",
+        "prefix": "",
+        "size": [
+          100,
+          100
+        ]
+      }
     }
   ]
 }
