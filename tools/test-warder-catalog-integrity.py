@@ -84,7 +84,6 @@ class CatalogIntegrity(unittest.TestCase):
             }
             reference = po_entries(ROOT / 'sk/LC_MESSAGES' / (domain + '.po'))
             self.assertFalse(source_keys - reference.keys(), (domain, source_keys - reference.keys()))
-            # All new runtime keys are available even in partial auxiliary catalogs.
             for language in LANGS:
                 with self.subTest(domain=domain, language=language):
                     path = ROOT / language / 'LC_MESSAGES' / (domain + '.po')
@@ -96,7 +95,7 @@ class CatalogIntegrity(unittest.TestCase):
         self.assertEqual(len(LANGS) + 1, 21)  # en: untranslated msgid source.
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'setupGlass17.po')
         expected = set(reference) - {''}
-        self.assertEqual(len(expected), 552)
+        self.assertEqual(len(expected), 580)
         for lang in LANGS:
             with self.subTest(lang=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
@@ -169,7 +168,7 @@ class CatalogIntegrity(unittest.TestCase):
 
     def test_full_five_domain_coverage_in_all_twenty_locales(self):
         """Enforce every reference key in every translated .po and .mo catalog."""
-        expected_counts = {'setupGlass17': 552, 'helpTxt': 195,
+        expected_counts = {'setupGlass17': 580, 'helpTxt': 195,
                            'weather': 108, 'netatmo': 42, 'eWeather': 2119}
         self.assertEqual(set(DOMAINS), set(expected_counts))
         for domain in DOMAINS:
@@ -364,6 +363,15 @@ class CatalogIntegrity(unittest.TestCase):
         with path.with_suffix('.mo').open('rb') as stream:
             binary = gettext.GNUTranslations(stream)
         self.assertEqual(set(binary._catalog) - {''}, keys)
+
+    def test_translatable_settings_and_weather_labels_are_localized(self):
+        for lang in LANGS:
+            setup = po_entries(ROOT / lang / 'LC_MESSAGES/setupGlass17.po')
+            for key in ('Show recording icon', 'Channel name', 'only Time', 'ECM Labels',
+                        'Choose the available satellite picon variant.', 'Configure the FullHDGlass skin'):
+                self.assertNotEqual(setup[key].casefold(), key.casefold(), (lang, key))
+            weather = po_entries(ROOT / lang / 'LC_MESSAGES/weather.po')
+            self.assertNotEqual(weather['Feels like'].casefold(), 'feels like', lang)
 
     def test_greek_help_is_complete(self):
         greek = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'helpTxt.po')

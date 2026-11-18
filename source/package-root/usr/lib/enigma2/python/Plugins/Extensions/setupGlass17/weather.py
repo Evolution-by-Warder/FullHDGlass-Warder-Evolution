@@ -55,7 +55,7 @@ PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
 def Writelog(txt):
     """Production runtime does not write diagnostic logs."""
     return None
-from .warderLocale import get_translator as _warderGetTranslator
+from .warderLocale import TranslatedMapping, get_translator as _warderGetTranslator
 _ = _warderGetTranslator("weather", config, PLUGINPATH)
 if os.path.isfile(PLUGINPATH + "wea.log"):
 	try:
@@ -82,15 +82,33 @@ ENA_10 = False
 NO_WIND_PICON = "/usr/share/enigma2/hd_glass17/icons/no-wind.png"
 UNKNOWN_STATE = _("...N/A...")
 UNKNOWN_STATE_TEMP = "--" + DG
-DICT_DAYS = {'Sun':_('Sun'), 'Mon':_('Mon'), 'Tue':_('Tue'), 'Wed':_('Wed'), 'Thu':_('Thu'), 'Fri':_('Fri'), 'Sat':_('Sat')}
-DICT_DATE = {'Jan':'1', 'Feb':'2', 'Mar':'3', 'Apr':'4', 'May':'5', 'Jun':'6', 'Jul':'7', 'Aug':'8', 'Sep':'9', 'Oct':'10', 'Nov':'11', 'Dec':'12',
-'1':_('January'), '2':_('February'), '3':_('March'), '4':_('April'), '5':_('May'), '6':_('Jun'), '7':_('Jul'), '8':_('August'), '9':_('September'), '10':_('October'), '11':_('November'), '12':_('December')}
-DICT_TEXT = {'Light Snow':_('Light Snow Shower'), 'Snow Showers':_('Light Snow Shower'), 'Foggy':_('Fog'), 'Fog':_('Fog'), 'Sun':_('Sunny'), 'Clouds':_('Cloudy'), 'Light Rain with Thunder':_('Light Rain with Thunder'), 'Drizzle':_('Drizzle'), 'Showers in the Vicinity':_('Showers in the Vicinity'),
-'Rain Shower':_('Rain Shower'), 'Thunderstorm':_('Thunderstorm'), 'Thunder in the Vicinity':_('Thunder in the Vicinity'), 'Thundershowers':_('Thundershowers'), 'Light Drizzle':_('Light Drizzle'), 'Thunder':_('Thunder'), 'Light Rain Shower':_('Light Rain Shower'),
-'Isolated Thunderstorms':_('Isolated Thunderstorms'), 'Scattered Thunderstorms':_('Scattered Thunderstorms'), 'AM':_('AM'), 'PM':_('PM'), 'Mostly Clear':_('Mostly Clear'), 'Snow':_('Snow'), 'Thunderstorms':_('Thunderstorms'), 'Wind':_('Wind'), 'Windy':_('Wind'), 'T-Storms':_('Thunderstorms'),
-'Showers':_('Showers'), 'Light Snow Shower':_('Light Snow Shower'), 'Rain':_('Rain'), 'Mostly Sunny':_('Mostly Sunny'), 'Sunny':_('Sunny'), 'Clearing':_('Clear'), 'Clear':_('Clear'), 'Thunderstorms':_('Thunderstorms'), 'Partly Cloudy':_('Partly Cloudy'), 'Mostly Cloudy':_('Mostly Cloudy'),
-'Scattered Showers':_('Scattered Showers'), 'Few Showers':_('Few Showers'), 'Light Rain':_('Light Rain'), 'Showers':_('Showers'), 'Cloudy':_('Cloudy'), 'Fair':_('Fair'), 'Scattered Snow Showers':_('Scattered Snow Showers'), 'Wintry Mix':_('Wintry Mix'), 'Icy':_('Ice'), 'Ice':_('Ice'),
-'Breezy':_('Breezy'), 'Rain Showers':_('Rain Shower'), 'Freezing Drizzle':_('Freezing Drizzle'), 'Freezing Rain':_('Freezing Rain'), 'Partly Sunny':_('Partly Cloudy'), 'Light Rain and Snow':_('Light Rain')+' / '+_('Snow'), 'Heavy Rain':_('Rain'), 'Rain And Snow':_('Rain')+' / '+_('Snow'), 'Rain and Snow':_('Rain')+' / '+_('Snow')}
+def _day_names(_):
+    return {'Sun':_('Sun'), 'Mon':_('Mon'), 'Tue':_('Tue'), 'Wed':_('Wed'), 'Thu':_('Thu'), 'Fri':_('Fri'), 'Sat':_('Sat')}
+
+
+DICT_DAYS = TranslatedMapping(_, _day_names)
+
+
+def _date_parts(_):
+    return {'Jan':'1', 'Feb':'2', 'Mar':'3', 'Apr':'4', 'May':'5', 'Jun':'6', 'Jul':'7', 'Aug':'8', 'Sep':'9', 'Oct':'10', 'Nov':'11', 'Dec':'12',
+        '1':_('January'), '2':_('February'), '3':_('March'), '4':_('April'), '5':_('May'), '6':_('Jun'), '7':_('Jul'), '8':_('August'), '9':_('September'), '10':_('October'), '11':_('November'), '12':_('December')}
+
+
+DICT_DATE = TranslatedMapping(_, _date_parts)
+
+
+def _conditions(_):
+    return {'Light Snow':_('Light Snow Shower'), 'Snow Showers':_('Light Snow Shower'), 'Foggy':_('Fog'), 'Fog':_('Fog'), 'Sun':_('Sunny'), 'Clouds':_('Cloudy'), 'Light Rain with Thunder':_('Light Rain with Thunder'), 'Drizzle':_('Drizzle'), 'Showers in the Vicinity':_('Showers in the Vicinity'),
+        'Rain Shower':_('Rain Shower'), 'Thunderstorm':_('Thunderstorm'), 'Thunder in the Vicinity':_('Thunder in the Vicinity'), 'Thundershowers':_('Thundershowers'), 'Light Drizzle':_('Light Drizzle'), 'Thunder':_('Thunder'), 'Light Rain Shower':_('Light Rain Shower'),
+        'Isolated Thunderstorms':_('Isolated Thunderstorms'), 'Scattered Thunderstorms':_('Scattered Thunderstorms'), 'AM':_('AM'), 'PM':_('PM'), 'Mostly Clear':_('Mostly Clear'), 'Snow':_('Snow'), 'Thunderstorms':_('Thunderstorms'), 'Wind':_('Wind'), 'Windy':_('Wind'), 'T-Storms':_('Thunderstorms'),
+        'Showers':_('Showers'), 'Light Snow Shower':_('Light Snow Shower'), 'Rain':_('Rain'), 'Mostly Sunny':_('Mostly Sunny'), 'Sunny':_('Sunny'), 'Clearing':_('Clear'), 'Clear':_('Clear'), 'Thunderstorms':_('Thunderstorms'), 'Partly Cloudy':_('Partly Cloudy'), 'Mostly Cloudy':_('Mostly Cloudy'),
+        'Scattered Showers':_('Scattered Showers'), 'Few Showers':_('Few Showers'), 'Light Rain':_('Light Rain'), 'Showers':_('Showers'), 'Cloudy':_('Cloudy'), 'Fair':_('Fair'), 'Scattered Snow Showers':_('Scattered Snow Showers'), 'Wintry Mix':_('Wintry Mix'), 'Icy':_('Ice'), 'Ice':_('Ice'),
+        'Breezy':_('Breezy'), 'Rain Showers':_('Rain Shower'), 'Freezing Drizzle':_('Freezing Drizzle'), 'Freezing Rain':_('Freezing Rain'), 'Partly Sunny':_('Partly Cloudy'), 'Light Rain and Snow':_('Light Rain')+' / '+_('Snow'), 'Heavy Rain':_('Rain'), 'Rain And Snow':_('Rain')+' / '+_('Snow'), 'Rain and Snow':_('Rain')+' / '+_('Snow')}
+
+
+DICT_TEXT = TranslatedMapping(_, _conditions)
+
+
 #######################################################################
 def convToC(t):
 	return int((t - 32) * 5.0/9.0)

@@ -38,7 +38,7 @@ msgid "Red"
 msgstr "Rosso"
 
 msgid "Purple"
-msgstr "Purple"
+msgstr "Viola"
 
 msgid "Gray"
 msgstr "Grigio"
@@ -50,34 +50,34 @@ msgid "Yellow"
 msgstr "Giallo"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatico"
 
 msgid "Type"
 msgstr "Tipo"
 
 msgid "from image"
-msgstr "from image"
+msgstr "Dall’immagine di sistema"
 
 msgid "G17 (Ch. Name)"
 msgstr "G17 (nome del canale)"
 
 msgid "Default"
-msgstr "Default"
+msgstr "Predefinito"
 
 msgid "only Picon"
-msgstr "only Picon"
+msgstr "Solo picon"
 
 msgid "only Time"
-msgstr "only Time"
+msgstr "Solo ora"
 
 msgid "VU+ (Ch. Name)"
-msgstr "VU+ (Ch. Name)"
+msgstr "VU+ (Nome canale)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (Programma in corso)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (Nome canale + Programma in corso)"
 
 msgid "G17 (Act. event)"
 msgstr "G17 (programma attuale)"
@@ -95,10 +95,10 @@ msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
-msgstr "Picon and Time"
+msgstr "Picon e ora"
 
 msgid "Default 2"
-msgstr "Default 2"
+msgstr "Predefinito 2"
 
 msgid "VU+ Duo2 Snr,Agc"
 msgstr "VU+ Duo2 Snr,Agc"
@@ -113,10 +113,10 @@ msgid "Duo2 Snr,Agc,RPM,Temp. 2"
 msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
 
 msgid "Classical"
-msgstr "Classical"
+msgstr "Classico"
 
 msgid "with ZZPicon"
-msgstr "with ZZPicon"
+msgstr "Con ZZPicon"
 
 msgid "with Picon 400x240"
 msgstr "con picon 400 × 240"
@@ -128,40 +128,40 @@ msgid "Glass17(+next event)"
 msgstr "Glass17 (+ programma successivo)"
 
 msgid "with PIG(+next event)"
-msgstr "with PIG(+next event)"
+msgstr "Con PIG (+ Programma successivo)"
 
 msgid "Glass17(+next, date)"
 msgstr "Glass17 (+ programma successivo, data)"
 
 msgid "New style"
-msgstr "New style"
+msgstr "Nuovo stile"
 
 msgid "New style with PIG"
-msgstr "New style with PIG"
+msgstr "Nuovo stile con PIG"
 
 msgid "PIG(+next event,left)"
-msgstr "PIG(+next event,left)"
+msgstr "PIG (+ Programma successivo, a sinistra)"
 
 msgid "PIG(+act,next,left)"
-msgstr "PIG(+act,next,left)"
+msgstr "PIG (+ Programma in corso, Programma successivo, a sinistra)"
 
 msgid "The Core 88"
 msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr "PIG(+several event)"
+msgstr "PIG (+ Più programmi)"
 
 msgid "G17(+several event)"
 msgstr "G17 (+ più programmi)"
 
 msgid "New style(+several event)"
-msgstr "New style(+several event)"
+msgstr "Nuovo stile (+ Più programmi)"
 
 msgid "PIG(+act,several,left)"
-msgstr "PIG(+act,several,left)"
+msgstr "PIG (+ Programma in corso, Più programmi, a sinistra)"
 
 msgid "with PIG"
-msgstr "with PIG"
+msgstr "Con PIG"
 
 msgid "G17 events"
 msgstr "Programmi G17"
@@ -179,7 +179,7 @@ msgid "PIP"
 msgstr "PIP"
 
 msgid "yes"
-msgstr "yes"
+msgstr "Sì"
 
 msgid "no"
 msgstr "no"
@@ -188,28 +188,28 @@ msgid "Icons"
 msgstr "Icone"
 
 msgid "Icons Right"
-msgstr "Icons Right"
+msgstr "Icone a destra"
 
 msgid "List"
-msgstr "List"
+msgstr "Elenco"
 
 msgid "List and Icon"
-msgstr "List and Icon"
+msgstr "Elenco e icona"
 
 msgid "Icons Bar"
-msgstr "Icons Bar"
+msgstr "Barra delle icone"
 
 msgid "simply PIG"
-msgstr "simply PIG"
+msgstr "Solo PIG"
 
 msgid "Sat and Prov"
-msgstr "Sat and Prov"
+msgstr "Satellite e operatore"
 
 msgid "only Sat"
-msgstr "only Sat"
+msgstr "Solo satellite"
 
 msgid "only Prov"
-msgstr "only Prov"
+msgstr "Solo operatore"
 
 msgid "only Weather"
 msgstr "Solo meteo"
@@ -239,67 +239,67 @@ msgid "Simple"
 msgstr "Semplice"
 
 msgid "Ecminfo only"
-msgstr "Ecminfo only"
+msgstr "Solo informazioni ECM"
 
 msgid "Ecminfo and CAID"
-msgstr "Ecminfo and CAID"
+msgstr "Informazioni ECM e CAID"
 
 msgid "CAID and SID"
-msgstr "CAID and SID"
+msgstr "CAID e SID"
 
 msgid "SID only"
-msgstr "SID only"
+msgstr "Solo SID"
 
 msgid "CAID, SID, VPID"
 msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "Percentuale"
 
 msgid "Colored gauge"
-msgstr "Colored gauge"
+msgstr "Indicatore colorato"
 
 msgid "System info"
-msgstr "System info"
+msgstr "Informazioni di sistema"
 
 msgid "Event - extended description"
-msgstr "Event - extended description"
+msgstr "Programma – descrizione estesa"
 
 msgid "Side infobar"
-msgstr "Side infobar"
+msgstr "Barra informazioni laterale"
 
 msgid "Event and side infobar"
-msgstr "Event and side infobar"
+msgstr "Programma e barra informazioni laterale"
 
 msgid "Event - now and next"
-msgstr "Event - now and next"
+msgstr "Programma in corso / Programma successivo"
 
 msgid "Event now/next and side infobar"
-msgstr "Event now/next and side infobar"
+msgstr "Programma in corso / Programma successivo + Barra informazioni laterale"
 
 msgid "Black"
 msgstr "Nere"
 
 msgid "with PIG(+ch.name,number)"
-msgstr "with PIG(+ch.name,number)"
+msgstr "Con PIG (+ Nome canale, Numero)"
 
 msgid "no time"
-msgstr "no time"
+msgstr "Senza ora"
 
 msgid "with internet check"
-msgstr "with internet check"
+msgstr "Con verifica della connessione"
 
 msgid "with frame"
-msgstr "with frame"
+msgstr "Con cornice"
 
 msgid "big"
-msgstr "big"
+msgstr "Grande"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Arresto automatico"
 
 msgid "Roll back"
-msgstr "Roll back"
+msgstr "Scorrimento all’indietro"
 
 msgid "Enhanced Weather"
 msgstr "Meteo migliorata"
@@ -314,7 +314,7 @@ msgid "Number"
 msgstr "numero"
 
 msgid "disabled"
-msgstr "disabled"
+msgstr "Disattivato"
 
 msgid "User defined path"
 msgstr "Percorso personalizzato"
@@ -432,10 +432,10 @@ msgid "EPG list font size"
 msgstr "Dimensione carattere della lista EPG"
 
 msgid "Dish screen"
-msgstr "Dish screen"
+msgstr "Schermata parabola"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "Selezione audio"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "Seleziona PluginBrowser - OE 2.0"
@@ -486,7 +486,7 @@ msgid "Starting Bitrate"
 msgstr "Avvio Bitrate"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "Velocità in bit"
 
 msgid "Btr: too high - stopped"
 msgstr "Btr: troppo alto - arrestato"
@@ -519,7 +519,7 @@ msgid "Streaming service"
 msgstr "servizio di streaming"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "Flusso IP"
 
 msgid "Save"
 msgstr "Salva"
@@ -528,10 +528,10 @@ msgid "Cancel"
 msgstr "Cancella"
 
 msgid "Download menu"
-msgstr "Download menu"
+msgstr "Menu dei download"
 
 msgid "Changelog"
-msgstr "Changelog"
+msgstr "Registro delle modifiche"
 
 msgid "Update"
 msgstr "Aggiorna"
@@ -549,7 +549,7 @@ msgid "EXTRA INFOBAR"
 msgstr "BARRA INFORMAZIONI AGGIUNTIVA"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "Barra informazioni"
 
 msgid "POSTER"
 msgstr "LOCANDINA"
@@ -558,7 +558,7 @@ msgid "HDD/SSD"
 msgstr "HDD/SSD"
 
 msgid "NETWORK"
-msgstr "NETWORK"
+msgstr "Rete"
 
 msgid "MENU"
 msgstr "MENU"
@@ -585,10 +585,10 @@ msgid "OLED"
 msgstr "OLED"
 
 msgid "TUNER"
-msgstr "TUNER"
+msgstr "Sintonizzatore"
 
 msgid "ENHANCED WEATHER"
-msgstr "ENHANCED WEATHER"
+msgstr "Meteo esteso"
 
 msgid "WEATHER"
 msgstr "TEMPO"
@@ -633,13 +633,13 @@ msgid "Show CHID in ECM line"
 msgstr "Mostra CHID nella riga ECM"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "Riga ECM"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "Etichette ECM"
 
 msgid "ECM Values"
-msgstr "ECM Values"
+msgstr "Valori ECM"
 
 msgid "Enable Enhanced Infobar"
 msgstr "Abilita Infobar Maggiore"
@@ -666,10 +666,10 @@ msgid "Enable icon of Unknown CAID"
 msgstr "Abilita icona per CAID sconosciuto"
 
 msgid "Audio type of current track"
-msgstr "Audio type of current track"
+msgstr "Formato della traccia audio corrente"
 
 msgid "Progressive/Interlace detection"
-msgstr "Progressive/Interlace detection"
+msgstr "Rilevamento scansione progressiva o interlacciata"
 
 msgid "Tuner info"
 msgstr "Informazioni sul sintonizzatore"
@@ -684,7 +684,7 @@ msgid "Enable full bitrate info"
 msgstr "Abilita informazioni complete bitrate"
 
 msgid "Bitrate auto stop limit"
-msgstr "Bitrate auto stop limit"
+msgstr "Soglia di arresto automatico del bitrate"
 
 msgid "Enable eBitrateCalculator"
 msgstr "Abilita eBitrateCalculator"
@@ -693,7 +693,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Mostra Posizione Satellite in info TP"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Operatore"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -711,16 +711,16 @@ msgid "Progress bar background pixmap"
 msgstr "Immagine di sfondo della barra di avanzamento"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Operatore"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Tipo di transponder"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Informazioni transponder"
 
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Risoluzione video"
 
 msgid "Date"
 msgstr "Data"
@@ -732,7 +732,7 @@ msgid "Seconds"
 msgstr "Secondi"
 
 msgid "Channel name"
-msgstr "Channel name"
+msgstr "Nome canale"
 
 msgid "Event now"
 msgstr "Programma attuale"
@@ -762,7 +762,7 @@ msgid "Enable fade in"
 msgstr "Abilita dissolvenza in ingresso"
 
 msgid "Show recording icon"
-msgstr "Show recording icon"
+msgstr "Mostra l’icona di registrazione"
 
 msgid "Channel name type"
 msgstr "Tipo Nome canale"
@@ -828,13 +828,13 @@ msgid "Line height"
 msgstr "Altezza riga"
 
 msgid "EPG Description"
-msgstr "EPG Description"
+msgstr "Descrizione EPG"
 
 msgid "EPG Description - selected"
-msgstr "EPG Description - selected"
+msgstr "Descrizione EPG (selezionato)"
 
 msgid "Channel name - selected"
-msgstr "Channel name - selected"
+msgstr "Nome canale (selezionato)"
 
 msgid "Enable Special info timeout"
 msgstr "Abilita Offerta speciale timeout"
@@ -849,7 +849,7 @@ msgid "Enable Permanent User info"
 msgstr "Abilita Informazioni Utente Permanenti"
 
 msgid "User info act./next switching"
-msgstr "User info act./next switching"
+msgstr "Passaggio tra programma attuale e successivo nelle info utente"
 
 msgid "Station"
 msgstr "Stazione"
@@ -879,13 +879,13 @@ msgid "Missing"
 msgstr "Mancanti"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "Registrazione"
 
 msgid "Recording and live"
-msgstr "Recording and live"
+msgstr "Registrazione e diretta"
 
 msgid "Show Astronomical Information"
-msgstr "Show Astronomical Information"
+msgstr "Mostra informazioni astronomiche"
 
 msgid "Temperature unit"
 msgstr "Unità di temperatura"
@@ -1029,7 +1029,7 @@ msgid "Enable user encoding.conf"
 msgstr "Abilita user encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Salvaschermo radio"
 
 msgid "IPTV Radio Detection"
 msgstr "Rilevamento radio IPTV"
@@ -1044,18 +1044,17 @@ msgid "Erase finished successfully!"
 msgstr "Cancellazione completata correttamente!"
 
 msgid "Color Sample"
-msgstr "Color Sample"
+msgstr "Campione di colore"
 
 msgid "Version:"
 msgstr "Versione:"
 
 msgid "Extra Screen"
-msgstr "Extra Screen"
+msgstr "Schermata aggiuntiva"
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
-"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr "Sito: www.hdglass16.eu. Donazioni sul conto PayPal hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "Nessun file rilevato!"
@@ -1129,7 +1128,7 @@ msgid "Special Info type"
 msgstr "Informazioni di tipo speciale"
 
 msgid "User info type"
-msgstr "User info type"
+msgstr "Tipo di info utente"
 
 msgid "HDD/SSD state"
 msgstr "Stato HDD/SSD"
@@ -1735,3 +1734,87 @@ msgstr "I picon Warder sono stati saltati. Gli altri download selezionati proseg
 
 msgid "picons"
 msgstr "picon"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip non è disponibile per l’architettura di questo ricevitore."
+
+msgid "Back"
+msgstr "Indietro"
+
+msgid "Channel-list picon source"
+msgstr "Origine picon nell’elenco canali"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Scegli l’animazione di attesa. Salva per applicarla dopo il riavvio dell’interfaccia."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Scegli la cartella per il file di configurazione di backup hdg17.conf. Predefinita: /usr/share/enigma2/hd_glass17/. Premi OK per scegliere un'altra cartella e SAVE per salvare il backup."
+
+msgid "Choose with OK"
+msgstr "Seleziona con OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Configura il tema FullHDGlass"
+
+msgid "Confirm"
+msgstr "Conferma"
+
+msgid "DAB+ information"
+msgstr "Informazioni DAB+"
+
+msgid "Default spinner of image"
+msgstr "Animazione predefinita dell'immagine"
+
+msgid "Dove"
+msgstr "Colomba"
+
+msgid "Downloading selected spinner..."
+msgstr "Download dell’animazione selezionata…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Attiva i picon personali dalla cartella scelta. I download rimangono nell'archivio Warder e i tuoi file non vengono modificati."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Installa 7zip dal menu dei download, quindi riprova il download selezionato."
+
+msgid "Loading spinner list..."
+msgstr "Caricamento delle animazioni…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Elenco online non disponibile. Le animazioni installate sono disponibili."
+
+msgid "Prefer 50x30"
+msgstr "Preferisci 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Premi OK per scegliere la cartella dei picon. La skin legge soltanto i PNG per InfoBar ed elenchi canali, senza modificarli o eliminarli."
+
+msgid "Radio mode"
+msgstr "Modalità radio"
+
+msgid "Selected settings"
+msgstr "Selezione attuale"
+
+msgid "Spinner download failed. Try again."
+msgstr "Download non riuscito. Riprova."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Percorso per set grafici, picon e altri dati scaricati della skin. Salvando un percorso modificato viene creata qui hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Archivio set grafici, picon e dati"
+
+msgid "System setting"
+msgstr "Impostazione di sistema"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "L’impostazione di sistema mantiene la ricerca originale dei picon. Preferisci 50×30 usa picon_50x30, poi picon per ogni logo mancante. Salvare e riavviare la GUI."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Impossibile cambiare l’animazione. I file esistenti sono stati conservati."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Impossibile ripristinare le icone predefinite. Reinstalla la skin."

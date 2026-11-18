@@ -50,7 +50,7 @@ msgid "Yellow"
 msgstr "Geel"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatisch"
 
 msgid "Type"
 msgstr "Type"
@@ -74,13 +74,13 @@ msgid "VU+ (Ch. Name)"
 msgstr "VU+ (Zendernaam)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (Huidig programma)"
 
 msgid "VU+ (Ch. Name + Act. event)"
 msgstr "VU+ (Zendernaam + Act. event)"
 
 msgid "G17 (Act. event)"
-msgstr "G17 (Act. event)"
+msgstr "G17 (huidig programma)"
 
 msgid "G17 (Ch. Name + Act. event)"
 msgstr "G17 (Zendernaam + Act. event)"
@@ -164,7 +164,7 @@ msgid "with PIG"
 msgstr "met PIG"
 
 msgid "G17 events"
-msgstr "G17 events"
+msgstr "G17-programma’s"
 
 msgid "Big Icons"
 msgstr "Grote pictogrammen"
@@ -296,7 +296,7 @@ msgid "big"
 msgstr "groot"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Automatische stop"
 
 msgid "Roll back"
 msgstr "Terugrollend"
@@ -350,7 +350,7 @@ msgid "Transparent"
 msgstr "Transparant"
 
 msgid "Full HD GLass17 spinner"
-msgstr "Full HD GLass17 spinner"
+msgstr "Wachtanimatie van Full HD Glass17"
 
 msgid "Full HD Glass17 Setup"
 msgstr "HD Glass17 Instellingen"
@@ -486,7 +486,7 @@ msgid "Starting Bitrate"
 msgstr "Bitrate starten"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "Bitsnelheid"
 
 msgid "Btr: too high - stopped"
 msgstr "BTR: te hoog - gestopt"
@@ -519,7 +519,7 @@ msgid "Streaming service"
 msgstr "streaming-dienst"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "IP-stream"
 
 msgid "Save"
 msgstr "Bewaren"
@@ -528,13 +528,13 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 msgid "Download menu"
-msgstr "Download menu"
+msgstr "Downloadmenu"
 
 msgid "Changelog"
 msgstr "Change log"
 
 msgid "Update"
-msgstr "Update"
+msgstr "Bijwerken"
 
 msgid "Restore config"
 msgstr "Configuratie herstellen"
@@ -636,7 +636,7 @@ msgid "ECM line"
 msgstr "ECM regel"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "ECM-labels"
 
 msgid "ECM Values"
 msgstr "ECM Waarden"
@@ -693,7 +693,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Toon alleen sat positie bij TP info"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Aanbieder"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -711,13 +711,13 @@ msgid "Progress bar background pixmap"
 msgstr "Achtergrondafbeelding van de voortgangsbalk"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Aanbieder"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Transpondertype"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Transponderinformatie"
 
 msgid "Video resolution"
 msgstr "Video resolutie"
@@ -873,7 +873,7 @@ msgid "Active in the background"
 msgstr "Actief op de achtergrond"
 
 msgid "Standby mode"
-msgstr "Standby mode"
+msgstr "Stand-bymodus"
 
 msgid "Missing"
 msgstr "Missende"
@@ -1014,7 +1014,7 @@ msgid "Enable CAID PIDs"
 msgstr "Toon CAID PIDs venster"
 
 msgid "Neutrino keymap"
-msgstr "Neutrino keymap"
+msgstr "Neutrino-toetsindeling"
 
 msgid "Full HD Glass17 spinner"
 msgstr "HD Glass17 spinners"
@@ -1029,7 +1029,7 @@ msgid "Enable user encoding.conf"
 msgstr "Gebruik HDG encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Radioschermbeveiliging"
 
 msgid "IPTV Radio Detection"
 msgstr "IPTV-radioherkenning"
@@ -1154,7 +1154,7 @@ msgid "Cleaning Picons"
 msgstr "Picons opruimen"
 
 msgid "Start Download"
-msgstr "Start Download"
+msgstr "Download starten"
 
 msgid "picon white"
 msgstr "picons wit"
@@ -1733,3 +1733,87 @@ msgstr "De picons van Warder zijn overgeslagen. De overige geselecteerde downloa
 
 msgid "picons"
 msgstr "zenderpicons"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip is niet beschikbaar voor de architectuur van deze ontvanger."
+
+msgid "Back"
+msgstr "Terug"
+
+msgid "Channel-list picon source"
+msgstr "Piconbron voor de zenderlijst"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Kies de wachtanimatie. Sla op om deze na een GUI-herstart toe te passen."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Kies de map voor het reserveconfiguratiebestand hdg17.conf. Standaard: /usr/share/enigma2/hd_glass17/. Druk op OK om een andere map te kiezen en op SAVE om de back-up op te slaan."
+
+msgid "Choose with OK"
+msgstr "Kiezen met OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "De FullHDGlass-skin instellen"
+
+msgid "Confirm"
+msgstr "Bevestigen"
+
+msgid "DAB+ information"
+msgstr "DAB+ informatie"
+
+msgid "Default spinner of image"
+msgstr "Standaardspinner van de image"
+
+msgid "Dove"
+msgstr "Duif"
+
+msgid "Downloading selected spinner..."
+msgstr "Geselecteerde animatie downloaden…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Schakel dit in om je eigen zenderpicons uit een gekozen map te tonen. Downloads blijven in de Warder-opslag en je map blijft onaangetast."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Installeer 7zip via het downloadmenu en probeer de gekozen download opnieuw."
+
+msgid "Loading spinner list..."
+msgstr "Animatielijst laden…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Onlinelijst niet beschikbaar. Geïnstalleerde animaties zijn beschikbaar."
+
+msgid "Prefer 50x30"
+msgstr "Voorkeur voor 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Druk op OK om de map met je zenderpicons te kiezen. De skin leest daar alleen PNG-bestanden voor informatiebalken en zenderlijsten. Er worden geen bestanden naar die map gedownload, gewijzigd of verwijderd."
+
+msgid "Radio mode"
+msgstr "Radiomodus"
+
+msgid "Selected settings"
+msgstr "Gekozen instellingen"
+
+msgid "Spinner download failed. Try again."
+msgstr "Download mislukt. Probeer opnieuw."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Opslag voor gedownloade grafische sets, picons en andere skingegevens. Bij het opslaan van een gewijzigd pad wordt hier hdg17_files gemaakt."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Opslag voor grafische sets, picons en gegevens"
+
+msgid "System setting"
+msgstr "Systeeminstelling"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "De systeeminstelling behoudt de oorspronkelijke zoekvolgorde van het systeemimage. Bij voorkeur voor 50×30 wordt eerst in picon_50x30 gezocht en voor elk ontbrekend logo in picon. Sla op en herstart de gebruikersinterface."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "De animatie kon niet worden gewijzigd. Uw bestaande bestanden zijn behouden."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Standaardpictogrammen konden niet worden hersteld. Installeer de skin opnieuw."

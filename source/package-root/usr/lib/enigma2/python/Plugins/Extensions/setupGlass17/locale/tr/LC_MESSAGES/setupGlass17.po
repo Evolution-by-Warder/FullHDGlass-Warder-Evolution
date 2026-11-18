@@ -39,7 +39,7 @@ msgid "Red"
 msgstr "kırmızı"
 
 msgid "Purple"
-msgstr "Purple"
+msgstr "Mor"
 
 msgid "Gray"
 msgstr "gri"
@@ -51,34 +51,34 @@ msgid "Yellow"
 msgstr "sarı"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Otomatik"
 
 msgid "Type"
 msgstr "Tür"
 
 msgid "from image"
-msgstr "from image"
+msgstr "Sistem imajından"
 
 msgid "G17 (Ch. Name)"
 msgstr "G17 (kanal adı)"
 
 msgid "Default"
-msgstr "Default"
+msgstr "Varsayılan"
 
 msgid "only Picon"
-msgstr "only Picon"
+msgstr "Yalnızca pikon"
 
 msgid "only Time"
-msgstr "only Time"
+msgstr "Yalnızca saat"
 
 msgid "VU+ (Ch. Name)"
-msgstr "VU+ (Ch. Name)"
+msgstr "VU+ (Kanal adı)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (Şimdiki program)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (Kanal adı + Şimdiki program)"
 
 msgid "G17 (Act. event)"
 msgstr "G17 (yayındaki program)"
@@ -96,10 +96,10 @@ msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
-msgstr "Picon and Time"
+msgstr "Pikon ve saat"
 
 msgid "Default 2"
-msgstr "Default 2"
+msgstr "Varsayılan 2"
 
 msgid "VU+ Duo2 Snr,Agc"
 msgstr "VU+ Duo2 Snr,Agc"
@@ -114,10 +114,10 @@ msgid "Duo2 Snr,Agc,RPM,Temp. 2"
 msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
 
 msgid "Classical"
-msgstr "Classical"
+msgstr "Klasik"
 
 msgid "with ZZPicon"
-msgstr "with ZZPicon"
+msgstr "ZZPicon ile"
 
 msgid "with Picon 400x240"
 msgstr "400 × 240 picon ile"
@@ -129,40 +129,40 @@ msgid "Glass17(+next event)"
 msgstr "Glass17 (+ sonraki program)"
 
 msgid "with PIG(+next event)"
-msgstr "with PIG(+next event)"
+msgstr "PIG ile (+ Sonraki program)"
 
 msgid "Glass17(+next, date)"
 msgstr "Glass17 (+ sonraki program, tarih)"
 
 msgid "New style"
-msgstr "New style"
+msgstr "Yeni stil"
 
 msgid "New style with PIG"
-msgstr "New style with PIG"
+msgstr "PIG ile yeni stil"
 
 msgid "PIG(+next event,left)"
-msgstr "PIG(+next event,left)"
+msgstr "PIG (+ Sonraki program, solda)"
 
 msgid "PIG(+act,next,left)"
-msgstr "PIG(+act,next,left)"
+msgstr "PIG (+ Şimdiki program, Sonraki program, solda)"
 
 msgid "The Core 88"
 msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr "PIG(+several event)"
+msgstr "PIG (+ Birden çok program)"
 
 msgid "G17(+several event)"
 msgstr "G17 (+ birden fazla program)"
 
 msgid "New style(+several event)"
-msgstr "New style(+several event)"
+msgstr "Yeni stil (+ Birden çok program)"
 
 msgid "PIG(+act,several,left)"
-msgstr "PIG(+act,several,left)"
+msgstr "PIG (+ Şimdiki program, Birden çok program, solda)"
 
 msgid "with PIG"
-msgstr "with PIG"
+msgstr "PIG ile"
 
 msgid "G17 events"
 msgstr "G17 programları"
@@ -180,37 +180,37 @@ msgid "PIP"
 msgstr "PIP"
 
 msgid "yes"
-msgstr "yes"
+msgstr "Evet"
 
 msgid "no"
-msgstr "no"
+msgstr "Hayır"
 
 msgid "Icons"
 msgstr "Simgeler"
 
 msgid "Icons Right"
-msgstr "Icons Right"
+msgstr "Simgeler sağda"
 
 msgid "List"
-msgstr "List"
+msgstr "Liste"
 
 msgid "List and Icon"
-msgstr "List and Icon"
+msgstr "Liste ve simge"
 
 msgid "Icons Bar"
-msgstr "Icons Bar"
+msgstr "Simge çubuğu"
 
 msgid "simply PIG"
-msgstr "simply PIG"
+msgstr "Yalnızca PIG"
 
 msgid "Sat and Prov"
-msgstr "Sat and Prov"
+msgstr "Uydu ve sağlayıcı"
 
 msgid "only Sat"
-msgstr "only Sat"
+msgstr "Yalnızca uydu"
 
 msgid "only Prov"
-msgstr "only Prov"
+msgstr "Yalnızca sağlayıcı"
 
 msgid "only Weather"
 msgstr "Yalnızca hava durumu"
@@ -240,67 +240,67 @@ msgid "Simple"
 msgstr "Basit"
 
 msgid "Ecminfo only"
-msgstr "Ecminfo only"
+msgstr "Yalnızca ECM bilgileri"
 
 msgid "Ecminfo and CAID"
-msgstr "Ecminfo and CAID"
+msgstr "ECM bilgileri ve CAID"
 
 msgid "CAID and SID"
-msgstr "CAID and SID"
+msgstr "CAID ve SID"
 
 msgid "SID only"
-msgstr "SID only"
+msgstr "Yalnızca SID"
 
 msgid "CAID, SID, VPID"
 msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "Yüzde"
 
 msgid "Colored gauge"
-msgstr "Colored gauge"
+msgstr "Renkli gösterge"
 
 msgid "System info"
-msgstr "System info"
+msgstr "Sistem bilgileri"
 
 msgid "Event - extended description"
-msgstr "Event - extended description"
+msgstr "Program – ayrıntılı açıklama"
 
 msgid "Side infobar"
-msgstr "Side infobar"
+msgstr "Yan bilgi çubuğu"
 
 msgid "Event and side infobar"
-msgstr "Event and side infobar"
+msgstr "Program ve yan bilgi çubuğu"
 
 msgid "Event - now and next"
-msgstr "Event - now and next"
+msgstr "Şimdiki program / Sonraki program"
 
 msgid "Event now/next and side infobar"
-msgstr "Event now/next and side infobar"
+msgstr "Şimdiki program / Sonraki program + Yan bilgi çubuğu"
 
 msgid "Black"
 msgstr "Siyah"
 
 msgid "with PIG(+ch.name,number)"
-msgstr "with PIG(+ch.name,number)"
+msgstr "PIG ile (+ Kanal adı, Numara)"
 
 msgid "no time"
-msgstr "no time"
+msgstr "Saat yok"
 
 msgid "with internet check"
-msgstr "with internet check"
+msgstr "İnternet denetimiyle"
 
 msgid "with frame"
-msgstr "with frame"
+msgstr "Çerçeveli"
 
 msgid "big"
-msgstr "big"
+msgstr "Büyük"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Otomatik durdurma"
 
 msgid "Roll back"
-msgstr "Roll back"
+msgstr "Geri kaydır"
 
 msgid "Enhanced Weather"
 msgstr "geliştirilmiş Hava"
@@ -315,7 +315,7 @@ msgid "Number"
 msgstr "numara"
 
 msgid "disabled"
-msgstr "disabled"
+msgstr "Devre dışı"
 
 msgid "User defined path"
 msgstr "Kullanıcı tanımlı yol"
@@ -433,10 +433,10 @@ msgid "EPG list font size"
 msgstr "EPG listesi yazı tipi boyutu"
 
 msgid "Dish screen"
-msgstr "Dish screen"
+msgstr "Anten ekranı"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "Ses seçimi"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "Eklenti gözat - OE 2.0 ayarı"
@@ -445,7 +445,7 @@ msgid "Set user encoding.conf"
 msgstr "Kullanıcı encoding.conf ayarı:"
 
 msgid "ChannelSelection 2xOK"
-msgstr "ChannelSelection 2xOK"
+msgstr "Kanal seçimi (2×OK)"
 
 msgid "Enable windowstylescrollbar"
 msgstr "windowstylescrollbar etkinleştir"
@@ -488,7 +488,7 @@ msgid "Starting Bitrate"
 msgstr "Bitrate başlangıcı"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "Bit hızı"
 
 msgid "Btr: too high - stopped"
 msgstr "Btr: çok yüksek - durduruldu"
@@ -518,10 +518,10 @@ msgid "Radio"
 msgstr "Radyo"
 
 msgid "Streaming service"
-msgstr "Streaming service"
+msgstr "Akış hizmeti"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "IP akışı"
 
 msgid "Save"
 msgstr "Kaydet"
@@ -551,7 +551,7 @@ msgid "EXTRA INFOBAR"
 msgstr "EK BİLGİ ÇUBUĞU"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "Bilgi çubuğu"
 
 msgid "POSTER"
 msgstr "AFİŞ"
@@ -563,7 +563,7 @@ msgid "NETWORK"
 msgstr "AĞ"
 
 msgid "MENU"
-msgstr "MENU"
+msgstr "Menü"
 
 msgid "CHANNEL SELECTION"
 msgstr "KANAL SEÇİMİ"
@@ -587,10 +587,10 @@ msgid "OLED"
 msgstr "OLED"
 
 msgid "TUNER"
-msgstr "TUNER"
+msgstr "Alıcı birimi"
 
 msgid "ENHANCED WEATHER"
-msgstr "ENHANCED WEATHER"
+msgstr "Gelişmiş hava durumu"
 
 msgid "WEATHER"
 msgstr "HAVA"
@@ -635,13 +635,13 @@ msgid "Show CHID in ECM line"
 msgstr "ECM satırında CHID göster"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "ECM satırı"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "ECM etiketleri"
 
 msgid "ECM Values"
-msgstr "ECM Values"
+msgstr "ECM değerleri"
 
 msgid "Enable Enhanced Infobar"
 msgstr "Geliştirilmiş bilgiçubuğunu etkinleştir"
@@ -668,10 +668,10 @@ msgid "Enable icon of Unknown CAID"
 msgstr "Bilinmeyen CAID simgesini etkinleştir"
 
 msgid "Audio type of current track"
-msgstr "Audio type of current track"
+msgstr "Geçerli ses parçasının biçimi"
 
 msgid "Progressive/Interlace detection"
-msgstr "Progressive/Interlace detection"
+msgstr "Aşamalı veya geçmeli taramayı algıla"
 
 msgid "Tuner info"
 msgstr "Tuner bilgileri"
@@ -695,7 +695,7 @@ msgid "Show Satellite position in TP info"
 msgstr "TP bilgisi ve Uydu konumunu göster"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Sağlayıcı"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -713,16 +713,16 @@ msgid "Progress bar background pixmap"
 msgstr "İlerleme çubuğu arka plan görseli"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Sağlayıcı"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Transponder türü"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Transponder bilgileri"
 
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Video çözünürlüğü"
 
 msgid "Date"
 msgstr "Tarih"
@@ -734,7 +734,7 @@ msgid "Seconds"
 msgstr "Saniye"
 
 msgid "Channel name"
-msgstr "Channel name"
+msgstr "Kanal adı"
 
 msgid "Event now"
 msgstr "Şimdiki program"
@@ -752,7 +752,7 @@ msgid "Enable typewriting"
 msgstr "Daktilo yazımı etkinleştir"
 
 msgid "Ignore infobar timeout"
-msgstr "Ignore infobar timeout"
+msgstr "Bilgi çubuğu zaman aşımını yok say"
 
 msgid "Enable fade"
 msgstr "Fade etkinleştir"
@@ -764,7 +764,7 @@ msgid "Enable fade in"
 msgstr "Fade içeriye etkinleştir"
 
 msgid "Show recording icon"
-msgstr "Show recording icon"
+msgstr "Kayıt simgesini göster"
 
 msgid "Channel name type"
 msgstr "Kanal Adı tipi"
@@ -830,13 +830,13 @@ msgid "Line height"
 msgstr "Satır yüksekliği"
 
 msgid "EPG Description"
-msgstr "EPG Description"
+msgstr "EPG açıklaması"
 
 msgid "EPG Description - selected"
-msgstr "EPG Description - selected"
+msgstr "EPG açıklaması (seçili)"
 
 msgid "Channel name - selected"
-msgstr "Channel name - selected"
+msgstr "Kanal adı (seçili)"
 
 msgid "Enable Special info timeout"
 msgstr "Özel bilgi zaman aşımı etkinleştirin"
@@ -881,13 +881,13 @@ msgid "Missing"
 msgstr "Eksik"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "Kayıt"
 
 msgid "Recording and live"
-msgstr "Recording and live"
+msgstr "Kayıt ve canlı yayın"
 
 msgid "Show Astronomical Information"
-msgstr "Show Astronomical Information"
+msgstr "Astronomi bilgilerini göster"
 
 msgid "Temperature unit"
 msgstr "Sıcaklık birimi"
@@ -998,7 +998,7 @@ msgid "(Channel selection) picon/Prov/Sat"
 msgstr "(Kanal listesi) picon/sağlayıcı/uydu"
 
 msgid "VTi SplitScreen"
-msgstr "VTi SplitScreen"
+msgstr "VTi bölünmüş ekran"
 
 msgid "Reference separating char"
 msgstr "Referans ayırıcı karakteri"
@@ -1016,7 +1016,7 @@ msgid "Enable CAID PIDs"
 msgstr "CAID PIDs etkinleştir"
 
 msgid "Neutrino keymap"
-msgstr "Neutrino keymap"
+msgstr "Neutrino tuş düzeni"
 
 msgid "Full HD Glass17 spinner"
 msgstr "FullHDGlass17 yükleme göstergesi"
@@ -1031,7 +1031,7 @@ msgid "Enable user encoding.conf"
 msgstr "Kullanıcı encoding.conf etkinleştir"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Radyo ekran koruyucusu"
 
 msgid "IPTV Radio Detection"
 msgstr "IPTV radyo algılama"
@@ -1046,7 +1046,7 @@ msgid "Erase finished successfully!"
 msgstr "Silme işlemi başarıyla tamamlandı!"
 
 msgid "Color Sample"
-msgstr "Color Sample"
+msgstr "Renk örneği"
 
 msgid "Version:"
 msgstr "Sürüm:"
@@ -1056,8 +1056,7 @@ msgstr "İlave Ekran"
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
-"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr "Web sitesi: www.hdglass16.eu. Bağış için PayPal hesabı: hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "Hiçbir dosya tespit edilemedi!"
@@ -1737,3 +1736,87 @@ msgstr "Warder kanal logoları atlandı. Seçilen diğer indirmeler devam edecek
 
 msgid "picons"
 msgstr "kanal logoları"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "Bu alıcının mimarisi için 7zip kullanılamıyor."
+
+msgid "Back"
+msgstr "Geri"
+
+msgid "Channel-list picon source"
+msgstr "Kanal listesi pikon kaynağı"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Bekleme animasyonunu seçin. Kaydettikten sonra arayüz yeniden başlatıldığında uygulanır."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Yedek yapılandırma dosyası hdg17.conf için klasör seçin. Varsayılan: /usr/share/enigma2/hd_glass17/. Başka klasör için OK, yedeği kaydetmek için SAVE tuşuna basın."
+
+msgid "Choose with OK"
+msgstr "OK ile seç"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "FullHDGlass temasını yapılandır"
+
+msgid "Confirm"
+msgstr "Onayla"
+
+msgid "DAB+ information"
+msgstr "DAB+ bilgileri"
+
+msgid "Default spinner of image"
+msgstr "İmajın varsayılan bekleme animasyonu"
+
+msgid "Dove"
+msgstr "Güvercin"
+
+msgid "Downloading selected spinner..."
+msgstr "Seçilen animasyon indiriliyor…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Seçtiğiniz klasördeki kendi kanal pikonlarınızı göstermek için etkinleştirin. İndirmeler Warder depolama alanını kullanmaya devam eder ve klasörünüz değiştirilmez."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "İndirme menüsünden 7zip'i yükleyin, ardından seçili indirmeyi yeniden deneyin."
+
+msgid "Loading spinner list..."
+msgstr "Animasyon listesi yükleniyor…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Çevrimiçi liste kullanılamıyor. Yüklü animasyonlar kullanılabilir."
+
+msgid "Prefer 50x30"
+msgstr "50×30 tercih et"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Kanal pikonlarınızın klasörünü seçmek için OK tuşuna basın. Tema, bilgi çubukları ve kanal listeleri için buradaki PNG dosyalarını yalnızca okur. Bu klasöre dosya indirmez ve dosyaları değiştirmez veya silmez."
+
+msgid "Radio mode"
+msgstr "Radyo modu"
+
+msgid "Selected settings"
+msgstr "Seçili ayarlar"
+
+msgid "Spinner download failed. Try again."
+msgstr "İndirme başarısız. Yeniden deneyin."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "İndirilen grafik setleri, piconlar ve diğer tema verileri için depolama. Yol değişikliği kaydedilince burada hdg17_files oluşturulur."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Grafik setleri, piconlar ve veri depolama"
+
+msgid "System setting"
+msgstr "Sistem ayarı"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Sistem ayarı imajın özgün pikon aramasını korur. 50×30 tercih edildiğinde önce picon_50x30, bulunamayan her logo için de picon klasörü aranır. Kaydedip grafik arayüzü yeniden başlatın."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Animasyon değiştirilemedi. Mevcut dosyalarınız korundu."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Varsayılan simgeler geri yüklenemedi. Temayı yeniden yükleyin."

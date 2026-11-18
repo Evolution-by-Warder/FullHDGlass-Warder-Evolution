@@ -1453,6 +1453,9 @@ def _warderRadioButtonTrace(self, *args, **kwargs):
 
 
 def startHdg17(reason, **kwargs):
+	if reason == 0:
+		from .warderLocale import watch_language
+		watch_language(config, PLUGINPATH)
 	if reason != 0 or config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		try:
 			from .warderRadioUpdate import start as start_radio_update

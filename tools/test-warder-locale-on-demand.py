@@ -133,29 +133,32 @@ class TestOnDemand(unittest.TestCase):
                 self.assertEqual((cache / target).read_bytes(), catalog)
 
     def test_package_contains_only_english_and_digest_inventory(self):
-        original = (PLUGIN / "locale/el/LC_MESSAGES/setupGlass17.mo").read_bytes()
+        import gettext
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            location = root / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale"
-            for lang in ("el", "en"):
-                folder = location / lang / "LC_MESSAGES"
-                folder.mkdir(parents=True)
-                (folder / "setupGlass17.mo").write_bytes(original)
-            (location / "el/LC_MESSAGES/setupGlass17.po").write_text("source")
-            tarfile_path = root.parent / (root.name + "-locale.tar.gz")
-            try:
-                builder.archive(root, tarfile_path, payload=True)
-                with tarfile.open(tarfile_path, "r:gz") as archive:
-                    names = archive.getnames()
-                    self.assertTrue(any("/en/LC_MESSAGES/setupGlass17.mo" in n for n in names))
-                    self.assertFalse(any("/el/LC_MESSAGES/setupGlass17.mo" in n for n in names))
-                    self.assertFalse(any(n.endswith(".po") for n in names))
-                    record = next(n for n in names if n.endswith("warder-locale-manifest.json"))
-                    manifest = json.load(archive.extractfile(record))
-                    self.assertEqual(manifest["files"]["el"]["setupGlass17"], hashlib.sha256(original).hexdigest())
-                    self.assertEqual(len(manifest["ref"]), 40)
-            finally:
-                tarfile_path.unlink(missing_ok=True)
+            stage = root / "stage"
+            location = stage / builder.PLUGIN / "locale"
+            shutil.copytree(PLUGIN / "locale", location)
+            tarfile_path = root / "locale.tar.gz"
+            builder.archive(stage, tarfile_path, payload=True)
+            with tarfile.open(tarfile_path, "r:gz") as archive:
+                names = archive.getnames()
+                english = [n for n in names if n.endswith(".mo")]
+                self.assertTrue(english)
+                for name in english:
+                    self.assertIn("/locale/en/LC_MESSAGES/", name)
+                    catalog = gettext.GNUTranslations(archive.extractfile(name))
+                    self.assertTrue(catalog.info()["language"].startswith("en"))
+                self.assertFalse(any(n.endswith(".po") for n in names))
+                record = next(n for n in names if n.endswith("warder-locale-manifest.json"))
+                manifest = json.load(archive.extractfile(record))
+            self.assertRegex(manifest["ref"], r"^[0-9a-f]{40}$")
+            self.assertEqual(manifest["files"].keys(), downloader.LANGUAGES)
+            for lang, signatures in manifest["files"].items():
+                self.assertEqual(signatures.keys(), downloader.DOMAINS)
+                for domain, digest in signatures.items():
+                    source = location / lang / "LC_MESSAGES" / (domain + ".mo")
+                    self.assertEqual(digest, hashlib.sha256(source.read_bytes()).hexdigest())
 
 
 if __name__ == "__main__":

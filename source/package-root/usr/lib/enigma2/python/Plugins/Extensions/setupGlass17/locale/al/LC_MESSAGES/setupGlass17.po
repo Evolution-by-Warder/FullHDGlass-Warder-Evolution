@@ -38,7 +38,7 @@ msgid "Red"
 msgstr "i kuq"
 
 msgid "Purple"
-msgstr "Purple"
+msgstr "Vjollcë"
 
 msgid "Gray"
 msgstr "gri"
@@ -50,34 +50,34 @@ msgid "Yellow"
 msgstr "i verdhë"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatikisht"
 
 msgid "Type"
 msgstr "Lloji"
 
 msgid "from image"
-msgstr "from image"
+msgstr "Nga imazhi i sistemit"
 
 msgid "G17 (Ch. Name)"
 msgstr "G17 (emri i kanalit)"
 
 msgid "Default"
-msgstr "Default"
+msgstr "I parazgjedhur"
 
 msgid "only Picon"
-msgstr "only Picon"
+msgstr "Vetëm pikoni"
 
 msgid "only Time"
-msgstr "only Time"
+msgstr "Vetëm ora"
 
 msgid "VU+ (Ch. Name)"
-msgstr "VU+ (Ch. Name)"
+msgstr "VU+ (Emri i kanalit)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (Emisioni aktual)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (Emri i kanalit + Emisioni aktual)"
 
 msgid "G17 (Act. event)"
 msgstr "G17 (programi aktual)"
@@ -95,10 +95,10 @@ msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
-msgstr "Picon and Time"
+msgstr "Pikoni dhe ora"
 
 msgid "Default 2"
-msgstr "Default 2"
+msgstr "I parazgjedhur 2"
 
 msgid "VU+ Duo2 Snr,Agc"
 msgstr "VU+ Duo2 Snr,Agc"
@@ -113,10 +113,10 @@ msgid "Duo2 Snr,Agc,RPM,Temp. 2"
 msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
 
 msgid "Classical"
-msgstr "Classical"
+msgstr "Klasik"
 
 msgid "with ZZPicon"
-msgstr "with ZZPicon"
+msgstr "Me ZZPicon"
 
 msgid "with Picon 400x240"
 msgstr "me pikon 400 × 240"
@@ -128,40 +128,40 @@ msgid "Glass17(+next event)"
 msgstr "Glass17 (+ programi pasues)"
 
 msgid "with PIG(+next event)"
-msgstr "with PIG(+next event)"
+msgstr "Me PIG (+ Emisioni pasues)"
 
 msgid "Glass17(+next, date)"
 msgstr "Glass17 (+ programi pasues, data)"
 
 msgid "New style"
-msgstr "New style"
+msgstr "Stil i ri"
 
 msgid "New style with PIG"
-msgstr "New style with PIG"
+msgstr "Stil i ri me PIG"
 
 msgid "PIG(+next event,left)"
-msgstr "PIG(+next event,left)"
+msgstr "PIG (+ Emisioni pasues, majtas)"
 
 msgid "PIG(+act,next,left)"
-msgstr "PIG(+act,next,left)"
+msgstr "PIG (+ Emisioni aktual, Emisioni pasues, majtas)"
 
 msgid "The Core 88"
 msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr "PIG(+several event)"
+msgstr "PIG (+ Disa emisione)"
 
 msgid "G17(+several event)"
 msgstr "G17 (+ disa programe)"
 
 msgid "New style(+several event)"
-msgstr "New style(+several event)"
+msgstr "Stil i ri (+ Disa emisione)"
 
 msgid "PIG(+act,several,left)"
-msgstr "PIG(+act,several,left)"
+msgstr "PIG (+ Emisioni aktual, Disa emisione, majtas)"
 
 msgid "with PIG"
-msgstr "with PIG"
+msgstr "Me PIG"
 
 msgid "G17 events"
 msgstr "Programet G17"
@@ -179,37 +179,37 @@ msgid "PIP"
 msgstr "PIP"
 
 msgid "yes"
-msgstr "yes"
+msgstr "Po"
 
 msgid "no"
-msgstr "no"
+msgstr "Jo"
 
 msgid "Icons"
 msgstr "Ikona"
 
 msgid "Icons Right"
-msgstr "Icons Right"
+msgstr "Ikonat djathtas"
 
 msgid "List"
-msgstr "List"
+msgstr "Listë"
 
 msgid "List and Icon"
-msgstr "List and Icon"
+msgstr "Listë dhe ikonë"
 
 msgid "Icons Bar"
-msgstr "Icons Bar"
+msgstr "Shirit ikonash"
 
 msgid "simply PIG"
-msgstr "simply PIG"
+msgstr "Vetëm PIG"
 
 msgid "Sat and Prov"
-msgstr "Sat and Prov"
+msgstr "Sateliti dhe operatori"
 
 msgid "only Sat"
-msgstr "only Sat"
+msgstr "Vetëm sateliti"
 
 msgid "only Prov"
-msgstr "only Prov"
+msgstr "Vetëm operatori"
 
 msgid "only Weather"
 msgstr "Vetëm moti"
@@ -239,67 +239,67 @@ msgid "Simple"
 msgstr "I thjeshtë"
 
 msgid "Ecminfo only"
-msgstr "Ecminfo only"
+msgstr "Vetëm informacion ECM"
 
 msgid "Ecminfo and CAID"
-msgstr "Ecminfo and CAID"
+msgstr "Informacion ECM dhe CAID"
 
 msgid "CAID and SID"
-msgstr "CAID and SID"
+msgstr "CAID dhe SID"
 
 msgid "SID only"
-msgstr "SID only"
+msgstr "Vetëm SID"
 
 msgid "CAID, SID, VPID"
 msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "Përqindje"
 
 msgid "Colored gauge"
-msgstr "Colored gauge"
+msgstr "Tregues me ngjyra"
 
 msgid "System info"
-msgstr "System info"
+msgstr "Informacioni i sistemit"
 
 msgid "Event - extended description"
-msgstr "Event - extended description"
+msgstr "Emisioni – përshkrim i zgjeruar"
 
 msgid "Side infobar"
-msgstr "Side infobar"
+msgstr "Shiriti anësor i informacionit"
 
 msgid "Event and side infobar"
-msgstr "Event and side infobar"
+msgstr "Emisioni dhe shiriti anësor"
 
 msgid "Event - now and next"
-msgstr "Event - now and next"
+msgstr "Emisioni aktual / Emisioni pasues"
 
 msgid "Event now/next and side infobar"
-msgstr "Event now/next and side infobar"
+msgstr "Emisioni aktual / Emisioni pasues + Shiriti anësor i informacionit"
 
 msgid "Black"
 msgstr "E zezë"
 
 msgid "with PIG(+ch.name,number)"
-msgstr "with PIG(+ch.name,number)"
+msgstr "Me PIG (+ Emri i kanalit, Numri)"
 
 msgid "no time"
-msgstr "no time"
+msgstr "Pa orë"
 
 msgid "with internet check"
-msgstr "with internet check"
+msgstr "Me kontroll të internetit"
 
 msgid "with frame"
-msgstr "with frame"
+msgstr "Me kornizë"
 
 msgid "big"
-msgstr "big"
+msgstr "I madh"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Ndalim automatik"
 
 msgid "Roll back"
-msgstr "Roll back"
+msgstr "Lëviz prapa"
 
 msgid "Enhanced Weather"
 msgstr "Moti Enhanced"
@@ -314,7 +314,7 @@ msgid "Number"
 msgstr "numër"
 
 msgid "disabled"
-msgstr "disabled"
+msgstr "Çaktivizuar"
 
 msgid "User defined path"
 msgstr "Shteg i përcaktuar nga përdoruesi"
@@ -435,7 +435,7 @@ msgid "Dish screen"
 msgstr "ekran pjatë"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "Zgjedhja e audios"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "Vendos PluginBrowser - OE 2.0"
@@ -444,7 +444,7 @@ msgid "Set user encoding.conf"
 msgstr "Zgjidh user encoding.conf"
 
 msgid "ChannelSelection 2xOK"
-msgstr "ChannelSelection 2xOK"
+msgstr "Zgjedhja e kanalit (2×OK)"
 
 msgid "Enable windowstylescrollbar"
 msgstr "Aktivizo windowstylescrollbar"
@@ -486,7 +486,7 @@ msgid "Starting Bitrate"
 msgstr " Bitrate po fillon"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "Shpejtësia e biteve"
 
 msgid "Btr: too high - stopped"
 msgstr "Btr: teper e larte- ndaloi"
@@ -519,7 +519,7 @@ msgid "Streaming service"
 msgstr "shërbimi streaming"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "Transmetim IP"
 
 msgid "Save"
 msgstr "Rezervo"
@@ -549,7 +549,7 @@ msgid "EXTRA INFOBAR"
 msgstr "PANEL SHTESË INFORMACIONI"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "Shiriti i informacionit"
 
 msgid "POSTER"
 msgstr "POSTERI"
@@ -561,7 +561,7 @@ msgid "NETWORK"
 msgstr "RRJETI"
 
 msgid "MENU"
-msgstr "MENU"
+msgstr "Menyja"
 
 msgid "CHANNEL SELECTION"
 msgstr "CHANNEL PËRZGJEDHJA"
@@ -585,7 +585,7 @@ msgid "OLED"
 msgstr "OLED"
 
 msgid "TUNER"
-msgstr "TUNER"
+msgstr "Sintonizuesi"
 
 msgid "ENHANCED WEATHER"
 msgstr "MOTI ENHANCED"
@@ -615,7 +615,7 @@ msgid "ECM line type"
 msgstr "Lloji i ECM line"
 
 msgid "ECM refresh time"
-msgstr "ECM refresh time"
+msgstr "Intervali i rifreskimit të ECM"
 
 msgid "Enable show address in ECM info"
 msgstr "Trego adresen ne   ECM info"
@@ -633,13 +633,13 @@ msgid "Show CHID in ECM line"
 msgstr "Shfaq CHID në rreshtin ECM"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "Rreshti ECM"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "Etiketat ECM"
 
 msgid "ECM Values"
-msgstr "ECM Values"
+msgstr "Vlerat ECM"
 
 msgid "Enable Enhanced Infobar"
 msgstr "Aktivizo Enhanced Infobar"
@@ -666,10 +666,10 @@ msgid "Enable icon of Unknown CAID"
 msgstr "Aktivizo ikonën për CAID të panjohur"
 
 msgid "Audio type of current track"
-msgstr "Audio type of current track"
+msgstr "Formati i pistës aktuale zanore"
 
 msgid "Progressive/Interlace detection"
-msgstr "Progressive/Interlace detection"
+msgstr "Zbulimi i skanimit progresiv ose të ndërthurur"
 
 msgid "Tuner info"
 msgstr "Informacion për tunerin"
@@ -693,7 +693,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Trego pozicionin e satelitit ne informacionin e TP"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Operatori"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -711,16 +711,16 @@ msgid "Progress bar background pixmap"
 msgstr "Figura e sfondit të shiritit të përparimit"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Operatori"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Lloji i transponderit"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Të dhënat e transponderit"
 
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Rezolucioni i videos"
 
 msgid "Date"
 msgstr "Data"
@@ -732,7 +732,7 @@ msgid "Seconds"
 msgstr "Sekonda"
 
 msgid "Channel name"
-msgstr "Channel name"
+msgstr "Emri i kanalit"
 
 msgid "Event now"
 msgstr "Programi aktual"
@@ -762,7 +762,7 @@ msgid "Enable fade in"
 msgstr "Aktivizo zbehje ne"
 
 msgid "Show recording icon"
-msgstr "Show recording icon"
+msgstr "Shfaq ikonën e regjistrimit"
 
 msgid "Channel name type"
 msgstr "Channel Emri lloj"
@@ -801,7 +801,7 @@ msgid "Network speed"
 msgstr "Shpejtësia e rrjetit"
 
 msgid "Menu Icons"
-msgstr "Menu Icons"
+msgstr "Ikonat e menysë"
 
 msgid "Enable empty icons in Menu type - Icons"
 msgstr "Aktivizo ikonat bosh në llojin Menu Icons"
@@ -828,13 +828,13 @@ msgid "Line height"
 msgstr "Lartësia e rreshtit"
 
 msgid "EPG Description"
-msgstr "EPG Description"
+msgstr "Përshkrimi EPG"
 
 msgid "EPG Description - selected"
-msgstr "EPG Description - selected"
+msgstr "Përshkrimi EPG (i zgjedhur)"
 
 msgid "Channel name - selected"
-msgstr "Channel name - selected"
+msgstr "Emri i kanalit (i zgjedhur)"
 
 msgid "Enable Special info timeout"
 msgstr "Aktivizo timeout Speciale info"
@@ -879,10 +879,10 @@ msgid "Missing"
 msgstr "i humbur"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "Regjistrim"
 
 msgid "Recording and live"
-msgstr "Recording and live"
+msgstr "Regjistrim dhe transmetim drejtpërdrejt"
 
 msgid "Show Astronomical Information"
 msgstr "Trego Informacion Astronomical"
@@ -996,7 +996,7 @@ msgid "(Channel selection) picon/Prov/Sat"
 msgstr "(Lista e kanaleve) pikon/ofrues/satelit"
 
 msgid "VTi SplitScreen"
-msgstr "VTi SplitScreen"
+msgstr "Ekran i ndarë VTi"
 
 msgid "Reference separating char"
 msgstr "Shenja ndarëse e referencave"
@@ -1014,7 +1014,7 @@ msgid "Enable CAID PIDs"
 msgstr "Aktivizo CAID PIDs"
 
 msgid "Neutrino keymap"
-msgstr "Neutrino keymap"
+msgstr "Skema e tasteve Neutrino"
 
 msgid "Full HD Glass17 spinner"
 msgstr "Treguesi i ngarkimit FullHDGlass17"
@@ -1029,7 +1029,7 @@ msgid "Enable user encoding.conf"
 msgstr "Aktivizo user encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreensaver"
+msgstr "Mbrojtësi i ekranit për radion"
 
 msgid "IPTV Radio Detection"
 msgstr "Zbulimi i radios IPTV"
@@ -1044,7 +1044,7 @@ msgid "Erase finished successfully!"
 msgstr "Fshirja përfundoi me sukses!"
 
 msgid "Color Sample"
-msgstr "Color Sample"
+msgstr "Mostër ngjyre"
 
 msgid "Version:"
 msgstr "Versioni:"
@@ -1054,8 +1054,7 @@ msgstr "Ekrani Extra"
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
-"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr "Faqja: www.hdglass16.eu. Dhurime në llogarinë PayPal hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "Nuk ndodhet asnje file!"
@@ -1239,7 +1238,7 @@ msgid "Total:"
 msgstr "Totali:"
 
 msgid "Deleted:"
-msgstr "Deleted:"
+msgstr "U fshinë:"
 
 msgid "Sorry, too low free space"
 msgstr "Na vjen keq, hapësirë ​​shumë të ulët të lirë"
@@ -1272,7 +1271,7 @@ msgid "Previews downloaded successfully!"
 msgstr "Previews u shkarkuan me sukses!"
 
 msgid "Previews:"
-msgstr "Previews:"
+msgstr "Pamje paraprake:"
 
 msgid "Delete"
 msgstr "Fshij"
@@ -1381,46 +1380,46 @@ msgid "selected receiver service(s) have no matching picon in the selected packa
 msgstr "shërbime të zgjedhura të marrësit nuk kanë pikonë përkatëse në paketat e zgjedhura."
 
 msgid "Choose an available channel picon size and the large channel selection icon package."
-msgstr "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Zgjidhni madhësinë e disponueshme të pikonëve të kanaleve dhe paketën e ikonave të mëdha për listën e kanaleve."
 
 msgid "Choose a channel picon colour supported at the selected size."
-msgstr "Choose a channel picon colour supported at the selected size."
+msgstr "Zgjidhni një ngjyrë pikoni që ofrohet për madhësinë e zgjedhur."
 
 msgid "Choose the available provider picon variant."
-msgstr "Choose the available provider picon variant."
+msgstr "Zgjidhni variantin e disponueshëm të pikonëve të operatorëve."
 
 msgid "Choose the available satellite picon variant."
-msgstr "Choose the available satellite picon variant."
+msgstr "Zgjidhni variantin e disponueshëm të pikonëve të satelitëve."
 
 msgid "Choose black or white CAM picons."
-msgstr "Choose black or white CAM picons."
+msgstr "Zgjidhni pikonët CAM të zinj ose të bardhë."
 
 msgid "Choose black or white weather information picons."
-msgstr "Choose black or white weather information picons."
+msgstr "Zgjidhni pikonët e zinj ose të bardhë për informacionin e motit."
 
 msgid "Provider picons"
-msgstr "Provider picons"
+msgstr "Pikonët e operatorëve"
 
 msgid "Satellite picons"
-msgstr "Satellite picons"
+msgstr "Pikonët e satelitëve"
 
 msgid "CAM picons"
-msgstr "CAM picons"
+msgstr "Pikonët CAM"
 
 msgid "Weather picons"
-msgstr "Weather picons"
+msgstr "Pikonët e motit"
 
 msgid "Large for selected channel selection types"
-msgstr "Large for selected channel selection types"
+msgstr "Ikona të mëdha për pamjet e zgjedhura të listës së kanaleve"
 
 msgid "No legacy picon archive is available for the selected positions and variant."
-msgstr "No legacy picon archive is available for the selected positions and variant."
+msgstr "Për pozicionet dhe variantin e zgjedhur nuk disponohet asnjë arkiv i vjetër pikonësh."
 
 msgid "Invalid picon destination"
-msgstr "Invalid picon destination"
+msgstr "Vendndodhje e pavlefshme për pikonët"
 
 msgid "Large channel selection icons (710 x 682)"
-msgstr "Large for selected channel selection types (710 x 682)"
+msgstr "Ikona të mëdha për listën e kanaleve (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
@@ -1734,3 +1733,87 @@ msgstr "Logot e Warder u anashkaluan. Shkarkimet e tjera të zgjedhura do të va
 
 msgid "picons"
 msgstr "logo kanalesh"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip nuk është i disponueshëm për arkitekturën e këtij marrësi."
+
+msgid "Back"
+msgstr "Prapa"
+
+msgid "Channel-list picon source"
+msgstr "Burimi i pikonëve në listën e kanaleve"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Zgjidh animacionin e pritjes. Ruaje për ta zbatuar pas rinisjes së GUI."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Zgjidhni dosjen për skedarin rezervë të konfigurimit hdg17.conf. Parazgjedhja: /usr/share/enigma2/hd_glass17/. Shtypni OK për dosje tjetër, pastaj SAVE për ta ruajtur."
+
+msgid "Choose with OK"
+msgstr "Zgjidh me OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Konfiguro temën FullHDGlass"
+
+msgid "Confirm"
+msgstr "Konfirmo"
+
+msgid "DAB+ information"
+msgstr "Informacione DAB+"
+
+msgid "Default spinner of image"
+msgstr "Animacioni i parazgjedhur i imazhit"
+
+msgid "Dove"
+msgstr "Pëllumbi"
+
+msgid "Downloading selected spinner..."
+msgstr "Duke shkarkuar animacionin e zgjedhur…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Aktivizojeni për të shfaqur pikonët tuaj nga dosja e zgjedhur. Shkarkimet vazhdojnë të përdorin hapësirën Warder dhe dosja juaj mbetet e paprekur."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Instaloni 7zip nga menyja e shkarkimeve dhe provoni përsëri shkarkimin e zgjedhur."
+
+msgid "Loading spinner list..."
+msgstr "Duke ngarkuar animacionet…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Lista në internet nuk është e disponueshme. Animacionet e instaluara janë të disponueshme."
+
+msgid "Prefer 50x30"
+msgstr "Jepi përparësi 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Shtypni OK për të zgjedhur dosjen me pikonët e kanaleve tuaja. Tema vetëm lexon skedarët PNG për shiritat e informacionit dhe listat e kanaleve. Në këtë dosje nuk shkarkon, ndryshon apo fshin skedarë."
+
+msgid "Radio mode"
+msgstr "Mënyra radio"
+
+msgid "Selected settings"
+msgstr "Cilësimet e zgjedhura"
+
+msgid "Spinner download failed. Try again."
+msgstr "Shkarkimi dështoi. Provo sërish."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Vend për paketat grafike, pikonët dhe të dhëna të tjera të shkarkuara të skin-it. Ruajtja e rrugës së ndryshuar krijon këtu hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Ruajtja e paketave grafike, pikonëve dhe të dhënave"
+
+msgid "System setting"
+msgstr "Cilësimi i sistemit"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Cilësimi i sistemit ruan kërkimin origjinal të pikonëve nga imazhi. Me përparësi 50×30 kërkohet fillimisht te picon_50x30 dhe për çdo logo që mungon te picon. Ruajeni dhe rinisni ndërfaqen grafike."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Animacioni nuk mund të ndryshohej. Skedarët ekzistues u ruajtën."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Ikonat e parazgjedhura nuk u rikthyen. Riinstaloni skin-in."

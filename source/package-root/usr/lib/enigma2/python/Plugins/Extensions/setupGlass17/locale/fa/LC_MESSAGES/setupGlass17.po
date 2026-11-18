@@ -38,7 +38,7 @@ msgid "Red"
 msgstr "أحمر"
 
 msgid "Purple"
-msgstr "Purple"
+msgstr "بنفش"
 
 msgid "Gray"
 msgstr "اللون الرمادي"
@@ -50,34 +50,34 @@ msgid "Yellow"
 msgstr "أصفر"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "خودکار"
 
 msgid "Type"
 msgstr "نوع"
 
 msgid "from image"
-msgstr "from image"
+msgstr "از ایمیج سیستم"
 
 msgid "G17 (Ch. Name)"
 msgstr "G17 (نام کانال)"
 
 msgid "Default"
-msgstr "Default"
+msgstr "پیش‌فرض"
 
 msgid "only Picon"
-msgstr "only Picon"
+msgstr "فقط پیکون"
 
 msgid "only Time"
-msgstr "only Time"
+msgstr "فقط ساعت"
 
 msgid "VU+ (Ch. Name)"
-msgstr "VU+ (Ch. Name)"
+msgstr "VU+ (نام کانال)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (برنامهٔ فعلی)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (نام کانال + برنامهٔ فعلی)"
 
 msgid "G17 (Act. event)"
 msgstr "G17 (برنامهٔ جاری)"
@@ -95,10 +95,10 @@ msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
-msgstr "Picon and Time"
+msgstr "پیکون و ساعت"
 
 msgid "Default 2"
-msgstr "Default 2"
+msgstr "پیش‌فرض 2"
 
 msgid "VU+ Duo2 Snr,Agc"
 msgstr "VU+ Duo2 Snr,Agc"
@@ -113,10 +113,10 @@ msgid "Duo2 Snr,Agc,RPM,Temp. 2"
 msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
 
 msgid "Classical"
-msgstr "Classical"
+msgstr "کلاسیک"
 
 msgid "with ZZPicon"
-msgstr "with ZZPicon"
+msgstr "با ZZPicon"
 
 msgid "with Picon 400x240"
 msgstr "با پیکون 400 × 240"
@@ -128,40 +128,40 @@ msgid "Glass17(+next event)"
 msgstr "Glass17 (+ برنامهٔ بعدی)"
 
 msgid "with PIG(+next event)"
-msgstr "with PIG(+next event)"
+msgstr "با PIG (+ برنامهٔ بعدی)"
 
 msgid "Glass17(+next, date)"
 msgstr "Glass17 (+ برنامهٔ بعدی و تاریخ)"
 
 msgid "New style"
-msgstr "New style"
+msgstr "سبک جدید"
 
 msgid "New style with PIG"
-msgstr "New style with PIG"
+msgstr "سبک جدید با PIG"
 
 msgid "PIG(+next event,left)"
-msgstr "PIG(+next event,left)"
+msgstr "PIG (+ برنامهٔ بعدی, چپ)"
 
 msgid "PIG(+act,next,left)"
-msgstr "PIG(+act,next,left)"
+msgstr "PIG (+ برنامهٔ فعلی, برنامهٔ بعدی, چپ)"
 
 msgid "The Core 88"
 msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr "PIG(+several event)"
+msgstr "PIG (+ چند برنامه)"
 
 msgid "G17(+several event)"
 msgstr "G17 (+ چند برنامه)"
 
 msgid "New style(+several event)"
-msgstr "New style(+several event)"
+msgstr "سبک جدید (+ چند برنامه)"
 
 msgid "PIG(+act,several,left)"
-msgstr "PIG(+act,several,left)"
+msgstr "PIG (+ برنامهٔ فعلی, چند برنامه, چپ)"
 
 msgid "with PIG"
-msgstr "with PIG"
+msgstr "با PIG"
 
 msgid "G17 events"
 msgstr "برنامه‌های G17"
@@ -179,37 +179,37 @@ msgid "PIP"
 msgstr "PIP"
 
 msgid "yes"
-msgstr "yes"
+msgstr "بله"
 
 msgid "no"
-msgstr "no"
+msgstr "خیر"
 
 msgid "Icons"
 msgstr "آیکون ها"
 
 msgid "Icons Right"
-msgstr "Icons Right"
+msgstr "نمادها در سمت راست"
 
 msgid "List"
-msgstr "List"
+msgstr "فهرست"
 
 msgid "List and Icon"
-msgstr "List and Icon"
+msgstr "فهرست و نماد"
 
 msgid "Icons Bar"
-msgstr "Icons Bar"
+msgstr "نوار نمادها"
 
 msgid "simply PIG"
-msgstr "simply PIG"
+msgstr "فقط PIG"
 
 msgid "Sat and Prov"
-msgstr "Sat and Prov"
+msgstr "ماهواره و ارائه‌دهنده"
 
 msgid "only Sat"
-msgstr "only Sat"
+msgstr "فقط ماهواره"
 
 msgid "only Prov"
-msgstr "only Prov"
+msgstr "فقط ارائه‌دهنده"
 
 msgid "only Weather"
 msgstr "فقط آب‌وهوا"
@@ -224,7 +224,7 @@ msgid "Sat, Prov and Weather"
 msgstr "ماهواره، ارائه‌دهنده و آب‌وهوا"
 
 msgid "InfoECM by Duri"
-msgstr "InfoECM by Duri"
+msgstr "اطلاعات ECM از Duri"
 
 msgid "None"
 msgstr "لا شيء"
@@ -239,67 +239,67 @@ msgid "Simple"
 msgstr "ساده"
 
 msgid "Ecminfo only"
-msgstr "Ecminfo only"
+msgstr "فقط اطلاعات ECM"
 
 msgid "Ecminfo and CAID"
-msgstr "Ecminfo and CAID"
+msgstr "اطلاعات ECM و CAID"
 
 msgid "CAID and SID"
-msgstr "CAID and SID"
+msgstr "CAID و SID"
 
 msgid "SID only"
-msgstr "SID only"
+msgstr "فقط SID"
 
 msgid "CAID, SID, VPID"
 msgstr "CAID، SID، VPID"
 
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "درصد"
 
 msgid "Colored gauge"
-msgstr "Colored gauge"
+msgstr "نشانگر رنگی"
 
 msgid "System info"
-msgstr "System info"
+msgstr "اطلاعات سیستم"
 
 msgid "Event - extended description"
-msgstr "Event - extended description"
+msgstr "برنامه – شرح تکمیلی"
 
 msgid "Side infobar"
-msgstr "Side infobar"
+msgstr "نوار اطلاعات کناری"
 
 msgid "Event and side infobar"
-msgstr "Event and side infobar"
+msgstr "برنامه و نوار اطلاعات کناری"
 
 msgid "Event - now and next"
-msgstr "Event - now and next"
+msgstr "برنامهٔ فعلی / برنامهٔ بعدی"
 
 msgid "Event now/next and side infobar"
-msgstr "Event now/next and side infobar"
+msgstr "برنامهٔ فعلی / برنامهٔ بعدی + نوار اطلاعات کناری"
 
 msgid "Black"
 msgstr "سیاه"
 
 msgid "with PIG(+ch.name,number)"
-msgstr "with PIG(+ch.name,number)"
+msgstr "با PIG (+ نام کانال, شماره)"
 
 msgid "no time"
-msgstr "no time"
+msgstr "بدون ساعت"
 
 msgid "with internet check"
-msgstr "with internet check"
+msgstr "با بررسی اتصال اینترنت"
 
 msgid "with frame"
-msgstr "with frame"
+msgstr "با قاب"
 
 msgid "big"
-msgstr "big"
+msgstr "بزرگ"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "توقف خودکار"
 
 msgid "Roll back"
-msgstr "Roll back"
+msgstr "پیمایش معکوس"
 
 msgid "Enhanced Weather"
 msgstr "الطقس المحسن"
@@ -314,7 +314,7 @@ msgid "Number"
 msgstr "عدد"
 
 msgid "disabled"
-msgstr "disabled"
+msgstr "غیرفعال"
 
 msgid "User defined path"
 msgstr "مسیر تعریف‌شده توسط کاربر"
@@ -363,7 +363,7 @@ msgstr ""
 "اینترنت یا تنظیمات فایروال را چک کنید !!"
 
 msgid "OLED type"
-msgstr "OLED type"
+msgstr "نوع OLED"
 
 msgid "Set OLED off in Standby"
 msgstr "تنظیم مد دیود ساطع کننده نور ارگانیک به حالت استندبای"
@@ -375,10 +375,10 @@ msgid "Mute picture transparency"
 msgstr "شفافیت تصویر بی‌صدا"
 
 msgid "Set binaries"
-msgstr "Set binaries"
+msgstr "تنظیم فایل‌های اجرایی"
 
 msgid "Style:"
-msgstr "Style:"
+msgstr "سبک:"
 
 msgid "Title color:"
 msgstr "رنگ عنوان : "
@@ -417,7 +417,7 @@ msgid "EventView type"
 msgstr "نوع نمایش برنامه"
 
 msgid "PIG type"
-msgstr "PIG type"
+msgstr "نوع PIG"
 
 msgid "Extendend description font size"
 msgstr "اندازهٔ قلم توضیحات کامل"
@@ -432,10 +432,10 @@ msgid "EPG list font size"
 msgstr "اندازهٔ قلم فهرست EPG"
 
 msgid "Dish screen"
-msgstr "Dish screen"
+msgstr "صفحهٔ آنتن"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "انتخاب صدا"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "OE.20تنظیم پلاگین مرورگر برای  "
@@ -444,10 +444,10 @@ msgid "Set user encoding.conf"
 msgstr "   بکار گرفته شده encoding.conf تنظیم"
 
 msgid "ChannelSelection 2xOK"
-msgstr "ChannelSelection 2xOK"
+msgstr "انتخاب کانال (۲ بار OK)"
 
 msgid "Enable windowstylescrollbar"
-msgstr "Enable windowstylescrollbar"
+msgstr "فعال کردن نوار پیمایش به سبک پنجره"
 
 msgid "On/Off icons"
 msgstr "آیکون‌های روشن/خاموش"
@@ -488,7 +488,7 @@ msgid "Starting Bitrate"
 msgstr "شروع به کار نرخ بیت"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "نرخ بیت"
 
 msgid "Btr: too high - stopped"
 msgstr "Btr: خیلی زیاد - متوقف شد"
@@ -518,10 +518,10 @@ msgid "Radio"
 msgstr "رادیو"
 
 msgid "Streaming service"
-msgstr "Streaming service"
+msgstr "سرویس پخش جریانی"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "جریان IP"
 
 msgid "Save"
 msgstr "ذخیره سازی"
@@ -551,7 +551,7 @@ msgid "EXTRA INFOBAR"
 msgstr "نوار اطلاعات اضافی"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "نوار اطلاعات"
 
 msgid "POSTER"
 msgstr "پوستر"
@@ -560,13 +560,13 @@ msgid "HDD/SSD"
 msgstr "HDD/SSD"
 
 msgid "NETWORK"
-msgstr "NETWORK"
+msgstr "شبکه"
 
 msgid "MENU"
-msgstr "MENU"
+msgstr "منو"
 
 msgid "CHANNEL SELECTION"
-msgstr "CHANNEL SELECTION"
+msgstr "انتخاب کانال"
 
 msgid "EPG SELECTION"
 msgstr "انتخاب EPG"
@@ -575,10 +575,10 @@ msgid "EVENT VIEW"
 msgstr "جزئیات برنامه"
 
 msgid "SPECIAL INFO"
-msgstr "SPECIAL INFO"
+msgstr "اطلاعات ویژه"
 
 msgid "USER INFO"
-msgstr "USER INFO"
+msgstr "اطلاعات کاربر"
 
 msgid "NETATMO"
 msgstr "NETATMO"
@@ -587,13 +587,13 @@ msgid "OLED"
 msgstr "OLED"
 
 msgid "TUNER"
-msgstr "TUNER"
+msgstr "تیونر"
 
 msgid "ENHANCED WEATHER"
-msgstr "ENHANCED WEATHER"
+msgstr "آب‌وهوای پیشرفته"
 
 msgid "WEATHER"
-msgstr "WEATHER"
+msgstr "آب‌وهوا"
 
 msgid "PATHS"
 msgstr "مسیرهای فایل‌های پیکربندی پوسته"
@@ -608,16 +608,16 @@ msgid "ANIMATIONS"
 msgstr "انیمیشن‌ها"
 
 msgid "OTHER"
-msgstr "OTHER"
+msgstr "سایر موارد"
 
 msgid "Color(s)"
 msgstr "رنگ(ها)"
 
 msgid "ECM line type"
-msgstr "ECM line type"
+msgstr "نوع سطر ECM"
 
 msgid "ECM refresh time"
-msgstr "ECM refresh time"
+msgstr "فاصلهٔ نوسازی ECM"
 
 msgid "Enable show address in ECM info"
 msgstr "ECM فعال سازی آدرس در اطلاعات"
@@ -635,13 +635,13 @@ msgid "Show CHID in ECM line"
 msgstr "نمایش CHID در سطر ECM"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "سطر ECM"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "برچسب‌های ECM"
 
 msgid "ECM Values"
-msgstr "ECM Values"
+msgstr "مقادیر ECM"
 
 msgid "Enable Enhanced Infobar"
 msgstr "فعال سازی نوار اطلاعات پیشرفته"
@@ -668,10 +668,10 @@ msgid "Enable icon of Unknown CAID"
 msgstr "فعال‌سازی نماد CAID ناشناخته"
 
 msgid "Audio type of current track"
-msgstr "Audio type of current track"
+msgstr "قالب ترک صوتی فعلی"
 
 msgid "Progressive/Interlace detection"
-msgstr "Progressive/Interlace detection"
+msgstr "تشخیص اسکن پیش‌رونده یا درهم‌بافته"
 
 msgid "Tuner info"
 msgstr "اطلاعات تیونر"
@@ -686,7 +686,7 @@ msgid "Enable full bitrate info"
 msgstr "فعال سازی کامل اطلاعات میزان ارسال بیت"
 
 msgid "Bitrate auto stop limit"
-msgstr "Bitrate auto stop limit"
+msgstr "آستانهٔ توقف خودکار سنجش نرخ بیت"
 
 msgid "Enable eBitrateCalculator"
 msgstr "فعال‌سازی eBitrateCalculator"
@@ -695,7 +695,7 @@ msgid "Show Satellite position in TP info"
 msgstr "TP نمایش موقعیت ماهواره ها در اطلاعات  "
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "ارائه‌دهنده"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -713,16 +713,16 @@ msgid "Progress bar background pixmap"
 msgstr "تصویر پس‌زمینهٔ نوار پیشرفت"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, ارائه‌دهنده"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "نوع ترانسپوندر"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "اطلاعات ترانسپوندر"
 
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "وضوح تصویر"
 
 msgid "Date"
 msgstr "تاریخ"
@@ -734,7 +734,7 @@ msgid "Seconds"
 msgstr "ثانیه"
 
 msgid "Channel name"
-msgstr "Channel name"
+msgstr "نام کانال"
 
 msgid "Event now"
 msgstr "برنامهٔ جاری"
@@ -752,7 +752,7 @@ msgid "Enable typewriting"
 msgstr "فعال سازی نوع نوشتن"
 
 msgid "Ignore infobar timeout"
-msgstr "Ignore infobar timeout"
+msgstr "نادیده گرفتن زمان بسته شدن نوار اطلاعات"
 
 msgid "Enable fade"
 msgstr "فعال سازی محو شدن"
@@ -764,7 +764,7 @@ msgid "Enable fade in"
 msgstr "فعال سازی محو شدن در"
 
 msgid "Show recording icon"
-msgstr "Show recording icon"
+msgstr "نمایش نماد ضبط"
 
 msgid "Channel name type"
 msgstr "اسم القناة نوع"
@@ -803,19 +803,19 @@ msgid "Network speed"
 msgstr "سرعت شبکه"
 
 msgid "Menu Icons"
-msgstr "Menu Icons"
+msgstr "نمادهای منو"
 
 msgid "Enable empty icons in Menu type - Icons"
 msgstr "فعال کردن آیکون های خالی در نوع منو - آیکن"
 
 msgid "Enable Animation (Menu: Icons/Icons Bar)"
-msgstr "Enable Animation (Menu: Icons/Icons Bar)"
+msgstr "فعال کردن پویانمایی منو در حالت نمادها یا نوار نمادها"
 
 msgid "Display remaining time in extra EPG"
 msgstr "نمایش زمان باقی‌مانده در EPG اضافی"
 
 msgid "Text rolling type"
-msgstr "Text rolling type"
+msgstr "نوع پیمایش متن"
 
 msgid "Text rolling start delay"
 msgstr "النص بداية المتداول تأخير"
@@ -830,19 +830,19 @@ msgid "Line height"
 msgstr "ارتفاع سطر"
 
 msgid "EPG Description"
-msgstr "EPG Description"
+msgstr "شرح EPG"
 
 msgid "EPG Description - selected"
-msgstr "EPG Description - selected"
+msgstr "شرح EPG (انتخاب‌شده)"
 
 msgid "Channel name - selected"
-msgstr "Channel name - selected"
+msgstr "نام کانال (انتخاب‌شده)"
 
 msgid "Enable Special info timeout"
 msgstr "تمكين معلومات الخاصة مهلة"
 
 msgid "extensions"
-msgstr "extensions"
+msgstr "افزونه‌ها"
 
 msgid "Special info in main menu"
 msgstr "معلومات خاصة في القائمة الرئيسية"
@@ -863,31 +863,31 @@ msgid "Enable OLED off in standby"
 msgstr "فعال سازی دیود ساطع کننده ی نور ارگانیک در مد استندبای"
 
 msgid "Number of tuners"
-msgstr "Number of tuners"
+msgstr "تعداد تیونرها"
 
 msgid "Hide tuner in standby or missing tuner"
 msgstr "پنهان کردن تیونر در حالت آماده‌به‌کار یا هنگام نبود تیونر"
 
 msgid "Active"
-msgstr "Active"
+msgstr "فعال"
 
 msgid "Active in the background"
-msgstr "Active in the background"
+msgstr "فعال در پس‌زمینه"
 
 msgid "Standby mode"
-msgstr "Standby mode"
+msgstr "حالت آماده‌به‌کار"
 
 msgid "Missing"
-msgstr "Missing"
+msgstr "موجود نیست"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "ضبط"
 
 msgid "Recording and live"
-msgstr "Recording and live"
+msgstr "ضبط و پخش زنده"
 
 msgid "Show Astronomical Information"
-msgstr "Show Astronomical Information"
+msgstr "نمایش اطلاعات نجومی"
 
 msgid "Temperature unit"
 msgstr "واحد دما"
@@ -914,7 +914,7 @@ msgid "Display nighttime icons"
 msgstr "نمایش نمادهای شبانه"
 
 msgid "Enable next city in Weather"
-msgstr "Enable next city in Weather"
+msgstr "فعال کردن نمایش شهر بعدی در بخش آب‌وهوا"
 
 msgid "API-Key OpenWeatherMap"
 msgstr "کلید API سرویس OpenWeatherMap"
@@ -998,7 +998,7 @@ msgid "(Channel selection) picon/Prov/Sat"
 msgstr "(فهرست کانال‌ها) پیکون/ارائه‌دهنده/ماهواره"
 
 msgid "VTi SplitScreen"
-msgstr "VTi SplitScreen"
+msgstr "صفحهٔ تقسیم‌شدهٔ VTi"
 
 msgid "Reference separating char"
 msgstr "نویسهٔ جداکنندهٔ شناسه‌ها"
@@ -1031,7 +1031,7 @@ msgid "Enable user encoding.conf"
 msgstr "   بکار گرفته شده encoding.conf فعال سازی"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "محافظ صفحهٔ رادیو"
 
 msgid "IPTV Radio Detection"
 msgstr "شناسایی رادیوی IPTV"
@@ -1046,7 +1046,7 @@ msgid "Erase finished successfully!"
 msgstr "حذف با موفقیت به پایان رسید!"
 
 msgid "Color Sample"
-msgstr "Color Sample"
+msgstr "نمونهٔ رنگ"
 
 msgid "Version:"
 msgstr "نسخه :"
@@ -1056,8 +1056,7 @@ msgstr "صفحه نمایش خیلی پهن "
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
-"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr "وبگاه: www.hdglass16.eu. کمک مالی از طریق حساب PayPal به نشانی hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "هیچ فایل شناسایی نشد !"
@@ -1129,7 +1128,7 @@ msgstr "برای اعمال همهٔ تغییرات بدون عوض شدن سب�
 "به منظور اعمال راه اندازی کلی و عدم تغییر در سبک موجود دوباره ذخیره سازی کنید"
 
 msgid "Special Info type"
-msgstr "Special Info type"
+msgstr "نوع اطلاعات ویژه"
 
 msgid "User info type"
 msgstr "نوع اطلاعات کلربری :"
@@ -1385,46 +1384,46 @@ msgid "selected receiver service(s) have no matching picon in the selected packa
 msgstr "سرویس‌های انتخاب‌شدهٔ گیرنده در بسته‌های انتخاب‌شده پیکون متناظر ندارند."
 
 msgid "Choose an available channel picon size and the large channel selection icon package."
-msgstr "Choose an available channel picon size and the large channel selection icon package."
+msgstr "اندازهٔ موجود برای پیکون کانال‌ها و بستهٔ نمادهای بزرگ فهرست کانال را انتخاب کنید."
 
 msgid "Choose a channel picon colour supported at the selected size."
-msgstr "Choose a channel picon colour supported at the selected size."
+msgstr "یکی از رنگ‌های موجود برای اندازهٔ انتخاب‌شدهٔ پیکون کانال را انتخاب کنید."
 
 msgid "Choose the available provider picon variant."
-msgstr "Choose the available provider picon variant."
+msgstr "گونهٔ موجود پیکون ارائه‌دهندگان را انتخاب کنید."
 
 msgid "Choose the available satellite picon variant."
-msgstr "Choose the available satellite picon variant."
+msgstr "گونهٔ موجود پیکون ماهواره‌ها را انتخاب کنید."
 
 msgid "Choose black or white CAM picons."
-msgstr "Choose black or white CAM picons."
+msgstr "پیکون‌های سیاه یا سفید CAM را انتخاب کنید."
 
 msgid "Choose black or white weather information picons."
-msgstr "Choose black or white weather information picons."
+msgstr "پیکون‌های سیاه یا سفید اطلاعات هواشناسی را انتخاب کنید."
 
 msgid "Provider picons"
-msgstr "Provider picons"
+msgstr "پیکون‌های ارائه‌دهندگان"
 
 msgid "Satellite picons"
-msgstr "Satellite picons"
+msgstr "پیکون‌های ماهواره‌ها"
 
 msgid "CAM picons"
-msgstr "CAM picons"
+msgstr "پیکون‌های CAM"
 
 msgid "Weather picons"
-msgstr "Weather picons"
+msgstr "پیکون‌های هواشناسی"
 
 msgid "Large for selected channel selection types"
-msgstr "Large for selected channel selection types"
+msgstr "نمادهای بزرگ برای حالت‌های منتخب فهرست کانال"
 
 msgid "No legacy picon archive is available for the selected positions and variant."
-msgstr "No legacy picon archive is available for the selected positions and variant."
+msgstr "برای موقعیت‌ها و گونهٔ انتخاب‌شده هیچ بایگانی قدیمی پیکون موجود نیست."
 
 msgid "Invalid picon destination"
-msgstr "Invalid picon destination"
+msgstr "مقصد پیکون نامعتبر است"
 
 msgid "Large channel selection icons (710 x 682)"
-msgstr "Large for selected channel selection types (710 x 682)"
+msgstr "نمادهای بزرگ فهرست کانال (710 x 682)"
 
 # TEST196 Warder picon settings
 msgid "Satellite positions"
@@ -1738,3 +1737,87 @@ msgstr "از نشان‌های Warder صرف‌نظر شد. بارگیری سا�
 
 msgid "picons"
 msgstr "نشان‌های کانال"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip برای معماری این گیرنده در دسترس نیست."
+
+msgid "Back"
+msgstr "بازگشت"
+
+msgid "Channel-list picon source"
+msgstr "منبع پیکون‌های فهرست کانال"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "پویانمایی انتظار را انتخاب کنید. پس از ذخیره و راه‌اندازی مجدد رابط اعمال می‌شود."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "پوشه ذخیره نسخه پشتیبان تنظیمات hdg17.conf را انتخاب کنید. مسیر پیش‌فرض: /usr/share/enigma2/hd_glass17/. برای انتخاب پوشه دیگر OK و برای ذخیره نسخه پشتیبان SAVE را بزنید."
+
+msgid "Choose with OK"
+msgstr "انتخاب با OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "تنظیم پوستهٔ FullHDGlass"
+
+msgid "Confirm"
+msgstr "تأیید"
+
+msgid "DAB+ information"
+msgstr "اطلاعات DAB+"
+
+msgid "Default spinner of image"
+msgstr "انیمیشن پیش‌فرض ایمیج"
+
+msgid "Dove"
+msgstr "کبوتر"
+
+msgid "Downloading selected spinner..."
+msgstr "در حال دریافت پویانمایی انتخاب‌شده…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "با فعال کردن این گزینه، پیکون‌های کانال از پوشهٔ انتخابی شما نمایش داده می‌شوند. فایل‌های بارگیری‌شده همچنان در فضای Warder ذخیره می‌شوند و پوشهٔ شما دست‌نخورده می‌ماند."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "7zip را از منوی بارگیری نصب کنید و بارگیری انتخاب‌شده را دوباره انجام دهید."
+
+msgid "Loading spinner list..."
+msgstr "در حال بارگیری فهرست پویانمایی‌ها…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "فهرست آنلاین در دسترس نیست. پویانمایی‌های نصب‌شده در دسترس هستند."
+
+msgid "Prefer 50x30"
+msgstr "اولویت با ۵۰×۳۰"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "برای انتخاب پوشهٔ پیکون‌های کانال، OK را بزنید. پوسته فقط فایل‌های PNG را برای نوارهای اطلاعات و فهرست کانال‌ها می‌خواند و در این پوشه هیچ فایلی بارگیری، ویرایش یا حذف نمی‌کند."
+
+msgid "Radio mode"
+msgstr "حالت رادیو"
+
+msgid "Selected settings"
+msgstr "تنظیمات انتخاب‌شده"
+
+msgid "Spinner download failed. Try again."
+msgstr "دریافت ناموفق بود. دوباره تلاش کنید."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "محل نگهداری مجموعه‌های گرافیکی، پیکون‌ها و دیگر داده‌های دانلودشده پوسته. با ذخیره مسیر تغییر‌یافته، پوشه hdg17_files اینجا ساخته می‌شود."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "محل ذخیره بسته‌های گرافیکی، پیکون‌ها و داده‌ها"
+
+msgid "System setting"
+msgstr "تنظیم سیستم"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "تنظیم سیستم روش اصلی ایمیج برای یافتن پیکون‌ها را حفظ می‌کند. با اولویت ۵۰×۳۰ ابتدا picon_50x30 و برای هر نشانِ یافت‌نشده سپس picon جست‌وجو می‌شود. تنظیمات را ذخیره و رابط گرافیکی را بازراه‌اندازی کنید."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "تغییر پویانمایی ممکن نشد. پرونده‌های موجود شما حفظ شدند."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "بازیابی نمادهای پیش‌فرض ممکن نشد. پوسته را دوباره نصب کنید."

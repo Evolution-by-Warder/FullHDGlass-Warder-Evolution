@@ -1775,3 +1775,87 @@ msgstr "已跳过 Warder 台标。其他选中的文件将继续下载。"
 
 msgid "picons"
 msgstr "台标"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip 不支持此接收机的架构。"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Channel-list picon source"
+msgstr "频道列表台标来源"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "选择等待动画。保存后将在界面重启时应用。"
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "选择配置备份文件 hdg17.conf 的保存文件夹。默认位置：/usr/share/enigma2/hd_glass17/。按 OK 选择其他文件夹，再按 SAVE 保存备份。"
+
+msgid "Choose with OK"
+msgstr "按 OK 选择"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "配置 FullHDGlass 皮肤"
+
+msgid "Confirm"
+msgstr "确认"
+
+msgid "DAB+ information"
+msgstr "DAB+ 信息"
+
+msgid "Default spinner of image"
+msgstr "系统镜像默认等待动画"
+
+msgid "Dove"
+msgstr "鸽子"
+
+msgid "Downloading selected spinner..."
+msgstr "正在下载所选动画…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "启用后将显示所选文件夹中的自定义频道台标。下载内容仍保存在 Warder 存储区，不会更改您的文件夹。"
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "请在下载菜单中安装 7zip，然后重试所选下载。"
+
+msgid "Loading spinner list..."
+msgstr "正在加载动画列表…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "在线列表不可用。仍可使用已安装的动画。"
+
+msgid "Prefer 50x30"
+msgstr "优先使用 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "按 OK 选择频道台标文件夹。皮肤只会读取其中的 PNG 文件，用于信息栏和频道列表，不会向该文件夹下载文件，也不会修改或删除其中的文件。"
+
+msgid "Radio mode"
+msgstr "收音机模式"
+
+msgid "Selected settings"
+msgstr "已选设置"
+
+msgid "Spinner download failed. Try again."
+msgstr "下载失败，请重试。"
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "用于存储下载的图形套件、台标及其他皮肤数据。保存更改后的路径时会在此创建 hdg17_files。"
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "图形套件、台标和数据存储位置"
+
+msgid "System setting"
+msgstr "系统设置"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "系统设置会保留系统镜像原有的台标查找方式。优先使用 50×30 时，先查找 picon_50x30，找不到的台标再到 picon 中查找。请保存并重启图形界面。"
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "无法更改等待动画。现有文件已保留。"
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "无法恢复默认图标，请重新安装皮肤。"

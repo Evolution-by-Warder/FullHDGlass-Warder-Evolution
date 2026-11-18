@@ -160,9 +160,9 @@ class NetatmoScreen(Screen):
 		self.session = session
 		if not ENAA:
 			self.skin = NetatmoScreen.skinA
-			from Plugins.Extensions.setupGlass17.txt import NETATMO
+			from Plugins.Extensions.setupGlass17.txt import netatmo_missing
 			from Components.Label import Label
-			self['info'] = Label(NETATMO)
+			self['info'] = Label(netatmo_missing())
 		elif ENA_ALL:
 			self.skin = NetatmoScreen.skinC
 			self.__atmoTimer = eTimer()

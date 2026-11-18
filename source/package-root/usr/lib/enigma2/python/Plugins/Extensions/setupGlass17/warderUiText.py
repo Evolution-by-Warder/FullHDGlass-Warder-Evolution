@@ -1,9 +1,7 @@
 """New setup strings; resolve the active OSD language on every screen opening."""
-import gettext
-from functools import lru_cache
 from pathlib import Path
 from Components.config import config
-from .warderLocale import language_code
+from .warderLocale import get_translator, language_code
 
 
 TEXT = {
@@ -185,9 +183,7 @@ TEXT.setdefault("tr", {})["FullHDGlass skin storage"] = "FullHDGlass tema depola
 TEXT.setdefault("uk", {})["FullHDGlass skin storage"] = "Сховище скіна FullHDGlass"
 TEXT.setdefault("zh", {})["FullHDGlass skin storage"] = "FullHDGlass 皮肤存储位置"
 
-@lru_cache(maxsize=24)
-def _catalog(lang):
-    return gettext.translation("setupGlass17", str(Path(__file__).parent / "locale"), languages=[lang], fallback=True)
+_translate = get_translator("setupGlass17", config, str(Path(__file__).parent), always_osd=True)
 
 
 def ui_text(text):
@@ -196,7 +192,7 @@ def ui_text(text):
         return TEXT[lang][text]
     if text == "FullHDGlass configuration":
         return TEXT["en"][text]
-    return _catalog(lang).gettext(text)
+    return _translate(text)
 
 # Prefix for the current settings summary below the shared header.
 for _lang, _selection in {'sk': 'Máš zvolené', 'cs': 'Máš zvoleno', 'en': 'Selected settings', 'de': 'Ausgewählt', 'pl': 'Wybrane ustawienia', 'hu': 'Kiválasztva', 'ru': 'Выбрано', 'fr': 'Sélection actuelle', 'it': 'Selezione attuale', 'es': 'Selección actual'}.items():

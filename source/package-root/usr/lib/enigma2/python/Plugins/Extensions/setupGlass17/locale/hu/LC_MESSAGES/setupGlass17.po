@@ -38,7 +38,7 @@ msgid "Red"
 msgstr "Piros"
 
 msgid "Purple"
-msgstr "Purple"
+msgstr "Lila"
 
 msgid "Gray"
 msgstr "Szürke"
@@ -50,34 +50,34 @@ msgid "Yellow"
 msgstr "Sárga"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatikus"
 
 msgid "Type"
 msgstr "Típus"
 
 msgid "from image"
-msgstr "from image"
+msgstr "A rendszerképből"
 
 msgid "G17 (Ch. Name)"
 msgstr "G17 (csatornanév)"
 
 msgid "Default"
-msgstr "Default"
+msgstr "Alapértelmezett"
 
 msgid "only Picon"
-msgstr "only Picon"
+msgstr "Csak pikon"
 
 msgid "only Time"
-msgstr "only Time"
+msgstr "Csak idő"
 
 msgid "VU+ (Ch. Name)"
-msgstr "VU+ (Ch. Name)"
+msgstr "VU+ (Csatornanév)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (Aktuális műsor)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (Csatornanév + Aktuális műsor)"
 
 msgid "G17 (Act. event)"
 msgstr "G17 (aktuális műsor)"
@@ -95,10 +95,10 @@ msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
-msgstr "Picon and Time"
+msgstr "Pikon és idő"
 
 msgid "Default 2"
-msgstr "Default 2"
+msgstr "Alapértelmezett 2"
 
 msgid "VU+ Duo2 Snr,Agc"
 msgstr "VU+ Duo2 Snr,Agc"
@@ -113,10 +113,10 @@ msgid "Duo2 Snr,Agc,RPM,Temp. 2"
 msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
 
 msgid "Classical"
-msgstr "Classical"
+msgstr "Klasszikus"
 
 msgid "with ZZPicon"
-msgstr "with ZZPicon"
+msgstr "ZZPiconnal"
 
 msgid "with Picon 400x240"
 msgstr "400 × 240-es piconnal"
@@ -128,40 +128,40 @@ msgid "Glass17(+next event)"
 msgstr "Glass17 (+ következő műsor)"
 
 msgid "with PIG(+next event)"
-msgstr "with PIG(+next event)"
+msgstr "PIG-gel (+ Következő műsor)"
 
 msgid "Glass17(+next, date)"
 msgstr "Glass17 (+ következő műsor, dátum)"
 
 msgid "New style"
-msgstr "New style"
+msgstr "Új stílus"
 
 msgid "New style with PIG"
-msgstr "New style with PIG"
+msgstr "Új stílus PIG-gel"
 
 msgid "PIG(+next event,left)"
-msgstr "PIG(+next event,left)"
+msgstr "PIG (+ Következő műsor, bal oldalon)"
 
 msgid "PIG(+act,next,left)"
-msgstr "PIG(+act,next,left)"
+msgstr "PIG (+ Aktuális műsor, Következő műsor, bal oldalon)"
 
 msgid "The Core 88"
 msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr "PIG(+several event)"
+msgstr "PIG (+ Több műsor)"
 
 msgid "G17(+several event)"
 msgstr "G17 (+ több műsor)"
 
 msgid "New style(+several event)"
-msgstr "New style(+several event)"
+msgstr "Új stílus (+ Több műsor)"
 
 msgid "PIG(+act,several,left)"
-msgstr "PIG(+act,several,left)"
+msgstr "PIG (+ Aktuális műsor, Több műsor, bal oldalon)"
 
 msgid "with PIG"
-msgstr "with PIG"
+msgstr "PIG-gel"
 
 msgid "G17 events"
 msgstr "G17 műsorok"
@@ -179,37 +179,37 @@ msgid "PIP"
 msgstr "PIP"
 
 msgid "yes"
-msgstr "yes"
+msgstr "Igen"
 
 msgid "no"
-msgstr "no"
+msgstr "Nem"
 
 msgid "Icons"
 msgstr "Ikonok"
 
 msgid "Icons Right"
-msgstr "Icons Right"
+msgstr "Ikonok a jobb oldalon"
 
 msgid "List"
-msgstr "List"
+msgstr "Lista"
 
 msgid "List and Icon"
-msgstr "List and Icon"
+msgstr "Lista és ikon"
 
 msgid "Icons Bar"
-msgstr "Icons Bar"
+msgstr "Ikonsáv"
 
 msgid "simply PIG"
-msgstr "simply PIG"
+msgstr "Csak PIG"
 
 msgid "Sat and Prov"
-msgstr "Sat and Prov"
+msgstr "Műhold és szolgáltató"
 
 msgid "only Sat"
-msgstr "only Sat"
+msgstr "Csak műhold"
 
 msgid "only Prov"
-msgstr "only Prov"
+msgstr "Csak szolgáltató"
 
 msgid "only Weather"
 msgstr "Csak időjárás"
@@ -239,67 +239,67 @@ msgid "Simple"
 msgstr "Egyszerű"
 
 msgid "Ecminfo only"
-msgstr "Ecminfo only"
+msgstr "Csak ECM-adatok"
 
 msgid "Ecminfo and CAID"
-msgstr "Ecminfo and CAID"
+msgstr "ECM-adatok és CAID"
 
 msgid "CAID and SID"
-msgstr "CAID and SID"
+msgstr "CAID és SID"
 
 msgid "SID only"
-msgstr "SID only"
+msgstr "Csak SID"
 
 msgid "CAID, SID, VPID"
 msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "Százalék"
 
 msgid "Colored gauge"
-msgstr "Colored gauge"
+msgstr "Színes mérő"
 
 msgid "System info"
-msgstr "System info"
+msgstr "Rendszerinformáció"
 
 msgid "Event - extended description"
-msgstr "Event - extended description"
+msgstr "Műsor – részletes leírás"
 
 msgid "Side infobar"
-msgstr "Side infobar"
+msgstr "Oldalsó információs sáv"
 
 msgid "Event and side infobar"
-msgstr "Event and side infobar"
+msgstr "Műsor és oldalsó információs sáv"
 
 msgid "Event - now and next"
-msgstr "Event - now and next"
+msgstr "Aktuális műsor / Következő műsor"
 
 msgid "Event now/next and side infobar"
-msgstr "Event now/next and side infobar"
+msgstr "Aktuális műsor / Következő műsor + Oldalsó információs sáv"
 
 msgid "Black"
 msgstr "Fekete"
 
 msgid "with PIG(+ch.name,number)"
-msgstr "with PIG(+ch.name,number)"
+msgstr "PIG-gel (+ Csatornanév, Szám)"
 
 msgid "no time"
-msgstr "no time"
+msgstr "Óra nélkül"
 
 msgid "with internet check"
-msgstr "with internet check"
+msgstr "Internetkapcsolat-ellenőrzéssel"
 
 msgid "with frame"
-msgstr "with frame"
+msgstr "Kerettel"
 
 msgid "big"
-msgstr "big"
+msgstr "Nagy"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Automatikus leállítás"
 
 msgid "Roll back"
-msgstr "Roll back"
+msgstr "Visszagörgetés"
 
 msgid "Enhanced Weather"
 msgstr "Fokozott időjárás"
@@ -314,7 +314,7 @@ msgid "Number"
 msgstr "szám"
 
 msgid "disabled"
-msgstr "disabled"
+msgstr "Kikapcsolva"
 
 msgid "User defined path"
 msgstr "Felhasználói elérési út"
@@ -432,10 +432,10 @@ msgid "EPG list font size"
 msgstr "Az EPG-lista betűmérete"
 
 msgid "Dish screen"
-msgstr "Dish screen"
+msgstr "Antenna képernyő"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "Hangsávválasztás"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "PluginBrowser - OE 2.0 beállítása"
@@ -516,10 +516,10 @@ msgid "Radio"
 msgstr "Rádió"
 
 msgid "Streaming service"
-msgstr "Streaming service"
+msgstr "Streamszolgáltatás"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "IP-adatfolyam"
 
 msgid "Save"
 msgstr "Mentés"
@@ -549,7 +549,7 @@ msgid "EXTRA INFOBAR"
 msgstr "KIEGÉSZÍTŐ INFORMÁCIÓS SÁV"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "Információs sáv"
 
 msgid "POSTER"
 msgstr "POSZTER"
@@ -561,7 +561,7 @@ msgid "NETWORK"
 msgstr "HÁLÓZAT"
 
 msgid "MENU"
-msgstr "MENU"
+msgstr "Menü"
 
 msgid "CHANNEL SELECTION"
 msgstr "CSATORNAVÁLASZTÁS"
@@ -576,7 +576,7 @@ msgid "SPECIAL INFO"
 msgstr "KÜLÖNLEGES INFO"
 
 msgid "USER INFO"
-msgstr "USER INFO"
+msgstr "Felhasználói információ"
 
 msgid "NETATMO"
 msgstr "NETATMO"
@@ -588,7 +588,7 @@ msgid "TUNER"
 msgstr "TUNER"
 
 msgid "ENHANCED WEATHER"
-msgstr "ENHANCED WEATHER"
+msgstr "Bővített időjárás"
 
 msgid "WEATHER"
 msgstr "IDŐJÁRÁS"
@@ -633,13 +633,13 @@ msgid "Show CHID in ECM line"
 msgstr "CHID megjelenítése az ECM-sorban"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "ECM-sor"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "ECM-címkék"
 
 msgid "ECM Values"
-msgstr "ECM Values"
+msgstr "ECM-értékek"
 
 msgid "Enable Enhanced Infobar"
 msgstr "Mutassa a teljes infosávot"
@@ -666,10 +666,10 @@ msgid "Enable icon of Unknown CAID"
 msgstr "Ismeretlen CAID ikonjának engedélyezése"
 
 msgid "Audio type of current track"
-msgstr "Audio type of current track"
+msgstr "Az aktuális hangsáv formátuma"
 
 msgid "Progressive/Interlace detection"
-msgstr "Progressive/Interlace detection"
+msgstr "Progresszív vagy váltottsoros kép felismerése"
 
 msgid "Tuner info"
 msgstr "Tunerinformációk"
@@ -693,7 +693,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Mutasd műholdas pozíciót TP info"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Szolgáltató"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -711,16 +711,16 @@ msgid "Progress bar background pixmap"
 msgstr "Folyamatjelző sáv háttérképe"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Szolgáltató"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Transzpondertípus"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Transzponderadatok"
 
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Videófelbontás"
 
 msgid "Date"
 msgstr "Dátum"
@@ -732,7 +732,7 @@ msgid "Seconds"
 msgstr "Másodperc"
 
 msgid "Channel name"
-msgstr "Channel name"
+msgstr "Csatornanév"
 
 msgid "Event now"
 msgstr "Aktuális műsor"
@@ -762,7 +762,7 @@ msgid "Enable fade in"
 msgstr "Fokozatos felfutási hatás engedélyezése"
 
 msgid "Show recording icon"
-msgstr "Show recording icon"
+msgstr "Felvételikon megjelenítése"
 
 msgid "Channel name type"
 msgstr "Csatorna neve Típus"
@@ -828,13 +828,13 @@ msgid "Line height"
 msgstr "Sormagasság"
 
 msgid "EPG Description"
-msgstr "EPG Description"
+msgstr "EPG-leírás"
 
 msgid "EPG Description - selected"
-msgstr "EPG Description - selected"
+msgstr "EPG-leírás (kijelölve)"
 
 msgid "Channel name - selected"
-msgstr "Channel name - selected"
+msgstr "Csatornanév (kijelölve)"
 
 msgid "Enable Special info timeout"
 msgstr "Engedélyezi a speciális info timeout"
@@ -879,13 +879,13 @@ msgid "Missing"
 msgstr "Hiányzó"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "Felvétel"
 
 msgid "Recording and live"
-msgstr "Recording and live"
+msgstr "Felvétel és élő adás"
 
 msgid "Show Astronomical Information"
-msgstr "Show Astronomical Information"
+msgstr "Csillagászati adatok megjelenítése"
 
 msgid "Temperature unit"
 msgstr "Hőmérséklet mértékegysége"
@@ -996,7 +996,7 @@ msgid "(Channel selection) picon/Prov/Sat"
 msgstr "(Csatornalista) picon/szolgáltató/műhold"
 
 msgid "VTi SplitScreen"
-msgstr "VTi SplitScreen"
+msgstr "VTi osztott képernyő"
 
 msgid "Reference separating char"
 msgstr "Referencia-elválasztó karakter"
@@ -1029,7 +1029,7 @@ msgid "Enable user encoding.conf"
 msgstr "Engedélyezi a felhasználó encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Rádiós képernyőkímélő"
 
 msgid "IPTV Radio Detection"
 msgstr "IPTV-rádió felismerése"
@@ -1044,18 +1044,17 @@ msgid "Erase finished successfully!"
 msgstr "A törlés sikeresen befejeződött!"
 
 msgid "Color Sample"
-msgstr "Color Sample"
+msgstr "Színminta"
 
 msgid "Version:"
 msgstr "Változat:"
 
 msgid "Extra Screen"
-msgstr "Extra Screen"
+msgstr "Kiegészítő képernyő"
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
-"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr "Webhely: www.hdglass16.eu. Adományok PayPalon: hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "Nem találtam fájlokat!"
@@ -1236,7 +1235,7 @@ msgid "SUCCESSFUL"
 msgstr "SIKERES"
 
 msgid "Total:"
-msgstr "Total:"
+msgstr "Összesen:"
 
 msgid "Deleted:"
 msgstr "Törölt:"
@@ -1734,3 +1733,87 @@ msgstr "A Warder pikonjai kimaradtak. A többi kijelölt fájl letöltése folyt
 
 msgid "picons"
 msgstr "pikonok"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "A 7zip nem érhető el ehhez a vevőarchitektúrához."
+
+msgid "Back"
+msgstr "Vissza"
+
+msgid "Channel-list picon source"
+msgstr "Csatornalista piconforrása"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Válassza ki a várakozási animációt. Mentés után a kezelőfelület újraindításakor lép életbe."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Itt választható ki a hdg17.conf biztonsági konfigurációs fájl mappája. Alapértelmezett: /usr/share/enigma2/hd_glass17/. OK: másik mappa; SAVE: mentés."
+
+msgid "Choose with OK"
+msgstr "Kiválasztás az OK gombbal"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "FullHDGlass felület beállítása"
+
+msgid "Confirm"
+msgstr "Megerősítés"
+
+msgid "DAB+ information"
+msgstr "DAB+ információk"
+
+msgid "Default spinner of image"
+msgstr "Az image alapértelmezett animációja"
+
+msgid "Dove"
+msgstr "Galamb"
+
+msgid "Downloading selected spinner..."
+msgstr "A kiválasztott animáció letöltése…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Engedélyezze saját csatornapikonjait egy kiválasztott mappából. A letöltések a Warder tárhelyét használják; fájljai érintetlenek maradnak."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Telepítse a 7zip programot a Letöltés menüből, majd próbálja újra a kiválasztott letöltést."
+
+msgid "Loading spinner list..."
+msgstr "Animációlista betöltése…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Az online lista nem érhető el. A telepített animációk elérhetők."
+
+msgid "Prefer 50x30"
+msgstr "50×30 előnyben"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Nyomjon OK-t a pikonmappa kiválasztásához. A felület csak olvassa az InfoBarok és csatornalisták PNG fájljait, nem módosít és nem töröl."
+
+msgid "Radio mode"
+msgstr "Rádió üzemmód"
+
+msgid "Selected settings"
+msgstr "Kiválasztva"
+
+msgid "Spinner download failed. Try again."
+msgstr "Az animáció letöltése sikertelen. Próbálja újra."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Letöltött grafikai készletek, piconok és egyéb skinadatok helye. A módosított útvonal mentésekor itt jön létre a hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Grafikai csomagok, piconok és adatok tárhelye"
+
+msgid "System setting"
+msgstr "Rendszerbeállítás"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "A rendszerbeállítás megtartja az image eredeti piconkeresését. Az 50×30 mód a picon_50x30 mappát használja, hiányzó logónál a picon mappát. Ments és indítsd újra a GUI-t."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Az animáció nem módosítható. A meglévő fájlok megmaradtak."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Az alapértelmezett ikonok visszaállítása sikertelen. Telepítse újra a skint."

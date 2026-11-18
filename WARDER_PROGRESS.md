@@ -1,5 +1,10 @@
 ## 18. 11. 2026 — FullHDGlass, bod 9 (21 jazykov)
 
+- Bod 9 má 60 880 overených položiek v 100 cieľových katalógoch a anglický základ. Kontrola oproti [východiskovému commitu](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5194ca6a9c67ae884fdbeec61d7d433b06816b10) namerala 33 925 pridaných položiek a 1 175 opravených hodnôt. Zdroj je pripravený na skúšku na prijímači a následné schválenie vydania vlastníkom. [Úplný audit](docs/SKIN-I18N-AUDIT-20261117.md)
+
+
+- Všetkých 100 cieľových katalógov už obsahuje celý referenčný inventár. Prebieha kontrola starších hodnôt zhodných s angličtinou. [CI po doplnení eWeather](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44269295764) prešlo.
+
 - Dokončené eWeather vo všetkých 20 prekladových jazykoch. Pribudlo 30 615 položiek, po 2 041 do každého z 15 doteraz čiastočných katalógov. [Predchádzajúca kontrola 43 zdrojových kľúčov](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44264869200) prešla.
 
 - Doplnenie zdrojového inventára na základe [5194ca6](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5194ca6a9c67ae884fdbeec61d7d433b06816b10) prinieslo 860 prekladov. Nový referenčný základ má 552 kľúčov nastavení, 195 nápovied a 2 119 kľúčov rozšíreného počasia. Dávka prešla všetkými 33 lokálnymi jazykovými testami.

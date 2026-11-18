@@ -17,7 +17,7 @@ from Screens.InputBox import InputBox
 from Components.Input import Input
 from Components.Sources.List import List
 from socket import socket, AF_INET, SOCK_STREAM
-from Plugins.Extensions.setupGlass17.txt import EWEA, MoonInfo, EWEA_ERROR
+from Plugins.Extensions.setupGlass17.txt import MoonInfo, weather_status
 from enigma import eTimer
 from Tools.LoadPixmap import LoadPixmap
 from Plugins.Extensions.setupGlass17.weaUtils import NO_WEATHER_PICON, setFcolor, fixUtf8, calcSun, ignZero, toLocale, ISP38, WLANG, wmoText
@@ -126,7 +126,7 @@ class mainmenu(Screen):
 		self["weathericon_9"] = Pixmap()
 		self["temperature"] = ColorLabel("--")
 		self["weathertext"] = Label(DEFAULT_V)
-		self["init_txt"] = Label(({False:EWEA_ERROR, True:EWEA}[ENAACC]))
+		self["init_txt"] = Label(weather_status(ENAACC))
 		self["now1"] = Label(DEFAULT_V)
 		self["now2"] = Label(DEFAULT_V)
 		self["sunrise0"] = Label(DEFAULT_V)

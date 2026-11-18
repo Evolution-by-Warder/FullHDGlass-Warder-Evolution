@@ -170,7 +170,7 @@ msgid "Big Icons"
 msgstr "Veľké ikony"
 
 msgid "Poster"
-msgstr "Poster"
+msgstr "Plagát"
 
 msgid "PIG + PIP"
 msgstr "PIG + PIP"
@@ -350,7 +350,7 @@ msgid "Transparent"
 msgstr "Transparentné"
 
 msgid "Full HD GLass17 spinner"
-msgstr "Full HD Glass17 spinner"
+msgstr "Animácia čakania Full HD Glass17"
 
 msgid "Full HD Glass17 Setup"
 msgstr "Nastavenie Full HD Glass17"
@@ -384,7 +384,7 @@ msgid "Title color:"
 msgstr "Farba titulu okna:"
 
 msgid "Picon default, marker, next ..."
-msgstr "Picon default, marker, next ..."
+msgstr "Predvolený picon, značka, nasledujúci…"
 
 msgid "Icons type"
 msgstr "Typ Ikon"
@@ -435,7 +435,7 @@ msgid "Dish screen"
 msgstr "Symbol otáčania antény"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "Výber zvukovej stopy"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "Nastav PluginBrowser - OE 2.0"
@@ -486,7 +486,7 @@ msgid "Starting Bitrate"
 msgstr "Spúšťanie bitrate"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "Dátový tok"
 
 msgid "Btr: too high - stopped"
 msgstr "Btr: vysoký - zastavený"
@@ -516,10 +516,10 @@ msgid "Radio"
 msgstr "Rádio"
 
 msgid "Streaming service"
-msgstr "Streaming service"
+msgstr "Streamovacia služba"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "IP streamovanie"
 
 msgid "Save"
 msgstr "Uložiť"
@@ -546,13 +546,13 @@ msgid "ECM"
 msgstr "ECM"
 
 msgid "EXTRA INFOBAR"
-msgstr "EXTRA INFOBAR"
+msgstr "Ďalšia informačná lišta"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "Informačná lišta"
 
 msgid "POSTER"
-msgstr "POSTER"
+msgstr "Plagát"
 
 msgid "HDD/SSD"
 msgstr "HDD/SSD"
@@ -561,7 +561,7 @@ msgid "NETWORK"
 msgstr "SIEŤ"
 
 msgid "MENU"
-msgstr "MENU"
+msgstr "Ponuka"
 
 msgid "CHANNEL SELECTION"
 msgstr "VÝBER KANÁLOV"
@@ -576,7 +576,7 @@ msgid "SPECIAL INFO"
 msgstr "ŠPECIÁLNE INFO"
 
 msgid "USER INFO"
-msgstr "USER INFO"
+msgstr "Informácie používateľa"
 
 msgid "NETATMO"
 msgstr "NETATMO"
@@ -633,7 +633,7 @@ msgid "Show CHID in ECM line"
 msgstr "Zobraziť CHID v riadku s ECM"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "Riadok ECM"
 
 msgid "ECM Labels"
 msgstr "ECM názvy"
@@ -693,7 +693,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Zobraziť pozíciu sat v TP info"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Poskytovateľ"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -711,13 +711,13 @@ msgid "Progress bar background pixmap"
 msgstr "Ukazovateľ priebehu pixmapa pozadia"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/pamäť, otáčky/teplota, poskytovateľ"
 
 msgid "TP type"
 msgstr "Typ TP"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Údaje transpondéra"
 
 msgid "Video resolution"
 msgstr "Rozlíšenie videa"
@@ -915,7 +915,7 @@ msgid "Enable next city in Weather"
 msgstr "Povoliť ďalšie mesto v Počasí"
 
 msgid "API-Key OpenWeatherMap"
-msgstr "API-Key OpenWeatherMap"
+msgstr "Kľúč API pre OpenWeatherMap"
 
 msgid "Forecast for more days"
 msgstr "Predpoveď na viac dní"
@@ -975,16 +975,16 @@ msgid "Enable Animations"
 msgstr "Povoliť animácie"
 
 msgid "(Infobar) Picon"
-msgstr "(Infobar) Picon"
+msgstr "Picon v informačnej lište"
 
 msgid "(Infobar) Second Picon"
 msgstr "(Infobar) Druhý picon"
 
 msgid "(Infobar) Poster"
-msgstr "(Infobar) Poster"
+msgstr "Plagát v informačnej lište"
 
 msgid "(Infobar) ECM line"
-msgstr "(Infobar) ECM line"
+msgstr "Riadok ECM v informačnej lište"
 
 msgid "(Infobar) TP info/type"
 msgstr "(Infobar) TP info/typ"
@@ -1017,7 +1017,7 @@ msgid "Neutrino keymap"
 msgstr "Mapovanie tlačidiel Neutrino"
 
 msgid "Full HD Glass17 spinner"
-msgstr "Full HD Glass17 spinner"
+msgstr "Animácia čakania Full HD Glass17"
 
 msgid "Localization of the skin"
 msgstr "Lokalizácia skinu"
@@ -1029,7 +1029,7 @@ msgid "Enable user encoding.conf"
 msgstr "Povoliť user encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Šetrič obrazovky rádia"
 
 msgid "IPTV Radio Detection"
 msgstr "Detekcia IPTV Radio"
@@ -1734,3 +1734,87 @@ msgstr "Picony Warder sa preskočili. Sťahovanie ostatných vybraných súborov
 
 msgid "picons"
 msgstr "picony"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip nie je dostupný pre architektúru tohto prijímača."
+
+msgid "Back"
+msgstr "Naspäť"
+
+msgid "Channel-list picon source"
+msgstr "Zdroj piconov v zozname staníc"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Vyberte animáciu čakania. Po uložení sa použije po reštarte GUI."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Tu si zvolíte adresár, do ktorého sa bude ukladať záložný konfiguračný súbor hdg17.conf. Predvolené umiestnenie je /usr/share/enigma2/hd_glass17/. Stlačením OK môžete vybrať iný adresár a tlačidlom SAVE zálohu uložiť."
+
+msgid "Choose with OK"
+msgstr "Vybrať s OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Nastavenie skinu FullHDGlass"
+
+msgid "Confirm"
+msgstr "Potvrdiť"
+
+msgid "DAB+ information"
+msgstr "DAB+ informácie"
+
+msgid "Default spinner of image"
+msgstr "Predvolený spinner image"
+
+msgid "Dove"
+msgstr "Holubica"
+
+msgid "Downloading selected spinner..."
+msgstr "Sťahujem vybraný spinner…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Zapnutím sa budú picony staníc zobrazovať z vášho priečinka. Sťahovanie naďalej používa úložisko Warder; vaše súbory zostanú nedotknuté."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Nainštalujte 7zip z Ponuky sťahovania a potom spustite vybrané sťahovanie znova."
+
+msgid "Loading spinner list..."
+msgstr "Načítavam zoznam spinnerov…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Online zoznam je nedostupný. Nainštalované spinnery sú k dispozícii."
+
+msgid "Prefer 50x30"
+msgstr "Preferovať 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Stlačením OK vyberiete priečinok s vlastnými piconmi staníc. Skin odtiaľ iba číta PNG pre InfoBary a zoznam staníc. Nič nesťahuje, nemení ani nemaže."
+
+msgid "Radio mode"
+msgstr "Režim rádia"
+
+msgid "Selected settings"
+msgstr "Máš zvolené"
+
+msgid "Spinner download failed. Try again."
+msgstr "Spinner sa nepodarilo stiahnuť. Skúste znova."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Úložisko stiahnutých grafických sád, piconov a ďalších dát skinu. Po uložení zmeny cesty sa tu vytvorí hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Úložisko grafických sád, piconov a dát"
+
+msgid "System setting"
+msgstr "Systémové nastavenie"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Systémové nastavenie zachová pôvodné vyhľadávanie piconov podľa image. Preferovať 50×30 použije picon_50x30 a chýbajúce logo doplní z picon. Uložte a reštartujte GUI."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Animáciu sa nepodarilo zmeniť. Vaše pôvodné súbory zostali zachované."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Nepodarilo sa obnoviť základné ikony. Preinštalujte skin."

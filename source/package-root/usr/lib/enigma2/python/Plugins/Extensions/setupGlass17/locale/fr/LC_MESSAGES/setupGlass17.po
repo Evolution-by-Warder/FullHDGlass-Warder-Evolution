@@ -50,7 +50,7 @@ msgid "Yellow"
 msgstr "Jaune"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatique"
 
 msgid "Type"
 msgstr "Type"
@@ -164,7 +164,7 @@ msgid "with PIG"
 msgstr "avec image"
 
 msgid "G17 events"
-msgstr "G17 events"
+msgstr "Émissions G17"
 
 msgid "Big Icons"
 msgstr "Grandes icônes"
@@ -296,7 +296,7 @@ msgid "big"
 msgstr "grand"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Arrêt automatique"
 
 msgid "Roll back"
 msgstr "Retour"
@@ -480,13 +480,13 @@ msgid "No info about Caids"
 msgstr "Pas d'info sur CAIDs"
 
 msgid "Free To Air"
-msgstr "Free To Air"
+msgstr "En clair"
 
 msgid "Starting Bitrate"
 msgstr "Bitrate démarré"
 
 msgid "Bitrate"
-msgstr "Bitrate"
+msgstr "Débit binaire"
 
 msgid "Btr: too high - stopped"
 msgstr "BTR: trop grand - arrêté"
@@ -519,7 +519,7 @@ msgid "Streaming service"
 msgstr "Service streaming"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "Flux IP"
 
 msgid "Save"
 msgstr "Sauver"
@@ -531,7 +531,7 @@ msgid "Download menu"
 msgstr "Télécharger menu"
 
 msgid "Changelog"
-msgstr "Changelog"
+msgstr "Historique des modifications"
 
 msgid "Update"
 msgstr "Mettre à jour"
@@ -693,7 +693,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Montrer position Sat dans TP info"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Opérateur"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -711,13 +711,13 @@ msgid "Progress bar background pixmap"
 msgstr "Image d'arrière-plan de la barre de progression"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/mémoire, régime/température, opérateur"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Type de transpondeur"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Infos transpondeur"
 
 msgid "Video resolution"
 msgstr "Video résolution"
@@ -828,7 +828,7 @@ msgid "Line height"
 msgstr "Hauteur de ligne"
 
 msgid "EPG Description"
-msgstr "EPG description"
+msgstr "Description EPG"
 
 msgid "EPG Description - selected"
 msgstr "EPG description - sélection"
@@ -873,7 +873,7 @@ msgid "Active in the background"
 msgstr "Actif en arrière plan"
 
 msgid "Standby mode"
-msgstr "Standby mode"
+msgstr "Mode veille"
 
 msgid "Missing"
 msgstr "Manquant"
@@ -945,7 +945,7 @@ msgid "Fair"
 msgstr "Beau"
 
 msgid "temperature"
-msgstr "temperature"
+msgstr "Température"
 
 msgid "Picons/Icons path"
 msgstr "Picons/Icones Path"
@@ -975,7 +975,7 @@ msgid "Enable Animations"
 msgstr "Activer les animations"
 
 msgid "(Infobar) Picon"
-msgstr "(Infobar) Picon"
+msgstr "Picon dans la barre d’information"
 
 msgid "(Infobar) Second Picon"
 msgstr "(Infobar) Deuxième picon"
@@ -1014,7 +1014,7 @@ msgid "Enable CAID PIDs"
 msgstr "Montrer CAID PIDs"
 
 msgid "Neutrino keymap"
-msgstr "Neutrino keymap"
+msgstr "Disposition des touches Neutrino"
 
 msgid "Full HD Glass17 spinner"
 msgstr "Animation de chargement Full HD Glass17"
@@ -1029,7 +1029,7 @@ msgid "Enable user encoding.conf"
 msgstr "Activer user encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Économiseur d’écran radio"
 
 msgid "IPTV Radio Detection"
 msgstr "Détection des radios IPTV"
@@ -1106,7 +1106,7 @@ msgid "HDD/SSD power state check is not available for SH4"
 msgstr "Controle du status du HD pas disponible pour SH4"
 
 msgid "Set Clear memory"
-msgstr "Set Clear memory"
+msgstr "Configurer le nettoyage de la mémoire"
 
 msgid "Set original encoding.conf"
 msgstr "Mettre encoding.conf original"
@@ -1273,7 +1273,7 @@ msgid "Previews downloaded successfully!"
 msgstr "Exemples téléchargés!"
 
 msgid "Previews:"
-msgstr "Previews:"
+msgstr "Aperçus :"
 
 msgid "Delete"
 msgstr "Effacé"
@@ -1735,3 +1735,87 @@ msgstr "Les picons Warder ont été ignorés. Les autres téléchargements séle
 
 msgid "picons"
 msgstr "logos de chaînes (picons)"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip n’est pas disponible pour l’architecture de ce récepteur."
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Channel-list picon source"
+msgstr "Source des picons de la liste"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Choisissez l’animation d’attente. Enregistrez pour l’appliquer au redémarrage de l’interface."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Choisissez le dossier de sauvegarde du fichier de configuration hdg17.conf. Par défaut : /usr/share/enigma2/hd_glass17/. Appuyez sur OK pour choisir un autre dossier, puis sur SAVE pour sauvegarder."
+
+msgid "Choose with OK"
+msgstr "Choisir avec OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Configurer le thème FullHDGlass"
+
+msgid "Confirm"
+msgstr "Confirmer"
+
+msgid "DAB+ information"
+msgstr "Informations DAB+"
+
+msgid "Default spinner of image"
+msgstr "Animation d’attente par défaut de l’image"
+
+msgid "Dove"
+msgstr "Colombe"
+
+msgid "Downloading selected spinner..."
+msgstr "Téléchargement de l’animation choisie…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Activez les picons de chaînes de votre dossier. Les téléchargements restent dans le stockage Warder et vos fichiers ne sont jamais modifiés."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Installez 7zip depuis le menu des téléchargements, puis relancez le téléchargement choisi."
+
+msgid "Loading spinner list..."
+msgstr "Chargement des animations…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Liste en ligne indisponible. Les animations installées restent disponibles."
+
+msgid "Prefer 50x30"
+msgstr "Préférer 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Appuyez sur OK pour choisir le dossier des picons. Le skin lit seulement les PNG pour les InfoBars et listes de chaînes, sans les modifier ni les supprimer."
+
+msgid "Radio mode"
+msgstr "Mode radio"
+
+msgid "Selected settings"
+msgstr "Sélection actuelle"
+
+msgid "Spinner download failed. Try again."
+msgstr "Échec du téléchargement. Réessayez."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Emplacement des packs graphiques, picons et autres données téléchargées du skin. L'enregistrement d'un nouveau chemin crée ici hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Stockage des packs graphiques, picons et données"
+
+msgid "System setting"
+msgstr "Réglage système"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Le réglage système conserve la recherche de picons de l’image. Préférer 50×30 utilise picon_50x30, puis picon pour chaque logo absent. Enregistrez et redémarrez l’interface."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "L’animation n’a pas pu être modifiée. Vos fichiers existants ont été conservés."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Impossible de restaurer les icônes d'origine. Réinstallez le skin."

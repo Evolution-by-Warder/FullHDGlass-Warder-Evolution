@@ -1371,7 +1371,7 @@ msgid "Satellite picons"
 msgstr "Picons δορυφόρων"
 
 msgid "CAM picons"
-msgstr "CAM picons"
+msgstr "Εικονίδια CAM"
 
 msgid "Weather picons"
 msgstr "Picons καιρού"
@@ -1660,3 +1660,87 @@ msgstr "Τα λογότυπα Warder παραλείφθηκαν. Οι υπόλο
 
 msgid "picons"
 msgstr "λογότυπα καναλιών"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "Το 7zip δεν διατίθεται για την αρχιτεκτονική αυτού του δέκτη."
+
+msgid "Back"
+msgstr "Πίσω"
+
+msgid "Channel-list picon source"
+msgstr "Πηγή εικονιδίων στη λίστα καναλιών"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Επιλέξτε την κίνηση αναμονής και αποθηκεύστε την επιλογή. Θα εφαρμοστεί μετά την επανεκκίνηση του γραφικού περιβάλλοντος."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Επιλέξτε πού θα αποθηκευτεί το αντίγραφο ρυθμίσεων hdg17.conf. Προεπιλογή: /usr/share/enigma2/hd_glass17/. Πατήστε OK για άλλον φάκελο και μετά Αποθήκευση."
+
+msgid "Choose with OK"
+msgstr "Επιλογή με OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Ρύθμιση του θέματος FullHDGlass"
+
+msgid "Confirm"
+msgstr "Επιβεβαίωση"
+
+msgid "DAB+ information"
+msgstr "Πληροφορίες DAB+"
+
+msgid "Default spinner of image"
+msgstr "Προεπιλεγμένη κίνηση αναμονής του συστήματος"
+
+msgid "Dove"
+msgstr "Περιστέρι"
+
+msgid "Downloading selected spinner..."
+msgstr "Γίνεται λήψη της επιλεγμένης κίνησης αναμονής…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Ενεργοποιήστε την επιλογή για να εμφανίζονται τα δικά σας εικονίδια καναλιών από τον επιλεγμένο φάκελο. Οι λήψεις εξακολουθούν να αποθηκεύονται στον χώρο Warder και ο φάκελός σας παραμένει ανέπαφος."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Εγκαταστήστε το 7zip από το μενού λήψεων και επαναλάβετε την επιλεγμένη λήψη."
+
+msgid "Loading spinner list..."
+msgstr "Φόρτωση λίστας κινήσεων αναμονής…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Η ηλεκτρονική λίστα δεν είναι διαθέσιμη. Μπορείτε να επιλέξετε μια εγκατεστημένη κίνηση αναμονής."
+
+msgid "Prefer 50x30"
+msgstr "Προτίμηση σε 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Πατήστε OK για να επιλέξετε φάκελο με δικά σας εικονίδια καναλιών. Το θέμα διαβάζει μόνο τα PNG για τις μπάρες πληροφοριών και τις λίστες καναλιών. Δεν κατεβάζει, δεν τροποποιεί και δεν διαγράφει αρχεία στον φάκελο."
+
+msgid "Radio mode"
+msgstr "Λειτουργία ραδιοφώνου"
+
+msgid "Selected settings"
+msgstr "Επιλεγμένες ρυθμίσεις"
+
+msgid "Spinner download failed. Try again."
+msgstr "Η λήψη της κίνησης αναμονής απέτυχε. Δοκιμάστε ξανά."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Χώρος αποθήκευσης για ληφθέντα σύνολα γραφικών, εικονίδια καναλιών και άλλα δεδομένα του θέματος. Όταν αποθηκεύσετε τη νέα διαδρομή, θα δημιουργηθεί εδώ ο φάκελος hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Χώρος αποθήκευσης γραφικών, εικονιδίων καναλιών και δεδομένων"
+
+msgid "System setting"
+msgstr "Ρύθμιση συστήματος"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Η ρύθμιση συστήματος διατηρεί την αρχική αναζήτηση εικονιδίων του συστήματος. Με την προτίμηση 50×30 αναζητούνται πρώτα στο picon_50x30 και, για κάθε εικονίδιο που λείπει, στο picon. Αποθηκεύστε και επανεκκινήστε το γραφικό περιβάλλον."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Δεν ήταν δυνατή η αλλαγή της κίνησης αναμονής. Τα υπάρχοντα αρχεία διατηρήθηκαν."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Δεν ήταν δυνατή η επαναφορά των προεγκατεστημένων εικονιδίων. Εγκαταστήστε ξανά το θέμα."

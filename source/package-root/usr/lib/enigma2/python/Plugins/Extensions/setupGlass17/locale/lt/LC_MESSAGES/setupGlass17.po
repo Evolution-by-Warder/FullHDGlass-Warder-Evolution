@@ -1737,3 +1737,87 @@ msgstr "„Warder“ kanalų logotipai praleisti. Kiti pasirinkti failai bus siu
 
 msgid "picons"
 msgstr "kanalų logotipai"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "Šio imtuvo architektūrai 7zip neprieinamas."
+
+msgid "Back"
+msgstr "Atgal"
+
+msgid "Channel-list picon source"
+msgstr "Kanalų sąrašo logotipų šaltinis"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Pasirinkite laukimo animaciją. Išsaugojus ji bus pritaikyta paleidus sąsają iš naujo."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Pasirinkite aplanką atsarginei hdg17.conf konfigūracijos kopijai. Numatytasis: /usr/share/enigma2/hd_glass17/. Spauskite OK kitam aplankui pasirinkti, tada SAVE kopijai įrašyti."
+
+msgid "Choose with OK"
+msgstr "Pasirinkti mygtuku OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Konfigūruoti FullHDGlass apipavidalinimą"
+
+msgid "Confirm"
+msgstr "Patvirtinti"
+
+msgid "DAB+ information"
+msgstr "DAB+ informacija"
+
+msgid "Default spinner of image"
+msgstr "Numatytoji imidžo animacija"
+
+msgid "Dove"
+msgstr "Balandis"
+
+msgid "Downloading selected spinner..."
+msgstr "Atsisiunčiama pasirinkta animacija…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Įjunkite, jei norite rodyti savo kanalų logotipus iš pasirinkto aplanko. Atsisiunčiami failai ir toliau saugomi Warder saugykloje, jūsų aplankas nekeičiamas."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Įdiekite 7zip iš atsisiuntimų meniu ir pakartokite pasirinktą atsisiuntimą."
+
+msgid "Loading spinner list..."
+msgstr "Įkeliamas animacijų sąrašas…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Internetinis sąrašas nepasiekiamas. Įdiegtos animacijos pasiekiamos."
+
+msgid "Prefer 50x30"
+msgstr "Teikti pirmenybę 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Paspauskite OK ir pasirinkite savo kanalų logotipų aplanką. Iš jo tik skaitomi informacinėms juostoms ir kanalų sąrašams skirti PNG failai. Čia failai neatsiunčiami, nekeičiami ir netrinami."
+
+msgid "Radio mode"
+msgstr "Radijo režimas"
+
+msgid "Selected settings"
+msgstr "Pasirinktos nuostatos"
+
+msgid "Spinner download failed. Try again."
+msgstr "Atsisiųsti nepavyko. Bandykite dar kartą."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Vieta atsisiųstiems grafikos rinkiniams, pikonams ir kitiems apvalkalo duomenims. Išsaugojus pakeistą kelią čia sukuriamas hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Grafikos rinkinių, pikonų ir duomenų saugykla"
+
+msgid "System setting"
+msgstr "Sistemos nuostata"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Sistemos nuostata išlaiko pradinę imtuvo logotipų paiešką. Pasirinkus 50×30, pirmiausia ieškoma aplanke picon_50x30, o trūkstamų logotipų – aplanke picon. Išsaugokite ir paleiskite grafinę sąsają iš naujo."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Animacijos pakeisti nepavyko. Esami failai išsaugoti."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Nepavyko atkurti numatytųjų piktogramų. Įdiekite apvalkalą iš naujo."

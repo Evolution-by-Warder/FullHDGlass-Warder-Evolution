@@ -1743,3 +1743,87 @@ msgstr "Пиконы Warder пропущены. Загрузка остальн�
 
 msgid "picons"
 msgstr "пиконы"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip недоступен для архитектуры этого ресивера."
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Channel-list picon source"
+msgstr "Источник пиконов списка каналов"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Выберите анимацию ожидания. Сохраните для применения после перезапуска интерфейса."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Выберите папку для резервного файла конфигурации hdg17.conf. По умолчанию: /usr/share/enigma2/hd_glass17/. Нажмите OK для выбора другой папки, затем SAVE для сохранения копии."
+
+msgid "Choose with OK"
+msgstr "Выбрать кнопкой OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Настройка скина FullHDGlass"
+
+msgid "Confirm"
+msgstr "Подтвердить"
+
+msgid "DAB+ information"
+msgstr "Информация DAB+"
+
+msgid "Default spinner of image"
+msgstr "Спиннер по умолчанию из имиджа"
+
+msgid "Dove"
+msgstr "Голубь"
+
+msgid "Downloading selected spinner..."
+msgstr "Загрузка выбранной анимации…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Включите, чтобы показывать собственные пиконы каналов из выбранной папки. Загрузки по-прежнему сохраняются в хранилище Warder, а ваша папка остаётся без изменений."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Установите 7zip через меню загрузок и повторите выбранную загрузку."
+
+msgid "Loading spinner list..."
+msgstr "Загрузка списка анимаций…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Онлайн-список недоступен. Установленные анимации доступны."
+
+msgid "Prefer 50x30"
+msgstr "Предпочитать 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Нажмите OK и выберите папку с пиконами каналов. Скин только читает из неё PNG для информационных панелей и списков каналов. Он не загружает в эту папку файлы, не изменяет и не удаляет их."
+
+msgid "Radio mode"
+msgstr "Режим радио"
+
+msgid "Selected settings"
+msgstr "Выбрано"
+
+msgid "Spinner download failed. Try again."
+msgstr "Не удалось загрузить анимацию. Повторите попытку."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Хранилище загруженных наборов графики, пиконов и других данных скина. При сохранении нового пути здесь создаётся hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Хранилище графических наборов, пиконов и данных"
+
+msgid "System setting"
+msgstr "Системная настройка"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Системная настройка сохраняет исходный поиск пиконов образа. Режим 50×30 использует picon_50x30, а для отсутствующих логотипов — picon. Сохраните и перезапустите GUI."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Не удалось изменить анимацию. Ваши существующие файлы сохранены."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Не удалось восстановить стандартные значки. Переустановите скин."

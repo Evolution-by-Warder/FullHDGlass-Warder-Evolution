@@ -37,7 +37,7 @@ msgid "Red"
 msgstr "червоний"
 
 msgid "Purple"
-msgstr "Purple"
+msgstr "Фіолетовий"
 
 msgid "Gray"
 msgstr "сірий"
@@ -49,34 +49,34 @@ msgid "Yellow"
 msgstr "жовтий"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Автоматично"
 
 msgid "Type"
 msgstr "Тип"
 
 msgid "from image"
-msgstr "from image"
+msgstr "Із системного образу"
 
 msgid "G17 (Ch. Name)"
 msgstr "G17 (назва каналу)"
 
 msgid "Default"
-msgstr "Default"
+msgstr "Типово"
 
 msgid "only Picon"
-msgstr "only Picon"
+msgstr "Лише пікон"
 
 msgid "only Time"
-msgstr "only Time"
+msgstr "Лише час"
 
 msgid "VU+ (Ch. Name)"
-msgstr "VU+ (Ch. Name)"
+msgstr "VU+ (Назва каналу)"
 
 msgid "VU+ (Act. event)"
-msgstr "VU+ (Act. event)"
+msgstr "VU+ (Поточна передача)"
 
 msgid "VU+ (Ch. Name + Act. event)"
-msgstr "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (Назва каналу + Поточна передача)"
 
 msgid "G17 (Act. event)"
 msgstr "G17 (поточна передача)"
@@ -94,10 +94,10 @@ msgid "VU+ Ultimo"
 msgstr "VU+ Ultimo"
 
 msgid "Picon and Time"
-msgstr "Picon and Time"
+msgstr "Пікон і час"
 
 msgid "Default 2"
-msgstr "Default 2"
+msgstr "Типово 2"
 
 msgid "VU+ Duo2 Snr,Agc"
 msgstr "VU+ Duo2 Snr,Agc"
@@ -112,10 +112,10 @@ msgid "Duo2 Snr,Agc,RPM,Temp. 2"
 msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
 
 msgid "Classical"
-msgstr "Classical"
+msgstr "Класичний"
 
 msgid "with ZZPicon"
-msgstr "with ZZPicon"
+msgstr "Із ZZPicon"
 
 msgid "with Picon 400x240"
 msgstr "з піктограмою каналу 400 × 240"
@@ -127,40 +127,40 @@ msgid "Glass17(+next event)"
 msgstr "Glass17 (+ наступна передача)"
 
 msgid "with PIG(+next event)"
-msgstr "with PIG(+next event)"
+msgstr "З PIG (+ Наступна передача)"
 
 msgid "Glass17(+next, date)"
 msgstr "Glass17 (+ наступна передача, дата)"
 
 msgid "New style"
-msgstr "New style"
+msgstr "Новий стиль"
 
 msgid "New style with PIG"
-msgstr "New style with PIG"
+msgstr "Новий стиль із PIG"
 
 msgid "PIG(+next event,left)"
-msgstr "PIG(+next event,left)"
+msgstr "PIG (+ Наступна передача, ліворуч)"
 
 msgid "PIG(+act,next,left)"
-msgstr "PIG(+act,next,left)"
+msgstr "PIG (+ Поточна передача, Наступна передача, ліворуч)"
 
 msgid "The Core 88"
 msgstr "The Core 88"
 
 msgid "PIG(+several event)"
-msgstr "PIG(+several event)"
+msgstr "PIG (+ Кілька передач)"
 
 msgid "G17(+several event)"
 msgstr "G17 (+ кілька передач)"
 
 msgid "New style(+several event)"
-msgstr "New style(+several event)"
+msgstr "Новий стиль (+ Кілька передач)"
 
 msgid "PIG(+act,several,left)"
-msgstr "PIG(+act,several,left)"
+msgstr "PIG (+ Поточна передача, Кілька передач, ліворуч)"
 
 msgid "with PIG"
-msgstr "with PIG"
+msgstr "З PIG"
 
 msgid "G17 events"
 msgstr "Передачі G17"
@@ -178,37 +178,37 @@ msgid "PIP"
 msgstr "PIP"
 
 msgid "yes"
-msgstr "yes"
+msgstr "Так"
 
 msgid "no"
-msgstr "no"
+msgstr "Ні"
 
 msgid "Icons"
 msgstr "Іконки"
 
 msgid "Icons Right"
-msgstr "Icons Right"
+msgstr "Піктограми праворуч"
 
 msgid "List"
-msgstr "List"
+msgstr "Список"
 
 msgid "List and Icon"
-msgstr "List and Icon"
+msgstr "Список і піктограма"
 
 msgid "Icons Bar"
-msgstr "Icons Bar"
+msgstr "Панель піктограм"
 
 msgid "simply PIG"
-msgstr "simply PIG"
+msgstr "Лише PIG"
 
 msgid "Sat and Prov"
-msgstr "Sat and Prov"
+msgstr "Супутник і провайдер"
 
 msgid "only Sat"
-msgstr "only Sat"
+msgstr "Лише супутник"
 
 msgid "only Prov"
-msgstr "only Prov"
+msgstr "Лише провайдер"
 
 msgid "only Weather"
 msgstr "Лише погода"
@@ -238,67 +238,67 @@ msgid "Simple"
 msgstr "Простий"
 
 msgid "Ecminfo only"
-msgstr "Ecminfo only"
+msgstr "Лише дані ECM"
 
 msgid "Ecminfo and CAID"
-msgstr "Ecminfo and CAID"
+msgstr "Дані ECM і CAID"
 
 msgid "CAID and SID"
-msgstr "CAID and SID"
+msgstr "CAID і SID"
 
 msgid "SID only"
-msgstr "SID only"
+msgstr "Лише SID"
 
 msgid "CAID, SID, VPID"
 msgstr "CAID, SID, VPID"
 
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "Відсотки"
 
 msgid "Colored gauge"
-msgstr "Colored gauge"
+msgstr "Кольоровий індикатор"
 
 msgid "System info"
-msgstr "System info"
+msgstr "Системна інформація"
 
 msgid "Event - extended description"
-msgstr "Event - extended description"
+msgstr "Передача – розширений опис"
 
 msgid "Side infobar"
-msgstr "Side infobar"
+msgstr "Бічна інфопанель"
 
 msgid "Event and side infobar"
-msgstr "Event and side infobar"
+msgstr "Передача та бічна інфопанель"
 
 msgid "Event - now and next"
-msgstr "Event - now and next"
+msgstr "Поточна передача / Наступна передача"
 
 msgid "Event now/next and side infobar"
-msgstr "Event now/next and side infobar"
+msgstr "Поточна передача / Наступна передача + Бічна інфопанель"
 
 msgid "Black"
 msgstr "Чорні"
 
 msgid "with PIG(+ch.name,number)"
-msgstr "with PIG(+ch.name,number)"
+msgstr "З PIG (+ Назва каналу, Номер)"
 
 msgid "no time"
-msgstr "no time"
+msgstr "Без часу"
 
 msgid "with internet check"
-msgstr "with internet check"
+msgstr "З перевіркою з’єднання"
 
 msgid "with frame"
-msgstr "with frame"
+msgstr "З рамкою"
 
 msgid "big"
-msgstr "big"
+msgstr "Великий"
 
 msgid "Autostop"
-msgstr "Autostop"
+msgstr "Автоматична зупинка"
 
 msgid "Roll back"
-msgstr "Roll back"
+msgstr "Прокрутити назад"
 
 msgid "Enhanced Weather"
 msgstr "Покращена погода"
@@ -313,7 +313,7 @@ msgid "Number"
 msgstr "нумерувати"
 
 msgid "disabled"
-msgstr "disabled"
+msgstr "Вимкнено"
 
 msgid "User defined path"
 msgstr "Шлях користувача"
@@ -431,10 +431,10 @@ msgid "EPG list font size"
 msgstr "Розмір шрифту списку EPG"
 
 msgid "Dish screen"
-msgstr "Dish screen"
+msgstr "Екран антени"
 
 msgid "AudioSelection"
-msgstr "AudioSelection"
+msgstr "Вибір аудіо"
 
 msgid "Set PluginBrowser - OE 2.0"
 msgstr "Встановити PluginBrowser - OE 2.0"
@@ -443,7 +443,7 @@ msgid "Set user encoding.conf"
 msgstr "Встановити user encoding.conf"
 
 msgid "ChannelSelection 2xOK"
-msgstr "ChannelSelection 2xOK"
+msgstr "Вибір каналу (2×OK)"
 
 msgid "Enable windowstylescrollbar"
 msgstr "Активувати windowstylescrollbar"
@@ -515,10 +515,10 @@ msgid "Radio"
 msgstr "Радіо"
 
 msgid "Streaming service"
-msgstr "Streaming service"
+msgstr "Служба потокового мовлення"
 
 msgid "IP stream"
-msgstr "IP stream"
+msgstr "IP-потік"
 
 msgid "Save"
 msgstr "Зберегти"
@@ -548,7 +548,7 @@ msgid "EXTRA INFOBAR"
 msgstr "ДОДАТКОВА ІНФОПАНЕЛЬ"
 
 msgid "INFOBAR"
-msgstr "INFOBAR"
+msgstr "Інфопанель"
 
 msgid "POSTER"
 msgstr "ПОСТЕР"
@@ -557,10 +557,10 @@ msgid "HDD/SSD"
 msgstr "HDD/SSD"
 
 msgid "NETWORK"
-msgstr "NETWORK"
+msgstr "Мережа"
 
 msgid "MENU"
-msgstr "MENU"
+msgstr "Меню"
 
 msgid "CHANNEL SELECTION"
 msgstr "вибір каналу"
@@ -575,7 +575,7 @@ msgid "SPECIAL INFO"
 msgstr "СПЕЦІАЛЬНА ІНФОРМАЦІЯ"
 
 msgid "USER INFO"
-msgstr "USER INFO"
+msgstr "Інформація користувача"
 
 msgid "NETATMO"
 msgstr "NETATMO"
@@ -584,10 +584,10 @@ msgid "OLED"
 msgstr "OLED"
 
 msgid "TUNER"
-msgstr "TUNER"
+msgstr "Тюнер"
 
 msgid "ENHANCED WEATHER"
-msgstr "ENHANCED WEATHER"
+msgstr "Розширена погода"
 
 msgid "WEATHER"
 msgstr "ПОГОДА"
@@ -632,13 +632,13 @@ msgid "Show CHID in ECM line"
 msgstr "Показувати CHID у рядку ECM"
 
 msgid "ECM line"
-msgstr "ECM line"
+msgstr "Рядок ECM"
 
 msgid "ECM Labels"
-msgstr "ECM Labels"
+msgstr "Підписи ECM"
 
 msgid "ECM Values"
-msgstr "ECM Values"
+msgstr "Значення ECM"
 
 msgid "Enable Enhanced Infobar"
 msgstr "Активувати Розширену Інфопанель"
@@ -665,10 +665,10 @@ msgid "Enable icon of Unknown CAID"
 msgstr "Увімкнути значок для невідомого CAID"
 
 msgid "Audio type of current track"
-msgstr "Audio type of current track"
+msgstr "Формат поточної звукової доріжки"
 
 msgid "Progressive/Interlace detection"
-msgstr "Progressive/Interlace detection"
+msgstr "Визначення прогресивної або черезрядкової розгортки"
 
 msgid "Tuner info"
 msgstr "Інформація про тюнер"
@@ -692,7 +692,7 @@ msgid "Show Satellite position in TP info"
 msgstr "Показувати позицію сат в інфо ТП"
 
 msgid "Provider"
-msgstr "Provider"
+msgstr "Провайдер"
 
 msgid "Temp/RPM"
 msgstr "Temp/RPM"
@@ -710,16 +710,16 @@ msgid "Progress bar background pixmap"
 msgstr "Фонове зображення індикатора прогресу"
 
 msgid "CPU/Mem, RPM/Temp, Provider"
-msgstr "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Провайдер"
 
 msgid "TP type"
-msgstr "TP type"
+msgstr "Тип транспондера"
 
 msgid "TP info"
-msgstr "TP info"
+msgstr "Інформація про транспондер"
 
 msgid "Video resolution"
-msgstr "Video resolution"
+msgstr "Роздільна здатність відео"
 
 msgid "Date"
 msgstr "Дата"
@@ -731,7 +731,7 @@ msgid "Seconds"
 msgstr "Секунди"
 
 msgid "Channel name"
-msgstr "Channel name"
+msgstr "Назва каналу"
 
 msgid "Event now"
 msgstr "Поточна передача"
@@ -761,7 +761,7 @@ msgid "Enable fade in"
 msgstr "Активувати плавну появу"
 
 msgid "Show recording icon"
-msgstr "Show recording icon"
+msgstr "Показувати піктограму запису"
 
 msgid "Channel name type"
 msgstr "Тип Назва каналу"
@@ -827,13 +827,13 @@ msgid "Line height"
 msgstr "Висота рядка"
 
 msgid "EPG Description"
-msgstr "EPG Description"
+msgstr "Опис EPG"
 
 msgid "EPG Description - selected"
-msgstr "EPG Description - selected"
+msgstr "Опис EPG (вибрано)"
 
 msgid "Channel name - selected"
-msgstr "Channel name - selected"
+msgstr "Назва каналу (вибрано)"
 
 msgid "Enable Special info timeout"
 msgstr "Включити спеціальні тайм-аут інформація"
@@ -878,13 +878,13 @@ msgid "Missing"
 msgstr "відсутній"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "Запис"
 
 msgid "Recording and live"
-msgstr "Recording and live"
+msgstr "Запис і прямий ефір"
 
 msgid "Show Astronomical Information"
-msgstr "Show Astronomical Information"
+msgstr "Показувати астрономічні дані"
 
 msgid "Temperature unit"
 msgstr "Одиниця температури"
@@ -995,7 +995,7 @@ msgid "(Channel selection) picon/Prov/Sat"
 msgstr "(Список каналів) піктограма/провайдер/супутник"
 
 msgid "VTi SplitScreen"
-msgstr "VTi SplitScreen"
+msgstr "Розділений екран VTi"
 
 msgid "Reference separating char"
 msgstr "Символ розділення референсів"
@@ -1028,7 +1028,7 @@ msgid "Enable user encoding.conf"
 msgstr "Активувати user encoding.conf"
 
 msgid "RadioScreenSaver"
-msgstr "RadioScreenSaver"
+msgstr "Екранна заставка радіо"
 
 msgid "IPTV Radio Detection"
 msgstr "Визначення IPTV-радіо"
@@ -1043,7 +1043,7 @@ msgid "Erase finished successfully!"
 msgstr "Видалення успішно завершено!"
 
 msgid "Color Sample"
-msgstr "Color Sample"
+msgstr "Зразок кольору"
 
 msgid "Version:"
 msgstr "Версія:"
@@ -1053,8 +1053,7 @@ msgstr "Екстра Вікно"
 
 msgid ""
 "Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
-msgstr ""
-"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr "Вебсайт: www.hdglass16.eu. Пожертви на рахунок PayPal hd_glass@pobox.sk"
 
 msgid "None files detected!"
 msgstr "Файли не знайдено!"
@@ -1734,3 +1733,87 @@ msgstr "Пікони Warder пропущено. Решту вибраних фа
 
 msgid "picons"
 msgstr "пікони"
+
+msgid "7zip is not available for this receiver architecture."
+msgstr "7zip недоступний для архітектури цього приймача."
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Channel-list picon source"
+msgstr "Джерело піконів списку каналів"
+
+msgid "Choose the waiting animation. Save to apply it after a GUI restart."
+msgstr "Виберіть анімацію очікування. Збережіть для застосування після перезапуску інтерфейсу."
+
+msgid "Choose where to save the backup configuration file hdg17.conf. Default: /usr/share/enigma2/hd_glass17/. Press OK to choose another folder, then SAVE to save the backup."
+msgstr "Виберіть теку для резервного файлу конфігурації hdg17.conf. Типово: /usr/share/enigma2/hd_glass17/. Натисніть OK для вибору іншої теки, потім SAVE для збереження копії."
+
+msgid "Choose with OK"
+msgstr "Вибрати кнопкою OK"
+
+msgid "Configure the FullHDGlass skin"
+msgstr "Налаштувати скін FullHDGlass"
+
+msgid "Confirm"
+msgstr "Підтвердити"
+
+msgid "DAB+ information"
+msgstr "Інформація DAB+"
+
+msgid "Default spinner of image"
+msgstr "Стандартний спінер іміджу"
+
+msgid "Dove"
+msgstr "Голуб"
+
+msgid "Downloading selected spinner..."
+msgstr "Завантаження вибраної анімації…"
+
+msgid "Enable this option to display your own channel picons from a selected folder. Downloads still use Warder storage; your folder is never modified."
+msgstr "Увімкніть, щоб показувати власні пікони каналів із вибраної теки. Завантаження й далі зберігаються у сховищі Warder, а ваша тека залишається без змін."
+
+msgid "FullHDGlass configuration"
+msgstr "FullHDGlass Warder Evolution"
+
+msgid "Install 7zip from the Download menu, then retry the selected download."
+msgstr "Установіть 7zip із меню завантажень і повторіть вибране завантаження."
+
+msgid "Loading spinner list..."
+msgstr "Завантаження списку анімацій…"
+
+msgid "Online list unavailable. Installed spinners are available."
+msgstr "Онлайн-список недоступний. Установлені анімації доступні."
+
+msgid "Prefer 50x30"
+msgstr "Віддавати перевагу 50×30"
+
+msgid "Press OK to choose a folder containing your channel picons. The skin only reads PNG files here for InfoBars and channel lists; it never downloads, changes or deletes them."
+msgstr "Натисніть OK і виберіть теку з власними піконами каналів. Скін лише читає з неї PNG для інфопанелей і списків каналів. Він нічого не завантажує в цю теку, не змінює й не видаляє файлів."
+
+msgid "Radio mode"
+msgstr "Режим радіо"
+
+msgid "Selected settings"
+msgstr "Вибрані налаштування"
+
+msgid "Spinner download failed. Try again."
+msgstr "Не вдалося завантажити. Спробуйте ще раз."
+
+msgid "Storage for downloaded graphics sets, picons and other skin data. Saving a changed path creates hdg17_files here."
+msgstr "Сховище завантажених графічних наборів, піконів та інших даних скіна. Після збереження зміненого шляху тут створюється hdg17_files."
+
+msgid "Storage for graphics sets, picons and data"
+msgstr "Сховище графічних наборів, піконів і даних"
+
+msgid "System setting"
+msgstr "Системне налаштування"
+
+msgid "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI."
+msgstr "Системне налаштування зберігає початковий порядок пошуку піконів в образі. За переваги 50×30 спершу перевіряється picon_50x30, а для кожного відсутнього логотипа — picon. Збережіть зміни й перезапустіть графічний інтерфейс."
+
+msgid "The spinner could not be changed. Your existing files were preserved."
+msgstr "Не вдалося змінити анімацію. Ваші наявні файли збережено."
+
+msgid "Unable to restore bundled default icons. Please reinstall the skin."
+msgstr "Не вдалося відновити стандартні значки. Перевстановіть скін."

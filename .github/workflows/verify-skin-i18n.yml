@@ -7,6 +7,12 @@ on:
     paths:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/**'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocale.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/txt.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/Netatmo.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py'
       - 'tools/test-warder-skin-i18n.py'
       - 'tools/test-warder-catalog-integrity.py'
       - 'tools/test-warder-locale-on-demand.py'
