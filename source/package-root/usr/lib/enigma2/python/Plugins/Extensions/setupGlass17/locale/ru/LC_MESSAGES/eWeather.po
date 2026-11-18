@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "City"
+msgstr "Город"
+
+msgid "Pressure"
+msgstr "Давление"
+
+msgid "Humidity"
+msgstr "Влажность"
+
+msgid "Wind"
+msgstr "Ветер"
+
+msgid "Visibility"
+msgstr "Видимость"
+
+msgid "sun"
+msgstr "Солнце"
+
+msgid "N"
+msgstr "С"
+
+msgid "NE"
+msgstr "СВ"
+
+msgid "NNE"
+msgstr "ССВ"
+
+msgid "SE"
+msgstr "ЮВ"
+
+msgid "mostly cloudy"
+msgstr "Преимущественно облачно"
+
+msgid "partly cloudy"
+msgstr "Небольшая облачность"
+
+msgid "clear"
+msgstr "Ясно"
+
+msgid "overcast"
+msgstr "Пасмурно"
+
+msgid "sunny"
+msgstr "Солнечно"
+
+msgid "S"
+msgstr "Ю"
+
+msgid "Please enter a city name"
+msgstr "Пожалуйста, введите название города"
+
+msgid "E"
+msgstr "В"
+
+msgid "SSW"
+msgstr "ЮЮЗ"
+
+msgid "NNW"
+msgstr "ССЗ"
+
+msgid "ESE"
+msgstr "ВЮВ"
+
+msgid "ENE"
+msgstr "ВСВ"
+
+msgid "mostly sunny"
+msgstr "Преимущественно солнечно"
+
+msgid "W"
+msgstr "З"
+
+msgid "SW"
+msgstr "ЮЗ"
+
+msgid "NW"
+msgstr "СЗ"
+
+msgid "SSE"
+msgstr "ЮЮВ"
+
+msgid "WSW"
+msgstr "ЗЮЗ"
+
+msgid "cloudy"
+msgstr "Облачно"
+
+msgid "rain"
+msgstr "Дождь"
+
+msgid "WNW"
+msgstr "ЗСЗ"
+
+msgid "mainly clear"
+msgstr "Преимущественно ясно"
+
+msgid "Location"
+msgstr "Расположение"
+
+msgid "light rain"
+msgstr "Небольшой дождь"
+
+msgid "thunderstorm"
+msgstr "Гроза"
+
+msgid "mostly clear"
+msgstr "Преимущественно ясно"
+
+msgid "light rain shower"
+msgstr "Небольшой кратковременный дождь"
+
+msgid "thunderstorms"
+msgstr "Грозы"
+
+msgid "rain shower"
+msgstr "Кратковременный дождь"
+
+msgid "ice"
+msgstr "Лёд"
+
+msgid "heavy rain"
+msgstr "Сильный дождь"
+
+msgid "showers"
+msgstr "Кратковременные дожди"
+
+msgid "drizzle"
+msgstr "Морось"
+
+msgid "light snow shower"
+msgstr "Небольшой кратковременный снег"
+
+msgid "fog"
+msgstr "Туман"
+
+msgid "snow"
+msgstr "Снег"
+
+msgid "breezy"
+msgstr "Небольшой ветер"
+
+msgid "snow showers"
+msgstr "Кратковременный снег"
+
+msgid "Enhanced Weather"
+msgstr "Подробный прогноз погоды"
+
+msgid "Clear sky"
+msgstr "Ясно"
+
+msgid "Mainly clear"
+msgstr "Преимущественно ясно"
+
+msgid "Partly cloudy"
+msgstr "Переменная облачность"
+
+msgid "Overcast"
+msgstr "Пасмурно"
+
+msgid "Depositing rime fog"
+msgstr "Изморозевый туман"
+
+msgid "Dense drizzle"
+msgstr "Сильная морось"
+
+msgid "Slight rain"
+msgstr "Слабый дождь"
+
+msgid "Heavy rain"
+msgstr "Сильный дождь"
+
+msgid "Heavy freezing rain"
+msgstr "Сильный ледяной дождь"
+
+msgid "Slight snow"
+msgstr "Слабый снег"
+
+msgid "Heavy snow"
+msgstr "Сильный снег"
+
+msgid "Snow grains"
+msgstr "Снежная крупа"
+
+msgid "Rain showers"
+msgstr "Кратковременные дожди"
+
+msgid "Heavy rain showers"
+msgstr "Сильный ливневый дождь"
+
+msgid "Snow showers"
+msgstr "Кратковременные снегопады"
+
+msgid "Heavy snow showers"
+msgstr "Сильные кратковременные снегопады"
+
+msgid "Thunderstorm with hail"
+msgstr "Гроза с градом"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Гроза с сильным градом"
+
+msgid "Unknown"
+msgstr "Неизвестно"
+
+msgid "Fog"
+msgstr "Туман"
+
+msgid "Light drizzle"
+msgstr "Слабая морось"
+
+msgid "Drizzle"
+msgstr "Морось"
+
+msgid "Freezing drizzle"
+msgstr "Ледяная морось"
+
+msgid "Rain"
+msgstr "Дождь"
+
+msgid "Freezing rain"
+msgstr "Ледяной дождь"
+
+msgid "Snow"
+msgstr "Снег"
+
+msgid "Thunderstorm"
+msgstr "Гроза"

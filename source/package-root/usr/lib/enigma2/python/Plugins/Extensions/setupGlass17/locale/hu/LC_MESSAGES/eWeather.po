@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "City"
+msgstr "Város"
+
+msgid "Pressure"
+msgstr "Nyomás"
+
+msgid "Humidity"
+msgstr "Páratartalom"
+
+msgid "Wind"
+msgstr "Szél"
+
+msgid "Visibility"
+msgstr "Látótávolság"
+
+msgid "sun"
+msgstr "Nap"
+
+msgid "N"
+msgstr "É"
+
+msgid "NE"
+msgstr "ÉK"
+
+msgid "NNE"
+msgstr "ÉÉK"
+
+msgid "SE"
+msgstr "DK"
+
+msgid "mostly cloudy"
+msgstr "Többnyire felhős"
+
+msgid "partly cloudy"
+msgstr "Részben felhős"
+
+msgid "clear"
+msgstr "Derült"
+
+msgid "overcast"
+msgstr "Borult"
+
+msgid "sunny"
+msgstr "Napos"
+
+msgid "S"
+msgstr "D"
+
+msgid "Please enter a city name"
+msgstr "Adja meg a város nevét"
+
+msgid "E"
+msgstr "K"
+
+msgid "SSW"
+msgstr "DDNy"
+
+msgid "NNW"
+msgstr "ÉÉNy"
+
+msgid "ESE"
+msgstr "KDK"
+
+msgid "ENE"
+msgstr "KÉK"
+
+msgid "mostly sunny"
+msgstr "Túlnyomóan napos"
+
+msgid "W"
+msgstr "Ny"
+
+msgid "SW"
+msgstr "DNy"
+
+msgid "NW"
+msgstr "ÉNy"
+
+msgid "SSE"
+msgstr "DDK"
+
+msgid "WSW"
+msgstr "NyDNy"
+
+msgid "cloudy"
+msgstr "Felhős"
+
+msgid "rain"
+msgstr "Eső"
+
+msgid "WNW"
+msgstr "NyÉNy"
+
+msgid "mainly clear"
+msgstr "Többnyire derült"
+
+msgid "Location"
+msgstr "Hely"
+
+msgid "light rain"
+msgstr "Gyenge eső"
+
+msgid "thunderstorm"
+msgstr "Zivatar"
+
+msgid "mostly clear"
+msgstr "Többnyire derült"
+
+msgid "light rain shower"
+msgstr "Gyenge zápor"
+
+msgid "thunderstorms"
+msgstr "Zivatarok"
+
+msgid "rain shower"
+msgstr "Zápor"
+
+msgid "ice"
+msgstr "Jég"
+
+msgid "heavy rain"
+msgstr "Erős eső"
+
+msgid "showers"
+msgstr "Záporok"
+
+msgid "drizzle"
+msgstr "Ködszitálás"
+
+msgid "light snow shower"
+msgstr "Gyenge hózápor"
+
+msgid "fog"
+msgstr "Köd"
+
+msgid "snow"
+msgstr "Havazás"
+
+msgid "breezy"
+msgstr "Enyhén szeles"
+
+msgid "snow showers"
+msgstr "Hózáporok"
+
+msgid "Enhanced Weather"
+msgstr "Részletes időjárás-előrejelzés"
+
+msgid "Clear sky"
+msgstr "Tiszta égbolt"
+
+msgid "Mainly clear"
+msgstr "Többnyire derült"
+
+msgid "Partly cloudy"
+msgstr "Részben felhős"
+
+msgid "Overcast"
+msgstr "Borult"
+
+msgid "Depositing rime fog"
+msgstr "Zúzmarás köd"
+
+msgid "Dense drizzle"
+msgstr "Erős szitálás"
+
+msgid "Slight rain"
+msgstr "Gyenge eső"
+
+msgid "Heavy rain"
+msgstr "Erős eső"
+
+msgid "Heavy freezing rain"
+msgstr "Erős ónos eső"
+
+msgid "Slight snow"
+msgstr "Gyenge havazás"
+
+msgid "Heavy snow"
+msgstr "Erős havazás"
+
+msgid "Snow grains"
+msgstr "Hódara"
+
+msgid "Rain showers"
+msgstr "Zápor"
+
+msgid "Heavy rain showers"
+msgstr "Erős zápor"
+
+msgid "Snow showers"
+msgstr "Hózáporok"
+
+msgid "Heavy snow showers"
+msgstr "Erős hózáporok"
+
+msgid "Thunderstorm with hail"
+msgstr "Zivatar jégesővel"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Zivatar erős jégesővel"
+
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+msgid "Fog"
+msgstr "Köd"
+
+msgid "Light drizzle"
+msgstr "Gyenge szitálás"
+
+msgid "Drizzle"
+msgstr "Szitálás"
+
+msgid "Freezing drizzle"
+msgstr "Ónos szitálás"
+
+msgid "Rain"
+msgstr "Eső"
+
+msgid "Freezing rain"
+msgstr "Ónos eső"
+
+msgid "Snow"
+msgstr "Havazás"
+
+msgid "Thunderstorm"
+msgstr "Zivatar"

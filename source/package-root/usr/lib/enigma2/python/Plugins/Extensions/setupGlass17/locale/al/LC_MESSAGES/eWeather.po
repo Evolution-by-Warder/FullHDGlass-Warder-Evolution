@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: sq_AL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "City"
+msgstr "Qyteti"
+
+msgid "Pressure"
+msgstr "Presioni"
+
+msgid "Humidity"
+msgstr "Lagështia"
+
+msgid "Wind"
+msgstr "Erë"
+
+msgid "Visibility"
+msgstr "Dukshmëria"
+
+msgid "sun"
+msgstr "Diell"
+
+msgid "N"
+msgstr "V"
+
+msgid "NE"
+msgstr "VL"
+
+msgid "NNE"
+msgstr "VVL"
+
+msgid "SE"
+msgstr "JL"
+
+msgid "mostly cloudy"
+msgstr "Kryesisht me re"
+
+msgid "partly cloudy"
+msgstr "Pjesërisht me re"
+
+msgid "clear"
+msgstr "I kthjellët"
+
+msgid "overcast"
+msgstr "I vranët"
+
+msgid "sunny"
+msgstr "Me diell"
+
+msgid "S"
+msgstr "J"
+
+msgid "Please enter a city name"
+msgstr "Ju lutemi, shkruani emrin e qytetit"
+
+msgid "E"
+msgstr "L"
+
+msgid "SSW"
+msgstr "JJP"
+
+msgid "NNW"
+msgstr "VVP"
+
+msgid "ESE"
+msgstr "LJL"
+
+msgid "ENE"
+msgstr "LVL"
+
+msgid "mostly sunny"
+msgstr "Kryesisht me diell"
+
+msgid "W"
+msgstr "P"
+
+msgid "SW"
+msgstr "JP"
+
+msgid "NW"
+msgstr "VP"
+
+msgid "SSE"
+msgstr "JJL"
+
+msgid "WSW"
+msgstr "PJP"
+
+msgid "cloudy"
+msgstr "Me re"
+
+msgid "rain"
+msgstr "Shi"
+
+msgid "WNW"
+msgstr "PVP"
+
+msgid "mainly clear"
+msgstr "Kryesisht i kthjellët"
+
+msgid "Location"
+msgstr "Vendndodhja"
+
+msgid "light rain"
+msgstr "Shi i lehtë"
+
+msgid "thunderstorm"
+msgstr "Stuhi me bubullima"
+
+msgid "mostly clear"
+msgstr "Kryesisht i kthjellët"
+
+msgid "light rain shower"
+msgstr "Reshje të lehta shiu"
+
+msgid "thunderstorms"
+msgstr "Stuhi me bubullima"
+
+msgid "rain shower"
+msgstr "Reshje të shkurtra shiu"
+
+msgid "ice"
+msgstr "Akull"
+
+msgid "heavy rain"
+msgstr "Shi i rrëmbyeshëm"
+
+msgid "showers"
+msgstr "Reshje të shkurtra"
+
+msgid "drizzle"
+msgstr "Rigë"
+
+msgid "light snow shower"
+msgstr "Reshje të lehta dëbore"
+
+msgid "fog"
+msgstr "Mjegull"
+
+msgid "snow"
+msgstr "Dëborë"
+
+msgid "breezy"
+msgstr "Me erë të lehtë"
+
+msgid "snow showers"
+msgstr "Reshje të shkurtra dëbore"
+
+msgid "Enhanced Weather"
+msgstr "Parashikim i zgjeruar i motit"
+
+msgid "Clear sky"
+msgstr "Qiell i kthjellët"
+
+msgid "Mainly clear"
+msgstr "Kryesisht i kthjellët"
+
+msgid "Partly cloudy"
+msgstr "Pjesërisht me re"
+
+msgid "Overcast"
+msgstr "I vranët"
+
+msgid "Depositing rime fog"
+msgstr "Mjegull me formim bryme"
+
+msgid "Dense drizzle"
+msgstr "Rigë e dendur"
+
+msgid "Slight rain"
+msgstr "Shi i lehtë"
+
+msgid "Heavy rain"
+msgstr "Shi i rrëmbyeshëm"
+
+msgid "Heavy freezing rain"
+msgstr "Shi i fortë që ngrin"
+
+msgid "Slight snow"
+msgstr "Dëborë e lehtë"
+
+msgid "Heavy snow"
+msgstr "Dëborë e dendur"
+
+msgid "Snow grains"
+msgstr "Kokrriza dëbore"
+
+msgid "Rain showers"
+msgstr "Reshje të shkurtra shiu"
+
+msgid "Heavy rain showers"
+msgstr "Reshje të dendura shiu"
+
+msgid "Snow showers"
+msgstr "Reshje të shkurtra dëbore"
+
+msgid "Heavy snow showers"
+msgstr "Reshje të dendura dëbore"
+
+msgid "Thunderstorm with hail"
+msgstr "Stuhi me bubullima dhe breshër"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Stuhi me bubullima dhe breshër të dendur"
+
+msgid "Unknown"
+msgstr "I panjohur"
+
+msgid "Fog"
+msgstr "Mjegull"
+
+msgid "Light drizzle"
+msgstr "Rigë e lehtë"
+
+msgid "Drizzle"
+msgstr "Rigë"
+
+msgid "Freezing drizzle"
+msgstr "Rigë që ngrin"
+
+msgid "Rain"
+msgstr "Shi"
+
+msgid "Freezing rain"
+msgstr "Shi që ngrin"
+
+msgid "Snow"
+msgstr "Dëborë"
+
+msgid "Thunderstorm"
+msgstr "Stuhi me bubullima"

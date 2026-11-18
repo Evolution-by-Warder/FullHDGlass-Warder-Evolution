@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "City"
+msgstr "Stad"
+
+msgid "Pressure"
+msgstr "Druk"
+
+msgid "Humidity"
+msgstr "Vochtigheid"
+
+msgid "Wind"
+msgstr "Wind"
+
+msgid "Visibility"
+msgstr "Zicht"
+
+msgid "sun"
+msgstr "Zon"
+
+msgid "N"
+msgstr "N"
+
+msgid "NE"
+msgstr "NO"
+
+msgid "NNE"
+msgstr "NNO"
+
+msgid "SE"
+msgstr "ZO"
+
+msgid "mostly cloudy"
+msgstr "Overwegend bewolkt"
+
+msgid "partly cloudy"
+msgstr "Gedeeltelijk bewolkt"
+
+msgid "clear"
+msgstr "Helder"
+
+msgid "overcast"
+msgstr "Geheel bewolkt"
+
+msgid "sunny"
+msgstr "Zonnig"
+
+msgid "S"
+msgstr "Z"
+
+msgid "Please enter a city name"
+msgstr "Voer een plaatsnaam in"
+
+msgid "E"
+msgstr "O"
+
+msgid "SSW"
+msgstr "ZZW"
+
+msgid "NNW"
+msgstr "NNW"
+
+msgid "ESE"
+msgstr "OZO"
+
+msgid "ENE"
+msgstr "ONO"
+
+msgid "mostly sunny"
+msgstr "Overwegend zonnig"
+
+msgid "W"
+msgstr "W"
+
+msgid "SW"
+msgstr "ZW"
+
+msgid "NW"
+msgstr "NW"
+
+msgid "SSE"
+msgstr "ZZO"
+
+msgid "WSW"
+msgstr "WZW"
+
+msgid "cloudy"
+msgstr "Bewolkt"
+
+msgid "rain"
+msgstr "Regen"
+
+msgid "WNW"
+msgstr "WNW"
+
+msgid "mainly clear"
+msgstr "Overwegend helder"
+
+msgid "Location"
+msgstr "Plaats"
+
+msgid "light rain"
+msgstr "Lichte regen"
+
+msgid "thunderstorm"
+msgstr "Onweer"
+
+msgid "mostly clear"
+msgstr "Overwegend helder"
+
+msgid "light rain shower"
+msgstr "Lichte regenbui"
+
+msgid "thunderstorms"
+msgstr "Onweer"
+
+msgid "rain shower"
+msgstr "Regenbui"
+
+msgid "ice"
+msgstr "IJzel"
+
+msgid "heavy rain"
+msgstr "Zware regen"
+
+msgid "showers"
+msgstr "Buiig"
+
+msgid "drizzle"
+msgstr "Motregen"
+
+msgid "light snow shower"
+msgstr "Lichte sneeuwbui"
+
+msgid "fog"
+msgstr "Mist"
+
+msgid "snow"
+msgstr "Sneeuw"
+
+msgid "breezy"
+msgstr "Licht winderig"
+
+msgid "snow showers"
+msgstr "Sneeuwbuien"
+
+msgid "Enhanced Weather"
+msgstr "Uitgebreide weersverwachting"
+
+msgid "Clear sky"
+msgstr "Heldere hemel"
+
+msgid "Mainly clear"
+msgstr "Overwegend helder"
+
+msgid "Partly cloudy"
+msgstr "Gedeeltelijk bewolkt"
+
+msgid "Overcast"
+msgstr "Geheel bewolkt"
+
+msgid "Depositing rime fog"
+msgstr "Aanvriezende mist"
+
+msgid "Dense drizzle"
+msgstr "Zware motregen"
+
+msgid "Slight rain"
+msgstr "Lichte regen"
+
+msgid "Heavy rain"
+msgstr "Zware regen"
+
+msgid "Heavy freezing rain"
+msgstr "Zware ijzel"
+
+msgid "Slight snow"
+msgstr "Lichte sneeuw"
+
+msgid "Heavy snow"
+msgstr "Zware sneeuw"
+
+msgid "Snow grains"
+msgstr "Sneeuwkorrels"
+
+msgid "Rain showers"
+msgstr "Regenbuien"
+
+msgid "Heavy rain showers"
+msgstr "Zware regenbuien"
+
+msgid "Snow showers"
+msgstr "Sneeuwbuien"
+
+msgid "Heavy snow showers"
+msgstr "Zware sneeuwbuien"
+
+msgid "Thunderstorm with hail"
+msgstr "Onweer met hagel"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Onweer met zware hagel"
+
+msgid "Unknown"
+msgstr "Onbekend"
+
+msgid "Fog"
+msgstr "Mist"
+
+msgid "Light drizzle"
+msgstr "Lichte motregen"
+
+msgid "Drizzle"
+msgstr "Motregen"
+
+msgid "Freezing drizzle"
+msgstr "Aanvriezende motregen"
+
+msgid "Rain"
+msgstr "Regen"
+
+msgid "Freezing rain"
+msgstr "IJzel"
+
+msgid "Snow"
+msgstr "Sneeuw"
+
+msgid "Thunderstorm"
+msgstr "Onweer"

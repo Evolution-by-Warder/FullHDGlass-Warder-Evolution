@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "City"
+msgstr "Şehir"
+
+msgid "Pressure"
+msgstr "Basınç"
+
+msgid "Humidity"
+msgstr "Nem"
+
+msgid "Wind"
+msgstr "Rüzgâr"
+
+msgid "Visibility"
+msgstr "Görüş mesafesi"
+
+msgid "sun"
+msgstr "Güneş"
+
+msgid "N"
+msgstr "K"
+
+msgid "NE"
+msgstr "KD"
+
+msgid "NNE"
+msgstr "KKD"
+
+msgid "SE"
+msgstr "GD"
+
+msgid "mostly cloudy"
+msgstr "Çok bulutlu"
+
+msgid "partly cloudy"
+msgstr "Parçalı bulutlu"
+
+msgid "clear"
+msgstr "Açık"
+
+msgid "overcast"
+msgstr "Kapalı"
+
+msgid "sunny"
+msgstr "Güneşli"
+
+msgid "S"
+msgstr "G"
+
+msgid "Please enter a city name"
+msgstr "Bir şehir adı girin"
+
+msgid "E"
+msgstr "D"
+
+msgid "SSW"
+msgstr "GGB"
+
+msgid "NNW"
+msgstr "KKB"
+
+msgid "ESE"
+msgstr "DGD"
+
+msgid "ENE"
+msgstr "DKD"
+
+msgid "mostly sunny"
+msgstr "Çoğunlukla güneşli"
+
+msgid "W"
+msgstr "B"
+
+msgid "SW"
+msgstr "GB"
+
+msgid "NW"
+msgstr "KB"
+
+msgid "SSE"
+msgstr "GGD"
+
+msgid "WSW"
+msgstr "BGB"
+
+msgid "cloudy"
+msgstr "Bulutlu"
+
+msgid "rain"
+msgstr "Yağmur"
+
+msgid "WNW"
+msgstr "BKB"
+
+msgid "mainly clear"
+msgstr "Genellikle açık"
+
+msgid "Location"
+msgstr "Konum"
+
+msgid "light rain"
+msgstr "Hafif yağmur"
+
+msgid "thunderstorm"
+msgstr "Gök gürültülü fırtına"
+
+msgid "mostly clear"
+msgstr "Çoğunlukla açık"
+
+msgid "light rain shower"
+msgstr "Hafif yağmur sağanağı"
+
+msgid "thunderstorms"
+msgstr "Gök gürültülü fırtınalar"
+
+msgid "rain shower"
+msgstr "Yağmur sağanağı"
+
+msgid "ice"
+msgstr "Buz"
+
+msgid "heavy rain"
+msgstr "Şiddetli yağmur"
+
+msgid "showers"
+msgstr "Sağanak yağış"
+
+msgid "drizzle"
+msgstr "Çiseleme"
+
+msgid "light snow shower"
+msgstr "Hafif kar sağanağı"
+
+msgid "fog"
+msgstr "Sis"
+
+msgid "snow"
+msgstr "Kar"
+
+msgid "breezy"
+msgstr "Hafif rüzgârlı"
+
+msgid "snow showers"
+msgstr "Kar sağanakları"
+
+msgid "Enhanced Weather"
+msgstr "Ayrıntılı hava durumu"
+
+msgid "Clear sky"
+msgstr "Açık gökyüzü"
+
+msgid "Mainly clear"
+msgstr "Genellikle açık"
+
+msgid "Partly cloudy"
+msgstr "Parçalı bulutlu"
+
+msgid "Overcast"
+msgstr "Kapalı"
+
+msgid "Depositing rime fog"
+msgstr "Kırağı oluşturan sis"
+
+msgid "Dense drizzle"
+msgstr "Yoğun çiseleme"
+
+msgid "Slight rain"
+msgstr "Hafif yağmur"
+
+msgid "Heavy rain"
+msgstr "Şiddetli yağmur"
+
+msgid "Heavy freezing rain"
+msgstr "Şiddetli donan yağmur"
+
+msgid "Slight snow"
+msgstr "Hafif kar yağışı"
+
+msgid "Heavy snow"
+msgstr "Yoğun kar yağışı"
+
+msgid "Snow grains"
+msgstr "Kar tanecikleri"
+
+msgid "Rain showers"
+msgstr "Sağanak yağmur"
+
+msgid "Heavy rain showers"
+msgstr "Şiddetli sağanak yağmur"
+
+msgid "Snow showers"
+msgstr "Kar sağanakları"
+
+msgid "Heavy snow showers"
+msgstr "Şiddetli kar sağanakları"
+
+msgid "Thunderstorm with hail"
+msgstr "Dolu yağışlı gök gürültülü fırtına"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Şiddetli dolu yağışlı gök gürültülü fırtına"
+
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+msgid "Fog"
+msgstr "Sis"
+
+msgid "Light drizzle"
+msgstr "Hafif çiseleme"
+
+msgid "Drizzle"
+msgstr "Çiseleme"
+
+msgid "Freezing drizzle"
+msgstr "Donan çiseleme"
+
+msgid "Rain"
+msgstr "Yağmur"
+
+msgid "Freezing rain"
+msgstr "Donan yağmur"
+
+msgid "Snow"
+msgstr "Kar"
+
+msgid "Thunderstorm"
+msgstr "Gök gürültülü fırtına"

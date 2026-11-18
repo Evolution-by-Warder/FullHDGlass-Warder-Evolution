@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "City"
+msgstr "Cidade"
+
+msgid "Pressure"
+msgstr "Pressão"
+
+msgid "Humidity"
+msgstr "Humidade"
+
+msgid "Wind"
+msgstr "Vento"
+
+msgid "Visibility"
+msgstr "Visibilidade"
+
+msgid "sun"
+msgstr "Sol"
+
+msgid "N"
+msgstr "N"
+
+msgid "NE"
+msgstr "NE"
+
+msgid "NNE"
+msgstr "NNE"
+
+msgid "SE"
+msgstr "SE"
+
+msgid "mostly cloudy"
+msgstr "Predominantemente nublado"
+
+msgid "partly cloudy"
+msgstr "Parcialmente nublado"
+
+msgid "clear"
+msgstr "Céu limpo"
+
+msgid "overcast"
+msgstr "Céu encoberto"
+
+msgid "sunny"
+msgstr "Ensolarado"
+
+msgid "S"
+msgstr "S"
+
+msgid "Please enter a city name"
+msgstr "Por favor, indique um nome de cidade"
+
+msgid "E"
+msgstr "E"
+
+msgid "SSW"
+msgstr "SSO"
+
+msgid "NNW"
+msgstr "NNO"
+
+msgid "ESE"
+msgstr "ESE"
+
+msgid "ENE"
+msgstr "ENE"
+
+msgid "mostly sunny"
+msgstr "Predominantemente soalheiro"
+
+msgid "W"
+msgstr "O"
+
+msgid "SW"
+msgstr "SO"
+
+msgid "NW"
+msgstr "NO"
+
+msgid "SSE"
+msgstr "SSE"
+
+msgid "WSW"
+msgstr "OSO"
+
+msgid "cloudy"
+msgstr "Nublado"
+
+msgid "rain"
+msgstr "Chuva"
+
+msgid "WNW"
+msgstr "ONO"
+
+msgid "mainly clear"
+msgstr "Céu maioritariamente limpo"
+
+msgid "Location"
+msgstr "Localização"
+
+msgid "light rain"
+msgstr "Chuva fraca"
+
+msgid "thunderstorm"
+msgstr "Trovoada"
+
+msgid "mostly clear"
+msgstr "Céu maioritariamente limpo"
+
+msgid "light rain shower"
+msgstr "Aguaceiro fraco de chuva"
+
+msgid "thunderstorms"
+msgstr "Trovoadas"
+
+msgid "rain shower"
+msgstr "Aguaceiro de chuva"
+
+msgid "ice"
+msgstr "Gelo"
+
+msgid "heavy rain"
+msgstr "Chuva forte"
+
+msgid "showers"
+msgstr "Aguaceiros"
+
+msgid "drizzle"
+msgstr "Chuvisco"
+
+msgid "light snow shower"
+msgstr "Aguaceiro fraco de neve"
+
+msgid "fog"
+msgstr "Nevoeiro"
+
+msgid "snow"
+msgstr "Neve"
+
+msgid "breezy"
+msgstr "Brisa ligeira"
+
+msgid "snow showers"
+msgstr "Aguaceiros de neve"
+
+msgid "Enhanced Weather"
+msgstr "Previsão meteorológica detalhada"
+
+msgid "Clear sky"
+msgstr "Céu limpo"
+
+msgid "Mainly clear"
+msgstr "Céu maioritariamente limpo"
+
+msgid "Partly cloudy"
+msgstr "Parcialmente nublado"
+
+msgid "Overcast"
+msgstr "Céu encoberto"
+
+msgid "Depositing rime fog"
+msgstr "Nevoeiro com formação de sincelo"
+
+msgid "Dense drizzle"
+msgstr "Chuvisco intenso"
+
+msgid "Slight rain"
+msgstr "Chuva fraca"
+
+msgid "Heavy rain"
+msgstr "Chuva forte"
+
+msgid "Heavy freezing rain"
+msgstr "Chuva congelante forte"
+
+msgid "Slight snow"
+msgstr "Queda de neve fraca"
+
+msgid "Heavy snow"
+msgstr "Queda de neve intensa"
+
+msgid "Snow grains"
+msgstr "Grãos de neve"
+
+msgid "Rain showers"
+msgstr "Aguaceiros de chuva"
+
+msgid "Heavy rain showers"
+msgstr "Aguaceiros fortes"
+
+msgid "Snow showers"
+msgstr "Aguaceiros de neve"
+
+msgid "Heavy snow showers"
+msgstr "Aguaceiros de neve fortes"
+
+msgid "Thunderstorm with hail"
+msgstr "Trovoada com granizo"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Trovoada com granizo intenso"
+
+msgid "Unknown"
+msgstr "Desconhecido"
+
+msgid "Fog"
+msgstr "Nevoeiro"
+
+msgid "Light drizzle"
+msgstr "Chuvisco fraco"
+
+msgid "Drizzle"
+msgstr "Chuvisco"
+
+msgid "Freezing drizzle"
+msgstr "Chuvisco congelante"
+
+msgid "Rain"
+msgstr "Chuva"
+
+msgid "Freezing rain"
+msgstr "Chuva congelante"
+
+msgid "Snow"
+msgstr "Neve"
+
+msgid "Thunderstorm"
+msgstr "Trovoada"

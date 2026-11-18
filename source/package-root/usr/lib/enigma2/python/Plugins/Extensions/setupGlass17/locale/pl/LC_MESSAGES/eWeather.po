@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : 2);\n"
+
+msgid "City"
+msgstr "Miasto"
+
+msgid "Pressure"
+msgstr "Ciśnienie"
+
+msgid "Humidity"
+msgstr "Wilgotność"
+
+msgid "Wind"
+msgstr "Wiatr"
+
+msgid "Visibility"
+msgstr "Widoczność"
+
+msgid "sun"
+msgstr "Słońce"
+
+msgid "N"
+msgstr "N"
+
+msgid "NE"
+msgstr "NE"
+
+msgid "NNE"
+msgstr "NNE"
+
+msgid "SE"
+msgstr "SE"
+
+msgid "mostly cloudy"
+msgstr "Przeważnie pochmurno"
+
+msgid "partly cloudy"
+msgstr "Częściowe zachmurzenie"
+
+msgid "clear"
+msgstr "Pogodnie"
+
+msgid "overcast"
+msgstr "Pochmurno"
+
+msgid "sunny"
+msgstr "Słonecznie"
+
+msgid "S"
+msgstr "S"
+
+msgid "Please enter a city name"
+msgstr "Wpisz nazwę miasta"
+
+msgid "E"
+msgstr "E"
+
+msgid "SSW"
+msgstr "SSW"
+
+msgid "NNW"
+msgstr "NNW"
+
+msgid "ESE"
+msgstr "ESE"
+
+msgid "ENE"
+msgstr "ENE"
+
+msgid "mostly sunny"
+msgstr "Przeważnie słonecznie"
+
+msgid "W"
+msgstr "W"
+
+msgid "SW"
+msgstr "SW"
+
+msgid "NW"
+msgstr "NW"
+
+msgid "SSE"
+msgstr "SSE"
+
+msgid "WSW"
+msgstr "WSW"
+
+msgid "cloudy"
+msgstr "Pochmurno"
+
+msgid "rain"
+msgstr "Deszcz"
+
+msgid "WNW"
+msgstr "WNW"
+
+msgid "mainly clear"
+msgstr "Przeważnie bezchmurnie"
+
+msgid "Location"
+msgstr "Lokalizacja"
+
+msgid "light rain"
+msgstr "Słaby deszcz"
+
+msgid "thunderstorm"
+msgstr "Burza"
+
+msgid "mostly clear"
+msgstr "Przeważnie bezchmurnie"
+
+msgid "light rain shower"
+msgstr "Słaby przelotny deszcz"
+
+msgid "thunderstorms"
+msgstr "Burze"
+
+msgid "rain shower"
+msgstr "Przelotny deszcz"
+
+msgid "ice"
+msgstr "Lód"
+
+msgid "heavy rain"
+msgstr "Silny deszcz"
+
+msgid "showers"
+msgstr "Przelotne opady deszczu"
+
+msgid "drizzle"
+msgstr "Mżawka"
+
+msgid "light snow shower"
+msgstr "Słaby przelotny śnieg"
+
+msgid "fog"
+msgstr "Mgła"
+
+msgid "snow"
+msgstr "Śnieg"
+
+msgid "breezy"
+msgstr "Lekko wietrznie"
+
+msgid "snow showers"
+msgstr "Przelotny śnieg"
+
+msgid "Enhanced Weather"
+msgstr "Szczegółowa prognoza pogody"
+
+msgid "Clear sky"
+msgstr "Bezchmurnie"
+
+msgid "Mainly clear"
+msgstr "Przeważnie bezchmurnie"
+
+msgid "Partly cloudy"
+msgstr "Częściowe zachmurzenie"
+
+msgid "Overcast"
+msgstr "Pochmurno"
+
+msgid "Depositing rime fog"
+msgstr "Mgła osadzająca szadź"
+
+msgid "Dense drizzle"
+msgstr "Silna mżawka"
+
+msgid "Slight rain"
+msgstr "Słaby deszcz"
+
+msgid "Heavy rain"
+msgstr "Silny deszcz"
+
+msgid "Heavy freezing rain"
+msgstr "Silny marznący deszcz"
+
+msgid "Slight snow"
+msgstr "Słabe opady śniegu"
+
+msgid "Heavy snow"
+msgstr "Intensywne opady śniegu"
+
+msgid "Snow grains"
+msgstr "Śnieg ziarnisty"
+
+msgid "Rain showers"
+msgstr "Przelotny deszcz"
+
+msgid "Heavy rain showers"
+msgstr "Silne przelotne opady deszczu"
+
+msgid "Snow showers"
+msgstr "Przelotny śnieg"
+
+msgid "Heavy snow showers"
+msgstr "Silne przelotne opady śniegu"
+
+msgid "Thunderstorm with hail"
+msgstr "Burza z gradem"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Burza z silnym gradem"
+
+msgid "Unknown"
+msgstr "Nieznane"
+
+msgid "Fog"
+msgstr "Mgła"
+
+msgid "Light drizzle"
+msgstr "Lekka mżawka"
+
+msgid "Drizzle"
+msgstr "Mżawka"
+
+msgid "Freezing drizzle"
+msgstr "Marznąca mżawka"
+
+msgid "Rain"
+msgstr "Deszcz"
+
+msgid "Freezing rain"
+msgstr "Marznący deszcz"
+
+msgid "Snow"
+msgstr "Śnieg"
+
+msgid "Thunderstorm"
+msgstr "Burza"

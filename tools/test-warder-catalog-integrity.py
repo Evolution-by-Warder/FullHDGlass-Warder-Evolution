@@ -11,6 +11,13 @@ ROOT = Path(__file__).resolve().parents[1] / (
 LANGS = ('al', 'cs', 'de', 'el', 'es', 'et', 'fa', 'fr', 'hu', 'it',
          'lt', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'tr', 'uk', 'zh')
 DOMAINS = ('setupGlass17', 'helpTxt', 'weather', 'netatmo', 'eWeather')
+LANGUAGE_TAGS = {
+    'al': 'sq_AL', 'cs': 'cs_CZ', 'de': 'de_DE', 'el': 'el_GR',
+    'es': 'es_ES', 'et': 'et_EE', 'fa': 'fa_IR', 'fr': 'fr_FR',
+    'hu': 'hu_HU', 'it': 'it_IT', 'lt': 'lt_LT', 'nl': 'nl_NL',
+    'pl': 'pl_PL', 'pt': 'pt_PT', 'ro': 'ro_RO', 'ru': 'ru_RU',
+    'sk': 'sk_SK', 'tr': 'tr_TR', 'uk': 'uk_UA', 'zh': 'zh_CN',
+}
 FORMAT = re.compile(r'%(?!%)(?:\([\w]+\))?[-+#0 ]*(?:\d+|\*)?(?:\.(?:\d+|\*))?[diouxXeEfFgGcrs]')
 
 
@@ -53,15 +60,8 @@ def po_entries(path):
 
 class CatalogIntegrity(unittest.TestCase):
     def test_main_gettext_language_headers_match_locale(self):
-        expected_codes = {
-            'al': 'sq_AL', 'cs': 'cs_CZ', 'de': 'de_DE', 'el': 'el_GR',
-            'es': 'es_ES', 'et': 'et_EE', 'fa': 'fa_IR', 'fr': 'fr_FR',
-            'hu': 'hu_HU', 'it': 'it_IT', 'lt': 'lt_LT', 'nl': 'nl_NL',
-            'pl': 'pl_PL', 'pt': 'pt_PT', 'ro': 'ro_RO', 'ru': 'ru_RU',
-            'sk': 'sk_SK', 'tr': 'tr_TR', 'uk': 'uk_UA', 'zh': 'zh_CN',
-        }
-        self.assertEqual(set(expected_codes), set(LANGS))
-        for lang, expected in expected_codes.items():
+        self.assertEqual(set(LANGUAGE_TAGS), set(LANGS))
+        for lang, expected in LANGUAGE_TAGS.items():
             with self.subTest(lang=lang):
                 path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
                 po_header = po_entries(path)['']
@@ -96,7 +96,12 @@ class CatalogIntegrity(unittest.TestCase):
                     self.assertTrue(binary.is_file(), str(binary))
                     with binary.open('rb') as stream:
                         translations = gettext.GNUTranslations(stream)
-                    for key, value in po_entries(path).items():
+                    catalog = po_entries(path)
+                    tag = translations.info().get('language')
+                    self.assertIn(tag, (LANGUAGE_TAGS[lang], LANGUAGE_TAGS[lang].split('_')[0]))
+                    self.assertIn('Language: %s\n' % tag, catalog[''])
+                    self.assertEqual(translations.charset().lower(), 'utf-8')
+                    for key, value in catalog.items():
                         if key and value:
                             self.assertEqual(translations.gettext(key), value, key)
 
@@ -351,6 +356,25 @@ class CatalogIntegrity(unittest.TestCase):
             with self.subTest(key=key):
                 self.assertEqual(catalog[key], value)
                 self.assertEqual(binary.gettext(key), value)
+
+    def test_shared_extended_weather_messages(self):
+        expected = set(po_entries(ROOT / 'sk/LC_MESSAGES/eWeather.po')) - {''}
+        sun = {'al': 'Diell', 'de': 'Sonne', 'es': 'Sol', 'fa': 'خورشید',
+               'fr': 'Soleil', 'hu': 'Nap', 'it': 'Sole', 'nl': 'Zon',
+               'pl': 'Słońce', 'pt': 'Sol', 'ro': 'Soare', 'ru': 'Солнце',
+               'tr': 'Güneş', 'uk': 'Сонце', 'zh': '太阳'}
+        for lang, translation in sun.items():
+            with self.subTest(lang=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'eWeather.po'
+                catalog = po_entries(path)
+                keys = set(catalog) - {''}
+                self.assertTrue(keys <= expected)
+                self.assertGreaterEqual(len(keys), 76)
+                self.assertTrue(all(catalog[key].strip() for key in keys))
+                self.assertEqual(catalog['sun'], translation)
+                with path.with_suffix('.mo').open('rb') as stream:
+                    binary = gettext.GNUTranslations(stream)
+                self.assertEqual(set(binary._catalog) - {''}, keys)
 
     def test_extended_greek_weather_batch(self):
         catalog = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'eWeather.po')

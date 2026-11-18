@@ -1,5 +1,43 @@
 # FullHDGlass — jazykový audit 17. 11. 2026
 
+## Aktuálny stav — 18. 11. 2026
+
+**Bod 9 je rozpracovaný. Zostáva 32 694 referenčných položiek:** `helpTxt` **2 079** a `eWeather` **30 615**.
+
+Tabuľka počíta neprázdne hodnoty z referenčného inventára, ktoré majú rovnaký text v `.po` aj v načítanom `.mo`. Angličtina je zdrojový jazyk všetkých piatich oblastí. Historické kľúče mimo inventára, napríklad estónsky `Select city`, do počtu nevstupujú.
+
+| Jazyk | setupGlass17 | helpTxt | weather | netatmo | eWeather |
+|---|---:|---:|---:|---:|---:|
+| en | zdroj 517 | zdroj 189 | zdroj 108 | zdroj 42 | zdroj 2 117 |
+| al | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| cs | 517/517 | 189/189 | 108/108 | 42/42 | 2117/2117 |
+| de | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| el | 517/517 | 189/189 | 108/108 | 42/42 | 2117/2117 |
+| es | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| et | 517/517 | 0/189 | 108/108 | 42/42 | 2117/2117 |
+| fa | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| fr | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| hu | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| it | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| lt | 517/517 | 189/189 | 108/108 | 42/42 | 2117/2117 |
+| nl | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| pl | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| pt | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| ro | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| ru | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+| sk | 517/517 | 189/189 | 108/108 | 42/42 | 2117/2117 |
+| tr | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| uk | 517/517 | 0/189 | 108/108 | 42/42 | 76/2117 |
+| zh | 517/517 | 189/189 | 108/108 | 42/42 | 76/2117 |
+
+- Estónske `eWeather` doplnilo posledných **802** referenčných textov. Katalóg má **2 117/2 117** prekladov. Zachovalo sa všetkých 1 315 predchádzajúcich referenčných hodnôt a historický kľúč `Select city`. Binárny gettext súbor má 2 119 záznamov aj s hlavičkou. Výsledok [GitHub Actions](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44257450926) pre [commit 095497e](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/095497ec6f5b50e95c99d43c64d756ba88ac349b) je úspešný.
+- Pätnásť ďalších jazykov `eWeather` získalo po **76** záznamov, spolu **1 140**. Dávka využíva zhodné meteorologické hlásenia a skratky smerov z existujúcich katalógov. Pri prenose boli upravené kolízie významov a nevhodné výrazy, napríklad anglické `sun` v predpovedi pomenúva slnko. Vytvorených bolo 15 párov UTF-8 `.po` a gettext `.mo`.
+- Opravené kódy jazyka v albánskom, českom, maďarskom, poľskom a ukrajinskom `weather` a českom `helpTxt`. Pre poľské `netatmo` a `eWeather` sú nastavené tri tvary množného čísla. Obsah existujúcich prekladových správ sa pri oprave hlavičiek nezmenil. Kontrola overuje jazykový kód aj UTF-8 všetkých prítomných binárnych katalógov.
+- [Automatické sťahovanie a zachovanie jazykov](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/7f6a51e626e3edc3939ab8973847789281d9a7e3) ukladá katalógy mimo inštalačného adresára a pred aktualizáciou zachováva katalógy zo staršej inštalácie. Zvolenie angličtiny nespúšťa sieťový prenos. Pri priamom teste sa z GitHubu stiahlo a podľa SHA-256 overilo všetkých päť gréckych katalógov. Opakovaná synchronizácia použila uložené súbory. [Jazykové CI opravy sťahovania](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44256787078) prešlo.
+- Pokrytie v tabuľke vyjadruje technicky overený obsah. Fyzická skúška na Enigma2 a jazyková korektúra historických prekladov zostávajú otvorené.
+
+## Staršie záznamy
+
 Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav: **čiastočne dokončené**. Vyplnený prekladový záznam nie je záruka správnosti jazykovej formulácie; kontrola na prijímači ešte neprebehla.
 
 ## Hlavné nastavenia

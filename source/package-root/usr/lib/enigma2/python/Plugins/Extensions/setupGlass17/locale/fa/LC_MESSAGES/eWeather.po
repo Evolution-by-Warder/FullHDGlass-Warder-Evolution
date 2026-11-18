@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "City"
+msgstr "شهر"
+
+msgid "Pressure"
+msgstr "فشار هوا"
+
+msgid "Humidity"
+msgstr "رطوبت"
+
+msgid "Wind"
+msgstr "باد"
+
+msgid "Visibility"
+msgstr "دید افقی"
+
+msgid "sun"
+msgstr "خورشید"
+
+msgid "N"
+msgstr "شمال"
+
+msgid "NE"
+msgstr "شمال‌شرق"
+
+msgid "NNE"
+msgstr "شمال‌شمال‌شرق"
+
+msgid "SE"
+msgstr "جنوب‌شرق"
+
+msgid "mostly cloudy"
+msgstr "عمدتاً ابری"
+
+msgid "partly cloudy"
+msgstr "نیمه‌ابری"
+
+msgid "clear"
+msgstr "صاف"
+
+msgid "overcast"
+msgstr "تمام‌ابری"
+
+msgid "sunny"
+msgstr "آفتابی"
+
+msgid "S"
+msgstr "جنوب"
+
+msgid "Please enter a city name"
+msgstr "لطفاً نام شهر را وارد کنید"
+
+msgid "E"
+msgstr "شرق"
+
+msgid "SSW"
+msgstr "جنوب‌جنوب‌غرب"
+
+msgid "NNW"
+msgstr "شمال‌شمال‌غرب"
+
+msgid "ESE"
+msgstr "شرق‌جنوب‌شرق"
+
+msgid "ENE"
+msgstr "شرق‌شمال‌شرق"
+
+msgid "mostly sunny"
+msgstr "عمدتاً آفتابی"
+
+msgid "W"
+msgstr "غرب"
+
+msgid "SW"
+msgstr "جنوب‌غرب"
+
+msgid "NW"
+msgstr "شمال‌غرب"
+
+msgid "SSE"
+msgstr "جنوب‌جنوب‌شرق"
+
+msgid "WSW"
+msgstr "غرب‌جنوب‌غرب"
+
+msgid "cloudy"
+msgstr "ابری"
+
+msgid "rain"
+msgstr "باران"
+
+msgid "WNW"
+msgstr "غرب‌شمال‌غرب"
+
+msgid "mainly clear"
+msgstr "عمدتاً صاف"
+
+msgid "Location"
+msgstr "موقعیت"
+
+msgid "light rain"
+msgstr "باران خفیف"
+
+msgid "thunderstorm"
+msgstr "طوفان تندری"
+
+msgid "mostly clear"
+msgstr "عمدتاً صاف"
+
+msgid "light rain shower"
+msgstr "رگبار خفیف باران"
+
+msgid "thunderstorms"
+msgstr "طوفان‌های تندری"
+
+msgid "rain shower"
+msgstr "رگبار باران"
+
+msgid "ice"
+msgstr "یخ"
+
+msgid "heavy rain"
+msgstr "باران شدید"
+
+msgid "showers"
+msgstr "رگبار"
+
+msgid "drizzle"
+msgstr "نم‌نم باران"
+
+msgid "light snow shower"
+msgstr "رگبار خفیف برف"
+
+msgid "fog"
+msgstr "مه"
+
+msgid "snow"
+msgstr "برف"
+
+msgid "breezy"
+msgstr "کمی بادخیز"
+
+msgid "snow showers"
+msgstr "رگبار برف"
+
+msgid "Enhanced Weather"
+msgstr "پیش‌بینی پیشرفتهٔ هوا"
+
+msgid "Clear sky"
+msgstr "آسمان صاف"
+
+msgid "Mainly clear"
+msgstr "عمدتاً صاف"
+
+msgid "Partly cloudy"
+msgstr "نیمه‌ابری"
+
+msgid "Overcast"
+msgstr "تمام‌ابری"
+
+msgid "Depositing rime fog"
+msgstr "مه همراه با تشکیل برفک"
+
+msgid "Dense drizzle"
+msgstr "نم‌نم باران شدید"
+
+msgid "Slight rain"
+msgstr "باران خفیف"
+
+msgid "Heavy rain"
+msgstr "باران شدید"
+
+msgid "Heavy freezing rain"
+msgstr "باران یخ‌زننده شدید"
+
+msgid "Slight snow"
+msgstr "برف خفیف"
+
+msgid "Heavy snow"
+msgstr "برف شدید"
+
+msgid "Snow grains"
+msgstr "دانه‌های ریز برف"
+
+msgid "Rain showers"
+msgstr "رگبار باران"
+
+msgid "Heavy rain showers"
+msgstr "رگبار شدید باران"
+
+msgid "Snow showers"
+msgstr "رگبار برف"
+
+msgid "Heavy snow showers"
+msgstr "رگبار شدید برف"
+
+msgid "Thunderstorm with hail"
+msgstr "طوفان تندری همراه با تگرگ"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "طوفان تندری همراه با تگرگ شدید"
+
+msgid "Unknown"
+msgstr "نامشخص"
+
+msgid "Fog"
+msgstr "مه"
+
+msgid "Light drizzle"
+msgstr "نم‌نم باران خفیف"
+
+msgid "Drizzle"
+msgstr "نم‌نم باران"
+
+msgid "Freezing drizzle"
+msgstr "نم‌نم باران یخ‌زننده"
+
+msgid "Rain"
+msgstr "باران"
+
+msgid "Freezing rain"
+msgstr "باران یخ‌زننده"
+
+msgid "Snow"
+msgstr "برف"
+
+msgid "Thunderstorm"
+msgstr "طوفان تندری"

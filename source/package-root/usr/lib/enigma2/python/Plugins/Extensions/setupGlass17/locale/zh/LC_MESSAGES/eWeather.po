@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "City"
+msgstr "城市"
+
+msgid "Pressure"
+msgstr "压力"
+
+msgid "Humidity"
+msgstr "湿度"
+
+msgid "Wind"
+msgstr "风"
+
+msgid "Visibility"
+msgstr "能见度"
+
+msgid "sun"
+msgstr "太阳"
+
+msgid "N"
+msgstr "北"
+
+msgid "NE"
+msgstr "东北"
+
+msgid "NNE"
+msgstr "东北偏北"
+
+msgid "SE"
+msgstr "东南"
+
+msgid "mostly cloudy"
+msgstr "多云"
+
+msgid "partly cloudy"
+msgstr "晴间多云"
+
+msgid "clear"
+msgstr "晴"
+
+msgid "overcast"
+msgstr "阴天"
+
+msgid "sunny"
+msgstr "晴天"
+
+msgid "S"
+msgstr "南"
+
+msgid "Please enter a city name"
+msgstr "请输入城市名称"
+
+msgid "E"
+msgstr "东"
+
+msgid "SSW"
+msgstr "西南偏南"
+
+msgid "NNW"
+msgstr "西北偏北"
+
+msgid "ESE"
+msgstr "东南偏东"
+
+msgid "ENE"
+msgstr "东北偏东"
+
+msgid "mostly sunny"
+msgstr "多为晴天"
+
+msgid "W"
+msgstr "西"
+
+msgid "SW"
+msgstr "西南"
+
+msgid "NW"
+msgstr "西北"
+
+msgid "SSE"
+msgstr "东南偏南"
+
+msgid "WSW"
+msgstr "西南偏西"
+
+msgid "cloudy"
+msgstr "多云"
+
+msgid "rain"
+msgstr "雨"
+
+msgid "WNW"
+msgstr "西北偏西"
+
+msgid "mainly clear"
+msgstr "大部晴朗"
+
+msgid "Location"
+msgstr "位置"
+
+msgid "light rain"
+msgstr "小雨"
+
+msgid "thunderstorm"
+msgstr "雷雨"
+
+msgid "mostly clear"
+msgstr "大部晴朗"
+
+msgid "light rain shower"
+msgstr "小阵雨"
+
+msgid "thunderstorms"
+msgstr "雷暴"
+
+msgid "rain shower"
+msgstr "阵雨"
+
+msgid "ice"
+msgstr "冰"
+
+msgid "heavy rain"
+msgstr "大雨"
+
+msgid "showers"
+msgstr "阵雨"
+
+msgid "drizzle"
+msgstr "毛毛雨"
+
+msgid "light snow shower"
+msgstr "小阵雪"
+
+msgid "fog"
+msgstr "雾"
+
+msgid "snow"
+msgstr "雪"
+
+msgid "breezy"
+msgstr "微风"
+
+msgid "snow showers"
+msgstr "阵雪"
+
+msgid "Enhanced Weather"
+msgstr "详细天气预报"
+
+msgid "Clear sky"
+msgstr "晴朗"
+
+msgid "Mainly clear"
+msgstr "大部晴朗"
+
+msgid "Partly cloudy"
+msgstr "晴间多云"
+
+msgid "Overcast"
+msgstr "阴天"
+
+msgid "Depositing rime fog"
+msgstr "结雾凇的雾"
+
+msgid "Dense drizzle"
+msgstr "强毛毛雨"
+
+msgid "Slight rain"
+msgstr "小雨"
+
+msgid "Heavy rain"
+msgstr "大雨"
+
+msgid "Heavy freezing rain"
+msgstr "强冻雨"
+
+msgid "Slight snow"
+msgstr "小雪"
+
+msgid "Heavy snow"
+msgstr "大雪"
+
+msgid "Snow grains"
+msgstr "米雪"
+
+msgid "Rain showers"
+msgstr "阵雨"
+
+msgid "Heavy rain showers"
+msgstr "强阵雨"
+
+msgid "Snow showers"
+msgstr "阵雪"
+
+msgid "Heavy snow showers"
+msgstr "强阵雪"
+
+msgid "Thunderstorm with hail"
+msgstr "雷暴伴冰雹"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "雷暴伴强冰雹"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Fog"
+msgstr "雾"
+
+msgid "Light drizzle"
+msgstr "小毛毛雨"
+
+msgid "Drizzle"
+msgstr "毛毛雨"
+
+msgid "Freezing drizzle"
+msgstr "冻毛毛雨"
+
+msgid "Rain"
+msgstr "雨"
+
+msgid "Freezing rain"
+msgstr "冻雨"
+
+msgid "Snow"
+msgstr "雪"
+
+msgid "Thunderstorm"
+msgstr "雷雨"

@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "City"
+msgstr "Oraș"
+
+msgid "Pressure"
+msgstr "Presiune atmosferică"
+
+msgid "Humidity"
+msgstr "Umiditate"
+
+msgid "Wind"
+msgstr "Vânt"
+
+msgid "Visibility"
+msgstr "Vizibilitate"
+
+msgid "sun"
+msgstr "Soare"
+
+msgid "N"
+msgstr "N"
+
+msgid "NE"
+msgstr "NE"
+
+msgid "NNE"
+msgstr "NNE"
+
+msgid "SE"
+msgstr "SE"
+
+msgid "mostly cloudy"
+msgstr "Predominant noros"
+
+msgid "partly cloudy"
+msgstr "Parțial noros"
+
+msgid "clear"
+msgstr "Senin"
+
+msgid "overcast"
+msgstr "Acoperit"
+
+msgid "sunny"
+msgstr "Însorit"
+
+msgid "S"
+msgstr "S"
+
+msgid "Please enter a city name"
+msgstr "Vă rugăm să introduceți un nume de oraș"
+
+msgid "E"
+msgstr "E"
+
+msgid "SSW"
+msgstr "SSV"
+
+msgid "NNW"
+msgstr "NNV"
+
+msgid "ESE"
+msgstr "ESE"
+
+msgid "ENE"
+msgstr "ENE"
+
+msgid "mostly sunny"
+msgstr "Predominant însorit"
+
+msgid "W"
+msgstr "V"
+
+msgid "SW"
+msgstr "SV"
+
+msgid "NW"
+msgstr "NV"
+
+msgid "SSE"
+msgstr "SSE"
+
+msgid "WSW"
+msgstr "VSV"
+
+msgid "cloudy"
+msgstr "Cer noros"
+
+msgid "rain"
+msgstr "Ploaie"
+
+msgid "WNW"
+msgstr "VNV"
+
+msgid "mainly clear"
+msgstr "Predominant senin"
+
+msgid "Location"
+msgstr "Locație"
+
+msgid "light rain"
+msgstr "Ploaie slabă"
+
+msgid "thunderstorm"
+msgstr "Furtună cu descărcări electrice"
+
+msgid "mostly clear"
+msgstr "Predominant senin"
+
+msgid "light rain shower"
+msgstr "Aversă slabă de ploaie"
+
+msgid "thunderstorms"
+msgstr "Furtuni cu descărcări electrice"
+
+msgid "rain shower"
+msgstr "Aversă de ploaie"
+
+msgid "ice"
+msgstr "Gheață"
+
+msgid "heavy rain"
+msgstr "Ploaie puternică"
+
+msgid "showers"
+msgstr "Averse"
+
+msgid "drizzle"
+msgstr "Burniță"
+
+msgid "light snow shower"
+msgstr "Aversă slabă de ninsoare"
+
+msgid "fog"
+msgstr "Ceață"
+
+msgid "snow"
+msgstr "Ninsoare"
+
+msgid "breezy"
+msgstr "Adiere de vânt"
+
+msgid "snow showers"
+msgstr "Averse de ninsoare"
+
+msgid "Enhanced Weather"
+msgstr "Prognoză meteo detaliată"
+
+msgid "Clear sky"
+msgstr "Cer senin"
+
+msgid "Mainly clear"
+msgstr "Predominant senin"
+
+msgid "Partly cloudy"
+msgstr "Parțial noros"
+
+msgid "Overcast"
+msgstr "Acoperit"
+
+msgid "Depositing rime fog"
+msgstr "Ceață cu chiciură"
+
+msgid "Dense drizzle"
+msgstr "Burniță densă"
+
+msgid "Slight rain"
+msgstr "Ploaie slabă"
+
+msgid "Heavy rain"
+msgstr "Ploaie puternică"
+
+msgid "Heavy freezing rain"
+msgstr "Ploaie puternică ce îngheață la contact"
+
+msgid "Slight snow"
+msgstr "Ninsoare slabă"
+
+msgid "Heavy snow"
+msgstr "Ninsoare puternică"
+
+msgid "Snow grains"
+msgstr "Grăunțe de zăpadă"
+
+msgid "Rain showers"
+msgstr "Averse de ploaie"
+
+msgid "Heavy rain showers"
+msgstr "Averse puternice de ploaie"
+
+msgid "Snow showers"
+msgstr "Averse de ninsoare"
+
+msgid "Heavy snow showers"
+msgstr "Averse puternice de ninsoare"
+
+msgid "Thunderstorm with hail"
+msgstr "Furtună cu grindină"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Furtună cu grindină puternică"
+
+msgid "Unknown"
+msgstr "Necunoscut"
+
+msgid "Fog"
+msgstr "Ceață"
+
+msgid "Light drizzle"
+msgstr "Burniță slabă"
+
+msgid "Drizzle"
+msgstr "Burniță"
+
+msgid "Freezing drizzle"
+msgstr "Burniță care îngheață la contact"
+
+msgid "Rain"
+msgstr "Ploaie"
+
+msgid "Freezing rain"
+msgstr "Ploaie care îngheață la contact"
+
+msgid "Snow"
+msgstr "Ninsoare"
+
+msgid "Thunderstorm"
+msgstr "Furtună cu descărcări electrice"
