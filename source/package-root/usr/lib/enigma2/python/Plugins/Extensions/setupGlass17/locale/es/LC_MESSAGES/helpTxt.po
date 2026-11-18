@@ -1,0 +1,576 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\n"
+"Language: es_ES\n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "N/A"
+msgstr "No disponible"
+
+msgid "free"
+msgstr "libre"
+
+msgid "TP info is not detected"
+msgstr "No se detectó información del transpondedor"
+
+msgid "Reference is not detected"
+msgstr "No se detectó la referencia"
+
+msgid "No EPG data available"
+msgstr "No hay datos EPG disponibles"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Espere mientras se leen y procesan los datos"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Pulse «OK» para seleccionar la carpeta favorita."
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Color automático: usar la definición de skin.xml o g17Screens.py; color seleccionado: mostrar con el color elegido"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Canales de todas las posiciones de satélite y canales terrestres de Eslovaquia y Chequia"
+
+msgid "No plugin Netatmo installed"
+msgstr "El complemento Netatmo no está instalado"
+
+msgid "Your API-key"
+msgstr "Su clave API"
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "El diseño se calcula y selecciona automáticamente según el tamaño del picon en la barra de información"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "La medición de la velocidad actual de la red está desactivada"
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "La medición de la velocidad actual de la red está activada y se muestra en kb/s"
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "La medición de la velocidad actual de la red está activada y se muestra en Mb/s"
+
+msgid "Poster is displayed if exists"
+msgstr "Mostrar el cartel si está disponible"
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "El cartel mostrado se eliminará al mantener pulsado «OK» y no volverá a mostrarse"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Buscar carteles en Internet Movie Database (IMDb)"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Buscar carteles en The Movie Database (TMDb)"
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Buscar primero en Internet Movie Database (IMDb) y, si no se encuentra, buscar en The Movie Database (TMDb)"
+
+msgid "Poster search is started with selected delay"
+msgstr "La búsqueda de carteles comienza tras el retraso seleccionado"
+
+msgid "Poster is displayed with the selected size"
+msgstr "El cartel se muestra con el tamaño seleccionado"
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "Mostrar información ECM de todos los canales: actual, grabación en segundo plano, streaming, etc."
+
+msgid "ECM info is displayed from current channel"
+msgstr "Mostrar información ECM del canal actual"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "La tasa de bits se calcula mediante el ejecutable incluido"
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "La tasa de bits se calcula con eBitrateCalculator del complemento BitrateViewer"
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Mostrar sucesivamente todas las estaciones disponibles con sus módulos según el intervalo de cambio definido"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Mostrar información de la estación elegida en el complemento Netatmo"
+
+msgid "Time in seconds"
+msgstr "Tiempo en segundos"
+
+msgid "Real tuner data are displayed"
+msgstr "Mostrar los datos reales del sintonizador"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Mostrar los datos obtenidos de la información del transpondedor"
+
+msgid "Animations are disabled"
+msgstr "Las animaciones están desactivadas"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Las animaciones seleccionadas se aplican a los objetos elegidos"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "No mostrar información sobre el estado del HDD/SSD"
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "Mostrar temperatura, capacidad y espacio libre del HDD/SSD en las barras de información de EMC y Movieplayer"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Mostrar solo los últimos 10 canales buscados"
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Mostrar los canales encontrados en una lista larga que puede recorrerse"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Intervalo entre fotogramas de un icono animado (valor predeterminado: 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Aplicar a todas las pantallas que utilizan listas"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Sustituir los iconos nocturnos por los diurnos"
+
+msgid "Nighttime icons are displayed"
+msgstr "Mostrar los iconos nocturnos"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Pulse «OK» para activar la función seleccionada"
+
+msgid "Spinner will be used as default from image"
+msgstr "Usar el indicador de carga predeterminado de la imagen del receptor"
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "Usar el indicador de carga de Full HD Glass17; el original se mueve a la carpeta spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "Mostrar la lista EPG con el tamaño de letra seleccionado"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "Los modos PIP de selección de canales no están disponibles"
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "Los modos PIP de selección de canales están disponibles, pero pueden provocar un GSOD en algunas imágenes"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Carpeta donde se encuentra el archivo satellites.xml"
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Carpeta donde se guardará la configuración actual de FHDG (archivo hdg17.conf)"
+
+msgid "Display forecast for 5 days"
+msgstr "Mostrar el pronóstico de 5 días"
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Mostrar el pronóstico de 10 días: primero 5 días y, tras el intervalo de cambio, los 5 siguientes"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Mostrar información de la salida y puesta de los planetas, el Sol y la Luna"
+
+msgid "Sorry, help info is missing"
+msgstr "No hay información de ayuda para esta opción"
+
+msgid "Info is displayed with defined color"
+msgstr "Mostrar la información con el color definido"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Mostrar la información con el color seleccionado automáticamente"
+
+msgid "Show extra screen only"
+msgstr "Mostrar solo la pantalla adicional"
+
+msgid "None special info is selected"
+msgstr "No se ha seleccionado información especial"
+
+msgid "Show extra infobar only"
+msgstr "Mostrar solo la barra de información adicional"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Mostrar solo la barra lateral y la barra de información adicional"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1: más rápido; 10: más lento"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "La barra de información aparece y desaparece inmediatamente"
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "La barra de información aparece y desaparece mediante una transición entre transparencia completa y la definida"
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "La barra de información aparece inmediatamente y desaparece pasando de la transparencia definida a la completa"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Mostrar la barra de información adicional; pulsar «OK» dos veces para mostrar la información del usuario"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "La información del usuario aparece al pulsar «OK» dos veces y desaparece junto con la barra de información adicional"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "La información del usuario aparece al pulsar «OK» dos veces y desaparece al pulsar «OK» o «Exit»"
+
+msgid "Show actual event(EPG) only"
+msgstr "Mostrar solo el programa EPG actual"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Mantener pulsado «>» para alternar entre el programa EPG actual y el siguiente"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Mostrar información ECM PID junto con la barra de información adicional"
+
+msgid "Show events name in infobar as static text"
+msgstr "Mostrar los nombres de los programas como texto fijo en la barra de información"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "Mostrar los nombres de los programas carácter por carácter con efecto de máquina de escribir"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Mostrar el diseño OLED definido por la imagen del receptor"
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Mostrar «Btr demasiado alto: detenido» si la tasa de bits en tiempo real supera el valor configurado"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "Usar solo si la asignación de teclas de la imagen está configurada como «standard Enigma2»"
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Usar solo si la asignación de teclas de la imagen está configurada como «Neutrino keymap type»"
+
+msgid "Show messages in default language - english"
+msgstr "Mostrar los mensajes en el idioma predeterminado: inglés"
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Mostrar los mensajes traducidos según el idioma OSD activo"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "La barra de información desaparece tras el tiempo definido en la configuración del sistema"
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "La barra activada al cambiar de canal desaparece tras el tiempo definido; la abierta con «OK» permanece hasta pulsar «Exit» u «OK»"
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "La barra abierta con «OK» permanece visible hasta pulsar «Exit» u «OK»"
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Comprobar la conexión a Internet con la dirección IP indicada"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "La imagen del receptor gestiona por sí sola la activación de discos HDD/SSD en reposo"
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "Despertar el HDD/SSD si una función no puede leer la información solicitada porque el disco está en reposo"
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "Automático: detectar los sintonizadores del receptor; valor de 1 a 19: mostrar el número elegido de sintonizadores"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "No mostrar el icono «R» parpadeante en la barra de información"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Mostrar el icono «R» parpadeante en la barra de información"
+
+msgid "Leave memory management untouched"
+msgstr "No modificar la gestión de memoria"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Detectar AC3/Dolby en todas las pistas de audio disponibles"
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "Detectar AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC y MPEG en la pista de audio actual"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Limpieza automática de memoria cada 3 minutos"
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "Dirección IP utilizada para comprobar el estado de la red y el acceso a Internet"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Usar el archivo encoding.conf de la imagen activa"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Usar el archivo encoding-user.conf situado en /usr/share/enigma2"
+
+msgid "Channel selection works with standard functionality"
+msgstr "La selección de canales funciona con el comportamiento estándar"
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "Pulse «OK» para activar el canal elegido sin cerrar la lista; al pulsar «OK» de nuevo se cierra. Pulse «Exit» para volver al canal reproducido antes de abrir la selección"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Pulse «OK» para iniciar el elemento elegido sin animación"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Pulse «OK» para reproducir una animación antes de iniciar el elemento elegido"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Mostrar el tiempo meteorológico de la ciudad seleccionada en la configuración"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Pulse «>» para mostrar el tiempo de la siguiente ciudad"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "Cerrar la pantalla de información especial, abierta con «Help», pulsando «Help» otra vez"
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "Cerrar automáticamente a los 20 segundos la pantalla de información especial abierta con «Help»"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Intervalo para volver a leer el archivo ecm.info"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Desactivar la comprobación automática de nuevas versiones de HDG"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Activar la comprobación automática de nuevas versiones de HDG"
+
+msgid "Static text - no scrolling"
+msgstr "Texto estático sin desplazamiento"
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Desplazar el texto hacia arriba, pausar al final durante el tiempo elegido y volver a desplazarlo hacia abajo"
+
+msgid "Roll up at end of text and stop"
+msgstr "Desplazar el texto hacia arriba y detenerse al final"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "El desplazamiento del texto comienza tras el retraso definido en skin.xml"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "El desplazamiento del texto comienza tras el retraso elegido (s)"
+
+msgid "Show channel name only"
+msgstr "Mostrar solo el nombre del canal"
+
+msgid "Show number and channel name"
+msgstr "Mostrar el número y el nombre del canal"
+
+msgid "Show satellite position and channel name"
+msgstr "Mostrar la posición del satélite y el nombre del canal"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Mostrar el número, la posición del satélite y el nombre del canal"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "No mostrar información del proveedor en la barra de información"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Mostrar información del proveedor en la barra de información"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "No mostrar temperatura ni RPM en la barra de información"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Mostrar temperatura y RPM en la barra de información"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "No mostrar el uso de CPU y memoria en la barra de información"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Mostrar el uso de CPU y memoria en la barra de información"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "No mostrar la temperatura del HDD/SSD en la barra de información"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Mostrar la temperatura del HDD/SSD en la barra de información"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "No mostrar la información especial seleccionada en «Extensiones» del menú principal"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Mostrar la información especial seleccionada en «Extensiones» del menú principal"
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Usar la unidad de temperatura definida en my_city_Code.txt o city_Code.txt"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Usar la unidad de temperatura definida en eWea_city_Code.txt"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Mostrar la temperatura en grados Celsius"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Mostrar la temperatura en grados Fahrenheit"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Intervalo de actualización de los datos meteorológicos desde el sitio web, en minutos"
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Obtener datos meteorológicos de OpenWeatherMap. Necesita una clave API tras registrarse en openweathermap.org (registro y clave API básica gratuitos). La clave se puede leer desde /etc/openweathermap.api"
+
+msgid "Reading weather data from MSN website"
+msgstr "Obtener datos meteorológicos del sitio web de MSN"
+
+msgid "\"Find a city\" is disabled"
+msgstr "«Buscar ciudad» está desactivado"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "«Buscar ciudad» está desactivado en la lista de extensiones"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "«Buscar ciudad» está desactivado en el menú principal"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "No intentar obtener más datos del proveedor cuando se detecte un error"
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Reconexión automática: si se detecta un error, reintentar en el intervalo seleccionado hasta recibir datos válidos"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Mostrar el pronóstico de hoy y los próximos 3 días"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Mostrar el pronóstico de ayer, hoy y los próximos 3 días"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Mostrar la temperatura máxima con color automático"
+
+msgid "High temperature appear in selected color"
+msgstr "Mostrar la temperatura máxima con el color seleccionado"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Mostrar la temperatura mínima con color automático"
+
+msgid "Low temperature appear in selected color"
+msgstr "Mostrar la temperatura mínima con el color seleccionado"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "Mostrar temperaturas frías y cálidas con los colores seleccionados (frío/cálido)"
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "La temperatura fría supera el límite «Temperatura fría» o la cálida es inferior al límite «Temperatura cálida», o ambas condiciones"
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Intervalo de temperatura cálida: 15–40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Intervalo de temperatura fría: 1–14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Intervalo de temperatura cálida: 58–104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Intervalo de temperatura fría: 33–57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "HDD/SSD detectado como dispositivo por el núcleo"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Ruta a todas las carpetas necesarias, como picon, piconProv y otras"
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "Ruta personalizada a todas las carpetas necesarias, como picon, piconProv y otras"
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Los números de canal se calculan al arrancar Enigma; los cambios posteriores en el orden no afectan a la numeración"
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "El número de canal se vuelve a calcular tras cada cambio de canal, de modo que se refleja cualquier cambio en el orden"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Usar el formato de fecha definido en el skin"
+
+msgid "Date format will be used as follow"
+msgstr "Usar el formato de fecha indicado a continuación"
+
+msgid "Channel logos with white background"
+msgstr "Logotipos de canales con fondo blanco"
+
+msgid "Channel logos with black background"
+msgstr "Logotipos de canales con fondo negro"
+
+msgid "Channel logos for OLED display"
+msgstr "Logotipos de canales para la pantalla OLED"
+
+msgid "Provider logos with white background"
+msgstr "Logotipos de proveedores con fondo blanco"
+
+msgid "Provider logos with black background"
+msgstr "Logotipos de proveedores con fondo negro"
+
+msgid "Satellite logos with white background"
+msgstr "Logotipos de satélites con fondo blanco"
+
+msgid "Satellite logos with black background"
+msgstr "Logotipos de satélites con fondo negro"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Logotipos de sistemas CA y SoftCam con fondo blanco"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Logotipos de sistemas CA y SoftCam con fondo negro"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Vista previa de las opciones seleccionadas en la configuración del skin"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Vistas previas de pantallas adicionales y conjuntos de iconos utilizados en la barra de información"
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Gráficos usados en pantallas adicionales; al descargarlos estarán disponibles más diseños de pantalla adicional"
+
+msgid "Icons used in some menu types"
+msgstr "Iconos utilizados en ciertos tipos de menú"
+
+msgid "Big icons used in some menu types"
+msgstr "Iconos grandes utilizados en ciertos tipos de menú"
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Iconos meteorológicos utilizados en información especial y de usuario: Weather, Weather light y Extended weather"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "piconWeather blanco como segundo tipo de picon en la barra de información, si se selecciona"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "piconWeather negro como segundo tipo de picon en la barra de información, si se selecciona"
+
+msgid "Animated icons will be displayed"
+msgstr "Mostrar iconos animados"
+
+msgid "Static icons will be displayed"
+msgstr "Mostrar iconos estáticos"
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Iconos meteorológicos animados utilizados en la barra de información y en información especial o del usuario de tipo Weather o Enhanced Weather"
+
+msgid "Channel logos with picture background"
+msgstr "Logotipos de canales con fondo de imagen"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Solo el paquete de canales Skylink y Freesat"
+
+msgid "Channel logos with transparent background"
+msgstr "Logotipos de canales con fondo transparente"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Herramienta necesaria para extraer paquetes de picons"
+
+msgid "Provider logos with transparent background"
+msgstr "Logotipos de proveedores con fondo transparente"
+
+msgid "Satellite logos with transparent background"
+msgstr "Logotipos de satélites con fondo transparente"
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Iconos de selección de canales con fondo transparente, utilizados en algunos modos de selección"
+
+msgid "New Moon"
+msgstr "Luna nueva"
+
+msgid "First Quarter"
+msgstr "Cuarto creciente"
+
+msgid "Waxing Crescent"
+msgstr "Luna creciente"
+
+msgid "Waxing Moon"
+msgstr "Luna en fase creciente"
+
+msgid "Full Moon"
+msgstr "Luna llena"
+
+msgid "Waning Moon"
+msgstr "Luna en fase menguante"
+
+msgid "Waning Crescent"
+msgstr "Luna menguante"
+
+msgid "Last Quarter"
+msgstr "Cuarto menguante"
