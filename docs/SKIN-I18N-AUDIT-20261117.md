@@ -46,13 +46,13 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 
 | Jazyk | helpTxt | weather | netatmo | eWeather |
 |---|---:|---:|---:|---:|
-| al | — | — | 42/42 | — |
+| al | — | 108/108 | 42/42 | — |
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | de | — | 108/108 | 42/42 | — |
 | el | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | es | — | 108/108 | 42/42 | — |
 | et | — | 108/108 | 42/42 | 96/2117 |
-| fa | — | — | 42/42 | — |
+| fa | — | 108/108 | 42/42 | — |
 | fr | — | 108/108 | 42/42 | — |
 | hu | — | 108/108 | 42/42 | — |
 | it | — | 108/108 | 42/42 | — |
@@ -63,7 +63,7 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 | ro | — | 108/108 | 42/42 | — |
 | ru | 189/189 | 108/108 | 42/42 | — |
 | sk | 189/189 | 108/108 | 42/42 | 2117/2117 |
-| tr | — | — | 42/42 | — |
+| tr | — | 108/108 | 42/42 | — |
 | uk | — | 108/108 | 42/42 | — |
 | zh | 189/189 | 108/108 | 42/42 | — |
 
@@ -106,7 +106,7 @@ Pri gréčtine zostáva **0 nepreložených fráz eWeather**; všetkých 189 kľ
 
 ## Stále chýba
 
-Doplniť chýbajúce jazykové katalógy podľa tabuľky (weather zostáva pre al/fa/tr), 2 021 estónskych eWeather kľúčov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
+Doplniť chýbajúce jazykové katalógy podľa tabuľky (weather je teraz 108/108 vo všetkých 20 jazykoch), 2 021 estónskych eWeather kľúčov; následne kontrola kontextu a jazykovej kvality, úspešné CI a fyzický test na OpenATV/OpenPLi.
 
 ## Voliteľné jazykové katalógy – 18. 11. 2026
 
@@ -117,3 +117,11 @@ Doplniť chýbajúce jazykové katalógy podľa tabuľky (weather zostáva pre a
 - Doplnený `tools/test-warder-locale-on-demand.py` a kontroly v `.github/workflows/verify-skin-i18n.yml`. Fyzický test na Enigma2 boxe ani úspech najnovšieho CI zatiaľ nie je potvrdený.
 - **Pokrytie prekladov sa týmto nemení:** setupGlass17 20 × 517/517, Netatmo 20 × 42/42; gréčtina eWeather 2117/2117, estónčina 96/2117 (zostáva 2021). Chýbajúce katalógy helpTxt, weather, eWeather ostatných jazykov sú stále rozpracované, nie „hotové“ vďaka anglickému fallbacku.
 - **Žiadne vydanie, IPK, feed, zlúčenie do main ani zmena verzie.** Nová politika balenia sa prejaví až pri budúcom schválenom zostavení.
+
+## Dávka 18. 11. 2026 – tri ďalšie jazyky weather
+
+- **324 skutočných nových prekladov** pre meteorologický katalóg `weather`: turečtina (`tr`) 108/108, albánčina (`al`) 108/108 a perzština (`fa`) 108/108. Všetky referenčné kľúče zo slovenského inventára zachované, žiadne prázdne `msgstr`; vrátane smerov vetra, zrážok, búrok, systémových a chybových hlásení.
+- Vytvorených **3 UTF-8 `.po` a 3 binárne GNU gettext `.mo`**, doplnené automatické porovnanie kľúčov, čitateľnosti `.mo`, neporušených placeholderov a test známych prekladov.
+- **Aktuálne weather 20 × 108/108, Netatmo 20 × 42/42, hlavný setupGlass17 20 × 517/517.** Celkovo naďalej chýba **2 646 kľúčov helpTxt** (14 úplne chýbajúcich katalógov) a **33 776 kľúčov eWeather** (15 úplne chýbajúcich katalógov plus 2 021 v estónčine). Počty označujú obsah `.po`, nie fyzické jazykové overenie.
+- V novej logike voliteľných jazykov opravené generovanie koncového riadka JSON manifestu po skutočnom zlyhaní CI testu `test_package_contains_only_english_and_digest_inventory`. Zostáva potvrdiť nový beh GitHub Actions aj kontrolu na Enigma2 prijímači.
+- Bez IPK, feedu, release, zlúčenia do `main` a zmeny čísla verzie.
