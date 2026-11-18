@@ -1,0 +1,50 @@
+name: Verify channel catalogue for skin and PiconHub (no IPK)
+
+on:
+  pull_request:
+    paths:
+      - 'assets/warder/downloads/picons/channels/**'
+      - 'reports/channel-catalog-canonical-parts-20261118.json'
+      - 'tools/test_channel_catalog_canonical_20261118.py'
+      - '.github/workflows/verify-channel-canonical-both-clients.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  data-only-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out affected skin catalogue and tests only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /reports/channel-catalog-canonical-parts-20261118.json
+            /tools/test_channel_catalog_canonical_20261118.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+      - name: Check out installed PiconHub 0.1.44 validator (read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 0f2debdc606a58cc6cd7580ae2c1b4d0149a030d
+          path: external/piconhub
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/src/Plugins/Extensions/WarderPiconHub/warder_skin_sync.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 498 packages, 2131 parts, 82 original-byte aliases, both validators
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -m unittest tools/test_channel_catalog_canonical_20261118.py -v
