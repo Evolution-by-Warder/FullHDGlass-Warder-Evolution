@@ -101,8 +101,12 @@ if [ "$WARDER_PACKAGE_ID" = enigma2-plugin-skins-fullhdglass-warder-evolution ];
 fi
 
 echo "******************************************************************"
-echo "*              FullHDGlass - Warder Evolution                 *"
+echo "*                 FullHDGlass Warder Evolution                  *"
 echo "******************************************************************"
+case "${1:-}" in
+    install) echo "Preparing FullHDGlass Warder Evolution installation/reinstall..." ;;
+    upgrade) echo "Preparing FullHDGlass Warder Evolution upgrade/reinstall..." ;;
+esac
 
 # Record whether this package manager invocation is a first install or upgrade.
 # Only an explicit first-install context may seed the Warder EPG hotkey.
