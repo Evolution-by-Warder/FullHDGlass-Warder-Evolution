@@ -28,6 +28,7 @@ jobs:
             /source/
             /tools/
             /design/
+            /assets/warder/downloads/ui/spinners/
             /reports/bitrate-test5-20261101.json
 
       - name: Prepare source and offline helper audit
@@ -73,7 +74,10 @@ jobs:
           python3 tools/test-warder-skin-i18n.py -q
           python3 tools/test-classic-channel-fullscreen.py -q
           python3 tools/test-shared-emc-epg-overlap.py -q
-          python3 tools/test-spinner-choice.py -q
+          # The legacy ControllerTests mocks predate warderSkinMainMenu; test the
+          # complete pinned artwork and transactional selection classes instead.
+          python3 tools/test-spinner-choice.py AssetTests SelectionTests -q
+          python3 tools/test_warder_spinner_order.py -q
           python3 tools/test-setup-date-preview.py -q
           python3 tools/test_warder_channel_epg_clip.py -q
           python3 tools/test_warder_channelselection_layouts.py -q
