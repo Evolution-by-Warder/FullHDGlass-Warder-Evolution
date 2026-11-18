@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: et_EE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Väljas"
+
+msgid "Wind"
+msgstr "Tuul"
+
+msgid "Rain"
+msgstr "Vihm"
+
+msgid "Indoor"
+msgstr "Siseruumis"
+
+msgid "ENE"
+msgstr "Idakirre"
+
+msgid "ESE"
+msgstr "Idakagu"
+
+msgid "WNW"
+msgstr "Lääneloe"
+
+msgid "WSW"
+msgstr "Lääneedel"
+
+msgid "SSE"
+msgstr "Lõunakagu"
+
+msgid "SW"
+msgstr "Edel"
+
+msgid "SSW"
+msgstr "Lõunaedel"
+
+msgid "SE"
+msgstr "Kagu"
+
+msgid "NW"
+msgstr "Loe"
+
+msgid "NNW"
+msgstr "Põhjaloe"
+
+msgid "NNE"
+msgstr "Põhjakirre"
+
+msgid "NE"
+msgstr "Kirre"
+
+msgid "S"
+msgstr "Lõuna"
+
+msgid "W"
+msgstr "Lääs"
+
+msgid "N"
+msgstr "Põhi"
+
+msgid "E"
+msgstr "Ida"
+
+msgid "N/A"
+msgstr "Andmed puuduvad"
+
+msgid "No Netatmo station detected"
+msgstr "Netatmo ilmajaama ei leitud"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Type"
+msgstr "Tüüp"
+
+msgid "Main station"
+msgstr "Peajaam"
+
+msgid "Temperature"
+msgstr "Temperatuur"
+
+msgid "Humidity"
+msgstr "Õhuniiskus"
+
+msgid "Noise"
+msgstr "Müratase"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Wi-Fi olek"
+
+msgid "Index"
+msgstr "Indeks"
+
+msgid "Pressure"
+msgstr "Õhurõhk"
+
+msgid "Rainfall"
+msgstr "Sademed"
+
+msgid "Summary 1 Hour"
+msgstr "Viimase tunni summa"
+
+msgid "Summary 24 Hours"
+msgstr "Viimase 24 tunni summa"
+
+msgid "Wind Strength"
+msgstr "Tuule kiirus"
+
+msgid "Wind Angle"
+msgstr "Tuule suund"
+
+msgid "Gust Strength"
+msgstr "Tuulepuhangute kiirus"
+
+msgid "Gust Angle"
+msgstr "Tuulepuhangute suund"
+
+msgid "Dew Point"
+msgstr "Kastepunkt"
+
+msgid "RF Status"
+msgstr "Raadioside olek"
+
+msgid "Baterry"
+msgstr "Patarei"

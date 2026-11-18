@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: sq_AL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Outdoor"
+msgstr "Jashtë"
+
+msgid "Wind"
+msgstr "Era"
+
+msgid "Rain"
+msgstr "Shiu"
+
+msgid "Indoor"
+msgstr "Brenda"
+
+msgid "ENE"
+msgstr "LVL"
+
+msgid "ESE"
+msgstr "LJL"
+
+msgid "WNW"
+msgstr "PVP"
+
+msgid "WSW"
+msgstr "PJP"
+
+msgid "SSE"
+msgstr "JJL"
+
+msgid "SW"
+msgstr "JP"
+
+msgid "SSW"
+msgstr "JJP"
+
+msgid "SE"
+msgstr "JL"
+
+msgid "NW"
+msgstr "VP"
+
+msgid "NNW"
+msgstr "VVP"
+
+msgid "NNE"
+msgstr "VVL"
+
+msgid "NE"
+msgstr "VL"
+
+msgid "S"
+msgstr "J"
+
+msgid "W"
+msgstr "P"
+
+msgid "N"
+msgstr "V"
+
+msgid "E"
+msgstr "L"
+
+msgid "N/A"
+msgstr "Nuk ka të dhëna"
+
+msgid "No Netatmo station detected"
+msgstr "Nuk u zbulua asnjë stacion Netatmo"
+
+msgid "Name"
+msgstr "Emri"
+
+msgid "Type"
+msgstr "Lloji"
+
+msgid "Main station"
+msgstr "Stacioni kryesor"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Humidity"
+msgstr "Lagështia"
+
+msgid "Noise"
+msgstr "Zhurma"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Gjendja e Wi-Fi"
+
+msgid "Index"
+msgstr "Indeksi"
+
+msgid "Pressure"
+msgstr "Presioni atmosferik"
+
+msgid "Rainfall"
+msgstr "Reshjet"
+
+msgid "Summary 1 Hour"
+msgstr "Totali për 1 orë"
+
+msgid "Summary 24 Hours"
+msgstr "Totali për 24 orë"
+
+msgid "Wind Strength"
+msgstr "Shpejtësia e erës"
+
+msgid "Wind Angle"
+msgstr "Drejtimi i erës"
+
+msgid "Gust Strength"
+msgstr "Shpejtësia e rafaleve"
+
+msgid "Gust Angle"
+msgstr "Drejtimi i rafaleve"
+
+msgid "Dew Point"
+msgstr "Pika e vesës"
+
+msgid "RF Status"
+msgstr "Gjendja e lidhjes radio"
+
+msgid "Baterry"
+msgstr "Bateria"

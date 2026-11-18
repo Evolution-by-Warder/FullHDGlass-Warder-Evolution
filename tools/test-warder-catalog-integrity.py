@@ -133,6 +133,10 @@ class CatalogIntegrity(unittest.TestCase):
             'uk': ('Gust Angle', 'Напрям поривів'),
             'tr': ('Wind Angle', 'Rüzgâr yönü'),
             'zh': ('Dew Point', '露点'),
+            'al': ('Humidity', 'Lagështia'),
+            'et': ('Dew Point', 'Kastepunkt'),
+            'lt': ('Wind Strength', 'Vėjo greitis'),
+            'fa': ('Humidity', 'رطوبت'),
         }
         for lang, (key, expected) in samples.items():
             with self.subTest(lang=lang):

@@ -46,17 +46,17 @@ Cieľ: 21 jazykov (20 prekladových katalógov a anglický zdrojový text). Stav
 
 | Jazyk | helpTxt | weather | netatmo | eWeather |
 |---|---:|---:|---:|---:|
-| al | — | — | — | — |
+| al | — | — | 42/42 | — |
 | cs | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | de | — | 108/108 | 42/42 | — |
 | el | 189/189 | 108/108 | 42/42 | 1174/2117 |
 | es | — | — | 42/42 | — |
-| et | — | 108/108 | — | 96/2117 |
-| fa | — | — | — | — |
+| et | — | 108/108 | 42/42 | 96/2117 |
+| fa | — | — | 42/42 | — |
 | fr | — | 108/108 | 42/42 | — |
 | hu | — | 108/108 | 42/42 | — |
 | it | — | — | 42/42 | — |
-| lt | 189/189 | 108/108 | — | 2117/2117 |
+| lt | 189/189 | 108/108 | 42/42 | 2117/2117 |
 | nl | — | 108/108 | 42/42 | — |
 | pl | — | 108/108 | 42/42 | — |
 | pt | — | — | 42/42 | — |
@@ -86,6 +86,8 @@ Pri gréčtine zostáva **943 nepreložených fráz eWeather**; všetkých 189 k
 - Nové kompletné preklady Netatmo pre ru/uk/tr/zh: **168 nových textov**, aktualizované binárne GNU gettext `.mo` a doplnené regresné kontroly. Čínske helpTxt doplnené o **20 chýbajúcich viacriadkových textov** na plných 189/189; ostatné preklady ostali zachované. Nový CI beh ešte treba potvrdiť.
 
 - Ďalších **160 originálne preložených gréckych viet** v eWeather (po novom 1 174/2 117; zostáva 943). Všetky staršie preklady zachované, binárny katalóg `.mo` preložený z aktuálneho `.po`; test kontroluje skutočné pokrytie. Overenie nového CI behu ešte čaká na výsledok.
+
+- Dokončené posledné štyri samostatné katalógy Netatmo: albánčina, estónčina, litovčina a perzština, spolu **168 nových prekladov** s lokalizovanými 16 smermi vetra. Všetkých 20 jazykov má teraz katalóg Netatmo 42/42; jazyková kontrola rodenými hovoriacimi a fyzické skúšky ešte neprebehli. Všetky nové `.mo` boli skompilované; nové CI čaká na overenie.
 
 ## Stále chýba
 

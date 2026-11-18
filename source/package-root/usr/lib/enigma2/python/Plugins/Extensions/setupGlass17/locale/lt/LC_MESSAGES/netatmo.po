@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: lt_LT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Outdoor"
+msgstr "Lauke"
+
+msgid "Wind"
+msgstr "Vėjas"
+
+msgid "Rain"
+msgstr "Lietus"
+
+msgid "Indoor"
+msgstr "Viduje"
+
+msgid "ENE"
+msgstr "RŠR"
+
+msgid "ESE"
+msgstr "RPR"
+
+msgid "WNW"
+msgstr "VŠV"
+
+msgid "WSW"
+msgstr "VPV"
+
+msgid "SSE"
+msgstr "PPR"
+
+msgid "SW"
+msgstr "PV"
+
+msgid "SSW"
+msgstr "PPV"
+
+msgid "SE"
+msgstr "PR"
+
+msgid "NW"
+msgstr "ŠV"
+
+msgid "NNW"
+msgstr "ŠŠV"
+
+msgid "NNE"
+msgstr "ŠŠR"
+
+msgid "NE"
+msgstr "ŠR"
+
+msgid "S"
+msgstr "P"
+
+msgid "W"
+msgstr "V"
+
+msgid "N"
+msgstr "Š"
+
+msgid "E"
+msgstr "R"
+
+msgid "N/A"
+msgstr "Nėra duomenų"
+
+msgid "No Netatmo station detected"
+msgstr "Netatmo stotelė neaptikta"
+
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgid "Type"
+msgstr "Tipas"
+
+msgid "Main station"
+msgstr "Pagrindinė stotelė"
+
+msgid "Temperature"
+msgstr "Temperatūra"
+
+msgid "Humidity"
+msgstr "Drėgmė"
+
+msgid "Noise"
+msgstr "Triukšmo lygis"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "Wi-Fi būsena"
+
+msgid "Index"
+msgstr "Indeksas"
+
+msgid "Pressure"
+msgstr "Atmosferos slėgis"
+
+msgid "Rainfall"
+msgstr "Kritulių kiekis"
+
+msgid "Summary 1 Hour"
+msgstr "Per paskutinę valandą"
+
+msgid "Summary 24 Hours"
+msgstr "Per paskutines 24 valandas"
+
+msgid "Wind Strength"
+msgstr "Vėjo greitis"
+
+msgid "Wind Angle"
+msgstr "Vėjo kryptis"
+
+msgid "Gust Strength"
+msgstr "Gūsių greitis"
+
+msgid "Gust Angle"
+msgstr "Gūsių kryptis"
+
+msgid "Dew Point"
+msgstr "Rasos taškas"
+
+msgid "RF Status"
+msgstr "Radijo ryšio būsena"
+
+msgid "Baterry"
+msgstr "Baterija"

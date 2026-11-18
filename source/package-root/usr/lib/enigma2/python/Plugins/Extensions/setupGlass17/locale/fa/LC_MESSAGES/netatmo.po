@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo Warder Evolution\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Outdoor"
+msgstr "بیرون"
+
+msgid "Wind"
+msgstr "باد"
+
+msgid "Rain"
+msgstr "باران"
+
+msgid "Indoor"
+msgstr "داخل"
+
+msgid "ENE"
+msgstr "شرق‌شمال‌شرق"
+
+msgid "ESE"
+msgstr "شرق‌جنوب‌شرق"
+
+msgid "WNW"
+msgstr "غرب‌شمال‌غرب"
+
+msgid "WSW"
+msgstr "غرب‌جنوب‌غرب"
+
+msgid "SSE"
+msgstr "جنوب‌جنوب‌شرق"
+
+msgid "SW"
+msgstr "جنوب‌غرب"
+
+msgid "SSW"
+msgstr "جنوب‌جنوب‌غرب"
+
+msgid "SE"
+msgstr "جنوب‌شرق"
+
+msgid "NW"
+msgstr "شمال‌غرب"
+
+msgid "NNW"
+msgstr "شمال‌شمال‌غرب"
+
+msgid "NNE"
+msgstr "شمال‌شمال‌شرق"
+
+msgid "NE"
+msgstr "شمال‌شرق"
+
+msgid "S"
+msgstr "جنوب"
+
+msgid "W"
+msgstr "غرب"
+
+msgid "N"
+msgstr "شمال"
+
+msgid "E"
+msgstr "شرق"
+
+msgid "N/A"
+msgstr "داده‌ای موجود نیست"
+
+msgid "No Netatmo station detected"
+msgstr "هیچ ایستگاه Netatmo شناسایی نشد"
+
+msgid "Name"
+msgstr "نام"
+
+msgid "Type"
+msgstr "نوع"
+
+msgid "Main station"
+msgstr "ایستگاه اصلی"
+
+msgid "Temperature"
+msgstr "دما"
+
+msgid "Humidity"
+msgstr "رطوبت"
+
+msgid "Noise"
+msgstr "سطح صدا"
+
+msgid "Co2"
+msgstr "CO₂"
+
+msgid "Wifi Status"
+msgstr "وضعیت Wi-Fi"
+
+msgid "Index"
+msgstr "شاخص"
+
+msgid "Pressure"
+msgstr "فشار هوا"
+
+msgid "Rainfall"
+msgstr "میزان بارش"
+
+msgid "Summary 1 Hour"
+msgstr "مجموع یک ساعت گذشته"
+
+msgid "Summary 24 Hours"
+msgstr "مجموع ۲۴ ساعت گذشته"
+
+msgid "Wind Strength"
+msgstr "سرعت باد"
+
+msgid "Wind Angle"
+msgstr "جهت باد"
+
+msgid "Gust Strength"
+msgstr "سرعت تندباد"
+
+msgid "Gust Angle"
+msgstr "جهت تندباد"
+
+msgid "Dew Point"
+msgstr "نقطه شبنم"
+
+msgid "RF Status"
+msgstr "وضعیت ارتباط رادیویی"
+
+msgid "Baterry"
+msgstr "باتری"
