@@ -1,0 +1,57 @@
+name: Read-only DNS and HTTPS verification Warder
+on:
+  push:
+    branches: [diagnostics/dns-warder-20261118-2042]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Query EU parent, authoritative servers, public resolvers, HTTPS
+        shell: bash
+        run: |
+          set +e
+          echo "UTC_TIMESTAMP=$(date -u --iso-8601=seconds)"
+          echo '=== Public recursive NS, A, CNAME; status and answer ==='
+          for r in 1.1.1.1 8.8.8.8 9.9.9.9; do
+            echo "RESOLVER=$r"
+            for entry in "warder-evolution.eu NS" "warder-evolution.eu A" "www.warder-evolution.eu CNAME"; do
+              echo "QUERY=$entry"
+              dig @"$r" $entry +time=3 +tries=1 +noall +comments +answer | grep -E 'status:|flags:|^[a-zA-Z0-9_.-]+[[:space:]]+[0-9]+[[:space:]]+IN' || true
+            done
+          done
+          echo '=== EU parent referral (authoritative delegation, avoid cached child NS) ==='
+          PARENT="$(dig @1.1.1.1 +short A a.dns.eu | head -1)"
+          echo "EU_PARENT_IP=$PARENT"
+          if [ -n "$PARENT" ]; then
+            dig @"$PARENT" warder-evolution.eu NS +norecurse +time=4 +tries=1 +noall +comments +authority +additional
+            NAMESERVERS="$(dig @"$PARENT" warder-evolution.eu NS +norecurse +time=4 +tries=1 +noall +authority | awk '$4=="NS"{print $5}' | sed 's/\.$//' | sort -u)"
+          fi
+          echo "PARENT_NS_BEGIN"
+          printf '%s\n' "$NAMESERVERS"
+          echo "PARENT_NS_END"
+          for ns in $NAMESERVERS; do
+            echo "=== AUTHORITATIVE $ns ==="
+            ip="$(dig @1.1.1.1 +short A "$ns" | head -1)"
+            echo "IP=$ip"
+            if [ -z "$ip" ]; then echo "ERROR=NS_ADDRESS_UNRESOLVABLE"; continue; fi
+            for entry in "warder-evolution.eu SOA" "warder-evolution.eu A" "www.warder-evolution.eu CNAME"; do
+              echo "AUTH_QUERY=$entry"
+              dig @"$ip" $entry +norecurse +time=4 +tries=1 +noall +comments +answer | grep -E 'status:|flags:|^[a-zA-Z0-9_.-]+[[:space:]]+[0-9]+[[:space:]]+IN' || true
+            done
+          done
+          echo '=== HTTPS direct (valid cert, redirects, final response) ==='
+          curl --noproxy '*' --location --head --silent --show-error \
+            --max-time 15 --connect-timeout 7 \
+            --output /dev/null \
+            --write-out 'HTTPS_IP=%{remote_ip}\nHTTPS_CODE=%{http_code}\nHTTPS_SSL_VERIFY_RESULT=%{ssl_verify_result}\nHTTPS_FINAL_URL=%{url_effective}\n' \
+            https://warder-evolution.eu/ || echo "HTTPS_CHECK=FAIL"
+          echo '=== HTTPS page GET (as opposed to HEAD-only support) ==='
+          curl --noproxy '*' --location --silent --show-error \
+            --max-time 15 --connect-timeout 7 \
+            --output /dev/null \
+            --write-out 'GET_IP=%{remote_ip}\nGET_CODE=%{http_code}\nGET_SSL_VERIFY_RESULT=%{ssl_verify_result}\nGET_FINAL_URL=%{url_effective}\n' \
+            https://warder-evolution.eu/ || echo "HTTPS_GET_CHECK=FAIL"
+          echo '=== End read-only verification ==='
