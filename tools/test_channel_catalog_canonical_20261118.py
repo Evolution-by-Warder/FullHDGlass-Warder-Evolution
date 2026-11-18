@@ -71,10 +71,9 @@ class CanonicalManifest(unittest.TestCase):
     def test_sha256sum_index_matches_manifest_and_all_part_metadata(self):
         lines = SUMS.read_text(encoding="utf-8").splitlines()
         self.assertEqual(len(lines), len(self.meta) + 1)
-        entries = dict(line.split("  ", 1) for line in lines)
-        self.assertEqual(len(entries), len(lines))
         actual = {filename: digest for digest, filename in
                   (line.split("  ", 1) for line in lines)}
+        self.assertEqual(len(actual), len(lines))
         self.assertEqual(actual.pop("manifest.json"),
                          hashlib.sha256(MANIFEST.read_bytes()).hexdigest())
         self.assertEqual(actual, {p["filename"]: p["sha256"] for p in self.doc["parts"]})
