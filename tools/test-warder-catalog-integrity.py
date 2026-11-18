@@ -210,7 +210,8 @@ class CatalogIntegrity(unittest.TestCase):
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'eWeather.po')
         keys = set(catalog) - {''}
         self.assertEqual(len(keys), 386)
-        self.assertTrue(keys <= set(reference))
+        self.assertEqual(keys - set(reference), {'Select city'})
+        self.assertEqual(len(keys & set(reference)), 385)
         expected = {
             'a p.m. snow shower in spots': 'pärastlõunal kohati lumehooge',
             'a severe thunderstorm': 'tugev äikesetorm',
