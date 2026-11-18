@@ -209,9 +209,9 @@ class CatalogIntegrity(unittest.TestCase):
         catalog = po_entries(ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.po')
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'eWeather.po')
         keys = set(catalog) - {''}
-        self.assertEqual(len(keys), 386)
+        self.assertEqual(len(keys), 556)
         self.assertEqual(keys - set(reference), {'Select city'})
-        self.assertEqual(len(keys & set(reference)), 385)
+        self.assertEqual(len(keys & set(reference)), 555)
         expected = {
             'a p.m. snow shower in spots': 'pärastlõunal kohati lumehooge',
             'a severe thunderstorm': 'tugev äikesetorm',
@@ -222,6 +222,10 @@ class CatalogIntegrity(unittest.TestCase):
             'a p.m. t-storm': 'Pärastlõunal äikesetorm',
             'partly sunny and warm': 'Osaliselt päikeseline ja soe',
             'Select City': 'Vali linn',
+            'a thunderstorm this afternoon': 'Täna pärastlõunal äikesetorm',
+            'mostly sunny and comfortable': 'Enamasti päikeseline ja mõnus',
+            'strong afternoon t-storms': 'Pärastlõunal tugevad äikesetormid',
+            'partly sunny and breezy': 'Osaliselt päikeseline ja tuuline',
         }
         with (ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.mo').open('rb') as stream:
             binary = gettext.GNUTranslations(stream)
