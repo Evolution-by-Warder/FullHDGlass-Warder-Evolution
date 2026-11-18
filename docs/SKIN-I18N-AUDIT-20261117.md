@@ -37,6 +37,8 @@ Tabuľka počíta aktívne neprázdne preklady z referenčných katalógov, ktor
 
 - Priamy test z [commitu 831fc08](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/831fc08ea1a4d68521968ea8ee94ca11e3f7eec0) stiahol päť katalógov z GitHubu pre albánčinu a päť pre perzštinu. Všetkých desať súborov prešlo kontrolou SHA-256 a načítalo sa v GNU gettext. Opätovná synchronizácia oboch jazykov aj výber angličtiny mali nula sieťových požiadaviek. [GitHub Actions](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44275743179) na tomto commite prešli.
 
+- Na [commite 93f75dd](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/93f75dd782af1a9f681c6a292335f4cdff594632) prešlo všetkých [45 jazykových a súvisiacich testov v GitHub Actions](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44277206134), vrátane zobrazenia rádiových titulkov so skutočným písmom skinu. Ďalší regresný test porovnáva úvod auditu aj všetky bunky tabuľky priamo s binárnymi katalógmi.
+
 ## Staršie záznamy
 
 ### Priebežný audit pred kontrolou anglických hodnôt a doplnením textov nastavení

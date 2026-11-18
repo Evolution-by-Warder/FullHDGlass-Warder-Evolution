@@ -187,6 +187,34 @@ class CatalogIntegrity(unittest.TestCase):
                     for key in keys:
                         self.assertEqual(binary.gettext(key), values[key], (lang, domain, key))
 
+    def test_published_audit_matches_compiled_catalogs(self):
+        report = Path(__file__).resolve().parents[1] / 'docs/SKIN-I18N-AUDIT-20261117.md'
+        current = report.read_text(encoding='utf-8').split('## Staršie záznamy', 1)[0]
+        table = [line.strip('|').split('|') for line in current.splitlines() if line.startswith('|')]
+        header, _, *rows = [[cell.strip() for cell in row] for row in table]
+        self.assertEqual(header, ['Jazyk', *DOMAINS])
+        expected = [set(po_entries(ROOT / 'sk' / 'LC_MESSAGES' / (d + '.po'))) - {''}
+                    for d in DOMAINS]
+        languages = [row[0] for row in rows]
+        self.assertCountEqual(languages, ['en', *LANGS])
+        total = 0
+        for lang, *cells in rows:
+            if lang == 'en':
+                self.assertEqual(cells, ['zdroj %d' % len(keys) for keys in expected])
+                continue
+            measured = []
+            for domain, keys in zip(DOMAINS, expected):
+                with (ROOT / lang / 'LC_MESSAGES' / (domain + '.mo')).open('rb') as stream:
+                    binary = gettext.GNUTranslations(stream)
+                count = sum(bool(binary._catalog.get(key, '').strip()) for key in keys)
+                total += count
+                measured.append('%d/%d' % (count, len(keys)))
+            self.assertEqual(cells, measured, lang)
+        possible = sum(map(len, expected)) * len(LANGS)
+        headline = current.split('Tabuľka', 1)[0].replace(' ', '').replace('\xa0', '')
+        self.assertIn('Zostáva%d' % (possible - total), headline)
+        self.assertIn('%d/%d' % (total, possible), headline)
+
     def test_all_shipped_mo_files_load_and_match_po(self):
         for lang in LANGS:
             for domain in DOMAINS:

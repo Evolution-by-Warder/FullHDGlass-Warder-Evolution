@@ -13,6 +13,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/Netatmo.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py'
+      - 'docs/SKIN-I18N-AUDIT-20261117.md'
       - 'tools/test-warder-skin-i18n.py'
       - 'tools/test-warder-catalog-integrity.py'
       - 'tools/test-warder-locale-on-demand.py'
@@ -40,6 +41,7 @@ jobs:
         with:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            /docs/SKIN-I18N-AUDIT-20261117.md
             /source/control/
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
             /source/package-root/usr/lib/enigma2/python/Components/Renderer/

@@ -3,7 +3,7 @@
 - Bod 9 má 61 380 overených položiek v 100 cieľových katalógoch a anglický základ. Kontrola oproti [východiskovému commitu](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5194ca6a9c67ae884fdbeec61d7d433b06816b10) namerala 34 425 pridaných položiek a 1 180 opravených hodnôt. Zdroj je pripravený na skúšku na prijímači a následné schválenie vydania vlastníkom. [Úplný audit](docs/SKIN-I18N-AUDIT-20261117.md)
 
 
-- Priamy test sťahovania dvoch jazykov, kontroly SHA-256 a opakovanej synchronizácie bez siete prešiel na [831fc08](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/831fc08ea1a4d68521968ea8ee94ca11e3f7eec0). Záverečná lokálna sada zahŕňa 45 jazykových a súvisiacich regresných testov.
+- Priamy test sťahovania dvoch jazykov, kontroly SHA-256 a opakovanej synchronizácie bez siete prešiel na [831fc08](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/831fc08ea1a4d68521968ea8ee94ca11e3f7eec0). Na [93f75dd prešlo v CI všetkých 45 testov](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44277206134). S kontrolou zhody auditu a binárnych katalógov obsahuje záverečná sada 46 testov.
 
 - Všetkých 100 cieľových katalógov už obsahuje celý referenčný inventár. Prebieha kontrola starších hodnôt zhodných s angličtinou. [CI po doplnení eWeather](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44269295764) prešlo.
 
