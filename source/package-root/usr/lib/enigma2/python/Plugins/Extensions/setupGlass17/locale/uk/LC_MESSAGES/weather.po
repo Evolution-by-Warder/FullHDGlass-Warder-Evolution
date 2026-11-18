@@ -194,7 +194,7 @@ msgid "Wind direction"
 msgstr "Напрям вітру"
 
 msgid "Location"
-msgstr ""
+msgstr "Розташування"
 
 msgid "Humidity"
 msgstr "Вологість"
@@ -227,13 +227,13 @@ msgid "Error"
 msgstr "помилка"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Перевищено час очікування під час читання даних із сайту"
 
 msgid "None data received from website"
-msgstr ""
+msgstr "Дані із сайту не отримано"
 
 msgid "Website is not responding"
-msgstr ""
+msgstr "Сайт не відповідає"
 
 msgid "is not defined"
 msgstr "не визначено"
@@ -263,13 +263,13 @@ msgid "E"
 msgstr "Східний"
 
 msgid "Mishmash in the data"
-msgstr ""
+msgstr "Суперечливі дані"
 
 msgid "Weather"
 msgstr "Погода"
 
 msgid "Attempt"
-msgstr ""
+msgstr "Спроба"
 
 msgid "time to reconnect"
 msgstr "час оновлення"

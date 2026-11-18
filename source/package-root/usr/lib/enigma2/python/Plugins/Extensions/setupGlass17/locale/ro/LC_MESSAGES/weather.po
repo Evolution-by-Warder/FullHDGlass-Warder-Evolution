@@ -194,7 +194,7 @@ msgid "Wind direction"
 msgstr "Directia Vantului"
 
 msgid "Location"
-msgstr ""
+msgstr "Locație"
 
 msgid "Humidity"
 msgstr "Umiditate"
@@ -227,13 +227,13 @@ msgid "Error"
 msgstr "Eroare"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Timpul de citire a datelor de pe site a expirat"
 
 msgid "None data received from website"
-msgstr ""
+msgstr "Nu s-au primit date de la site"
 
 msgid "Website is not responding"
-msgstr ""
+msgstr "Site-ul nu răspunde"
 
 msgid "is not defined"
 msgstr "nu este definit"
@@ -263,13 +263,13 @@ msgid "E"
 msgstr "Est"
 
 msgid "Mishmash in the data"
-msgstr ""
+msgstr "Date incoerente"
 
 msgid "Weather"
 msgstr "Vreme"
 
 msgid "Attempt"
-msgstr ""
+msgstr "Încercare"
 
 msgid "time to reconnect"
 msgstr "timp de reconectare"

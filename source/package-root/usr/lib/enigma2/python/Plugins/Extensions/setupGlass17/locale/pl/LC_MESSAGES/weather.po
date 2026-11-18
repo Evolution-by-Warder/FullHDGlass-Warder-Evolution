@@ -194,7 +194,7 @@ msgid "Wind direction"
 msgstr "Kierunek Wiatru"
 
 msgid "Location"
-msgstr ""
+msgstr "Lokalizacja"
 
 msgid "Humidity"
 msgstr "Wilgotność"
@@ -227,13 +227,13 @@ msgid "Error"
 msgstr "Błąd"
 
 msgid "Website data reading timeout"
-msgstr ""
+msgstr "Przekroczono limit czasu odczytu danych ze strony"
 
 msgid "None data received from website"
-msgstr ""
+msgstr "Nie otrzymano danych ze strony internetowej"
 
 msgid "Website is not responding"
-msgstr ""
+msgstr "Strona internetowa nie odpowiada"
 
 msgid "is not defined"
 msgstr "nie określone"
@@ -263,13 +263,13 @@ msgid "E"
 msgstr "Wschodni"
 
 msgid "Mishmash in the data"
-msgstr ""
+msgstr "Niespójne dane"
 
 msgid "Weather"
 msgstr "Pogoda"
 
 msgid "Attempt"
-msgstr ""
+msgstr "Próba"
 
 msgid "time to reconnect"
 msgstr "Odświeżanie za"
