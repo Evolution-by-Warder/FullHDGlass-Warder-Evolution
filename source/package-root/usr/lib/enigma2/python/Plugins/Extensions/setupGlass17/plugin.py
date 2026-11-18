@@ -743,6 +743,9 @@ config.plugins.warderPiconExpert = ConfigSubsection()
 config.plugins.warderPiconExpert.custom_destination = ConfigYesNo(default=False)
 config.plugins.warderPiconExpert.destination = ConfigText(default="", fixed_size=False)
 # Independent, read-only channel-picon lookup. Does not modify download destination.
+# Optional main-menu shortcut. Opt-in and independent of legacy par1..par231.
+config.plugins.warderSkinMainMenu = ConfigSubsection()
+config.plugins.warderSkinMainMenu.enabled = ConfigYesNo(default=False)
 config.plugins.warderUserPicons = ConfigSubsection()
 config.plugins.warderUserPicons.enabled = ConfigYesNo(default=False)
 config.plugins.warderUserPicons.path = ConfigText(default="", fixed_size=False)
@@ -1292,6 +1295,11 @@ def chckEnaWea():
 def startSetup17(menuid, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Search the installed menu.xml for an Ostatné submenu; images without
+		# that submenu keep the opt-in shortcut directly in Main menu.
+		from .warderSettingsMenuPlacement import target_key
+		if config.plugins.warderSkinMainMenu.enabled.value and menuid == target_key():
+			ret.append(("FullHDGlass Warder Evolution", main, "warder_fullhdglass_settings", 43))
 		if menuid == "mainmenu":
 			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
 				ret.append((config.plugins.setupGlass17.par78.getText()+" (FullHDGlass)", main17, str(config.plugins.setupGlass17.par78.value), 44))
@@ -6926,6 +6934,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self._ownPiconsAtOpen = bool(config.plugins.warderUserPicons.enabled.value)
 		self._ownPiconRestartPending = False
 		self._epgListScrollAtOpen = bool(config.plugins.warderEpgListScroll.enabled.value)
+		self._warderMainMenuAtOpen = bool(config.plugins.warderSkinMainMenu.enabled.value)
 		self.firststart = True
 		self.start_rst = eTimer()
 		try:
@@ -7374,6 +7383,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("(Menu) Big Icons/Icons"), config.plugins.setupGlass17.par165))
 					self.list.append(getConfigListEntry(S0 % _("(Channel selection) picon/Prov/Sat"), config.plugins.setupGlass17.par166))
 			elif tt == 28:   
+				self.list.append(getConfigListEntry(S0 % ui_text("Show FullHDGlass Warder Evolution in main menu"), config.plugins.warderSkinMainMenu.enabled))
 				self.list.append(getConfigListEntry(S0 % ui_text("Spinner"), config.plugins.setupGlass17.par230))
 				if not os.path.isdir(PYTHONPATH+"Plugins/Extensions/EnhancedMovieCenter"):
 					self.list.append(getConfigListEntry(S0 % _("Movie selection type"), config.plugins.setupGlass17.par224))
@@ -8424,6 +8434,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			msg += ui_text("Spinner") + "\n"
 		if self._piconSourceAtOpen != config.plugins.setupGlass17.par231.value:
 			msg += ui_text("Channel-list picon source") + "\n"
+		if self._warderMainMenuAtOpen != bool(config.plugins.warderSkinMainMenu.enabled.value):
+			# Enigma2 refreshes menu descriptors when restarting GUI.
+			msg += ui_text("Show FullHDGlass Warder Evolution in main menu") + "\n"
 		if self._epgListScrollAtOpen != bool(config.plugins.warderEpgListScroll.enabled.value):
 			# Rebuild the runtime ChannelSelection with/without the overlay now.
 			chckPigFont()
@@ -8809,6 +8822,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
 		# New settings live outside the legacy numbered registry.
+		config.plugins.warderSkinMainMenu.enabled.save()
 		config.plugins.warderEpgListScroll.enabled.save()
 		config.plugins.warderPiconExpert.custom_destination.save()
 		config.plugins.warderPiconExpert.destination.save()
@@ -8859,6 +8873,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if a:
 			# Only the factory-reset flow may use bundled icons without a downloaded pack.
 			self._warderFactoryResetPending = True
+			config.plugins.warderSkinMainMenu.enabled.value = False
 			self.restoreCfgFromFile(PLUGINPATH+"defaults")
 
 	def restoreCfgFromFile(self,cfile):
@@ -8957,6 +8972,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							i[1].cancel()
 							break
 		except: pass
+		config.plugins.warderSkinMainMenu.enabled.cancel()
 		try:
 			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()
