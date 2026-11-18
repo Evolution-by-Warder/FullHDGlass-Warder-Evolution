@@ -103,7 +103,7 @@ class CatalogIntegrity(unittest.TestCase):
                 entries = po_entries(po)
                 self.assertEqual(set(entries) - {''}, expected_keys)
                 self.assertFalse(any(not entries[key].strip() for key in expected_keys))
-                self.assertIn('Language: %s\\n' % LANGUAGE_TAGS[lang], entries[''])
+                self.assertIn('Language: %s\n' % LANGUAGE_TAGS[lang], entries[''])
                 self.assertIn('charset=UTF-8', entries[''])
                 with po.with_suffix('.mo').open('rb') as stream:
                     compiled = gettext.GNUTranslations(stream)
