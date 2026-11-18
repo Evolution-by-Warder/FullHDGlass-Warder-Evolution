@@ -52,6 +52,25 @@ def po_entries(path):
 
 
 class CatalogIntegrity(unittest.TestCase):
+    def test_main_gettext_language_headers_match_locale(self):
+        expected_codes = {
+            'al': 'sq_AL', 'cs': 'cs_CZ', 'de': 'de_DE', 'el': 'el_GR',
+            'es': 'es_ES', 'et': 'et_EE', 'fa': 'fa_IR', 'fr': 'fr_FR',
+            'hu': 'hu_HU', 'it': 'it_IT', 'lt': 'lt_LT', 'nl': 'nl_NL',
+            'pl': 'pl_PL', 'pt': 'pt_PT', 'ro': 'ro_RO', 'ru': 'ru_RU',
+            'sk': 'sk_SK', 'tr': 'tr_TR', 'uk': 'uk_UA', 'zh': 'zh_CN',
+        }
+        self.assertEqual(set(expected_codes), set(LANGS))
+        for lang, expected in expected_codes.items():
+            with self.subTest(lang=lang):
+                path = ROOT / lang / 'LC_MESSAGES' / 'setupGlass17.po'
+                po_header = po_entries(path)['']
+                self.assertIn('Language: %s\n' % expected, po_header)
+                self.assertIn('charset=UTF-8', po_header)
+                with path.with_suffix('.mo').open('rb') as stream:
+                    catalog = gettext.GNUTranslations(stream)
+                self.assertEqual(catalog.info().get('language'), expected)
+
     def test_locale_count_and_complete_main_keys(self):
         self.assertEqual(len(LANGS) + 1, 21)  # en: untranslated msgid source.
         reference = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'setupGlass17.po')
