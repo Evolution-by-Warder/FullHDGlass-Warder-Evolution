@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import re
+import struct
 import sys
 import tempfile
 from urllib.request import Request, urlopen
@@ -46,7 +47,7 @@ def _valid_mo(content):
     try:
         gettext.GNUTranslations(io.BytesIO(content))
         return True
-    except (OSError, ValueError, EOFError, UnicodeError, IndexError):
+    except (OSError, ValueError, EOFError, UnicodeError, IndexError, struct.error):
         return False
 
 
