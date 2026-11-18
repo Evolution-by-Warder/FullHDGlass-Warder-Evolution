@@ -167,6 +167,26 @@ class CatalogIntegrity(unittest.TestCase):
                     key, translation = samples[lang]
                     self.assertEqual(compiled.gettext(key), translation)
 
+    def test_full_five_domain_coverage_in_all_twenty_locales(self):
+        """Enforce every reference key in every translated .po and .mo catalog."""
+        expected_counts = {'setupGlass17': 552, 'helpTxt': 195,
+                           'weather': 108, 'netatmo': 42, 'eWeather': 2119}
+        self.assertEqual(set(DOMAINS), set(expected_counts))
+        for domain in DOMAINS:
+            reference = po_entries(ROOT / 'sk/LC_MESSAGES' / (domain + '.po'))
+            keys = set(reference) - {''}
+            self.assertEqual(len(keys), expected_counts[domain])
+            for lang in LANGS:
+                with self.subTest(domain=domain, lang=lang):
+                    path = ROOT / lang / 'LC_MESSAGES' / (domain + '.po')
+                    values = po_entries(path)
+                    missing = {key for key in keys if not values.get(key, '').strip()}
+                    self.assertFalse(missing, (domain, lang, sorted(missing)))
+                    with path.with_suffix('.mo').open('rb') as stream:
+                        binary = gettext.GNUTranslations(stream)
+                    for key in keys:
+                        self.assertEqual(binary.gettext(key), values[key], (lang, domain, key))
+
     def test_all_shipped_mo_files_load_and_match_po(self):
         for lang in LANGS:
             for domain in DOMAINS:
