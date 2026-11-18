@@ -138,7 +138,7 @@ def _mixed_package_overlay(folder, themes):
         if digest in known.get(name, ()):
             return False
         # Guard that the tail is actual PNG artwork, not arbitrary user data.
-        if len(raw) < 33 or len(raw) > 128 * 1024 or not raw.startswith(b'\\x89PNG\\r\\n\\x1a\\n'):
+        if len(raw) < 33 or len(raw) > 128 * 1024 or not raw.startswith(b'\x89PNG\r\n\x1a\n'):
             return False
     return True
 
