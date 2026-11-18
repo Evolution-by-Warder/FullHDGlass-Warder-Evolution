@@ -1,4 +1,4 @@
-## Stav uzavretých opráv 1–8 (18. 11. 2026)
+## Stav uzavretých opráv 1–9 (18. 11. 2026)
 
 **Zdrojovo dokončené v `main` – nezaraďovať znovu medzi otvorené úlohy.** Toto je jediný orientačný prehľad pre postup po bodoch. Staré pracovné PR z obdobia pred integráciou sa uzatvárajú ako nahradené aktuálnym `main`; neaplikovať ich znovu. Vydaná verzia a produkčný aktualizátor zostávajú **1.0.80**. **Nový IPK nebol vydaný.**
 
@@ -12,8 +12,11 @@
 | 6 | Viditeľná ukážka formátu dátumu v nastaveniach, sedem kontextov | [test náhľadu](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-setup-date-preview.py) | **Uzatvorené**, súčasť 1.0.80; PR #90 zastaraný |
 | 7 | UV index / rýchlosť vetra: schválené grafické nápovedy 882×300 RGBA s odlišným zvýraznením, prepínanie podľa kurzora | [test nápovied](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test-weather-help-bubbles.py) | **Zdrojovo uzatvorené**; pôvodná úloha #108. Fyzické GUI testy zostávajú pre budúce spoločné vydanie. |
 | 8 | Automatické rozpoznávanie aktívneho GLES/e2egl pre EPG: OpenATV 8.1 ON, bez GLES alebo OpenATV 7.6/8.0.x/OpenPLi natívny fallback; rolovanie a jeho prepínač povolené iba tam, kde je backend aktívny | [runtime policy](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py), [test policy](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/blob/main/tools/test_warder_epg_gles_policy.py) | **Zdrojovo uzatvorené**; runtime politika je v `main` od v1.0.76, PR #82 je starý návrh nahradený novším kódom; bez nového fyzického testu konkrétnej OpenATV 8.1 zostavy. |
+| 9 | 21 jazykov skinu: anglický základ + 20 prekladových jazykov v 5 doménach setupGlass17/helpTxt/weather/netatmo/eWeather | [jazykový audit](docs/SKIN-I18N-AUDIT-20261117.md), [regresné testy](tools/test-warder-catalog-integrity.py), [CI PASS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44277206134) | **Zdrojovo uzatvorené**: 100 zdrojových `.po` + 100 binárnych `.mo`, 61 380/61 380 referenčných neprázdnych prekladov. Skutočná lokalizačná kvalita a prijímačový test sa nevyhlasujú za hotové. Širšia úloha #111 zostáva otvorená pre iné moduly/projekty (napr. `warderRadioCore` má iba 10 jazykov). |
 
-**Rozsah overenia:** Zhodu kódu a statické predpoklady možno potvrdiť v repozitári; v tomto kole sa všetky regresné testy nespúšťali a nový fyzický test na prijímači sa nerobil (najmä body 2–3). Týmto sa netvrdí 100 % hardvérové potvrdenie. Ak sa objaví konkrétna regresia na prijímači, evidovať ju ako **nový** prípad, nie opätovne otvárať implementačné body 1–8.
+**Rozsah overenia:** Zhodu kódu a statické predpoklady možno potvrdiť v repozitári; v tomto kole sa všetky regresné testy nespúšťali a nový fyzický test na prijímači sa nerobil (najmä body 2–3). Týmto sa netvrdí 100 % hardvérové potvrdenie. Ak sa objaví konkrétna regresia na prijímači, evidovať ju ako **nový** prípad, nie opätovne otvárať implementačné body 1–9.
+
+**Rozsah bodu 9:** uzavreté sú len päť domén kontrolovaných v tomto bode. Samostatný `warderRadioCore/data/translations.json` obsahuje 10 jazykov a nepatrí do tohto inventára. Širšia úloha #111 preto nemá byť uzavretá a musí sledovať ostatné moduly a projekty bez opätovného spracúvania už hotových piatich domén.
 
 ---
 
