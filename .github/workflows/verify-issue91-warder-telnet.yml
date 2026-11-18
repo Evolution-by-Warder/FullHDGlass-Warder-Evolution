@@ -16,6 +16,11 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          # FullHDGlass contains large historical picon archives; test only hooks.
+          sparse-checkout: |
+            source/control
+            tools/test_warder_issue91_ipk_messages.py
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
