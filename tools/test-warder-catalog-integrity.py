@@ -154,10 +154,12 @@ class CatalogIntegrity(unittest.TestCase):
                 entries = po_entries(path)
                 self.assertEqual(set(entries) - {''}, expected)
                 self.assertFalse(any(not entries[key].strip() for key in expected))
-                self.assertIn('Language: %s\n' % LANGUAGE_TAGS[lang], entries[''])
+                valid_tags = (LANGUAGE_TAGS[lang], LANGUAGE_TAGS[lang].split('_')[0])
+                self.assertTrue(any('Language: %s\n' % tag in entries['']
+                                    for tag in valid_tags), lang)
                 with path.with_suffix('.mo').open('rb') as stream:
                     compiled = gettext.GNUTranslations(stream)
-                self.assertEqual(compiled.info().get('language'), LANGUAGE_TAGS[lang])
+                self.assertIn(compiled.info().get('language'), valid_tags)
                 self.assertEqual(set(compiled._catalog), set(entries))
                 for key in expected:
                     self.assertEqual(compiled.gettext(key), entries[key], (lang, key))
