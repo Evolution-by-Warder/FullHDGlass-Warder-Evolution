@@ -7597,7 +7597,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.sampleColor(t.value)
 			self["selected_item"].setText("")
 			self["help_txt"].setText("")
-			art = "weather-uv-help.png" if t == config.plugins.setupGlass17.par176 else "weather-wind-help.png"
+			art = "weather-uv-help.png" if t is config.plugins.setupGlass17.par176 else "weather-wind-help.png"
 			filename = os.path.join(os.path.dirname(__file__), "images", "help", art)
 			self._warderLoadHelpPicture(filename)
 			self["help_pict"].show()
