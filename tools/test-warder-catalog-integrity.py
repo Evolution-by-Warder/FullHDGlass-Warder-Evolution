@@ -252,6 +252,20 @@ class CatalogIntegrity(unittest.TestCase):
             self.assertEqual(spanish[key], expected)
             self.assertEqual(binary.gettext(key), expected)
 
+    def test_italian_help_is_complete_and_loadable(self):
+        path = ROOT / 'it/LC_MESSAGES/helpTxt.po'
+        catalog = po_entries(path)
+        reference = po_entries(ROOT / 'sk/LC_MESSAGES/helpTxt.po')
+        keys = set(catalog) - {''}
+        self.assertEqual(len(keys), 189)
+        self.assertEqual(keys, set(reference) - {''})
+        self.assertTrue(all(catalog[key].strip() for key in keys))
+        self.assertEqual(catalog['No EPG data available'], 'Nessun dato EPG disponibile')
+        self.assertEqual(catalog['Last Quarter'], 'Ultimo quarto')
+        with path.with_suffix('.mo').open('rb') as stream:
+            binary = gettext.GNUTranslations(stream)
+        self.assertEqual(set(binary._catalog) - {''}, keys)
+
     def test_greek_help_is_complete(self):
         greek = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'helpTxt.po')
         slovak = po_entries(ROOT / 'sk' / 'LC_MESSAGES' / 'helpTxt.po')
