@@ -25,3 +25,570 @@ msgstr "Kasutatakse süsteemitõmmise ooteanimatsiooni"
 
 msgid "Weather data is provided by Open-Meteo; no API key is required"
 msgstr "Ilmaandmed pärinevad Open-Meteost. API-võtit pole vaja."
+
+msgid "N/A"
+msgstr "Pole saadaval"
+
+msgid "free"
+msgstr "vaba"
+
+msgid "TP info is not detected"
+msgstr "Transpondri teavet ei tuvastatud"
+
+msgid "Reference is not detected"
+msgstr "Viidet ei tuvastatud"
+
+msgid "No EPG data available"
+msgstr "EPG andmed puuduvad"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Palun oodake andmete lugemise ja töötlemise lõpuni"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Lemmikkausta valimiseks vajutage nuppu \"OK\"."
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Automaatne värv – kasutatakse skin.xml või g17Screens.py määrangut; valitud värv – kuvatakse määratud värviga"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Kanalid kõigilt satelliidipositsioonidelt ning SK/CZ maapealsed kanalid"
+
+msgid "No plugin Netatmo installed"
+msgstr "Netatmo plugin pole paigaldatud"
+
+msgid "Your API-key"
+msgstr "Teie API-võti"
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "Paigutus arvutatakse automaatselt inforibal oleva piconi suuruse järgi"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Praeguse võrgukiiruse mõõtmine on välja lülitatud"
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Võrgukiiruse mõõtmine on sisse lülitatud ja tulemus kuvatakse ühikus kb/s"
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Võrgukiiruse mõõtmine on sisse lülitatud ja tulemus kuvatakse ühikus Mb/s"
+
+msgid "Poster is displayed if exists"
+msgstr "Plakat kuvatakse, kui see on olemas"
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "Kuvatav plakat kustutatakse pika \"OK\" vajutusega ja seda enam ei näidata"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Otsi plakatit andmebaasist \"Internet Movie Database (IMDb)\""
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Otsi plakatit andmebaasist \"The Movie Database (TMDb)\""
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Otsi plakatit esmalt andmebaasist \"Internet Movie Database (IMDb)\", selle puudumisel andmebaasist \"The Movie Database (TMDb)\""
+
+msgid "Poster search is started with selected delay"
+msgstr "Plakati otsimine algab määratud viivituse järel"
+
+msgid "Poster is displayed with the selected size"
+msgstr "Plakat kuvatakse valitud suuruses"
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "ECM teavet näidatakse kõigi kanalite kohta, sealhulgas vaadatava, taustal salvestatavate ja voogedastatavate kanalite kohta"
+
+msgid "ECM info is displayed from current channel"
+msgstr "ECM teavet näidatakse ainult vaadatava kanali kohta"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "Bitikiirus arvutatakse kaasasoleva bitrate'i käivitatava faili abil"
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "Bitikiirus arvutatakse BitrateVieweri plugina eBitrateCalculator abil"
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Kõiki saadaolevaid jaamu ning nende mooduleid näidatakse ükshaaval määratud vahetusintervalliga"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Kuvatakse Netatmo pluginas valitud jaama teave"
+
+msgid "Time in seconds"
+msgstr "Aeg sekundites"
+
+msgid "Real tuner data are displayed"
+msgstr "Kuvatakse tuuneri tegelikke andmeid"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Andmed võetakse transpondri teabest"
+
+msgid "Animations are disabled"
+msgstr "Animatsioonid on välja lülitatud"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Valitud animatsioone rakendatakse valitud objektidele"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Ära näita HDD/SSD olekuteavet"
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "HDD/SSD temperatuuri, mahtu ja vaba ruumi näidatakse EMC ja Movieplayeri inforibal"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Kuvatakse ainult viimased 10 otsitud kanalit"
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Otsitud kanalid kuvatakse pikas sirvitavas loendis"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Animeeritud ikooni kaadrite värskendusintervall (vaikimisi 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Rakenda kõigile ekraanidele, kus kasutatakse loendikasti"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Ööikoonid asendatakse päevaikoonidega"
+
+msgid "Nighttime icons are displayed"
+msgstr "Kuvatakse ööikoone"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Valitud funktsiooni käivitamiseks vajutage nuppu \"OK\""
+
+msgid "Spinner will be used as default from image"
+msgstr "Vaikimisi kasutatakse süsteemitõmmise ooteanimatsiooni"
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "Kasutatakse Full HD Glass17 ooteanimatsiooni; algne animatsioon teisaldatakse kausta spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "EPG loend kuvatakse valitud fondisuurusega"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "PIP-kanalivaliku tüübid pole saadaval"
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "PIP-kanalivaliku tüübid on saadaval, kuid võivad mõne süsteemitõmmise korral põhjustada GSOD-tõrke"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Kaust, kus asub fail satellites.xml"
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Kaust, kuhu salvestatakse FHDG seadistus (fail hdg17.conf)"
+
+msgid "Display forecast for 5 days"
+msgstr "Näita 5 päeva ilmaprognoosi"
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Näita 10 päeva prognoosi: esmalt 5 päeva, seejärel vahetusaja möödumisel ülejäänud 5 päeva"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Kuvatakse planeetide, Päikese ja Kuu tõusu- ja loojumisaegu"
+
+msgid "Sorry, help info is missing"
+msgstr "Vabandust, abiteave puudub"
+
+msgid "Info is displayed with defined color"
+msgstr "Teave kuvatakse määratud värviga"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Teave kuvatakse automaatselt valitud värviga"
+
+msgid "Show extra screen only"
+msgstr "Näita ainult lisaekraani"
+
+msgid "None special info is selected"
+msgstr "Eriteavet pole valitud"
+
+msgid "Show extra infobar only"
+msgstr "Näita ainult täiendavat inforiba"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Näita ainult külgriba ja täiendavat inforiba"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1 – kõige kiirem, 10 – kõige aeglasem"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "Inforiba ilmub ja kaob kohe"
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "Inforiba ilmumisel ja kadumisel muutub läbipaistvus täis- või määratud tasemelt teisele tasemele"
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "Inforiba ilmub kohe ning kaob määratud tasemelt täieliku läbipaistvuseni"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Näita täiendavat inforiba; kasutajateabe kuvamiseks vajuta kaks korda \"OK\""
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "Kasutajateave ilmub pärast kahte \"OK\" vajutust ning kaob koos täiendava inforibaga"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "Kasutajateave ilmub pärast kahte \"OK\" vajutust ning kaob nupuga \"OK\" või \"exit\""
+
+msgid "Show actual event(EPG) only"
+msgstr "Näita ainult käimasolevat saadet (EPG)"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Käimasoleva ja järgmise saate (EPG) vahetamiseks hoia nuppu \">\" all"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Näita täiendaval inforibal ECM PID teavet"
+
+msgid "Show events name in infobar as static text"
+msgstr "Näita saadete nimesid inforibal staatilise tekstina"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "Näita saadete nimesid inforibal tähthaaval kirjutusmasina efektiga"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Näita süsteemitõmmises määratud OLED-kujundust"
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Näita teadet \"Btr too high - stopped\", kui reaalajas bitikiirus ületab määratud väärtuse"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "Kasuta ainult juhul, kui süsteemitõmmise nupuseadistus on \"standard Enigma2\""
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Kasuta ainult juhul, kui süsteemitõmmise nupuseadistus on \"Neutrino keymap type\""
+
+msgid "Show messages in default language - english"
+msgstr "Näita teateid vaikekeeles – inglise keeles"
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Näita teateid automaatselt tuvastatud aktiivses OSD keeles"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "Inforiba kaob süsteemiseadetes määratud aja möödumisel"
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "Kanalivahetusel avatud inforiba kaob süsteemis määratud aja järel. Nupuga \"OK\" avatud inforiba jääb ekraanile, kuni vajutatakse \"exit\" või \"OK\""
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "Nupuga \"OK\" avatud inforiba jääb ekraanile, kuni vajutatakse \"exit\" või \"OK\""
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Kontrolli internetiühendust määratud IP-aadressiga ühenduse loomise teel"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "HDD/SSD äratamist haldab ainult süsteemitõmmis"
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "Ärata HDD/SSD, kui see magab ja vajalikku teavet ei õnnestu lugeda"
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "auto – tuvasta vastuvõtja tuunerid automaatselt; arv (1–19) – näita valitud arvu tuunereid"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Ära näita inforibal vilkuvat \"R\" ikooni"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Näita inforibal vilkuvat \"R\" ikooni"
+
+msgid "Leave memory management untouched"
+msgstr "Ära muuda mäluhaldust"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Tuvasta AC3/Dolby kõigil saadaolevatel heliradadel"
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "Tuvasta aktiivsel helirajal AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC ja MPEG"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Automaatne mälu puhastamine – värskendusintervall 3 minutit"
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "IP-aadress, mida kasutatakse internetiühenduse oleku kontrollimiseks"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Kasuta aktiivse süsteemitõmmise faili encoding.conf"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Kasuta kaustas /usr/share/enigma2 asuvat faili encoding-user.conf"
+
+msgid "Channel selection works with standard functionality"
+msgstr "Kanalivalik töötab tavapärasel viisil"
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "\"OK\" lülitab valitud kanalile, kanaliloendit ei näidata; uus \"OK\" sulgeb kanaliloendi ning \"exit\" viib tagasi enne kanalivalikut vaadatud kanalile"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Valitud üksuse käivitamiseks ilma animatsioonita vajuta \"OK\""
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Animatsiooni käivitamiseks enne valitud üksuse aktiveerimist vajuta \"OK\""
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Näita seadetes valitud linna ilmateadet"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Järgmise linna ilmateate kuvamiseks vajuta \">\""
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "Nupuga \"help\" avatud eriteabe aken suletakse nupuga \"help\""
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "Nupuga \"help\" avatud eriteabe aken sulgub 20 sekundi pärast automaatselt"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Faili ecm.info lugemise värskendusintervall"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Lülita HDG uue versiooni automaatne kontroll välja"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Lülita HDG uue versiooni automaatne kontroll sisse"
+
+msgid "Static text - no scrolling"
+msgstr "Staatiline tekst – kerimist pole"
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Keri tekst lõpuni üles, oota määratud sekundid ja keri tagasi alla"
+
+msgid "Roll up at end of text and stop"
+msgstr "Keri tekst lõpuni üles ja peatu"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Teksti kerimine algab failis skin.xml määratud viivitusega"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Teksti kerimine algab valitud viivitusega (s)"
+
+msgid "Show channel name only"
+msgstr "Näita ainult kanali nime"
+
+msgid "Show number and channel name"
+msgstr "Näita kanali numbrit ja nime"
+
+msgid "Show satellite position and channel name"
+msgstr "Näita satelliidipositsiooni ja kanali nime"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Näita kanali numbrit, satelliidipositsiooni ja nime"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Ära näita inforibal \"Provider\" teavet"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Näita inforibal \"Provider\" teavet"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "Ära näita inforibal \"Temperature and RPM\" teavet"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Näita inforibal \"Temperature and RPM\" teavet"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Ära näita inforibal \"CPU usage and Memory usage\" teavet"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Näita inforibal \"CPU usage and Memory usage\" teavet"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Ära näita inforibal \"Temperature HDD/SSD\" teavet"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Näita inforibal \"Temperature HDD/SSD\" teavet"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "Ära näita peamenüüs valitud \"extensions\" eriteavet"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Näita peamenüüs valitud \"extensions\" eriteavet"
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Näita temperatuuri failis my_city_Code.txt või city_Code.txt määratud ühikutes"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Näita temperatuuri failis eWea_city_Code.txt määratud ühikutes"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Näita temperatuuri Celsiuse kraadides"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Näita temperatuuri Fahrenheiti kraadides"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Veebilehelt ilmaandmete uuesti küsimise intervall minutites"
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Hangi ilmaandmed OpenWeatherMapist; selleks registreeru saidil openweathermap.org ja sisesta API-võti (registreerimine ja põhiline API-võti on tasuta). Võtme saab lugeda ka failist /etc/openweathermap.api"
+
+msgid "Reading weather data from MSN website"
+msgstr "Hangi ilmaandmed MSN-i veebilehelt"
+
+msgid "\"Find a city\" is disabled"
+msgstr "\"Find a city\" on välja lülitatud"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "\"Find a city\" on laienduste loendis välja lülitatud"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "\"Find a city\" on peamenüüs välja lülitatud"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Tõrke tuvastamisel ära proovi teenusepakkujalt uusi andmeid küsida"
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Automaatne taasühendamine – tõrke korral küsi teenusepakkujalt määratud vahedega andmeid uuesti, kuni andmed on korras"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Näita tänase ja järgmise 3 päeva prognoosi"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Näita eilse, tänase ja järgmise 3 päeva prognoosi"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Kõrge temperatuur kuvatakse automaatse värviga"
+
+msgid "High temperature appear in selected color"
+msgstr "Kõrge temperatuur kuvatakse valitud värviga"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Madal temperatuur kuvatakse automaatse värviga"
+
+msgid "Low temperature appear in selected color"
+msgstr "Madal temperatuur kuvatakse valitud värviga"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "Külm/soe temperatuur kuvatakse valitud värviga (külma/sooja värv)"
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "Külm temperatuur ületab seadet \"Cold temperature\" ja/või soe temperatuur jääb alla seade \"Warm temperature\""
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Sooja temperatuuri piirväärtuse vahemik: 15–40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Külma temperatuuri piirväärtuse vahemik: 1–14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Sooja temperatuuri piirväärtuse vahemik: 58–104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Külma temperatuuri piirväärtuse vahemik: 33–57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "Kernel tuvastas HDD/SSD seadmena"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Kõigi vajalike kaustade (picon, piconProv jm) asukohatee"
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "Kasutaja määratud asukohatee kõigile vajalikele kaustadele (picon, piconProv jm)"
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Kanalinumbrid arvutatakse Enigma käivitumisel, seetõttu kanali järjekorra hilisem muutmine numbreid ei mõjuta"
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "Kanalinumber arvutatakse pärast iga kanalivahetust uuesti, seega kajastuvad kanali järjekorra muudatused ka numbrites"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Kuupäevavorming võetakse skini määrangust"
+
+msgid "Date format will be used as follow"
+msgstr "Kuupäevavorming on järgmine"
+
+msgid "Channel logos with white background"
+msgstr "Valge taustaga kanalilogod"
+
+msgid "Channel logos with black background"
+msgstr "Musta taustaga kanalilogod"
+
+msgid "Channel logos for OLED display"
+msgstr "Kanalilogod OLED-ekraanile"
+
+msgid "Provider logos with white background"
+msgstr "Valge taustaga teenusepakkujate logod"
+
+msgid "Provider logos with black background"
+msgstr "Musta taustaga teenusepakkujate logod"
+
+msgid "Satellite logos with white background"
+msgstr "Valge taustaga satelliidilogod"
+
+msgid "Satellite logos with black background"
+msgstr "Musta taustaga satelliidilogod"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Valge taustaga CA-süsteemi ja SoftCami logod"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Musta taustaga CA-süsteemi ja SoftCami logod"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Skini seadetes valitud valikute eelvaated"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Lisaekraani eelvaated ja inforibal kasutatavad ikoonikomplektid"
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Lisaekraanil kasutatav graafika; allalaadimisel lisandub uusi lisaekraani valikuid"
+
+msgid "Icons used in some menu types"
+msgstr "Mõnes menüütüübis kasutatavad ikoonid"
+
+msgid "Big icons used in some menu types"
+msgstr "Mõnes menüütüübis kasutatavad suured ikoonid"
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Ilmaikoonid eri- ja kasutajateabe vaadetes: Weather, Weather light ja Extended weather"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "Valiku korral kasutatakse inforibal teise piconi tüübina valget piconWeather ikooni"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "Valiku korral kasutatakse inforibal teise piconi tüübina musta piconWeather ikooni"
+
+msgid "Animated icons will be displayed"
+msgstr "Kuvatakse animeeritud ikoone"
+
+msgid "Static icons will be displayed"
+msgstr "Kuvatakse staatilisi ikoone"
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Animeeritud ilmaikoonid inforibal ning Weather või Enhanced Weather eri- ja kasutajateabe vaadetes"
+
+msgid "Channel logos with picture background"
+msgstr "Pilditaustaga kanalilogod"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Ainult Skylinki ja Freesati kanalite pakett"
+
+msgid "Channel logos with transparent background"
+msgstr "Läbipaistva taustaga kanalilogod"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Piconi pakettide lahtipakkimiseks vajalik tööriist"
+
+msgid "Provider logos with transparent background"
+msgstr "Läbipaistva taustaga teenusepakkujate logod"
+
+msgid "Satellite logos with transparent background"
+msgstr "Läbipaistva taustaga satelliidilogod"
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Läbipaistva taustaga kanalivaliku ikoonid, mida kasutatakse mõnes kanalivaliku tüübis"
+
+msgid "New Moon"
+msgstr "Noorkuu"
+
+msgid "First Quarter"
+msgstr "Esimene veerand"
+
+msgid "Waxing Crescent"
+msgstr "Kasvav kuusirp"
+
+msgid "Waxing Moon"
+msgstr "Kasvav Kuu"
+
+msgid "Full Moon"
+msgstr "Täiskuu"
+
+msgid "Waning Moon"
+msgstr "Kahanev Kuu"
+
+msgid "Waning Crescent"
+msgstr "Kahanev kuusirp"
+
+msgid "Last Quarter"
+msgstr "Viimane veerand"
