@@ -147,6 +147,25 @@ class CatalogIntegrity(unittest.TestCase):
                     compiled = gettext.GNUTranslations(stream)
                 self.assertEqual(compiled.gettext(key), expected)
 
+    def test_estonian_historical_weather_terminology(self):
+        catalog = po_entries(ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.po')
+        expected = {
+            'warm': 'soe',
+            'then t-storms': 'seejärel äikesetormid',
+            'ENE': 'ida-kirde',
+            'WNW': 'lääne-loode',
+            'WSW': 'lääne-edela',
+            'Change city': 'Muuda linna',
+            'then showers': 'seejärel hoovihmad',
+        }
+        for key, translation in expected.items():
+            with self.subTest(key=key):
+                self.assertEqual(catalog[key], translation)
+        with (ROOT / 'et' / 'LC_MESSAGES' / 'eWeather.mo').open('rb') as stream:
+            binary = gettext.GNUTranslations(stream)
+        for key, translation in expected.items():
+            self.assertEqual(binary.gettext(key), translation)
+
     def test_extended_greek_weather_batch(self):
         catalog = po_entries(ROOT / 'el' / 'LC_MESSAGES' / 'eWeather.po')
         self.assertEqual(len(catalog) - 1, 2117)
