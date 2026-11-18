@@ -23,11 +23,17 @@ jobs:
             done
           done
           echo '=== EU parent referral (authoritative delegation, avoid cached child NS) ==='
-          PARENT="$(dig @1.1.1.1 +short A a.dns.eu | head -1)"
+          EUNS="$(dig @1.1.1.1 +short NS eu. | head -1 | sed 's/\\.$//')"
+          echo "EU_PARENT_NS=$EUNS"
+          PARENT="$(dig @1.1.1.1 +short A "$EUNS" | head -1)"
           echo "EU_PARENT_IP=$PARENT"
           if [ -n "$PARENT" ]; then
             dig @"$PARENT" warder-evolution.eu NS +norecurse +time=4 +tries=1 +noall +comments +authority +additional
             NAMESERVERS="$(dig @"$PARENT" warder-evolution.eu NS +norecurse +time=4 +tries=1 +noall +authority | awk '$4=="NS"{print $5}' | sed 's/\.$//' | sort -u)"
+          fi
+          if [ -z "$NAMESERVERS" ]; then
+            echo "PARENT_REFERRAL_NOT_AVAILABLE__TRY_DIRECT_NS"
+            NAMESERVERS="$(dig @1.1.1.1 +short NS warder-evolution.eu | sed 's/\\.$//' | sort -u)"
           fi
           echo "PARENT_NS_BEGIN"
           printf '%s\n' "$NAMESERVERS"
