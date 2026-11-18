@@ -25,3 +25,570 @@ msgstr "Sistem imajıyla gelen bekleme animasyonu kullanılır"
 
 msgid "Weather data is provided by Open-Meteo; no API key is required"
 msgstr "Hava durumu verilerini Open-Meteo sağlar. API anahtarı gerekmez."
+
+msgid "N/A"
+msgstr "Yok"
+
+msgid "free"
+msgstr "boş"
+
+msgid "TP info is not detected"
+msgstr "Transponder bilgisi algılanamadı"
+
+msgid "Reference is not detected"
+msgstr "Referans algılanamadı"
+
+msgid "No EPG data available"
+msgstr "EPG verisi bulunmuyor"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Verilerin okunup işlenmesini bekleyin"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Favori klasörünü seçmek için \"OK\" tuşuna basın."
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Otomatik renk: skin.xml veya g17Screens.py tanımını kullanır; seçilen renk: belirlediğiniz rengi kullanır"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Tüm uydu konumlarındaki ve SK/CZ karasal yayınlarındaki kanallar"
+
+msgid "No plugin Netatmo installed"
+msgstr "Netatmo eklentisi yüklü değil"
+
+msgid "Your API-key"
+msgstr "API anahtarınız"
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "Yerleşim, bilgi çubuğundaki picon boyutuna göre otomatik hesaplanır"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Anlık ağ hızı ölçümü kapalı"
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Anlık ağ hızı ölçümü açık; değer kb/s cinsinden gösterilir"
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Anlık ağ hızı ölçümü açık; değer Mb/s cinsinden gösterilir"
+
+msgid "Poster is displayed if exists"
+msgstr "Poster varsa gösterilir"
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "Görüntülenen poster, \"OK\" tuşuna uzun basıldığında silinir ve yeniden gösterilmez"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "\"Internet Movie Database (IMDb)\" üzerinde poster ara"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "\"The Movie Database (TMDb)\" üzerinde poster ara"
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Önce \"Internet Movie Database (IMDb)\" üzerinde ara; bulunamazsa \"The Movie Database (TMDb)\" üzerinde ara"
+
+msgid "Poster search is started with selected delay"
+msgstr "Poster araması seçilen gecikmeden sonra başlar"
+
+msgid "Poster is displayed with the selected size"
+msgstr "Poster seçilen boyutta gösterilir"
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "ECM bilgileri, izlenen kanalın yanı sıra arka planda kaydedilen ve akışla aktarılan kanallar dâhil tüm kanallar için gösterilir"
+
+msgid "ECM info is displayed from current channel"
+msgstr "ECM bilgileri yalnızca izlenen kanal için gösterilir"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "Bit hızı, pakete dâhil olan bitrate ikili dosyasıyla hesaplanır"
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "Bit hızı, BitrateViewer eklentisindeki eBitrateCalculator ile hesaplanır"
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Kullanılabilir tüm istasyonlar ve modülleri, belirlenen geçiş süresiyle sırayla gösterilir"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Netatmo eklentisinde seçilen istasyonun bilgileri gösterilir"
+
+msgid "Time in seconds"
+msgstr "Saniye cinsinden süre"
+
+msgid "Real tuner data are displayed"
+msgstr "Gerçek tuner verileri gösterilir"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Veriler transponder bilgilerinden alınır"
+
+msgid "Animations are disabled"
+msgstr "Animasyonlar kapalı"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Seçilen animasyonlar seçilen nesnelere uygulanır"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "HDD/SSD durumu hakkında bilgi gösterme"
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "HDD/SSD sıcaklığı, kapasitesi ve boş alanı EMC ve Movieplayer bilgi çubuğunda gösterilir"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Yalnızca son aranan 10 kanal gösterilir"
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Aranan kanallar uzun bir listede gösterilir; listeye göz atabilirsiniz"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Animasyonlu simgenin kareleri arasındaki yenileme süresi (varsayılan 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Liste kutusu kullanılan tüm ekranlara uygula"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Gece simgelerinin yerine gündüz simgeleri kullanılır"
+
+msgid "Nighttime icons are displayed"
+msgstr "Gece simgeleri gösterilir"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Seçilen işlevi etkinleştirmek için \"OK\" tuşuna basın"
+
+msgid "Spinner will be used as default from image"
+msgstr "Varsayılan olarak sistem imajının bekleme animasyonu kullanılır"
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "Full HD Glass17 bekleme animasyonu kullanılır. Özgün animasyon spinner-ori klasörüne taşınır"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "EPG listesi seçilen yazı tipi boyutunda gösterilir"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "PIP kanal seçim türleri kullanılamaz"
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "PIP kanal seçim türleri kullanılabilir ancak bazı imajlarda GSOD hatasına yol açabilir"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "satellites.xml dosyasının bulunduğu klasör"
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "FHDG yapılandırmasının (hdg17.conf dosyası) kaydedileceği klasör"
+
+msgid "Display forecast for 5 days"
+msgstr "5 günlük hava tahminini göster"
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Önce ilk 5 günü, geçiş süresi dolunca sonraki 5 günü göstererek 10 günlük hava tahmini sun"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Gezegenlerin, Güneş'in ve Ay'ın doğuş ve batış bilgileri gösterilir"
+
+msgid "Sorry, help info is missing"
+msgstr "Üzgünüz, yardım bilgisi bulunmuyor"
+
+msgid "Info is displayed with defined color"
+msgstr "Bilgi belirlenen renkte gösterilir"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Bilgi otomatik seçilen renkte gösterilir"
+
+msgid "Show extra screen only"
+msgstr "Yalnızca ek ekranı göster"
+
+msgid "None special info is selected"
+msgstr "Özel bilgi seçilmedi"
+
+msgid "Show extra infobar only"
+msgstr "Yalnızca ek bilgi çubuğunu göster"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Yalnızca yan çubuğu ve ek bilgi çubuğunu göster"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1 en hızlı, 10 en yavaş"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "Bilgi çubuğu anında görünür ve anında kaybolur"
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "Bilgi çubuğu tam/belirlenen saydamlıktan belirlenen/tam saydamlığa geçerek görünür veya kaybolur"
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "Bilgi çubuğu hemen görünür ve belirlenen saydamlıktan tam saydamlığa geçerek kaybolur"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Ek bilgi çubuğunu göster; kullanıcı bilgilerini açmak için \"OK\" tuşuna iki kez bas"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "Kullanıcı bilgileri \"OK\" tuşuna iki kez basıldığında görünür, ek bilgi çubuğuyla birlikte kaybolur"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "Kullanıcı bilgileri \"OK\" tuşuna iki kez basıldığında görünür, \"OK\" veya \"exit\" ile kaybolur"
+
+msgid "Show actual event(EPG) only"
+msgstr "Yalnızca mevcut EPG programını göster"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Mevcut ve sonraki EPG programı arasında geçmek için \">\" tuşuna uzun basın"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Ek bilgi çubuğunda ECM PID bilgisini göster"
+
+msgid "Show events name in infobar as static text"
+msgstr "Bilgi çubuğunda program adlarını sabit metin olarak göster"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "Bilgi çubuğunda program adlarını daktilo efektiyle harf harf göster"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Sistem imajında tanımlanan OLED tasarımını göster"
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Gerçek zamanlı bit hızı ayarlanan değerden yüksekse \"Btr too high - stopped\" mesajını göster"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "Yalnızca sistem imajınızda tuş eşlemesi \"standard Enigma2\" ise kullanın"
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Yalnızca sistem imajınızda tuş eşlemesi \"Neutrino keymap type\" ise kullanın"
+
+msgid "Show messages in default language - english"
+msgstr "Mesajları varsayılan dilde (İngilizce) göster"
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Mesajları etkin OSD dil ayarından otomatik algılanan yerel dilde göster"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "Bilgi çubuğu, sistem ayarlarında belirlenen süre sonunda kaybolur"
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "Kanal değiştirildiğinde açılan bilgi çubuğu sistemde belirlenen sürede kaybolur. \"OK\" ile açılan çubuk kalıcıdır; \"exit\" veya \"OK\" ile kapatılır"
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "\"OK\" ile açılan bilgi çubuğu kalıcıdır; \"exit\" veya \"OK\" ile kapatılır"
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Belirtilen IP adresine bağlanarak internet erişimini denetle"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "HDD/SSD'nin uyandırılması yalnızca sistem imajı tarafından yönetilir"
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "HDD/SSD uyku modundaysa ve bir işlev gerekli bilgiyi okuyamazsa diski uyandır"
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "Otomatik: alıcıdaki tunerleri algıla; değer (1–19): seçilen sayıda tuneri göster"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Bilgi çubuğunda yanıp sönen \"R\" simgesini gösterme"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Bilgi çubuğunda yanıp sönen \"R\" simgesini göster"
+
+msgid "Leave memory management untouched"
+msgstr "Bellek yönetimini değiştirme"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Kullanılabilir tüm ses izlerinde AC3/Dolby algıla"
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "Etkin ses izinde AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC ve MPEG algıla"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Otomatik bellek temizleme; yenileme aralığı: 3 dakika"
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "İnternet bağlantı durumunu denetlemek için kullanılan IP adresi"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Etkin sistem imajının encoding.conf dosyasını kullan"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "/usr/share/enigma2 klasöründeki encoding-user.conf dosyasını kullan"
+
+msgid "Channel selection works with standard functionality"
+msgstr "Kanal seçimi standart şekilde çalışır"
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "\"OK\" seçilen kanalı etkinleştirir; kanal listesi görünmez. \"OK\" yeniden basıldığında liste kaybolur; \"exit\" ile kanal listesi açılmadan önce oynatılan kanala dönülür"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Seçilen öğeyi animasyon olmadan başlatmak için \"OK\" tuşuna basın"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Seçilen öğeyi etkinleştirmeden önce animasyonu başlatmak için \"OK\" tuşuna basın"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Ayarlarda seçilen şehrin hava durumunu göster"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Sonraki şehrin hava durumunu göstermek için \">\" tuşuna basın"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "\"help\" ile açılan özel bilgi ekranı yine \"help\" ile kapanır"
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "\"help\" ile açılan özel bilgi ekranı 20 saniye sonra otomatik kapanır"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "ecm.info dosyasını okuma yenileme aralığı"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "HDG'nin yeni sürümlerini otomatik denetlemeyi kapat"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "HDG'nin yeni sürümlerini otomatik denetlemeyi aç"
+
+msgid "Static text - no scrolling"
+msgstr "Sabit metin; kaydırma yok"
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Metni sona kadar yukarı kaydır, seçilen süre kadar beklet, ardından tekrar aşağı kaydır"
+
+msgid "Roll up at end of text and stop"
+msgstr "Metni sona kadar yukarı kaydır ve durdur"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Metin kaydırma skin.xml içinde belirtilen gecikmeyle başlar"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Metin kaydırma seçilen gecikmeden (s) sonra başlar"
+
+msgid "Show channel name only"
+msgstr "Yalnızca kanal adını göster"
+
+msgid "Show number and channel name"
+msgstr "Kanal numarasını ve adını göster"
+
+msgid "Show satellite position and channel name"
+msgstr "Uydu konumunu ve kanal adını göster"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Kanal numarasını, uydu konumunu ve kanal adını göster"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Bilgi çubuğunda \"Provider\" bilgisini gösterme"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Bilgi çubuğunda \"Provider\" bilgisini göster"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "Bilgi çubuğunda \"Temperature and RPM\" bilgisini gösterme"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Bilgi çubuğunda \"Temperature and RPM\" bilgisini göster"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Bilgi çubuğunda \"CPU usage and Memory usage\" bilgisini gösterme"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Bilgi çubuğunda \"CPU usage and Memory usage\" bilgisini göster"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Bilgi çubuğunda \"Temperature HDD/SSD\" bilgisini gösterme"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Bilgi çubuğunda \"Temperature HDD/SSD\" bilgisini göster"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "Ana menüde seçilen özel \"extensions\" bilgisini gösterme"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Ana menüde seçilen özel \"extensions\" bilgisini göster"
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Sıcaklığı my_city_Code.txt veya city_Code.txt dosyasında belirlenen birimde göster"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Sıcaklığı eWea_city_Code.txt dosyasında belirlenen birimde göster"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Sıcaklığı Celsius cinsinden göster"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Sıcaklığı Fahrenheit cinsinden göster"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Web sitesinden hava verilerini yeniden alma aralığı (dakika)"
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Hava verilerini OpenWeatherMap üzerinden alır; openweathermap.org sitesinde kaydolup API anahtarınızı girmeniz gerekir (kayıt ve temel API anahtarı ücretsizdir). Anahtar /etc/openweathermap.api dosyasından da okunabilir"
+
+msgid "Reading weather data from MSN website"
+msgstr "Hava verilerini MSN web sitesinden alır"
+
+msgid "\"Find a city\" is disabled"
+msgstr "\"Find a city\" işlevi kapalı"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "\"Find a city\" işlevi eklentiler listesinde kapalı"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "\"Find a city\" işlevi ana menüde kapalı"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Bir hata algılanırsa sağlayıcıdan tekrar veri almaya çalışma"
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Otomatik yeniden bağlanma: hata olursa seçilen aralıklarla veriler düzelene kadar sağlayıcıdan tekrar veri almayı dene"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Bugün ve sonraki 3 günün hava tahminini göster"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Dün, bugün ve sonraki 3 günün hava tahminini göster"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Yüksek sıcaklığı otomatik renkte göster"
+
+msgid "High temperature appear in selected color"
+msgstr "Yüksek sıcaklığı seçilen renkte göster"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Düşük sıcaklığı otomatik renkte göster"
+
+msgid "Low temperature appear in selected color"
+msgstr "Düşük sıcaklığı seçilen renkte göster"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "Soğuk/sıcak değerleri seçilen renkte (Soğuk/Sıcak rengi) göster"
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "Soğuk sıcaklığı \"Cold temperature\" ayarından yüksekse ve/veya sıcak sıcaklığı \"Warm temperature\" ayarından düşükse"
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Sıcaklık üst sınır aralığı: 15–40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Soğuk sıcaklık sınır aralığı: 1–14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Sıcaklık üst sınır aralığı: 58–104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Soğuk sıcaklık sınır aralığı: 33–57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "Çekirdek tarafından aygıt olarak algılanan HDD/SSD"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "picon, piconProv ve diğer gerekli klasörlerin yolu"
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "picon, piconProv ve diğer gerekli klasörler için kullanıcı tanımlı yol"
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Kanal numaraları Enigma başladığında hesaplanır; kanal sırası değişiklikleri numaraları etkilemez"
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "Kanal numarası her kanal değişiminden sonra yeniden hesaplanır; kanal sırasındaki değişiklikler numaraya yansır"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Tarih biçimi skin bölümündeki tanımdan alınır"
+
+msgid "Date format will be used as follow"
+msgstr "Tarih biçimi şu şekilde kullanılır"
+
+msgid "Channel logos with white background"
+msgstr "Beyaz arka planlı kanal logoları"
+
+msgid "Channel logos with black background"
+msgstr "Siyah arka planlı kanal logoları"
+
+msgid "Channel logos for OLED display"
+msgstr "OLED ekran için kanal logoları"
+
+msgid "Provider logos with white background"
+msgstr "Beyaz arka planlı sağlayıcı logoları"
+
+msgid "Provider logos with black background"
+msgstr "Siyah arka planlı sağlayıcı logoları"
+
+msgid "Satellite logos with white background"
+msgstr "Beyaz arka planlı uydu logoları"
+
+msgid "Satellite logos with black background"
+msgstr "Siyah arka planlı uydu logoları"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Beyaz arka planlı CA sistemi ve SoftCam logoları"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Siyah arka planlı CA sistemi ve SoftCam logoları"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Skin ayarlarında seçilen seçeneklerin önizlemeleri"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Ek ekran önizlemeleri ve bilgi çubuğunda kullanılan simge setleri"
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Ek ekranda kullanılan grafikler; indirildiklerinde daha fazla ek ekran seçeneği sunarlar"
+
+msgid "Icons used in some menu types"
+msgstr "Bazı menü türlerinde kullanılan simgeler"
+
+msgid "Big icons used in some menu types"
+msgstr "Bazı menü türlerinde kullanılan büyük simgeler"
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Özel ve kullanıcı bilgi ekranlarında kullanılan hava durumu simgeleri: Weather, Weather light ve Extended weather"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "Seçilmişse bilgi çubuğunda ikinci picon türü olarak beyaz piconWeather kullanılır"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "Seçilmişse bilgi çubuğunda ikinci picon türü olarak siyah piconWeather kullanılır"
+
+msgid "Animated icons will be displayed"
+msgstr "Animasyonlu simgeler gösterilir"
+
+msgid "Static icons will be displayed"
+msgstr "Sabit simgeler gösterilir"
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Bilgi çubuğunda ve Weather veya Enhanced Weather özel/kullanıcı bilgi ekranlarında kullanılan animasyonlu hava simgeleri"
+
+msgid "Channel logos with picture background"
+msgstr "Resimli arka planlı kanal logoları"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Yalnızca Skylink ve Freesat kanal paketi"
+
+msgid "Channel logos with transparent background"
+msgstr "Saydam arka planlı kanal logoları"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Picon paketlerini çıkarmak için gereken araç"
+
+msgid "Provider logos with transparent background"
+msgstr "Saydam arka planlı sağlayıcı logoları"
+
+msgid "Satellite logos with transparent background"
+msgstr "Saydam arka planlı uydu logoları"
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Bazı kanal seçimi türlerinde kullanılan saydam arka planlı kanal seçimi simgeleri"
+
+msgid "New Moon"
+msgstr "Yeni Ay"
+
+msgid "First Quarter"
+msgstr "İlk dördün"
+
+msgid "Waxing Crescent"
+msgstr "Büyüyen hilal"
+
+msgid "Waxing Moon"
+msgstr "Büyüyen Ay"
+
+msgid "Full Moon"
+msgstr "Dolunay"
+
+msgid "Waning Moon"
+msgstr "Küçülen Ay"
+
+msgid "Waning Crescent"
+msgstr "Küçülen hilal"
+
+msgid "Last Quarter"
+msgstr "Son dördün"
