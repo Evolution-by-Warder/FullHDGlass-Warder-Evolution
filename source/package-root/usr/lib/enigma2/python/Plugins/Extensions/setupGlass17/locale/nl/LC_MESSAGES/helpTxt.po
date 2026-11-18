@@ -1,0 +1,569 @@
+msgid ""
+msgstr "Project-Id-Version: FullHDGlass Warder Evolution\nLanguage: nl_NL\nLanguage-Team: Dutch\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "N/A"
+msgstr "N.v.t."
+
+msgid "free"
+msgstr "vrij"
+
+msgid "TP info is not detected"
+msgstr "Transponderinformatie kon niet worden vastgesteld"
+
+msgid "Reference is not detected"
+msgstr "Kanaalreferentie kon niet worden vastgesteld"
+
+msgid "No EPG data available"
+msgstr "Geen EPG-gegevens beschikbaar"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Wacht terwijl de gegevens worden gelezen en verwerkt"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Druk op 'OK' om de map met favorieten te kiezen."
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Automatische kleur: gebruik de definitie uit skin.xml of g17Screens.py; gekozen kleur: toon in de geselecteerde kleur"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Kanalen van alle satellietposities en Slowaakse en Tsjechische etherkanalen"
+
+msgid "No plugin Netatmo installed"
+msgstr "De Netatmo-plug-in is niet geïnstalleerd"
+
+msgid "Your API-key"
+msgstr "Uw API-sleutel"
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "De indeling wordt automatisch berekend aan de hand van het piconformaat in de informatiebalk"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Het meten van de huidige netwerksnelheid is uitgeschakeld"
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Het meten van de huidige netwerksnelheid is ingeschakeld; weergave in kb/s"
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Het meten van de huidige netwerksnelheid is ingeschakeld; weergave in Mb/s"
+
+msgid "Poster is displayed if exists"
+msgstr "De poster wordt getoond als deze beschikbaar is"
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "Houd 'OK' ingedrukt om de huidige poster te wissen; deze wordt daarna niet meer getoond"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Posters zoeken in Internet Movie Database (IMDb)"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Posters zoeken in The Movie Database (TMDb)"
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Zoek eerst in Internet Movie Database (IMDb) en, indien niet gevonden, in The Movie Database (TMDb)"
+
+msgid "Poster search is started with selected delay"
+msgstr "Het zoeken naar posters begint na de gekozen vertraging"
+
+msgid "Poster is displayed with the selected size"
+msgstr "De poster wordt in het gekozen formaat getoond"
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "Toon ECM-informatie van alle kanalen: huidig kanaal, achtergrondopnamen, streaming enzovoort"
+
+msgid "ECM info is displayed from current channel"
+msgstr "Toon ECM-informatie van het huidige kanaal"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "De bitrate wordt berekend met het meegeleverde uitvoerbare programma"
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "De bitrate wordt berekend met eBitrateCalculator uit de plug-in BitrateViewer"
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Alle beschikbare stations en hun modules worden om beurten getoond met de ingestelde wisseltijd"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Toon informatie van het station dat in de Netatmo-plug-in is gekozen"
+
+msgid "Time in seconds"
+msgstr "Tijd in seconden"
+
+msgid "Real tuner data are displayed"
+msgstr "Toon de werkelijke tunergegevens"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Toon gegevens uit de transponderinformatie"
+
+msgid "Animations are disabled"
+msgstr "Animaties zijn uitgeschakeld"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "De gekozen animaties worden toegepast op de geselecteerde onderdelen"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Geen informatie over de status van de HDD/SSD tonen"
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "Toon temperatuur, capaciteit en vrije ruimte van de HDD/SSD in de informatiebalken van EMC en Movieplayer"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Toon alleen de laatste 10 gezochte kanalen"
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Toon gevonden kanalen in een lange lijst waarin u kunt bladeren"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Verversingsinterval tussen frames van een geanimeerd pictogram (standaard 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Toepassen op alle schermen met een keuzelijst"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Nachtpictogrammen vervangen door dagpictogrammen"
+
+msgid "Nighttime icons are displayed"
+msgstr "Nachtpictogrammen tonen"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Druk op 'OK' om de gekozen functie te activeren"
+
+msgid "Spinner will be used as default from image"
+msgstr "De standaardlaadanimatie van de systeemimage gebruiken"
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "De laadanimatie van Full HD Glass17 gebruiken; de oorspronkelijke wordt verplaatst naar spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "Toon de EPG-lijst met de gekozen lettergrootte"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "PIP-varianten voor kanaalselectie zijn niet beschikbaar"
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "PIP-varianten voor kanaalselectie zijn beschikbaar, maar kunnen op sommige systeemimages GSOD veroorzaken"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Map waarin het bestand satellites.xml staat"
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Map voor het opslaan van de huidige FHDG-configuratie (bestand hdg17.conf)"
+
+msgid "Display forecast for 5 days"
+msgstr "Toon de weersverwachting voor 5 dagen"
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Toon de weersverwachting voor 10 dagen: eerst 5 dagen en na de ingestelde wachttijd de volgende 5"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Toon informatie over opkomst en ondergang van zon, maan en planeten"
+
+msgid "Sorry, help info is missing"
+msgstr "Helaas is er geen helpinformatie beschikbaar"
+
+msgid "Info is displayed with defined color"
+msgstr "Toon informatie in de ingestelde kleur"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Toon informatie in een automatisch gekozen kleur"
+
+msgid "Show extra screen only"
+msgstr "Alleen het extra scherm tonen"
+
+msgid "None special info is selected"
+msgstr "Er is geen speciale informatie geselecteerd"
+
+msgid "Show extra infobar only"
+msgstr "Alleen de extra informatiebalk tonen"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Zijbalk en extra informatiebalk tonen"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1 is het snelst, 10 het langzaamst"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "De informatiebalk verschijnt en verdwijnt direct"
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "De informatiebalk vervaagt van volledige/ingestelde transparantie naar ingestelde/volledige transparantie"
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "De informatiebalk verschijnt direct en vervaagt van de ingestelde naar volledige transparantie"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Extra informatiebalk tonen; druk tweemaal op 'OK' voor gebruikersinformatie"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "Gebruikersinformatie verschijnt na tweemaal 'OK' en verdwijnt met de extra informatiebalk"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "Gebruikersinformatie verschijnt na tweemaal 'OK' en verdwijnt na 'OK' of 'exit'"
+
+msgid "Show actual event(EPG) only"
+msgstr "Alleen de huidige EPG-uitzending tonen"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Houd '>' ingedrukt om te wisselen tussen de huidige en volgende EPG-uitzending"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Toon ECM PID in de extra informatiebalk"
+
+msgid "Show events name in infobar as static text"
+msgstr "Toon de programmanaam als stilstaande tekst in de informatiebalk"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "Toon de programmanaam letter voor letter met een typemachine-effect"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Gebruik het OLED-ontwerp volgens de definitie 'image'"
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Toon 'Btr too high - stopped' als de huidige bitrate de ingestelde waarde overschrijdt"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "Alleen gebruiken als de toetsindeling van de systeemimage op 'standard Enigma2' staat"
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Alleen gebruiken als de toetsindeling van de systeemimage op 'Neutrino keymap type' staat"
+
+msgid "Show messages in default language - english"
+msgstr "Berichten in de standaardtaal Engels tonen"
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Vertaalde berichten tonen volgens de ingestelde OSD-taal"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "De informatiebalk verdwijnt na de tijd die in de systeeminstellingen is opgegeven"
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "De balk die bij kanaalwisseling verschijnt, verdwijnt volgens de systeemtimer. Met 'OK' geopende balk blijft zichtbaar tot 'exit' of 'OK'"
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "Een met 'OK' geopende informatiebalk blijft zichtbaar tot 'exit' of 'OK'"
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Controleer de internetverbinding via het opgegeven IP-adres"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "De systeemimage beheert zelf het ontwaken van de HDD/SSD"
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "Maak de HDD/SSD wakker als deze slaapt en een functie de benodigde gegevens niet kan lezen"
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "auto: tuners in de ontvanger automatisch detecteren; waarde 1–19: het gekozen aantal tuners tonen"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Het knipperende 'R'-pictogram in de informatiebalk niet tonen"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Het knipperende 'R'-pictogram in de informatiebalk tonen"
+
+msgid "Leave memory management untouched"
+msgstr "Het geheugenbeheer ongewijzigd laten"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "AC3/Dolby detecteren in alle beschikbare audiotracks"
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC en MPEG detecteren in de huidige audiotrack"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Geheugen automatisch opschonen om de 3 minuten"
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "IP-adres voor het controleren van de netwerkstatus en internettoegang"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Het originele encoding.conf uit de actieve systeemimage gebruiken"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Het bestand encoding-user.conf uit /usr/share/enigma2 gebruiken"
+
+msgid "Channel selection works with standard functionality"
+msgstr "Kanaalselectie werkt volgens de standaardbediening"
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "Druk op 'OK' om het gekozen kanaal te starten zonder de lijst te sluiten. Druk opnieuw op 'OK' om de lijst te sluiten; met 'exit' keert u terug naar het kanaal dat eerder werd bekeken"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Druk op 'OK' om het gekozen onderdeel zonder animatie te starten"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Druk op 'OK' om de animatie af te spelen voordat het gekozen onderdeel start"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Toon het weer voor de stad die in de instellingen is gekozen"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Druk op '>' om het weer voor de volgende stad te tonen"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "Het speciale informatiescherm dat met 'help' is geopend, sluit met een tweede druk op 'help'"
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "Het speciale informatiescherm dat met 'help' is geopend, sluit automatisch na 20 seconden"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Interval voor het opnieuw lezen van het bestand ecm.info"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Automatisch controleren op een nieuwe HDG-versie uitschakelen"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Automatisch controleren op een nieuwe HDG-versie inschakelen"
+
+msgid "Static text - no scrolling"
+msgstr "Stilstaande tekst, zonder scrollen"
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Schuif de tekst omhoog tot het einde, wacht het gekozen aantal seconden en schuif weer omlaag"
+
+msgid "Roll up at end of text and stop"
+msgstr "Schuif de tekst omhoog tot het einde en stop"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Start het scrollen na de vertraging die in skin.xml is ingesteld"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Start het scrollen na de gekozen vertraging (s)"
+
+msgid "Show channel name only"
+msgstr "Alleen de kanaalnaam tonen"
+
+msgid "Show number and channel name"
+msgstr "Kanaalnummer en -naam tonen"
+
+msgid "Show satellite position and channel name"
+msgstr "Satellietpositie en kanaalnaam tonen"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Kanaalnummer, satellietpositie en kanaalnaam tonen"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Geen informatie over de provider in de informatiebalk tonen"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Informatie over de provider in de informatiebalk tonen"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "Geen temperatuur en toerental (RPM) in de informatiebalk tonen"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Temperatuur en toerental (RPM) in de informatiebalk tonen"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Geen CPU- en geheugengebruik in de informatiebalk tonen"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "CPU- en geheugengebruik in de informatiebalk tonen"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Geen HDD/SSD-temperatuur in de informatiebalk tonen"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "HDD/SSD-temperatuur in de informatiebalk tonen"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "De geselecteerde speciale extensies niet in het hoofdmenu tonen"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "De geselecteerde speciale extensies in het hoofdmenu tonen"
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Toon de temperatuur in de eenheden die zijn ingesteld in my_city_Code.txt of city_Code.txt"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Toon de temperatuur in de eenheden die zijn ingesteld in eWea_city_Code.txt"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Toon de temperatuur in graden Celsius"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Toon de temperatuur in graden Fahrenheit"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Interval in minuten voor het opnieuw verbinden met de weerwebsite"
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Haal weergegevens op bij OpenWeatherMap. Vul uw API-sleutel in na registratie op openweathermap.org (registratie en een basis-API-sleutel zijn gratis). De sleutel kan ook uit /etc/openweathermap.api worden gelezen"
+
+msgid "Reading weather data from MSN website"
+msgstr "Haal weergegevens op bij de MSN-website"
+
+msgid "\"Find a city\" is disabled"
+msgstr "De functie 'Stad zoeken' is uitgeschakeld"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "De functie 'Stad zoeken' is uitgeschakeld in de extensielijst"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "De functie 'Stad zoeken' is uitgeschakeld in het hoofdmenu"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Na een fout geen nieuwe gegevens bij de aanbieder ophalen"
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Automatisch opnieuw verbinden: probeer na een fout met het ingestelde interval opnieuw totdat geldige gegevens zijn ontvangen"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Toon de weersverwachting voor vandaag en de komende 3 dagen"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Toon de weersverwachting voor gisteren, vandaag en de komende 3 dagen"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Toon de maximumtemperatuur met een automatisch gekozen kleur"
+
+msgid "High temperature appear in selected color"
+msgstr "Toon de maximumtemperatuur met de geselecteerde kleur"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Toon de minimumtemperatuur met een automatisch gekozen kleur"
+
+msgid "Low temperature appear in selected color"
+msgstr "Toon de minimumtemperatuur met de geselecteerde kleur"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "Toon koude en warme temperaturen in de daarvoor gekozen kleuren"
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "Koude temperatuur ligt boven de waarde 'Cold temperature' en/of warme temperatuur onder de waarde 'Warm temperature'"
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Bereik voor de warme temperatuurlimiet: 15–40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Bereik voor de koude temperatuurlimiet: 1–14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Bereik voor de warme temperatuurlimiet: 58–104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Bereik voor de koude temperatuurlimiet: 33–57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "HDD/SSD door de kernel als apparaat herkend"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Pad naar alle benodigde mappen, zoals picon, piconProv en meer"
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "Zelfgekozen pad naar alle benodigde mappen, zoals picon, piconProv en meer"
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Kanaalnummers worden bij het starten van Enigma2 berekend; latere wijzigingen in de volgorde hebben geen invloed op de nummers"
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "Kanaalnummers worden na elke kanaalwisseling opnieuw berekend, zodat wijzigingen in de volgorde direct meetellen"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "De datumnotatie wordt overgenomen uit de skindefinitie"
+
+msgid "Date format will be used as follow"
+msgstr "Gebruik de volgende datumnotatie"
+
+msgid "Channel logos with white background"
+msgstr "Kanaallogo's met witte achtergrond"
+
+msgid "Channel logos with black background"
+msgstr "Kanaallogo's met zwarte achtergrond"
+
+msgid "Channel logos for OLED display"
+msgstr "Kanaallogo's voor het OLED-scherm"
+
+msgid "Provider logos with white background"
+msgstr "Providerlogo's met witte achtergrond"
+
+msgid "Provider logos with black background"
+msgstr "Providerlogo's met zwarte achtergrond"
+
+msgid "Satellite logos with white background"
+msgstr "Satellietlogo's met witte achtergrond"
+
+msgid "Satellite logos with black background"
+msgstr "Satellietlogo's met zwarte achtergrond"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Logo's van CA-systemen en SoftCam met witte achtergrond"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Logo's van CA-systemen en SoftCam met zwarte achtergrond"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Voorbeelden van de geselecteerde opties in de skininstellingen"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Voorbeelden van extra schermen en pictogramsets voor de informatiebalk"
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Afbeeldingen voor het extra scherm; na downloaden zijn meer varianten beschikbaar"
+
+msgid "Icons used in some menu types"
+msgstr "Pictogrammen die in bepaalde menu's worden gebruikt"
+
+msgid "Big icons used in some menu types"
+msgstr "Grote pictogrammen die in bepaalde menu's worden gebruikt"
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Weerpictogrammen voor Weather, Weather light en Extended weather in speciale schermen en gebruikersinformatie"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "Witte piconWeather als tweede pictontype in de informatiebalk, indien geselecteerd"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "Zwarte piconWeather als tweede pictontype in de informatiebalk, indien geselecteerd"
+
+msgid "Animated icons will be displayed"
+msgstr "Geanimeerde pictogrammen tonen"
+
+msgid "Static icons will be displayed"
+msgstr "Statische pictogrammen tonen"
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Geanimeerde weerpictogrammen voor de informatiebalk, speciale schermen en Weather of Enhanced Weather"
+
+msgid "Channel logos with picture background"
+msgstr "Kanaallogo's met een afbeeldingsachtergrond"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Pakket met uitsluitend Skylink- en Freesat-kanalen"
+
+msgid "Channel logos with transparent background"
+msgstr "Kanaallogo's met transparante achtergrond"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Hulpmiddel voor het uitpakken van piconpakketten"
+
+msgid "Provider logos with transparent background"
+msgstr "Providerlogo's met transparante achtergrond"
+
+msgid "Satellite logos with transparent background"
+msgstr "Satellietlogo's met transparante achtergrond"
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Transparante pictogrammen voor kanaalselectie die in sommige typen kanaallijsten worden gebruikt"
+
+msgid "New Moon"
+msgstr "Nieuwe maan"
+
+msgid "First Quarter"
+msgstr "Eerste kwartier"
+
+msgid "Waxing Crescent"
+msgstr "Wassende maansikkel"
+
+msgid "Waxing Moon"
+msgstr "Wassende maan"
+
+msgid "Full Moon"
+msgstr "Volle maan"
+
+msgid "Waning Moon"
+msgstr "Afnemende maan"
+
+msgid "Waning Crescent"
+msgstr "Afnemende maansikkel"
+
+msgid "Last Quarter"
+msgstr "Laatste kwartier"
