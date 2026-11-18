@@ -41,7 +41,7 @@ class SkinLifecycleMessages(unittest.TestCase):
         self.assertIn("upgrade/reinstall", result.stdout)
         self.assertNotIn("Removing", result.stdout)
         postrm = hook("postrm")
-        self.assertLess(postrm.index('case "\${1:-}" in'), postrm.index("Removal finished: " + NAME))
+        self.assertLess(postrm.index('case "${1:-}" in'), postrm.index("Removal finished: " + NAME))
         self.assertIn("remove|purge)", postrm)
         self.assertIn("*) exit 0 ;;", postrm)
         # Only 'upgrade' is executed: 'remove' would delete the real skin!
