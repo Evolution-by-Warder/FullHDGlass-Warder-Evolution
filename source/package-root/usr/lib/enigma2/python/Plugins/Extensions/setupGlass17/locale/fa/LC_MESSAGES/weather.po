@@ -1,0 +1,333 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\\n"
+"Language: fa\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "...N/A..."
+msgstr "...داده‌ای موجود نیست..."
+
+msgid "Sun"
+msgstr "یکشنبه"
+
+msgid "Mon"
+msgstr "دوشنبه"
+
+msgid "Tue"
+msgstr "سه‌شنبه"
+
+msgid "Wed"
+msgstr "چهارشنبه"
+
+msgid "Thu"
+msgstr "پنجشنبه"
+
+msgid "Fri"
+msgstr "جمعه"
+
+msgid "Sat"
+msgstr "شنبه"
+
+msgid "January"
+msgstr "ژانویه"
+
+msgid "February"
+msgstr "فوریه"
+
+msgid "March"
+msgstr "مارس"
+
+msgid "April"
+msgstr "آوریل"
+
+msgid "May"
+msgstr "مه"
+
+msgid "Jun"
+msgstr "ژوئن"
+
+msgid "Jul"
+msgstr "ژوئیه"
+
+msgid "August"
+msgstr "اوت"
+
+msgid "September"
+msgstr "سپتامبر"
+
+msgid "October"
+msgstr "اکتبر"
+
+msgid "November"
+msgstr "نوامبر"
+
+msgid "December"
+msgstr "دسامبر"
+
+msgid "Light Snow Shower"
+msgstr "رگبار خفیف برف"
+
+msgid "Fog"
+msgstr "مه"
+
+msgid "Sunny"
+msgstr "آفتابی"
+
+msgid "Cloudy"
+msgstr "ابری"
+
+msgid "Light Rain with Thunder"
+msgstr "باران خفیف همراه با رعدوبرق"
+
+msgid "Drizzle"
+msgstr "نم‌نم باران"
+
+msgid "Showers in the Vicinity"
+msgstr "رگبار در نزدیکی"
+
+msgid "Rain Shower"
+msgstr "رگبار باران"
+
+msgid "Thunderstorm"
+msgstr "طوفان تندری"
+
+msgid "Thunder in the Vicinity"
+msgstr "رعدوبرق در نزدیکی"
+
+msgid "Thundershowers"
+msgstr "رگبار همراه با رعدوبرق"
+
+msgid "Light Drizzle"
+msgstr "نم‌نم باران خفیف"
+
+msgid "Thunder"
+msgstr "رعد"
+
+msgid "Light Rain Shower"
+msgstr "رگبار خفیف باران"
+
+msgid "Isolated Thunderstorms"
+msgstr "طوفان‌های تندری موضعی"
+
+msgid "Scattered Thunderstorms"
+msgstr "طوفان‌های تندری پراکنده"
+
+msgid "AM"
+msgstr "قبل‌ازظهر"
+
+msgid "PM"
+msgstr "بعدازظهر"
+
+msgid "Mostly Clear"
+msgstr "عمدتاً صاف"
+
+msgid "Snow"
+msgstr "برف"
+
+msgid "Thunderstorms"
+msgstr "طوفان‌های تندری"
+
+msgid "Wind"
+msgstr "باد"
+
+msgid "Showers"
+msgstr "رگبار"
+
+msgid "Rain"
+msgstr "باران"
+
+msgid "Mostly Sunny"
+msgstr "عمدتاً آفتابی"
+
+msgid "Clear"
+msgstr "صاف"
+
+msgid "Partly Cloudy"
+msgstr "نیمه‌ابری"
+
+msgid "Mostly Cloudy"
+msgstr "عمدتاً ابری"
+
+msgid "Scattered Showers"
+msgstr "رگبارهای پراکنده"
+
+msgid "Few Showers"
+msgstr "رگبارهای اندک"
+
+msgid "Light Rain"
+msgstr "باران خفیف"
+
+msgid "Fair"
+msgstr "هوای مساعد"
+
+msgid "Scattered Snow Showers"
+msgstr "رگبارهای پراکنده برف"
+
+msgid "Wintry Mix"
+msgstr "بارش ترکیبی زمستانی"
+
+msgid "Ice"
+msgstr "یخ"
+
+msgid "Breezy"
+msgstr "کمی بادخیز"
+
+msgid "Freezing Drizzle"
+msgstr "نم‌نم باران یخ‌زننده"
+
+msgid "Freezing Rain"
+msgstr "باران یخ‌زننده"
+
+msgid "Wind direction"
+msgstr "جهت باد"
+
+msgid "Location"
+msgstr "موقعیت"
+
+msgid "Humidity"
+msgstr "رطوبت"
+
+msgid "Visibility"
+msgstr "دید افقی"
+
+msgid "Geo position"
+msgstr "موقعیت جغرافیایی"
+
+msgid "Pressure"
+msgstr "فشار هوا"
+
+msgid "Feels like"
+msgstr "دمای محسوس"
+
+msgid "City"
+msgstr "شهر"
+
+msgid "Sunrise"
+msgstr "طلوع خورشید"
+
+msgid "Sunset"
+msgstr "غروب خورشید"
+
+msgid "Update"
+msgstr "به‌روزرسانی"
+
+msgid "Error"
+msgstr "خطا"
+
+msgid "Website data reading timeout"
+msgstr "زمان دریافت داده از وب‌سایت به پایان رسید"
+
+msgid "None data received from website"
+msgstr "داده‌ای از وب‌سایت دریافت نشد"
+
+msgid "Website is not responding"
+msgstr "وب‌سایت پاسخ نمی‌دهد"
+
+msgid "is not defined"
+msgstr "تعریف نشده است"
+
+msgid "NW"
+msgstr "شمال‌غرب"
+
+msgid "SW"
+msgstr "جنوب‌غرب"
+
+msgid "SE"
+msgstr "جنوب‌شرق"
+
+msgid "NE"
+msgstr "شمال‌شرق"
+
+msgid "S"
+msgstr "جنوب"
+
+msgid "N"
+msgstr "شمال"
+
+msgid "W"
+msgstr "غرب"
+
+msgid "E"
+msgstr "شرق"
+
+msgid "Mishmash in the data"
+msgstr "ناسازگاری در داده‌ها"
+
+msgid "Weather"
+msgstr "وضعیت هوا"
+
+msgid "Attempt"
+msgstr "تلاش"
+
+msgid "time to reconnect"
+msgstr "زمان باقی‌مانده تا اتصال دوباره"
+
+msgid "Clear sky"
+msgstr "آسمان صاف"
+
+msgid "Mainly clear"
+msgstr "عمدتاً صاف"
+
+msgid "Partly cloudy"
+msgstr "نیمه‌ابری"
+
+msgid "Overcast"
+msgstr "تمام‌ابری"
+
+msgid "Depositing rime fog"
+msgstr "مه همراه با تشکیل برفک"
+
+msgid "Dense drizzle"
+msgstr "نم‌نم باران شدید"
+
+msgid "Slight rain"
+msgstr "باران خفیف"
+
+msgid "Heavy rain"
+msgstr "باران شدید"
+
+msgid "Heavy freezing rain"
+msgstr "باران یخ‌زننده شدید"
+
+msgid "Slight snow"
+msgstr "برف خفیف"
+
+msgid "Heavy snow"
+msgstr "برف شدید"
+
+msgid "Snow grains"
+msgstr "دانه‌های ریز برف"
+
+msgid "Rain showers"
+msgstr "رگبار باران"
+
+msgid "Heavy rain showers"
+msgstr "رگبار شدید باران"
+
+msgid "Snow showers"
+msgstr "رگبار برف"
+
+msgid "Heavy snow showers"
+msgstr "رگبار شدید برف"
+
+msgid "Thunderstorm with hail"
+msgstr "طوفان تندری همراه با تگرگ"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "طوفان تندری همراه با تگرگ شدید"
+
+msgid "Unknown"
+msgstr "نامشخص"
+
+msgid "Light drizzle"
+msgstr "نم‌نم باران خفیف"
+
+msgid "Freezing drizzle"
+msgstr "نم‌نم باران یخ‌زننده"
+
+msgid "Freezing rain"
+msgstr "باران یخ‌زننده"
+

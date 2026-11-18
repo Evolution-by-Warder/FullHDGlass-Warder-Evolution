@@ -1,0 +1,333 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FullHDGlass Warder Evolution\\n"
+"Language: tr\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "...N/A..."
+msgstr "...Bilgi yok..."
+
+msgid "Sun"
+msgstr "Pazar"
+
+msgid "Mon"
+msgstr "Pazartesi"
+
+msgid "Tue"
+msgstr "Salı"
+
+msgid "Wed"
+msgstr "Çarşamba"
+
+msgid "Thu"
+msgstr "Perşembe"
+
+msgid "Fri"
+msgstr "Cuma"
+
+msgid "Sat"
+msgstr "Cumartesi"
+
+msgid "January"
+msgstr "Ocak"
+
+msgid "February"
+msgstr "Şubat"
+
+msgid "March"
+msgstr "Mart"
+
+msgid "April"
+msgstr "Nisan"
+
+msgid "May"
+msgstr "Mayıs"
+
+msgid "Jun"
+msgstr "Haziran"
+
+msgid "Jul"
+msgstr "Temmuz"
+
+msgid "August"
+msgstr "Ağustos"
+
+msgid "September"
+msgstr "Eylül"
+
+msgid "October"
+msgstr "Ekim"
+
+msgid "November"
+msgstr "Kasım"
+
+msgid "December"
+msgstr "Aralık"
+
+msgid "Light Snow Shower"
+msgstr "Hafif kar sağanağı"
+
+msgid "Fog"
+msgstr "Sis"
+
+msgid "Sunny"
+msgstr "Güneşli"
+
+msgid "Cloudy"
+msgstr "Bulutlu"
+
+msgid "Light Rain with Thunder"
+msgstr "Gök gürültülü hafif yağmur"
+
+msgid "Drizzle"
+msgstr "Çiseleme"
+
+msgid "Showers in the Vicinity"
+msgstr "Yakın çevrede sağanak yağış"
+
+msgid "Rain Shower"
+msgstr "Yağmur sağanağı"
+
+msgid "Thunderstorm"
+msgstr "Gök gürültülü fırtına"
+
+msgid "Thunder in the Vicinity"
+msgstr "Yakın çevrede gök gürültüsü"
+
+msgid "Thundershowers"
+msgstr "Gök gürültülü sağanak yağış"
+
+msgid "Light Drizzle"
+msgstr "Hafif çiseleme"
+
+msgid "Thunder"
+msgstr "Gök gürültüsü"
+
+msgid "Light Rain Shower"
+msgstr "Hafif yağmur sağanağı"
+
+msgid "Isolated Thunderstorms"
+msgstr "Yerel gök gürültülü fırtınalar"
+
+msgid "Scattered Thunderstorms"
+msgstr "Yer yer gök gürültülü fırtınalar"
+
+msgid "AM"
+msgstr "ÖÖ"
+
+msgid "PM"
+msgstr "ÖS"
+
+msgid "Mostly Clear"
+msgstr "Çoğunlukla açık"
+
+msgid "Snow"
+msgstr "Kar"
+
+msgid "Thunderstorms"
+msgstr "Gök gürültülü fırtınalar"
+
+msgid "Wind"
+msgstr "Rüzgâr"
+
+msgid "Showers"
+msgstr "Sağanak yağış"
+
+msgid "Rain"
+msgstr "Yağmur"
+
+msgid "Mostly Sunny"
+msgstr "Çoğunlukla güneşli"
+
+msgid "Clear"
+msgstr "Açık"
+
+msgid "Partly Cloudy"
+msgstr "Parçalı bulutlu"
+
+msgid "Mostly Cloudy"
+msgstr "Çok bulutlu"
+
+msgid "Scattered Showers"
+msgstr "Yer yer sağanak yağış"
+
+msgid "Few Showers"
+msgstr "Az sayıda sağanak yağış"
+
+msgid "Light Rain"
+msgstr "Hafif yağmur"
+
+msgid "Fair"
+msgstr "Açık ve güzel"
+
+msgid "Scattered Snow Showers"
+msgstr "Yer yer kar sağanağı"
+
+msgid "Wintry Mix"
+msgstr "Karışık kış yağışı"
+
+msgid "Ice"
+msgstr "Buz"
+
+msgid "Breezy"
+msgstr "Hafif rüzgârlı"
+
+msgid "Freezing Drizzle"
+msgstr "Donan çiseleme"
+
+msgid "Freezing Rain"
+msgstr "Donan yağmur"
+
+msgid "Wind direction"
+msgstr "Rüzgâr yönü"
+
+msgid "Location"
+msgstr "Konum"
+
+msgid "Humidity"
+msgstr "Nem"
+
+msgid "Visibility"
+msgstr "Görüş mesafesi"
+
+msgid "Geo position"
+msgstr "Coğrafi konum"
+
+msgid "Pressure"
+msgstr "Basınç"
+
+msgid "Feels like"
+msgstr "Hissedilen sıcaklık"
+
+msgid "City"
+msgstr "Şehir"
+
+msgid "Sunrise"
+msgstr "Gün doğumu"
+
+msgid "Sunset"
+msgstr "Gün batımı"
+
+msgid "Update"
+msgstr "Güncelle"
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Website data reading timeout"
+msgstr "Web sitesinden veri okuma zaman aşımı"
+
+msgid "None data received from website"
+msgstr "Web sitesinden veri alınamadı"
+
+msgid "Website is not responding"
+msgstr "Web sitesi yanıt vermiyor"
+
+msgid "is not defined"
+msgstr "tanımlanmamış"
+
+msgid "NW"
+msgstr "KB"
+
+msgid "SW"
+msgstr "GB"
+
+msgid "SE"
+msgstr "GD"
+
+msgid "NE"
+msgstr "KD"
+
+msgid "S"
+msgstr "G"
+
+msgid "N"
+msgstr "K"
+
+msgid "W"
+msgstr "B"
+
+msgid "E"
+msgstr "D"
+
+msgid "Mishmash in the data"
+msgstr "Verilerde tutarsızlık"
+
+msgid "Weather"
+msgstr "Hava durumu"
+
+msgid "Attempt"
+msgstr "Deneme"
+
+msgid "time to reconnect"
+msgstr "Yeniden bağlanmaya kalan süre"
+
+msgid "Clear sky"
+msgstr "Açık gökyüzü"
+
+msgid "Mainly clear"
+msgstr "Genellikle açık"
+
+msgid "Partly cloudy"
+msgstr "Parçalı bulutlu"
+
+msgid "Overcast"
+msgstr "Kapalı"
+
+msgid "Depositing rime fog"
+msgstr "Kırağı oluşturan sis"
+
+msgid "Dense drizzle"
+msgstr "Yoğun çiseleme"
+
+msgid "Slight rain"
+msgstr "Hafif yağmur"
+
+msgid "Heavy rain"
+msgstr "Şiddetli yağmur"
+
+msgid "Heavy freezing rain"
+msgstr "Şiddetli donan yağmur"
+
+msgid "Slight snow"
+msgstr "Hafif kar yağışı"
+
+msgid "Heavy snow"
+msgstr "Yoğun kar yağışı"
+
+msgid "Snow grains"
+msgstr "Kar tanecikleri"
+
+msgid "Rain showers"
+msgstr "Sağanak yağmur"
+
+msgid "Heavy rain showers"
+msgstr "Şiddetli sağanak yağmur"
+
+msgid "Snow showers"
+msgstr "Kar sağanakları"
+
+msgid "Heavy snow showers"
+msgstr "Şiddetli kar sağanakları"
+
+msgid "Thunderstorm with hail"
+msgstr "Dolu yağışlı gök gürültülü fırtına"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Şiddetli dolu yağışlı gök gürültülü fırtına"
+
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+msgid "Light drizzle"
+msgstr "Hafif çiseleme"
+
+msgid "Freezing drizzle"
+msgstr "Donan çiseleme"
+
+msgid "Freezing rain"
+msgstr "Donan yağmur"
+
