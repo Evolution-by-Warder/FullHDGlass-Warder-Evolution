@@ -1,0 +1,569 @@
+msgid ""
+msgstr "Project-Id-Version: FullHDGlass Warder Evolution\nLanguage: ro_RO\nLanguage-Team: Romanian\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n%100>0 && n%100<20) ? 1 : 2);\n"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "free"
+msgstr "liber"
+
+msgid "TP info is not detected"
+msgstr "Informațiile despre transponder nu au fost detectate"
+
+msgid "Reference is not detected"
+msgstr "Referința canalului nu a fost detectată"
+
+msgid "No EPG data available"
+msgstr "Nu sunt disponibile date EPG"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Așteptați citirea și prelucrarea datelor"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Apăsați „OK” pentru a selecta directorul de favorite."
+
+msgid "Autocolor - use definition from skin.xml or g17Screens.py; selected color - display with selected color"
+msgstr "Culoare automată — folosește definiția din skin.xml sau g17Screens.py; culoare selectată — afișează folosind culoarea aleasă"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Canale de pe toate pozițiile de satelit și canale terestre slovace și cehe"
+
+msgid "No plugin Netatmo installed"
+msgstr "Pluginul Netatmo nu este instalat"
+
+msgid "Your API-key"
+msgstr "Cheia dvs. API"
+
+msgid "The layout is selected automatically calculating by picon size in the infobar"
+msgstr "Aspectul este ales automat în funcție de dimensiunea piconului din bara de informații"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Măsurarea vitezei curente a rețelei este dezactivată"
+
+msgid "Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Măsurarea vitezei curente a rețelei este activată; afișare în kb/s"
+
+msgid "Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Măsurarea vitezei curente a rețelei este activată; afișare în Mb/s"
+
+msgid "Poster is displayed if exists"
+msgstr "Afișează posterul dacă este disponibil"
+
+msgid "Currently displayed Poster will be erased after press long \"OK\" and do not displayed back again"
+msgstr "Apăsarea lungă a tastei „OK” șterge posterul afișat și împiedică reapariția lui"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Caută postere în Internet Movie Database (IMDb)"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Caută postere în The Movie Database (TMDb)"
+
+msgid "Poster search from \"Internet Movie Database (IMDb) if not found then search from \"The Movie Database (TMDb)\""
+msgstr "Caută mai întâi posterul în Internet Movie Database (IMDb), iar dacă lipsește, în The Movie Database (TMDb)"
+
+msgid "Poster search is started with selected delay"
+msgstr "Căutarea posterului începe după întârzierea selectată"
+
+msgid "Poster is displayed with the selected size"
+msgstr "Posterul este afișat la dimensiunea aleasă"
+
+msgid "ECM info is displayed from all channels - current displayed, background recording, streaming etc."
+msgstr "Afișează informațiile ECM pentru toate canalele: cel curent, înregistrările din fundal, fluxurile transmise etc."
+
+msgid "ECM info is displayed from current channel"
+msgstr "Afișează informațiile ECM pentru canalul curent"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "Rata de biți este calculată cu ajutorul programului binar inclus"
+
+msgid "Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "Rata de biți este calculată cu eBitrateCalculator din pluginul BitrateViewer"
+
+msgid "All available stations with their modules are displayed one by one with defined switching time"
+msgstr "Toate stațiile disponibile și modulele lor sunt afișate succesiv, la intervalul stabilit"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Afișează informații de la stația selectată în pluginul Netatmo"
+
+msgid "Time in seconds"
+msgstr "Timp în secunde"
+
+msgid "Real tuner data are displayed"
+msgstr "Afișează datele reale ale tunerului"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Afișează datele din informațiile transponderului"
+
+msgid "Animations are disabled"
+msgstr "Animațiile sunt dezactivate"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Animațiile selectate sunt aplicate obiectelor alese"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Nu afișa informații despre starea HDD/SSD"
+
+msgid "HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer infobar"
+msgstr "Afișează temperatura, capacitatea și spațiul liber al HDD/SSD în barele de informații EMC și Movieplayer"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Afișează numai ultimele 10 canale căutate"
+
+msgid "Searched channels are displayed as long list and you can browse in the list"
+msgstr "Afișează canalele găsite într-o listă lungă care poate fi derulată"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Intervalul de actualizare a cadrelor unei pictograme animate (implicit 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Aplică tuturor ecranelor care folosesc o listă"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Înlocuiește pictogramele nocturne cu cele diurne"
+
+msgid "Nighttime icons are displayed"
+msgstr "Afișează pictogramele nocturne"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Apăsați „OK” pentru a activa funcția selectată"
+
+msgid "Spinner will be used as default from image"
+msgstr "Folosește indicatorul de așteptare implicit al imaginii de sistem"
+
+msgid "Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori"
+msgstr "Folosește indicatorul de așteptare Full HD Glass17; originalul este mutat în directorul spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "Afișează lista EPG cu dimensiunea de font selectată"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "Tipurile PIP pentru selectarea canalelor nu sunt disponibile"
+
+msgid "PIP types of channel selections are available but it can generate GSOD in some images"
+msgstr "Tipurile PIP pentru selectarea canalelor sunt disponibile, dar pot provoca GSOD pe unele imagini de sistem"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Directorul în care se găsește fișierul satellites.xml"
+
+msgid "Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Directorul în care se salvează configurația curentă FHDG (fișierul hdg17.conf)"
+
+msgid "Display forecast for 5 days"
+msgstr "Afișează prognoza pe 5 zile"
+
+msgid "Display forecast for 10 days at first 5 days after timeout of switch time display next 5 days"
+msgstr "Afișează prognoza pe 10 zile: primele 5, apoi următoarele 5 după intervalul ales"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Afișează informații despre răsăritul și apusul Soarelui, Lunii și planetelor"
+
+msgid "Sorry, help info is missing"
+msgstr "Ne pare rău, informațiile de ajutor lipsesc"
+
+msgid "Info is displayed with defined color"
+msgstr "Afișează informațiile în culoarea definită"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Afișează informațiile în culoarea aleasă automat"
+
+msgid "Show extra screen only"
+msgstr "Afișează numai ecranul suplimentar"
+
+msgid "None special info is selected"
+msgstr "Nu este selectată nicio informație specială"
+
+msgid "Show extra infobar only"
+msgstr "Afișează numai bara de informații suplimentară"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Afișează bara laterală și bara de informații suplimentară"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1 — cel mai rapid; 10 — cel mai lent"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "Bara de informații apare și dispare imediat"
+
+msgid "Infobar (dis)appears from full/defined transparency to defined(full) transparency"
+msgstr "Bara de informații își modifică treptat transparența de la completă/definită la definită/completă"
+
+msgid "Infobar appears immediately and disapears from defined to full transparency"
+msgstr "Bara de informații apare imediat și dispare prin trecerea de la transparența definită la cea completă"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Afișează bara de informații suplimentară; apăsarea de două ori pe „OK” afișează informațiile utilizatorului"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "Informațiile utilizatorului apar la două apăsări pe „OK” și dispar odată cu bara suplimentară"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "Informațiile utilizatorului apar la două apăsări pe „OK” și dispar la apăsarea „OK” sau „exit”"
+
+msgid "Show actual event(EPG) only"
+msgstr "Afișează numai evenimentul EPG curent"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Apăsarea lungă a tastei „>” alternează între evenimentul EPG curent și următorul"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Afișează ECM PID în bara de informații suplimentară"
+
+msgid "Show events name in infobar as static text"
+msgstr "Afișează numele emisiunii ca text fix în bara de informații"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "Afișează numele emisiunii caracter cu caracter, cu efect de mașină de scris"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Folosește designul OLED definit în „image”"
+
+msgid "Display \"Btr too high - stopped\" if realtime bitrate is higher as the set value"
+msgstr "Afișează „Btr too high - stopped” dacă rata curentă de biți depășește valoarea stabilită"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "Folosește numai dacă schema tastelor imaginii de sistem este „standard Enigma2”"
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Folosește numai dacă schema tastelor imaginii de sistem este „Neutrino keymap type”"
+
+msgid "Show messages in default language - english"
+msgstr "Afișează mesajele în limba implicită — engleză"
+
+msgid "Show localized messages autodetected from active OSD setting of language"
+msgstr "Afișează mesaje traduse automat în limba activă a interfeței OSD"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "Bara de informații dispare după intervalul definit în setările sistemului"
+
+msgid "Infobar activated by switching between channels disappears after a defined timeout in system settings. Infobar activated press \"OK\" appears permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr "Bara afișată la schimbarea canalului dispare după intervalul din sistem; cea deschisă cu „OK” rămâne vizibilă până la apăsarea „exit” sau „OK”"
+
+msgid "Infobar activated press \"OK\" appears permanently but disappears press \"exit\" or \"OK\""
+msgstr "Bara de informații deschisă cu „OK” rămâne vizibilă până la apăsarea „exit” sau „OK”"
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Verifică legătura la internet printr-o adresă IP definită"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "Activarea HDD/SSD din repaus este gestionată numai de imaginea de sistem"
+
+msgid "Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is sleeping"
+msgstr "Activează HDD/SSD din repaus dacă o funcție nu poate citi datele necesare de pe dispozitivul adormit"
+
+msgid "auto - autodetection of tuners presented in box; value (1-19) - display selected numbers of tuners"
+msgstr "auto — detectare automată a tunerelor receptorului; valoarea 1–19 — afișează numărul de tunere selectat"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Nu afișa pictograma „R” intermitentă în bara de informații"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Afișează pictograma „R” intermitentă în bara de informații"
+
+msgid "Leave memory management untouched"
+msgstr "Nu modifica gestionarea memoriei"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Detectează AC3/Dolby în toate pistele audio disponibile"
+
+msgid "Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio track"
+msgstr "Detectează AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC și MPEG în pista audio curentă"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Curățarea automată a memoriei la fiecare 3 minute"
+
+msgid "IP Address used for network status check - available connection to the Internet"
+msgstr "Adresa IP pentru verificarea stării rețelei și a accesului la internet"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Folosește fișierul encoding.conf original din imaginea de sistem activă"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Folosește encoding-user.conf din /usr/share/enigma2"
+
+msgid "Channel selection works with standard functionality"
+msgstr "Selectarea canalelor funcționează în modul standard"
+
+msgid "Press \"OK\" - activate selected channel and channel selection no appear then press \"OK\" - disappear channel selection or press \"exit\" revert on last playd channel before activating Channel selection"
+msgstr "Apăsarea „OK” activează canalul ales fără a închide lista; încă o apăsare „OK” închide lista, iar „exit” revine la canalul redat înainte de deschiderea listei"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Apăsați „OK” pentru a porni elementul selectat fără animație"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Apăsați „OK” pentru a reda animația înainte de activarea elementului selectat"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Afișează vremea pentru orașul ales în setări"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Apăsați „>” pentru a afișa vremea din orașul următor"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "Ecranul cu informații speciale deschis cu „help” se închide printr-o nouă apăsare a tastei „help”"
+
+msgid "Special info screen (activated press \"help\") disappear automatically after 20s"
+msgstr "Ecranul cu informații speciale deschis cu „help” se închide automat după 20 de secunde"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Intervalul de recitire a fișierului ecm.info"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Dezactivează verificarea automată a versiunilor noi HDG"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Activează verificarea automată a versiunilor noi HDG"
+
+msgid "Static text - no scrolling"
+msgstr "Text static, fără derulare"
+
+msgid "Roll up at end of text and stop wait selected seconds (text roll delay) then roll down back"
+msgstr "Derulează textul în sus până la capăt, așteaptă numărul de secunde stabilit și derulează înapoi în jos"
+
+msgid "Roll up at end of text and stop"
+msgstr "Derulează textul în sus până la capăt și oprește"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Începe derularea textului după întârzierea definită în skin.xml"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Începe derularea textului după întârzierea selectată (s)"
+
+msgid "Show channel name only"
+msgstr "Afișează numai numele canalului"
+
+msgid "Show number and channel name"
+msgstr "Afișează numărul și numele canalului"
+
+msgid "Show satellite position and channel name"
+msgstr "Afișează poziția satelitului și numele canalului"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Afișează numărul, poziția satelitului și numele canalului"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Nu afișa informațiile despre furnizor în bara de informații"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Afișează informațiile despre furnizor în bara de informații"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "Nu afișa temperatura și turația (RPM) în bara de informații"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Afișează temperatura și turația (RPM) în bara de informații"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Nu afișa utilizarea procesorului și a memoriei în bara de informații"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Afișează utilizarea procesorului și a memoriei în bara de informații"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Nu afișa temperatura HDD/SSD în bara de informații"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Afișează temperatura HDD/SSD în bara de informații"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "Nu afișa extensiile speciale alese în meniul principal"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Afișează extensiile speciale alese în meniul principal"
+
+msgid "Temperature will be displayed with units defined in my_city_Code.txt or city_Code.txt"
+msgstr "Afișează temperatura în unitățile definite în my_city_Code.txt sau city_Code.txt"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Afișează temperatura în unitățile definite în eWea_city_Code.txt"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Afișează temperatura în grade Celsius"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Afișează temperatura în grade Fahrenheit"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Intervalul de reconectare pentru citirea datelor meteo de pe site, în minute"
+
+msgid "Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr "Obține date meteo de la OpenWeatherMap. Introduceți cheia API primită după înregistrarea pe openweathermap.org (înregistrarea și cheia de bază sunt gratuite). Cheia poate fi citită și din /etc/openweathermap.api"
+
+msgid "Reading weather data from MSN website"
+msgstr "Obține date meteo de pe site-ul MSN"
+
+msgid "\"Find a city\" is disabled"
+msgstr "Funcția „Găsește un oraș” este dezactivată"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "Funcția „Găsește un oraș” este dezactivată în lista de extensii"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "Funcția „Găsește un oraș” este dezactivată în meniul principal"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Nu solicita din nou date de la furnizor după detectarea unei erori"
+
+msgid "Autoreconnect - try get data from provider if an error is detected - try with cycle in selected time while data are not ok"
+msgstr "Reconectare automată: în caz de eroare, reîncearcă la intervalul stabilit până la primirea unor date corecte"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Afișează prognoza pentru astăzi și următoarele 3 zile"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Afișează prognoza pentru ieri, astăzi și următoarele 3 zile"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Afișează temperatura maximă în culoarea aleasă automat"
+
+msgid "High temperature appear in selected color"
+msgstr "Afișează temperatura maximă în culoarea selectată"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Afișează temperatura minimă în culoarea aleasă automat"
+
+msgid "Low temperature appear in selected color"
+msgstr "Afișează temperatura minimă în culoarea selectată"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "Afișează temperaturile reci și calde în culorile selectate"
+
+msgid "Cold temperature is higher as settings of \"Cold temperature\" or/and Warm temperature is lower as \"Warm temperature\""
+msgstr "Temperatura rece depășește pragul „Cold temperature” și/sau temperatura caldă este sub pragul „Warm temperature”"
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Intervalul pentru temperatura caldă: 15–40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Intervalul pentru temperatura rece: 1–14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Intervalul pentru temperatura caldă: 58–104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Intervalul pentru temperatura rece: 33–57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "HDD/SSD detectat de nucleul sistemului ca dispozitiv"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Calea către toate directoarele necesare, precum picon, piconProv și altele"
+
+msgid "User defined path to all required directories like picon, piconProv and more."
+msgstr "Calea definită de utilizator către directoarele necesare, precum picon, piconProv și altele"
+
+msgid "Channel numbers are calculated at enigma start so any change in channels order have no effect to channel numbers"
+msgstr "Numerele canalelor sunt calculate la pornirea Enigma2, deci schimbarea ordinii canalelor nu modifică numerotarea"
+
+msgid "Channel number is calculated after switching between channels always so every change in channel order is applied on calculation of channel number"
+msgstr "Numărul canalului este recalculat la fiecare schimbare, astfel încât noua ordine se reflectă imediat"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Formatul datei este preluat din definiția skinului"
+
+msgid "Date format will be used as follow"
+msgstr "Folosește următorul format al datei"
+
+msgid "Channel logos with white background"
+msgstr "Sigle de canale cu fundal alb"
+
+msgid "Channel logos with black background"
+msgstr "Sigle de canale cu fundal negru"
+
+msgid "Channel logos for OLED display"
+msgstr "Sigle de canale pentru afișajul OLED"
+
+msgid "Provider logos with white background"
+msgstr "Sigle de furnizori cu fundal alb"
+
+msgid "Provider logos with black background"
+msgstr "Sigle de furnizori cu fundal negru"
+
+msgid "Satellite logos with white background"
+msgstr "Sigle de sateliți cu fundal alb"
+
+msgid "Satellite logos with black background"
+msgstr "Sigle de sateliți cu fundal negru"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Sigle ale sistemelor CA și SoftCam cu fundal alb"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Sigle ale sistemelor CA și SoftCam cu fundal negru"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Previzualizarea opțiunilor selectate în configurarea skinului"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Previzualizări ale ecranelor suplimentare și seturi de pictograme utilizate în bara de informații"
+
+msgid "Graphics used in extra screen and after download it you get more choices of Extra screen"
+msgstr "Elemente grafice pentru ecranul suplimentar; după descărcare sunt disponibile mai multe variante"
+
+msgid "Icons used in some menu types"
+msgstr "Pictograme utilizate în anumite tipuri de meniu"
+
+msgid "Big icons used in some menu types"
+msgstr "Pictograme mari utilizate în anumite tipuri de meniu"
+
+msgid "Weather icons used in special and user info types: Weather, Weather light a Extended weather"
+msgstr "Pictograme meteo utilizate în ecranele Weather, Weather light și Extended weather și în informațiile utilizatorului"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "piconWeather albe, ca al doilea tip de picon în bara de informații, dacă sunt selectate"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "piconWeather negre, ca al doilea tip de picon în bara de informații, dacă sunt selectate"
+
+msgid "Animated icons will be displayed"
+msgstr "Afișează pictograme animate"
+
+msgid "Static icons will be displayed"
+msgstr "Afișează pictograme statice"
+
+msgid "Animated Weather icons used in: Infobar, Special, User info type Weather or Enhanced Weather "
+msgstr "Pictograme meteo animate pentru bara de informații, ecranele speciale și informațiile Weather sau Enhanced Weather"
+
+msgid "Channel logos with picture background"
+msgstr "Sigle de canale cu fundal ilustrat"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Pachet numai cu canale Skylink și Freesat"
+
+msgid "Channel logos with transparent background"
+msgstr "Sigle de canale cu fundal transparent"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Instrument necesar pentru extragerea pachetelor de piconuri"
+
+msgid "Provider logos with transparent background"
+msgstr "Sigle de furnizori cu fundal transparent"
+
+msgid "Satellite logos with transparent background"
+msgstr "Sigle de sateliți cu fundal transparent"
+
+msgid "Channelselection icons with transparent background used in some Channelselecion types"
+msgstr "Pictograme transparente de selecție a canalelor folosite în unele tipuri de liste de canale"
+
+msgid "New Moon"
+msgstr "Lună nouă"
+
+msgid "First Quarter"
+msgstr "Primul pătrar"
+
+msgid "Waxing Crescent"
+msgstr "Seceră în creștere"
+
+msgid "Waxing Moon"
+msgstr "Lună în creștere"
+
+msgid "Full Moon"
+msgstr "Lună plină"
+
+msgid "Waning Moon"
+msgstr "Lună în descreștere"
+
+msgid "Waning Crescent"
+msgstr "Seceră în descreștere"
+
+msgid "Last Quarter"
+msgstr "Ultimul pătrar"
