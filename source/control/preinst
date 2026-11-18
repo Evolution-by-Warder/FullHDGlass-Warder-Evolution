@@ -139,6 +139,56 @@ case "${1:-}" in
         ;;
 esac
 
+# Keep catalogs from earlier installs before opkg prunes its old file list.
+warder_preserve_locales() (
+    old_plugin="$1"
+    cache="$2"
+    settings="$3"
+    if [ -f "$old_plugin/warder-locale-manifest.json" ]; then
+        # Earlier on-demand versions cached only languages the receiver used.
+        languages="al cs de el es et fa fr hu it lt nl pl pt ro ru sk tr uk zh"
+    else
+        # Earlier bundled versions shipped all languages. Keep the active one.
+        active=$(sed -n 's/^config\.osd\.language=//p' "$settings" 2>/dev/null | head -n 1)
+        active=$(printf '%s' "$active" | tr 'A-Z-' 'a-z_')
+        case "${active%%_*}" in
+            sq) languages=al ;;
+            gr) languages=el ;;
+            cz) languages=cs ;;
+            ua) languages=uk ;;
+            cn) languages=zh ;;
+            al|cs|de|el|es|et|fa|fr|hu|it|lt|nl|pl|pt|ro|ru|sk|tr|uk|zh)
+                languages="${active%%_*}" ;;
+            *) return 0 ;;
+        esac
+    fi
+    for language in $languages; do
+        for domain in setupGlass17 helpTxt weather netatmo eWeather; do
+            old="$old_plugin/locale/$language/LC_MESSAGES/$domain.mo"
+            target="$cache/$language/LC_MESSAGES/$domain.mo"
+            [ -f "$old" ] && [ ! -L "$old" ] && [ ! -e "$target" ] || continue
+            mkdir -p "${target%/*}" || return 1
+            temp=$(mktemp "${target%/*}/.migration.XXXXXX") || return 1
+            if cp "$old" "$temp" && chmod 644 "$temp"; then
+                # A concurrent sync may already have installed the new version.
+                ln "$temp" "$target" 2>/dev/null || [ -f "$target" ] || {
+                    rm -f "$temp"
+                    return 1
+                }
+            else
+                rm -f "$temp"
+                return 1
+            fi
+            rm -f "$temp"
+        done
+    done
+)
+if ! warder_preserve_locales /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17 \
+    /var/lib/fullhdglass17/locale /etc/enigma2/settings; then
+    echo "Could not preserve existing FullHDGlass language catalogs." >&2
+    exit 1
+fi
+
 # Preserve the generated FullHDGlass17 user overlay across upgrades.
 # The main Enigma2 configuration lives in /etc/enigma2/settings and is
 # deliberately never modified by this package.

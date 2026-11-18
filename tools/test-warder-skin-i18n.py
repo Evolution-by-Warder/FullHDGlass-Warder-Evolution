@@ -2,14 +2,15 @@
 import importlib.util
 import pathlib
 import tempfile
+import shutil
+import sys
 import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
 PATH = pathlib.Path(__file__).resolve().parents[1] / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocale.py'
-spec = importlib.util.spec_from_file_location('warderLocale_test', PATH)
-mod = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(mod)
+sys.path.insert(0, str(PATH.parent.parent))
+from setupGlass17 import warderLocale as mod
 
 
 def settings(lang, enabled=True):
@@ -38,6 +39,24 @@ class TestLocale(unittest.TestCase):
             loader.assert_called_once_with('setupGlass17', localedir='/test/plugin/locale',
                                            languages=['el'], fallback=True)
 
+
+    def test_existing_translator_loads_downloaded_catalog(self):
+        with tempfile.TemporaryDirectory() as directory:
+            plugin = pathlib.Path(directory) / "plugin"
+            cache = pathlib.Path(directory) / "state"
+            target = cache / "el/LC_MESSAGES/setupGlass17.mo"
+            active = settings("el_GR")
+            with patch.object(mod, "DOWNLOADED_LOCALE", str(cache)), patch.object(
+                mod, "request_language"
+            ) as request, patch.object(mod.time, "monotonic", side_effect=[1, 4, 7]):
+                translate = mod.get_translator("setupGlass17", active, str(plugin))
+                self.assertEqual(translate("Save"), "Save")
+                target.parent.mkdir(parents=True)
+                shutil.copyfile(PATH.parent / "locale/el/LC_MESSAGES/setupGlass17.mo", target)
+                self.assertEqual(translate("Save"), "Αποθήκευση")
+                active.osd.language.value = "en_GB"
+                self.assertEqual(translate("Save"), "Save")
+                self.assertEqual([item.args[0] for item in request.call_args_list], ["el", "el"])
 
     def test_greek_catalogs_are_loadable_utf8(self):
         import gettext

@@ -1,15 +1,21 @@
 """Runtime gettext resolver shared by FullHDGlass setup, weather and help.
 
-Resolve Enigma2 language variants; return English source text if a .mo
-catalog is absent. This module never downloads or generates translations.
+Resolve Enigma2 language variants and request the selected catalog in the
+background. English source text is available while the catalog is absent.
 """
 import gettext
 import os
 import subprocess
+import struct
 import sys
+import time
+
+from .warderLocaleDownload import LOCALE as DOWNLOADED_LOCALE
 
 LANGUAGES = ("al", "cs", "de", "el", "en", "es", "et", "fa", "fr", "hu",
              "it", "lt", "nl", "pl", "pt", "ro", "ru", "sk", "tr", "uk", "zh")
+_last_request = {}
+
 ALIASES = {"sq": "al", "gr": "el", "cz": "cs", "ua": "uk", "cn": "zh"}
 
 
@@ -26,24 +32,16 @@ def identity(message):
     return message
 
 
-def request_missing_language(code, plugin_dir):
-    """Start an independent fetch process at most once per language per boot.
-
-    Never block the GUI and never delete a previously downloaded language.
-    Failures are tolerated; the next reboot permits retry.
-    """
-    if code == "en":
-        return
+def request_language(code, plugin_dir):
+    """Start a background sync with a retry interval for offline receivers."""
     helper = os.path.join(plugin_dir, "warderLocaleDownload.py")
     manifest = os.path.join(plugin_dir, "warder-locale-manifest.json")
     if not (os.path.isfile(helper) and os.path.isfile(manifest)):
         return
-    marker = "/tmp/warder-locale-request-" + code
-    try:
-        fd = os.open(marker, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
-    except OSError:
+    now = time.monotonic()
+    if now < _last_request.get(code, 0):
         return
-    os.close(fd)
+    _last_request[code] = now + 300
     try:
         with open(os.devnull, "wb") as devnull:
             subprocess.Popen(
@@ -52,26 +50,59 @@ def request_missing_language(code, plugin_dir):
                 close_fds=True, start_new_session=True,
             )
     except OSError:
-        try:
-            os.unlink(marker)
-        except OSError:
-            pass
+        pass
 
 
 def get_translator(domain, config, plugin_dir):
-    """Respect the skin translation setting; missing catalogs are harmless."""
-    try:
-        if not config.plugins.setupGlass17.par49.value:
-            return identity
-        code = language_code(config.osd.language.value)
+    """Follow downloaded catalogs without repeatedly reading them from disk."""
+    checked_until = 0
+    current = None
+    translate = identity
+
+    def lookup(message):
+        nonlocal checked_until, current, translate
+        now = time.monotonic()
+        if now < checked_until:
+            return translate(message)
+        checked_until = now + 2
+        try:
+            if not config.plugins.setupGlass17.par49.value:
+                code = "en"
+            else:
+                code = language_code(config.osd.language.value)
+        except (AttributeError, TypeError, ValueError):
+            code = "en"
         if code == "en":
-            return identity
-        catalog = os.path.join(plugin_dir, "locale", code, "LC_MESSAGES", domain + ".mo")
-        if not os.path.isfile(catalog):
-            request_missing_language(code, plugin_dir)
+            current = None
+            translate = identity
+            return message
+
+        request_language(code, plugin_dir)
+        downloaded = os.path.join(DOWNLOADED_LOCALE, code, "LC_MESSAGES", domain + ".mo")
+        try:
+            info = os.stat(downloaded)
+            stamp = (info.st_ino, info.st_mtime_ns, info.st_size)
+        except OSError:
+            stamp = None
+        if current != (code, stamp):
+            translate = _load(domain, code, downloaded if stamp else None, plugin_dir)
+            current = (code, stamp)
+        return translate(message)
+
+    return lookup
+
+
+def _load(domain, code, downloaded, plugin_dir):
+    if downloaded:
+        try:
+            with open(downloaded, "rb") as stream:
+                return gettext.GNUTranslations(stream).gettext
+        except (OSError, ValueError, EOFError, struct.error):
+            pass
+    try:
         return gettext.translation(
             domain, localedir=os.path.join(plugin_dir, "locale"),
             languages=[code], fallback=True
         ).gettext
-    except (AttributeError, OSError, TypeError, ValueError):
+    except (OSError, ValueError, EOFError, struct.error):
         return identity

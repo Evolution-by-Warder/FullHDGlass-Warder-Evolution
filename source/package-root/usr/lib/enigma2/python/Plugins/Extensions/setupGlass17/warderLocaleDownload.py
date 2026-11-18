@@ -4,6 +4,7 @@ The package carries a SHA-256 manifest generated from the exact source commit.
 Only files whose digest is in that manifest may be installed. Existing catalogues
 are never removed; the English source text works offline without a catalogue.
 """
+import fcntl
 import hashlib
 import json
 import os
@@ -14,7 +15,8 @@ import tempfile
 from urllib.request import Request, urlopen
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LOCALE = os.path.join(HERE, "locale")
+# Keep runtime files outside the package manager's payload directory.
+LOCALE = "/var/lib/fullhdglass17/locale"
 MANIFEST = os.path.join(HERE, "warder-locale-manifest.json")
 BASE = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/"
 DOMAINS = frozenset(("setupGlass17", "helpTxt", "weather", "netatmo", "eWeather"))
@@ -55,7 +57,14 @@ def sync(language):
     language = normalize(language)
     if language not in LANGUAGES:
         return 0
-    data = _manifest()
+    os.makedirs(LOCALE, exist_ok=True)
+    lock_path = os.path.join(LOCALE, ".sync-" + language)
+    with open(lock_path, "a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _sync(language, _manifest())
+
+
+def _sync(language, data):
     entries = data["files"].get(language, {})
     if not isinstance(entries, dict):
         raise ValueError("Invalid language entries")

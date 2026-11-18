@@ -13,7 +13,11 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
+PLUGIN = Path("usr/lib/enigma2/python/Plugins/Extensions/setupGlass17")
+
+
 def archive(directory, output, payload=False):
+    locale = directory / PLUGIN / "locale"
     with output.open("wb") as raw, gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as compressed:
         with tarfile.open(fileobj=compressed, mode="w", format=tarfile.GNU_FORMAT) as tar:
             for path in sorted(directory.rglob("*")):
@@ -24,8 +28,9 @@ def archive(directory, output, payload=False):
                     continue
                 # Only the English source locale is bundled. All other compiled
                 # catalogs are fetched by verified digest when selected.
-                if payload and path.suffix == ".mo" and "locale" in path.parts and "en" not in path.parts:
-                    continue
+                if payload and path.suffix == ".mo" and path.is_relative_to(locale):
+                    if path.relative_to(locale).parts[0] != "en":
+                        continue
                 # Never include these four unapproved Warder Menu graphics.
                 if payload and path.name.lower() in {
                     "warder_gsu.png", "warder_piconhub.png",
@@ -48,13 +53,12 @@ def archive(directory, output, payload=False):
             if payload:
                 # This is the *same* pinned source revision from which the
                 # catalog SHA-256 inventory was derived.
-                base = directory / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17"
                 revision = subprocess.check_output(
                     ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
                 if not re.fullmatch(r"[0-9a-f]{40}", revision):
                     raise SystemExit("Cannot pin language source revision")
                 files = {}
-                for mo in sorted((base / "locale").glob("*/LC_MESSAGES/*.mo")):
+                for mo in sorted(locale.glob("*/LC_MESSAGES/*.mo")):
                     lang = mo.parent.parent.name
                     if lang == "en":
                         continue
