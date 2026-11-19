@@ -1,3 +1,13 @@
+## 19. 11. 2026 — FullHDGlass reálny 224-country offline test, 313 originálnych PNG a 140-char názvy
+
+- **Skutočná integrácia:** [Radio-Warder-Evolution Actions #44584595283 — PASS](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44584595283). Bez internetového vyhľadávania zo skutočného podpisovaného svetového ZIP `9e600636cf38bb874bed4b984a8dffccb0a50e76f50349770eac19b703501029` všetkých **224** krajín a **48 219** staníc skin správne prepol SK (123), CZ (229), FR (2476), DE (4863), GB (1776), IT (1445) a ET (22). Použil sa skin commit `57d08e49c9c7aab446444845d64750e1fa2c35fe` na samostatnej pracovnej vetve, nie vydaná IPK.
+- **Zhodné dáta/picony:** SK 111 a CZ 202 originálnych PNG z [full SK/CZ artefaktu #14556504575](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44577435803) majú presnú identity mapu z celosvetového source; odskúšaná bezpečná výmena `PATHS/picon/radio`, TV/SAT bez zásahu.
+- **Fyzický výkon:** Python/FS lokálna aktivácia na GitHub runneri SK 6,41ms, CZ 9,65ms, ET 4,04ms, FR 73,82ms, DE 149,07ms, GB 56,63ms, IT 45,02ms. **Nie je to meranie GigaBlue GUI**.
+- **Opravený zdrojový edge case:** pri 9 reálnych Radio Browser názvoch dlhých 140 znakov vznikla koncová ASCII medzera. Pôvodný validačný kód skinu ich odmietol napriek platnému autoritatívnemu world SHA; `warderRadioPackages.verified_country` teraz pripúšťa len trailing ASCII space u už SHA-verified názvu, všetky UUID, URL, country a iné názvy ďalej kontroluje striktne. Commit [`383d352`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/383d3523ce68b4e0352782b2d487f930f4243300), test [`test-radio-packages.py`](tools/test-radio-packages.py). Nové source generovanie v rádio PR #52 chybu zároveň odstraňuje.
+- **Stav vydania:** PR [#129](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/129) ďalej draft; `main`, ostrý updater a TEST138 nie sú zmenené. **Celosvetové originálne logá sa ešte iba generujú** v [Radio Actions #44583128017](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44583128017). Po dokončení zdrojov a schválení publikovania dáva zmysel prvý spoločný fyzický TEST na GigaBlue.
+
+---
+
 ## 19. 11. 2026 — prepojenie offline country switch s GUI a 14-dňovým aktualizátorom (PR #129)
 
 - **Implementované na izolovanej vetve** `feature/radio-live-world-bundle-installer-20261119`: `warderRadioCountry.py` má tri nezávislé subprocess príkazy `--activate-world CC PATHS`, `--sync-world PATHS`, `--logos-world CC PATHS`. Nie sú zmenené pôvodné používateľské bouquety ani bežiaci TEST138. Podmienky online fallbacku zachované, pokiaľ nie je nainštalovaný a overený kompletný svetový zdroj.
