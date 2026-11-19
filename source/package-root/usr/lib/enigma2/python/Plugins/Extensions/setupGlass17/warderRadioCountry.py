@@ -13,7 +13,12 @@ import signal
 import sys
 import time
 
-from . import warderRadioLive as live
+# Standalone IPK postinst launches this file by absolute path, so make the
+# receiver's Enigma2 plugin root importable without importing the skin plugin.
+_ENIGMA_ROOT = str(Path(__file__).resolve().parents[3])
+if _ENIGMA_ROOT not in sys.path:
+    sys.path.insert(0, _ENIGMA_ROOT)
+from Plugins.Extensions.setupGlass17 import warderRadioLive as live
 
 DIRECTORY = Path('/etc/enigma2')
 CHOICE_FILE = 'warder-radio-live-country.json'
@@ -250,6 +255,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         except BlockingIOError:
             return {'changed': False, 'skipped': 'busy'}
         state = _choice(directory)
+        # The GUI or setup may have changed the active country while a worker
+        # was still running; the worker reads the choice under this lock.
         if not _owner_valid(directory, before, state):
             return {'changed': False, 'skipped': 'owner-modified'}
         country = _pending_country(state) or active_country(directory)
@@ -311,7 +318,7 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         state.pop('pending_started', None)
         _save_choice(directory, state)
         live._write(staging, b'{}')
-        live._register(directory)
+        registered = live._register(directory)
         # Remove old owned world data only after a new, complete online
         # selected country was installed. Unrelated bouquets stay untouched.
         legacy = live._managed_legacy(directory)
@@ -319,7 +326,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             old = directory / live.LEGACY_FILE
             if not old.is_symlink() and old.read_bytes() == legacy:
                 old.unlink()
-        return {'changed': changed, 'country': country, 'stations': len(collected)}
+        return {'changed': changed or registered or bool(pending),
+                'country': country, 'stations': len(collected)}
 
 
 def country_options():
