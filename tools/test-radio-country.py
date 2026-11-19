@@ -327,6 +327,11 @@ class CountryTests(unittest.TestCase):
                     self.assertIn('Warder Radio Live',
                                   ui.ui_text('Select country (Warder Radio Live)'))
             self.assertEqual(len(ui._RADIO_COUNTRY_TRANSLATIONS), 21)
+            self.assertEqual(len(ui._RADIO_COUNTRY_START_ERROR_TRANSLATIONS), 21)
+            osd_language.value = 'sk_SK'
+            self.assertEqual(
+                ui.ui_text('Country saved, but background radio update did not start.'),
+                'Krajina bola uložená, ale aktualizácia rádia sa nespustila.')
         plugin_source = (RUNTIME / 'Plugins/Extensions/setupGlass17/plugin.py').read_text()
         picker_source = (RUNTIME / 'Plugins/Extensions/setupGlass17/warderRadioCountry.py').read_text()
         self.assertIn('name=ui_text("Select country (Warder Radio Live)")', plugin_source)
@@ -372,6 +377,42 @@ class CountryTests(unittest.TestCase):
         info = country.diagnose(self.root)
         self.assertEqual(info['active'], 'CZ')
         self.assertIsNone(info['pending'])
+
+    def test_selection_starts_missing_gui_controller_instead_of_silent_queue(self):
+        session = SimpleNamespace()
+        started = []
+        class Controller:
+            closed = False
+            def request_refresh(self):
+                started.append('scheduled')
+        def start(reason, session=None):
+            self.assertEqual(reason, 0)
+            started.append(session)
+            live._controller = Controller()
+        with patch.object(live, '_controller', None), patch.object(live, 'start', start):
+            self.assertTrue(country._start_selected_country_refresh(session))
+        self.assertEqual(started, [session, 'scheduled'])
+
+    def test_missing_gui_controller_reports_failed_update_start(self):
+        with patch.object(live, '_controller', None), patch.object(live, 'start', lambda *args, **kwargs: None):
+            self.assertFalse(country._start_selected_country_refresh(SimpleNamespace()))
+
+    def test_diagnostic_detects_unowned_country_file_without_stream_urls(self):
+        country.bootstrap(self.root)
+        good = country.diagnose(self.root)
+        self.assertTrue(good['bouquet_owned_checksum_valid'])
+        self.assertTrue(good['bouquet_header_valid'])
+        self.assertEqual(good['bouquet_group_markers'], 1)
+        content = live.HEADER + b'#COMMENT user modified group headers\n'
+        self.bouquet.write_bytes(content)
+        bad = country.diagnose(self.root)
+        self.assertTrue(bad['bouquet_exists'])
+        self.assertEqual(bad['bouquet_group_markers'], 0)
+        self.assertFalse(bad['bouquet_owned_checksum_valid'])
+        self.assertEqual(bad['visible_country_sections'], [])
+        self.assertEqual(country.refresh(self.root, now=NOW, browser=Browser())['skipped'], 'owner-modified')
+        self.assertEqual(country.diagnose(self.root)['last_attempt'], 0)
+        self.assertNotIn('http', str(bad))
 
     def test_country_picker_list_available_offline(self):
         choices = country.country_options()
