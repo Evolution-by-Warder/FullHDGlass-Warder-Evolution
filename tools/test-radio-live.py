@@ -93,20 +93,113 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0)])
         data = self.bouquet.read_text()
         self.assertIn('#NAME Warder Radio Live', data)
-        self.assertIn('#DESCRIPTION SK', data)
-        self.assertIn('#DESCRIPTION CZ', data)
+        self.assertIn('#DESCRIPTION Slovensko', data)
+        self.assertIn('#DESCRIPTION Čechy', data)
         self.assertEqual(data.count('#SERVICE 4097:0:2:'), 2)
         self.assertEqual(self.legacy.read_bytes(), b'#NAME Warder Radio Streams\n#SERVICE 1:64:2:0:0:0:0:0:0:0:\n')
         index = self.index.read_bytes()
-        self.assertTrue(index.startswith(personal))
+        self.assertTrue(index.startswith(b'#NAME My radios\n' + live.INDEX_LINE))
+        self.assertIn(personal.split(b'\n', 1)[1], index)
         self.assertEqual(index.count(live.INDEX_LINE), 1)
         mapping = json.loads((self.root / live.DATA_FILE).read_text())
         self.assertEqual(len(mapping['stations']), 2)
 
+    def test_bootstrap_replaces_legacy_first_and_reclaims_old_files(self):
+        sections = [
+            ('Slovensko', 'SK'),
+            ('Čechy', 'CZ'),
+            ('Deutschland', 'DE'),
+            ('France', 'FR'),
+        ]
+        old = [live.LEGACY_HEADER]
+        for index, (country, code) in enumerate(sections, 1):
+            old += [
+                b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n',
+                ('#DESCRIPTION ' + country + '\n').encode('utf-8'),
+                ('#SERVICE 4097:0:2:%X:1:EC:0:0:0:0:https%%3a//radio.test/%s\n' %
+                 (index, code)).encode('utf-8'),
+                ('#DESCRIPTION ' + code + ' original\n').encode('utf-8'),
+            ]
+        original = b''.join(old)
+        self.legacy.write_bytes(original)
+        backup = self.root / (live.LEGACY_FILE + '.bak')
+        backup.write_bytes(original)
+        personal = (b'#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET '
+                    b'"userbouquet.my-radio.radio" ORDER BY bouquet\n')
+        prior = (b'#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET '
+                 b'"userbouquet.warder.radio" ORDER BY bouquet\n')
+        self.index.write_bytes(b'#NAME User Radio\n' + personal + prior)
+        outcome = live.bootstrap(self.root)
+        self.assertTrue(outcome['legacy_retired'])
+        self.assertFalse(self.legacy.exists())
+        self.assertFalse(backup.exists())
+        result = self.bouquet.read_bytes()
+        self.assertEqual(result, live.HEADER + original[len(live.LEGACY_HEADER):])
+        self.assertEqual(len(live._sections(result)), 4)
+        radio_index = self.index.read_bytes()
+        self.assertEqual(radio_index, b'#NAME User Radio\n' + live.INDEX_LINE + personal)
+        self.assertEqual(live.bootstrap(self.root)['changed'], False)
+        self.assertFalse(self.legacy.exists())
+        self.assertTrue(self.bouquet.exists())
+
+    def test_legacy_remains_if_any_country_would_be_lost(self):
+        original = (live.LEGACY_HEADER +
+                    b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                    b'#DESCRIPTION Germany\n'
+                    b'#SERVICE 4097:0:2:1:2:3:4:0:0:0:https%3A//example.org\n'
+                    b'#DESCRIPTION Legacy radio\n')
+        self.legacy.write_bytes(original)
+        live.bootstrap(self.root)
+        self.assertFalse(self.legacy.exists())
+        # Recreate a managed legacy file with an additional country not copied
+        # into the currently owned live target. Direct cleanup must reject it.
+        extra = (b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                 b'#DESCRIPTION Another country\n'
+                 b'#SERVICE 4097:0:2:9:2:3:4:0:0:0:https%3A//other.example.org\n'
+                 b'#DESCRIPTION Extra station\n')
+        self.legacy.write_bytes(original + extra)
+        self.assertFalse(live._retire_legacy(self.root))
+        self.assertTrue(self.legacy.exists())
+
+    def test_world_incremental_updates_keep_unvisited_countries(self):
+        original = (live.LEGACY_HEADER +
+                    b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n#DESCRIPTION Deutschland\n'
+                    b'#SERVICE 4097:0:2:1:2:3:4:0:0:0:https%3A//de.example.org\n'
+                    b'#DESCRIPTION Original DE\n'
+                    b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n#DESCRIPTION France\n'
+                    b'#SERVICE 4097:0:2:2:2:3:4:0:0:0:https%3A//fr.example.org\n'
+                    b'#DESCRIPTION Original FR\n')
+        self.legacy.write_bytes(original)
+        live.bootstrap(self.root)
+        class World(Browser):
+            def facets(self):
+                return SimpleNamespace(countries=['SK', 'CZ', 'DE', 'FR'], offline=False)
+            def page(self, country, offset):
+                self.calls.append((country, offset))
+                ids = {'SK': UUID_SK, 'CZ': UUID_CZ,
+                       'DE': '32345678-1234-1234-1234-123456789abc',
+                       'FR': '42345678-1234-1234-1234-123456789abc'}
+                return SimpleNamespace(rows=[station(ids[country], country + ' updated')],
+                                       more=False, offline=False)
+        browser = World()
+        first = live.refresh(self.root, NOW, browser)
+        self.assertFalse(first['world_complete'])
+        self.assertEqual(first['world_total'], 4)
+        self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 4)
+        self.assertIn('Original DE', self.bouquet.read_text())
+        self.assertIn('Original FR', self.bouquet.read_text())
+        second = live.refresh(self.root, NOW + live.WORLD_STEP_INTERVAL, browser)
+        self.assertTrue(second['world_complete'])
+        self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0), ('DE', 0), ('FR', 0)])
+        self.assertIn('DE updated', self.bouquet.read_text())
+        self.assertIn('FR updated', self.bouquet.read_text())
+        self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 4)
+        self.assertFalse(self.legacy.exists())
+
     def test_no_network_during_daily_interval(self):
         live.refresh(self.root, NOW, Browser())
         browser = Browser()
-        result = live.refresh(self.root, NOW + 3600, browser)
+        result = live.refresh(self.root, NOW + 60, browser)
         self.assertEqual(result['skipped'], 'not-due')
         self.assertEqual(browser.calls, [])
         self.assertEqual(self.index.read_bytes().count(live.INDEX_LINE), 1)
@@ -115,9 +208,9 @@ class LiveTests(unittest.TestCase):
         live.refresh(self.root, NOW, Browser())
         original = self.bouquet.read_bytes()
         with self.assertRaises(OSError):
-            live.refresh(self.root, NOW + live.DAY + 1, Browser(offline=True))
+            live.refresh(self.root, NOW + live.WORLD_REFRESH_INTERVAL + 1, Browser(offline=True))
         self.assertEqual(original, self.bouquet.read_bytes())
-        self.assertEqual(live.refresh(self.root, NOW + live.DAY + 2, Browser())['skipped'], 'not-due')
+        self.assertEqual(live.refresh(self.root, NOW + live.WORLD_REFRESH_INTERVAL + 2, Browser())['skipped'], 'not-due')
 
     def test_user_edited_or_symlink_bouquet_never_overwritten(self):
         self.bouquet.write_bytes(b'#NAME Personal bouquet\n')
@@ -146,6 +239,8 @@ class LiveTests(unittest.TestCase):
         (plugin / 'state.json').write_text(json.dumps({'online_country': 'DE'}))
         browser = Browser()
         live.refresh(self.root, NOW, browser)
+        self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0)])
+        live.refresh(self.root, NOW + live.WORLD_STEP_INTERVAL, browser)
         self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0), ('DE', 0)])
         self.assertIn('#DESCRIPTION DE', self.bouquet.read_text())
 
@@ -162,6 +257,8 @@ class LiveTests(unittest.TestCase):
         browser = EmptyOptional()
         result = live.refresh(self.root, NOW, browser)
         self.assertEqual(result['stations'], 2)
+        self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0)])
+        live.refresh(self.root, NOW + live.WORLD_STEP_INTERVAL, browser)
         self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0), ('DE', 0)])
         self.assertNotIn('#DESCRIPTION DE', self.bouquet.read_text())
         self.assertEqual(self.bouquet.read_text().count('#SERVICE 4097:0:2:'), 2)
@@ -265,7 +362,7 @@ class LiveTests(unittest.TestCase):
                 result = super().page(country, offset)
                 result.rows[0]['url'] = 'https://new.example.org/stream'
                 return result
-        live.refresh(self.root, NOW + live.DAY + 1, NewBrowser())
+        live.refresh(self.root, NOW + live.WORLD_REFRESH_INTERVAL + 1, NewBrowser())
         second = self.bouquet.read_text()
         self.assertNotEqual(first, second)
         self.assertIn('https%3A//new.example.org/stream', second)
@@ -427,7 +524,7 @@ class LiveTests(unittest.TestCase):
         result = live.refresh(self.root, NOW, browser)
         self.assertTrue(result['changed'])
         self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0)])
-        self.assertEqual(json.loads(state.read_text())['bootstrap_generation'], 'live125')
+        self.assertEqual(json.loads(state.read_text())['bootstrap_generation'], live.BOOTSTRAP_GENERATION)
 
     def test_first_import_cooldown_is_fifteen_minutes(self):
         failing = Browser(offline=True)
