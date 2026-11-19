@@ -664,7 +664,10 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 _save_choice(directory, state)
                 return {'changed': False, 'skipped': 'country-staging-invalid'}
             rows, offset = [], 0
-        first_page = not continuing and state.get('active') != country
+        # Also show the first page immediately for a brand-new language-based
+        # initial country with no authoritative station map yet.
+        first_page = (not continuing and
+                      (state.get('active') != country or not mapping.exists()))
         try:
             collected, offset, more = _station_rows(
                 browser, country, offset, rows,
@@ -843,8 +846,9 @@ def diagnose(directory=DIRECTORY):
         'pending': _pending_country(info),
         'queued_country': _queued_country(directory),
         'downloaded': info.get('downloaded', 0),
-        'preview_incomplete': bool(info.get('partial') and
-                                   _pending_country(info) == info.get('active')),
+        'preview_incomplete': bool(
+            info.get('partial') and isinstance(staging, dict) and
+            staging.get('country') == info.get('active')),
         'pending_pages': staging.get('offset', 0) // 60
         if isinstance(staging, dict) and isinstance(staging.get('offset', 0), int)
         else 0,
