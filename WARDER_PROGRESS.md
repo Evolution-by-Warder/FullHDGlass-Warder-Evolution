@@ -1,3 +1,12 @@
+## 19. 11. 2026 — úsporný multi-release country ZIP download, SHA a HTTPS ochrany
+
+- V `warderRadioBundleFetch.py` pribudla podpora voliteľného `latest.json/countries[CC].logos.asset_tag`. Skript si smie zobrať originálny country PNG ZIP z už schváleného predchádzajúceho immutable GitHub release, **iba ak** tag zodpovedá prísnemu formátu `radio-country-YYYYMMDD`, nie je novší než hlavička feedu, krajinský ZIP má povolený presný názov `CC.zip`, presnú dĺžku a SHA-256 podľa nového manifestu. World ZIP vždy patrí aktuálnemu release tagu.
+- Nezmenený `CC.zip` sa preto pri 14-dňovej úprave už nemusí publikovať opakovane. Ani bežiaci prijímač nesťahuje ten istý ZIP druhýkrát, pokiaľ už má platný country owner marker rovnakého SHA. Nový online manifest bez `asset_tag` zachováva spätnú kompatibilitu.
+- [Runtime offline CI #44601206216 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44601206216), test `test-radio-bundle-fetch.py` explicitne kontroluje výber predchádzajúceho asset tagu, neplatné/útokové tagy aj ignorovanie starých log ak sa krajina zmení. [Reálny zdrojový plán 224 logo ZIP #44602115806 SUCCESS](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44602115806).
+- Fyzický test GigaBlue ešte nie je vykonaný. `main`, TEST138, ostrá IPK aj verejný Country Release zostali nedotknuté.
+
+---
+
 ## 19. 11. 2026 — finálny 224-country world/skin bridge a 313 reálnych PNG PASS
 
 - **Finálne zdrojové dáta skutočne overené:** [Warder Radio Actions #44599384867 SUCCESS](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44599384867) použil **finálny** world `radio-countries-bouquets.zip` SHA `669b3c2c32009c3a7d8e8552c8b5f077ceeb3a66b37947664229a8f46d94aa38`, s dátami **224 krajín, 48 219 staníc** a finálnymi country manifestmi. CI na aktuálnom reviewed skin commite prepínal SK **123**, CZ **229**, FR **2476**, DE **4863**, US **6749** bez online požiadaviek, úplná 224 položková ponuka Radio Mode.
