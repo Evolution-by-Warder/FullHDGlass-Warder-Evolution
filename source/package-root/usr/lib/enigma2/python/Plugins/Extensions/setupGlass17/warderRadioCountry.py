@@ -381,6 +381,75 @@ def is_live_service(service):
     return False
 
 
+def _is_live_bouquet_selected(csel):
+    """Only the highlighted Warder Radio Live folder in radio bouquets."""
+    try:
+        current = csel.getCurrentSelection()
+        root = csel.getRoot()
+        if current is None or root is None:
+            return False
+        current_path = current.getPath()
+        root_path = root.getPath()
+        return (isinstance(current_path, str) and
+                'FROM BOUQUET "' + live.FILE + '"' in current_path and
+                isinstance(root_path, str) and
+                'FROM BOUQUET "bouquets.radio"' in root_path)
+    except (AttributeError, TypeError, ValueError):
+        return False
+
+
+def install_root_country_menu():
+    """Optional in-memory root-bouquet context action for OpenATV/OpenPLi.
+
+    Enigma2 exposes plugin context actions for playable services but not for
+    folder rows in the radio bouquet root. Extend only the specific native
+    menu instance when Warder Radio Live is highlighted. All standard actions
+    remain in their original order, untouched for other bouquets.
+    """
+    try:
+        from Screens.ChannelSelection import ChannelContextMenu
+        from Components.ChoiceList import ChoiceEntryComponent
+        from .warderUiText import ui_text
+    except (ImportError, AttributeError):
+        return False
+
+    original = ChannelContextMenu.__init__
+    if getattr(original, '_warder_live_country_root_menu', False):
+        return False
+
+    def context_init(menu, session, csel, *args, **kwargs):
+        original(menu, session, csel, *args, **kwargs)
+        if not _is_live_bouquet_selected(csel):
+            return
+        try:
+            widget = menu['menu']
+            entries = list(widget.getList())
+            if any(isinstance(item, (tuple, list)) and item and
+                   isinstance(item[0], (tuple, list)) and item[0] and
+                   'Warder Radio Live' in str(item[0][0])
+                   for item in entries):
+                return
+
+            def select_country():
+                # Match the native runPlugin flow: open the next screen and
+                # then close the context menu, leaving normal radio navigation.
+                open_country_selector(session)
+                menu.close(False)
+
+            entry = ChoiceEntryComponent(
+                text=(ui_text('Select country (Warder Radio Live)'),
+                      select_country))
+            entries.insert(1 if entries else 0, entry)
+            widget.setList(entries)
+        except (AttributeError, KeyError, TypeError, IndexError, ValueError):
+            # Unsupported image variants keep their stock context menu.
+            pass
+
+    context_init._warder_live_country_root_menu = True
+    ChannelContextMenu.__init__ = context_init
+    return True
+
+
 def open_country_selector(session, service=None, **kwargs):
     """Native Channel Selection MENU callback; runs no HTTP in the GUI."""
     try:
