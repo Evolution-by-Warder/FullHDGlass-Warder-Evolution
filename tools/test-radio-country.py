@@ -378,6 +378,99 @@ class CountryTests(unittest.TestCase):
         self.assertFalse(
             (self.root / (live.FILE + '.enigma-alternatives.bak')).exists())
 
+    def test_explicit_czech_switch_replaces_native_edited_managed_bouquet_after_backup(self):
+        """No saved ref URLs match, alt has no description or matching alt file.
+
+        This matches the actual receiver report while ensuring the previous
+        active-country catalogue is signed and all 122 normal numeric IDs match.
+        """
+        country.bootstrap(self.root)
+        result = country.refresh(self.root, now=NOW, browser=Browser())
+        self.assertEqual(result['stations'], 2)
+        rows = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        original = self.bouquet.read_bytes()
+        live_header = live.HEADER.replace(b'\n', b'\r\n')
+        active_marker = (
+            b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\r\n'
+            '#DESCRIPTION Slovensko\r\n'.encode('utf-8'))
+        rewritten = (
+            b'#SERVICE ' + rows[1]['stem'].replace('_', ':').encode('ascii') +
+            b':https%3a//radio.example.org/other:' +
+            rows[1]['name'].encode('utf-8') + b'\r\n' +
+            ('#DESCRIPTION ' + rows[1]['name'] + '\r\n').encode('utf-8'))
+        alternative = (
+            b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+            b'"alternatives.radio_001.radio" ORDER BY bouquet\r\n')
+        edited = live_header + active_marker + alternative + rewritten
+        self.assertEqual(edited.count(b'#SERVICE 4097:'), 1)
+        self.bouquet.write_bytes(edited)
+        state = country._choice(self.root)
+        self.assertFalse(country._owner_valid(self.root, edited, state))
+        self.assertFalse(country._recover_enigma_alternative(
+            self.root, edited, state, inspect_only=True))
+        self.assertFalse(country._pending_country_switch_backup_allowed(
+            self.root, edited, state)) # no explicit pending country yet
+        self.assertEqual(country.refresh(
+            self.root, now=NOW + country.RETRY, browser=Browser())['skipped'],
+            'owner-modified')
+        self.assertEqual(self.bouquet.read_bytes(), edited)
+        country.request_country('CZ', self.root)
+        report = country.diagnose(self.root)
+        self.assertTrue(report['pending_country_switch_safe'])
+        self.assertFalse(report['enigma_alternative_recovery_possible'])
+        self.assertFalse((self.root / (live.FILE + '.before-country-switch.bak')).exists())
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertTrue(result['changed'])
+        self.assertEqual(result['country'], 'CZ')
+        self.assertEqual(country.active_country(self.root), 'CZ')
+        backup = self.root / (live.FILE + '.before-country-switch.bak')
+        self.assertEqual(backup.read_bytes(), edited)
+        self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
+                         [country.country_name('CZ')])
+
+    def test_pending_country_does_not_authorize_unknown_numeric_service_edit(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        row = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]
+        orig = self.bouquet.read_bytes()
+        edit = orig.replace(row['stem'].replace('_', ':').encode('ascii'),
+                            b'4097:0:2:FFFF:FFFF:FFFF:FFFFFFFF:0:0:0', 1)
+        self.bouquet.write_bytes(edit)
+        country.request_country('CZ', self.root)
+        self.assertFalse(country.diagnose(self.root)['pending_country_switch_safe'])
+        self.assertEqual(country.refresh(
+            self.root, now=NOW + country.RETRY, browser=Browser())['skipped'],
+            'owner-modified')
+        self.assertEqual(self.bouquet.read_bytes(), edit)
+        self.assertFalse((self.root / (live.FILE + '.before-country-switch.bak')).exists())
+
+    def test_explicit_pending_switch_rejects_tampered_catalogue_and_backup_collision(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        rows = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        previous = self.bouquet.read_bytes()
+        # Reordering the two known stations creates a checksum mismatch but
+        # does not introduce an unknown identity or change any station.
+        pairs = [live._service(row).encode('utf-8') for row in rows]
+        edited = previous.replace(pairs[0] + pairs[1], pairs[1] + pairs[0])
+        self.assertNotEqual(edited, previous)
+        self.bouquet.write_bytes(edited)
+        country.request_country('CZ', self.root)
+        self.assertTrue(country.diagnose(self.root)['pending_country_switch_safe'])
+        backup = self.root / (live.FILE + '.before-country-switch.bak')
+        backup.write_bytes(b'user backup must not be overwritten')
+        self.assertFalse(country.diagnose(self.root)['pending_country_switch_safe'])
+        self.assertEqual(country.refresh(
+            self.root, now=NOW + country.RETRY, browser=Browser())['skipped'],
+            'owner-modified')
+        self.assertEqual(backup.read_bytes(), b'user backup must not be overwritten')
+        backup.unlink()
+        mapping = json.loads((self.root / live.DATA_FILE).read_text())
+        mapping['stations'][0]['name'] = 'unauthorized new title'
+        (self.root / live.DATA_FILE).write_text(json.dumps(mapping))
+        self.assertFalse(country.diagnose(self.root)['pending_country_switch_safe'])
+        self.assertEqual(self.bouquet.read_bytes(), edited)
+
     def test_unknown_user_edits_are_not_adopted_even_if_alternative_present(self):
         country.bootstrap(self.root)
         country.refresh(self.root, now=NOW, browser=Browser())
