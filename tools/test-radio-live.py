@@ -186,7 +186,7 @@ class LiveTests(unittest.TestCase):
     def test_rerender_sorts_existing_live_bouquet_on_reinstall(self):
         """An already managed test127 bouquet must be sorted by local bootstrap."""
         raw = (live.HEADER +
-               b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+               b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' +
                '#DESCRIPTION Slovensko\n'.encode('utf-8') +
                b'#SERVICE 4097:0:2:1:1:EC:0:0:0:0:https%3A//b.test\n'
                b'#DESCRIPTION Zeta\n'
