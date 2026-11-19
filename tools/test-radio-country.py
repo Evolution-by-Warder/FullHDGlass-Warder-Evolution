@@ -33,7 +33,7 @@ class Browser:
 
     def page(self, country='', offset=0):
         self.calls.append((country, offset))
-        if self.with_pages and offset < 180:
+        if self.with_pages and offset < 300:
             more = True
         else:
             more = False
@@ -180,7 +180,7 @@ class CountryTests(unittest.TestCase):
         second = country.refresh(self.root, now=NOW + country.STEP, browser=browser)
         self.assertTrue(second['changed'])
         self.assertEqual(country.active_country(self.root), 'GB')
-        self.assertEqual(browser.calls, [('GB', 0), ('GB', 60), ('GB', 120), ('GB', 180)])
+        self.assertEqual(browser.calls, [('GB', 0), ('GB', 60), ('GB', 120), ('GB', 180), ('GB', 240), ('GB', 300)])
         self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 1)
 
     def test_invalid_request_and_user_modifications_never_replaced(self):
