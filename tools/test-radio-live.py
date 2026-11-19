@@ -268,6 +268,74 @@ class LiveTests(unittest.TestCase):
             finally:
                 ctl.close()
 
+    def test_missing_disk_does_not_block_later_icon_attempt(self):
+        live.refresh(self.root, NOW, Browser())
+        row = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]
+        stem = row['stem']
+        reference = stem.replace('_', ':') + ':https%3A//radio.example.org/live'
+
+        class Call:
+            def active(self):
+                return True
+            def cancel(self):
+                return None
+        class Loop:
+            def callLater(self, *_):
+                return Call()
+
+        queue = []
+        with patch.object(live, 'DIRECTORY', self.root), patch.dict(
+                sys.modules, {'NavigationInstance': SimpleNamespace(instance=None)}):
+            controller = live.Controller(Loop(), lambda: None)
+            controller._spawn = lambda _action, args, _done: (queue.append(args) or object())
+            try:
+                with patch.object(live, '_skin_picon_directory', return_value=None):
+                    controller.enqueue_icon(reference)
+                    controller.check_icon()
+                self.assertNotIn(stem, controller.icon_requested)
+                self.assertEqual(queue, [])
+                folder = str(self.root / 'picon')
+                with patch.object(live, '_skin_picon_directory', return_value=folder):
+                    controller.enqueue_icon(reference)
+                    self.assertEqual(controller.icon_queue[0], stem)
+                    controller.check_icon()
+                self.assertEqual(queue, [['--icon', stem, folder]])
+                self.assertIn(stem, controller.icon_requested)
+            finally:
+                controller.close()
+
+    def test_retry_after_fifteen_minutes_not_on_each_list_redraw(self):
+        live.refresh(self.root, NOW, Browser())
+        stem = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]['stem']
+        reference = stem.replace('_', ':') + ':https%3A//radio.example.org/live'
+
+        class Call:
+            def active(self):
+                return True
+            def cancel(self):
+                return None
+        class Loop:
+            def callLater(self, *_):
+                return Call()
+        with patch.object(live, 'DIRECTORY', self.root), patch.dict(
+                sys.modules, {'NavigationInstance': SimpleNamespace(instance=None)}):
+            controller = live.Controller(Loop(), lambda: None)
+            controller._spawn = lambda *_args: object()
+            try:
+                with patch.object(live, '_skin_picon_directory', return_value=str(self.root / 'picon')):
+                    with patch.object(live.time, 'monotonic', return_value=1000):
+                        controller.enqueue_icon(reference)
+                        controller.check_icon()
+                    controller.icon_done(None)
+                    with patch.object(live.time, 'monotonic', return_value=1001):
+                        controller.enqueue_icon(reference)
+                    self.assertNotIn(stem, controller.icon_queue)
+                    with patch.object(live.time, 'monotonic', return_value=1000 + live.ICON_RETRY_SECONDS + 1):
+                        controller.enqueue_icon(reference)
+                    self.assertEqual(controller.icon_queue[0], stem)
+            finally:
+                controller.close()
+
     def test_channel_picon_fallback_wires_only_live_radio_on_miss(self):
         code = (P / 'warderChannelPicons.py').read_text()
         self.assertIn('from Plugins.Extensions.setupGlass17.warderRadioLive import request_picon', code)
