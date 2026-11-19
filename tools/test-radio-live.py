@@ -148,6 +148,78 @@ class LiveTests(unittest.TestCase):
         self.assertFalse(self.legacy.exists())
         self.assertTrue(self.bouquet.exists())
 
+    def test_stations_alphabetic_within_country_and_all_refs_preserved(self):
+        """Rebuild a deliberately scrambled world bouquet; no station disappears."""
+        records = [
+            ('Žilinské rádio', 'https%3A//stream.test/zilina', 'A1'),
+            ('Rádio Expres', 'https%3A//stream.test/expres', 'A2'),
+            ('897', 'https%3A//stream.test/897', 'A3'),
+            ('Československé rádio', 'https%3A//stream.test/cs', 'A4'),
+            ('Áčko rádio', 'https%3A//stream.test/acko', 'A5'),
+            ('Rádio Beta', 'https%3A//stream.test/beta', 'A6'),
+        ]
+        original = [live.LEGACY_HEADER,
+                    b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n',
+                    '#DESCRIPTION Slovensko\n'.encode('utf-8')]
+        services = []
+        for label, url, ref in records:
+            service = ('#SERVICE 4097:0:2:%s:1:EC:0:0:0:0:%s\n' %
+                       (ref, url)).encode('ascii')
+            description = ('#DESCRIPTION %s\n' % label).encode('utf-8')
+            original.extend([service, description])
+            services.append(service + description)
+        self.legacy.write_bytes(b''.join(original))
+        result = live.bootstrap(self.root)
+        self.assertTrue(result['legacy_retired'])
+        self.assertFalse(self.legacy.exists())
+        section = live._sections(self.bouquet.read_bytes())['Slovensko']
+        lines = section.decode('utf-8').splitlines()
+        names = [line.removeprefix('#DESCRIPTION ') for line in lines
+                 if line.startswith('#DESCRIPTION ')][1:]
+        self.assertEqual(names, ['897', 'Áčko rádio', 'Československé rádio',
+                                 'Rádio Beta', 'Rádio Expres', 'Žilinské rádio'])
+        for record in services:
+            self.assertEqual(section.count(record), 1)
+        self.assertEqual(section.count(b'#SERVICE 4097:'), len(records))
+        self.assertFalse(live.bootstrap(self.root)['changed'])  # idempotent
+
+    def test_rerender_sorts_existing_live_bouquet_on_reinstall(self):
+        """An already managed test127 bouquet must be sorted by local bootstrap."""
+        raw = (live.HEADER +
+               b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+               '#DESCRIPTION Slovensko\n'.encode('utf-8') +
+               b'#SERVICE 4097:0:2:1:1:EC:0:0:0:0:https%3A//b.test\n'
+               b'#DESCRIPTION Zeta\n'
+               b'#SERVICE 4097:0:2:2:1:EC:0:0:0:0:https%3A//a.test\n'
+               b'#DESCRIPTION Alfa\n')
+        self.bouquet.write_bytes(raw)
+        (self.root / live.STATE_FILE).write_text(json.dumps({
+            'bouquet_sha256': __import__('hashlib').sha256(raw).hexdigest(),
+            'bootstrap_generation': live.BOOTSTRAP_GENERATION
+        }))
+        outcome = live.bootstrap(self.root)
+        self.assertTrue(outcome['changed'])
+        names = self.bouquet.read_text().split('#DESCRIPTION ')[2:]
+        self.assertEqual([x.split('\n', 1)[0] for x in names], ['Alfa', 'Zeta'])
+        self.assertEqual(self.bouquet.read_bytes().count(b'#SERVICE 4097:'), 2)
+
+    def test_sort_unknown_station_layout_does_not_modify_content(self):
+        """Unsupported metadata patterns must be retained, never discarded."""
+        section = (b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                   b'#DESCRIPTION Group\n'
+                   b'#SERVICE 4097:0:2:2:1:EC:0:0:0:0:https%3A//b.test\n'
+                   b'#DESCRIPTION Beta\n'
+                   b'#SOME-CUSTOM-SETTING stays with Beta\n'
+                   b'#SERVICE 4097:0:2:1:1:EC:0:0:0:0:https%3A//a.test\n'
+                   b'#DESCRIPTION Alfa\n')
+        sorted_section = live._sorted_country_section(section)
+        self.assertTrue(sorted_section.index(b'#DESCRIPTION Alfa') <
+                        sorted_section.index(b'#DESCRIPTION Beta'))
+        self.assertEqual(sorted_section.count(b'#SOME-CUSTOM-SETTING stays with Beta'), 1)
+        self.assertTrue(sorted_section.endswith(b'#SOME-CUSTOM-SETTING stays with Beta\n'))
+        corrupted = section.replace(b'#DESCRIPTION Alfa', b'#UNRECOGNIZED Alfa')
+        self.assertEqual(live._sorted_country_section(corrupted), corrupted)
+
     def test_country_headings_alphabetical_after_slovakia_and_czechia(self):
         """Out-of-order historical countries must become sorted without losing data."""
         headings = ('Zulu', 'Österreich', 'Čechy', 'France', 'Slovensko',
