@@ -925,8 +925,8 @@ class Controller:
         except Exception:
             self.finished(None)
 
-    def _refresh_visible_radio_list(self):
-        """Refresh only an open Enigma2 radio list after a finished country switch.
+    def _refresh_visible_radio_list(self, reset_to_top=True):
+        """Refresh an open Enigma2 radio list after a progressive country update.
 
         DVBDB.reloadBouquets alone does not invalidate the visible ServiceList
         root. The selection window otherwise keeps showing the old country's
@@ -951,9 +951,18 @@ class Controller:
             listing = dialog.servicelist
             if getattr(listing, 'instance', None) is None:
                 return False
+            # Enigma2 resetRoot preserves the OLD numeric row index. While
+            # background pages are alphabetically inserted, retain the same
+            # selected service instead. Only a new country's FIRST page
+            # should place the selection at the beginning of the list.
+            selected = None
+            if not reset_to_top and hasattr(listing, 'getCurrent'):
+                selected = listing.getCurrent()
             listing.resetRoot()
-            if 'FROM BOUQUET "' + FILE + '"' in path:
+            if reset_to_top and 'FROM BOUQUET "' + FILE + '"' in path:
                 listing.goTop()
+            elif selected is not None and hasattr(listing, 'setCurrent'):
+                listing.setCurrent(selected, adjust=False)
             return True
         except (AttributeError, OSError, RuntimeError, TypeError):
             return False
@@ -968,19 +977,21 @@ class Controller:
         has_bouquet = (DIRECTORY / FILE).is_file()
         valid = isinstance(result, dict)
         switched = valid and result.get('changed') and bool(result.get('country'))
+        first_page = not valid or result.get('first_page', True)
         if valid and (result.get('changed') or
                       (self.initial_reload and has_bouquet)):
             try:
                 self.reload()
                 self.initial_reload = False
                 if switched:
-                    self._refresh_visible_radio_list()
-                    # The confirmation popup can still cover the radio list
-                    # when a cached country completes immediately.
+                    self._refresh_visible_radio_list(reset_to_top=first_page)
+                    # The ChoiceBox may be closing as the first cached page
+                    # arrives. Retry once without blocking the channel list.
                     if self.radio_refresh_timer is not None and self.radio_refresh_timer.active():
                         self.radio_refresh_timer.cancel()
                     self.radio_refresh_timer = self.loop.callLater(
-                        5, self._refresh_visible_radio_list)
+                        1, lambda: self._refresh_visible_radio_list(
+                            reset_to_top=first_page))
             except Exception:
                 pass
         preference = _read_json(DIRECTORY / 'warder-radio-live-country.json', {})
