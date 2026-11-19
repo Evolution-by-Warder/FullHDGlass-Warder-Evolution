@@ -1467,6 +1467,13 @@ def startHdg17(reason, **kwargs):
 		except Exception:
 			pass
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Add the country picker to our live-radio MENU even when the current
+		# row is a country marker; preserve every native context-menu action.
+		try:
+			from .warderRadioCountry import install_context_menu_hook
+			install_context_menu_hook()
+		except (ImportError, AttributeError, OSError):
+			pass
 		# TEST89: timestamp the actual RADIO key handler before any mode-switch work.
 		global _warderOriginalShowRadioButton
 		try:
