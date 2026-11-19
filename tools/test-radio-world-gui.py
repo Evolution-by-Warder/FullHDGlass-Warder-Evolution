@@ -90,6 +90,30 @@ class Tests(unittest.TestCase):
         ctrl.last_bulk_logo = None
         return ctrl
 
+    def test_read_only_receiver_diagnostic_counts_world_and_original_logos(self):
+        before = (self.etc/'bouquets.radio').read_bytes()
+        info = world.diagnose(self.paths,self.etc)
+        self.assertTrue(info['world_present'])
+        self.assertTrue(info['world_owned_integrity_valid'])
+        self.assertEqual(info['world_countries'],2)
+        self.assertEqual(info['world_stations'],6)
+        self.assertEqual(info['active_country'],'FR')
+        self.assertFalse(info['radio_picons_owned_integrity_valid'])
+        self.assertNotIn('url', str(info).lower())
+        self.assertEqual((self.etc/'bouquets.radio').read_bytes(),before)
+
+        first=packages.install_logos(self.root/'source','FR',self.paths/'picon',
+                                     require_external=False)
+        self.assertTrue(first['changed'])
+        updated=world.diagnose(self.paths,self.etc)
+        self.assertTrue(updated['radio_picons_owned_integrity_valid'])
+        self.assertEqual(updated['radio_logo_country'],'FR')
+        self.assertEqual(updated['radio_png_count'],3)
+        next((self.paths/'picon/radio').glob('*.png')).write_bytes(b'user PNG modified')
+        changed=world.diagnose(self.paths,self.etc)
+        self.assertFalse(changed['radio_picons_owned_integrity_valid'])
+        self.assertEqual((self.etc/'bouquets.radio').read_bytes(),before)
+
     def test_ready_countries_are_discovered_without_entire_map_scan(self):
         self.assertIsNotNone(world.cached_country(self.paths,'FR'))
         self.assertIsNotNone(world.cached_country(self.paths,'ET'))
