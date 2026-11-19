@@ -411,7 +411,7 @@ class CountryTests(unittest.TestCase):
         self.assertFalse(bad['bouquet_owned_checksum_valid'])
         self.assertEqual(bad['visible_country_sections'], [])
         self.assertEqual(country.refresh(self.root, now=NOW, browser=Browser())['skipped'], 'owner-modified')
-        self.assertEqual(country.diagnose(self.root)['last_attempt'], 0)
+        self.assertIsNone(country.diagnose(self.root)['last_attempt'])  # no worker attempt reached
         self.assertNotIn('http', str(bad))
 
     def test_country_picker_list_available_offline(self):
