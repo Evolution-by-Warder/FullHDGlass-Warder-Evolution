@@ -172,6 +172,34 @@ def _reference_key(raw):
         return None
 
 
+def _trusted_country_marker(service_line, country):
+    """Match the exact owned country marker, including native Enigma2 NAME.
+
+    Enigma2 flushChanges() can serialize an empty PATH plus the marker name:
+    '#SERVICE 1:64:2:0:0:0:0:0:0:0::Slovensko'. The group's following
+    #DESCRIPTION is separately checked by the caller. Reject any nonempty
+    PATH, different marker identity, or unexpected marker name; never accept
+    arbitrary service text merely because it starts with '1:64'.
+    """
+    prefix = b'#SERVICE 1:64:2:0:0:0:0:0:0:0:'
+    if (not isinstance(service_line, bytes) or
+            not service_line.startswith(prefix) or
+            not service_line.endswith(b'\n')):
+        return False
+    tail = service_line[len(prefix):-1]
+    if tail in (b'', b':'):
+        return True
+    if not tail.startswith(b':'):
+        return False
+    expected = country_name(country)
+    if not isinstance(expected, str) or not expected:
+        return False
+    expected_bytes = expected.encode('utf-8')
+    if len(tail) > 1 + len(expected_bytes) * 3:
+        return False
+    return unquote_to_bytes(tail[1:]) == expected_bytes
+
+
 def _trusted_service_matches(service_line, item):
     """Compare a saved Enigma2 reference to the authoritative exact map row.
 
@@ -265,7 +293,7 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
 
     data = normalized.splitlines(keepends=True)
     if (len(data) < 6 or data[0] != live.HEADER or
-            data[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
+            not _trusted_country_marker(data[1], country) or
             data[2] != ('#DESCRIPTION ' + country_name(country) + '\n').encode('utf-8')):
         return False
     # Map stable numeric identities once, keeping verification linear even
@@ -377,7 +405,7 @@ def _pending_country_switch_backup_allowed(directory, original, state):
 
     lines = raw.splitlines(keepends=True)
     if (len(lines) < 5 or lines[0] != live.HEADER or
-            lines[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
+            not _trusted_country_marker(lines[1], active) or
             lines[2] != ('#DESCRIPTION ' + country_name(active) + '\n').encode('utf-8')):
         return False
     seen, alternative_count = set(), 0
@@ -676,6 +704,7 @@ def diagnose(directory=DIRECTORY):
     except OSError:
         raw = None
     normalized = _normalized_receiver_bouquet(raw)
+    normalized_lines = normalized.splitlines(keepends=True) if normalized else []
     sections = live._sections(normalized)
     live_state = live._read_json(directory / live.STATE_FILE, {})
     if not isinstance(live_state, dict):
@@ -689,6 +718,9 @@ def diagnose(directory=DIRECTORY):
         'bouquet_exists': raw is not None,
         'bouquet_bytes': len(raw) if raw is not None else 0,
         'bouquet_header_valid': bool(normalized),
+        'bouquet_group_marker_compatible': bool(
+            len(normalized_lines) > 1 and isinstance(info.get('active'), str) and
+            _trusted_country_marker(normalized_lines[1], info['active'])),
         'bouquet_format_normalizable': normalized is not None,
         'bouquet_line_endings': 'crlf' if raw and b'\r\n' in raw else 'lf_or_other',
         'bouquet_group_markers': raw.count(b'#SERVICE 1:64:') if raw else 0,
