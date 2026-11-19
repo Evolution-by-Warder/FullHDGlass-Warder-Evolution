@@ -161,6 +161,17 @@ if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_update" ]; then
     /usr/bin/python3 -B "$warder_radio_update" --refresh </dev/null >/dev/null 2>&1 &
 fi
 
+# First import of the optional Radio Browser live bouquet. Run entirely in a
+# detached worker: never delay package installation or block Enigma2 GUI.
+# The worker verifies ownership of its own bouquet, preserves existing radios,
+# and records a sanitized diagnostic status if the catalogue is unavailable.
+warder_radio_live=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py
+if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_live" ] &&
+   [ -f "$warder_radio_browser" ]; then
+    /usr/bin/python3 -B "$warder_radio_live" --refresh </dev/null >/dev/null 2>&1 &
+fi
+
 # Download only the selected language after package installation, without
 # holding opkg or the Enigma2 GUI. A failed/offline fetch never blocks install.
 warder_locale_helper=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLocaleDownload.py
