@@ -201,7 +201,18 @@ def sync_world(paths_root, opener=urlopen, require_external=True,
     marker=root/world.WORLD_NAME/world.OWNER
     if marker.is_file() and not marker.is_symlink():
         present=world._json_file(marker,world.MAX_OWNER)
-        if present.get('archive_sha256')==index['world']['sha256'] and world._owner_ok(marker.parent):
+        owned=world._owner_ok(marker.parent)
+        if owned:
+            # The publisher also reviews removals, but a bad future
+            # latest.json must never erase a working cached country.
+            previous=world._json_file(marker.parent/'index.json',world.MAX_INDEX)
+            previous_codes=set(world._verify_index(previous))
+            removed=sorted(previous_codes-set(index['countries']))
+            if removed:
+                return {'changed':False,
+                        'skipped':'country-removal-requires-review',
+                        'removed_countries':removed}
+        if present.get('archive_sha256')==index['world']['sha256'] and owned:
             result={'changed':False,'skipped':'already-current',
                     'countries':present.get('countries')}
         else:
