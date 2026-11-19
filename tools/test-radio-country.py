@@ -90,6 +90,47 @@ class CountryTests(unittest.TestCase):
             b'#NAME Stored alternatives\\n'.replace(b'\\n', b'\n') +
             live._service(mapped_station).encode('utf-8'))
 
+    def test_trusted_country_marker_accepts_only_native_name_serialization(self):
+        """Preserve native Enigma2 marker NAME without admitting foreign markers."""
+        prefix = b'#SERVICE 1:64:2:0:0:0:0:0:0:0:'
+        accepted = (
+            prefix + b'\n',
+            prefix + b':\n',
+            prefix + b':Slovensko\n',
+            prefix + b':%53lovensko\n',
+        )
+        rejected = (
+            prefix + b'Slovensko\n',  # Nonempty PATH, not a native marker NAME.
+            prefix + b':Wrong-country\n',
+            prefix + b':https%3a//untrusted.example:Slovensko\n',
+            b'#SERVICE 1:64:1:0:0:0:0:0:0:0::Slovensko\n',
+            prefix + b':Slovensko:extra\n',
+            prefix + b':Slovensko',  # Unterminated record.
+        )
+        for marker in accepted:
+            with self.subTest(marker=marker):
+                self.assertTrue(country._trusted_country_marker(marker, 'SK'))
+        for marker in rejected:
+            with self.subTest(marker=marker):
+                self.assertFalse(country._trusted_country_marker(marker, 'SK'))
+
+    def test_unknown_native_group_marker_keeps_pending_switch_blocked(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        original = self.bouquet.read_bytes()
+        marker = b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+        self.assertIn(marker, original)
+        tampered = original.replace(
+            marker, b'#SERVICE 1:64:2:0:0:0:0:0:0:0::Unknown\n', 1)
+        self.bouquet.write_bytes(tampered)
+        country.request_country('CZ', self.root)
+        self.assertFalse(country.diagnose(self.root)['bouquet_group_marker_compatible'])
+        self.assertFalse(country.diagnose(self.root)['pending_country_switch_safe'])
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertEqual(result['skipped'], 'owner-modified')
+        self.assertEqual(self.bouquet.read_bytes(), tampered)
+        self.assertFalse((self.root / (live.FILE + '.before-country-switch.bak')).exists())
+
     def test_first_launch_country_matches_enigma_language(self):
         cases = {'sk_SK': 'SK', 'cs_CZ': 'CZ', 'de_DE': 'DE',
                  'en_US': 'GB', 'fr_FR': 'FR', 'it_IT': 'IT',
@@ -301,7 +342,7 @@ class CountryTests(unittest.TestCase):
         original = self.bouquet.read_bytes()
         self._alt_file('alternatives.radio_007.radio', rows[7])
         items = [live.HEADER.replace(b'\n', b'\r\n'),
-                 b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\r\n',
+                 b'#SERVICE 1:64:2:0:0:0:0:0:0:0::Slovensko\r\n',
                  '#DESCRIPTION Slovensko\r\n'.encode('utf-8')]
         for index, row in enumerate(rows):
             if index == 7:
@@ -320,6 +361,7 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(report['mapped_stations'], 123)
         self.assertEqual(report['bouquet_stream_entries'], 122)
         self.assertEqual(report['bouquet_group_markers'], 1)
+        self.assertTrue(report['bouquet_group_marker_compatible'])
         self.assertTrue(report['enigma_alternative_recovery_possible'])
         country.request_country('CZ', self.root)
         result = country.refresh(self.root, now=NOW + country.RETRY, browser=browser)
@@ -462,7 +504,7 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(first['stations'], 123)
         mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
         parts = [live.HEADER.replace(b'\n', b'\r\n'),
-                 b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\r\n',
+                 b'#SERVICE 1:64:2:0:0:0:0:0:0:0::Slovensko\r\n',
                  '#DESCRIPTION Slovensko\r\n'.encode('utf-8')]
         for index, row in enumerate(mapping):
             if index == 7:
@@ -488,6 +530,7 @@ class CountryTests(unittest.TestCase):
         report = country.diagnose(self.root)
         self.assertFalse(report['enigma_alternative_recovery_possible'])
         self.assertTrue(report['pending_country_switch_safe'])
+        self.assertTrue(report['bouquet_group_marker_compatible'])
         result = country.refresh(self.root, now=NOW + country.RETRY, browser=browser)
         self.assertEqual(result['country'], 'CZ')
         self.assertEqual(country.active_country(self.root), 'CZ')
