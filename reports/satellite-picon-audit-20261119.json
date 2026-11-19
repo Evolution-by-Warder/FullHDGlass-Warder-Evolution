@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "VERIFIED_FOR_ATOMIC_PUBLICATION",
+  "status": "PRODUCTION_REPAIR_VERIFIED",
   "date": "2026-11-19",
   "source_commit": "5ba72330557e31973439407fbc17671e3d52c589",
   "verified_references": 20,
@@ -16,975 +16,975 @@
   "ipk_changed": false,
   "packages": [
     {
-      "selector_id": "70W",
-      "resolution": "220x132",
-      "family": "channel-transparent",
-      "old_filename": "warder-70w-220x132-transparent-ba6354c26256f83d.zip",
-      "new_filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip",
-      "png_count": 2314,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 25636014,
-      "sha256": "89ffbd272b29dc5a002337367c7125b6109cdefa43a6fda6a973a116ca72a3eb",
-      "parts": 10
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "220x132",
-      "family": "channel-white",
-      "old_filename": "warder-70w-220x132-white-037bb94ef361b411.zip",
-      "new_filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip",
-      "png_count": 2314,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 52293590,
-      "sha256": "8cb84ac06a86f8bf39e8b4205a34f5ed0b131d1c86b0bb286936f6e9bf2cbea2",
-      "parts": 16
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "220x132",
-      "family": "channel-black",
-      "old_filename": "warder-70w-220x132-black-8223d4bcde17d931.zip",
-      "new_filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip",
-      "png_count": 2314,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 57263136,
-      "sha256": "8b4a1ccd756ab6585a852e8abb2c868eaa124ca2f93b3728adc7c8e9f6ea46dd",
-      "parts": 18
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "50x30",
-      "family": "channel-transparent",
-      "old_filename": "warder-70w-50x30-transparent-b6ef8c30edffb41c.zip",
-      "new_filename": "warder-70w-50x30-transparent-1f93d77691570098.zip",
-      "png_count": 2258,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 3442303,
-      "sha256": "1f93d77691570098514202ce44613c9637be1513717fb9edf783713de87278d8",
-      "parts": 5
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "50x30",
-      "family": "channel-white",
-      "old_filename": "warder-70w-50x30-white-e44cdfb95699dc07.zip",
-      "new_filename": "warder-70w-50x30-white-0ab98768e5a9cd91.zip",
-      "png_count": 2258,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 4190129,
-      "sha256": "0ab98768e5a9cd91777f84b27a6d007e61631018d9c4c232b3d2540f9b5baed7",
-      "parts": 5
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "50x30",
-      "family": "channel-black",
-      "old_filename": "warder-70w-50x30-black-15a8191b1d7db924.zip",
-      "new_filename": "warder-70w-50x30-black-1b8b4ee0515c3ccb.zip",
-      "png_count": 2258,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 4271670,
-      "sha256": "1b8b4ee0515c3ccb1e420f1befd068718209b69adb7e5842016315d3c469b0b8",
-      "parts": 5
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "400x240",
-      "family": "channel-transparent",
-      "old_filename": "warder-70w-400x240-transparent-aaae0c77aa0daee6.zip",
-      "new_filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip",
-      "png_count": 2258,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 70973521,
-      "sha256": "c74cdbc8e9b9adfe9870dc78f307d831d45d753ba4481c31824281024a0998d1",
-      "parts": 21
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "400x240",
-      "family": "channel-white",
-      "old_filename": "warder-70w-400x240-white-00d46732523006e4.zip",
-      "new_filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip",
-      "png_count": 2258,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 69531403,
-      "sha256": "15fa8aaa13781fe4e50a2d9505d957d717f585f0d9a7e6d0c90cb9a1e4970d9c",
-      "parts": 21
-    },
-    {
-      "selector_id": "70W",
-      "resolution": "400x240",
-      "family": "channel-black",
-      "old_filename": "warder-70w-400x240-black-93d33a79dc66b965.zip",
-      "new_filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip",
-      "png_count": 2258,
-      "added": 12,
-      "replaced": 7,
-      "bytes": 66899684,
-      "sha256": "4c867e5f177a7a850a9948b8e6dcb87e47fbec7795104fbf88943d6e24e63bce",
-      "parts": 21
-    },
-    {
       "selector_id": "530E",
       "resolution": "220x132",
       "family": "channel-transparent",
       "old_filename": "warder-530e-220x132-transparent-32b8a935cdbf7cb3.zip",
-      "new_filename": "warder-530e-220x132-transparent-9a4aa119c4c2202c.zip",
+      "new_filename": "warder-530e-220x132-transparent-6c64d7c552ea7749.zip",
       "png_count": 75,
-      "added": 1,
-      "replaced": 0,
       "bytes": 672921,
-      "sha256": "9a4aa119c4c2202c1c39d5c2062f88589caac4f6d6a68ee932484500db5bc95b",
-      "parts": 3
-    },
-    {
-      "selector_id": "530E",
-      "resolution": "220x132",
-      "family": "channel-white",
-      "old_filename": "warder-530e-220x132-white-b40196d2ff141697.zip",
-      "new_filename": "warder-530e-220x132-white-beac2edb6d139686.zip",
-      "png_count": 75,
+      "sha256": "6c64d7c552ea77493b010503ad708c4381b4e7bfa2ddeff7d16c265a6f412e5f",
+      "parts": 3,
       "added": 1,
-      "replaced": 0,
-      "bytes": 2017374,
-      "sha256": "beac2edb6d139686ee639666b5e5bce6a17a46f4059eac67264d09a78250d9de",
-      "parts": 2
+      "replaced": 0
     },
     {
       "selector_id": "530E",
       "resolution": "220x132",
       "family": "channel-black",
       "old_filename": "warder-530e-220x132-black-24feafc1740a461f.zip",
-      "new_filename": "warder-530e-220x132-black-1295f9788b8e47bc.zip",
+      "new_filename": "warder-530e-220x132-black-f327b4b4051c8a2f.zip",
       "png_count": 75,
-      "added": 1,
-      "replaced": 0,
       "bytes": 2107255,
-      "sha256": "1295f9788b8e47bc3930b4d3bd2a7bc0d85eba515e8dff35ca054c0a778f315b",
-      "parts": 2
+      "sha256": "f327b4b4051c8a2f08b61d6ccc51f200d91c5ee69ab6594fe53f8eb20e10b495",
+      "parts": 2,
+      "added": 1,
+      "replaced": 0
+    },
+    {
+      "selector_id": "530E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "old_filename": "warder-530e-220x132-white-b40196d2ff141697.zip",
+      "new_filename": "warder-530e-220x132-white-be75fc3806c49875.zip",
+      "png_count": 75,
+      "bytes": 2017374,
+      "sha256": "be75fc3806c49875f82a038a56d4918cfe8a4aac8fa9d20f5cfb2f771a5495a1",
+      "parts": 2,
+      "added": 1,
+      "replaced": 0
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "old_filename": "warder-70w-220x132-transparent-ba6354c26256f83d.zip",
+      "new_filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip",
+      "png_count": 2314,
+      "bytes": 25636181,
+      "sha256": "8c65189c5af835f7d9ea48c57a100bb2afdd2336dd146e17e0a5eee42d274fd7",
+      "parts": 10,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "old_filename": "warder-70w-220x132-black-8223d4bcde17d931.zip",
+      "new_filename": "warder-70w-220x132-black-5eeaae738766ab21.zip",
+      "png_count": 2314,
+      "bytes": 57263136,
+      "sha256": "5eeaae738766ab212c4a04de995cb4566b37bef32d15ecc2268bba21ecb36523",
+      "parts": 18,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "old_filename": "warder-70w-220x132-white-037bb94ef361b411.zip",
+      "new_filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip",
+      "png_count": 2314,
+      "bytes": 52293590,
+      "sha256": "3ce1a1e398b2db007a835791ff3409a99de6318937d3e51089e5c7a8e4db5235",
+      "parts": 16,
+      "added": 12,
+      "replaced": 7
     },
     {
       "selector_id": "530E",
       "resolution": "50x30",
       "family": "channel-transparent",
       "old_filename": "warder-530e-50x30-transparent-90818cf7233bb6c6.zip",
-      "new_filename": "warder-530e-50x30-transparent-f4ee70169fd6e002.zip",
+      "new_filename": "warder-530e-50x30-transparent-1452acd6abe46b45.zip",
       "png_count": 74,
-      "added": 1,
-      "replaced": 0,
       "bytes": 122057,
-      "sha256": "f4ee70169fd6e0026f3e2f496bddfdcb3211c5b1add3221663ad27e6cf897afd",
-      "parts": 3
+      "sha256": "1452acd6abe46b45a3be8609db34d2bcc4c0a45959889be6598d5e3ddc10b458",
+      "parts": 3,
+      "added": 1,
+      "replaced": 0
     },
     {
       "selector_id": "530E",
       "resolution": "50x30",
       "family": "channel-white",
       "old_filename": "warder-530e-50x30-white-bdf94d4456a24c1c.zip",
-      "new_filename": "warder-530e-50x30-white-b98090336dfac012.zip",
+      "new_filename": "warder-530e-50x30-white-b9f8023c7e8e7729.zip",
       "png_count": 74,
-      "added": 1,
-      "replaced": 0,
       "bytes": 158782,
-      "sha256": "b98090336dfac01290687e6845ca1eb4a7f4a0d22eea9b7f171c3e22a6598bda",
-      "parts": 3
+      "sha256": "b9f8023c7e8e7729b7988ba972695e32c4e80f4de2d476fc1f43a64147089ca9",
+      "parts": 3,
+      "added": 1,
+      "replaced": 0
     },
     {
       "selector_id": "530E",
       "resolution": "50x30",
       "family": "channel-black",
       "old_filename": "warder-530e-50x30-black-880d3f700289d911.zip",
-      "new_filename": "warder-530e-50x30-black-2c1ddd224357b3cd.zip",
+      "new_filename": "warder-530e-50x30-black-1bf8491794290ca3.zip",
       "png_count": 74,
-      "added": 1,
-      "replaced": 0,
       "bytes": 168224,
-      "sha256": "2c1ddd224357b3cde7781067f27fe4baeffdc5f75b0ea5459874b95d0ad13fc7",
-      "parts": 3
+      "sha256": "1bf8491794290ca35e910e5d3e5367d9bca13c82a7b30dc9ae413aea63b23f0f",
+      "parts": 3,
+      "added": 1,
+      "replaced": 0
     },
     {
       "selector_id": "530E",
       "resolution": "400x240",
       "family": "channel-transparent",
       "old_filename": "warder-530e-400x240-transparent-ba2346fb72b35add.zip",
-      "new_filename": "warder-530e-400x240-transparent-98acb938c35600ff.zip",
+      "new_filename": "warder-530e-400x240-transparent-89a266740f81d93f.zip",
       "png_count": 74,
+      "bytes": 2480107,
+      "sha256": "89a266740f81d93f3db428bcd9cd6b49c8fe5a1c0fc1fc542e20a0bca541be23",
+      "parts": 3,
       "added": 1,
-      "replaced": 0,
-      "bytes": 2480093,
-      "sha256": "98acb938c35600ff9c5c544f0b6614d47ee6193f7625183a9ad53f9b9d0b2c03",
-      "parts": 3
+      "replaced": 0
     },
     {
       "selector_id": "530E",
       "resolution": "400x240",
       "family": "channel-white",
       "old_filename": "warder-530e-400x240-white-821bd7ff4ad0e789.zip",
-      "new_filename": "warder-530e-400x240-white-93a3d86c1261f7a4.zip",
+      "new_filename": "warder-530e-400x240-white-e1f42545b1430ad0.zip",
       "png_count": 74,
-      "added": 1,
-      "replaced": 0,
       "bytes": 3381092,
-      "sha256": "93a3d86c1261f7a4a90d6cc47aa9659f195f400831f7edd51b709f83c7cc44e8",
-      "parts": 3
+      "sha256": "e1f42545b1430ad0350485d0f6bb67d3fcb51a6508257b9e3a69df1bfd4c5af2",
+      "parts": 3,
+      "added": 1,
+      "replaced": 0
     },
     {
       "selector_id": "530E",
       "resolution": "400x240",
       "family": "channel-black",
       "old_filename": "warder-530e-400x240-black-28e1483992861a8a.zip",
-      "new_filename": "warder-530e-400x240-black-722eaa3ad4ea3232.zip",
+      "new_filename": "warder-530e-400x240-black-e9d3cabaff4ff8e6.zip",
       "png_count": 74,
-      "added": 1,
-      "replaced": 0,
       "bytes": 3310269,
-      "sha256": "722eaa3ad4ea3232afd9be5ef6fcbf85120ed412f353927a7a8c7bcc862b921b",
-      "parts": 3
+      "sha256": "e9d3cabaff4ff8e679a4ec9ecddb011354a5c57fd8d48a9df3c0b9ca9d371ee0",
+      "parts": 3,
+      "added": 1,
+      "replaced": 0
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "old_filename": "warder-70w-50x30-transparent-b6ef8c30edffb41c.zip",
+      "new_filename": "warder-70w-50x30-transparent-515663c655c33216.zip",
+      "png_count": 2258,
+      "bytes": 3442344,
+      "sha256": "515663c655c33216b4ede37c5dc54f1c2bbe47f264697283e84350c6aeb16e68",
+      "parts": 5,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "old_filename": "warder-70w-50x30-white-e44cdfb95699dc07.zip",
+      "new_filename": "warder-70w-50x30-white-11c3c009d8408a29.zip",
+      "png_count": 2258,
+      "bytes": 4190129,
+      "sha256": "11c3c009d8408a29b0b485155aac72926b65f51499ef7797ebe649a04114c85b",
+      "parts": 5,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "old_filename": "warder-70w-50x30-black-15a8191b1d7db924.zip",
+      "new_filename": "warder-70w-50x30-black-0de1979d55905500.zip",
+      "png_count": 2258,
+      "bytes": 4271670,
+      "sha256": "0de1979d55905500697237c21c6461f87e74356706e37a00b7e4d990e7db69a1",
+      "parts": 5,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "old_filename": "warder-70w-400x240-transparent-aaae0c77aa0daee6.zip",
+      "new_filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip",
+      "png_count": 2258,
+      "bytes": 70974573,
+      "sha256": "2de70aa16ffd6570d78ed10f913a7ded35514fbac4167d65fc0147b1176f315e",
+      "parts": 21,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "old_filename": "warder-70w-400x240-white-00d46732523006e4.zip",
+      "new_filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip",
+      "png_count": 2258,
+      "bytes": 69531403,
+      "sha256": "4e4b07ace2fa91bf43a5b19bcb30d1606e37fb3a93fd0a55aac714d9d203dbd9",
+      "parts": 21,
+      "added": 12,
+      "replaced": 7
+    },
+    {
+      "selector_id": "70W",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "old_filename": "warder-70w-400x240-black-93d33a79dc66b965.zip",
+      "new_filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip",
+      "png_count": 2258,
+      "bytes": 66899684,
+      "sha256": "816c3e9aa10fc783f03a7c000680f94a0c3dda66bec5f094ece45bfee0b23709",
+      "parts": 21,
+      "added": 12,
+      "replaced": 7
     }
   ],
   "new_parts": [
     {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part00",
-      "bytes": 2563602,
-      "sha256": "5ea6c16191ccd5a707cbe05d88afca546f5b201137adb8bb6f196841d6c4fb7b"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part01",
-      "bytes": 2563602,
-      "sha256": "a5543693ca319959dcb1ae87d7e8204d884302ffb48e15124e355f36898be23f"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part02",
-      "bytes": 2563602,
-      "sha256": "4ce8979539df6f0b9eacb04d59705eb1518c83f7b74ffdd5c1ca76009ea03097"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part03",
-      "bytes": 2563602,
-      "sha256": "e79ffee08a16ab034899f5e09349b2f2ea4a2fc3473e22401c592df549f83f28"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part04",
-      "bytes": 2563602,
-      "sha256": "c39092dad105661acbf7881b3a1cf2b810538e27171232e9f7486996cde2153d"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part05",
-      "bytes": 2563602,
-      "sha256": "2ced191999a70c06539a6bc72bc5d032286b54a79357a21831a858a29946209d"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part06",
-      "bytes": 2563602,
-      "sha256": "93b5ec9d19328a71e990fbf6bc7e0d4047030f41852d6d6257479822f9f437d1"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part07",
-      "bytes": 2563602,
-      "sha256": "e9c730f98fa9fb8ab8f6910502ac1b9794f804911510a210c0133f63adc01049"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part08",
-      "bytes": 2563602,
-      "sha256": "4afd3c56b7164389102817baf9279b73c8bf47ee608775c85429f61597cee861"
-    },
-    {
-      "filename": "warder-70w-220x132-transparent-89ffbd272b29dc5a.zip.part09",
-      "bytes": 2563596,
-      "sha256": "54cfb6f1631f2d4b8cf744325fc5b1b7658dca3d42761714f275ae5994ef2f8b"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part00",
-      "bytes": 3268350,
-      "sha256": "ac75a653ed90e6aad73776a4e9f42e7177ddca3cd30563f7ee28bb23c5482ccc"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part01",
-      "bytes": 3268350,
-      "sha256": "7a47a9911f7dcfae1411d0983cef55552d675cc67f16717a7b5cc323330c82a9"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part02",
-      "bytes": 3268350,
-      "sha256": "19ac31f7293385a9436ad78382a71739e8aa4d16f5efbafd8022441ea7cdf3a6"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part03",
-      "bytes": 3268350,
-      "sha256": "2cfeecaabe974f66ffe730778eb9647519183472de966454fc9879aee371506b"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part04",
-      "bytes": 3268350,
-      "sha256": "4ace0b86793b99368cffb82ddaf54f712ee1268d9dc1f205daba07d210837e09"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part05",
-      "bytes": 3268350,
-      "sha256": "1fa54407cc2b418551c585c6821ab2f71e0a3ad47ea30664556862b5ba3ecf47"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part06",
-      "bytes": 3268350,
-      "sha256": "20325f2f1e5a063cbddb885ba932fd371056736fcfafbcacc08955ac3394698e"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part07",
-      "bytes": 3268350,
-      "sha256": "8e7f9b48f1f3e0a2d8535331dacb0f94aa3119949d180e85d4a8b4e3da3738ec"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part08",
-      "bytes": 3268350,
-      "sha256": "ad00219cff59f9f8a7afc941e065e67170b93a9bce02137965b93b8219848131"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part09",
-      "bytes": 3268350,
-      "sha256": "a2c645fea1223ed8fcb0a9314a374b9ecce392ec326e7d1b12a4ef014f7ba3fc"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part10",
-      "bytes": 3268350,
-      "sha256": "b00df9f6312a5837ad4797c110635dd5e399147816ba409e6aaf6ca9b232fe95"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part11",
-      "bytes": 3268350,
-      "sha256": "3843a6a740c1c47cb8464efe1c4248732f9a0d2899032d033b4f741839281a66"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part12",
-      "bytes": 3268350,
-      "sha256": "99770e6904c57f869c5f6de4dc0cbff21019072597b08bc0feec0cee55e4aced"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part13",
-      "bytes": 3268350,
-      "sha256": "639da9a8ecb9c2fecc2568037c18b5ff7eab86bb105251807b9562d138f7da04"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part14",
-      "bytes": 3268350,
-      "sha256": "32c2f59f7e913c8885af2770c76cadedad0c1abcd31da8887d8b5f0f3a31bb00"
-    },
-    {
-      "filename": "warder-70w-220x132-white-8cb84ac06a86f8bf.zip.part15",
-      "bytes": 3268340,
-      "sha256": "61851f9402506f798a9b6cf274169a3502dee6dc15dd07941e09d6c5b6e7494f"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part00",
-      "bytes": 3181286,
-      "sha256": "e4bb4b7bf0c6e79ee0684f23193549945d7d7463893a96939b19b152fb506e8f"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part01",
-      "bytes": 3181286,
-      "sha256": "a036cda91c0b3d17d75bb1cc40aae3bd8f6ee959a8c13bae5511adcd16504b10"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part02",
-      "bytes": 3181286,
-      "sha256": "acc86324432f0659ad86b5290b13651e7abc7430fbb5097a1a9494546cb27e1f"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part03",
-      "bytes": 3181286,
-      "sha256": "085321f6a4cc39fe0d866c9373da01f5c75bf14128076eee4548bebfd3ff95aa"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part04",
-      "bytes": 3181286,
-      "sha256": "273ecc42a34716ee0b7a44ceb6a975f4ce944c3971d97e860c7c45f9d1461e1c"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part05",
-      "bytes": 3181286,
-      "sha256": "0e8bd28199bfb286195fd0e631b164e9c715e300c72d93bc5a25023e37e73165"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part06",
-      "bytes": 3181286,
-      "sha256": "5a9b348d766f47b79b976cb5de31e801e63a4ad0e509503c3c8a7fa84ece66ee"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part07",
-      "bytes": 3181286,
-      "sha256": "b608d1c5ec1be6d81639c44ad68dd5c8900dbdd3d33ea2a33e3d4c24d1b23c12"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part08",
-      "bytes": 3181286,
-      "sha256": "b5cb5f721fc3ae6dcc1b774fb5b6ba9183c900b9f860ee4c05fdc789779a0fe7"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part09",
-      "bytes": 3181286,
-      "sha256": "1af6d3888e87532f9b4528fc96ce50f2e63ad4ffa8179064cbd3217975b5b43d"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part10",
-      "bytes": 3181286,
-      "sha256": "53d74a27bdfcfdf1a8c6209621197bea87b3b2094fc2dc383f3db2318bf95233"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part11",
-      "bytes": 3181286,
-      "sha256": "d9c94b08255258052ce6bfef68a9af2f1697dd9875cc3c0b77e72f9f8aeb7f2b"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part12",
-      "bytes": 3181286,
-      "sha256": "ec48e31371751795e4336bbeed2e6927ff71baaa8f9b2307d17ababe2f829f1e"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part13",
-      "bytes": 3181286,
-      "sha256": "0377afe171803584cf9748aeb133536b90caf0045a33ec01d552ede6a61e3787"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part14",
-      "bytes": 3181286,
-      "sha256": "f767ae2a64fe99ab5c62cbc2ae11834b3f320e9429f6928e561f1ba148bc2a40"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part15",
-      "bytes": 3181286,
-      "sha256": "65b0786dc55e74916bfceab43c2ace5bafcb328dcee84b8abc522ae9a212f285"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part16",
-      "bytes": 3181286,
-      "sha256": "3cc07426fc4dfc7d027e65c5d93c2445cf348c96d6ccc30b3d9f1334fbf43437"
-    },
-    {
-      "filename": "warder-70w-220x132-black-8b4a1ccd756ab658.zip.part17",
-      "bytes": 3181274,
-      "sha256": "4849ac02bf9491478154b35d1d923f1f8de0d402348b9d6661225c2f00bfa620"
-    },
-    {
-      "filename": "warder-70w-50x30-transparent-1f93d77691570098.zip.part00",
-      "bytes": 688461,
-      "sha256": "393c764fe5aee38d31c8b32e3f7fa2923c0830b14103c7500dc59bc3ae86830e"
-    },
-    {
-      "filename": "warder-70w-50x30-transparent-1f93d77691570098.zip.part01",
-      "bytes": 688461,
-      "sha256": "a0a170b8b8fd2e869303516675c31b689f7a71b2f7e72137ae6b5d39d2cbc898"
-    },
-    {
-      "filename": "warder-70w-50x30-transparent-1f93d77691570098.zip.part02",
-      "bytes": 688461,
-      "sha256": "da589b46e2da7c79f419c9a6f91049610261d93aa74e5050daf9c4d2e7a40893"
-    },
-    {
-      "filename": "warder-70w-50x30-transparent-1f93d77691570098.zip.part03",
-      "bytes": 688461,
-      "sha256": "cff1873a35c6add5de212cf2107562267ea7020d25d051a942d5c055b10bf129"
-    },
-    {
-      "filename": "warder-70w-50x30-transparent-1f93d77691570098.zip.part04",
-      "bytes": 688459,
-      "sha256": "1cb1e09f07e439b0f6d3b9cc1f8b7644ed38f648b47db48c541959e7f4ab8ccd"
-    },
-    {
-      "filename": "warder-70w-50x30-white-0ab98768e5a9cd91.zip.part00",
-      "bytes": 838026,
-      "sha256": "e3842046f033359ff79a8401c151bc7953966d8ed5648dfe5ce844d9002f5700"
-    },
-    {
-      "filename": "warder-70w-50x30-white-0ab98768e5a9cd91.zip.part01",
-      "bytes": 838026,
-      "sha256": "2a927e7ecb1e12bca90b5f3948351236df8261f6f9b76f11ea0e6f4c60bc696a"
-    },
-    {
-      "filename": "warder-70w-50x30-white-0ab98768e5a9cd91.zip.part02",
-      "bytes": 838026,
-      "sha256": "23bfd84579117a69268c8d6a53e86cc565f83d83c2c3a4047588d84ba5a54ff3"
-    },
-    {
-      "filename": "warder-70w-50x30-white-0ab98768e5a9cd91.zip.part03",
-      "bytes": 838026,
-      "sha256": "f08909710050c455ec1cd9e1b69319a4db54d403948b61d92f1b83d83a654c46"
-    },
-    {
-      "filename": "warder-70w-50x30-white-0ab98768e5a9cd91.zip.part04",
-      "bytes": 838025,
-      "sha256": "8da98f6e70e5064a61c557880cb997ce191d9bc922d3e692cb59e8b62dd5a1ba"
-    },
-    {
-      "filename": "warder-70w-50x30-black-1b8b4ee0515c3ccb.zip.part00",
-      "bytes": 854334,
-      "sha256": "a6167b44e92fcb6f426daa2a60f1ef35d0aad22973cca92cfc506cf02a42334a"
-    },
-    {
-      "filename": "warder-70w-50x30-black-1b8b4ee0515c3ccb.zip.part01",
-      "bytes": 854334,
-      "sha256": "84454172cd10770db21f00f825e80f090cf6c5c7ed9420059544563dccbc26a5"
-    },
-    {
-      "filename": "warder-70w-50x30-black-1b8b4ee0515c3ccb.zip.part02",
-      "bytes": 854334,
-      "sha256": "192e8308deeabee5e6042a013516c67fe6f84473394ebc51c71fe7371b0fca01"
-    },
-    {
-      "filename": "warder-70w-50x30-black-1b8b4ee0515c3ccb.zip.part03",
-      "bytes": 854334,
-      "sha256": "0671fd68f45585930090930b3ec89eb9c4a875107d78c92fa14fa9acbfa33235"
-    },
-    {
-      "filename": "warder-70w-50x30-black-1b8b4ee0515c3ccb.zip.part04",
-      "bytes": 854334,
-      "sha256": "591c0cbc5f93096e79baa3904d7d1938d8cd7c8261c99cd0992d691a9d30ccc6"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part00",
-      "bytes": 3379692,
-      "sha256": "bca41f0f7c45b3cb38e814323bc2637b732f386bf5c323d50d8f5bd935462344"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part01",
-      "bytes": 3379692,
-      "sha256": "ce285a74da4452dabf50e31ba04ac7e89fd61407bdfeadccfaa1421b9a84b0e1"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part02",
-      "bytes": 3379692,
-      "sha256": "ce47eb5a02b8bb1328015e1d8e5123daf6bc36fa2abb0a012b6eeae762319884"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part03",
-      "bytes": 3379692,
-      "sha256": "350dad5b551fdcb7c44f0c03abada712a0d07f3630208cf6453c86029aa8469f"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part04",
-      "bytes": 3379692,
-      "sha256": "4a7b5a0e9b5f203b1aacbb063b522e332f45c9290fb006dcebfaee6cba9be928"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part05",
-      "bytes": 3379692,
-      "sha256": "cd4d839391431a4edbf5439658fe71ae3d6fbfa247c32e15eb1407ffc2b73a8d"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part06",
-      "bytes": 3379692,
-      "sha256": "ef224c698159461c48a668381da290b7c15cdbcaa3583337e96339ddda0fa18d"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part07",
-      "bytes": 3379692,
-      "sha256": "1a2af237be3201a99d5fabcc53103edaaebd25216d39d82d7ec126805501b2e8"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part08",
-      "bytes": 3379692,
-      "sha256": "f60715822b41a8fa3665e676a746b68c5b03d9bd31c44ebf94306e6bae98d2c8"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part09",
-      "bytes": 3379692,
-      "sha256": "91088a68e418f382d4f40ba3e5c79c6b033436b3ebb0f6898b43bbf63e9a5908"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part10",
-      "bytes": 3379692,
-      "sha256": "6ee80a835daf6ea9514b4c617434cd4dfb2b539b43c5ab403c01d06f303a2ab5"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part11",
-      "bytes": 3379692,
-      "sha256": "856748ae629e60f2d536dc4270cfa75fc1608d7a099e1d7efaee7147e677026b"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part12",
-      "bytes": 3379692,
-      "sha256": "c1df78de3605de8b89bf18254579c075a47d450c76315bda531129aa8101f9ed"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part13",
-      "bytes": 3379692,
-      "sha256": "71e42cc5c7f0a510b3c982de64ff92fbdf5ec68b13124ad83ab71348c5dddee2"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part14",
-      "bytes": 3379692,
-      "sha256": "2e18cb2976533eabec4951fca6019a909257b88139c7d567e8308e0f1d04d059"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part15",
-      "bytes": 3379692,
-      "sha256": "34bdaa5abb83926e25f4dca7ef9f5df1afb6f28e7618ec51b20bc0fe976060fe"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part16",
-      "bytes": 3379692,
-      "sha256": "2a6ecab63865d67b3b37704df34f9a1571cc1bde34c132b95e32361f26aef31a"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part17",
-      "bytes": 3379692,
-      "sha256": "277b1d2c8edc9702bb13a8cfe1f05760c463151ec9e90fe91a1a765b85c99926"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part18",
-      "bytes": 3379692,
-      "sha256": "9d337ebefe7297dc9fbd7b8750e2698917517f45d048d8e2d9adbda80751f75f"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part19",
-      "bytes": 3379692,
-      "sha256": "4ec0b86c92f0aaddb5729eb20c146d1918caa8265eefdf7777baf996bce2f99e"
-    },
-    {
-      "filename": "warder-70w-400x240-transparent-c74cdbc8e9b9adfe.zip.part20",
-      "bytes": 3379681,
-      "sha256": "f7f8f955536f3e99d4f687eb47fbc2b925d448fd1aa227fc439ddab00b1457eb"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part00",
-      "bytes": 3311020,
-      "sha256": "594f6755ecfb3cafd6435912dae33066b9706201623d4f1ba0220bb3079ca732"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part01",
-      "bytes": 3311020,
-      "sha256": "1119ff7d89839b1a5e619d068fe2e125f9ac7399aef7bfc629d995e5be40da98"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part02",
-      "bytes": 3311020,
-      "sha256": "79b5f444a07e7fcd04fbac2701e6597d8d519aa9fbb94c73850916fdfaf98fb1"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part03",
-      "bytes": 3311020,
-      "sha256": "c990333758966cf8b9438cba055b4574b7d23b0ba94c438d939f7c1a6ed129ed"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part04",
-      "bytes": 3311020,
-      "sha256": "293cc36bb5a9c6c8a262b5ecdb8dd112db59ddb0f2132034720c479778e287c4"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part05",
-      "bytes": 3311020,
-      "sha256": "dcf2b4c91d202bdf5e7c509749f2345943b3514573ea686a6f26e84fc53df559"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part06",
-      "bytes": 3311020,
-      "sha256": "c4bf6cc4ac89678f7a1fc0bc2a3501f67eb715efb163b5aee13873f7d3dd1474"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part07",
-      "bytes": 3311020,
-      "sha256": "571448b42a1b6a469d57a101899ef80d8a2de083d27f4eba03b07ce7ea20e1ee"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part08",
-      "bytes": 3311020,
-      "sha256": "c7eab763f3af669bfec18518b3c659382c13dbe0a464bcd45b7d0dbed47ec005"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part09",
-      "bytes": 3311020,
-      "sha256": "1ca3fa964a7b7ebd111780d62750b4fdee07eca6c8adc451e0d3ff42016ed9c8"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part10",
-      "bytes": 3311020,
-      "sha256": "f438a6ff5da6a95de9a380b58ea7df8619f8b518f491b62a25356f6706f24776"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part11",
-      "bytes": 3311020,
-      "sha256": "049f8404a47a20999ffde390da128f4fcd25ef26d7699d016bd61999ca2fe344"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part12",
-      "bytes": 3311020,
-      "sha256": "04d591daf4ca34d06f8e2d77e5d8bd65839b4c5cd7a6adb3465209da97ddf6cf"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part13",
-      "bytes": 3311020,
-      "sha256": "fe43aab8a17b0e456fbc56f25e44c5581cd7e4005d742c66b3270c973e485249"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part14",
-      "bytes": 3311020,
-      "sha256": "3dfb37d9c39ec383c7f8d5b44dc0730a0974767c46974c27ef7bab44bbb718b7"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part15",
-      "bytes": 3311020,
-      "sha256": "dff43628071dcf2346c08785a53fb453933b99922dc23ed1d32ebf9c7564904b"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part16",
-      "bytes": 3311020,
-      "sha256": "02c2ba62b28ca530f354aaa22f47769c8937bd3f9a0c683d296dd944189fa6cb"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part17",
-      "bytes": 3311020,
-      "sha256": "45c2dafee89f63cb016331ee4a1c811346406c1d14301c6351f7a24cc392169c"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part18",
-      "bytes": 3311020,
-      "sha256": "0ffb8afdaa01854cf26d6dca89a9c9284cb8a8a4591b6a467a63d4b032e4eca4"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part19",
-      "bytes": 3311020,
-      "sha256": "e92b76ac225178889b2851286748bf6f9b690f34d59f54005f0cde0d4a08b74d"
-    },
-    {
-      "filename": "warder-70w-400x240-white-15fa8aaa13781fe4.zip.part20",
-      "bytes": 3311003,
-      "sha256": "d2f8eb89d41c017e7fb7cdcad57a5199317e4f9f89c6764a227394e2d7be7145"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part00",
-      "bytes": 3185700,
-      "sha256": "80eea00448b519323efc7c22f4b3d3ee4a25daa4f4de7d222cd8a14b17f2b156"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part01",
-      "bytes": 3185700,
-      "sha256": "4cf3f5cc5ace3c7dcc857a669bff8ed2e316b9c3e27fa3d0e417a4b4c7532f1b"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part02",
-      "bytes": 3185700,
-      "sha256": "63efc2b8a5fa25950757aefa3866fd83e866e8bf9c3900487b3931958c9571f1"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part03",
-      "bytes": 3185700,
-      "sha256": "ae800e90082fa5bf69be2b6899ed0abd39967433cfcc8cabaef5becdaa34d27a"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part04",
-      "bytes": 3185700,
-      "sha256": "eefd9ecafd43a3d77f235c16efcc8b345c0ecc30282500e0b1308e022593eed8"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part05",
-      "bytes": 3185700,
-      "sha256": "69cdc596d32bcc8dcb57cd9e045d7481f727adfe0cbcdb9563ed7393b1c78538"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part06",
-      "bytes": 3185700,
-      "sha256": "1c2cc3e0b9162130a6ccccc928a0a98a01304d4940bcbddcb7d436673a2c0bfa"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part07",
-      "bytes": 3185700,
-      "sha256": "95eff4700f6774b8e61f72769e7d8fde439f30861e3dbf3c4fd509b7c60db12d"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part08",
-      "bytes": 3185700,
-      "sha256": "1a39737794cac775315f640e831bf10efde7dfd6e4c5c069ecbde0d3b5c97c84"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part09",
-      "bytes": 3185700,
-      "sha256": "c54dc4dda09f91f05c16f251824dbc6bd3ee81005785e53bc4adadc27e742e64"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part10",
-      "bytes": 3185700,
-      "sha256": "17a4a10820b7246f52a6fa15eb7d73a659b7d1b6827fceb6f7d680679f616c27"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part11",
-      "bytes": 3185700,
-      "sha256": "10db02348b8bdf12417d5a11e1f06afe7bee6eea9a3869178cba8a6a2401d56e"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part12",
-      "bytes": 3185700,
-      "sha256": "b0b0b6c48531f7b4bc1ba247d193841ff3fe39132cb31f502a7697ae4f47e2c7"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part13",
-      "bytes": 3185700,
-      "sha256": "a4cd2c43f8e7da68291ba221e1bb1efec74252338c8e7c90954ca3bcab5bd76c"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part14",
-      "bytes": 3185700,
-      "sha256": "50523596c646a72224dc318920514e18c4e893d300ca26eedc09ff10cbdc850d"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part15",
-      "bytes": 3185700,
-      "sha256": "38b92dcb049d9c7e4942a5f0d24ff02ae5befba1aec8b652a90a002185e46e3e"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part16",
-      "bytes": 3185700,
-      "sha256": "df443cb116872e08455b2a077bba9d7d258d23f179869c5cfa044559f5fb6ee2"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part17",
-      "bytes": 3185700,
-      "sha256": "180e2ace8499582a410112d7b8f921abf640e0704be71d5daf92798436cbaa2c"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part18",
-      "bytes": 3185700,
-      "sha256": "0969c6271256ac4b5cbce471b2d5db47636fae4c060309df91ea085905c8738d"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part19",
-      "bytes": 3185700,
-      "sha256": "df17a4609dae91b92f0281bf44a714d81aa4800ba16ab60d177c85bebaf9a71a"
-    },
-    {
-      "filename": "warder-70w-400x240-black-4c867e5f177a7a85.zip.part20",
-      "bytes": 3185684,
-      "sha256": "acf3953c00fa7c3bea7ae50de3b2572635eccec34c1420c4f05d8ffc696c9bad"
-    },
-    {
-      "filename": "warder-530e-220x132-transparent-9a4aa119c4c2202c.zip.part00",
       "bytes": 224307,
-      "sha256": "a806cdd8eb0e876da4e447d5adcbb4a5c7c0df947d5af7301da37aceb511fd94"
+      "filename": "warder-530e-220x132-transparent-6c64d7c552ea7749.zip.part00",
+      "sha256": "94ba0f695156140c3a114bebd82a973c21b10647601395219ad745665bbc797a"
     },
     {
-      "filename": "warder-530e-220x132-transparent-9a4aa119c4c2202c.zip.part01",
       "bytes": 224307,
-      "sha256": "be27ac96587b99400831448f74ff9a1087a91966a6f3dffefc1735421efc0a2c"
+      "filename": "warder-530e-220x132-transparent-6c64d7c552ea7749.zip.part01",
+      "sha256": "86ee142c1aaed4888ba7630c145dd4ad372511fec0eb5ed90863c418d7f221bf"
     },
     {
-      "filename": "warder-530e-220x132-transparent-9a4aa119c4c2202c.zip.part02",
       "bytes": 224307,
-      "sha256": "e8b27fbacfe5ccd67f70285e18eefca27b11ac9a4c6288063d240a9d1c71ead9"
+      "filename": "warder-530e-220x132-transparent-6c64d7c552ea7749.zip.part02",
+      "sha256": "c1deb22a3742e8c8ed4c4d85f6aeebbae42a1d9a579f57a7dc5b5dd77ef080f2"
     },
     {
-      "filename": "warder-530e-220x132-white-beac2edb6d139686.zip.part00",
-      "bytes": 1008687,
-      "sha256": "efc3d754d0a15e10cc5228e69524585e1ecc165496760b10385af3244c7c077f"
-    },
-    {
-      "filename": "warder-530e-220x132-white-beac2edb6d139686.zip.part01",
-      "bytes": 1008687,
-      "sha256": "56bdd6aa8c9e550de3f54bb7960f8efffc448b5a59d0571133a55bdce22e2a5b"
-    },
-    {
-      "filename": "warder-530e-220x132-black-1295f9788b8e47bc.zip.part00",
       "bytes": 1053628,
-      "sha256": "fb0007d2cac581a8922ee79607d17cf5eb6e6d60bcbac363c18f0b6884bf99b5"
+      "filename": "warder-530e-220x132-black-f327b4b4051c8a2f.zip.part00",
+      "sha256": "015a6c3df74560c1476c80770ba0bdddaf0b32c0793f3c6ab3d3133f6e163702"
     },
     {
-      "filename": "warder-530e-220x132-black-1295f9788b8e47bc.zip.part01",
       "bytes": 1053627,
-      "sha256": "ae60cf4b07649fac6c84ba458f95c9baadb491ad72f868d6613a89cd5d0a1587"
+      "filename": "warder-530e-220x132-black-f327b4b4051c8a2f.zip.part01",
+      "sha256": "e653b7c9a6a2596a2bc11f46daa076553ff01ccbc6fd8bb99333c20246e9ad8f"
     },
     {
-      "filename": "warder-530e-50x30-transparent-f4ee70169fd6e002.zip.part00",
+      "bytes": 1008687,
+      "filename": "warder-530e-220x132-white-be75fc3806c49875.zip.part00",
+      "sha256": "5d31c52f5dff45b381f809296ffc57e40f91f6b8d1df6e5adae37e464698bf26"
+    },
+    {
+      "bytes": 1008687,
+      "filename": "warder-530e-220x132-white-be75fc3806c49875.zip.part01",
+      "sha256": "19e40a5ea855c64e577dd279c03e59f07ca400b14837f936998fdd32191b9a77"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part00",
+      "sha256": "151f1f573f9cf458d61c7c6d65d8cc67e1ae9915d9659f0fb685ad8de977ad96"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part01",
+      "sha256": "93b957e7ba4a86c37e1e5c23f63504e785714221e62cf1d14f28b29709251c4f"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part02",
+      "sha256": "41009996824769581592766eb1c7bcaf5030589edbb50c1a85f80b54c6c245a2"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part03",
+      "sha256": "b51185c69bc43992f67be5d6fbca28e67e07aa4be92113eea7d33a0e8d5f3b86"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part04",
+      "sha256": "8978d0b1ba72acef166f786c176e16469076f8ac0e2c064d2b6e6d35dd438d06"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part05",
+      "sha256": "59c8cd70a67de63909bb802ee9204509b0f9a0514fc3d1eb4ceef0834fafacbb"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part06",
+      "sha256": "f8273676dba22fdba22ace66ef72200cdfd0057ac89dded0b596813171c6c12a"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part07",
+      "sha256": "a8c10a9e1c3e94f4b086d888b22d6c03e5a01515e16b1462cd0f3ffd7fab4f7d"
+    },
+    {
+      "bytes": 2563619,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part08",
+      "sha256": "c60d7da1ec112e55a8afb8a3bb937dd87c59b3cdb6cb040f5ecf86eaa05bfa87"
+    },
+    {
+      "bytes": 2563610,
+      "filename": "warder-70w-220x132-transparent-8c65189c5af835f7.zip.part09",
+      "sha256": "1ce54d1ff41b6f04c870b67d1df964dbc31c187058edabccad4ce55928824711"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part00",
+      "sha256": "bb05f290b5ed2a0321865baf1f3d30edf30e280daacbd99c1bdaf69abb065f2f"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part01",
+      "sha256": "27795813862af07b270474744886a4e03ff9551e138453459c2a2ee271eb0709"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part02",
+      "sha256": "b301fc91c211b29df74a98e551e56d38ca3cf5a9cae4eed2bef4277b55f92424"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part03",
+      "sha256": "b265675cef84d2db2f188f547259781fa13d7b7f375f84f224b9ce9deb453288"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part04",
+      "sha256": "746a833aa15c454dfb368cfda6b0f8e2c2431562c11b23f24f1ce9fcbb82292a"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part05",
+      "sha256": "7534f7dfd9ce60e561b46ef63a903fb8a60043782932c85fed21231e49e1c3f1"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part06",
+      "sha256": "52485099db7740f77048b5f5dd114fb7261dac50b063a659b2053c786fcc1bce"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part07",
+      "sha256": "2eab314b9e4b2448aef1907aee92ae8603139a0d9fb53781b1b47757a3e4d21a"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part08",
+      "sha256": "425f505e1dac9282a8d190ba0d5f27a30d422c0c62d40164d0e7a3c53182aad9"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part09",
+      "sha256": "1a8910612765bc550736032d5433cada2b771f2ed40dd991b12246cdb446219a"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part10",
+      "sha256": "2dbaa49163006a5007569c0803a842ba8caa302fcd2f419d67d48c735792076b"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part11",
+      "sha256": "7a78b13e9953ab01dbf2d884271a41eeb303103f2c30165d29e54d1d45c8c881"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part12",
+      "sha256": "05bb8d0f610c265aa2c3606680150f71fec891780c82377f70f5d3ae62f1eb1e"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part13",
+      "sha256": "a9077055265ab86234fe458d77d2743738bb7a8397461c7b3a5d5bd191ed49e1"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part14",
+      "sha256": "5bff9799c16a83e9e6a01e9b7055f0eec9182185dd7d1fc069f882a7d4f3fe4a"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part15",
+      "sha256": "bef1b297b4b4fcaa91c18e6c749b53406dc56d0fc8d80dba0b2afbd6e640a5a2"
+    },
+    {
+      "bytes": 3181286,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part16",
+      "sha256": "80e7636105fce806542ffc07c56bffa10603ae6a3597c66ddc29d04d878e9441"
+    },
+    {
+      "bytes": 3181274,
+      "filename": "warder-70w-220x132-black-5eeaae738766ab21.zip.part17",
+      "sha256": "d3f84c20965cc145ebf574a0696d131918a12a25687dd689fa5a1718628047a0"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part00",
+      "sha256": "77965972ae45b158044dcb71972581a9ce5782dd4fddde56f83e6ddbc43df0ad"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part01",
+      "sha256": "52bbd3302d6f629f5a715b8571932ac36c24843c31f59ee2072dab465c401c74"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part02",
+      "sha256": "6a8f8c3cbdc5225ab02dbfb1c8e1f1b3a53d0896017fc153548dab17b86cb8e2"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part03",
+      "sha256": "2829b822924fad57dc6eee8477e16506fd26e11ba9d725bb22b3c7e6e4fc056f"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part04",
+      "sha256": "f583ee6f37abd74d461215ce028ee22625826b90238806bd021aa41d5848c10c"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part05",
+      "sha256": "14a891956fb35c029ca9bd869953a0824a136cfa0bab3d380ad55c1b5714d052"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part06",
+      "sha256": "319a891dd8b3af65b23de8c03a88430145dbe4b5b8409851362e73a0a6b95bda"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part07",
+      "sha256": "b58a1fd593b6e0f79a6bd51a64d7265030ccc3341ef5e75ed844eabbf57128c0"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part08",
+      "sha256": "4c8c60c6c79e76682250cdee29bda7d678dfd8dd650bca65873281d281c1caa8"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part09",
+      "sha256": "a3cb8af74885718adcc2daf08691812c3f134e2bc455e8b7f0f59aba9bf37879"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part10",
+      "sha256": "51b4c9d1d8055691a8471df2ff24268e74b608f32e1d0b2e4a3cedadefa7baf3"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part11",
+      "sha256": "655cdd833d41d10922a41e052a755dc492b3dc7a428bb0a560bd1d2fb25322e7"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part12",
+      "sha256": "1783d3fd6c5de251549eb9f327f62d9463028960d8a717da81fa3dfd90175bc5"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part13",
+      "sha256": "099f9ddc645ef746283c553e49509300da6478521d02c0682eae8aab7fd2927f"
+    },
+    {
+      "bytes": 3268350,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part14",
+      "sha256": "5fd3c9cfbf573bb2b0f8842586afb3c4daf504b8cc2b5b6cd0148fc48f528069"
+    },
+    {
+      "bytes": 3268340,
+      "filename": "warder-70w-220x132-white-3ce1a1e398b2db00.zip.part15",
+      "sha256": "087afbe8caa9abd15e9668f596c80aa180d96bedf73d810439b0da7832a5bd25"
+    },
+    {
       "bytes": 40686,
-      "sha256": "223dcb525c733e8013e5204a7e3b1beb44eaca49566abb0ac2b838bb9c6030b8"
+      "filename": "warder-530e-50x30-transparent-1452acd6abe46b45.zip.part00",
+      "sha256": "4ca1ffa2c26945ec58816016ba2695ed0a54995dd0f9818c487bf23e288a214f"
     },
     {
-      "filename": "warder-530e-50x30-transparent-f4ee70169fd6e002.zip.part01",
       "bytes": 40686,
-      "sha256": "1917563a027f01ca1072b8da3d4060420bf72205573246435f354836c4f45943"
+      "filename": "warder-530e-50x30-transparent-1452acd6abe46b45.zip.part01",
+      "sha256": "447d2706ca8eba355134a8a81d16a36964d14c5edb6eff952a940efc65c332c5"
     },
     {
-      "filename": "warder-530e-50x30-transparent-f4ee70169fd6e002.zip.part02",
       "bytes": 40685,
-      "sha256": "5de55789eed20b806b85824729f2a2f86c5caf9b130d969b3d32086f6a734943"
+      "filename": "warder-530e-50x30-transparent-1452acd6abe46b45.zip.part02",
+      "sha256": "5b4c69aba58eac03c2ae90d8c47c52794cdc68487e06be8087a63fc52356199b"
     },
     {
-      "filename": "warder-530e-50x30-white-b98090336dfac012.zip.part00",
       "bytes": 52928,
-      "sha256": "6bc5e76bb27ed75d53e2f1aa991436cf3c09b2e189760a2d36f3dd8e0b12a693"
+      "filename": "warder-530e-50x30-white-b9f8023c7e8e7729.zip.part00",
+      "sha256": "402f3b70051e59aa423b796a3884c9f91080a5a88ba98561e9bf0c60ed4cd420"
     },
     {
-      "filename": "warder-530e-50x30-white-b98090336dfac012.zip.part01",
       "bytes": 52928,
-      "sha256": "c76d5452912ce96ca66a5ff213871aeb89ebfb4ac9da199fc514ef874d013b28"
+      "filename": "warder-530e-50x30-white-b9f8023c7e8e7729.zip.part01",
+      "sha256": "1046ff074ca8cbdbd07b83b1964104fdb16665a079eb0cfe943566826c20e229"
     },
     {
-      "filename": "warder-530e-50x30-white-b98090336dfac012.zip.part02",
       "bytes": 52926,
-      "sha256": "ac3ec484e889fef35e91d7722b264d5ae10810d33e875ec33d4180f3f5e11276"
+      "filename": "warder-530e-50x30-white-b9f8023c7e8e7729.zip.part02",
+      "sha256": "740311e9098fe7d25930ff8305f4c3879b803719d5c5d068b78189fd91916a96"
     },
     {
-      "filename": "warder-530e-50x30-black-2c1ddd224357b3cd.zip.part00",
       "bytes": 56075,
-      "sha256": "7717f89b06ff40f3bb1743fe3922e485467b66fad3b14af2e23debc621cf5f88"
+      "filename": "warder-530e-50x30-black-1bf8491794290ca3.zip.part00",
+      "sha256": "01d3705f5710842bd2d2126c677813e2a7aeb3275a0014300c5939f80936dd63"
     },
     {
-      "filename": "warder-530e-50x30-black-2c1ddd224357b3cd.zip.part01",
       "bytes": 56075,
-      "sha256": "d16e219cd218b5583ff53c3ff1f7cfd84b5afec894a6b65d41ade4fc5bfd28c6"
+      "filename": "warder-530e-50x30-black-1bf8491794290ca3.zip.part01",
+      "sha256": "18fec4d199bcc571495af1e84ed7a99ed0b588d249c1d4d5fa435615b4b37ee5"
     },
     {
-      "filename": "warder-530e-50x30-black-2c1ddd224357b3cd.zip.part02",
       "bytes": 56074,
-      "sha256": "0e2c70084aa132adb633c9709a1b010769607666159bfda8db0060704636d456"
+      "filename": "warder-530e-50x30-black-1bf8491794290ca3.zip.part02",
+      "sha256": "b83692f2f098631d1aabbbe03c6b87f6b4addf5052aa787eabb52bd3a30da6b2"
     },
     {
-      "filename": "warder-530e-400x240-transparent-98acb938c35600ff.zip.part00",
-      "bytes": 826698,
-      "sha256": "23423c72ad5c0fd8cbb49b853f8d93a1b58385b3b3d1dca3f7fab892f4673059"
+      "bytes": 826703,
+      "filename": "warder-530e-400x240-transparent-89a266740f81d93f.zip.part00",
+      "sha256": "54179e7aca76cb809ba7859baf0f94288fa645c0031740912be957b31ba86f80"
     },
     {
-      "filename": "warder-530e-400x240-transparent-98acb938c35600ff.zip.part01",
-      "bytes": 826698,
-      "sha256": "1981da1cd0bf7376e5a25c853c19644ab92e8e02b667e07c36e22980609d1852"
+      "bytes": 826703,
+      "filename": "warder-530e-400x240-transparent-89a266740f81d93f.zip.part01",
+      "sha256": "1a8ec0973268821604de01fdcdbcc22b5777c6ba504e1c2bd17e9357fc2b3715"
     },
     {
-      "filename": "warder-530e-400x240-transparent-98acb938c35600ff.zip.part02",
-      "bytes": 826697,
-      "sha256": "11e691d782aed1d0f2f9839963a63ff9d21ab52b30fe4d09fd2fc2829cf90f0d"
+      "bytes": 826701,
+      "filename": "warder-530e-400x240-transparent-89a266740f81d93f.zip.part02",
+      "sha256": "f9870683a8d69268213dd4830dadf16f216c8273710bec236e294d3b1f108403"
     },
     {
-      "filename": "warder-530e-400x240-white-93a3d86c1261f7a4.zip.part00",
       "bytes": 1127031,
-      "sha256": "14a744bc26d2c3e32e3bb333be00f4a648c4d14967d43557cfeb1d3fb7d457d0"
+      "filename": "warder-530e-400x240-white-e1f42545b1430ad0.zip.part00",
+      "sha256": "1ec0340affe313e3c832afbb2206224f41cf98f21f7c6922c8335510d9c22acd"
     },
     {
-      "filename": "warder-530e-400x240-white-93a3d86c1261f7a4.zip.part01",
       "bytes": 1127031,
-      "sha256": "982b20394240351390b5b5a45a0c362a42fa0e8142a57fcd7f116ce83aae963d"
+      "filename": "warder-530e-400x240-white-e1f42545b1430ad0.zip.part01",
+      "sha256": "b28f133c46252b004d2d2fbb8e46ec99efe237b3a35a524eefc78237746f8ecd"
     },
     {
-      "filename": "warder-530e-400x240-white-93a3d86c1261f7a4.zip.part02",
       "bytes": 1127030,
-      "sha256": "a2b6557531e7ef0c4a376ff9613ed9c263ca91aaceae75e38f3dc1d1436ba379"
+      "filename": "warder-530e-400x240-white-e1f42545b1430ad0.zip.part02",
+      "sha256": "cbb151e9f76afbefbb5c0af15314ccc87dd16d827e45af0bbf8e3882e8409399"
     },
     {
-      "filename": "warder-530e-400x240-black-722eaa3ad4ea3232.zip.part00",
       "bytes": 1103423,
-      "sha256": "d9d287aa8ce11a74c8053fbcb35e00b8ceb8e768320291e3fc4949385b852bbd"
+      "filename": "warder-530e-400x240-black-e9d3cabaff4ff8e6.zip.part00",
+      "sha256": "ba9b274fdab7365e49a5b5264f9ff07769d42b4d9b0cd0adf4a566b6532b0fa7"
     },
     {
-      "filename": "warder-530e-400x240-black-722eaa3ad4ea3232.zip.part01",
       "bytes": 1103423,
-      "sha256": "26563dd2450a7d1410ca2d773e3b069a898a94b1d335fb602cebdf8edda3ede2"
+      "filename": "warder-530e-400x240-black-e9d3cabaff4ff8e6.zip.part01",
+      "sha256": "95cec77a2c2a27b75a8c0b9cfdfba1982e2a6d20d02574ca83d02003b3c5b87d"
     },
     {
-      "filename": "warder-530e-400x240-black-722eaa3ad4ea3232.zip.part02",
       "bytes": 1103423,
-      "sha256": "ad3e803767f0d58fc95616ddc94a5160165c54394b60b17fd56b4ad56345c0ae"
+      "filename": "warder-530e-400x240-black-e9d3cabaff4ff8e6.zip.part02",
+      "sha256": "52e0a4fefe39d3d8b7687e32ab9c538a295da6f61c3e5b2512df6022d7d3f57c"
+    },
+    {
+      "bytes": 688469,
+      "filename": "warder-70w-50x30-transparent-515663c655c33216.zip.part00",
+      "sha256": "05a49adb7854831613fa32f6c72c9c5a3ca03445941f68560e0b43b4251bfc50"
+    },
+    {
+      "bytes": 688469,
+      "filename": "warder-70w-50x30-transparent-515663c655c33216.zip.part01",
+      "sha256": "6424b8d848fa48e9fc3bfa283ac8fc91d07ebc7b7e7a329e48bc239db07017f5"
+    },
+    {
+      "bytes": 688469,
+      "filename": "warder-70w-50x30-transparent-515663c655c33216.zip.part02",
+      "sha256": "a183df9ab99f1a91888fa733752e8df8e1d49f2e2f827b54507a00ec8d60b8e6"
+    },
+    {
+      "bytes": 688469,
+      "filename": "warder-70w-50x30-transparent-515663c655c33216.zip.part03",
+      "sha256": "5b704d4f8fe040d84913b0176decad13c642191a8940a0e2f66ee1f026fedb40"
+    },
+    {
+      "bytes": 688468,
+      "filename": "warder-70w-50x30-transparent-515663c655c33216.zip.part04",
+      "sha256": "51c21d0adc11f2b1e463ac1a82ee3ea0727a4aec0903e8bb86ffb2061534133d"
+    },
+    {
+      "bytes": 838026,
+      "filename": "warder-70w-50x30-white-11c3c009d8408a29.zip.part00",
+      "sha256": "026ed2dc46dbd5c0672b8c24079eb2364be2effab642bbe5e97c7e596baf18f2"
+    },
+    {
+      "bytes": 838026,
+      "filename": "warder-70w-50x30-white-11c3c009d8408a29.zip.part01",
+      "sha256": "6a8b1102ac948823bc98c430747a798696feab425d10570aa3fe29aeca464997"
+    },
+    {
+      "bytes": 838026,
+      "filename": "warder-70w-50x30-white-11c3c009d8408a29.zip.part02",
+      "sha256": "f9cb59cb11e6300dea9113c901dd5ec2ee966cb58c5ad410512e5e73809bc5cb"
+    },
+    {
+      "bytes": 838026,
+      "filename": "warder-70w-50x30-white-11c3c009d8408a29.zip.part03",
+      "sha256": "c0cd5ae644bc3c8b79e6110e9a9a0a8331ed91d5eff283e2d13ac7adfdcd07c9"
+    },
+    {
+      "bytes": 838025,
+      "filename": "warder-70w-50x30-white-11c3c009d8408a29.zip.part04",
+      "sha256": "92ab77df46d2904c386e89a0d8d00086d2530e258b0102af68a38472e8eaf034"
+    },
+    {
+      "bytes": 854334,
+      "filename": "warder-70w-50x30-black-0de1979d55905500.zip.part00",
+      "sha256": "d45cce1248dbc5726fdc68350aa1361d1df0996a9edb163276e34a16b6a24d2b"
+    },
+    {
+      "bytes": 854334,
+      "filename": "warder-70w-50x30-black-0de1979d55905500.zip.part01",
+      "sha256": "582308552c279b8a5ed18944849916c805d964103b612683cf6331b0eccbbc3c"
+    },
+    {
+      "bytes": 854334,
+      "filename": "warder-70w-50x30-black-0de1979d55905500.zip.part02",
+      "sha256": "dc1f30d86cc06be32d5a68e05af8424935144092ba782aacab4d2a2368e3035b"
+    },
+    {
+      "bytes": 854334,
+      "filename": "warder-70w-50x30-black-0de1979d55905500.zip.part03",
+      "sha256": "1b2fbb23268ea2e941079cd0e683e32d7af96a81208a111cfe988ebad20500e7"
+    },
+    {
+      "bytes": 854334,
+      "filename": "warder-70w-50x30-black-0de1979d55905500.zip.part04",
+      "sha256": "41e10e740d323e5ed552b5516a9f4e75e99df330a5c120ef18d6d83e2fffd5bc"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part00",
+      "sha256": "540d963f9954539157b07590561a3431dae064d49c36054fbb212996c915a860"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part01",
+      "sha256": "7cd0d0887e47133dae94990cbf8ccabab3f11f4c6b279c7debb315bdb0b3f4d7"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part02",
+      "sha256": "197ffb5a00912171bac975cb9f27d819f995f76a715bf0a4d4b72fd7874af83b"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part03",
+      "sha256": "a309ee36a55b0c811f85212b7dd9ac6aad4ebd8f3806b01aef39d2320afcd334"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part04",
+      "sha256": "d9ef87fc9120be43ad346dd1ee9ac12b4ff738ff4647c7a8a66ba3d3c41a4731"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part05",
+      "sha256": "54734bed78256ea427557dc6b2d287185f2c6a4892a833d1ed5b00f25f5731a4"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part06",
+      "sha256": "9d6b0d36267372325da1bf6cc0bdd76a60875972fd423a524e0f537408a5d81c"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part07",
+      "sha256": "be658cf8b5c211d54f3b522a2a69e2ac1c490fa7b57e7baa356e01947c48073d"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part08",
+      "sha256": "14b191bc5b1632b3ca1ad5167ad20aca6683ce31a539c6c85d893b32aca8b091"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part09",
+      "sha256": "ea3fd6b2af880822f74ea3934bd6de9e302d77e95f8acb89ea7db5a286c7434f"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part10",
+      "sha256": "2c1e71c0594a608a3a67f633e74cbc519d249fabe2e32089cacda40e3722bcaf"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part11",
+      "sha256": "2656704a6b75044a67e4aca16d168770c9cffc0c775b019bd6fab471082aeebe"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part12",
+      "sha256": "0c10c999b51cf00f62693467283cc738e11ccd4d3ac4be8884b5adf1d956a273"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part13",
+      "sha256": "9ca1227a670272675424a6fdd72063f32506e69831e9cabe11e1a8d61801be13"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part14",
+      "sha256": "84d5e69fe11795516b885da1eea8584e5931cadcc85234800d8dea60967c5a81"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part15",
+      "sha256": "20c1e2943e2766eb20ce75de8ab996036e8d1c209a65c79e91ed641efba08dc8"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part16",
+      "sha256": "4342da5cc33cddbb045742326857b381b23241e3eb9d3d51777bef7662bad4c8"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part17",
+      "sha256": "c37bb4b9dd7592222557f72d1d49c9506343abc51f6889860c1ac2bc08cdf2bb"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part18",
+      "sha256": "c9252717065a6726cadbbec51031867bc5956b3af4cd73621f65350bbb2fe7e3"
+    },
+    {
+      "bytes": 3379742,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part19",
+      "sha256": "71868e3942f3fdc9b0ca0357f54aaf34e12c3138e26a68a5c587998a9a8b9d5c"
+    },
+    {
+      "bytes": 3379733,
+      "filename": "warder-70w-400x240-transparent-2de70aa16ffd6570.zip.part20",
+      "sha256": "3fef70627304bba3e589c0a0b435d6e536a8c83841fda005a877ec2763a49f1e"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part00",
+      "sha256": "8c03a076cf05dd18ffc309120b675d4fd5c1733b87ad28027e6c896f38aad081"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part01",
+      "sha256": "eeb1eeae3350390f20c33f54faff284d92ae3ddb5b46be2852164cf8ab81823a"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part02",
+      "sha256": "b607cfe1db36f1b18b0fe38cd242ed28fa1d2a623f11c418b488f5daf8e8526d"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part03",
+      "sha256": "9b67eb2173401466c08a6846c3fdce105d5155e155e73e0549c54872c7e47ec2"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part04",
+      "sha256": "391fa1b596a6e4b1aa32619afb375f71962efe4dca633616522bdb565646ccf2"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part05",
+      "sha256": "b2927f97a5eb37d3e84dc22119add821cf93912d107ba9f7c13b48939f545021"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part06",
+      "sha256": "2f45e82dbda94c4530541c448c4412fcf308a2d9f2d01247ef5c5be47d888115"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part07",
+      "sha256": "b3b12b0d018bad5a8ea7281c75c18f660184fcd54cebae5cf9dcfea5b95fe731"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part08",
+      "sha256": "34faa24a8f9bb2dac3aa3740774e73256f0506cfd8da4398dd496d2b237a1704"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part09",
+      "sha256": "09e5c7f7998518b71a004d7a045bcdfe93cf3c6f06a54bec89c3372622c8cb47"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part10",
+      "sha256": "02cc2342865c144e90931ab026ef3576f26342416a0c954d01f2fceb3de1c9b8"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part11",
+      "sha256": "1629cf577f8a3cf96edba23ca09e94d11231fa30bcc0710124efa6079cd4e742"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part12",
+      "sha256": "789dd8035e241c88d0e8d7d4aa4e6c384db45ee761df550e55b3da3b16d1579c"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part13",
+      "sha256": "f986a61f2e48441d4928505293fc80325645c67dc72a61e9fd5b3307ca27256e"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part14",
+      "sha256": "de7b7f02161180ca9b1cd3cf950c2d1b11964363d4665e2a90c898e6d85889bf"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part15",
+      "sha256": "545761d7fe7ec17e3f5b7fc79580efc8a745a166b9917358fb586b6527d5ec9d"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part16",
+      "sha256": "a20a88614e4e6b0b42dd8601d8305790d179c8bda6a41f86ec72f0bb81541029"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part17",
+      "sha256": "15ae5fa7988ae538565ac4c55b097e32f18fbefb0867d2145fb4f74c7f7f1dc2"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part18",
+      "sha256": "5d19973779cf1b4ee8080264a7c3d0cfdde83bf36d2e69ab56be0eff468e94a2"
+    },
+    {
+      "bytes": 3311020,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part19",
+      "sha256": "6af27c2bc5de0896105b529c8720ad63fa19853b7600b3ff577bc11c96a55327"
+    },
+    {
+      "bytes": 3311003,
+      "filename": "warder-70w-400x240-white-4e4b07ace2fa91bf.zip.part20",
+      "sha256": "2bb4adb85cf44439fac3622136489599cc44e32ba8acd6a890b0f69596ed6a3f"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part00",
+      "sha256": "fe995fe8f8ce55fabd20768dc9367042d1df73faabaece332f7bbe3cbfa39bf2"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part01",
+      "sha256": "0c184c96e913eb5a1264df6361b0ed00d14373c5d7d6eea4438b7ebbd2abbd71"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part02",
+      "sha256": "fee486aae1c57085e2685b1209b6a90dc000d6b1d692e683990d3232a6c48271"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part03",
+      "sha256": "4a3dca7e0326198642bda3ffe420c93e7a06e431c3bd69e8e38658d1685612e2"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part04",
+      "sha256": "ad3b8a12e7834850777f1367ba8b36516c982f0e178eca0e5cc355b5c0378963"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part05",
+      "sha256": "c728991d8ac6beea7a3769a8b367eaa5d9b2c450f4cce64d5a01765a352faae9"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part06",
+      "sha256": "69a04c21a4239c2a68581b50a2401228530f26455de2a6ac06e9459eb15fcbac"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part07",
+      "sha256": "ff978141c128788874a6c128f704fc5974871ed08a82a05aa74e9a03d3cb3ae3"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part08",
+      "sha256": "1704e87131fd881773bead926c2fb7da5ce1db6abbb39c8b491594cb68e99ad4"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part09",
+      "sha256": "f669cd01ae4efb3676d4e7ded507935ff63bc66b3f38b67fc0bd96425d72a9e2"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part10",
+      "sha256": "b9368188b7f24fe65e51cc5f2e140f44cb48ff201fdedb7646a8ee629fffb8d2"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part11",
+      "sha256": "2a27ef59416cd12eed7e48fba10489e53d27fc4098ec49807ad5f709c582ddb4"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part12",
+      "sha256": "ed39c0c4f60cdeb4f9023539e4d0adfc502242c2e20f01b92b74c62a596cc367"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part13",
+      "sha256": "652201ec9ade032feaacaaa3cc2f0734f574bd87a9d0ecada469ef0175a5529c"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part14",
+      "sha256": "e76af1b31b482b85e5c7944c322dd47dc99ac02c0e55c4ae3370e9dde159fb7a"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part15",
+      "sha256": "2866edf22c1ce310247e64043ce93afaa6c1f61344a019866e6929aecf82009a"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part16",
+      "sha256": "21d08e30d586241f09f25eb2b85e55ffe59d82ca7f2312b1645e12bf3b6fb8a0"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part17",
+      "sha256": "8e90426a6a41c3bbac045ba9e4e2928757dcb3b56f64b4d4d3bcea2a18ffe519"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part18",
+      "sha256": "35285ee68e8b9559e56ddd0c66048195dbd80666a3ed8e3326be3edd77c50272"
+    },
+    {
+      "bytes": 3185700,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part19",
+      "sha256": "03ec88ccb3243a7c7f897b7e0951992ee5c5a75dae835ca41af8936716ac93cc"
+    },
+    {
+      "bytes": 3185684,
+      "filename": "warder-70w-400x240-black-816c3e9aa10fc783.zip.part20",
+      "sha256": "12298688b0a76ef35fb2f5587ca7d586da86bba906207dce337b229226b06d22"
     }
   ],
   "validation": {
@@ -998,7 +998,8 @@
     "user_file_preserved": "PASS",
     "unchanged_package_records": "480/480 byte-identical JSON",
     "sha256sums": "PASS",
-    "ipk_or_runtime_changes": 0
+    "ipk_or_runtime_changes": 0,
+    "publication_transport_repair": "PASS: generated on GitHub runner and pushed with native git"
   },
   "audit_window": {
     "from": "2026-11-12",
