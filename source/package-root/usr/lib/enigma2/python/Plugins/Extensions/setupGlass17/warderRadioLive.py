@@ -196,6 +196,11 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         state = _read_json(state_path, {})
         if not isinstance(state, dict):
             state = {}
+        # Retry immediately after upgrading an initial failed test124 import.
+        # Otherwise the previous failed attempt could postpone first creation.
+        if before is None and state.get('bootstrap_generation') != 'live125':
+            state['bootstrap_generation'] = 'live125'
+            state.pop('attempt', None)
         if before is not None:
             expected = state.get('bouquet_sha256', '')
             if (not isinstance(expected, str) or
