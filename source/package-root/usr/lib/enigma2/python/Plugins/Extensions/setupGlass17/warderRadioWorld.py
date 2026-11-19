@@ -247,6 +247,41 @@ def install_world(archive, sha256, paths_root, require_external=True,
             shutil.rmtree(stage)
 
 
+
+
+def cached_country(paths_root, code):
+    """Cheap read-only GUI hint; activation subprocess does full SHA verification.
+
+    Do not count every PNG or parse the entire station catalogue on Enigma's
+    event loop. This is a hint only, never a trust/ownership authorization.
+    """
+    if not isinstance(code, str) or not COUNTRY.fullmatch(code):
+        return None
+    root = Path(paths_root)
+    folder = root / WORLD_NAME
+    try:
+        if not _safe_directory(root) or folder.is_symlink() or not folder.is_dir():
+            return None
+        owner = _json_file(folder / OWNER, MAX_OWNER)
+        if owner.get('owner') != 'WarderRadioLive':
+            return None
+        digest = owner.get('archive_sha256')
+        if not isinstance(digest, str) or not SHA.fullmatch(digest):
+            return None
+        index = _json_file(folder / 'index.json', MAX_INDEX)
+        countries = _verify_index(index)
+        if code not in countries:
+            return None
+        for dirname, ext in (('bouquets', 'radio'), ('catalog', 'json'),
+                             ('manifests', 'json')):
+            item = folder / dirname / (code + '.' + ext)
+            if item.is_symlink() or not item.is_file():
+                return None
+        return digest
+    except (OSError, ValueError, TypeError):
+        return None
+
+
 def activate_from_world(paths_root, code, enigma_directory):
     """Fast offline country selection; never validates or scans other countries."""
     root=Path(paths_root)
