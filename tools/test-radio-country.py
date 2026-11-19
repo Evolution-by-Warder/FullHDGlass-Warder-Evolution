@@ -218,6 +218,53 @@ class CountryTests(unittest.TestCase):
         self.assertIn('WHERE_CHANNEL_CONTEXT_MENU', script)
         self.assertIn('serviceFilter=warderRadioCountry.is_live_service', script)
 
+    def test_system_language_translates_native_menu_and_country_picker(self):
+        """The receiver language drives the native MENU text, not Slovak literals."""
+        import importlib.util
+        components = ModuleType('Components')
+        components.__path__ = []
+        config_module = ModuleType('Components.config')
+        osd_language = SimpleNamespace(value='en_GB')
+        config_module.config = SimpleNamespace(osd=SimpleNamespace(language=osd_language))
+        locale_module = ModuleType('Plugins.Extensions.setupGlass17.warderLocale')
+        locale_module.language_code = lambda value: value.replace('-', '_').split('_', 1)[0].lower()
+        locale_module.get_translator = lambda *args, **kwargs: (lambda value: value)
+        module_name = 'Plugins.Extensions.setupGlass17.warderUiText'
+        source = RUNTIME / 'Plugins/Extensions/setupGlass17/warderUiText.py'
+        spec = importlib.util.spec_from_file_location(module_name, source)
+        ui = importlib.util.module_from_spec(spec)
+        with patch.dict(sys.modules, {
+                'Components': components, 'Components.config': config_module,
+                'Plugins.Extensions.setupGlass17.warderLocale': locale_module,
+                module_name: ui}):
+            spec.loader.exec_module(ui)
+            self.assertEqual(ui.ui_text('Select country (Warder Radio Live)'),
+                             'Select country (Warder Radio Live)')
+            osd_language.value = 'sk_SK'
+            self.assertEqual(ui.ui_text('Select country (Warder Radio Live)'),
+                             'Vybrať krajinu (Warder Radio Live)')
+            osd_language.value = 'cs_CZ'
+            self.assertEqual(ui.ui_text('Select country (Warder Radio Live)'),
+                             'Vybrat zemi (Warder Radio Live)')
+            osd_language.value = 'de_DE'
+            self.assertEqual(ui.ui_text('Select country (Warder Radio Live)'),
+                             'Land auswählen (Warder Radio Live)')
+            for lang, translations in ui._RADIO_COUNTRY_TRANSLATIONS.items():
+                with self.subTest(lang=lang):
+                    self.assertEqual(len(translations), len(ui._RADIO_COUNTRY_KEYS))
+                    osd_language.value = lang + '_XX'
+                    for key in ui._RADIO_COUNTRY_KEYS:
+                        self.assertTrue(ui.ui_text(key))
+                    self.assertIn('Warder Radio Live',
+                                  ui.ui_text('Select country (Warder Radio Live)'))
+            self.assertEqual(len(ui._RADIO_COUNTRY_TRANSLATIONS), 21)
+        plugin_source = (RUNTIME / 'Plugins/Extensions/setupGlass17/plugin.py').read_text()
+        picker_source = (RUNTIME / 'Plugins/Extensions/setupGlass17/warderRadioCountry.py').read_text()
+        self.assertIn('name=ui_text("Select country (Warder Radio Live)")', plugin_source)
+        self.assertIn('title=ui_text("Select country (Warder Radio Live)")', picker_source)
+        self.assertIn("ui_text('(current)')", picker_source)
+        self.assertNotIn('name="Vybrať krajinu (Warder Radio Live)"', plugin_source)
+
     def test_country_picker_list_available_offline(self):
         choices = country.country_options()
         self.assertTrue(len(choices) >= 4)
