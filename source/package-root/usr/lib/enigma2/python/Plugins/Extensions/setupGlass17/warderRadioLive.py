@@ -896,13 +896,26 @@ class Controller:
         from .warderHelpPreview import _Worker
         worker = _Worker(callback)
         path = os.path.abspath(__file__)
+        if action == 'refresh':
+            path = os.path.join(os.path.dirname(path), 'warderRadioCountry.py')
         self.loop.spawnProcess(worker, '/usr/bin/python3', ['/usr/bin/python3', path] + args,
                                env=dict(os.environ))
         return worker
 
+    def request_refresh(self):
+        """Immediately schedule a selected-country refresh from the MENU."""
+        if self.closed:
+            return
+        if self.pending is not None and self.pending.active():
+            self.pending.cancel()
+        self.pending = self.loop.callLater(1 if self.worker is None else 12, self.check)
+
     def check(self):
         self.pending = None
-        if self.closed or self.worker is not None:
+        if self.closed:
+            return
+        if self.worker is not None:
+            self.pending = self.loop.callLater(12, self.check)
             return
         try:
             self.worker = self._spawn('refresh', ['--refresh'], self.finished)
@@ -929,8 +942,13 @@ class Controller:
             except Exception:
                 pass
         # Keep first-import checks short while the disk file is still missing.
+        # Large countries load in bounded page batches without freezing GUI.
+        # A selection error keeps the old active bouquet and is retried later.
+        partial = isinstance(result, dict) and result.get('incomplete') is True
         self.pending = self.loop.callLater(
-            60 if self.initial_reload and not has_bouquet else 3600, self.check)
+            12 if partial else
+            60 if self.initial_reload and not has_bouquet else
+            300 if result is None else 3600, self.check)
 
     def timed_out(self):
         self.timeout = None
@@ -959,7 +977,7 @@ class Controller:
             seen[code] = seen.get(code, 0) + 1
             # Do not fetch every radio logo in the worldwide catalogue.
             # Radio Browser images are demand-loaded for visible list rows.
-            if code in COUNTRIES and seen[code] <= 8:
+            if seen[code] <= 8:
                 initial.append(row.get('stem', ''))
         self.icon_queue = [stem for stem in initial if stem in self.known_icons]
 
