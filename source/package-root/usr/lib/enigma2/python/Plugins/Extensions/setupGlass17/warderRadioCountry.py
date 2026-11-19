@@ -871,6 +871,21 @@ def country_options():
                  [('SK', 'Slovensko'), ('CZ', 'Čechy'), ('DE', 'Germany'),
                   ('GB', 'United Kingdom'), ('FR', 'France'),
                   ('IT', 'Italy'), ('PL', 'Poland'), ('ES', 'Spain')]}
+    # A complete pre-generated world may include 224 countries/territories,
+    # including stations absent from an older standalone-plugin name map.
+    # Restrict this menu to installed local bouquet countries; display names
+    # prefer the plugin's familiar translated labels where available.
+    try:
+        from . import warderRadioWorld as world
+        available = world.available_countries(live._radio_world_root())
+        if available:
+            return sorted([(names.get(code) or label, code)
+                           for code, label in available.items()
+                           if isinstance(code, str) and COUNTRY_RE.fullmatch(code)
+                           and isinstance(label, str) and label],
+                          key=lambda row: live._country_sort_key(row[0]))
+    except (ImportError, AttributeError, OSError, TypeError, ValueError):
+        pass
     return sorted([(name, code) for code, name in names.items()
                    if isinstance(code, str) and COUNTRY_RE.fullmatch(code)
                    and isinstance(name, str) and name],
