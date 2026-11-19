@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+from urllib.parse import unquote_to_bytes
 import re
 import signal
 import sys
@@ -158,19 +159,84 @@ def _owner_valid(directory, original, state):
     return checksum in (current, old_sha)
 
 
+def _reference_key(raw):
+    """Normalize the numeric Enigma2 identity (not its changing URL/name)."""
+    try:
+        source = raw.removeprefix(b'#SERVICE ').strip().split(b':', 10)
+        if len(source) != 11 or not source[0].isdigit() or not source[1].isdigit():
+            return None
+        fields = (int(source[0]), int(source[1]),
+                  *(int(value, 16) for value in source[2:10]))
+        return fields, source[10]
+    except (ValueError, TypeError, OverflowError):
+        return None
+
+
+def _trusted_service_matches(service_line, item):
+    """Compare a saved Enigma2 reference to the authoritative exact map row.
+
+    Enigma2's toString() uses lowercase percent escapes and can append the
+    #DESCRIPTION name to #SERVICE. Neither means the stream URL changed.
+    Require the full numeric service ID, decoded URL and any appended name to
+    match the existing trusted catalogue; don't trust a bare UUID/name match.
+    """
+    parsed = _reference_key(service_line)
+    if parsed is None:
+        return False
+    fields, tail = parsed
+    try:
+        stem = item['stem'].split('_')
+        intended = (int(stem[0]), int(stem[1]),
+                    *(int(value, 16) for value in stem[2:10]))
+        if fields != intended:
+            return False
+        path, separator, label = tail.partition(b':')
+        if unquote_to_bytes(path) != item['url'].encode('utf-8'):
+            return False
+        if separator and unquote_to_bytes(label) != item['name'].encode('utf-8'):
+            return False
+        return True
+    except (KeyError, ValueError, AttributeError, UnicodeError, TypeError):
+        return False
+
+
+def _alt_group_filename(line):
+    """No arbitrary filesystem paths, only Enigma2's own alternative group."""
+    record = line.removeprefix(b'#SERVICE ').strip()
+    matched = re.fullmatch(
+        rb'1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+        rb'"(alternatives\.[a-z0-9_][a-z0-9_.-]{0,178}\.radio)" '
+        rb'ORDER BY bouquet', record)
+    if not matched:
+        return None
+    name = matched.group(1).decode('ascii')
+    if '..' in name:
+        return None
+    return name
+
+
+def _alt_contains_missing(directory, filename, item):
+    """The missing published station must belong to this exact alt bouquet."""
+    alt = Path(directory) / filename
+    try:
+        if alt.is_symlink() or not alt.is_file() or alt.stat().st_size > 128 * 1024:
+            return False
+        content = alt.read_bytes().replace(b'\r\n', b'\n')
+    except OSError:
+        return False
+    if not content.startswith(b'#NAME '):
+        return False
+    for line in content.splitlines():
+        if line.startswith(b'#SERVICE ') and _trusted_service_matches(line, item):
+            return True
+    return False
+
+
 def _recover_enigma_alternative(directory, original, state, inspect_only=False):
-    """Recover ONLY a known Enigma2 Alternative Edit, never arbitrary edits.
+    """Recover exactly one native Alternative Edit, with full trust checks.
 
-    When users enter Alternative Edit, Enigma2 replaces one normal IPTV station
-    with a 1:134:2 reference to an alternatives.*.radio group. The strict
-    checksum consequently blocks updates, though the remaining records still
-    match our exact published Radio Browser catalogue.
-
-    Require an existing trusted country checksum, exact catalogued normal
-    service records and exactly one matching alternative whose name is that
-    of the missing catalogue station. Save the altered bouquet to a separate
-    never-overwritten .bak before restoring managed content. An unfamiliar
-    edit remains blocked and can be recovered manually.
+    The original receiver file is backed up unchanged. Never adopt an unknown
+    playlist, renamed station, changed URL or unverified alternative group.
     """
     directory = Path(directory)
     normalized = _normalized_receiver_bouquet(original)
@@ -183,69 +249,74 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
         return False
     mapping = live._read_json(directory / live.DATA_FILE, {}, MAP_LIMIT)
     rows = mapping.get('stations') if isinstance(mapping, dict) else None
-    if not isinstance(rows, list) or not rows or len(rows) > MAX_STATIONS:
+    if not isinstance(rows, list) or len(rows) < 2 or len(rows) > MAX_STATIONS:
         return False
-    # No new identity is accepted: use exactly the previous trusted radio map.
     if any(not isinstance(row, dict) or row.get('countrycode') != country for row in rows):
         return False
-    expected = {}
+    # Require the catalogue itself to match the previously published checksum.
     try:
-        for row in rows:
-            service = live._service(row).encode('utf-8').splitlines(keepends=True)
-            if len(service) != 2 or service[0] in expected:
-                return False
-            expected[service[0]] = service[1]
-    except (ValueError, KeyError, AttributeError, UnicodeError):
+        original_catalogue = live._bouquet([(country_name(country), rows)])
+        original_catalogue = live.HEADER + live._sorted_country_section(
+            original_catalogue[len(live.HEADER):])
+    except (ValueError, KeyError, AttributeError, TypeError):
         return False
-    # Bind the mapping to the previous *trusted* published bouquet checksum.
-    # An arbitrary user-edited mapping must not authorize a destructive reset.
-    original_catalogue = live._bouquet([(country_name(country), rows)])
-    original_catalogue = live.HEADER + live._sorted_country_section(
-        original_catalogue[len(live.HEADER):])
     if hashlib.sha256(original_catalogue).hexdigest() != state['sha256']:
         return False
+
     data = normalized.splitlines(keepends=True)
-    if (len(data) < 5 or data[0] != live.HEADER or
+    if (len(data) < 6 or data[0] != live.HEADER or
             data[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
-            data[2] != ('#DESCRIPTION ' + country_name(country) + '\n').encode('utf-8') or
-            len(data[3:]) != 2 * len(expected)):
+            data[2] != ('#DESCRIPTION ' + country_name(country) + '\n').encode('utf-8')):
         return False
-    normal = set()
+    found = set()
     alternative = None
-    for idx in range(3, len(data), 2):
-        first, description = data[idx], data[idx + 1]
-        if first in expected:
-            if first in normal or expected[first] != description:
-                return False
-            normal.add(first)
-        elif (alternative is None and
-              re.fullmatch(
-                  rb'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
-                  rb'"alternatives\.[A-Za-z0-9_.-]{1,180}\.radio" ORDER BY bouquet\n',
-                  first)):
-            alternative = description
-        else:
+    index = 3
+    while index < len(data):
+        service = data[index]
+        if not service.startswith(b'#SERVICE '):
             return False
-    missing = set(expected) - normal
-    if (alternative is None or len(missing) != 1 or
-            expected[next(iter(missing))] != alternative):
+        has_description = (index + 1 < len(data) and
+                           data[index + 1].startswith(b'#DESCRIPTION '))
+        description = data[index + 1] if has_description else None
+        index += 2 if has_description else 1
+        filename = _alt_group_filename(service)
+        if filename is not None:
+            if alternative is not None:
+                return False
+            alternative = (filename, description)
+            continue
+        if description is None:
+            return False
+        matched = [position for position, row in enumerate(rows)
+                   if position not in found and
+                   _trusted_service_matches(service, row) and
+                   description == ('#DESCRIPTION ' + row['name'] + '\n').encode('utf-8')]
+        if len(matched) != 1:
+            return False
+        found.add(matched[0])
+
+    absent = set(range(len(rows))) - found
+    if alternative is None or len(absent) != 1 or len(found) != len(rows) - 1:
         return False
-    # Reconstruct exactly the original published catalogue, with its stable
-    # references and names. No user-edited URL, name or unrelated entry can pass.
-    restored = original_catalogue
-    if len(restored) > 12 * 1024 * 1024:
+    filename, description = alternative
+    missing = rows[next(iter(absent))]
+    if (description is not None and
+            description != ('#DESCRIPTION ' + missing['name'] + '\n').encode('utf-8')):
         return False
-    if (directory / live.FILE).read_bytes() != original:
+    if not _alt_contains_missing(directory, filename, missing):
+        return False
+
+    target = directory / live.FILE
+    if target.is_symlink() or not target.is_file() or target.read_bytes() != original:
         return False
     backup = directory / (live.FILE + '.enigma-alternatives.bak')
     if not live._safe_file(backup) or backup.exists():
-        # Never overwrite any existing user or prior-recovery backup.
         return False
     if inspect_only:
         return True
     live._write(backup, original)
-    live._write(directory / live.FILE, restored)
-    state['sha256'] = hashlib.sha256(restored).hexdigest()
+    live._write(target, original_catalogue)
+    state['sha256'] = hashlib.sha256(original_catalogue).hexdigest()
     state['recovered_alternative_edit'] = True
     _save_choice(directory, state)
     return True
