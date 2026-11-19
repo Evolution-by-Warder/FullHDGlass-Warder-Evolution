@@ -534,16 +534,18 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         # was still running; the worker reads the choice under this lock.
         pending_backup_required = False
         if not _owner_valid(directory, before, state):
-            # Changing the whole managed bouquet is the purpose of choosing a
-            # different country. Validate previous ownership by the signed
-            # catalogue and numeric station IDs, then back up the original
-            # receiver bytes only AFTER a complete new country is ready.
-            pending_backup_required = _pending_country_switch_backup_allowed(
-                directory, before, state)
-            if not pending_backup_required:
-                if not _recover_enigma_alternative(directory, before, state):
-                    return {'changed': False, 'skipped': 'owner-modified'}
+            # The exact native Alternative Edit can still take the original
+            # strict recovery path and keep its existing recovery-backup name.
+            if _recover_enigma_alternative(directory, before, state):
                 before = target.read_bytes()
+            else:
+                # An explicit *different* country selection replaces only this
+                # owned bouquet, after exact inventory checks and an untouched
+                # backup made once the new country has fully downloaded.
+                pending_backup_required = _pending_country_switch_backup_allowed(
+                    directory, before, state)
+                if not pending_backup_required:
+                    return {'changed': False, 'skipped': 'owner-modified'}
         country = _pending_country(state) or active_country(directory)
         if not COUNTRY_RE.fullmatch(country):
             return {'changed': False, 'skipped': 'invalid-country'}
