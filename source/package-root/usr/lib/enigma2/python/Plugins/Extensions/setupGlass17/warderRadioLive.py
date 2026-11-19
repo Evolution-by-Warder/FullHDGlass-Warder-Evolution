@@ -37,7 +37,7 @@ COUNTRIES_PER_PASS = 2
 WORLD_REFRESH_INTERVAL = 7 * DAY
 WORLD_STEP_INTERVAL = 5 * 60
 PENDING_FILE = 'warder-radio-live-pending.json'
-MAX_ICONS = 4096  # two native Enigma2 filename variants
+MAX_ICONS = 640  # bounded on-demand cache, not an entire world picon archive
 MIN_FREE = 16 * 1024 * 1024
 ICON_RETRY_SECONDS = 15 * 60
 COUNTRIES = ('SK', 'CZ')
@@ -575,13 +575,13 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             raise ValueError('World radio bouquet exceeds receiver-safe limit')
         if target.exists() and target.read_bytes() != before:
             raise OSError('Concurrent world bouquet edit')
-        mapping = _read_json(data, {}, 8 * 1024 * 1024)
+        mapping = _read_json(data, {}, 24 * 1024 * 1024)
         old_rows = mapping.get('stations', []) if isinstance(mapping, dict) else []
         previous = [row for row in old_rows
                     if isinstance(row, dict) and row.get('countrycode') not in updated_rows]
         saved = previous + [row for rows in updated_rows.values() for row in rows]
         mapping_bytes = _json_bytes({'schema': 1, 'stations': saved})
-        if len(mapping_bytes) > 8 * 1024 * 1024:
+        if len(mapping_bytes) > 24 * 1024 * 1024:
             raise ValueError('Radio picon mapping exceeds receiver-safe limit')
         if not data.exists() or data.read_bytes() != mapping_bytes:
             _write(data, mapping_bytes)
