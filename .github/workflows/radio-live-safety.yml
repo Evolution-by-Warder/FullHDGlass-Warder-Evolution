@@ -7,12 +7,14 @@ on:
     paths:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py'
       - 'tools/test-radio-live.py'
       - '.github/workflows/radio-live-safety.yml'
   pull_request:
     paths:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py'
       - 'tools/test-radio-live.py'
       - '.github/workflows/radio-live-safety.yml'
 
@@ -29,6 +31,7 @@ jobs:
           sparse-checkout: |
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py
             tools/test-radio-live.py
           sparse-checkout-cone-mode: false
       - name: Validate Python syntax
