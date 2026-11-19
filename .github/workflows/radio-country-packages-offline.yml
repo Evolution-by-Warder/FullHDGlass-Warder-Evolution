@@ -1,0 +1,30 @@
+name: Radio Live offline country bundles - security and regression
+
+on:
+  push:
+    branches: [feature/radio-live-offline-country-bundles-20261119]
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioPackages.py
+      - tools/test-radio-packages.py
+      - .github/workflows/radio-country-packages-offline.yml
+  pull_request:
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioPackages.py
+      - tools/test-radio-packages.py
+      - .github/workflows/radio-country-packages-offline.yml
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile new radio country importer and original skin modules
+        run: python3 -m py_compile tools/test-radio-packages.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioPackages.py
+      - name: Verify original-only radio picons and safe local country switch
+        run: python3 -B tools/test-radio-packages.py
+      - name: Existing country regression tests
+        run: python3 -B tools/test-radio-country.py
