@@ -197,6 +197,23 @@ def _group_name(code, labels):
         return preferred
     if code in labels:
         return code
+    # Historical world bouquets used localized names for some countries;
+    # reuse their exact existing heading rather than adding duplicates.
+    aliases = {
+        'DE': ('Deutschland', 'Germany', 'Nemecko'),
+        'FR': ('France', 'Francúzsko'),
+        'AT': ('Österreich', 'Austria', 'Rakúsko'),
+        'CH': ('Schweiz', 'Switzerland', 'Švajčiarsko'),
+        'IT': ('Italia', 'Italy', 'Taliansko'),
+        'ES': ('España', 'Spain', 'Španielsko'),
+        'GB': ('United Kingdom', 'Great Britain', 'Veľká Británia'),
+        'US': ('United States', 'USA', 'Spojené štáty'),
+        'PL': ('Polska', 'Poland', 'Poľsko'),
+        'HU': ('Magyarország', 'Hungary', 'Maďarsko'),
+    }
+    for name in aliases.get(code, ()):
+        if name in labels:
+            return name
     try:
         from Plugins.Extensions.WarderRadio.radio_browser import country_name
         name = country_name(code)
