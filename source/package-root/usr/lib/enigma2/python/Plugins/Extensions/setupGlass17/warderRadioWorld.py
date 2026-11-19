@@ -282,8 +282,8 @@ def cached_country(paths_root, code):
         return None
 
 
-def activate_from_world(paths_root, code, enigma_directory):
-    """Fast offline country selection; never validates or scans other countries."""
+def activate_from_world(paths_root, code, enigma_directory, require_requested=False):
+    """Fast offline selection, with optional stale GUI-choice rejection."""
     root=Path(paths_root)
     current=root/WORLD_NAME
     if not _safe_directory(root) or current.is_symlink() or not current.is_dir():
@@ -291,4 +291,5 @@ def activate_from_world(paths_root, code, enigma_directory):
     owner=_json_file(current/OWNER,MAX_OWNER)
     if owner.get('owner')!='WarderRadioLive':
         return {'changed':False,'skipped':'unowned-world-snapshot'}
-    return country_package.activate_local(current,code,enigma_directory)
+    return country_package.activate_local(
+        current, code, enigma_directory, require_requested=require_requested)
