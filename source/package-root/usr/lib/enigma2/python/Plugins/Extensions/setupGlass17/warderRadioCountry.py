@@ -352,6 +352,23 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 'country': country, 'stations': len(collected)}
 
 
+def _start_selected_country_refresh(session):
+    """Guarantee that a saved country selection actually schedules a worker.
+
+    A plugin context menu can remain usable even when the GUI-side controller
+    was not initialized at session start. Never silently report success while
+    its asynchronous download scheduler is missing.
+    """
+    controller = live._controller
+    if controller is None or getattr(controller, 'closed', False):
+        live.start(0, session=session)
+        controller = live._controller
+    if controller is None or getattr(controller, 'closed', False):
+        return False
+    controller.request_refresh()
+    return True
+
+
 def diagnose(directory=DIRECTORY):
     """Read-only debug status for receiver tests; never display stream URLs."""
     directory = Path(directory)
@@ -366,7 +383,20 @@ def diagnose(directory=DIRECTORY):
     except OSError:
         raw = None
     sections = live._sections(raw)
+    live_state = live._read_json(directory / live.STATE_FILE, {})
+    if not isinstance(live_state, dict):
+        live_state = {}
+    expected = _choice(directory).get('sha256')
+    old_expected = live_state.get('bouquet_sha256')
+    actual = hashlib.sha256(raw).hexdigest() if raw is not None else None
     return {
+        'bouquet_exists': raw is not None,
+        'bouquet_bytes': len(raw) if raw is not None else 0,
+        'bouquet_header_valid': bool(raw and raw.startswith(live.HEADER)),
+        'bouquet_group_markers': raw.count(b'#SERVICE 1:64:') if raw else 0,
+        'bouquet_stream_entries': sum(line.startswith(b'#SERVICE 4097:')
+                                      for line in raw.splitlines()) if raw else 0,
+        'bouquet_owned_checksum_valid': bool(actual and actual in (expected, old_expected)),
         'active': active_country(directory),
         'pending': _pending_country(info),
         'downloaded': info.get('downloaded', 0),
@@ -520,14 +550,19 @@ def open_country_selector(session, service=None, **kwargs):
             return
         if result.get('already_active'):
             return
+        scheduled = False
         try:
-            controller = live._controller
-            if controller is not None:
-                controller.request_refresh()
-        except (AttributeError, OSError):
-            pass
-        session.open(MessageBox, ui_text("Loading radio stations for the selected country."),
-                     type=MessageBox.TYPE_INFO, timeout=4)
+            scheduled = _start_selected_country_refresh(session)
+        except (AttributeError, ImportError, OSError, RuntimeError, TypeError):
+            scheduled = False
+        if not scheduled:
+            session.open(MessageBox,
+                         ui_text("Country saved, but background radio update did not start."),
+                         type=MessageBox.TYPE_INFO, timeout=6)
+        else:
+            session.open(MessageBox,
+                         ui_text("Loading radio stations for the selected country."),
+                         type=MessageBox.TYPE_INFO, timeout=4)
 
     # Keep the active choice first in the user-facing menu.
     ordered = sorted(choices, key=lambda row: row[1] != current)
