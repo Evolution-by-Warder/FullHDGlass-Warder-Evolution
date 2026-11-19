@@ -341,6 +341,120 @@ class CountryTests(unittest.TestCase):
         self.assertIn('CZ', [code for label, code in choices])
         self.assertIn('DE', [code for label, code in choices])
 
+    def test_country_switch_refreshes_visible_native_radio_list(self):
+        """GUI must not keep showing Slovensko after Czech data was published."""
+        country.bootstrap(self.root)
+        country.request_country('CZ', self.root)
+        result = country.refresh(self.root, now=NOW, browser=Browser())
+        self.assertTrue(result['changed'])
+        self.assertEqual(result['country'], 'CZ')
+
+        class FakeCall:
+            def __init__(self, callback=None):
+                self.callback, self.cancelled = callback, False
+            def active(self):
+                return not self.cancelled
+            def cancel(self):
+                self.cancelled = True
+
+        class FakeLoop:
+            def __init__(self):
+                self.calls = []
+            def callLater(self, delay, callback):
+                self.calls.append((delay, callback))
+                return FakeCall(callback)
+
+        view = []
+        class ChannelSelectionRadio:
+            shown = True
+            def __init__(self):
+                self.servicelist = SimpleNamespace(
+                    instance=object(),
+                    resetRoot=lambda: view.append('reset'),
+                    goTop=lambda: view.append('top'))
+            def getRoot(self):
+                return SimpleNamespace(
+                    getPath=lambda: 'FROM BOUQUET "' + live.FILE + '" ORDER BY bouquet')
+
+        radio = ChannelSelectionRadio()
+        session = SimpleNamespace(current_dialog=radio)
+        controller = live.Controller.__new__(live.Controller)
+        loop = FakeLoop()
+        controller.loop = loop
+        controller.session = session
+        controller.reload = lambda: view.append('reload')
+        controller.worker = object()
+        controller.pending = FakeCall()
+        controller.timeout = None
+        controller.radio_refresh_timer = None
+        controller.closed = False
+        controller.initial_reload = False
+        with patch.object(live, 'DIRECTORY', self.root):
+            controller.finished(result)
+        self.assertEqual(view[:3], ['reload', 'reset', 'top'])
+        self.assertTrue(any(delay == 5 for delay, _ in loop.calls))
+        self.assertTrue(any(delay == 3600 for delay, _ in loop.calls))
+
+    def test_pending_country_is_retried_not_silently_delayed_for_an_hour(self):
+        country.bootstrap(self.root)
+        country.request_country('CZ', self.root)
+        class Call:
+            def active(self): return True
+            def cancel(self): pass
+        class Loop:
+            def __init__(self): self.calls = []
+            def callLater(self, seconds, callback):
+                self.calls.append(seconds)
+                return Call()
+        loop = Loop()
+        controller = live.Controller.__new__(live.Controller)
+        controller.loop = loop
+        controller.session = None
+        controller.reload = lambda: None
+        controller.worker = None
+        controller.pending = None
+        controller.timeout = None
+        controller.radio_refresh_timer = None
+        controller.closed = False
+        controller.initial_reload = False
+        with patch.object(live, 'DIRECTORY', self.root):
+            controller.finished({'changed': False, 'skipped': 'radio-browser-unavailable'})
+            self.assertIn(60, loop.calls)
+            controller.finished({'changed': False, 'incomplete': True, 'country': 'CZ'})
+            self.assertIn(3, loop.calls)
+        self.assertNotIn(3600, loop.calls)
+
+    def test_radio_list_redraw_resumes_after_country_confirmation_dialog(self):
+        class FakeCall:
+            def active(self): return True
+            def cancel(self): pass
+        class Loop:
+            def __init__(self): self.calls = []
+            def callLater(self, seconds, callback):
+                self.calls.append((seconds, callback))
+                return FakeCall()
+        class ChannelSelectionRadio:
+            shown = True
+            def __init__(self):
+                self.count = 0
+                self.servicelist = SimpleNamespace(
+                    instance=object(), resetRoot=self.count_up, goTop=lambda: None)
+            def count_up(self): self.count += 1
+            def getRoot(self):
+                return SimpleNamespace(getPath=lambda: 'FROM BOUQUET "' + live.FILE + '"')
+        radio = ChannelSelectionRadio()
+        session = SimpleNamespace(current_dialog=SimpleNamespace(shown=True))
+        ctrl = live.Controller.__new__(live.Controller)
+        ctrl.session = session
+        ctrl.loop = Loop()
+        ctrl.closed = False
+        ctrl.radio_refresh_timer = None
+        self.assertFalse(ctrl._refresh_visible_radio_list())
+        self.assertEqual(radio.count, 0)
+        session.current_dialog = radio
+        self.assertTrue(ctrl._refresh_visible_radio_list())
+        self.assertEqual(radio.count, 1)
+
     def test_first_success_retires_only_owned_legacy_radio_file(self):
         country.bootstrap(self.root)
         self.assertTrue(self.legacy.exists())
