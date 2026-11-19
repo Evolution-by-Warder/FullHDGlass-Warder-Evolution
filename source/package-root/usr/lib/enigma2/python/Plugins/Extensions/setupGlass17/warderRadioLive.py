@@ -206,21 +206,22 @@ def _group_name(code, labels):
 
 
 def _combined(legacy, current, updates=None):
-    """Retain every legacy country and current live country; no silent shrink."""
+    """Keep every old country and service until replaced by verified updates."""
     old = _sections(legacy) if legacy is not None else {}
     live = _sections(current) if current is not None else {}
     output = dict(old)
     for name, section in live.items():
         canonical = {'SK': 'Slovensko', 'CZ': 'Čechy'}.get(name, name)
-        if canonical in output:
-            output[canonical] = (section.replace(b'#DESCRIPTION SK\n',
-                                                 '#DESCRIPTION Slovensko\n'.encode('utf-8'), 1)
-                                 if name == 'SK' else
-                                 section.replace(b'#DESCRIPTION CZ\n',
-                                                 '#DESCRIPTION Čechy\n'.encode('utf-8'), 1)
-                                 if name == 'CZ' else section)
-        else:
-            output[name] = section
+        # Migration: an original world group wins over a partial test124/125
+        # country. After source deletion, the full live group is authoritative.
+        if canonical not in output:
+            if name == 'SK':
+                section = section.replace(b'#DESCRIPTION SK\n',
+                                          '#DESCRIPTION Slovensko\n'.encode('utf-8'), 1)
+            elif name == 'CZ':
+                section = section.replace(b'#DESCRIPTION CZ\n',
+                                          '#DESCRIPTION Čechy\n'.encode('utf-8'), 1)
+            output[canonical] = section
     for name, section in (updates or {}).items():
         output[name] = section
     return HEADER + b''.join(output.values())
@@ -262,6 +263,53 @@ def _managed_legacy(directory):
         return None
 
 
+def _retire_legacy(directory):
+    """Reclaim original Warder radio bytes only after exact migration proof.
+
+    The old managed file and its one managed .bak are deleted only after every
+    original country *section* is byte-identical in the registered live file.
+    Never delete unknown or user-owned files; never follow symlinks.
+    """
+    source = directory / LEGACY_FILE
+    target = directory / FILE
+    original = _managed_legacy(directory)
+    if original is None or target.is_symlink() or not target.is_file():
+        return False
+    old_sections = _sections(original)
+    current = target.read_bytes()
+    new_sections = _sections(current)
+    if (not old_sections or
+            len(old_sections) != original.count(b'#SERVICE 1:64:') or
+            not all(new_sections.get(name) == body
+                    for name, body in old_sections.items())):
+        return False
+    # Check registration before deleting any recoverable source data.
+    index = directory / 'bouquets.radio'
+    if not index.is_file() or index.is_symlink():
+        return False
+    indexed = index.read_bytes()
+    if (INDEX_LINE.strip() not in indexed or
+            LEGACY_FILE.encode('ascii') in indexed):
+        return False
+    metadata = _read_json(directory / STATE_FILE, {})
+    if (not isinstance(metadata, dict) or
+            metadata.get('bouquet_sha256') != hashlib.sha256(current).hexdigest()):
+        return False
+    if source.is_symlink() or source.read_bytes() != original:
+        return False
+    source.unlink()
+    # A package-generated previous-version copy is obsolete after the world
+    # inventory was preserved byte-for-byte in the new managed live bouquet.
+    backup = directory / (LEGACY_FILE + '.bak')
+    try:
+        if backup.is_file() and not backup.is_symlink() and backup.stat().st_size <= 4 * 1024 * 1024:
+            if backup.read_bytes().startswith(LEGACY_HEADER):
+                backup.unlink()
+    except OSError:
+        pass
+    return True
+
+
 def _register(directory):
     """Put the live bouquet first; retire ONLY a verified Warder legacy entry.
 
@@ -277,7 +325,10 @@ def _register(directory):
     if before and b'\x00' in before:
         raise ValueError('Invalid radio index')
     lines = before.splitlines(keepends=True)
-    legacy_owned = _managed_legacy(directory) is not None
+    legacy_state = _read_json(directory / STATE_FILE, {})
+    legacy_owned = (_managed_legacy(directory) is not None or
+                    isinstance(legacy_state, dict) and
+                    legacy_state.get('legacy_retired') is True)
     path_re = re.compile(rb'^#SERVICE[ \t]+[^\r\n]*FROM BOUQUET "([^"\r\n]+)"')
     kept = []
     for line in lines:
@@ -359,8 +410,13 @@ def bootstrap(directory=DIRECTORY):
         elif created:
             _write(state_path, _json_bytes(state))
         moved = _register(directory)
+        retired = _retire_legacy(directory)
+        if retired:
+            state['legacy_retired'] = True
+            _write(state_path, _json_bytes(state))
         return {'changed': created or moved, 'created': created,
-                'legacy_hidden': _managed_legacy(directory) is not None}
+                'legacy_retired': retired, 'legacy_hidden': retired or
+                _managed_legacy(directory) is not None}
 
 
 def refresh(directory=DIRECTORY, now=None, browser=None):
