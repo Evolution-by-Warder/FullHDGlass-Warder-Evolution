@@ -84,6 +84,16 @@ class Tests(unittest.TestCase):
         self.assertEqual(before.count(b'userbouquet.personal.radio'),1)
         self.assertFalse(any(self.paths.glob('picon/radio/*')))
 
+    def test_country_logo_must_have_exact_service_identity(self):
+        from Plugins.Extensions.setupGlass17 import warderRadioPackages as packs
+        source=self.root/'radio-artifacts'
+        foreign=live.service_stem('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa')+'.png'
+        example(source,'FR','France',size=3,zip_name=foreign)
+        with self.assertRaisesRegex(ValueError,'Unsafe logo ZIP member'):
+            packs.install_logos(source,'FR',self.paths/'picon',
+                               require_external=False)
+        self.assertFalse((self.paths/'picon/radio').exists())
+
     def test_world_checksum_mismatch_never_modifies_cache(self):
         with self.assertRaisesRegex(ValueError,'SHA-256 mismatch'):
             world.install_world(self.archive,'0'*64,self.paths,False)
