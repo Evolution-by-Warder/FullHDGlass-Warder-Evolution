@@ -141,7 +141,8 @@ def _manifest_match(code, index_entry, manifest):
             raise ValueError('World country checksum inventory mismatch')
 
 
-def install_world(archive, sha256, paths_root, require_external=True):
+def install_world(archive, sha256, paths_root, require_external=True,
+                  expected_countries=None):
     """Stage, fully verify and atomically swap the world snapshot directory.
 
     The caller obtains the expected digest from the trusted GitHub release
@@ -182,6 +183,10 @@ def install_world(archive, sha256, paths_root, require_external=True):
                 raise ValueError('Oversized world index')
             index=json.loads(z.read(indexfile).decode('utf-8'))
             codes=_verify_index(index)
+            if (expected_countries is not None and
+                    (type(expected_countries) is not int or
+                     len(codes) != expected_countries)):
+                raise ValueError('Published country index count mismatch')
             allowed={indexfile}
             for code in codes:
                 allowed.update((f'bouquets/{code}.radio',f'catalog/{code}.json',
