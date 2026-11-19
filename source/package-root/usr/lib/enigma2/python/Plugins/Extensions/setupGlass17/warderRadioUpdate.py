@@ -245,13 +245,23 @@ class Controller:
             except Exception:pass
 
 
-def start(reason=0):
+def start(reason=0, session=None):
+    """Only the new live-radio controller is active after migration.
+
+    Preserve the old updater implementation as a recovery reference but do not
+    start it: the legacy worker would re-register Warder Radio Streams later.
+    """
     global _controller
-    if reason == 0 and _controller is None:
-        _controller = Controller()
-    elif reason != 0 and _controller is not None:
+    if _controller is not None:
         _controller.close()
         _controller = None
+    plugin_file = Path(__file__).resolve().parent.parent / 'WarderRadio' / 'radio_browser.py'
+    if reason != 0 or plugin_file.is_file():
+        try:
+            from .warderRadioLive import start as start_live_radio
+            start_live_radio(reason, session=session)
+        except (ImportError, OSError):
+            pass
 
 
 if __name__ == '__main__':

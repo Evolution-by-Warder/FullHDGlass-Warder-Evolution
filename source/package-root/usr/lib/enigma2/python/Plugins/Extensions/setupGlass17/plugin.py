@@ -1311,6 +1311,19 @@ def Plugins(path, **kwargs):
 		ret = [ PluginDescriptor(name=ui_text("FullHDGlass configuration"), description=ui_text("Configure the FullHDGlass skin"), where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="images/warder-config.png"),
 				PluginDescriptor(where=PluginDescriptor.WHERE_MENU, fnc=startSetup17),
 							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
+		# Native Enigma2 Channel Selection MENU extension, only on actual
+		# Warder Radio Live services. No image-owned ChannelSelection patches.
+		if hasattr(PluginDescriptor, "WHERE_CHANNEL_CONTEXT_MENU"):
+			try:
+				from . import warderRadioCountry
+				ret.append(PluginDescriptor(
+					name=ui_text("Select country (Warder Radio Live)"),
+					description="Select the active Radio Browser country",
+					where=PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU,
+					fnc=warderRadioCountry.open_country_selector,
+					serviceFilter=warderRadioCountry.is_live_service))
+			except (ImportError, AttributeError):
+				pass
 		if _warderOpenPliEpgReady:
 			ret.append(PluginDescriptor(name="FullHDGlass Multi EPG", description=_warderUiText("PROGRAM INFO"), where=[PluginDescriptor.WHERE_EVENTINFO, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=warderOpenPliMultiEpg))
 		if config.plugins.setupGlass17.par78.value != "n":
@@ -1450,10 +1463,17 @@ def startHdg17(reason, **kwargs):
 	if reason != 0 or config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		try:
 			from .warderRadioUpdate import start as start_radio_update
-			start_radio_update(reason)
+			start_radio_update(reason, session=kwargs.get('session'))
 		except Exception:
 			pass
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Optional context-MENU entry only when the Warder Radio Live folder
+		# is highlighted at the root of RADIO bouquets. Never patch image files.
+		try:
+			from .warderRadioCountry import install_root_country_menu
+			install_root_country_menu()
+		except (ImportError, AttributeError, OSError):
+			pass
 		# TEST89: timestamp the actual RADIO key handler before any mode-switch work.
 		global _warderOriginalShowRadioButton
 		try:

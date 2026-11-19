@@ -60,6 +60,14 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
             path = join(directory, name + '.png')
             if isfile(path):
                 return path
+    # Notify the optional live-radio bridge only after an actual picon miss.
+    # Never touch the read-only Own Picons source or block the GUI on HTTP.
+    if custom_folder is None:
+        try:
+            from Plugins.Extensions.setupGlass17.warderRadioLive import request_picon
+            request_picon(reference)
+        except (ImportError, AttributeError, TypeError, ValueError):
+            pass
     return ''
 
 
