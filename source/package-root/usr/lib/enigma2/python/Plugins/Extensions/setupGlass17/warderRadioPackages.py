@@ -271,6 +271,7 @@ def install_logos(root, code, picon_root, require_external=True):
             raise ValueError('Logo count differs from signed manifest')
         (stage / OWNER_FILE).write_text(
             json.dumps({'owner': 'WarderRadioLive', 'country': code,
+                        'logo_zip_sha256': manifest['files']['logos/' + code + '.zip']['sha256'],
                         'files': hashes}, sort_keys=True), encoding='utf-8')
         if folder.exists():
             old = Path(tempfile.mkdtemp(prefix='.warder-radio-old-', dir=str(picon_root)))
