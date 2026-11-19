@@ -1,4 +1,4 @@
-name: Build standalone RADIO LIVE TEST128 IPK
+name: Build standalone RADIO LIVE TEST129 IPK
 
 on:
   push:
@@ -9,6 +9,9 @@ on:
       - tools/test-radio-live.py
       - source/control/postinst
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - tools/test-radio-country.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py
       - .github/workflows/radio-live-test-package.yml
@@ -32,6 +35,7 @@ jobs:
             source/package-root
             source/control
             tools/test-radio-live.py
+            tools/test-radio-country.py
             tools/build-radio-live-test-ipk.py
             .github/workflows/radio-live-test-package.yml
 
@@ -41,10 +45,12 @@ jobs:
           set -euo pipefail
           python3 -m py_compile \
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py \
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py \
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py \
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py \
             tools/build-radio-live-test-ipk.py
           PYTHONDONTWRITEBYTECODE=1 python3 tools/test-radio-live.py -v
+          PYTHONDONTWRITEBYTECODE=1 python3 tools/test-radio-country.py -v
           sh -n source/control/preinst source/control/postinst source/control/postrm
 
       - name: Build TEST-only IPK
@@ -53,16 +59,16 @@ jobs:
           set -euo pipefail
           PYTHONDONTWRITEBYTECODE=1 python3 tools/build-radio-live-test-ipk.py
           (cd packages/radio-live-test && sha256sum -c *.ipk.sha256)
-          test -s packages/radio-live-test/radio-live-test128-manifest.json
+          test -s packages/radio-live-test/radio-live-test129-manifest.json
 
       - name: Upload independent TEST package
         uses: actions/upload-artifact@v4
         with:
-          name: warder-radio-live-1.0.81-test128-ipk
+          name: warder-radio-live-1.0.81-test129-ipk
           path: |
             packages/radio-live-test/*.ipk
             packages/radio-live-test/*.ipk.sha256
-            packages/radio-live-test/radio-live-test128-manifest.json
+            packages/radio-live-test/radio-live-test129-manifest.json
           if-no-files-found: error
           retention-days: 30
 
@@ -72,10 +78,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          tag=radio-live-test128-20261119
-          ipk=packages/radio-live-test/enigma2-plugin-skins-fullhdglass_1.0.81-test128_all.ipk
+          tag=radio-live-test129-20261119
+          ipk=packages/radio-live-test/enigma2-plugin-skins-fullhdglass_1.0.81-test129_all.ipk
           sidecar="$ipk.sha256"
-          manifest=packages/radio-live-test/radio-live-test128-manifest.json
+          manifest=packages/radio-live-test/radio-live-test129-manifest.json
           test -f "$ipk" && test -f "$sidecar" && test -f "$manifest"
           cat > /tmp/warder-live-test-notes.md <<'EOF'
           **TESTOVACIA IPK – nie ostrá verzia.**
@@ -94,7 +100,7 @@ jobs:
           else
             gh release create "$tag" "$ipk" "$sidecar" "$manifest" \
               --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-              --prerelease --title "FullHDGlass Radio Live 1.0.81-test128 (TEST ONLY)" \
+              --prerelease --title "FullHDGlass Radio Live 1.0.81-test129 (TEST ONLY)" \
               --notes-file /tmp/warder-live-test-notes.md
           fi
           gh release view "$tag" --repo "$GITHUB_REPOSITORY"
