@@ -405,6 +405,13 @@ def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
         return {'changed': changed}
 
 
+def request_picon(reference):
+    """Nonblocking GUI callback for a visible service-list radio row."""
+    controller = _controller
+    if controller is not None:
+        controller.enqueue_icon(reference)
+
+
 class Controller:
     def __init__(self, event_loop=None, reload_bouquets=None):
         from .warderHelpPreview import _NativeLoop
@@ -418,6 +425,8 @@ class Controller:
         self.closed = False
         self.last_icon = None
         self.icon_queue = []
+        self.known_icons = set()
+        self.icon_requested = set()
         self.map_mtime = None
 
     @staticmethod
@@ -465,6 +474,53 @@ class Controller:
             except Exception:
                 pass
 
+    def _load_icon_map(self):
+        mapping = DIRECTORY / DATA_FILE
+        mtime = mapping.stat().st_mtime if mapping.is_file() and not mapping.is_symlink() else None
+        if mtime == self.map_mtime:
+            return
+        self.map_mtime = mtime
+        data = _read_json(mapping, {}) if mtime is not None else {}
+        rows = data.get('stations', []) if isinstance(data, dict) else []
+        self.known_icons = {row.get('stem') for row in rows if isinstance(row, dict)
+                            and isinstance(row.get('stem'), str)}
+        self.icon_requested.clear()
+        initial, seen = [], {}
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            code = row.get('countrycode', '')
+            seen[code] = seen.get(code, 0) + 1
+            if seen[code] <= 12:
+                initial.append(row.get('stem', ''))
+        self.icon_queue = [stem for stem in initial if stem in self.known_icons]
+
+    def enqueue_icon(self, reference):
+        """Queue one visible radio without doing network or disk I/O per row."""
+        if self.closed:
+            return
+        try:
+            fields = (reference if isinstance(reference, str) else
+                      reference.toString()).split(':', 10)
+            stem = '_'.join(field.upper() for field in fields[:10])
+            if len(fields) < 11 or not re.fullmatch(
+                    r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}', stem):
+                return
+            if stem in self.icon_requested or stem in self.icon_queue:
+                return
+            # Only the visible live-bouquet identities are accepted.
+            if stem not in self.known_icons:
+                return
+            self.icon_queue.insert(0, stem)
+            self.icon_queue = self.icon_queue[:48]
+            self.icon_requested.add(stem)
+            if self.icon_worker is None:
+                if self.icon_timer is not None and self.icon_timer.active():
+                    self.icon_timer.cancel()
+                self.icon_timer = self.loop.callLater(0.3, self.check_icon)
+        except (AttributeError, TypeError, ValueError):
+            return
+
     def check_icon(self):
         self.icon_timer = None
         if self.closed:
@@ -472,21 +528,7 @@ class Controller:
         try:
             if self.icon_worker is None:
                 # Prefetch only a few visible-country stations, never the whole catalogue.
-                mapping = DIRECTORY / DATA_FILE
-                mtime = mapping.stat().st_mtime if mapping.is_file() and not mapping.is_symlink() else None
-                if mtime != self.map_mtime:
-                    self.map_mtime = mtime
-                    data = _read_json(mapping, {}) if mtime is not None else {}
-                    rows = data.get('stations', []) if isinstance(data, dict) else []
-                    seen = {}
-                    self.icon_queue = []
-                    for row in rows:
-                        if not isinstance(row, dict):
-                            continue
-                        code = row.get('countrycode', '')
-                        seen[code] = seen.get(code, 0) + 1
-                        if seen[code] <= 12:
-                            self.icon_queue.append(row.get('stem', ''))
+                self._load_icon_map()
                 from NavigationInstance import instance
                 ref = instance.getCurrentlyPlayingServiceReference() if instance else None
                 fields = ref.toString().split(':') if ref else []
