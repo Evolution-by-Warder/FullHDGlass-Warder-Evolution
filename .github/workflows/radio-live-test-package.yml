@@ -1,4 +1,4 @@
-name: Build standalone RADIO LIVE TEST131 IPK
+name: Build standalone RADIO LIVE TEST132 IPK
 
 on:
   push:
@@ -59,16 +59,16 @@ jobs:
           set -euo pipefail
           PYTHONDONTWRITEBYTECODE=1 python3 tools/build-radio-live-test-ipk.py
           (cd packages/radio-live-test && sha256sum -c *.ipk.sha256)
-          test -s packages/radio-live-test/radio-live-test131-manifest.json
+          test -s packages/radio-live-test/radio-live-test132-manifest.json
 
       - name: Upload independent TEST package
         uses: actions/upload-artifact@v4
         with:
-          name: warder-radio-live-1.0.81-test131-ipk
+          name: warder-radio-live-1.0.81-test132-ipk
           path: |
             packages/radio-live-test/*.ipk
             packages/radio-live-test/*.ipk.sha256
-            packages/radio-live-test/radio-live-test131-manifest.json
+            packages/radio-live-test/radio-live-test132-manifest.json
           if-no-files-found: error
           retention-days: 30
 
@@ -78,10 +78,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          tag=radio-live-test131-20261119
-          ipk=packages/radio-live-test/enigma2-plugin-skins-fullhdglass_1.0.81-test131_all.ipk
+          tag=radio-live-test132-20261119
+          ipk=packages/radio-live-test/enigma2-plugin-skins-fullhdglass_1.0.81-test132_all.ipk
           sidecar="$ipk.sha256"
-          manifest=packages/radio-live-test/radio-live-test131-manifest.json
+          manifest=packages/radio-live-test/radio-live-test132-manifest.json
           test -f "$ipk" && test -f "$sidecar" && test -f "$manifest"
           cat > /tmp/warder-live-test-notes.md <<'EOF'
           **TESTOVACIA IPK – nie ostrá verzia.**
@@ -100,7 +100,7 @@ jobs:
           else
             gh release create "$tag" "$ipk" "$sidecar" "$manifest" \
               --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-              --prerelease --title "FullHDGlass Radio Live 1.0.81-test131 (TEST ONLY)" \
+              --prerelease --title "FullHDGlass Radio Live 1.0.81-test132 (TEST ONLY)" \
               --notes-file /tmp/warder-live-test-notes.md
           fi
           gh release view "$tag" --repo "$GITHUB_REPOSITORY"
