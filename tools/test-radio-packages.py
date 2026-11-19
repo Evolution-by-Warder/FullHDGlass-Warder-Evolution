@@ -79,6 +79,38 @@ class RadioBundleTests(unittest.TestCase):
         self.assertIn(b'"stations":',source)
         self.assertEqual(manifest['stations'],3)
 
+    def test_signed_140_character_name_with_terminal_space_is_safe(self):
+        rows,manifest=example(self.packages,'DE','Deutschland',size=2)
+        rows[0]['name']='X'*139+' '
+        raw=live._bouquet([('Deutschland',rows)])
+        catalog_path=self.packages/'catalog/DE.json'
+        country_file=self.packages/'bouquets/DE.radio'
+        catalog={'schema':1,'country':'DE','name':'Deutschland',
+                 'stations':rows,'catalogue_complete':True}
+        payload=json.dumps(catalog,ensure_ascii=False,separators=(',',':')).encode()
+        country_file.write_bytes(raw)
+        catalog_path.write_bytes(payload)
+        for name,data in [('bouquets/DE.radio',raw),('catalog/DE.json',payload)]:
+            manifest['files'][name]={'sha256':hashlib.sha256(data).hexdigest(),
+                                      'bytes':len(data)}
+        (self.packages/'manifests/DE.json').write_text(json.dumps(manifest))
+        checked,_,_=pkg.verified_country(self.packages,'DE')
+        self.assertEqual(checked,raw)
+        # A renamed or internally spaced station must still be rejected,
+        # even if a local test fixture updates its manifest checksums.
+        rows[0]['name']='X  Y'
+        raw=live._bouquet([('Deutschland',rows)])
+        catalog['stations']=rows
+        payload=json.dumps(catalog,ensure_ascii=False,separators=(',',':')).encode()
+        country_file.write_bytes(raw)
+        catalog_path.write_bytes(payload)
+        for name,data in [('bouquets/DE.radio',raw),('catalog/DE.json',payload)]:
+            manifest['files'][name]={'sha256':hashlib.sha256(data).hexdigest(),
+                                      'bytes':len(data)}
+        (self.packages/'manifests/DE.json').write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError,'Unsafe station row'):
+            pkg.verified_country(self.packages,'DE')
+
     def test_select_local_country_without_network_or_other_bouquet_changes(self):
         country.bootstrap(self.etc)
         personal=self.index.read_bytes()
