@@ -100,6 +100,53 @@ class Tests(unittest.TestCase):
         self.assertTrue(switched['local'])
         self.assertEqual(len(self.network.calls),3)
 
+    def test_fortnightly_update_is_persistent_across_receiver_reboots(self):
+        now = 1800000000
+        first=fetch.sync_world(self.paths,self.network,require_external=False,
+                               state_directory=self.etc,now=now)
+        self.assertTrue(first['changed'])
+        self.assertEqual(len(self.network.calls),2)
+        self.network.calls.clear()
+        restart=fetch.sync_world(self.paths,self.network,require_external=False,
+                                 state_directory=self.etc,now=now+5*24*3600)
+        self.assertEqual(restart['skipped'],'not-due')
+        self.assertEqual(restart['retry_after'],9*24*3600)
+        self.assertEqual(self.network.calls,[])
+        next_check=fetch.sync_world(self.paths,self.network,require_external=False,
+                                    state_directory=self.etc,now=now+14*24*3600)
+        self.assertEqual(next_check['skipped'],'already-current')
+        self.assertEqual(self.network.calls,[fetch.LATEST_URL])
+        again=fetch.sync_world(self.paths,self.network,require_external=False,
+                               state_directory=self.etc,now=now+14*24*3600+60)
+        self.assertEqual(again['skipped'],'not-due')
+
+    def test_absent_release_retries_in_six_hours_not_on_each_gui_restart(self):
+        now=1800000000
+        self.network.content.pop(fetch.LATEST_URL)
+        with self.assertRaises(OSError):
+            fetch.sync_world(self.paths,self.network,require_external=False,
+                             state_directory=self.etc,now=now)
+        count=len(self.network.calls)
+        deferred=fetch.sync_world(self.paths,self.network,require_external=False,
+                                  state_directory=self.etc,now=now+600)
+        self.assertEqual(deferred['skipped'],'not-due')
+        self.assertEqual(deferred['retry_after'],fetch.SYNC_RETRY-600)
+        self.assertEqual(len(self.network.calls),count)
+        with self.assertRaises(OSError):
+            fetch.sync_world(self.paths,self.network,require_external=False,
+                             state_directory=self.etc,now=now+fetch.SYNC_RETRY)
+        self.assertEqual(len(self.network.calls),count+1)
+
+    def test_world_refresh_state_symlink_is_never_followed(self):
+        personal=self.root/'personal.json'
+        personal.write_text('private')
+        (self.etc/fetch.SYNC_STATE).symlink_to(personal)
+        reply=fetch.sync_world(self.paths,self.network,require_external=False,
+                               state_directory=self.etc,now=1800000000)
+        self.assertEqual(reply['skipped'],'unsafe-state')
+        self.assertEqual(personal.read_text(),'private')
+        self.assertEqual(self.network.calls,[])
+
     def test_only_selected_country_logo_zip_is_downloaded(self):
         fetch.sync_world(self.paths,self.network,require_external=False)
         country.bootstrap(self.etc)
