@@ -136,6 +136,32 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0), ('DE', 0)])
         self.assertIn('#DESCRIPTION DE', self.bouquet.read_text())
 
+    def test_empty_optional_country_keeps_core_radio_bouquets(self):
+        plugin = self.root / 'warder-radio'
+        plugin.mkdir()
+        (plugin / 'state.json').write_text(json.dumps({'online_country': 'DE'}))
+        class EmptyOptional(Browser):
+            def page(self, country, offset):
+                if country == 'DE':
+                    self.calls.append((country, offset))
+                    return SimpleNamespace(rows=[], more=False, offline=False)
+                return super().page(country, offset)
+        browser = EmptyOptional()
+        result = live.refresh(self.root, NOW, browser)
+        self.assertEqual(result['stations'], 2)
+        self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0), ('DE', 0)])
+        self.assertNotIn('#DESCRIPTION DE', self.bouquet.read_text())
+        self.assertEqual(self.bouquet.read_text().count('#SERVICE 4097:0:2:'), 2)
+
+    def test_gui_does_not_create_radio_picon_folders(self):
+        import ast
+        tree = ast.parse((P / 'warderRadioLive.py').read_text())
+        folder = next(node for node in tree.body if isinstance(node, ast.FunctionDef)
+                      and node.name == '_skin_picon_directory')
+        calls = [n for n in ast.walk(folder) if isinstance(n, ast.Call)]
+        self.assertFalse(any(isinstance(n.func, ast.Attribute) and n.func.attr == 'mkdir'
+                             for n in calls))
+
     def test_picon_single_station_exact_and_no_overwrite(self):
         live.refresh(self.root, NOW, Browser())
         mapping = json.loads((self.root / live.DATA_FILE).read_text())
