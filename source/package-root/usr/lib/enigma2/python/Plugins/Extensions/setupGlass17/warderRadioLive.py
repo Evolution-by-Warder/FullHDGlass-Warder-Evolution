@@ -14,6 +14,7 @@ import signal
 import sys
 import tempfile
 import time
+import unicodedata
 from urllib.parse import quote, urlsplit
 from uuid import UUID
 
@@ -222,8 +223,20 @@ def _group_name(code, labels):
     return name if name in labels else (preferred or name)
 
 
+def _country_sort_key(label):
+    """SK, CZ first; remaining displayed country labels sorted accent-insensitively."""
+    folded = unicodedata.normalize('NFKD', label.casefold())
+    plain = ''.join(char for char in folded if not unicodedata.combining(char))
+    normalized = ' '.join(plain.split())
+    if normalized in ('slovensko', 'slovakia'):
+        return (0, '', label)
+    if normalized in ('cechy', 'cesko', 'ceska republika', 'czechia', 'czech republic'):
+        return (1, '', label)
+    return (2, normalized, label.casefold())
+
+
 def _combined(legacy, current, updates=None):
-    """Keep every old country and service until replaced by verified updates."""
+    """Keep every old country and service, sorting only country-group order."""
     old = _sections(legacy) if legacy is not None else {}
     live = _sections(current) if current is not None else {}
     output = dict(old)
@@ -241,7 +254,10 @@ def _combined(legacy, current, updates=None):
             output[canonical] = section
     for name, section in (updates or {}).items():
         output[name] = section
-    return HEADER + b''.join(output.values())
+    # Sort complete groups, not individual service lines. Preserve every
+    # original stream reference, country label, and station ordering byte-for-byte.
+    names = sorted(output, key=_country_sort_key)
+    return HEADER + b''.join(output[name] for name in names)
 
 
 def _country_codes(browser, state):
