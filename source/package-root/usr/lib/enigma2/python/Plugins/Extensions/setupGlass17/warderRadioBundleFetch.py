@@ -71,6 +71,7 @@ def _feed(opener):
     except (ValueError,UnicodeError):
         raise ValueError('Invalid radio country index')
     if (not isinstance(data,dict) or data.get('schema')!=1 or
+            data.get('complete') is not True or
             data.get('source')!='WarderRadio.RadioBrowser' or
             not isinstance(data.get('release_tag'),str) or
             not TAG.fullmatch(data['release_tag']) or
@@ -158,11 +159,10 @@ def sync_world(paths_root, opener=urlopen, require_external=True):
     archive=_download(opener,_asset(index,info['file']),root,
                       info['sha256'],info['bytes'],ZIP_LIMIT)
     try:
-        result=world.install_world(archive,info['sha256'],root,
-                                  require_external=require_external)
-        if result.get('changed') and result.get('countries')!=index['country_count']:
-            raise ValueError('Published country index differs from bundle inventory')
-        return result
+        return world.install_world(
+            archive,info['sha256'],root,
+            require_external=require_external,
+            expected_countries=index['country_count'])
     finally:
         archive.unlink(missing_ok=True)
 
