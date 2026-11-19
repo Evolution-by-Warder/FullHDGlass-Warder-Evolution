@@ -34,7 +34,7 @@ class Browser:
 
     def page(self, country, offset):
         self.calls.append((country, offset))
-        uuid = UUID_SK if country == 'SK' else UUID_CZ
+        uuid = {'SK': UUID_SK, 'CZ': UUID_CZ, 'DE': '32345678-1234-1234-1234-123456789abc'}.get(country, UUID_CZ)
         return SimpleNamespace(rows=[station(uuid, country + ' Rádio')], more=False, offline=self.offline)
 
 
