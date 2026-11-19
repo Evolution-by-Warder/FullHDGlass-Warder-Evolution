@@ -39,6 +39,7 @@ jobs:
         with:
           sparse-checkout: |
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+            source/package-root/usr/lib/enigma2/python/Components/Renderer/
             tools/test-radio-world.py
             tools/test-radio-packages.py
             tools/test-radio-bundle-fetch.py
