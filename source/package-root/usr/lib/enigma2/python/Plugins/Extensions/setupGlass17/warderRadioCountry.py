@@ -203,7 +203,8 @@ def request_country(country, directory=DIRECTORY):
         if country == state.get('active') and not state.get('pending'):
             return {'accepted': True, 'already_active': True}
         state.update({'schema': VERSION, 'pending': country,
-                      'pending_started': int(time.time()), 'last_attempt': 0})
+                      'pending_started': int(time.time()), 'last_attempt': 0,
+                      'last_error': None, 'downloaded': 0})
         _save_choice(directory, state)
         page = directory / PAGE_FILE
         if live._safe_file(page):
@@ -285,18 +286,29 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         try:
             collected, offset, more = _station_rows(browser, country, offset, rows)
         except (OSError, ValueError):
+            state['last_error'] = 'radio-browser-unavailable'
+            _save_choice(directory, state)
             return {'changed': False, 'skipped': 'radio-browser-unavailable'}
         if more:
             if len(collected) >= MAX_STATIONS:
+                state['last_error'] = 'too-many-stations'
+                _save_choice(directory, state)
                 return {'changed': False, 'skipped': 'too-many-stations'}
             staging_data = {'country': country, 'rows': collected, 'offset': offset}
             encoded = live._json_bytes(staging_data)
             if len(encoded) > 4 * 1024 * 1024:
+                state['last_error'] = 'country-too-large'
+                _save_choice(directory, state)
                 return {'changed': False, 'skipped': 'country-too-large'}
             live._write(staging, encoded)
+            state['downloaded'] = len(collected)
+            state['last_error'] = None
+            _save_choice(directory, state)
             return {'changed': False, 'incomplete': True, 'country': country,
                     'downloaded': len(collected)}
         if not collected:
+            state['last_error'] = 'empty-country'
+            _save_choice(directory, state)
             return {'changed': False, 'skipped': 'empty-country'}
         collected.sort(key=lambda row: live._station_sort_key(row['name']))
         raw = live._bouquet([(country_name(country), collected)])
@@ -313,7 +325,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         if changed:
             live._write(target, raw)
         state.update({'active': country, 'sha256': hashlib.sha256(raw).hexdigest(),
-                      'last_success': now, 'last_attempt': now})
+                      'last_success': now, 'last_attempt': now,
+                      'last_error': None, 'downloaded': len(collected)})
         state.pop('pending', None)
         state.pop('pending_started', None)
         _save_choice(directory, state)
@@ -337,6 +350,37 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                             backup.unlink()
         return {'changed': changed or registered or bool(pending),
                 'country': country, 'stations': len(collected)}
+
+
+def diagnose(directory=DIRECTORY):
+    """Read-only debug status for receiver tests; never display stream URLs."""
+    directory = Path(directory)
+    info = _choice(directory)
+    staging = live._read_json(directory / PAGE_FILE, {}, 4 * 1024 * 1024)
+    stations = live._read_json(directory / live.DATA_FILE, {}, MAP_LIMIT)
+    raw_path = directory / live.FILE
+    try:
+        raw = (raw_path.read_bytes() if raw_path.is_file() and
+               not raw_path.is_symlink() and raw_path.stat().st_size <= 12 * 1024 * 1024
+               else None)
+    except OSError:
+        raw = None
+    sections = live._sections(raw)
+    return {
+        'active': active_country(directory),
+        'pending': _pending_country(info),
+        'downloaded': info.get('downloaded', 0),
+        'pending_pages': staging.get('offset', 0) // 60
+        if isinstance(staging, dict) and isinstance(staging.get('offset', 0), int)
+        else 0,
+        'last_attempt': info.get('last_attempt'),
+        'last_success': info.get('last_success'),
+        'last_error': info.get('last_error'),
+        'visible_country_sections': list(sections),
+        'mapped_stations': len(stations.get('stations', []))
+        if isinstance(stations, dict) and isinstance(stations.get('stations'), list)
+        else 0,
+    }
 
 
 def country_options():
@@ -501,7 +545,7 @@ if __name__ == '__main__':
         elif sys.argv[1:] == ['--refresh']:
             result = refresh()
         elif sys.argv[1:] == ['--diagnose']:
-            result = {'active': active_country(), 'choice': _choice(DIRECTORY)}
+            result = diagnose()
         else:
             sys.exit(2)
         print(json.dumps(result, ensure_ascii=False))
