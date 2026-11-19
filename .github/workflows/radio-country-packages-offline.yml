@@ -22,6 +22,13 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+            source/control/postinst
+            tools/test-radio-packages.py
+            tools/test-radio-country.py
+          sparse-checkout-cone-mode: false
       - name: Compile new radio country importer and original skin modules
         run: python3 -m py_compile tools/test-radio-packages.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioPackages.py
       - name: Verify original-only radio picons and safe local country switch
