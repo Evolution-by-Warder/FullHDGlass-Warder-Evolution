@@ -322,10 +322,19 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         # Remove old owned world data only after a new, complete online
         # selected country was installed. Unrelated bouquets stay untouched.
         legacy = live._managed_legacy(directory)
-        if legacy is not None:
-            old = directory / live.LEGACY_FILE
-            if not old.is_symlink() and old.read_bytes() == legacy:
-                old.unlink()
+        index = directory / 'bouquets.radio'
+        if legacy is not None and index.is_file() and not index.is_symlink():
+            index_bytes = index.read_bytes()
+            if (live.INDEX_LINE.strip() in index_bytes and
+                    b'FROM BOUQUET "userbouquet.warder.radio"' not in index_bytes):
+                old = directory / live.LEGACY_FILE
+                if not old.is_symlink() and old.read_bytes() == legacy:
+                    old.unlink()
+                    backup = directory / (live.LEGACY_FILE + '.bak')
+                    if (backup.is_file() and not backup.is_symlink()
+                            and backup.stat().st_size <= 4 * 1024 * 1024):
+                        if backup.read_bytes().startswith(live.LEGACY_HEADER):
+                            backup.unlink()
         return {'changed': changed or registered or bool(pending),
                 'country': country, 'stations': len(collected)}
 
