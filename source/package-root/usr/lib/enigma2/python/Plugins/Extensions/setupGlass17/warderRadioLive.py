@@ -1039,7 +1039,12 @@ class Controller:
             self.active_local_key = None
             self.request_refresh()
         # An absent/unpublished index is NOT treated as a completed refresh.
-        delay = 14 * DAY if ready else 6 * 3600
+        if valid and result.get('skipped') == 'not-due':
+            seconds = result.get('retry_after')
+            delay = max(60, min(14 * DAY, seconds)) if (
+                type(seconds) is int and seconds > 0) else 6 * 3600
+        else:
+            delay = 14 * DAY if ready else 6 * 3600
         self.world_timer = self.loop.callLater(delay, self.check_world)
 
     def world_timed_out(self):
