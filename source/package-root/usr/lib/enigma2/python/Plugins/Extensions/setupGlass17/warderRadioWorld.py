@@ -305,6 +305,74 @@ def cached_country(paths_root, code):
         return None
 
 
+
+
+def diagnose(paths_root, enigma_directory):
+    """Read-only health summary for later receiver tests; never include URLs.
+
+    This intentionally checks owned-file SHA-256 only in explicit diagnostics,
+    not when drawing a radio list or changing a selection on the GUI thread.
+    """
+    from . import warderRadioCountry as country
+    from . import warderRadioPackages as packages
+    from . import warderRadioLive as live
+    import time
+
+    root = Path(paths_root) if paths_root is not None else None
+    result = {
+        'world_present': False, 'world_owned_integrity_valid': False,
+        'world_countries': 0, 'world_stations': 0,
+        'active_country': None, 'mapped_stations': 0,
+        'radio_logo_country': None, 'radio_png_count': 0,
+        'radio_picons_owned_integrity_valid': False,
+        'last_world_check': None, 'last_world_success': None,
+        'external_storage': False,
+    }
+    try:
+        folder = Path(enigma_directory)
+        if folder.is_dir() and not folder.is_symlink():
+            choice = country._choice(folder)
+            selected = country.active_country(folder)
+            result['active_country'] = selected
+            rows = live._read_json(folder / live.DATA_FILE, {}, 24 * 1024 * 1024)
+            if isinstance(rows, dict) and isinstance(rows.get('stations'), list):
+                result['mapped_stations'] = len(rows['stations'])
+            refresh = live._read_json(folder / 'warder-radio-world-update.json', {}, 4096)
+            if isinstance(refresh, dict):
+                for source, dest in (('last_attempt','last_world_check'),
+                                     ('last_success','last_world_success')):
+                    value = refresh.get(source)
+                    if type(value) in (int, float) and 1700000000 <= value <= time.time()+3600:
+                        result[dest] = int(value)
+    except (OSError, ValueError, TypeError):
+        pass
+    try:
+        if root is None or not _safe_directory(root):
+            return result
+        result['external_storage'] = root.stat().st_dev != Path('/').stat().st_dev
+        snapshot = root / WORLD_NAME
+        if not snapshot.is_symlink() and snapshot.is_dir():
+            result['world_present'] = True
+            idx = _json_file(snapshot / 'index.json', MAX_INDEX)
+            countries = _verify_index(idx)
+            result['world_countries'] = len(countries)
+            result['world_stations'] = idx['station_count']
+            result['world_owned_integrity_valid'] = _owner_ok(snapshot)
+        radio = root / 'picon' / 'radio'
+        if radio.is_dir() and not radio.is_symlink():
+            if _owner_ok(root / WORLD_NAME) and packages._owned_dir(radio):
+                state = packages._json((radio / packages.OWNER_FILE).read_bytes())
+                files = state.get('files', {})
+                result['radio_picons_owned_integrity_valid'] = True
+                result['radio_logo_country'] = state.get('country')
+                result['radio_png_count'] = len(files)
+            else:
+                result['radio_picons_owned_integrity_valid'] = False
+    except (OSError, ValueError, TypeError, KeyError):
+        pass
+    return result
+
+
 def activate_from_world(paths_root, code, enigma_directory, require_requested=False):
     """Fast offline selection, with optional stale GUI-choice rejection."""
     root=Path(paths_root)
