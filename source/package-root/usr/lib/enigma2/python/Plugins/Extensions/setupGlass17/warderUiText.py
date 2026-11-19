@@ -71,9 +71,41 @@ _RADIO_COUNTRY_TRANSLATIONS = {
 }
 
 
+_RADIO_COUNTRY_START_ERROR = "Country saved, but background radio update did not start."
+_RADIO_COUNTRY_START_ERROR_TRANSLATIONS = {
+    "al": "Vendi u ruajt, por përditësimi i radios nuk u nis.",
+    "cs": "Země byla uložena, ale aktualizace rádií se nespustila.",
+    "de": "Land gespeichert, aber die Radioaktualisierung wurde nicht gestartet.",
+    "el": "Η χώρα αποθηκεύτηκε, αλλά δεν ξεκίνησε η ενημέρωση ραδιοφώνου.",
+    "en": _RADIO_COUNTRY_START_ERROR,
+    "es": "País guardado, pero la actualización de radio no se inició.",
+    "et": "Riik salvestati, kuid raadio värskendamine ei käivitunud.",
+    "fa": "کشور ذخیره شد اما به‌روزرسانی رادیو شروع نشد.",
+    "fr": "Pays enregistré, mais la mise à jour radio n'a pas démarré.",
+    "hu": "Az ország mentve, de a rádiófrissítés nem indult el.",
+    "it": "Paese salvato, ma l'aggiornamento radio non è partito.",
+    "lt": "Šalis išsaugota, bet radijo atnaujinimas neprasidėjo.",
+    "nl": "Land opgeslagen, maar de radio-update is niet gestart.",
+    "pl": "Kraj zapisany, ale aktualizacja radia nie została uruchomiona.",
+    "pt": "País guardado, mas a atualização da rádio não começou.",
+    "ro": "Țara a fost salvată, dar actualizarea radio nu a pornit.",
+    "ru": "Страна сохранена, но обновление радио не запустилось.",
+    "sk": "Krajina bola uložená, ale aktualizácia rádia sa nespustila.",
+    "tr": "Ülke kaydedildi, ancak radyo güncellemesi başlatılamadı.",
+    "uk": "Країну збережено, але оновлення радіо не запустилося.",
+    "zh": "国家或地区已保存，但广播更新未能启动。",
+}
+
+
 def ui_text(text):
     translated = _translate(text)
     if translated == text:
+        if text == _RADIO_COUNTRY_START_ERROR:
+            try:
+                code = language_code(config.osd.language.value)
+            except (AttributeError, TypeError, ValueError):
+                code = "en"
+            return _RADIO_COUNTRY_START_ERROR_TRANSLATIONS.get(code, text)
         if text in _RADIO_COUNTRY_KEYS:
             try:
                 code = language_code(config.osd.language.value)
