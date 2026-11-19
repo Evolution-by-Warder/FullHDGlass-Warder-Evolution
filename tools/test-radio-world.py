@@ -14,7 +14,12 @@ sys.path.insert(0,str(ROOT/'source/package-root/usr/lib/enigma2/python'))
 from Plugins.Extensions.setupGlass17 import warderRadioWorld as world
 from Plugins.Extensions.setupGlass17 import warderRadioCountry as country
 from Plugins.Extensions.setupGlass17 import warderRadioLive as live
-from test_radio_packages import example
+import importlib.util
+_fixture = ROOT / 'tools/test-radio-packages.py'
+_spec = importlib.util.spec_from_file_location('world_country_package_fixtures', _fixture)
+_fixtures = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_fixtures)
+example = _fixtures.example
 
 
 def snapshot(root, codes=('ET','FR')):
