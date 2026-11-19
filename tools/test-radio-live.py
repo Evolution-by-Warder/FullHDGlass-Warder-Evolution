@@ -21,6 +21,7 @@ spec = importlib.util.spec_from_file_location(pkg.__name__ + '.warderRadioLive',
 live = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = live
 spec.loader.exec_module(live)
+REAL_PICON_PNG = live._picon_png
 NOW = 1800000000
 UUID_SK = '12345678-1234-1234-1234-123456789abc'
 UUID_CZ = '22345678-1234-1234-1234-123456789abc'
@@ -53,6 +54,11 @@ class LogoStore:
 
 class LiveTests(unittest.TestCase):
     def setUp(self):
+        # Existing ownership tests use stub PNG headers; actual Pillow
+        # geometry/alpha processing has a dedicated real-image test below.
+        local_picon = patch.object(live, '_picon_png', side_effect=lambda payload: payload)
+        local_picon.start()
+        self.addCleanup(local_picon.stop)
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
@@ -330,6 +336,47 @@ class LiveTests(unittest.TestCase):
         calls = [n for n in ast.walk(folder) if isinstance(n, ast.Call)]
         self.assertFalse(any(isinstance(n.func, ast.Attribute) and n.func.attr == 'mkdir'
                              for n in calls))
+
+    def test_real_radio_logo_preserves_aspect_ratio_and_alpha(self):
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest('Pillow is optional on CI host; installed by Radio plugin on receiver')
+        import io
+        logo = Image.new('RGBA', (72, 72), (234, 55, 33, 255))
+        original = io.BytesIO()
+        logo.save(original, 'PNG')
+        output = REAL_PICON_PNG(original.getvalue())
+        with Image.open(io.BytesIO(output)) as rendered:
+            self.assertEqual(rendered.size, (220, 132))
+            self.assertEqual(rendered.mode, 'RGBA')
+            self.assertEqual(rendered.getpixel((0, 0))[3], 0)
+            self.assertEqual(rendered.getpixel((110, 66))[3], 255)
+            # A 72x72 square logo should remain square, not stretched to 220x132.
+            self.assertEqual(rendered.getpixel((30, 66))[3], 0)
+        with self.assertRaises(ValueError):
+            REAL_PICON_PNG(b'not a PNG')
+
+    def test_background_prefetch_only_selected_home_countries(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            states = [{'countrycode': code,
+                       'stem': live.service_stem('%08x-1234-1234-1234-123456789abc' % i)}
+                      for code, count in [('SK', 10), ('CZ', 10), ('DE', 30)]
+                      for i in range(count)]
+            (root / live.DATA_FILE).write_text(json.dumps({'stations': states}))
+            class Call:
+                def active(self): return True
+                def cancel(self): pass
+            class Loop:
+                def callLater(self, *_): return Call()
+            with patch.object(live, 'DIRECTORY', root):
+                controller = live.Controller(Loop(), lambda: None)
+                try:
+                    self.assertEqual(len(controller.icon_queue), 16)
+                    self.assertTrue(all(x in controller.known_icons for x in controller.icon_queue))
+                finally:
+                    controller.close()
 
     def test_picon_single_station_exact_and_no_overwrite(self):
         live.refresh(self.root, NOW, Browser())
