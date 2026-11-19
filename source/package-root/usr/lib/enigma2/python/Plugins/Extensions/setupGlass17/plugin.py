@@ -1467,6 +1467,13 @@ def startHdg17(reason, **kwargs):
 		except Exception:
 			pass
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Optional context-MENU entry only when the Warder Radio Live folder
+		# is highlighted at the root of RADIO bouquets. Never patch image files.
+		try:
+			from .warderRadioCountry import install_root_country_menu
+			install_root_country_menu()
+		except (ImportError, AttributeError, OSError):
+			pass
 		# TEST89: timestamp the actual RADIO key handler before any mode-switch work.
 		global _warderOriginalShowRadioButton
 		try:
