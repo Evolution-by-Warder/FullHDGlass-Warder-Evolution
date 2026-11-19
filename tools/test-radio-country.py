@@ -202,6 +202,9 @@ class CountryTests(unittest.TestCase):
         state = json.loads(self.prefs.read_text())
         self.assertEqual(state['active'], 'SK')
         self.assertFalse(country._owner_valid(self.root, modified, state))
+        diagnostic = country.diagnose(self.root)
+        self.assertTrue(diagnostic['enigma_alternative_recovery_possible'])
+        self.assertFalse((self.root / (live.FILE + '.enigma-alternatives.bak')).exists())
         country.request_country('CZ', self.root)
         result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
         self.assertTrue(result['changed'])
@@ -486,6 +489,7 @@ class CountryTests(unittest.TestCase):
         self.assertTrue(bad['bouquet_exists'])
         self.assertEqual(bad['bouquet_group_markers'], 0)
         self.assertFalse(bad['bouquet_owned_checksum_valid'])
+        self.assertFalse(bad['enigma_alternative_recovery_possible'])
         self.assertEqual(bad['visible_country_sections'], [])
         self.assertEqual(country.refresh(self.root, now=NOW, browser=Browser())['skipped'], 'owner-modified')
         self.assertIsNone(country.diagnose(self.root)['last_attempt'])  # no worker attempt reached
