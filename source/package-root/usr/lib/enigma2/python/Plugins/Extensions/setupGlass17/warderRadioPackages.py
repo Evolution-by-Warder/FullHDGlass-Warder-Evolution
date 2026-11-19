@@ -25,6 +25,7 @@ SHA = re.compile(r'^[0-9a-f]{64}$')
 OWNER_FILE = '.warder-radio-country.json'
 MAX_STATIONS = 12000
 MAX_MANIFEST = 64 * 1024
+MAX_OWNER_MANIFEST = 4 * 1024 * 1024
 MAX_BOUQUET = 12 * 1024 * 1024
 MAX_CATALOGUE = 24 * 1024 * 1024
 MAX_ZIP = 1024 * 1024 * 1024
@@ -171,7 +172,7 @@ def _owned_dir(folder):
     if not folder.is_dir():
         return False
     marker = folder / OWNER_FILE
-    if marker.is_symlink() or not marker.is_file() or marker.stat().st_size > MAX_MANIFEST:
+    if marker.is_symlink() or not marker.is_file() or marker.stat().st_size > MAX_OWNER_MANIFEST:
         return False
     state = _json(marker.read_bytes())
     files = state.get('files')
