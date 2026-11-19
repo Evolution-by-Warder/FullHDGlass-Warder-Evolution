@@ -84,6 +84,12 @@ class CountryTests(unittest.TestCase):
                                 group('United Kingdom', ('UK One',)))
         (self.root / 'settings').write_text('config.osd.language=sk_SK\n')
 
+    def _alt_file(self, filename, mapped_station):
+        """Write an Enigma2-managed alternatives group referencing the same station."""
+        (self.root / filename).write_bytes(
+            b'#NAME Stored alternatives\\n'.replace(b'\\n', b'\n') +
+            live._service(mapped_station).encode('utf-8'))
+
     def test_first_launch_country_matches_enigma_language(self):
         cases = {'sk_SK': 'SK', 'cs_CZ': 'CZ', 'de_DE': 'DE',
                  'en_US': 'GB', 'fr_FR': 'FR', 'it_IT': 'IT',
@@ -189,6 +195,7 @@ class CountryTests(unittest.TestCase):
         country.refresh(self.root, now=NOW, browser=Browser())
         mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
         self.assertEqual(len(mapping), 2)
+        self._alt_file('alternatives.test_897.radio', mapping[0])
         previous = self.bouquet.read_bytes()
         original_service = live._service(mapping[0]).encode('utf-8')
         self.assertIn(original_service, previous)
@@ -224,6 +231,7 @@ class CountryTests(unittest.TestCase):
         rows = json.loads((self.root / live.DATA_FILE).read_text())['stations']
         original = self.bouquet.read_bytes()
         self.assertEqual(len(rows), 2)
+        self._alt_file('alternatives.live_radio.radio', rows[0])
         edited = original.replace(
             live._service(rows[0]).encode('utf-8'),
             (b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
@@ -277,6 +285,7 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(original_result['stations'], 123)
         original = self.bouquet.read_bytes()
         row = json.loads((self.root / live.DATA_FILE).read_text())['stations'][7]
+        self._alt_file('alternatives.7.radio', row)
         modified = original.replace(
             live._service(row).encode('utf-8'),
             (b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
@@ -334,6 +343,7 @@ class CountryTests(unittest.TestCase):
         country.refresh(self.root, now=NOW, browser=Browser())
         mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
         previous = self.bouquet.read_bytes()
+        self._alt_file('alternatives.test.radio', mapping[0])
         alt = (b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
                b'"alternatives.test.radio" ORDER BY bouquet\n'
                + ('#DESCRIPTION ' + mapping[0]['name'] + '\n').encode('utf-8'))
@@ -361,6 +371,7 @@ class CountryTests(unittest.TestCase):
         country.refresh(self.root, now=NOW, browser=Browser())
         mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
         original = self.bouquet.read_bytes()
+        self._alt_file('alternatives.protected.radio', mapping[0])
         modified = original.replace(
             live._service(mapping[0]).encode('utf-8'),
             b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
