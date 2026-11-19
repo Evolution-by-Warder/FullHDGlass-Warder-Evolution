@@ -897,6 +897,30 @@ def request_picon(reference):
         controller.enqueue_icon(reference)
 
 
+def cached_country_picon(references, base):
+    """Fast in-memory UUID ownership test before reading radio-only PNG path.
+
+    Normal TV/SAT, custom/Own Picons, and unrecognized stations retain their
+    existing native lookup. No Radio Browser, JSON or HTTP per rendered row.
+    """
+    controller = _controller
+    if (controller is None or not getattr(controller, 'local_world_sha', None)
+            or not isinstance(base, str) or not base or
+            not isinstance(references, (tuple, list))):
+        return ''
+    known = getattr(controller, 'known_icons', set())
+    folder = os.path.join(base, 'picon', 'radio')
+    for stem in references:
+        if not isinstance(stem, str):
+            continue
+        exact = '4097' + stem[1:] if stem.startswith('1_') else stem
+        if exact in known:
+            path = os.path.join(folder, exact + '.png')
+            if os.path.isfile(path):
+                return path
+    return ''
+
+
 class Controller:
     def __init__(self, event_loop=None, reload_bouquets=None, session=None):
         from .warderHelpPreview import _NativeLoop
