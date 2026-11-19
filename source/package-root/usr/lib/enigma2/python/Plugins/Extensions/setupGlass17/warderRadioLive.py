@@ -1191,25 +1191,52 @@ class Controller:
             return
         try:
             if self.icon_worker is None:
-                # Prefetch only a few visible-country stations, never the whole catalogue.
-                self._load_icon_map()
-                from NavigationInstance import instance
-                ref = instance.getCurrentlyPlayingServiceReference() if instance else None
-                fields = ref.toString().split(':') if ref else []
-                stem = '_'.join(field.upper() for field in fields[:10])
-                candidate = None
-                if (len(fields) >= 11 and stem in self.known_icons and
-                        stem != self.last_icon):
-                    candidate = stem
-                elif self.icon_queue:
-                    candidate = self.icon_queue.pop(0)
-                if candidate:
-                    destination = _skin_picon_directory()
-                    if destination:
-                        self.icon_worker = self._spawn(
-                            'icon', ['--icon', candidate, destination], self.icon_done)
-                        self.icon_requested[candidate] = time.monotonic()
-                        self.last_icon = candidate
+                # In the pre-generated mode logos arrive in ONE country ZIP,
+                # not as thousands of individual Radio Browser requests.
+                root = _radio_world_root()
+                cached = None
+                country_code = None
+                if root is not None:
+                    from . import warderRadioWorld as world
+                    from . import warderRadioCountry as country
+                    country_code = country.active_country(DIRECTORY)
+                    cached = world.cached_country(root, country_code)
+                if cached:
+                    self.local_world_sha = cached
+                    if not _radio_custom_picons_enabled():
+                        key = (country_code, cached)
+                        last = self.last_bulk_logo
+                        if last is None or last[0] != key or (
+                                time.monotonic() - last[1] >= 3600):
+                            self.last_bulk_logo = (key, time.monotonic())
+                            self.icon_worker = self._spawn(
+                                'logo_zip',
+                                ['--logos-world', country_code, str(root)],
+                                self.icon_done)
+                    # In cached-country mode do NOT start old per-station
+                    # downloads into the shared TV/SAT picon folder.
+                else:
+                    self.local_world_sha = None
+                    # Online TEST138 fallback until the complete world source
+                    # is actually published; do not discard existing behavior.
+                    self._load_icon_map()
+                    from NavigationInstance import instance
+                    ref = instance.getCurrentlyPlayingServiceReference() if instance else None
+                    fields = ref.toString().split(':') if ref else []
+                    stem = '_'.join(field.upper() for field in fields[:10])
+                    candidate = None
+                    if (len(fields) >= 11 and stem in self.known_icons and
+                            stem != self.last_icon):
+                        candidate = stem
+                    elif self.icon_queue:
+                        candidate = self.icon_queue.pop(0)
+                    if candidate:
+                        destination = _skin_picon_directory()
+                        if destination:
+                            self.icon_worker = self._spawn(
+                                'icon', ['--icon', candidate, destination], self.icon_done)
+                            self.icon_requested[candidate] = time.monotonic()
+                            self.last_icon = candidate
         except Exception:
             pass
         self.icon_timer = self.loop.callLater(12, self.check_icon)
@@ -1235,10 +1262,12 @@ class Controller:
     def close(self):
         self.closed = True
         for call in (self.pending, self.icon_timer, self.timeout,
-                     self.radio_refresh_timer):
+                     self.radio_refresh_timer, getattr(self, 'world_timer', None),
+                     getattr(self, 'world_timeout', None)):
             if call is not None and call.active():
                 call.cancel()
-        for worker in (self.worker, self.icon_worker):
+        for worker in (self.worker, self.icon_worker,
+                       getattr(self, 'world_worker', None)):
             if worker is not None:
                 try:
                     worker.transport.kill()
