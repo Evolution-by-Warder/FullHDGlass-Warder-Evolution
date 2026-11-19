@@ -249,6 +249,55 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
                          [country.country_name('CZ')])
 
+    def test_receiver_scale_123_mapped_122_streams_one_alternative_crlf(self):
+        """Regression at exact receiver shape, not just two mocked stations."""
+        from uuid import UUID
+        class LargeCountryBrowser:
+            def page(self, country='', offset=0):
+                if country == 'SK':
+                    prefix = '12345678-1234-1234-1234-'
+                    rows = [
+                        {'stationuuid': prefix + ('%012x' % i),
+                         'name': 'Radio %03d' % i,
+                         'url': 'https://radio.example.org/live/%d' % i,
+                         'favicon': ''}
+                        for i in range(123)
+                    ]
+                else:
+                    rows = [
+                        {'stationuuid': '22345678-1234-1234-1234-123456789abc',
+                         'name': 'České rádio',
+                         'url': 'https://radio.example.org/czech',
+                         'favicon': ''}
+                    ]
+                return SimpleNamespace(rows=rows, more=False, offline=False)
+        browser = LargeCountryBrowser()
+        country.bootstrap(self.root)
+        original_result = country.refresh(self.root, now=NOW, browser=browser)
+        self.assertEqual(original_result['stations'], 123)
+        original = self.bouquet.read_bytes()
+        row = json.loads((self.root / live.DATA_FILE).read_text())['stations'][7]
+        modified = original.replace(
+            live._service(row).encode('utf-8'),
+            (b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+             b'"alternatives.7.radio" ORDER BY bouquet\n' +
+             ('#DESCRIPTION ' + row['name'] + '\n').encode('utf-8')), 1
+        ).replace(b'\n', b'\r\n')
+        self.bouquet.write_bytes(modified)
+        diagnose = country.diagnose(self.root)
+        self.assertEqual(diagnose['mapped_stations'], 123)
+        self.assertEqual(diagnose['bouquet_stream_entries'], 122)
+        self.assertEqual(diagnose['bouquet_group_markers'], 1)
+        self.assertTrue(diagnose['enigma_alternative_recovery_possible'])
+        country.request_country('CZ', self.root)
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=browser)
+        self.assertTrue(result['changed'])
+        self.assertEqual(country.active_country(self.root), 'CZ')
+        self.assertEqual((self.root / (live.FILE + '.enigma-alternatives.bak')).read_bytes(),
+                         modified)
+        self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
+                         [country.country_name('CZ')])
+
     def test_only_crlf_or_bom_format_differences_keep_trusted_ownership(self):
         country.bootstrap(self.root)
         country.refresh(self.root, now=NOW, browser=Browser())
