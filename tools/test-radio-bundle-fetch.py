@@ -219,6 +219,15 @@ class Tests(unittest.TestCase):
             fetch.sync_world(self.paths,self.network,require_external=False)
         self.assertFalse((self.paths/'radio-world').exists())
 
+    def test_complete_world_feed_with_one_partial_logo_country_is_rejected(self):
+        # A central complete=true flag is not sufficient; check every
+        # participating country's original PNG ZIP attempt completeness.
+        self.feed['countries']['ET']['logo_package_complete'] = False
+        self._network()
+        with self.assertRaisesRegex(ValueError, 'Incomplete country logo listing'):
+            fetch.sync_world(self.paths,self.network,require_external=False)
+        self.assertFalse((self.paths/'radio-world').exists())
+
     def test_incomplete_feed_refused(self):
         self.feed['complete']=False
         self._network()
