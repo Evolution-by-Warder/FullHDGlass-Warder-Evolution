@@ -15,6 +15,7 @@ from pathlib import Path
 import re
 import shutil
 import tempfile
+import time
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
@@ -32,6 +33,9 @@ SHA = re.compile(r'^[0-9a-f]{64}$')
 INDEX_LIMIT = 1024 * 1024
 ZIP_LIMIT = world.MAX_ARCHIVE
 LOGO_LIMIT = packages.MAX_ZIP
+SYNC_STATE = 'warder-radio-world-update.json'
+SYNC_PERIOD = 14 * 24 * 3600
+SYNC_RETRY = 6 * 3600
 
 
 def _trusted_url(value):
@@ -142,29 +146,71 @@ def _download(opener, url, parent, expected_hash, expected_size, limit):
         raise
 
 
-def sync_world(paths_root, opener=urlopen, require_external=True):
-    """Verify current release and install local world snapshot off the GUI."""
+def sync_world(paths_root, opener=urlopen, require_external=True,
+               state_directory=None, now=None):
+    """Verified world update with optional durable, reboot-safe 14-day cadence.
+
+    Only the subprocess passes state_directory=/etc/enigma2. Existing offline
+    callers and unit tests may omit it and run an explicit forced check.
+    """
     root=Path(paths_root)
     if not world._safe_directory(root) or (
             require_external and root.stat().st_dev == Path('/').stat().st_dev):
         return {'changed':False,'skipped':'unsafe-storage'}
+    now = time.time() if now is None else now
+    state_path = None
+    if state_directory is not None:
+        parent = Path(state_directory)
+        state_path = parent / SYNC_STATE
+        if (parent.is_symlink() or not parent.is_dir() or
+                not packages.live._safe_file(state_path)):
+            return {'changed':False,'skipped':'unsafe-state'}
+        if now < 1700000000:
+            return {'changed':False,'skipped':'clock','retry_after':3600}
+        state = packages.live._read_json(state_path,{},4096)
+        if not isinstance(state,dict):
+            state = {}
+        prev = state.get('last_success')
+        attempt = state.get('last_attempt')
+        # A cached snapshot may have been removed between GUI restarts.
+        # Never suppress re-download when the active local snapshot is absent.
+        have_world = (root / world.WORLD_NAME / world.OWNER).is_file()
+        if have_world and type(prev) in (int,float) and 0 <= now-prev < SYNC_PERIOD:
+            return {'changed':False,'skipped':'not-due',
+                    'retry_after':max(60,int(SYNC_PERIOD-(now-prev)))}
+        if type(attempt) in (int,float) and 0 <= now-attempt < SYNC_RETRY:
+            return {'changed':False,'skipped':'not-due',
+                    'retry_after':max(60,int(SYNC_RETRY-(now-attempt)))}
+        state['last_attempt'] = now
+        packages.live._write(state_path,packages.live._json_bytes(state))
     index=_feed(opener)
     marker=root/world.WORLD_NAME/world.OWNER
     if marker.is_file() and not marker.is_symlink():
         present=world._json_file(marker,world.MAX_OWNER)
         if present.get('archive_sha256')==index['world']['sha256'] and world._owner_ok(marker.parent):
-            return {'changed':False,'skipped':'already-current',
+            result={'changed':False,'skipped':'already-current',
                     'countries':present.get('countries')}
-    info=index['world']
-    archive=_download(opener,_asset(index,info['file']),root,
-                      info['sha256'],info['bytes'],ZIP_LIMIT)
-    try:
-        return world.install_world(
-            archive,info['sha256'],root,
-            require_external=require_external,
-            expected_countries=index['country_count'])
-    finally:
-        archive.unlink(missing_ok=True)
+        else:
+            result=None
+    else:
+        result=None
+    if result is None:
+        info=index['world']
+        archive=_download(opener,_asset(index,info['file']),root,
+                          info['sha256'],info['bytes'],ZIP_LIMIT)
+        try:
+            result=world.install_world(
+                archive,info['sha256'],root,
+                require_external=require_external,
+                expected_countries=index['country_count'])
+        finally:
+            archive.unlink(missing_ok=True)
+    if state_path is not None and (
+            result.get('changed') or result.get('skipped') == 'already-current'):
+        state['last_success'] = now
+        state['last_sha256'] = index['world']['sha256']
+        packages.live._write(state_path,packages.live._json_bytes(state))
+    return result
 
 
 def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
