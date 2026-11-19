@@ -24,8 +24,10 @@ INDEX_LINE = ('#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "' + FILE + '" ORDER BY
 DATA_FILE = 'warder-radio-live-stations.json'
 STATE_FILE = 'warder-radio-live-state.json'
 ICON_STATE = 'warder-radio-live-picons.json'
+DIAG_FILE = 'warder-radio-live-diagnostics.json'
 DAY = 24 * 3600
 RETRY = 6 * 3600
+INITIAL_RETRY = 15 * 60
 MAX_PAGES = 3
 MAX_STATIONS = 600
 MAX_ICONS = 2 * MAX_STATIONS + 24  # two native Enigma2 filename variants
@@ -204,7 +206,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         if before is not None and success and 0 <= now-success < DAY:
             changed = _register(directory)
             return {'changed': changed, 'skipped': 'not-due'}
-        if attempt and 0 <= now-attempt < RETRY:
+        retry = RETRY if before is not None else INITIAL_RETRY
+        if attempt and 0 <= now-attempt < retry:
             changed = _register(directory) if before is not None else False
             return {'changed': changed, 'skipped': 'not-due'}
         state['attempt'] = now
@@ -602,6 +605,84 @@ class Controller:
                     pass
 
 
+
+def _safe_status(data, directory=DIRECTORY):
+    """Publish sanitized status only; never persist stream addresses or secrets."""
+    try:
+        target = Path(directory) / DIAG_FILE
+        _write(target, _json_bytes(data))
+    except OSError:
+        pass
+
+
+def diagnose(directory=DIRECTORY):
+    """Read-only receiver diagnostic; no network requests or GUI imports."""
+    directory = Path(directory)
+    target = directory / FILE
+    index = directory / 'bouquets.radio'
+    source = Path(__file__).resolve().parent.parent / 'WarderRadio' / 'radio_browser.py'
+    state = _read_json(directory / STATE_FILE, {})
+    latest = _read_json(directory / DIAG_FILE, {})
+    if not isinstance(state, dict):
+        state = {}
+    if not isinstance(latest, dict):
+        latest = {}
+    registered = False
+    if index.is_file() and not index.is_symlink():
+        with index.open('rb') as handle:
+            registered = INDEX_LINE.strip() in handle.read(512 * 1024)
+    data = {
+        'version': 'radio-live-test125',
+        'radio_plugin_source_exists': source.is_file(),
+        'bouquet_exists': target.is_file() and not target.is_symlink(),
+        'registered_in_bouquets_radio': registered,
+        'last_attempt': state.get('attempt'),
+        'last_success': state.get('success'),
+        'last_status': latest,
+    }
+    if source.is_file():
+        try:
+            _plugin()
+            data['radio_plugin_import'] = 'ok'
+        except ImportError as exc:
+            data['radio_plugin_import'] = 'failed'
+            data['module'] = getattr(exc, 'name', None) or 'unknown'
+        except (OSError, ValueError):
+            data['radio_plugin_import'] = 'failed'
+            data['module'] = 'unknown'
+    else:
+        data['radio_plugin_import'] = 'missing'
+    return data
+
+
+def refresh_with_status():
+    """Used by the silent installer / controller; record errors for diagnosis."""
+    try:
+        result = refresh()
+    except Exception as exc:
+        reason = type(exc).__name__
+        message = str(exc)
+        if isinstance(exc, ImportError):
+            reason = 'radio-plugin-import'
+        elif 'Radio Browser' in message:
+            reason = 'radio-browser-unavailable'
+        elif 'Empty core country' in message:
+            reason = 'empty-required-country'
+        elif 'Concurrent bouquet edit' in message:
+            reason = 'concurrent-edit'
+        elif 'Unsafe' in message:
+            reason = 'unsafe-path'
+        _safe_status({'result': 'failed', 'reason': reason,
+                      'timestamp': int(time.time())})
+        raise
+    _safe_status({'result': 'ready' if (Path(DIRECTORY) / FILE).is_file() else 'not-ready',
+                  'changed': bool(result.get('changed')),
+                  'skipped': result.get('skipped'),
+                  'stations': result.get('stations'),
+                  'timestamp': int(time.time())})
+    return result
+
+
 def start(reason=0):
     global _controller
     if reason == 0 and _controller is None:
@@ -616,7 +697,10 @@ if __name__ == '__main__':
         signal.alarm(90)
         os.nice(10)
         if sys.argv[1:] == ['--refresh']:
-            result = refresh()
+            result = refresh_with_status()
+        elif sys.argv[1:] == ['--diagnose']:
+            print(json.dumps(diagnose(), ensure_ascii=False))
+            sys.exit(0)
         elif len(sys.argv) == 4 and sys.argv[1] == '--icon':
             destination = Path(sys.argv[3])
             # Prevent forged CLI paths from writing to receiver flash.
