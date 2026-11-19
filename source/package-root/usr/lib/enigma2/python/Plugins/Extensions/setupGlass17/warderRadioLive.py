@@ -705,6 +705,30 @@ def _purge_owned(entries, directory, keep):
         entries.pop(name, None)
 
 
+def _picon_png(source, width=220, height=132):
+    """Fit the trusted radio logo into a transparent 16:9-ish Enigma2 picon.
+
+    No distortion, letterboxing with alpha, no branding overlay. Executed only
+    in the background download worker, never in the main GUI thread.
+    """
+    import io
+    from PIL import Image
+    with Image.open(io.BytesIO(source), formats=('PNG',)) as logo:
+        if (logo.width < 24 or logo.height < 24 or
+                logo.width * logo.height > 1024 * 1024):
+            raise ValueError('Unsafe radio logo dimensions')
+        image = logo.convert('RGBA')
+        image.thumbnail((width, height),
+                        Image.Resampling.LANCZOS if hasattr(Image, 'Resampling')
+                        else Image.LANCZOS)
+        canvas = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        canvas.alpha_composite(image, ((width - image.width) // 2,
+                                       (height - image.height) // 2))
+        output = io.BytesIO()
+        canvas.save(output, 'PNG', compress_level=6)
+        return output.getvalue()
+
+
 def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
     """Download or refresh one logo; never change an unowned native picon.
 
@@ -757,6 +781,10 @@ def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
         with open(source, 'rb') as inp:
             content = inp.read(512 * 1024 + 1)
         if not content.startswith(b'\x89PNG\r\n\x1a\n') or len(content) > 512 * 1024:
+            return {'changed': False, 'skipped': 'bad-logo'}
+        try:
+            content = _picon_png(content)
+        except (ValueError, OSError, ImportError):
             return {'changed': False, 'skipped': 'bad-logo'}
         checksum = hashlib.sha256(content).hexdigest()
         changed = False
@@ -881,7 +909,9 @@ class Controller:
                 continue
             code = row.get('countrycode', '')
             seen[code] = seen.get(code, 0) + 1
-            if seen[code] <= 12:
+            # Do not fetch every radio logo in the worldwide catalogue.
+            # Radio Browser images are demand-loaded for visible list rows.
+            if code in COUNTRIES and seen[code] <= 8:
                 initial.append(row.get('stem', ''))
         self.icon_queue = [stem for stem in initial if stem in self.known_icons]
 
