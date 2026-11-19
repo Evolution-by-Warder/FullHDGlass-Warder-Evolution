@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "source/package-root"
 CONTROL = ROOT / "source/control"
 OUT_DIR = ROOT / "packages/radio-live-test"
-RUNTIME_VERSION = "1.0.81-test136"
+RUNTIME_VERSION = "1.0.81-test137"
 PACKAGE_VERSION = RUNTIME_VERSION + "-1"
 PKG_NAME = "enigma2-plugin-skins-fullhdglass"
 PACKAGE_ID = "enigma2-plugin-skins-fullhdglass-warder-evolution"
@@ -53,7 +53,7 @@ def check_sources():
     return text.replace("Version: 1.0.80-1\n",
                         "Version: " + PACKAGE_VERSION + "\n").replace(
         "Description: FullHDGlass - Warder Evolution - modern Enigma2 skin continuation",
-        "Description: FullHDGlass Warder Evolution RADIO LIVE TEST136 - receiver trial"
+        "Description: FullHDGlass Warder Evolution RADIO LIVE TEST137 - receiver trial"
     )
 
 
@@ -148,7 +148,7 @@ def main():
     summary["sha256"] = hashlib.sha256(destination.read_bytes()).hexdigest()
     (OUT_DIR / (destination.name + ".sha256")).write_text(
         summary["sha256"] + "  " + destination.name + "\n", encoding="utf-8")
-    (OUT_DIR / "radio-live-test136-manifest.json").write_text(
+    (OUT_DIR / "radio-live-test137-manifest.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))
 

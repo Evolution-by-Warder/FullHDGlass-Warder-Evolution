@@ -24,9 +24,12 @@ from Plugins.Extensions.setupGlass17 import warderRadioLive as live
 DIRECTORY = Path('/etc/enigma2')
 CHOICE_FILE = 'warder-radio-live-country.json'
 PAGE_FILE = 'warder-radio-live-country-pending.json'
+QUEUE_FILE = 'warder-radio-live-country-request.json'
 COUNTRY_RE = re.compile(r'^[A-Z]{2}$')
 MAX_PAGES_PER_JOB = 5
-MAX_STATIONS = 4000
+MAX_STATIONS = 12000  # 4,000 excluded large countries, e.g. Germany
+MAX_SCAN_OFFSET = 30000  # Raw API rows, independent of accepted/unique stations
+PENDING_LIMIT = 12 * 1024 * 1024
 DAY = 86400
 RETRY = 15 * 60
 STEP = 2
@@ -489,29 +492,81 @@ def bootstrap(directory=DIRECTORY):
                 'pending': _pending_country(state)}
 
 
+def _queued_country(directory):
+    """Read latest user intent; never read an arbitrary path from the file."""
+    queued = live._read_json(Path(directory) / QUEUE_FILE, {}, 4096)
+    selected = queued.get('country') if isinstance(queued, dict) else None
+    return selected if isinstance(selected, str) and COUNTRY_RE.fullmatch(selected) else None
+
+
+def _queue_lock(directory):
+    return live._lock(Path(directory) / (QUEUE_FILE + '.lock'))
+
+
+def _take_queued_country(directory):
+    """Atomically consume a click received while the country worker was busy."""
+    path = Path(directory) / QUEUE_FILE
+    if not live._safe_file(path):
+        return None
+    with _queue_lock(directory) as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        selected = _queued_country(directory)
+        if path.exists():
+            live._write(path, b'{}')
+        return selected
+
+
+def _save_country_request_locked(country, directory, state):
+    """Update the pending choice only; never touch the active station bouquet."""
+    if country == _pending_country(state):
+        return {'accepted': True, 'already_active': False, 'already_pending': True}
+    if country == state.get('active'):
+        if _pending_country(state):
+            state.pop('pending', None)
+            state.pop('pending_started', None)
+            state['last_error'] = None
+            state['downloaded'] = 0
+            _save_choice(directory, state)
+            live._write(Path(directory) / PAGE_FILE, b'{}')
+        return {'accepted': True, 'already_active': True}
+    state.update({'schema': VERSION, 'pending': country,
+                  'pending_started': int(time.time()), 'last_attempt': 0,
+                  'last_error': None, 'downloaded': 0})
+    _save_choice(directory, state)
+    live._write(Path(directory) / PAGE_FILE, b'{}')
+    return {'accepted': True, 'already_active': False}
+
+
 def request_country(country, directory=DIRECTORY):
-    """Queue a country switch without changing the currently playable list."""
+    """Save a new country even if a previous catalogue page is in flight.
+
+    A repeat click on the SAME pending country never discards downloaded pages.
+    Clicks during a long worker job use a separate tiny atomic intent file,
+    processed by that worker before it is allowed to publish the old country.
+    """
     if not isinstance(country, str) or not COUNTRY_RE.fullmatch(country):
         return {'accepted': False, 'reason': 'invalid-country'}
     directory = Path(directory)
-    if not live._safe_file(directory / CHOICE_FILE):
+    if not all(live._safe_file(directory / name)
+               for name in (CHOICE_FILE, PAGE_FILE, QUEUE_FILE)):
         return {'accepted': False, 'reason': 'unsafe-path'}
     with _lock(directory) as handle:
         try:
             fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
-            return {'accepted': False, 'reason': 'busy'}
-        state = _choice(directory)
-        if country == state.get('active') and not state.get('pending'):
-            return {'accepted': True, 'already_active': True}
-        state.update({'schema': VERSION, 'pending': country,
-                      'pending_started': int(time.time()), 'last_attempt': 0,
-                      'last_error': None, 'downloaded': 0})
-        _save_choice(directory, state)
-        page = directory / PAGE_FILE
-        if live._safe_file(page):
-            live._write(page, b'{}')
-        return {'accepted': True, 'already_active': False}
+            # Never block Enigma2's GUI while the background worker has the
+            # country lock for HTTP. Last explicit country selection wins.
+            try:
+                with _queue_lock(directory) as queue_lock:
+                    fcntl.flock(queue_lock, fcntl.LOCK_EX)
+                    live._write(directory / QUEUE_FILE, live._json_bytes({
+                        'country': country, 'requested_at': int(time.time())}))
+            except OSError:
+                return {'accepted': False, 'reason': 'unsafe-path'}
+            return {'accepted': True, 'queued': True, 'already_active': False}
+        # New direct selection overrides any older deferred intent.
+        _take_queued_country(directory)
+        return _save_country_request_locked(country, directory, _choice(directory))
 
 
 def _station_rows(browser, country, offset, saved):
@@ -519,6 +574,8 @@ def _station_rows(browser, country, offset, saved):
     rows = list(saved)
     more = False
     for _ in range(MAX_PAGES_PER_JOB):
+        if offset >= MAX_SCAN_OFFSET:
+            return rows, offset, True
         page = browser.page(country=country, offset=offset)
         if page.offline:
             raise OSError('Radio Browser country unavailable')
@@ -549,7 +606,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
     state_path = directory / CHOICE_FILE
     staging = directory / PAGE_FILE
     mapping = directory / live.DATA_FILE
-    if not all(live._safe_file(p) for p in (target, state_path, staging, mapping)):
+    if not all(live._safe_file(p) for p in
+               (target, state_path, staging, mapping, directory / QUEUE_FILE)):
         return {'changed': False, 'skipped': 'unsafe-path'}
     before = target.read_bytes() if target.exists() else None
     with _lock(directory) as lock:
@@ -557,6 +615,9 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             return {'changed': False, 'skipped': 'busy'}
+        new_selected = _take_queued_country(directory)
+        if new_selected is not None:
+            _save_country_request_locked(new_selected, directory, _choice(directory))
         state = _choice(directory)
         # The GUI or setup may have changed the active country while a worker
         # was still running; the worker reads the choice under this lock.
@@ -580,7 +641,7 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         pending = _pending_country(state)
         since = state.get('last_success', 0)
         attempt = state.get('last_attempt', 0)
-        page = live._read_json(staging, {}, 4 * 1024 * 1024)
+        page = live._read_json(staging, {}, PENDING_LIMIT)
         continuing = isinstance(page, dict) and page.get('country') == country
         if not pending and not continuing and since and 0 <= now-since < DAY:
             return {'changed': False, 'skipped': 'not-due'}
@@ -594,15 +655,36 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             browser = RadioBrowser('/etc/enigma2/warder-radio')
         rows = page.get('rows', []) if continuing else []
         offset = page.get('offset', 0) if continuing else 0
-        if (not isinstance(rows, list) or not isinstance(offset, int) or
-                offset < 0 or offset > MAX_STATIONS or len(rows) > MAX_STATIONS):
+        if (not isinstance(rows, list) or type(offset) is not int or
+                offset < 0 or offset > MAX_SCAN_OFFSET or
+                len(rows) > MAX_STATIONS):
+            if continuing:
+                state['last_error'] = 'country-staging-invalid'
+                _save_choice(directory, state)
+                return {'changed': False, 'skipped': 'country-staging-invalid'}
             rows, offset = [], 0
         try:
             collected, offset, more = _station_rows(browser, country, offset, rows)
         except (OSError, ValueError):
+            selected = _take_queued_country(directory)
+            if selected is not None and selected != country:
+                _save_country_request_locked(selected, directory, state)
+                return {'changed': False, 'skipped': 'country-superseded',
+                        'pending': selected}
             state['last_error'] = 'radio-browser-unavailable'
             _save_choice(directory, state)
             return {'changed': False, 'skipped': 'radio-browser-unavailable'}
+        # A new user click supersedes the old HTTP job before any staging or
+        # final publication. The previous valid bouquet stays untouched.
+        selected = _take_queued_country(directory)
+        if selected is not None and selected != country:
+            _save_country_request_locked(selected, directory, state)
+            return {'changed': False, 'skipped': 'country-superseded',
+                    'pending': selected}
+        if more and offset >= MAX_SCAN_OFFSET:
+            state['last_error'] = 'country-page-limit'
+            _save_choice(directory, state)
+            return {'changed': False, 'skipped': 'country-page-limit'}
         if more:
             if len(collected) >= MAX_STATIONS:
                 state['last_error'] = 'too-many-stations'
@@ -610,7 +692,7 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 return {'changed': False, 'skipped': 'too-many-stations'}
             staging_data = {'country': country, 'rows': collected, 'offset': offset}
             encoded = live._json_bytes(staging_data)
-            if len(encoded) > 4 * 1024 * 1024:
+            if len(encoded) > PENDING_LIMIT:
                 state['last_error'] = 'country-too-large'
                 _save_choice(directory, state)
                 return {'changed': False, 'skipped': 'country-too-large'}
@@ -627,10 +709,14 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         collected.sort(key=lambda row: live._station_sort_key(row['name']))
         raw = live._bouquet([(country_name(country), collected)])
         if len(raw) > 12 * 1024 * 1024:
-            raise ValueError('Active country too large')
+            state['last_error'] = 'country-too-large'
+            _save_choice(directory, state)
+            return {'changed': False, 'skipped': 'country-too-large'}
         payload = live._json_bytes({'schema': VERSION, 'stations': collected})
         if len(payload) > MAP_LIMIT:
-            raise ValueError('Country icon mapping too large')
+            state['last_error'] = 'country-too-large'
+            _save_choice(directory, state)
+            return {'changed': False, 'skipped': 'country-too-large'}
         if target.exists() and target.read_bytes() != before:
             raise OSError('Concurrent managed bouquet edit')
         if pending_backup_required:
@@ -694,7 +780,7 @@ def diagnose(directory=DIRECTORY):
     """Read-only debug status for receiver tests; never display stream URLs."""
     directory = Path(directory)
     info = _choice(directory)
-    staging = live._read_json(directory / PAGE_FILE, {}, 4 * 1024 * 1024)
+    staging = live._read_json(directory / PAGE_FILE, {}, PENDING_LIMIT)
     stations = live._read_json(directory / live.DATA_FILE, {}, MAP_LIMIT)
     raw_path = directory / live.FILE
     try:
@@ -737,6 +823,7 @@ def diagnose(directory=DIRECTORY):
             _pending_country_switch_backup_allowed(directory, raw, info)),
         'active': active_country(directory),
         'pending': _pending_country(info),
+        'queued_country': _queued_country(directory),
         'downloaded': info.get('downloaded', 0),
         'pending_pages': staging.get('offset', 0) // 60
         if isinstance(staging, dict) and isinstance(staging.get('offset', 0), int)
@@ -871,6 +958,12 @@ def open_country_selector(session, service=None, **kwargs):
     except ImportError:
         return
     current = active_country()
+    info = _choice(DIRECTORY)
+    loading = _pending_country(info)
+    queued = _queued_country(DIRECTORY)
+    downloaded = info.get('downloaded', 0)
+    if type(downloaded) is not int or downloaded < 0:
+        downloaded = 0
     choices = country_options()
     if not choices:
         session.open(MessageBox, ui_text("Country list is unavailable."),
@@ -905,7 +998,11 @@ def open_country_selector(session, service=None, **kwargs):
     # Keep the active choice first in the user-facing menu.
     ordered = sorted(choices, key=lambda row: row[1] != current)
     session.openWithCallback(chosen, ChoiceBox, title=ui_text("Select country (Warder Radio Live)"),
-                             list=[(name + (' ' + ui_text('(current)') if code == current else ''), code)
+                             list=[(name +
+                                    (' ' + ui_text('(current)') if code == current else '') +
+                                    (' [.. %d]' % downloaded if code == loading and
+                                     code != queued else '') +
+                                    (' [.. 0]' if code == queued else ''), code)
                                    for name, code in ordered])
 
 

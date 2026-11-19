@@ -984,9 +984,14 @@ class Controller:
             except Exception:
                 pass
         preference = _read_json(DIRECTORY / 'warder-radio-live-country.json', {})
-        awaiting_country = (isinstance(preference, dict) and
-                            isinstance(preference.get('pending'), str))
-        partial = valid and result.get('incomplete') is True
+        deferred = _read_json(DIRECTORY / 'warder-radio-live-country-request.json', {})
+        awaiting_country = ((isinstance(preference, dict) and
+                             isinstance(preference.get('pending'), str)) or
+                            (isinstance(deferred, dict) and
+                             isinstance(deferred.get('country'), str) and
+                             re.fullmatch(r'[A-Z]{2}', deferred['country'])))
+        partial = valid and (result.get('incomplete') is True or
+                             result.get('skipped') == 'country-superseded')
         if self.pending is not None and self.pending.active():
             self.pending.cancel()
         # Resume paginated countries promptly. If the remote catalogue fails,
