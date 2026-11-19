@@ -95,6 +95,21 @@ class Tests(unittest.TestCase):
         self.assertIsNotNone(world.cached_country(self.paths,'ET'))
         self.assertIsNone(world.cached_country(self.paths,'DE'))
 
+    def test_country_menu_matches_installed_world_not_stale_plugin_names(self):
+        with patch.object(live, '_radio_world_root', return_value=self.paths):
+            choices = country.country_options()
+        self.assertEqual({code for name, code in choices}, {'ET', 'FR'})
+        self.assertIn(('Ethiopia', 'ET'), choices)
+        # The name map may be incomplete, but the authoritative world index
+        # must still expose every installed country.
+        self.assertFalse(any(code == 'SK' for _, code in choices))
+
+    def test_country_menu_retains_old_options_when_world_not_ready(self):
+        with patch.object(live, '_radio_world_root', return_value=None):
+            choices = country.country_options()
+        self.assertTrue(choices)
+        self.assertIn('SK', {code for _, code in choices})
+
     def test_gui_pending_choice_uses_local_subprocess_not_online_browser(self):
         selected = country.request_country('ET',self.etc)
         self.assertTrue(selected['accepted'])
