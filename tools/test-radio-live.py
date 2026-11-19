@@ -367,6 +367,38 @@ class LiveTests(unittest.TestCase):
         self.assertIn('from Plugins.Extensions.setupGlass17.warderRadioLive import request_picon', code)
         self.assertIn('if custom_folder is None:', code)
 
+    def test_real_channel_picon_lookup_queues_only_missing_native_radio(self):
+        spec = importlib.util.spec_from_file_location(
+            'warder_live_tests.channel_lookup', P / 'warderChannelPicons.py')
+        lookup = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(lookup)
+        from types import ModuleType
+        calls = []
+        parents = ['Plugins', 'Plugins.Extensions', 'Plugins.Extensions.setupGlass17']
+        modules = {name: ModuleType(name) for name in parents}
+        module_name = 'Plugins.Extensions.setupGlass17.warderRadioLive'
+        modules[module_name] = ModuleType(module_name)
+        modules[module_name].request_picon = calls.append
+        live.refresh(self.root, NOW, Browser())
+        item = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]
+        ref = item['stem'].replace('_', ':') + ':https%3A//radio.example.org/live'
+        base = self.root / 'skin'
+        icons = base / 'picon'
+        icons.mkdir(parents=True)
+        own = self.root / 'own'
+        own.mkdir()
+        args = (ref, str(base), lambda raw: raw, lambda _ref: 'Test Rádio',
+                lambda name: name)
+        with patch.dict(sys.modules, modules):
+            self.assertEqual(lookup.find_picon(*args), '')
+            self.assertEqual(calls, [ref])
+            self.assertEqual(lookup.find_picon(*args, custom_folder=str(own)), '')
+            self.assertEqual(calls, [ref])
+            existing = icons / (item['stem'] + '.png')
+            existing.write_bytes(b'user-approved logo')
+            self.assertEqual(lookup.find_picon(*args), str(existing))
+            self.assertEqual(calls, [ref])
+
     def test_no_touched_radio_plugin_state(self):
         plugin = self.root / 'warder-radio'
         plugin.mkdir()
