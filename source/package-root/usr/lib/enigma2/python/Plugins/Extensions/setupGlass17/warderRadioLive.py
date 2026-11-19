@@ -29,6 +29,7 @@ MAX_PAGES = 3
 MAX_STATIONS = 600
 MAX_ICONS = 2 * MAX_STATIONS + 24  # two native Enigma2 filename variants
 MIN_FREE = 16 * 1024 * 1024
+ICON_RETRY_SECONDS = 15 * 60
 COUNTRIES = ('SK', 'CZ')
 _controller = None
 
@@ -433,7 +434,7 @@ class Controller:
         self.last_icon = None
         self.icon_queue = []
         self.known_icons = set()
-        self.icon_requested = set()
+        self.icon_requested = {}
         self.map_mtime = None
         self._load_icon_map()
 
@@ -514,7 +515,8 @@ class Controller:
             if len(fields) < 11 or not re.fullmatch(
                     r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}', stem):
                 return
-            if stem in self.icon_requested:
+            last_attempt = self.icon_requested.get(stem)
+            if last_attempt is not None and time.monotonic() - last_attempt < ICON_RETRY_SECONDS:
                 return
             # Only the visible live-bouquet identities are accepted.
             if stem not in self.known_icons:
@@ -523,7 +525,8 @@ class Controller:
                 self.icon_queue.remove(stem)
             self.icon_queue.insert(0, stem)
             self.icon_queue = self.icon_queue[:48]
-            self.icon_requested.add(stem)
+            # The cooldown starts only when the background worker was spawned.
+            # A missing/unmounted PATHS directory must never permanently block retry.
             if self.icon_worker is None:
                 if self.icon_timer is not None and self.icon_timer.active():
                     self.icon_timer.cancel()
@@ -544,8 +547,8 @@ class Controller:
                 fields = ref.toString().split(':') if ref else []
                 stem = '_'.join(field.upper() for field in fields[:10])
                 candidate = None
-                if len(fields) >= 11 and stem.startswith('4097_0_2_') and stem != self.last_icon:
-                    self.last_icon = stem
+                if (len(fields) >= 11 and stem in self.known_icons and
+                        stem != self.last_icon):
                     candidate = stem
                 elif self.icon_queue:
                     candidate = self.icon_queue.pop(0)
@@ -554,6 +557,8 @@ class Controller:
                     if destination:
                         self.icon_worker = self._spawn(
                             'icon', ['--icon', candidate, destination], self.icon_done)
+                        self.icon_requested[candidate] = time.monotonic()
+                        self.last_icon = candidate
         except Exception:
             pass
         self.icon_timer = self.loop.callLater(12, self.check_icon)
