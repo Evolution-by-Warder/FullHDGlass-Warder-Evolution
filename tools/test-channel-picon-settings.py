@@ -34,6 +34,7 @@ class SettingsTests(unittest.TestCase):
         self.section=NS(**self.values)
         self.section.dict=lambda:self.values
         self.config=NS(plugins=NS(setupGlass17=self.section,
+                                  warderSkinMainMenu=NS(enabled=Setting(False)),
                                   warderEpgListScroll=NS(enabled=Setting(True)),
                                   warderPiconExpert=NS(custom_destination=Setting(False),
                                                       destination=Setting('')),
