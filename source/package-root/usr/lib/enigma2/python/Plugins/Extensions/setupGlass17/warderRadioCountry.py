@@ -1030,7 +1030,10 @@ def open_country_selector(session, service=None, **kwargs):
 
 if __name__ == '__main__':
     try:
-        signal.alarm(90)
+        # World and country ZIP downloads may need longer than one online page.
+        # These commands are used only by subprocesses, never on the GUI thread.
+        bulk = sys.argv[1:2] in (['--sync-world'], ['--logos-world'])
+        signal.alarm(240 if bulk else 90)
         os.nice(10)
         if sys.argv[1:] == ['--bootstrap']:
             result = bootstrap()
@@ -1038,6 +1041,24 @@ if __name__ == '__main__':
             result = refresh()
         elif sys.argv[1:] == ['--diagnose']:
             result = diagnose()
+        elif len(sys.argv) == 4 and sys.argv[1] == '--activate-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioWorld
+            code, root = sys.argv[2], Path(sys.argv[3])
+            if not COUNTRY_RE.fullmatch(code):
+                sys.exit(2)
+            result = warderRadioWorld.activate_from_world(
+                root, code, DIRECTORY, require_requested=True)
+            result['first_page'] = result.get('changed', False)
+        elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+            result = warderRadioBundleFetch.sync_world(Path(sys.argv[2]))
+        elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+            code, root = sys.argv[2], Path(sys.argv[3])
+            if not COUNTRY_RE.fullmatch(code):
+                sys.exit(2)
+            result = warderRadioBundleFetch.sync_selected_logos(
+                root, DIRECTORY, code)
         else:
             sys.exit(2)
         print(json.dumps(result, ensure_ascii=False))
