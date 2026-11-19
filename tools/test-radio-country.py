@@ -371,10 +371,19 @@ class CountryTests(unittest.TestCase):
         self.assertFalse(country._owner_valid(
             self.root, malicious, country._choice(self.root)))
         self.assertFalse(country.diagnose(self.root)['enigma_alternative_recovery_possible'])
-        country.request_country('CZ', self.root)
-        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
-        self.assertEqual(result['skipped'], 'owner-modified')
+        # An automatic SK refresh may not silently overwrite this modification.
+        self.assertEqual(country.refresh(
+            self.root, now=NOW + country.RETRY, browser=Browser())['skipped'],
+            'owner-modified')
         self.assertEqual(self.bouquet.read_bytes(), malicious)
+        # Explicit country replacement is different: preserve the user's
+        # original bytes and only commit after CZ is completely fetched.
+        country.request_country('CZ', self.root)
+        self.assertTrue(country.diagnose(self.root)['pending_country_switch_safe'])
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertEqual(result['country'], 'CZ')
+        self.assertEqual((self.root / (live.FILE + '.before-country-switch.bak')).read_bytes(),
+                         malicious)
         self.assertFalse(
             (self.root / (live.FILE + '.enigma-alternatives.bak')).exists())
 
@@ -515,9 +524,12 @@ class CountryTests(unittest.TestCase):
         backup.write_bytes(b'original user backup')
         country.request_country('CZ', self.root)
         result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
-        self.assertEqual(result['skipped'], 'owner-modified')
-        self.assertEqual(self.bouquet.read_bytes(), modified)
+        self.assertTrue(result['changed'])
+        self.assertEqual(result['country'], 'CZ')
         self.assertEqual(backup.read_bytes(), b'original user backup')
+        self.assertEqual(
+            (self.root / (live.FILE + '.before-country-switch.bak')).read_bytes(),
+            modified)
 
     def test_invalid_request_and_user_modifications_never_replaced(self):
         self.assertFalse(country.request_country('../IT', self.root)['accepted'])
