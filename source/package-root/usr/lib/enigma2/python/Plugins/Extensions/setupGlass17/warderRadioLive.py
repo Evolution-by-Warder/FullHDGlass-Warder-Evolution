@@ -102,6 +102,10 @@ def _countries(plugin_dir):
 
 def service_stem(uuid):
     """Stable picon/service identity: independent of mutable stream URLs."""
+    if not isinstance(uuid, str) or not re.fullmatch(
+            r'(?:[0-9a-fA-F]{32}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-'
+            r'[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', uuid):
+        raise ValueError('Missing or malformed Radio Browser UUID')
     try:
         canonical = str(UUID(uuid))
     except (ValueError, AttributeError, TypeError):
