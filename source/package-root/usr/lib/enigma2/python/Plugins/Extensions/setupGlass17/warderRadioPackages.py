@@ -227,7 +227,9 @@ def install_logos(root, code, picon_root, require_external=True):
     picon_root is PATHS/picon (not the global picon collection on flash).
     The caller must run this in a background worker, not the GUI event loop.
     """
-    _, _, manifest = verified_country(root, code)
+    _, payload, manifest = verified_country(root, code)
+    catalog = _json(payload)
+    allowed_logos = {row['stem'] + '.png' for row in catalog['stations']}
     if manifest.get('logo_package_complete') is not True:
         return {'changed': False, 'skipped': 'incomplete-logo-package'}
     picon_root = Path(picon_root)
@@ -252,8 +254,8 @@ def install_logos(root, code, picon_root, require_external=True):
                     raise ValueError('Too many radio logos')
                 for info in members:
                     name = info.filename
-                    if (not PNG_NAME.fullmatch(name) or name in hashes or
-                            info.file_size > MAX_PNG or
+                    if (not PNG_NAME.fullmatch(name) or name not in allowed_logos
+                            or name in hashes or info.file_size > MAX_PNG or
                             stat.S_ISLNK(info.external_attr >> 16)):
                         raise ValueError('Unsafe logo ZIP member')
                     png = z.read(info)
