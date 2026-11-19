@@ -252,6 +252,15 @@ def start(reason=0):
     elif reason != 0 and _controller is not None:
         _controller.close()
         _controller = None
+    # Additive live Radio Browser bouquet; the legacy managed bouquet remains
+    # untouched. Only activate when the companion Radio plugin is installed.
+    plugin_file = Path(__file__).resolve().parent.parent / 'WarderRadio' / 'radio_browser.py'
+    if reason != 0 or plugin_file.is_file():
+        try:
+            from . import warderRadioLive
+            warderRadioLive.start(reason)
+        except (ImportError, OSError):
+            pass
 
 
 if __name__ == '__main__':
