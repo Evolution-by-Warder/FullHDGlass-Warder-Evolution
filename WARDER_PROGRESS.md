@@ -1,3 +1,13 @@
+## 19. 11. 2026 — Warder Radio Live, SK → CZ, GigaBlue native marker (TEST136 kandidát)
+
+- **Podklad:** používateľský read-only log `warder-country-test135.log`: `active=SK`, `pending=CZ`, 123 mapovaných staníc, 122/122 bežných numerických identít + úplná URL/názov zhoda, jedna rozpoznaná alternatíva, 248 riadkov, všetky podpisy a ochrana zálohy PASS. Jediné zamietnutie `first_group_marker_exact=false`; príčina neúspešného switch guard `pending_country_switch_safe=false`.
+- **Kód:** [draft PR #125](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/125), vetva `fix/radio-country-native-group-marker-test136-20261119`, source commit [`76a83f9`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/76a83f99132366440de8cb1cfeec5fd515af3537) a test commit [`25a9a92`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/25a9a925d9e5d62a8006dac45a9d1556d8959629). Striktne pripustená iba kanonická značka krajiny alebo natívny zápis s prázdnym PATH a presným menom aktívnej krajiny. Nová read-only položka `bouquet_group_marker_compatible`.
+- **Testy:** [Radio Live offline regression PASS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44527123200) (42 + 39 testov, jeden skipped), vrátane 123/122+1 native CRLF simulácie a blokovania cudzích markerov. Celkové workflowy OpenATV/OpenPLi hlásili chyby aj na *východiskovej* feature vetve `81ba29cd`; nie sú dôkazom prechodu prijímača.
+- **Zverejnenie a schválenie:** iba zdrojový kandidát na izolovanej vetve. **Žiadne IPK, žiadny merge, žiadny zásah do `main` ani produkčného feedu.** Feature vetva sama pri push automaticky vydáva test135, preto sa jej nevykonal zápis.
+- **Ďalší krok:** pred fyzickým potvrdením na GigaBlue overiť, že tamojší marker má skutočne podporovaný native NAME formát; po výslovnom schválení samostatnej testovacej distribúcie testovať `pending_country_switch_safe=true`, kompletný CZ download, zálohu originálu, `active=CZ`, `pending=null` a viditeľné Čechy. Ak má marker iný formát, nič neprepisovať a doložiť len jeho znecitlivený tvar.
+
+---
+
 ## Pôvodný zoznam 12 opráv FullHDGlass Warder Evolution — stav k 18. 11. 2026
 
 **DÔLEŽITÉ: Zachovať pôvodné číslovanie.** Predošlé označenie jazykovej podpory za bod 9 a výberu spinnerov za bod 10 bolo chybné; patrili do iného kontextu. Tento zoznam je záväzným mapovaním pôvodnej dvanástky. **Zlúčené do `main` znamená integráciu zdrojov, nie automaticky fyzické overenie na prijímači.** Vydaná produkčná verzia/feed zostáva **1.0.80**, bez nového IPK.
