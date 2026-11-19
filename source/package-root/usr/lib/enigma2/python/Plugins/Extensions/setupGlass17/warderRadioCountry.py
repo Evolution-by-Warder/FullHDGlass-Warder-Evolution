@@ -381,6 +381,66 @@ def is_live_service(service):
     return False
 
 
+def _live_context(csel):
+    """Match the displayed managed bouquet, independent of selected marker."""
+    try:
+        for candidate in (csel.getRoot(), csel.getCurrentSelection()):
+            if candidate is None:
+                continue
+            location = candidate.toString() if hasattr(candidate, 'toString') else str(candidate)
+            if hasattr(candidate, 'getPath'):
+                location += ' ' + (candidate.getPath() or '')
+            if 'FROM BOUQUET "' + live.FILE + '"' in location:
+                return True
+    except (AttributeError, TypeError, ValueError):
+        pass
+    return False
+
+
+def install_context_menu_hook():
+    """Keep country selection available on live-bouquet headers and after zap.
+
+    Enigma2's plugin context-menu extension is only evaluated for playable
+    services. A freshly switched list may initially select a country marker.
+    Extend the in-memory native menu after construction, without changing any
+    image-owned files or affecting other bouquets' menus.
+    """
+    try:
+        from Screens.ChannelSelection import ChannelContextMenu
+        from Components.ChoiceList import ChoiceEntryComponent
+        from .warderUiText import ui_text
+    except (ImportError, AttributeError):
+        return False
+    original = ChannelContextMenu.__init__
+    if getattr(original, '_warder_country_context', False):
+        return False
+
+    def init(menu, session, csel, *args, **kwargs):
+        original(menu, session, csel, *args, **kwargs)
+        if not _live_context(csel):
+            return
+        try:
+            widget = menu['menu']
+            choices = list(widget.getList())
+            if any('Warder Radio Live' in str(item[0][0])
+                   for item in choices if item and item[0]):
+                return
+
+            def choose_country():
+                menu.close()
+                open_country_selector(session)
+
+            choices.insert(1, ChoiceEntryComponent(
+                text=(ui_text('Select country (Warder Radio Live)'), choose_country)))
+            widget.setList(choices)
+        except (AttributeError, IndexError, KeyError, TypeError, ValueError):
+            pass
+
+    init._warder_country_context = True
+    ChannelContextMenu.__init__ = init
+    return True
+
+
 def open_country_selector(session, service=None, **kwargs):
     """Native Channel Selection MENU callback; runs no HTTP in the GUI."""
     try:
