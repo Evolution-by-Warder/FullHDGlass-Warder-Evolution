@@ -157,18 +157,17 @@ fi
 # First-paint registration happens synchronously from LOCAL files only.
 # No network, no GUI call, no modification of personal bouquets. This ensures
 # Warder Radio Live is first as soon as the receiver reloads its bouquet index.
-warder_radio_live=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+warder_radio_country=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
 warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py
-if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_live" ] &&
+if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_country" ] &&
    [ -f "$warder_radio_browser" ]; then
-    if /usr/bin/python3 -B "$warder_radio_live" --bootstrap </dev/null >/dev/null 2>&1; then
-        echo "Warder Radio Live registered first; old Warder Radio Streams replaced in the radio list."
+    if /usr/bin/python3 -B "$warder_radio_country" --bootstrap </dev/null >/dev/null 2>&1; then
+        echo "Warder Radio Live: selected-country bouquet registered; user country preserved."
     else
-        echo "Warder Radio Live local bootstrap failed; user bouquets left untouched."
+        echo "Warder Radio Live country bootstrap deferred; user bouquets unchanged."
     fi
-    # Actual catalogue download is always asynchronous and will replace the
-    # temporary local fallback after verification.
-    /usr/bin/python3 -B "$warder_radio_live" --refresh </dev/null >/dev/null 2>&1 &
+    # Load the saved active country only, off the installer/GUI thread.
+    /usr/bin/python3 -B "$warder_radio_country" --refresh </dev/null >/dev/null 2>&1 &
 fi
 
 # Download only the selected language after package installation, without
