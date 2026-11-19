@@ -138,7 +138,15 @@ def verified_country(root, code):
         # Recheck the source URL, station name and identity using the skin's
         # own validator; do not trust JSON alone.
         actual = live._entry(row)
-        if actual['stem'] != row['stem'] or actual['name'] != row['name']:
+        # Historical 2026-11-19 pinned world rows could be truncated
+        # *exactly* at a trailing ASCII space at column 140. Enigma's
+        # validator canonicalizes that one harmless trailing space away.
+        # Keep all signed service IDs, URL, country and internal name bytes
+        # strict: accept only trailing ASCII spaces, never renamed services.
+        stored_name = row.get('name')
+        if (not isinstance(stored_name, str) or
+                actual['stem'] != row['stem'] or
+                actual['name'] != stored_name.rstrip(' ')):
             raise ValueError('Unsafe station row')
     raw = _verified_member(root, manifest, 'bouquets/' + code + '.radio', MAX_BOUQUET)
     expected = live._bouquet([(name, data['stations'])])
@@ -150,7 +158,7 @@ def verified_country(root, code):
     return raw, payload, manifest
 
 
-def activate_local(root, code, directory):
+def activate_local(root, code, directory, require_requested=False):
     """Switch a cached country without Radio Browser or network requests."""
     raw, payload, _ = verified_country(root, code)
     directory = Path(directory)
@@ -170,6 +178,14 @@ def activate_local(root, code, directory):
             return {'changed': False, 'skipped': 'busy'}
         before = target.read_bytes() if target.exists() else None
         state = country._choice(directory)
+        # The GUI may change countries while a cached worker is verifying its
+        # source snapshot. Last user selection wins; never commit an obsolete
+        # cached country over a newer pending or deferred choice.
+        if require_requested:
+            selected = country._pending_country(state) or country.active_country(directory)
+            deferred = country._queued_country(directory)
+            if selected != code or (deferred is not None and deferred != code):
+                return {'changed': False, 'skipped': 'country-superseded'}
         if not country._owner_valid(directory, before, state):
             return {'changed': False, 'skipped': 'owner-modified'}
         changed = before != raw
@@ -221,13 +237,16 @@ def _owned_dir(folder):
     return True
 
 
-def install_logos(root, code, picon_root, require_external=True):
+def install_logos(root, code, picon_root, require_external=True,
+                  still_selected=None):
     """Atomic radio-only logo ZIP exchange. Keep old files on every failure.
 
     picon_root is PATHS/picon (not the global picon collection on flash).
     The caller must run this in a background worker, not the GUI event loop.
     """
-    _, _, manifest = verified_country(root, code)
+    _, payload, manifest = verified_country(root, code)
+    catalog = _json(payload)
+    allowed_logos = {row['stem'] + '.png' for row in catalog['stations']}
     if manifest.get('logo_package_complete') is not True:
         return {'changed': False, 'skipped': 'incomplete-logo-package'}
     picon_root = Path(picon_root)
@@ -252,8 +271,8 @@ def install_logos(root, code, picon_root, require_external=True):
                     raise ValueError('Too many radio logos')
                 for info in members:
                     name = info.filename
-                    if (not PNG_NAME.fullmatch(name) or name in hashes or
-                            info.file_size > MAX_PNG or
+                    if (not PNG_NAME.fullmatch(name) or name not in allowed_logos
+                            or name in hashes or info.file_size > MAX_PNG or
                             stat.S_ISLNK(info.external_attr >> 16)):
                         raise ValueError('Unsafe logo ZIP member')
                     png = z.read(info)
@@ -269,7 +288,12 @@ def install_logos(root, code, picon_root, require_external=True):
             raise ValueError('Logo count differs from signed manifest')
         (stage / OWNER_FILE).write_text(
             json.dumps({'owner': 'WarderRadioLive', 'country': code,
+                        'logo_zip_sha256': manifest['files']['logos/' + code + '.zip']['sha256'],
                         'files': hashes}, sort_keys=True), encoding='utf-8')
+        # The user may have switched countries while a large ZIP was being
+        # decompressed. Do not atomically replace a newer selection's PNGs.
+        if still_selected is not None and still_selected(code) is not True:
+            return {'changed': False, 'skipped': 'country-superseded'}
         if folder.exists():
             old = Path(tempfile.mkdtemp(prefix='.warder-radio-old-', dir=str(picon_root)))
             old.rmdir()

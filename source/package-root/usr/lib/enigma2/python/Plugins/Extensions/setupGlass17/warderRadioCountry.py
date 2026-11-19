@@ -871,6 +871,21 @@ def country_options():
                  [('SK', 'Slovensko'), ('CZ', 'Čechy'), ('DE', 'Germany'),
                   ('GB', 'United Kingdom'), ('FR', 'France'),
                   ('IT', 'Italy'), ('PL', 'Poland'), ('ES', 'Spain')]}
+    # A complete pre-generated world may include 224 countries/territories,
+    # including stations absent from an older standalone-plugin name map.
+    # Restrict this menu to installed local bouquet countries; display names
+    # prefer the plugin's familiar translated labels where available.
+    try:
+        from . import warderRadioWorld as world
+        available = world.available_countries(live._radio_world_root())
+        if available:
+            return sorted([(names.get(code) or label, code)
+                           for code, label in available.items()
+                           if isinstance(code, str) and COUNTRY_RE.fullmatch(code)
+                           and isinstance(label, str) and label],
+                          key=lambda row: live._country_sort_key(row[0]))
+    except (ImportError, AttributeError, OSError, TypeError, ValueError):
+        pass
     return sorted([(name, code) for code, name in names.items()
                    if isinstance(code, str) and COUNTRY_RE.fullmatch(code)
                    and isinstance(name, str) and name],
@@ -1030,7 +1045,10 @@ def open_country_selector(session, service=None, **kwargs):
 
 if __name__ == '__main__':
     try:
-        signal.alarm(90)
+        # World and country ZIP downloads may need longer than one online page.
+        # These commands are used only by subprocesses, never on the GUI thread.
+        bulk = sys.argv[1:2] in (['--sync-world'], ['--logos-world'])
+        signal.alarm(240 if bulk else 90)
         os.nice(10)
         if sys.argv[1:] == ['--bootstrap']:
             result = bootstrap()
@@ -1038,6 +1056,28 @@ if __name__ == '__main__':
             result = refresh()
         elif sys.argv[1:] == ['--diagnose']:
             result = diagnose()
+        elif len(sys.argv) == 4 and sys.argv[1] == '--activate-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioWorld
+            code, root = sys.argv[2], Path(sys.argv[3])
+            if not COUNTRY_RE.fullmatch(code):
+                sys.exit(2)
+            result = warderRadioWorld.activate_from_world(
+                root, code, DIRECTORY, require_requested=True)
+            result['first_page'] = result.get('changed', False)
+        elif len(sys.argv) == 3 and sys.argv[1] == '--diagnose-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioWorld
+            result = warderRadioWorld.diagnose(Path(sys.argv[2]), DIRECTORY)
+        elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+            result = warderRadioBundleFetch.sync_world(
+                Path(sys.argv[2]), state_directory=DIRECTORY)
+        elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+            code, root = sys.argv[2], Path(sys.argv[3])
+            if not COUNTRY_RE.fullmatch(code):
+                sys.exit(2)
+            result = warderRadioBundleFetch.sync_selected_logos(
+                root, DIRECTORY, code)
         else:
             sys.exit(2)
         print(json.dumps(result, ensure_ascii=False))
