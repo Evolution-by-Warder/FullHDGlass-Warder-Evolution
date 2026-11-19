@@ -235,6 +235,54 @@ def _country_sort_key(label):
     return (2, normalized, label.casefold())
 
 
+def _station_sort_key(value):
+    """Natural, stable, accent-insensitive alphabetic order for displayed names."""
+    folded = unicodedata.normalize('NFKD', value.casefold())
+    plain = ''.join(char for char in folded if not unicodedata.combining(char))
+    return (' '.join(plain.split()), value.casefold())
+
+
+def _sorted_country_section(section):
+    """Sort station records within one country without modifying their bytes.
+
+    Each station is a complete #SERVICE / #DESCRIPTION pair, with optional
+    additional metadata attached. If the original layout is unfamiliar, keep
+    it untouched rather than risk losing or corrupting receiver services.
+    """
+    lines = section.splitlines(keepends=True)
+    if (len(lines) < 2 or not lines[0].startswith(b'#SERVICE 1:64:')
+            or not lines[1].startswith(b'#DESCRIPTION ')):
+        return section
+    heading = b''.join(lines[:2])
+    remaining = lines[2:]
+    if not remaining:
+        return section
+    records = []
+    offset = 0
+    while offset < len(remaining):
+        if (not remaining[offset].startswith(b'#SERVICE ')
+                or offset + 1 >= len(remaining)
+                or not remaining[offset + 1].startswith(b'#DESCRIPTION ')):
+            return section
+        try:
+            name = remaining[offset + 1][len(b'#DESCRIPTION '):].decode('utf-8').strip()
+        except UnicodeError:
+            return section
+        if not name:
+            return section
+        finish = offset + 2
+        while finish < len(remaining) and not remaining[finish].startswith(b'#SERVICE '):
+            finish += 1
+        block = b''.join(remaining[offset:finish])
+        records.append((_station_sort_key(name), len(records), block))
+        offset = finish
+    records.sort(key=lambda item: (item[0], item[1]))
+    ordered = heading + b''.join(item[2] for item in records)
+    if len(ordered) != len(section):
+        raise ValueError('Radio sort changed byte count')
+    return ordered
+
+
 def _combined(legacy, current, updates=None):
     """Keep every old country and service, sorting only country-group order."""
     old = _sections(legacy) if legacy is not None else {}
@@ -254,10 +302,10 @@ def _combined(legacy, current, updates=None):
             output[canonical] = section
     for name, section in (updates or {}).items():
         output[name] = section
-    # Sort complete groups, not individual service lines. Preserve every
-    # original stream reference, country label, and station ordering byte-for-byte.
+    # Sort all countries and the intact station records inside each one.
+    # Never rewrite URLs, Enigma service references or station names.
     names = sorted(output, key=_country_sort_key)
-    return HEADER + b''.join(output[name] for name in names)
+    return HEADER + b''.join(_sorted_country_section(output[name]) for name in names)
 
 
 def _country_codes(browser, state):
@@ -313,7 +361,7 @@ def _retire_legacy(directory):
     new_sections = _sections(current)
     if (not old_sections or
             len(old_sections) != original.count(b'#SERVICE 1:64:') or
-            not all(new_sections.get(name) == body
+            not all(new_sections.get(name) == _sorted_country_section(body)
                     for name, body in old_sections.items())):
         return False
     # Check registration before deleting any recoverable source data.
