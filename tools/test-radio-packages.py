@@ -155,6 +155,25 @@ class RadioBundleTests(unittest.TestCase):
         self.assertFalse(any(p.exists() for p in fr_png))
         self.assertEqual(unrelated.read_bytes(),b'untouched')
 
+    def test_country_changed_during_extraction_preserves_previous_pngs(self):
+        first=pkg.install_logos(self.packages,'FR',self.picons,
+                                require_external=False)
+        self.assertEqual(first['logos'],3)
+        prior={p.name:p.read_bytes() for p in (self.picons/'radio').glob('*.png')}
+        example(self.packages,'DE','Deutschland',size=2)
+        result=pkg.install_logos(self.packages,'DE',self.picons,
+                                 require_external=False,
+                                 still_selected=lambda code: False)
+        self.assertEqual(result['skipped'],'country-superseded')
+        self.assertFalse(result['changed'])
+        self.assertEqual({p.name:p.read_bytes() for p in
+                          (self.picons/'radio').glob('*.png')},prior)
+        allowed=pkg.install_logos(self.packages,'DE',self.picons,
+                                  require_external=False,
+                                  still_selected=lambda code: code=='DE')
+        self.assertTrue(allowed['changed'])
+        self.assertEqual(allowed['logos'],2)
+
     def test_unsafe_storage_never_touches_internal_flash(self):
         result=pkg.install_logos(self.packages,'FR',self.picons)
         self.assertEqual(result['skipped'],'unsafe-storage')
