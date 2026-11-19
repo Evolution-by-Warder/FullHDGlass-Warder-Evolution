@@ -75,6 +75,35 @@ def _verified_member(root, manifest, relative, max_size):
     return raw
 
 
+def _verified_large_file(root, manifest, relative, maximum):
+    """Stream SHA for country ZIP without loading the full archive into RAM."""
+    entry = manifest.get('files', {}).get(relative)
+    if (not isinstance(entry, dict) or
+            type(entry.get('bytes')) is not int or
+            not 0 < entry['bytes'] <= maximum or
+            not isinstance(entry.get('sha256'), str) or
+            not SHA.fullmatch(entry['sha256'])):
+        raise ValueError('Invalid country ZIP manifest')
+    parent = Path(root)
+    if parent.is_symlink() or not parent.is_dir():
+        raise ValueError('Unsafe package root')
+    for part in relative.split('/'):
+        if part in ('', '.', '..'):
+            raise ValueError('Unsafe ZIP path')
+        parent = parent / part
+        if parent.is_symlink():
+            raise ValueError('Symlink in package path')
+    if not parent.is_file() or parent.stat().st_size != entry['bytes']:
+        raise ValueError('Invalid country ZIP size')
+    digest = hashlib.sha256()
+    with parent.open('rb') as handle:
+        for chunk in iter(lambda: handle.read(256 * 1024), b''):
+            digest.update(chunk)
+    if digest.hexdigest() != entry['sha256']:
+        raise ValueError('Country asset SHA-256 mismatch')
+    return parent
+
+
 def verified_country(root, code):
     """Validate a COMPLETE Radio Browser snapshot and exact Enigma2 references."""
     if not isinstance(code, str) or not COUNTRY.fullmatch(code):
@@ -206,7 +235,7 @@ def install_logos(root, code, picon_root, require_external=True):
             not picon_root.is_dir() or
             (require_external and picon_root.stat().st_dev == Path('/').stat().st_dev)):
         return {'changed': False, 'skipped': 'unsafe-storage'}
-    packed = _verified_member(root, manifest, 'logos/' + code + '.zip', MAX_ZIP)
+    packed = _verified_large_file(root, manifest, 'logos/' + code + '.zip', MAX_ZIP)
     folder = picon_root / 'radio'
     if not _owned_dir(folder):
         return {'changed': False, 'skipped': 'unowned-radio-folder'}
@@ -217,8 +246,7 @@ def install_logos(root, code, picon_root, require_external=True):
         total = 0
         hashes = {}
         try:
-            from io import BytesIO
-            with ZipFile(BytesIO(packed)) as z:
+            with ZipFile(str(packed)) as z:
                 members = z.infolist()
                 if len(members) > MAX_STATIONS:
                     raise ValueError('Too many radio logos')
