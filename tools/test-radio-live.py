@@ -220,6 +220,46 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(first.split('#SERVICE 4097:0:2:')[1].split(':', 7)[:7],
                          second.split('#SERVICE 4097:0:2:')[1].split(':', 7)[:7])
 
+    def test_visible_channel_requests_exact_picon_without_gui_network(self):
+        live.refresh(self.root, NOW, Browser())
+        row = json.loads((self.root / live.DATA_FILE).read_text())['stations'][1]
+        stem = row['stem']
+        class Call:
+            def __init__(self):
+                self.cancelled = False
+            def active(self):
+                return not self.cancelled
+            def cancel(self):
+                self.cancelled = True
+        class Loop:
+            def __init__(self):
+                self.calls = []
+            def callLater(self, seconds, callback):
+                self.calls.append((seconds, callback))
+                return Call()
+        loop = Loop()
+        with patch.object(live, 'DIRECTORY', self.root):
+            ctl = live.Controller(loop, lambda: None)
+            try:
+                self.assertIn(stem, ctl.known_icons)
+                reference = stem.replace('_', ':') + ':https%3A//radio.example.org/live'
+                with patch.object(live, '_controller', ctl):
+                    live.request_picon(reference)
+                    self.assertEqual(ctl.icon_queue[0], stem)
+                    self.assertIn(0.3, [seconds for seconds, _ in loop.calls])
+                    before = len(loop.calls)
+                    live.request_picon(reference)
+                    self.assertEqual(len(loop.calls), before)
+                    live.request_picon('4097:0:2:1:2:3:4:0:0:0:https%3A//unmanaged')
+                    self.assertEqual(ctl.icon_queue[0], stem)
+            finally:
+                ctl.close()
+
+    def test_channel_picon_fallback_wires_only_live_radio_on_miss(self):
+        code = (P / 'warderChannelPicons.py').read_text()
+        self.assertIn('from Plugins.Extensions.setupGlass17.warderRadioLive import request_picon', code)
+        self.assertIn('if custom_folder is None:', code)
+
     def test_no_touched_radio_plugin_state(self):
         plugin = self.root / 'warder-radio'
         plugin.mkdir()
