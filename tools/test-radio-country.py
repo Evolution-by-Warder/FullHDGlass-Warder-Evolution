@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Offline tests for one-country Warder Radio Live and persistent country choice."""
+import fcntl
 import hashlib
 import importlib
 import json
@@ -229,6 +230,155 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(country.active_country(self.root), 'GB')
         self.assertEqual(browser.calls, [('GB', 0), ('GB', 60), ('GB', 120), ('GB', 180), ('GB', 240), ('GB', 300)])
         self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 1)
+
+    def test_reselect_pending_country_preserves_incomplete_pages(self):
+        country.bootstrap(self.root)
+        country.request_country('DE', self.root)
+        first = country.refresh(self.root, now=NOW, browser=Browser(with_pages=True))
+        self.assertTrue(first['incomplete'])
+        saved = (self.root / country.PAGE_FILE).read_bytes()
+        status = country.diagnose(self.root)
+        self.assertEqual(status['pending_pages'], 5)
+        again = country.request_country('DE', self.root)
+        self.assertTrue(again['already_pending'])
+        self.assertEqual((self.root / country.PAGE_FILE).read_bytes(), saved)
+        self.assertEqual(country.diagnose(self.root)['pending_pages'], 5)
+        complete = country.refresh(self.root, now=NOW + country.STEP, browser=Browser())
+        self.assertEqual(complete['country'], 'DE')
+        self.assertIsNone(country.diagnose(self.root)['pending'])
+
+    def test_select_current_country_cancels_pending_without_download(self):
+        country.bootstrap(self.root)
+        before = self.bouquet.read_bytes()
+        country.request_country('DE', self.root)
+        country.refresh(self.root, now=NOW, browser=Browser(with_pages=True))
+        self.assertEqual(country.diagnose(self.root)['pending'], 'DE')
+        result = country.request_country('SK', self.root)
+        self.assertTrue(result['already_active'])
+        status = country.diagnose(self.root)
+        self.assertIsNone(status['pending'])
+        self.assertEqual(status['pending_pages'], 0)
+        self.assertEqual(self.bouquet.read_bytes(), before)
+        self.assertEqual(status['active'], 'SK')
+
+    def test_busy_country_lock_queues_new_selection_without_losing_existing_bouquet(self):
+        country.bootstrap(self.root)
+        country.request_country('DE', self.root)
+        country.refresh(self.root, now=NOW, browser=Browser(with_pages=True))
+        original = self.bouquet.read_bytes()
+        with country._lock(self.root) as handle:
+            fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            selected = country.request_country('AT', self.root)
+            self.assertTrue(selected['accepted'])
+            self.assertTrue(selected['queued'])
+            self.assertEqual(country.diagnose(self.root)['queued_country'], 'AT')
+            self.assertEqual(self.bouquet.read_bytes(), original)
+        at = Browser()
+        result = country.refresh(self.root, now=NOW + country.STEP, browser=at)
+        self.assertEqual(result['country'], 'AT')
+        self.assertEqual(at.calls, [('AT', 0)])
+        status = country.diagnose(self.root)
+        self.assertEqual(status['active'], 'AT')
+        self.assertIsNone(status['pending'])
+        self.assertIsNone(status['queued_country'])
+        self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 1)
+
+    def test_country_clicked_during_download_cannot_publish_old_selection(self):
+        country.bootstrap(self.root)
+        original = self.bouquet.read_bytes()
+        country.request_country('DE', self.root)
+
+        class ClickMidDownload(Browser):
+            def page(inner, country_code='', offset=0, **kwargs):
+                self.assertEqual(kwargs.get('country', country_code), 'DE')
+                self.assertEqual(country.request_country('AT', self.root)['queued'], True)
+                return super().page(country='DE', offset=offset)
+
+        result = country.refresh(self.root, now=NOW, browser=ClickMidDownload())
+        self.assertEqual(result['skipped'], 'country-superseded')
+        self.assertEqual(result['pending'], 'AT')
+        self.assertEqual(self.bouquet.read_bytes(), original)
+        self.assertEqual(country.diagnose(self.root)['pending_pages'], 0)
+        self.assertEqual(country.diagnose(self.root)['active'], 'SK')
+        next_result = country.refresh(self.root, now=NOW + country.STEP, browser=Browser())
+        self.assertEqual(next_result['country'], 'AT')
+        self.assertEqual(country.active_country(self.root), 'AT')
+
+    def test_large_country_can_finish_beyond_old_4000_station_and_page_limits(self):
+        """Large DE catalogues must not restart at offset > 4,000."""
+        count = 5101
+        class LargeGermany:
+            def __init__(inner):
+                inner.offsets = []
+            def page(inner, country='', offset=0):
+                self.assertEqual(country, 'DE')
+                inner.offsets.append(offset)
+                rows = [
+                    {'stationuuid': '32345678-1234-1234-1234-%012x' % i,
+                     'name': 'Deutschland %05d' % i,
+                     'url': 'https://radio.example.org/de/%d' % i, 'favicon': ''}
+                    for i in range(offset, min(offset + 60, count))
+                ]
+                return SimpleNamespace(rows=rows, more=offset + 60 < count,
+                                       offline=False)
+        country.bootstrap(self.root)
+        original = self.bouquet.read_bytes()
+        country.request_country('DE', self.root)
+        browser = LargeGermany()
+        for step in range(40):
+            result = country.refresh(self.root, now=NOW + 3 * step, browser=browser)
+            if result.get('changed'):
+                break
+            self.assertTrue(result.get('incomplete'), result)
+            self.assertEqual(self.bouquet.read_bytes(), original)
+        else:
+            self.fail('Country did not finish within 40 bounded batches')
+        self.assertEqual(result['country'], 'DE')
+        self.assertEqual(result['stations'], count)
+        self.assertGreater(max(browser.offsets), 4000)
+        self.assertEqual(country.diagnose(self.root)['mapped_stations'], count)
+        self.assertEqual(country.diagnose(self.root)['active'], 'DE')
+        self.assertIsNone(country.diagnose(self.root)['pending'])
+
+    def test_raw_pages_do_not_reset_when_many_rows_share_an_id(self):
+        """Raw pagination offset is not the number of unique stations."""
+        raw_count = 5040
+        class RepeatedGermanRows:
+            def page(inner, country='', offset=0):
+                rows = []
+                for index in range(offset, min(raw_count, offset + 60)):
+                    station = index // 2
+                    rows.append({
+                        'stationuuid': '42345678-1234-1234-1234-%012x' % station,
+                        'name': 'German %04d' % station,
+                        'url': 'https://radio.example.org/de/%d' % station,
+                        'favicon': ''})
+                return SimpleNamespace(rows=rows, more=offset + 60 < raw_count,
+                                       offline=False)
+        country.bootstrap(self.root)
+        country.request_country('DE', self.root)
+        for step in range(30):
+            result = country.refresh(self.root, now=NOW + step * 3,
+                                     browser=RepeatedGermanRows())
+            if result.get('changed'):
+                break
+            self.assertTrue(result.get('incomplete'), result)
+        else:
+            self.fail('Pagination offset wrongly reset after 4,000 API rows')
+        self.assertEqual(result['stations'], raw_count // 2)
+        self.assertEqual(country.diagnose(self.root)['active'], 'DE')
+
+    def test_bounded_country_scan_does_not_publish_truncated_catalogue(self):
+        country.bootstrap(self.root)
+        before = self.bouquet.read_bytes()
+        country.request_country('DE', self.root)
+        live._write(self.root / country.PAGE_FILE, live._json_bytes({
+            'country': 'DE', 'rows': [], 'offset': country.MAX_SCAN_OFFSET}))
+        result = country.refresh(self.root, now=NOW, browser=Browser())
+        self.assertEqual(result['skipped'], 'country-page-limit')
+        self.assertEqual(country.diagnose(self.root)['last_error'],
+                         'country-page-limit')
+        self.assertEqual(self.bouquet.read_bytes(), before)
 
     def test_enigma_alternative_edit_is_backed_up_and_czech_switch_recovers(self):
         """Mimic real receiver: 2 mapped stations, one normal, one 1:134:2."""
@@ -953,6 +1103,35 @@ class CountryTests(unittest.TestCase):
             controller.finished({'changed': False, 'incomplete': True, 'country': 'CZ'})
             self.assertIn(3, loop.calls)
         self.assertNotIn(3600, loop.calls)
+
+    def test_deferred_selection_is_scheduled_even_when_previous_country_finished(self):
+        country.bootstrap(self.root)
+        with country._queue_lock(self.root) as handle:
+            fcntl.flock(handle, fcntl.LOCK_EX)
+            live._write(self.root / country.QUEUE_FILE,
+                        live._json_bytes({'country': 'AT'}))
+        class Call:
+            def active(self): return True
+            def cancel(self): pass
+        class Loop:
+            def __init__(self): self.calls = []
+            def callLater(self, seconds, callback):
+                self.calls.append(seconds)
+                return Call()
+        ctrl = live.Controller.__new__(live.Controller)
+        ctrl.loop = Loop()
+        ctrl.session = None
+        ctrl.reload = lambda: None
+        ctrl.worker = None
+        ctrl.pending = None
+        ctrl.timeout = None
+        ctrl.radio_refresh_timer = None
+        ctrl.closed = False
+        ctrl.initial_reload = False
+        with patch.object(live, 'DIRECTORY', self.root):
+            ctrl.finished({'changed': False, 'skipped': 'not-due'})
+        self.assertIn(60, ctrl.loop.calls)
+        self.assertNotIn(3600, ctrl.loop.calls)
 
     def test_radio_list_redraw_resumes_after_country_confirmation_dialog(self):
         class FakeCall:
