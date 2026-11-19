@@ -158,6 +158,92 @@ def _bouquet(groups):
     return ''.join(lines).encode('utf-8')
 
 
+def _sections(raw):
+    """Extract well-formed groups without altering the station reference bytes."""
+    if not isinstance(raw, bytes) or not raw.startswith((HEADER, LEGACY_HEADER)):
+        return {}
+    lines = raw.splitlines(keepends=True)
+    groups = {}
+    name, content = None, []
+    for i in range(1, len(lines)):
+        line = lines[i]
+        if (line.startswith(b'#SERVICE 1:64:') and i + 1 < len(lines)
+                and lines[i + 1].startswith(b'#DESCRIPTION ')):
+            if name is not None and name not in groups:
+                groups[name] = b''.join(content)
+            try:
+                name = lines[i + 1][len(b'#DESCRIPTION '):].decode('utf-8').strip()
+            except UnicodeError:
+                return {}
+            if not name or len(name) > 120:
+                return {}
+            content = [line]
+            # The description gets appended by the next iteration.
+        elif name is not None:
+            content.append(line)
+    if name is not None and name not in groups:
+        groups[name] = b''.join(content)
+    return groups
+
+
+def _group_name(code, labels):
+    """Preserve the classic Slovak/Czech headings across radio generations."""
+    preferred = {'SK': 'Slovensko', 'CZ': 'Čechy'}.get(code)
+    if preferred and preferred in labels:
+        return preferred
+    if code in labels:
+        return code
+    try:
+        from Plugins.Extensions.WarderRadio.radio_browser import country_name
+        name = country_name(code)
+    except (ImportError, ValueError, OSError):
+        name = code
+    return name if name in labels else (preferred or name)
+
+
+def _combined(legacy, current, updates=None):
+    """Retain every legacy country and current live country; no silent shrink."""
+    old = _sections(legacy) if legacy is not None else {}
+    live = _sections(current) if current is not None else {}
+    output = dict(old)
+    for name, section in live.items():
+        canonical = {'SK': 'Slovensko', 'CZ': 'Čechy'}.get(name, name)
+        if canonical in output:
+            output[canonical] = (section.replace(b'#DESCRIPTION SK\n',
+                                                 b'#DESCRIPTION Slovensko\n', 1)
+                                 if name == 'SK' else
+                                 section.replace(b'#DESCRIPTION CZ\n',
+                                                 b'#DESCRIPTION Čechy\n', 1)
+                                 if name == 'CZ' else section)
+        else:
+            output[name] = section
+    for name, section in (updates or {}).items():
+        output[name] = section
+    return HEADER + b''.join(output.values())
+
+
+def _country_codes(browser, state):
+    """Fetch full Radio Browser country inventory once; never filter to SK/CZ."""
+    known = state.get('world_countries')
+    if isinstance(known, list) and known:
+        countries = [value for value in known
+                     if isinstance(value, str) and re.fullmatch(r'[A-Z]{2}', value)]
+        if countries:
+            return list(dict.fromkeys(countries))
+    if not hasattr(browser, 'facets'):
+        return list(COUNTRIES)
+    facets = browser.facets()
+    if facets.offline:
+        raise OSError('Country inventory unavailable')
+    countries = [code for code in facets.countries
+                 if isinstance(code, str) and re.fullmatch(r'[A-Z]{2}', code)]
+    countries = list(dict.fromkeys([*COUNTRIES, *countries]))
+    if len(countries) < 2:
+        raise ValueError('Unexpected empty country inventory')
+    state['world_countries'] = countries
+    return countries
+
+
 def _managed_legacy(directory):
     """Only the original Warder-managed radio file may be hidden from the index."""
     source = directory / LEGACY_FILE
@@ -239,28 +325,34 @@ def bootstrap(directory=DIRECTORY):
         if not isinstance(state, dict):
             state = {}
         created = False
-        if existing is None:
-            legacy = _managed_legacy(directory)
-            if legacy is not None:
-                # The original stream references remain playable immediately,
-                # even before the dynamic Radio Browser catalogue is available.
-                raw = HEADER + legacy[len(LEGACY_HEADER):]
-                origin = 'legacy-fallback'
-            else:
-                # An empty network cache can still expose the new bouquet at
-                # the top, but must never fabricate a playable station.
-                raw = HEADER + (
-                    '#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
-                    '#DESCRIPTION Načítavanie rádií…\n'
-                ).encode('utf-8')
-                origin = 'empty-fallback'
+        legacy = _managed_legacy(directory)
+        if existing is not None:
+            expected = state.get('bouquet_sha256')
+            if not isinstance(expected, str) or hashlib.sha256(existing).hexdigest() != expected:
+                return {'changed': False, 'skipped': 'owner-modified'}
+        if existing is None and legacy is None:
+            raw = HEADER + (
+                '#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                '#DESCRIPTION Načítavanie rádií…\n'
+            ).encode('utf-8')
+            origin = 'empty-fallback'
+        else:
+            raw = _combined(legacy, existing)
+            origin = 'legacy-world' if legacy else 'current-live'
+        if raw != existing:
+            if len(raw) > 12 * 1024 * 1024:
+                raise ValueError('World radio bouquet exceeds safe size')
             _write(target, raw)
             created = True
             state['bouquet_sha256'] = hashlib.sha256(raw).hexdigest()
+        if state.get('bootstrap_generation') != BOOTSTRAP_GENERATION:
             state['bootstrap_generation'] = BOOTSTRAP_GENERATION
             state.pop('success', None)
             state.pop('attempt', None)
+            state['world_cursor'] = 0
             state['seed_origin'] = origin
+            _write(state_path, _json_bytes(state))
+        elif created:
             _write(state_path, _json_bytes(state))
         moved = _register(directory)
         return {'changed': created or moved, 'created': created,
