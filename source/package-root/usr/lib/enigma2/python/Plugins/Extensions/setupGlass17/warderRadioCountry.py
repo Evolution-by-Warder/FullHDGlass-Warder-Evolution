@@ -27,6 +27,7 @@ PAGE_FILE = 'warder-radio-live-country-pending.json'
 QUEUE_FILE = 'warder-radio-live-country-request.json'
 COUNTRY_RE = re.compile(r'^[A-Z]{2}$')
 MAX_PAGES_PER_JOB = 5
+FIRST_PAGE_COUNT = 1  # Show the first page immediately; grow in the background
 MAX_STATIONS = 12000  # 4,000 excluded large countries, e.g. Germany
 MAX_SCAN_OFFSET = 30000  # Raw API rows, independent of accepted/unique stations
 PENDING_LIMIT = 12 * 1024 * 1024
@@ -569,11 +570,11 @@ def request_country(country, directory=DIRECTORY):
         return _save_country_request_locked(country, directory, _choice(directory))
 
 
-def _station_rows(browser, country, offset, saved):
+def _station_rows(browser, country, offset, saved, max_pages=MAX_PAGES_PER_JOB):
     seen = {row.get('stationuuid') for row in saved if isinstance(row, dict)}
     rows = list(saved)
     more = False
-    for _ in range(MAX_PAGES_PER_JOB):
+    for _ in range(max_pages):
         if offset >= MAX_SCAN_OFFSET:
             return rows, offset, True
         page = browser.page(country=country, offset=offset)
@@ -663,8 +664,11 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 _save_choice(directory, state)
                 return {'changed': False, 'skipped': 'country-staging-invalid'}
             rows, offset = [], 0
+        first_page = not continuing and state.get('active') != country
         try:
-            collected, offset, more = _station_rows(browser, country, offset, rows)
+            collected, offset, more = _station_rows(
+                browser, country, offset, rows,
+                FIRST_PAGE_COUNT if first_page else MAX_PAGES_PER_JOB)
         except (OSError, ValueError):
             selected = _take_queued_country(directory)
             if selected is not None and selected != country:
@@ -685,11 +689,19 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             state['last_error'] = 'country-page-limit'
             _save_choice(directory, state)
             return {'changed': False, 'skipped': 'country-page-limit'}
+        if more and len(collected) >= MAX_STATIONS:
+            state['last_error'] = 'too-many-stations'
+            _save_choice(directory, state)
+            return {'changed': False, 'skipped': 'too-many-stations'}
+        if not collected and not more:
+            state['last_error'] = 'empty-country'
+            _save_choice(directory, state)
+            return {'changed': False, 'skipped': 'empty-country'}
+
+        # Persist the cursor before publishing the first playable page.
+        # An empty/duplicate-only page may advance the scan, but must never
+        # replace a playable country with an empty bouquet.
         if more:
-            if len(collected) >= MAX_STATIONS:
-                state['last_error'] = 'too-many-stations'
-                _save_choice(directory, state)
-                return {'changed': False, 'skipped': 'too-many-stations'}
             staging_data = {'country': country, 'rows': collected, 'offset': offset}
             encoded = live._json_bytes(staging_data)
             if len(encoded) > PENDING_LIMIT:
@@ -697,22 +709,24 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 _save_choice(directory, state)
                 return {'changed': False, 'skipped': 'country-too-large'}
             live._write(staging, encoded)
-            state['downloaded'] = len(collected)
+        if not collected:
+            state['downloaded'] = 0
             state['last_error'] = None
             _save_choice(directory, state)
             return {'changed': False, 'incomplete': True, 'country': country,
-                    'downloaded': len(collected)}
-        if not collected:
-            state['last_error'] = 'empty-country'
-            _save_choice(directory, state)
-            return {'changed': False, 'skipped': 'empty-country'}
-        collected.sort(key=lambda row: live._station_sort_key(row['name']))
-        raw = live._bouquet([(country_name(country), collected)])
+                    'downloaded': 0}
+
+        # Publish *after one page* for a new country, then append the next
+        # bounded batches. This is still a single Warder-owned bouquet; all
+        # personal bouquets remain untouched. The authoritative map and SHA
+        # are refreshed at every snapshot so a restarted worker can resume.
+        published = sorted(collected, key=lambda row: live._station_sort_key(row['name']))
+        raw = live._bouquet([(country_name(country), published)])
         if len(raw) > 12 * 1024 * 1024:
             state['last_error'] = 'country-too-large'
             _save_choice(directory, state)
             return {'changed': False, 'skipped': 'country-too-large'}
-        payload = live._json_bytes({'schema': VERSION, 'stations': collected})
+        payload = live._json_bytes({'schema': VERSION, 'stations': published})
         if len(payload) > MAP_LIMIT:
             state['last_error'] = 'country-too-large'
             _save_choice(directory, state)
@@ -723,8 +737,7 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             backup = directory / (live.FILE + '.before-country-switch.bak')
             if not live._safe_file(backup) or backup.exists():
                 return {'changed': False, 'skipped': 'backup-exists'}
-            # Save the exact byte representation, including Enigma2's custom
-            # formatting and alternative list, before installing new stations.
+            # Preserve the exact original before the first visible preview.
             live._write(backup, before)
         if not mapping.exists() or mapping.read_bytes() != payload:
             live._write(mapping, payload)
@@ -732,31 +745,36 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         if changed:
             live._write(target, raw)
         state.update({'active': country, 'sha256': hashlib.sha256(raw).hexdigest(),
-                      'last_success': now, 'last_attempt': now,
-                      'last_error': None, 'downloaded': len(collected)})
-        state.pop('pending', None)
-        state.pop('pending_started', None)
+                      'last_attempt': now, 'last_error': None,
+                      'downloaded': len(collected), 'partial': bool(more)})
+        if not more:
+            state['last_success'] = now
+            state.pop('pending', None)
+            state.pop('pending_started', None)
         _save_choice(directory, state)
-        live._write(staging, b'{}')
+        if not more:
+            live._write(staging, b'{}')
         registered = live._register(directory)
-        # Remove old owned world data only after a new, complete online
-        # selected country was installed. Unrelated bouquets stay untouched.
-        legacy = live._managed_legacy(directory)
-        index = directory / 'bouquets.radio'
-        if legacy is not None and index.is_file() and not index.is_symlink():
-            index_bytes = index.read_bytes()
-            if (live.INDEX_LINE.strip() in index_bytes and
-                    b'FROM BOUQUET "userbouquet.warder.radio"' not in index_bytes):
-                old = directory / live.LEGACY_FILE
-                if not old.is_symlink() and old.read_bytes() == legacy:
-                    old.unlink()
-                    backup = directory / (live.LEGACY_FILE + '.bak')
-                    if (backup.is_file() and not backup.is_symlink()
-                            and backup.stat().st_size <= 4 * 1024 * 1024):
-                        if backup.read_bytes().startswith(live.LEGACY_HEADER):
-                            backup.unlink()
-        return {'changed': changed or registered or bool(pending),
-                'country': country, 'stations': len(collected)}
+        if not more:
+            # Retire legacy files ONLY when the complete selected country is
+            # installed. The partial list stays recoverable while downloading.
+            legacy = live._managed_legacy(directory)
+            index = directory / 'bouquets.radio'
+            if legacy is not None and index.is_file() and not index.is_symlink():
+                index_bytes = index.read_bytes()
+                if (live.INDEX_LINE.strip() in index_bytes and
+                        b'FROM BOUQUET "userbouquet.warder.radio"' not in index_bytes):
+                    old = directory / live.LEGACY_FILE
+                    if not old.is_symlink() and old.read_bytes() == legacy:
+                        old.unlink()
+                        backup = directory / (live.LEGACY_FILE + '.bak')
+                        if (backup.is_file() and not backup.is_symlink()
+                                and backup.stat().st_size <= 4 * 1024 * 1024):
+                            if backup.read_bytes().startswith(live.LEGACY_HEADER):
+                                backup.unlink()
+        return {'changed': changed or registered, 'country': country,
+                'stations': len(collected), 'incomplete': bool(more),
+                'preview': bool(more), 'first_page': first_page}
 
 
 def _start_selected_country_refresh(session):
@@ -825,6 +843,8 @@ def diagnose(directory=DIRECTORY):
         'pending': _pending_country(info),
         'queued_country': _queued_country(directory),
         'downloaded': info.get('downloaded', 0),
+        'preview_incomplete': bool(info.get('partial') and
+                                   _pending_country(info) == info.get('active')),
         'pending_pages': staging.get('offset', 0) // 60
         if isinstance(staging, dict) and isinstance(staging.get('offset', 0), int)
         else 0,
@@ -990,10 +1010,8 @@ def open_country_selector(session, service=None, **kwargs):
             session.open(MessageBox,
                          ui_text("Country saved, but background radio update did not start."),
                          type=MessageBox.TYPE_INFO, timeout=6)
-        else:
-            session.open(MessageBox,
-                         ui_text("Loading radio stations for the selected country."),
-                         type=MessageBox.TYPE_INFO, timeout=4)
+        # Avoid a four-second modal popup: the first received page now
+        # appears in the radio list and continues loading without blocking it.
 
     # Keep the active choice first in the user-facing menu.
     ordered = sorted(choices, key=lambda row: row[1] != current)
