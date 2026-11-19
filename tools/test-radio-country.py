@@ -234,7 +234,7 @@ class CountryTests(unittest.TestCase):
         self.assertNotIn(live.LEGACY_FILE.encode(), self.index.read_bytes())
         self.assertIn(b'userbouquet.personal.radio', self.index.read_bytes())
         self.assertNotIn(b'Zeta SK', self.bouquet.read_bytes()) # new online catalogue replaced legacy
-        self.assertIn(b'Áčko', self.bouquet.read_bytes())
+        self.assertIn('Áčko'.encode('utf-8'), self.bouquet.read_bytes())
 
     def test_no_successful_network_preserves_legacy_fallback(self):
         country.bootstrap(self.root)
