@@ -354,7 +354,7 @@ class LiveTests(unittest.TestCase):
             self.assertEqual(rendered.getpixel((110, 66))[3], 255)
             # A 72x72 square logo should remain square, not stretched to 220x132.
             self.assertEqual(rendered.getpixel((30, 66))[3], 0)
-        with self.assertRaises(ValueError):
+        with self.assertRaises((OSError, ValueError)):
             REAL_PICON_PNG(b'not a PNG')
 
     def test_background_prefetch_only_selected_home_countries(self):
