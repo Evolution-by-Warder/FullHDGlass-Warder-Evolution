@@ -21,10 +21,13 @@ Status: **draft PR #124**. No release, installer, feed, version bump, or deploye
 - Files already owned by the user or an approved picon pack are **never overwritten**. Only unchanged bridge-owned PNGs may be refreshed after seven days.
 - The bridge skips auto-writing when FullHDGlass is using **Own Picons** and requires PATHS to point to a real external disk, to avoid filling the image flash.
 - A bounded receiver-side registry tracks generated files and safe cleanup, without deleting user-modified PNGs.
+- Failed image retrieval is eligible for retry after 15 minutes, and repeated row renders cannot keep postponing the pending worker. Missing mount points do not permanently block retries.
+- The image folder is created, if needed, by the background worker after checking that its parent is on actual external storage. The GUI does not create picon folders.
+- Malformed Radio Browser UUIDs, credential-bearing URLs and invalid stream addresses are discarded before bouquet publication.
 
 ## Validation
 
-Offline regression suite: `python3 tools/test-radio-live.py -v`. CI workflow: `.github/workflows/radio-live-safety.yml`.
+Offline regression suite: `python3 tools/test-radio-live.py -v`. CI workflow: `.github/workflows/radio-live-safety.yml`. **24/24 focused tests passed** on the working branch after hardening of UUID/stream validation, retries, optional-country fallback and disk cache initialization.
 
 Native receiver acceptance is **not yet confirmed**. Before merging or releasing, physically check the live bouquet and visible picon renders on GigaBlue Quad 4K Pro / OpenATV 8.1 and Octagon SF8008 (including fallback), the active PATHS destination and Own Picons, startup/offline cases, scrolling performance, and 7-day refresh behavior. Full OpenATV/OpenPLi workflow failures unrelated to this change must be evaluated separately; a passing focused test is not a release authorization.
 
