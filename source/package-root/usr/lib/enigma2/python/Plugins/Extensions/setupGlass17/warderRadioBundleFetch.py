@@ -191,8 +191,19 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
         return {'changed':False,'skipped':'logos-not-ready'}
     zipinfo=info['logos']
     picon=root/'picon'
-    if picon.is_symlink() or not picon.is_dir():
-        return {'changed':False,'skipped':'missing-picon-path'}
+    if picon.is_symlink() or (picon.exists() and not picon.is_dir()):
+        return {'changed':False,'skipped':'unsafe-picon-path'}
+    if not picon.exists():
+        # Only the background worker may create the standard PATHS/picon
+        # parent; the dedicated picon/radio directory is created by the
+        # verified logo installer and never on the GUI event loop.
+        try:
+            picon.mkdir(mode=0o755)
+        except (OSError, FileExistsError):
+            return {'changed':False,'skipped':'missing-picon-path'}
+    if picon.is_symlink() or not picon.is_dir() or (
+            require_external and picon.stat().st_dev == Path('/').stat().st_dev):
+        return {'changed':False,'skipped':'unsafe-picon-path'}
     current=picon/'radio'
     owner=current/packages.OWNER_FILE
     if current.exists() and not packages._owned_dir(current):
