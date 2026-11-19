@@ -869,10 +869,12 @@ def request_picon(reference):
 
 
 class Controller:
-    def __init__(self, event_loop=None, reload_bouquets=None):
+    def __init__(self, event_loop=None, reload_bouquets=None, session=None):
         from .warderHelpPreview import _NativeLoop
         self.loop = event_loop or _NativeLoop()
         self.reload = reload_bouquets or self._reload
+        self.session = session
+        self.radio_refresh_timer = None
         self.pending = self.loop.callLater(25, self.check)
         self.icon_timer = self.loop.callLater(25, self.check_icon)
         self.worker = None
@@ -908,20 +910,53 @@ class Controller:
             return
         if self.pending is not None and self.pending.active():
             self.pending.cancel()
-        self.pending = self.loop.callLater(1 if self.worker is None else 12, self.check)
+        self.pending = self.loop.callLater(1 if self.worker is None else 3, self.check)
 
     def check(self):
         self.pending = None
         if self.closed:
             return
         if self.worker is not None:
-            self.pending = self.loop.callLater(12, self.check)
+            self.pending = self.loop.callLater(3, self.check)
             return
         try:
             self.worker = self._spawn('refresh', ['--refresh'], self.finished)
             self.timeout = self.loop.callLater(90, self.timed_out)
         except Exception:
             self.finished(None)
+
+    def _refresh_visible_radio_list(self):
+        """Refresh only an open Enigma2 radio list after a finished country switch.
+
+        DVBDB.reloadBouquets alone does not invalidate the visible ServiceList
+        root. The selection window otherwise keeps showing the old country's
+        entries until it is closed/reopened.
+        """
+        self.radio_refresh_timer = None
+        if self.closed or self.session is None:
+            return False
+        try:
+            dialog = getattr(self.session, 'current_dialog', None)
+            if dialog is None or not getattr(dialog, 'shown', False):
+                return False
+            if not any(cls.__name__ == 'ChannelSelectionRadio'
+                       for cls in type(dialog).__mro__):
+                return False
+            root = dialog.getRoot()
+            path = root.getPath() if root is not None else ''
+            if not isinstance(path, str) or not (
+                    'FROM BOUQUET "' + FILE + '"' in path or
+                    'FROM BOUQUET "bouquets.radio"' in path):
+                return False
+            listing = dialog.servicelist
+            if getattr(listing, 'instance', None) is None:
+                return False
+            listing.resetRoot()
+            if 'FROM BOUQUET "' + FILE + '"' in path:
+                listing.goTop()
+            return True
+        except (AttributeError, OSError, RuntimeError, TypeError):
+            return False
 
     def finished(self, result):
         self.worker = None
@@ -930,25 +965,37 @@ class Controller:
         self.timeout = None
         if self.closed:
             return
-        # The installer may have published the live bouquet after Enigma2
-        # loaded its radio index. Reload once even when a parallel GUI check
-        # reports not-due; otherwise the new bouquet stays invisible.
         has_bouquet = (DIRECTORY / FILE).is_file()
-        if isinstance(result, dict) and (result.get('changed') or
-                                          (self.initial_reload and has_bouquet)):
+        valid = isinstance(result, dict)
+        switched = valid and result.get('changed') and bool(result.get('country'))
+        if valid and (result.get('changed') or
+                      (self.initial_reload and has_bouquet)):
             try:
                 self.reload()
                 self.initial_reload = False
+                if switched:
+                    self._refresh_visible_radio_list()
+                    # The confirmation popup can still cover the radio list
+                    # when a cached country completes immediately.
+                    if self.radio_refresh_timer is not None and self.radio_refresh_timer.active():
+                        self.radio_refresh_timer.cancel()
+                    self.radio_refresh_timer = self.loop.callLater(
+                        5, self._refresh_visible_radio_list)
             except Exception:
                 pass
-        # Keep first-import checks short while the disk file is still missing.
-        # Large countries load in bounded page batches without freezing GUI.
-        # A selection error keeps the old active bouquet and is retried later.
-        partial = isinstance(result, dict) and result.get('incomplete') is True
-        self.pending = self.loop.callLater(
-            12 if partial else
-            60 if self.initial_reload and not has_bouquet else
-            300 if result is None else 3600, self.check)
+        preference = _read_json(DIRECTORY / 'warder-radio-live-country.json', {})
+        awaiting_country = (isinstance(preference, dict) and
+                            isinstance(preference.get('pending'), str))
+        partial = valid and result.get('incomplete') is True
+        if self.pending is not None and self.pending.active():
+            self.pending.cancel()
+        # Resume paginated countries promptly. If the remote catalogue fails,
+        # keep the existing stations but revisit the pending choice, rather
+        # than going silent for one hour after the first unsuccessful attempt.
+        delay = (3 if partial else 60 if awaiting_country else
+                 60 if self.initial_reload and not has_bouquet else
+                 120 if result is None else 3600)
+        self.pending = self.loop.callLater(delay, self.check)
 
     def timed_out(self):
         self.timeout = None
@@ -1064,7 +1111,8 @@ class Controller:
 
     def close(self):
         self.closed = True
-        for call in (self.pending, self.icon_timer, self.timeout):
+        for call in (self.pending, self.icon_timer, self.timeout,
+                     self.radio_refresh_timer):
             if call is not None and call.active():
                 call.cancel()
         for worker in (self.worker, self.icon_worker):
@@ -1206,10 +1254,12 @@ def refresh_with_status():
     return result
 
 
-def start(reason=0):
+def start(reason=0, session=None):
     global _controller
     if reason == 0 and _controller is None:
-        _controller = Controller()
+        _controller = Controller(session=session)
+    elif reason == 0 and session is not None:
+        _controller.session = session
     elif reason != 0 and _controller is not None:
         _controller.close()
         _controller = None
