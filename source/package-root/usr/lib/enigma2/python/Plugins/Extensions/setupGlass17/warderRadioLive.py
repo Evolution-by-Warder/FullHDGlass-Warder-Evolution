@@ -214,10 +214,10 @@ def _combined(legacy, current, updates=None):
         canonical = {'SK': 'Slovensko', 'CZ': 'Čechy'}.get(name, name)
         if canonical in output:
             output[canonical] = (section.replace(b'#DESCRIPTION SK\n',
-                                                 b'#DESCRIPTION Slovensko\n', 1)
+                                                 '#DESCRIPTION Slovensko\n'.encode('utf-8'), 1)
                                  if name == 'SK' else
                                  section.replace(b'#DESCRIPTION CZ\n',
-                                                 b'#DESCRIPTION Čechy\n', 1)
+                                                 '#DESCRIPTION Čechy\n'.encode('utf-8'), 1)
                                  if name == 'CZ' else section)
         else:
             output[name] = section
