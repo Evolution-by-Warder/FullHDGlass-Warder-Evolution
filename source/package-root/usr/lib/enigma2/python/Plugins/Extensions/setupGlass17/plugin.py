@@ -1463,7 +1463,7 @@ def startHdg17(reason, **kwargs):
 	if reason != 0 or config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		try:
 			from .warderRadioUpdate import start as start_radio_update
-			start_radio_update(reason)
+			start_radio_update(reason, session=kwargs.get('session'))
 		except Exception:
 			pass
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
