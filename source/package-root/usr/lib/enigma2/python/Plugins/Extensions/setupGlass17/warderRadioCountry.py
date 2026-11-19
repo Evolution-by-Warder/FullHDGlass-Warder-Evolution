@@ -133,6 +133,92 @@ def _owner_valid(directory, original, state):
     return checksum in (current, old_sha)
 
 
+def _recover_enigma_alternative(directory, original, state):
+    """Recover ONLY a known Enigma2 Alternative Edit, never arbitrary edits.
+
+    When users enter Alternative Edit, Enigma2 replaces one normal IPTV station
+    with a 1:134:2 reference to an alternatives.*.radio group. The strict
+    checksum consequently blocks updates, though the remaining records still
+    match our exact published Radio Browser catalogue.
+
+    Require an existing trusted country checksum, exact catalogued normal
+    service records and exactly one matching alternative whose name is that
+    of the missing catalogue station. Save the altered bouquet to a separate
+    never-overwritten .bak before restoring managed content. An unfamiliar
+    edit remains blocked and can be recovered manually.
+    """
+    directory = Path(directory)
+    if (not isinstance(original, bytes) or
+            not original.startswith(live.HEADER) or
+            not isinstance(state.get('sha256'), str) or
+            not re.fullmatch(r'[0-9a-f]{64}', state['sha256'])):
+        return False
+    country = state.get('active')
+    if not isinstance(country, str) or not COUNTRY_RE.fullmatch(country):
+        return False
+    mapping = live._read_json(directory / live.DATA_FILE, {}, MAP_LIMIT)
+    rows = mapping.get('stations') if isinstance(mapping, dict) else None
+    if not isinstance(rows, list) or not rows or len(rows) > MAX_STATIONS:
+        return False
+    # No new identity is accepted: use exactly the previous trusted radio map.
+    if any(not isinstance(row, dict) or row.get('countrycode') != country for row in rows):
+        return False
+    expected = {}
+    try:
+        for row in rows:
+            service = live._service(row).encode('utf-8').splitlines(keepends=True)
+            if len(service) != 2 or service[0] in expected:
+                return False
+            expected[service[0]] = service[1]
+    except (ValueError, KeyError, AttributeError, UnicodeError):
+        return False
+    data = original.splitlines(keepends=True)
+    if (len(data) < 5 or data[0] != live.HEADER or
+            data[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
+            data[2] != ('#DESCRIPTION ' + country_name(country) + '\n').encode('utf-8') or
+            len(data[3:]) != 2 * len(expected)):
+        return False
+    normal = set()
+    alternative = None
+    for idx in range(3, len(data), 2):
+        first, description = data[idx], data[idx + 1]
+        if first in expected:
+            if first in normal or expected[first] != description:
+                return False
+            normal.add(first)
+        elif (alternative is None and
+              re.fullmatch(
+                  rb'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+                  rb'"alternatives\.[A-Za-z0-9_.-]{1,180}\.radio" ORDER BY bouquet\n',
+                  first)):
+            alternative = description
+        else:
+            return False
+    missing = set(expected) - normal
+    if (alternative is None or len(missing) != 1 or
+            expected[next(iter(missing))] != alternative):
+        return False
+    # Reconstruct exactly the original published catalogue, with its stable
+    # references and names. No user-edited URL, name or unrelated entry can pass.
+    restored = live._bouquet([(country_name(country), rows)])
+    restored = live.HEADER + live._sorted_country_section(
+        restored[len(live.HEADER):])
+    if len(restored) > 12 * 1024 * 1024:
+        return False
+    if (directory / live.FILE).read_bytes() != original:
+        return False
+    backup = directory / (live.FILE + '.enigma-alternatives.bak')
+    if not live._safe_file(backup) or backup.exists():
+        # Never overwrite any existing user or prior-recovery backup.
+        return False
+    live._write(backup, original)
+    live._write(directory / live.FILE, restored)
+    state['sha256'] = hashlib.sha256(restored).hexdigest()
+    state['recovered_alternative_edit'] = True
+    _save_choice(directory, state)
+    return True
+
+
 def _save_choice(directory, data):
     live._write(Path(directory) / CHOICE_FILE, live._json_bytes(data))
 
@@ -259,7 +345,11 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         # The GUI or setup may have changed the active country while a worker
         # was still running; the worker reads the choice under this lock.
         if not _owner_valid(directory, before, state):
-            return {'changed': False, 'skipped': 'owner-modified'}
+            if not _recover_enigma_alternative(directory, before, state):
+                return {'changed': False, 'skipped': 'owner-modified'}
+            # The manually edited reference was backed up and the trusted
+            # previous-country catalogue restored; the CZ request remains pending.
+            before = target.read_bytes()
         country = _pending_country(state) or active_country(directory)
         if not COUNTRY_RE.fullmatch(country):
             return {'changed': False, 'skipped': 'invalid-country'}
