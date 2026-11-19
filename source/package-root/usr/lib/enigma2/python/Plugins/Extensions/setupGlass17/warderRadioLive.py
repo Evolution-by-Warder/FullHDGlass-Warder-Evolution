@@ -220,7 +220,10 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 if not result.more or len(seen) >= MAX_STATIONS:
                     break
             if not rows:
-                raise ValueError('Empty live country; keep previous bouquet')
+                if country in COUNTRIES:
+                    raise ValueError('Empty core country; keep previous bouquet')
+                # An optional selected country may genuinely have no stations.
+                continue
             for item in rows:
                 item['countrycode'] = country
             groups.append((country, rows))
@@ -264,11 +267,14 @@ def _skin_picon_directory():
         directory = root / 'picon'
         if directory.is_symlink():
             return None
-        if not directory.exists():
-            directory.mkdir(mode=0o755)
-        if not directory.is_dir() or not os.access(str(directory), os.W_OK):
+        if directory.exists() and (not directory.is_dir() or
+                                   not os.access(str(directory), os.W_OK)):
             return None
-        if os.statvfs(str(directory)).f_bavail * os.statvfs(str(directory)).f_frsize < MIN_FREE:
+        # Do not create directories on Enigma's GUI thread. The child process
+        # validates the removable-media mount again before creating this one.
+        check = directory if directory.exists() else root
+        vfs = os.statvfs(str(check))
+        if vfs.f_bavail * vfs.f_frsize < MIN_FREE:
             return None
         return str(directory)
     except (AttributeError, ImportError, OSError, TypeError, ValueError):
@@ -601,8 +607,17 @@ if __name__ == '__main__':
         elif len(sys.argv) == 4 and sys.argv[1] == '--icon':
             destination = Path(sys.argv[3])
             # Prevent forged CLI paths from writing to receiver flash.
-            if (not destination.is_dir() or destination.is_symlink() or
-                    os.stat(str(destination)).st_dev == os.stat('/').st_dev):
+            parent = destination.parent
+            root_device = os.stat('/').st_dev
+            if (destination.name != 'picon' or parent.is_symlink() or
+                    not parent.is_dir() or os.stat(str(parent)).st_dev == root_device or
+                    destination.is_symlink() or
+                    (destination.exists() and not destination.is_dir())):
+                sys.exit(3)
+            if not destination.exists():
+                destination.mkdir(mode=0o755)
+            if (destination.is_symlink() or not destination.is_dir() or
+                    os.stat(str(destination)).st_dev == root_device):
                 sys.exit(3)
             result = get_icon(sys.argv[2], destination=destination)
         else:
