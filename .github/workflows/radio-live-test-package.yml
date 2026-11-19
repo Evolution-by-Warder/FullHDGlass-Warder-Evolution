@@ -47,7 +47,7 @@ jobs:
         run: |
           set -euo pipefail
           PYTHONDONTWRITEBYTECODE=1 python3 tools/build-radio-live-test-ipk.py
-          sha256sum -c packages/radio-live-test/*.ipk.sha256
+          (cd packages/radio-live-test && sha256sum -c *.ipk.sha256)
           test -s packages/radio-live-test/radio-live-test124-manifest.json
 
       - name: Upload independent TEST package
