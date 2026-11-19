@@ -695,6 +695,35 @@ def _skin_picon_directory():
         return None
 
 
+def _radio_world_root():
+    """Read PATHS for radio bundles without creating folders on the GUI thread."""
+    try:
+        from Components.config import config
+        value = config.plugins.setupGlass17.par39.value
+        if not isinstance(value, str) or not value.startswith('/'):
+            return None
+        root = Path(value)
+        if (root.name != 'hdg17_files' or root.is_symlink() or
+                not root.is_dir() or root.stat().st_dev == Path('/').stat().st_dev):
+            return None
+        vfs = os.statvfs(str(root))
+        if vfs.f_bavail * vfs.f_frsize < MIN_FREE:
+            return None
+        return root
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        return None
+
+
+def _radio_custom_picons_enabled():
+    """Explicit user-owned picon source must not be overwritten by radio ZIP."""
+    try:
+        from Components.config import config
+        from .warderUserPicons import selected_source
+        return selected_source(config)[0]
+    except (AttributeError, ImportError, TypeError, ValueError):
+        return True
+
+
 def _picon_dir():
     """Use existing picon folder on a truly mounted disk; never fill image flash."""
     root = os.stat('/').st_dev
@@ -864,7 +893,7 @@ def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
 def request_picon(reference):
     """Nonblocking GUI callback for a visible service-list radio row."""
     controller = _controller
-    if controller is not None:
+    if controller is not None and not getattr(controller, 'local_world_sha', None):
         controller.enqueue_icon(reference)
 
 
@@ -877,9 +906,16 @@ class Controller:
         self.radio_refresh_timer = None
         self.pending = self.loop.callLater(25, self.check)
         self.icon_timer = self.loop.callLater(25, self.check_icon)
+        self.world_timer = self.loop.callLater(5, self.check_world)
         self.worker = None
         self.icon_worker = None
+        self.world_worker = None
         self.timeout = None
+        self.world_timeout = None
+        self.active_local_key = None
+        self.local_worker_key = None
+        self.local_world_sha = None
+        self.last_bulk_logo = None
         self.closed = False
         self.initial_reload = True
         self.last_icon = None
@@ -898,7 +934,7 @@ class Controller:
         from .warderHelpPreview import _Worker
         worker = _Worker(callback)
         path = os.path.abspath(__file__)
-        if action == 'refresh':
+        if action in ('refresh', 'local', 'world', 'logo_zip'):
             path = os.path.join(os.path.dirname(path), 'warderRadioCountry.py')
         self.loop.spawnProcess(worker, '/usr/bin/python3', ['/usr/bin/python3', path] + args,
                                env=dict(os.environ))
@@ -920,10 +956,75 @@ class Controller:
             self.pending = self.loop.callLater(3, self.check)
             return
         try:
-            self.worker = self._spawn('refresh', ['--refresh'], self.finished)
+            root = _radio_world_root()
+            from . import warderRadioCountry as country
+            selected = country._pending_country(country._choice(DIRECTORY))
+            if not selected:
+                selected = country.active_country(DIRECTORY)
+            from . import warderRadioWorld as world
+            digest = world.cached_country(root, selected) if root is not None else None
+            if digest:
+                self.local_world_sha = digest
+                key = (selected, digest)
+                if selected == country.active_country(DIRECTORY) and (
+                        country._pending_country(country._choice(DIRECTORY)) is None and
+                        self.active_local_key == key):
+                    self.pending = self.loop.callLater(3600, self.check)
+                    return
+                self.local_worker_key = key
+                self.worker = self._spawn(
+                    'local', ['--activate-world', selected, str(root)], self.finished)
+            else:
+                self.local_world_sha = None
+                self.local_worker_key = None
+                self.worker = self._spawn('refresh', ['--refresh'], self.finished)
             self.timeout = self.loop.callLater(90, self.timed_out)
         except Exception:
             self.finished(None)
+
+    def check_world(self):
+        """Fetch a new world snapshot off the GUI; 14-day successful cadence."""
+        self.world_timer = None
+        if self.closed:
+            return
+        root = _radio_world_root()
+        if root is None:
+            self.world_timer = self.loop.callLater(3600, self.check_world)
+            return
+        if self.world_worker is not None:
+            self.world_timer = self.loop.callLater(60, self.check_world)
+            return
+        try:
+            self.world_worker = self._spawn(
+                'world', ['--sync-world', str(root)], self.world_done)
+            self.world_timeout = self.loop.callLater(210, self.world_timed_out)
+        except Exception:
+            self.world_done(None)
+
+    def world_done(self, result):
+        self.world_worker = None
+        if self.world_timeout is not None and self.world_timeout.active():
+            self.world_timeout.cancel()
+        self.world_timeout = None
+        if self.closed:
+            return
+        valid = isinstance(result, dict)
+        ready = valid and (result.get('changed') or
+                           result.get('skipped') == 'already-current')
+        if valid and result.get('changed'):
+            self.active_local_key = None
+            self.request_refresh()
+        # An absent/unpublished index is NOT treated as a completed refresh.
+        delay = 14 * DAY if ready else 6 * 3600
+        self.world_timer = self.loop.callLater(delay, self.check_world)
+
+    def world_timed_out(self):
+        self.world_timeout = None
+        if self.world_worker is not None:
+            try:
+                self.world_worker.transport.kill()
+            except Exception:
+                pass
 
     def _refresh_visible_radio_list(self, reset_to_top=True):
         """Refresh an open Enigma2 radio list after a progressive country update.
@@ -978,6 +1079,12 @@ class Controller:
         valid = isinstance(result, dict)
         switched = valid and result.get('changed') and bool(result.get('country'))
         first_page = not valid or result.get('first_page', True)
+        if valid and result.get('local') and result.get('country'):
+            self.active_local_key = getattr(self, 'local_worker_key', None)
+            self._load_icon_map()
+            if self.icon_timer is not None and self.icon_timer.active():
+                self.icon_timer.cancel()
+            self.icon_timer = self.loop.callLater(0.2, self.check_icon)
         if valid and (result.get('changed') or
                       (self.initial_reload and has_bouquet)):
             try:
@@ -1027,7 +1134,7 @@ class Controller:
         if mtime == self.map_mtime:
             return
         self.map_mtime = mtime
-        data = _read_json(mapping, {}) if mtime is not None else {}
+        data = _read_json(mapping, {}, 24 * 1024 * 1024) if mtime is not None else {}
         rows = data.get('stations', []) if isinstance(data, dict) else []
         self.known_icons = {row.get('stem') for row in rows if isinstance(row, dict)
                             and isinstance(row.get('stem'), str)}
