@@ -412,6 +412,82 @@ class LiveTests(unittest.TestCase):
             self.assertEqual(lookup.find_picon(*args), str(existing))
             self.assertEqual(calls, [ref])
 
+    def test_new_install_starts_live_refresh_without_blocking_opkg(self):
+        postinst = (ROOT / 'source/control/postinst').read_text()
+        self.assertIn('warder_radio_live=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py',
+                      postinst)
+        self.assertIn('warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py',
+                      postinst)
+        self.assertIn('"$warder_radio_live" --refresh </dev/null >/dev/null 2>&1 &', postinst)
+
+    def test_failed_test124_import_can_retry_immediately_on_test125(self):
+        state = self.root / live.STATE_FILE
+        state.write_text(json.dumps({'attempt': NOW - 120, 'bootstrap_generation': 'live124'}))
+        browser = Browser()
+        result = live.refresh(self.root, NOW, browser)
+        self.assertTrue(result['changed'])
+        self.assertEqual(browser.calls, [('SK', 0), ('CZ', 0)])
+        self.assertEqual(json.loads(state.read_text())['bootstrap_generation'], 'live125')
+
+    def test_first_import_cooldown_is_fifteen_minutes(self):
+        failing = Browser(offline=True)
+        with self.assertRaises(OSError):
+            live.refresh(self.root, NOW, failing)
+        self.assertEqual(live.refresh(self.root, NOW + 1, Browser())['skipped'], 'not-due')
+        self.assertTrue(live.refresh(self.root, NOW + live.INITIAL_RETRY, Browser())['changed'])
+
+    def test_diagnostic_is_read_only_and_reports_registration(self):
+        with patch.object(live, '_plugin', side_effect=ImportError('stub')):
+            status = live.diagnose(self.root)
+        self.assertFalse(status['bouquet_exists'])
+        self.assertFalse(status['registered_in_bouquets_radio'])
+        self.assertIsNone(status['last_attempt'])
+        live.refresh(self.root, NOW, Browser())
+        (self.root / live.DIAG_FILE).write_text(json.dumps(
+            {'result': 'ready', 'changed': True, 'stations': 2}))
+        with patch.object(live, '_plugin', side_effect=ImportError('stub')):
+            status = live.diagnose(self.root)
+        self.assertTrue(status['bouquet_exists'])
+        self.assertTrue(status['registered_in_bouquets_radio'])
+        self.assertEqual(status['last_status']['result'], 'ready')
+
+    def test_silent_refresh_records_sanitized_error(self):
+        with patch.object(live, 'DIRECTORY', self.root), patch.object(
+                live, 'refresh', side_effect=OSError('Radio Browser unavailable')):
+            with self.assertRaises(OSError):
+                live.refresh_with_status()
+        status = json.loads((self.root / live.DIAG_FILE).read_text())
+        self.assertEqual(status['result'], 'failed')
+        self.assertEqual(status['reason'], 'radio-browser-unavailable')
+        self.assertNotIn('url', str(status).lower())
+
+    def test_gui_reloads_bouquet_written_by_postinst_even_when_not_due(self):
+        class Call:
+            def __init__(self):
+                self.cancelled = False
+            def active(self):
+                return not self.cancelled
+            def cancel(self):
+                self.cancelled = True
+        class Loop:
+            def __init__(self):
+                self.calls = []
+            def callLater(self, seconds, callback):
+                self.calls.append((seconds, callback))
+                return Call()
+        loop, reloads = Loop(), []
+        with patch.object(live, 'DIRECTORY', self.root):
+            controller = live.Controller(loop, lambda: reloads.append(True))
+            try:
+                live.refresh(self.root, NOW, Browser())  # postinst finished between GUI checks
+                controller.finished({'changed': False, 'skipped': 'not-due'})
+                self.assertEqual(reloads, [True])
+                self.assertFalse(controller.initial_reload)
+                controller.finished({'changed': False, 'skipped': 'not-due'})
+                self.assertEqual(reloads, [True])
+            finally:
+                controller.close()
+
     def test_no_touched_radio_plugin_state(self):
         plugin = self.root / 'warder-radio'
         plugin.mkdir()
