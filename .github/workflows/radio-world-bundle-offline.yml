@@ -5,12 +5,16 @@ on:
     branches: [feature/radio-live-world-bundle-installer-20261119]
     paths:
       - tools/test-radio-world.py
+      - tools/test-radio-bundle-fetch.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioWorld.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py
       - .github/workflows/radio-world-bundle-offline.yml
   pull_request:
     paths:
       - tools/test-radio-world.py
+      - tools/test-radio-bundle-fetch.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioWorld.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py
       - .github/workflows/radio-world-bundle-offline.yml
 
 permissions:
@@ -27,10 +31,13 @@ jobs:
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
             tools/test-radio-world.py
             tools/test-radio-packages.py
+            tools/test-radio-bundle-fetch.py
           sparse-checkout-cone-mode: false
       - name: Python syntax
-        run: python3 -m py_compile tools/test-radio-world.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioWorld.py
+        run: python3 -m py_compile tools/test-radio-world.py tools/test-radio-bundle-fetch.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioWorld.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py
       - name: Existing country package safety
         run: python3 -B tools/test-radio-packages.py
       - name: World archive protection, local country switching and non-radio picon safety
-        run: python3 -B tools/test-radio-world.py
+        run: |
+          python3 -B tools/test-radio-world.py
+          python3 -B tools/test-radio-bundle-fetch.py
