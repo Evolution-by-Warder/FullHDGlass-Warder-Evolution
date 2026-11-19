@@ -253,6 +253,32 @@ class Tests(unittest.TestCase):
             fetch.sync_world(self.paths,self.network,require_external=False)
         self.assertFalse((self.paths/'radio-world').exists())
 
+    def test_removed_country_from_new_feed_preserves_cached_world(self):
+        fetch.sync_world(self.paths,self.network,require_external=False)
+        old=(self.paths/'radio-world/bouquets/ET.radio').read_bytes()
+        self.feed['countries'].pop('ET')
+        self.feed['country_count']=1
+        self._network()
+        self.network.calls.clear()
+        result=fetch.sync_world(self.paths,self.network,require_external=False)
+        self.assertEqual(result['skipped'],'country-removal-requires-review')
+        self.assertEqual(result['removed_countries'],['ET'])
+        self.assertEqual(self.network.calls,[fetch.LATEST_URL])
+        self.assertEqual((self.paths/'radio-world/bouquets/ET.radio').read_bytes(),old)
+
+    def test_swapped_country_with_same_count_preserves_cached_world(self):
+        fetch.sync_world(self.paths,self.network,require_external=False)
+        old=(self.paths/'radio-world/index.json').read_bytes()
+        record=self.feed['countries'].pop('ET')
+        record['logos']['file']='DE.zip'
+        self.feed['countries']['DE']=record
+        self._network()
+        result=fetch.sync_world(self.paths,self.network,require_external=False)
+        self.assertEqual(result['skipped'],'country-removal-requires-review')
+        self.assertEqual(result['removed_countries'],['ET'])
+        self.assertEqual((self.paths/'radio-world/index.json').read_bytes(),old)
+        self.assertFalse((self.paths/'radio-world/bouquets/DE.radio').exists())
+
     def test_complete_world_feed_with_one_partial_logo_country_is_rejected(self):
         # A central complete=true flag is not sufficient; check every
         # participating country's original PNG ZIP attempt completeness.
