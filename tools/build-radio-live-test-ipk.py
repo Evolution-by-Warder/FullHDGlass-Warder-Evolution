@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "source/package-root"
 CONTROL = ROOT / "source/control"
 OUT_DIR = ROOT / "packages/radio-live-test"
-RUNTIME_VERSION = "1.0.81-test128"
+RUNTIME_VERSION = "1.0.81-test129"
 PACKAGE_VERSION = RUNTIME_VERSION + "-1"
 PKG_NAME = "enigma2-plugin-skins-fullhdglass"
 PACKAGE_ID = "enigma2-plugin-skins-fullhdglass-warder-evolution"
@@ -25,6 +25,7 @@ PLUGIN = "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17"
 VERSION_REL = PLUGIN + "/version"
 REQUIRED = {
     PLUGIN + "/warderRadioLive.py",
+    PLUGIN + "/warderRadioCountry.py",
     PLUGIN + "/warderRadioUpdate.py",
     PLUGIN + "/warderChannelPicons.py",
     PLUGIN + "/plugin.py",
@@ -147,7 +148,7 @@ def main():
     summary["sha256"] = hashlib.sha256(destination.read_bytes()).hexdigest()
     (OUT_DIR / (destination.name + ".sha256")).write_text(
         summary["sha256"] + "  " + destination.name + "\n", encoding="utf-8")
-    (OUT_DIR / "radio-live-test128-manifest.json").write_text(
+    (OUT_DIR / "radio-live-test129-manifest.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))
 
