@@ -27,7 +27,9 @@ Status: **draft PR #124**. No release, installer, feed, version bump, or deploye
 
 ## Validation
 
-Offline regression suite: `python3 tools/test-radio-live.py -v`. CI workflow: `.github/workflows/radio-live-safety.yml`. **24/24 focused tests passed** on the working branch after hardening of UUID/stream validation, retries, optional-country fallback and disk cache initialization.
+Offline regression suite: `python3 tools/test-radio-live.py -v`. CI workflow: `.github/workflows/radio-live-safety.yml`. **30/30 focused tests passed** on the working branch after hardening of UUID/stream validation, retries, optional-country fallback and disk cache initialization.
+
+First receiver test of 1.0.81-test124 on 2026-11-19 showed only the original Warder Radio Streams bouquet. Receiver repair 1.0.81-test125 now also starts the live import from postinst, forces a retry after the prior test124 failed-first-import cooldown, reloads the radio index after postinst has registered the live file, and records a sanitized error/status for `warderRadioLive.py --diagnose`. Its standalone package builder and publishing workflow are separate from production update feeds; 30/30 focused tests and IPK SHA-256 verification passed. **The fix still requires a fresh physical receiver retest.**
 
 Native receiver acceptance is **not yet confirmed**. Before merging or releasing, physically check the live bouquet and visible picon renders on GigaBlue Quad 4K Pro / OpenATV 8.1 and Octagon SF8008 (including fallback), the active PATHS destination and Own Picons, startup/offline cases, scrolling performance, and 7-day refresh behavior. Full OpenATV/OpenPLi workflow failures unrelated to this change must be evaluated separately; a passing focused test is not a release authorization.
 
