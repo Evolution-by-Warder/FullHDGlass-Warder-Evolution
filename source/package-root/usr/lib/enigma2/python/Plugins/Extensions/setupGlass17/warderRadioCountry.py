@@ -333,6 +333,80 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
     return True
 
 
+def _pending_country_switch_backup_allowed(directory, original, state):
+    """A user-selected NEW country may replace this owned live bouquet.
+
+    This is not a generic checksum bypass. Require a distinct explicit pending
+    country, a source map signed by the previous active-country SHA256, and the
+    exact set of original service identities (optionally with ONE native
+    alternative) in the current radio file. Native Enigma2 may re-encode
+    stream URL strings, descriptions or CRLF on save, so don't require raw-byte
+    equality. Always back up the untouched receiver file before replacement.
+    """
+    directory = Path(directory)
+    active, pending = state.get('active'), _pending_country(state)
+    if (not isinstance(active, str) or not COUNTRY_RE.fullmatch(active) or
+            pending is None or pending == active or
+            not isinstance(state.get('sha256'), str) or
+            not re.fullmatch(r'[0-9a-f]{64}', state['sha256'])):
+        return False
+    raw = _normalized_receiver_bouquet(original)
+    if raw is None:
+        return False
+    rows_obj = live._read_json(directory / live.DATA_FILE, {}, MAP_LIMIT)
+    rows = rows_obj.get('stations') if isinstance(rows_obj, dict) else None
+    if (not isinstance(rows, list) or not rows or len(rows) > MAX_STATIONS or
+            any(not isinstance(row, dict) or row.get('countrycode') != active
+                for row in rows)):
+        return False
+    try:
+        catalogue = live._bouquet([(country_name(active), rows)])
+        catalogue = live.HEADER + live._sorted_country_section(
+            catalogue[len(live.HEADER):])
+        if hashlib.sha256(catalogue).hexdigest() != state['sha256']:
+            return False
+        permitted = set()
+        for row in rows:
+            key = _reference_key(
+                b'#SERVICE ' + row['stem'].replace('_', ':').encode('ascii') + b':')
+            if key is None or key[0] in permitted:
+                return False
+            permitted.add(key[0])
+    except (ValueError, KeyError, TypeError, AttributeError, UnicodeError):
+        return False
+
+    lines = raw.splitlines(keepends=True)
+    if (len(lines) < 5 or lines[0] != live.HEADER or
+            lines[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
+            lines[2] != ('#DESCRIPTION ' + country_name(active) + '\n').encode('utf-8')):
+        return False
+    seen, alternative_count = set(), 0
+    index = 3
+    while index < len(lines):
+        line = lines[index]
+        if not line.startswith(b'#SERVICE '):
+            return False
+        if _alt_group_filename(line) is not None:
+            alternative_count += 1
+            if alternative_count > 1:
+                return False
+        else:
+            key = _reference_key(line)
+            if (key is None or key[0] not in permitted or
+                    key[0] in seen or key[0][0] != 4097):
+                return False
+            seen.add(key[0])
+        index += 1
+        if index < len(lines) and lines[index].startswith(b'#DESCRIPTION '):
+            index += 1
+    if len(seen) + alternative_count != len(rows):
+        return False
+    # A previous safeguard may already have created a backup. Do not ever
+    # overwrite it; the user can inspect/delete it deliberately if necessary.
+    backup = directory / (live.FILE + '.before-country-switch.bak')
+    return live._safe_file(backup) and not backup.exists()
+
+
 def _save_choice(directory, data):
     live._write(Path(directory) / CHOICE_FILE, live._json_bytes(data))
 
@@ -458,12 +532,18 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         state = _choice(directory)
         # The GUI or setup may have changed the active country while a worker
         # was still running; the worker reads the choice under this lock.
+        pending_backup_required = False
         if not _owner_valid(directory, before, state):
-            if not _recover_enigma_alternative(directory, before, state):
-                return {'changed': False, 'skipped': 'owner-modified'}
-            # The manually edited reference was backed up and the trusted
-            # previous-country catalogue restored; the CZ request remains pending.
-            before = target.read_bytes()
+            # Changing the whole managed bouquet is the purpose of choosing a
+            # different country. Validate previous ownership by the signed
+            # catalogue and numeric station IDs, then back up the original
+            # receiver bytes only AFTER a complete new country is ready.
+            pending_backup_required = _pending_country_switch_backup_allowed(
+                directory, before, state)
+            if not pending_backup_required:
+                if not _recover_enigma_alternative(directory, before, state):
+                    return {'changed': False, 'skipped': 'owner-modified'}
+                before = target.read_bytes()
         country = _pending_country(state) or active_country(directory)
         if not COUNTRY_RE.fullmatch(country):
             return {'changed': False, 'skipped': 'invalid-country'}
@@ -523,6 +603,13 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             raise ValueError('Country icon mapping too large')
         if target.exists() and target.read_bytes() != before:
             raise OSError('Concurrent managed bouquet edit')
+        if pending_backup_required:
+            backup = directory / (live.FILE + '.before-country-switch.bak')
+            if not live._safe_file(backup) or backup.exists():
+                return {'changed': False, 'skipped': 'backup-exists'}
+            # Save the exact byte representation, including Enigma2's custom
+            # formatting and alternative list, before installing new stations.
+            live._write(backup, before)
         if not mapping.exists() or mapping.read_bytes() != payload:
             live._write(mapping, payload)
         changed = raw != before
@@ -611,6 +698,9 @@ def diagnose(directory=DIRECTORY):
             raw is not None and normalized_sha not in (expected, old_expected) and
             _recover_enigma_alternative(directory, raw, _choice(directory),
                                        inspect_only=True)),
+        'pending_country_switch_safe': bool(
+            raw is not None and normalized_sha not in (expected, old_expected) and
+            _pending_country_switch_backup_allowed(directory, raw, info)),
         'active': active_country(directory),
         'pending': _pending_country(info),
         'downloaded': info.get('downloaded', 0),
