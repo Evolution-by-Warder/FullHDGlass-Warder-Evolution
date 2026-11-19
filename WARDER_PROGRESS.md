@@ -1,3 +1,11 @@
+## 19. 11. 2026 — dodatočná OpenATV/OpenPLi kompatibilita na radio-world branch
+
+- **Preukázaná príčina pôvodných 3 CI errors:** v `tools/test-channel-picon-settings.py` chýbal testovací `config.plugins.warderSkinMainMenu.enabled` stub. Na realnejšom vstupnom `plugin.py` sa používa v `saving()` aj `exitNow()`; preto tri testy padali na `AttributeError` aj na `main`, nezávisle od rádia. Opravené iba v **testovacom mocku**, commit `592e5996`, produkčný plugin bez zmeny.
+- **Ďalšia samostatná existujúca CI nesúlad po tomto fixe:** na PR vetve OpenATV kompatibilita už prejde cez tri nastavenia, ale teraz signalizuje odlišný historický **globálny skin SHA** v `test-openatv-screen-compat.py` (vypočítaný `eb7962fc...`, historický `7af1ecd3...`); OpenPLi podobne `test-openpli-graph-epg.py` (`e50ef0a4...` vs `994c682d...`). Treba dôsledne porovnať schválené kožené layouty a baseline; **nesmieme len prepísať očakávané SHA bez vysvetlenia**. Tieto staršie testy nie sú rádio PNG, ale bránia označeniu všeobecnej OpenATV/OpenPLi compat ako PASS.
+- **Zvyšné rádiové testy** [world/ZIP CI #44590523328 PASS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/44590523328), skutočný 224-world bridge [#44590260765 PASS](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44590260765), produkčná IPK ani `main` nedotknuté.
+
+---
+
 ## 19. 11. 2026 — kompletné 224-krajinské menu, read-only diagnostika a integračný PASS
 
 - **Skutočné Radio Mode menu:** `warderRadioWorld.available_countries(PATHS)` načítava aktuálny nainštalovaný 224-country index. `warderRadioCountry.country_options()` z neho zobrazí každú krajinu, preferuje známe slovenské/lokalizované názvy zo samostatného radio pluginu. Pri chýbajúcom svete používa starý bezpečný country names fallback, stále bez HTTP v GUI.
