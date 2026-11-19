@@ -386,12 +386,13 @@ def open_country_selector(session, service=None, **kwargs):
     try:
         from Screens.ChoiceBox import ChoiceBox
         from Screens.MessageBox import MessageBox
+        from .warderUiText import ui_text
     except ImportError:
         return
     current = active_country()
     choices = country_options()
     if not choices:
-        session.open(MessageBox, "Zoznam krajín nie je dostupný.",
+        session.open(MessageBox, ui_text("Country list is unavailable."),
                      type=MessageBox.TYPE_INFO, timeout=5)
         return
 
@@ -401,7 +402,7 @@ def open_country_selector(session, service=None, **kwargs):
         code = answer[1]
         result = request_country(code)
         if not result.get('accepted'):
-            session.open(MessageBox, "Výber krajiny sa nepodarilo uložiť.",
+            session.open(MessageBox, ui_text("Country selection could not be saved."),
                          type=MessageBox.TYPE_INFO, timeout=5)
             return
         if result.get('already_active'):
@@ -412,13 +413,13 @@ def open_country_selector(session, service=None, **kwargs):
                 controller.request_refresh()
         except (AttributeError, OSError):
             pass
-        session.open(MessageBox, "Načítavam stanice vybranej krajiny na pozadí.",
+        session.open(MessageBox, ui_text("Loading radio stations for the selected country."),
                      type=MessageBox.TYPE_INFO, timeout=4)
 
     # Keep the active choice first in the user-facing menu.
     ordered = sorted(choices, key=lambda row: row[1] != current)
-    session.openWithCallback(chosen, ChoiceBox, title="Vybrať krajinu – Warder Radio Live",
-                             list=[(name + (' (aktuálna)' if code == current else ''), code)
+    session.openWithCallback(chosen, ChoiceBox, title=ui_text("Select country (Warder Radio Live)"),
+                             list=[(name + (' ' + ui_text('(current)') if code == current else ''), code)
                                    for name, code in ordered])
 
 
