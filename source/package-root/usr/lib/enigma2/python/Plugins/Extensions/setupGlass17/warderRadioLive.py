@@ -1,6 +1,6 @@
 """Optional live Radio Browser bouquets and demand-loaded Enigma2 radio picons.
 
-The managed live bouquet is separate from the legacy Warder Radio Streams file.
+The live bouquet replaces the managed legacy entry in the radio index but leaves the old source file untouched as a recovery fallback.
 Only this module's own files may be replaced. No network calls run in the GUI.
 Radio Warder Evolution supplies the catalogue and the validated logo downloader.
 """
@@ -19,6 +19,8 @@ from uuid import UUID
 
 DIRECTORY = Path('/etc/enigma2')
 FILE = 'userbouquet.warder.live.radio'
+LEGACY_FILE = 'userbouquet.warder.radio'
+LEGACY_HEADER = b'#NAME Warder Radio Streams\n'
 HEADER = b'#NAME Warder Radio Live\n'
 INDEX_LINE = ('#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "' + FILE + '" ORDER BY bouquet\n').encode()
 DATA_FILE = 'warder-radio-live-stations.json'
@@ -28,6 +30,7 @@ DIAG_FILE = 'warder-radio-live-diagnostics.json'
 DAY = 24 * 3600
 RETRY = 6 * 3600
 INITIAL_RETRY = 15 * 60
+BOOTSTRAP_GENERATION = 'live126'
 MAX_PAGES = 3
 MAX_STATIONS = 600
 MAX_ICONS = 2 * MAX_STATIONS + 24  # two native Enigma2 filename variants
@@ -155,22 +158,113 @@ def _bouquet(groups):
     return ''.join(lines).encode('utf-8')
 
 
+def _managed_legacy(directory):
+    """Only the original Warder-managed radio file may be hidden from the index."""
+    source = directory / LEGACY_FILE
+    if source.is_symlink() or not source.is_file():
+        return None
+    try:
+        if source.stat().st_size > 4 * 1024 * 1024:
+            return None
+        raw = source.read_bytes()
+        return raw if raw.startswith(LEGACY_HEADER) else None
+    except OSError:
+        return None
+
+
 def _register(directory):
+    """Put the live bouquet first; retire ONLY a verified Warder legacy entry.
+
+    All other radio-bouquet references and their relative order are preserved.
+    Rewriting uses a complete atomic file rather than in-place truncation.
+    """
     index = directory / 'bouquets.radio'
     if not _safe_file(index):
         raise OSError('Unsafe radio index')
-    flags = os.O_RDWR | os.O_CREAT | os.O_APPEND | os.O_NOFOLLOW
-    with os.fdopen(os.open(str(index), flags, 0o644), 'a+b') as output:
-        output.seek(0)
-        before = output.read()
-        if re.search(rb'^#SERVICE[^\r\n]*FROM BOUQUET "' +
-                     re.escape(FILE.encode()) + rb'"', before, re.MULTILINE):
-            return False
-        output.write((b'#NAME Bouquets (Radio)\n' if not before else
-                      b'' if before.endswith(b'\n') else b'\n') + INDEX_LINE)
-        output.flush()
-        os.fsync(output.fileno())
+    if index.exists() and index.stat().st_size > 512 * 1024:
+        raise ValueError('Oversized radio index')
+    before = index.read_bytes() if index.exists() else b''
+    if before and b'\x00' in before:
+        raise ValueError('Invalid radio index')
+    lines = before.splitlines(keepends=True)
+    legacy_owned = _managed_legacy(directory) is not None
+    path_re = re.compile(rb'^#SERVICE[ \t]+[^\r\n]*FROM BOUQUET "([^"\r\n]+)"')
+    kept = []
+    for line in lines:
+        match = path_re.match(line)
+        if match and (match.group(1) == FILE.encode('ascii') or
+                      (legacy_owned and match.group(1) == LEGACY_FILE.encode('ascii'))):
+            continue
+        kept.append(line)
+    # Put the new bouquet immediately after the radio-index heading.
+    # Preserve every other byte, apart from a necessary newline for insertion.
+    if kept and kept[0].startswith(b'#NAME '):
+        first, tail = kept[0], kept[1:]
+        ending = b'\r\n' if first.endswith(b'\r\n') else b'\n'
+        if not first.endswith(b'\n'):
+            first += ending
+        result = first + INDEX_LINE + b''.join(tail)
+    else:
+        result = b'#NAME Bouquets (Radio)\n' + INDEX_LINE + b''.join(kept)
+    if result == before:
+        return False
+    if index.exists() and index.read_bytes() != before:
+        raise OSError('Concurrent radio index edit')
+    _write(index, result)
     return True
+
+
+def bootstrap(directory=DIRECTORY):
+    """Local-only first-paint preparation, no online or Enigma2 imports.
+
+    The preexisting managed streams, if any, seed the new filename until the
+    background Radio Browser refresh replaces them. Their original file remains
+    untouched for rollback and must no longer be registered as another bouquet.
+    """
+    directory = Path(directory)
+    target = directory / FILE
+    state_path = directory / STATE_FILE
+    index = directory / 'bouquets.radio'
+    if not all(_safe_file(p) for p in (target, state_path, index)):
+        return {'changed': False, 'skipped': 'unsafe-path'}
+    with _lock(directory / (STATE_FILE + '.lock')) as handle:
+        try:
+            fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return {'changed': False, 'skipped': 'busy'}
+        existing = target.read_bytes() if target.exists() else None
+        if existing is not None and not existing.startswith(HEADER):
+            return {'changed': False, 'skipped': 'unmanaged'}
+        state = _read_json(state_path, {})
+        if not isinstance(state, dict):
+            state = {}
+        created = False
+        if existing is None:
+            legacy = _managed_legacy(directory)
+            if legacy is not None:
+                # The original stream references remain playable immediately,
+                # even before the dynamic Radio Browser catalogue is available.
+                raw = HEADER + legacy[len(LEGACY_HEADER):]
+                origin = 'legacy-fallback'
+            else:
+                # An empty network cache can still expose the new bouquet at
+                # the top, but must never fabricate a playable station.
+                raw = HEADER + (
+                    '#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                    '#DESCRIPTION Načítavanie rádií…\n'
+                ).encode('utf-8')
+                origin = 'empty-fallback'
+            _write(target, raw)
+            created = True
+            state['bouquet_sha256'] = hashlib.sha256(raw).hexdigest()
+            state['bootstrap_generation'] = BOOTSTRAP_GENERATION
+            state.pop('success', None)
+            state.pop('attempt', None)
+            state['seed_origin'] = origin
+            _write(state_path, _json_bytes(state))
+        moved = _register(directory)
+        return {'changed': created or moved, 'created': created,
+                'legacy_hidden': _managed_legacy(directory) is not None}
 
 
 def refresh(directory=DIRECTORY, now=None, browser=None):
@@ -198,8 +292,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             state = {}
         # Retry immediately after upgrading an initial failed test124 import.
         # Otherwise the previous failed attempt could postpone first creation.
-        if before is None and state.get('bootstrap_generation') != 'live125':
-            state['bootstrap_generation'] = 'live125'
+        if before is None and state.get('bootstrap_generation') != BOOTSTRAP_GENERATION:
+            state['bootstrap_generation'] = BOOTSTRAP_GENERATION
             state.pop('attempt', None)
         if before is not None:
             expected = state.get('bouquet_sha256', '')
@@ -710,7 +804,12 @@ if __name__ == '__main__':
     try:
         signal.alarm(90)
         os.nice(10)
-        if sys.argv[1:] == ['--refresh']:
+        if sys.argv[1:] == ['--bootstrap']:
+            result = bootstrap()
+        elif sys.argv[1:] == ['--refresh']:
+            # The worker may start without an installer (e.g. after a GUI
+            # restart); keep index promotion idempotent in both paths.
+            bootstrap()
             result = refresh_with_status()
         elif sys.argv[1:] == ['--diagnose']:
             print(json.dumps(diagnose(), ensure_ascii=False))
