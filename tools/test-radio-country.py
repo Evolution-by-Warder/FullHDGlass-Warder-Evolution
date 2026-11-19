@@ -391,7 +391,7 @@ class CountryTests(unittest.TestCase):
         original = self.bouquet.read_bytes()
         live_header = live.HEADER.replace(b'\n', b'\r\n')
         active_marker = (
-            b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\r\n'
+            b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\r\n' +
             '#DESCRIPTION Slovensko\r\n'.encode('utf-8'))
         rewritten = (
             b'#SERVICE ' + rows[1]['stem'].replace('_', ':').encode('ascii') +
