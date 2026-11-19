@@ -116,6 +116,17 @@ class Tests(unittest.TestCase):
         self.assertEqual(second['skipped'],'already-current')
         self.assertEqual(self.network.calls[-1],fetch.LATEST_URL)
 
+    def test_background_fetch_creates_missing_external_paths_picon_only(self):
+        fetch.sync_world(self.paths,self.network,require_external=False)
+        country.bootstrap(self.etc)
+        world.activate_from_world(self.paths,'FR',self.etc)
+        (self.paths/'picon').rmdir()
+        self.assertFalse((self.paths/'picon').exists())
+        result=fetch.sync_selected_logos(self.paths,self.etc,'FR',self.network,
+                                         require_external=False)
+        self.assertTrue(result['changed'])
+        self.assertEqual(len(list((self.paths/'picon/radio').glob('*.png'))),3)
+
     def test_background_logo_request_for_old_country_does_not_replace_selection(self):
         fetch.sync_world(self.paths,self.network,require_external=False)
         country.bootstrap(self.etc)
