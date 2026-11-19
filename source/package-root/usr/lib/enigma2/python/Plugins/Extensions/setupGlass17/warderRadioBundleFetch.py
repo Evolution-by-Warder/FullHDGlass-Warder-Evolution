@@ -100,8 +100,10 @@ def _feed(opener):
                 not 0<logos['bytes']<=LOGO_LIMIT or
                 not isinstance(logos.get('sha256'),str) or
                 not SHA.fullmatch(logos['sha256']) or
-                type(record.get('logo_package_complete')) is not bool):
-            raise ValueError('Untrusted country logo listing')
+                record.get('logo_package_complete') is not True):
+            # A global feed cannot claim complete=true while one country's
+            # original-logo scan is still pending. Keep last valid snapshot.
+            raise ValueError('Incomplete country logo listing')
     return data
 
 
