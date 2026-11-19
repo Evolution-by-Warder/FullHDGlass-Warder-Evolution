@@ -24,11 +24,11 @@ DIRECTORY = Path('/etc/enigma2')
 CHOICE_FILE = 'warder-radio-live-country.json'
 PAGE_FILE = 'warder-radio-live-country-pending.json'
 COUNTRY_RE = re.compile(r'^[A-Z]{2}$')
-MAX_PAGES_PER_JOB = 3
+MAX_PAGES_PER_JOB = 5
 MAX_STATIONS = 4000
 DAY = 86400
 RETRY = 15 * 60
-STEP = 10
+STEP = 2
 MAP_LIMIT = 24 * 1024 * 1024
 VERSION = 1
 
