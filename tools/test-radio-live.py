@@ -445,7 +445,7 @@ class LiveTests(unittest.TestCase):
             with patch.object(live, 'DIRECTORY', root):
                 controller = live.Controller(Loop(), lambda: None)
                 try:
-                    self.assertEqual(len(controller.icon_queue), 16)
+                    self.assertEqual(len(controller.icon_queue), 24)  # 8 per mapped country max
                     self.assertTrue(all(x in controller.known_icons for x in controller.icon_queue))
                 finally:
                     controller.close()
