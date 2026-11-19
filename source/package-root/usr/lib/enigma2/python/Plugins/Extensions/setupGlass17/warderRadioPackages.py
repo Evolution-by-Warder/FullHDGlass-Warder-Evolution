@@ -138,7 +138,15 @@ def verified_country(root, code):
         # Recheck the source URL, station name and identity using the skin's
         # own validator; do not trust JSON alone.
         actual = live._entry(row)
-        if actual['stem'] != row['stem'] or actual['name'] != row['name']:
+        # Historical 2026-11-19 pinned world rows could be truncated
+        # *exactly* at a trailing ASCII space at column 140. Enigma's
+        # validator canonicalizes that one harmless trailing space away.
+        # Keep all signed service IDs, URL, country and internal name bytes
+        # strict: accept only trailing ASCII spaces, never renamed services.
+        stored_name = row.get('name')
+        if (not isinstance(stored_name, str) or
+                actual['stem'] != row['stem'] or
+                actual['name'] != stored_name.rstrip(' ')):
             raise ValueError('Unsafe station row')
     raw = _verified_member(root, manifest, 'bouquets/' + code + '.radio', MAX_BOUQUET)
     expected = live._bouquet([(name, data['stations'])])
