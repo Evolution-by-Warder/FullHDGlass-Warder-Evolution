@@ -100,18 +100,30 @@ def _feed(opener):
                 not 0<logos['bytes']<=LOGO_LIMIT or
                 not isinstance(logos.get('sha256'),str) or
                 not SHA.fullmatch(logos['sha256']) or
-                record.get('logo_package_complete') is not True):
+                record.get('logo_package_complete') is not True or
+                (logos.get('asset_tag') is not None and
+                 (not isinstance(logos.get('asset_tag'), str) or
+                  not TAG.fullmatch(logos['asset_tag']) or
+                  logos['asset_tag'] > data['release_tag']))):
             # A global feed cannot claim complete=true while one country's
             # original-logo scan is still pending. Keep last valid snapshot.
             raise ValueError('Incomplete country logo listing')
     return data
 
 
-def _asset(index, name):
+def _asset(index, name, asset_tag=None):
     if name not in ('radio-countries-bouquets.zip',) and not (
-            re.fullmatch(r'[A-Z]{2}\.zip',name)):
+            re.fullmatch(r'[A-Z]{2}\.zip', name)):
         raise ValueError('Unsafe release asset name')
-    return RELEASE_ROOT+index['release_tag']+'/'+name
+    if name == 'radio-countries-bouquets.zip':
+        if asset_tag is not None:
+            raise ValueError('World ZIP must come from current release')
+        tag = index['release_tag']
+    else:
+        tag = index['release_tag'] if asset_tag is None else asset_tag
+    if not isinstance(tag, str) or not TAG.fullmatch(tag):
+        raise ValueError('Unsafe immutable radio release tag')
+    return RELEASE_ROOT + tag + '/' + name
 
 
 def _download(opener, url, parent, expected_hash, expected_size, limit):
@@ -274,7 +286,8 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
             shutil.copyfile(inp,target)
         source=stage/'logos'
         source.mkdir()
-        zipfile=_download(opener,_asset(feed,zipinfo['file']),source,
+        zipfile=_download(opener,_asset(feed,zipinfo['file'],
+                                       zipinfo.get('asset_tag')),source,
                           zipinfo['sha256'],zipinfo['bytes'],LOGO_LIMIT)
         os.replace(zipfile,source/(code+'.zip'))
         # If user switched countries during download, never activate stale PNGs.
