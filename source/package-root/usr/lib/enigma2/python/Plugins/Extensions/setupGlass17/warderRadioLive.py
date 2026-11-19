@@ -30,10 +30,14 @@ DIAG_FILE = 'warder-radio-live-diagnostics.json'
 DAY = 24 * 3600
 RETRY = 6 * 3600
 INITIAL_RETRY = 15 * 60
-BOOTSTRAP_GENERATION = 'live126'
+BOOTSTRAP_GENERATION = 'live126-world'
 MAX_PAGES = 3
-MAX_STATIONS = 600
-MAX_ICONS = 2 * MAX_STATIONS + 24  # two native Enigma2 filename variants
+MAX_STATIONS = 4000  # Per-country staging, not a global station limit
+COUNTRIES_PER_PASS = 2
+WORLD_REFRESH_INTERVAL = 7 * DAY
+WORLD_STEP_INTERVAL = 5 * 60
+PENDING_FILE = 'warder-radio-live-pending.json'
+MAX_ICONS = 4096  # two native Enigma2 filename variants
 MIN_FREE = 16 * 1024 * 1024
 ICON_RETRY_SECONDS = 15 * 60
 COUNTRIES = ('SK', 'CZ')
@@ -360,7 +364,12 @@ def bootstrap(directory=DIRECTORY):
 
 
 def refresh(directory=DIRECTORY, now=None, browser=None):
-    """Publish only after all online pages validate. Keep previous data offline."""
+    """Incrementally refresh every Radio Browser country, preserving old groups.
+
+    Only two countries and up to three pages per country are processed in one
+    worker. A larger country's staged pages are resumed on the next pass.
+    The legacy world bouquet remains fully usable during the entire cycle.
+    """
     directory = Path(directory)
     now = time.time() if now is None else now
     if now < 1700000000:
@@ -368,8 +377,10 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
     target = directory / FILE
     index = directory / 'bouquets.radio'
     data = directory / DATA_FILE
+    pending_path = directory / PENDING_FILE
     state_path = directory / STATE_FILE
-    if not all(_safe_file(path) for path in (target, index, data, state_path)):
+    if not all(_safe_file(path) for path in (target, index, data, state_path,
+                                              pending_path)):
         return {'changed': False, 'skipped': 'unsafe-path'}
     before = target.read_bytes() if target.exists() else None
     if before is not None and not before.startswith(HEADER):
@@ -382,8 +393,6 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         state = _read_json(state_path, {})
         if not isinstance(state, dict):
             state = {}
-        # Retry immediately after upgrading an initial failed test124 import.
-        # Otherwise the previous failed attempt could postpone first creation.
         if before is None and state.get('bootstrap_generation') != BOOTSTRAP_GENERATION:
             state['bootstrap_generation'] = BOOTSTRAP_GENERATION
             state.pop('attempt', None)
@@ -394,54 +403,113 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                     hashlib.sha256(before).hexdigest() != expected):
                 return {'changed': False, 'skipped': 'owner-modified'}
         success, attempt = state.get('success', 0), state.get('attempt', 0)
-        if before is not None and success and 0 <= now-success < DAY:
+        complete = state.get('world_complete', False) is True
+        if before is not None and complete and success and 0 <= now-success < WORLD_REFRESH_INTERVAL:
             changed = _register(directory)
             return {'changed': changed, 'skipped': 'not-due'}
-        retry = RETRY if before is not None else INITIAL_RETRY
+        retry = WORLD_STEP_INTERVAL if before is not None else INITIAL_RETRY
         if attempt and 0 <= now-attempt < retry:
             changed = _register(directory) if before is not None else False
             return {'changed': changed, 'skipped': 'not-due'}
         state['attempt'] = now
         _write(state_path, _json_bytes(state))
-        # Radio plugin is optional. It owns the online client and logo validation.
+
         if browser is None:
             RadioBrowser, _ = _plugin()
             browser = RadioBrowser('/etc/enigma2/warder-radio')
-        plugin_dir = directory / 'warder-radio'
-        groups, saved, seen = [], [], set()
-        for country in _countries(plugin_dir):
-            rows = []
-            for page in range(MAX_PAGES):
-                result = browser.page(country=country, offset=page * 60)
+        codes = _country_codes(browser, state)
+        # A selected country should also be included if older Radio Browser
+        # inventory data has not listed it yet.
+        codes = list(dict.fromkeys([*codes, *_countries(directory / 'warder-radio')]))
+        if not codes:
+            raise ValueError('Empty world country inventory')
+        cursor = state.get('world_cursor', 0)
+        if type(cursor) is not int or not 0 <= cursor < len(codes):
+            cursor = 0
+        staged = _read_json(pending_path, {}, 4 * 1024 * 1024)
+        if not isinstance(staged, dict):
+            staged = {}
+        old_sections = _sections(_managed_legacy(directory))
+        current_sections = _sections(before)
+        labels = {*old_sections, *current_sections}
+        updates, updated_rows = {}, {}
+        done = 0
+        for _ in range(COUNTRIES_PER_PASS):
+            if cursor >= len(codes):
+                break
+            code = codes[cursor]
+            continuing = staged.get('country') == code
+            rows = staged.get('rows', []) if continuing else []
+            offset = staged.get('offset', 0) if continuing else 0
+            if (not isinstance(rows, list) or type(offset) is not int or
+                    not 0 <= offset <= MAX_STATIONS or len(rows) > MAX_STATIONS):
+                rows, offset = [], 0
+            known = {item.get('stationuuid') for item in rows if isinstance(item, dict)}
+            more = False
+            for _page in range(MAX_PAGES):
+                result = browser.page(country=code, offset=offset)
                 if result.offline:
-                    raise OSError('Radio Browser is offline; keep previous bouquet')
+                    raise OSError('Radio Browser offline; preserving existing world bouquet')
                 for station in result.rows:
                     try:
                         item = _entry(station)
-                    except (ValueError, AttributeError, TypeError):
+                    except (ValueError, TypeError, AttributeError):
                         continue
-                    if item['stationuuid'] in seen:
+                    if item['stationuuid'] in known:
                         continue
-                    seen.add(item['stationuuid'])
+                    known.add(item['stationuuid'])
                     rows.append(item)
-                if not result.more or len(seen) >= MAX_STATIONS:
+                offset += 60
+                more = bool(result.more)
+                if not more:
                     break
-            if not rows:
-                if country in COUNTRIES:
-                    raise ValueError('Empty core country; keep previous bouquet')
-                # An optional selected country may genuinely have no stations.
-                continue
-            for item in rows:
-                item['countrycode'] = country
-            groups.append((country, rows))
-            saved.extend(rows)
-        raw = _bouquet(groups)
-        if not saved or len(raw) > 4 * 1024 * 1024:
-            raise ValueError('Invalid live radio bouquet')
+                if len(rows) >= MAX_STATIONS:
+                    break
+            if more and len(rows) < MAX_STATIONS:
+                _write(pending_path, _json_bytes({
+                    'country': code, 'offset': offset, 'rows': rows[:MAX_STATIONS]
+                }))
+                break
+            # Never publish a truncated country as the complete replacement of
+            # its older complete group. Retain previous valid data instead.
+            staged = {}
+            if rows and not more:
+                name = _group_name(code, labels)
+                for row in rows:
+                    row['countrycode'] = code
+                updates[name] = _bouquet([(name, rows)])[len(HEADER):]
+                updated_rows[code] = rows
+                labels.add(name)
+            elif code in COUNTRIES and not before and not old_sections:
+                raise ValueError('Empty core country; keep previous bouquet')
+            cursor += 1
+            done += 1
+            _write(pending_path, b'{}')
+        finished = cursor >= len(codes)
+        if finished:
+            state['success'] = now
+            state['world_complete'] = True
+            state['world_cursor'] = 0
+            # Refresh the inventory on the next complete weekly cycle.
+            state.pop('world_countries', None)
+        else:
+            state['world_complete'] = False
+            state['world_cursor'] = cursor
+        raw = _combined(_managed_legacy(directory), before, updates)
+        if not _sections(raw):
+            raise ValueError('World radio bouquet has no stations')
+        if len(raw) > 16 * 1024 * 1024:
+            raise ValueError('World radio bouquet exceeds receiver-safe limit')
         if target.exists() and target.read_bytes() != before:
-            raise OSError('Concurrent bouquet edit')
-        # Keep mapping and bouquet together: an old mapping is always harmless.
+            raise OSError('Concurrent world bouquet edit')
+        mapping = _read_json(data, {}, 8 * 1024 * 1024)
+        old_rows = mapping.get('stations', []) if isinstance(mapping, dict) else []
+        previous = [row for row in old_rows
+                    if isinstance(row, dict) and row.get('countrycode') not in updated_rows]
+        saved = previous + [row for rows in updated_rows.values() for row in rows]
         mapping_bytes = _json_bytes({'schema': 1, 'stations': saved})
+        if len(mapping_bytes) > 8 * 1024 * 1024:
+            raise ValueError('Radio picon mapping exceeds receiver-safe limit')
         if not data.exists() or data.read_bytes() != mapping_bytes:
             _write(data, mapping_bytes)
         changed = raw != before
@@ -450,10 +518,12 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                 _write(directory / (FILE + '.bak'), before)
             _write(target, raw)
         registered = _register(directory)
-        state['success'] = now
         state['bouquet_sha256'] = hashlib.sha256(raw).hexdigest()
         _write(state_path, _json_bytes(state))
-        return {'changed': changed or registered, 'stations': len(saved)}
+        return {'changed': changed or registered, 'stations': len(saved),
+                'countries': len(_sections(raw)),
+                'world_total': len(codes), 'world_processed': cursor,
+                'world_complete': finished, 'processed_this_run': done}
 
 
 def _skin_picon_directory():
