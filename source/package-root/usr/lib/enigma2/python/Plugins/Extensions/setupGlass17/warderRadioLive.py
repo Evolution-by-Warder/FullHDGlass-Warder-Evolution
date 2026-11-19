@@ -238,6 +238,35 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         return {'changed': changed or registered, 'stations': len(saved)}
 
 
+def _skin_picon_directory():
+    """Resolve FullHDGlass PATHS at GUI runtime; never write into Own picons."""
+    try:
+        from Components.config import config
+        from .warderUserPicons import selected_source
+        enabled, _ = selected_source(config)
+        if enabled:
+            return None
+        base = config.plugins.setupGlass17.par39.value
+        if not isinstance(base, str) or not base.startswith('/') or not base.strip():
+            return None
+        root = Path(base)
+        # A configured PATHS root must be on real external media.
+        if root.is_symlink() or not root.is_dir() or os.stat(str(root)).st_dev == os.stat('/').st_dev:
+            return None
+        directory = root / 'picon'
+        if directory.is_symlink():
+            return None
+        if not directory.exists():
+            directory.mkdir(mode=0o755)
+        if not directory.is_dir() or not os.access(str(directory), os.W_OK):
+            return None
+        if os.statvfs(str(directory)).f_bavail * os.statvfs(str(directory)).f_frsize < MIN_FREE:
+            return None
+        return str(directory)
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        return None
+
+
 def _picon_dir():
     """Use existing picon folder on a truly mounted disk; never fill image flash."""
     root = os.stat('/').st_dev
@@ -469,7 +498,10 @@ class Controller:
                 elif self.icon_queue:
                     candidate = self.icon_queue.pop(0)
                 if candidate:
-                    self.icon_worker = self._spawn('icon', ['--icon', candidate], self.icon_done)
+                    destination = _skin_picon_directory()
+                    if destination:
+                        self.icon_worker = self._spawn(
+                            'icon', ['--icon', candidate, destination], self.icon_done)
         except Exception:
             pass
         self.icon_timer = self.loop.callLater(12, self.check_icon)
@@ -505,8 +537,13 @@ if __name__ == '__main__':
         os.nice(10)
         if sys.argv[1:] == ['--refresh']:
             result = refresh()
-        elif len(sys.argv) == 3 and sys.argv[1] == '--icon':
-            result = get_icon(sys.argv[2])
+        elif len(sys.argv) == 4 and sys.argv[1] == '--icon':
+            destination = Path(sys.argv[3])
+            # Prevent forged CLI paths from writing to receiver flash.
+            if (not destination.is_dir() or destination.is_symlink() or
+                    os.stat(str(destination)).st_dev == os.stat('/').st_dev):
+                sys.exit(3)
+            result = get_icon(sys.argv[2], destination=destination)
         else:
             sys.exit(2)
         print(json.dumps(result))
