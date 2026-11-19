@@ -150,7 +150,7 @@ def verified_country(root, code):
     return raw, payload, manifest
 
 
-def activate_local(root, code, directory):
+def activate_local(root, code, directory, require_requested=False):
     """Switch a cached country without Radio Browser or network requests."""
     raw, payload, _ = verified_country(root, code)
     directory = Path(directory)
@@ -170,6 +170,14 @@ def activate_local(root, code, directory):
             return {'changed': False, 'skipped': 'busy'}
         before = target.read_bytes() if target.exists() else None
         state = country._choice(directory)
+        # The GUI may change countries while a cached worker is verifying its
+        # source snapshot. Last user selection wins; never commit an obsolete
+        # cached country over a newer pending or deferred choice.
+        if require_requested:
+            selected = country._pending_country(state) or country.active_country(directory)
+            deferred = country._queued_country(directory)
+            if selected != code or (deferred is not None and deferred != code):
+                return {'changed': False, 'skipped': 'country-superseded'}
         if not country._owner_valid(directory, before, state):
             return {'changed': False, 'skipped': 'owner-modified'}
         changed = before != raw
