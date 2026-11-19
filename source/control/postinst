@@ -154,21 +154,20 @@ if [ -x /usr/bin/python3 ] && [ -f "$warder_spinner" ]; then
     /usr/bin/python3 -B "$warder_spinner" || true
 fi
 
-# First radio import runs outside opkg and the GUI, with bounded network time.
-# Offline failures stay silent; the session controller retries automatically.
-warder_radio_update=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
-if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_update" ]; then
-    /usr/bin/python3 -B "$warder_radio_update" --refresh </dev/null >/dev/null 2>&1 &
-fi
-
-# First import of the optional Radio Browser live bouquet. Run entirely in a
-# detached worker: never delay package installation or block Enigma2 GUI.
-# The worker verifies ownership of its own bouquet, preserves existing radios,
-# and records a sanitized diagnostic status if the catalogue is unavailable.
+# First-paint registration happens synchronously from LOCAL files only.
+# No network, no GUI call, no modification of personal bouquets. This ensures
+# Warder Radio Live is first as soon as the receiver reloads its bouquet index.
 warder_radio_live=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
 warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py
 if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_live" ] &&
    [ -f "$warder_radio_browser" ]; then
+    if /usr/bin/python3 -B "$warder_radio_live" --bootstrap </dev/null >/dev/null 2>&1; then
+        echo "Warder Radio Live registered first; old Warder Radio Streams replaced in the radio list."
+    else
+        echo "Warder Radio Live local bootstrap failed; user bouquets left untouched."
+    fi
+    # Actual catalogue download is always asynchronous and will replace the
+    # temporary local fallback after verification.
     /usr/bin/python3 -B "$warder_radio_live" --refresh </dev/null >/dev/null 2>&1 &
 fi
 
