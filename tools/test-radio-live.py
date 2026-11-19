@@ -639,6 +639,25 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(live.refresh(self.root, NOW + 1, Browser())['skipped'], 'not-due')
         self.assertTrue(live.refresh(self.root, NOW + live.INITIAL_RETRY, Browser())['changed'])
 
+    def test_picon_diagnostics_only_reports_native_toggle_and_owned_counts(self):
+        own = self.root / 'hdg17_files' / 'picon'
+        own.mkdir(parents=True)
+        (own / 'one.png').write_bytes(b'owner-owned')
+        (self.root / 'settings').write_text(
+            'config.skin.primary_skin=hd_glass17/skin.xml\n'
+            'config.plugins.setupGlass17.par125=0\n'
+            'config.plugins.setupGlass17.par124=' + str(self.root) + '/\n'
+            'config.usage.service_icon_enable=false\n'
+            'config.channelSelection.showPicon=false\n'
+            'config.some.token=SECRET_SHOULD_NOT_LEAK\n'
+        )
+        result = live._radio_picon_diagnostics(self.root)
+        self.assertTrue(result['skin_active'])
+        self.assertEqual(result['picon_folder_png_count'], 1)
+        self.assertEqual(result['native_picon_enabled_legacy'], 'false')
+        self.assertEqual(result['native_picon_enabled_new'], 'false')
+        self.assertNotIn('SECRET_SHOULD_NOT_LEAK', str(result))
+
     def test_diagnostic_is_read_only_and_reports_registration(self):
         with patch.object(live, '_plugin', side_effect=ImportError('stub')):
             status = live.diagnose(self.root)
