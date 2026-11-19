@@ -230,7 +230,7 @@ class CountryTests(unittest.TestCase):
             altered.replace(b'alternatives.test.radio', b'other.userbouquet.radio'),
             altered.replace(('#DESCRIPTION ' + mapping[0]['name']).encode('utf-8'),
                             b'#DESCRIPTION unrelated owner edit'),
-            altered.replace(('https%3A//radio.example.org/other').encode('utf-8'),
+            altered.replace(('https%3A//radio.example.org/live').encode('utf-8'),
                             b'https%3A//changed.example.org/stream'),
         ]
         for original in variants:
