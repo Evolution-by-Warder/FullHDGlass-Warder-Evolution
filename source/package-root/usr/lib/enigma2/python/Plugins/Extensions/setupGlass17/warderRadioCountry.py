@@ -1064,6 +1064,9 @@ if __name__ == '__main__':
             result = warderRadioWorld.activate_from_world(
                 root, code, DIRECTORY, require_requested=True)
             result['first_page'] = result.get('changed', False)
+        elif len(sys.argv) == 3 and sys.argv[1] == '--diagnose-world':
+            from Plugins.Extensions.setupGlass17 import warderRadioWorld
+            result = warderRadioWorld.diagnose(Path(sys.argv[2]), DIRECTORY)
         elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
             result = warderRadioBundleFetch.sync_world(
