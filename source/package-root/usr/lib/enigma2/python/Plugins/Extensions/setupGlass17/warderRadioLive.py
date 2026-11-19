@@ -620,10 +620,10 @@ class Controller:
 
 
 
-def _safe_status(data, directory=DIRECTORY):
+def _safe_status(data, directory=None):
     """Publish sanitized status only; never persist stream addresses or secrets."""
     try:
-        target = Path(directory) / DIAG_FILE
+        target = Path(DIRECTORY if directory is None else directory) / DIAG_FILE
         _write(target, _json_bytes(data))
     except OSError:
         pass
