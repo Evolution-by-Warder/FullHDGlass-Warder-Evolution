@@ -121,12 +121,37 @@ def _single(code, section):
     return live.HEADER + live._sorted_country_section(section)
 
 
+def _normalized_receiver_bouquet(raw):
+    """Normalize *only* transport formatting Enigma2 may rewrite on save.
+
+    Accept BOM, CRLF and header trailing whitespace, but not arbitrary
+    content edits. All service rows are still compared byte-for-byte against
+    the trusted mapping and its stored checksum before any recovery write.
+    """
+    if not isinstance(raw, bytes) or not raw or len(raw) > 12 * 1024 * 1024:
+        return None
+    clean = raw.replace(b'\r\n', b'\n')
+    if b'\r' in clean or b'\x00' in clean:
+        return None
+    if not clean.endswith(b'\n'):
+        clean += b'\n'
+    parts = clean.split(b'\n')
+    header = parts[0]
+    if header.startswith(b'\xef\xbb\xbf'):
+        header = header[3:]
+    if header.rstrip(b' \t') != live.HEADER[:-1]:
+        return None
+    parts[0] = live.HEADER[:-1]
+    return b'\n'.join(parts)
+
+
 def _owner_valid(directory, original, state):
     if original is None:
         return True
-    if not original.startswith(live.HEADER):
+    normalized = _normalized_receiver_bouquet(original)
+    if normalized is None:
         return False
-    checksum = hashlib.sha256(original).hexdigest()
+    checksum = hashlib.sha256(normalized).hexdigest()
     current = state.get('sha256')
     old = live._read_json(Path(directory) / live.STATE_FILE, {})
     old_sha = old.get('bouquet_sha256') if isinstance(old, dict) else None
@@ -148,8 +173,8 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
     edit remains blocked and can be recovered manually.
     """
     directory = Path(directory)
-    if (not isinstance(original, bytes) or
-            not original.startswith(live.HEADER) or
+    normalized = _normalized_receiver_bouquet(original)
+    if (normalized is None or
             not isinstance(state.get('sha256'), str) or
             not re.fullmatch(r'[0-9a-f]{64}', state['sha256'])):
         return False
@@ -172,7 +197,14 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
             expected[service[0]] = service[1]
     except (ValueError, KeyError, AttributeError, UnicodeError):
         return False
-    data = original.splitlines(keepends=True)
+    # Bind the mapping to the previous *trusted* published bouquet checksum.
+    # An arbitrary user-edited mapping must not authorize a destructive reset.
+    original_catalogue = live._bouquet([(country_name(country), rows)])
+    original_catalogue = live.HEADER + live._sorted_country_section(
+        original_catalogue[len(live.HEADER):])
+    if hashlib.sha256(original_catalogue).hexdigest() != state['sha256']:
+        return False
+    data = normalized.splitlines(keepends=True)
     if (len(data) < 5 or data[0] != live.HEADER or
             data[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
             data[2] != ('#DESCRIPTION ' + country_name(country) + '\n').encode('utf-8') or
@@ -200,9 +232,7 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
         return False
     # Reconstruct exactly the original published catalogue, with its stable
     # references and names. No user-edited URL, name or unrelated entry can pass.
-    restored = live._bouquet([(country_name(country), rows)])
-    restored = live.HEADER + live._sorted_country_section(
-        restored[len(live.HEADER):])
+    restored = original_catalogue
     if len(restored) > 12 * 1024 * 1024:
         return False
     if (directory / live.FILE).read_bytes() != original:
@@ -474,23 +504,29 @@ def diagnose(directory=DIRECTORY):
                else None)
     except OSError:
         raw = None
-    sections = live._sections(raw)
+    normalized = _normalized_receiver_bouquet(raw)
+    sections = live._sections(normalized)
     live_state = live._read_json(directory / live.STATE_FILE, {})
     if not isinstance(live_state, dict):
         live_state = {}
     expected = _choice(directory).get('sha256')
     old_expected = live_state.get('bouquet_sha256')
     actual = hashlib.sha256(raw).hexdigest() if raw is not None else None
+    normalized_sha = (hashlib.sha256(normalized).hexdigest()
+                      if normalized is not None else None)
     return {
         'bouquet_exists': raw is not None,
         'bouquet_bytes': len(raw) if raw is not None else 0,
-        'bouquet_header_valid': bool(raw and raw.startswith(live.HEADER)),
+        'bouquet_header_valid': bool(normalized),
+        'bouquet_format_normalizable': normalized is not None,
+        'bouquet_line_endings': 'crlf' if raw and b'\r\n' in raw else 'lf_or_other',
         'bouquet_group_markers': raw.count(b'#SERVICE 1:64:') if raw else 0,
         'bouquet_stream_entries': sum(line.startswith(b'#SERVICE 4097:')
                                       for line in raw.splitlines()) if raw else 0,
-        'bouquet_owned_checksum_valid': bool(actual and actual in (expected, old_expected)),
+        'bouquet_owned_checksum_valid': bool(normalized_sha and
+                                              normalized_sha in (expected, old_expected)),
         'enigma_alternative_recovery_possible': bool(
-            raw is not None and actual not in (expected, old_expected) and
+            raw is not None and normalized_sha not in (expected, old_expected) and
             _recover_enigma_alternative(directory, raw, _choice(directory),
                                        inspect_only=True)),
         'active': active_country(directory),
