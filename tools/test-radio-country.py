@@ -437,6 +437,64 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
                          [country.country_name('CZ')])
 
+    def test_explicit_switch_123_mapped_122_native_rewrites_one_alt_no_description(self):
+        """Full GigaBlue shape: 248 lines, 0 textual #SERVICE matches, one alt.
+
+        No trusted alternative sub-bouquet is available, but the user
+        explicitly requested another country. Backup is mandatory before
+        replacing the signed managed SK bouquet with complete CZ data.
+        """
+        class LargeBrowser:
+            def page(self, country='', offset=0):
+                if country == 'SK':
+                    rows = [{'stationuuid': '32345678-1234-1234-1234-%012x' % i,
+                             'name': 'Station %03d' % i,
+                             'url': 'https://radio.example.org/live/%d?x=%%25' % i,
+                             'favicon': ''}
+                            for i in range(123)]
+                else:
+                    rows = [{'stationuuid': UUIDS['CZ'], 'name': 'České rádio',
+                             'url': 'https://radio.example.org/cz', 'favicon': ''}]
+                return SimpleNamespace(rows=rows, more=False, offline=False)
+        browser = LargeBrowser()
+        country.bootstrap(self.root)
+        first = country.refresh(self.root, now=NOW, browser=browser)
+        self.assertEqual(first['stations'], 123)
+        mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        parts = [live.HEADER.replace(b'\n', b'\r\n'),
+                 b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\r\n',
+                 '#DESCRIPTION Slovensko\r\n'.encode('utf-8')]
+        for index, row in enumerate(mapping):
+            if index == 7:
+                parts.append(b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+                             b'"alternatives.station_007.radio" ORDER BY bouquet\r\n')
+            else:
+                # Native Enigma2 serializes the URL and name inside the
+                # reference (including lower-case escape), unlike our IPK.
+                source = row['stem'].replace('_', ':')
+                url = row['url'].replace(':', '%3a').replace('%25', '%2525')
+                parts.extend([
+                    ('#SERVICE ' + source + ':' + url + ':' + row['name'] +
+                     '\r\n').encode('utf-8'),
+                    ('#DESCRIPTION ' + row['name'] + '\r\n').encode('utf-8')])
+        modified = b''.join(parts)
+        self.assertEqual(len(modified.splitlines()), 248)
+        canonical = {live._service(row).encode('utf-8').splitlines()[0]
+                     for row in mapping}
+        self.assertEqual(len(canonical.intersection(modified.splitlines())), 0)
+        self.bouquet.write_bytes(modified)
+        self.assertFalse(country.diagnose(self.root)['pending_country_switch_safe'])
+        country.request_country('CZ', self.root)
+        report = country.diagnose(self.root)
+        self.assertFalse(report['enigma_alternative_recovery_possible'])
+        self.assertTrue(report['pending_country_switch_safe'])
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=browser)
+        self.assertEqual(result['country'], 'CZ')
+        self.assertEqual(country.active_country(self.root), 'CZ')
+        self.assertEqual(
+            (self.root / (live.FILE + '.before-country-switch.bak')).read_bytes(),
+            modified)
+
     def test_pending_country_does_not_authorize_unknown_numeric_service_edit(self):
         country.bootstrap(self.root)
         country.refresh(self.root, now=NOW, browser=Browser())
