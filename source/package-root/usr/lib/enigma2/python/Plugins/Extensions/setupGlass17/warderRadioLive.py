@@ -980,6 +980,21 @@ class Controller:
 
     def icon_done(self, result):
         self.icon_worker = None
+        # Native Enigma2 caches visible ServiceList rows. Redraw only the
+        # currently open channel list after a verified new/updated radio picon;
+        # never reload all bouquets or stop the playing station.
+        if isinstance(result, dict) and result.get('changed') is True:
+            try:
+                from Screens.InfoBar import InfoBar
+                infobar = InfoBar.instance
+                screen = infobar.servicelist if infobar is not None else None
+                component = screen.servicelist if screen is not None and getattr(
+                    screen, 'shown', False) else None
+                listing = component.l if component is not None else None
+                if listing is not None:
+                    listing.refresh()
+            except (ImportError, AttributeError, RuntimeError):
+                pass
 
     def close(self):
         self.closed = True
