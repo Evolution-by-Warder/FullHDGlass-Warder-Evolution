@@ -157,6 +157,43 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(approved.read_bytes(), b'owner-approved')
         self.assertEqual(store.calls, [])
 
+    def test_user_modified_cached_picon_is_preserved(self):
+        live.refresh(self.root, NOW, Browser())
+        stem = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]['stem']
+        folder = self.root / 'picon'
+        folder.mkdir()
+        source = self.root / 'logo.png'
+        source.write_bytes(b'\x89PNG\r\n\x1a\noriginal image')
+        store = LogoStore(source)
+        self.assertTrue(live.get_icon(stem, self.root, store, folder)['changed'])
+        path = folder / (stem + '.png')
+        path.write_bytes(b'approved replacement')
+        source.write_bytes(b'\x89PNG\r\n\x1a\nchanged source')
+        self.assertEqual(live.get_icon(stem, self.root, store, folder)['skipped'], 'already-present')
+        self.assertEqual(path.read_bytes(), b'approved replacement')
+
+    def test_owned_logo_refreshes_after_ttl(self):
+        live.refresh(self.root, NOW, Browser())
+        stem = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]['stem']
+        folder = self.root / 'picon'
+        folder.mkdir()
+        source = self.root / 'logo.png'
+        source.write_bytes(b'\x89PNG\r\n\x1a\ninitial logo')
+        store = LogoStore(source)
+        with patch.object(live.time, 'time', return_value=NOW):
+            self.assertTrue(live.get_icon(stem, self.root, store, folder)['changed'])
+        old = (folder / (stem + '.png')).read_bytes()
+        source.write_bytes(b'\x89PNG\r\n\x1a\nupdated logo')
+        with patch.object(live.time, 'time', return_value=NOW + 8 * live.DAY):
+            self.assertTrue(live.get_icon(stem, self.root, store, folder)['changed'])
+        self.assertNotEqual(old, (folder / (stem + '.png')).read_bytes())
+        self.assertEqual((folder / ('1' + stem[4:] + '.png')).read_bytes(), source.read_bytes())
+
+    def test_picon_directory_rejects_image_flash(self):
+        with patch.object(live.os, 'stat', wraps=live.os.stat) as stat:
+            self.assertIsNone(live._picon_dir())
+            self.assertTrue(stat.called)
+
     def test_invalid_reference_does_not_download(self):
         source = self.root / 'logo.png'
         source.write_bytes(b'\x89PNG\r\n\x1a\nexample image')
