@@ -1051,7 +1051,8 @@ if __name__ == '__main__':
             result['first_page'] = result.get('changed', False)
         elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
-            result = warderRadioBundleFetch.sync_world(Path(sys.argv[2]))
+            result = warderRadioBundleFetch.sync_world(
+                Path(sys.argv[2]), state_directory=DIRECTORY)
         elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
             code, root = sys.argv[2], Path(sys.argv[3])
