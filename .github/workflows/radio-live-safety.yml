@@ -1,0 +1,37 @@
+name: Warder Radio Live - offline regression tests
+
+on:
+  push:
+    branches:
+      - feature/dynamic-radio-bouquets-picons-20261119
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py'
+      - 'tools/test-radio-live.py'
+      - '.github/workflows/radio-live-safety.yml'
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py'
+      - 'tools/test-radio-live.py'
+      - '.github/workflows/radio-live-safety.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  offline-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+            tools/test-radio-live.py
+          sparse-checkout-cone-mode: false
+      - name: Validate Python syntax
+        run: python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py tools/test-radio-live.py
+      - name: Test managed bouquet and on-demand picons
+        run: python3 tools/test-radio-live.py -v
