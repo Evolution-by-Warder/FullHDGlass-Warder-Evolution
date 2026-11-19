@@ -117,6 +117,16 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(result['skipped'], 'unsafe-path')
         self.assertTrue(self.bouquet.is_symlink())
 
+    def test_user_edit_with_managed_header_is_not_overwritten(self):
+        live.refresh(self.root, NOW, Browser())
+        content = self.bouquet.read_text()
+        changed = content.replace('SK Rádio', 'My manually edited radio')
+        self.bouquet.write_text(changed)
+        output = live.refresh(self.root, NOW + live.DAY + 100, Browser())
+        self.assertEqual(output['skipped'], 'owner-modified')
+        self.assertEqual(self.bouquet.read_text(), changed)
+        self.assertFalse((self.root / (live.FILE + '.bak')).exists())
+
     def test_selected_online_country_is_included(self):
         plugin = self.root / 'warder-radio'
         plugin.mkdir()
