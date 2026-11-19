@@ -245,7 +245,7 @@ class Controller:
             except Exception:pass
 
 
-def start(reason=0):
+def start(reason=0, session=None):
     """Only the new live-radio controller is active after migration.
 
     Preserve the old updater implementation as a recovery reference but do not
@@ -259,7 +259,7 @@ def start(reason=0):
     if reason != 0 or plugin_file.is_file():
         try:
             from .warderRadioLive import start as start_live_radio
-            start_live_radio(reason)
+            start_live_radio(reason, session=session)
         except (ImportError, OSError):
             pass
 
