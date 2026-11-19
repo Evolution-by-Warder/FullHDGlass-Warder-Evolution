@@ -142,6 +142,65 @@ class LiveTests(unittest.TestCase):
         self.assertFalse(self.legacy.exists())
         self.assertTrue(self.bouquet.exists())
 
+    def test_country_headings_alphabetical_after_slovakia_and_czechia(self):
+        """Out-of-order historical countries must become sorted without losing data."""
+        headings = ('Zulu', 'Österreich', 'Čechy', 'France', 'Slovensko',
+                    'Deutschland', 'Åland Islands')
+        sections = []
+        original_parts = [live.LEGACY_HEADER]
+        for number, label in enumerate(headings, 1):
+            payload = (
+                '#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                '#DESCRIPTION ' + label + '\n'
+                '#SERVICE 4097:0:2:%X:1:EC:0:0:0:0:https%%3A//station.example/%d\n' %
+                (number, number) +
+                '#DESCRIPTION Station %d\n' % number
+            ).encode('utf-8')
+            original_parts.append(payload)
+        original = b''.join(original_parts)
+        self.legacy.write_bytes(original)
+        original_sections = live._sections(original)
+        result = live.bootstrap(self.root)
+        self.assertTrue(result['changed'])
+        self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
+                         ['Slovensko', 'Čechy', 'Åland Islands', 'Deutschland',
+                          'France', 'Österreich', 'Zulu'])
+        self.assertEqual(live._sections(self.bouquet.read_bytes()), original_sections)
+        self.assertFalse(self.legacy.exists())  # byte-identical country content
+        self.assertEqual(self.bouquet.read_bytes().count(b'#SERVICE 4097:'), 7)
+        self.assertEqual(live.bootstrap(self.root)['changed'], False)
+
+    def test_live_updates_keep_alphabetical_country_order(self):
+        """An online update must not append new countries at the end."""
+        sections = [
+            ('France', 1), ('Slovensko', 2), ('Čechy', 3), ('Österreich', 4)
+        ]
+        old = [live.LEGACY_HEADER]
+        for label, number in sections:
+            old.append((
+                '#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                '#DESCRIPTION ' + label + '\n'
+                '#SERVICE 4097:0:2:%X:1:EC:0:0:0:0:https%%3A//radio.example/%d\n' %
+                (number, number) +
+                '#DESCRIPTION Original %d\n' % number
+            ).encode('utf-8'))
+        self.legacy.write_bytes(b''.join(old))
+        live.bootstrap(self.root)
+        sections_before = live._sections(self.bouquet.read_bytes())
+        self.assertEqual(list(sections_before), ['Slovensko', 'Čechy',
+                                                'France', 'Österreich'])
+        online = {'Zambia': (
+            b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+            b'#DESCRIPTION Zambia\n'
+            b'#SERVICE 4097:0:2:9:1:EC:0:0:0:0:https%3A//zambia.example\n'
+            b'#DESCRIPTION Zambia Radio\n'
+        )}
+        merged = live._combined(None, self.bouquet.read_bytes(), online)
+        self.assertEqual(list(live._sections(merged)),
+                         ['Slovensko', 'Čechy', 'France', 'Österreich', 'Zambia'])
+        for label, body in sections_before.items():
+            self.assertEqual(live._sections(merged)[label], body)
+
     def test_legacy_remains_if_any_country_would_be_lost(self):
         original = (live.LEGACY_HEADER +
                     b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
