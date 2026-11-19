@@ -163,6 +163,40 @@ class Tests(unittest.TestCase):
         self.assertEqual(second['skipped'],'already-current')
         self.assertEqual(self.network.calls[-1],fetch.LATEST_URL)
 
+    def test_unmodified_logo_zip_is_loaded_from_older_immutable_release(self):
+        previous='radio-country-20261119'
+        current='radio-country-20261203'
+        self.feed['release_tag']=current
+        self.feed['countries']['FR']['logos']['asset_tag']=previous
+        self._network()
+        old_url=fetch.RELEASE_ROOT+previous+'/FR.zip'
+        new_url=fetch.RELEASE_ROOT+current+'/FR.zip'
+        self.network.content[old_url]=self.network.content.pop(new_url)
+        fetch.sync_world(self.paths,self.network,require_external=False)
+        country.bootstrap(self.etc)
+        world.activate_from_world(self.paths,'FR',self.etc)
+        self.network.calls.clear()
+        result=fetch.sync_selected_logos(self.paths,self.etc,'FR',self.network,
+                                         require_external=False)
+        self.assertTrue(result['changed'])
+        self.assertEqual(result['logos'],3)
+        self.assertEqual(self.network.calls,[fetch.LATEST_URL,old_url])
+        self.assertEqual(len(list((self.paths/'picon/radio').glob('*.png'))),3)
+        self.assertEqual(fetch._asset(self.feed,'radio-countries-bouquets.zip'),
+                         fetch.RELEASE_ROOT+current+'/radio-countries-bouquets.zip')
+        with self.assertRaisesRegex(ValueError,'current release'):
+            fetch._asset(self.feed,'radio-countries-bouquets.zip',previous)
+
+    def test_malicious_or_future_country_asset_tag_does_not_fetch_any_zip(self):
+        for unsafe in ('../../evil','radio-country-20990101','20261119',''):
+            with self.subTest(unsafe=unsafe):
+                self.feed['countries']['FR']['logos']['asset_tag']=unsafe
+                self._network()
+                with self.assertRaisesRegex(ValueError,'Incomplete country logo listing'):
+                    fetch.sync_world(self.paths,self.network,require_external=False)
+                self.assertEqual(self.network.calls,[fetch.LATEST_URL])
+                self.assertFalse((self.paths/'radio-world').exists())
+
     def test_background_fetch_creates_missing_external_paths_picon_only(self):
         fetch.sync_world(self.paths,self.network,require_external=False)
         country.bootstrap(self.etc)
