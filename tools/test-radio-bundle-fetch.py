@@ -152,7 +152,9 @@ class Tests(unittest.TestCase):
                          original)
 
     def test_published_country_count_mismatch_is_blocked_before_swap(self):
-        self.feed['countries']['DE']=self.feed['countries']['ET']
+        self.feed['countries']['DE']=json.loads(
+            json.dumps(self.feed['countries']['ET']))
+        self.feed['countries']['DE']['logos']['file']='DE.zip'
         self.feed['country_count']=3
         self._network()
         with self.assertRaisesRegex(ValueError,'country index count mismatch'):
