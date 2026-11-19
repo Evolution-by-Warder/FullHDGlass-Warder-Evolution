@@ -216,20 +216,107 @@ class CountryTests(unittest.TestCase):
         data = json.loads((self.root / live.DATA_FILE).read_text())
         self.assertTrue(all(row['countrycode'] == 'DE' for row in data['stations']))
 
-    def test_incomplete_pages_resume_without_switching_or_losing_station(self):
+    def test_incomplete_pages_show_first_page_then_complete_in_background(self):
         country.bootstrap(self.root)
         country.request_country('GB', self.root)
         before = self.bouquet.read_bytes()
         browser = Browser(with_pages=True)
         first = country.refresh(self.root, now=NOW, browser=browser)
         self.assertTrue(first['incomplete'])
-        self.assertEqual(country.active_country(self.root), 'SK')
-        self.assertEqual(self.bouquet.read_bytes(), before)
-        second = country.refresh(self.root, now=NOW + country.STEP, browser=browser)
-        self.assertTrue(second['changed'])
+        self.assertTrue(first['preview'])
+        self.assertTrue(first['first_page'])
+        self.assertEqual(browser.calls, [('GB', 0)])
         self.assertEqual(country.active_country(self.root), 'GB')
-        self.assertEqual(browser.calls, [('GB', 0), ('GB', 60), ('GB', 120), ('GB', 180), ('GB', 240), ('GB', 300)])
+        self.assertEqual(country.diagnose(self.root)['pending'], 'GB')
+        self.assertTrue(country.diagnose(self.root)['preview_incomplete'])
+        self.assertNotEqual(self.bouquet.read_bytes(), before)
+        self.assertEqual(list(live._sections(self.bouquet.read_bytes())), ['United Kingdom'])
+        second = country.refresh(self.root, now=NOW + country.STEP, browser=browser)
+        self.assertFalse(second['incomplete'])
+        self.assertFalse(second['first_page'])
+        self.assertEqual(country.active_country(self.root), 'GB')
+        self.assertEqual(browser.calls, [('GB', 0), ('GB', 60), ('GB', 120),
+                                         ('GB', 180), ('GB', 240), ('GB', 300)])
         self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 1)
+        self.assertFalse(country.diagnose(self.root)['preview_incomplete'])
+        self.assertIsNone(country.diagnose(self.root)['pending'])
+
+    def test_first_page_switch_is_immediate_for_large_country(self):
+        class FourPages:
+            def __init__(inner):
+                inner.calls = []
+            def page(inner, country='', offset=0):
+                inner.calls.append((country, offset))
+                rows = [
+                    {'stationuuid': '12345678-1234-1234-1234-%012x' % index,
+                     'name': 'France %03d' % index,
+                     'url': 'https://radio.example.org/fr/%d' % index, 'favicon': ''}
+                    for index in range(offset, min(offset + 60, 240))]
+                return SimpleNamespace(rows=rows, more=offset + 60 < 240,
+                                       offline=False)
+        browser = FourPages()
+        country.bootstrap(self.root)
+        personal_before = self.index.read_bytes()
+        country.request_country('FR', self.root)
+        first = country.refresh(self.root, now=NOW, browser=browser)
+        self.assertEqual(browser.calls, [('FR', 0)])
+        self.assertTrue(first['changed'])
+        self.assertTrue(first['first_page'])
+        self.assertTrue(first['preview'])
+        self.assertEqual(first['stations'], 60)
+        first_diagnostic = country.diagnose(self.root)
+        self.assertEqual(first_diagnostic['active'], 'FR')
+        self.assertEqual(first_diagnostic['pending'], 'FR')
+        self.assertEqual(first_diagnostic['mapped_stations'], 60)
+        self.assertTrue(first_diagnostic['preview_incomplete'])
+        self.assertTrue(first_diagnostic['bouquet_owned_checksum_valid'])
+        self.assertEqual(first_diagnostic['visible_country_sections'], ['France'])
+        self.assertIn(b'userbouquet.personal.radio', self.index.read_bytes())
+        self.assertEqual(personal_before.count(b'userbouquet.personal.radio'), 1)
+        later = country.refresh(self.root, now=NOW + country.STEP, browser=browser)
+        self.assertFalse(later['incomplete'])
+        self.assertFalse(later['preview'])
+        self.assertFalse(later['first_page'])
+        self.assertEqual(later['stations'], 240)
+        self.assertEqual(browser.calls, [('FR', 0), ('FR', 60),
+                                         ('FR', 120), ('FR', 180)])
+        final = country.diagnose(self.root)
+        self.assertEqual(final['active'], 'FR')
+        self.assertIsNone(final['pending'])
+        self.assertFalse(final['preview_incomplete'])
+        self.assertEqual(final['mapped_stations'], 240)
+
+    def test_offline_after_first_page_keeps_playable_preview_and_resumes(self):
+        class TwoPages:
+            def page(self, country='', offset=0):
+                if offset == 0:
+                    return SimpleNamespace(rows=[
+                        {'stationuuid': UUIDS['CZ'], 'name': 'Brno',
+                         'url': 'https://radio.example.org/brno', 'favicon': ''}
+                    ], more=True, offline=False)
+                return SimpleNamespace(rows=[
+                    {'stationuuid': UUIDS['SK'], 'name': 'Praha',
+                     'url': 'https://radio.example.org/praha', 'favicon': ''}
+                ], more=False, offline=False)
+        country.bootstrap(self.root)
+        country.request_country('CZ', self.root)
+        first = country.refresh(self.root, now=NOW, browser=TwoPages())
+        self.assertTrue(first['incomplete'])
+        preview = self.bouquet.read_bytes()
+        offline = country.refresh(self.root, now=NOW + country.STEP,
+                                  browser=Browser(offline=True))
+        self.assertEqual(offline['skipped'], 'radio-browser-unavailable')
+        self.assertEqual(self.bouquet.read_bytes(), preview)
+        self.assertTrue(country.diagnose(self.root)['preview_incomplete'])
+        self.assertEqual(country.diagnose(self.root)['active'], 'CZ')
+        country.bootstrap(self.root)
+        self.assertEqual(self.bouquet.read_bytes(), preview)
+        complete = country.refresh(self.root, now=NOW + country.RETRY,
+                                   browser=TwoPages())
+        self.assertFalse(complete['incomplete'])
+        self.assertEqual(complete['stations'], 2)
+        self.assertEqual(country.diagnose(self.root)['active'], 'CZ')
+        self.assertIsNone(country.diagnose(self.root)['pending'])
 
     def test_reselect_pending_country_preserves_incomplete_pages(self):
         country.bootstrap(self.root)
@@ -238,28 +325,33 @@ class CountryTests(unittest.TestCase):
         self.assertTrue(first['incomplete'])
         saved = (self.root / country.PAGE_FILE).read_bytes()
         status = country.diagnose(self.root)
-        self.assertEqual(status['pending_pages'], 5)
+        self.assertEqual(status['pending_pages'], 1)
         again = country.request_country('DE', self.root)
         self.assertTrue(again['already_pending'])
         self.assertEqual((self.root / country.PAGE_FILE).read_bytes(), saved)
-        self.assertEqual(country.diagnose(self.root)['pending_pages'], 5)
+        self.assertEqual(country.diagnose(self.root)['pending_pages'], 1)
         complete = country.refresh(self.root, now=NOW + country.STEP, browser=Browser())
         self.assertEqual(complete['country'], 'DE')
         self.assertIsNone(country.diagnose(self.root)['pending'])
 
-    def test_select_current_country_cancels_pending_without_download(self):
+    def test_switch_back_from_partial_country_keeps_preview_until_next_page(self):
         country.bootstrap(self.root)
-        before = self.bouquet.read_bytes()
         country.request_country('DE', self.root)
         country.refresh(self.root, now=NOW, browser=Browser(with_pages=True))
         self.assertEqual(country.diagnose(self.root)['pending'], 'DE')
+        self.assertEqual(country.diagnose(self.root)['active'], 'DE')
+        partial = self.bouquet.read_bytes()
         result = country.request_country('SK', self.root)
-        self.assertTrue(result['already_active'])
+        self.assertTrue(result['accepted'])
         status = country.diagnose(self.root)
-        self.assertIsNone(status['pending'])
+        self.assertEqual(status['pending'], 'SK')
         self.assertEqual(status['pending_pages'], 0)
-        self.assertEqual(self.bouquet.read_bytes(), before)
-        self.assertEqual(status['active'], 'SK')
+        self.assertEqual(self.bouquet.read_bytes(), partial)
+        self.assertEqual(status['active'], 'DE')
+        done = country.refresh(self.root, now=NOW + country.STEP, browser=Browser())
+        self.assertEqual(done['country'], 'SK')
+        self.assertEqual(country.diagnose(self.root)['active'], 'SK')
+        self.assertIsNone(country.diagnose(self.root)['pending'])
 
     def test_busy_country_lock_queues_new_selection_without_losing_existing_bouquet(self):
         country.bootstrap(self.root)
@@ -325,12 +417,18 @@ class CountryTests(unittest.TestCase):
         original = self.bouquet.read_bytes()
         country.request_country('DE', self.root)
         browser = LargeGermany()
+        observed = []
         for step in range(40):
             result = country.refresh(self.root, now=NOW + 3 * step, browser=browser)
-            if result.get('changed'):
+            if step == 0:
+                self.assertEqual(browser.offsets, [0])
+                self.assertNotEqual(self.bouquet.read_bytes(), original)
+                self.assertEqual(country.diagnose(self.root)['active'], 'DE')
+            observed.append(country.diagnose(self.root)['mapped_stations'])
+            if not result.get('incomplete'):
                 break
             self.assertTrue(result.get('incomplete'), result)
-            self.assertEqual(self.bouquet.read_bytes(), original)
+        self.assertEqual(observed, sorted(observed))
         else:
             self.fail('Country did not finish within 40 bounded batches')
         self.assertEqual(result['country'], 'DE')
@@ -360,7 +458,7 @@ class CountryTests(unittest.TestCase):
         for step in range(30):
             result = country.refresh(self.root, now=NOW + step * 3,
                                      browser=RepeatedGermanRows())
-            if result.get('changed'):
+            if not result.get('incomplete'):
                 break
             self.assertTrue(result.get('incomplete'), result)
         else:
@@ -967,9 +1065,10 @@ class CountryTests(unittest.TestCase):
         pending = country.refresh(self.root, now=NOW, browser=browser)
         self.assertTrue(pending['incomplete'])
         info = country.diagnose(self.root)
-        self.assertEqual(info['active'], 'SK')
+        self.assertEqual(info['active'], 'CZ')
         self.assertEqual(info['pending'], 'CZ')
-        self.assertEqual(info['pending_pages'], country.MAX_PAGES_PER_JOB)
+        self.assertTrue(info['preview_incomplete'])
+        self.assertEqual(info['pending_pages'], 1)
         self.assertEqual(info['downloaded'], 2)
         result = country.refresh(self.root, now=NOW + country.STEP, browser=browser)
         self.assertTrue(result['changed'])
@@ -1072,7 +1171,7 @@ class CountryTests(unittest.TestCase):
         with patch.object(live, 'DIRECTORY', self.root):
             controller.finished(result)
         self.assertEqual(view[:3], ['reload', 'reset', 'top'])
-        self.assertTrue(any(delay == 5 for delay, _ in loop.calls))
+        self.assertTrue(any(delay == 1 for delay, _ in loop.calls))
         self.assertTrue(any(delay == 3600 for delay, _ in loop.calls))
 
     def test_pending_country_is_retried_not_silently_delayed_for_an_hour(self):
