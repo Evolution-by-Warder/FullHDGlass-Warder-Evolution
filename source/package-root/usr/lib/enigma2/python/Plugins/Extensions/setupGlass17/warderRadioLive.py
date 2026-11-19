@@ -180,6 +180,12 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         state = _read_json(state_path, {})
         if not isinstance(state, dict):
             state = {}
+        if before is not None:
+            expected = state.get('bouquet_sha256', '')
+            if (not isinstance(expected, str) or
+                    not re.fullmatch(r'[0-9a-f]{64}', expected) or
+                    hashlib.sha256(before).hexdigest() != expected):
+                return {'changed': False, 'skipped': 'owner-modified'}
         success, attempt = state.get('success', 0), state.get('attempt', 0)
         if before is not None and success and 0 <= now-success < DAY:
             changed = _register(directory)
@@ -234,6 +240,7 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
             _write(target, raw)
         registered = _register(directory)
         state['success'] = now
+        state['bouquet_sha256'] = hashlib.sha256(raw).hexdigest()
         _write(state_path, _json_bytes(state))
         return {'changed': changed or registered, 'stations': len(saved)}
 
