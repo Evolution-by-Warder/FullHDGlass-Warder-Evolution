@@ -1,3 +1,12 @@
+## 19. 11. 2026 — finálny 224-country world/skin bridge a 313 reálnych PNG PASS
+
+- **Finálne zdrojové dáta skutočne overené:** [Warder Radio Actions #44599384867 SUCCESS](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44599384867) použil **finálny** world `radio-countries-bouquets.zip` SHA `669b3c2c32009c3a7d8e8552c8b5f077ceeb3a66b37947664229a8f46d94aa38`, s dátami **224 krajín, 48 219 staníc** a finálnymi country manifestmi. CI na aktuálnom reviewed skin commite prepínal SK **123**, CZ **229**, FR **2476**, DE **4863**, US **6749** bez online požiadaviek, úplná 224 položková ponuka Radio Mode.
+- **Originálne SK/CZ logá z finálneho vydania presne sedia:** lokálna inštalácia `SK.zip` **111 PNG**, `CZ.zip` **202 PNG**, ich SHA-256, krajinské manifesty, UUID referencie, vlastnícke súčty aj zobrazenie v krajinskom režime na testovacích súboroch PASS. TV/SAT PNG nechali nedotknuté. Na GitHub runneri lokálny čas zapísaný v job logu, **nejde o fyzické meranie GigaBlue GUI**.
+- **Samostatný 224-source audit:** [Actions #44598970492 PASS](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/actions/runs/44598970492), všetkých **39 110** pôvodných station PNG, **9 109** nedostupných a 224 ZIP SHA; world `latest.json` candidate má `complete=true`.
+- **Dokončenie vs publikovanie:** Všetky rádio zdrojové review balíky sú kompletne hotové. Ostáva **schválené** zverejnenie immutable Country Release/manifestu na GitHub (v aktuálnom `main` ešte chýba), legálne preverenie distribúcie cudzieho logo artwork a fyzické testy na GigaBlue. Skin GUI kód a 14-dňový background updater ostávajú iba na draft [PR #129](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/129). Nevydať ostré IPK bez súhlasu.
+
+---
+
 ## 19. 11. 2026 — dodatočná OpenATV/OpenPLi kompatibilita na radio-world branch
 
 - **Preukázaná príčina pôvodných 3 CI errors:** v `tools/test-channel-picon-settings.py` chýbal testovací `config.plugins.warderSkinMainMenu.enabled` stub. Na realnejšom vstupnom `plugin.py` sa používa v `saving()` aj `exitNow()`; preto tri testy padali na `AttributeError` aj na `main`, nezávisle od rádia. Opravené iba v **testovacom mocku**, commit `592e5996`, produkčný plugin bez zmeny.
