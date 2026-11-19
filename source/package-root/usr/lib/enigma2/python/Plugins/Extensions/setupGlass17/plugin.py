@@ -1317,7 +1317,7 @@ def Plugins(path, **kwargs):
 			try:
 				from . import warderRadioCountry
 				ret.append(PluginDescriptor(
-					name="Vybrať krajinu (Warder Radio Live)",
+					name=ui_text("Select country (Warder Radio Live)"),
 					description="Select the active Radio Browser country",
 					where=PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU,
 					fnc=warderRadioCountry.open_country_selector,
