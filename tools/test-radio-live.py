@@ -72,6 +72,19 @@ class LiveTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             live.service_stem('unknown')
 
+    def test_malformed_uuid_and_untrusted_stream_urls_are_rejected(self):
+        self.assertEqual(live.service_stem(UUID_SK),
+                         live.service_stem(UUID_SK.replace('-', '').upper()))
+        for malformed in ('x' * 36, '----' + '0' * 32, 'not-a-uuid'):
+            with self.subTest(uuid=malformed), self.assertRaises(ValueError):
+                live.service_stem(malformed)
+        for url in ('http://', 'ftp://radio.example.org/stream',
+                    'https://user:pass@radio.example.org/stream',
+                    'https://radio.example.org:notaport/live',
+                    'https://radio.example.org/line\nbreak'):
+            with self.subTest(url=url), self.assertRaises(ValueError):
+                live._entry(station(UUID_SK, url=url))
+
     def test_live_bouquet_keeps_legacy_and_other_user_bouquets(self):
         personal = b'#NAME My radios\n#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.personal.radio" ORDER BY bouquet\n'
         self.index.write_bytes(personal)
