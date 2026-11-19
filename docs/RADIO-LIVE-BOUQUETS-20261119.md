@@ -1,5 +1,18 @@
 # Dynamic Radio Browser bouquets and picons — source-only candidate
 
+## Radio Live TEST129: výber krajiny a predvolená krajina podľa jazyka
+
+Tento návrh nahrádza starý režim, ktorý predbežne synchronizoval všetky krajiny. Zostáva jeden **Warder Radio Live** na prvom mieste v rádiových bouquetoch. Obsahuje vždy iba **jednu aktívnu krajinu**.
+
+- **Prvé spustenie:** `warderRadioCountry.initial_country()` číta `config.osd.language` zo systémových nastavení Enigma2. Napríklad `sk→SK`, `cs→CZ`, `de→DE`, `en→GB`, `fr→FR`, `it→IT`, `pl→PL`; neznámy jazyk má bezpečný predvolený výber `SK`.
+- **MENU → Vybrať krajinu (Warder Radio Live):** natívny hook `PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU` len pre hrateľnú stanicu v našom zozname (nie globálny systémový patch). Zoznam krajín pochádza z lokálneho katalógu už nainštalovaného Radio pluginu.
+- **Zachovanie nastavení:** súbor `/etc/enigma2/warder-radio-live-country.json` ukladá aktívnu krajinu nezávisle od jazyka systému. Po zmene jazyka alebo reštarte zostane posledný úspešný výber.
+- **Bezpečný prechod:** nové rádio sa sťahuje na pozadí; aktívny bouquet sa zmení až po overení celej krajiny. Neúspešné, prerušené alebo prázdne sťahovanie ponechá predchádzajúcu krajinu a jej stanice. Bounded pages pre veľké krajiny; viac než 4000 staníc momentálne vyžaduje osobitné riešenie.
+- **Žiadny celosvetový prefetch:** picony sa doťahujú podľa potreby z existujúcej Radio Browser cache. Pôvodný Warder Radio Streams sa odstráni len po úspešnom nasadení online dát aktívnej krajiny.
+- **Testy:** `tools/test-radio-country.py` (14 scenárov) spolu s `tools/test-radio-live.py` (42 scenárov) sú v cielenej CI zelené. Pre test129 sa overilo 56/56 offline scenárov a SHA256 IPK. Natívne ovládanie MENU a načítanie bouquetu na prijímači zostávajú na fyzický test.
+
+
+
 Status: **draft PR #124**. No release, installer, feed, version bump, or deployed receiver change.
 
 ## Runtime ownership
