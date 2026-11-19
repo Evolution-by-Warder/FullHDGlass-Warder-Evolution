@@ -133,7 +133,7 @@ def _owner_valid(directory, original, state):
     return checksum in (current, old_sha)
 
 
-def _recover_enigma_alternative(directory, original, state):
+def _recover_enigma_alternative(directory, original, state, inspect_only=False):
     """Recover ONLY a known Enigma2 Alternative Edit, never arbitrary edits.
 
     When users enter Alternative Edit, Enigma2 replaces one normal IPTV station
@@ -211,6 +211,8 @@ def _recover_enigma_alternative(directory, original, state):
     if not live._safe_file(backup) or backup.exists():
         # Never overwrite any existing user or prior-recovery backup.
         return False
+    if inspect_only:
+        return True
     live._write(backup, original)
     live._write(directory / live.FILE, restored)
     state['sha256'] = hashlib.sha256(restored).hexdigest()
@@ -487,6 +489,10 @@ def diagnose(directory=DIRECTORY):
         'bouquet_stream_entries': sum(line.startswith(b'#SERVICE 4097:')
                                       for line in raw.splitlines()) if raw else 0,
         'bouquet_owned_checksum_valid': bool(actual and actual in (expected, old_expected)),
+        'enigma_alternative_recovery_possible': bool(
+            raw is not None and actual not in (expected, old_expected) and
+            _recover_enigma_alternative(directory, raw, _choice(directory),
+                                       inspect_only=True)),
         'active': active_country(directory),
         'pending': _pending_country(info),
         'downloaded': info.get('downloaded', 0),
