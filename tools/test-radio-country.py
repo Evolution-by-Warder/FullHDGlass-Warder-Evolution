@@ -217,6 +217,69 @@ class CountryTests(unittest.TestCase):
         self.assertTrue(country._choice(self.root)['recovered_alternative_edit'])
         self.assertEqual(len(json.loads((self.root / live.DATA_FILE).read_text())['stations']), 2)
 
+    def test_crlf_enigma_alternative_is_verified_backed_up_then_switches_country(self):
+        """Reproduce receiver: recognizable first line, strict raw header fails."""
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        rows = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        original = self.bouquet.read_bytes()
+        self.assertEqual(len(rows), 2)
+        edited = original.replace(
+            live._service(rows[0]).encode('utf-8'),
+            (b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+             b'"alternatives.live_radio.radio" ORDER BY bouquet\n' +
+             ('#DESCRIPTION ' + rows[0]['name'] + '\n').encode('utf-8')), 1
+        ).replace(b'\n', b'\r\n')
+        self.assertFalse(edited.startswith(live.HEADER))
+        self.assertEqual(edited.splitlines()[0], b'#NAME Warder Radio Live')
+        self.bouquet.write_bytes(edited)
+        report = country.diagnose(self.root)
+        self.assertEqual(report['bouquet_line_endings'], 'crlf')
+        self.assertTrue(report['bouquet_format_normalizable'])
+        self.assertEqual(report['visible_country_sections'], ['Slovensko'])
+        self.assertFalse(report['bouquet_owned_checksum_valid'])
+        self.assertTrue(report['enigma_alternative_recovery_possible'])
+        country.request_country('CZ', self.root)
+        switched = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertTrue(switched['changed'])
+        self.assertEqual(switched['country'], 'CZ')
+        self.assertEqual(country.active_country(self.root), 'CZ')
+        self.assertEqual(
+            (self.root / (live.FILE + '.enigma-alternatives.bak')).read_bytes(), edited)
+        self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
+                         [country.country_name('CZ')])
+
+    def test_only_crlf_or_bom_format_differences_keep_trusted_ownership(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        published = self.bouquet.read_bytes()
+        state = country._choice(self.root)
+        for variant in (published.replace(b'\n', b'\r\n'),
+                        b'\xef\xbb\xbf' + published,
+                        published.replace(b'#NAME Warder Radio Live\n',
+                                          b'#NAME Warder Radio Live   \r\n', 1)):
+            with self.subTest(kind=variant[:42]):
+                self.bouquet.write_bytes(variant)
+                self.assertTrue(country._owner_valid(self.root, variant, state))
+                self.assertTrue(country.diagnose(self.root)['bouquet_owned_checksum_valid'])
+        self.bouquet.write_bytes(published)
+
+    def test_enigma_header_formatting_does_not_authorize_modified_stream(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        published = self.bouquet.read_bytes().replace(b'\n', b'\r\n')
+        malicious = published.replace(b'radio.example.org', b'untrusted.example.org', 1)
+        self.bouquet.write_bytes(malicious)
+        self.assertFalse(country._owner_valid(
+            self.root, malicious, country._choice(self.root)))
+        self.assertFalse(country.diagnose(self.root)['enigma_alternative_recovery_possible'])
+        country.request_country('CZ', self.root)
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertEqual(result['skipped'], 'owner-modified')
+        self.assertEqual(self.bouquet.read_bytes(), malicious)
+        self.assertFalse(
+            (self.root / (live.FILE + '.enigma-alternatives.bak')).exists())
+
     def test_unknown_user_edits_are_not_adopted_even_if_alternative_present(self):
         country.bootstrap(self.root)
         country.refresh(self.root, now=NOW, browser=Browser())
