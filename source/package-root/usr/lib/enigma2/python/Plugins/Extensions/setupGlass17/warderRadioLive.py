@@ -521,6 +521,10 @@ class Controller:
             # Only the visible live-bouquet identities are accepted.
             if stem not in self.known_icons:
                 return
+            # A repeated render must not cancel and postpone the same pending
+            # download timer. Only elevate a station that is not already first.
+            if self.icon_queue and self.icon_queue[0] == stem:
+                return
             if stem in self.icon_queue:
                 self.icon_queue.remove(stem)
             self.icon_queue.insert(0, stem)
