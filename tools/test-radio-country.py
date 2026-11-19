@@ -428,9 +428,9 @@ class CountryTests(unittest.TestCase):
             if not result.get('incomplete'):
                 break
             self.assertTrue(result.get('incomplete'), result)
-        self.assertEqual(observed, sorted(observed))
         else:
             self.fail('Country did not finish within 40 bounded batches')
+        self.assertEqual(observed, sorted(observed))
         self.assertEqual(result['country'], 'DE')
         self.assertEqual(result['stations'], count)
         self.assertGreater(max(browser.offsets), 4000)
