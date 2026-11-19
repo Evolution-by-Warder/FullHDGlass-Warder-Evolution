@@ -218,6 +218,75 @@ class CountryTests(unittest.TestCase):
         self.assertIn('WHERE_CHANNEL_CONTEXT_MENU', script)
         self.assertIn('serviceFilter=warderRadioCountry.is_live_service', script)
 
+    def test_country_menu_on_selected_live_bouquet_folder_only(self):
+        """The bouquet-root MENU retains native actions and adds our picker."""
+        channel_mod = ModuleType('Screens.ChannelSelection')
+        screens_mod = ModuleType('Screens')
+        screens_mod.__path__ = []
+        choices_mod = ModuleType('Components.ChoiceList')
+        components_mod = ModuleType('Components')
+        components_mod.__path__ = []
+        ui_mod = ModuleType('Plugins.Extensions.setupGlass17.warderUiText')
+        ui_mod.ui_text = lambda text: 'Choose country (Warder Radio Live)'
+        choices_mod.ChoiceEntryComponent = lambda key=None, text=None: [text]
+
+        class Widget:
+            def __init__(self):
+                self.items = [[('Settings', lambda: None)],
+                              [('Add Bouquet', lambda: None)],
+                              [('Rename Entry', lambda: None)]]
+            def getList(self):
+                return self.items
+            def setList(self, entries):
+                self.items = entries
+
+        class FakeMenu:
+            def __init__(self, session, csel):
+                self.widget = Widget()
+                self.closed = False
+            def __getitem__(self, name):
+                return self.widget
+            def close(self, *args):
+                self.closed = True
+
+        def csel(bouquet, root='bouquets.radio'):
+            ref = lambda name: SimpleNamespace(
+                getPath=lambda: 'FROM BOUQUET "' + name + '" ORDER BY bouquet')
+            return SimpleNamespace(getRoot=lambda: ref(root),
+                                   getCurrentSelection=lambda: ref(bouquet))
+
+        channel_mod.ChannelContextMenu = FakeMenu
+        installed = [
+            ('Screens', screens_mod), ('Screens.ChannelSelection', channel_mod),
+            ('Components', components_mod), ('Components.ChoiceList', choices_mod),
+            ('Plugins.Extensions.setupGlass17.warderUiText', ui_mod),
+        ]
+        with patch.dict(sys.modules, dict(installed)):
+            self.assertTrue(country.install_root_country_menu())
+            self.assertFalse(country.install_root_country_menu())
+            session = SimpleNamespace()
+            selected = csel(live.FILE)
+            self.assertTrue(country._is_live_bouquet_selected(selected))
+            actions = []
+            with patch.object(country, 'open_country_selector', lambda x: actions.append(x)):
+                screen = FakeMenu(session, selected)
+                rows = screen['menu'].getList()
+                self.assertEqual([x[0][0] for x in rows],
+                                 ['Settings', 'Choose country (Warder Radio Live)',
+                                  'Add Bouquet', 'Rename Entry'])
+                rows[1][0][1]()
+                self.assertEqual(actions, [session])
+                self.assertTrue(screen.closed)
+            other = FakeMenu(session, csel('userbouquet.another.radio'))
+            self.assertEqual(len(other['menu'].getList()), 3)
+            tv = FakeMenu(session, csel(live.FILE, root='bouquets.tv'))
+            self.assertEqual(len(tv['menu'].getList()), 3)
+
+    def test_bouquet_root_menu_hook_source_is_scoped_to_fullhdglass(self):
+        plugin_source = (RUNTIME / 'Plugins/Extensions/setupGlass17/plugin.py').read_text()
+        self.assertIn('install_root_country_menu()', plugin_source)
+        self.assertIn('if reason == 0 and config.skin.primary_skin.value', plugin_source)
+
     def test_system_language_translates_native_menu_and_country_picker(self):
         """The receiver language drives the native MENU text, not Slovak literals."""
         import importlib.util
