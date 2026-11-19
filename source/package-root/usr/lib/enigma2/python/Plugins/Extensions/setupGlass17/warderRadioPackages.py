@@ -237,7 +237,8 @@ def _owned_dir(folder):
     return True
 
 
-def install_logos(root, code, picon_root, require_external=True):
+def install_logos(root, code, picon_root, require_external=True,
+                  still_selected=None):
     """Atomic radio-only logo ZIP exchange. Keep old files on every failure.
 
     picon_root is PATHS/picon (not the global picon collection on flash).
@@ -289,6 +290,10 @@ def install_logos(root, code, picon_root, require_external=True):
             json.dumps({'owner': 'WarderRadioLive', 'country': code,
                         'logo_zip_sha256': manifest['files']['logos/' + code + '.zip']['sha256'],
                         'files': hashes}, sort_keys=True), encoding='utf-8')
+        # The user may have switched countries while a large ZIP was being
+        # decompressed. Do not atomically replace a newer selection's PNGs.
+        if still_selected is not None and still_selected(code) is not True:
+            return {'changed': False, 'skipped': 'country-superseded'}
         if folder.exists():
             old = Path(tempfile.mkdtemp(prefix='.warder-radio-old-', dir=str(picon_root)))
             old.rmdir()
