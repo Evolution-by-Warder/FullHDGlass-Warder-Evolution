@@ -32,6 +32,7 @@ jobs:
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py
+            source/control/postinst
             tools/test-radio-live.py
           sparse-checkout-cone-mode: false
       - name: Validate Python syntax
