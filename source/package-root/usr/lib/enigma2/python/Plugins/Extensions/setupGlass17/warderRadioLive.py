@@ -181,8 +181,7 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         if not isinstance(state, dict):
             state = {}
         success, attempt = state.get('success', 0), state.get('attempt', 0)
-        if (before is not None and success and 0 <= now-success < DAY and
-                0 <= now-attempt < RETRY):
+        if before is not None and success and 0 <= now-success < DAY:
             changed = _register(directory)
             return {'changed': changed, 'skipped': 'not-due'}
         if attempt and 0 <= now-attempt < RETRY:
@@ -215,6 +214,8 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
                     break
             if not rows:
                 raise ValueError('Empty live country; keep previous bouquet')
+            for item in rows:
+                item['countrycode'] = country
             groups.append((country, rows))
             saved.extend(rows)
         raw = _bouquet(groups)
@@ -223,7 +224,9 @@ def refresh(directory=DIRECTORY, now=None, browser=None):
         if target.exists() and target.read_bytes() != before:
             raise OSError('Concurrent bouquet edit')
         # Keep mapping and bouquet together: an old mapping is always harmless.
-        _write(data, _json_bytes({'schema': 1, 'stations': saved}))
+        mapping_bytes = _json_bytes({'schema': 1, 'stations': saved})
+        if not data.exists() or data.read_bytes() != mapping_bytes:
+            _write(data, mapping_bytes)
         changed = raw != before
         if changed:
             if before is not None:
@@ -256,7 +259,7 @@ def _picon_dir():
 def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
     """Download one logo only; never replace an unrelated/approved picon."""
     directory = Path(directory)
-    if not re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){7}[0-9A-F]{1,8}', stem):
+    if not re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}', stem):
         return {'changed': False, 'skipped': 'invalid-stem'}
     mapping = _read_json(directory / DATA_FILE, {})
     rows = mapping.get('stations') if isinstance(mapping, dict) else None
@@ -298,7 +301,7 @@ def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
         # Keep track only of files we added ourselves; verify checksums
         # before eviction so user replacements are never deleted.
         for name, record in sorted(entries.items(), key=lambda pair: pair[1].get('at', 0)):
-            if len(entries) < MAX_ICONS:
+            if len(entries) <= MAX_ICONS - 2:
                 break
             old = target_dir / name
             if (re.fullmatch(r'(?:4097|1)_[0-9A-F_]+\.png', name) and
@@ -319,8 +322,18 @@ def get_icon(stem, directory=DIRECTORY, store=None, destination=None):
                 os.fsync(output.fileno())
         except FileExistsError:
             return {'changed': False, 'skipped': 'already-present'}
-        entries[target.name] = {'directory': str(target_dir), 'sha256':
-                                hashlib.sha256(content).hexdigest(), 'at': time.time()}
+        checksum = hashlib.sha256(content).hexdigest()
+        entries[target.name] = {'directory': str(target_dir), 'sha256': checksum,
+                                'at': time.time()}
+        # Some native Enigma2 Picon renderers normalize IPTV type 4097 to DVB 1.
+        # Add a hard-link alias only if no user picon already owns the filename.
+        try:
+            os.link(str(target), str(alias), follow_symlinks=False)
+        except (FileExistsError, OSError):
+            pass
+        else:
+            entries[alias.name] = {'directory': str(target_dir), 'sha256': checksum,
+                                   'at': time.time()}
         _write(owned_path, _json_bytes({'files': entries}))
         return {'changed': True}
 
@@ -337,6 +350,8 @@ class Controller:
         self.timeout = None
         self.closed = False
         self.last_icon = None
+        self.icon_queue = []
+        self.map_mtime = None
 
     @staticmethod
     def _reload():
@@ -388,14 +403,35 @@ class Controller:
         if self.closed:
             return
         try:
-            from NavigationInstance import instance
-            ref = instance.getCurrentlyPlayingServiceReference() if instance else None
-            fields = ref.toString().split(':') if ref else []
-            stem = '_'.join(field.upper() for field in fields[:10])
-            if len(fields) >= 11 and stem.startswith('4097_0_2_') and stem != self.last_icon:
-                self.last_icon = stem
-                if self.icon_worker is None:
-                    self.icon_worker = self._spawn('icon', ['--icon', stem], self.icon_done)
+            if self.icon_worker is None:
+                # Prefetch only a few visible-country stations, never the whole catalogue.
+                mapping = DIRECTORY / DATA_FILE
+                mtime = mapping.stat().st_mtime if mapping.is_file() and not mapping.is_symlink() else None
+                if mtime != self.map_mtime:
+                    self.map_mtime = mtime
+                    data = _read_json(mapping, {}) if mtime is not None else {}
+                    rows = data.get('stations', []) if isinstance(data, dict) else []
+                    seen = {}
+                    self.icon_queue = []
+                    for row in rows:
+                        if not isinstance(row, dict):
+                            continue
+                        code = row.get('countrycode', '')
+                        seen[code] = seen.get(code, 0) + 1
+                        if seen[code] <= 12:
+                            self.icon_queue.append(row.get('stem', ''))
+                from NavigationInstance import instance
+                ref = instance.getCurrentlyPlayingServiceReference() if instance else None
+                fields = ref.toString().split(':') if ref else []
+                stem = '_'.join(field.upper() for field in fields[:10])
+                candidate = None
+                if len(fields) >= 11 and stem.startswith('4097_0_2_') and stem != self.last_icon:
+                    self.last_icon = stem
+                    candidate = stem
+                elif self.icon_queue:
+                    candidate = self.icon_queue.pop(0)
+                if candidate:
+                    self.icon_worker = self._spawn('icon', ['--icon', candidate], self.icon_done)
         except Exception:
             pass
         self.icon_timer = self.loop.callLater(12, self.check_icon)
