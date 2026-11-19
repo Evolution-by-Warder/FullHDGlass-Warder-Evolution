@@ -447,12 +447,13 @@ class Controller:
         from .warderHelpPreview import _NativeLoop
         self.loop = event_loop or _NativeLoop()
         self.reload = reload_bouquets or self._reload
-        self.pending = self.loop.callLater(75, self.check)
+        self.pending = self.loop.callLater(25, self.check)
         self.icon_timer = self.loop.callLater(25, self.check_icon)
         self.worker = None
         self.icon_worker = None
         self.timeout = None
         self.closed = False
+        self.initial_reload = True
         self.last_icon = None
         self.icon_queue = []
         self.known_icons = set()
@@ -490,12 +491,20 @@ class Controller:
         self.timeout = None
         if self.closed:
             return
-        if isinstance(result, dict) and result.get('changed'):
+        # The installer may have published the live bouquet after Enigma2
+        # loaded its radio index. Reload once even when a parallel GUI check
+        # reports not-due; otherwise the new bouquet stays invisible.
+        has_bouquet = (DIRECTORY / FILE).is_file()
+        if isinstance(result, dict) and (result.get('changed') or
+                                          (self.initial_reload and has_bouquet)):
             try:
                 self.reload()
+                self.initial_reload = False
             except Exception:
                 pass
-        self.pending = self.loop.callLater(3600, self.check)
+        # Keep first-import checks short while the disk file is still missing.
+        self.pending = self.loop.callLater(
+            60 if self.initial_reload and not has_bouquet else 3600, self.check)
 
     def timed_out(self):
         self.timeout = None
