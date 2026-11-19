@@ -428,6 +428,7 @@ class Controller:
         self.known_icons = set()
         self.icon_requested = set()
         self.map_mtime = None
+        self._load_icon_map()
 
     @staticmethod
     def _reload():
@@ -476,7 +477,7 @@ class Controller:
 
     def _load_icon_map(self):
         mapping = DIRECTORY / DATA_FILE
-        mtime = mapping.stat().st_mtime if mapping.is_file() and not mapping.is_symlink() else None
+        mtime = mapping.stat().st_mtime_ns if mapping.is_file() and not mapping.is_symlink() else None
         if mtime == self.map_mtime:
             return
         self.map_mtime = mtime
@@ -506,11 +507,13 @@ class Controller:
             if len(fields) < 11 or not re.fullmatch(
                     r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}', stem):
                 return
-            if stem in self.icon_requested or stem in self.icon_queue:
+            if stem in self.icon_requested:
                 return
             # Only the visible live-bouquet identities are accepted.
             if stem not in self.known_icons:
                 return
+            if stem in self.icon_queue:
+                self.icon_queue.remove(stem)
             self.icon_queue.insert(0, stem)
             self.icon_queue = self.icon_queue[:48]
             self.icon_requested.add(stem)
