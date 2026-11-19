@@ -36,9 +36,51 @@ _MAIN_MENU_TRANSLATIONS = {
 }
 
 
+# The native Channel Selection context menu has to use the receiver OSD
+# language, even if the optional translation catalog is not downloaded yet.
+# Keep these five new strings available offline in all 21 skin languages.
+_RADIO_COUNTRY_KEYS = (
+    "Select country (Warder Radio Live)",
+    "(current)",
+    "Country list is unavailable.",
+    "Country selection could not be saved.",
+    "Loading radio stations for the selected country.",
+)
+_RADIO_COUNTRY_TRANSLATIONS = {
+    "al": ("Zgjidh vendin (Warder Radio Live)", "(aktual)", "Lista e vendeve nuk është e disponueshme.", "Zgjedhja e vendit nuk mund të ruhej.", "Po ngarkohen radiot e vendit të zgjedhur."),
+    "cs": ("Vybrat zemi (Warder Radio Live)", "(aktuální)", "Seznam zemí není dostupný.", "Výběr země se nepodařilo uložit.", "Načítají se rozhlasové stanice vybrané země."),
+    "de": ("Land auswählen (Warder Radio Live)", "(aktuell)", "Die Länderliste ist nicht verfügbar.", "Die Länderauswahl konnte nicht gespeichert werden.", "Radiosender des ausgewählten Landes werden geladen."),
+    "el": ("Επιλογή χώρας (Warder Radio Live)", "(τρέχουσα)", "Η λίστα χωρών δεν είναι διαθέσιμη.", "Δεν ήταν δυνατή η αποθήκευση της χώρας.", "Φόρτωση σταθμών της επιλεγμένης χώρας."),
+    "en": _RADIO_COUNTRY_KEYS,
+    "es": ("Seleccionar país (Warder Radio Live)", "(actual)", "La lista de países no está disponible.", "No se pudo guardar la selección del país.", "Cargando emisoras del país seleccionado."),
+    "et": ("Vali riik (Warder Radio Live)", "(praegune)", "Riikide loend pole saadaval.", "Riigi valikut ei saanud salvestada.", "Valitud riigi raadiojaamu laaditakse."),
+    "fa": ("انتخاب کشور (Warder Radio Live)", "(فعلی)", "فهرست کشورها در دسترس نیست.", "انتخاب کشور ذخیره نشد.", "در حال بارگذاری ایستگاه‌های رادیویی کشور انتخاب‌شده."),
+    "fr": ("Choisir un pays (Warder Radio Live)", "(actuel)", "La liste des pays est indisponible.", "Impossible d’enregistrer le pays sélectionné.", "Chargement des radios du pays sélectionné."),
+    "hu": ("Ország kiválasztása (Warder Radio Live)", "(jelenlegi)", "Az országok listája nem érhető el.", "Az országválasztás mentése sikertelen.", "A kiválasztott ország rádióállomásainak betöltése."),
+    "it": ("Seleziona paese (Warder Radio Live)", "(attuale)", "L'elenco dei paesi non è disponibile.", "Impossibile salvare il paese selezionato.", "Caricamento delle radio del paese selezionato."),
+    "lt": ("Pasirinkti šalį (Warder Radio Live)", "(dabartinė)", "Šalių sąrašas nepasiekiamas.", "Nepavyko išsaugoti šalies pasirinkimo.", "Įkeliamos pasirinktos šalies radijo stotys."),
+    "nl": ("Land kiezen (Warder Radio Live)", "(huidig)", "De landenlijst is niet beschikbaar.", "De landkeuze kon niet worden opgeslagen.", "Radiozenders van het gekozen land worden geladen."),
+    "pl": ("Wybierz kraj (Warder Radio Live)", "(aktualny)", "Lista krajów jest niedostępna.", "Nie udało się zapisać wybranego kraju.", "Wczytywanie stacji radiowych wybranego kraju."),
+    "pt": ("Selecionar país (Warder Radio Live)", "(atual)", "A lista de países não está disponível.", "Não foi possível guardar o país selecionado.", "A carregar estações do país selecionado."),
+    "ro": ("Alege țara (Warder Radio Live)", "(actuală)", "Lista țărilor nu este disponibilă.", "Selecția țării nu a putut fi salvată.", "Se încarcă posturile radio din țara selectată."),
+    "ru": ("Выбрать страну (Warder Radio Live)", "(текущая)", "Список стран недоступен.", "Не удалось сохранить выбор страны.", "Загружаются радиостанции выбранной страны."),
+    "sk": ("Vybrať krajinu (Warder Radio Live)", "(aktuálna)", "Zoznam krajín nie je dostupný.", "Výber krajiny sa nepodarilo uložiť.", "Načítavajú sa rádiové stanice vybranej krajiny."),
+    "tr": ("Ülke seç (Warder Radio Live)", "(geçerli)", "Ülke listesi kullanılamıyor.", "Ülke seçimi kaydedilemedi.", "Seçilen ülkenin radyo istasyonları yükleniyor."),
+    "uk": ("Вибрати країну (Warder Radio Live)", "(поточна)", "Список країн недоступний.", "Не вдалося зберегти вибір країни.", "Завантажуються радіостанції вибраної країни."),
+    "zh": ("选择国家或地区 (Warder Radio Live)", "（当前）", "国家或地区列表不可用。", "无法保存国家或地区选择。", "正在加载所选国家或地区的广播电台。"),
+}
+
+
 def ui_text(text):
     translated = _translate(text)
     if translated == text:
+        if text in _RADIO_COUNTRY_KEYS:
+            try:
+                code = language_code(config.osd.language.value)
+            except (AttributeError, TypeError, ValueError):
+                code = "en"
+            return _RADIO_COUNTRY_TRANSLATIONS.get(code, _RADIO_COUNTRY_KEYS)[
+                _RADIO_COUNTRY_KEYS.index(text)]
         if text == _MAIN_MENU_KEY:
             try:
                 code = language_code(config.osd.language.value)
