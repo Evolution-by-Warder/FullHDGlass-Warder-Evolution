@@ -183,6 +183,83 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(browser.calls, [('GB', 0), ('GB', 60), ('GB', 120), ('GB', 180), ('GB', 240), ('GB', 300)])
         self.assertEqual(len(live._sections(self.bouquet.read_bytes())), 1)
 
+    def test_enigma_alternative_edit_is_backed_up_and_czech_switch_recovers(self):
+        """Mimic real receiver: 2 mapped stations, one normal, one 1:134:2."""
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        self.assertEqual(len(mapping), 2)
+        previous = self.bouquet.read_bytes()
+        original_service = live._service(mapping[0]).encode('utf-8')
+        self.assertIn(original_service, previous)
+        reference = (
+            b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+            b'"alternatives.test_897.radio" ORDER BY bouquet\n'
+            + ('#DESCRIPTION ' + mapping[0]['name'] + '\n').encode('utf-8'))
+        modified = previous.replace(original_service, reference, 1)
+        self.assertNotEqual(previous, modified)
+        self.bouquet.write_bytes(modified)
+        state = json.loads(self.prefs.read_text())
+        self.assertEqual(state['active'], 'SK')
+        self.assertFalse(country._owner_valid(self.root, modified, state))
+        country.request_country('CZ', self.root)
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertTrue(result['changed'])
+        self.assertEqual(result['country'], 'CZ')
+        self.assertEqual(country.active_country(self.root), 'CZ')
+        self.assertEqual(list(live._sections(self.bouquet.read_bytes())),
+                         [country.country_name('CZ')])
+        backup = self.root / (live.FILE + '.enigma-alternatives.bak')
+        self.assertEqual(backup.read_bytes(), modified)
+        self.assertTrue(country._choice(self.root)['recovered_alternative_edit'])
+        self.assertEqual(len(json.loads((self.root / live.DATA_FILE).read_text())['stations']), 2)
+
+    def test_unknown_user_edits_are_not_adopted_even_if_alternative_present(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        previous = self.bouquet.read_bytes()
+        alt = (b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+               b'"alternatives.test.radio" ORDER BY bouquet\n'
+               + ('#DESCRIPTION ' + mapping[0]['name'] + '\n').encode('utf-8'))
+        first = live._service(mapping[0]).encode('utf-8')
+        self.assertIn(first, previous)
+        self.bouquet.write_bytes(previous.replace(first, alt, 1))
+        altered = self.bouquet.read_bytes()
+        variants = [
+            altered.replace(b'alternatives.test.radio', b'other.userbouquet.radio'),
+            altered.replace(('#DESCRIPTION ' + mapping[0]['name']).encode('utf-8'),
+                            b'#DESCRIPTION unrelated owner edit'),
+            altered.replace(('https%3A//radio.example.org/other').encode('utf-8'),
+                            b'https%3A//changed.example.org/stream'),
+        ]
+        for original in variants:
+            with self.subTest(kind=original[-90:]):
+                self.bouquet.write_bytes(original)
+                self.assertFalse(country._recover_enigma_alternative(
+                    self.root, original, country._choice(self.root)))
+                self.assertEqual(self.bouquet.read_bytes(), original)
+                self.assertFalse((self.root / (live.FILE + '.enigma-alternatives.bak')).exists())
+
+    def test_do_not_overwrite_previous_alternative_recovery_backup(self):
+        country.bootstrap(self.root)
+        country.refresh(self.root, now=NOW, browser=Browser())
+        mapping = json.loads((self.root / live.DATA_FILE).read_text())['stations']
+        original = self.bouquet.read_bytes()
+        modified = original.replace(
+            live._service(mapping[0]).encode('utf-8'),
+            b'#SERVICE 1:134:2:0:0:0:0:0:0:0:FROM BOUQUET '
+            b'"alternatives.protected.radio" ORDER BY bouquet\n' +
+            ('#DESCRIPTION ' + mapping[0]['name'] + '\n').encode('utf-8'), 1)
+        self.bouquet.write_bytes(modified)
+        backup = self.root / (live.FILE + '.enigma-alternatives.bak')
+        backup.write_bytes(b'original user backup')
+        country.request_country('CZ', self.root)
+        result = country.refresh(self.root, now=NOW + country.RETRY, browser=Browser())
+        self.assertEqual(result['skipped'], 'owner-modified')
+        self.assertEqual(self.bouquet.read_bytes(), modified)
+        self.assertEqual(backup.read_bytes(), b'original user backup')
+
     def test_invalid_request_and_user_modifications_never_replaced(self):
         self.assertFalse(country.request_country('../IT', self.root)['accepted'])
         country.bootstrap(self.root)
