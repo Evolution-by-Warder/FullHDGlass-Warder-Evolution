@@ -1004,6 +1004,58 @@ def _safe_status(data, directory=None):
         pass
 
 
+def _radio_picon_diagnostics(directory):
+    """Read only known config keys and counts; never expose sensitive settings."""
+    config_keys = (
+        'config.skin.primary_skin',
+        'config.channelSelection.showPicon',
+        'config.usage.service_icon_enable',
+        'config.plugins.setupGlass17.par125',
+        'config.plugins.setupGlass17.par124',
+    )
+    settings = {}
+    source = directory / 'settings'
+    try:
+        if source.is_file() and not source.is_symlink() and source.stat().st_size <= 1024 * 1024:
+            with source.open('r', encoding='utf-8', errors='replace') as handle:
+                for line in handle:
+                    key, separator, value = line.partition('=')
+                    if separator and key in config_keys:
+                        settings[key] = value.strip()
+    except OSError:
+        pass
+    current = settings.get('config.plugins.setupGlass17.par125', '/media/usb')
+    mount = (settings.get('config.plugins.setupGlass17.par124', '')
+             if current == '0' else current)
+    base = Path(mount) / 'hdg17_files' if mount.startswith('/') else None
+    folder = base / 'picon' if base is not None else None
+    count = None
+    if folder is not None and folder.is_dir() and not folder.is_symlink():
+        try:
+            with os.scandir(str(folder)) as scans:
+                count = sum(1 for entry in scans if entry.name.lower().endswith('.png')
+                            and entry.is_file(follow_symlinks=False))
+        except OSError:
+            pass
+    mapping = _read_json(directory / DATA_FILE, {}, 24 * 1024 * 1024)
+    rows = mapping.get('stations', []) if isinstance(mapping, dict) else []
+    if not isinstance(rows, list):
+        rows = []
+    owned = _read_json(directory / ICON_STATE, {})
+    tracked = owned.get('files', {}) if isinstance(owned, dict) else {}
+    if not isinstance(tracked, dict):
+        tracked = {}
+    return {
+        'online_station_mappings': len(rows),
+        'cached_generated_files': len(tracked),
+        'picon_folder_png_count': count,
+        'picon_folder_exists': folder is not None and folder.is_dir(),
+        'skin_active': settings.get('config.skin.primary_skin', '') == 'hd_glass17/skin.xml',
+        'native_picon_enabled_legacy': settings.get('config.usage.service_icon_enable'),
+        'native_picon_enabled_new': settings.get('config.channelSelection.showPicon'),
+    }
+
+
 def diagnose(directory=DIRECTORY):
     """Read-only receiver diagnostic; no network requests or GUI imports."""
     directory = Path(directory)
@@ -1021,13 +1073,14 @@ def diagnose(directory=DIRECTORY):
         with index.open('rb') as handle:
             registered = INDEX_LINE.strip() in handle.read(512 * 1024)
     data = {
-        'version': 'radio-live-test125',
+        'version': 'radio-live-test127',
         'radio_plugin_source_exists': source.is_file(),
         'bouquet_exists': target.is_file() and not target.is_symlink(),
         'registered_in_bouquets_radio': registered,
         'last_attempt': state.get('attempt'),
         'last_success': state.get('success'),
         'last_status': latest,
+        'picon_diagnostics': _radio_picon_diagnostics(directory),
     }
     if source.is_file():
         try:
