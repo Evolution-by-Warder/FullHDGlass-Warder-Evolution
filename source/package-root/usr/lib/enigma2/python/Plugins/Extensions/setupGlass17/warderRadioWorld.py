@@ -249,6 +249,29 @@ def install_world(archive, sha256, paths_root, require_external=True,
 
 
 
+def available_countries(paths_root):
+    """Read the current offline country list, never query Radio Browser on GUI."""
+    root = Path(paths_root) if paths_root is not None else None
+    if root is None or not _safe_directory(root):
+        return None
+    folder = root / WORLD_NAME
+    try:
+        if folder.is_symlink() or not folder.is_dir():
+            return None
+        owner = _json_file(folder / OWNER, MAX_OWNER)
+        if (owner.get('owner') != 'WarderRadioLive' or
+                not isinstance(owner.get('archive_sha256'), str) or
+                not SHA.fullmatch(owner['archive_sha256'])):
+            return None
+        index = _json_file(folder / 'index.json', MAX_INDEX)
+        countries = _verify_index(index)
+        return {code: (row.get('name', code) if isinstance(row.get('name'), str)
+                       and row.get('name') else code)
+                for code, row in countries.items()}
+    except (OSError, ValueError, TypeError):
+        return None
+
+
 def cached_country(paths_root, code):
     """Cheap read-only GUI hint; activation subprocess does full SHA verification.
 
