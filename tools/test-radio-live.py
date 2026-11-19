@@ -689,11 +689,12 @@ class LiveTests(unittest.TestCase):
 
     def test_new_install_starts_live_refresh_without_blocking_opkg(self):
         postinst = (ROOT / 'source/control/postinst').read_text()
-        self.assertIn('warder_radio_live=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py',
+        self.assertIn('warder_radio_country=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py',
                       postinst)
         self.assertIn('warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py',
                       postinst)
-        self.assertIn('"$warder_radio_live" --refresh </dev/null >/dev/null 2>&1 &', postinst)
+        self.assertIn('"$warder_radio_country" --bootstrap </dev/null >/dev/null 2>&1', postinst)
+        self.assertIn('"$warder_radio_country" --refresh </dev/null >/dev/null 2>&1 &', postinst)
 
     def test_failed_test124_import_can_retry_immediately_on_test125(self):
         state = self.root / live.STATE_FILE
