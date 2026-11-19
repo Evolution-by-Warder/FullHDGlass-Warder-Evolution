@@ -1071,7 +1071,9 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(info['pending_pages'], 1)
         self.assertEqual(info['downloaded'], 2)
         result = country.refresh(self.root, now=NOW + country.STEP, browser=browser)
-        self.assertTrue(result['changed'])
+        # Identical UUIDs on later pages need no byte rewrite, but final
+        # completion must clear pending and mark the catalogue complete.
+        self.assertFalse(result['incomplete'])
         info = country.diagnose(self.root)
         self.assertEqual(info['active'], 'CZ')
         self.assertIsNone(info['pending'])
@@ -1173,6 +1175,61 @@ class CountryTests(unittest.TestCase):
         self.assertEqual(view[:3], ['reload', 'reset', 'top'])
         self.assertTrue(any(delay == 1 for delay, _ in loop.calls))
         self.assertTrue(any(delay == 3600 for delay, _ in loop.calls))
+
+    def test_incremental_gui_refresh_preserves_selected_station(self):
+        class FakeCall:
+            def __init__(self, callback=None):
+                self.callback, self.cancelled = callback, False
+            def active(self):
+                return not self.cancelled
+            def cancel(self):
+                self.cancelled = True
+        class FakeLoop:
+            def __init__(self):
+                self.calls = []
+            def callLater(self, delay, callback):
+                self.calls.append((delay, callback))
+                return FakeCall(callback)
+        events = []
+        selected = SimpleNamespace(toString=lambda: 'selected-radio-reference')
+        class ChannelSelectionRadio:
+            shown = True
+            def __init__(self):
+                self.servicelist = SimpleNamespace(
+                    instance=object(),
+                    getCurrent=lambda: selected,
+                    resetRoot=lambda: events.append('reset'),
+                    goTop=lambda: events.append('top'),
+                    setCurrent=lambda ref, adjust=True:
+                        events.append(('restore', ref, adjust)))
+            def getRoot(self):
+                return SimpleNamespace(getPath=lambda:
+                    'FROM BOUQUET "' + live.FILE + '" ORDER BY bouquet')
+        session = SimpleNamespace(current_dialog=ChannelSelectionRadio())
+        ctrl = live.Controller.__new__(live.Controller)
+        ctrl.loop = FakeLoop()
+        ctrl.session = session
+        ctrl.reload = lambda: events.append('reload')
+        ctrl.worker = object()
+        ctrl.pending = FakeCall()
+        ctrl.timeout = None
+        ctrl.radio_refresh_timer = None
+        ctrl.closed = False
+        ctrl.initial_reload = False
+        country.bootstrap(self.root)
+        with patch.object(live, 'DIRECTORY', self.root):
+            ctrl.finished({'changed': True, 'country': 'FR', 'incomplete': True,
+                           'preview': True, 'first_page': False})
+        self.assertEqual(events, ['reload', 'reset', ('restore', selected, False)])
+        self.assertNotIn('top', events)
+        self.assertTrue(any(delay == 1 for delay, _ in ctrl.loop.calls))
+
+    def test_successful_country_selection_does_not_open_blocking_loading_popup(self):
+        import inspect
+        source = inspect.getsource(country.open_country_selector)
+        self.assertNotIn('ui_text("Loading radio stations for the selected country.")',
+                         source)
+        self.assertIn('_start_selected_country_refresh(session)', source)
 
     def test_pending_country_is_retried_not_silently_delayed_for_an_hour(self):
         country.bootstrap(self.root)
