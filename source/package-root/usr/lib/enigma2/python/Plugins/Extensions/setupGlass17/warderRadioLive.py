@@ -14,7 +14,8 @@ import signal
 import sys
 import tempfile
 import time
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
+from uuid import UUID
 
 DIRECTORY = Path('/etc/enigma2')
 FILE = 'userbouquet.warder.live.radio'
@@ -101,9 +102,11 @@ def _countries(plugin_dir):
 
 def service_stem(uuid):
     """Stable picon/service identity: independent of mutable stream URLs."""
-    if not isinstance(uuid, str) or not re.fullmatch(r'[0-9a-f-]{36}', uuid, re.I):
-        raise ValueError('Missing Radio Browser UUID')
-    digest = hashlib.sha256(uuid.lower().encode('ascii')).hexdigest().upper()
+    try:
+        canonical = str(UUID(uuid))
+    except (ValueError, AttributeError, TypeError):
+        raise ValueError('Missing or malformed Radio Browser UUID')
+    digest = hashlib.sha256(canonical.encode('ascii')).hexdigest().upper()
     fields = ('4097', '0', '2', digest[:4], digest[4:8], digest[8:12],
               digest[12:20], '0', '0', '0')
     return '_'.join(fields)
@@ -111,17 +114,23 @@ def service_stem(uuid):
 
 def _entry(row):
     uuid, url, name = row.get('stationuuid'), row.get('url'), row.get('name')
-    if not isinstance(url, str) or not url.lower().startswith(('http://', 'https://')):
+    if not isinstance(url, str) or len(url) > 4096 or any(ord(char) < 32 for char in url):
+        raise ValueError('Invalid radio URL')
+    try:
+        parsed = urlsplit(url)
+        if (parsed.scheme.lower() not in ('http', 'https') or not parsed.hostname or
+                parsed.username is not None or parsed.password is not None):
+            raise ValueError('Invalid radio URL')
+        _ = parsed.port
+    except (ValueError, AttributeError):
         raise ValueError('Invalid radio URL')
     if not isinstance(name, str) or not name.strip():
         raise ValueError('Invalid radio name')
-    if len(url) > 4096 or any(ord(char) < 32 for char in url):
-        raise ValueError('Invalid radio URL')
     name = ' '.join(name.split())[:140]
     if not name:
         raise ValueError('Empty radio name')
     stem = service_stem(uuid)
-    return {'stem': stem, 'stationuuid': uuid.lower(), 'name': name,
+    return {'stem': stem, 'stationuuid': str(UUID(uuid)), 'name': name,
             'url': url, 'favicon': row.get('favicon', ''),
             'homepage': row.get('homepage', '')}
 
