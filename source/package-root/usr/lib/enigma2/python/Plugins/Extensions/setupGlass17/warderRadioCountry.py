@@ -556,10 +556,13 @@ def request_country(country, directory=DIRECTORY):
         except BlockingIOError:
             # Never block Enigma2's GUI while the background worker has the
             # country lock for HTTP. Last explicit country selection wins.
-            with _queue_lock(directory) as queue_lock:
-                fcntl.flock(queue_lock, fcntl.LOCK_EX)
-                live._write(directory / QUEUE_FILE, live._json_bytes({
-                    'country': country, 'requested_at': int(time.time())}))
+            try:
+                with _queue_lock(directory) as queue_lock:
+                    fcntl.flock(queue_lock, fcntl.LOCK_EX)
+                    live._write(directory / QUEUE_FILE, live._json_bytes({
+                        'country': country, 'requested_at': int(time.time())}))
+            except OSError:
+                return {'accepted': False, 'reason': 'unsafe-path'}
             return {'accepted': True, 'queued': True, 'already_active': False}
         # New direct selection overrides any older deferred intent.
         _take_queued_country(directory)
@@ -572,7 +575,7 @@ def _station_rows(browser, country, offset, saved):
     more = False
     for _ in range(MAX_PAGES_PER_JOB):
         if offset >= MAX_SCAN_OFFSET:
-            break
+            return rows, offset, True
         page = browser.page(country=country, offset=offset)
         if page.offline:
             raise OSError('Radio Browser country unavailable')
