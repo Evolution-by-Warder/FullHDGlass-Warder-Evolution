@@ -1,3 +1,13 @@
+## 19. 11. 2026 — PR #128 — overený offline country cache + vyhradené rádio logá
+
+- **Zdroj:** nový generátor dát a originálnych log [Warder Radio PR #52](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/52), inventár **224 krajín**, ET **22/22 + 18 platných PNG**, FR **2 476 platných staníc**, zatiaľ len testované logá.
+- **Skin kandidát:** [draft PR #128](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/128), vetva `feature/radio-live-offline-country-bundles-20261119`. Pridaný [`warderRadioPackages.py`](source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioPackages.py): dôsledná SHA-256 a presná Radio Browser UUID kontrola, ktorá načíta kompletný a overený lokálny country bouquet a aktivuje iba `userbouquet.warder.live.radio` bez siete. Porovnáva každú servisnú referenciu s mapou, chráni používateľské bouquety aj manuálne zmeny.
+- **Logá:** bezpečný samostatný `PATHS/picon/radio/` s kontrolou podpisu originálneho ZIP, jedinou formou PNG s presnou servisnou referenciou, streaming SHA cez 256 KiB bloky, ochrana flash, zákaz zip-slip a symlinkov, bezpečná výmena cez staging a návrat pri chybe. Zmazať vie iba **vlastný byte-identický** priečinok, nikdy TV/SAT picony ani súbory upravené používateľom. [Testy](tools/test-radio-packages.py), [CI](.github/workflows/radio-country-packages-offline.yml), pracovné commity `ae79b55`, `2909512`, `e4a4ec2`, `18332cc`, `5f923ff`.
+- **Stav:** offline modul je pripravený na kontrolu; CI prebieha, jeho výsledok zatiaľ nie je označený PASS. **Ešte nie je zapojený do živého CountrySelection, nesťahuje prvotný celosvetový balík, nie je vydaná nová IPK a nie sú publikované produkčné ZIP-y**. Nezamieňať PR s funkčným prijímačovým testom. `main` a TEST138 bezo zmien.
+- **Ďalší krok:** po úspechu CI zapojiť background worker pre 14-dňový lokálny update, celosvetový lokálny prehľad a per-country ZIP iba po výbere krajiny; následne reálny GigaBlue Quad 4K Pro TEST IPK po osobitnom schválení.
+
+---
+
 ## 19. 11. 2026 — okamžité zobrazenie prvej stránky krajiny (PR #127)
 
 - **Prijímačové pozorovanie:** používateľ GigaBlue Quad 4K Pro poslal dva zábery `Warder Radio Live` z prepnutia Etiópia → Francúzsko. Krajina sa napokon zmení, ale pri niekoľkých tisíckach staníc čakal neprimerane dlho oproti samostatnému Warder Radio pluginu. Príčina priamo v `warderRadioCountry.refresh`: starý kód pri `more=True` iba ukladá staging a až po poslednej stránke zmení viditeľný bouquet.
