@@ -6,6 +6,11 @@ on:
       - feature/dynamic-radio-bouquets-picons-20261119
     paths:
       - tools/build-radio-live-test-ipk.py
+      - tools/test-radio-live.py
+      - source/control/postinst
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py
       - .github/workflows/radio-live-test-package.yml
   workflow_dispatch:
 
