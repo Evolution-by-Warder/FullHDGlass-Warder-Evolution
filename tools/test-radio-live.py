@@ -639,6 +639,26 @@ class LiveTests(unittest.TestCase):
         self.assertEqual(live.refresh(self.root, NOW + 1, Browser())['skipped'], 'not-due')
         self.assertTrue(live.refresh(self.root, NOW + live.INITIAL_RETRY, Browser())['changed'])
 
+    def test_new_picon_redraws_only_visible_servicelist(self):
+        """Fresh PNG is shown without zapping or a full bouquet database reload."""
+        screens = ModuleType('Screens')
+        infobar_module = ModuleType('Screens.InfoBar')
+        redraws = []
+        native_list = SimpleNamespace(refresh=lambda: redraws.append('redraw'))
+        screen = SimpleNamespace(shown=True, servicelist=SimpleNamespace(l=native_list))
+        infobar_module.InfoBar = SimpleNamespace(instance=SimpleNamespace(servicelist=screen))
+        controller = live.Controller.__new__(live.Controller)
+        controller.icon_worker = object()
+        with patch.dict(sys.modules, {'Screens': screens, 'Screens.InfoBar': infobar_module}):
+            controller.icon_done({'changed': True})
+            self.assertIsNone(controller.icon_worker)
+            self.assertEqual(redraws, ['redraw'])
+            controller.icon_done({'changed': False})
+            self.assertEqual(redraws, ['redraw'])
+            screen.shown = False
+            controller.icon_done({'changed': True})
+            self.assertEqual(redraws, ['redraw'])
+
     def test_picon_diagnostics_only_reports_native_toggle_and_owned_counts(self):
         own = self.root / 'hdg17_files' / 'picon'
         own.mkdir(parents=True)
