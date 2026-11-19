@@ -60,8 +60,9 @@ def data_members():
     result = []
     for src in SOURCE.rglob("*"):
         rel = src.relative_to(SOURCE).as_posix()
+        # Syntax preflight generates local bytecode; never package it.
         if "__pycache__" in src.parts or src.suffix in (".pyc", ".pyo"):
-            raise RuntimeError("Refuse bytecode in source tree: " + rel)
+            continue
         if src.name in BLOCKED_GRAPHICS:
             continue
         if src.suffix == ".po":
