@@ -268,6 +268,15 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
             data[1] != b'#SERVICE 1:64:2:0:0:0:0:0:0:0:\n' or
             data[2] != ('#DESCRIPTION ' + country_name(country) + '\n').encode('utf-8')):
         return False
+    # Map stable numeric identities once, keeping verification linear even
+    # for countries with several thousand stations.
+    indexed = {}
+    for position, row in enumerate(rows):
+        stem_ref = b'#SERVICE ' + row['stem'].replace('_', ':').encode('ascii') + b':'
+        parsed_stem = _reference_key(stem_ref)
+        if parsed_stem is None or parsed_stem[0] in indexed:
+            return False
+        indexed[parsed_stem[0]] = (position, row)
     found = set()
     alternative = None
     index = 3
@@ -287,13 +296,15 @@ def _recover_enigma_alternative(directory, original, state, inspect_only=False):
             continue
         if description is None:
             return False
-        matched = [position for position, row in enumerate(rows)
-                   if position not in found and
-                   _trusted_service_matches(service, row) and
-                   description == ('#DESCRIPTION ' + row['name'] + '\n').encode('utf-8')]
-        if len(matched) != 1:
+        parsed = _reference_key(service)
+        match = indexed.get(parsed[0]) if parsed is not None else None
+        if match is None:
             return False
-        found.add(matched[0])
+        position, row = match
+        if (position in found or not _trusted_service_matches(service, row) or
+                description != ('#DESCRIPTION ' + row['name'] + '\n').encode('utf-8')):
+            return False
+        found.add(position)
 
     absent = set(range(len(rows))) - found
     if alternative is None or len(absent) != 1 or len(found) != len(rows) - 1:
