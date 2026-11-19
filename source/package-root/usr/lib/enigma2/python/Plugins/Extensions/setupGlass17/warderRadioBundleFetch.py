@@ -278,7 +278,9 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
         # If user switched countries during download, never activate stale PNGs.
         if country.active_country(enigma_directory)!=code:
             return {'changed':False,'skipped':'country-superseded'}
-        return packages.install_logos(stage,code,picon,
-                                      require_external=require_external)
+        return packages.install_logos(
+            stage, code, picon, require_external=require_external,
+            still_selected=lambda selected:
+                country.active_country(enigma_directory) == selected)
     finally:
         shutil.rmtree(stage)
