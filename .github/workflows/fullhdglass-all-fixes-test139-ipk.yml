@@ -2,7 +2,7 @@ name: FullHDGlass ALL approved repairs 1.0.81-test139 TEST IPK
 on:
   push:
     branches: [feature/radio-live-world-bundle-installer-20261119]
-    paths: [.github/workflows/fullhdglass-all-fixes-test139-ipk.yml, tools/build-fullhdglass-all-fixes-test139.py, source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry.py]
+    paths: [.github/workflows/fullhdglass-all-fixes-test139-ipk.yml, tools/build-fullhdglass-all-fixes-test139.py, source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry.py, tools/test-spinner-choice.py]
   workflow_dispatch:
 permissions:
   contents: read
