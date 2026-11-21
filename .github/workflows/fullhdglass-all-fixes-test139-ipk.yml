@@ -1,0 +1,81 @@
+name: FullHDGlass ALL approved repairs 1.0.81-test139 TEST IPK
+on:
+  push:
+    branches: [feature/radio-live-world-bundle-installer-20261119]
+    paths: [.github/workflows/fullhdglass-all-fixes-test139-ipk.yml, tools/build-fullhdglass-all-fixes-test139.py]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test139:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source safety and Python preflight
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = 1.0.80
+          grep -Fx 'Version: 1.0.80-1' source/control/control
+          for f in preinst postinst prerm postrm; do sh -n "source/control/$f"; done
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          for p in Path('source/package-root').rglob('*.py'):
+              ast.parse(p.read_text(encoding='utf-8'),filename=str(p))
+          print('All checked-in skin Python files parse: PASS')
+          PY
+      - name: Global committed skin regression tests
+        run: |
+          set -euo pipefail
+          mkdir -p packages/fullhdglass-all-fixes-test139
+          for t in test-package-transition.py test-radio-live.py test-radio-country.py test-radio-packages.py test-radio-world.py test-radio-bundle-fetch.py test-radio-world-gui.py test-channel-picons.py test-channel-picon-settings.py test-warder-user-picons.py test-warder-channel-worker.py test-warder-skin-i18n.py test-weather-condition-language.py test-weather-help-bubbles.py test-setup-date-preview.py test-spinner-choice.py test-spinner-online.py test-setup-style.py test-settings-glass.py test-settings-batch.py test-skin-package-retention.py test-skin-binding-audit.py test-radio-lyrics.py test-radio-cover-search-port.py test-warder-combined-openatv76.py; do
+            echo "TEST $t"
+            python3 -B "tools/$t" >> packages/fullhdglass-all-fixes-test139/all-fixes-regressions.log 2>&1 || { tail -100 packages/fullhdglass-all-fixes-test139/all-fixes-regressions.log; exit 1; }
+          done
+          echo 'Skin, Radio World, EPG, flash, menu, spinner, language, weather, install tests: PASS'
+      - name: Build complete FullHDGlass 1.0.81-test139 IPK without touching production
+        run: |
+          set -euo pipefail
+          python3 -B tools/build-fullhdglass-all-fixes-test139.py
+          cd packages/fullhdglass-all-fixes-test139
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk.sha256
+          ar t enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk
+      - name: Verify full skin payload and test identity
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,subprocess,tarfile,io
+          from pathlib import Path
+          root=Path('packages/fullhdglass-all-fixes-test139')
+          p=root/'enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk'
+          metadata=json.loads((root/'fullhdglass-1.0.81-test139-manifest.json').read_text())
+          assert metadata['runtime_version']=='1.0.81-test139'
+          assert metadata['package_version']=='1.0.81-test139-1'
+          assert metadata['test_only'] and not metadata['production_modified']
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==metadata['sha256']
+          assert Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()=='1.0.80'
+          assert subprocess.check_output(['ar','t',str(p)],text=True).splitlines()==['debian-binary','control.tar.gz','data.tar.gz']
+          with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(p),'data.tar.gz'])),mode='r:gz') as z:
+              names=z.getnames()
+              assert './usr/share/enigma2/hd_glass17/skin.xml' in names
+              assert sum(n.startswith('./usr/share/enigma2/hd_glass17/icons_factory/') and n.endswith('.png') for n in names)==148
+          print('Complete all-fixes skin test139 source, data and SHA: PASS')
+          PY
+      - name: Upload ONE complete test-only IPK, never update main or release
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: FullHDGlass-ALL-fixes-1.0.81-test139-TEST-IPK
+          path: |
+            packages/fullhdglass-all-fixes-test139/enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk
+            packages/fullhdglass-all-fixes-test139/enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk.sha256
+            packages/fullhdglass-all-fixes-test139/fullhdglass-1.0.81-test139-manifest.json
+            packages/fullhdglass-all-fixes-test139/all-fixes-regressions.log
+          retention-days: 30
+          if-no-files-found: error
