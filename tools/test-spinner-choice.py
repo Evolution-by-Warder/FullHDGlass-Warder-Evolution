@@ -407,6 +407,7 @@ class ControllerTests(unittest.TestCase):
             warderUserPicons=SimpleNamespace(enabled=SimpleNamespace(value=False, save=noop),
                 path=SimpleNamespace(value='', save=noop)),
             warderEpgListScroll=SimpleNamespace(enabled=SimpleNamespace(save=noop)),
+            warderSkinMainMenu=SimpleNamespace(enabled=SimpleNamespace(value=False, save=noop)),
             warderPiconExpert=SimpleNamespace(custom_destination=SimpleNamespace(save=noop),
                 destination=SimpleNamespace(save=noop))))
         def apply(value):
