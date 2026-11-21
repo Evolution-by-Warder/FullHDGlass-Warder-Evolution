@@ -322,7 +322,7 @@ class ControllerTests(unittest.TestCase):
         setup = SimpleNamespace(**{'par%d' % n: SimpleNamespace(value=False) for n in range(1, 231)})
         branch = next(n for n in ast.walk(self.method('runSetup')) if isinstance(n, ast.If) and ast.unparse(n.test) == 'tt == 28')
         screen = SimpleNamespace(list=[])
-        scope = {'self':screen, 'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup)),
+        scope = {'self':screen, 'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup, warderSkinMainMenu=SimpleNamespace(enabled=SimpleNamespace(value=False)))),
                  'S0':'%s', 'ui_text':lambda text:text, '_':lambda text:text,
                  'getConfigListEntry':lambda title, value:(title, value), 'os':os,
                  'PYTHONPATH':'/no-receiver-plugins/', 'ISVTI':False, 'EFIFO':False,
@@ -388,7 +388,7 @@ class ControllerTests(unittest.TestCase):
     def test_actual_cancel_discards_spinner_preference_without_applying_it(self):
         events = []
         setup = SimpleNamespace(dict=lambda: {'par230':SimpleNamespace(cancel=lambda:events.append(('cancel',)))})
-        scope = {'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup)),
+        scope = {'config':SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup, warderSkinMainMenu=SimpleNamespace(enabled=SimpleNamespace(cancel=lambda:None)))),
                  'ALL_CFG':[''] * 229 + ['Spinner theme'], 'setPathFiles':lambda:None}
         screen = SimpleNamespace(rst=False, destroyTimers=lambda:True, close=lambda:events.append(('close',)))
         exec(compile(ast.Module(body=[self.method('exitNow')], type_ignores=[]), 'actual-cancel', 'exec'), scope)
