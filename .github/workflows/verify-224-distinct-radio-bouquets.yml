@@ -1,0 +1,39 @@
+name: Warder TEST 224 distinct radio bouquets and signed logo-source regression
+on:
+  push:
+    branches: [feature/radio-live-world-bundle-installer-20261119]
+    paths: [.github/workflows/verify-224-distinct-radio-bouquets.yml, tools/test-radio-224-real-country-bouquets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryBouquets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py]
+permissions:
+  contents: read
+jobs:
+  native-country-bouquet-and-artwork:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/
+            /tools/test-radio-224-real-country-bouquets.py
+            /tools/test-radio-packages.py
+            /tools/test-radio-world.py
+            /tools/test-radio-world-gui.py
+            /tools/test-radio-bundle-fetch.py
+      - name: Strict Python source and offline native radio-group tests
+        run: |
+          set -euo pipefail
+          python3 -B tools/test-radio-224-real-country-bouquets.py -v
+          python3 -B tools/test-radio-packages.py -v
+          python3 -B tools/test-radio-world.py -v
+          python3 -B tools/test-radio-world-gui.py -v
+          python3 -B tools/test-radio-bundle-fetch.py -v
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          for p in Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17').glob('*.py'):
+              ast.parse(p.read_text(encoding='utf-8'),str(p))
+          print('Installed skin native radio source AST PASS')
+          PY
