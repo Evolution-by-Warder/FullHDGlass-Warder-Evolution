@@ -108,6 +108,6 @@ class Tests(unittest.TestCase):
         self.boot()
         with patch.object(country,'_choice',return_value={'active':'AA'}):
             self.assertEqual(online.sync_online_country(self.external,self.etc,
-                'AA',require_external=False)['skipped'],'country-not-selected')
+                'AB',require_external=False)['skipped'],'country-not-selected')
 
 if __name__=='__main__': unittest.main()
