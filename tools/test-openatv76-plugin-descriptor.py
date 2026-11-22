@@ -118,7 +118,7 @@ class TestDescriptorCompatibility(unittest.TestCase):
 
 
     def test_openatv76_legacy_descriptor_still_loads_main_plugin(self):
-        descriptors = self._run(LegacyDescriptor)
+        descriptors, ns = self._run(LegacyDescriptor)
         self.assertEqual(len(descriptors), 3)
         self.assertTrue(ns["_warderLegacyRdsTvGuard"])
         self.assertTrue(any(
