@@ -1067,6 +1067,10 @@ if __name__ == '__main__':
                 sys.exit(2)
             result = warderRadioWorld.activate_from_world(
                 root, code, DIRECTORY, require_requested=True)
+            if result.get('local') and result.get('country') == code:
+                from Plugins.Extensions.setupGlass17 import warderRadioCountryCleanup
+                result['inactive_radio_logos'] = warderRadioCountryCleanup.prune_inactive(
+                    root, code, DIRECTORY)
             result['first_page'] = result.get('changed', False)
         elif len(sys.argv) == 3 and sys.argv[1] == '--diagnose-world':
             from Plugins.Extensions.setupGlass17 import warderRadioWorld
@@ -1079,6 +1083,11 @@ if __name__ == '__main__':
             if not COUNTRY_RE.fullmatch(code):
                 sys.exit(2)
             from Plugins.Extensions.setupGlass17 import warderRadioOnlineLogos
+            from Plugins.Extensions.setupGlass17 import warderRadioCountryCleanup
+            inactive = warderRadioCountryCleanup.prune_inactive(root, code, DIRECTORY)
+            if inactive.get('skipped') == 'country-superseded':
+                print(json.dumps({'changed': False, 'skipped': 'country-superseded'}))
+                sys.exit(0)
             if sys.argv[1] == '--logos-online':
                 result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
             else:
