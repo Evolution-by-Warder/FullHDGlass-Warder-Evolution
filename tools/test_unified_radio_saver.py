@@ -167,6 +167,25 @@ class ControllerChecks(unittest.TestCase):
         self.assertFalse(self.opened)
         ctrl.close()
 
+    def test_image_native_saver_is_temporarily_suspended(self):
+        calls = []
+        native_timer = types.SimpleNamespace(stop=lambda: calls.append("stop"))
+        native_screen = types.SimpleNamespace(
+            shown=True, hide=lambda: calls.append("hide"))
+        self.bar.screenSaverTimer = native_timer
+        self.bar.screenSaver = native_screen
+        self.bar.screenSaverTimerStart = lambda: calls.append("restart")
+        ctrl = self.module.UnifiedRadioSaver(self.bar, self.setting)
+        ctrl.poll()
+        self.assertIn("stop", calls)
+        self.assertIn("hide", calls)
+        self.assertNotIn("restart", calls)
+        self.setting.value = "0"
+        ctrl.poll()
+        self.assertEqual(calls.count("restart"), 1)
+        ctrl.close()
+        self.assertEqual(calls.count("restart"), 1)
+
     def test_switch_station_resets_inactivity(self):
         ctrl = self.module.UnifiedRadioSaver(self.bar, self.setting)
         ctrl.poll()
