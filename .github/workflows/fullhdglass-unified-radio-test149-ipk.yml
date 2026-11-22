@@ -1,0 +1,112 @@
+name: FullHDGlass TEST149 unified RADIO screen saver IPK
+on:
+  push:
+    branches:
+      - feature/unified-radio-screensaver-20261122
+    paths:
+      - .github/workflows/fullhdglass-unified-radio-test149-ipk.yml
+      - tools/build-fullhdglass-unified-radio-test149.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/screenSaver.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSaverController.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSaverLayout.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-skin-test149:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Checkout current TEST149 feature branch
+        uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /assets/warder/downloads/ui/spinners/
+            /assets/warder/channel-picon-build.json
+            /assets/warder/runtime-network-dependencies.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate unified saver and package source
+        run: |
+          set -euo pipefail
+          python3 -B tools/test_unified_radio_saver.py
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          root=Path("source/package-root")
+          count=0
+          for item in root.rglob("*.py"):
+              ast.parse(item.read_text(encoding="utf-8"), filename=str(item), feature_version=(3,9))
+              count+=1
+          assert count>100, count
+          print("Enigma Python 3.9 source parse PASS",count)
+          PY
+          for s in preinst postinst prerm postrm; do sh -n "source/control/$s"; done
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.80"
+
+      - name: Build complete radio screensaver TEST149 IPK
+        run: |
+          set -euo pipefail
+          python3 -B tools/build-fullhdglass-unified-radio-test149.py
+
+      - name: Verify test package content, installer identity and checksum
+        run: |
+          set -euo pipefail
+          cd packages/fullhdglass-unified-radio-test149
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.81-test149_all.ipk.sha256
+          python3 - <<'PY'
+          import io, json, hashlib, subprocess, tarfile
+          from pathlib import Path
+          name="enigma2-plugin-skins-fullhdglass_1.0.81-test149_all.ipk"
+          p=Path(name)
+          meta=json.loads(Path("fullhdglass-1.0.81-test149-manifest.json").read_text())
+          assert p.is_file() and p.stat().st_size < 22*1024*1024
+          assert meta["sha256"]==hashlib.sha256(p.read_bytes()).hexdigest()
+          assert meta["test_only"] and meta["production_modified"] is False
+          assert meta["runtime_version"]=="1.0.81-test149"
+          assert subprocess.check_output(["ar","t",str(p)],text=True).splitlines()==[
+              "debian-binary","control.tar.gz","data.tar.gz"]
+          def entries(part):
+              raw=subprocess.check_output(["ar","p",str(p),part])
+              with tarfile.open(fileobj=io.BytesIO(raw),mode="r:gz") as z:
+                  return {m.name:z.extractfile(m).read() for m in z.getmembers() if m.isfile()}
+          ctl=entries("control.tar.gz")
+          control=ctl["./control"].decode()
+          assert "Version: 1.0.81-test149-1" in control
+          assert "Package: enigma2-plugin-skins-fullhdglass-warder-evolution" in control
+          data=entries("data.tar.gz")
+          root="./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
+          for file in ("plugin.py","screenSaver.py","warderRadioSaverController.py",
+                       "warderRadioSaverLayout.py"):
+              assert root+file in data, file
+          assert data[root+"version"].strip()==b"1.0.81-test149"
+          assert b"radioSaverDelay" in data[root+"plugin.py"]
+          assert b"_is_radio" in data[root+"warderRadioSaverController.py"]
+          assert b"bounded_motion" in data[root+"warderRadioSaverLayout.py"]
+          assert "./usr/share/enigma2/hd_glass17/radio-world/radio-countries-bouquets.zip" not in data
+          print("TEST149 IPK CONTROL/PAYLOAD/SHA VERIFIED",len(data),p.stat().st_size,meta["sha256"])
+          PY
+
+      - name: Upload standalone test-only IPK and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.81-test149-Unified-Radio-Saver-TEST-IPK
+          path: |
+            packages/fullhdglass-unified-radio-test149/enigma2-plugin-skins-fullhdglass_1.0.81-test149_all.ipk
+            packages/fullhdglass-unified-radio-test149/enigma2-plugin-skins-fullhdglass_1.0.81-test149_all.ipk.sha256
+            packages/fullhdglass-unified-radio-test149/fullhdglass-1.0.81-test149-manifest.json
+          if-no-files-found: error
+          retention-days: 30
