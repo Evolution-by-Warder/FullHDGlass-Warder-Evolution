@@ -42,6 +42,11 @@ def prune_inactive(paths_root, active_code, enigma_directory=None,
 
     removed = []
     protected = []
+    def verified(folder, code):
+        try:
+            return packages._owned_country_dir(folder, code)
+        except (OSError, ValueError, UnicodeError, TypeError):
+            return False
     for folder in sorted(parent.iterdir(), key=lambda entry: entry.name):
         cc = folder.name
         if cc == active_code or not COUNTRY.fullmatch(cc):
@@ -50,7 +55,7 @@ def prune_inactive(paths_root, active_code, enigma_directory=None,
             return {'changed': bool(removed), 'skipped': 'country-superseded',
                     'removed': removed, 'protected': protected}
         # Names alone NEVER authorize deletion. Only own SHA-signed PNG files.
-        if not packages._owned_country_dir(folder, cc):
+        if not verified(folder, cc):
             protected.append(cc)
             continue
 
@@ -61,7 +66,7 @@ def prune_inactive(paths_root, active_code, enigma_directory=None,
         quarantine.rmdir()
         try:
             os.replace(str(folder), str(quarantine))
-            if not still_active() or not packages._owned_country_dir(quarantine, cc):
+            if not still_active() or not verified(quarantine, cc):
                 if not folder.exists():
                     os.replace(str(quarantine), str(folder))
                 protected.append(cc)
