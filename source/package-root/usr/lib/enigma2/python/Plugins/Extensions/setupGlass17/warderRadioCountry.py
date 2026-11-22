@@ -1047,17 +1047,13 @@ if __name__ == '__main__':
     try:
         # World and country ZIP downloads may need longer than one online page.
         # These commands are used only by subprocesses, never on the GUI thread.
-        bulk = sys.argv[1:2] in (['--sync-world'], ['--logos-world'], ['--logos-online'])
-        signal.alarm(240 if bulk else 90)
+        # A large approved original archive (US ~135MB) may need more time
+        # on slow ADSL/HDD receivers. All transfers run off GUI thread.
+        signal.alarm(900 if sys.argv[1:2] == ['--logos-world'] else
+                     300 if sys.argv[1:2] == ['--sync-world'] else 90)
         os.nice(10)
         if sys.argv[1:] == ['--bootstrap']:
             result = bootstrap()
-        elif sys.argv[1:] == ['--refresh']:
-            result = refresh()
-            if result.get('country') and result.get('changed'):
-                from Plugins.Extensions.setupGlass17 import warderRadioCountryBouquets
-                result['individual_bouquet'] = warderRadioCountryBouquets.update_from_online_country(
-                    DIRECTORY, result['country'])
         elif sys.argv[1:] == ['--diagnose']:
             result = diagnose()
         elif len(sys.argv) == 4 and sys.argv[1] == '--activate-world':
@@ -1078,29 +1074,21 @@ if __name__ == '__main__':
         elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
             from Plugins.Extensions.setupGlass17 import warderRadioSingleCountry
             result = warderRadioSingleCountry.sync(Path(sys.argv[2]), DIRECTORY)
-        elif len(sys.argv) == 4 and sys.argv[1] in ('--logos-world', '--logos-online'):
+        elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
             code, root = sys.argv[2], Path(sys.argv[3])
             if not COUNTRY_RE.fullmatch(code):
                 sys.exit(2)
-            from Plugins.Extensions.setupGlass17 import warderRadioOnlineLogos
             from Plugins.Extensions.setupGlass17 import warderRadioCountryCleanup
             inactive = warderRadioCountryCleanup.prune_inactive(root, code, DIRECTORY)
             if inactive.get('skipped') == 'country-superseded':
-                print(json.dumps({'changed': False, 'skipped': 'country-superseded'}))
-                sys.exit(0)
-            if sys.argv[1] == '--logos-online':
-                result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
+                result = {'changed': False, 'skipped': 'country-superseded'}
             else:
                 from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
-                try:
-                    result = warderRadioBundleFetch.sync_selected_logos(root, DIRECTORY, code)
-                except Exception as error:
-                    from urllib.error import HTTPError
-                    if not isinstance(error, HTTPError) or error.code != 404:
-                        raise
-                    result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
-                if result.get('skipped') in ('logos-not-ready', 'world-update-needed'):
-                    result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
+                # Only the SHA-pinned approved country original ZIP is
+                # permitted. On a network error keep the previous state;
+                # NEVER silently revert to thousands of legacy API images.
+                result = warderRadioBundleFetch.sync_selected_logos(
+                    root, DIRECTORY, code)
         else:
             sys.exit(2)
         print(json.dumps(result, ensure_ascii=False))
