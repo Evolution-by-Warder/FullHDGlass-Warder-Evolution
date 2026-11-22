@@ -28,6 +28,15 @@ required_saver = {plugin + "/" + name for name in (
 base.base.mod.REQUIRED |= required_saver
 base.base.more.update(required_saver)
 
+# The TEST147 builder is intentionally reused, but its public package
+# description must identify this as the TEST148 saver receiver trial.
+_control = base.base.mod.check_sources
+def _test148_control():
+    return _control().replace(
+        "Full skin TEST147 - external radio catalog and safe opkg upgrade",
+        "Full skin TEST148 - unified RADIO OLED saver receiver trial")
+base.base.mod.check_sources = _test148_control
+
 
 def main():
     # All tests below must be run with the pinned branch payload, not a
