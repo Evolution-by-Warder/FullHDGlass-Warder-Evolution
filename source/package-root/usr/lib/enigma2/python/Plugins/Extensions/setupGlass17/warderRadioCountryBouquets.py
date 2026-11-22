@@ -202,7 +202,9 @@ def selected_country(directory):
 def remember_selection(directory,code):
     folder=Path(directory)
     owner=_read(folder/OWNER)
-    if owner is None or filename(code) not in owner['files']:
+    if owner is None:
+        return False
+    if code is not None and filename(code) not in owner['files']:
         return False
     old=selected_country(folder)
     if old==code:return False
