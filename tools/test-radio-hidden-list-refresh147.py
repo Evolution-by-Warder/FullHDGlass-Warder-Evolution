@@ -43,6 +43,7 @@ class ListWidget:
 class ChannelSelection:
     def __init__(self,events,mode=1,path=None,shown=False):
         self.events=events;self.mode=mode;self.shown=shown
+        self.onShown=[]
         self.path=path or 'FROM BOUQUET "'+live.FILE+'" ORDER BY bouquet'
         self.servicelist=ListWidget(events)
     def getCurrentMode(self):return self.mode
@@ -141,6 +142,53 @@ class Tests(unittest.TestCase):
         with InfoBarModules(radio):
             self.assertTrue(ctrl._refresh_visible_radio_list())
         self.assertEqual(events,['resetRoot','goTop'])
+
+    def test_hidden_tv_mode_refreshes_only_when_radio_list_is_reopened(self):
+        events=[]
+        radio=ChannelSelection(events,mode=0,shown=False)
+        ctrl=self.controller(events)
+        with tempfile.TemporaryDirectory() as t:
+            base=Path(t)
+            (base/live.FILE).write_text('#NAME Warder Radio Live\\n')
+            with patch.object(live,'DIRECTORY',base),InfoBarModules(radio):
+                ctrl.finished({'changed':True,'country':'US','local':True,'first_page':True})
+                self.assertEqual(events.count('resetRoot'),0)
+                self.assertEqual(len(radio.onShown),1)
+                # OpenATV's persistent list was kept in TV mode by native
+                # cancel(). As soon as Radio is reopened it must reload US.
+                radio.mode=1
+                radio.shown=True
+                for callback in list(radio.onShown):
+                    callback()
+                self.assertEqual(events.count('resetRoot'),1)
+                self.assertEqual(radio.servicelist.country,'United States')
+                self.assertEqual(radio.onShown,[])
+
+    def test_tv_onshown_is_ignored_until_radio_mode(self):
+        events=[]
+        radio=ChannelSelection(events,mode=0,shown=False)
+        ctrl=self.controller(events)
+        with InfoBarModules(radio):
+            self.assertTrue(ctrl._arm_radio_list_refresh_on_show())
+            for callback in list(radio.onShown):
+                callback()
+            self.assertEqual(events,[])
+            self.assertEqual(len(radio.onShown),1)
+            radio.mode=1
+            for callback in list(radio.onShown):
+                callback()
+            self.assertEqual(events,['resetRoot','goTop'])
+            self.assertEqual(radio.onShown,[])
+
+    def test_exit_removes_one_shot_native_radio_hook(self):
+        events=[]
+        radio=ChannelSelection(events,mode=1,shown=False)
+        ctrl=self.controller(events)
+        with InfoBarModules(radio):
+            self.assertTrue(ctrl._arm_radio_list_refresh_on_show())
+            self.assertEqual(len(radio.onShown),1)
+            ctrl._disarm_radio_list_refresh_on_show()
+            self.assertEqual(radio.onShown,[])
 
     def test_only_list_in_active_radio_mode_reloaded_deduplicated(self):
         events=[];radio=ChannelSelection(events,shown=False)
