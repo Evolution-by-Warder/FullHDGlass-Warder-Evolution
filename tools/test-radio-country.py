@@ -965,14 +965,14 @@ class CountryTests(unittest.TestCase):
             selected = csel(live.FILE)
             self.assertTrue(country._is_live_bouquet_selected(selected))
             actions = []
-            with patch.object(country, 'open_country_selector', lambda x: actions.append(x)):
+            with patch.object(country, 'open_country_selector', lambda x, **kw: actions.append((x, kw.get('channel_selection')))):
                 screen = FakeMenu(session, selected)
                 rows = screen['menu'].getList()
                 self.assertEqual([x[0][0] for x in rows],
                                  ['Settings', 'Choose country (Warder Radio Live)',
                                   'Add Bouquet', 'Rename Entry'])
                 rows[1][0][1]()
-                self.assertEqual(actions, [session])
+                self.assertEqual(actions, [(session, selected)])
                 self.assertTrue(screen.closed)
             other = FakeMenu(session, csel('userbouquet.another.radio'))
             self.assertEqual(len(other['menu'].getList()), 3)
