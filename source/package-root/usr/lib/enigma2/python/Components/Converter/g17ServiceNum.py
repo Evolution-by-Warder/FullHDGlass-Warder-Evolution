@@ -83,10 +83,31 @@ class g17ServiceNum(Converter, object):
 				ref = service
 			if info is None:
 				return "Unknown Channel"
-			name = ref and info.getName(ref)
-			if name is None:
-				name = info.getName()					
-			return "%s%s%s" % (self.isEnaNumber(), self.isEnaSat(ref, info), name.replace('\xc2\x86', '').replace('\xc2\x87', ''))
+			# An IPTV service may have a playlist name even if its decoder
+			# temporarily exposes an empty native name.
+			try:
+				name = info.getName(ref) if ref is not None else info.getName()
+			except Exception:
+				name = None
+			if not name:
+				try:
+					current_ref = self.source.serviceref
+					name = current_ref.getName() if current_ref is not None else None
+				except Exception:
+					name = None
+			if not name:
+				name = "Unknown Channel"
+			# Channel-number lookup traverses bouquets and can fail for IPTV
+			# (4097/5001/5002). It must never suppress the service name.
+			try:
+				number = self.isEnaNumber()
+			except Exception:
+				number = ""
+			try:
+				platform = self.isEnaSat(ref, info)
+			except Exception:
+				platform = ""
+			return "%s%s%s" % (number, platform, name.replace('\\xc2\\x86', '').replace('\\xc2\\x87', ''))
 		elif self.type == self.NUMBERANDNAMEEVENT:
 			num = ""
 			name = "Unknown Channel"
