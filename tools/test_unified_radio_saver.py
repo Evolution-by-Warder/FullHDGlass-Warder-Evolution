@@ -61,7 +61,7 @@ class LayoutChecks(unittest.TestCase):
 class StaticChecks(unittest.TestCase):
     def test_every_modified_python_file_parses(self):
         for file in ("plugin.py", "screenSaver.py", "warderRadioSaverController.py",
-                     "warderRadioSaverLayout.py"):
+                     "warderRadioSaverLayout.py", "warderRadioRds.py"):
             with self.subTest(file=file):
                 ast.parse((PLUGIN / file).read_text(encoding="utf-8"))
 
@@ -122,6 +122,70 @@ class StaticChecks(unittest.TestCase):
         self.assertEqual((first.cancels, third.cancels), (1, 1))
         self.assertEqual((radio.saves, radio.cancels), (0, 0))
         self.assertEqual(writes, [("/tmp/hdg17.conf", "First: first\nThird: third\n")])
+
+
+
+class RadioRdsChecks(unittest.TestCase):
+    def setUp(self):
+        spec = importlib.util.spec_from_file_location(
+            "warderRadioRdsTest", PLUGIN / "warderRadioRds.py")
+        self.rds = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.rds)
+        self.fake_enigma = types.SimpleNamespace(
+            iRdsDecoder=types.SimpleNamespace(RtpText=101, RadioText=102))
+        self.patch_enigma = patch.dict(sys.modules, {"enigma": self.fake_enigma})
+        self.patch_enigma.start()
+
+    def tearDown(self):
+        self.patch_enigma.stop()
+
+    def _service(self, rtp="", radio="", errors=None):
+        mapping = {101: rtp, 102: radio}
+        class FakeDecoder:
+            def getText(self, kind):
+                if errors == kind:
+                    raise RuntimeError("Invalid native RDS data")
+                return mapping[kind]
+        return types.SimpleNamespace(rdsDecoder=lambda: FakeDecoder())
+
+    def test_openatv_rtplus_real_title_artist_order(self):
+        # OpenATV's native decoder emits title followed by (artist).
+        fields = self.rds.native_rds(self._service(
+            rtp="Bestseller (BANKET)", radio="Station advertisement"))
+        self.assertEqual(fields, ("BANKET", "Bestseller", "", ""))
+        fields = self.rds.native_rds(self._service(
+            rtp="Oldies neu entdecken (Schwarzwaldradio)"))
+        self.assertEqual(fields, ("Schwarzwaldradio", "Oldies neu entdecken", "", ""))
+
+    def test_lone_rtplus_title_is_not_invented_artist(self):
+        self.assertEqual(self.rds.native_rds(self._service(rtp="Bestseller")),
+                         ("", "Bestseller", "", ""))
+
+    def test_plain_radio_text_not_mislabeled_as_song(self):
+        self.assertEqual(self.rds.native_rds(self._service(
+            radio="You are listening to Fun Radio Z")),
+            ("", "", "You are listening to Fun Radio Z", "RDS TEXT"))
+
+    def test_no_decoder_and_failed_source_are_safe(self):
+        self.assertEqual(self.rds.native_rds(None), ("", "", "", ""))
+        self.assertEqual(self.rds.native_rds(types.SimpleNamespace(
+            rdsDecoder=lambda: None)), ("", "", "", ""))
+        self.assertEqual(self.rds.native_rds(self._service(
+            radio="Good music all day", errors=101)),
+            ("", "", "Good music all day", "RDS TEXT"))
+
+    def test_saver_uses_rds_only_on_native_radio(self):
+        tree = ast.parse((PLUGIN / "screenSaver.py").read_text(encoding="utf-8"))
+        cls = next(node for node in tree.body if isinstance(node, ast.ClassDef)
+                   and node.name == "ScreenSaverScreen")
+        refresh = next(node for node in cls.body if isinstance(node, ast.FunctionDef)
+                       and node.name == "_refresh")
+        source = ast.unparse(refresh)
+        self.assertIn("native_rds(service)", source)
+        self.assertIn('song_caption = "RDS TEXT"', source)
+        self.assertIn("current_song(service, ref)", source)
+        self.assertIn("native_song(service)", source)
+        self.assertIn("if rds_artist and rds_title:", source)
 
 
 class ControllerChecks(unittest.TestCase):
