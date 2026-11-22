@@ -14,6 +14,12 @@ base.VERSION=VERSION
 base.mod.RUNTIME_VERSION=VERSION
 base.mod.PACKAGE_VERSION=VERSION+"-1"
 base.mod.OUT_DIR=ROOT/"packages/fullhdglass-all-fixes-test144"
+_source_control=base.mod.check_sources
+def _clean_control_label():
+    return _source_control().replace(
+        "RADIO LIVE TEST138 - receiver trial",
+        "Full skin TEST144 - external radio catalog and safe opkg upgrade")
+base.mod.check_sources=_clean_control_label
 plugin=base.mod.PLUGIN
 extras={plugin+"/"+name for name in (
   "warderRadioCountry.py","warderRadioSingleCountry.py",
