@@ -173,7 +173,7 @@ class Tests(unittest.TestCase):
         from Plugins.Extensions.setupGlass17 import warderRadioPackages as packages
         one=load_fixture('test-radio-packages.py').example
         rows,_=one(src,'FR','France')
-        result=packages.install_logos(src,'FR',self.paths/'picon',require_external=False)
+        result=packages.install_country_logos(src,'FR',self.paths/'picon',require_external=False)
         self.assertEqual(result['logos'],3)
         stem=rows[0]['stem']
         live._controller=SimpleNamespace(local_world_sha='a'*64,
@@ -181,7 +181,7 @@ class Tests(unittest.TestCase):
         reference=stem.replace('_',':')+':https%3A//example.org/FR'
         found=channel.find_picon(reference,str(self.paths),lambda s:s,
             lambda ref:'', lambda name:name)
-        self.assertEqual(found,str(self.paths/'picon'/'radio'/(stem+'.png')))
+        self.assertEqual(found,str(self.paths/'picon'/'radio'/'FR'/(stem+'.png')))
         # User-custom picons override any radio-zip logo.
         custom=self.root/'own'
         custom.mkdir()
