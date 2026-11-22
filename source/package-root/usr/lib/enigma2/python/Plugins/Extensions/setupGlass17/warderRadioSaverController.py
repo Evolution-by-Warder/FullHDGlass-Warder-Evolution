@@ -7,11 +7,25 @@ the radio plugin's own saver, playback, or the user's channel list.
 import time
 
 from enigma import eTimer, eActionMap
-from Components.Converter.WarderRadioOnly import is_radio_reference
+from Components.Converter.WarderRadioOnly import is_radio_reference, is_native_dab
 from .warderRadioSaverLayout import delay_seconds
 from .screenSaver import ScreenSaverScreen
 
 _controller = None
+
+
+def _is_radio(ref):
+    if ref is None:
+        return False
+    if is_native_dab(ref) or is_radio_reference(ref):
+        return True
+    # Some images' ServiceReference.isRadioServiceReference does not know
+    # IPTV radio (4097/5001) or DAB; service field 2 is the radio marker.
+    try:
+        fields = ref.toString().split(":")
+        return len(fields) > 2 and fields[2].upper() in ("2", "A")
+    except Exception:
+        return False
 
 
 class UnifiedRadioSaver:
@@ -87,7 +101,7 @@ class UnifiedRadioSaver:
         ref = self._current_ref()
         try:
             fingerprint = ref.toString() if ref is not None else ""
-            radio = bool(is_radio_reference(ref))
+            radio = _is_radio(ref)
         except Exception:
             fingerprint, radio = "", False
         now = time.monotonic()
