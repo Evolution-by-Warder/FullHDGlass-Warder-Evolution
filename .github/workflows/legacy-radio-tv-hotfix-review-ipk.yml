@@ -56,9 +56,9 @@ jobs:
               for member in archive:
                   raw = archive.extractfile(member).read() if member.isfile() else None
                   if member.name.lstrip("./") == "control":
-                      assert b"Version: 1.0.83-1\\n" in raw
-                      raw = raw.replace(b"Version: 1.0.83-1\\n",
-                                        b"Version: 1.0.83-2\\n", 1)
+                      assert b"Version: 1.0.83-1\n" in raw
+                      raw = raw.replace(b"Version: 1.0.83-1\n",
+                                        b"Version: 1.0.83-2\n", 1)
                       member.size = len(raw)
                       changed = True
                   members.append((member, raw))
@@ -73,7 +73,7 @@ jobs:
           result = folder / "enigma2-plugin-skins-fullhdglass_1.0.83-2_all.ipk"
           with tempfile.TemporaryDirectory() as td:
               wd = Path(td)
-              (wd / "debian-binary").write_bytes(b"2.0\\n")
+              (wd / "debian-binary").write_bytes(b"2.0\n")
               (wd / "control.tar.gz").write_bytes(buf.getvalue())
               (wd / "data.tar.gz").write_bytes(data)
               subprocess.run(["ar", "rcsD", str(result.resolve()),
@@ -83,9 +83,9 @@ jobs:
           with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(
                   ["ar", "p", str(result), "control.tar.gz"])), mode="r:gz") as archive:
               control_text = archive.extractfile("./control").read()
-          assert b"Version: 1.0.83-2\\n" in control_text
+          assert b"Version: 1.0.83-2\n" in control_text
           digest = hashlib.sha256(result.read_bytes()).hexdigest()
-          result.with_suffix(".ipk.sha256").write_text(digest + "  " + result.name + "\\n")
+          result.with_suffix(".ipk.sha256").write_text(digest + "  " + result.name + "\n")
           print("REVIEW ONLY", result, digest)
           PY
           (cd packages/legacy-radio-tv-review && sha256sum -c *.sha256)
