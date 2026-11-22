@@ -181,13 +181,14 @@ class Tests(unittest.TestCase):
         self.assertFalse(country._close_radio_list_after_country_choice(Session(radio)))
         self.assertEqual(events,[])
 
-    def test_hidden_or_missing_radio_is_not_force_closed(self):
+    def test_hidden_radio_is_closed_only_when_explicitly_selected_in_context(self):
         events=[]
         radio=ChannelSelectionRadio(events,shown=False)
         session=Session(radio)
-        self.assertFalse(country._close_radio_list_after_country_choice(session,radio))
+        self.assertFalse(country._close_radio_list_after_country_choice(session))
+        self.assertTrue(country._close_radio_list_after_country_choice(session,radio))
         self.assertFalse(country._close_radio_list_after_country_choice(Session()))
-        self.assertEqual(events,[])
+        self.assertEqual(events,['native-radio-cancel'])
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
