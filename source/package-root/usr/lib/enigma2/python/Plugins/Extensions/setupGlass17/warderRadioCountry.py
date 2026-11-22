@@ -1072,35 +1072,8 @@ if __name__ == '__main__':
             from Plugins.Extensions.setupGlass17 import warderRadioWorld
             result = warderRadioWorld.diagnose(Path(sys.argv[2]), DIRECTORY)
         elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
-            from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
-            from Plugins.Extensions.setupGlass17 import warderRadioCountryBouquets
-            radio_root = Path(sys.argv[2])
-            from Plugins.Extensions.setupGlass17 import warderRadioBundledWorld
-            local = warderRadioBundledWorld.sync_world(radio_root)
-            if local.get('skipped') in ('missing-bundled-world',):
-                try:
-                    result = warderRadioBundleFetch.sync_world(
-                        radio_root, state_directory=DIRECTORY)
-                except Exception as error:
-                    # Only missing TEST feed uses public Radio Browser; bad
-                    # hashes, redirects or unexpected API data fail closed.
-                    from urllib.error import HTTPError
-                    if not isinstance(error, HTTPError) or error.code != 404:
-                        raise
-                    alternate=warderRadioCountryBouquets.bootstrap_online(
-                        radio_root, DIRECTORY)
-                    result={'changed':bool(alternate.get('changed')),
-                            'skipped':'test-feed-unpublished',
-                            'pending_source':True,
-                            'separate_country_bouquets':alternate}
-            else:
-                result=local
-            if (result.get('changed') or result.get('skipped') in
-                    ('already-current', 'not-due')):
-                separate = warderRadioCountryBouquets.publish(radio_root, DIRECTORY)
-                result['separate_country_bouquets'] = separate
-                if separate.get('changed'):
-                    result['changed'] = True
+            from Plugins.Extensions.setupGlass17 import warderRadioSingleCountry
+            result = warderRadioSingleCountry.sync(Path(sys.argv[2]), DIRECTORY)
         elif len(sys.argv) == 4 and sys.argv[1] in ('--logos-world', '--logos-online'):
             code, root = sys.argv[2], Path(sys.argv[3])
             if not COUNTRY_RE.fullmatch(code):
