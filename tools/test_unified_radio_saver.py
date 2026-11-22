@@ -121,7 +121,7 @@ class StaticChecks(unittest.TestCase):
         self.assertEqual((first.saves, third.saves), (1, 1))
         self.assertEqual((first.cancels, third.cancels), (1, 1))
         self.assertEqual((radio.saves, radio.cancels), (0, 0))
-        self.assertEqual(writes, [("/tmp/hdg17.conf", "First: first\\nThird: third\\n")])
+        self.assertEqual(writes, [("/tmp/hdg17.conf", "First: first\nThird: third\n")])
 
 
 class ControllerChecks(unittest.TestCase):
