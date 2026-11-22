@@ -35,13 +35,6 @@ class ModernDescriptor(LegacyDescriptor):
         self.options = kwargs
 
 
-class NoContextDescriptor(LegacyDescriptor):
-    pass
-
-
-del NoContextDescriptor.WHERE_CHANNEL_CONTEXT_MENU
-
-
 class TestDescriptorCompatibility(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
