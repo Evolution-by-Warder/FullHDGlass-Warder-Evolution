@@ -1103,45 +1103,67 @@ class Controller:
                 pass
 
     def _refresh_visible_radio_list(self, reset_to_top=True):
-        """Refresh an open Enigma2 radio list after a progressive country update.
+        """Invalidate native radio ServiceList even when the window is HIDDEN.
 
-        DVBDB.reloadBouquets alone does not invalidate the visible ServiceList
-        root. The selection window otherwise keeps showing the old country's
-        entries until it is closed/reopened.
+        OpenATV keeps InfoBar.instance.servicelist alive after its radio
+        ChannelSelection closes. The old check incorrectly required
+        session.current_dialog to be visible ChannelSelectionRadio, so a
+        finished country switch left C++ ServiceList showing the OLD country
+        until the user entered Warder Radio Live again. Do not change the
+        active service, native radio path, bouquet selection, TV mode or
+        personal bouquets. Only reset the existing Warder radio list ROOT.
         """
         self.radio_refresh_timer = None
-        if self.closed or self.session is None:
+        if self.closed:
             return False
         try:
-            dialog = getattr(self.session, 'current_dialog', None)
-            if dialog is None or not getattr(dialog, 'shown', False):
-                return False
-            if not any(cls.__name__ == 'ChannelSelectionRadio'
-                       for cls in type(dialog).__mro__):
-                return False
-            root = dialog.getRoot()
-            path = root.getPath() if root is not None else ''
-            if not isinstance(path, str) or not (
-                    'FROM BOUQUET "' + FILE + '"' in path or
-                    'FROM BOUQUET "bouquets.radio"' in path):
-                return False
-            listing = dialog.servicelist
-            if getattr(listing, 'instance', None) is None:
-                return False
-            # Enigma2 resetRoot preserves the OLD numeric row index. While
-            # background pages are alphabetically inserted, retain the same
-            # selected service instead. Only a new country's FIRST page
-            # should place the selection at the beginning of the list.
-            selected = None
-            if not reset_to_top and hasattr(listing, 'getCurrent'):
-                selected = listing.getCurrent()
-            listing.resetRoot()
-            if reset_to_top and 'FROM BOUQUET "' + FILE + '"' in path:
-                listing.goTop()
-            elif selected is not None and hasattr(listing, 'setCurrent'):
-                listing.setCurrent(selected, adjust=False)
-            return True
-        except (AttributeError, OSError, RuntimeError, TypeError):
+            dialogs = []
+            session = getattr(self, 'session', None)
+            if session is not None:
+                dialogs.append(getattr(session, 'current_dialog', None))
+            try:
+                from Screens.InfoBar import InfoBar
+                infobar = InfoBar.instance
+                if infobar is not None:
+                    dialogs.append(getattr(infobar, 'servicelist', None))
+            except (ImportError, AttributeError):
+                pass
+            seen = set()
+            updated = False
+            for dialog in dialogs:
+                if dialog is None or id(dialog) in seen:
+                    continue
+                seen.add(id(dialog))
+                classes = {cls.__name__ for cls in type(dialog).__mro__}
+                if not ({'ChannelSelection', 'ChannelSelectionRadio'} & classes):
+                    continue
+                if 'ChannelSelection' in classes:
+                    mode = (dialog.getCurrentMode()
+                            if callable(getattr(dialog, 'getCurrentMode', None))
+                            else getattr(dialog, 'mode', None))
+                    if mode != 1:
+                        continue  # MODE_TV=0; never mutate a TV channel list.
+                root = dialog.getRoot()
+                path = root.getPath() if root is not None else ''
+                if (not isinstance(path, str) or
+                        'FROM BOUQUET "' + FILE + '"' not in path):
+                    continue  # Do not change other user bouquets or root.
+                listing = getattr(dialog, 'servicelist', None)
+                if listing is None:
+                    continue
+                reset = getattr(listing, 'resetRoot', None)
+                if not callable(reset):
+                    continue
+                # Always requery current eDVBDB bouquet data, including when
+                # this persistent native dialog is HIDDEN after ChoiceBox.
+                reset()
+                if reset_to_top:
+                    go_top = getattr(listing, 'goTop', None)
+                    if callable(go_top):
+                        go_top()
+                updated = True
+            return updated
+        except (AttributeError, OSError, RuntimeError, TypeError, ValueError):
             return False
 
     def finished(self, result):
