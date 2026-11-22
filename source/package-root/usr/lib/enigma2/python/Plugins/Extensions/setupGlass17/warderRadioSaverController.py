@@ -38,6 +38,7 @@ class UnifiedRadioSaver:
         self.last_service = None
         self.closed = False
         self.bound = False
+        self.native_suspended = False
         self._watch = eTimer()
         try:
             self._watch_conn = self._watch.timeout.connect(self.poll)
@@ -88,6 +89,32 @@ class UnifiedRadioSaver:
         self.dialog = None
         self.last_activity = time.monotonic()
 
+    def _suspend_native(self):
+        # OpenATV can run its own InfoBarScreenSaver for audio services.
+        # Temporarily pause only this InfoBar timer while our saver owns radio.
+        timer = getattr(self.infobar, "screenSaverTimer", None)
+        if timer is None:
+            return
+        try:
+            timer.stop()
+            self.native_suspended = True
+            native = getattr(self.infobar, "screenSaver", None)
+            if native is not None and getattr(native, "shown", False):
+                native.hide()
+        except Exception:
+            pass
+
+    def _restore_native(self, restart=True):
+        if not self.native_suspended:
+            return
+        self.native_suspended = False
+        starter = getattr(self.infobar, "screenSaverTimerStart", None)
+        if restart and callable(starter):
+            try:
+                starter()
+            except Exception:
+                pass
+
     def _current_ref(self):
         try:
             return self.session.nav.getCurrentlyPlayingServiceReference()
@@ -113,7 +140,9 @@ class UnifiedRadioSaver:
             self._dismiss()
         if not radio or not delay:
             self._dismiss()
+            self._restore_native()
             return
+        self._suspend_native()
         if self.dialog is not None:
             if self.session.current_dialog is not self.dialog:
                 self._dismiss()
@@ -138,6 +167,7 @@ class UnifiedRadioSaver:
         self.closed = True
         self._dismiss()
         self._watch.stop()
+        self._restore_native(restart=False)
         if self.bound:
             try:
                 self._actions.unbindAction("", self._key)
