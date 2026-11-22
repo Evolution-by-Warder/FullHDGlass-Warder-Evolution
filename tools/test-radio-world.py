@@ -140,6 +140,29 @@ class Tests(unittest.TestCase):
         self.assertEqual((self.paths/'picon/TV.png').read_bytes(),b'tv-unmodified')
         self.assertEqual(world.activate_from_world(self.paths,'DE',self.etc)['country'],'DE')
 
+    def test_diagnostics_verify_only_active_country_logo_ownership(self):
+        from Plugins.Extensions.setupGlass17 import warderRadioPackages as packs
+        world.install_world(self.archive, self.digest, self.paths, False)
+        country.bootstrap(self.etc)
+        world.activate_from_world(self.paths, 'FR', self.etc)
+        source = self.root / 'source'
+        result = packs.install_country_logos(
+            source, 'FR', self.paths / 'picon', require_external=False)
+        self.assertTrue(result['changed'])
+        # A second independent country must not change the active report.
+        packs.install_country_logos(
+            source, 'ET', self.paths / 'picon', require_external=False)
+        report = world.diagnose(self.paths, self.etc)
+        self.assertTrue(report['world_owned_integrity_valid'])
+        self.assertTrue(report['radio_picons_owned_integrity_valid'])
+        self.assertEqual(report['radio_logo_country'], 'FR')
+        self.assertEqual(report['radio_png_count'], 3)
+        # User-edited artwork cannot be silently reported as trusted.
+        logo = next((self.paths / 'picon' / 'radio' / 'FR').glob('*.png'))
+        logo.write_bytes(b'user modified logo')
+        self.assertFalse(world.diagnose(
+            self.paths, self.etc)['radio_picons_owned_integrity_valid'])
+
     def test_external_mount_required_in_production(self):
         report=world.install_world(self.archive,self.digest,self.paths)
         self.assertEqual(report['skipped'],'unsafe-storage')
