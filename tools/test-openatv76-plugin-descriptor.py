@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 """Exercise the real plugin entry-point against old and new Descriptor APIs.
 
-OpenATV 7.6 may expose WHERE_CHANNEL_CONTEXT_MENU without accepting the
+OpenATV 7.6 and OpenPLi 9.2 can expose WHERE_CHANNEL_CONTEXT_MENU without accepting the
 serviceFilter constructor keyword. The optional country action must not
 prevent FullHDGlass itself from loading.
 """
 import ast
+import os
 from pathlib import Path
 import sys
 from types import ModuleType, SimpleNamespace
@@ -80,6 +81,38 @@ class TestDescriptorCompatibility(unittest.TestCase):
         finally:
             sys.modules.pop(country.__name__, None)
             sys.modules.pop(name, None)
+
+    def test_actual_upstream_descriptor_signature_when_provided(self):
+        filename = os.environ.get("WARDER_UPSTREAM_PLUGIN", "")
+        if not filename:
+            self.skipTest("upstream Plugin.py not provided")
+        tree = ast.parse(Path(filename).read_text(encoding="utf-8"), filename=filename)
+        native = next(node for node in tree.body
+                      if isinstance(node, ast.ClassDef)
+                      and node.name == "PluginDescriptor")
+        constructor = next(node for node in native.body
+                           if isinstance(node, ast.FunctionDef)
+                           and node.name == "__init__")
+        # This is the real 7.6 / 9.2 constructor API, not only our fake:
+        # both expose WHERE_CHANNEL_CONTEXT_MENU without serviceFilter.
+        arguments = [arg.arg for arg in (constructor.args.posonlyargs +
+                     constructor.args.args + constructor.args.kwonlyargs)]
+        self.assertNotIn("serviceFilter", arguments)
+        self.assertIsNone(constructor.args.kwarg)
+        self.assertTrue(any(
+            isinstance(node, ast.Assign) and any(
+                isinstance(target, ast.Name) and
+                target.id == "WHERE_CHANNEL_CONTEXT_MENU"
+                for target in node.targets)
+            for node in native.body), "Native context menu must be present")
+
+
+    def test_openpli92_legacy_descriptor_still_loads_main_plugin(self):
+        descriptors = self._run(LegacyDescriptor)
+        self.assertEqual(len(descriptors), 3)
+        self.assertFalse(any(
+            "serviceFilter" in d.options for d in descriptors))
+
 
     def test_openatv76_legacy_descriptor_still_loads_main_plugin(self):
         descriptors = self._run(LegacyDescriptor)
