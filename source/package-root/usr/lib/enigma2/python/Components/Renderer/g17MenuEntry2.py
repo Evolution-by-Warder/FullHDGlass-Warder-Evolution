@@ -71,6 +71,19 @@ class g17MenuEntry2(Renderer):
 					pixpath = self.default
 					Writelog(self.source.entryName + self.pict + '.png')
 			except: pass
+			# Use theme-specific artwork only when this actual menu entry exists;
+			# downloaded user artwork always takes precedence.
+			if pixpath == self.default:
+				art = {
+					"warder_radio_mainmenu": "warder_radio.png",
+					"warder_piconhub_mainmenu": "warder_piconhub.png",
+					"warder_gsu_mainmenu": "warder_gsu.png",
+					"warder_fullhdglass_settings": "FHD_Glass17_Setup.png",
+				}.get(str(getattr(self.source, "entryName", "")))
+				if art:
+					candidate = "/usr/share/enigma2/hd_glass17/menu/" + art
+					if fileExists(candidate):
+						pixpath = candidate
 			if self.__last != pixpath:
 				self.__last = pixpath
 				self.instance.setPixmapFromFile(pixpath)					
