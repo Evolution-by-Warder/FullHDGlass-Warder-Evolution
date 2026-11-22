@@ -52,7 +52,7 @@ jobs:
           for name, proof in zip(("bitrate-helper-build.json",
                                   "bitrate-helper-mipsel-build.json",
                                   "bitrate-helper-aarch64-build.json"), audit["builds"]):
-              (out / name).write_text(json.dumps(proof, indent=2) + "\\n")
+              (out / name).write_text(json.dumps(proof, indent=2) + "\n")
           PY
           python3 -B tools/build-release-ipk.py
           python3 - <<'PY'
