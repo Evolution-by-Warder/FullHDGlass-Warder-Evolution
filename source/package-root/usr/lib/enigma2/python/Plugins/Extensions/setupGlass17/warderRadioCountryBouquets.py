@@ -250,7 +250,7 @@ def bootstrap_online(paths_root,enigma_directory,available=None,require_external
     if len(raw)>MAX_INDEX_BYTES or START in raw or END in raw:
         return {'changed':False,'skipped':'country-index-conflict'}
     for code in codes:
-        if (etc/filename(code)).exists() or (etc/filename(code)).is_symlink() or
+        if ((etc/filename(code)).exists() or (etc/filename(code)).is_symlink() or
             filename(code).encode('ascii') in raw):
             return {'changed':False,'skipped':'country-name-conflicts'}
     from . import warderRadioCountry as country
