@@ -1054,6 +1054,10 @@ if __name__ == '__main__':
             result = bootstrap()
         elif sys.argv[1:] == ['--refresh']:
             result = refresh()
+            if result.get('country') and result.get('changed'):
+                from Plugins.Extensions.setupGlass17 import warderRadioCountryBouquets
+                result['individual_bouquet'] = warderRadioCountryBouquets.update_from_online_country(
+                    DIRECTORY, result['country'])
         elif sys.argv[1:] == ['--diagnose']:
             result = diagnose()
         elif len(sys.argv) == 4 and sys.argv[1] == '--activate-world':
@@ -1071,14 +1075,28 @@ if __name__ == '__main__':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
             from Plugins.Extensions.setupGlass17 import warderRadioCountryBouquets
             radio_root = Path(sys.argv[2])
-            result = warderRadioBundleFetch.sync_world(
-                radio_root, state_directory=DIRECTORY)
-            if (result.get('changed') or result.get('skipped') in
-                    ('already-current', 'not-due')):
-                separate = warderRadioCountryBouquets.publish(radio_root, DIRECTORY)
-                result['separate_country_bouquets'] = separate
-                if separate.get('changed'):
-                    result['changed'] = True
+            try:
+                result = warderRadioBundleFetch.sync_world(
+                    radio_root, state_directory=DIRECTORY)
+            except Exception as error:
+                # Only a missing, not-yet-published TEST source is eligible for
+                # the online fallback. SHA and malformed data errors still fail closed.
+                from urllib.error import HTTPError
+                if not isinstance(error, HTTPError) or error.code != 404:
+                    raise
+                alternate=warderRadioCountryBouquets.bootstrap_online(
+                    radio_root, DIRECTORY)
+                result={'changed':bool(alternate.get('changed')),
+                        'skipped':'test-feed-unpublished',
+                        'pending_source':True,
+                        'separate_country_bouquets':alternate}
+            else:
+                if (result.get('changed') or result.get('skipped') in
+                        ('already-current', 'not-due')):
+                    separate = warderRadioCountryBouquets.publish(radio_root, DIRECTORY)
+                    result['separate_country_bouquets'] = separate
+                    if separate.get('changed'):
+                        result['changed'] = True
         elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
             code, root = sys.argv[2], Path(sys.argv[3])
