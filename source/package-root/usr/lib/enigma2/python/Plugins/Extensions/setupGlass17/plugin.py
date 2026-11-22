@@ -1323,7 +1323,10 @@ def Plugins(path, **kwargs):
 					where=PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU,
 					fnc=warderRadioCountry.open_country_selector,
 					serviceFilter=warderRadioCountry.is_live_service))
-			except (ImportError, AttributeError):
+			except (ImportError, AttributeError, TypeError):
+				# OpenATV 7.6 exposes WHERE_CHANNEL_CONTEXT_MENU but its
+				# PluginDescriptor does not accept the serviceFilter keyword.
+				# Skip only this optional entry; never invalidate setupGlass17.
 				pass
 		if _warderOpenPliEpgReady:
 			ret.append(PluginDescriptor(name="FullHDGlass Multi EPG", description=_warderUiText("PROGRAM INFO"), where=[PluginDescriptor.WHERE_EVENTINFO, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=warderOpenPliMultiEpg))
