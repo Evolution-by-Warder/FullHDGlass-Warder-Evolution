@@ -1,3 +1,14 @@
+## 22. 11. 2026 — Integračný audit všetkých 35 vetiev FullHDGlass, PR #131 (iba pracovná vetva)
+
+- **Pôvodných 12 opráv:** na `main` sú zdrojovo integrované podľa prvého dvanásťbodového bloku nižšie. Ostáva platná ostrá verzia `1.0.80`, žiadne zmeny produkčného feedu ani IPK.
+- **Zachovaná súčasná produkcia:** aktuálny `main` `7e72d6e2b6d70eeb095b770d34430b3f53af9a2b` obsahuje novší satelitný katalóg a 11 commitov, ktoré rádiová vývojová vetva nemala. V integračnom strome sú SAT manifesty a SHA256SUMS presne z `main`, bez prepisu.
+- **Zjednotené rádio:** do novej vetvy `integration/fullhdglass-all-approved-radio-20261122` skombinovaný `main` so schválenou rádiovou funkčnou vetvou `feature/unified-radio-screensaver-20261122` (predchodca TEST151). Bezstratový dvojrodičovský integračný commit `f0a3476d1299a9b9b7f91bda4786fbf73b5e8ba8` a [Draft PR #131](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/131) proti `main`; 76 rozdielnych súborov oproti main. PR #124–130 sú jeho predkami a predstavujú neintegrovaný rádio reťazec, nie 7 nezávislých opráv na aplikovanie súčasne.
+- **Staršie PR:** #99 runtime už má main, zostáva test-only rozdiel. #115 mal v `g17MenuEntry2.py` skutočne ešte neprevzatý fallback (integrácia `fe0089c`), následne opravené Enigma2 ID na schválené `1ffaefd` a guard v teste `af55bfa`; ďalšie staré zmeny #115 sa nesmú bez kontroly prehrať cez moderný main.
+- **Testy a najbližšie blokácie:** `test-channel-picon-settings.py` nový `radioSaverDelay` fixture (commit `82573d2`), `test_warder_primetime_placements.py` overuje aktuálnu zhodnú geometriu EPG/Prime Time `60,854 / 1370,40` v ChannelSelection-12 (`f29f56e`), 1.0.79-only Neutrino workflow je historicky podmienený (`39b317f`). Nový kombinovaný [QA run #45021634747 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45021634747), ďalšie OpenATV/OpenPLi a staré golden testy ešte treba overiť a dočistiť.
+- **Podrobný audit:** [docs/INTEGRATION-AUDIT-20261122.md](docs/INTEGRATION-AUDIT-20261122.md), commit `c99a13455fdc2907a2ef3dbecfea07e36cb756db`. **Main, ostrý feed, produkčné picony, tagy a posledný TEST151 IPK ostávajú bezo zmeny**. Žiadne produkčné zlúčenie/publikovanie pred úplným overením a výslovným rozhodnutím vlastníka.
+
+---
+
 ## 22. 11. 2026 — TEST151: logo Warder Radio Live v spoločnom OLED šetriči
 
 - **Fyzický report používateľa:** pri internetovom rádiu Europa 2 (Warder Radio Live) sa v native Radio ServiceList správne zobrazuje modro-červené logo E2, ale nový OLED šetrič ukazuje len názov stanice bez malého piconu; veľký obal aktuálnej skladby funguje. Picony pri klasickom DVB a DAB rádio používateľ potvrdil ako OK. Nezamieňať obal skladby s logom rádia.
