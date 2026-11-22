@@ -9,7 +9,6 @@ import json
 import os
 from pathlib import Path
 import re
-import shutil
 import tempfile
 
 from . import warderRadioWorld as world
@@ -120,8 +119,11 @@ def publish(paths_root,enigma_directory,require_external=True,min_free=MIN_FREE)
         return {'changed':False,'skipped':'modified-managed-block'}
     if existing and not old:
         return {'changed':False,'skipped':'unowned-managed-index'}
-    if not existing and old:
+    if not existing and old and any(not (etc/name).is_file() or
+           digest((etc/name).read_bytes()) != hash for name,hash in current_files.items()):
         return {'changed':False,'skipped':'missing-managed-index'}
+    # A completed but unindexed interrupted stage can be safely finished
+    # only when every ownership-recorded country file remains byte-identical.
     if existing and original.split(START,1)[1].split(END,1)[0] != block(countries).split(START,1)[1].split(END,1)[0]:
         return {'changed':False,'skipped':'modified-managed-index'}
     # Reject unexpected same bouquet names appearing outside our block.
@@ -153,7 +155,7 @@ def publish(paths_root,enigma_directory,require_external=True,min_free=MIN_FREE)
     if etc.stat().st_dev == Path('/').stat().st_dev:
         available=os.statvfs(str(etc))
         free=available.f_bavail*available.f_frsize
-        required=sum(len(data) for data in proposed.values() if not (etc/data).exists())
+        required=sum(len(data) for name,data in proposed.items() if not (etc/name).exists())
         if free < max(min_free,required+8*1024*1024):
             return {'changed':False,'skipped':'flash-space-guard',
                     'required_bytes':required,'free_bytes':free}
