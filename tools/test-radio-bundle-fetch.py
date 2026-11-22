@@ -157,7 +157,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(result['logos'],3)
         self.assertEqual(self.network.calls,[fetch.LATEST_URL,
             fetch.RELEASE_ROOT+self.feed['release_tag']+'/FR.zip'])
-        self.assertEqual(len(list((self.paths/'picon/radio').glob('*.png'))),3)
+        self.assertEqual(len(list((self.paths/'picon/radio/FR').glob('*.png'))),3)
         second=fetch.sync_selected_logos(self.paths,self.etc,'FR',self.network,
                                          require_external=False)
         self.assertEqual(second['skipped'],'already-current')
@@ -181,7 +181,7 @@ class Tests(unittest.TestCase):
         self.assertTrue(result['changed'])
         self.assertEqual(result['logos'],3)
         self.assertEqual(self.network.calls,[fetch.LATEST_URL,old_url])
-        self.assertEqual(len(list((self.paths/'picon/radio').glob('*.png'))),3)
+        self.assertEqual(len(list((self.paths/'picon/radio/FR').glob('*.png'))),3)
         self.assertEqual(fetch._asset(self.feed,'radio-countries-bouquets.zip'),
                          fetch.RELEASE_ROOT+current+'/radio-countries-bouquets.zip')
         with self.assertRaisesRegex(ValueError,'current release'):
@@ -206,7 +206,7 @@ class Tests(unittest.TestCase):
         result=fetch.sync_selected_logos(self.paths,self.etc,'FR',self.network,
                                          require_external=False)
         self.assertTrue(result['changed'])
-        self.assertEqual(len(list((self.paths/'picon/radio').glob('*.png'))),3)
+        self.assertEqual(len(list((self.paths/'picon/radio/FR').glob('*.png'))),3)
 
     def test_background_logo_request_for_old_country_does_not_replace_selection(self):
         fetch.sync_world(self.paths,self.network,require_external=False)
@@ -224,14 +224,14 @@ class Tests(unittest.TestCase):
         world.activate_from_world(self.paths,'FR',self.etc)
         fetch.sync_selected_logos(self.paths,self.etc,'FR',self.network,
                                  require_external=False)
-        original={(p.name,p.read_bytes()) for p in (self.paths/'picon/radio').glob('*.png')}
+        original={(p.name,p.read_bytes()) for p in (self.paths/'picon/radio/FR').glob('*.png')}
         self.network.content.pop(fetch.RELEASE_ROOT+self.feed['release_tag']+'/ET.zip')
         world.activate_from_world(self.paths,'ET',self.etc)
         with self.assertRaises(OSError):
             fetch.sync_selected_logos(self.paths,self.etc,'ET',self.network,
                                      require_external=False)
         self.assertEqual({(p.name,p.read_bytes()) for p in
-                          (self.paths/'picon/radio').glob('*.png')},original)
+                          (self.paths/'picon/radio/FR').glob('*.png')},original)
 
     def test_world_bad_digest_does_not_replace_owned_cache(self):
         fetch.sync_world(self.paths,self.network,require_external=False)
