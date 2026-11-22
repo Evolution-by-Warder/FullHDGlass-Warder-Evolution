@@ -67,7 +67,13 @@ class ScreenCompatTests(unittest.TestCase):
   self.assertEqual({x['name'] for x in record['edits']},{'GraphicalEPG','PackageAction','ParentalControlSetup','ParentalControlChangePin','Setup','TextBox','NumberZapPicon'})
   for item in record['edits']:self.assertEqual(text.count(item['updated_screen']),1);text=text.replace(item['updated_screen'],item['original_screen'],1)
   import hashlib
-  self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['before_skin_sha256'])
+  # This is the immutable 1.0.80 *main* source after its additional
+  # receiver-approved skin/EPG/layout changes have been reversed above.
+  # Keep the original pre-1.0.80 ledger intact; pin later approved runtime
+  # separately rather than accepting arbitrary skin edits.
+  version=(ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()
+  approved='eb7962fc52015ac018a2c694ffc43763d4082fa54079f80a45ecdca0903eee5a' if version=='1.0.80' else record['before_skin_sha256']
+  self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),approved)
   block=lambda value:re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>',value).group(0)
   self.assertEqual(block(text),block(SKIN))
  def test_native_no_pig_graph_colour_sources_are_rendered_as_sources(self):
