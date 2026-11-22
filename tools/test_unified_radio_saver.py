@@ -101,8 +101,8 @@ class ControllerChecks(unittest.TestCase):
             "Components": types.ModuleType("Components"),
             "Components.Converter": types.ModuleType("Components.Converter"),
             "Components.Converter.WarderRadioOnly": types.SimpleNamespace(
-                is_radio_reference=lambda ref: bool(ref and (
-                    ref.kind in ("radio", "dab", "stream")))),
+                is_radio_reference=lambda ref: bool(ref and ref.kind == "radio"),
+                is_native_dab=lambda ref: bool(ref and ref.kind == "dab")),
         }
         self.inject = patch.dict(sys.modules, self.modules)
         self.inject.start()
