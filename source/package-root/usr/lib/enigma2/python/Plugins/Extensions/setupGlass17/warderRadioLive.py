@@ -1294,21 +1294,19 @@ class Controller:
             path = root.getPath() if root is not None else ''
             code = country_bouquets.selected_from_native_path(path)
             if code is not None:
+                # Explicit native folder choice is durable across a later GUI
+                # restart and OSD-language changes. Entering the bouquet is
+                # the user's decision; only that country is activated.
                 country_bouquets.remember_selection(DIRECTORY, code)
                 if code != self.observed_native_country:
                     self.observed_native_country = code
-                    # In the absence of an immutable country-world download,
-                    # populate ONLY the highlighted native country through
-                    # the existing paginated, off-GUI Radio Browser worker.
-                    from . import warderRadioWorld as world
-                    root_dir = _radio_world_root()
-                    if (root_dir is not None and
-                            not world.cached_country(root_dir, code)):
-                        from . import warderRadioCountry as selected
-                        selected.request_country(code, DIRECTORY)
+                    from . import warderRadioCountry as country
+                    if country.active_country(DIRECTORY) != code:
+                        country.request_country(code, DIRECTORY)
                         self.request_refresh()
             else:
-                country_bouquets.remember_selection(DIRECTORY, None)
+                # Leaving the service list MUST NOT erase the preferred
+                # country: the user chose it once and expects it at boot.
                 self.observed_native_country = None
             return code
         except (AttributeError, OSError, ValueError, TypeError):
