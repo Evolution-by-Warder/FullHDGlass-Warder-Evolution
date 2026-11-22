@@ -613,8 +613,12 @@ class LiveTests(unittest.TestCase):
                     controller.enqueue_icon(reference)
                     self.assertEqual(controller.icon_queue[0], stem)
                     controller.check_icon()
-                self.assertEqual(queue, [['--icon', stem, folder]])
-                self.assertIn(stem, controller.icon_requested)
+                # Since country original ZIPs are available, no isolated
+                # per-station Radio Browser HTTP should be started, even
+                # after the external disk becomes available. The separate
+                # country-world worker is responsible for the signed ZIP.
+                self.assertEqual(queue, [])
+                self.assertNotIn(stem, controller.icon_requested)
             finally:
                 controller.close()
 
@@ -694,7 +698,9 @@ class LiveTests(unittest.TestCase):
         self.assertIn('warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py',
                       postinst)
         self.assertIn('"$warder_radio_country" --bootstrap </dev/null >/dev/null 2>&1', postinst)
-        self.assertIn('"$warder_radio_country" --refresh </dev/null >/dev/null 2>&1 &', postinst)
+        # The GUI-start world worker fetches the SHA-verified country
+        # catalogue to external PATHS, never the old 60-station API pages.
+        self.assertNotIn('"$warder_radio_country" --refresh </dev/null >/dev/null 2>&1 &', postinst)
 
     def test_failed_test124_import_can_retry_immediately_on_test125(self):
         state = self.root / live.STATE_FILE
