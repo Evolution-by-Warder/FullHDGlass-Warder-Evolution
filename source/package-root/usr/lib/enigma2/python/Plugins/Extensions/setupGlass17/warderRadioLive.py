@@ -938,8 +938,8 @@ def cached_country_picon(references, base):
     # Never use an online/fallback logo to override a signed original. This
     # path is radio-only and bound to the active owned country, never TV/SAT.
     try:
-        from . import warderRadioCountryBouquets as country_bouquets
-        selected = country_bouquets.selected_country(DIRECTORY)
+        from . import warderRadioCountry as country
+        selected = country.active_country(DIRECTORY)
         if selected:
             online = os.path.join(base, 'picon', 'radio', selected)
             path = os.path.join(online, '.warder-radio-online-source.json')
@@ -1272,47 +1272,9 @@ class Controller:
             return
 
     def _observe_country_bouquet(self):
-        """Native radio ServiceList focus is authoritative for selected logo ZIP."""
-        if self.session is None:
-            return None
-        try:
-            from . import warderRadioCountryBouquets as country_bouquets
-            dialog = getattr(self.session, 'current_dialog', None)
-            if dialog is None or not getattr(dialog, 'shown', False):
-                try:
-                    from Screens.InfoBar import InfoBar
-                    info = InfoBar.instance
-                    dialog = info.servicelist if info is not None else None
-                except (ImportError, AttributeError):
-                    dialog = None
-            if dialog is None:
-                return None
-            if not any(cls.__name__ in ('ChannelSelectionRadio', 'ChannelSelection')
-                       for cls in type(dialog).__mro__):
-                return None
-            root = dialog.getRoot()
-            path = root.getPath() if root is not None else ''
-            code = country_bouquets.selected_from_native_path(path)
-            if code is not None:
-                # Explicit native folder choice is durable across a later GUI
-                # restart and OSD-language changes. Entering the bouquet is
-                # the user's decision; only that country is activated.
-                country_bouquets.remember_selection(DIRECTORY, code)
-                if code != self.observed_native_country:
-                    self.observed_native_country = code
-                    from . import warderRadioCountry as country
-                    saved = country._choice(DIRECTORY)
-                    if (saved.get('active') != code or
-                            country._pending_country(saved) not in (None, code)):
-                        country.request_country(code, DIRECTORY)
-                        self.request_refresh()
-            else:
-                # Leaving the service list MUST NOT erase the preferred
-                # country: the user chose it once and expects it at boot.
-                self.observed_native_country = None
-            return code
-        except (AttributeError, OSError, ValueError, TypeError):
-            return None
+        """One selected Warder Live bouquet: last user choice or OSD on first boot."""
+        from . import warderRadioCountry as country
+        return country.active_country(DIRECTORY)
 
     def check_icon(self):
         self.icon_timer = None
