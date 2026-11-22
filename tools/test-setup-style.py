@@ -48,7 +48,7 @@ RADIO_SAVER_PERSISTENCE_1080_SHA256='47b938394493e4d409672fef9bc9c8d7d2a66517e87
 # OpenPLi 9.2. Keep the previous controller fingerprint for older versions;
 # the full AST guard remains active for every unrelated settings/save change.
 LEGACY_RADIO_TV_GUARD_1083_SHA256='1248749fab1b3d98fb1a4e80e7268535a6245cbf8f613830f0417573f53b41fb'
-EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION == '1.0.83' else
+EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83', '1.0.84') else
               RADIO_SAVER_PERSISTENCE_1080_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82') else
               REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
               REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
@@ -56,10 +56,10 @@ EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION == '1.0.83' e
 def fingerprint_source(source):
     # Stable releases change only the visible header version labels.
     # Restore those labels for the frozen 1.0.76 controller AST check.
-    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79', '1.0.82', '1.0.83'):
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79', '1.0.82', '1.0.83', '1.0.84'):
         source, count = re.subn(
             r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
-            r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83') else '1.0.76') + r'\2', source)
+            r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84') else '1.0.76') + r'\2', source)
         if count != 10:
             raise AssertionError('Expected 10 reviewed version header labels')
     return style.normalized(ast.parse(source))
