@@ -72,6 +72,58 @@ class StaticChecks(unittest.TestCase):
         self.assertNotIn("if isRadioService and keyManage.TunerTest()", source)
 
 
+    def test_radio_delay_has_save_cancel_and_legacy_registry_ignores_named_fields(self):
+        source = (PLUGIN / "plugin.py").read_text(encoding="utf-8")
+        tree = ast.parse(source)
+        setup = next(node for node in tree.body if isinstance(node, ast.ClassDef)
+                     and node.name == "setupGlass17ScreenSetup")
+        methods = {node.name: node for node in setup.body if isinstance(node, ast.FunctionDef)}
+        save_body = methods["saving"].body
+        cancel_body = methods["exitNow"].body
+        save_calls = [ast.unparse(item) for item in save_body]
+        cancel_calls = [ast.unparse(item) for item in cancel_body]
+        saver_save = "config.plugins.setupGlass17.radioSaverDelay.save()"
+        saver_cancel = "config.plugins.setupGlass17.radioSaverDelay.cancel()"
+        save_index = next(i for i, s in enumerate(save_calls) if s == saver_save)
+        file_index = next(i for i, s in enumerate(save_calls) if s == "configfile.save()")
+        self.assertLess(save_index, file_index)
+        self.assertIn(saver_cancel, cancel_calls)
+
+        # Run the actual legacy registry save/cancel AST independently under
+        # fake Enigma2 config. A non-numbered key appearing first must not
+        # abort the numbered settings loop (the TEST148 regression).
+        class Setting:
+            def __init__(self, value):
+                self.value = value
+                self.saves = self.cancels = 0
+            def getValue(self):
+                return self.value
+            def save(self):
+                self.saves += 1
+            def cancel(self):
+                self.cancels += 1
+        first = Setting("first")
+        third = Setting("third")
+        radio = Setting("10")
+        mapping = {"radioSaverDelay": radio, "par1": first, "par3": third}
+        settings = types.SimpleNamespace(dict=lambda: mapping, par144=types.SimpleNamespace(value="/tmp/"))
+        config = types.SimpleNamespace(plugins=types.SimpleNamespace(setupGlass17=settings))
+        registry = ["First", "", "Third"]
+        writes = []
+        env = {"config": config, "ALL_CFG": registry,
+               "_atomicWriteText": lambda path, content: writes.append((path, content))}
+        for method, verb in ((methods["saving"], "save"), (methods["exitNow"], "cancel")):
+            candidate = next(stmt for stmt in method.body if isinstance(stmt, ast.Try)
+                             and "ALL_CFG" in ast.unparse(stmt)
+                             and "config.plugins.setupGlass17.dict()" in ast.unparse(stmt))
+            exec(compile(ast.fix_missing_locations(ast.Module(
+                body=[candidate], type_ignores=[])), "<registry-test>", "exec"), env)
+        self.assertEqual((first.saves, third.saves), (1, 1))
+        self.assertEqual((first.cancels, third.cancels), (1, 1))
+        self.assertEqual((radio.saves, radio.cancels), (0, 0))
+        self.assertEqual(writes, [("/tmp/hdg17.conf", "First: first\\nThird: third\\n")])
+
+
 class ControllerChecks(unittest.TestCase):
     def setUp(self):
         self.package = types.ModuleType("saver_test_pkg")
