@@ -41,6 +41,32 @@ jobs:
           test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = "e94b5342b8d3d82371ccfbc5898e397d7819a3bb"
           test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.80"
           echo "Existing main SAT assets unchanged; release version unchanged"
+      - name: Diagnose historical layout checksum drift without modifying graphics
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import importlib.util,hashlib,json,xml.etree.ElementTree as ET
+          s=importlib.util.spec_from_file_location('style','tools/style-setup-screens.py')
+          m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+          baseline=json.loads(m.FIXTURE.read_text())
+          layouts=m.extract(m.PLUGIN.read_text())
+          for name,(source,actual) in layouts.items():
+              close='</screen>' if name=='selectIconsDisplayed' else ''
+              original=ET.fromstring(baseline['skins'][name]+close)
+              now=ET.fromstring(actual+close)
+              expected=set(m.widget_ids(original))
+              observed=set(m.widget_ids(now))
+              print('LAYOUT',name,'SHA256',hashlib.sha256(actual.encode()).hexdigest(),
+                    'missing_ids',repr(sorted(expected-observed)),
+                    'extra_ids',repr(sorted(observed-expected)),
+                    'reproducible',actual.strip()==m.themed(name,baseline['skins'][name]).strip())
+          art=json.loads(Path('design/settings-header-asset.json').read_text())
+          raw=(Path('source/package-root')/art['path']).read_bytes()
+          print('CURRENT MAIN BANNER',art['path'],
+                'sha256',hashlib.sha256(raw).hexdigest(),
+                'historical_pin',art['sha256'],
+                'width_height',int.from_bytes(raw[16:20],'big'),int.from_bytes(raw[20:24],'big'))
+          PY
       - name: Receiver-friendly source syntax and packaging hooks
         run: |
           set -euo pipefail
