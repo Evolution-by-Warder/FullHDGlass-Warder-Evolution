@@ -239,10 +239,8 @@ def sync_world(paths_root, opener=urlopen, require_external=True,
 
 
 def _country_really_selected(enigma_directory, code):
-    """Require precise owned folder selected in native ServiceList when present."""
-    from . import warderRadioCountryBouquets as country_bouquets
-    selected=country_bouquets.selected_country(enigma_directory)
-    return selected==code if selected is not None else country.active_country(enigma_directory)==code
+    """Only the saved or OSD-default ACTIVE single-country bouquet owns logos."""
+    return country.active_country(enigma_directory) == code
 
 
 def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
