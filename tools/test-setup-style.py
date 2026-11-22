@@ -25,7 +25,10 @@ REVIEWED_PR99_SHA256='c057e541971ba6a442f1959e8e5f19e99c673db3dce2c23da21abf1a1e
 # Owner-requested removal of the abandoned IPTV radio-picon selector is the
 # only authorized 1.0.80 controller change. Preserve an exact AST fingerprint.
 RETIRED_RADIO_PICONS_1080_SHA256='81875e0d54ec49b51cb96814c099a02e3aaed641a2268659445e3072ba3c8557'
-EXPECTED_SHA=(RETIRED_RADIO_PICONS_1080_SHA256 if RUNTIME_VERSION == '1.0.80' else
+# PR #130 reviewed the new radio-only delay, settings control, migration and
+# InfoBar lifecycle. Pin the entire resulting AST so future edits still fail.
+UNIFIED_RADIO_SAVER_1080_SHA256='aac9e1f4005ce50aef95eac4618ff6ec0f9de3412a6855368bbc8699b5ba062d'
+EXPECTED_SHA=(UNIFIED_RADIO_SAVER_1080_SHA256 if RUNTIME_VERSION == '1.0.80' else
               REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
               REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
 
