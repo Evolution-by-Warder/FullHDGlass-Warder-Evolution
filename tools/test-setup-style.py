@@ -510,13 +510,13 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():
-            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83') and name in CURRENT_MAIN_1080_LAYOUTS:
+            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84') and name in CURRENT_MAIN_1080_LAYOUTS:
                 # Pin only reviewed current-main exceptions. No blanket skip.
                 # Normalize ONLY the single generated version label to the
                 # unchanged, SHA-pinned main 1.0.80 layout. All other graphics,
                 # geometry and widget source must remain byte-identical.
                 verified_skin = skin
-                if RUNTIME_VERSION in ('1.0.82', '1.0.83'):
+                if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84'):
                     label = 'text="' + RUNTIME_VERSION + '"'
                     if verified_skin.count(label) != 1:
                         raise AssertionError('Expected one version label in ' + name)
