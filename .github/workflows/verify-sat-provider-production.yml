@@ -1,0 +1,32 @@
+name: Verify SAT Work published provider ZIPs (read-only)
+on:
+  pull_request:
+    paths:
+      - 'tools/audit-sat-provider-archives-20261122.py'
+      - '.github/workflows/verify-sat-provider-production.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/audit-sat-provider-archives-20261122.py
+            /.github/workflows/verify-sat-provider-production.yml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify actual public ZIP bytes, Git blob SHA1, ZIP CRC and provider PNG names
+        run: python3 tools/audit-sat-provider-archives-20261122.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: SAT-provider-production-readonly-20261122
+          path: sat-provider-audit.json
+          if-no-files-found: ignore
