@@ -2,7 +2,7 @@ name: Warder TEST 224 distinct radio bouquets and signed logo-source regression
 on:
   push:
     branches: [feature/radio-live-world-bundle-installer-20261119]
-    paths: [.github/workflows/verify-224-distinct-radio-bouquets.yml, tools/test-radio-224-real-country-bouquets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryBouquets.py, tools/test-radio-224-online-fallback-and-logos.py, tools/test-radio-local-test-assets.py, tools/test-radio-bundled-world-test141.py, tools/test-radio-approved-country-installer.py, tools/test-radio-single-country-startup142.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSingleCountry.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundledWorld.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLocalTestAssets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioOnlineLogos.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py, tools/test-radio-country-logo-cleanup.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryCleanup.py, tools/test-radio-world-gui.py, tools/test-radio-224-signed-zip-only145.py, source/control/postinst]
+    paths: [.github/workflows/verify-224-distinct-radio-bouquets.yml, tools/test-radio-224-real-country-bouquets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryBouquets.py, tools/test-radio-224-online-fallback-and-logos.py, tools/test-radio-local-test-assets.py, tools/test-radio-bundled-world-test141.py, tools/test-radio-approved-country-installer.py, tools/test-radio-single-country-startup142.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSingleCountry.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundledWorld.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLocalTestAssets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioOnlineLogos.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py, tools/test-radio-country-logo-cleanup.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryCleanup.py, tools/test-radio-world-gui.py, tools/test-radio-224-signed-zip-only145.py, tools/test-radio-country-close-list145.py, tools/test-radio-country.py, source/control/postinst]
 permissions:
   contents: read
 jobs:
@@ -28,6 +28,8 @@ jobs:
             /tools/test-radio-world.py
             /tools/test-radio-world-gui.py
             /tools/test-radio-224-signed-zip-only145.py
+            /tools/test-radio-country-close-list145.py
+            /tools/test-radio-country.py
             /source/control/postinst
             /tools/test-radio-bundle-fetch.py
       - name: Strict Python source and offline native radio-group tests
@@ -45,6 +47,8 @@ jobs:
           python3 -B tools/test-radio-world.py -v
           python3 -B tools/test-radio-world-gui.py -v
           python3 -B tools/test-radio-224-signed-zip-only145.py -v
+          python3 -B tools/test-radio-country-close-list145.py -v
+          python3 -B tools/test-radio-country.py -v
           python3 -B tools/test-radio-bundle-fetch.py -v
           python3 - <<'PY'
           import ast
