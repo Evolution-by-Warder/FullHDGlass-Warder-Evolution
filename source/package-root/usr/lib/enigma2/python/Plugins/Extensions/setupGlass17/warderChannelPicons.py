@@ -43,6 +43,16 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
     references = reference_names(reference, alternative)
     if not references:
         return ''
+    # Generated original Radio Browser logos are kept wholly separate from
+    # TV/SAT and loaded only for UUIDs in this owned live radio bouquet.
+    if custom_folder is None:
+        try:
+            from .warderRadioLive import cached_country_picon
+            existing = cached_country_picon(references, base)
+            if existing:
+                return existing
+        except (ImportError, AttributeError, OSError, TypeError, ValueError):
+            pass
     aliases = None
     folders = ('picon_50x30', 'picon') if prefer_mini else ('picon', 'picon_50x30')
     # Expert choice is authoritative: never silently mix two picon collections.
@@ -60,6 +70,14 @@ def find_picon(reference, base, alternative, get_name, sanitize, prefer_mini=Fal
             path = join(directory, name + '.png')
             if isfile(path):
                 return path
+    # Notify the optional live-radio bridge only after an actual picon miss.
+    # Never touch the read-only Own Picons source or block the GUI on HTTP.
+    if custom_folder is None:
+        try:
+            from Plugins.Extensions.setupGlass17.warderRadioLive import request_picon
+            request_picon(reference)
+        except (ImportError, AttributeError, TypeError, ValueError):
+            pass
     return ''
 
 

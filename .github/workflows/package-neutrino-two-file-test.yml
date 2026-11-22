@@ -21,7 +21,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Scope legacy two-file trial to exact 1.0.79
+        id: legacy
+        run: |
+          BASE=source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+          if [ "$(cat "$BASE/version")" = "1.0.79" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Historical 1.0.79 only; new versions use verify-neutrino-openatv76"
+          fi
       - name: Verify sources and package only two replacement files
+        if: steps.legacy.outputs.enabled == 'true'
         run: |
           set -euo pipefail
           base=source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
@@ -36,6 +47,7 @@ jobs:
           test "$(unzip -Z1 "$GITHUB_WORKSPACE/Warder-1.0.79-Neutrino-OK-2-files-TEST.zip" | wc -l)" -eq 2
           sha256sum plugin.py keymap.xml > "$GITHUB_WORKSPACE/Neutrino-test-SHA256SUMS.txt"
       - uses: actions/upload-artifact@v4
+        if: steps.legacy.outputs.enabled == 'true'
         with:
           name: Warder-1.0.79-Neutrino-OK-2-files-TEST
           path: |

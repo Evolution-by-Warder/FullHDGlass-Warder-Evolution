@@ -2,6 +2,49 @@
 set -u
 
 WARDER_PACKAGE_ID=enigma2-plugin-skins-fullhdglass-warder-evolution
+
+# Repair missing Python 3.13 bytecode in the installed package's opkg file list.
+# Old postinst deleted these tracked files early; opkg later fails on ENOENT.
+# Recreate only absent, listed, exact own-cache entries, never user data.
+warder_repair_tracked_missing_bytecode() {
+    warder_python=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+    warder_cache="$warder_python/__pycache__"
+    [ -d "$warder_python" ] && [ ! -L "$warder_python" ] || return 0
+    if [ -L "$warder_cache" ]; then
+        echo "Warder: refusing linked bytecode directory" >&2
+        return 1
+    fi
+    for warder_db in /var/lib/opkg/info /usr/lib/opkg/info; do
+        warder_list="$warder_db/$WARDER_PACKAGE_ID.list"
+        [ -f "$warder_list" ] && [ ! -L "$warder_list" ] || continue
+        [ -d "$warder_cache" ] || mkdir "$warder_cache" || return 1
+        [ -d "$warder_cache" ] && [ ! -L "$warder_cache" ] || return 1
+        warder_count=0
+        while IFS= read -r warder_path || [ -n "$warder_path" ]; do
+            case "$warder_path" in
+                "$warder_cache"/*.cpython-313.pyc) ;;
+                *) continue ;;
+            esac
+            warder_stem=$(basename "$warder_path")
+            case "$warder_stem" in
+                *[!a-zA-Z0-9_.-]*|'') continue ;;
+            esac
+            warder_count=$((warder_count + 1))
+            [ "$warder_count" -le 256 ] || return 1
+            if [ -e "$warder_path" ] || [ -L "$warder_path" ]; then
+                continue
+            fi
+            (set -C; umask 077; : > "$warder_path") || return 1
+            echo "Repaired missing opkg-tracked bytecode: $warder_stem"
+        done < "$warder_list"
+    done
+    return 0
+}
+if ! warder_repair_tracked_missing_bytecode; then
+    echo "Could not safely repair missing tracked bytecode." >&2
+    exit 1
+fi
+
 # The original installer deletes these two payload files but leaves them in
 # its opkg file list. Restore only missing, explicitly tracked legacy entries
 # so opkg can prune them without ENOENT. Never overwrite files or symlinks.

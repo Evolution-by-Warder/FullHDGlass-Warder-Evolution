@@ -32,8 +32,12 @@ class SettingsTests(unittest.TestCase):
         self.values['par231']=Setting('system')
         self.values['par144'].value='/test-backup/'
         self.section=NS(**self.values)
+        # Named radio screensaver delay is separate from the par1..par231 registry.
+        # It must exist in the real setup config and survive save/cancel.
+        self.section.radioSaverDelay = Setting('0')
         self.section.dict=lambda:self.values
         self.config=NS(plugins=NS(setupGlass17=self.section,
+                                  warderSkinMainMenu=NS(enabled=Setting(False)),
                                   warderEpgListScroll=NS(enabled=Setting(True)),
                                   warderPiconExpert=NS(custom_destination=Setting(False),
                                                       destination=Setting('')),
@@ -151,6 +155,7 @@ class SettingsTests(unittest.TestCase):
         self.assertIn('Channel-list picon source: mini\n',backup[1])
         self.assertIn('Icons type: old-1\n',backup[1])
         self.assertEqual(self.section.par1.saved,'old-1')
+        self.assertEqual(self.section.radioSaverDelay.saved, '0')
         self.scope['configfile'].save.assert_called_once()
         screen.close.assert_called_once()
 

@@ -1,6 +1,6 @@
 """Regression guard for the 13 alternate layouts using a gated EPG cell.
 
-No screenshots/receiver UI implied: this statically verifies source placement.
+No screenshots/receiver UI implied: this statically verifies source placement.\nChannelSelection-12 uses the fullscreen list layout: both the native\nServiceEvent EPG and the PrimeTime overlay are at 60,854 / 1370,40.
 """
 import re
 import unittest
@@ -20,7 +20,7 @@ TARGETS = {
     "ChannelSelection-9": ("352,865", "465,30"),
     "ChannelSelection-10": ("1162,864", "690,33"),
     "ChannelSelection-11": ("1288,742", "474,33"),
-    "ChannelSelection-12": ("15,633", "690,33"),
+    "ChannelSelection-12": ("60,854", "1370,40"),
     "ChannelSelection-13": ("225,540", "720,45"),
     "ChannelSelection-14": ("15,678", "1395,45"),
     "ChannelSelection-18": ("225,540", "720,45"),

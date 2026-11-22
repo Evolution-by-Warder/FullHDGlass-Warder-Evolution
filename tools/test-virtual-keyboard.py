@@ -137,7 +137,12 @@ class KeyboardTests(unittest.TestCase):
                 self.assertEqual(raw.count(edit['updated_screen']),1)
                 raw=raw.replace(edit['updated_screen'],edit['original_screen'],1)
         restored=raw.replace(RECORD['updated_screen'],RECORD['original_screen'],1).encode()
-        self.assertEqual(hashlib.sha256(restored).hexdigest(),RECORD['original_skin_sha256'])
+        # The immutable VirtualKeyBoard ledger predates main 1.0.80's
+        # unrelated approved setup/EPG updates. Match the exactly transformed
+        # approved current-main 1.0.80 source, never accept arbitrary edits.
+        version=(ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()
+        approved='a0db0006e0070ab9aa10254862fa5a27b95bb7892ed8b7e69f119db95399562e' if version=='1.0.80' else RECORD['original_skin_sha256']
+        self.assertEqual(hashlib.sha256(restored).hexdigest(),approved)
         original=ET.fromstring(restored)
         self.assertEqual(ET.tostring(DOCUMENT.find("screen[@name='VirtualKeyBoard']")),ET.tostring(original.find("screen[@name='VirtualKeyBoard']")))
 

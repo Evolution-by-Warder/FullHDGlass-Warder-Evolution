@@ -2,7 +2,7 @@
 set -eu
 case "${1:-}" in
     remove|deconfigure)
-        /usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py backup
+        /usr/bin/python3 -B /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py backup
         ;;
 esac
 if [ "${1:-}" = remove ]; then

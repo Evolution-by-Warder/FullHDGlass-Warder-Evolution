@@ -1,0 +1,71 @@
+name: FullHDGlass 1.0.81-test139 single complete receiver TEST IPK
+on:
+  push:
+    branches: [feature/radio-live-world-bundle-installer-20261119]
+    paths: [.github/workflows/fullhdglass-test139-complete-package.yml]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all FullHDGlass Python source and test runtime identity
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          for p in Path('source/package-root').rglob('*.py'):
+              ast.parse(p.read_text(encoding='utf-8'),filename=str(p))
+          print('Full skin Python syntax PASS')
+          PY
+          for item in warderRadioLive.py warderRadioCountry.py warderRadioWorld.py warderRadioPackages.py warderRadioBundleFetch.py warderSpinnerScreen.py warderStorageSafety.py; do test -s "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/$item"; done
+          for f in preinst postinst prerm postrm; do sh -n "source/control/$f"; done
+      - name: Build and re-open one complete FullHDGlass 1.0.81-test139 package
+        run: |
+          set -euo pipefail
+          python3 -B tools/build-fullhdglass-all-fixes-test139.py
+          cd packages/fullhdglass-all-fixes-test139
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk.sha256
+          ar t enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk
+      - name: Verify exact package test version, all files, factory icon reset and source unchanged
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,io,tarfile,subprocess
+          root=Path('packages/fullhdglass-all-fixes-test139')
+          ipk=root/'enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk'
+          d=json.loads((root/'fullhdglass-1.0.81-test139-manifest.json').read_text())
+          assert d['package_version']=='1.0.81-test139-1'
+          assert d['runtime_version']=='1.0.81-test139'
+          assert d['test_only'] and d['production_modified'] is False
+          assert hashlib.sha256(ipk.read_bytes()).hexdigest()==d['sha256']
+          ctrl=subprocess.check_output(['ar','p',str(ipk),'control.tar.gz'])
+          with tarfile.open(fileobj=io.BytesIO(ctrl),mode='r:gz') as z:
+              c=z.extractfile('./control').read().decode()
+              assert 'Version: 1.0.81-test139-1' in c
+              assert 'Package: enigma2-plugin-skins-fullhdglass-warder-evolution' in c
+          assert Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()=='1.0.80'
+          print('FULLHDGLASS 1.0.81-test139 receiver IPK ready - SHA and payload PASS',d['sha256'])
+          PY
+      - name: Upload complete test IPK (no stable release or test feed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-Complete-1.0.81-test139-TEST-ONLY
+          path: |
+            packages/fullhdglass-all-fixes-test139/enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk
+            packages/fullhdglass-all-fixes-test139/enigma2-plugin-skins-fullhdglass_1.0.81-test139_all.ipk.sha256
+            packages/fullhdglass-all-fixes-test139/fullhdglass-1.0.81-test139-manifest.json
+          retention-days: 30
+          if-no-files-found: error
