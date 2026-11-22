@@ -23,11 +23,20 @@ class ChannelSelectionRadio:
         self.events.append('native-radio-cancel')
 
 class ChannelSelection:
-    def __init__(self,events):
-        self.shown=True
+    """Shared native OpenATV TV/radio list used by the receiver screenshot."""
+    def __init__(self,events,mode=1,shown=True):
         self.events=events
+        self.mode=mode
+        self.shown=shown
+        self.bouquet_root=SimpleNamespace(getPath=lambda:
+            'FROM BOUQUET "bouquets.radio" ORDER BY bouquet' if mode==1
+            else 'FROM BOUQUET "bouquets.tv" ORDER BY bouquet')
+    def getCurrentMode(self):
+        return self.mode
     def cancel(self):
-        self.events.append('TV-WRONG-CANCEL')
+        self.events.append('shared-radio-cancel' if self.mode==1
+                           else 'TV-WRONG-CANCEL')
+
 
 class ScreensHarness:
     def __enter__(self):
@@ -131,6 +140,46 @@ class Tests(unittest.TestCase):
         session.current_dialog=radio
         self.assertTrue(country._close_radio_list_after_country_choice(session))
         self.assertEqual(events,['native-radio-cancel'])
+
+    def test_openatv_shared_channel_selection_radio_mode_closes_after_saving(self):
+        events=[]
+        radio=ChannelSelection(events,mode=1,shown=False)
+        session=Session(radio)
+        def request(code):
+            events.append('saved-'+code)
+            return {'accepted':True,'already_active':False}
+        def schedule(_):
+            events.append('background-scheduled')
+            return True
+        for session in self.picker(session,request,schedule,radio):
+            session.select('DE')
+        self.assertEqual(events,['saved-DE','background-scheduled',
+                                 'shared-radio-cancel'])
+
+    def test_openatv_shared_tv_mode_cannot_be_closed(self):
+        events=[]
+        tv=ChannelSelection(events,mode=0,shown=True)
+        self.assertFalse(country._close_radio_list_after_country_choice(Session(tv),tv))
+        self.assertEqual(events,[])
+
+    def test_radio_screen_under_choicebox_closes_from_explicit_reference(self):
+        events=[]
+        radio=ChannelSelection(events,mode=1,shown=False)
+        session=Session(SimpleNamespace(shown=True))
+        self.assertTrue(country._close_radio_list_after_country_choice(session,radio))
+        self.assertEqual(events,['shared-radio-cancel'])
+
+    def test_radio_context_when_no_explicit_ref_uses_visible_radio_dialog(self):
+        events=[]
+        radio=ChannelSelection(events,mode=1,shown=True)
+        self.assertTrue(country._close_radio_list_after_country_choice(Session(radio)))
+        self.assertEqual(events,['shared-radio-cancel'])
+
+    def test_hidden_unrelated_infobar_radio_list_is_not_closed(self):
+        events=[]
+        radio=ChannelSelection(events,mode=1,shown=False)
+        self.assertFalse(country._close_radio_list_after_country_choice(Session(radio)))
+        self.assertEqual(events,[])
 
     def test_hidden_or_missing_radio_is_not_force_closed(self):
         events=[]
