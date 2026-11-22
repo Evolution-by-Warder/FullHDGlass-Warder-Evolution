@@ -5,6 +5,9 @@ on:
     paths:
       - .github/workflows/fullhdglass-lean-radio-test145-ipk.yml
       - tools/build-fullhdglass-all-fixes-test145.py
+      - tools/test-radio-live.py
+      - tools/test-radio-country-close-list145.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
 permissions:
   contents: read
 jobs:
