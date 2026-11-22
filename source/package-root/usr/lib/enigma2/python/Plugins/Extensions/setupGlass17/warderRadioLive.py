@@ -1301,7 +1301,9 @@ class Controller:
                 if code != self.observed_native_country:
                     self.observed_native_country = code
                     from . import warderRadioCountry as country
-                    if country.active_country(DIRECTORY) != code:
+                    saved = country._choice(DIRECTORY)
+                    if (saved.get('active') != code or
+                            country._pending_country(saved) not in (None, code)):
                         country.request_country(code, DIRECTORY)
                         self.request_refresh()
             else:
