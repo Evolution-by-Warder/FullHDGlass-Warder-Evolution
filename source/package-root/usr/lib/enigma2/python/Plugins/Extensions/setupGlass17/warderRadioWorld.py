@@ -358,9 +358,8 @@ def diagnose(paths_root, enigma_directory):
             result['world_countries'] = len(countries)
             result['world_stations'] = idx['station_count']
             result['world_owned_integrity_valid'] = _owner_ok(snapshot)
-        # Approved originals and online fallback logos live in radio/CC.
-        # The old flat radio/ marker is retired, so inspecting it reports
-        # false missing logos even when the selected country's PNGs are valid.
+        # Check signed active-country logos first. Retain read-only legacy
+        # flat-collection diagnosis for receivers upgraded from older builds.
         radio = root / 'picon' / 'radio'
         selected = result['active_country']
         if (radio.is_dir() and not radio.is_symlink() and
@@ -377,8 +376,17 @@ def diagnose(paths_root, enigma_directory):
                     result['radio_picons_owned_integrity_valid'] = True
                     result['radio_logo_country'] = selected
                     result['radio_png_count'] = len(files)
-            else:
-                result['radio_picons_owned_integrity_valid'] = False
+            elif (not folder.exists() and _owner_ok(root / WORLD_NAME) and
+                  packages._owned_dir(radio)):
+                # Existing upgraded receivers may retain approved flat logos.
+                # Never use that fallback to mask a modified country folder.
+                marker = radio / packages.OWNER_FILE
+                state = packages._json(marker.read_bytes())
+                files = state.get('files')
+                if state.get('country') == selected and isinstance(files, dict):
+                    result['radio_picons_owned_integrity_valid'] = True
+                    result['radio_logo_country'] = selected
+                    result['radio_png_count'] = len(files)
     except (OSError, ValueError, TypeError, KeyError):
         pass
     return result
