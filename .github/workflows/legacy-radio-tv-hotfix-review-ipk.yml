@@ -5,6 +5,7 @@ on:
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
       - tools/test-openatv76-plugin-descriptor.py
       - tools/test-legacy-radio-live-startup.py
+      - tools/test-radio-country-close-list145.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
       - source/control/postinst
@@ -38,6 +39,7 @@ jobs:
           set -euo pipefail
           python3 -B tools/test-openatv76-plugin-descriptor.py -v
           python3 -B tools/test-legacy-radio-live-startup.py -v
+          python3 -B tools/test-radio-country-close-list145.py -v
           python3 -B tools/test-setup-style.py -q -k test_configuration_actions_callbacks_and_controller_logic_are_unchanged
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
           find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
@@ -75,7 +77,7 @@ jobs:
                   if member.name.lstrip("./") == "control":
                       assert b"Version: 1.0.83-1\n" in raw
                       raw = raw.replace(b"Version: 1.0.83-1\n",
-                                        b"Version: 1.0.83-3\n", 1)
+                                        b"Version: 1.0.83-4\n", 1)
                       member.size = len(raw)
                       changed = True
                   members.append((member, raw))
@@ -87,7 +89,7 @@ jobs:
                       archive.addfile(member, io.BytesIO(raw) if raw is not None else None)
           folder = Path("packages/legacy-radio-tv-review")
           folder.mkdir(parents=True, exist_ok=True)
-          result = folder / "enigma2-plugin-skins-fullhdglass_1.0.83-3_all.ipk"
+          result = folder / "enigma2-plugin-skins-fullhdglass_1.0.83-4_all.ipk"
           with tempfile.TemporaryDirectory() as td:
               wd = Path(td)
               (wd / "debian-binary").write_bytes(b"2.0\n")
@@ -100,7 +102,7 @@ jobs:
           with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(
                   ["ar", "p", str(result), "control.tar.gz"])), mode="r:gz") as archive:
               control_text = archive.extractfile("./control").read()
-          assert b"Version: 1.0.83-3\n" in control_text
+          assert b"Version: 1.0.83-4\n" in control_text
           digest = hashlib.sha256(result.read_bytes()).hexdigest()
           result.with_suffix(".ipk.sha256").write_text(digest + "  " + result.name + "\n")
           print("REVIEW ONLY", result, digest)
@@ -108,7 +110,7 @@ jobs:
           (cd packages/legacy-radio-tv-review && sha256sum -c *.sha256)
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.83-3-OpenATV76-OpenPLi92-RadioLive-REVIEW-ONLY
+          name: FullHDGlass-1.0.83-4-OpenATV76-OpenPLi92-RadioLive-REVIEW-ONLY
           path: |
             packages/legacy-radio-tv-review/*.ipk
             packages/legacy-radio-tv-review/*.sha256
