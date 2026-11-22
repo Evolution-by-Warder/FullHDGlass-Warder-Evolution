@@ -1069,8 +1069,16 @@ if __name__ == '__main__':
             result = warderRadioWorld.diagnose(Path(sys.argv[2]), DIRECTORY)
         elif len(sys.argv) == 3 and sys.argv[1] == '--sync-world':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+            from Plugins.Extensions.setupGlass17 import warderRadioCountryBouquets
+            radio_root = Path(sys.argv[2])
             result = warderRadioBundleFetch.sync_world(
-                Path(sys.argv[2]), state_directory=DIRECTORY)
+                radio_root, state_directory=DIRECTORY)
+            if (result.get('changed') or result.get('skipped') in
+                    ('already-current', 'not-due')):
+                separate = warderRadioCountryBouquets.publish(radio_root, DIRECTORY)
+                result['separate_country_bouquets'] = separate
+                if separate.get('changed'):
+                    result['changed'] = True
         elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
             code, root = sys.argv[2], Path(sys.argv[3])
