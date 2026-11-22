@@ -153,8 +153,10 @@ if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_country" ] &&
     else
         echo "Warder Radio Live country bootstrap deferred; user bouquets unchanged."
     fi
-    # Load the saved active country only, off the installer/GUI thread.
-    /usr/bin/python3 -B "$warder_radio_country" --refresh </dev/null >/dev/null 2>&1 &
+    # Never call the old Radio Browser paginated fetch from the installer.
+    # The Enigma2 first-start world worker fetches the signed 224-country
+    # catalogue to external PATHS, and then downloads exactly the selected
+    # country's original logo ZIP (not individual station favicons).
 fi
 
 # Download only the selected language after package installation, without
