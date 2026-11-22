@@ -1122,9 +1122,9 @@ class Controller:
             if not any(cls.__name__ == 'ChannelSelection'
                        for cls in type(screen).__mro__):
                 return False
-            if self._radio_list_show_target is screen:
+            if getattr(self, '_radio_list_show_target', None) is screen:
                 return True
-            if self._radio_list_show_target is not None:
+            if getattr(self, '_radio_list_show_target', None) is not None:
                 self._disarm_radio_list_refresh_on_show()
 
             def when_shown():
