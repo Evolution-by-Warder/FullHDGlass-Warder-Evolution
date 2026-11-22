@@ -43,9 +43,11 @@ def _write(path,body):
     finally:
         if os.path.exists(tmp):os.unlink(tmp)
 
-def selected(code,directory):
-    active=books.selected_country(directory)
-    return active==code
+def selected(code, directory):
+    """Use active receiver radio country, retained across GUI reboot."""
+    from . import warderRadioCountry as country
+    return country.active_country(directory) == code
+
 
 def _verified_rows(root,directory,code):
     cached=world.cached_country(root,code)
