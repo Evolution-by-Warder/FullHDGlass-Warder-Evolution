@@ -3,7 +3,7 @@ on:
   push:
     branches: [feature/radio-live-world-bundle-installer-20261119]
     paths:
-      - .github/workflows/fullhdglass-approved-radio-test144-ipk.yml
+      - .github/workflows/fullhdglass-lean-radio-test144-ipk.yml
       - tools/build-fullhdglass-all-fixes-test144.py
 permissions:
   contents: read
