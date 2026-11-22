@@ -958,6 +958,7 @@ class Controller:
         self.local_world_sha = None
         self.country_logo_stems = set()
         self.country_logo_mtime = None
+        self.observed_native_country = None
         self.last_bulk_logo = None
         self.closed = False
         self.initial_reload = True
@@ -1058,7 +1059,10 @@ class Controller:
             self.active_local_key = None
             self.request_refresh()
         # An absent/unpublished index is NOT treated as a completed refresh.
-        if valid and result.get('skipped') == 'not-due':
+        if valid and result.get('pending_source'):
+            # A preview country list is NOT a published, signed world.
+            delay = 6 * 3600
+        elif valid and result.get('skipped') == 'not-due':
             seconds = result.get('retry_after')
             delay = max(60, min(14 * DAY, seconds)) if (
                 type(seconds) is int and seconds > 0) else 6 * 3600
@@ -1250,8 +1254,21 @@ class Controller:
             code = country_bouquets.selected_from_native_path(path)
             if code is not None:
                 country_bouquets.remember_selection(DIRECTORY, code)
+                if code != self.observed_native_country:
+                    self.observed_native_country = code
+                    # In the absence of an immutable country-world download,
+                    # populate ONLY the highlighted native country through
+                    # the existing paginated, off-GUI Radio Browser worker.
+                    from . import warderRadioWorld as world
+                    root_dir = _radio_world_root()
+                    if (root_dir is not None and
+                            not world.cached_country(root_dir, code)):
+                        from . import warderRadioCountry as selected
+                        selected.request_country(code, DIRECTORY)
+                        self.request_refresh()
             else:
                 country_bouquets.remember_selection(DIRECTORY, None)
+                self.observed_native_country = None
             return code
         except (AttributeError, OSError, ValueError, TypeError):
             return None
