@@ -59,6 +59,9 @@ jobs:
           set -euo pipefail
           for t in \
             test-channel-picon-settings.py \
+            test_warder_menu_icon_bindings.py \
+            test_warder_mainmenu_toggle.py \
+            test_warder_integrated_skin.py \
             test_warder_primetime_placements.py \
             test_warder_spinner_order.py \
             test_warder_storage_safety.py \
