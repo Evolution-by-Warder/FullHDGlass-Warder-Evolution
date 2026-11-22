@@ -358,14 +358,25 @@ def diagnose(paths_root, enigma_directory):
             result['world_countries'] = len(countries)
             result['world_stations'] = idx['station_count']
             result['world_owned_integrity_valid'] = _owner_ok(snapshot)
+        # Approved originals and online fallback logos live in radio/CC.
+        # The old flat radio/ marker is retired, so inspecting it reports
+        # false missing logos even when the selected country's PNGs are valid.
         radio = root / 'picon' / 'radio'
-        if radio.is_dir() and not radio.is_symlink():
-            if _owner_ok(root / WORLD_NAME) and packages._owned_dir(radio):
-                state = packages._json((radio / packages.OWNER_FILE).read_bytes())
-                files = state.get('files', {})
-                result['radio_picons_owned_integrity_valid'] = True
-                result['radio_logo_country'] = state.get('country')
-                result['radio_png_count'] = len(files)
+        selected = result['active_country']
+        if (radio.is_dir() and not radio.is_symlink() and
+                isinstance(selected, str) and COUNTRY.fullmatch(selected)):
+            folder = radio / selected
+            if (folder.is_dir() and not folder.is_symlink() and
+                    packages._owned_country_dir(folder, selected)):
+                approved = folder / packages.COUNTRY_APPROVED_OWNER
+                online = folder / packages.ONLINE_COUNTRY_OWNER
+                marker = approved if approved.is_file() and not approved.is_symlink() else online
+                state = packages._json(marker.read_bytes())
+                files = state.get('files')
+                if isinstance(files, dict):
+                    result['radio_picons_owned_integrity_valid'] = True
+                    result['radio_logo_country'] = selected
+                    result['radio_png_count'] = len(files)
             else:
                 result['radio_picons_owned_integrity_valid'] = False
     except (OSError, ValueError, TypeError, KeyError):
