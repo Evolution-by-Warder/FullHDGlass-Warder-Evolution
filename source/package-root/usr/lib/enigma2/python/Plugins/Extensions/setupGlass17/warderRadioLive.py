@@ -978,6 +978,8 @@ class Controller:
         self.country_online_stems = set()
         self.observed_native_country = None
         self.last_bulk_logo = None
+        self._radio_list_show_target = None
+        self._radio_list_show_callback = None
         self.closed = False
         self.initial_reload = True
         self.last_icon = None
@@ -1102,6 +1104,56 @@ class Controller:
             except Exception:
                 pass
 
+    def _arm_radio_list_refresh_on_show(self):
+        """One-shot native onShown invalidation when hidden radio mode is stale.
+
+        OpenATV can switch the permanent ChannelSelection back to TV while
+        closing it. Reset only after it returns to MODE_RADIO at the next
+        opening. Retain one callback, not a timer or recurring poller.
+        """
+        if self.closed:
+            return False
+        try:
+            from Screens.InfoBar import InfoBar
+            info = InfoBar.instance
+            screen = getattr(info, 'servicelist', None) if info is not None else None
+            if screen is None or not hasattr(screen, 'onShown'):
+                return False
+            if not any(cls.__name__ == 'ChannelSelection'
+                       for cls in type(screen).__mro__):
+                return False
+            if self._radio_list_show_target is screen:
+                return True
+            if self._radio_list_show_target is not None:
+                self._disarm_radio_list_refresh_on_show()
+
+            def when_shown():
+                if self.closed:
+                    self._disarm_radio_list_refresh_on_show()
+                    return
+                # Do not touch a displayed TV list or any other user bouquet.
+                if self._refresh_visible_radio_list(reset_to_top=True):
+                    self._disarm_radio_list_refresh_on_show()
+
+            screen.onShown.append(when_shown)
+            self._radio_list_show_target = screen
+            self._radio_list_show_callback = when_shown
+            return True
+        except (ImportError, AttributeError, RuntimeError, TypeError):
+            return False
+
+    def _disarm_radio_list_refresh_on_show(self):
+        screen = getattr(self, '_radio_list_show_target', None)
+        callback = getattr(self, '_radio_list_show_callback', None)
+        self._radio_list_show_target = None
+        self._radio_list_show_callback = None
+        if screen is not None and callback is not None:
+            try:
+                if callback in screen.onShown:
+                    screen.onShown.remove(callback)
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                pass
+
     def _refresh_visible_radio_list(self, reset_to_top=True):
         """Invalidate native radio ServiceList even when the window is HIDDEN.
 
@@ -1198,6 +1250,7 @@ class Controller:
                 self.reload()
                 self.initial_reload = False
                 if switched:
+                    self._arm_radio_list_refresh_on_show()
                     self._refresh_visible_radio_list(reset_to_top=first_page)
                     # The ChoiceBox may be closing as the first cached page
                     # arrives. Retry once without blocking the channel list.
@@ -1362,6 +1415,7 @@ class Controller:
 
     def close(self):
         self.closed = True
+        self._disarm_radio_list_refresh_on_show()
         for call in (self.pending, self.icon_timer, self.timeout,
                      self.radio_refresh_timer, getattr(self, 'world_timer', None),
                      getattr(self, 'world_timeout', None)):
