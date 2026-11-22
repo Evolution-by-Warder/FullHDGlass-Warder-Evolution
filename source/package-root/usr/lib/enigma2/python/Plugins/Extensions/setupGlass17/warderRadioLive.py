@@ -910,6 +910,23 @@ def cached_country_picon(references, base):
         return ''
     known = getattr(controller, 'known_icons', set())
     folder = os.path.join(base, 'picon', 'radio')
+    # The selected separate country owns a different UUID map than the legacy
+    # single Warder Live bouquet. Cache only that signed country's logo members.
+    owner = os.path.join(folder, '.warder-radio-country.json')
+    try:
+        mtime = os.stat(owner).st_mtime_ns if not os.path.islink(owner) else None
+    except OSError:
+        mtime = None
+    if mtime != getattr(controller, 'country_logo_mtime', None):
+        record = _read_json(Path(owner), {}, 4 * 1024 * 1024) if mtime else {}
+        valid = isinstance(record, dict) and record.get('owner') == 'WarderRadioLive'
+        files = record.get('files') if valid else {}
+        controller.country_logo_stems = {
+            name[:-4] for name in files if isinstance(name, str)
+            and re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\\.png', name)
+        } if isinstance(files, dict) else set()
+        controller.country_logo_mtime = mtime
+    known = known | getattr(controller, 'country_logo_stems', set())
     for stem in references:
         if not isinstance(stem, str):
             continue
@@ -939,6 +956,8 @@ class Controller:
         self.active_local_key = None
         self.local_worker_key = None
         self.local_world_sha = None
+        self.country_logo_stems = set()
+        self.country_logo_mtime = None
         self.last_bulk_logo = None
         self.closed = False
         self.initial_reload = True
@@ -1214,6 +1233,29 @@ class Controller:
         except (AttributeError, TypeError, ValueError):
             return
 
+    def _observe_country_bouquet(self):
+        """Native radio ServiceList focus is authoritative for selected logo ZIP."""
+        if self.session is None:
+            return None
+        try:
+            from . import warderRadioCountryBouquets as country_bouquets
+            dialog = getattr(self.session, 'current_dialog', None)
+            if dialog is None or not getattr(dialog, 'shown', False):
+                return None
+            if not any(cls.__name__ == 'ChannelSelectionRadio'
+                       for cls in type(dialog).__mro__):
+                return None
+            root = dialog.getRoot()
+            path = root.getPath() if root is not None else ''
+            code = country_bouquets.selected_from_native_path(path)
+            if code is not None:
+                country_bouquets.remember_selection(DIRECTORY, code)
+            else:
+                country_bouquets.remember_selection(DIRECTORY, None)
+            return code
+        except (AttributeError, OSError, ValueError, TypeError):
+            return None
+
     def check_icon(self):
         self.icon_timer = None
         if self.closed:
@@ -1223,12 +1265,13 @@ class Controller:
                 # In the pre-generated mode logos arrive in ONE country ZIP,
                 # not as thousands of individual Radio Browser requests.
                 root = _radio_world_root()
+                chosen_bouquet = self._observe_country_bouquet()
                 cached = None
                 country_code = None
                 if root is not None:
                     from . import warderRadioWorld as world
                     from . import warderRadioCountry as country
-                    country_code = country.active_country(DIRECTORY)
+                    country_code = chosen_bouquet or country.active_country(DIRECTORY)
                     cached = world.cached_country(root, country_code)
                 if cached:
                     self.local_world_sha = cached
