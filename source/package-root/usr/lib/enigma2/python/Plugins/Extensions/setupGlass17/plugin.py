@@ -1698,6 +1698,8 @@ def hdg17inicialize(self):
 				config.plugins.setupGlass17.radioSaverDelay.save()
 			config.plugins.setupGlass17.par64.value = False
 			config.plugins.setupGlass17.par64.save()
+			# Persist both ends of one-time migration before a GUI restart.
+			configfile.save()
 		try:
 			from .warderRadioSaverController import install as _installRadioSaver
 			_installRadioSaver(self, config.plugins.setupGlass17.radioSaverDelay)
@@ -8843,13 +8845,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			a = config.plugins.setupGlass17.dict()
 			for x in range(1, len(ALL_CFG)+1):
 				if ALL_CFG[x-1] != "":
-					for i in a.items():
-						idx = int(str(i[0]).replace("par",""))
-						if idx == x:
-							cfg = i[1].getValue()
-							allLines += "%s: %s\n" % (ALL_CFG[x-1], cfg)
-							i[1].save()
-							break
+					# Only numbered legacy parameters belong in hdg17.conf.
+					# Named settings (such as radioSaverDelay) save separately.
+					setting = a.get("par%d" % x)
+					if setting is not None:
+						cfg = setting.getValue()
+						allLines += "%s: %s\n" % (ALL_CFG[x-1], cfg)
+						setting.save()
 			if allLines != "":
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
@@ -8860,6 +8862,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		config.plugins.warderPiconExpert.destination.save()
 		config.plugins.warderUserPicons.enabled.save()
 		config.plugins.warderUserPicons.path.save()
+		# TEST149: commit the new non-numbered radio setting before configfile.save.
+		config.plugins.setupGlass17.radioSaverDelay.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -8998,13 +9002,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			a = config.plugins.setupGlass17.dict()
 			for x in range(1, len(ALL_CFG)+1):
 				if ALL_CFG[x-1] != "":
-					for i in a.items():
-						idx = int(str(i[0]).replace("par",""))
-						if idx == x:
-							i[1].cancel()
-							break
+					setting = a.get("par%d" % x)
+					if setting is not None:
+						setting.cancel()
 		except: pass
 		config.plugins.warderSkinMainMenu.enabled.cancel()
+		config.plugins.setupGlass17.radioSaverDelay.cancel()
 		try:
 			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()
