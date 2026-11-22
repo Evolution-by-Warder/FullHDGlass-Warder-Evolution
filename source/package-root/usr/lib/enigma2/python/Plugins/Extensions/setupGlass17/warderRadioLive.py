@@ -1156,11 +1156,20 @@ class Controller:
                     continue
                 # Always requery current eDVBDB bouquet data, including when
                 # this persistent native dialog is HIDDEN after ChoiceBox.
+                current = None
+                if not reset_to_top:
+                    get_current = getattr(listing, 'getCurrent', None)
+                    if callable(get_current):
+                        current = get_current()
                 reset()
                 if reset_to_top:
                     go_top = getattr(listing, 'goTop', None)
                     if callable(go_top):
                         go_top()
+                elif current is not None:
+                    set_current = getattr(listing, 'setCurrent', None)
+                    if callable(set_current):
+                        set_current(current, adjust=False)
                 updated = True
             return updated
         except (AttributeError, OSError, RuntimeError, TypeError, ValueError):
