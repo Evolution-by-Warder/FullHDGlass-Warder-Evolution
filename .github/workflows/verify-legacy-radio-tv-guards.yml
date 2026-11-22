@@ -5,6 +5,7 @@ on:
       - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
       - "tools/test-openatv76-plugin-descriptor.py"
       - "tools/test-legacy-radio-live-startup.py"
+      - "tools/test-radio-country-close-list145.py"
       - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py"
       - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py"
       - "source/control/postinst"
@@ -37,6 +38,7 @@ jobs:
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             tools/test-openatv76-plugin-descriptor.py
             tools/test-legacy-radio-live-startup.py
+            tools/test-radio-country-close-list145.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
             source/control/postinst
@@ -56,4 +58,5 @@ jobs:
         run: |
           python3 tools/test-openatv76-plugin-descriptor.py -v
           python3 tools/test-legacy-radio-live-startup.py -v
+          python3 tools/test-radio-country-close-list145.py -v
           python3 -m py_compile tools/test-openatv76-plugin-descriptor.py
