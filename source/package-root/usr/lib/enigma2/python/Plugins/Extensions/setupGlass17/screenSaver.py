@@ -19,6 +19,7 @@ from Tools.LoadPixmap import LoadPixmap
 
 from .warderResolution import Screen, ePoint
 from .warderRadioSaverLayout import make_widgets, bounded_motion
+from .warderRadioRds import native_rds
 from .warderUserPicons import selected_source, find_png
 
 _MARKUP, _POSITIONS = make_widgets()
@@ -178,16 +179,29 @@ class ScreenSaverScreen(Screen):
                 return
             name = _service_name(ref, service)
             group, kind = _service_group(ref, service)
+            song_caption = "SONG"
             if stream_url(ref):
                 artist, track = current_song(service, ref)
             else:
                 artist, track = native_song(service)
+                # DVB RDS/RT+ has its own decoder: native iServiceInformation
+                # sTagArtist/sTagTitle alone is not enough for those services.
+                rds_artist, rds_title, radio_text, _ = native_rds(service)
+                if rds_artist and rds_title:
+                    artist, track = rds_artist, rds_title
+                elif rds_title and not track:
+                    artist, track = (artist or rds_artist), rds_title
+                elif radio_text and not (artist or track):
+                    # Plain RadioText is station prose, NOT a verified
+                    # artist/song pair; show it truthfully as RDS TEXT.
+                    track = radio_text
+                    song_caption = "RDS TEXT"
             self._label("saver_head", "RADIO")
             self._label("saver_station", name or "Rádio")
             self._label("saver_group", group)
             self._label("saver_artist_caption", "ARTIST")
             self._label("saver_artist", artist or "—")
-            self._label("saver_track_caption", "SONG")
+            self._label("saver_track_caption", song_caption)
             self._label("saver_track", track or "—")
             self._label("saver_signal", kind)
             self._label("saver_date", time.strftime("%d.%m.%Y"))
