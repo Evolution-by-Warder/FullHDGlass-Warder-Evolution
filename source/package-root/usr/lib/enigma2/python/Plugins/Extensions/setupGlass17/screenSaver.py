@@ -64,7 +64,22 @@ def _picon_path(ref):
         stem = "_".join(ref_text.split(":")[:10]).upper().rstrip("_")
         enabled, directory = selected_source(config)
         if enabled:
+            # Explicitly selected Own Picons remain authoritative.
             return find_png(directory, stem)
+        # Warder Radio Live keeps signed, country-scoped originals under
+        # PATHS/picon/radio/CC. Use the SAME ownership-checked lookup as the
+        # channel list, never a loose search through unrelated country PNGs.
+        try:
+            from .warderRadioLive import cached_country_picon
+            radio_stems = [stem]
+            if stem.startswith("1_"):
+                radio_stems.append("4097" + stem[1:])
+            picon = cached_country_picon(
+                radio_stems, config.plugins.setupGlass17.par39.value)
+            if picon:
+                return picon
+        except (ImportError, AttributeError, OSError, TypeError, ValueError):
+            pass
         from Components.Renderer.Picon import getPiconName
         name = getPiconName(ref_text)
         if name and os.path.isfile(name):
