@@ -280,15 +280,16 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
     if picon.is_symlink() or not picon.is_dir() or (
             require_external and picon.stat().st_dev == Path('/').stat().st_dev):
         return {'changed':False,'skipped':'unsafe-picon-path'}
-    current=picon/'radio'
-    owner=current/packages.OWNER_FILE
-    if current.exists() and not packages._owned_dir(current):
-        return {'changed':False,'skipped':'unowned-radio-folder'}
+    current=picon/'radio'/code
+    if not packages._owned_country_dir(current, code):
+        return {'changed':False,'skipped':'user-modified-country-picons'}
+    owner=current/packages.COUNTRY_APPROVED_OWNER
     if owner.is_file() and not owner.is_symlink():
         old=packages._json(owner.read_bytes())
         if (old.get('country')==code and
                 old.get('logo_zip_sha256')==zipinfo['sha256']):
-            return {'changed':False,'skipped':'already-current'}
+            return {'changed':False,'skipped':'already-current',
+                    'country':code,'logos':len(old.get('files', {}))}
     stage=Path(tempfile.mkdtemp(prefix='.warder-country-logo-',dir=str(root)))
     try:
         for group,extension in (('bouquets','radio'),('catalog','json'),
@@ -309,7 +310,7 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
         # If user switched countries during download, never activate stale PNGs.
         if not _country_really_selected(enigma_directory, code):
             return {'changed':False,'skipped':'country-superseded'}
-        return packages.install_logos(
+        return packages.install_country_logos(
             stage, code, picon, require_external=require_external,
             still_selected=lambda selected:
                 _country_really_selected(enigma_directory, selected))
