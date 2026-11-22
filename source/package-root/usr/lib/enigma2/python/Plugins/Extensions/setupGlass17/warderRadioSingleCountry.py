@@ -1,6 +1,6 @@
 """Exactly one active Warder Radio Live bouquet, chosen by OSD or saved preference.
 
-The signed bundled Radio Browser world offers 224 country choices, but the
+The signed external Radio Browser world offers 224 country choices, but the
 receiver registers only ONE live bouquet. An earlier experimental TEST141
 224-folder index is retired only when all managed files and the managed
 index block remain byte-identical. User and TV/SAT bouquets are untouched.
@@ -67,25 +67,51 @@ def migrate_old_test_country_folders(directory):
     return {'changed': True, 'retired_country_roots': 224, 'selected': selected}
 
 
-def sync(paths_root, directory, require_external=True, source_archive=bundled.SOURCE):
-    """Verify 224-country catalogue on external PATHS; register one live bouquet."""
-    directory = Path(directory)
+def sync(paths_root, directory, require_external=True, source_archive=None,
+         opener=None, now=None):
+    """Download verified world to external PATHS, then register one saved country.
+
+    No world ZIP is part of the IPK or stored in internal receiver flash.
+    With an existing signed external cache, an offline 14-day retry never
+    loses the selected country or personal bouquets.
+    """
+    directory=Path(directory)
     if directory.is_symlink() or not directory.is_dir():
-        return {'changed': False, 'skipped': 'unsafe-enigma-directory'}
-    result = bundled.sync_world(
-        paths_root, require_external=require_external, source_archive=source_archive)
-    if not (result.get('changed') or result.get('skipped') == 'already-current'):
+        return {'changed':False,'skipped':'unsafe-enigma-directory'}
+    root=Path(paths_root)
+    if source_archive is not None:
+        # Offline regression fixture for the exact pinned approved source.
+        result=bundled.sync_world(root,require_external=require_external,
+                                  source_archive=source_archive)
+    else:
+        from . import warderRadioBundleFetch as fetch
+        options={'require_external':require_external,
+                 'state_directory':directory}
+        if opener is not None:
+            options['opener']=opener
+        if now is not None:
+            options['now']=now
+        result=fetch.sync_world(root,**options)
+    if result.get('skipped')=='not-due':
+        from . import warderRadioWorld as world
+        # All previously cached country files must still be SHA-owned.
+        existing=root/world.WORLD_NAME
+        if not world._owner_ok(existing):
+            return result
+        result={'changed':False,'skipped':'already-current',
+                'country_cache':'verified-signed-external'}
+    if not (result.get('changed') or result.get('skipped')=='already-current'):
         return result
-    migrated = migrate_old_test_country_folders(directory)
-    result['old_test_bouquets'] = migrated
-    if migrated.get('skipped') not in (None, 'no-old-country-roots'):
-        return {'changed': False, 'skipped': 'old-country-migration-blocked',
-                'cause': migrated.get('skipped')}
-    initial = country.bootstrap(directory)
-    result['initial_country'] = country.active_country(directory)
-    result['live_country_bouquet'] = initial
-    result['changed'] = bool(
+    migrated=migrate_old_test_country_folders(directory)
+    result['old_test_bouquets']=migrated
+    if migrated.get('skipped') not in (None,'no-old-country-roots'):
+        return {'changed':False,'skipped':'old-country-migration-blocked',
+                'cause':migrated.get('skipped')}
+    initial=country.bootstrap(directory)
+    result['initial_country']=country.active_country(directory)
+    result['live_country_bouquet']=initial
+    result['changed']=bool(
         result.get('changed') or migrated.get('changed') or initial.get('changed'))
-    result['country_choices'] = 224
-    result['active_bouquets'] = 1
+    result['country_choices']=224
+    result['active_bouquets']=1
     return result
