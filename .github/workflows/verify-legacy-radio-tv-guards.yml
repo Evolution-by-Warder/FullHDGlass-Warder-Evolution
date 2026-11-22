@@ -41,6 +41,7 @@ jobs:
             tools/test-radio-country-close-list145.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
             source/control/postinst
           sparse-checkout-cone-mode: false
       - uses: actions/checkout@v4
