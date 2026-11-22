@@ -1,3 +1,12 @@
+## 22. 11. 2026 — Jeden kompletný integračný TEST152 IPK, bez vydania do produkcie
+
+- [GitHub Actions TEST152 #45022168262 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45022168262), [artifact #14753389284](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45022168262/artifacts/14753389284). **Skutočný stiahnutý a overený** `enigma2-plugin-skins-fullhdglass_1.0.81-test152_all.ipk`, 18 381 202 B, SHA256 `c9fa965b794499704a66bf4d2b347e8158191407dd3ad427f49b6ad0d2f440d1`, `Version: 1.0.81-test152-1`, 1 817 payload entries. ZIP/AR/control/PNG runtime, picon ownership a `sha256sum -c` overené v konverzačnom kontajneri. Prístupný priamy IPK a SHA používateľovi v chate, **bez produkčného release, tagu alebo update feedu**.
+- Build zahŕňa celý aktuálny skin, rádio Live 224 krajín a pôvodný otestovaný šetrič TEST151. Novelty proti starému TEST151: novší hlavný satelitný katalóg zostal v zdrojovom repozitári a pridané bolo opravené mapovanie schválených big-menu ikon z PR #115; samotný obrovský krajinský world ZIP zámerne nie je zabalený do internej flash.
+- Integračný kombinovaný offline QA úspešne prešiel [run #45021634747](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45021634747) a po korekcii legacy simulácie aj [run #45021967303](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45021967303). OpenATV/OpenPLi staré golden testy (pred main 1.0.80) sú kontrolované osobitne; upravené verziovo podmienené hash referencie v `tools/test-openpli-graph-epg.py` (`c34357a`), `tools/test-openatv-screen-compat.py` (`9ff41fc`) a `tools/test-setup-style.py` (`25a9fec`), **bez zmeny aktuálnych grafických súborov**. Pri všetkých zmenách zanechaný prísny aktuálny SHA pin.
+- **Stále čaká:** výsledok novších úplných kompatibilitných workflow, fyzický upgrade TEST152 na prijímači (na rozdiel od samostatného TEST151), následné explicitné schválenie merge/vydania. PR #131 zostáva Draft, main/produkčná verzia 1.0.80 nezmenená.
+
+---
+
 ## 22. 11. 2026 — Integračný audit všetkých 35 vetiev FullHDGlass, PR #131 (iba pracovná vetva)
 
 - **Pôvodných 12 opráv:** na `main` sú zdrojovo integrované podľa prvého dvanásťbodového bloku nižšie. Ostáva platná ostrá verzia `1.0.80`, žiadne zmeny produkčného feedu ani IPK.
