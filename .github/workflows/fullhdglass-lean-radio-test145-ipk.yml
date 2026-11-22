@@ -1,0 +1,145 @@
+name: TEST145 FullHDGlass complete skin, automatic 224-country original logos and cleanup
+on:
+  push:
+    branches: [feature/radio-live-world-bundle-installer-20261119]
+    paths:
+      - .github/workflows/fullhdglass-lean-radio-test145-ipk.yml
+      - tools/build-fullhdglass-all-fixes-test145.py
+permissions:
+  contents: read
+jobs:
+  full-skin-test145:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      RADIO_COUNTRY_TAG: radio-country-20261122
+      WORLD_SHA: 771953b41ceab46f8852f5e3219338cb1369d7f653ed7d329ad551e481f88d68
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /assets/warder/downloads/ui/spinners/
+            /assets/warder/channel-picon-build.json
+            /assets/warder/runtime-network-dependencies.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reject bundled world ZIP and verify Python 3.9 syntax
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          root=Path('source/package-root')
+          assert not (root/'usr/share/enigma2/hd_glass17/radio-world/radio-countries-bouquets.zip').exists()
+          for item in root.rglob('*.py'):
+              ast.parse(item.read_text(encoding='utf-8'),filename=str(item),feature_version=(3,9))
+          print('LEAN TEST145: no 6.7MB world data inside skin flash payload')
+          PY
+      - name: Check original country GUI and safe old-radio-logos deletion regression
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          mkdir -p packages/fullhdglass-all-fixes-test145
+          for t in test-radio-country-close-list145.py test-radio-224-signed-zip-only145.py test-radio-live.py test-opkg-pyc-upgrade144.py test-radio-country-logo-cleanup.py test-radio-approved-country-installer.py \
+                   test-radio-single-country-startup142.py test-radio-bundle-fetch.py \
+                   test-radio-world-gui.py test-radio-world.py test-radio-country.py \
+                   test-radio-224-online-fallback-and-logos.py test-spinner-choice.py \
+                   test-setup-date-preview.py test-weather-help-bubbles.py; do
+            echo "TEST $t"
+            python3 -B "tools/$t" >>packages/fullhdglass-all-fixes-test145/test145-tests.log 2>&1 || {
+              tail -80 packages/fullhdglass-all-fixes-test145/test145-tests.log
+              exit 1
+            }
+          done
+          for script in preinst postinst prerm postrm; do sh -n "source/control/$script"; done
+      - name: REAL live HTTPS test for current SK original ZIP and CZ selection cleanup
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,tempfile
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,'source/package-root/usr/lib/enigma2/python')
+          from Plugins.Extensions.setupGlass17 import warderRadioWorld as world
+          from Plugins.Extensions.setupGlass17 import warderRadioCountry as country
+          from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch as fetch
+          from Plugins.Extensions.setupGlass17 import warderRadioCountryCleanup as cleanup
+          from Plugins.Extensions.setupGlass17 import warderRadioPackages as pkg
+          from Plugins.Extensions.setupGlass17 import warderRadioSingleCountry as single
+          with tempfile.TemporaryDirectory() as t:
+              base=Path(t)
+              external=base/'hdg17_files'
+              external.mkdir()
+              etc=base/'enigma2'
+              etc.mkdir()
+              (etc/'settings').write_text('config.osd.language=sk_SK\n')
+              (etc/'bouquets.radio').write_bytes(
+                  b'#NAME Bouquets (Radio)\n'
+                  b'#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.personal.radio" ORDER BY bouquet\n')
+              old=single.sync(external,etc,require_external=False)
+              with (external/'radio-world/index.json').open(encoding='utf-8') as f:
+                  summary=json.load(f)
+              count_sk=summary['countries']['SK']['logos_found']
+              count_cz=summary['countries']['CZ']['logos_found']
+              assert old['initial_country']=='SK' and old['active_bouquets']==1
+              owned=fetch.sync_selected_logos(external,etc,'SK',require_external=False)
+              assert owned['country']=='SK' and owned['logos']==count_sk,owned
+              (external/'picon'/'tv-owned.png').write_bytes(b'keep my satellite image')
+              result=world.activate_from_world(external,'CZ',etc)
+              assert result['country']=='CZ' and country.active_country(etc)=='CZ'
+              removed=cleanup.prune_inactive(external,'CZ',etc,require_external=False)
+              assert removed['removed']==['SK'],removed
+              final=fetch.sync_selected_logos(external,etc,'CZ',require_external=False)
+              assert final['country']=='CZ' and final['logos']==count_cz,final
+              assert not (external/'picon/radio/SK').exists()
+              assert len(list((external/'picon/radio/CZ').glob('*.png')))==count_cz
+              assert (external/'picon/tv-owned.png').read_bytes()==b'keep my satellite image'
+              print('LIVE SK',count_sk,'PNG / SWITCH CZ',count_cz,'PNG / SK DELETED / TV/SAT PRESERVED PASS')
+          PY
+      - name: Build complete single FullHDGlass TEST145 IPK and verify exact archive inventory
+        run: |
+          set -euo pipefail
+          python3 -B tools/build-fullhdglass-all-fixes-test145.py
+          cd packages/fullhdglass-all-fixes-test145
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.81-test145_all.ipk.sha256
+          python3 - <<'PY'
+          import io,json,subprocess,tarfile,hashlib
+          from pathlib import Path
+          p=Path('enigma2-plugin-skins-fullhdglass_1.0.81-test145_all.ipk')
+          manifest=json.loads(Path('fullhdglass-1.0.81-test145-manifest.json').read_text())
+          assert manifest['sha256']==hashlib.sha256(p.read_bytes()).hexdigest()
+          assert subprocess.check_output(['ar','t',str(p)],text=True).splitlines()==[
+              'debian-binary','control.tar.gz','data.tar.gz']
+          with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(p),'control.tar.gz'])),mode='r:gz') as t:
+              control=t.extractfile('./control').read().decode()
+              assert 'Version: 1.0.81-test145-1' in control
+          with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(p),'data.tar.gz'])),mode='r:gz') as t:
+              names=set(t.getnames())
+              path='./usr/share/enigma2/hd_glass17/radio-world/radio-countries-bouquets.zip'
+              assert path not in names, 'No 6.7MB catalogue may be bundled into flash'
+              assert p.stat().st_size < 22*1024*1024
+              for name in ('warderRadioCountryCleanup.py','warderRadioBundleFetch.py',
+                           'warderRadioSingleCountry.py','warderRadioOnlineLogos.py'):
+                  assert './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/'+name in names
+              assert len([n for n in names if n.startswith('./usr/share/enigma2/hd_glass17/icons_factory/') and n.endswith('.png')])==148
+          print('SINGLE FULL SKIN TEST145 IPK VERIFIED',len(names),p.stat().st_size,manifest['sha256'])
+          PY
+      - name: Upload ONE test-only FullHDGlass skin IPK (not a stable feed or release)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.81-test145-224-countries-close-radio-list-TEST-IPK
+          path: |
+            packages/fullhdglass-all-fixes-test145/enigma2-plugin-skins-fullhdglass_1.0.81-test145_all.ipk
+            packages/fullhdglass-all-fixes-test145/enigma2-plugin-skins-fullhdglass_1.0.81-test145_all.ipk.sha256
+            packages/fullhdglass-all-fixes-test145/fullhdglass-1.0.81-test145-manifest.json
+            packages/fullhdglass-all-fixes-test145/test145-tests.log
+          retention-days: 30
+          if-no-files-found: error
