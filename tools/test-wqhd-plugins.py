@@ -80,10 +80,19 @@ class ResolutionTests(unittest.TestCase):
         for value,axis in ((579,0),(592,1)):
             physical=ui.pixel(value,axis)
             self.assertEqual(ui.logical(physical,axis),value)
-        for filename in ('plugin.py','screenSaver.py'):
-            tree=ast.parse((RUNTIME/filename).read_text())
-            imported={alias.asname or alias.name for node in ast.walk(tree) if isinstance(node,ast.ImportFrom) and node.module=='warderResolution' for alias in node.names}
-            self.assertIn('logical',imported)
+        # The main plugin reads native widget coordinates, then converts back
+        # to 1920x1080 reference units before passing them through ePoint.
+        tree=ast.parse((RUNTIME/'plugin.py').read_text())
+        imported={alias.asname or alias.name for node in ast.walk(tree) if isinstance(node,ast.ImportFrom) and node.module=='warderResolution' for alias in node.names}
+        self.assertIn('logical',imported)
+
+        # The unified radio saver no longer reads back native positions.
+        # Its bounded motion stays in reference units and scales via ePoint.
+        saver_tree=ast.parse((RUNTIME/'screenSaver.py').read_text())
+        saver_imports={alias.asname or alias.name for node in ast.walk(saver_tree) if isinstance(node,ast.ImportFrom) and node.module=='warderResolution' for alias in node.names}
+        self.assertIn('ePoint',saver_imports)
+        saver_moves=[node for node in ast.walk(saver_tree) if isinstance(node,ast.Call) and isinstance(node.func,ast.Attribute) and node.func.attr=='move']
+        self.assertTrue(any(node.args and isinstance(node.args[0],ast.Call) and isinstance(node.args[0].func,ast.Name) and node.args[0].func.id=='ePoint' for node in saver_moves))
 
     def test_config_font_installation_uses_the_native_font_factory_once(self):
         self.assertIs(ui.gFont._warder_native_font,engine.gFont)
