@@ -62,6 +62,9 @@ class Tests(unittest.TestCase):
         self.assertEqual(country.bootstrap(self.etc)['country'],'FR')
         self.previous_controller = live._controller
         self.addCleanup(setattr,live,'_controller',self.previous_controller)
+        self.previous_directory=live.DIRECTORY
+        live.DIRECTORY=self.etc
+        self.addCleanup(setattr,live,'DIRECTORY',self.previous_directory)
 
     def controller(self):
         ctrl = live.Controller.__new__(live.Controller)
