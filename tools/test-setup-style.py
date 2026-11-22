@@ -123,11 +123,15 @@ class SetupStyleTests(unittest.TestCase):
         ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
         expected = [(r['scope'], style.portable(ast.parse(r['after']).body[0])) for r in ledger]
         counts = [0] * len(expected)
+        expected_types = {}
+        for record_scope, reviewed_node in expected:
+            expected_types.setdefault(record_scope, set()).add(reviewed_node[0])
 
         def visit(node, scope='module'):
             if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
                 scope = node.name if scope == 'module' else scope + '.' + node.name
-            if isinstance(node, ast.stmt):
+            # Avoid recursively serializing huge unrelated function definitions.
+            if isinstance(node, ast.stmt) and type(node).__name__ in expected_types.get(scope, ()):
                 portable_node = style.portable(node)
                 for index, (record_scope, reviewed_node) in enumerate(expected):
                     if scope == record_scope and portable_node == reviewed_node:
@@ -227,7 +231,7 @@ class SetupStyleTests(unittest.TestCase):
                 original.remove(original.find("widget[@name='selected_item']"))
             # The modern SAT selector has no Yellow action. Its historical
             # unused key_yellow widget was removed from the visible dialog.
-            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83') and name=='satSelectorScr':
+            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84') and name=='satSelectorScr':
                 legacy=original.find("widget[@name='key_yellow']")
                 self.assertIsNotNone(legacy)
                 original.remove(legacy)
@@ -461,7 +465,7 @@ class SetupStyleTests(unittest.TestCase):
         import struct
         record=json.loads((ROOT/'design/settings-header-asset.json').read_text())
         path=ROOT/'source/package-root'/record['path'];raw=path.read_bytes()
-        expected=(CURRENT_MAIN_1080_HEADER_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83')
+        expected=(CURRENT_MAIN_1080_HEADER_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84')
                   else record['sha256'])
         self.assertEqual(hashlib.sha256(raw).hexdigest(),expected)
         self.assertEqual(raw[:8],b'\x89PNG\r\n\x1a\n')
