@@ -21,8 +21,8 @@ from . import warderRadioPackages as country_package
 OWNER='.warder-radio-online-source.json'
 PNG=re.compile(r'^4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\.png$')
 SHA=re.compile(r'^[0-9a-f]{64}$')
-BATCH=28
-WORKERS=5
+BATCH=48
+WORKERS=6
 
 def _read(path,maxsize):
     if path.is_symlink() or not path.is_file() or path.stat().st_size>maxsize:
@@ -89,7 +89,7 @@ def sync_online_country(root,directory,code,logos=None,max_batch=BATCH,
     if path.is_symlink() or (path.exists() and not path.is_dir()):
         return {'changed':False,'skipped':'unsafe-picons'}
     if not path.exists():path.mkdir(mode=0o755)
-    folder=path/'radio-online'
+    folder=path/'radio'
     if folder.is_symlink() or (folder.exists() and not folder.is_dir()):
         return {'changed':False,'skipped':'unsafe-online-picons'}
     if not folder.exists():folder.mkdir(mode=0o755)
@@ -123,7 +123,7 @@ def sync_online_country(root,directory,code,logos=None,max_batch=BATCH,
     block=rows[start:start+max_batch]
     if logos is None:
         _,logo_type=live._plugin()
-        logos=logo_type('/etc/enigma2/warder-radio')
+        logos=logo_type(str(folder))
     candidates={}
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         jobs={pool.submit(logos.get,row):row for row in block
