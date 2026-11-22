@@ -1262,7 +1262,10 @@ try:
 	ENAFINDER = True
 except: pass
 Glass17__init__ = None
-_warderOriginalShowRadioButton = None                          
+_warderOriginalShowRadioButton = None
+# Enabled only by the legacy PluginDescriptor path on older Enigma2 images.
+# Modern OpenATV 8.1 keeps its already-working native radio/TV lifecycle.
+_warderLegacyRdsTvGuard = False                          
 FirstRun17 = False
 enaFadeOut17 = True
 enaFadeIn17 = True
@@ -1307,6 +1310,7 @@ def startSetup17(menuid, **kwargs):
 	return ret
 	
 def Plugins(path, **kwargs):
+	global _warderLegacyRdsTvGuard
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		ret = [ PluginDescriptor(name=ui_text("FullHDGlass configuration"), description=ui_text("Configure the FullHDGlass skin"), where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="images/warder-config.png"),
@@ -1323,10 +1327,12 @@ def Plugins(path, **kwargs):
 					where=PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU,
 					fnc=warderRadioCountry.open_country_selector,
 					serviceFilter=warderRadioCountry.is_live_service))
-			except (ImportError, AttributeError, TypeError):
-				# OpenATV 7.6 exposes WHERE_CHANNEL_CONTEXT_MENU but its
-				# PluginDescriptor does not accept the serviceFilter keyword.
-				# Skip only this optional entry; never invalidate setupGlass17.
+			except TypeError:
+				# OpenATV 7.6 / OpenPLi 9.2 expose the native context menu,
+				# but reject the new serviceFilter constructor keyword.
+				# The same legacy images also require the RDS TV-hide guard.
+				_warderLegacyRdsTvGuard = True
+			except (ImportError, AttributeError):
 				pass
 		if _warderOpenPliEpgReady:
 			ret.append(PluginDescriptor(name="FullHDGlass Multi EPG", description=_warderUiText("PROGRAM INFO"), where=[PluginDescriptor.WHERE_EVENTINFO, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=warderOpenPliMultiEpg))
@@ -1714,7 +1720,9 @@ def SpecialScreenWindow17(self):
 	ShowHideViaKey()
 
 def _warderGuardNativeRadioWindow(self, rds):
-	# OpenATV 7.6 can re-show its native full-screen RdsInfoDisplay even
+	if not _warderLegacyRdsTvGuard:
+		return
+	# OpenATV 7.6 / OpenPLi 9.2 can re-show their native RDS display even
 	# after navigating back to a DVB-TV service. The radio-only artwork
 	# must never be allowed to cover TV, including after later native show().
 	if rds is None or getattr(self, "_warderRdsGuardOwner", None) is rds:
