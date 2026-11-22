@@ -5,7 +5,8 @@
 - Odhalený nesúlad: diagnostika hľadala historický flat radio marker, kým ostrý inštalátor pracuje so SHA-256 overenými picon/radio/<CC> značkami. Výstup radio_png_count a radio_picons_owned_integrity_valid mohol nesprávne hlásiť chýbajúce logá.
 - Read-only oprava v warderRadioWorld.py commit cb889da2750a23b1f9c8b603018b813223d947e2; regresný test aktívnej/neaktívnej krajiny a používateľom zmenených PNG v tools/test-radio-world.py commit 344d33ea8bd3822dbb8c4474a2cc4dbf0195524a.
 - Pracovná vetva fix/radio-world-diagnostics-country-layout-20261122; [PR #136](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/136) OPEN bez merge. Automatické CI sa overí po poslednom commite. Bez zmeny grafiky, SAT piconov, IPK 1.0.83 alebo update feedu. Merge a vydanie iba po výslovnom súhlase.
-- Najbližší krok: skontrolovať PR CI, na prijímači overiť prvý world sync, offline SK→CZ→DE, prekreslenie zoznamu a externé logá.
+- CI iterácia: prvý offline test odhalil nutnosť zachovať starý schválený flat picon layout; spätne kompatibilné čítanie bolo doplnené commitom 1678fab738160e46a0ee8e6e162bc7f2664ca2b6, bez maskovania neovereného nového country priečinka. Po tejto oprave [world ZIP/offline test #45040928500 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45040928500), [schválená rádio regresia #45040928510 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45040928510) a [stable preflight #45040928499 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45040928499). OpenATV/OpenPLi a integrovaná kompatibilita ešte prebiehajú; tento PR sa automaticky nezlučuje.
+- Najbližší krok: dokončiť PR CI, na prijímači overiť prvý world sync, offline SK→CZ→DE, prekreslenie zoznamu a externé logá.
 
 ---
 ## 22. 11. 2026 — Pomocné CI stabilnej 1.0.83 opravené bez opätovného vydania
