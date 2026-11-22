@@ -182,7 +182,7 @@ class RadioRdsChecks(unittest.TestCase):
                        and node.name == "_refresh")
         source = ast.unparse(refresh)
         self.assertIn("native_rds(service)", source)
-        self.assertIn('song_caption = "RDS TEXT"', source)
+        self.assertIn("song_caption = 'RDS TEXT'", source)
         self.assertIn("current_song(service, ref)", source)
         self.assertIn("native_song(service)", source)
         self.assertIn("if rds_artist and rds_title:", source)
