@@ -1,3 +1,11 @@
+## 22. 11. 2026 — Pomocné CI stabilnej 1.0.83 opravené bez opätovného vydania
+
+- [PR #134](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/134) zlúčené, commit `7ce08f76a57f187c08157ae6f9d8b72724c72c52`. Starý verifikátor rádia už nevyžaduje nedostupný Python 3.9 ani generátor z historickej verzie; používa Python 3.11 a overuje reálne produkčné source/feed/IPK SHA, externé rádio a 224-krajinný world. Nový main [CI #45039722144 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45039722144).
+- [PR #135](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/135) zlúčené, commit `3a9b64f0a521b034c268bc8fa9180fb39e21983b`. Presné pôvodné 1080p grafické layout SHA ostávajú zamknuté; test normalizuje výhradne automatické `1.0.82/1.0.83` číslo v troch verziových hlavičkách na referenciu 1.0.80. Úplné porovnanie zdrojových skin obrazoviek potvrdilo, že po tejto jedinej náhrade sú všetky tri zhodné s v1.0.80; [nová rýchla main kontrola #45040309257 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45040309257). Základné PR preflight aj OpenATV PASS. Veľký OpenPLi regression run #45040237276 pri poslednej kontrole ešte prebiehal; jeho natívne testy na vetve pred vydaním PASS.
+- **Žiadny nový skin build, žiadna ďalšia verzia, žiadna zmena používateľských dát.** Ostrý FullHDGlass ostáva `1.0.83`, SHA `502d71a840f280be868c2199c8031dac60a26cf5955968085dc256d1ab5c3727`, oficiálny updater má `1.0.83`. Radio World `224/48 219/40 837` a 14-dňové serverové workflowy ostávajú nezmenené. Fyzický test prvého radio world syncu na prijímači stále nie je zaznamenaný.
+
+---
+
 ## 22. 11. 2026 — OSTRÁ VERZIA FullHDGlass Warder Evolution 1.0.83 HOTOVÁ
 
 - Vlastník autorizoval ostré publikovanie 224-krajinných originálnych rádiových dát, automatizovanú aktualizáciu a produkčné zapojenie FullHDGlass. [PR #133](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/133) je zlúčený do main commitom `1c0a7e5620c873c8e8887475d01bcf45565dd025`.
