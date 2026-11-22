@@ -211,3 +211,112 @@ def remember_selection(directory,code):
     _write(folder/'.warder-radio-selected-country.json',
            (json.dumps({'country':code,'schema':1})+'\n').encode())
     return True
+
+
+def bootstrap_online(paths_root,enigma_directory,available=None,require_external=True):
+    """Without a published world, create SAFE independent country folders.
+
+    They start as clearly-labelled pending placeholders; a native selection
+    triggers the real Radio Browser worker which updates that country's file.
+    No fabricated stations, no online logos and no changes to personal lists.
+    """
+    root=Path(paths_root)
+    etc=Path(enigma_directory)
+    if (not world._safe_directory(root) or
+        (require_external and root.stat().st_dev==Path('/').stat().st_dev) or
+        etc.is_symlink() or not etc.is_dir()):
+        return {'changed':False,'skipped':'unsafe-storage'}
+    if available is None:
+        from . import warderRadioLive as live
+        browser_type,_=live._plugin()
+        facets=browser_type('/etc/enigma2/warder-radio').facets()
+        if facets.offline:
+            return {'changed':False,'skipped':'country-list-offline'}
+        available=list(facets.countries)
+    if (not isinstance(available,(tuple,list)) or len(available)!=224 or
+        len(set(available))!=224 or any(not isinstance(c,str) or
+        not re.fullmatch(r'[A-Z]{2}',c) for c in available)):
+        return {'changed':False,'skipped':'country-list-incomplete',
+                'count':len(available) if isinstance(available,(tuple,list)) else None}
+    codes=sorted(available)
+    ownerpath=etc/OWNER
+    if _read(ownerpath) is not None:
+        return {'changed':False,'skipped':'already-owned'}
+    indexpath=etc/'bouquets.radio'
+    if (indexpath.is_symlink() or
+        (indexpath.exists() and not indexpath.is_file())):
+        return {'changed':False,'skipped':'unsafe-radio-index'}
+    raw=indexpath.read_bytes() if indexpath.is_file() else b'#NAME Bouquets (Radio)\n'
+    if len(raw)>MAX_INDEX_BYTES or START in raw or END in raw:
+        return {'changed':False,'skipped':'country-index-conflict'}
+    for code in codes:
+        if (etc/filename(code)).exists() or (etc/filename(code)).is_symlink() or
+            filename(code).encode('ascii') in raw):
+            return {'changed':False,'skipped':'country-name-conflicts'}
+    from . import warderRadioCountry as country
+    labels={code:country.country_name(code) or code for code in codes}
+    # On Enigma2 this is a real independent file per country, not a switchable
+    # alias to one shared global bouquet. One pending label signals load state.
+    templates={
+        filename(code):('#NAME Warder Radio - '+labels[code]+'\n'
+                        '#SERVICE 1:64:2:0:0:0:0:0:0:0:\n'
+                        '#DESCRIPTION Načítavanie staníc…\n').encode('utf-8')
+        for code in codes}
+    available_bytes=os.statvfs(str(etc))
+    if available_bytes.f_bavail*available_bytes.f_frsize < MIN_FREE:
+        return {'changed':False,'skipped':'flash-space-guard'}
+    for name,data in sorted(templates.items()):
+        _write(etc/name,data)
+    records={name:digest(data) for name,data in templates.items()}
+    _write(ownerpath,(json.dumps({
+        'schema':1,'owner':'WarderCountryBouquets-v1','source':'radio-browser-live',
+        'countries':224,'files':records,'station_count':0
+        },sort_keys=True)+'\n').encode())
+    _write(indexpath,(raw if raw.endswith(b'\n') else raw+b'\n')+block(codes))
+    return {'changed':True,'countries':224,'stations':0,'indexed_countries':224,
+            'pending_country_downloads':224}
+
+def update_from_online_country(directory,code):
+    """Mirror the *verified* live country selection into its independent file."""
+    etc=Path(directory)
+    ownerpath=etc/OWNER
+    owner=_read(ownerpath)
+    if owner is None:
+        return {'changed':False,'skipped':'no-managed-country-index'}
+    name=filename(code)
+    if name not in owner['files']:
+        return {'changed':False,'skipped':'country-not-listed'}
+    target=etc/name
+    if (target.is_symlink() or not target.is_file()
+        or digest(target.read_bytes())!=owner['files'][name]):
+        return {'changed':False,'skipped':'modified-managed-country'}
+    from . import warderRadioCountry as country
+    from . import warderRadioLive as live
+    state=country._choice(etc)
+    if state.get('active')!=code:
+        return {'changed':False,'skipped':'different-active-country'}
+    current=etc/live.FILE
+    mapping=etc/live.DATA_FILE
+    if any(p.is_symlink() or not p.is_file() for p in (current,mapping)):
+        return {'changed':False,'skipped':'missing-live-country'}
+    data=live._read_json(mapping,{},24*1024*1024)
+    rows=data.get('stations') if isinstance(data,dict) else None
+    if (not isinstance(rows,list) or not rows or
+        any(not isinstance(r,dict) or r.get('countrycode')!=code for r in rows)):
+        return {'changed':False,'skipped':'unverified-live-rows'}
+    try:
+        expected=live._bouquet([(country.country_name(code),rows)])
+        actual=current.read_bytes()
+        # No remapping: every exact advertised stream and reference retained.
+        if expected!=actual:
+            return {'changed':False,'skipped':'live-reference-not-verified'}
+        transformed=country_bouquet(expected,code,country.country_name(code))
+    except (OSError,ValueError,KeyError,TypeError):
+        return {'changed':False,'skipped':'bad-live-snapshot'}
+    if target.read_bytes()==transformed:
+        return {'changed':False,'skipped':'already-current','country':code}
+    _write(target,transformed)
+    owner['files'][name]=digest(transformed)
+    owner['station_count']=max(0,owner.get('station_count',0))
+    _write(ownerpath,(json.dumps(owner,sort_keys=True,ensure_ascii=False)+'\n').encode())
+    return {'changed':True,'country':code,'stations':len(rows),'bouquet':name}
