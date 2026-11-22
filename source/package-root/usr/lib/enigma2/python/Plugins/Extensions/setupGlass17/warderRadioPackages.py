@@ -314,3 +314,131 @@ def install_logos(root, code, picon_root, require_external=True,
         if stage.exists():
             shutil.rmtree(str(stage))
         # A failed rollback must never remove the surviving old radio folder.
+
+
+COUNTRY_APPROVED_OWNER = '.warder-radio-country.json'
+ONLINE_COUNTRY_OWNER = '.warder-radio-online-source.json'
+
+
+def _owned_country_dir(folder, code):
+    """Allow replacing ONLY own exact-country artwork, never user PNGs."""
+    folder = Path(folder)
+    if folder.is_symlink():
+        return False
+    if not folder.exists():
+        return True
+    if not folder.is_dir():
+        return False
+    approved = folder / COUNTRY_APPROVED_OWNER
+    online = folder / ONLINE_COUNTRY_OWNER
+    marker = approved if approved.is_file() and not approved.is_symlink() else online
+    if marker.is_symlink() or not marker.is_file() or marker.stat().st_size > MAX_OWNER_MANIFEST:
+        return False
+    state = _json(marker.read_bytes())
+    if state.get('country') != code or (
+            marker == approved and state.get('owner') != 'WarderRadioLive') or (
+            marker == online and state.get('owner') != 'WarderRadioOnline'):
+        return False
+    files = state.get('files')
+    if not isinstance(files, dict) or len(files) > MAX_STATIONS:
+        return False
+    if set(p.name for p in folder.iterdir()) != set(files) | {marker.name}:
+        return False
+    for name, expected in files.items():
+        if (not isinstance(name, str) or not PNG_NAME.fullmatch(name) or
+                not isinstance(expected, str) or not SHA.fullmatch(expected)):
+            return False
+        path = folder / name
+        if path.is_symlink() or not path.is_file() or path.stat().st_size > MAX_PNG:
+            return False
+        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+            return False
+    return True
+
+
+def install_country_logos(root, code, picon_root, require_external=True,
+                          still_selected=None):
+    """Install signed originals under PATHS/picon/radio/CC, safely replacing fallback.
+
+    All files remain isolated by country. Historical flat radio collections,
+    TV/SAT picons and other country directories are never removed.
+    """
+    _, payload, manifest = verified_country(root, code)
+    rows = _json(payload)['stations']
+    allowed = {row['stem'] + '.png' for row in rows}
+    if manifest.get('logo_package_complete') is not True:
+        return {'changed': False, 'skipped': 'incomplete-logo-package'}
+    picon_root = Path(picon_root)
+    if (picon_root.name != 'picon' or picon_root.is_symlink() or
+            not picon_root.is_dir() or
+            (require_external and picon_root.stat().st_dev == Path('/').stat().st_dev)):
+        return {'changed': False, 'skipped': 'unsafe-storage'}
+    archive = _verified_large_file(root, manifest, 'logos/' + code + '.zip', MAX_ZIP)
+    parent = picon_root / 'radio'
+    if parent.is_symlink() or (parent.exists() and not parent.is_dir()):
+        return {'changed': False, 'skipped': 'unsafe-radio-path'}
+    if not parent.exists():
+        parent.mkdir(mode=0o755)
+    target = parent / code
+    if not _owned_country_dir(target, code):
+        return {'changed': False, 'skipped': 'user-modified-country-picons'}
+    if target.exists():
+        owner = target / COUNTRY_APPROVED_OWNER
+        if owner.is_file() and not owner.is_symlink():
+            state = _json(owner.read_bytes())
+            if state.get('logo_zip_sha256') == manifest['files']['logos/' + code + '.zip']['sha256']:
+                return {'changed': False, 'skipped': 'already-current', 'country': code,
+                        'logos': len(state.get('files', {}))}
+    stage = Path(tempfile.mkdtemp(prefix='.warder-originals-'+code+'-', dir=str(parent)))
+    old = None
+    try:
+        hashes = {}
+        expanded = 0
+        try:
+            with ZipFile(str(archive)) as zipfile:
+                members = zipfile.infolist()
+                if len(members) > MAX_STATIONS:
+                    raise ValueError('Excessive original radio country entries')
+                for entry in members:
+                    name = entry.filename
+                    if (name not in allowed or not PNG_NAME.fullmatch(name)
+                            or name in hashes or entry.file_size > MAX_PNG
+                            or stat.S_ISLNK(entry.external_attr >> 16)):
+                        raise ValueError('Invalid exact original radio country PNG')
+                    png = zipfile.read(entry)
+                    expanded += len(png)
+                    if (expanded > MAX_EXPANDED or
+                            not png.startswith(b'\x89PNG\r\n\x1a\n')):
+                        raise ValueError('Unsafe original radio PNG contents')
+                    (stage / name).write_bytes(png)
+                    hashes[name] = hashlib.sha256(png).hexdigest()
+        except BadZipFile:
+            raise ValueError('Corrupt original country ZIP')
+        if len(hashes) != manifest.get('logos_found'):
+            raise ValueError('Original radio ZIP station count differs from manifest')
+        (stage / COUNTRY_APPROVED_OWNER).write_text(
+            json.dumps({'owner': 'WarderRadioLive', 'country': code,
+                        'logo_zip_sha256': manifest['files']['logos/' + code + '.zip']['sha256'],
+                        'files': hashes}, sort_keys=True),
+            encoding='utf-8')
+        if still_selected is not None and still_selected(code) is not True:
+            return {'changed': False, 'skipped': 'country-superseded'}
+        if target.exists():
+            old = Path(tempfile.mkdtemp(prefix='.warder-radio-previous-'+code+'-', dir=str(parent)))
+            old.rmdir()
+            os.replace(str(target), str(old))
+        try:
+            os.replace(str(stage), str(target))
+        except OSError:
+            if old is not None and old.exists() and not target.exists():
+                os.replace(str(old), str(target))
+                old = None
+            raise
+        if old is not None and old.exists():
+            shutil.rmtree(old)
+            old = None
+        return {'changed': True, 'country': code, 'logos': len(hashes),
+                'source': 'approved-original-country-zip'}
+    finally:
+        if stage.exists():
+            shutil.rmtree(stage)
