@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 import tempfile
 from concurrent.futures import ThreadPoolExecutor,as_completed
+from contextlib import nullcontext
 
 from . import warderRadioLive as live
 from . import warderRadioCountryBouquets as books
@@ -123,29 +124,34 @@ def sync_online_country(root,directory,code,logos=None,max_batch=BATCH,
         return {'changed':False,'skipped':'already-scanned','country':code,
                 'logos':len(known)}
     block=rows[start:start+max_batch]
-    if logos is None:
-        _,logo_type=live._plugin()
-        logos=logo_type(str(folder))
-    candidates={}
-    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        jobs={pool.submit(logos.get,row):row for row in block
-              if row.get('favicon') and PNG.fullmatch(row.get('stem','')+'.png')
-              and row.get('countrycode')==code}
-        for task in as_completed(jobs):
-            row=jobs[task]
-            try:
-                loc=task.result()
-                if not loc:continue
-                src=Path(loc)
-                if src.is_symlink() or not src.is_file() or src.stat().st_size>512*1024:
+    # Source PNG cache is temporary on external PATHS, not an extra growing
+    # radio/station-logo-cache directory retained after switching countries.
+    scratch=tempfile.TemporaryDirectory(
+        prefix='.warder-radio-logo-source-',dir=str(root)) if logos is None else nullcontext()
+    with scratch as temporary:
+        if logos is None:
+            _,logo_type=live._plugin()
+            logos=logo_type(temporary)
+        candidates={}
+        with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+            jobs={pool.submit(logos.get,row):row for row in block
+                  if row.get('favicon') and PNG.fullmatch(row.get('stem','')+'.png')
+                  and row.get('countrycode')==code}
+            for task in as_completed(jobs):
+                row=jobs[task]
+                try:
+                    loc=task.result()
+                    if not loc:continue
+                    src=Path(loc)
+                    if src.is_symlink() or not src.is_file() or src.stat().st_size>512*1024:
+                        continue
+                    raw=src.read_bytes()
+                    if not raw.startswith(b'\x89PNG\r\n\x1a\n'):continue
+                    rendered=live._picon_png(raw,224,224)
+                    if not 512<len(rendered)<512*1024:continue
+                    candidates[row['stem']+'.png']=rendered
+                except (ValueError,KeyError,OSError,TypeError,ImportError):
                     continue
-                raw=src.read_bytes()
-                if not raw.startswith(b'\x89PNG\r\n\x1a\n'):continue
-                rendered=live._picon_png(raw,224,224)
-                if not 512<len(rendered)<512*1024:continue
-                candidates[row['stem']+'.png']=rendered
-            except (ValueError,KeyError,OSError,TypeError,ImportError):
-                continue
     # Only exact SHA-verified station names, and never overwrite a personal PNG.
     count=0
     for name,data in candidates.items():
