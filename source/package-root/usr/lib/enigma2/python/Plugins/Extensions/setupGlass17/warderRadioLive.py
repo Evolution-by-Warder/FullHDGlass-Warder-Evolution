@@ -941,7 +941,7 @@ def cached_country_picon(references, base):
         from . import warderRadioCountryBouquets as country_bouquets
         selected = country_bouquets.selected_country(DIRECTORY)
         if selected:
-            online = os.path.join(base, 'picon', 'radio-online', selected)
+            online = os.path.join(base, 'picon', 'radio', selected)
             path = os.path.join(online, '.warder-radio-online-source.json')
             mtime = os.stat(path).st_mtime_ns if not os.path.islink(path) else None
             key = (selected, mtime)
@@ -1279,8 +1279,15 @@ class Controller:
             from . import warderRadioCountryBouquets as country_bouquets
             dialog = getattr(self.session, 'current_dialog', None)
             if dialog is None or not getattr(dialog, 'shown', False):
+                try:
+                    from Screens.InfoBar import InfoBar
+                    info = InfoBar.instance
+                    dialog = info.servicelist if info is not None else None
+                except (ImportError, AttributeError):
+                    dialog = None
+            if dialog is None:
                 return None
-            if not any(cls.__name__ == 'ChannelSelectionRadio'
+            if not any(cls.__name__ in ('ChannelSelectionRadio', 'ChannelSelection')
                        for cls in type(dialog).__mro__):
                 return None
             root = dialog.getRoot()
@@ -1322,8 +1329,8 @@ class Controller:
                 if root is not None:
                     from . import warderRadioWorld as world
                     from . import warderRadioCountry as country
-                    country_code = chosen_bouquet or country.active_country(DIRECTORY)
-                    cached = world.cached_country(root, country_code)
+                    country_code = chosen_bouquet
+                    cached = world.cached_country(root, country_code) if country_code else None
                 if cached:
                     self.local_world_sha = cached
                     if not _radio_custom_picons_enabled():
