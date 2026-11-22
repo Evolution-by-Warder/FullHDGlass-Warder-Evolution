@@ -961,7 +961,11 @@ def install_root_country_menu():
             return
         try:
             widget = menu['menu']
-            entries = list(widget.getList())
+            # OpenATV 7.6 ChoiceList offers getList(); OpenPLi 9.2
+            # MenuList stores the same native entries in .list instead.
+            # Never prevent the country action solely due to this API delta.
+            getter = getattr(widget, 'getList', None)
+            entries = list(getter() if callable(getter) else widget.list)
             if any(isinstance(item, (tuple, list)) and item and
                    isinstance(item[0], (tuple, list)) and item[0] and
                    'Warder Radio Live' in str(item[0][0])
