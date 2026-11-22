@@ -3,6 +3,7 @@
 import ast
 import importlib.util
 import pathlib
+import tempfile
 import sys
 import types
 import unittest
@@ -123,6 +124,101 @@ class StaticChecks(unittest.TestCase):
         self.assertEqual((radio.saves, radio.cancels), (0, 0))
         self.assertEqual(writes, [("/tmp/hdg17.conf", "First: first\nThird: third\n")])
 
+
+
+class LiveLogoChecks(unittest.TestCase):
+    def test_live_country_logo_has_priority_and_custom_source_wins(self):
+        import os
+        with tempfile.TemporaryDirectory() as temp:
+            base = pathlib.Path(temp) / "hdg17_files"
+            country = base / "picon" / "radio" / "SK"
+            country.mkdir(parents=True)
+            stem = "4097_0_2_1_2_3_4_5_6_7"
+            logo = country / (stem + ".png")
+            logo.write_bytes(b"approved-image-placeholder")
+            custom = base / "own"
+            custom.mkdir()
+            own = custom / (stem + ".png")
+            own.write_bytes(b"own-image-placeholder")
+            ref = types.SimpleNamespace(
+                toString=lambda: "4097:0:2:1:2:3:4:5:6:7:http://live")
+            config = types.SimpleNamespace(plugins=types.SimpleNamespace(
+                setupGlass17=types.SimpleNamespace(
+                    par39=types.SimpleNamespace(value=str(base)))))
+            events = []
+            mode = {"own": False, "published": True}
+
+            def resolver(references, root):
+                events.append(("country", tuple(references), root))
+                self.assertEqual(root, str(base))
+                self.assertEqual(references[0], stem)
+                return str(logo) if mode["published"] else ""
+
+            def generic(reference):
+                events.append(("generic", reference))
+                return ""
+
+            modules = {
+                "saver_test_pkg": types.ModuleType("saver_test_pkg"),
+                "saver_test_pkg.warderRadioLive":
+                    types.SimpleNamespace(cached_country_picon=resolver),
+                "Components.Renderer": types.ModuleType("Components.Renderer"),
+                "Components.Renderer.Picon":
+                    types.SimpleNamespace(getPiconName=generic),
+            }
+            modules["saver_test_pkg"].__path__ = [str(PLUGIN)]
+            module = ast.parse((PLUGIN / "screenSaver.py").read_text(encoding="utf-8"))
+            func = next(n for n in module.body
+                        if isinstance(n, ast.FunctionDef) and n.name == "_picon_path")
+            env = {
+                "__package__": "saver_test_pkg",
+                "os": os, "config": config,
+                "selected_source": lambda _: (mode["own"], str(custom)),
+                "find_png": lambda directory, name: (
+                    str(pathlib.Path(directory) / (name + ".png"))
+                    if (pathlib.Path(directory) / (name + ".png")).is_file() else ""),
+            }
+            with patch.dict(sys.modules, modules):
+                exec(compile(ast.fix_missing_locations(ast.Module(
+                    body=[func], type_ignores=[])), "<live-picon>", "exec"), env)
+                self.assertEqual(env["_picon_path"](ref), str(logo))
+                self.assertEqual(len(events), 1, "Must not fall back to generic picons")
+                events.clear()
+                mode["own"] = True
+                self.assertEqual(env["_picon_path"](ref), str(own))
+                self.assertEqual(events, [], "Own picon source must be authoritative")
+                events.clear()
+                mode["own"] = False
+                mode["published"] = False
+                self.assertEqual(env["_picon_path"](ref), "")
+                self.assertEqual(events[0][0], "country")
+                self.assertEqual(events[1][0], "generic")
+
+    def test_exact_legacy_type_one_alias_uses_signed_country_resolver(self):
+        import os
+        ref = types.SimpleNamespace(toString=lambda: "1:0:2:A:B:C:D:E:F:10:")
+        names = []
+        modules = {
+            "saver_test_pkg": types.ModuleType("saver_test_pkg"),
+            "saver_test_pkg.warderRadioLive": types.SimpleNamespace(
+                cached_country_picon=lambda refs, base: (
+                    names.extend(refs) or "/mock/approved.png")),
+        }
+        modules["saver_test_pkg"].__path__ = [str(PLUGIN)]
+        config = types.SimpleNamespace(plugins=types.SimpleNamespace(
+            setupGlass17=types.SimpleNamespace(par39=types.SimpleNamespace(
+                value="/mock/hdg17_files"))))
+        func = next(n for n in ast.parse((PLUGIN / "screenSaver.py").read_text()).body
+                    if isinstance(n, ast.FunctionDef) and n.name == "_picon_path")
+        env = {"__package__": "saver_test_pkg", "os": os, "config": config,
+               "selected_source": lambda _: (False, ""),
+               "find_png": lambda *args: ""}
+        with patch.dict(sys.modules, modules):
+            exec(compile(ast.fix_missing_locations(ast.Module(
+                body=[func], type_ignores=[])), "<live-alias>", "exec"), env)
+            self.assertEqual(env["_picon_path"](ref), "/mock/approved.png")
+            self.assertEqual(names, ["1_0_2_A_B_C_D_E_F_10",
+                                     "4097_0_2_A_B_C_D_E_F_10"])
 
 
 class RadioRdsChecks(unittest.TestCase):
