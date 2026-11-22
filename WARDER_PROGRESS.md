@@ -1,3 +1,15 @@
+## 22. 11. 2026 — OSTRÉ VYDANIE FullHDGlass Warder Evolution 1.0.82 HOTOVÉ
+
+- Vlastník výslovne schválil integráciu a ostré vydanie. Integračný [PR #131](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/131) je zlúčený do `main` (commit `042f12afcf5edc6950e613195ab064cbb5e9366f`); vydávací [PR #132](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/132) do `main` (commit `1984e942daa80b993f85bb7067e9136f2ba2ca75`).
+- **Nová ostrá verzia: `1.0.82-1`.** [GitHub Release v1.0.82](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.82), [úplný oficiálny vydávací workflow #45025931200 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45025931200). Verejný `enigma2-plugin-skins-fullhdglass_1.0.82_all.ipk` má presne **18 388 056 bajtov**, SHA-256 **`cc0f7b2cd0a7fae6d43735a9dec3977cb1686325af77eb629da279e2bf5d8148`**. GitHub tag, aktívny `main/packages/`, `source/control/control`, runtime `version` a `update-production.json` sú po overení zhodné.
+- **Bezpečné poradové číslo:** `1.0.82-1` aktualizuje aj z testovacieho `1.0.81-test153-1` (stabilné `1.0.81-1` by bolo naopak staršie).
+- **Súčasť vydania:** všetky schválené skoršie opravy skinu, nové Radio Live krajiny/bouquety/originálne logá podľa bezpečných zdrojov, spoločný DVB/DAB/IPTV OLED rádiový šetrič, najnovšie SAT picony a oprava IPTV názvu pri InfoBar 76. Uložené používateľské nastavenia, cudzí obsah a externé adresáre PATHS nie sú balíkom prepisované; svetový ZIP nie je uložený v internej flash.
+- Pre-release **15/15 integrovaných workflow PASS**; release preflight [#45025492211 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45025492211), OpenATV 8.0/8.0-next/master [#45025492100 SUCCESS](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45025492100), oficiálne balenie a kontrola verejného aktualizačného kanála **PASS**. Po výslovnom rozhodnutí vlastníka vydané aj s transparentným limitom: nové IPTV InfoBar 76 ešte nemá potvrdenie fyzického testu na VU+ Duo 4K SE.
+- Redundantné PR #99, #115 a #124–130 sú uzavreté ako nahradené PR #131. Ich vetvy a celá história ostávajú zachované.
+- **Zostávajúci starý CI problém mimo vydávacieho workflow:** `Verify approved radio release` #45025931222 padá už pri `actions/setup-python@v5` (Ubuntu 26.04 neponúka Python 3.9), teda pred jediným vlastným testom; nie je to dôkaz chyby v IPK. Opraviť iba runner/testovací workflow oddelene od už overeného release, nespúšťať opätovné vydanie bez nového dôvodu.
+
+---
+
 ## 22. 11. 2026 — Schválená integrácia PR #131, príprava ostrej 1.0.82
 
 - Vlastník **výslovne schválil** zlúčenie všetkých opráv a vydanie novej ostrej IPK. Integračný PR [#131](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/131) bol zlúčený do `main` commitom `042f12afcf5edc6950e613195ab064cbb5e9366f`. Zachované sú pôvodné 1.0.80 opravy, aktuálny SAT katalóg, Radio Live, spoločný rádiový šetrič a dodatočná ochrana názvu IPTV stanice v `g17ServiceNum` pre InfoBar 76.
