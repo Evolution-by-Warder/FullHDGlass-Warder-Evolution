@@ -85,6 +85,11 @@ jobs:
           from Plugins.Extensions.setupGlass17 import warderRadioPackages as pkg
           from Plugins.Extensions.setupGlass17 import warderRadioSingleCountry as single
           source=Path('source/package-root/usr/share/enigma2/hd_glass17/radio-world/radio-countries-bouquets.zip')
+          from zipfile import ZipFile
+          with ZipFile(source) as z:
+              summary=json.loads(z.read('index.json'))
+          count_sk=summary['countries']['SK']['logos_found']
+          count_cz=summary['countries']['CZ']['logos_found']
           with tempfile.TemporaryDirectory() as t:
               base=Path(t)
               external=base/'hdg17_files'
@@ -98,18 +103,18 @@ jobs:
               old=single.sync(external,etc,require_external=False,source_archive=source)
               assert old['initial_country']=='SK' and old['active_bouquets']==1
               owned=fetch.sync_selected_logos(external,etc,'SK',require_external=False)
-              assert owned['country']=='SK' and owned['logos']==111,owned
+              assert owned['country']=='SK' and owned['logos']==count_sk,owned
               (external/'picon'/'tv-owned.png').write_bytes(b'keep my satellite image')
               result=world.activate_from_world(external,'CZ',etc)
               assert result['country']=='CZ' and country.active_country(etc)=='CZ'
               removed=cleanup.prune_inactive(external,'CZ',etc,require_external=False)
               assert removed['removed']==['SK'],removed
               final=fetch.sync_selected_logos(external,etc,'CZ',require_external=False)
-              assert final['country']=='CZ' and final['logos']==202,final
+              assert final['country']=='CZ' and final['logos']==count_cz,final
               assert not (external/'picon/radio/SK').exists()
-              assert len(list((external/'picon/radio/CZ').glob('*.png')))==202
+              assert len(list((external/'picon/radio/CZ').glob('*.png')))==count_cz
               assert (external/'picon/tv-owned.png').read_bytes()==b'keep my satellite image'
-              print('LIVE SK 111 PNG / SWITCH CZ 202 PNG / SK DELETED / TV/SAT PRESERVED PASS')
+              print('LIVE SK',count_sk,'PNG / SWITCH CZ',count_cz,'PNG / SK DELETED / TV/SAT PRESERVED PASS')
           PY
       - name: Build complete single FullHDGlass TEST143 IPK and verify exact archive inventory
         run: |
