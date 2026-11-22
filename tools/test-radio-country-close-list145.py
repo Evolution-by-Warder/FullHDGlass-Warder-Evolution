@@ -131,7 +131,7 @@ class Tests(unittest.TestCase):
 
     def test_only_native_radio_list_may_close_not_tv_or_player(self):
         events=[]
-        tv=ChannelSelection(events)
+        tv=ChannelSelection(events,mode=0)
         session=Session(tv)
         self.assertFalse(country._close_radio_list_after_country_choice(session,tv))
         self.assertEqual(events,[])
