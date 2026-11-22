@@ -961,7 +961,11 @@ def install_root_country_menu():
             return
         try:
             widget = menu['menu']
-            entries = list(widget.getList())
+            # OpenATV 7.6 ChoiceList offers getList(); OpenPLi 9.2
+            # MenuList stores the same native entries in .list instead.
+            # Never prevent the country action solely due to this API delta.
+            getter = getattr(widget, 'getList', None)
+            entries = list(getter() if callable(getter) else widget.list)
             if any(isinstance(item, (tuple, list)) and item and
                    isinstance(item[0], (tuple, list)) and item[0] and
                    'Warder Radio Live' in str(item[0][0])
@@ -1048,6 +1052,36 @@ def _close_radio_list_after_country_choice(session, channel_selection=None):
     return False
 
 
+
+def _dismiss_after_country_choice(session, channel_selection=None):
+    """Close the old radio list after ChoiceBox has finished unwinding.
+
+    Older OpenATV/OpenPLi session stacks can restore ChannelSelection after
+    a synchronous cancel from an openWithCallback() callback. Defer only on
+    those legacy images; OpenATV 8.1 keeps its receiver-proven path.
+    """
+    plugin = sys.modules.get('Plugins.Extensions.setupGlass17.plugin')
+    if not getattr(plugin, '_warderLegacyRdsTvGuard', False):
+        return _close_radio_list_after_country_choice(session, channel_selection)
+    try:
+        from .warderHelpPreview import _NativeLoop
+        previous = getattr(session, '_warderCountryCloseCall', None)
+        if previous is not None and previous.active():
+            previous.cancel()
+
+        def after_choice_closed():
+            try:
+                _close_radio_list_after_country_choice(session, channel_selection)
+            finally:
+                session._warderCountryCloseCall = None
+
+        session._warderCountryCloseCall = _NativeLoop().callLater(
+            0.15, after_choice_closed)
+        return True
+    except (ImportError, AttributeError, RuntimeError, TypeError):
+        return _close_radio_list_after_country_choice(session, channel_selection)
+
+
 def open_country_selector(session, service=None, **kwargs):
     """Native Channel Selection MENU callback; runs no HTTP in the GUI."""
     try:
@@ -1079,7 +1113,7 @@ def open_country_selector(session, service=None, **kwargs):
                          type=MessageBox.TYPE_INFO, timeout=5)
             return
         if result.get('already_active'):
-            _close_radio_list_after_country_choice(
+            _dismiss_after_country_choice(
                 session, kwargs.get('channel_selection'))
             return
         scheduled = False
@@ -1096,7 +1130,7 @@ def open_country_selector(session, service=None, **kwargs):
         # continues off GUI while the receiver returns to its normal screen.
         # If a modal error is needed, do not close the radio list underneath it.
         if scheduled:
-            _close_radio_list_after_country_choice(
+            _dismiss_after_country_choice(
                 session, kwargs.get('channel_selection'))
 
     # Keep the active choice first in the user-facing menu.

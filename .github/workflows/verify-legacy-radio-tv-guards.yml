@@ -1,0 +1,63 @@
+name: Verify legacy OpenATV and OpenPLi radio/TV guards
+on:
+  pull_request:
+    paths:
+      - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
+      - "tools/test-openatv76-plugin-descriptor.py"
+      - "tools/test-legacy-radio-live-startup.py"
+      - "tools/test-radio-country-close-list145.py"
+      - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py"
+      - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py"
+      - "source/control/postinst"
+      - ".github/workflows/verify-legacy-radio-tv-guards.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  legacy:
+    name: "${{ matrix.image }} ${{ matrix.ref }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: OpenATV
+            repository: openatv/enigma2
+            ref: "7.6"
+          - image: OpenPLi
+            repository: OpenPLi/enigma2
+            ref: release-9.2
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      WARDER_UPSTREAM_PLUGIN: upstream/enigma2/lib/python/Plugins/Plugin.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            tools/test-openatv76-plugin-descriptor.py
+            tools/test-legacy-radio-live-startup.py
+            tools/test-radio-country-close-list145.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+            source/control/postinst
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repository }}
+          ref: ${{ matrix.ref }}
+          path: upstream/enigma2
+          sparse-checkout: lib/python/Plugins/Plugin.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify real native descriptor signature and TV/RADIO dialog guards
+        run: |
+          python3 tools/test-openatv76-plugin-descriptor.py -v
+          python3 tools/test-legacy-radio-live-startup.py -v
+          python3 tools/test-radio-country-close-list145.py -v
+          python3 -m py_compile tools/test-openatv76-plugin-descriptor.py

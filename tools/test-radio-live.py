@@ -697,8 +697,9 @@ class LiveTests(unittest.TestCase):
         postinst = (ROOT / 'source/control/postinst').read_text()
         self.assertIn('warder_radio_country=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py',
                       postinst)
-        self.assertIn('warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py',
-                      postinst)
+        # Signed Live runtime is owned by FullHDGlass, never gated by the
+        # optional standalone WarderRadio extension on older images.
+        self.assertNotIn('warder_radio_browser=', postinst)
         self.assertIn('"$warder_radio_country" --bootstrap </dev/null >/dev/null 2>&1', postinst)
         # The GUI-start world worker fetches the SHA-verified country
         # catalogue to external PATHS, never the old 60-station API pages.

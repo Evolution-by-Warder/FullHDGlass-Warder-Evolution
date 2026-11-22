@@ -145,9 +145,9 @@ fi
 # No network, no GUI call, no modification of personal bouquets. This ensures
 # Warder Radio Live is first as soon as the receiver reloads its bouquet index.
 warder_radio_country=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
-warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py
-if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_country" ] &&
-   [ -f "$warder_radio_browser" ]; then
+# The approved world is downloaded and activated by FullHDGlass itself.
+# Do not require the optional standalone WarderRadio plugin on older images.
+if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_country" ]; then
     if /usr/bin/python3 -B "$warder_radio_country" --bootstrap </dev/null >/dev/null 2>&1; then
         echo "Warder Radio Live: selected-country bouquet registered; user country preserved."
     else

@@ -255,13 +255,16 @@ def start(reason=0, session=None):
     if _controller is not None:
         _controller.close()
         _controller = None
-    plugin_file = Path(__file__).resolve().parent.parent / 'WarderRadio' / 'radio_browser.py'
-    if reason != 0 or plugin_file.is_file():
-        try:
-            from .warderRadioLive import start as start_live_radio
-            start_live_radio(reason, session=session)
-        except (ImportError, OSError):
-            pass
+    # The signed 224-country Warder Radio Live world is provided by the
+    # FullHDGlass runtime itself. Older OpenATV/OpenPLi receivers often do not
+    # have the separate WarderRadio extension installed; that must NOT keep
+    # the new bouquet controller from starting after an upgrade.
+    # Legacy Radio Browser paginated updates stay disabled.
+    try:
+        from .warderRadioLive import start as start_live_radio
+        start_live_radio(reason, session=session)
+    except (ImportError, OSError):
+        pass
 
 
 if __name__ == '__main__':

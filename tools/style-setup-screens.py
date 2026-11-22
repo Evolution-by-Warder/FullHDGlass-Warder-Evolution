@@ -190,18 +190,28 @@ def strip_reviewed_batch(tree, records=None):
     # Exact reviewed AST replacements only. A changed save/action/installer node
     # no longer matches and therefore still trips the frozen 1.0.15 fingerprint.
     if records is None:records=json.loads((ROOT/'design/settings-batch261-logic.json').read_text())
-    mapping={(r['scope'],json.dumps(portable(ast.parse(r['after']).body[0]),sort_keys=True)):r['before'] for r in records}
+    # Match cheap scope/type/name first. Serializing a large function AST for
+    # every unrelated statement was making regression CI extremely slow.
+    mapping={}
+    for record in records:
+        candidate=ast.parse(record['after']).body[0]
+        signature=(record['scope'],type(candidate),getattr(candidate,'name',None))
+        mapping.setdefault(signature,{})[
+            json.dumps(portable(candidate),sort_keys=True)]=record['before']
     def restore(nodes, scope):
         result=[]
         for node in nodes:
-            key=(scope,json.dumps(portable(node),sort_keys=True))
-            if key in mapping:
-                result.extend(ast.parse(mapping[key]).body)
+            signature=(scope,type(node),getattr(node,'name',None))
+            candidates=mapping.get(signature)
+            fingerprint=json.dumps(portable(node),sort_keys=True) if candidates else None
+            if candidates is not None and fingerprint in candidates:
+                result.extend(ast.parse(candidates[fingerprint]).body)
             else:
                 if isinstance(node,ast.ClassDef):node.body=restore(node.body,node.name)
                 result.append(node)
         return result
-    tree=copy.deepcopy(tree)
+    # The normalizer owns a private AST copy, so avoid copying all ~12k
+    # lines again for every reviewed ledger. Matching remains exact.
     tree.body=restore(tree.body,'module')
     return tree
 
@@ -237,7 +247,12 @@ def strip_openpli_compatibility(tree):
 
 def strip_reviewed_scoped(tree, records):
     """Reverse exact setting statements only in their reviewed method scope."""
-    mapping={(r['scope'],json.dumps(portable(ast.parse(r['after']).body[0]),sort_keys=True)):r['before'] for r in records}
+    mapping={}
+    for record in records:
+        candidate=ast.parse(record['after']).body[0]
+        signature=(record['scope'],type(candidate),getattr(candidate,'name',None))
+        mapping.setdefault(signature,{})[
+            json.dumps(portable(candidate),sort_keys=True)]=record['before']
     def restore(node, scope):
         if isinstance(node,(ast.ClassDef,ast.FunctionDef,ast.AsyncFunctionDef)):
             scope=node.name if scope=='module' else scope+'.'+node.name
@@ -246,19 +261,25 @@ def strip_reviewed_scoped(tree, records):
                 result=[]
                 for child in value:
                     if isinstance(child,ast.stmt):
-                        key=(scope,json.dumps(portable(child),sort_keys=True))
-                        if key in mapping:
-                            result.extend(ast.parse(mapping[key]).body)
-                            continue
+                        signature=(scope,type(child),getattr(child,'name',None))
+                        candidates=mapping.get(signature)
+                        if candidates is not None:
+                            fingerprint=json.dumps(portable(child),sort_keys=True)
+                            if fingerprint in candidates:
+                                result.extend(ast.parse(candidates[fingerprint]).body)
+                                continue
                     result.append(restore(child,scope) if isinstance(child,ast.AST) else child)
                 setattr(node,field,result)
             elif isinstance(value,ast.AST):
                 setattr(node,field,restore(value,scope))
         return node
-    return restore(copy.deepcopy(tree),'module')
+    return restore(tree,'module')
 
 
 def normalized(tree):
+    # Copy once so callers can reuse their AST safely. All subsequent reviewed
+    # inverse operations work on this private tree without repeated full copies.
+    tree = copy.deepcopy(tree)
     # Reverse only the four exact, scoped Neutrino additions approved in PR #104.
     # Audit three touched functions, not the entire 12k-line plugin AST.
     neutrino_ledger = ROOT / 'design/neutrino-short-ok/logic.json'
@@ -270,7 +291,6 @@ def normalized(tree):
             ast.Module(body=target, type_ignores=[]),
             json.loads(neutrino_ledger.read_text()))
         restored = {node.name: node for node in stripped.body}
-        tree = copy.deepcopy(tree)
         tree.body = [
             restored[node.name] if isinstance(node, ast.FunctionDef) and node.name in restored else node
             for node in tree.body

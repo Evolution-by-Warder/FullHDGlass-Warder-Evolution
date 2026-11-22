@@ -1,0 +1,118 @@
+name: REVIEW ONLY - OpenATV 7.6 and OpenPLi 9.2 TV-radio hotfix IPK
+on:
+  pull_request:
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - tools/test-openatv76-plugin-descriptor.py
+      - tools/test-legacy-radio-live-startup.py
+      - tools/test-radio-country-close-list145.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+      - source/control/postinst
+      - tools/test-setup-style.py
+      - .github/workflows/legacy-radio-tv-hotfix-review-ipk.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  build-review-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /reports/bitrate-test5-20261101.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify legacy descriptor and unchanged settings business logic
+        run: |
+          set -euo pipefail
+          python3 -B tools/test-openatv76-plugin-descriptor.py -v
+          python3 -B tools/test-legacy-radio-live-startup.py -v
+          python3 -B tools/test-radio-country-close-list145.py -v
+          python3 -B tools/test-setup-style.py -q -k test_configuration_actions_callbacks_and_controller_logic_are_unchanged
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f -name '*.pyc' -delete
+      - name: Assemble exact full 1.0.84 source payload, then isolate test revision
+        run: |
+          set -euo pipefail
+          # The reviewed bitrate helper reports are generated build inputs,
+          # not committed package files. Recreate them from the pinned proof.
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          audit = json.loads(Path("reports/bitrate-test5-20261101.json").read_text())
+          assert len(audit["builds"]) == 3
+          out = Path("packages/test")
+          out.mkdir(parents=True, exist_ok=True)
+          for name, proof in zip(("bitrate-helper-build.json",
+                                  "bitrate-helper-mipsel-build.json",
+                                  "bitrate-helper-aarch64-build.json"), audit["builds"]):
+              (out / name).write_text(json.dumps(proof, indent=2) + "\n")
+          PY
+          python3 -B tools/build-release-ipk.py
+          python3 - <<'PY'
+          import gzip, hashlib, io, subprocess, tarfile, tempfile
+          from pathlib import Path
+          original = Path("packages/enigma2-plugin-skins-fullhdglass_1.0.84_all.ipk")
+          assert original.is_file()
+          control = subprocess.check_output(["ar", "p", str(original), "control.tar.gz"])
+          data = subprocess.check_output(["ar", "p", str(original), "data.tar.gz"])
+          members = []
+          changed = False
+          with tarfile.open(fileobj=io.BytesIO(control), mode="r:gz") as archive:
+              for member in archive:
+                  raw = archive.extractfile(member).read() if member.isfile() else None
+                  if member.name.lstrip("./") == "control":
+                      assert b"Version: 1.0.84-1\n" in raw
+                      raw = raw.replace(b"Version: 1.0.84-1\n",
+                                        b"Version: 1.0.84-2\n", 1)
+                      member.size = len(raw)
+                      changed = True
+                  members.append((member, raw))
+          assert changed
+          buf = io.BytesIO()
+          with gzip.GzipFile(filename="", mode="wb", fileobj=buf, mtime=0) as stream:
+              with tarfile.open(fileobj=stream, mode="w") as archive:
+                  for member, raw in members:
+                      archive.addfile(member, io.BytesIO(raw) if raw is not None else None)
+          folder = Path("packages/legacy-radio-tv-review")
+          folder.mkdir(parents=True, exist_ok=True)
+          result = folder / "enigma2-plugin-skins-fullhdglass_1.0.84-2_all.ipk"
+          with tempfile.TemporaryDirectory() as td:
+              wd = Path(td)
+              (wd / "debian-binary").write_bytes(b"2.0\n")
+              (wd / "control.tar.gz").write_bytes(buf.getvalue())
+              (wd / "data.tar.gz").write_bytes(data)
+              subprocess.run(["ar", "rcsD", str(result.resolve()),
+                              "debian-binary", "control.tar.gz", "data.tar.gz"],
+                             cwd=wd, check=True)
+          assert subprocess.check_output(["ar", "p", str(result), "data.tar.gz"]) == data
+          with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(
+                  ["ar", "p", str(result), "control.tar.gz"])), mode="r:gz") as archive:
+              control_text = archive.extractfile("./control").read()
+          assert b"Version: 1.0.84-2\n" in control_text
+          digest = hashlib.sha256(result.read_bytes()).hexdigest()
+          result.with_suffix(".ipk.sha256").write_text(digest + "  " + result.name + "\n")
+          print("REVIEW ONLY", result, digest)
+          PY
+          (cd packages/legacy-radio-tv-review && sha256sum -c *.sha256)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.84-2-OpenATV76-OpenPLi92-RadioLive-REVIEW-ONLY
+          path: |
+            packages/legacy-radio-tv-review/*.ipk
+            packages/legacy-radio-tv-review/*.sha256
+          retention-days: 14
+          if-no-files-found: error
