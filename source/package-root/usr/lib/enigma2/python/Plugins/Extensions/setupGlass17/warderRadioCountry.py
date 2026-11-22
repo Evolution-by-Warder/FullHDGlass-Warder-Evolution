@@ -1047,7 +1047,7 @@ if __name__ == '__main__':
     try:
         # World and country ZIP downloads may need longer than one online page.
         # These commands are used only by subprocesses, never on the GUI thread.
-        bulk = sys.argv[1:2] in (['--sync-world'], ['--logos-world'])
+        bulk = sys.argv[1:2] in (['--sync-world'], ['--logos-world'], ['--logos-online'])
         signal.alarm(240 if bulk else 90)
         os.nice(10)
         if sys.argv[1:] == ['--bootstrap']:
@@ -1097,13 +1097,24 @@ if __name__ == '__main__':
                     result['separate_country_bouquets'] = separate
                     if separate.get('changed'):
                         result['changed'] = True
-        elif len(sys.argv) == 4 and sys.argv[1] == '--logos-world':
-            from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+        elif len(sys.argv) == 4 and sys.argv[1] in ('--logos-world', '--logos-online'):
             code, root = sys.argv[2], Path(sys.argv[3])
             if not COUNTRY_RE.fullmatch(code):
                 sys.exit(2)
-            result = warderRadioBundleFetch.sync_selected_logos(
-                root, DIRECTORY, code)
+            from Plugins.Extensions.setupGlass17 import warderRadioOnlineLogos
+            if sys.argv[1] == '--logos-online':
+                result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
+            else:
+                from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+                try:
+                    result = warderRadioBundleFetch.sync_selected_logos(root, DIRECTORY, code)
+                except Exception as error:
+                    from urllib.error import HTTPError
+                    if not isinstance(error, HTTPError) or error.code != 404:
+                        raise
+                    result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
+                if result.get('skipped') in ('logos-not-ready', 'world-update-needed'):
+                    result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
         else:
             sys.exit(2)
         print(json.dumps(result, ensure_ascii=False))
