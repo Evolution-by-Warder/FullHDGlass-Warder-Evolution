@@ -107,23 +107,10 @@ if [ -d "$warder_probe" ] && [ ! -L "$warder_probe" ] &&
     rmdir "$warder_probe" 2>/dev/null || true
 fi
 
-# Invalidate bytecode for package-owned plugin modules, including caches made
-# from releases with identical timestamps and lengths for changed source code.
-warder_python=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
-if [ -d "$warder_python" ] && [ ! -L "$warder_python" ]; then
-    for warder_source in "$warder_python"/*.py; do
-        [ -f "$warder_source" ] && [ ! -L "$warder_source" ] || continue
-        warder_stem=${warder_source%.py}
-        rm -f "$warder_stem.pyc" "$warder_stem.pyo"
-        warder_name=${warder_stem##*/}
-        if [ -d "$warder_python/__pycache__" ] && [ ! -L "$warder_python/__pycache__" ]; then
-            for warder_bytecode in "$warder_python/__pycache__/$warder_name".*.pyc; do
-                [ -f "$warder_bytecode" ] && [ ! -L "$warder_bytecode" ] || continue
-                rm -f "$warder_bytecode"
-            done
-        fi
-    done
-fi
+# Leave opkg-tracked Python bytecode to opkg. The old postinst deleted
+# __pycache__/*.cpython-313.pyc before opkg could handle its installed
+# file-list on the next upgrade, causing remove_obsolesced_files ENOENT.
+# Never delete package-tracked Python bytecode from an installer hook.
 
 # Apply the selected InfoBar after all package files have been installed.
 # Retire only positively identified diagnostic files from older Warder builds.
@@ -142,9 +129,9 @@ for warder_log in \
 done
 
 if [ -x /usr/bin/python ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then
-    /usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
+    /usr/bin/python -B /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
 elif [ -x /usr/bin/python3 ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then
-    /usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
+    /usr/bin/python3 -B /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
 fi
 
 # Reapply the saved native skin spinner after opkg overlays package defaults.
@@ -154,11 +141,22 @@ if [ -x /usr/bin/python3 ] && [ -f "$warder_spinner" ]; then
     /usr/bin/python3 -B "$warder_spinner" || true
 fi
 
-# First radio import runs outside opkg and the GUI, with bounded network time.
-# Offline failures stay silent; the session controller retries automatically.
-warder_radio_update=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
-if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_update" ]; then
-    /usr/bin/python3 -B "$warder_radio_update" --refresh </dev/null >/dev/null 2>&1 &
+# First-paint registration happens synchronously from LOCAL files only.
+# No network, no GUI call, no modification of personal bouquets. This ensures
+# Warder Radio Live is first as soon as the receiver reloads its bouquet index.
+warder_radio_country=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+warder_radio_browser=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/radio_browser.py
+if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_country" ] &&
+   [ -f "$warder_radio_browser" ]; then
+    if /usr/bin/python3 -B "$warder_radio_country" --bootstrap </dev/null >/dev/null 2>&1; then
+        echo "Warder Radio Live: selected-country bouquet registered; user country preserved."
+    else
+        echo "Warder Radio Live country bootstrap deferred; user bouquets unchanged."
+    fi
+    # Never call the old Radio Browser paginated fetch from the installer.
+    # The Enigma2 first-start world worker fetches the signed 224-country
+    # catalogue to external PATHS, and then downloads exactly the selected
+    # country's original logo ZIP (not individual station favicons).
 fi
 
 # Download only the selected language after package installation, without

@@ -1,169 +1,263 @@
-#######################################################################
-#
-#    ScreenSaver for Enigma2
-#    Coded by shamann (c)2020
-#
-#    This program is free software; you can redistribute it and/or
-#    modify it under the terms of the GNU General Public License
-#    as published by the Free Software Foundation; either version 2
-#    of the License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#    
-#######################################################################
+# -*- coding: utf-8 -*-
+"""FullHDGlass radio-only OLED saver, matching the Warder Radio plugin layout.
 
-from .warderResolution import Screen
+This screen is presented modally by warderRadioSaverController only after a
+configurable idle period. Native labels/pixmaps are used; internet cover
+lookup stays in a bounded background worker and never blocks Enigma2 GUI.
+"""
+import os
+import threading
+import time
+
 from Components.Label import Label
-from enigma import eTimer, ePoint, gRGB, eSize, iPlayableServicePtr, iPlayableService
-from .warderResolution import ePoint, eSize, logical
-from time import localtime, time, strftime
-import random
-from Components.ServiceEventTracker import ServiceEventTracker
-try:
-	from string import upper
-except: pass
+from Components.Pixmap import Pixmap
+from Components.config import config
+from Components.Converter.WarderRadioOnly import is_native_dab
+from Components.Converter.WarderRadioMetadata import current_song, native_song, stream_url
+from enigma import eTimer, iServiceInformation
+from Tools.LoadPixmap import LoadPixmap
 
-class ScreenSaverScreen(Screen):                  
+from .warderResolution import Screen, ePoint
+from .warderRadioSaverLayout import make_widgets, bounded_motion
+from .warderRadioRds import native_rds
+from .warderUserPicons import selected_source, find_png
 
-	skin = """<screen name="ScreenSaver" position="0,0" size="1920,1080" zPosition="-1" backgroundColor="#00000000" flags="wfNoBorder" >	
+_MARKUP, _POSITIONS = make_widgets()
 
-		<widget name="saver_text" font="Prive3;36" position="127,115" zPosition="3" size="600,75" halign="center" backgroundColor="#31000000" transparent="1" />
 
-    </screen>"""
-                            	
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		self.skin = ScreenSaverScreen.skin
-		self.session = session    
-		self.suspend = True
-		self['saver_text'] = Label("") 
-		self.Sname = "- - -"
-		self.__refreshTimer = eTimer()
-		try:
-			self.__refreshTimer_conn = self.__refreshTimer.timeout.connect(self.__updateInfo)
-		except AttributeError:
-			self.__refreshTimer.timeout.get().append(self.__updateInfo)    
-		self.__colorTimer = eTimer()
-		try:
-			self.__colorTimer_conn = self.__colorTimer.timeout.connect(self.__updateColor)
-		except AttributeError:
-			self.__colorTimer.timeout.get().append(self.__updateColor)
-		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStopped: self.noServiceName, iPlayableService.evStart: self.readServiceName, iPlayableService.evTunedIn: self.readServiceName,})
-		self.onShow.append(self.__wakeup)
-		self.onHide.append(self.__standby)
-		self.colorR = 200
-		self.colorG = 100
-		self.colorB = 0
-		self.DcolorR = 2
-		self.DcolorG = 2
-		self.DcolorB = 2
-		self.ena = 0
-		self.delay = 0 
-                                      	
-	def noServiceName(self):
-		self.Sname = " "
+def _service_name(ref, service):
+    try:
+        info = service and service.info()
+        if info:
+            name = info.getName() or ""
+            if name:
+                return name.strip()
+    except Exception:
+        pass
+    try:
+        from ServiceReference import ServiceReference
+        return (ServiceReference(ref).getServiceName() or "").strip()
+    except Exception:
+        return ""
 
-	def __wakeup(self):
-		self.readPosition()
-		self.direction = "+"
-		self.newsizeY = 75
-		self.ena = 0
-		self.__refreshTimer.start(10)
-		self.__colorTimer.start(10)
-		
-	def readPosition(self):
-		self.posX = logical(self['saver_text'].instance.position().x(),0)
-		self.posY = logical(self['saver_text'].instance.position().y(),1)
-		self.newposY = self.posY
-		
-	def readServiceName(self):
-		service = self.session.nav.getCurrentService()
-		if isinstance(service, iPlayableServicePtr):
-			info = service and service.info()
-			ref = None
-		else:
-			info = service and self.source.info
-			ref = service
-		if info is None:
-			self.Sname = " "
-		name = ref and info.getName(ref)
-		if name is None:
-			name = info.getName()
-		self.Sname = name.replace('\xc2\x86', '').replace('\xc2\x87', '').upper()
-    		
-	def __standby(self):
-		self.__refreshTimer.stop()
-		self.__colorTimer.stop()
-		self['saver_text'].instance.resize(eSize(600,75))
-        	  		
-	def __updateInfo(self):
-		self.__refreshTimer.stop()
-		t = localtime(time())
-		self['saver_text'].setText("%s\n%s" % (self.Sname, strftime("%d %B %Y, %H:%M:%S", t)))	
-		if self.ena == 1:
-			self['saver_text'].instance.move(ePoint((random.randint(50, 1320)),(random.randint(50, 905))))
-			self.readPosition()
-			self.direction = "-"
-			self.newsizeY = 0
-			self.ena = 2
-		elif self.ena == 3:
-			self.readPosition()
-			self.direction = "+"
-			self.newsizeY = 75
-			self.ena = 0
-		elif self.ena == 4:
-			self.delay += 1
-			if self.delay == 4:
-				self.ena = 3
-				self.delay = 0
-		self.__refreshTimer.start(1000)	
-      		
-	def __updateColor(self):
-		self.__colorTimer.stop() 
-		self.colorR += self.DcolorR
-		if self.colorR > 255:  
-			self.DcolorR = -2  
-			self.colorR += self.DcolorR
-		elif self.colorR < 0:  
-			self.DcolorR = 2  
-			self.colorR += self.DcolorR
-		self.colorG += self.DcolorG
-		if self.colorG > 255:  
-			self.DcolorG = -2  
-			self.colorG += self.DcolorG
-		elif self.colorG < 0:  
-			self.DcolorG = 2  
-			self.colorG += self.DcolorG  
-		self.colorB += self.DcolorB
-		if self.colorB > 255:  
-			self.DcolorB = -2  
-			self.colorB += self.DcolorB
-		elif self.colorB < 0:  
-			self.DcolorB = 2  
-			self.colorB += self.DcolorB   
-		try:  
-			self['saver_text'].instance.setForegroundColor(gRGB(int(("%0.2X%0.2X%0.2X" % (self.colorR, self.colorG, self.colorB)), 0x10)))  
-		except: pass  
-		if self.ena == 0 or self.ena == 2:
-			if self.newposY > self.posY+75 or self.newsizeY < 0:
-				self.ena = 1
-			elif self.newposY < self.posY-75 or self.newsizeY > 75:
-				self.ena = 4
-			else:      
-				if self.direction == "+": 
-					self.newposY += 1
-					self.newsizeY -= 1
-				else: 
-					self.newposY -= 1
-					self.newsizeY += 1
-				if self.newsizeY < 0:
-					self['saver_text'].instance.resize(eSize(600, 0))
-				else:
-					self['saver_text'].instance.resize(eSize(600, int(self.newsizeY)))
-				self['saver_text'].instance.move(ePoint(int(self.posX), int(self.newposY)))
-		self.__colorTimer.start(30)  
-  		
-		
+
+def _service_group(ref, service):
+    if is_native_dab(ref):
+        kind = "DAB / DAB+"
+    elif stream_url(ref):
+        kind = "INTERNET RADIO"
+    else:
+        kind = "DVB RADIO"
+    try:
+        info = service and service.info()
+        name = info.getInfoString(iServiceInformation.sProvider) if info else ""
+        if name and str(name).strip():
+            return str(name).strip(), kind
+    except Exception:
+        pass
+    return kind, kind
+
+
+def _picon_path(ref):
+    try:
+        ref_text = ref.toString()
+        stem = "_".join(ref_text.split(":")[:10]).upper().rstrip("_")
+        enabled, directory = selected_source(config)
+        if enabled:
+            # Explicitly selected Own Picons remain authoritative.
+            return find_png(directory, stem)
+        # Warder Radio Live keeps signed, country-scoped originals under
+        # PATHS/picon/radio/CC. Use the SAME ownership-checked lookup as the
+        # channel list, never a loose search through unrelated country PNGs.
+        try:
+            from .warderRadioLive import cached_country_picon
+            radio_stems = [stem]
+            if stem.startswith("1_"):
+                radio_stems.append("4097" + stem[1:])
+            picon = cached_country_picon(
+                radio_stems, config.plugins.setupGlass17.par39.value)
+            if picon:
+                return picon
+        except (ImportError, AttributeError, OSError, TypeError, ValueError):
+            pass
+        from Components.Renderer.Picon import getPiconName
+        name = getPiconName(ref_text)
+        if name and os.path.isfile(name):
+            return name
+    except Exception:
+        pass
+    try:
+        root = config.plugins.setupGlass17.par39.value
+        for folder in (os.path.join(root, "picon", "radio"),
+                       os.path.join(root, "picon")):
+            result = find_png(folder, stem)
+            if result:
+                return result
+    except Exception:
+        pass
+    return ""
+
+
+class ScreenSaverScreen(Screen):
+    skin = ('<screen name="WarderRadioScreenSaver" position="0,0"'
+            ' size="1920,1080" zPosition="3000" flags="wfNoBorder"'
+            ' backgroundColor="#000000">' + _MARKUP + '</screen>')
+
+    def __init__(self, session):
+        Screen.__init__(self, session)
+        self._positions = _POSITIONS
+        self._offset = (0, 0)
+        self._direction = (1, 1)
+        self._ticks = 0
+        self._last_values = {}
+        self._last_picon = None
+        self._last_cover = None
+        self._picon_ref = None
+        self._picon_value = ""
+        self._cover_request = None
+        self._cover_result = None
+        self._cover_running = False
+        self._closed = False
+        self._ready = False
+        for name in self._positions:
+            self[name] = Pixmap() if name in ("saver_picon", "saver_cover") else Label("")
+        self._timer = eTimer()
+        try:
+            self._timer_conn = self._timer.timeout.connect(self._refresh)
+        except AttributeError:
+            self._timer.callback.append(self._refresh)
+        self.onLayoutFinish.append(self._layout)
+        self.onShow.append(self._show)
+        self.onHide.append(self._hide)
+        self.onClose.append(self._close)
+
+    def _layout(self):
+        self._ready = True
+
+    def _show(self):
+        self._closed = False
+        self._refresh()
+        self._timer.start(1000, False)
+
+    def _hide(self):
+        self._timer.stop()
+
+    def _close(self):
+        self._closed = True
+        self._timer.stop()
+
+    def _label(self, name, value):
+        value = str(value or "")
+        if self._last_values.get(name) != value:
+            self._last_values[name] = value
+            self[name].setText(value)
+
+    def _picture(self, name, path):
+        if name == "saver_picon":
+            cache = "_last_picon"
+        else:
+            cache = "_last_cover"
+        if path == getattr(self, cache):
+            return
+        setattr(self, cache, path)
+        if not path or not os.path.isfile(path):
+            self[name].hide()
+            return
+        try:
+            pix = LoadPixmap(path=path)
+            if pix is None:
+                self[name].hide()
+                return
+            self[name].instance.setPixmap(pix)
+            self[name].show()
+        except Exception:
+            self[name].hide()
+
+    def _cover_background(self, identity):
+        try:
+            from .warderRadioCoverSearch import lookup_cover
+            path, provider = lookup_cover(identity[0], identity[1])
+        except Exception:
+            path = ""
+        # Worker only publishes a path. GUI widgets are touched by _refresh.
+        self._cover_result = (identity, path)
+        self._cover_running = False
+
+    def _refresh(self):
+        if self._closed or not self._ready:
+            return
+        try:
+            nav = self.session.nav
+            ref = nav.getCurrentlyPlayingServiceReference()
+            service = nav.getCurrentService()
+            if ref is None:
+                return
+            name = _service_name(ref, service)
+            group, kind = _service_group(ref, service)
+            song_caption = "SONG"
+            if stream_url(ref):
+                artist, track = current_song(service, ref)
+            else:
+                artist, track = native_song(service)
+                # DVB RDS/RT+ has its own decoder: native iServiceInformation
+                # sTagArtist/sTagTitle alone is not enough for those services.
+                rds_artist, rds_title, radio_text, _ = native_rds(service)
+                if rds_artist and rds_title:
+                    artist, track = rds_artist, rds_title
+                elif rds_title and not track:
+                    artist, track = (artist or rds_artist), rds_title
+                elif radio_text and not (artist or track):
+                    # Plain RadioText is station prose, NOT a verified
+                    # artist/song pair; show it truthfully as RDS TEXT.
+                    track = radio_text
+                    song_caption = "RDS TEXT"
+            self._label("saver_head", "RADIO")
+            self._label("saver_station", name or "Rádio")
+            self._label("saver_group", group)
+            self._label("saver_artist_caption", "ARTIST")
+            self._label("saver_artist", artist or "—")
+            self._label("saver_track_caption", song_caption)
+            self._label("saver_track", track or "—")
+            self._label("saver_signal", kind)
+            self._label("saver_date", time.strftime("%d.%m.%Y"))
+            self._label("saver_time", time.strftime("%H:%M:%S"))
+            ref_string = ref.toString()
+            # Cheap refresh on slow non-GLES boxes. Recheck occasionally so
+            # a radio logo downloaded after activation appears automatically.
+            if ref_string != self._picon_ref or self._ticks % 10 == 0:
+                self._picon_ref = ref_string
+                self._picon_value = _picon_path(ref)
+            picon = self._picon_value
+            self._picture("saver_picon", picon)
+            identity = (artist, track) if artist and track else None
+            if identity != self._cover_request and not self._cover_running:
+                self._cover_request = identity
+                self._cover_result = None
+                if identity:
+                    self._cover_running = True
+                    worker = threading.Thread(target=self._cover_background, args=(identity,))
+                    worker.daemon = True
+                    worker.start()
+            cover = (self._cover_result[1]
+                     if self._cover_result and self._cover_result[0] == identity
+                     else "")
+            self._picture("saver_cover", cover or picon)
+            self._ticks += 1
+            if self._ticks % 2 == 0:
+                self._move()
+        except Exception:
+            # Missing metadata, an optional image provider, or changing service
+            # must never stop radio or crash the receiver GUI.
+            pass
+
+    def _move(self):
+        self._offset, self._direction = bounded_motion(
+            self._offset, self._direction)
+        dx, dy = self._offset
+        for name, (x, y, width, height) in self._positions.items():
+            if name == "saver_black":
+                continue
+            try:
+                self[name].instance.move(ePoint(x + dx, y + dy))
+            except Exception:
+                pass

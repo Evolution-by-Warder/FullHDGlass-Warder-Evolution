@@ -1,0 +1,105 @@
+name: Build standalone RADIO LIVE TEST138 IPK
+
+on:
+  push:
+    branches:
+      - fix/radio-live-progressive-first-page-20261119
+    paths:
+      - tools/build-radio-live-test-ipk.py
+      - tools/test-radio-live.py
+      - source/control/postinst
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - tools/test-radio-country.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py
+      - .github/workflows/radio-live-test-package.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  radio-live-test-ipk:
+    if: github.ref == 'refs/heads/fix/radio-live-progressive-first-page-20261119'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout receiver payload and tests
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            source/package-root
+            source/control
+            tools/test-radio-live.py
+            tools/test-radio-country.py
+            tools/build-radio-live-test-ipk.py
+            .github/workflows/radio-live-test-package.yml
+
+      - name: Verify live bouquet logic and native picon bridge
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py \
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py \
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py \
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py \
+            tools/build-radio-live-test-ipk.py
+          PYTHONDONTWRITEBYTECODE=1 python3 tools/test-radio-live.py -v
+          PYTHONDONTWRITEBYTECODE=1 python3 tools/test-radio-country.py -v
+          sh -n source/control/preinst source/control/postinst source/control/postrm
+
+      - name: Build TEST-only IPK
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python3 tools/build-radio-live-test-ipk.py
+          (cd packages/radio-live-test && sha256sum -c *.ipk.sha256)
+          test -s packages/radio-live-test/radio-live-test138-manifest.json
+
+      - name: Upload independent TEST package
+        uses: actions/upload-artifact@v4
+        with:
+          name: warder-radio-live-1.0.81-test138-ipk
+          path: |
+            packages/radio-live-test/*.ipk
+            packages/radio-live-test/*.ipk.sha256
+            packages/radio-live-test/radio-live-test138-manifest.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish direct IPK as TEST-only prerelease
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=radio-live-test138-20261119
+          ipk=packages/radio-live-test/enigma2-plugin-skins-fullhdglass_1.0.81-test138_all.ipk
+          sidecar="$ipk.sha256"
+          manifest=packages/radio-live-test/radio-live-test138-manifest.json
+          test -f "$ipk" && test -f "$sidecar" && test -f "$manifest"
+          cat > /tmp/warder-live-test-notes.md <<'EOF'
+          **TESTOVACIA IPK – nie ostrá verzia.**
+          - Vychádza z PR #127 FullHDGlass Warder Evolution.
+          - Pri výbere krajiny zverejní už PRVÚ stránku staníc, potom priebežne aktualizuje zoznam na pozadí.
+          - Odstránená štvorsekundová blokujúca hláška, zachováva sa označená stanica pri pridávaní ďalších stránok.
+          - Zachováva opravy TEST136/137, kontrolu SHA, osobné bouquety a bezpečný návrat po chybe siete.
+          - Vyžaduje nainštalovaný Radio Warder Evolution. Pre automatické picony treba nastavený PATHS na externé úložisko.
+          - Zálohovanie nastavení Enigma2 pred testovaním je odporúčané.
+          - Po inštalácii reštartovať GUI; testovať v Radio Mode nový bouquet Warder Radio Live.
+          - Pripravené mimo produkčného aktualizačného kanála. **Nevydáva sa nové ostré IPK.**
+          EOF
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "ERROR: test138 release tag already exists; refusing to overwrite uploaded test assets" >&2
+            exit 1
+          fi
+          gh release create "$tag" "$ipk" "$sidecar" "$manifest" \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --prerelease --title "FullHDGlass Radio Live 1.0.81-test138 (TEST ONLY)" \
+            --notes-file /tmp/warder-live-test-notes.md
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY"

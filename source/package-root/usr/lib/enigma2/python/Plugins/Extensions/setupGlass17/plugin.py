@@ -819,7 +819,8 @@ config.plugins.setupGlass17.par60 = ConfigYesNo(default = False) # enable empty 
 config.plugins.setupGlass17.par61 = ConfigText("0", False) # used for ok option - ignore infobar timeout
 config.plugins.setupGlass17.par62 = ConfigYesNo(default = False) # enable ChannelSel patch 2xOK
 config.plugins.setupGlass17.par63 = ConfigYesNo(default = False) # enable anim for menu: Icons Bar
-config.plugins.setupGlass17.par64 = ConfigYesNo(default = False) # enable screensaver in radio mode  
+config.plugins.setupGlass17.par64 = ConfigYesNo(default = False) # legacy saver toggle, migrated on first InfoBar
+config.plugins.setupGlass17.radioSaverDelay = ConfigSelection(default="0", choices=[("0", _("off")), ("10", "10 s"), ("20", "20 s"), ("30", "30 s"), ("60", "60 s")]) # common radio screensaver delay
 config.plugins.setupGlass17.par65 = NoSave(ConfigYesNo(default = False)) # retired spinner setting; compatibility placeholder only
 config.plugins.setupGlass17.par66 = ConfigYesNo(default = False) # animated ewea
 config.plugins.setupGlass17.par67 = ConfigYesNo(default = False) # service scan long list
@@ -1311,6 +1312,19 @@ def Plugins(path, **kwargs):
 		ret = [ PluginDescriptor(name=ui_text("FullHDGlass configuration"), description=ui_text("Configure the FullHDGlass skin"), where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="images/warder-config.png"),
 				PluginDescriptor(where=PluginDescriptor.WHERE_MENU, fnc=startSetup17),
 							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
+		# Native Enigma2 Channel Selection MENU extension, only on actual
+		# Warder Radio Live services. No image-owned ChannelSelection patches.
+		if hasattr(PluginDescriptor, "WHERE_CHANNEL_CONTEXT_MENU"):
+			try:
+				from . import warderRadioCountry
+				ret.append(PluginDescriptor(
+					name=ui_text("Select country (Warder Radio Live)"),
+					description="Select the active Radio Browser country",
+					where=PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU,
+					fnc=warderRadioCountry.open_country_selector,
+					serviceFilter=warderRadioCountry.is_live_service))
+			except (ImportError, AttributeError):
+				pass
 		if _warderOpenPliEpgReady:
 			ret.append(PluginDescriptor(name="FullHDGlass Multi EPG", description=_warderUiText("PROGRAM INFO"), where=[PluginDescriptor.WHERE_EVENTINFO, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=warderOpenPliMultiEpg))
 		if config.plugins.setupGlass17.par78.value != "n":
@@ -1450,10 +1464,17 @@ def startHdg17(reason, **kwargs):
 	if reason != 0 or config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		try:
 			from .warderRadioUpdate import start as start_radio_update
-			start_radio_update(reason)
+			start_radio_update(reason, session=kwargs.get('session'))
 		except Exception:
 			pass
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Optional context-MENU entry only when the Warder Radio Live folder
+		# is highlighted at the root of RADIO bouquets. Never patch image files.
+		try:
+			from .warderRadioCountry import install_root_country_menu
+			install_root_country_menu()
+		except (ImportError, AttributeError, OSError):
+			pass
 		# TEST89: timestamp the actual RADIO key handler before any mode-switch work.
 		global _warderOriginalShowRadioButton
 		try:
@@ -1517,7 +1538,7 @@ def startHdg17(reason, **kwargs):
 		else:
 			if fileExists(SKINPATH + "icons/about1.png"):
 				autoStartChck17.startHdgchck(kwargs["session"])
-			if config.plugins.setupGlass17.par12.value != "n" or config.plugins.setupGlass17.par64.value:
+			if config.plugins.setupGlass17.par12.value != "n":
 				keyManage.initKeyMng(kwargs["session"])
 			global Glass17__init__
 			if "session" in kwargs:
@@ -1669,6 +1690,21 @@ def hdg17inicialize(self):
 	if isinstance(self, InfoBar):
 		from Plugins.Extensions.setupGlass17.warderRadioWindows import install_radio_window_transparency
 		install_radio_window_transparency(self)
+		# Retire the legacy yes/no setting exactly once. Preserve its enabled
+		# state as a 10-second delay without affecting later user choices.
+		if config.plugins.setupGlass17.par64.value:
+			if config.plugins.setupGlass17.radioSaverDelay.value == "0":
+				config.plugins.setupGlass17.radioSaverDelay.value = "10"
+				config.plugins.setupGlass17.radioSaverDelay.save()
+			config.plugins.setupGlass17.par64.value = False
+			config.plugins.setupGlass17.par64.save()
+			# Persist both ends of one-time migration before a GUI restart.
+			configfile.save()
+		try:
+			from .warderRadioSaverController import install as _installRadioSaver
+			_installRadioSaver(self, config.plugins.setupGlass17.radioSaverDelay)
+		except (ImportError, AttributeError, RuntimeError):
+			pass
 
 def SpecialScreenWindow17(self):
 	ShowHideViaKey()
@@ -3707,14 +3743,6 @@ class KeyManage():
 					self.dialogKey.shown = False
 				else:
 					self.dialogKey = session.instantiateDialog(NetatmoScreen)
-		if config.plugins.setupGlass17.par64.value:
-			from Plugins.Extensions.setupGlass17.screenSaver import ScreenSaverScreen
-			if ENA_Z:
-				self.dialog = self.session.instantiateDialog(ScreenSaverScreen, zPosition=-1)
-				self.dialog.shown = False
-			else:
-				self.dialog = session.instantiateDialog(ScreenSaverScreen)
-			self.hideME()
 		self.specialinfoTimer = None
 
 	def stopTimer(self):
@@ -5139,23 +5167,13 @@ class ExtraInfo17(Screen):
 			self.chckSS()
 
 	def chckSS(self, state=False):
-		if config.plugins.setupGlass17.par64.value:	
-			if not state:
-				service = self.session.nav.getCurrentService()
-				info = service and service.info()
-				if info:	
-					ref = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
-					if isinstance(ref, eServiceReference):
-						isRadioService = ref.getData(0) in (2, 10)
-						if isRadioService and keyManage.TunerTest():
-							state = True
-			if self.state != state and keyManage.dialog is not None:
-				self.state = state
-				if state:
-					keyManage.showME()
-				else:
-					keyManage.hideME()
-						
+		# Legacy service events can request a timely check, but the only
+		# owner of the radio saver is the idle controller on the InfoBar.
+		controller = getattr(self.session, "current_dialog", None)
+		controller = getattr(controller, "_warderUnifiedRadioSaver", None)
+		if controller is not None:
+			controller.poll()
+
 	def __updateEMM(self):
 		self.emm_timer.stop()
 		service = self.session.nav.getCurrentService()
@@ -6846,7 +6864,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.d.append(config.plugins.setupGlass17.par55.getValue())
 		self.d.append(config.plugins.setupGlass17.par62.getValue())
 		self.d.append(config.plugins.setupGlass17.par65.getValue())
-		self.d.append(config.plugins.setupGlass17.par64.getValue())
+		self.d.append(config.plugins.setupGlass17.radioSaverDelay.getValue())
 		self.d.append(config.plugins.setupGlass17.par66.getValue())
 		self.d.append(config.plugins.setupGlass17.par67.getValue())
 		self.d.append(config.plugins.setupGlass17.par68.getValue())
@@ -7405,7 +7423,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("Enable user encoding.conf"), config.plugins.setupGlass17.par59))          
 				if ENA_ONOFF:
 					self.list.append(getConfigListEntry(S0 % _("On/Off icons"), config.plugins.setupGlass17.par190))
-				self.list.append(getConfigListEntry(S0 % _("RadioScreenSaver"), config.plugins.setupGlass17.par64))      
+				self.list.append(getConfigListEntry(S0 % _("RadioScreenSaver"), config.plugins.setupGlass17.radioSaverDelay))      
 				self.list.append(getConfigListEntry(S0 % _("IPTV Radio Detection"), config.plugins.setupGlass17.par225))
 				self.list.append(getConfigListEntry(S0 % _("PIG type"), config.plugins.setupGlass17.par68))     	
 				self.list.append(getConfigListEntry(S0 % _("Update"), config.plugins.setupGlass17.par75))      	                    
@@ -7722,8 +7740,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			filename = "42-"+TF(config.plugins.setupGlass17.par58.value)
 		elif t == config.plugins.setupGlass17.par59:
 			filename = "43-"+TF(config.plugins.setupGlass17.par59.value)
-		elif t == config.plugins.setupGlass17.par64:
-			filename = "47-"+TF(config.plugins.setupGlass17.par64.value)
+		elif t == config.plugins.setupGlass17.radioSaverDelay:
+			filename = "47-"+TF(config.plugins.setupGlass17.radioSaverDelay.value != "0")
 		elif t == config.plugins.setupGlass17.par68:
 			filename = "51-"+config.plugins.setupGlass17.par68.value			
 		elif t == config.plugins.setupGlass17.par75:
@@ -8635,7 +8653,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			xxx = changePIGres()			
 		if self.d[22] != config.plugins.setupGlass17.par48.value:
 			msg += _("Show Satellite position in TP info") + "\n"			
-		if self.d[34] != config.plugins.setupGlass17.par64.value:
+		if self.d[34] != config.plugins.setupGlass17.radioSaverDelay.value:
 			msg += _("RadioScreenSaver") + "\n"		
 		if config.plugins.setupGlass17.par54.value != self.d[27]:		
 			msg += _("EPG selection type") + "\n"
@@ -8827,13 +8845,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			a = config.plugins.setupGlass17.dict()
 			for x in range(1, len(ALL_CFG)+1):
 				if ALL_CFG[x-1] != "":
-					for i in a.items():
-						idx = int(str(i[0]).replace("par",""))
-						if idx == x:
-							cfg = i[1].getValue()
-							allLines += "%s: %s\n" % (ALL_CFG[x-1], cfg)
-							i[1].save()
-							break
+					# Only numbered legacy parameters belong in hdg17.conf.
+					# Named settings (such as radioSaverDelay) save separately.
+					setting = a.get("par%d" % x)
+					if setting is not None:
+						cfg = setting.getValue()
+						allLines += "%s: %s\n" % (ALL_CFG[x-1], cfg)
+						setting.save()
 			if allLines != "":
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
@@ -8844,6 +8862,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		config.plugins.warderPiconExpert.destination.save()
 		config.plugins.warderUserPicons.enabled.save()
 		config.plugins.warderUserPicons.path.save()
+		# TEST149: commit the new non-numbered radio setting before configfile.save.
+		config.plugins.setupGlass17.radioSaverDelay.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -8982,13 +9002,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			a = config.plugins.setupGlass17.dict()
 			for x in range(1, len(ALL_CFG)+1):
 				if ALL_CFG[x-1] != "":
-					for i in a.items():
-						idx = int(str(i[0]).replace("par",""))
-						if idx == x:
-							i[1].cancel()
-							break
+					setting = a.get("par%d" % x)
+					if setting is not None:
+						setting.cancel()
 		except: pass
 		config.plugins.warderSkinMainMenu.enabled.cancel()
+		config.plugins.setupGlass17.radioSaverDelay.cancel()
 		try:
 			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()
