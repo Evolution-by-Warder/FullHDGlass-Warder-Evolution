@@ -1691,6 +1691,7 @@ def hdg17inicialize(self):
 			InfoBarPlugins.SpecialScreenWindow17 = None
 	Glass17__init__(self)
 	if isinstance(self, InfoBar):
+		_warderGuardNativeRadioWindow(self, getattr(self, "rds_display", None))
 		from Plugins.Extensions.setupGlass17.warderRadioWindows import install_radio_window_transparency
 		install_radio_window_transparency(self)
 		# Retire the legacy yes/no setting exactly once. Preserve its enabled
@@ -1711,6 +1712,30 @@ def hdg17inicialize(self):
 
 def SpecialScreenWindow17(self):
 	ShowHideViaKey()
+
+def _warderGuardNativeRadioWindow(self, rds):
+	# OpenATV 7.6 can re-show its native full-screen RdsInfoDisplay even
+	# after navigating back to a DVB-TV service. The radio-only artwork
+	# must never be allowed to cover TV, including after later native show().
+	if rds is None or getattr(self, "_warderRdsGuardOwner", None) is rds:
+		return
+	callbacks = getattr(rds, "onShow", None)
+	if callbacks is None:
+		return
+	def _hide_if_tv():
+		try:
+			ref = self.session.nav.getCurrentlyPlayingServiceReference()
+			if not is_radio_reference(ref):
+				rds.hide()
+		except (AttributeError, RuntimeError):
+			pass
+	try:
+		callbacks.append(_hide_if_tv)
+		self._warderRdsGuardOwner = rds
+		self._warderRdsGuardCallback = _hide_if_tv
+	except (AttributeError, TypeError):
+		pass
+
 
 def serviceStartNow17(self):
 	if isinstance(self,InfoBar):
@@ -1741,6 +1766,7 @@ def serviceStartNow17(self):
 				controller.update()
 			rds = getattr(self, "rds_display", None)
 			if rds is not None:
+				_warderGuardNativeRadioWindow(self, rds)
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
 					rds.show()
