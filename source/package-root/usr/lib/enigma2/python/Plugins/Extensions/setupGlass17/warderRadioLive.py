@@ -923,7 +923,7 @@ def cached_country_picon(references, base):
         files = record.get('files') if valid else {}
         controller.country_logo_stems = {
             name[:-4] for name in files if isinstance(name, str)
-            and re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\\.png', name)
+            and re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\.png', name)
         } if isinstance(files, dict) else set()
         controller.country_logo_mtime = mtime
     known = known | getattr(controller, 'country_logo_stems', set())
