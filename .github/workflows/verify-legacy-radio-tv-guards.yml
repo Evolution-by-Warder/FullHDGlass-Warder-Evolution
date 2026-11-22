@@ -4,6 +4,10 @@ on:
     paths:
       - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
       - "tools/test-openatv76-plugin-descriptor.py"
+      - "tools/test-legacy-radio-live-startup.py"
+      - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py"
+      - "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py"
+      - "source/control/postinst"
       - ".github/workflows/verify-legacy-radio-tv-guards.yml"
   workflow_dispatch:
 permissions:
@@ -32,6 +36,10 @@ jobs:
           sparse-checkout: |
             source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             tools/test-openatv76-plugin-descriptor.py
+            tools/test-legacy-radio-live-startup.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py
+            source/control/postinst
           sparse-checkout-cone-mode: false
       - uses: actions/checkout@v4
         with:
@@ -47,4 +55,5 @@ jobs:
       - name: Verify real native descriptor signature and TV/RADIO dialog guards
         run: |
           python3 tools/test-openatv76-plugin-descriptor.py -v
+          python3 tools/test-legacy-radio-live-startup.py -v
           python3 -m py_compile tools/test-openatv76-plugin-descriptor.py
