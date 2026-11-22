@@ -1,3 +1,13 @@
+## 22. 11. 2026 — Automatické zlúčenie PR #136 prakticky overené
+
+- Podľa schváleného rozsahu a potvrdenia na prijímači bol na [PR #136](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/136) uložený owner-authored approval marker viazaný na presný HEAD `7124f64db6a6b36368d8b609e7a92081d97c65ac`. Všetkých 10 check-runov skončilo úspešne vrátane OpenPLi regression a 3 natívnych OpenATV.
+- Nový schválený automatický GitHub workflow [#45043296554](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45043296554) sa **skutočne spustil udalosťou issue_comment a skončil SUCCESS**. Jeho log výslovne uvádza `Merged approved and verified PR #136`, výsledný squash merge commit `d98bb213138596f9b6c77a0e4e2444e0bb651c0f`. Toto je prvé produkčné overenie mechanizmu, nielen existencia konfiguračného YAML.
+- Runtime opravuje len read-only diagnostiku: rozpoznáva nové `hdg17_files/picon/radio/CC` aj starší overený flat priečinok. Žiadne používateľské logo, rádio stream alebo SAT picon sa týmto merge neprepísalo.
+- Po merge stále **ostáva oficiálna stabilná FullHDGlass 1.0.83**, SHA-256 `502d71a840f280be868c2199c8031dac60a26cf5955968085dc256d1ab5c3727`; `update-production.json` hlási 1.0.83 s identickým hashom. Oprava diagnostiky je v `main`, ale **nie je ešte v existujúcom vydanom IPK**. Žiadne nové vydanie sa v tomto kroku neuskutočnilo.
+- Pokračovať podľa princípu jeden súhlas na rozsah: nové schválené PR s preukázateľným SHA komentárom a kompletným CI zlúči workflow automaticky. Novú stabilnú verziu a jeho produkčné vydanie riešiť až v schválenom vydávacom rozsahu, vždy SHA-verifikáciou.
+
+---
+
 ## 22. 11. 2026 — Diagnostika originálnych rádiových log po 1.0.83 (PR #136, bez merge)
 
 - Overený ostrý release [v1.0.83](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.83): publisher #45039266511 SUCCESS, OpenATV #45039266535 SUCCESS, rádio #45039722144 SUCCESS, layout #45040309257 SUCCESS. Main pred zmenou: fb5a52eec8b485663d81f26f3c16f844213a7cd3.
