@@ -1,18 +1,18 @@
 {
-  "version": "1.0.82",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.82_all.ipk",
-  "sha256": "cc0f7b2cd0a7fae6d43735a9dec3977cb1686325af77eb629da279e2bf5d8148",
-  "changelog": "Unified FullHDGlass repairs, corrected IPTV channel names in InfoBar 76, DVB/DAB/IPTV OLED radio saver, Radio Live country bouquets, safer storage and preserved satellite picons. Existing settings are retained; restart Enigma2 after updating.",
+  "version": "1.0.83",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.83_all.ipk",
+  "sha256": "502d71a840f280be868c2199c8031dac60a26cf5955968085dc256d1ab5c3727",
+  "changelog": "Official Warder Radio Live: stable 224-country bouquets, 48,219 stations and original country-specific radio logos. Verified data downloads only to configured external storage; 14-day updates, user picons, skin settings and original graphics preserved. Restart Enigma2 after updating.",
   "changelog_i18n": {
-    "en": "Unified FullHDGlass repairs, corrected IPTV channel names in InfoBar 76, DVB/DAB/IPTV OLED radio saver, Radio Live country bouquets, safer storage and preserved satellite picons. Existing settings are retained; restart Enigma2 after updating.",
-    "sk": "Zjednotené opravy FullHDGlass, opravené názvy IPTV staníc v infobare 76, spoločný OLED šetrič rádia DVB/DAB/IPTV, krajinské bouquety Radio Live a ochrana úložiska. Satelitné picony a nastavenia zostávajú zachované; po aktualizácii reštartujte Enigma2.",
-    "cs": "Sjednocené opravy FullHDGlass, opravené názvy IPTV stanic v infobaru 76, společný OLED spořič rádia DVB/DAB/IPTV, zemské bukety Radio Live a ochrana úložiště. Satelitní picony i nastavení zůstávají zachovány; restartujte Enigma2.",
-    "de": "Vereinte FullHDGlass-Korrekturen, IPTV-Sendernamen in InfoBar 76, gemeinsamer OLED-Radioschoner für DVB/DAB/IPTV, Radio-Live-Länderbouquets und Speicherschutz. Satelliten-Picons und Einstellungen bleiben erhalten. Enigma2 neu starten.",
-    "pl": "Połączone poprawki FullHDGlass, nazwy kanałów IPTV w InfoBar 76, wspólny wygaszacz OLED radia DVB/DAB/IPTV, bukiety krajów Radio Live i ochrona pamięci. Pikony satelitarne oraz ustawienia pozostają zachowane. Uruchom ponownie Enigma2.",
-    "hu": "Egységes FullHDGlass javítások, IPTV-csatornanevek az InfoBar 76-ban, közös DVB/DAB/IPTV OLED rádióképernyővédő, Radio Live országlisták és tárhelyvédelem. A műholdas piconok és beállítások megmaradnak. Indítsa újra az Enigma2-t.",
-    "ru": "Объединённые исправления FullHDGlass, названия IPTV-каналов в InfoBar 76, общий OLED-экран радио DVB/DAB/IPTV, списки стран Radio Live и защита хранилища. Спутниковые пиконы и настройки сохранены. Перезапустите Enigma2.",
-    "fr": "Correctifs FullHDGlass réunis, noms IPTV dans l’InfoBar 76, économiseur OLED radio DVB/DAB/IPTV, bouquets nationaux Radio Live et protection du stockage. Picons satellite et réglages conservés. Redémarrez Enigma2.",
-    "it": "Correzioni FullHDGlass integrate, nomi IPTV nell’InfoBar 76, salvaschermo OLED radio DVB/DAB/IPTV, bouquet nazionali Radio Live e protezione della memoria. Picon satellitari e impostazioni conservati. Riavviare Enigma2.",
-    "es": "Correcciones FullHDGlass integradas, nombres IPTV en InfoBar 76, protector OLED de radio DVB/DAB/IPTV, listas nacionales Radio Live y protección del almacenamiento. Se mantienen los picons satelitales y los ajustes. Reinicie Enigma2."
+    "en": "Official Warder Radio Live: stable 224-country bouquets, 48,219 stations and original country-specific radio logos. Verified data downloads only to configured external storage; 14-day updates, user picons, skin settings and original graphics preserved. Restart Enigma2 after updating.",
+    "sk": "Ostré Warder Radio Live: 224 krajín, 48 219 staníc a originálne rádiové logá podľa zvolenej krajiny. Overené dáta sa sťahujú iba na nastavené externé úložisko; dvojtýždňové aktualizácie, používateľské picony, nastavenia a grafika zostávajú zachované. Reštartujte Enigma2.",
+    "cs": "Ostré Warder Radio Live: 224 zemí, 48 219 stanic a originální rádiová loga podle vybrané země. Ověřená data se stahují pouze na nastavené externí úložiště; čtrnáctidenní aktualizace, picony, nastavení a grafika zůstávají zachovány. Restartujte Enigma2.",
+    "de": "Warder Radio Live mit 224 Ländern, 48.219 Sendern und länderspezifischen Original-Logos. Verifizierte Daten werden nur auf konfiguriertem externem Speicher geladen. 14-Tage-Updates, Picons, Einstellungen und Grafik bleiben erhalten. Enigma2 neu starten.",
+    "pl": "Warder Radio Live: 224 kraje, 48 219 stacji i oryginalne logotypy dla wybranego kraju. Sprawdzone dane są pobierane wyłącznie na skonfigurowaną pamięć zewnętrzną. Aktualizacje co 14 dni, pikony i ustawienia pozostają bez zmian. Uruchom ponownie Enigma2.",
+    "hu": "Warder Radio Live: 224 ország, 48 219 állomás és eredeti, országonkénti rádiólogók. Az ellenőrzött adatok csak a beállított külső tárolóra kerülnek. A 14 napos frissítések, piconok, beállítások és grafika megmaradnak. Indítsa újra az Enigma2-t.",
+    "ru": "Warder Radio Live: 224 страны, 48 219 станций и оригинальные логотипы для выбранной страны. Проверенные данные загружаются только во внешнее хранилище. Обновления раз в 14 дней, пиконы, настройки и оформление сохраняются. Перезапустите Enigma2.",
+    "fr": "Warder Radio Live : 224 pays, 48 219 stations et logos radio d’origine par pays. Les données vérifiées sont téléchargées uniquement sur le stockage externe configuré. Mises à jour tous les 14 jours, picons, réglages et graphismes conservés. Redémarrer Enigma2.",
+    "it": "Warder Radio Live: 224 paesi, 48.219 stazioni e loghi radio originali per paese. I dati verificati vengono scaricati solo sulla memoria esterna configurata. Aggiornamenti ogni 14 giorni, picon, impostazioni e grafica preservati. Riavviare Enigma2.",
+    "es": "Warder Radio Live: 224 países, 48.219 emisoras y logotipos originales por país. Los datos verificados se descargan solo al almacenamiento externo configurado. Actualizaciones cada 14 días, picons, ajustes y gráficos conservados. Reinicie Enigma2."
   }
 }
