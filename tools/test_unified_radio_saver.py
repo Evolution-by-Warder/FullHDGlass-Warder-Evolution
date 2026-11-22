@@ -110,7 +110,7 @@ class StaticChecks(unittest.TestCase):
         config = types.SimpleNamespace(plugins=types.SimpleNamespace(setupGlass17=settings))
         registry = ["First", "", "Third"]
         writes = []
-        env = {"config": config, "ALL_CFG": registry,
+        env = {"config": config, "ALL_CFG": registry, "allLines": "",
                "_atomicWriteText": lambda path, content: writes.append((path, content))}
         for method, verb in ((methods["saving"], "save"), (methods["exitNow"], "cancel")):
             candidate = next(stmt for stmt in method.body if isinstance(stmt, ast.Try)
