@@ -5,8 +5,8 @@ logo ZIP per country. This module never runs in the GUI event loop, and refuses
 unpublished/foreign/index-inconsistent data. Country selection itself stays
 offline; only snapshots and selected-country logos use HTTP.
 
-This is a working candidate. The repository's latest.json and production
-release are NOT published yet; no automatic scheduler uses this module.
+TEST-only pre-release source. The production latest.json remains untouched;
+the TEST feed uses the isolated Radio-Warder-Evolution feature branch.
 """
 import hashlib
 import json
@@ -24,7 +24,8 @@ from . import warderRadioPackages as packages
 from . import warderRadioCountry as country
 
 LATEST_URL = ('https://raw.githubusercontent.com/Evolution-by-Warder/'
-              'Radio-Warder-Evolution/main/assets/radio-country/latest.json')
+              'Radio-Warder-Evolution/feature/radio-browser-country-bouquets-and-logo-zips-20261119/'
+              'assets/radio-country/test-20261122.json')
 RELEASE_ROOT = ('https://github.com/Evolution-by-Warder/'
                 'Radio-Warder-Evolution/releases/download/')
 TAG = re.compile(r'^radio-country-20[0-9]{6}$')
