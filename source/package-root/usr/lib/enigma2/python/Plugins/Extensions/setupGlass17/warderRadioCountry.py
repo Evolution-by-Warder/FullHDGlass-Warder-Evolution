@@ -989,31 +989,63 @@ def install_root_country_menu():
 
 
 def _close_radio_list_after_country_choice(session, channel_selection=None):
-    """Exit ONLY the native radio station list after a confirmed country choice.
+    """Dismiss the native RADIO list, never a TV or generic screen.
 
-    ChoiceBox is already closing when its callback runs. Use the image's own
-    ChannelSelectionRadio.cancel() action, never close InfoBar/TV selection or
-    interfere with the background radio refresh and current station settings.
+    OpenATV usually reuses ChannelSelection in MODE_RADIO=1. The older
+    ChannelSelectionRadio is another valid radio class. When ChoiceBox is
+    open, the underlying list may have shown=False; an exact reference
+    from our own native bouquet context menu is still safe to close.
     """
     def native_radio(screen):
-        if screen is None or not getattr(screen, 'shown', False):
+        if screen is None:
             return False
-        return any(cls.__name__ == 'ChannelSelectionRadio'
-                   for cls in type(screen).__mro__)
+        classes = {cls.__name__ for cls in type(screen).__mro__}
+        if 'ChannelSelectionRadio' in classes:
+            return True
+        if 'ChannelSelection' not in classes:
+            return False
+        # MODE_RADIO is 1 on OpenATV and OpenPLi. Never dismiss a TV list.
+        try:
+            mode = screen.getCurrentMode() if callable(
+                getattr(screen, 'getCurrentMode', None)) else getattr(screen, 'mode', None)
+            if mode != 1:
+                return False
+            bouquet_root = getattr(screen, 'bouquet_root', None)
+            path = bouquet_root.getPath() if bouquet_root is not None else ''
+            if path and 'bouquets.radio' not in path and 'favourites.radio' not in path:
+                return False
+            return True
+        except (AttributeError, TypeError, ValueError):
+            return False
 
-    target = channel_selection if native_radio(channel_selection) else None
-    if target is None:
-        target = getattr(session, 'current_dialog', None)
-        if not native_radio(target):
-            return False
+    candidates = [channel_selection, getattr(session, 'current_dialog', None)]
     try:
-        action = getattr(target, 'cancel', None)
-        if not callable(action):
-            return False
-        action()
-        return True
-    except (AttributeError, RuntimeError, TypeError):
-        return False
+        from Screens.InfoBar import InfoBar
+        info = InfoBar.instance
+        if info is not None:
+            candidates.append(getattr(info, 'servicelist', None))
+    except (ImportError, AttributeError):
+        pass
+    seen = set()
+    for screen in candidates:
+        if screen is None or id(screen) in seen:
+            continue
+        seen.add(id(screen))
+        if not native_radio(screen):
+            continue
+        # An explicit context-menu reference is allowed while a ChoiceBox
+        # obscures the list. An unrelated hidden InfoBar list is NOT.
+        if screen is not channel_selection and not getattr(screen, 'shown', False):
+            continue
+        cancel = getattr(screen, 'cancel', None)
+        if not callable(cancel):
+            continue
+        try:
+            cancel()
+            return True
+        except (AttributeError, RuntimeError, TypeError):
+            continue
+    return False
 
 
 def open_country_selector(session, service=None, **kwargs):
