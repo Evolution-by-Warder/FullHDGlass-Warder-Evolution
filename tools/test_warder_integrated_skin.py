@@ -34,8 +34,10 @@ class SkinIntegrationTests(unittest.TestCase):
     def test_download_requires_explicit_confirmation(self):
         txt=(PLUGIN/'plugin.py').read_text()
         self.assertIn('self._warderStorageChoice, ChoiceBox',txt)
-        self.assertIn("('Continue anyway')",txt)
-        self.assertIn("('Cancel')",txt)
+        self.assertIn('ui_text("Continue anyway"), "continue"',txt)
+        self.assertIn('ui_text("Cancel"), "cancel"',txt)
+        self.assertIn('if _warderStorageHasSpace(storage_target):',txt)
+        self.assertIn('if not _warderStorageHasSpace(target):',txt)
     def test_artwork_only_uses_stable_menu_ids(self):
         txt=RENDERER.read_text()
         for ident in ('warder_radio_mainmenu','PiconHub_Warder_Evolution','glass_sys_utils','warder_fullhdglass_settings'):
