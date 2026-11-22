@@ -25,9 +25,7 @@ jobs:
             /source/
             /tools/
             /design/
-            /packages/test/bitrate-helper-build.json
-            /packages/test/bitrate-helper-mipsel-build.json
-            /packages/test/bitrate-helper-aarch64-build.json
+            /reports/bitrate-test5-20261101.json
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -42,6 +40,20 @@ jobs:
       - name: Assemble exact full 1.0.83 source payload, then isolate test revision
         run: |
           set -euo pipefail
+          # The reviewed bitrate helper reports are generated build inputs,
+          # not committed package files. Recreate them from the pinned proof.
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          audit = json.loads(Path("reports/bitrate-test5-20261101.json").read_text())
+          assert len(audit["builds"]) == 3
+          out = Path("packages/test")
+          out.mkdir(parents=True, exist_ok=True)
+          for name, proof in zip(("bitrate-helper-build.json",
+                                  "bitrate-helper-mipsel-build.json",
+                                  "bitrate-helper-aarch64-build.json"), audit["builds"]):
+              (out / name).write_text(json.dumps(proof, indent=2) + "\\n")
+          PY
           python3 -B tools/build-release-ipk.py
           python3 - <<'PY'
           import gzip, hashlib, io, subprocess, tarfile, tempfile
