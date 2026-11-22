@@ -75,9 +75,11 @@ class TestDescriptorCompatibility(unittest.TestCase):
                 "startHdg17": lambda *args, **kwargs: None,
                 "main17": lambda *args, **kwargs: None,
                 "_warderOpenPliEpgReady": False,
+                "_warderLegacyRdsTvGuard": False,
             }
             exec(self.entry_code, ns)
-            return ns["Plugins"](None)
+            descriptors = ns["Plugins"](None)
+            return descriptors, ns
         finally:
             sys.modules.pop(country.__name__, None)
             sys.modules.pop(name, None)
@@ -108,8 +110,9 @@ class TestDescriptorCompatibility(unittest.TestCase):
 
 
     def test_openpli92_legacy_descriptor_still_loads_main_plugin(self):
-        descriptors = self._run(LegacyDescriptor)
+        descriptors, ns = self._run(LegacyDescriptor)
         self.assertEqual(len(descriptors), 3)
+        self.assertTrue(ns["_warderLegacyRdsTvGuard"])
         self.assertFalse(any(
             "serviceFilter" in d.options for d in descriptors))
 
@@ -117,13 +120,15 @@ class TestDescriptorCompatibility(unittest.TestCase):
     def test_openatv76_legacy_descriptor_still_loads_main_plugin(self):
         descriptors = self._run(LegacyDescriptor)
         self.assertEqual(len(descriptors), 3)
+        self.assertTrue(ns["_warderLegacyRdsTvGuard"])
         self.assertTrue(any(
             item.options.get("where") == LegacyDescriptor.WHERE_PLUGINMENU
             for item in descriptors))
 
     def test_newer_descriptor_keeps_optional_country_menu(self):
-        descriptors = self._run(ModernDescriptor)
+        descriptors, ns = self._run(ModernDescriptor)
         self.assertEqual(len(descriptors), 4)
+        self.assertFalse(ns["_warderLegacyRdsTvGuard"])
         self.assertTrue(any("serviceFilter" in item.options for item in descriptors))
 
     def test_rds_window_is_hidden_if_native_image_reopens_it_on_tv(self):
@@ -143,7 +148,7 @@ class TestDescriptorCompatibility(unittest.TestCase):
         nav = SimpleNamespace(getCurrentlyPlayingServiceReference=lambda: playing["ref"])
         bar = SimpleNamespace(session=SimpleNamespace(nav=nav))
         display = FakeRadioDisplay()
-        ns = {"is_radio_reference": lambda ref: ref == "radio"}
+        ns = {"is_radio_reference": lambda ref: ref == "radio", "_warderLegacyRdsTvGuard": True}
         exec(self.rds_guard_code, ns)
         install = ns["_warderGuardNativeRadioWindow"]
         install(bar, display)
@@ -157,6 +162,19 @@ class TestDescriptorCompatibility(unittest.TestCase):
         self.assertIn(
             "_warderGuardNativeRadioWindow(self, rds)",
             PLUGIN.read_text(encoding="utf-8"))
+
+    def test_modern_openatv81_keeps_native_rds_behavior(self):
+        class RadioDisplay:
+            def __init__(self):
+                self.onShow = []
+
+        display = RadioDisplay()
+        bar = SimpleNamespace()
+        ns = {"_warderLegacyRdsTvGuard": False}
+        exec(self.rds_guard_code, ns)
+        ns["_warderGuardNativeRadioWindow"](bar, display)
+        self.assertEqual(display.onShow, [])
+        self.assertFalse(hasattr(bar, "_warderRdsGuardOwner"))
 
 
 if __name__ == "__main__":
