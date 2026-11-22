@@ -971,7 +971,7 @@ def install_root_country_menu():
             def select_country():
                 # Match the native runPlugin flow: open the next screen and
                 # then close the context menu, leaving normal radio navigation.
-                open_country_selector(session)
+                open_country_selector(session, channel_selection=csel)
                 menu.close(False)
 
             entry = ChoiceEntryComponent(
@@ -986,6 +986,34 @@ def install_root_country_menu():
     context_init._warder_live_country_root_menu = True
     ChannelContextMenu.__init__ = context_init
     return True
+
+
+def _close_radio_list_after_country_choice(session, channel_selection=None):
+    """Exit ONLY the native radio station list after a confirmed country choice.
+
+    ChoiceBox is already closing when its callback runs. Use the image's own
+    ChannelSelectionRadio.cancel() action, never close InfoBar/TV selection or
+    interfere with the background radio refresh and current station settings.
+    """
+    def native_radio(screen):
+        if screen is None or not getattr(screen, 'shown', False):
+            return False
+        return any(cls.__name__ == 'ChannelSelectionRadio'
+                   for cls in type(screen).__mro__)
+
+    target = channel_selection if native_radio(channel_selection) else None
+    if target is None:
+        target = getattr(session, 'current_dialog', None)
+        if not native_radio(target):
+            return False
+    try:
+        action = getattr(target, 'cancel', None)
+        if not callable(action):
+            return False
+        action()
+        return True
+    except (AttributeError, RuntimeError, TypeError):
+        return False
 
 
 def open_country_selector(session, service=None, **kwargs):
@@ -1019,6 +1047,8 @@ def open_country_selector(session, service=None, **kwargs):
                          type=MessageBox.TYPE_INFO, timeout=5)
             return
         if result.get('already_active'):
+            _close_radio_list_after_country_choice(
+                session, kwargs.get('channel_selection'))
             return
         scheduled = False
         try:
@@ -1029,8 +1059,13 @@ def open_country_selector(session, service=None, **kwargs):
             session.open(MessageBox,
                          ui_text("Country saved, but background radio update did not start."),
                          type=MessageBox.TYPE_INFO, timeout=6)
-        # Avoid a four-second modal popup: the first received page now
-        # appears in the radio list and continues loading without blocking it.
+        # Close the old radio list only after the user's choice is saved
+        # and the worker has been scheduled. Backend catalog/ZIP extraction
+        # continues off GUI while the receiver returns to its normal screen.
+        # If a modal error is needed, do not close the radio list underneath it.
+        if scheduled:
+            _close_radio_list_after_country_choice(
+                session, kwargs.get('channel_selection'))
 
     # Keep the active choice first in the user-facing menu.
     ordered = sorted(choices, key=lambda row: row[1] != current)
