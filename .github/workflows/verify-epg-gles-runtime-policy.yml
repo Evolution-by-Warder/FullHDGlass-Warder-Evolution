@@ -12,6 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # This repository contains large artwork and release packages.
+          # The GLES policy check needs exactly these three source files.
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/test_warder_epg_gles_policy.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgRenderPolicy.py
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
