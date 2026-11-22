@@ -93,7 +93,7 @@ class Tests(unittest.TestCase):
         self.assertFalse(second['incomplete'])
         self.assertEqual(second['logos'],33)
         self.assertEqual((original/'tv-owned.png').read_bytes(),b'untouchable')
-        folder=original/'radio-online/AA'
+        folder=original/'radio/AA'
         self.assertEqual(len(list(folder.glob('*.png'))),33)
         target=folder/(items[0]['stem']+'.png')
         target.write_bytes(b'edited by user')
