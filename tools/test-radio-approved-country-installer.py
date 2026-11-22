@@ -81,7 +81,7 @@ class Tests(unittest.TestCase):
         old=list((self.paths/'radio/FR').glob('*.png'))
         before={p.name:p.read_bytes() for p in old}
         (self.source/'logos/FR.zip').write_bytes(b'corrupted')
-        with self.assertRaisesRegex(ValueError,'SHA-256 mismatch'):
+        with self.assertRaisesRegex(ValueError,'SHA-256 mismatch|Invalid country ZIP size'):
             self.install('FR')
         self.assertEqual({p.name:p.read_bytes() for p in old},before)
 if __name__=='__main__':unittest.main()
