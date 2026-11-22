@@ -80,6 +80,68 @@ class Tests(unittest.TestCase):
             country.open_country_selector(session,channel_selection=radio)
             yield session
 
+    def test_openatv76_choicebox_unwind_closes_radio_list_after_callback(self):
+        """Native ChoiceBox can still be the current dialog in its callback."""
+        events = []
+        radio = ChannelSelection(events, mode=1, shown=False)
+        session = Session(SimpleNamespace(shown=True))
+        scheduled = []
+
+        class Pending:
+            def __init__(self, cb):
+                self.cb = cb
+                self.pending = True
+            def active(self):
+                return self.pending
+            def cancel(self):
+                self.pending = False
+            def fire(self):
+                if self.pending:
+                    self.pending = False
+                    self.cb()
+
+        class Loop:
+            def callLater(self, delay, cb):
+                self.assert_delay = delay
+                call = Pending(cb)
+                scheduled.append(call)
+                return call
+
+        plugin = ModuleType('Plugins.Extensions.setupGlass17.plugin')
+        plugin._warderLegacyRdsTvGuard = True
+        preview = ModuleType('Plugins.Extensions.setupGlass17.warderHelpPreview')
+        preview._NativeLoop = Loop
+        with patch.dict(sys.modules, {
+                'Plugins.Extensions.setupGlass17.plugin': plugin,
+                'Plugins.Extensions.setupGlass17.warderHelpPreview': preview}):
+            for picker in self.picker(
+                    session,
+                    lambda cc: events.append('saved-'+cc) or {'accepted': True},
+                    lambda ss: events.append('worker-scheduled') or True,
+                    radio):
+                picker.select('DE')
+            self.assertEqual(events, ['saved-DE', 'worker-scheduled'])
+            self.assertEqual(len(scheduled), 1)
+            # Radio list is dismissed only after ChoiceBox has unwound.
+            session.current_dialog = radio
+            scheduled[0].fire()
+        self.assertEqual(events, ['saved-DE', 'worker-scheduled',
+                                  'shared-radio-cancel'])
+        self.assertIsNone(session._warderCountryCloseCall)
+
+    def test_openatv81_choice_still_closes_with_existing_path(self):
+        events = []
+        radio = ChannelSelectionRadio(events)
+        session = Session(radio)
+        plugin = ModuleType('Plugins.Extensions.setupGlass17.plugin')
+        plugin._warderLegacyRdsTvGuard = False
+        with patch.dict(sys.modules, {'Plugins.Extensions.setupGlass17.plugin': plugin}):
+            for picker in self.picker(
+                    session, lambda cc: {'accepted': True},
+                    lambda ss: True, radio):
+                picker.select('DE')
+        self.assertEqual(events, ['native-radio-cancel'])
+
     def test_success_closes_native_radio_after_worker_schedule(self):
         events=[]
         radio=ChannelSelectionRadio(events)
