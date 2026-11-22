@@ -507,7 +507,15 @@ class SetupStyleTests(unittest.TestCase):
         for name,(_,skin) in LAYOUTS.items():
             if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83') and name in CURRENT_MAIN_1080_LAYOUTS:
                 # Pin only reviewed current-main exceptions. No blanket skip.
-                self.assertEqual(hashlib.sha256(skin.encode()).hexdigest(),
+                # Only the automatically generated version label may vary
+                # from the pinned, receiver-approved 1.0.82 layout hash.
+                verified_skin = skin
+                if RUNTIME_VERSION == '1.0.83' and name == 'setupGlass17ScreenSetup':
+                    label = 'text="1.0.83"'
+                    if verified_skin.count(label) != 1:
+                        raise AssertionError('Unexpected settings header version count')
+                    verified_skin = verified_skin.replace(label, 'text="1.0.82"', 1)
+                self.assertEqual(hashlib.sha256(verified_skin.encode()).hexdigest(),
                                  CURRENT_MAIN_1080_LAYOUTS[name],name)
             else:
                 self.assertEqual(skin.strip(),style.themed(name,BASELINE['skins'][name]).strip(),name)
