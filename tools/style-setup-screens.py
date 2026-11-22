@@ -210,7 +210,8 @@ def strip_reviewed_batch(tree, records=None):
                 if isinstance(node,ast.ClassDef):node.body=restore(node.body,node.name)
                 result.append(node)
         return result
-    tree=copy.deepcopy(tree)
+    # The normalizer owns a private AST copy, so avoid copying all ~12k
+    # lines again for every reviewed ledger. Matching remains exact.
     tree.body=restore(tree.body,'module')
     return tree
 
@@ -272,10 +273,13 @@ def strip_reviewed_scoped(tree, records):
             elif isinstance(value,ast.AST):
                 setattr(node,field,restore(value,scope))
         return node
-    return restore(copy.deepcopy(tree),'module')
+    return restore(tree,'module')
 
 
 def normalized(tree):
+    # Copy once so callers can reuse their AST safely. All subsequent reviewed
+    # inverse operations work on this private tree without repeated full copies.
+    tree = copy.deepcopy(tree)
     # Reverse only the four exact, scoped Neutrino additions approved in PR #104.
     # Audit three touched functions, not the entire 12k-line plugin AST.
     neutrino_ledger = ROOT / 'design/neutrino-short-ok/logic.json'
@@ -287,7 +291,6 @@ def normalized(tree):
             ast.Module(body=target, type_ignores=[]),
             json.loads(neutrino_ledger.read_text()))
         restored = {node.name: node for node in stripped.body}
-        tree = copy.deepcopy(tree)
         tree.body = [
             restored[node.name] if isinstance(node, ast.FunctionDef) and node.name in restored else node
             for node in tree.body
