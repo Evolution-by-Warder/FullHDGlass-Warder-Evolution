@@ -29,7 +29,8 @@ class Tests(unittest.TestCase):
         self.personal=(b'#NAME Bouquets (Radio)\n'
           b'#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.personal.radio" ORDER BY bouquet\n')
         (self.etc/'bouquets.radio').write_bytes(self.personal)
-        mock=patch.object(single.bundled,'sync_world',
+        from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+        mock=patch.object(warderRadioBundleFetch,'sync_world',
                          return_value={'changed':True,'countries':224,'stations':48219})
         mock.start()
         self.addCleanup(mock.stop)
