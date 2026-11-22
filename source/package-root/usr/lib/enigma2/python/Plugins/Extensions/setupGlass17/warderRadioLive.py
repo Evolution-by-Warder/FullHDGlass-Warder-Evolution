@@ -1037,9 +1037,15 @@ class Controller:
                 self.worker = self._spawn(
                     'local', ['--activate-world', selected, str(root)], self.finished)
             else:
+                # The signed 224-country snapshot is the ONLY authority for
+                # station data. While its background world download is pending,
+                # never start the old paginated Radio Browser service fetch.
+                # This applies equally to all 224 countries, including the
+                # large US/DE/FR catalogs.
                 self.local_world_sha = None
                 self.local_worker_key = None
-                self.worker = self._spawn('refresh', ['--refresh'], self.finished)
+                self.pending = self.loop.callLater(15, self.check)
+                return
             self.timeout = self.loop.callLater(90, self.timed_out)
         except Exception:
             self.finished(None)
@@ -1292,38 +1298,10 @@ class Controller:
                     # In cached-country mode do NOT start old per-station
                     # downloads into the shared TV/SAT picon folder.
                 else:
+                    # Never fall back to one-by-one Radio Browser favicon
+                    # requests (or old direct per-station picons). A valid
+                    # signed world is mandatory for a country original ZIP.
                     self.local_world_sha = None
-                    if chosen_bouquet and root is not None:
-                        if not _radio_custom_picons_enabled():
-                            key = (country_code, 'online-verified-source')
-                            last = self.last_bulk_logo
-                            if last is None or last[0] != key or (
-                                    time.monotonic() - last[1] >= 60):
-                                self.last_bulk_logo = (key, time.monotonic())
-                                self.icon_worker = self._spawn(
-                                    'logo_zip',
-                                    ['--logos-online', country_code, str(root)],
-                                    self.icon_done)
-                    else:
-                        # Legacy single-country fallback remains available.
-                        self._load_icon_map()
-                        from NavigationInstance import instance
-                        ref = instance.getCurrentlyPlayingServiceReference() if instance else None
-                        fields = ref.toString().split(':') if ref else []
-                        stem = '_'.join(field.upper() for field in fields[:10])
-                        candidate = None
-                        if (len(fields) >= 11 and stem in self.known_icons and
-                                stem != self.last_icon):
-                            candidate = stem
-                        elif self.icon_queue:
-                            candidate = self.icon_queue.pop(0)
-                        if candidate:
-                            destination = _skin_picon_directory()
-                            if destination:
-                                self.icon_worker = self._spawn(
-                                    'icon', ['--icon', candidate, destination], self.icon_done)
-                                self.icon_requested[candidate] = time.monotonic()
-                                self.last_icon = candidate
         except Exception:
             pass
         self.icon_timer = self.loop.callLater(12, self.check_icon)
