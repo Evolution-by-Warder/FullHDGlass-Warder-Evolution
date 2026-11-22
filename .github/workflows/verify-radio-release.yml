@@ -1,63 +1,67 @@
 name: Verify approved radio release
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/verify-radio-release.yml'
+      - 'source/**'
+      - 'tools/test-radio-*'
+      - 'tools/verify-production-release-state.py'
   push:
-    branches: [main, warder-modernization-work]
-    paths: ['source/**', 'tools/*release*', 'tools/radio-release-baseline.json', 'update*.json', '.github/workflows/verify-radio-release.yml']
+    branches: [main]
+    paths:
+      - 'update-production.json'
+      - '.github/workflows/verify-radio-release.yml'
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     env:
       PYTHONDONTWRITEBYTECODE: '1'
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
         with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            source
-            tools
-            design
-            docs
-            reports
-            .github
+            /source/
+            /tools/
+            /docs/
+            /design/
+            /update-production.json
+            /.github/workflows/verify-radio-release.yml
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
-      - name: Build exactly the checked-in stable or TEST payload
+          python-version: '3.11'
+      - name: Verify current source, immutable version headers and country-radio installation safety
+        shell: bash
         run: |
-          python3 -m pip install --quiet Pillow==11.3.0
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends ffmpeg
-          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
-          python3 - <<'PY'
-          import importlib.util, sys
-          from pathlib import Path
-          root = Path.cwd()
-          sys.path.insert(0, str(root/'tools'))
-          spec = importlib.util.spec_from_file_location('approved_helpers', root/'tools/prepare-bitrate-stable-release.py')
-          module = importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(module)
-          module.VERSION = (root/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()
-          module.main()
-          PY
-          python3 tools/build-setup-style-test.py
-          python3 tools/verify-setup-style-ipk.py
-          PACKAGE_ID=$(sed -n "s/^Package: //p" source/control/control)
-          PREFIX="enigma2-plugin-skins-fullhdglass"
-          if [ "$PACKAGE_ID" = enigma2-skin-fullhdglass17 ]; then PREFIX=enigma2-skin-fullhdglass-warder-evolution; fi
-          case "$VERSION" in
-            *-test*) ;;
-            *)
-              FEED_FILE=update.json
-              if [ "$PACKAGE_ID" = enigma2-plugin-skins-fullhdglass-warder-evolution ]; then FEED_FILE=update-production.json; fi
-              FEED_VERSION=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["version"])' "$FEED_FILE")
-              if [ "$FEED_VERSION" = "$VERSION" ]; then
-                cp "packages/test/${PREFIX}_${VERSION}_all.ipk" "packages/${PREFIX}_${VERSION}_all.ipk"
-              fi
-              ;;
-          esac
-      - name: Verify bytecode invalidation and package error details
-        run: python3 tools/test-release-bytecode.py
-      - name: Verify confirmed graphics, package and update channels
-        run: python3 tools/verify-radio-release.py
+          set -euo pipefail
+          python3 tools/sync_header_version.py --check
+          python3 tools/test-radio-production-feed-1.0.83.py -q
+          python3 tools/test-radio-bundle-fetch.py -q
+          python3 tools/test-radio-world.py -q
+          python3 tools/test-radio-approved-country-installer.py -q
+          python3 tools/test-radio-country-logo-cleanup.py -q
+          python3 tools/test_warder_integrated_skin.py -q
+          echo 'PASS: radio country source, signed archive, external storage and approved skin preserved'
+      - name: Verify published production package, immutable release and exact SHA256
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          package="enigma2-plugin-skins-fullhdglass_${version}_all.ipk"
+          mkdir -p packages
+          # Fetch only the two exact versioned Git objects, not the full 0.5 GB package history.
+          git show "HEAD:packages/$package" > "packages/$package"
+          git show "HEAD:packages/$package.sha256" > "packages/$package.sha256"
+          (cd packages && sha256sum -c "$package.sha256")
+          python3 tools/verify-production-release-state.py
+          echo 'PASS: current official FullHDGlass stable IPK, feed, tag and radio runtime source'
