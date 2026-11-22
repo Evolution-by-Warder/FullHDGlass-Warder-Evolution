@@ -898,73 +898,57 @@ def request_picon(reference):
 
 
 def cached_country_picon(references, base):
-    """Fast in-memory UUID ownership test before reading radio-only PNG path.
+    """Return only signed approved original or safely-owned online picons for active radio country.
 
-    Normal TV/SAT, custom/Own Picons, and unrecognized stations retain their
-    existing native lookup. No Radio Browser, JSON or HTTP per rendered row.
+    User custom picon source remains authoritative upstream. Other station
+    collections, including TV/SAT, can never claim these UUID radio identities.
     """
-    controller = _controller
-    if (controller is None or
-            not isinstance(base, str) or not base or
-            not isinstance(references, (tuple, list))):
+    controller=_controller
+    if controller is None or not isinstance(base,str) or not base or not isinstance(references,(tuple,list)):
         return ''
-    known = getattr(controller, 'known_icons', set())
-    folder = os.path.join(base, 'picon', 'radio')
-    # The selected separate country owns a different UUID map than the legacy
-    # single Warder Live bouquet. Cache only that signed country's logo members.
-    owner = os.path.join(folder, '.warder-radio-country.json')
-    try:
-        mtime = os.stat(owner).st_mtime_ns if not os.path.islink(owner) else None
-    except OSError:
-        mtime = None
-    if mtime != getattr(controller, 'country_logo_mtime', None):
-        record = _read_json(Path(owner), {}, 4 * 1024 * 1024) if mtime else {}
-        valid = isinstance(record, dict) and record.get('owner') == 'WarderRadioLive'
-        files = record.get('files') if valid else {}
-        controller.country_logo_stems = {
-            name[:-4] for name in files if isinstance(name, str)
-            and re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\.png', name)
-        } if isinstance(files, dict) else set()
-        controller.country_logo_mtime = mtime
-    known = known | getattr(controller, 'country_logo_stems', set())
-    for stem in references:
-        if not isinstance(stem, str):
-            continue
-        exact = '4097' + stem[1:] if stem.startswith('1_') else stem
-        if exact in known:
-            path = os.path.join(folder, exact + '.png')
-            if os.path.isfile(path):
-                return path
-    # Never use an online/fallback logo to override a signed original. This
-    # path is radio-only and bound to the active owned country, never TV/SAT.
     try:
         from . import warderRadioCountry as country
-        selected = country.active_country(DIRECTORY)
-        if selected:
-            online = os.path.join(base, 'picon', 'radio', selected)
-            path = os.path.join(online, '.warder-radio-online-source.json')
-            mtime = os.stat(path).st_mtime_ns if not os.path.islink(path) else None
-            key = (selected, mtime)
-            if key != getattr(controller, 'country_online_mtime', None):
-                record = _read_json(Path(path), {}, 4 * 1024 * 1024)
-                files = (record.get('files') if isinstance(record, dict)
-                         and record.get('owner') == 'WarderRadioOnline'
-                         and record.get('country') == selected else {})
-                controller.country_online_stems = {
-                    name[:-4] for name in files
-                    if isinstance(name, str) and
-                    re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\.png', name)
-                } if isinstance(files, dict) else set()
-                controller.country_online_mtime = key
-            known_online = getattr(controller, 'country_online_stems', set())
-            for stem in references:
-                if not isinstance(stem, str):
-                    continue
-                exact = '4097' + stem[1:] if stem.startswith('1_') else stem
-                if exact in known_online:
-                    asset = os.path.join(online, exact + '.png')
-                    if os.path.isfile(asset) and not os.path.islink(asset):
-                        return asset
+        active=country.active_country(DIRECTORY)
+        if not isinstance(active,str) or not re.fullmatch(r'[A-Z]{2}',active):
+            return ''
+        folder=Path(base)/'picon'/'radio'/active
+        approved=folder/'.warder-radio-country.json'
+        online=folder/'.warder-radio-online-source.json'
+        marker=approved if approved.is_file() and not approved.is_symlink() else online
+        if marker.is_symlink() or not marker.is_file():
+            return ''
+        stamp=(active,str(folder),marker.name,marker.stat().st_mtime_ns)
+        if stamp != getattr(controller,'country_owned_logo_stamp',None):
+            record=_read_json(marker,{},4*1024*1024)
+            correct=(record.get('country')==active and record.get('owner')==
+                ('WarderRadioLive' if marker==approved else 'WarderRadioOnline'))
+            files=record.get('files') if correct else {}
+            controller.country_owned_logo_stems={
+                name[:-4] for name in files if isinstance(name,str) and
+                re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\.png',name)
+            } if isinstance(files,dict) else set()
+            controller.country_owned_logo_stamp=stamp
+        accepted=getattr(controller,'country_owned_logo_stems',set())
+        for stem in references:
+            if not isinstance(stem,str):continue
+            name=('4097'+stem[1:]) if stem.startswith('1_') else stem
+            if name in accepted:
+                path=folder/(name+'.png')
+                if path.is_file() and not path.is_symlink():
+                    return str(path)
+        # Preserve approved flat radio picons from earlier test packages.
+        if getattr(controller,'local_world_sha',None):
+            legacy=Path(base)/'picon'/'radio'
+            record=_read_json(legacy/'.warder-radio-country.json',{},4*1024*1024)
+            if record.get('country')==active and record.get('owner')=='WarderRadioLive':
+                files=record.get('files',{})
+                for stem in references:
+                    if not isinstance(stem,str):continue
+                    name=('4097'+stem[1:]) if stem.startswith('1_') else stem
+                    if isinstance(files,dict) and name+'.png' in files:
+                        path=legacy/(name+'.png')
+                        if path.is_file() and not path.is_symlink():
+                            return str(path)
     except (ImportError,AttributeError,OSError,TypeError,ValueError):
         pass
     return ''
