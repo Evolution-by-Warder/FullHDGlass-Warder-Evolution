@@ -1075,9 +1075,9 @@ if __name__ == '__main__':
             from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
             from Plugins.Extensions.setupGlass17 import warderRadioCountryBouquets
             radio_root = Path(sys.argv[2])
-            from Plugins.Extensions.setupGlass17 import warderRadioLocalTestAssets
-            local = warderRadioLocalTestAssets.sync_local_world(radio_root)
-            if local.get('skipped') in ('missing-local-test-kit', 'missing-world-archive'):
+            from Plugins.Extensions.setupGlass17 import warderRadioBundledWorld
+            local = warderRadioBundledWorld.sync_world(radio_root)
+            if local.get('skipped') in ('missing-bundled-world',):
                 try:
                     result = warderRadioBundleFetch.sync_world(
                         radio_root, state_directory=DIRECTORY)
@@ -1109,22 +1109,16 @@ if __name__ == '__main__':
             if sys.argv[1] == '--logos-online':
                 result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
             else:
-                from Plugins.Extensions.setupGlass17 import warderRadioLocalTestAssets
-                local=warderRadioLocalTestAssets.sync_local_logos(root, DIRECTORY, code)
-                if local.get('skipped') in ('missing-local-test-kit',
-                                            'missing-local-country-originals'):
-                    from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
-                    try:
-                        result = warderRadioBundleFetch.sync_selected_logos(root, DIRECTORY, code)
-                    except Exception as error:
-                        from urllib.error import HTTPError
-                        if not isinstance(error, HTTPError) or error.code != 404:
-                            raise
-                        result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
-                    if result.get('skipped') in ('logos-not-ready', 'world-update-needed'):
-                        result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
-                else:
-                    result=local
+                from Plugins.Extensions.setupGlass17 import warderRadioBundleFetch
+                try:
+                    result = warderRadioBundleFetch.sync_selected_logos(root, DIRECTORY, code)
+                except Exception as error:
+                    from urllib.error import HTTPError
+                    if not isinstance(error, HTTPError) or error.code != 404:
+                        raise
+                    result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
+                if result.get('skipped') in ('logos-not-ready', 'world-update-needed'):
+                    result = warderRadioOnlineLogos.sync_online_country(root, DIRECTORY, code)
         else:
             sys.exit(2)
         print(json.dumps(result, ensure_ascii=False))
