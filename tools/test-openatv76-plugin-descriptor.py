@@ -44,6 +44,11 @@ class TestDescriptorCompatibility(unittest.TestCase):
                      and node.name == "Plugins")
         cls.entry_code = compile(ast.Module(body=[entry], type_ignores=[]),
                                  str(PLUGIN), "exec")
+        rds_guard = next(node for node in tree.body
+                         if isinstance(node, ast.FunctionDef)
+                         and node.name == "_warderGuardNativeRadioWindow")
+        cls.rds_guard_code = compile(
+            ast.Module(body=[rds_guard], type_ignores=[]), str(PLUGIN), "exec")
 
     def _run(self, descriptor):
         name = "warder_descriptor_compat_fixture"
@@ -87,6 +92,38 @@ class TestDescriptorCompatibility(unittest.TestCase):
         descriptors = self._run(ModernDescriptor)
         self.assertEqual(len(descriptors), 4)
         self.assertTrue(any("serviceFilter" in item.options for item in descriptors))
+
+    def test_rds_window_is_hidden_if_native_image_reopens_it_on_tv(self):
+        class FakeRadioDisplay:
+            def __init__(self):
+                self.onShow = []
+                self.hide_count = 0
+
+            def hide(self):
+                self.hide_count += 1
+
+            def show(self):
+                for callback in list(self.onShow):
+                    callback()
+
+        playing = {"ref": "tv"}
+        nav = SimpleNamespace(getCurrentlyPlayingServiceReference=lambda: playing["ref"])
+        bar = SimpleNamespace(session=SimpleNamespace(nav=nav))
+        display = FakeRadioDisplay()
+        ns = {"is_radio_reference": lambda ref: ref == "radio"}
+        exec(self.rds_guard_code, ns)
+        install = ns["_warderGuardNativeRadioWindow"]
+        install(bar, display)
+        install(bar, display)  # no duplicate callbacks across service changes
+        self.assertEqual(len(display.onShow), 1)
+        display.show()
+        self.assertEqual(display.hide_count, 1)
+        playing["ref"] = "radio"
+        display.show()
+        self.assertEqual(display.hide_count, 1)
+        self.assertIn(
+            "_warderGuardNativeRadioWindow(self, rds)",
+            PLUGIN.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
