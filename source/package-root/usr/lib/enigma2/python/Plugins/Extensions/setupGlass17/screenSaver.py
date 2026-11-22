@@ -96,6 +96,8 @@ class ScreenSaverScreen(Screen):
         self._last_values = {}
         self._last_picon = None
         self._last_cover = None
+        self._picon_ref = None
+        self._picon_value = ""
         self._cover_request = None
         self._cover_result = None
         self._cover_running = False
@@ -190,7 +192,13 @@ class ScreenSaverScreen(Screen):
             self._label("saver_signal", kind)
             self._label("saver_date", time.strftime("%d.%m.%Y"))
             self._label("saver_time", time.strftime("%H:%M:%S"))
-            picon = _picon_path(ref)
+            ref_string = ref.toString()
+            # Cheap refresh on slow non-GLES boxes. Recheck occasionally so
+            # a radio logo downloaded after activation appears automatically.
+            if ref_string != self._picon_ref or self._ticks % 10 == 0:
+                self._picon_ref = ref_string
+                self._picon_value = _picon_path(ref)
+            picon = self._picon_value
             self._picture("saver_picon", picon)
             identity = (artist, track) if artist and track else None
             if identity != self._cover_request and not self._cover_running:
