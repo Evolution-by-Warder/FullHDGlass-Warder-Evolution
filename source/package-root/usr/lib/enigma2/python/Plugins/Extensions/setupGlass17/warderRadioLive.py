@@ -904,8 +904,8 @@ def cached_country_picon(references, base):
     existing native lookup. No Radio Browser, JSON or HTTP per rendered row.
     """
     controller = _controller
-    if (controller is None or not getattr(controller, 'local_world_sha', None)
-            or not isinstance(base, str) or not base or
+    if (controller is None or
+            not isinstance(base, str) or not base or
             not isinstance(references, (tuple, list))):
         return ''
     known = getattr(controller, 'known_icons', set())
@@ -935,6 +935,38 @@ def cached_country_picon(references, base):
             path = os.path.join(folder, exact + '.png')
             if os.path.isfile(path):
                 return path
+    # Never use an online/fallback logo to override a signed original. This
+    # path is radio-only and bound to the active owned country, never TV/SAT.
+    try:
+        from . import warderRadioCountryBouquets as country_bouquets
+        selected = country_bouquets.selected_country(DIRECTORY)
+        if selected:
+            online = os.path.join(base, 'picon', 'radio-online', selected)
+            path = os.path.join(online, '.warder-radio-online-source.json')
+            mtime = os.stat(path).st_mtime_ns if not os.path.islink(path) else None
+            key = (selected, mtime)
+            if key != getattr(controller, 'country_online_mtime', None):
+                record = _read_json(Path(path), {}, 4 * 1024 * 1024)
+                files = (record.get('files') if isinstance(record, dict)
+                         and record.get('owner') == 'WarderRadioOnline'
+                         and record.get('country') == selected else {})
+                controller.country_online_stems = {
+                    name[:-4] for name in files
+                    if isinstance(name, str) and
+                    re.fullmatch(r'4097_0_2_(?:[0-9A-F]{1,8}_){6}[0-9A-F]{1,8}\.png', name)
+                } if isinstance(files, dict) else set()
+                controller.country_online_mtime = key
+            known_online = getattr(controller, 'country_online_stems', set())
+            for stem in references:
+                if not isinstance(stem, str):
+                    continue
+                exact = '4097' + stem[1:] if stem.startswith('1_') else stem
+                if exact in known_online:
+                    asset = os.path.join(online, exact + '.png')
+                    if os.path.isfile(asset) and not os.path.islink(asset):
+                        return asset
+    except (ImportError,AttributeError,OSError,TypeError,ValueError):
+        pass
     return ''
 
 
@@ -958,6 +990,8 @@ class Controller:
         self.local_world_sha = None
         self.country_logo_stems = set()
         self.country_logo_mtime = None
+        self.country_online_mtime = None
+        self.country_online_stems = set()
         self.observed_native_country = None
         self.last_bulk_logo = None
         self.closed = False
@@ -1306,32 +1340,48 @@ class Controller:
                     # downloads into the shared TV/SAT picon folder.
                 else:
                     self.local_world_sha = None
-                    # Online TEST138 fallback until the complete world source
-                    # is actually published; do not discard existing behavior.
-                    self._load_icon_map()
-                    from NavigationInstance import instance
-                    ref = instance.getCurrentlyPlayingServiceReference() if instance else None
-                    fields = ref.toString().split(':') if ref else []
-                    stem = '_'.join(field.upper() for field in fields[:10])
-                    candidate = None
-                    if (len(fields) >= 11 and stem in self.known_icons and
-                            stem != self.last_icon):
-                        candidate = stem
-                    elif self.icon_queue:
-                        candidate = self.icon_queue.pop(0)
-                    if candidate:
-                        destination = _skin_picon_directory()
-                        if destination:
-                            self.icon_worker = self._spawn(
-                                'icon', ['--icon', candidate, destination], self.icon_done)
-                            self.icon_requested[candidate] = time.monotonic()
-                            self.last_icon = candidate
+                    if chosen_bouquet and root is not None:
+                        if not _radio_custom_picons_enabled():
+                            key = (country_code, 'online-verified-source')
+                            last = self.last_bulk_logo
+                            if last is None or last[0] != key or (
+                                    time.monotonic() - last[1] >= 60):
+                                self.last_bulk_logo = (key, time.monotonic())
+                                self.icon_worker = self._spawn(
+                                    'logo_zip',
+                                    ['--logos-online', country_code, str(root)],
+                                    self.icon_done)
+                    else:
+                        # Legacy single-country fallback remains available.
+                        self._load_icon_map()
+                        from NavigationInstance import instance
+                        ref = instance.getCurrentlyPlayingServiceReference() if instance else None
+                        fields = ref.toString().split(':') if ref else []
+                        stem = '_'.join(field.upper() for field in fields[:10])
+                        candidate = None
+                        if (len(fields) >= 11 and stem in self.known_icons and
+                                stem != self.last_icon):
+                            candidate = stem
+                        elif self.icon_queue:
+                            candidate = self.icon_queue.pop(0)
+                        if candidate:
+                            destination = _skin_picon_directory()
+                            if destination:
+                                self.icon_worker = self._spawn(
+                                    'icon', ['--icon', candidate, destination], self.icon_done)
+                                self.icon_requested[candidate] = time.monotonic()
+                                self.last_icon = candidate
         except Exception:
             pass
         self.icon_timer = self.loop.callLater(12, self.check_icon)
 
     def icon_done(self, result):
         self.icon_worker = None
+        if isinstance(result, dict) and result.get('incomplete'):
+            # Continue the next bounded country batch without a 1-hour stall.
+            self.last_bulk_logo = None
+        if isinstance(result, dict) and result.get('skipped') == 'country-catalogue-not-ready':
+            self.last_bulk_logo = None
         # Native Enigma2 caches visible ServiceList rows. Redraw only the
         # currently open channel list after a verified new/updated radio picon;
         # never reload all bouquets or stop the playing station.
