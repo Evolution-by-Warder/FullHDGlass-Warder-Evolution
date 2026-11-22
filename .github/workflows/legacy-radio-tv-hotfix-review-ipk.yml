@@ -44,7 +44,7 @@ jobs:
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
           find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
           find source/package-root -type f -name '*.pyc' -delete
-      - name: Assemble exact full 1.0.83 source payload, then isolate test revision
+      - name: Assemble exact full 1.0.84 source payload, then isolate test revision
         run: |
           set -euo pipefail
           # The reviewed bitrate helper reports are generated build inputs,
@@ -65,7 +65,7 @@ jobs:
           python3 - <<'PY'
           import gzip, hashlib, io, subprocess, tarfile, tempfile
           from pathlib import Path
-          original = Path("packages/enigma2-plugin-skins-fullhdglass_1.0.83_all.ipk")
+          original = Path("packages/enigma2-plugin-skins-fullhdglass_1.0.84_all.ipk")
           assert original.is_file()
           control = subprocess.check_output(["ar", "p", str(original), "control.tar.gz"])
           data = subprocess.check_output(["ar", "p", str(original), "data.tar.gz"])
@@ -75,9 +75,9 @@ jobs:
               for member in archive:
                   raw = archive.extractfile(member).read() if member.isfile() else None
                   if member.name.lstrip("./") == "control":
-                      assert b"Version: 1.0.83-1\n" in raw
-                      raw = raw.replace(b"Version: 1.0.83-1\n",
-                                        b"Version: 1.0.83-4\n", 1)
+                      assert b"Version: 1.0.84-1\n" in raw
+                      raw = raw.replace(b"Version: 1.0.84-1\n",
+                                        b"Version: 1.0.84-2\n", 1)
                       member.size = len(raw)
                       changed = True
                   members.append((member, raw))
@@ -89,7 +89,7 @@ jobs:
                       archive.addfile(member, io.BytesIO(raw) if raw is not None else None)
           folder = Path("packages/legacy-radio-tv-review")
           folder.mkdir(parents=True, exist_ok=True)
-          result = folder / "enigma2-plugin-skins-fullhdglass_1.0.83-4_all.ipk"
+          result = folder / "enigma2-plugin-skins-fullhdglass_1.0.84-2_all.ipk"
           with tempfile.TemporaryDirectory() as td:
               wd = Path(td)
               (wd / "debian-binary").write_bytes(b"2.0\n")
@@ -102,7 +102,7 @@ jobs:
           with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(
                   ["ar", "p", str(result), "control.tar.gz"])), mode="r:gz") as archive:
               control_text = archive.extractfile("./control").read()
-          assert b"Version: 1.0.83-4\n" in control_text
+          assert b"Version: 1.0.84-2\n" in control_text
           digest = hashlib.sha256(result.read_bytes()).hexdigest()
           result.with_suffix(".ipk.sha256").write_text(digest + "  " + result.name + "\n")
           print("REVIEW ONLY", result, digest)
@@ -110,7 +110,7 @@ jobs:
           (cd packages/legacy-radio-tv-review && sha256sum -c *.sha256)
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.83-4-OpenATV76-OpenPLi92-RadioLive-REVIEW-ONLY
+          name: FullHDGlass-1.0.84-2-OpenATV76-OpenPLi92-RadioLive-REVIEW-ONLY
           path: |
             packages/legacy-radio-tv-review/*.ipk
             packages/legacy-radio-tv-review/*.sha256
