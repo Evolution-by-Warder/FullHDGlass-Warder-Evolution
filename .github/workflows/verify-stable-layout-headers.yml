@@ -1,0 +1,47 @@
+name: Verify exact frozen FullHDGlass layout after generated version labels
+on:
+  pull_request:
+    paths:
+      - tools/test-setup-style.py
+      - .github/workflows/verify-stable-layout-headers.yml
+  push:
+    branches: [main]
+    paths:
+      - tools/test-setup-style.py
+      - .github/workflows/verify-stable-layout-headers.yml
+permissions:
+  contents: read
+jobs:
+  reviewed-layout-1080:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/
+            /design/
+            /source/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check exact frozen SHA for all 11 skin layouts and version-header normalization
+        run: |
+          python3 - <<'PY'
+          import importlib.util, pathlib, sys, unittest
+          path=pathlib.Path('tools/test-setup-style.py')
+          spec=importlib.util.spec_from_file_location('warder_frozen_style',path)
+          mod=importlib.util.module_from_spec(spec)
+          sys.modules[spec.name]=mod
+          spec.loader.exec_module(mod)
+          assert mod.RUNTIME_VERSION in ('1.0.82','1.0.83')
+          suite=unittest.TestSuite([
+             mod.SetupStyleTests('test_styling_is_reproducible_from_the_original_layouts')
+          ])
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          if not result.wasSuccessful():
+              raise SystemExit(1)
+          print('ALL reviewed main 1.0.80 layout digests unchanged after safe version-label normalization')
+          PY
