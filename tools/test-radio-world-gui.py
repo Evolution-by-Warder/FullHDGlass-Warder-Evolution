@@ -196,6 +196,7 @@ class Tests(unittest.TestCase):
 
     def test_cached_country_logo_worker_downloads_country_zip_not_individual_png(self):
         ctrl=self.controller()
+        ctrl._observe_country_bouquet=lambda:'FR'
         output=[]
         ctrl._spawn=lambda action,args,cb: output.append((action,args)) or object()
         with patch.object(live,'DIRECTORY',self.etc), patch.object(live,'_radio_world_root',
@@ -208,6 +209,7 @@ class Tests(unittest.TestCase):
 
     def test_explicit_own_picon_source_prevents_managed_radio_zip(self):
         ctrl=self.controller()
+        ctrl._observe_country_bouquet=lambda:'FR'
         output=[]
         ctrl._spawn=lambda action,args,cb: output.append((action,args)) or object()
         with patch.object(live,'DIRECTORY',self.etc), patch.object(live,'_radio_world_root',
