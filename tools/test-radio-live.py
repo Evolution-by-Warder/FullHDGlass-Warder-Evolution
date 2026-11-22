@@ -622,7 +622,8 @@ class LiveTests(unittest.TestCase):
             finally:
                 controller.close()
 
-    def test_retry_after_fifteen_minutes_not_on_each_list_redraw(self):
+    def test_old_icon_queue_cannot_trigger_legacy_favicon_download(self):
+        """A signed country original ZIP, not a legacy per-row request, owns the artwork."""
         live.refresh(self.root, NOW, Browser())
         stem = json.loads((self.root / live.DATA_FILE).read_text())['stations'][0]['stem']
         reference = stem.replace('_', ':') + ':https%3A//radio.example.org/live'
@@ -635,22 +636,23 @@ class LiveTests(unittest.TestCase):
         class Loop:
             def callLater(self, *_):
                 return Call()
-        with patch.object(live, 'DIRECTORY', self.root), patch.dict(
+        launches = []
+        with patch.object(live, 'DIRECTORY', self.root), patch.object(
+                live, '_radio_world_root', return_value=None), patch.dict(
                 sys.modules, {'NavigationInstance': SimpleNamespace(instance=None)}):
             controller = live.Controller(Loop(), lambda: None)
-            controller._spawn = lambda *_args: object()
+            controller._spawn = lambda *args: launches.append(args) or object()
             try:
                 with patch.object(live, '_skin_picon_directory', return_value=str(self.root / 'picon')):
                     with patch.object(live.time, 'monotonic', return_value=1000):
                         controller.enqueue_icon(reference)
                         controller.check_icon()
-                    controller.icon_done(None)
                     with patch.object(live.time, 'monotonic', return_value=1001):
                         controller.enqueue_icon(reference)
-                    self.assertNotIn(stem, controller.icon_queue)
-                    with patch.object(live.time, 'monotonic', return_value=1000 + live.ICON_RETRY_SECONDS + 1):
-                        controller.enqueue_icon(reference)
-                    self.assertEqual(controller.icon_queue[0], stem)
+                        controller.check_icon()
+                self.assertEqual(launches, [])
+                self.assertNotIn(stem, controller.icon_requested)
+                self.assertEqual(controller.icon_queue[0], stem)
             finally:
                 controller.close()
 
