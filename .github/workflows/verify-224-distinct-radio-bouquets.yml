@@ -2,7 +2,7 @@ name: Warder TEST 224 distinct radio bouquets and signed logo-source regression
 on:
   push:
     branches: [feature/radio-live-world-bundle-installer-20261119]
-    paths: [.github/workflows/verify-224-distinct-radio-bouquets.yml, tools/test-radio-224-real-country-bouquets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryBouquets.py, tools/test-radio-224-online-fallback-and-logos.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioOnlineLogos.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py]
+    paths: [.github/workflows/verify-224-distinct-radio-bouquets.yml, tools/test-radio-224-real-country-bouquets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountryBouquets.py, tools/test-radio-224-online-fallback-and-logos.py, tools/test-radio-local-test-assets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLocalTestAssets.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioOnlineLogos.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLive.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioBundleFetch.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCountry.py]
 permissions:
   contents: read
 jobs:
@@ -19,6 +19,7 @@ jobs:
             /source/package-root/usr/lib/enigma2/python/Components/Renderer/
             /tools/test-radio-224-real-country-bouquets.py
             /tools/test-radio-224-online-fallback-and-logos.py
+            /tools/test-radio-local-test-assets.py
             /tools/test-radio-packages.py
             /tools/test-radio-world.py
             /tools/test-radio-world-gui.py
@@ -29,6 +30,7 @@ jobs:
           python3 -m pip install --quiet 'Pillow==11.3.0'
           python3 -B tools/test-radio-224-real-country-bouquets.py -v
           python3 -B tools/test-radio-224-online-fallback-and-logos.py -v
+          python3 -B tools/test-radio-local-test-assets.py -v
           python3 -B tools/test-radio-packages.py -v
           python3 -B tools/test-radio-world.py -v
           python3 -B tools/test-radio-world-gui.py -v
