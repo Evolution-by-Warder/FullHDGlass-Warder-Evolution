@@ -238,6 +238,13 @@ def sync_world(paths_root, opener=urlopen, require_external=True,
     return result
 
 
+def _country_really_selected(enigma_directory, code):
+    """Require precise owned folder selected in native ServiceList when present."""
+    from . import warderRadioCountryBouquets as country_bouquets
+    selected=country_bouquets.selected_country(enigma_directory)
+    return selected==code if selected is not None else country.active_country(enigma_directory)==code
+
+
 def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
                         require_external=True):
     """Fetch only selected country's PNG ZIP, preserve others on failure."""
@@ -252,7 +259,7 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
     state=world._json_file(marker,world.MAX_OWNER)
     if state.get('owner')!='WarderRadioLive':
         return {'changed':False,'skipped':'unowned-world'}
-    if country.active_country(enigma_directory)!=code:
+    if not _country_really_selected(enigma_directory, code):
         return {'changed':False,'skipped':'no-longer-selected'}
     feed=_feed(opener)
     if feed['world']['sha256'] != state.get('archive_sha256'):
@@ -302,11 +309,11 @@ def sync_selected_logos(paths_root, enigma_directory, code, opener=urlopen,
                           zipinfo['sha256'],zipinfo['bytes'],LOGO_LIMIT)
         os.replace(zipfile,source/(code+'.zip'))
         # If user switched countries during download, never activate stale PNGs.
-        if country.active_country(enigma_directory)!=code:
+        if not _country_really_selected(enigma_directory, code):
             return {'changed':False,'skipped':'country-superseded'}
         return packages.install_logos(
             stage, code, picon, require_external=require_external,
             still_selected=lambda selected:
-                country.active_country(enigma_directory) == selected)
+                _country_really_selected(enigma_directory, selected))
     finally:
         shutil.rmtree(stage)
