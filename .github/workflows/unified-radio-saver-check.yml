@@ -1,0 +1,27 @@
+name: Unified radio saver checks
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/screenSaver.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSaver*.py'
+      - 'tools/test_unified_radio_saver.py'
+      - '.github/workflows/unified-radio-saver-check.yml'
+  workflow_dispatch:
+
+jobs:
+  offline-saver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/test_unified_radio_saver.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/screenSaver.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSaverController.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioSaverLayout.py
+          persist-credentials: false
+      - name: Python syntax, layout and lifecycle tests
+        run: python3 tools/test_unified_radio_saver.py
