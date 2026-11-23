@@ -477,6 +477,36 @@ class WarderChannelEpgClip(Renderer):
             native_column = int(config.usage.servicelist_column.value)
         except (AttributeError, TypeError, ValueError):
             native_column = -1
+        # OpenATV ServiceListLegacy.setMode() reserves the channel-number
+        # column BEFORE the picon and service name in bouquet mode.  The old
+        # overlay measured only picon + name, so its EPG text painted across
+        # native station titles when channel numbers were visible (Solo4K
+        # / OpenATV 8.1). Mirror that native reservation with the same number
+        # font and glyph sample. Other service-list modes reserve none.
+        try:
+            numbered_bouquet = (component.mode == component.MODE_BOUQUETS
+                                and bool(config.usage.show_channel_numbers_in_servicelist.value))
+        except (AttributeError, TypeError, ValueError):
+            numbered_bouquet = False
+        number_reserve = 0
+        if numbered_bouquet:
+            try:
+                alternate = bool(config.usage.alternative_number_mode.value)
+                digits = int(config.usage.numberZapDigits.value) if alternate else 5
+                if not 1 <= digits <= 16:
+                    return False  # Unknown geometry: preserve native EPG.
+                number_font = component.ServiceNumberFont
+                sample = "0" * digits
+                self._label.setFont(number_font)
+                self._label.setText(sample)
+                number_width = int(self._label.calculateSize().width())
+                if native_measure is not None:
+                    bounds = native_measure(number_font, sample,
+                                            NativeSize(max(width, 4096), row_height), True)
+                    number_width = max(number_width, int(bounds.width()))
+                number_reserve = max(0, number_width) + int(component.fieldMargins)
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                return False  # Never render over an unmeasured native column.
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
         # Invalidate geometrical measurements whenever a style/geometry
@@ -485,7 +515,7 @@ class WarderChannelEpgClip(Renderer):
                         int(component.listMarginLeft), int(component.itemsDistances),
                         str(config.usage.servicelist_picon_downsize.value),
                         str(config.usage.servicelist_picon_ratio.value),
-                        native_column, id(font), id(name_font))
+                        native_column, number_reserve, id(font), id(name_font))
         if getattr(self, '_row_geometry_key', None) != geometry_key:
             if hasattr(self, '_row_fit_cache'):
                 self._row_fit_cache.clear()
@@ -547,9 +577,9 @@ class WarderChannelEpgClip(Renderer):
                 # A gap keeps variable-width glyph bearings off the adjacent
                 # EPG cell; never shrink fonts or edit broadcaster names.
                 name_gap = max(12, int(component.itemsDistances))
-                start = max(0, int(component.listMarginLeft) + picon_width +
-                            2 * int(component.itemsDistances) + name_width +
-                            left_shift + name_gap)
+                start = max(0, int(component.listMarginLeft) + number_reserve +
+                            picon_width + 2 * int(component.itemsDistances) +
+                            name_width + left_shift + name_gap)
                 remaining = text_end - start
             else:
                 start, remaining, overflow, first_frame = cached_row
