@@ -86,7 +86,7 @@ class ScreenCompatTests(unittest.TestCase):
   # Keep the original pre-1.0.80 ledger intact; pin later approved runtime
   # separately rather than accepting arbitrary skin edits.
   version=(ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()
-  approved='eb7962fc52015ac018a2c694ffc43763d4082fa54079f80a45ecdca0903eee5a' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86') else record['before_skin_sha256']
+  approved='eb7962fc52015ac018a2c694ffc43763d4082fa54079f80a45ecdca0903eee5a' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87') else record['before_skin_sha256']
   self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),approved)
   block=lambda value:re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>',value).group(0)
   self.assertEqual(block(text),block(SKIN))
