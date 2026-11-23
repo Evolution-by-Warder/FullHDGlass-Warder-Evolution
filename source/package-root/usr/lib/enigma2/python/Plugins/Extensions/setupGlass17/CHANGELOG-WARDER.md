@@ -1,3 +1,11 @@
+## 1.0.86 — 23.11.2026
+
+- **SAT picony:** väčšie archívy 13°E a 19,2°E už neblokuje malé `/tmp`; overovaný ZIP sa dočasne ukladá na rovnaké už vybrané a overené médium, kde sú picony.
+- **Bezpečnosť:** rezerva 64 MiB, kontrola dôveryhodných zdrojov a SHA-256, ZIP/PNG validácia, atomická inštalácia piconov a automatické odstránenie pracovného ZIPu. Ak nie je dosť miesta na cieľovom médiu, operácia sa bezpečne zastaví.
+- **Regresie:** testy pre malé `/tmp`, nedostatok miesta na cieľovom disku, zachovanie systémovej rezervy, chybu SHA a symlink cieľa. Historický CI test retencie už dynamicky rešpektuje skutočný aktuálny produkčný feed.
+- **Zachované:** funkčný FullHDGlass 1.0.85, nahrávané používateľské nastavenia, originálne grafiky, SAT/rádiové picony a Warder Radio Live.
+- **Overenie:** automatizované testy pred ostrým vydaním. Používateľské potvrdenie práce s veľkými balíkmi 13°E/19,2°E na konkrétnom prijímači ešte nebolo dodané.
+
 ## 1.0.85 — 23.11.2026
 
 - **ChannelSelection / EPG:** opravené prekrývanie pri číslovaných bouquetoch a synchronizácia piconov/textov/výšky riadkov po zmene počtu staníc (14↔9), bez vypnutia dlhého rolovania EPG.
