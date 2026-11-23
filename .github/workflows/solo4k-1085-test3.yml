@@ -1,0 +1,143 @@
+name: FullHDGlass Solo4K 1.0.85-test3 (isolated test IPK)
+on:
+  push:
+    branches: [fix/solo4k-81-picon-help-epg-columns-20261123]
+    paths:
+      - '.github/workflows/solo4k-1085-test3.yml'
+      - 'source/**'
+      - 'tools/test-setup-style.py'
+      - 'tools/style-setup-screens.py'
+      - 'tools/test_warder_settings_summary.py'
+      - 'tools/test_warder_channel_epg_clip.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: solo4k-test3-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test-build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test prerequisites
+        run: python -m pip install --quiet Pillow==12.3.0
+      - name: Verify source version and approved Setup edits
+        run: |
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = 1.0.84
+          grep -Fx 'Version: 1.0.84-1' source/control/control
+          git fetch --no-tags --depth=1 origin main
+          git show origin/main:source/package-root/usr/share/enigma2/hd_glass17/skin.xml > /tmp/approved.xml
+          python tools/verify-solo4k-setup-geometry.py /tmp/approved.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - name: Regression checks (including 14 to 9 native list rows)
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tools -p test_warder_channel_epg_clip.py -v
+          python -m unittest discover -s tools -p test_fastscan_epg_name_geometry.py -v
+          python -m unittest discover -s tools -p test_warder_default_epg_panel_runtime.py -v
+          python -m unittest discover -s tools -p test_warder_settings_summary.py -v
+          python tools/test-setup-style.py SetupStyleTests.test_configuration_actions_callbacks_and_controller_logic_are_unchanged -v
+          python tools/test-setup-style.py SetupStyleTests.test_all_owned_layouts_retain_original_widget_and_source_contracts -v
+          python tools/test-setup-style.py SetupStyleTests.test_styling_is_reproducible_from_the_original_layouts -v
+          python tools/test-setup-style.py SetupStyleTests.test_every_static_widget_fits_inside_the_dialog -v
+          python tools/test-setup-style.py NativePiconSetupHelpBounds -v
+          python tools/test-openatv-screen-compat.py -q
+          # The native OpenPLi GraphMultiEPG and OpenATV VirtualKeyboard
+          # tests require actual --upstream source trees. They run in the
+          # separate Verify OpenPLi/OpenATV compatibility PR workflows;
+          # never launch either without its required upstream argument.
+          python -m unittest discover -s tools -p test_warder_epg_gles_policy.py -v
+          python -m unittest discover -s tools -p test_warder_epg_render_policy.py -v
+      - name: Stage 1.0.85-test3 only inside the runner
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          v=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version')
+          c=Path('source/control/control')
+          assert v.read_text().strip()=='1.0.84'
+          text=c.read_text()
+          assert text.count('Version: 1.0.84-1')==1
+          v.write_text('1.0.85-test3\n')
+          c.write_text(text.replace('Version: 1.0.84-1','Version: 1.0.85-test3-1'))
+          PY
+          python tools/sync_header_version.py
+          python tools/sync_header_version.py --check
+      - name: Build and verify full receiver IPK
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import importlib.util, hashlib, io, pathlib, subprocess, tarfile, tempfile
+          root=pathlib.Path.cwd()
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
+          output=root/'packages/test/enigma2-plugin-skins-fullhdglass_1.0.85-test3_all.ipk'
+          output.parent.mkdir(parents=True,exist_ok=True)
+          with tempfile.TemporaryDirectory() as temp:
+              work=pathlib.Path(temp)
+              (work/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(root/'source/control',work/'control.tar.gz')
+              builder.archive(root/'source/package-root',work/'data.tar.gz',payload=True)
+              subprocess.run(['ar','rcsD',str(output),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
+          assert subprocess.check_output(['ar','t',str(output)],text=True).splitlines()==['debian-binary','control.tar.gz','data.tar.gz']
+          def part(filename):
+              return subprocess.check_output(['ar','p',str(output),filename])
+          with tarfile.open(fileobj=io.BytesIO(part('control.tar.gz')),mode='r:gz') as tar:
+              assert 'Version: 1.0.85-test3-1\n' in tar.extractfile('./control').read().decode()
+          with tarfile.open(fileobj=io.BytesIO(part('data.tar.gz')),mode='r:gz') as tar:
+              for item in (
+                  'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version',
+                  'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py',
+                  'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSettingsSummary.py',
+                  'usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py',
+                  'usr/share/enigma2/hd_glass17/skin.xml',
+              ):
+                  assert tar.extractfile('./'+item).read()==(root/'source/package-root'/item).read_bytes(),item
+          digest=hashlib.sha256(output.read_bytes()).hexdigest()
+          (output.parent/(output.name+'.sha256')).write_text(digest+'  '+output.name+'\n')
+          print('TEST IPK:',output,'bytes:',output.stat().st_size,'sha256:',digest)
+          PY
+          cd packages/test
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.85-test3_all.ipk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.85-test3-Solo4K
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.85-test3_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.85-test3_all.ipk.sha256
+          retention-days: 30
+          if-no-files-found: error
+      - name: Publish isolated prerelease without changing live updater
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG=v1.0.85-test3
+          IPK=packages/test/enigma2-plugin-skins-fullhdglass_1.0.85-test3_all.ipk
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/immutable
+            gh release download "$TAG" --pattern "$(basename "$IPK")" --dir /tmp/immutable
+            cmp "$IPK" "/tmp/immutable/$(basename "$IPK")"
+          else
+            gh release create "$TAG" "$IPK" "$IPK.sha256" \
+              --target "$GITHUB_SHA" --prerelease --latest=false \
+              --title 'FullHDGlass 1.0.85-test3 – Solo4K' \
+              --notes 'Isolated TEST with Picon Setup help, correct selected-settings diagnostics, EPG column safety and one-shot native ChannelSelection row/picon layout synchronization. Long EPG scrolling remains enabled. Production v1.0.84 and update feeds unchanged. Receiver confirmation required.'
+          fi
+          gh release view "$TAG" --json tagName,isPrerelease,assets \
+            --jq '{tag:.tagName,prerelease:.isPrerelease,assets:[.assets[].name]}'

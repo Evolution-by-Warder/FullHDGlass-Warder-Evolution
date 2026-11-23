@@ -174,6 +174,19 @@ class Tests(unittest.TestCase):
  def test_registered_addition_keeps_the_entire_stable_skin_unchanged(self):
   import hashlib
   record=json.loads((ROOT/'design/openpli-graph-epg/layout.json').read_text());text=(PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml').read_text()
+  # The OpenATV native Setup help clearance is exactly two audited widget
+  # changes. Undo only those before checking the historic OpenPLi skin hash.
+  setup_start=text.index('<screen name="Setup" ')
+  setup_end=text.index('</screen>',setup_start)
+  setup=text[setup_start:setup_end]
+  for reviewed, approved in (
+   ('<widget name="config" position="45,60" size="1560,585" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />',
+    '<widget name="config" position="45,60" size="1560,615" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />'),
+   ('<widget name="description" position="45,650" size="1560,120" font="Prive3;25" halign="center" valign="center" foregroundColor="grey" transparent="1" />',
+    '<widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />')):
+   self.assertEqual(setup.count(reviewed),1,'Unexpected Setup help delta')
+   setup=setup.replace(reviewed,approved,1)
+  text=text[:setup_start]+setup+text[setup_end:]
   # Exact candidate reversals keep historic OpenPLi geometry checks strict.
   ledger=ROOT/'design/shared-emc-epg-overlap-20261112/layout.json'
   if ledger.exists():

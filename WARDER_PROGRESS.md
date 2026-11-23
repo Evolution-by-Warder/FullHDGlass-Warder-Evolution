@@ -1,3 +1,24 @@
+## 23. 11. 2026 — K existujúcemu „Máš zvolené“ pridaná diagnostika výberu kanálov (PR #151)
+
+- **Presný pokyn vlastníka:** nepoužiť nový panel ani grafický banner. Doplniť stručné hodnoty do *existujúceho jediného riadka* `setupGlass17ScreenSetup.skin` / `description` na pozícii `60,174`: „Máš zvolené – …“, nad obrazovkou výberu.
+- **Vstupy priamo z používateľských nastavení**: číslo `par19` (typ ChannelSelection), `warderEpgListScroll.enabled` (požadované rolovanie), `allow_channel_epg_overlay()` (či e2egl/GLES runtime dovolí vlastné EPG), `par145/par146/par147` (font názvu/EPG/riadok). Po existujúcich ikonách sa pridá krátke „Výber kanálov: 35, EPG: ZAP/GLES, F N/E/R: 0/0/1“; posledná hodnota HDD/SSD ostáva. Identické dáta pri ostatných jazykoch používajú krátke označenia. Hodnoty sú čisto informatívne, bez zápisov do konfigurácie.
+- **Oprava #1 zo Solo4K**: natívny `Setup` v `hd_glass17/skin.xml` má 120 px pre dlhý opis režimu piconov, nie pôvodných 80 px; config list zmenšený len o 30 px, `footnote` a farebné tlačidlá nezmenené. Oprava z predchádzajúcej izolovanej vetvy ostáva v tomto PR. Testy pre presné povolené rozdiely `Setup` sa nemenia mimo schváleného rozsahu.
+- **Oprava #2**: v PR zostáva aj už pripravený kandidát na rezerváciu číselného stĺpca natívneho `ServiceListLegacy` pri kreslení EPG; jeho skutočný podiel na správaní konkrétneho Solo4K nemožno zo snímky definitívne potvrdiť.
+- **Overenie**: nový `tools/test_warder_settings_summary.py` kontroluje lokalizovaný pomocný text, vypnutý/native režim, hodnoty a zachovanie rovnakého UI riadka; historický AST fingerprint sa presne odnormalizuje iba o schválený blok `showInfo`, všetky iné zmeny majú zostať blokované. Test sa spúšťa v `warder-channel-primetime.yml`.
+- **Stav**: len pracovná vetva/PR #151. Do produkčnej 1.0.84 sa tieto nové zmeny nezapisovali; nevyšla nová IPK ani neprebehol fyzický prijímačový test.
+
+---
+
+## 23. 11. 2026 — Solo 4K / OpenATV 8.1 beta: 2 chyby hlásené na ostrej 1.0.84 (PR kandidat, nie produkcia)
+
+- **Fyzický report používateľa:** 1.0.84 je na Solo 4K funkčná, ale natívna obrazovka „Nastavení Piconu“ má odrezaný dlhší spodný opis a v základnom ChannelSelection sa názvy staníc prekrývajú s názvami relácií. Priložené obrazovky poskytol používateľ v konverzácii 23.11.2026. Reálny dôkaz opravy na prijímači zatiaľ neexistuje.
+- **Príčina 1 / kandidát opravy:** `hd_glass17/skin.xml` spoločný `Setup`: `description` má iba 80 px a text režimu vyhľadávania piconov sa zalamuje do viacerých riadkov. Kandidát izolovane skracuje výšku konfiguračného zoznamu o 30 px a dáva `description` 120 px v medzere nad `footnote`, pri zachovaní tlačidiel a ostatných layoutov. Regresný test geometrie doplnený v `tools/test-setup-style.py`.
+- **Príčina 2 / kandidát opravy:** vlastný `WarderChannelEpgClip` počítal začiatok EPG podľa piconu a názvu služby, ale **nezapočítal natívny číselný stĺpec** v `ServiceListLegacy.setMode()` pre číslované bouquety. Porovnanie s upstream OpenATV `Components/ServiceList.py` ukazuje šírku `00000` alebo `0 * numberZapDigits` v `ServiceNumberFont` plus `fieldMargins`. Kandidát túto šírku rezervuje iba pri viditeľných číslach v režime `MODE_BOUQUETS`; keď šírku nedokáže overiť, bezpečne ponechá natívne EPG. Testy pre zapnuté/vypnuté číslovanie a alternatívny počet číslic doplnené v `tools/test_fastscan_epg_name_geometry.py`.
+- **Dôležitá neistota:** overlay sa na OpenATV 8.1 používa len pri aktívnom `e2egl` + zapnutom dlhom rolovaní EPG. Jeho skutočnú aktiváciu na konkrétnom Solo 4K screenshot nedokazuje; preto ide o kandidátske vysvetlenie, nie definitívne potvrdenú príčinu každého fyzického prekrytia.
+- **Rozsah/stav:** pracovná vetva `fix/solo4k-81-picon-help-epg-columns-20261123` vznikla z `main` `3506959bb820677515ecd6b8b623c22f8f1d7129`; 2 minimálne produkčné zdrojové úpravy + regresné testy, bez úpravy `main`, verzie, existujúcej IPK 1.0.84, updatera, piconov či záloh. Na publikáciu treba úspešné relevantné CI, review a potvrdenie prijímača.
+
+---
+
 ## 22. 11. 2026 — Automatické zlúčenie PR #136 prakticky overené
 
 - Podľa schváleného rozsahu a potvrdenia na prijímači bol na [PR #136](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/136) uložený owner-authored approval marker viazaný na presný HEAD `7124f64db6a6b36368d8b609e7a92081d97c65ac`. Všetkých 10 check-runov skončilo úspešne vrátane OpenPLi regression a 3 natívnych OpenATV.

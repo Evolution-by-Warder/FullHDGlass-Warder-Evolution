@@ -62,6 +62,22 @@ def fingerprint_source(source):
             r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84') else '1.0.76') + r'\2', source)
         if count != 10:
             raise AssertionError('Expected 10 reviewed version header labels')
+    # Exactly reverse the reviewed additions to the existing support-info row
+    # before evaluating the historical full-plugin AST fingerprint. Any other
+    # modification inside this block still fails as an unapproved change.
+    if 'from .warderSettingsSummary import channel_diagnostic_suffix' in source:
+        original = "\t\tself.textShowInfo = ui_text(\"Selected settings\") + \" – \" + (_(\"Extra Screen\") + \": \" + str(config.plugins.setupGlass17.par6.value) + \", \" + _(\"Icons type\") + \": \" + str(config.plugins.setupGlass17.par1.value) + \", \" + _(\"Menu Icons\") + \": \" + str(config.plugins.setupGlass17.par69.value) + \", \" + _(\"Weather Icons\") + \": \" + str(config.plugins.setupGlass17.par72.value) + \", \" + _(\"HDD/SSD\") + \": \" + str(config.plugins.setupGlass17.par140.value))"
+        reviewed = "\t\tfrom .warderSettingsSummary import channel_diagnostic_suffix, menu_support_number\n\t\ttry:\n\t\t\t_warder_osd_lang = config.osd.language.value\n\t\texcept (AttributeError, TypeError, ValueError):\n\t\t\t_warder_osd_lang = \"en\"\n\t\tself.textShowInfo = ui_text(\"Selected settings\") + \" – \" + (_(\"Extra Screen\") + \": \" + str(config.plugins.setupGlass17.par6.value) + \", \" + _(\"Icons type\") + \": \" + str(config.plugins.setupGlass17.par1.value) + \", \" + _(\"Menu Icons\") + \": \" + str(config.plugins.setupGlass17.par69.value) + \", Menu: \" + menu_support_number(config.plugins.setupGlass17.par7.value) + \", \" + _(\"Weather Icons\") + \": \" + str(config.plugins.setupGlass17.par72.value))\n\t\tself.textShowInfo += channel_diagnostic_suffix(\n\t\t\tconfig.plugins.setupGlass17.par19.value,\n\t\t\tconfig.plugins.warderEpgListScroll.enabled.value,\n\t\t\tallow_channel_epg_overlay(),\n\t\t\tconfig.plugins.setupGlass17.par145.value,\n\t\t\tconfig.plugins.setupGlass17.par146.value,\n\t\t\tconfig.plugins.setupGlass17.par147.value,\n\t\t\t_warder_osd_lang)\n\t\tself.textShowInfo += \", \" + _(\"HDD/SSD\") + \": \" + str(config.plugins.setupGlass17.par140.value)"
+        if source.count(reviewed) != 1:
+            raise AssertionError("Unreviewed channel summary/controller drift")
+        source = source.replace(reviewed, original, 1)
+    # Preserve controller fingerprint by undoing ONLY the reviewed one-line
+    # support-header geometry; other modified widget attributes remain barred.
+    old_header = "<widget name=\"description\" position=\"60,174\" size=\"1800,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;24\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+    new_header = "<widget name=\"description\" position=\"15,174\" size=\"1890,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;23\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+    if source.count(new_header) != 1:
+        raise AssertionError("Unexpected support-header geometry drift")
+    source = source.replace(new_header, old_header, 1)
     return style.normalized(ast.parse(source))
 
 
@@ -525,10 +541,42 @@ class SetupStyleTests(unittest.TestCase):
                     if verified_skin.count(label) != 1:
                         raise AssertionError('Expected one version label in ' + name)
                     verified_skin = verified_skin.replace(label, 'text="1.0.80"', 1)
+                if name == 'setupGlass17ScreenSetup':
+                    # Revert the exact approved one-line support label change,
+                    # retaining the stable, immutable historical whole-skin hash.
+                    old_header = "<widget name=\"description\" position=\"60,174\" size=\"1800,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;24\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+                    new_header = "<widget name=\"description\" position=\"15,174\" size=\"1890,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;23\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+                    self.assertEqual(verified_skin.count(new_header), 1)
+                    verified_skin = verified_skin.replace(new_header, old_header, 1)
                 self.assertEqual(hashlib.sha256(verified_skin.encode()).hexdigest(),
                                  CURRENT_MAIN_1080_LAYOUTS[name],name)
             else:
                 self.assertEqual(skin.strip(),style.themed(name,BASELINE['skins'][name]).strip(),name)
+
+
+class NativePiconSetupHelpBounds(unittest.TestCase):
+    """The native 8.1 Picon settings description may wrap to four lines."""
+
+    def test_shared_setup_description_stays_above_footnote_and_color_keys(self):
+        xml = (ROOT / 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text(encoding='utf-8')
+        screen = xml.split('<screen name="Setup"', 1)[1].split('</screen>', 1)[0]
+
+        def widget(name):
+            m = re.search(r'<widget\s+name="' + re.escape(name) + r'"[^>]*>', screen)
+            self.assertIsNotNone(m, name)
+            pos = re.search(r'position="(\d+),(\d+)"', m.group(0))
+            size = re.search(r'size="(\d+),(\d+)"', m.group(0))
+            return tuple(map(int, pos.groups())), tuple(map(int, size.groups()))
+
+        (cx, cy), (cw, ch) = widget('config')
+        (dx, dy), (dw, dh) = widget('description')
+        (fx, fy), (fw, fh) = widget('footnote')
+        self.assertGreaterEqual(dy - (cy + ch), 4)
+        self.assertGreaterEqual(dh, 120)  # Full Picon search-mode help.
+        self.assertLessEqual(dy + dh + 4, fy)
+        self.assertLessEqual(fy + fh + 4, 825)  # Native color-key row.
+        self.assertEqual((cx, cw), (dx, dw))
+        self.assertEqual((dx, dw), (fx, fw))
 
 
 if __name__=='__main__':unittest.main()

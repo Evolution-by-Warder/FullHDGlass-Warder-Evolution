@@ -6803,7 +6803,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	skin = """
 <screen name="setupGlass17" position="0,0" size="1920,1080" title="FullHDGlass" backgroundColor="#ff000000" flags="wfNoBorder">
-<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><widget name="description" position="60,174" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
+<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><widget name="description" position="15,174" size="1890,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;23" transparent="0" foregroundColor="#00b5d4ec" />
 <widget source="session.VideoPicture" render="WarderSettingsPig" position="60,242" zPosition="1" size="737,415" backgroundColor="transparent" />
 <widget name="config" font="Prive3;34" position="60,242" size="1790,320" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="1" backgroundColor="#ff000000" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 <widget name="list" position="860,238" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
@@ -8105,7 +8105,21 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 	def showInfo(self):
 		self.runSetup()
 		version = self.readVersion()
-		self.textShowInfo = ui_text("Selected settings") + " – " + (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value) + ", " + _("HDD/SSD") + ": " + str(config.plugins.setupGlass17.par140.value))
+		from .warderSettingsSummary import channel_diagnostic_suffix, menu_support_number
+		try:
+			_warder_osd_lang = config.osd.language.value
+		except (AttributeError, TypeError, ValueError):
+			_warder_osd_lang = "en"
+		self.textShowInfo = ui_text("Selected settings") + " – " + (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", Menu: " + menu_support_number(config.plugins.setupGlass17.par7.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value))
+		self.textShowInfo += channel_diagnostic_suffix(
+			config.plugins.setupGlass17.par19.value,
+			config.plugins.warderEpgListScroll.enabled.value,
+			allow_channel_epg_overlay(),
+			config.plugins.setupGlass17.par145.value,
+			config.plugins.setupGlass17.par146.value,
+			config.plugins.setupGlass17.par147.value,
+			_warder_osd_lang)
+		self.textShowInfo += ", " + _("HDD/SSD") + ": " + str(config.plugins.setupGlass17.par140.value)
 		self.vip = ""
 		self.pwdV = None
 		if os.path.isfile('/etc/vip17') and os.path.isfile('/usr/bin/unrar_bin'):
