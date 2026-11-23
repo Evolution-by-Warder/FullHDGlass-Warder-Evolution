@@ -156,6 +156,36 @@ class SettingsTests(unittest.TestCase):
                                                      '220x132'),
                          '/usr/share/enigma2/hdg17_files/picon')
 
+    def test_picon_symlink_alias_requires_mount_and_skin_ownership(self):
+        # Reproduce PATHS-managed picon directories linked to a real disk.
+        import importlib.util
+        from unittest import mock
+        module_path = PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py'
+        spec = importlib.util.spec_from_file_location('warderPiconSync_ci_alias', module_path)
+        sync = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sync)
+        link = '/usr/share/enigma2/hdg17_files/picon'
+        external = '/media/hdd/hdg17_files/picon'
+        resolved = {link: external}
+        real = lambda path: resolved.get(path, path)
+        with mock.patch.object(sync.os.path, 'realpath', side_effect=real), \
+             mock.patch.object(sync.os.path, 'ismount', side_effect=lambda path: path == '/media/hdd'):
+            self.assertEqual(sync.validate_destination(link), external)
+            # The same external target cannot be reached through any arbitrary
+            # system/user alias which the menu did not explicitly generate.
+            resolved['/etc/enigma2/picon'] = external
+            self.assertIsNone(sync.validate_destination('/etc/enigma2/picon'))
+            # The fake media folder must actually be mounted.
+            with mock.patch.object(sync.os.path, 'ismount', return_value=False):
+                self.assertIsNone(sync.validate_destination(link))
+            # A path resolving into protected image space stays forbidden.
+            resolved[link] = '/etc/hdg17_files/picon'
+            self.assertIsNone(sync.validate_destination(link))
+            resolved[link] = '/media/hdd/unrelated-logos'
+            self.assertIsNone(sync.validate_destination(link))
+            resolved[link] = '/hdg17_files/picon'
+            self.assertEqual(sync.validate_destination(link), '/hdg17_files/picon')
+
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
         self.assertEqual(REGISTRY[18],'Channel sel. type')
