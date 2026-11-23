@@ -28,9 +28,21 @@
 
 - **Warder Radio [PR #58](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/58): ZLÚČENÉ.** GitHub Actions `unit` SUCCESS na PR SHA `311ea06620ffdb9b454971aec64b2584ada0ddc8`; manuálne preskúmaný presný diff jedného workflowu. Squash merge `6651d52db631c331ff135afbbeef48727df7c51a`; potvrdený `main`, runtime/feed `0.2.2` zachované.
 - **PiconHub [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85): ZLÚČENÉ.** Päť odstránených zastaraných YAML a aktualizovaná read-only grafická CI ochrana; kontrola `whole-logo-regressions` SUCCESS na presnom SHA `f77fac302948bda64b52a9cb9b1e21a9450df75b`. Squash merge `e88d02e392e77dcd76f98f861e957c5ce9adb1e9`. Žiadny IPK/ZIP ani grafika sa nemenili.
-- **FullHDGlass [PR #143](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/143): pripravené na dokončenie, aktuálny merge status nezamieňať za hotový.** Odstránený jeden nefunkčný version-pinned publisher `1.0.70`; existujúci `verify-radio-release.yml` rozšírený o read-only kontrolu zmien workflowov a checkpointu. Relevantné CI `verify` už absolvovalo SUCCESS na pracovnom SHA `3782814274cb012d69b154e3bf3376885c0f7df5`; po posledných dokumentačných zmenách musí byť finálny HEAD znova úspešne overený pred merge.
+- **FullHDGlass [PR #143](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/143): ZLÚČENÉ.** Jeden odstránený historický publisher `publish-warder-1.0.70.yml`, rozšírená existujúca read-only CI ochrana a pridaný jediný spoločný checkpoint. Finálny CI `verify` SUCCESS na presnom SHA `7bf4008bc3f44e212d15d7754f1cc47f66ba4783`, [GitHub Actions #45147095092](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45147095092). Squash merge `0b1ff58280f14e43bf03d66d6c367eae4d145322`. Aktuálny stable publisher a verzia `1.0.84` zostali zachované.
 - **Celkom sedem odstránených pracovných YAML súborov v troch repozitároch** (FullHDGlass 1 + PiconHub 5 + Radio 1). Všetky zmazania boli vykonané cez PR; nesmie sa zamieňať otvorený PR s dokončeným merge. Bez mazania Git vetiev, tagov, GitHub Releases alebo historických Actions dôkazov.
-- Pri workflowoch `.github/workflows/` prebehla individuálna manuálna bezpečnostná kontrola a na dotknutých PR sú zapojené existujúce nepublikujúce read-only testy. Žiadne nové testovacie IPK ani SAT automatizácie sa v tejto dávke zámerne nevytvárali.
+- Pri workflowoch `.github/workflows/` prebehla individuálna manuálna bezpečnostná kontrola a na dotknutých PR sú zapojené existujúce nepublikujúce read-only testy. Dokončovací krok nespustil nové zostavenie testovacieho IPK ani novú SAT automatizáciu. Rádiový PR používal už existujúcu CI validáciu, ktorej súčasťou je historický interný balíkovací test; žiadny nový IPK alebo ZIP nebol publikovaný.
+
+## Finálne overenie po zlúčení všetkých troch PR (23.11.2026)
+
+| Repozitár | Preverený produkčný merge SHA | PR | Existujúce ostré vydanie |
+|---|---|---|---|
+| FullHDGlass | `0b1ff58280f14e43bf03d66d6c367eae4d145322` | [#143](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/143) MERGED | `v1.0.84`, runtime `1.0.84` |
+| PiconHub | `e88d02e392e77dcd76f98f861e957c5ce9adb1e9` | [#85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85) MERGED | `v0.1.44`, runtime `0.1.44` |
+| Warder Radio | `6651d52db631c331ff135afbbeef48727df7c51a` | [#58](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/58) MERGED | `warder-radio-v0.2.2`, runtime `0.2.2` |
+
+Bola vykonaná opätovná nezávislá kontrola troch GitHub `main` refs, stavu `merged=true`, merge commitov, runtime verzií a existencie pôvodných produkčných Releases. **Zmazaných presne 7 workflow YAML súborov:** FullHDGlass 1, PiconHub 5, Warder Radio 1. Navyše sa upravili 2 už existujúce read-only kontrolné workflowy na spustenie CI pri bezpečnostných zmenách a doplnil sa tento istý checkpoint; žiadna ďalšia checkpointová séria. Všetky 3 cieľové PR majú doložené úspešné CI. Tento dokumentačný dodatok môže posunúť HEAD FullHDGlass po samostatnom schválenom merge, ale nemení vyššie uvedený commit PR #143 ani produkciu.
+
+**Výsledok:** konzervatívne jednorazové upratanie **DOKONČENÉ A OVERENÉ** v troch hlavných projektoch. Žiadna vetva, tag, Release, zdrojový test, schválená grafika, produkčný updater, SAT picon, rádiodáta ani používateľské nastavenie neboli zmazané alebo prepísané. Fyzické testy na prijímači neboli súčasťou tohto úzkeho cleanup rozsahu; nemožno ich vykazovať ako PASS.
 
 ## Zachované naschvál
 
