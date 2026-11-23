@@ -89,6 +89,8 @@ jobs:
           python tools/test-openatv81-animation.py --upstream /tmp/warder-openatv81-pinned -v
           python tools/test-opkg-screen-compat.py --upstream /tmp/warder-openatv81-pinned -v
           python tools/test-config-font-compat.py -v
+      - name: Verify native wide config list spacing without affecting compact previews
+        run: python tools/test-native-config-spacing.py -v
       - name: Verify native bindings and replay repaired screens
         run: |
           python tools/test-skin-binding-audit.py -v

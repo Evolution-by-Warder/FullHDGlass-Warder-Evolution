@@ -1,3 +1,11 @@
+## 1.0.88 — 2026-11-23 — oprava prekrytia natívnych nastavovacích posuvníkov
+
+- Oprava nahlásená českým používateľom: v „Nastavení korekce obrazu“ a „Nastavení displeje“ prekrýval posuvník dlhý názov nastavenia. Príčinou bol krátky predvolený oddeľovací stĺpec v natívnom Enigma2 ConfigList pri veľkom písme FullHDGlass.
+- Rozostup vo veľkých natívnych konfiguračných zoznamoch sa upravuje na 55 % ich šírky, so zachovaním najmenej 450 px pre hodnotu/posuvník; úzke pluginové okná, náhľady, systémový Enigma2 kód a vlastné nastavenia skinu sa nemenia.
+- Vstupný kontrolný IPK 1.0.88-test1: 6/6 úzko zameraných testov, overený kontrolný súčet; PR #157 absolvoval kontroly OpenATV a OpenPLi pred prípravou stabilnej verzie.
+- Vlastník výslovne nariadil zaradiť opravu do ostrej verzie. Opakované prijímačové vizuálne potvrdenie českým používateľom zatiaľ nemáme. Ostatné funkcie, grafika, picony, bezpečnostné opravy 1.0.87 aj nastavenia zostávajú zachované.
+- Oficiálne vydanie: [v1.0.88](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.88). Podrobnosti: [poznámky 1.0.88](docs/warder-1.0.88-release-notes.md).
+
 ## 1.0.87 — 2026-11-23 — overené a publikované vydanie opravy SAT piconov
 
 - Oddelená kontrola používateľských možností od bezpečnostnej validácie cieľovej cesty. SF8008 už bezpečne používa zachovaný picon alias `/usr/share/enigma2/hdg17_files/picon -> /usr/share/enigma2/picon`.
