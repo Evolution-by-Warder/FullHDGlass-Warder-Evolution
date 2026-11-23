@@ -445,13 +445,18 @@ def set_task_position_bindings(preferences, bindings):
 
 
 def channel_preferences_ready(preferences):
+    """Check only the user-selected channel options.
+
+    The download controller validates the target directory separately and
+    reports 'Invalid picon destination' before any filesystem changes.
+    Including destination here mislabels a storage failure as missing choices.
+    """
     prefs = dict(preferences or {})
     return bool(valid_task_selection(prefs)
                 and prefs.get("resolution") in tuple(size for size, label in CHANNEL_RESOLUTION_CHOICES)
                 and prefs.get("style") in dict(STYLES)
                 and channel_style_supported(prefs.get("resolution"), prefs.get("style"))
-                and prefs.get("update_mode") in dict(UPDATE_MODES)
-                and validate_destination(prefs.get("destination")))
+                and prefs.get("update_mode") in dict(UPDATE_MODES))
 
 
 def auxiliary_variants(asset_keys):
