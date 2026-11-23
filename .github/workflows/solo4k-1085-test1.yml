@@ -56,8 +56,10 @@ jobs:
           python tools/test-setup-style.py SetupStyleTests.test_all_owned_layouts_retain_original_widget_and_source_contracts -v
           python tools/test-setup-style.py NativePiconSetupHelpBounds -v
           python tools/test-openatv-screen-compat.py -q
-          python tools/test-openpli-graph-epg.py -q
-          python tools/test-virtual-keyboard.py -q
+          # The native OpenPLi GraphMultiEPG and OpenATV VirtualKeyboard
+          # tests require actual --upstream source trees. They run in the
+          # separate Verify OpenPLi/OpenATV compatibility PR workflows;
+          # never launch either without its required upstream argument.
           python -m unittest discover -s tools -p test_warder_epg_gles_policy.py -v
           python -m unittest discover -s tools -p test_warder_epg_render_policy.py -v
       - name: Stage 1.0.85-test1 only inside the runner
