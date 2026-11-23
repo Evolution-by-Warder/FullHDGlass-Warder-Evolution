@@ -531,6 +531,31 @@ class SetupStyleTests(unittest.TestCase):
                 self.assertEqual(skin.strip(),style.themed(name,BASELINE['skins'][name]).strip(),name)
 
 
+class NativePiconSetupHelpBounds(unittest.TestCase):
+    """The native 8.1 Picon settings description may wrap to four lines."""
+
+    def test_shared_setup_description_stays_above_footnote_and_color_keys(self):
+        xml = (ROOT / 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text(encoding='utf-8')
+        screen = xml.split('<screen name="Setup"', 1)[1].split('</screen>', 1)[0]
+
+        def widget(name):
+            m = re.search(r'<widget\s+name="' + re.escape(name) + r'"[^>]*>', screen)
+            self.assertIsNotNone(m, name)
+            pos = re.search(r'position="(\d+),(\d+)"', m.group(0))
+            size = re.search(r'size="(\d+),(\d+)"', m.group(0))
+            return tuple(map(int, pos.groups())), tuple(map(int, size.groups()))
+
+        (cx, cy), (cw, ch) = widget('config')
+        (dx, dy), (dw, dh) = widget('description')
+        (fx, fy), (fw, fh) = widget('footnote')
+        self.assertGreaterEqual(dy - (cy + ch), 4)
+        self.assertGreaterEqual(dh, 120)  # Full Picon search-mode help.
+        self.assertLessEqual(dy + dh + 4, fy)
+        self.assertLessEqual(fy + fh + 4, 825)  # Native color-key row.
+        self.assertEqual((cx, cw), (dx, dw))
+        self.assertEqual((dx, dw), (fx, fw))
+
+
 if __name__=='__main__':unittest.main()
 
 
