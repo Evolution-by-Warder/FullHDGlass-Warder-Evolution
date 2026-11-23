@@ -15,7 +15,9 @@
 [Oficiálny GitHub Release 1.0.85](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.85) · [Stiahnuť IPK 1.0.85](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.85/enigma2-plugin-skins-fullhdglass_1.0.85_all.ipk) · [Úplné poznámky](warder-1.0.85-release-notes.md)
 
 - **Balík:** `enigma2-plugin-skins-fullhdglass_1.0.85_all.ipk`.
-- **SHA-256:** autoritatívny údaj v `update-production.json` a pri balíku `packages/enigma2-plugin-skins-fullhdglass_1.0.85_all.ipk.sha256` (publisher ich musí overiť po zostavení).
+- **Veľkosť IPK:** 18 392 206 B.
+- **SHA-256:** `f9f4af368cc2b7b6474dbde80f44a27c989de7c687b35e896bcf8af042c536d7`, overené vo verejnom Release assete, v `main/packages/*.sha256` aj v oboch produkčných manifestoch.
+- **Oficiálny publisher:** [GitHub Actions #45179558117](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45179558117) SUCCESS vrátane koncového `verify-production-release-state.py`. Aktuálny publikovaný main `313050910d2f4beefb2d6ceaaac303a869d3e83b`.
 - **Aktuálne feedy:** `update-production.json` a `update-test.json` zobrazujú rovnakú overenú ostrú verziu po dokončení publikácie. `update.json` naďalej slúži ako migračný most 1.0.18.
 - **Návratové ostré verzie:** v1.0.84 / v1.0.83 / v1.0.82; chránená 1.0.18 a starý TEST bridge 1.0.72 sa nezapočítavajú do štyroch stabilných dvojíc.
 
