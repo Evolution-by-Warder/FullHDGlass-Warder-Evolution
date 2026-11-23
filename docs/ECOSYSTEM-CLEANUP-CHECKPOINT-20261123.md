@@ -99,11 +99,13 @@ Zmazať len ďalšie jednotlivo dokázané nepotrebné položky **po** preveren�
 
 | Projekt | Výsledný overený `main` po PR | Ponechané ostré vydania | Odstránené z main (nová dávka) | Zmenené/ušetrené bajty v aktuálnom strome |
 |---|---|---|---|---|
-| FullHDGlass | `f294be86720a6b3b754ccdd08ccd1e668be5ea56` ([PR #145](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/145) MERGED) | `1.0.84, 1.0.83, 1.0.82, 1.0.80` | **24 starých IPK + 24 SHA-256 = 48 súborov**; 24 verzií zo série `1.0.48–1.0.79` okrem chránených `1.0.72` a `1.0.80` | **412 670 304 B = 393,55 MiB** |
+| FullHDGlass | `f294be86720a6b3b754ccdd08ccd1e668be5ea56` ([PR #145](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/145) MERGED) | `1.0.84, 1.0.83, 1.0.82, 1.0.80` | **24 starých IPK + 24 SHA-256 = 48 súborov**; 24 verzií zo série `1.0.48–1.0.79` okrem chránených `1.0.72` a `1.0.80` | **412 669 094 B netto = 393,55 MiB** |
 | PiconHub | `2018ec15efff0d51b41fcaa5a4d421fe18b5d76d` ([PR #86](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/86) MERGED) | `0.1.44, 0.1.43, 0.1.42` (iba 3 existujúce) | 0 starých IPK, 0 SHA | **0 B** |
 | Warder Radio | `b63e61f3531e083f641079e8df21f6725d006d0f` ([PR #59](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/59) MERGED) | `0.2.2, 0.2.1, 0.2.0, 0.1.9.4` | 0 starých IPK, 0 SHA | **0 B** |
 | GSU | `b173e1cdf7eb30d11821129ba3a0d14971813d76` ([PR #12](https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/pull/12) MERGED) | `13.41-r4, 13.40-r95, 13.40-r94, 13.40-r93` | 0 starých IPK, 0 SHA | **0 B** |
 | YouTube | `c6de0d43615a0961f7a2407597777f6820cbe5c2` ([PR #7](https://github.com/Evolution-by-Warder/YouTube-Warder-Evolution/pull/7) MERGED) | `1.0.2, 1.0.1, 1.0.0` (iba 3 existujúce) | 0 starých IPK, 0 SHA | **0 B** |
+
+**Presná bilancia:** pôvodný `main/packages/` mal 517 552 114 B a po merge má 104 883 020 B. Hrubá veľkosť 48 odstránených súborov je **412 670 304 B**; zmena `packages/README.md` ho zväčšila o 1 210 B, preto je **čistá úspora 412 669 094 B**. Git objekty v historických commitoch zostávajú zachované, nejde o fyzickú úsporu celej Git histórie.
 
 **Overené kroky:**
 - FullHDGlass [PR #145](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/145) prešiel všetkými **9/9 GitHub CI kontrolami** (`verify-stable-package`, `verify`, `integration-tests`, tri OpenATV vetvy a tri OpenPLi/regresné joby). Workflow publish zachoval oficiálny vydávací mechanizmus, ale pri budúcich release po overení Release + update feedov prerezáva staré IPK dvojice fail-closed skriptom `tools/retain-fullhdglass-stable.py`. Už nezakladá nové IPK kvôli zmene samotného YAML.
