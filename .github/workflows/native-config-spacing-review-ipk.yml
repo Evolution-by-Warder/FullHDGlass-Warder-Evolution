@@ -42,16 +42,24 @@ jobs:
               ast.parse((root/name).read_text(),filename=name,feature_version=(3,9))
           print("PASS: receiver Python 3.9 syntax")
           PY
-      - name: Stage independent version 1.0.88-test1 in CI workspace only
+      - name: Stage independent version 1.0.88-test1 only from pre-release 1.0.87 sources
+        id: stage
         run: |
           set -euo pipefail
-          test "$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.87"
+          CURRENT="$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
+          if [ "$CURRENT" != "1.0.87" ]; then
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            echo "Historical 1.0.88-test1 review build not applicable to stable source $CURRENT"
+            exit 0
+          fi
+          echo "build=true" >> "$GITHUB_OUTPUT"
           grep -qx 'Version: 1.0.87-1' source/control/control
           echo 1.0.88-test1 > source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
           sed -i 's/^Version: 1\.0\.87-1$/Version: 1.0.88-test1-1/' source/control/control
           python3 tools/sync_header_version.py
           python3 tools/sync_header_version.py --check
       - name: Build only a self-contained IPK and verify embedded code
+        if: steps.stage.outputs.build == 'true'
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -92,6 +100,7 @@ jobs:
           PY
           (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.88-test1_all.ipk.sha256)
       - name: Upload isolated control IPK (not a Release, not an updater)
+        if: steps.stage.outputs.build == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: FullHDGlass-1.0.88-test1-Czech-NativeConfig-REVIEW
