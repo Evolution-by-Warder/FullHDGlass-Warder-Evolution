@@ -101,6 +101,13 @@ assert prefs2["prepared"] is True
 PLUGIN = os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py")
 with open(PLUGIN, "r") as h:
     plugin_source = h.read()
+# Distinguish invalid storage from missing colour/resolution in the download UI.
+download_start = plugin_source.index("def startDown(self, destination_confirmed=False):")
+diagnostic = 'not warderPiconSync.validate_destination(self.warderPiconPrefs.get("destination"))'
+validation = "not self.warderDABOnly and not warderPiconSync.channel_preferences_ready"
+assert diagnostic in plugin_source[download_start:download_start + 2200]
+assert plugin_source.index(diagnostic, download_start) < plugin_source.index(validation, download_start)
+assert '_("Invalid picon destination") + ":\\n"' in plugin_source[download_start:download_start + 2200]
 menu_start = plugin_source.index("\t\tself.menuListAll = {", plugin_source.index("class downloadMenu"))
 menu_end = plugin_source.index("\n\t\t\t}", menu_start)
 menu_block = plugin_source[menu_start:menu_end]
@@ -296,6 +303,15 @@ assert jobs["jobs"][0]["bytes"] == 10 and jobs["jobs"][0]["sha256"] == "a" * 64
 assert jobs["jobs"][0]["parts"][0]["bytes"] == 10
 assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
 assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
+# PATHS may place FullHDGlass-owned data on internal /usr/share/enigma2 or /etc.
+# Only exact managed picon leaves are permitted; the storage warning still runs.
+for skin_root in ("/usr/share/enigma2/hdg17_files", "/etc/hdg17_files"):
+    for picon_dir in ("picon", "picon_50x30", "picon_400x240"):
+        target = skin_root + "/" + picon_dir
+        assert m.validate_destination(target) == target
+    assert m.validate_destination(skin_root) is None
+    assert m.validate_destination(skin_root + "/other") is None
+    assert m.validate_destination(skin_root + "/picon/untrusted") is None
 assert m.validate_destination("relative/picon") is None
 assert m.validate_destination("/") is None
 assert m.validate_destination("/etc/enigma2") is None
