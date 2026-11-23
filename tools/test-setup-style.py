@@ -78,6 +78,19 @@ def fingerprint_source(source):
     if source.count(new_header) != 1:
         raise AssertionError("Unexpected support-header geometry drift")
     source = source.replace(new_header, old_header, 1)
+    # Explicitly reviewed PR #156: only this one conservative 512 MiB
+    # internal-flash warning threshold may differ from the frozen 1.0.86
+    # controller. Restore the exact original AST before fingerprinting.
+    # Any change to destination guards, callbacks or other controller logic
+    # still produces a mismatching fingerprint.
+    reviewed_storage = ('\t\tif (_warderStorageIsInternal(storage_target) and\n'
+                        '\t\t\t\tnot _warderStorageHasSpace(storage_target, 512 * 1024 * 1024) and\n'
+                        '\t\t\t\tgetattr(self, "_warderInternalStorageApproved", None) != storage_target):')
+    original_storage = ('\t\tif (_warderStorageIsInternal(storage_target) and\n'
+                        '\t\t\t\tgetattr(self, "_warderInternalStorageApproved", None) != storage_target):')
+    if source.count(reviewed_storage) != 1:
+        raise AssertionError("Unreviewed internal-flash threshold/controller drift")
+    source = source.replace(reviewed_storage, original_storage, 1)
     return style.normalized(ast.parse(source))
 
 
