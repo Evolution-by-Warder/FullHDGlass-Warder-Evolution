@@ -37,3 +37,9 @@ python3 tools/test_dtt_italia_clients.py --hub ../PiconHub --channels ../talians
 ```
 
 Odkazy v manifeste majú produkčný formát, ktorý kontrolujú oba klienty. Pred vydaním sa diely kontrolujú zo zhodnej revízie tejto vetvy. Hlásenia o nových príspevkoch Azzurra spracuje existujúci dvojtýždňový SAT skener PiconHubu.
+
+## Nezávislé overenie uložených výsledkov
+
+Z pracovnej revízie FullHDGlass `f903ec11c9ccbab0316894b5a152c1b9a1b77311` sa znova stiahlo všetkých 181 dielov. Pri každom sa overila dĺžka a SHA-256 a po ich spojení aj SHA-256 všetkých 27 archívov. Stiahnutý manifest bol bajtovo zhodný s lokálnym výstupom aj s kópiou v PiconHube `af01ddd3f10a87471f77b89ec100a845ccedbd26`. Druhé zostavenie z pôvodných vstupov dalo rovnaký manifest, index SHA256SUMS a report s 27 hashmi. Pri 220×132 majú talianske a existujúce SK/CZ sady vo všetkých troch pozadiach nula spoločných referencií.
+
+Všetkých 241 testov PiconHubu prešlo. Prešli aj jeho GitHub kontroly balíka, OpenATV a OpenPLi. Katalógová regresia zachytáva zmenu akéhokoľvek z ostatných 480 balíkov a ich metadát. Dve kontroly FullHDGlass pôvodne očakávali presný odtlačok predchádzajúceho katalógu. Dostali odtlačky nezávisle overeného výsledku. Stav CI je pri [FullHDGlass #158](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/158) a [PiconHub #87](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/87).

@@ -58,6 +58,16 @@ class CanonicalManifest(unittest.TestCase):
             self.assertEqual(p["bytes"], total)
         self.assertEqual(used, set(self.meta))
 
+    def test_italian_update_preserves_every_other_package_and_part(self):
+        packages = [p for p in self.doc["packages"] if p["selector_id"] not in ("DTT_ITALIA", "90E", "50W")]
+        self.assertEqual(len(packages), 480)
+        names = {url.rsplit("/", 1)[-1] for p in packages for url in p["parts"]}
+        ordered = (sorted(packages, key=lambda p: (p["selector_id"], p["resolution"], p["family"])),
+                   [self.meta[name] for name in sorted(names)])
+        payload = json.dumps(ordered, sort_keys=True, separators=(",", ":")).encode()
+        # Digest measured on the catalogue before the Italian update (3597e077).
+        self.assertEqual(hashlib.sha256(payload).hexdigest(), "2f1213d4c4a2cf14bab008b988c7819ec1b010067c85a47c5fa7d09c31cd2c21")
+
     def test_canalplus_sk_cz_all_18_variants_remain_intact(self):
         providers = ("CANALPLUS_SK", "CANALPLUS_CZ")
         sizes = ("50x30", "220x132", "400x240")
