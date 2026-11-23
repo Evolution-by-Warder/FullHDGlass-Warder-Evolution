@@ -1313,35 +1313,60 @@ def build_download_jobs(document, package_plan, manifest_url=None):
 
 
 def validate_destination(path):
-    """Reject relative/root destinations; UI may only stage into a real subdirectory."""
+    """Validate a picon destination, including explicitly skin-owned aliases.
+
+    A PATHS-managed picon directory may already be a symlink to HDD or USB.
+    Only those exact menu-generated paths may resolve through an alias, and
+    only to an equally named picon folder on a mounted storage location.
+    Return the *resolved* destination so subsequent filesystem writes do not
+    follow the original alias again.
+    """
     raw = os.path.normpath(str(path or ""))
     if not os.path.isabs(raw):
         return None
     value = os.path.realpath(raw)
-    # Do not silently follow a user supplied symlink while installing files.
+    if value == os.path.sep:
+        return None
+    owned_roots = ("/usr/share/enigma2/hdg17_files", "/etc/hdg17_files")
+    picon_leaves = ("picon", "picon_50x30", "picon_400x240")
+    owned = {
+        os.path.join(root, leaf): leaf
+        for root in owned_roots for leaf in picon_leaves
+    }
+    if raw in owned:
+        # Existing installations can symlink either the skin's data folder or
+        # the selected picon leaf to a mounted disk. Never follow an alias
+        # into arbitrary system locations, and never mistake an unmounted
+        # /media/hdd folder on internal flash for a real external disk.
+        if value != os.path.abspath(raw):
+            if os.path.basename(value) != owned[raw]:
+                return None
+            if value == os.path.join("/hdg17_files", owned[raw]):
+                return value
+            mounts = ("/media/hdd", "/media/usb", "/media/sdcard",
+                      "/media/mmc", "/media/cf", "/data")
+            if any(value.startswith(mount + os.path.sep)
+                   and os.path.ismount(mount) for mount in mounts):
+                return value
+            return None
+        probe = os.path.sep
+        for component in (part for part in raw.split(os.path.sep) if part):
+            probe = os.path.join(probe, component)
+            if os.path.islink(probe):
+                return None
+        return value
+    # Every non-warder-owned path retains the previous strict symlink guard.
     if value != os.path.abspath(raw):
         return None
     probe = os.path.sep
-    for component in [part for part in raw.split(os.path.sep) if part]:
+    for component in (part for part in raw.split(os.path.sep) if part):
         probe = os.path.join(probe, component)
         if os.path.islink(probe):
             return None
-    if value == os.path.sep:
-        return None
     if value == DEFAULT_DESTINATION:
         return value
-    # PATHS in FullHDGlass explicitly offers /usr/share/enigma2 and /etc as
-    # storage roots.  Those image-owned parents remain protected, but their
-    # exact skin-managed picon subdirectories are safe download targets once
-    # the UI has applied the existing internal-storage/space confirmation.
-    # Keep checking every ancestor for symlinks above; never whitelist /usr,
-    # /etc, or arbitrary descendants of either.
-    managed_roots = ("/usr/share/enigma2/hdg17_files", "/etc/hdg17_files")
-    managed_leafs = ("picon", "picon_50x30", "picon_400x240")
-    if any(value == os.path.join(root, leaf)
-           for root in managed_roots for leaf in managed_leafs):
-        return value
-    protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc", "/root", "/run", "/sbin", "/sys", "/usr", "/var")
+    protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc",
+                 "/root", "/run", "/sbin", "/sys", "/usr", "/var")
     if value in protected or any(value.startswith(p + os.path.sep) for p in protected):
         return None
     return value
