@@ -1,3 +1,11 @@
+FullHDGlass 1.0.86 — 23.11.2026
+Opravené sťahovanie satelitných piconov pre veľké balíky 13°E a 19,2°E, ktoré predtým zlyhalo na nedostatku miesta v /tmp.
+Overovaný ZIP sa teraz dočasne ukladá priamo na zvolené HDD/SSD s piconmi, nie do obmedzeného /tmp.
+Zachovaná rezerva 64 MiB voľného miesta, SHA-256 jednotlivých častí aj celého balíka, bezpečné PNG a atomické nahrádzanie jednotlivých piconov.
+Pracovný ZIP sa po úspechu alebo chybe odstráni; existujúce picony a osobné súbory zostávajú zachované.
+Všetky potvrdené opravy 1.0.85 pre EPG, výber kanálov a diagnostiku zostávajú zachované.
+Po aktualizácii reštartujte Enigma2. Fyzický test presného nového spôsobu sťahovania ešte čaká.
+
 FullHDGlass 1.0.85 — 23.11.2026
 Opravené prekrývanie názvov staníc a EPG pomocou správnej geometrie číselného stĺpca a názvu programu.
 Po zmene počtu zobrazovaných staníc sa spoločne prepočítajú výšky riadkov, veľkosti piconov a pozície textov bez zatvárania zoznamu.

@@ -61,6 +61,108 @@ class ChannelWorkerTests(unittest.TestCase):
             self.assertEqual(list(worker.drain())[-1],
                              ("error", "SHA-256 mismatch"))
 
+
+    def test_large_channel_zip_uses_selected_picon_disk_not_full_tmp(self):
+        from unittest.mock import patch
+        import os
+        import types
+        with tempfile.TemporaryDirectory() as root:
+            received = []
+            def fetch(job, archive, progress):
+                self.assertEqual(Path(archive).parent, Path(root))
+                self.assertTrue(Path(archive).name.startswith(".warder-channel-"))
+                received.append(archive)
+                Path(archive).write_bytes(b"verified-zip-stub")
+                progress(12, 12)
+            def install(archive, destination, wanted):
+                self.assertEqual(Path(archive).read_bytes(), b"verified-zip-stub")
+                self.assertEqual(destination, root)
+                return {"test.png"}, {"test.png"}
+            real_usage = worker_module.shutil.disk_usage
+            def disk_usage(path):
+                if os.path.realpath(path) == os.path.realpath("/tmp"):
+                    raise AssertionError("/tmp must not be probed for channel archive space")
+                self.assertEqual(path, root)
+                return types.SimpleNamespace(free=1024 * 1024 * 1024)
+            with patch.object(worker_module.shutil, "disk_usage", side_effect=disk_usage):
+                worker = worker_module.ChannelWorker(
+                    {"bytes": 12}, root, {"test.png"}, fetch, install)
+                worker.run()
+            self.assertEqual(list(worker.drain())[-1],
+                             ("done", ({"test.png"}, {"test.png"})))
+            self.assertEqual(len(received), 1)
+            self.assertFalse(Path(received[0]).exists())
+            self.assertEqual(list(Path(root).iterdir()), [])
+
+    def test_insufficient_destination_space_fails_before_download(self):
+        from unittest.mock import patch
+        import types
+        with tempfile.TemporaryDirectory() as root:
+            called = []
+            def should_not_fetch(*args):
+                called.append("fetch")
+            with patch.object(worker_module.shutil, "disk_usage",
+                              return_value=types.SimpleNamespace(free=1024)):
+                worker = worker_module.ChannelWorker(
+                    {"bytes": 120 * 1024 * 1024}, root, None,
+                    should_not_fetch, lambda *a: called.append("install"))
+                worker.run()
+            self.assertEqual(list(worker.drain())[-1],
+                             ("error", "insufficient destination space for Warder channel package"))
+            self.assertEqual(called, [])
+            self.assertEqual(list(Path(root).iterdir()), [])
+
+    def test_receiver_free_space_reserve_is_not_consumed_by_archive(self):
+        from unittest.mock import patch
+        import types
+        with tempfile.TemporaryDirectory() as root:
+            # 12-byte ZIP requires 10 MiB conservative overhead + 64 MiB
+            # receiver reserve; 73 MiB is not enough to stage it safely.
+            free = 73 * 1024 * 1024
+            with patch.object(worker_module.shutil, "disk_usage",
+                              return_value=types.SimpleNamespace(free=free)):
+                worker = worker_module.ChannelWorker(
+                    {"bytes": 12}, root, None,
+                    lambda *a: self.fail("must not download into receiver reserve"),
+                    lambda *a: self.fail("must not install"))
+                worker.run()
+            self.assertEqual(list(worker.drain())[-1],
+                             ("error", "insufficient destination space for Warder channel package"))
+            self.assertEqual(list(Path(root).iterdir()), [])
+
+    def test_bad_archive_cleans_partial_zip_on_selected_storage(self):
+        with tempfile.TemporaryDirectory() as root:
+            staged = []
+            def broken(job, archive, progress):
+                staged.append(archive)
+                Path(archive).write_bytes(b"partial")
+                raise ValueError("SHA-256 mismatch")
+            worker = worker_module.ChannelWorker(
+                {"bytes": 12}, root, None, broken,
+                lambda *args: self.fail("unverified package must not be installed"))
+            worker.run()
+            self.assertEqual(list(worker.drain())[-1],
+                             ("error", "SHA-256 mismatch"))
+            self.assertTrue(staged)
+            self.assertFalse(Path(staged[0]).exists())
+
+    def test_symlink_destination_is_not_used_as_temporary_archive(self):
+        import os
+        with tempfile.TemporaryDirectory() as root:
+            actual = Path(root) / "real"
+            actual.mkdir()
+            link = Path(root) / "link"
+            link.symlink_to(actual, target_is_directory=True)
+            worker = worker_module.ChannelWorker(
+                {"bytes": 12}, str(link), None,
+                lambda *a: self.fail("unsafe destination must not download"),
+                lambda *a: self.fail("unsafe destination must not install"))
+            worker.run()
+            self.assertEqual(list(worker.drain())[-1],
+                             ("error", "unsafe Warder picon destination"))
+            self.assertEqual(list(actual.iterdir()), [])
+
+
     def test_auxiliary_asset_worker_reports_progress(self):
         with tempfile.TemporaryDirectory() as root:
             def work(asset, target, progress, stage):

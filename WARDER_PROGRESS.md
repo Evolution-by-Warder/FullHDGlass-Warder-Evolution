@@ -1,3 +1,25 @@
+## 23. 11. 2026 — Schválené ostré FullHDGlass 1.0.86: veľké SAT picon ZIPy mimo /tmp (vydávacia príprava)
+
+- **Hlásenie:** používateľ oznámil chybu `insufficient temporary space for Warder channel package` pri pozíciách `13.0e / 130E` a `19.2e / 192E`, zatiaľ čo `23.5e / 235E` prešlo do inštalácie. Príčina priamo v `warderChannelWorker.ChannelWorker.run()`: výlučne `/tmp` ako miesto dočasného stiahnutého ZIPu a kontrola `2.2 × veľkosť balíka + 10 MiB` na `/tmp` namiesto HDD/SSD určeného pre picony.
+- **Oprava:** ZIP `.warder-channel-*.zip` sa vytvára priamo v zvolenom a overenom adresári piconov; PNG sa na cieľ ukladajú postupne s kontrolou PNG a atómovým nahradením. Pri úspechu aj chybe sa odstraňuje iba vlastný pracovný ZIP; žiadne čistenie systémového `/tmp` ani existujúcich piconov.
+- **Bezpečnosť:** cieľ musí byť absolútny existujúci adresár, nesmie ísť o symlink; pre balík musí zostať konzervatívny priestor na stiahnutie/inštaláciu a ďalších **64 MiB** systémovej rezervy. Zachované sú schválené archívne URL, part/full SHA-256 a limity súborov, bezpečnosť ZIP/PNG a prenos na pozadí bez blokovania GUI.
+- **Regresné testy:** `test-warder-channel-worker.py` testuje malé `/tmp` s voľným externým cieľom, plný cieľ, rezervu 64 MiB, zlyhanie SHA/odstránenie ZIPu a nebezpečný symlink. `verify-fullhdglass-integrated-20261122.yml` spúšťa worker aj flash-storage testy. Zároveň opravený historický `verify-radio-release.yml` namiesto už neplatného predpokladu 1.0.84 kontroluje skutočný súčasný produkčný feed, štyri ostré IPK a migračné výnimky.
+- **Schválenie vlastníka:** `vydaj to v ostrej verzii a potom mi daj aj texty pre web` a `a zapis vsetko kam treba`. Rozsah zahŕňa zdroj, testy, merge, oficiálny stabilný IPK **1.0.86**, feedy, release záznamy a SK/EN webové texty. Bez novej neautorizovanej grafiky/piconov alebo súkromných údajov.
+- **Vydanie:** do úspechu príslušných testov, podpisu/overenia celého IPK a nemenného GitHub Release sa `1.0.86` nesmie označiť za produkčne vydanú. `publish-warder-stable.yml` po schválenom merge vydá IPK, overí SHA a až potom zapíše feedy. Skutočný SHA, commit a stav publikácie doplniť po finálnom overení.
+- **Fyzická kontrola:** nový spôsob sťahovania 13°E/19,2°E ešte nebol priamo otestovaný používateľom; automatické testy toto nepotvrdzujú. Potvrdené výsledky 1.0.85 (GigaBlue/OpenATV/GLES, rozostupy a EPG, diagnostika) zostávajú zachované.
+
+---
+
+## 23. 11. 2026 — Hlásenie 13°E/19,2°E: nedostatok dočasného miesta SAT piconov (PR kandidát)
+
+- Používateľ dodal snímku FullHDGlass 1.0.85: pri sťahovaní piconov `13.0e / 130E` a `19.2e / 192E` sa objaví `insufficient temporary space for Warder channel package`; `23.5e / 235E` sa stiahol na 100 % a prešiel do inštalácie PNG. Presná kapacita úložiska prijímača zatiaľ nie je overená.
+- Overený zdroj príčiny: `warderChannelWorker.ChannelWorker.run` meral voľné miesto v `/tmp` a vytváral ZIP cez `tempfile.mkstemp(dir="/tmp")`, hoci zvolené picony už smerujú na externý disk. Preto malé `/tmp` zablokuje veľké SAT balíky aj pri dostatočnom HDD.
+- Bezpečný kandidát: pracovný ZIP `.warder-channel-*.zip` vytvoriť **priamo v už overenom adresári zvolených piconov**, nie v `/tmp`. Ponechať konzervatívnu kontrolu priestoru na cieľovom FS, zákaz symlink cieľa, limit veľkosti balíka, verifikáciu part/full SHA256, kontrolu ZIP/PNG a atomické zápisy jednotlivých PNG. `finally` odstráni iba vlastný dočasný ZIP po úspechu alebo chybe; nikdy nemaže existujúce picony ani používateľské súbory.
+- Testy: `tools/test-warder-channel-worker.py` s regresiami pre plné `/tmp`, dostatok/nedostatok miesta na cieľovom disku, chybu SHA a symlink. Integračný workflow doplnený o spustenie týchto testov a `test_warder_storage_safety.py`.
+- Stav: **pracovná vetva `fix/channel-picons-stage-on-destination-20261123`**, bez zlúčenia do `main`, bez zmeny ostrého vydania 1.0.85 alebo produkčných balíkov. Fyzické potvrdenie 13°E/19,2°E ešte chýba. Vydanie vyžaduje schválenie rozsahu a testy.
+
+---
+
 ## 23. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.85
 
 - **Výslovný súhlas a fyzický TEST3:** vlastník potvrdil správne zobrazenie rozostupov 9/14 riadkov, piconov a rolovania EPG pri OpenATV 8.1/GLES a úplný horný riadok „Máš zvolené“ vrátane `HDD/SSD: /dev/sda`. Následne priamo schválil ostré vydanie 1.0.85. Natívny viacriadkový opis Picon Setup na konkrétnom Solo 4K nie je osobitne fyzicky doložený.
