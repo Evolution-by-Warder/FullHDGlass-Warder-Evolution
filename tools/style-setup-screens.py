@@ -524,8 +524,8 @@ def themed(name,original):
         root.set('title','FullHDGlass')
         for key in ('key_red','key_green'):
             fields[key].set('backgroundColor',BASE)
-        fields['description'].set('position','60,174');fields['description'].set('size','1800,46')
-        fields['description'].set('font','Regular;24');fields['description'].set('halign','left')
+        fields['description'].set('position','15,174');fields['description'].set('size','1890,46')
+        fields['description'].set('font','Regular;23');fields['description'].set('halign','left')
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
         fields['session.VideoPicture'].set('render','WarderSettingsPig')
         fields['session.VideoPicture'].set('position','60,242');fields['session.VideoPicture'].set('size','737,415')
