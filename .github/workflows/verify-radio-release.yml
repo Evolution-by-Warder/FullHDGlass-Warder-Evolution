@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/**'
+      - 'docs/ECOSYSTEM-CLEANUP-CHECKPOINT-20261123.md'
       - 'source/**'
       - 'tools/test-radio-*'
       - 'tools/verify-production-release-state.py'
