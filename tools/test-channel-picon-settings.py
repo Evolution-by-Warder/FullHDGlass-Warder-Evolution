@@ -183,6 +183,17 @@ class SettingsTests(unittest.TestCase):
             self.assertIsNone(sync.validate_destination(link))
             resolved[link] = '/media/hdd/unrelated-logos'
             self.assertIsNone(sync.validate_destination(link))
+            # Actual Octagon SF8008 installation (23 Nov 2026):
+            # /usr/share/enigma2/hdg17_files/picon -> /usr/share/enigma2/picon
+            # The standard picon directory is already a specially allowed
+            # destination; return its canonical path, never the symlink.
+            resolved[link] = '/usr/share/enigma2/picon'
+            self.assertEqual(sync.validate_destination(link), '/usr/share/enigma2/picon')
+            # No broad exemption for other managed roots or other picon sizes.
+            resolved['/etc/hdg17_files/picon'] = '/usr/share/enigma2/picon'
+            self.assertIsNone(sync.validate_destination('/etc/hdg17_files/picon'))
+            resolved['/usr/share/enigma2/hdg17_files/picon_50x30'] = '/usr/share/enigma2/picon'
+            self.assertIsNone(sync.validate_destination('/usr/share/enigma2/hdg17_files/picon_50x30'))
             resolved[link] = '/hdg17_files/picon'
             self.assertEqual(sync.validate_destination(link), '/hdg17_files/picon')
 
