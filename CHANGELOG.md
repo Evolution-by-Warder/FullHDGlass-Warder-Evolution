@@ -1,3 +1,11 @@
+## 1.0.87 — 2026-11-23 — overené a publikované vydanie opravy SAT piconov
+
+- Oddelená kontrola používateľských možností od bezpečnostnej validácie cieľovej cesty. SF8008 už bezpečne používa zachovaný picon alias `/usr/share/enigma2/hdg17_files/picon -> /usr/share/enigma2/picon`.
+- Pri dostatku miesta na internej flash (512 MiB pracovná rezerva navyše k 64 MiB systémovej rezerve) je zbytočný potvrdzovací dialóg vypnutý. Pri nedostatku miesta alebo priveľkom archíve zostávajú všetky bezpečnostné kontroly aktívne.
+- Prijímačové testy SF8008: 19,2°E 145 aktualizovaných PNG, 0 chýb; 23,5°E 184 PNG, výsledok „Stahování dokončeno“. Test upozornenia potvrdený vlastníkom.
+- Schválený a zlúčený PR #156; 18/18 relevantných CI úspešných. Oficiálny publikovací workflow #45245269154 úspešne vytvoril IPK 1.0.87 a aktualizoval produkčný aj testovací feed s rovnakým SHA-256.
+- Oficiálny Release: [v1.0.87](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.87). Úplné poznámky: [docs/warder-1.0.87-release-notes.md](docs/warder-1.0.87-release-notes.md). Existujúce grafiky, picony, konfigurácia a migrácia zostávajú nezmenené.
+
 ## 1.0.72 — 2026-11-08 — receiver-approved IPTV/CAID release
 
 - Fix missing IPTV video resolution with decoder fallback; preserve DVB behavior and dynamic dimensions.
