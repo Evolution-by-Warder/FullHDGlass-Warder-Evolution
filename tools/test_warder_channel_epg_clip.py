@@ -133,6 +133,66 @@ class ClippedEventTests(unittest.TestCase):
         with patch.dict(sys.modules, {"enigma": self.service_stub}):
             return method("_draw_rows")(self.renderer, self.component)
 
+
+    def test_native_row_count_change_rebuilds_picon_geometry_only_once(self):
+        # Receiver reproduction: 14 -> 9 rows updated item height, but the
+        # picons stayed small until reopening ChannelSelection.
+        sync = method("_sync_native_geometry")
+        usage = sync.__globals__["config"].usage
+        usage.servicelist_twolines = types.SimpleNamespace(value=False)
+        usage.serviceitems_per_page = types.SimpleNamespace(value=14)
+        usage.serviceitems_per_page_twolines = types.SimpleNamespace(value=9)
+        operations = []
+        instance = types.SimpleNamespace(
+            size=lambda: types.SimpleNamespace(width=lambda: 1065, height=lambda: 842),
+            invalidate=lambda: operations.append("invalidate"))
+        component = types.SimpleNamespace(mode=1, ItemHeight=60,
+                                          listHeight=842, instance=instance,
+                                          setItemsPerPage=lambda: None)
+        def set_mode(mode):
+            operations.append(("setMode", mode))
+            component.ItemHeight = 842 // usage.serviceitems_per_page.value
+        component.setMode = set_mode
+        target = types.SimpleNamespace(
+            _native_list_layout=None, _native_hidden=True, _last=("old",),
+            _row_geometry_key=("old",), _last_visible_top=2,
+            _row_fit_cache={"old": 1}, _glyph_width_cache={"old": 1},
+            _epg_snapshots={"old": 1}, _progress_paint_cache={"old": 1})
+        self.assertTrue(sync(target, component))
+        self.assertEqual(component.ItemHeight, 60)
+        self.assertEqual(operations.count(("setMode", 1)), 1)
+        self.assertFalse(target._native_hidden)
+        self.assertEqual(target._row_fit_cache, {})
+        self.assertTrue(sync(target, component))
+        self.assertEqual(operations.count(("setMode", 1)), 1)
+        usage.serviceitems_per_page.value = 9
+        self.assertTrue(sync(target, component))
+        self.assertEqual(component.ItemHeight, 93)
+        self.assertEqual(operations.count(("setMode", 1)), 2)
+        self.assertTrue(sync(target, component))
+        self.assertEqual(operations.count(("setMode", 1)), 2)
+        usage.serviceitems_per_page.value = 14
+        self.assertTrue(sync(target, component))
+        self.assertEqual(component.ItemHeight, 60)
+        self.assertEqual(operations.count(("setMode", 1)), 3)
+
+    def test_native_row_count_refresh_declines_invalid_geometry_and_template_list(self):
+        sync = method("_sync_native_geometry")
+        usage = sync.__globals__["config"].usage
+        usage.servicelist_twolines = types.SimpleNamespace(value=False)
+        usage.serviceitems_per_page = types.SimpleNamespace(value=0)
+        usage.serviceitems_per_page_twolines = types.SimpleNamespace(value=14)
+        component = types.SimpleNamespace(
+            mode=1, ItemHeight=45, listHeight=842,
+            instance=types.SimpleNamespace(
+                size=lambda: types.SimpleNamespace(width=lambda: 1065, height=lambda: 842)))
+        target = types.SimpleNamespace(_native_list_layout=None, _last=None)
+        self.assertFalse(sync(target, component))
+        usage.serviceitems_per_page.value = 9
+        # Unsupported list types do not receive ServiceListLegacy setMode.
+        self.assertTrue(sync(target, component))
+        self.assertIsNotNone(target._native_list_layout)
+
     def test_titles_never_reach_reserved_progress_column(self):
         self.assertTrue(self.draw())
         writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
