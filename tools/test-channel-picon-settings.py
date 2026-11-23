@@ -123,6 +123,39 @@ class SettingsTests(unittest.TestCase):
         self.assertEqual(target(directory, '400x240'), directory + '/picon_400x240')
         self.assertEqual(target('/media/usb/hdg17_files'), '/media/usb/hdg17_files/picon')
 
+    def test_ci_picon_download_choices_with_skin_managed_storage(self):
+        # Replay the exact 1.0.86 reported selection and PATHS destination.
+        # This suite runs in the FullHDGlass integration/OpenPLi CI workflows.
+        import importlib.util
+        module_path = PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py'
+        spec = importlib.util.spec_from_file_location('warderPiconSync_ci_storage', module_path)
+        sync = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sync)
+        bindings = [sync.task_binding_for_package_selector(x) for x in ('192E', '235E')]
+        self.assertTrue(all(bindings), bindings)
+        pref = sync.set_task_position_bindings(sync.default_preferences(), bindings)
+        self.assertEqual(pref['positions'], ['19.2E', '23.5E'])
+        pref.update(resolution='220x132', style='black',
+                    update_mode=sync.UPDATE_MODE_SYNC_TV)
+        for root in ('/usr/share/enigma2/hdg17_files', '/etc/hdg17_files'):
+            for size, leaf in (('50x30','picon_50x30'),
+                               ('220x132','picon'),
+                               ('400x240','picon_400x240')):
+                target = root + '/' + leaf
+                pref.update(resolution=size, destination=target)
+                self.assertTrue(sync.channel_preferences_ready(pref), (size, target))
+                self.assertEqual(sync.validate_destination(target), target)
+            for disallowed in (root, root+'/other', root+'/picon/untrusted'):
+                self.assertIsNone(sync.validate_destination(disallowed))
+        pref.update(resolution='220x132', destination='/etc/enigma2')
+        self.assertTrue(sync.channel_preferences_ready(pref))
+        self.assertIsNone(sync.validate_destination(pref['destination']))
+        self.assertIsNone(sync.validate_destination('/usr/share/enigma2'))
+        self.assertIsNone(sync.validate_destination('/'))
+        self.assertEqual(sync.skin_picon_destination('/usr/share/enigma2/hdg17_files',
+                                                     '220x132'),
+                         '/usr/share/enigma2/hdg17_files/picon')
+
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
         self.assertEqual(REGISTRY[18],'Channel sel. type')
