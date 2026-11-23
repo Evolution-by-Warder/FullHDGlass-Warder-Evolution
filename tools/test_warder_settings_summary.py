@@ -28,6 +28,25 @@ class SupportHeaderTests(unittest.TestCase):
         off = module.channel_diagnostic_suffix("35", False, True, 0, 0, 1, "en")
         self.assertIn("EPG: OFF/GLES", off)
 
+    def test_real_menu_template_number_is_not_confused_with_menu_icon_set(self):
+        import ast
+        source = (SOURCE / "plugin.py").read_text(encoding="utf-8")
+        self.assertIn('menusel(config.plugins.setupGlass17.par7.value)', source)
+        self.assertIn('_("Menu Icons")', source)
+        tree = ast.parse(source)
+        func = next(node for node in tree.body
+                    if isinstance(node, ast.FunctionDef) and node.name == "menusel")
+        assert len([node for node in tree.body
+                    if isinstance(node, ast.FunctionDef) and node.name == "menusel"]) == 1
+        scope = {"ISP38": False, "isATV": True}
+        exec(compile(ast.Module(body=[func], type_ignores=[]), "menu-id", "exec"), scope)
+        self.assertEqual(scope["menusel"]("List"), "2")
+        self.assertEqual(scope["menusel"]("Icons"), "1")
+        self.assertEqual(scope["menusel"]("PIG4"), "13")
+        self.assertEqual(scope["menusel"]("Li3"), "16")
+        scope["ISP38"] = True
+        self.assertEqual(scope["menusel"]("Li3"), "15")
+
     def test_original_selected_settings_line_remains_only_header_target(self):
         source = (SOURCE / "plugin.py").read_text(encoding="utf-8")
         self.assertIn('from .warderSettingsSummary import channel_diagnostic_suffix', source)
