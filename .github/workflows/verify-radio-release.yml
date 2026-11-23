@@ -2,7 +2,7 @@ name: Verify approved radio release
 on:
   pull_request:
     paths:
-      - '.github/workflows/verify-radio-release.yml'
+      - '.github/workflows/**'
       - 'source/**'
       - 'tools/test-radio-*'
       - 'tools/verify-production-release-state.py'
@@ -35,9 +35,20 @@ jobs:
             /design/
             /update-production.json
             /.github/workflows/verify-radio-release.yml
+            /.github/workflows/publish-warder-stable.yml
+            /.github/workflows/warder-approved-scope-auto-merge.yml
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Read-only safety check for retired publisher and preserved release path
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e .github/workflows/publish-warder-1.0.70.yml
+          test -s .github/workflows/publish-warder-stable.yml
+          test -s .github/workflows/warder-approved-scope-auto-merge.yml
+          test -s update-production.json
+          echo 'PASS: obsolete release-1.0.70 workflow removed, stable publisher and automatic review retained'
       - name: Verify current source, immutable version headers and country-radio installation safety
         shell: bash
         run: |
