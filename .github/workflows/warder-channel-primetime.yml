@@ -53,11 +53,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Verify approved base skin is byte-identical to main
+      - name: Verify only reviewed native Setup help geometry differs from main
         run: |
           git fetch --no-tags --depth=1 origin main
           git show origin/main:source/package-root/usr/share/enigma2/hd_glass17/skin.xml > /tmp/warder-approved-skin.xml
-          cmp /tmp/warder-approved-skin.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+          python tools/verify-solo4k-setup-geometry.py /tmp/warder-approved-skin.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
       - name: Verify bundled offline factory icons
         run: |
           python - <<'PY'
