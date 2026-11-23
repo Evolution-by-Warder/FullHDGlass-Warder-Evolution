@@ -77,7 +77,7 @@ jobs:
           testing=json.loads(Path('update-test.json').read_text())
           migration=json.loads(Path('update.json').read_text())
           current=production['version']
-          assert re.fullmatch(r'1\\.0\\.\\d+',current), 'unexpected stable version'
+          assert re.fullmatch(r'1[.]0[.][0-9]+',current), 'unexpected stable version'
           # Four actual rollback versions in the published feed, not a
           # frozen pre-1.0.85 list. The PR source may legitimately already
           # be the next version while the production feed is still old.
