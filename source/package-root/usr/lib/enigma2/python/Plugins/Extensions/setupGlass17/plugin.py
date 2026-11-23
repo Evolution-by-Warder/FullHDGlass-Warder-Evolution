@@ -9342,11 +9342,6 @@ class downloadMenu(Screen):
 			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
 			return
 		self.warderDABOnly = bool(warderRadio.selected(self.warderPiconPrefs) and not warderPiconSync.valid_task_selection(self.warderPiconPrefs))
-		# A missing/unsafe destination is not a missing resolution or colour.
-		# Report it explicitly, before the general channel-choice validator.
-		if prepared and not self.warderDABOnly and not warderPiconSync.validate_destination(self.warderPiconPrefs.get("destination")):
-			self.session.open(historyScreen, _("Result"), _("Invalid picon destination") + ":\n" + str(self.warderPiconPrefs.get("destination")))
-			return
 		if prepared and ((warderRadio.selected(self.warderPiconPrefs) and not warderRadio.ready(self.warderPiconPrefs)) or (not self.warderDABOnly and not warderPiconSync.channel_preferences_ready(self.warderPiconPrefs))):
 			self.session.open(historyScreen, _("Result"), _("Choose a resolution, colour and update method before downloading."))
 			return
