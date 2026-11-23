@@ -8105,7 +8105,16 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 	def showInfo(self):
 		self.runSetup()
 		version = self.readVersion()
-		self.textShowInfo = ui_text("Selected settings") + " – " + (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value) + ", " + _("HDD/SSD") + ": " + str(config.plugins.setupGlass17.par140.value))
+		from .warderSettingsSummary import channel_diagnostic_suffix
+		self.textShowInfo = ui_text("Selected settings") + " – " + (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value))
+		self.textShowInfo += channel_diagnostic_suffix(
+			config.plugins.setupGlass17.par19.value,
+			config.plugins.warderEpgListScroll.enabled.value,
+			allow_channel_epg_overlay(),
+			config.plugins.setupGlass17.par145.value,
+			config.plugins.setupGlass17.par146.value,
+			config.plugins.setupGlass17.par147.value, _)
+		self.textShowInfo += ", " + _("HDD/SSD") + ": " + str(config.plugins.setupGlass17.par140.value)
 		self.vip = ""
 		self.pwdV = None
 		if os.path.isfile('/etc/vip17') and os.path.isfile('/usr/bin/unrar_bin'):
