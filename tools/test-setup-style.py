@@ -96,6 +96,18 @@ def fingerprint_source(source):
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_pr156_flash_threshold_exception_is_scope_bound(self):
+        self.assertEqual(fingerprint_source(CURRENT), EXPECTED_SHA)
+        changed = CURRENT.replace('512 * 1024 * 1024', '0', 1)
+        self.assertNotEqual(changed, CURRENT)
+        with self.assertRaisesRegex(AssertionError, "internal-flash threshold"):
+            fingerprint_source(changed)
+        # A separate controller modification remains detectable even with
+        # the approved flash threshold normalized away.
+        changed = CURRENT.replace('if not self.toDown:', 'if self.toDown:', 1)
+        self.assertNotEqual(changed, CURRENT)
+        self.assertNotEqual(fingerprint_source(changed), EXPECTED_SHA)
+
     def test_picon_source_default_cannot_silently_change_to_mini(self):
         changed=CURRENT.replace('par231 = ConfigSelection(default="system"','par231 = ConfigSelection(default="mini"',1)
         self.assertNotEqual(changed,CURRENT)
