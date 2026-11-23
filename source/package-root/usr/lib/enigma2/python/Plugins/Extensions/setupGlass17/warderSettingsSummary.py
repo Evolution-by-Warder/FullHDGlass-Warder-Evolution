@@ -6,6 +6,22 @@ The EPG flag represents the user's preference, not proof of active scrolling.
 """
 
 
+# Support-only numbering. Keep the normal menu choice values and Enigma2
+# skin template numbers unchanged. 1 is always the factory/default "List".
+MENU_DISPLAY_ORDER = (
+    "List", "Icons", "Icons Right", "with PIG", "List and Icon",
+    "Icons Bar", "simply PIG", "PIG2", "PIG4", "Li2", "Li3",
+)
+
+
+def menu_support_number(value):
+    """One-based, stable menu number for screenshots, default List = 1."""
+    try:
+        return str(MENU_DISPLAY_ORDER.index(str(value)) + 1)
+    except ValueError:
+        return "?"  # Fail visibly; never call an unknown mode "default".
+
+
 def channel_diagnostic_suffix(channel_type, epg_scroll_enabled,
                               epg_renderer_allowed, name_font, event_font,
                               row_height, language="en"):
