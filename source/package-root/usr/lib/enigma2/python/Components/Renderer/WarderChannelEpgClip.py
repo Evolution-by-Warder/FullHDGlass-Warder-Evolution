@@ -83,6 +83,7 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_selected = None
         self._scroll_mode = None
         self._scroll_identity = None
+        self._native_list_layout = None
         # Never fake native EPG suppression with a tiny font. The C++ list
         # skips elements whose font pointer is null; where the image's SWIG
         # binding rejects None, leave its native list untouched.
@@ -738,6 +739,66 @@ class WarderChannelEpgClip(Renderer):
         self._diag("canvas_painted")
         return True
 
+    def _sync_native_geometry(self, component):
+        """Reapply image-native picon and row geometry only on a new/list-change.
+
+        OpenATV can update ItemHeight for an edited serviceitems_per_page
+        setting before reapplying the picon dimensions and text-cell
+        positions. Native setMode() is the supported route that updates all
+        three together; our canvas never attempts to resize picons itself.
+        Avoid repeated setMode calls on each 55/130-ms marquee tick.
+        """
+        try:
+            usage = config.usage
+            two_lines = bool(usage.servicelist_twolines.value)
+            setting = (usage.serviceitems_per_page_twolines
+                       if two_lines else usage.serviceitems_per_page)
+            per_page = int(setting.value)
+            if not 1 <= per_page <= 60:
+                return False
+            layout = (id(component), per_page, two_lines,
+                      component.instance.size().width(),
+                      component.instance.size().height())
+            if layout == getattr(self, "_native_list_layout", None):
+                return True
+            # Template lists have their own renderer: don't call legacy
+            # setMode on unknown implementations or other skin views.
+            if not (callable(getattr(component, "setMode", None))
+                    and callable(getattr(component, "setItemsPerPage", None))
+                    and hasattr(component, "listHeight")
+                    and hasattr(component, "ItemHeight")
+                    and hasattr(component, "mode")):
+                self._native_list_layout = layout
+                return True
+            component.setMode(component.mode)
+            # The native method resets the event font and picon geometry.
+            # Our overlay must suppress only the native event cell again
+            # after this operation, not keep its old cached coordinates.
+            self._native_hidden = False
+            self._native_list_layout = (
+                id(component), per_page, two_lines,
+                component.instance.size().width(),
+                component.instance.size().height())
+            self._last = None
+            self._row_geometry_key = None
+            self._last_visible_top = None
+            for cache_name in ("_row_fit_cache", "_glyph_width_cache",
+                               "_epg_snapshots", "_progress_paint_cache"):
+                cache = getattr(self, cache_name, None)
+                if cache is not None:
+                    cache.clear()
+            try:
+                component.instance.invalidate()
+            except (AttributeError, RuntimeError, TypeError):
+                pass
+            return True
+        except (AttributeError, RuntimeError, TypeError, ValueError,
+                ZeroDivisionError):
+            # Never partially paint our event canvas over unknown native
+            # geometry. The next safe refresh may retry after stabilization.
+            self._last = None
+            return False
+
     def refresh(self):
         # Native fast path never starts an EPG overlay repaint cycle.
         if not getattr(self, '_overlay_allowed', True):
@@ -764,6 +825,15 @@ class WarderChannelEpgClip(Renderer):
                     self._glyph_width_cache.clear()
                 self._native_disable_unsupported = False
                 self._last = None
+            # Apply native row-height, picon scale and service text-cell
+            # positions together when the channel-list row count changes.
+            # Do this before disabling celServiceInfo and repainting canvas.
+            # Compatibility mocks without this optional method stay native.
+            sync_geometry = getattr(self, "_sync_native_geometry", None)
+            if callable(sync_geometry) and not sync_geometry(component):
+                self.instance.clear(self._transparent)
+                self._restore_native()
+                return
             # Unsupported views must remain completely native; never
             # toggle celServiceInfo on every timer tick for those modes.
             if self._progress_mode() is None:
