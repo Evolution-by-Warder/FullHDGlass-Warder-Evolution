@@ -24,6 +24,7 @@
 ## Vydanie, aktualizácia a bezpečný návrat
 
 - Oficiálny balík: `enigma2-plugin-skins-fullhdglass_1.0.85_all.ipk`.
-- Vydávací postup: schválený PR [#151](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/151), následná príprava verzie a kontrola `publish-warder-stable.yml`; SHA-256 finálneho vydaného balíka sa zaznamená až po produkčnom buil­de.
+- Vydávací postup: schválené [PR #151](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/151) a [PR #152](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/152), oficiálny [publisher #45179558117](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45179558117) úspešne dokončený vrátane koncového overenia.
+- Finálny IPK 18 392 206 B, SHA-256 `f9f4af368cc2b7b6474dbde80f44a27c989de7c687b35e896bcf8af042c536d7`, totožné v GitHub Release, kontrolnom súbore a oboch aktualizačných feedoch.
 - Výsledný balík sa distribuuje cez oficiálny Release a `update-production.json`/`update-test.json`; starý migračný most `update.json` pre 1.0.18 musí zostať bezpečný.
 - Po aktualizácii **reštartujte Enigma2**. Pri návrate na staršiu verziu skontrolujte kompatibilitu opkg a aktuálneho image.
