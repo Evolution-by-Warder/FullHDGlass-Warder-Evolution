@@ -80,7 +80,9 @@ def build(input_dir, output, report_dir=REPORT):
                             require(REFERENCE.fullmatch(ref), ref)
                             name = ref + ".png"
                             if "artwork" in row:
-                                raw = art[row["artwork"]].read(size + "-" + style + ".png")
+                                source = row["artwork"]
+                                variants = recipe["artwork"][source].get("variants_from", source)
+                                raw = art[variants].read(size + "-" + style + ".png")
                             else:
                                 raw = donors[row["selector"]].read(row["reference"] + ".png")
                             require(raw.startswith(PNG) and struct.unpack(">II", raw[16:24]) == dimensions, name)

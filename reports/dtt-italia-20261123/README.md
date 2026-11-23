@@ -1,6 +1,6 @@
 # DTT ITALIA a talianske feedy – kontrolná dávka 23. novembra 2026
 
-**Stav pred vydaním.** Zostavených a overených je 27 archívov. Každá nová grafika má originál a 9 výsledných PNG. Z 96 kontrol White/Black pri 48 nových grafikách má 86 výsledok REVIEW a 10 PASS. Pri kolízii farieb s pozadím náhľad zachováva farebnosť značky. Konkrétne pri Italia Fishing TV slabne biely text na bielom podklade, pri Radio Classica na čiernom podklade tmavne časť logotypu. Balíky na tejto pracovnej vetve sú určené na kontrolu pred vydaním.
+**Stav pred vydaním.** Zostavených a overených je 27 archívov. Zo 48 zdrojových súborov vzniklo 45 graficky odlišných sád. Tri výstupy boli vo všetkých deviatich rozmerových a farebných kombináciách bajtovo totožné s inými sadami (Rai 5 a RTV San Marino). Ich originály zostávajú evidované, hotové varianty zdieľajú jednu kópiu. Z 90 kontrol White/Black pri jedinečných sadách má 80 výsledok REVIEW a 10 PASS. Pri kolízii farieb s pozadím náhľad zachováva farebnosť značky. Konkrétne pri Italia Fishing TV slabne biely text na bielom podklade, pri Radio Classica na čiernom podklade tmavne časť logotypu. Balíky na tejto pracovnej vetve sú určené na kontrolu pred vydaním.
 
 | Výber | Referencie v bouquetoch | Nové PNG naprieč 9 variantmi | Nahradené PNG | Zachované PNG zo starých balíkov |
 | --- | ---: | ---: | ---: | ---: |
@@ -19,13 +19,13 @@ Rozmery sú 50×30, 220×132 a 400×240, pozadia Transparent, White a Black. Po�
 
 ## Náhľady na kontrolu
 
-Každá skupina zobrazuje Transparent, White a Black na rozmere 220×132. Originál a všetky tri rozmery sú v ZIP-e pod SHA zdroja v priečinku `artwork/`.
+Každá skupina zobrazuje Transparent, White a Black na rozmere 220×132. Originál je v ZIP-e pod SHA zdroja v priečinku `artwork/`. Pole `variants_from` pri troch duplicitách odkazuje na spoločnú sadu všetkých rozmerov.
 
 ![Náhľad grafík 1 až 20](preview-1.jpg)
 
 ![Náhľad grafík 21 až 40](preview-2.jpg)
 
-![Náhľad grafík 41 až 48](preview-3.jpg)
+![Náhľad grafík 41 až 45](preview-3.jpg)
 
 ## Opätovné zostavenie
 

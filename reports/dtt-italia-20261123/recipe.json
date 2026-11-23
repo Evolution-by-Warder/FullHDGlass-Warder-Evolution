@@ -339,7 +339,7 @@
       }
     },
     "8d61a563943ce48ee4666f4555a1e27f0e25a36a83431ed6a9376f609e0a3f43": {
-      "sha256": "7e76e504f09534379b79fdad7364f068662dd3c5cb9961f252bf605f440beb93",
+      "sha256": "7e5479419c5824fddce1480138f5f295eb295430ccaf9b4753c9f02ee588b270",
       "styles": {
         "black": [
           "REVIEW",
@@ -349,7 +349,8 @@
           "REVIEW",
           "WHOLE_COLOURED_LOGO_CHANGED: 2326 pixels; neutral text, disconnected letters, panels, alpha and AA are protected; raw engine status=REVIEW"
         ]
-      }
+      },
+      "variants_from": "062a81bafb377a38a5056390f7fdcb6e2be907e44a71c825e419956668401d74"
     },
     "967b68855941ef2eb867569b1b090a29c822921f4ec7b75bc910e94818fe175d": {
       "sha256": "e6216e80adf7826dfa95a2c17130a259d44860e8d8806cfce2ede7414cf17573",
@@ -599,7 +600,7 @@
       }
     },
     "f64a71cc363a1a84fc41d14a8545e73ad0a45112ae7725615d3f160b0a6bab9b": {
-      "sha256": "2102d76bf986c12eb1cabda7a418bc6b824f8ae14262ab49e990e29f8ee507cf",
+      "sha256": "0161560b91c980b1ce2d48c5ac8754e8a3a4a1c4637126f3a0ce7c3a173815e3",
       "styles": {
         "black": [
           "REVIEW",
@@ -609,10 +610,11 @@
           "REVIEW",
           "WHOLE_COLOURED_LOGO_CHANGED: 2326 pixels; neutral text, disconnected letters, panels, alpha and AA are protected; raw engine status=REVIEW"
         ]
-      }
+      },
+      "variants_from": "062a81bafb377a38a5056390f7fdcb6e2be907e44a71c825e419956668401d74"
     },
     "ff1b9d38702a94fbc0cfbaa2493bd6209b86bcacc1ae299d57d9223e99972df5": {
-      "sha256": "180b0b2ed13b21ab1af3741124bb44bb3d39a0d946756b1cfad1e1cbb0976c5f",
+      "sha256": "596b389ccf18508b06f31f3c5123a90c88219aaee17985503fd3e3a122548644",
       "styles": {
         "black": [
           "REVIEW",
@@ -622,7 +624,8 @@
           "REVIEW",
           "WHOLE_COLOURED_LOGO_CHANGED: 2297 pixels; neutral text, disconnected letters, panels, alpha and AA are protected; raw engine status=REVIEW"
         ]
-      }
+      },
+      "variants_from": "9f59606a1806b916d2a0a7211ad56322636cda338dc5474403a43d7b763e3b68"
     }
   },
   "base": {
