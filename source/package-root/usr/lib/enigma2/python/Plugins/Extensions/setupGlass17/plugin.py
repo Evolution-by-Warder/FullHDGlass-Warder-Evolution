@@ -1492,13 +1492,6 @@ def startHdg17(reason, **kwargs):
 				InfoBar.showRadioButton = _warderRadioButtonTrace
 		except Exception:
 			pass
-		# Native wide setup lists: separate long translated labels from sliders.
-		# The helper clamps by actual widget width; compact plugin screens stay native.
-		try:
-			from .warderNativeConfigSpacing import install as _installWideConfigSpacing
-			_installWideConfigSpacing()
-		except (ImportError, AttributeError) as error:
-			Writelog("FullHDGlass native config spacing: %s" % error)
 		from .warderEpgCompat import configure_graph as _configureWarderGraph
 		_configureWarderGraph(config)
 		# Warder native graphical EPG: picons only, compact service column.
