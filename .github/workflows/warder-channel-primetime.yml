@@ -106,4 +106,5 @@ jobs:
           python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
           python -m unittest discover -s tools -p 'test_fastscan_epg_name_geometry.py' -v
           python tools/test-setup-style.py NativePiconSetupHelpBounds -v
+          python -m unittest discover -s tools -p 'test_warder_settings_summary.py' -v
           python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
