@@ -1,3 +1,11 @@
+FullHDGlass 1.0.86 — 23.11.2026
+Fixed satellite channel picon downloads for large 13°E and 19.2°E bundles that previously failed when /tmp lacked temporary space.
+Verified channel ZIP archives now stage on the user-selected picon HDD/SSD filesystem, not limited receiver /tmp.
+Preserved a 64 MiB free-space reserve, SHA-256 checks for every part and full package, PNG validation and atomic per-picon replacement.
+After success or failure the temporary ZIP is removed, while existing picons and user files remain untouched.
+All previously confirmed FullHDGlass 1.0.85 EPG, channel list and diagnostic improvements remain intact.
+After updating, restart Enigma2. Receiver validation of this exact new download path remains pending.
+
 FullHDGlass 1.0.85 — 23.11.2026
 Fixed channel and EPG title overlap with accurate native service-number and event-column geometry.
 Changing the number of visible channels now synchronizes native row height, picon scale and text positions without closing and reopening the list.
