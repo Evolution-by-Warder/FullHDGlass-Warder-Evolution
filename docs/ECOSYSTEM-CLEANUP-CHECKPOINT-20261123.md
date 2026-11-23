@@ -196,3 +196,16 @@ Zmazať len ďalšie jednotlivo dokázané nepotrebné položky **po** preveren�
 ### Samostatná dokončená korekcia verejných odkazov
 
 Na pracovnej vetve tejto dávky je opravený `README.md`: hlavný download už nesmeruje na historickú `v1.0.69` a staré nápovedné linky `v1.0.66/67` smerujú na platnú `v1.0.84`, pričom historický text zostal. `docs/CURRENT-RELEASE.md` už správne označuje `v1.0.84` namiesto `v1.0.73` a uvádza presný SHA-256, byte size, zachované rollbacky a migračné výnimky. Tieto dokumentačné zmeny **nie sú odstránením Releases** a nesmú spustiť nový vydávací IPK.
+
+
+## 23. 11. 2026 — oprava skutočného stavu DNS/webu a pôvodného FTP počasia
+
+### DNS a verejný web: FUNKČNÉ — potvrdené vlastníkom
+Vlastník 23. 11. 2026 predložil priamy snímok fungujúcej stránky `https://warder-evolution.eu/` v prehliadači Firefox: úspešne načítaná oficiálna titulná stránka Warder Evolution, HTTPS, menu Home / Privacy / Terms / GitHub a karty projektov. Vlastník výslovne potvrdil plnú funkčnosť domény. **Predchádzajúce hlásenia „DNS SERVFAIL/REFUSED“, „web čaká na aktiváciu“ či „neoverené“ už nesmú byť citované ako aktuálna otvorená úloha pre DNS a titulnú stránku.** Toto je reálne používateľské overenie konkrétnej verejnej adresy; nie je to automatický test každej podstránky alebo dostupnosti z každej siete. Nepresúvaj hotovú aktiváciu domény znovu do TODO.
+
+### `weatherIcons/piconWeather.zip`: presný pôvodný zdroj identifikovaný; distribúcia ešte nie je hotová
+- Súčasný verejný `main` stále **nemá** `assets/warder/downloads/weather/icons/piconWeather.zip`; `downloads.json` nemá službu `weatherIcons`. Stav `NOT_EXPOSED` sa zámerne nemení, kým archív nie je skutočne skopírovaný a overený.
+- Pôvodný archív je evidovaný v súkromnom repo `Evolution-by-Warder/Trezor`, v `archives/hdglass-ftp/ORIGINAL-FTP-INVENTORY.md`. Presná pôvodná cesta: `weatherIcons/piconWeather.zip`, **14 463 135 B**, **SHA-256 `39cc98af95ef07c1b22d701399be2e60a39f7c54080c5c10a2d193858b5b34ad`**.
+- Zálohový kontext: súkromný GitHub Release `Evolution-by-Warder/Trezor` / `hdglass-ftp-snapshot-2026-09-12`, archív `HDGlass_FTP_GOLDEN_MASTER_2026-09-12.zip` (535 201 061 B). Privátny inventár potvrdzuje identitu zaznamenaného súboru, no jeho binárne bajty neboli týmto kontrolným krokom vyextrahované a prepočítané.
+- **Nasledujúci jediný realizačný krok:** z vlastníkovej chránenej zálohy extrahovať presne `weatherIcons/piconWeather.zip`, overiť veľkosť a SHA-256; pri zhode umiestniť do `assets/warder/downloads/weather/icons/`, doplniť `downloads.json`, opraviť presne túto položku v `legacy-ftp-migration.tsv` a jej sumári, otestovať bezpečné extrahovanie na externé `hdg17_files`, CI a následne publikovať cez riadny schválený PR. **Neimprovizovať iný ZIP ani nepoužiť farebné `picWeaInf.zip` ako náhradu.** Starý FTP snapshot/Trezor nikdy neprepisovať.
+- **Aktuálny stav**: originál presne lokalizovaný v inventári súkromnej zálohy, ale samostatný archív zatiaľ nie je distribuovaný; neoznačovať `weatherIcons` za hotový bez byte-level overenia a produkčného merge.
