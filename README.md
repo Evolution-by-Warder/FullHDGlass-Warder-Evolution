@@ -2,16 +2,16 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Aktuálne ostré vydanie — 22. november 2026
+## Aktuálne ostré vydanie — 23. november 2026
 
-**FullHDGlass 1.0.84** pre podporované OpenPLi/OpenATV. [Aktuálne poznámky k vydaniu](docs/CURRENT-RELEASE.md). [Oficiálny IPK 1.0.84](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.84/enigma2-plugin-skins-fullhdglass_1.0.84_all.ipk). Staršie inštalácie používajú schválenú migračnú cestu; aktuálna ostrá verzia a SHA-256 sú uvedené v `update-production.json`.
+**FullHDGlass 1.0.85** pre podporované OpenPLi/OpenATV. Opravená geometria zoznamu kanálov/EPG a diagnostické nastavenia; fyzicky potvrdené na GigaBlue s OpenATV 8.1. [Aktuálne poznámky k vydaniu](docs/CURRENT-RELEASE.md). [Oficiálny IPK 1.0.85](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.85/enigma2-plugin-skins-fullhdglass_1.0.85_all.ipk). Staršie inštalácie používajú schválenú migračnú cestu; aktuálna ostrá verzia a SHA-256 sú uvedené v `update-production.json`.
 
 
 34,5°W a 50°E: všetky tri rozmery a pozadia Transparent, White a Black. Úplnosť troch pozadí sa kontroluje pre všetky satelity aj providery. [Pravidlo pozadí](docs/WARDER-BACKGROUND-POLICY.txt).
 
 ## Installation
 
-[Download verified stable IPK 1.0.84](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.84/enigma2-plugin-skins-fullhdglass_1.0.84_all.ipk).
+[Download verified stable IPK 1.0.85](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.85/enigma2-plugin-skins-fullhdglass_1.0.85_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 
