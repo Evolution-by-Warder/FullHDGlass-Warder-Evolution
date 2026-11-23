@@ -8110,7 +8110,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			_warder_osd_lang = config.osd.language.value
 		except (AttributeError, TypeError, ValueError):
 			_warder_osd_lang = "en"
-		self.textShowInfo = ui_text("Selected settings") + " – " + (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value))
+		self.textShowInfo = ui_text("Selected settings") + " – " + (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", Menu: " + menusel(config.plugins.setupGlass17.par7.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value))
 		self.textShowInfo += channel_diagnostic_suffix(
 			config.plugins.setupGlass17.par19.value,
 			config.plugins.warderEpgListScroll.enabled.value,
