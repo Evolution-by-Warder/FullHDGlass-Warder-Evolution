@@ -112,6 +112,24 @@ class ChannelWorkerTests(unittest.TestCase):
             self.assertEqual(called, [])
             self.assertEqual(list(Path(root).iterdir()), [])
 
+    def test_receiver_free_space_reserve_is_not_consumed_by_archive(self):
+        from unittest.mock import patch
+        import types
+        with tempfile.TemporaryDirectory() as root:
+            # 12-byte ZIP requires 10 MiB conservative overhead + 64 MiB
+            # receiver reserve; 73 MiB is not enough to stage it safely.
+            free = 73 * 1024 * 1024
+            with patch.object(worker_module.shutil, "disk_usage",
+                              return_value=types.SimpleNamespace(free=free)):
+                worker = worker_module.ChannelWorker(
+                    {"bytes": 12}, root, None,
+                    lambda *a: self.fail("must not download into receiver reserve"),
+                    lambda *a: self.fail("must not install"))
+                worker.run()
+            self.assertEqual(list(worker.drain())[-1],
+                             ("error", "insufficient destination space for Warder channel package"))
+            self.assertEqual(list(Path(root).iterdir()), [])
+
     def test_bad_archive_cleans_partial_zip_on_selected_storage(self):
         with tempfile.TemporaryDirectory() as root:
             staged = []
