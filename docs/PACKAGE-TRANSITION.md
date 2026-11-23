@@ -5,7 +5,7 @@ Vlastník 24. októbra 2026 výslovne schválil premenovanie inštalačného bal
 ## Aktualizácia existujúcej inštalácie
 
 1. V konfigurácii skinu potvrď migračnú aktualizáciu **1.0.18**. Tá ešte používa pôvodný identifikátor `enigma2-skin-fullhdglass17` a doplní ochranu používateľských súborov pri jeho výmene.
-2. Po reštarte GUI otvor konfiguráciu a potvrď následnú **1.0.19**. Tá prejde na `enigma2-plugin-skins-fullhdglass-warder-evolution`.
+2. Po reštarte GUI otvor konfiguráciu a potvrď aktuálnu **ostré vydanie 1.0.84** z `update-production.json`. Nahradí pôvodnú opkg identitu za `enigma2-plugin-skins-fullhdglass-warder-evolution`. Historická prvá verzia nového balíka bola 1.0.19, ale už nie je potrebné ju inštalovať ako samostatný medzistupeň po pripravenom 1.0.18.
 3. Po dokončení bude skin vo vlastnom zozname nainštalovaných balíkov OpenATV pod **Balíčky vzhľadu**. Odtiaľ ho možno štandardne spravovať a odstrániť.
 
 Nejde o pridanie skinu do cudzieho online inštalačného feedu OpenATV. Zaradenie používa štandardný prefix skutočne nainštalovaného balíka, bez zásahu do systémového PluginBrowser.py a bez falošnej registračnej položky.
@@ -18,6 +18,6 @@ Prechodná verzia 1.0.18 ešte pred odstránením pôvodného balíka uloží po
 
 ## Aktualizačné kanály
 
-Pôvodné `update.json` a `update-test.json` ponúkajú prípravnú 1.0.18. Tá aj nová 1.0.19 používajú `update-production.json`, kde je finálne produkčné vydanie. Tým existujúci používatelia nepreskočia krok potrebný na uchovanie svojich súborov.
+**Aktuálna politika 23.11.2026:** starý `update.json` na `main` úmyselne naďalej ponúka migračnú 1.0.18 (zámerná výnimka, nie zastaraná omylom). `main/update-test.json` už ponúka overenú 1.0.84, rovnako ako `update-production.json`. Staršie nainštalované TEST verzie však majú samostatnú hardcoded URL `warder-modernization-work/update-test.json` (teraz 1.0.72); jej cieľový balík zostáva chránený, kým nebude migrácia TEST klientov overená. Po úspešnom prechode cez 1.0.18 sa ďalšie aktualizácie riadia produkčným manifestom. Tým existujúci používatelia nepreskočia krok potrebný na uchovanie svojich súborov.
 
 Oba malé IPK sa zostavia a overia proti svojmu payloadu. Najprv sa zverejnia ich presné bajty, overí sa verejné stiahnutie a až potom sa naraz nastavia všetky tri manifesty. Kontroly pokrývajú kategóriu podľa názvu balíka, zachovanie XML/záloh/odkazov, odmietnutie chybných záznamov a poradie publikovania. Fyzický test tejto migrácie na prijímači zatiaľ netvrdíme.

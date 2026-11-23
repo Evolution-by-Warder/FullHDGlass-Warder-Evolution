@@ -3,6 +3,12 @@ on:
   pull_request:
     paths:
       - '.github/workflows/**'
+      - 'packages/**'
+      - 'update.json'
+      - 'update-test.json'
+      - 'tools/retain-fullhdglass-stable.py'
+      - 'tools/test-retain-four-stable.py'
+      - 'docs/RELEASE_RETENTION_POLICY.md'
       - 'docs/ECOSYSTEM-CLEANUP-CHECKPOINT-20261123.md'
       - 'source/**'
       - 'tools/test-radio-*'
@@ -35,6 +41,8 @@ jobs:
             /docs/
             /design/
             /update-production.json
+            /update-test.json
+            /update.json
             /.github/workflows/verify-radio-release.yml
             /.github/workflows/publish-warder-stable.yml
             /.github/workflows/warder-approved-scope-auto-merge.yml
@@ -50,6 +58,38 @@ jobs:
           test -s .github/workflows/warder-approved-scope-auto-merge.yml
           test -s update-production.json
           echo 'PASS: obsolete release-1.0.70 workflow removed, stable publisher and automatic review retained'
+      - name: Verify rollback retention, legacy bootstrap, and current updater feeds (no IPK build)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B tools/test-retain-four-stable.py -v
+          python3 -B tools/test-package-transition.py -q
+          python3 -B tools/test-legacy-950-upgrade.py -q
+          python3 - <<'PY'
+          import json
+          import re
+          import subprocess
+          from pathlib import Path
+          files = subprocess.check_output(
+              ['git','ls-tree','-r','--name-only','HEAD','packages/'],text=True).splitlines()
+          ipks = sorted(x for x in files if x.endswith('.ipk'))
+          versions = {'1.0.84','1.0.83','1.0.82','1.0.80','1.0.72'}
+          expected = {'packages/enigma2-plugin-skins-fullhdglass_'+v+'_all.ipk' for v in versions}
+          expected.add('packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk')
+          assert set(ipks) == expected, ('wrong IPK retained set', set(ipks)^expected)
+          assert all(x+'.sha256' in files for x in expected)
+          assert not any(x.endswith('.ipk.sha256') and x.removesuffix('.sha256') not in files for x in files)
+          production=json.loads(Path('update-production.json').read_text())
+          testing=json.loads(Path('update-test.json').read_text())
+          migration=json.loads(Path('update.json').read_text())
+          assert testing['version']==production['version']=='1.0.84'
+          assert testing['package_url']==production['package_url']
+          assert testing['sha256']==production['sha256']
+          assert production['package_url'].endswith('/enigma2-plugin-skins-fullhdglass_1.0.84_all.ipk')
+          assert migration['version']=='1.0.18'
+          assert migration['package_url'].endswith('/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk')
+          print('PASS: four current stable versions, two documented migration exceptions, no orphan SHA')
+          PY
       - name: Verify current source, immutable version headers and country-radio installation safety
         shell: bash
         run: |

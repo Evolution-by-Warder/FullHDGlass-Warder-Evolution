@@ -1,24 +1,19 @@
-# GitHub Releases – retention and safe cleanup
+# Warder Evolution – bezpečná retencia vydaní
 
-Status as of 2026-11-09. This policy is part of the cross-project Warder release hygiene programme. **It does not authorize blind automatic deletions.**
+**Nové pravidlo vlastníka: 23. 11. 2026 (nadradené staršej politike piatich vydaní).** V distribúcii a v aktuálnych zdrojových balíkoch ponechať **najnovšie ostré vydanie a najviac tri predchádzajúce ostré vydania** každého programu. TEST/RC nie sú ostré verzie. Nemaže sa Git história, tagy, zdrojové testy, schválené grafiky, manifesty dát, používateľské súbory ani Trezor.
 
-## Inventory
-- Repository: `Evolution-by-Warder/FullHDGlass-Warder-Evolution`
-- Observed GitHub Releases: **58**
-- Latest observed tag: `v1.0.76`
+Pre FullHDGlass je retenčná štvorica **v1.0.84 / v1.0.83 / v1.0.82 / v1.0.80**. Historická chýbajúca 1.0.81 nie je ostrým vydaním v tejto štvorici.
 
-## Policy
-1. Keep at least the **five most recent stable production releases** in each actively distributed project, plus specifically identified historical milestones and any supported rollback version.
-2. Keep **every release currently referenced** by an updater, feed, installer, plugin catalog, README, documentation, published package manifest or an active user-facing URL, regardless of age.
-3. Identify stale TEST/RC builds separately; never count them as production rollback releases. A candidate can be removed only after its source and test evidence are retained and all relevant refs have been checked.
-4. Before removing a Release or its asset, inventory versions/tags/URLs and run repository-wide searches for references, validate that a currently supported installed version can still update or reinstall, and preserve a verified recovery copy.
-5. Deletion of a GitHub Release, deletion of an asset and deletion of a Git tag are **separate operations**. Never rewrite release artifacts or silently remove tags. Record actions and exact identifiers in the project progress register.
-6. Apply the policy after each new stable publication and periodically review accumulated TEST assets. Publishing automation must not delete previous versions as a side effect.
+## Povinné migrácie a výnimky
 
-## Pending cleanup
+- **Legacy 1.0.18:** `update.json` je bootstrap zo starej `enigma2-skin-fullhdglass17` identity. `preinst` aktuálnej identity výslovne blokuje neoverený skok; preto musí pôvodná 1.0.18 zostať dostupná, kým všetky podporované staré inštalácie prejdú bezpečne do ostrého vydania. Číslo 1.0.18 sa nezapočítava do štyroch ostrých rollbackov.
+- **Legacy TEST 1.0.72:** produkčný kód pre staršie `-test` inštalácie používa `warder-modernization-work/update-test.json`, ktorý na 1.0.72 naďalej odkazuje. Tento súbor zatiaľ zostáva v `main/packages/`, kým sa testovacím klientom bezpečne zmení cesta. Nie je to piate ostré vydanie.
+- **Aktuálny main TEST feed:** `main/update-test.json` prechádza zo zastaranej 1.0.69 na rovnaký overený package URL/SHA ako `update-production.json` (1.0.84). Starý `update.json` zachováva 1.0.18, ale už uvádza následnú produkčnú 1.0.84; jeho prepis na nové meno IPK by mohol poškodiť staré prijímače.
 
-The existing 58 Releases are **inventory only**, not a reviewed deletion list. First check all live updater URLs and installation dependencies, then produce an explicit keep/remove manifest. Do not delete any Release until that manifest has been validated.
+## Vydávanie a automatické prerezávanie
 
+`publish-warder-stable.yml` overí zdroj, syntaktiku, existujúce regresie, celé IPK/SHA a nemenný GitHub Release. Až potom publikuje `update-production.json` a `update-test.json` s rovnakou overenou verziou a vykoná `tools/retain-fullhdglass-stable.py --apply`. Tento nástroj odmieta osirelé SHA, neočakávanú identitu, nepripravený legacy bootstrap, nesúlad test/stable feedu alebo chýbajúce štyri ostré dvojice. Zostávajú len štyri ostré verzie a doložené výnimky. Nevyvoláva sa vydanie pri samotnej zmene workflowu; novú ostrú verziu spúšťa zmena zdrojovej verzie/control alebo vedomý dispatch.
 
-## Cross-project scope
-Apply the same release hygiene process in FullHDGlass, PiconHub, GSU and Warder Radio. Exempt backup/archival snapshots from generic pruning. The aim is to keep release history readable without breaking installations or update feeds.
+Staršie GitHub Releases / TEST artefakty môžu byť odstránené **iba po** nezávislej kontrole aktívnych URL, feedov, inštalačných závislostí a možnosti obnovy. GitHub Release, release asset a tag sú tri odlišné veci. Nikdy neodstráň fungujúci rollback bez náhrady; historické vydanie z Git histórie nie je náhradou za aktívnu aktualizačnú adresu. Pri nemožnosti overiť aktívne odkazy ponechaj označenú výnimku. Súkromné/originálne FTP zálohy sa nemenia.
+
+**Bodový inventár 23.11.2026:** `main/packages/` pôvodne obsahoval 61 položiek, z toho 48 súborov (24 starých dvojíc IPK+SHA) bolo identifikovaných ako kandidáti na odstránenie po kontrole a presmerovaní aktívnych feedov. Presné počty odstránených položiek, zmenené HEAD a výsledky testov udržiava jediný `docs/ECOSYSTEM-CLEANUP-CHECKPOINT-20261123.md`, nie tento historický inventár.
