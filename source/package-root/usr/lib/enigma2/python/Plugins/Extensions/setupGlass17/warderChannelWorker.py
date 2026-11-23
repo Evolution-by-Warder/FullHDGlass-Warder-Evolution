@@ -46,7 +46,11 @@ class ChannelWorker(object):
             if package_bytes < 1:
                 raise ValueError("invalid Warder channel package size")
             needed = int((package_bytes * 2.2) / (1024 * 1024)) + 10
-            if int(shutil.disk_usage(self.destination).free / (1024 * 1024)) < needed:
+            # Retain 64 MiB for filesystem housekeeping and receiver
+            # services, in addition to the conservative ZIP/PNG allowance.
+            # shutil.disk_usage().free is the unprivileged usable space.
+            reserve = 64 * 1024 * 1024
+            if shutil.disk_usage(self.destination).free < needed * 1024 * 1024 + reserve:
                 raise ValueError("insufficient destination space for Warder channel package")
             # A hidden .zip cannot be mistaken for a picon. The finally
             # block removes it after success, download errors or bad SHA.
