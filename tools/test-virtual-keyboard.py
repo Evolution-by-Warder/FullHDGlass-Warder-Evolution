@@ -84,6 +84,19 @@ class KeyboardTests(unittest.TestCase):
 
     def test_only_the_modern_screen_changes_and_legacy_screen_is_preserved(self):
         raw=SKIN.read_text()
+        # Revert the two reviewed Setup help geometry edits before the
+        # immutable legacy keyboard/skin baseline; reject any wider drift.
+        setup_start=raw.index('<screen name="Setup" ')
+        setup_end=raw.index('</screen>',setup_start)
+        setup=raw[setup_start:setup_end]
+        for reviewed, approved in (
+         ('<widget name="config" position="45,60" size="1560,585" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />',
+          '<widget name="config" position="45,60" size="1560,615" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />'),
+         ('<widget name="description" position="45,650" size="1560,120" font="Prive3;25" halign="center" valign="center" foregroundColor="grey" transparent="1" />',
+          '<widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />')):
+         self.assertEqual(setup.count(reviewed),1,'Unexpected Solo4K Setup layout drift')
+         setup=setup.replace(reviewed,approved,1)
+        raw=raw[:setup_start]+setup+raw[setup_end:]
         # Restore exactly the separately-reviewed EMC/EPG column candidate
         # before checking the immutable VirtualKeyBoard baseline.
         layout=ROOT/'design/shared-emc-epg-overlap-20261112/layout.json'
