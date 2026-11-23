@@ -73,19 +73,30 @@ jobs:
           files = subprocess.check_output(
               ['git','ls-tree','-r','--name-only','HEAD','packages/'],text=True).splitlines()
           ipks = sorted(x for x in files if x.endswith('.ipk'))
-          versions = {'1.0.84','1.0.83','1.0.82','1.0.80','1.0.72'}
-          expected = {'packages/enigma2-plugin-skins-fullhdglass_'+v+'_all.ipk' for v in versions}
-          expected.add('packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk')
-          assert set(ipks) == expected, ('wrong IPK retained set', set(ipks)^expected)
-          assert all(x+'.sha256' in files for x in expected)
-          assert not any(x.endswith('.ipk.sha256') and x.removesuffix('.sha256') not in files for x in files)
           production=json.loads(Path('update-production.json').read_text())
           testing=json.loads(Path('update-test.json').read_text())
           migration=json.loads(Path('update.json').read_text())
-          assert testing['version']==production['version']=='1.0.84'
+          current=production['version']
+          assert re.fullmatch(r'1\\.0\\.\\d+',current), 'unexpected stable version'
+          # Four actual rollback versions in the published feed, not a
+          # frozen pre-1.0.85 list. The PR source may legitimately already
+          # be the next version while the production feed is still old.
+          native_prefix='packages/enigma2-plugin-skins-fullhdglass_'
+          retained=sorted(
+              (name[len(native_prefix):-len('_all.ipk')] for name in ipks
+               if name.startswith(native_prefix) and name.endswith('_all.ipk')
+               and name != native_prefix+'1.0.72_all.ipk'),
+              key=lambda value: tuple(map(int,value.split('.'))), reverse=True)
+          assert len(retained)==4 and retained[0]==current, ('wrong stable retained versions',retained,current)
+          expected={native_prefix+v+'_all.ipk' for v in retained+['1.0.72']}
+          expected.add('packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk')
+          assert set(ipks)==expected, ('wrong IPK retained set', set(ipks)^expected)
+          assert all(x+'.sha256' in files for x in expected)
+          assert not any(x.endswith('.ipk.sha256') and x.removesuffix('.sha256') not in files for x in files)
+          assert testing['version']==production['version']
           assert testing['package_url']==production['package_url']
           assert testing['sha256']==production['sha256']
-          assert production['package_url'].endswith('/enigma2-plugin-skins-fullhdglass_1.0.84_all.ipk')
+          assert production['package_url'].endswith('/enigma2-plugin-skins-fullhdglass_'+current+'_all.ipk')
           assert migration['version']=='1.0.18'
           assert migration['package_url'].endswith('/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk')
           print('PASS: four current stable versions, two documented migration exceptions, no orphan SHA')
