@@ -87,6 +87,8 @@ jobs:
           set -euo pipefail
           for t in \
             test-channel-picon-settings.py \
+            test-warder-channel-worker.py \
+            test_warder_storage_safety.py \
             test_iptv_infobar_service_name.py \
             test_warder_menu_icon_bindings.py \
             test_warder_mainmenu_toggle.py \
