@@ -92,3 +92,32 @@ Zmazať len ďalšie jednotlivo dokázané nepotrebné položky **po** preveren�
 
 **Nedotknuté:** SAT balíky, MASTER V9, CANAL+ SK/CZ, rádio katalóg, už vydané Releases/tagy, iné pracovné vetvy, prílohy PR #52, Trezor. Odstraňovanie historických GitHub Releases vyžaduje samostatne preukázaný audit aktívnych externých odkazov a bezpečnú návratovú kópiu; nerobiť neoverené mazanie a nepriznávať si z neho úsporu v main.
 
+
+## 23. 11. 2026 — finálne overené výsledky päťprojektového upratovania (tento oddiel má prednosť pred predchádzajúcim pracovným plánom)
+
+**Zdroj schválenia:** vlastník výslovne schválil najnovšiu ostrú verziu a najviac tri predchádzajúce ostré verzie v piatich repozitároch, bezpečné odstránenie nepotrebných historických IPK/SHA po overení odkazov, opravu FullHDGlass feedov, trvalé opatrenie v publisheri a aktualizáciu tohto jediného checkpointu. Staršie spomenuté „iba pracovná vetva“ znamenalo priebežný stav PRED nasledujúcimi potvrdenými merge.
+
+| Projekt | Výsledný overený `main` po PR | Ponechané ostré vydania | Odstránené z main (nová dávka) | Zmenené/ušetrené bajty v aktuálnom strome |
+|---|---|---|---|---|
+| FullHDGlass | `f294be86720a6b3b754ccdd08ccd1e668be5ea56` ([PR #145](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/145) MERGED) | `1.0.84, 1.0.83, 1.0.82, 1.0.80` | **24 starých IPK + 24 SHA-256 = 48 súborov**; 24 verzií zo série `1.0.48–1.0.79` okrem chránených `1.0.72` a `1.0.80` | **412 670 304 B = 393,55 MiB** |
+| PiconHub | `2018ec15efff0d51b41fcaa5a4d421fe18b5d76d` ([PR #86](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/86) MERGED) | `0.1.44, 0.1.43, 0.1.42` (iba 3 existujúce) | 0 starých IPK, 0 SHA | **0 B** |
+| Warder Radio | `b63e61f3531e083f641079e8df21f6725d006d0f` ([PR #59](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/59) MERGED) | `0.2.2, 0.2.1, 0.2.0, 0.1.9.4` | 0 starých IPK, 0 SHA | **0 B** |
+| GSU | `b173e1cdf7eb30d11821129ba3a0d14971813d76` ([PR #12](https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/pull/12) MERGED) | `13.41-r4, 13.40-r95, 13.40-r94, 13.40-r93` | 0 starých IPK, 0 SHA | **0 B** |
+| YouTube | `c6de0d43615a0961f7a2407597777f6820cbe5c2` ([PR #7](https://github.com/Evolution-by-Warder/YouTube-Warder-Evolution/pull/7) MERGED) | `1.0.2, 1.0.1, 1.0.0` (iba 3 existujúce) | 0 starých IPK, 0 SHA | **0 B** |
+
+**Overené kroky:**
+- FullHDGlass [PR #145](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/145) prešiel všetkými **9/9 GitHub CI kontrolami** (`verify-stable-package`, `verify`, `integration-tests`, tri OpenATV vetvy a tri OpenPLi/regresné joby). Workflow publish zachoval oficiálny vydávací mechanizmus, ale pri budúcich release po overení Release + update feedov prerezáva staré IPK dvojice fail-closed skriptom `tools/retain-fullhdglass-stable.py`. Už nezakladá nové IPK kvôli zmene samotného YAML.
+- Aktualizátor: `main/update-production.json` aj `main/update-test.json` teraz zhodne uvádzajú `1.0.84`, `sha256 623be902288bf1bc872425729d5a85596228d06593f022ff60b8572b23227591` a reálne ponechanú raw-main IPK URL. Odstránený bol starý test-feed odkaz na `1.0.69` z `main`.
+- Legacy `main/update.json` **úmyselne stále ponúka `1.0.18`** a jej vlastný fyzicky prítomný IPK/SHA, pretože pôvodná opkg identita potrebuje prípravu migrácie. Changelog/upstream informácia odkazuje po tomto kroku na najnovšiu produkčnú `1.0.84`. Tým sa zachová kompatibilita starého používateľa; zmena `update.json` priamo na nové meno IPK by sa nesmela vydávať za bezpečnú.
+- Staršie `-test` runtime stále hardcodujú `warder-modernization-work/update-test.json` → `1.0.72`; IPK/SHA `1.0.72` zostali v main ako **samostatná doložená migračná výnimka**. Bez budúceho overeného presmerovania ju nemaž.
+- Následná nezávislá kontrola cez GitHub API potvrdila `main` SHA, odstránené súbory v `main/packages/`, oba aktuálne feedy, SHA sidecars, existenciu štyroch ostrých FullHDGlass Releases a zachované GSU/radio/YouTube/PiconHub výstupné cesty.
+- PiconHub, Radio, GSU a YouTube už pred týmto rozsahom nemali historické inštalačné IPK v `main`; ich vydávanie ostáva **GitHub Releases-only**. Aktualizovali sa existujúce retenčné dokumenty, v YouTube aj zastaraný `update/README.md`. YouTube PR #7 mal GitHub `test` SUCCESS; tri ostatné PR boli dokumentačné a porovnané priamo s platnými feedmi/release tagmi bez zmeny runtime.
+- V tejto **novej** dávke nebol odstránený žiadny ďalší workflow; predchádzajúcich **7** už zmazaných nefunkčných YAML z PR #143/#85/#58 zostáva odstránených. Žiadny prípravný TEST IPK ani nový release sa touto retenciou nepublikoval.
+
+**GitHub Releases / TEST artefakty — otvorená stop-podmienka, nie úspešné zmazanie:**
+- Odstránených historických Releases: **0** v každom z piatich projektov. FullHDGlass má po tejto dávke stále **21 Releases** vrátane 15 starších `radio-live-test124–138` prerelease a dvoch starších ostrých `v1.0.78/79`; Radio má stále **9 Releases** vrátane mimo-štvoricových `0.1.9.2/0.1.9.3` a testovacej migrácie. Zvyšné počty: PiconHub **3**, GSU **4**, YouTube **3**.
+- Niektoré staré testovacie tagy sú **funkčná migračná závislosť** (Radio `warder-radio-v0.1.0-test11` je citovaný živým `radio-test.yml` a `update/testing.json`; GSU r93 používa `plugin/update/candidate.json`); veľký `radio-country-20261122` je **samostatný produkčný dátový katalóg 224 krajín**, nie „piata verzia“ prehrávača. Bez úplného overenia odkazov, dlhodobej obnovy binárnych Release assetov a dostupnej bezpečnej mazacej operácie sa ostatné staré release assety **neodstránili**. GitHub connector nemá akciu na mazanie GitHub Releases; neobchádzať autorizáciu a nepredstierať zmazanie.
+- Z toho dôvodu je splnené **vyčistenie súčasného zdrojového stromu FullHDGlass a ochrana ďalšieho rastu**, nie definitívna redukcia všetkých historických GitHub Releases. Toto je zámerne otvorená oblasť, nie druhý checkpoint.
+
+**Rollback / aktualizácia:** existujúce adresy, version/sha metadáta, CI inštalačné/regresné testy a všetky potrebné GitHub Release assety boli overené; **fyzická zmena a návrat na konkrétnom Enigma2 prijímači** nebola vykonaná v tomto upratovacom rozsahu a nesmie sa prezentovať ako fyzický PASS. Git história a ochrany všetkých schválených dát sú nezmenené.
+
