@@ -34,14 +34,23 @@ class ChannelWorker(object):
     def run(self):
         archive = None
         try:
-            needed = int((int(self.job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
-            if int(shutil.disk_usage("/tmp").free / (1024 * 1024)) < needed:
-                raise ValueError("insufficient temporary space for Warder channel package")
-            if os.path.islink(self.destination) or not os.path.isdir(self.destination):
+            # The ZIP is only read for streaming PNG installation. Keep the
+            # temporary ZIP on the SAME filesystem as the selected picons:
+            # /tmp can be a small tmpfs even when the HDD/SSD has gigabytes
+            # free (13E/19.2E report on 1.0.85). Preserve the existing
+            # conservative per-package space calculation and fail closed
+            # instead of silently filling receiver flash.
+            if not os.path.isabs(self.destination) or os.path.islink(self.destination) or not os.path.isdir(self.destination):
                 raise ValueError("unsafe Warder picon destination")
+            package_bytes = int(self.job.get("bytes", 0))
+            if package_bytes < 1:
+                raise ValueError("invalid Warder channel package size")
+            needed = int((package_bytes * 2.2) / (1024 * 1024)) + 10
             if int(shutil.disk_usage(self.destination).free / (1024 * 1024)) < needed:
                 raise ValueError("insufficient destination space for Warder channel package")
-            fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
+            # A hidden .zip cannot be mistaken for a picon. The finally
+            # block removes it after success, download errors or bad SHA.
+            fd, archive = tempfile.mkstemp(prefix=".warder-channel-", suffix=".zip", dir=self.destination)
             os.close(fd)
             self.events.put(("stage", "Downloading channel package"))
             self.fetch(self.job, archive, lambda done, total: self.events.put(("bytes", (done, total))))
