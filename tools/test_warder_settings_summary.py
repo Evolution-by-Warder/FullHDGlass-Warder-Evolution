@@ -62,9 +62,15 @@ class SupportHeaderTests(unittest.TestCase):
         self.assertIn('from .warderSettingsSummary import channel_diagnostic_suffix', source)
         self.assertIn('self.textShowInfo += channel_diagnostic_suffix(', source)
         self.assertIn('self["description"].setText(self.textShowInfo)', source)
-        match = re.search(r'<widget name="description" position="60,174" size="1800,46"[^>]*>', source)
+        match = re.search(r'<widget name="description" position="15,174" size="1890,46"[^>]*>', source)
         self.assertIsNotNone(match)
         self.assertIn('noWrap="1"', match.group(0))
+        self.assertIn('font="Regular;23"', match.group(0))
+        # Width expanded by exactly 90px; widget remains inside FHD screen.
+        self.assertEqual(15 + 1890, 1905)
+        self.assertIn('menu_support_number(config.plugins.setupGlass17.par7.value)', source)
+        for field in ('Extra Screen', 'Icons type', 'Menu Icons', 'Weather Icons', 'HDD/SSD'):
+            self.assertIn('_("' + field + '")', source)
         self.assertNotIn('source="channel_diagnostic"', source)
 
 
