@@ -45,8 +45,17 @@ jobs:
           find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
           find source/package-root -type f -name '*.pyc' -delete
       - name: Assemble exact full 1.0.84 source payload, then isolate test revision
+        # This is an immutable historical review of 1.0.84, not the
+        # current stable package. The shared plugin.py and setup-style test
+        # still run above for every new version, but do not force the current
+        # source to build an obsolete 1.0.84-1 IPK.
         run: |
           set -euo pipefail
+          CURRENT="$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
+          if [ "$CURRENT" != "1.0.84" ]; then
+            echo "Historical 1.0.84 review package not applicable to FullHDGlass $CURRENT"
+            exit 0
+          fi
           # The reviewed bitrate helper reports are generated build inputs,
           # not committed package files. Recreate them from the pinned proof.
           python3 - <<'PY'
@@ -109,6 +118,7 @@ jobs:
           PY
           (cd packages/legacy-radio-tv-review && sha256sum -c *.sha256)
       - uses: actions/upload-artifact@v4
+        if: ${{ hashFiles('packages/legacy-radio-tv-review/*.ipk') != '' }}
         with:
           name: FullHDGlass-1.0.84-2-OpenATV76-OpenPLi92-RadioLive-REVIEW-ONLY
           path: |

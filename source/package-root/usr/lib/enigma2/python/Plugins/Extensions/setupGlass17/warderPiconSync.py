@@ -445,13 +445,18 @@ def set_task_position_bindings(preferences, bindings):
 
 
 def channel_preferences_ready(preferences):
+    """Check only the user-selected channel options.
+
+    The download controller validates the target directory separately and
+    reports 'Invalid picon destination' before any filesystem changes.
+    Including destination here mislabels a storage failure as missing choices.
+    """
     prefs = dict(preferences or {})
     return bool(valid_task_selection(prefs)
                 and prefs.get("resolution") in tuple(size for size, label in CHANNEL_RESOLUTION_CHOICES)
                 and prefs.get("style") in dict(STYLES)
                 and channel_style_supported(prefs.get("resolution"), prefs.get("style"))
-                and prefs.get("update_mode") in dict(UPDATE_MODES)
-                and validate_destination(prefs.get("destination")))
+                and prefs.get("update_mode") in dict(UPDATE_MODES))
 
 
 def auxiliary_variants(asset_keys):
@@ -1308,24 +1313,68 @@ def build_download_jobs(document, package_plan, manifest_url=None):
 
 
 def validate_destination(path):
-    """Reject relative/root destinations; UI may only stage into a real subdirectory."""
+    """Validate a picon destination, including explicitly skin-owned aliases.
+
+    A PATHS-managed picon directory may already be a symlink to HDD or USB.
+    Only those exact menu-generated paths may resolve through an alias, and
+    only to an equally named picon folder on a mounted storage location.
+    Return the *resolved* destination so subsequent filesystem writes do not
+    follow the original alias again.
+    """
     raw = os.path.normpath(str(path or ""))
     if not os.path.isabs(raw):
         return None
     value = os.path.realpath(raw)
-    # Do not silently follow a user supplied symlink while installing files.
+    if value == os.path.sep:
+        return None
+    owned_roots = ("/usr/share/enigma2/hdg17_files", "/etc/hdg17_files")
+    picon_leaves = ("picon", "picon_50x30", "picon_400x240")
+    owned = {
+        os.path.join(root, leaf): leaf
+        for root in owned_roots for leaf in picon_leaves
+    }
+    if raw in owned:
+        # Existing installations can symlink either the skin's data folder or
+        # the selected picon leaf to a mounted disk. Never follow an alias
+        # into arbitrary system locations, and never mistake an unmounted
+        # /media/hdd folder on internal flash for a real external disk.
+        if value != os.path.abspath(raw):
+            # Existing FullHDGlass PATHS installations (e.g. Octagon SF8008)
+            # link the skin picon folder to Enigma2's standard picon directory:
+            # /usr/share/enigma2/hdg17_files/picon -> /usr/share/enigma2/picon
+            # This exact, explicitly supported destination must resolve to its
+            # real path before the controller's symlink and writable checks.
+            if (raw == "/usr/share/enigma2/hdg17_files/picon"
+                    and value == DEFAULT_DESTINATION):
+                return value
+            if os.path.basename(value) != owned[raw]:
+                return None
+            if value == os.path.join("/hdg17_files", owned[raw]):
+                return value
+            mounts = ("/media/hdd", "/media/usb", "/media/sdcard",
+                      "/media/mmc", "/media/cf", "/data")
+            if any(value.startswith(mount + os.path.sep)
+                   and os.path.ismount(mount) for mount in mounts):
+                return value
+            return None
+        probe = os.path.sep
+        for component in (part for part in raw.split(os.path.sep) if part):
+            probe = os.path.join(probe, component)
+            if os.path.islink(probe):
+                return None
+        return value
+    # Every non-warder-owned path retains the previous strict symlink guard.
     if value != os.path.abspath(raw):
         return None
     probe = os.path.sep
-    for component in [part for part in raw.split(os.path.sep) if part]:
+    for component in (part for part in raw.split(os.path.sep) if part):
         probe = os.path.join(probe, component)
         if os.path.islink(probe):
             return None
-    if value == os.path.sep:
-        return None
     if value == DEFAULT_DESTINATION:
         return value
-    protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc", "/root", "/run", "/sbin", "/sys", "/usr", "/var")
+    protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc",
+                 "/root", "/run", "/sbin", "/sys", "/usr", "/var")
     if value in protected or any(value.startswith(p + os.path.sep) for p in protected):
         return None
     return value

@@ -123,6 +123,80 @@ class SettingsTests(unittest.TestCase):
         self.assertEqual(target(directory, '400x240'), directory + '/picon_400x240')
         self.assertEqual(target('/media/usb/hdg17_files'), '/media/usb/hdg17_files/picon')
 
+    def test_ci_picon_download_choices_with_skin_managed_storage(self):
+        # Replay the exact 1.0.86 reported selection and PATHS destination.
+        # This suite runs in the FullHDGlass integration/OpenPLi CI workflows.
+        import importlib.util
+        module_path = PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py'
+        spec = importlib.util.spec_from_file_location('warderPiconSync_ci_storage', module_path)
+        sync = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sync)
+        bindings = [sync.task_binding_for_package_selector(x) for x in ('192E', '235E')]
+        self.assertTrue(all(bindings), bindings)
+        pref = sync.set_task_position_bindings(sync.default_preferences(), bindings)
+        self.assertEqual(pref['positions'], ['19.2E', '23.5E'])
+        pref.update(resolution='220x132', style='black',
+                    update_mode=sync.UPDATE_MODE_SYNC_TV)
+        for root in ('/usr/share/enigma2/hdg17_files', '/etc/hdg17_files'):
+            for size, leaf in (('50x30','picon_50x30'),
+                               ('220x132','picon'),
+                               ('400x240','picon_400x240')):
+                target = root + '/' + leaf
+                pref.update(resolution=size, destination=target)
+                self.assertTrue(sync.channel_preferences_ready(pref), (size, target))
+                self.assertEqual(sync.validate_destination(target), target)
+            for disallowed in (root, root+'/other', root+'/picon/untrusted'):
+                self.assertIsNone(sync.validate_destination(disallowed))
+        pref.update(resolution='220x132', destination='/etc/enigma2')
+        self.assertTrue(sync.channel_preferences_ready(pref))
+        self.assertIsNone(sync.validate_destination(pref['destination']))
+        self.assertIsNone(sync.validate_destination('/usr/share/enigma2'))
+        self.assertIsNone(sync.validate_destination('/'))
+        self.assertEqual(sync.skin_picon_destination('/usr/share/enigma2/hdg17_files',
+                                                     '220x132'),
+                         '/usr/share/enigma2/hdg17_files/picon')
+
+    def test_picon_symlink_alias_requires_mount_and_skin_ownership(self):
+        # Reproduce PATHS-managed picon directories linked to a real disk.
+        import importlib.util
+        from unittest import mock
+        module_path = PKG/'Plugins/Extensions/setupGlass17/warderPiconSync.py'
+        spec = importlib.util.spec_from_file_location('warderPiconSync_ci_alias', module_path)
+        sync = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sync)
+        link = '/usr/share/enigma2/hdg17_files/picon'
+        external = '/media/hdd/hdg17_files/picon'
+        resolved = {link: external}
+        real = lambda path: resolved.get(path, path)
+        with mock.patch.object(sync.os.path, 'realpath', side_effect=real), \
+             mock.patch.object(sync.os.path, 'ismount', side_effect=lambda path: path == '/media/hdd'):
+            self.assertEqual(sync.validate_destination(link), external)
+            # The same external target cannot be reached through any arbitrary
+            # system/user alias which the menu did not explicitly generate.
+            resolved['/etc/enigma2/picon'] = external
+            self.assertIsNone(sync.validate_destination('/etc/enigma2/picon'))
+            # The fake media folder must actually be mounted.
+            with mock.patch.object(sync.os.path, 'ismount', return_value=False):
+                self.assertIsNone(sync.validate_destination(link))
+            # A path resolving into protected image space stays forbidden.
+            resolved[link] = '/etc/hdg17_files/picon'
+            self.assertIsNone(sync.validate_destination(link))
+            resolved[link] = '/media/hdd/unrelated-logos'
+            self.assertIsNone(sync.validate_destination(link))
+            # Actual Octagon SF8008 installation (23 Nov 2026):
+            # /usr/share/enigma2/hdg17_files/picon -> /usr/share/enigma2/picon
+            # The standard picon directory is already a specially allowed
+            # destination; return its canonical path, never the symlink.
+            resolved[link] = '/usr/share/enigma2/picon'
+            self.assertEqual(sync.validate_destination(link), '/usr/share/enigma2/picon')
+            # No broad exemption for other managed roots or other picon sizes.
+            resolved['/etc/hdg17_files/picon'] = '/usr/share/enigma2/picon'
+            self.assertIsNone(sync.validate_destination('/etc/hdg17_files/picon'))
+            resolved['/usr/share/enigma2/hdg17_files/picon_50x30'] = '/usr/share/enigma2/picon'
+            self.assertIsNone(sync.validate_destination('/usr/share/enigma2/hdg17_files/picon_50x30'))
+            resolved[link] = '/hdg17_files/picon'
+            self.assertEqual(sync.validate_destination(link), '/hdg17_files/picon')
+
     def test_registry_preserves_original_parameter_indices(self):
         self.assertEqual(len(REGISTRY),231)
         self.assertEqual(REGISTRY[18],'Channel sel. type')

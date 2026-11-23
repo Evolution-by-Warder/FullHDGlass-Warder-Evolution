@@ -90,6 +90,51 @@ class StorageSafetyTests(unittest.TestCase):
         finish = text.split('def dwnFin(self, answer=""):', 1)[1].split('def downAnswerNow(self):', 1)[0]
         self.assertIn('self._warderInternalStorageApproved = None', finish)
 
+    def test_internal_flash_popup_only_when_room_is_tight(self):
+        # Exercise the actual startDown() AST predicate with the real
+        # available-space/reserve helper. No receiver UI or network required.
+        source = PLUGIN.read_text(encoding="utf-8")
+        tree = ast.parse(source)
+        download = next(node for node in tree.body if isinstance(node, ast.ClassDef)
+                        and node.name == "downloadMenu")
+        start = next(node for node in download.body
+                     if isinstance(node, ast.FunctionDef) and node.name == "startDown")
+        guard = next(node for node in ast.walk(start)
+                     if isinstance(node, ast.If)
+                     and "_warderStorageIsInternal(storage_target)" in ast.unparse(node.test))
+        predicate = compile(ast.fix_missing_locations(ast.Expression(guard.test)),
+                            str(PLUGIN), "eval")
+        path = "/usr/share/enigma2/hdg17_files"
+        owner = types.SimpleNamespace(_warderInternalStorageApproved=None)
+        scope = {"storage_target": path, "self": owner,
+                 "_warderStorageIsInternal": lambda value: True,
+                 "_warderStorageHasSpace": safe.has_space}
+        mib = 1024 * 1024
+        reserve = safe.MIN_FREE_RESERVE
+        # 1.1 GiB available on actual SF8008 must not trigger any popup.
+        with mock.patch.object(safe, "available_bytes", return_value=int(1.1 * 1024 * mib)):
+            self.assertFalse(eval(predicate, scope))
+        # Exactly enough space for staged payload plus 64 MiB system reserve.
+        with mock.patch.object(safe, "available_bytes", return_value=512*mib + reserve):
+            self.assertFalse(eval(predicate, scope))
+        # Insufficient staging headroom: warn, but allow user to decide
+        # only if the 64 MiB reserve remains available.
+        with mock.patch.object(safe, "available_bytes", return_value=300*mib):
+            self.assertTrue(eval(predicate, scope))
+            self.assertTrue(safe.has_space(path))
+        with mock.patch.object(safe, "available_bytes", return_value=reserve-1):
+            self.assertTrue(eval(predicate, scope))
+            self.assertFalse(safe.has_space(path))
+        # Keep explicit per-storage approval semantics for a warning.
+        with mock.patch.object(safe, "available_bytes", return_value=300*mib):
+            owner._warderInternalStorageApproved = path
+            self.assertFalse(eval(predicate, scope))
+            owner._warderInternalStorageApproved = None
+            scope["_warderStorageIsInternal"] = lambda value: False
+            self.assertFalse(eval(predicate, scope))
+        self.assertIn("insufficient destination space for Warder channel package",
+                      (MODULE_DIR / "warderChannelWorker.py").read_text(encoding="utf-8"))
+
     def test_unmounted_hdd_is_not_created_as_staging(self):
         text = PLUGIN.read_text(encoding="utf-8")
         section = text.split("def setWdir(self):", 1)[1].split("def doSelection", 1)[0]
