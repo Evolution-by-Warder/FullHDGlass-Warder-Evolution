@@ -68,3 +68,27 @@ Bola vykonaná opätovná nezávislá kontrola troch GitHub `main` refs, stavu `
 ## Politika ďalšieho upratovania
 
 Zmazať len ďalšie jednotlivo dokázané nepotrebné položky **po** preverení runtime referencií, CI, aktívnych vetiev, release pravidiel a rollbacku. Sporné prípady ponechať. Zmeny `.github/workflows/` podliehajú manuálnej bezpečnostnej kontrole podľa `AGENTS.md`; neobchádzať ochrany vetvy, nevytvárať novú IPK ani meniť produkčné dáta. Po merge každého PR overiť jeho skutočný stav a aktualizovať len status tohto checkpointu (nevytvárať novú paralelnú sériu).
+
+## 23. 11. 2026 — rozšírená schválená retencia ostrých inštalačných balíkov (päť projektov)
+
+**Nové schválenie:** aktuálna ostrá verzia plus maximálne tri staršie ostré verzie; nikdy nemaž aktívnu aktualizačnú cestu, rollback ani zdrojové dáta. Schválenie v tomto chate sa týka FullHDGlass, PiconHub, Warder Radio, GSU a YouTube. Zmeny realizovať cez samostatné pracovné vetvy a PR; pri CI/overení uviesť skutočný stav.
+
+**Východiskové main:** FullHDGlass `981071a363986afb70b8b919eb6fb24cbdd71acb`; PiconHub `e88d02e392e77dcd76f98f861e957c5ce9adb1e9`; Radio `6651d52db631c331ff135afbbeef48727df7c51a`; GSU `26b71c9d7c4707a379ba7d43c3864ab8371a21a3`; YouTube `8d1f10e9849b7754716f3fa9772f69b70b589855`. Tieto SHA reprezentujú stav pred novou retenčnou dávkou.
+
+| Produkt | Ostré verzie na ponechanie | Stav kandidáta |
+|---|---|---|
+| FullHDGlass | `1.0.84`, `1.0.83`, `1.0.82`, `1.0.80` | `packages/` mal 61 záznamov (517 552 114 B); 24 zastaraných IPK + 24 SHA = **48 odstránených súborov z pracovnej vetvy** (412 670 304 B / 393,55 MiB). Nová vetva `maintenance/retain-four-stable-ipk-20261123` a CI majú potvrdiť bezpečnosť pred merge do main. |
+| PiconHub | `0.1.44`, `0.1.43`, `0.1.42` (iba 3 existujúce ostré) | Aktuálny main nemá historické IPK v `packages/`, iba potrebné DAB dátové ZIPy. |
+| Radio | `0.2.2`, `0.2.1`, `0.2.0`, `0.1.9.4` | Žiadne IPK v main; 224-krajinná dátová Release je neporušiteľný dátový produkt, **nepočíta sa** ako verzia prehrávača. TEST a staršie release assety riešiť iba po preverení odkazov/obnovy. |
+| GSU | `13.41-r4`, `13.40-r95`, `13.40-r94`, `13.40-r93` | Nemá IPK v main; `13.40-r93` je aj prechodný balík pôvodnej opkg identity, nemazať. |
+| YouTube | `1.0.2`, `1.0.1`, `1.0.0` (iba 3) | Žiadne IPK v main; všetky tri aktuálne ostré Releases zachovať. |
+
+### Dve explicitné FullHDGlass migračné výnimky mimo štyroch ostrých verzií
+
+1. **`1.0.18` pôvodnej opkg identity:** aktívny `main/update.json` je legacy bootstrap zo starej inštalácie. Priamy skok bez prípravného balíka `preinst` odmieta; táto verzia ostáva, hoci nepatrí medzi posledné štyri ostré.
+2. **`1.0.72` pre historických TEST klientov:** aktuálny `warderAutoUpdate.TEST` z balíkov stále vyberá `warder-modernization-work/update-test.json`, ktorý ukazuje na `main/packages/1.0.72`. Jeho odstránenie by mohlo rozbiť TEST aktualizáciu. Zachovať, kým sa samostatná cesta nezmení a neotestuje.
+
+`main/update-test.json` bol na pracovnej vetve zosúladený zo zastaranej 1.0.69 na overenú 1.0.84 a SHA `623be902288bf1bc872425729d5a85596228d06593f022ff60b8572b23227591`. `main/update.json` ostáva z dôvodu kompatibility na 1.0.18 a poskytuje informáciu o následnej 1.0.84. Produkčný publisher po ďalšom novom vydaní automaticky odstráni staršie súbory až po nemennom Release, správnych feedech a fail-closed regresiách; nespúšťa sa len pri zmene vlastného YAML.
+
+**Nedotknuté:** SAT balíky, MASTER V9, CANAL+ SK/CZ, rádio katalóg, už vydané Releases/tagy, iné pracovné vetvy, prílohy PR #52, Trezor. Odstraňovanie historických GitHub Releases vyžaduje samostatne preukázaný audit aktívnych externých odkazov a bezpečnú návratovú kópiu; nerobiť neoverené mazanie a nepriznávať si z neho úsporu v main.
+
