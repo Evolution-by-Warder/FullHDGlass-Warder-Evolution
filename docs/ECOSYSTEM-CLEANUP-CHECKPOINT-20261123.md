@@ -123,3 +123,76 @@ Zmazať len ďalšie jednotlivo dokázané nepotrebné položky **po** preveren�
 
 **Rollback / aktualizácia:** existujúce adresy, version/sha metadáta, CI inštalačné/regresné testy a všetky potrebné GitHub Release assety boli overené; **fyzická zmena a návrat na konkrétnom Enigma2 prijímači** nebola vykonaná v tomto upratovacom rozsahu a nesmie sa prezentovať ako fyzický PASS. Git história a ochrany všetkých schválených dát sú nezmenené.
 
+
+
+## 23. 11. 2026 — konečný audit historických GitHub Releases (posledná fáza)
+
+**Autorizácia:** vlastník 23.11.2026 schválil dokončiť retenciu najnovšie ostré + maximálne 3 predchádzajúce ostré verzie. Nezmenené pravidlá: najprv aktualizátor, rollback, dokumentácia a skutočné binárne zálohy. Zdroj: priamo živé GitHub Releases API + aktuálny `main` každého repozitára; pri nájdenom novom Release inventár znovu preveriť.
+
+**Pripojenie a vykonateľnosť:** existujúce autorizované GitHub rozhranie podporuje čítanie Releases a PR, ale **neposkytuje mazanie GitHub Release, jeho assetov ani starých Actions artefaktov**. Žiadne z týchto objektov neboli týmto cyklom vymazané. Nepoužívať alternatívny token, 2FA, prístup ani neobchádzať obmedzenia. Manuálny postup nižšie je samostatná následná operácia používateľa, nie doklad o vykonanom mazaní.
+
+### Aktuálne počty a povinné ochrany
+
+| Repozitár | Súčasné Releases | Zachovať | Mimo retenčnej štvorice / status |
+|---|---:|---|---|
+| FullHDGlass | **21** | `v1.0.84`, `v1.0.83`, `v1.0.82`, `v1.0.80`; samostatné raw-main výnimky `1.0.18`, `1.0.72` | 15 rádiových `TEST124–138` a 2 historické ostré `v1.0.78/v1.0.79`; **17 kandidátov, 0 vymazaných** |
+| PiconHub | **3** | `v0.1.44`, `v0.1.43`, `v0.1.42` | 0 |
+| Radio | **9** | `warder-radio-v0.2.2`, `v0.2.1`, `v0.2.0`, `v0.1.9.4`; oddelené `radio-country-20261122` (224 krajín) a migračné `warder-radio-v0.1.0-test11` | `0.1.9.2`, `0.1.9.3`, `0.2.0-test22` = 3 kandidáti; **0 vymazaných** |
+| GSU | **4** | `v13.41-r4`, `v13.40-r95`, `v13.40-r94`, `v13.40-r93` (r93 stále používa `plugin/update/candidate.json`) | 0 |
+| YouTube | **3** | `youtube-warder-v1.0.2`, `v1.0.1`, `v1.0.0` | 0 |
+
+### FullHDGlass — presných 15 TEST + 2 staré ostré (ručný zoznam)
+
+| Release tag/odkaz | GitHub Release ID | Počet assetov | Veľkosť (B) | Bezpečnostný stav |
+|---|---|---:|---:|---|
+| [`radio-live-test124-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test124-20261119) | `450948394` | 3 | 18 325 205 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test125-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test125-20261119) | `450961338` | 3 | 18 330 843 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test126-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test126-20261119) | `450977851` | 3 | 18 331 345 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test127-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test127-20261119) | `451002406` | 3 | 18 332 523 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test128-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test128-20261119) | `451014439` | 3 | 18 336 895 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test129-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test129-20261119) | `451030981` | 3 | 18 339 557 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test130-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test130-20261119) | `451132817` | 3 | 18 340 387 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test131-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test131-20261119) | `451157691` | 3 | 18 342 831 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test132-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test132-20261119) | `451222303` | 3 | 18 343 219 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test133-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test133-20261119) | `451237908` | 3 | 18 343 853 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test134-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test134-20261119) | `451279436` | 3 | 18 344 641 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test135-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test135-20261119) | `451301242` | 3 | 18 344 641 | KANDIDÁT: najprv obnovovacia kópia a externé odkazy |
+| [`radio-live-test136-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test136-20261119) | `451358455` | 3 | 18 345 141 | ZADRŽAŤ: priame odkazy v WARDER_PROGRESS |
+| [`radio-live-test137-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test137-20261119) | `451394561` | 3 | 18 346 171 | ZADRŽAŤ: priame odkazy v WARDER_PROGRESS |
+| [`radio-live-test138-20261119`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-live-test138-20261119) | `451483754` | 3 | 18 346 797 | ZADRŽAŤ: aktívny ručný workflow + priame odkazy |
+| [`v1.0.78`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.78) | `440647553` | 2 | 18 111 158 | KANDIDÁT: mimo 4 ostrých; preveriť historické URL a backup |
+| [`v1.0.79`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.79) | `441872495` | 2 | 18 124 736 | KANDIDÁT: mimo 4 ostrých; preveriť historické URL a backup |
+
+**Súčet:** 15 TEST = **275094049 B** (262.35 MiB), 2 prebytočné ostré = **36235894 B** (34.56 MiB). Dokopy 17 Releases, 49 assetov, **311329943 B**. Žiadna z týchto veľkostí nebola zatiaľ fyzicky uvoľnená. Release ID je jednoznačný cieľ pre prípadnú manuálnu operáciu; pred každou operáciou znovu potvrdiť tag, počet assetov, digest a hlavný feed.
+
+**Zistené závislosti:** `WARDER_PROGRESS.md` priamo odkazuje na test136/137/138; `docs/RADIO-LIVE-BOUQUETS-20261119.md` opisuje TEST124/125; `.github/workflows/radio-live-test-package.yml` stále obsahuje `workflow_dispatch` a vydávací kód pre presný tag TEST138. Test136–138 **zadržať**, kým sa verejná dokumentácia a workflow neprevedú na historický záznam bez aktuálnych binárnych odkazov. Pri test124–135 nemožno z neexistencie aktívneho feedu vyvodiť neprítomnosť externých používateľských URL. Každá testovacia IPK bola jediným priamym odkazom svojho historického Release; bez overenej recovery kópie ju označiť ako KANDIDÁT, nie schválené bezpečné zmazanie.
+
+### Warder Radio — tri kandidáti, ochrana starého migračného mosta
+
+| Release tag/odkaz | GitHub Release ID | Počet assetov | Veľkosť (B) | Bezpečnostný stav |
+|---|---|---:|---:|---|
+| [`warder-radio-v0.1.9.2`](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/releases/tag/warder-radio-v0.1.9.2) | `436716653` | 3 | 3 179 797 | KANDIDÁT: overiť opkg/testovacie aktualizácie a zálohu |
+| [`warder-radio-v0.1.9.3`](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/releases/tag/warder-radio-v0.1.9.3) | `440470107` | 3 | 3 182 993 | KANDIDÁT: overiť opkg/testovacie aktualizácie a zálohu |
+| [`warder-radio-v0.2.0-test22`](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/releases/tag/warder-radio-v0.2.0-test22) | `446820666` | 3 | 2 931 612 | KANDIDÁT: overiť opkg/testovacie aktualizácie a zálohu |
+
+**Súčet:** 3 kandidáti, 9 assetov, **9294402 B** (8.86 MiB). `warder-radio-v0.1.0-test11` **NIE JE** kandidát; na jeho IPK stále smeruje `update/testing.json` a odkazuje `.github/workflows/radio-test.yml`. Moderné `update/v2/stable.json` a `update/v2/testing.json` smerujú na `v0.2.2`. Nevymazať `radio-country-20261122` ani jediný zo 225 originálnych dátových assetov. Pred čistením `0.2.0-test22` preveriť existujúce tester-bridge scenáre; pred čistením `0.1.9.2/0.1.9.3` preveriť historické inštalačné/regresné odkazy.
+
+### Aktívne aktualizačné cesty overené v zdrojoch
+
+- FullHDGlass `main/update-production.json` a `main/update-test.json`: `1.0.84`, `sha256 623be902288bf1bc872425729d5a85596228d06593f022ff60b8572b23227591`; `main/update.json`: originálna migrácia `1.0.18`, `sha256 f785741d79a93d06e9d252e64e3d5b7a35a642db117aff1084dcfd20878f2383`; `warder-modernization-work/update-test.json` na historickú `1.0.72` (ochrana trvá).
+- PiconHub `plugin/update/stable.json`: release `0.1.44`, verifikované Release assety. GSU `plugin/update/stable.json` `13.41-r4`, `plugin/update/candidate.json` `13.40-r93`. YouTube `update/stable.json`: `1.0.2`; testovací manifest má `release:null`.
+- Radio moderné `update/v2/stable.json`, `update/v2/testing.json`: `0.2.2`; starý testovací `update/testing.json`: `0.1.0-test11`. Dátový `assets/radio-country/latest.json` je oddelený a nesmie byť menený v retencii programu.
+- GitHub Release API potvrdzuje existenciu aktuálnych oficiálnych assetov, ich veľkosti a samostatný SHA-256 digest; ide o kontrolu zdrojov a distribučnej integrity, **nie fyzický downgrade test**.
+
+### Presný bezpečný manuálny postup — vykoná iba autorizovaný vlastník
+
+1. **Pred každým mazaním** stiahnuť IPK, `.sha256`/`SHA256SUMS`, `build.json` alebo testový manifest a celý text poznámok Release. Skontrolovať SHA-256 obsahu voči sidecaru alebo `assets[].digest` z GitHub API; následne uložiť overené identické bajty do samostatnej vlastníkovi schválenej návratovej zálohy. Nezapisovať/neorganizovať pôvodné Trezor originály; nová záloha má mať oddelenú evidenciu. Kým kópia s presným SHA reálne neexistuje, Release **nevymazať**.
+2. Overiť všetky aktívne raw/Release adresy vo feedoch, updatéroch, inštalátoroch, `README.md`, dokumentoch a aktuálnych workflowoch. Nájsť aj externé používateľské odkazy a prípadné stále používané TEST inštalácie; nespoliehať sa na neúplný GitHub code search. Pri nájdenej závislosti najprv presmerovať klienta a otestovať; dovtedy ponechať výnimku.
+3. Až pre jednoznačne uvoľnený tag otvoriť vyššie priloženú stránku `Releases → príslušné vydanie` na GitHube; zvoliť ikonu koša a **Delete this release**, potvrdiť. **Nezaškrtávať ani samostatne nemažte Git tag** a nepoužívať force-push. Pri immutable-release ochrane, neprístupnom ovládaní alebo nedostatočnej právomoci zastaviť dotknutý release; obmedzenia neobchádzať. Oficiálny postup: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository.
+4. Po **každom jednotlivom** mazaní overiť API `GET /repos/Evolution-by-Warder/<repo>/releases/tags/<tag>` → release už nie je prítomný, zostávajúce 4 ostré/releases/feed SHA a archívny backup existujú, cieľové IPK zostali inštalovateľné. Zaznamenať dátum, presný Release ID, asset IDs, SHA a výsledok do tohto istého checkpointu. Nikdy neoznačiť prácu ako dokončenú bez reálneho post-checku.
+
+**Bodový výsledok 23.11.2026:** 5 repozitárov overených; **0 Releases a 0 Release assetov skutočne odstránených**, **20 potenciálnych kandidátov** (17 FullHDGlass, 3 Radio), celková teoretická veľkosť **320624345 B (305.77 MiB)**. Štvorkové pravidlo už platí pre novú distribúciu a aktuálny `main/packages/`, ale úplné fyzické zmazanie starých GitHub Releases je **otvorené** do bezpečného manuálneho vykonania a overenia. K tomuto stavu neexistujú doložené recovery kópie všetkých kandidátskych binárnych Releases; nedeklarovať pripravenosť na okamžité kliknutie „Delete“ bez nich.
+
+### Samostatná dokončená korekcia verejných odkazov
+
+Na pracovnej vetve tejto dávky je opravený `README.md`: hlavný download už nesmeruje na historickú `v1.0.69` a staré nápovedné linky `v1.0.66/67` smerujú na platnú `v1.0.84`, pričom historický text zostal. `docs/CURRENT-RELEASE.md` už správne označuje `v1.0.84` namiesto `v1.0.73` a uvádza presný SHA-256, byte size, zachované rollbacky a migračné výnimky. Tieto dokumentačné zmeny **nie sú odstránením Releases** a nesmú spustiť nový vydávací IPK.
