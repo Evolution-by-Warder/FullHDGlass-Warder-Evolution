@@ -74,6 +74,67 @@ class FastScanNameGeometryTests(TestCase):
         self.assertEqual(len(writes), 3)
         self.assertTrue(all(call[1][0] >= 0 and call[1][2] > 0 for call in writes))
 
+    def test_visible_channel_numbers_reserve_the_native_number_column(self):
+        case = self.case()
+        case.component.mode = 1
+        case.component.MODE_BOUQUETS = 1
+        case.component.ServiceNumberFont = "number"
+        case.refs[0].name = "CT 1 PHA HD"
+        func = method("_draw_rows")
+        usage = func.__globals__["config"].usage
+        usage.show_channel_numbers_in_servicelist = types.SimpleNamespace(value=True)
+        usage.alternative_number_mode = types.SimpleNamespace(value=False)
+        usage.numberZapDigits = types.SimpleNamespace(value=4)
+        with patch.dict(sys.modules, {"enigma": case.service_stub}):
+            self.assertTrue(func(case.renderer, case.component))
+        first = next(call for call in case.renderer.instance.calls
+                     if call[0] == "write" and call[1][1] == 0)
+        # Native OpenATV uses a five-zero sample even with 4 zap digits in
+        # non-alternate numbering; 17px per glyph in this test's native stub.
+        number_column = 5 * 17 + case.component.fieldMargins
+        picon = int((37 + 2 * (-2)) * 167 / 100)
+        boundary = (5 + number_column + picon + 2 * 8
+                    + len("CT 1 PHA HD") * 17 + 12)
+        self.assertGreaterEqual(first[1][0], boundary)
+        self.assertLessEqual(first[1][0] + first[1][2], 700 - 25 - 90 - 12)
+
+    def test_disabled_number_column_does_not_shift_epg_titles(self):
+        case = self.case()
+        case.component.mode = case.component.MODE_BOUQUETS = 1
+        case.component.ServiceNumberFont = "number"
+        func = method("_draw_rows")
+        usage = func.__globals__["config"].usage
+        usage.show_channel_numbers_in_servicelist = types.SimpleNamespace(value=False)
+        usage.alternative_number_mode = types.SimpleNamespace(value=False)
+        usage.numberZapDigits = types.SimpleNamespace(value=4)
+        with patch.dict(sys.modules, {"enigma": case.service_stub}):
+            self.assertTrue(func(case.renderer, case.component))
+        first = next(call for call in case.renderer.instance.calls
+                     if call[0] == "write" and call[1][1] == 0)
+        reference = self.case()
+        original = self.draw(reference)
+        native_default = next(call for call in original
+                              if call[0] == "write" and call[1][1] == 0)
+        self.assertEqual(first[1][0], native_default[1][0])
+
+    def test_alt_numbering_uses_configured_zap_digit_count(self):
+        case = self.case()
+        case.component.mode = case.component.MODE_BOUQUETS = 1
+        case.component.ServiceNumberFont = "number"
+        func = method("_draw_rows")
+        usage = func.__globals__["config"].usage
+        usage.show_channel_numbers_in_servicelist = types.SimpleNamespace(value=True)
+        usage.alternative_number_mode = types.SimpleNamespace(value=True)
+        usage.numberZapDigits = types.SimpleNamespace(value=3)
+        with patch.dict(sys.modules, {"enigma": case.service_stub}):
+            self.assertTrue(func(case.renderer, case.component))
+        numbered = next(call for call in case.renderer.instance.calls
+                        if call[0] == "write" and call[1][1] == 0)
+        plain_case = self.case()
+        plain = self.draw(plain_case)[0]
+        self.assertEqual(numbered[1][0] - plain[1][0],
+                         3 * 17 + case.component.fieldMargins)
+
 
 if __name__ == "__main__":
     import unittest
