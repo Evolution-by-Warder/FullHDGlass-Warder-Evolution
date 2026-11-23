@@ -1,5 +1,16 @@
 # DTT ITALIA a talianske feedy – kontrolná dávka 23. novembra 2026
 
+## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W sú overené a publikované
+
+[FullHDGlass 1.0.89](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.89) a [PiconHub 0.1.45](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.45) sú dostupné cez produkčné aktualizátory. Pre každú aplikáciu boli skontrolované verejný IPK, jeho kontrolný súčet, verzia v metadátach opkg a obsah inštalovaného výberu. FullHDGlass má zhodný produkčný a testovací kanál. PiconHub má zhodné aktualizačné údaje na `main` a na kompatibilnej vetve `plugin/futuristic-rebuild`.
+
+| Vydanie | Veľkosť IPK | SHA-256 verejného IPK | Oficiálne zostavenie |
+| --- | ---: | --- | --- |
+| [FullHDGlass 1.0.89](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.89/enigma2-plugin-skins-fullhdglass_1.0.89_all.ipk) | 18 395 176 B | `50dd57e5e525688d7327c7915f6dfe1a9a5609f773ce017e87546b138cf53425` | [priebeh vydania](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45271414450) |
+| [PiconHub 0.1.45](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.45/enigma2-plugin-extensions-piconhub_0.1.45_all.ipk) | 3 038 080 B | `83758c52c4d5d6675183865239b0e38e9cc0e83340c378f5b2ed7e467adc9d45` | [priebeh vydania](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45271765476) |
+
+Opätovné stiahnutie z produkcie overilo 181 dielov a 27 archívov. V 891 väzbách servisná referencia / variant sa všetkých 405 schválených PNG zhodovalo s odtlačkami uloženými pri schválení. Katalóg v PiconHube má rovnaký SHA-256 ako živý katalóg FullHDGlass, `40db67977de066be65fa8f37f5a73041aa1b337b7a5c9cdf40233edaf537094a`.
+
 **Grafika schválená vlastníkom 23. novembra 2026.** Vlastník po prezretí troch náhľadových hárkov prijal všetkých 45 výsledných sád, vrátane 80 označených kombinácií na bielom a čiernom podklade. [Záznam schválenia a odtlačky 405 výsledných PNG, troch náhľadov a 27 ZIP](owner-approval.json). Pôvodné hodnotenie MASTER V9 v matici zachytáva stav pred rozhodnutím vlastníka.
 
 | Výber | Referencie v bouquetoch | Nové PNG naprieč 9 variantmi | Nahradené PNG | Zachované PNG zo starých balíkov |

@@ -5,3 +5,5 @@ Vo výbere piconov pribudla **DTT ITALIA**. Obsahuje všetkých 285 pozemných r
 Každá sada ponúka rozmery 50×30, 220×132 a 400×240 s pozadiami Transparent, White a Black. Synchronizácia rozpozná aj pozemné referencie s mennými priestormi EEEE0000 a EEEE0272. Po inštalácii reštartujte Enigma2.
 
 [Zoznam archívov, zdroje a schválené náhľady](../reports/dtt-italia-20261123/README.md).
+
+[Stiahnuť oficiálny IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.89/enigma2-plugin-skins-fullhdglass_1.0.89_all.ipk). SHA-256 `50dd57e5e525688d7327c7915f6dfe1a9a5609f773ce017e87546b138cf53425`.

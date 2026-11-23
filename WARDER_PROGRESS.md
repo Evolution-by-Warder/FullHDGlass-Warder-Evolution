@@ -1,3 +1,14 @@
+## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W sú overené a publikované
+
+[FullHDGlass 1.0.89](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.89) a [PiconHub 0.1.45](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.45) sú dostupné cez produkčné aktualizátory. Pre každú aplikáciu boli skontrolované verejný IPK, jeho kontrolný súčet, verzia v metadátach opkg a obsah inštalovaného výberu. FullHDGlass má zhodný produkčný a testovací kanál. PiconHub má zhodné aktualizačné údaje na `main` a na kompatibilnej vetve `plugin/futuristic-rebuild`.
+
+| Vydanie | Veľkosť IPK | SHA-256 verejného IPK | Oficiálne zostavenie |
+| --- | ---: | --- | --- |
+| [FullHDGlass 1.0.89](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.89/enigma2-plugin-skins-fullhdglass_1.0.89_all.ipk) | 18 395 176 B | `50dd57e5e525688d7327c7915f6dfe1a9a5609f773ce017e87546b138cf53425` | [priebeh vydania](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45271414450) |
+| [PiconHub 0.1.45](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.45/enigma2-plugin-extensions-piconhub_0.1.45_all.ipk) | 3 038 080 B | `83758c52c4d5d6675183865239b0e38e9cc0e83340c378f5b2ed7e467adc9d45` | [priebeh vydania](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45271765476) |
+
+Opätovné stiahnutie z produkcie overilo 181 dielov a 27 archívov. V 891 väzbách servisná referencia / variant sa všetkých 405 schválených PNG zhodovalo s odtlačkami uloženými pri schválení. Katalóg v PiconHube má rovnaký SHA-256 ako živý katalóg FullHDGlass, `40db67977de066be65fa8f37f5a73041aa1b337b7a5c9cdf40233edaf537094a`.
+
 ## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W
 
 Samostatná položka DTT ITALIA a 27 schválených balíkov pokrývajú Vhannibal Motor DTT Italia z 22. novembra. Na 9°E pribudla Radio Classica TV. Obe aplikácie rozpoznajú aj pozemný namespace EEEE0272. V existujúcom dvojtýždňovom SAT cykle PiconHub sleduje vlákno Azzurra 157954. Všetky kontrolované diely a archívy majú overené SHA-256. Prebehlo 27 skúšobných inštalácií FullHDGlass a 54 PiconHubu. Vlastník 23. novembra po vizuálnej kontrole schválil všetkých 45 sád vrátane označených kombinácií White a Black. [Schválenie konkrétnych súborov](reports/dtt-italia-20261123/owner-approval.json). [Výsledky, zdroje a náhľady](reports/dtt-italia-20261123/README.md).
