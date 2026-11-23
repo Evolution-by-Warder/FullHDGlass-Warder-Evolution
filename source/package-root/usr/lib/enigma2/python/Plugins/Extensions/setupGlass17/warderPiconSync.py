@@ -1339,6 +1339,14 @@ def validate_destination(path):
         # into arbitrary system locations, and never mistake an unmounted
         # /media/hdd folder on internal flash for a real external disk.
         if value != os.path.abspath(raw):
+            # Existing FullHDGlass PATHS installations (e.g. Octagon SF8008)
+            # link the skin picon folder to Enigma2's standard picon directory:
+            # /usr/share/enigma2/hdg17_files/picon -> /usr/share/enigma2/picon
+            # This exact, explicitly supported destination must resolve to its
+            # real path before the controller's symlink and writable checks.
+            if (raw == "/usr/share/enigma2/hdg17_files/picon"
+                    and value == DEFAULT_DESTINATION):
+                return value
             if os.path.basename(value) != owned[raw]:
                 return None
             if value == os.path.join("/hdg17_files", owned[raw]):
