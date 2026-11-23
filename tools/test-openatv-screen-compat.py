@@ -25,6 +25,20 @@ def widgets(name,keys):return [w for w in screen(name).findall('widget') if acti
 class ScreenCompatTests(unittest.TestCase):
  def test_approved_pig_screen_is_byte_identical_and_only_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  # Revert ONLY the two reviewed native Setup help offsets before checking
+  # the immutable historical OpenATV fingerprint. Keep all other screens
+  # byte-exact; missing or duplicated edits fail the review guard.
+  setup_start=text.index('<screen name="Setup" ')
+  setup_end=text.index('</screen>', setup_start)
+  setup=text[setup_start:setup_end]
+  for reviewed, approved in (
+   ('<widget name="config" position="45,60" size="1560,585" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />',
+    '<widget name="config" position="45,60" size="1560,615" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />'),
+   ('<widget name="description" position="45,650" size="1560,120" font="Prive3;25" halign="center" valign="center" foregroundColor="grey" transparent="1" />',
+    '<widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />')):
+   self.assertEqual(setup.count(reviewed),1,'Solo4K Setup help exact-geometry drift')
+   setup=setup.replace(reviewed,approved,1)
+  text=text[:setup_start]+setup+text[setup_end:]
   # The separately reviewed EMC/EPG geometry candidate must be reverted
   # exactly before comparing this historical OpenATV layout fingerprint.
   # Require a unique full-text match for each audited edit, not a broad skip.
