@@ -1325,6 +1325,17 @@ def validate_destination(path):
         return None
     if value == DEFAULT_DESTINATION:
         return value
+    # PATHS in FullHDGlass explicitly offers /usr/share/enigma2 and /etc as
+    # storage roots.  Those image-owned parents remain protected, but their
+    # exact skin-managed picon subdirectories are safe download targets once
+    # the UI has applied the existing internal-storage/space confirmation.
+    # Keep checking every ancestor for symlinks above; never whitelist /usr,
+    # /etc, or arbitrary descendants of either.
+    managed_roots = ("/usr/share/enigma2/hdg17_files", "/etc/hdg17_files")
+    managed_leafs = ("picon", "picon_50x30", "picon_400x240")
+    if any(value == os.path.join(root, leaf)
+           for root in managed_roots for leaf in managed_leafs):
+        return value
     protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc", "/root", "/run", "/sbin", "/sys", "/usr", "/var")
     if value in protected or any(value.startswith(p + os.path.sep) for p in protected):
         return None
