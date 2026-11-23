@@ -1,6 +1,6 @@
 # WARDER EVOLUTION — spoločný checkpoint po konzervatívnom uprataní (23. 11. 2026)
 
-**Rozsah schválenia:** vlastník 23. 11. 2026 požiadal o jednorazové odstránenie iba preukázateľne nepotrebných pomocných checkpointov/testovacích artefaktov v troch repozitároch, bez zásahu do `main`, histórie, chránených grafík, záloh, produkcie a aktuálne rozpracovaných úloh. Tento dokument je **jediný nový spoločný checkpoint**, nie automatická autorizácia ďalších mazaní.
+**Rozsah schválenia:** vlastník 23. 11. 2026 požiadal o jednorazové odstránenie iba preukázateľne nepotrebných pomocných checkpointov/testovacích artefaktov v troch repozitároch, bez prepisovania histórie a bez zásahu do chránených grafík, záloh, produkčných artefaktov a aktuálne rozpracovaných úloh; schválené PR sa po úspešných relevantných kontrolách bezpečne zlučujú do `main`. Tento dokument je **jediný nový spoločný checkpoint**, nie automatická autorizácia ďalších mazaní.
 
 ## Východiskové overené HEAD (`main`, 23. 11. 2026)
 
@@ -12,15 +12,25 @@
 
 **Dôležité:** stav sa musí pri ďalšej práci znovu overiť; údaje sú bodový checkpoint, nie trvalý HEAD. Produkčné ZIPy/IPK ani fyzické prijímače sa týmto upratovaním nepretestovali.
 
-## Preukázané odstránenia – iba pracovné vetvy, bez priamych zmien `main`
+## Preukázané odstránenia – cez auditované pracovné vetvy a PR, bez priameho prepisu `main`
 
 | Repozitár | Odstránená pomocná položka | Zdôvodnenie | Pracovný commit / PR |
 |---|---|---|---|
 | FullHDGlass | `.github/workflows/publish-warder-1.0.70.yml` | Version-pinned vydávací workflow v `main` vyžadoval zdrojovú verziu `1.0.70`, kým aktuálny runtime je `1.0.84`. Išlo o starý manuálne spustiteľný vydávací mechanizmus, nie aktuálny publisher. Neboli odstránené testy, kód ani historické dôkazy. | `29ff1e1fb6b31437b72be4187b901dfc89bcb5f9`; [PR #143](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/143) |
 | PiconHub | `.github/workflows/piconhub-0.1.41-download-fix.yml` | Jednorazový workflow viazaný na starú vetvu `release/piconhub-0.1.41-download-fix`, ktorá nie je v aktuálnom zozname vetiev. Vytváral `v0.1.41` a aktuálna ostrá verzia je `v0.1.44`. | `1ce71df0d951d1a87cc911620e484921568f388e`; [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85) |
+| PiconHub | `.github/workflows/four-profiles-candidate.yml` | Neprítomná výhradne cieľová vetva `feature/four-profiles-20261101`, žiadny workflow_dispatch/schedule/PR trigger, nijaký iný workflow ho nevyvoláva. Zdrojové testy ostali. | [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85), squash `e88d02e392e77dcd76f98f861e957c5ce9adb1e9` |
+| PiconHub | `.github/workflows/gles-wqhd-candidate.yml` | Neprítomná vetva `fix/generated-list-rows-20261102`; žiadne iné aktívne triggery alebo workflow závislosti. | [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85) |
+| PiconHub | `.github/workflows/openpli-stdlib-candidate.yml` | Neprítomná vetva `fix/openpli-stdlib-20261102`; testovacie skripty a kompatibilitné workflowy zachované. | [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85) |
+| PiconHub | `.github/workflows/runtime-cleanup-candidate.yml` | Neprítomná vetva `fix/receiver-runtime-cleanup`; žiadne ručné/plánované spúšťanie ani workflow závislosti. | [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85) |
 | Warder Radio | `.github/workflows/radio-019-upgrade-check.yml` | Jednorazový test aktualizácie `0.1.9.1` viazaný na neprítomnú starú `release/radio-0.1.9.1-20261106` vetvu. Aktuálna verzia `0.2.2` má samostatné zachované moderné testy. | `311ea06620ffdb9b454971aec64b2584ada0ddc8`; [PR #58](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/58) |
 
-**Presný stav:** odstránené sú 3 súbory v 3 oddelených pracovných vetvách, bez zásahu do produkčných vydaní. Overený diff: FullHDGlass #143 = 1 odstránený YAML (149 riadkov) + tento jediný checkpoint; PiconHub #85 = 1 odstránený YAML (42 riadkov); Radio #58 = 1 odstránený YAML (37 riadkov). Všetky tri PR hlásia `mergeable_state=clean`; Radio #58 má `unit` SUCCESS. FullHDGlass #143 a PiconHub #85 zatiaľ nemajú žiadny check-run pri novom SHA, takže ich merge je **zablokovaný neúplnou CI verifikáciou**. Ani Radio #58 sa nezlučuje automaticky, pretože úpravy workflowov vyžadujú osobitné manuálne posúdenie. Dokončenie upratovania v `main` je podmienené bezpečnostným preskúmaním zmien workflowov a príslušnými CI. PR nie je publikácia ani merge; finálny status kontrolovať na GitHube. Historické spustenia GitHub Actions ostávajú zachované.
+**Presný stav k poslednému overeniu 23.11.2026:**
+
+- **Warder Radio [PR #58](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/pull/58): ZLÚČENÉ.** GitHub Actions `unit` SUCCESS na PR SHA `311ea06620ffdb9b454971aec64b2584ada0ddc8`; manuálne preskúmaný presný diff jedného workflowu. Squash merge `6651d52db631c331ff135afbbeef48727df7c51a`; potvrdený `main`, runtime/feed `0.2.2` zachované.
+- **PiconHub [PR #85](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/85): ZLÚČENÉ.** Päť odstránených zastaraných YAML a aktualizovaná read-only grafická CI ochrana; kontrola `whole-logo-regressions` SUCCESS na presnom SHA `f77fac302948bda64b52a9cb9b1e21a9450df75b`. Squash merge `e88d02e392e77dcd76f98f861e957c5ce9adb1e9`. Žiadny IPK/ZIP ani grafika sa nemenili.
+- **FullHDGlass [PR #143](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/143): pripravené na dokončenie, aktuálny merge status nezamieňať za hotový.** Odstránený jeden nefunkčný version-pinned publisher `1.0.70`; existujúci `verify-radio-release.yml` rozšírený o read-only kontrolu zmien workflowov a checkpointu. Relevantné CI `verify` už absolvovalo SUCCESS na pracovnom SHA `3782814274cb012d69b154e3bf3376885c0f7df5`; po posledných dokumentačných zmenách musí byť finálny HEAD znova úspešne overený pred merge.
+- **Celkom sedem odstránených pracovných YAML súborov v troch repozitároch** (FullHDGlass 1 + PiconHub 5 + Radio 1). Všetky zmazania boli vykonané cez PR; nesmie sa zamieňať otvorený PR s dokončeným merge. Bez mazania Git vetiev, tagov, GitHub Releases alebo historických Actions dôkazov.
+- Pri workflowoch `.github/workflows/` prebehla individuálna manuálna bezpečnostná kontrola a na dotknutých PR sú zapojené existujúce nepublikujúce read-only testy. Žiadne nové testovacie IPK ani SAT automatizácie sa v tejto dávke zámerne nevytvárali.
 
 ## Zachované naschvál
 
