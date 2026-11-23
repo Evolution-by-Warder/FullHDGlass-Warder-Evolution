@@ -28,24 +28,34 @@ class SupportHeaderTests(unittest.TestCase):
         off = module.channel_diagnostic_suffix("35", False, True, 0, 0, 1, "en")
         self.assertIn("EPG: OFF/GLES", off)
 
-    def test_real_menu_template_number_is_not_confused_with_menu_icon_set(self):
-        import ast
+    def test_user_menu_numbers_are_stable_and_default_first(self):
         source = (SOURCE / "plugin.py").read_text(encoding="utf-8")
-        self.assertIn('menusel(config.plugins.setupGlass17.par7.value)', source)
+        self.assertIn('menu_support_number(config.plugins.setupGlass17.par7.value)', source)
         self.assertIn('_("Menu Icons")', source)
-        tree = ast.parse(source)
-        func = next(node for node in tree.body
-                    if isinstance(node, ast.FunctionDef) and node.name == "menusel")
-        assert len([node for node in tree.body
-                    if isinstance(node, ast.FunctionDef) and node.name == "menusel"]) == 1
-        scope = {"ISP38": False, "isATV": True}
-        exec(compile(ast.Module(body=[func], type_ignores=[]), "menu-id", "exec"), scope)
-        self.assertEqual(scope["menusel"]("List"), "2")
-        self.assertEqual(scope["menusel"]("Icons"), "1")
-        self.assertEqual(scope["menusel"]("PIG4"), "13")
-        self.assertEqual(scope["menusel"]("Li3"), "16")
-        scope["ISP38"] = True
-        self.assertEqual(scope["menusel"]("Li3"), "15")
+        self.assertNotIn('Menu: " + menusel(config.plugins.setupGlass17.par7.value)', source)
+        # Do not repurpose native template IDs (List is technically 2 there).
+        self.assertEqual(module.menu_support_number("List"), "1")
+        self.assertEqual(module.menu_support_number("Icons"), "2")
+        self.assertEqual(module.menu_support_number("Icons Right"), "3")
+        self.assertEqual(module.menu_support_number("PIG4"), "9")
+        self.assertEqual(module.menu_support_number("Li3"), "11")
+        self.assertEqual(module.menu_support_number("unknown"), "?")
+        self.assertEqual(len(set(module.MENU_DISPLAY_ORDER)), 11)
+
+    def test_all_existing_choice_values_have_support_numbers(self):
+        import ast
+        text = (SOURCE / "plugin.py").read_text(encoding="utf-8")
+        tree = ast.parse(text)
+        target = next(n for n in ast.walk(tree) if isinstance(n, ast.Assign)
+                      and any(isinstance(t, ast.Attribute) and t.attr == 'par7'
+                              for t in n.targets)
+                      and isinstance(n.value, ast.Call)
+                      and getattr(n.value.func, 'id', '') == 'ConfigSelection')
+        self.assertEqual(next(k.value.value for k in target.value.keywords
+                              if k.arg == 'default'), "List")
+        choices = next(k.value for k in target.value.keywords if k.arg == 'choices')
+        configured = {x.elts[0].value for x in choices.elts}
+        self.assertEqual(configured, set(module.MENU_DISPLAY_ORDER))
 
     def test_original_selected_settings_line_remains_only_header_target(self):
         source = (SOURCE / "plugin.py").read_text(encoding="utf-8")
