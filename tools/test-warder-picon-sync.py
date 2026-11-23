@@ -101,13 +101,15 @@ assert prefs2["prepared"] is True
 PLUGIN = os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py")
 with open(PLUGIN, "r") as h:
     plugin_source = h.read()
-# Distinguish invalid storage from missing colour/resolution in the download UI.
+# The untouched controller has a separate destination guard after option readiness.
+# Distinguish an invalid path from a missing colour/resolution in the validator.
 download_start = plugin_source.index("def startDown(self, destination_confirmed=False):")
-diagnostic = 'not warderPiconSync.validate_destination(self.warderPiconPrefs.get("destination"))'
-validation = "not self.warderDABOnly and not warderPiconSync.channel_preferences_ready"
-assert diagnostic in plugin_source[download_start:download_start + 2200]
-assert plugin_source.index(diagnostic, download_start) < plugin_source.index(validation, download_start)
-assert '_("Invalid picon destination") + ":\\n"' in plugin_source[download_start:download_start + 2200]
+download_end = plugin_source.index("def _warderProgressBegin", download_start)
+download_block = plugin_source[download_start:download_end]
+assert 'not self.warderDABOnly and not warderPiconSync.channel_preferences_ready' in download_block
+assert 'destination = warderPiconSync.validate_destination(' in download_block
+assert '_("Invalid picon destination")' in download_block
+assert download_block.index('channel_preferences_ready') < download_block.index('destination = warderPiconSync.validate_destination(')
 menu_start = plugin_source.index("\t\tself.menuListAll = {", plugin_source.index("class downloadMenu"))
 menu_end = plugin_source.index("\n\t\t\t}", menu_start)
 menu_block = plugin_source[menu_start:menu_end]
@@ -303,6 +305,9 @@ assert jobs["jobs"][0]["bytes"] == 10 and jobs["jobs"][0]["sha256"] == "a" * 64
 assert jobs["jobs"][0]["parts"][0]["bytes"] == 10
 assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
 assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
+valid_choices_unsafe_path = configured(["SKYLINK"], destination="/etc/enigma2", style="black")
+assert m.channel_preferences_ready(valid_choices_unsafe_path)
+assert m.validate_destination(valid_choices_unsafe_path["destination"]) is None
 # PATHS may place FullHDGlass-owned data on internal /usr/share/enigma2 or /etc.
 # Only exact managed picon leaves are permitted; the storage warning still runs.
 for skin_root in ("/usr/share/enigma2/hdg17_files", "/etc/hdg17_files"):
