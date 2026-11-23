@@ -15,6 +15,15 @@
 
 [Oficiálny Release v1.0.88](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.88) · [Stiahnuť IPK 1.0.88](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.88/enigma2-plugin-skins-fullhdglass_1.0.88_all.ipk) · [Poznámky k vydaniu](warder-1.0.88-release-notes.md).
 
-Oficiálny Release, SHA-256 a stav produkčného/testovacieho aktualizačného kanála sa potvrdzujú až po skončení kanonického publikačného workflow. Aktuálnu verziu na stiahnutie určuje súbor `update-production.json`.
+**Publikovanie overené 23. novembra 2026:** PR #157 bol zlúčený do `main` (squash commit `e595a1aae8a49d2fcee7b54973927e8581a513bc`), všetkých **24/24** automatických kontrol na finálnom HEAD prešlo. Kanonický vydávací [workflow #45252364033](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45252364033) skončil **COMPLETED / SUCCESS** vrátane koncového `verify-production-release-state.py`.
+
+- **IPK:** `enigma2-plugin-skins-fullhdglass_1.0.88_all.ipk`
+- **Veľkosť:** 18 394 974 bajtov
+- **SHA-256:** `0da1f61a4e675ffc7b548d423430e9673230551d5bbc24e77598d5128d687c28`
+- **Verejný Release:** `v1.0.88`, nie draft ani prerelease
+- **Aktualizácia:** `update-production.json` aj `update-test.json` → `1.0.88`, rovnaký SHA-256 ako vydaný asset, lokalizované poznámky v 10 jazykoch
+- **Zachovaná predchádzajúca verzia:** `1.0.87` a všetky jej schválené opravy
+
+Nie je doložené následné fyzické pretestovanie oboch obrazoviek českým používateľom; táto skúška zostáva požiadavkou na následné overenie bez blokovania výslovne schváleného vydania.
 
 **Po aktualizácii reštartujte Enigma2.**
