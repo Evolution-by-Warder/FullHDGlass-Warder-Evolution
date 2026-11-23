@@ -21,6 +21,6 @@
 
 Balík: `enigma2-plugin-skins-fullhdglass_1.0.88_all.ipk`.
 
-Oficiálny GitHub Release, kontrolný súčet publikovaného IPK a produkčný/testovací aktualizačný kanál musia byť potvrdené až po úspešnom kanonickom publikačnom workflow. Tento dokument nie je dôkazom hotového publikovania.
+**OVERENÉ A PUBLIKOVANÉ:** [Release v1.0.88](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.88) z 23. 11. 2026 je verejný, nie draft ani prerelease. Oficiálny IPK má **18 394 974 B**, SHA-256 **`0da1f61a4e675ffc7b548d423430e9673230551d5bbc24e77598d5128d687c28`**. Oba aktualizačné kanály (`update-production.json`, `update-test.json`) ukazujú na 1.0.88 s identickým SHA-256 a desiatimi jazykovými textami. [Kanonický vydávací workflow #45252364033](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45252364033) skončil **COMPLETED / SUCCESS** vrátane kontroly skutočne publikovaného stavu. PR #157 zlúčený, finálne 24/24 CI úspešných. Čaká sa už len na voliteľné následné snímky českého používateľa, nie na samotné vydanie.
 
 **Po inštalácii reštartujte Enigma2.**
