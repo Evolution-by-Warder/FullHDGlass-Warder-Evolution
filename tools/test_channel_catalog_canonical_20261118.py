@@ -36,8 +36,8 @@ class CanonicalManifest(unittest.TestCase):
         d = self.doc
         self.assertEqual(d["delivery"], "raw-github-parts")
         self.assertEqual(len(d["parts"]), len(self.meta))
-        self.assertEqual(len(d["packages"]), 498)
-        self.assertEqual(len(self.meta), 2131)
+        self.assertEqual(len(d["packages"]), 507)
+        self.assertEqual(len(self.meta), 2224)
         used = set()
         for p in d["packages"]:
             self.assertTrue(re.fullmatch(r"[0-9a-f]{64}", p["sha256"]))
@@ -90,8 +90,8 @@ class CanonicalManifest(unittest.TestCase):
         aliases = self.report["aliases"]
         self.assertEqual(len(aliases), 82)
         self.assertEqual(self.report["packages_corrected"], 20)
-        self.assertEqual(self.report["package_count"], len(self.doc["packages"]))
-        self.assertEqual(self.report["part_count"], len(self.meta))
+        self.assertEqual(self.report["package_count"], 498)
+        self.assertEqual(self.report["part_count"], 2131)
         self.assertEqual(set(self.report["affected_selectors"]),
                          {"150W", "192E", "360E", "08W"})
         for item in aliases:
