@@ -1,14 +1,7 @@
 name: FullHDGlass Solo4K 1.0.85-test1 (isolated test IPK)
 on:
-  push:
-    branches: [fix/solo4k-81-picon-help-epg-columns-20261123]
-    paths:
-      - '.github/workflows/solo4k-1085-test1.yml'
-      - 'source/**'
-      - 'tools/test_warder_channel_epg_clip.py'
-      - 'tools/test_fastscan_epg_name_geometry.py'
-      - 'tools/test_warder_settings_summary.py'
-      - 'tools/test-setup-style.py'
+  # Historical test already published. Manual verification only;
+  # never republish/overwrite an immutable older prerelease on new commits.
   workflow_dispatch:
 permissions:
   contents: read
