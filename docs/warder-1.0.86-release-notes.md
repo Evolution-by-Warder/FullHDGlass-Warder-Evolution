@@ -21,8 +21,10 @@
 
 Balík: `enigma2-plugin-skins-fullhdglass_1.0.86_all.ipk`.
 
-Oficiálny [GitHub Release 1.0.86](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.86) a [priame stiahnutie IPK 1.0.86](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.86/enigma2-plugin-skins-fullhdglass_1.0.86_all.ipk) sú platné až po úspešnom vydaní.
+Oficiálny [GitHub Release 1.0.86](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.86) a [priame stiahnutie IPK 1.0.86](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.86/enigma2-plugin-skins-fullhdglass_1.0.86_all.ipk) sú **publikované a overené**.
 
-Ostré aktualizačné kanály `update-production.json` a `update-test.json` sa aktualizujú až po overení finálneho vydania a jeho SHA-256; pôvodný migračný `update.json` a jeho balík 1.0.18 zostávajú chránené.
+**Finálny IPK:** 18 393 684 B, SHA-256 `40ff2a80fbe32b7c7b69c2b61335fca64d6e00bbc37489e4e5efe2972561f6c2`. Doložené na Release assete, v `main/packages` a v oboch aktualizačných manifestoch. Publisher [#45184862599](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45184862599) úspešne vytvoril Release aj publikoval a preveril produkčné feedy.
+
+Ostré aktualizačné kanály `update-production.json` a `update-test.json` už poskytujú **1.0.86** s totožným URL a SHA-256; pôvodný migračný `update.json` a jeho balík 1.0.18 zostávajú chránené.
 
 Po aktualizácii reštartujte Enigma2.
