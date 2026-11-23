@@ -70,6 +70,15 @@ def watch_language(config, plugin_dir):
         setting.addNotifier(changed, initial_call=True)
         _watched_language = setting
 
+    # FullHDGlass uses large native setup labels. Keep translated text away
+    # from native slider/value columns without touching compact dialogs.
+    if getattr(getattr(getattr(config, "skin", None), "primary_skin", None), "value", None) == "hd_glass17/skin.xml":
+        try:
+            from .warderNativeConfigSpacing import install as install_native_spacing
+            install_native_spacing()
+        except (ImportError, AttributeError):
+            pass
+
 
 def get_translator(domain, config, plugin_dir, *, always_osd=False):
     """Look up messages in the current language, refreshing after an atomic download."""
