@@ -2,13 +2,13 @@
 
 **Nové pravidlo vlastníka: 23. 11. 2026 (nadradené staršej politike piatich vydaní).** V distribúcii a v aktuálnych zdrojových balíkoch ponechať **najnovšie ostré vydanie a najviac tri predchádzajúce ostré vydania** každého programu. TEST/RC nie sú ostré verzie. Nemaže sa Git história, tagy, zdrojové testy, schválené grafiky, manifesty dát, používateľské súbory ani Trezor.
 
-Pre FullHDGlass je retenčná štvorica **v1.0.84 / v1.0.83 / v1.0.82 / v1.0.80**. Historická chýbajúca 1.0.81 nie je ostrým vydaním v tejto štvorici.
+Pre FullHDGlass je retenčná štvorica **v1.0.85 / v1.0.84 / v1.0.83 / v1.0.82**. Historická chýbajúca 1.0.81 nie je ostrým vydaním v tejto štvorici.
 
 ## Povinné migrácie a výnimky
 
 - **Legacy 1.0.18:** `update.json` je bootstrap zo starej `enigma2-skin-fullhdglass17` identity. `preinst` aktuálnej identity výslovne blokuje neoverený skok; preto musí pôvodná 1.0.18 zostať dostupná, kým všetky podporované staré inštalácie prejdú bezpečne do ostrého vydania. Číslo 1.0.18 sa nezapočítava do štyroch ostrých rollbackov.
 - **Legacy TEST 1.0.72:** produkčný kód pre staršie `-test` inštalácie používa `warder-modernization-work/update-test.json`, ktorý na 1.0.72 naďalej odkazuje. Tento súbor zatiaľ zostáva v `main/packages/`, kým sa testovacím klientom bezpečne zmení cesta. Nie je to piate ostré vydanie.
-- **Aktuálny main TEST feed:** `main/update-test.json` prechádza zo zastaranej 1.0.69 na rovnaký overený package URL/SHA ako `update-production.json` (1.0.84). Starý `update.json` zachováva 1.0.18, ale už uvádza následnú produkčnú 1.0.84; jeho prepis na nové meno IPK by mohol poškodiť staré prijímače.
+- **Aktuálny main TEST feed:** `main/update-test.json` prechádza zo zastaranej 1.0.69 na rovnaký overený package URL/SHA ako `update-production.json` (1.0.85). Starý `update.json` zachováva 1.0.18, ale už uvádza následnú produkčnú 1.0.85; jeho prepis na nové meno IPK by mohol poškodiť staré prijímače.
 
 ## Vydávanie a automatické prerezávanie
 
