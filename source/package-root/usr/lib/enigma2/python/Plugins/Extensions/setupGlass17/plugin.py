@@ -9350,7 +9350,11 @@ class downloadMenu(Screen):
 		# /media/usb and /media/hdd can silently point to receiver flash when
 		# their media are not mounted. Warn before starting a selected batch.
 		storage_target = os.path.realpath(str(config.plugins.setupGlass17.par39.value))
+		# Keep the 64 MiB system reserve and a conservative 512 MiB
+		# staging allowance before allowing silent internal-flash downloads.
+		# Each real Warder package is still size-checked by ChannelWorker.
 		if (_warderStorageIsInternal(storage_target) and
+				not _warderStorageHasSpace(storage_target, 512 * 1024 * 1024) and
 				getattr(self, "_warderInternalStorageApproved", None) != storage_target):
 			free_mb = _warderStorageFreeBytes(storage_target) // (1024 * 1024)
 			message = (ui_text("Internal storage download warning") + "\n" +
