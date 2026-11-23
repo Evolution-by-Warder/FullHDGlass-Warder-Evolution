@@ -305,7 +305,7 @@ assert jobs["jobs"][0]["bytes"] == 10 and jobs["jobs"][0]["sha256"] == "a" * 64
 assert jobs["jobs"][0]["parts"][0]["bytes"] == 10
 assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
 assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
-valid_choices_unsafe_path = configured(["SKYLINK"], destination="/etc/enigma2", style="black")
+valid_choices_unsafe_path = configured(["235E"], destination="/etc/enigma2", style="black")
 assert m.channel_preferences_ready(valid_choices_unsafe_path)
 assert m.validate_destination(valid_choices_unsafe_path["destination"]) is None
 # PATHS may place FullHDGlass-owned data on internal /usr/share/enigma2 or /etc.
