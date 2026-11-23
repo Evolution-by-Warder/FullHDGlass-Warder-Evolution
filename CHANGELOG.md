@@ -4,7 +4,7 @@
 - Rozostup vo veľkých natívnych konfiguračných zoznamoch sa upravuje na 55 % ich šírky, so zachovaním najmenej 450 px pre hodnotu/posuvník; úzke pluginové okná, náhľady, systémový Enigma2 kód a vlastné nastavenia skinu sa nemenia.
 - Vstupný kontrolný IPK 1.0.88-test1: 6/6 úzko zameraných testov, overený kontrolný súčet; PR #157 absolvoval kontroly OpenATV a OpenPLi pred prípravou stabilnej verzie.
 - Vlastník výslovne nariadil zaradiť opravu do ostrej verzie. Opakované prijímačové vizuálne potvrdenie českým používateľom zatiaľ nemáme. Ostatné funkcie, grafika, picony, bezpečnostné opravy 1.0.87 aj nastavenia zostávajú zachované.
-- Oficiálne vydanie: [v1.0.88](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.88). Podrobnosti: [poznámky 1.0.88](docs/warder-1.0.88-release-notes.md).
+- **OVERENÉ A PUBLIKOVANÉ:** PR #157 zlúčený do `main`, 24/24 CI úspešných. Oficiálny [Release v1.0.88](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.88) a [publikačný workflow #45252364033](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45252364033) **SUCCESS**. IPK 18 394 974 B, SHA-256 `0da1f61a4e675ffc7b548d423430e9673230551d5bbc24e77598d5128d687c28`; oba feedy `update-production.json` a `update-test.json` ukazujú na 1.0.88. Podrobnosti: [poznámky 1.0.88](docs/warder-1.0.88-release-notes.md).
 
 ## 1.0.87 — 2026-11-23 — overené a publikované vydanie opravy SAT piconov
 
