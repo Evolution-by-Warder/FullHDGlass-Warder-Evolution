@@ -1,3 +1,13 @@
+## 23. 11. 2026 — Hlásenie 13°E/19,2°E: nedostatok dočasného miesta SAT piconov (PR kandidát)
+
+- Používateľ dodal snímku FullHDGlass 1.0.85: pri sťahovaní piconov `13.0e / 130E` a `19.2e / 192E` sa objaví `insufficient temporary space for Warder channel package`; `23.5e / 235E` sa stiahol na 100 % a prešiel do inštalácie PNG. Presná kapacita úložiska prijímača zatiaľ nie je overená.
+- Overený zdroj príčiny: `warderChannelWorker.ChannelWorker.run` meral voľné miesto v `/tmp` a vytváral ZIP cez `tempfile.mkstemp(dir="/tmp")`, hoci zvolené picony už smerujú na externý disk. Preto malé `/tmp` zablokuje veľké SAT balíky aj pri dostatočnom HDD.
+- Bezpečný kandidát: pracovný ZIP `.warder-channel-*.zip` vytvoriť **priamo v už overenom adresári zvolených piconov**, nie v `/tmp`. Ponechať konzervatívnu kontrolu priestoru na cieľovom FS, zákaz symlink cieľa, limit veľkosti balíka, verifikáciu part/full SHA256, kontrolu ZIP/PNG a atomické zápisy jednotlivých PNG. `finally` odstráni iba vlastný dočasný ZIP po úspechu alebo chybe; nikdy nemaže existujúce picony ani používateľské súbory.
+- Testy: `tools/test-warder-channel-worker.py` s regresiami pre plné `/tmp`, dostatok/nedostatok miesta na cieľovom disku, chybu SHA a symlink. Integračný workflow doplnený o spustenie týchto testov a `test_warder_storage_safety.py`.
+- Stav: **pracovná vetva `fix/channel-picons-stage-on-destination-20261123`**, bez zlúčenia do `main`, bez zmeny ostrého vydania 1.0.85 alebo produkčných balíkov. Fyzické potvrdenie 13°E/19,2°E ešte chýba. Vydanie vyžaduje schválenie rozsahu a testy.
+
+---
+
 ## 23. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.85
 
 - **Výslovný súhlas a fyzický TEST3:** vlastník potvrdil správne zobrazenie rozostupov 9/14 riadkov, piconov a rolovania EPG pri OpenATV 8.1/GLES a úplný horný riadok „Máš zvolené“ vrátane `HDD/SSD: /dev/sda`. Následne priamo schválil ostré vydanie 1.0.85. Natívny viacriadkový opis Picon Setup na konkrétnom Solo 4K nie je osobitne fyzicky doložený.
