@@ -1,5 +1,7 @@
 # Legacy HDGlass FTP -> Warder asset architecture
 
+> **Stav k 23. 11. 2026 (aktuálny, nadradený historickému auditu nižšie):** Z 27 pôvodných položiek je všetkých **18 aktívnych runtime rodín** presmerovaných na Warder manifest; 9 položiek je historicky archivovaných. Pôvodný `weatherIcons/piconWeather.zip` nie je v dnešnom `downloadMenu` ponúkaný ani požadovaný; aktuálny skin používa `weatherIconsN`, `animWeatherIcons` a samostatné `piconWeather` balíky. Starý ZIP ostáva bezpečne evidovaný v chránenom originálnom FTP snapshote, ale je **ARCHIVE_ONLY, nie chýbajúci produkčný download**. Neobnovovať ho iba kvôli uzavretiu historického auditu. Ak vlastník niekedy bude chcieť znovu samostatnú klasickú sadu, pôjde o osobitnú požiadavku s extrakciou a SHA kontrolou originálu. Predchádzajúce počty „19 rodín / 1 missing“ nižšie sú historická snímka, nie aktuálny stav.
+
 > **Recovery status, 2026-10-23:** Current release/publication and backup state are in [PROJECT-CONTINUITY.md](../PROJECT-CONTINUITY.md) and [BACKUP-RESTORE.md](BACKUP-RESTORE.md). Older version numbers, publication states and immediate-next-work instructions below are dated history. This banner does not retire graphics/compatibility rules or claim unresolved receiver findings are fixed.
 
 
