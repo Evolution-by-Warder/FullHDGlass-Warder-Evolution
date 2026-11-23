@@ -1,3 +1,14 @@
+## 23. 11. 2026 — Schválené ostré FullHDGlass 1.0.85 (vydávacia príprava)
+
+- **Fyzické potvrdenie:** vlastník po inštalácii `1.0.85-test3` poskytol snímku jedného celého riadka „Máš zvolené“ vrátane `HDD/SSD: /dev/sda`; predtým na prijímači s OpenATV 8.1/GLES overil zmenu počtu riadkov `14 → 9 → 14`, správnu veľkosť piconov, názvy EPG bez prekrytia a zachované rolovanie EPG. Výslovne napísal „teraz to je dokonale, vydaj ostru verziu a zapis vsetko kam treba“. Toto je súhlas s produkčnou integráciou a vydaním v rozsahu PR #151, nie so zmenou schválených piconov/grafiky.
+- **Overená TEST3:** [Release v1.0.85-test3](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.85-test3), IPK 18 391 806 B, SHA-256 `54f6adf26004200adc9041621719e46d5cefbcbd60be9248f6f3175f8c089c2e`; workflow [#45176012466](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45176012466) SUCCESS. Zachovať testovací Release nemenný.
+- **Zdrojová integrácia:** [PR #151](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/151) ručne zlúčený (obsahoval aj testové workflowy), merge commit **`8a237098efaa25f228c69725e7e2b6dfd88fbb95`**. Najnovší `main` pred vydávacou vetvou bol 1.0.84; relevantné aktuálne OpenATV/OpenPLi, EPG, rádio a integračné testy na HEAD PR prešli. Historické TEST64–76 workflowy zlyhávali na starom pevnom predpoklade `1.0.69` a nie sú testami verzie 1.0.85.
+- **Zmeny:** natívna synchronizácia výšky riadka/piconu/názvov po zmene počtu staníc, bezpečná rezervácia šírky číselného stĺpca v EPG, väčšia viacriadková nápoveda v nastavení piconov, nový iba informačný formát riadka „Máš zvolené“ so zachovanými hodnotami Infobar/ikony/počasie/HDD. Typ menu: predvolené `1`; diagnostika EPG/GLES/font. Konečná geometria x=15, w=1890, Regular 23.
+- **Vydávacia vetva:** `release/fullhdglass-1.0.85-20261123` vychádza z presne overeného merge commitu, mení oficiálnu verziu a dokumentáciu; cieľ je jeden ostrý v1.0.85. `publish-warder-stable.yml` najprv zostaví a overí nemenný IPK a až potom aktivuje `update-production.json` a `update-test.json`, skontroluje `main` a Release. Pred dokončením tohto workflowu sa produkčná publikácia **nesmie označiť za hotovú**.
+- **Rozsah fyzických testov:** OpenATV 8.1/GLES na GigaBlue. Samotný dlhý opis Picon Setup na konkrétnom Solo 4K zatiaľ nebol prijímačovo potvrdený; zdroj/rozloženie je automaticky kontrolované. Žiadne zmeny rádio/SAT balíkov, piconov, schválených grafík či používateľských súborov.
+
+---
+
 ## FullHDGlass 1.0.69 — 5 November 2026
 
 Owner authorized immediate publication of the channel-list picon source selector. System setting restores the original image lookup by default; Prefer 50x30 is explicit opt-in. OpenATV/OpenPLi automated checks and public package verification passed. Physical receiver feedback is pending. The legacy bridge is preserved.

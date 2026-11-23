@@ -48,7 +48,7 @@ RADIO_SAVER_PERSISTENCE_1080_SHA256='47b938394493e4d409672fef9bc9c8d7d2a66517e87
 # OpenPLi 9.2. Keep the previous controller fingerprint for older versions;
 # the full AST guard remains active for every unrelated settings/save change.
 LEGACY_RADIO_TV_GUARD_1083_SHA256='1248749fab1b3d98fb1a4e80e7268535a6245cbf8f613830f0417573f53b41fb'
-EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83', '1.0.84') else
+EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83', '1.0.84', '1.0.85') else
               RADIO_SAVER_PERSISTENCE_1080_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82') else
               REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
               REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
@@ -56,10 +56,10 @@ EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83',
 def fingerprint_source(source):
     # Stable releases change only the visible header version labels.
     # Restore those labels for the frozen 1.0.76 controller AST check.
-    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79', '1.0.82', '1.0.83', '1.0.84'):
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79', '1.0.82', '1.0.83', '1.0.84', '1.0.85'):
         source, count = re.subn(
             r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
-            r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84') else '1.0.76') + r'\2', source)
+            r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84', '1.0.85') else '1.0.76') + r'\2', source)
         if count != 10:
             raise AssertionError('Expected 10 reviewed version header labels')
     # Exactly reverse the reviewed additions to the existing support-info row
@@ -247,7 +247,7 @@ class SetupStyleTests(unittest.TestCase):
                 original.remove(original.find("widget[@name='selected_item']"))
             # The modern SAT selector has no Yellow action. Its historical
             # unused key_yellow widget was removed from the visible dialog.
-            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84') and name=='satSelectorScr':
+            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85') and name=='satSelectorScr':
                 legacy=original.find("widget[@name='key_yellow']")
                 self.assertIsNotNone(legacy)
                 original.remove(legacy)
@@ -481,7 +481,7 @@ class SetupStyleTests(unittest.TestCase):
         import struct
         record=json.loads((ROOT/'design/settings-header-asset.json').read_text())
         path=ROOT/'source/package-root'/record['path'];raw=path.read_bytes()
-        expected=(CURRENT_MAIN_1080_HEADER_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84')
+        expected=(CURRENT_MAIN_1080_HEADER_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85')
                   else record['sha256'])
         self.assertEqual(hashlib.sha256(raw).hexdigest(),expected)
         self.assertEqual(raw[:8],b'\x89PNG\r\n\x1a\n')
@@ -530,13 +530,13 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():
-            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84') and name in CURRENT_MAIN_1080_LAYOUTS:
+            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85') and name in CURRENT_MAIN_1080_LAYOUTS:
                 # Pin only reviewed current-main exceptions. No blanket skip.
                 # Normalize ONLY the single generated version label to the
                 # unchanged, SHA-pinned main 1.0.80 layout. All other graphics,
                 # geometry and widget source must remain byte-identical.
                 verified_skin = skin
-                if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84'):
+                if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84', '1.0.85'):
                     label = 'text="' + RUNTIME_VERSION + '"'
                     if verified_skin.count(label) != 1:
                         raise AssertionError('Expected one version label in ' + name)

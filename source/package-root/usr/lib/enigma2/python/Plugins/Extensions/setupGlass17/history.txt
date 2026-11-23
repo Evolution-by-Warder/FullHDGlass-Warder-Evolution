@@ -1,3 +1,12 @@
+FullHDGlass 1.0.85 — 23.11.2026
+Fixed channel and EPG title overlap with accurate native service-number and event-column geometry.
+Changing the number of visible channels now synchronizes native row height, picon scale and text positions without closing and reopening the list.
+Preserved optional GLES long EPG title scrolling and native fallback on other images.
+Expanded native Picon Setup help to display long explanations above the action buttons.
+The existing Selected settings line now also shows menu type number, channel selection type, EPG/GLES state and font overrides without losing InfoBar, icon or HDD settings.
+Adjusted this one line to x=15, width=1890 and font Regular 23 to display the complete HDD path; GigaBlue/OpenATV 8.1 receiver TEST3 accepted.
+Previous radio packages, picons, graphics and user settings remain intact. Restart Enigma2.
+
 FullHDGlass 1.0.77 — 10.11.2026
 Factory reset restores all 148 original bundled icons offline without downloaded icon packs, even if type 1 is already selected.
 Renamed graphics/picon storage menu setting and improved localized help; backup configuration hdg17.conf has separate help.

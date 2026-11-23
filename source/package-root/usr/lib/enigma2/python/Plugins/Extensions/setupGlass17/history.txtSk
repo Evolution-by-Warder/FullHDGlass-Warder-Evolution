@@ -1,3 +1,12 @@
+FullHDGlass 1.0.85 — 23.11.2026
+Opravené prekrývanie názvov staníc a EPG pomocou správnej geometrie číselného stĺpca a názvu programu.
+Po zmene počtu zobrazovaných staníc sa spoločne prepočítajú výšky riadkov, veľkosti piconov a pozície textov bez zatvárania zoznamu.
+Zachované voliteľné GLES rolovanie dlhých názvov EPG a natívne zobrazenie na ostatných systémoch.
+Nápoveda v nastavení piconov sa zobrazuje vo väčšom priestore nad farebnými tlačidlami.
+Riadok „Máš zvolené“ zobrazuje aj číslo typu menu, výber kanálov, EPG/GLES a nastavenia písma pri zachovaní Infobaru, ikon a HDD/SSD.
+Iba tento riadok má x=15, šírku 1890 a font Regular 23; celú HDD cestu prijímačovo potvrdil vlastník v TEST3 na OpenATV 8.1.
+Rádio, všetky picony, grafika aj osobné nastavenia zostávajú zachované. Po aktualizácii reštartujte Enigma2.
+
 FullHDGlass 1.0.77 — 10.11.2026
 Úplný reset obnoví všetkých 148 originálnych ikon bez stiahnutej grafickej sady aj vtedy, keď je už zvolený typ 1.
 Premenovaná položka úložiska grafiky a piconov s viacjazyčnou nápovedou; samostatná nápoveda k zálohe hdg17.conf.

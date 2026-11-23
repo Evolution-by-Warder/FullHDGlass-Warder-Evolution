@@ -2,8 +2,8 @@
   "version": "1.0.18",
   "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk",
   "sha256": "f785741d79a93d06e9d252e64e3d5b7a35a642db117aff1084dcfd20878f2383",
-  "changelog": "Migračná aktualizácia 1.0.18 zachová súbory starého balíka FullHDGlass17 a pripraví bezpečný prechod na aktuálnu ostrú verziu 1.0.84. Po migrácii reštartujte GUI; ďalšie aktualizácie používa update-production.json.",
-  "post_migration_latest_version": "1.0.84",
+  "changelog": "Migračná aktualizácia 1.0.18 zachová súbory starého balíka FullHDGlass17 a pripraví bezpečný prechod na aktuálnu ostrú verziu 1.0.85. Po migrácii reštartujte GUI; ďalšie aktualizácie používa update-production.json.",
+  "post_migration_latest_version": "1.0.85",
   "post_migration_feed": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update-production.json",
   "retention_exception": "1.0.18 is a necessary legacy migration bootstrap; do not delete until all supported old installations can migrate safely."
 }

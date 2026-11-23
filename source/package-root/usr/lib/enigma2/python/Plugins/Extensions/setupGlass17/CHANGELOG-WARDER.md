@@ -1,3 +1,11 @@
+## 1.0.85 — 23.11.2026
+
+- **ChannelSelection / EPG:** opravené prekrývanie pri číslovaných bouquetoch a synchronizácia piconov/textov/výšky riadkov po zmene počtu staníc (14↔9), bez vypnutia dlhého rolovania EPG.
+- **Picon Setup:** viacriadková nápoveda sa už nezarezáva do spodnej oblasti.
+- **Diagnostika:** existujúci riadok „Máš zvolené“ zostáva jednoradový; zobrazuje pôvodné hodnoty a typ menu od 1, typ výberu kanálov, EPG/GLES a fonty. Schválené nastavenie x=15 / w=1890 / Regular 23 zobrazuje plnú HDD cestu.
+- **Prijímačová kontrola:** GigaBlue Quad 4K Pro, OpenATV 8.1, GLES; úspešný fyzický TEST3. Samostatné fyzické potvrdenie natívnej nápovedy na Solo4K zatiaľ nie je doložené.
+- **Zachované:** Rádio Live, SAT/radio picony, grafika, preferencie, natívne fallbacky a staršie image. Po aktualizácii reštartujte Enigma2.
+
 ## 1.0.73 — 08.11.2026
 
 - **OpenATV:** Dlhé názvy programov v predvolenom výbere staníc sa bezpečne skracujú pred indikátorom; vybraný dlhý názov sa postupne roluje vo svojom poli.

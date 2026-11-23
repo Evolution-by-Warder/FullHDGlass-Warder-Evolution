@@ -22,12 +22,21 @@ def expected_from_main(data):
     if last < 0:
         raise AssertionError('Approved native Setup screen has no end tag')
     original = data[first:last]
+    pairs = ((ORIGINAL_CONFIG.encode(), REVISED_CONFIG.encode()),
+             (ORIGINAL_HELP.encode(), REVISED_HELP.encode()))
+    # Before #151 main had the original 80px help; after the verified
+    # merge it already has the reviewed 120px help. Accept only those two
+    # complete known baselines, never a partial or arbitrary geometry edit.
+    original_mode = all(original.count(before) == 1 and original.count(after) == 0
+                        for before, after in pairs)
+    reviewed_mode = all(original.count(after) == 1 and original.count(before) == 0
+                        for before, after in pairs)
+    if not (original_mode or reviewed_mode):
+        raise AssertionError('Approved main Setup geometry drift; manual review required')
+    if reviewed_mode:
+        return data  # Current main already contains the approved change.
     revised = original
-    for before, after in ((ORIGINAL_CONFIG, REVISED_CONFIG),
-                          (ORIGINAL_HELP, REVISED_HELP)):
-        before, after = before.encode(), after.encode()
-        if revised.count(before) != 1:
-            raise AssertionError('Approved main Setup geometry drift; manual review required')
+    for before, after in pairs:
         revised = revised.replace(before, after, 1)
     return data[:first] + revised + data[last:]
 
