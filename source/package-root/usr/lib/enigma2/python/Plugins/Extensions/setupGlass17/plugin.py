@@ -6803,7 +6803,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	skin = """
 <screen name="setupGlass17" position="0,0" size="1920,1080" title="FullHDGlass" backgroundColor="#ff000000" flags="wfNoBorder">
-<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><widget name="description" position="60,174" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
+<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><widget name="description" position="15,174" size="1890,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;23" transparent="0" foregroundColor="#00b5d4ec" />
 <widget source="session.VideoPicture" render="WarderSettingsPig" position="60,242" zPosition="1" size="737,415" backgroundColor="transparent" />
 <widget name="config" font="Prive3;34" position="60,242" size="1790,320" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="1" backgroundColor="#ff000000" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 <widget name="list" position="860,238" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
