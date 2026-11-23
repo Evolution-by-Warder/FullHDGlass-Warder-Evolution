@@ -1,3 +1,14 @@
+## 23. 11. 2026 — K existujúcemu „Máš zvolené“ pridaná diagnostika výberu kanálov (PR #151)
+
+- **Presný pokyn vlastníka:** nepoužiť nový panel ani grafický banner. Doplniť stručné hodnoty do *existujúceho jediného riadka* `setupGlass17ScreenSetup.skin` / `description` na pozícii `60,174`: „Máš zvolené – …“, nad obrazovkou výberu.
+- **Vstupy priamo z používateľských nastavení**: číslo `par19` (typ ChannelSelection), `warderEpgListScroll.enabled` (požadované rolovanie), `allow_channel_epg_overlay()` (či e2egl/GLES runtime dovolí vlastné EPG), `par145/par146/par147` (font názvu/EPG/riadok). Po existujúcich ikonách sa pridá krátke „Výber kanálov: 35, EPG: ZAP/GLES, F N/E/R: 0/0/1“; posledná hodnota HDD/SSD ostáva. Identické dáta pri ostatných jazykoch používajú krátke označenia. Hodnoty sú čisto informatívne, bez zápisov do konfigurácie.
+- **Oprava #1 zo Solo4K**: natívny `Setup` v `hd_glass17/skin.xml` má 120 px pre dlhý opis režimu piconov, nie pôvodných 80 px; config list zmenšený len o 30 px, `footnote` a farebné tlačidlá nezmenené. Oprava z predchádzajúcej izolovanej vetvy ostáva v tomto PR. Testy pre presné povolené rozdiely `Setup` sa nemenia mimo schváleného rozsahu.
+- **Oprava #2**: v PR zostáva aj už pripravený kandidát na rezerváciu číselného stĺpca natívneho `ServiceListLegacy` pri kreslení EPG; jeho skutočný podiel na správaní konkrétneho Solo4K nemožno zo snímky definitívne potvrdiť.
+- **Overenie**: nový `tools/test_warder_settings_summary.py` kontroluje lokalizovaný pomocný text, vypnutý/native režim, hodnoty a zachovanie rovnakého UI riadka; historický AST fingerprint sa presne odnormalizuje iba o schválený blok `showInfo`, všetky iné zmeny majú zostať blokované. Test sa spúšťa v `warder-channel-primetime.yml`.
+- **Stav**: len pracovná vetva/PR #151. Do produkčnej 1.0.84 sa tieto nové zmeny nezapisovali; nevyšla nová IPK ani neprebehol fyzický prijímačový test.
+
+---
+
 ## 23. 11. 2026 — Solo 4K / OpenATV 8.1 beta: 2 chyby hlásené na ostrej 1.0.84 (PR kandidat, nie produkcia)
 
 - **Fyzický report používateľa:** 1.0.84 je na Solo 4K funkčná, ale natívna obrazovka „Nastavení Piconu“ má odrezaný dlhší spodný opis a v základnom ChannelSelection sa názvy staníc prekrývajú s názvami relácií. Priložené obrazovky poskytol používateľ v konverzácii 23.11.2026. Reálny dôkaz opravy na prijímači zatiaľ neexistuje.
