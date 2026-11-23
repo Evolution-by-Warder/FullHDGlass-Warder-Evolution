@@ -1,3 +1,7 @@
+## 1.0.89 – 23. november 2026
+
+Vo výbere piconov pribudla samostatná položka DTT ITALIA s 285 stanicovými referenciami. Aktualizované sú aj talianske feedy na 9°E a 5°W. Vybrať si môžete zo všetkých troch rozmerov a pozadí. Po inštalácii reštartujte Enigma2.
+
 ## 1.0.88 — 2026-11-23 — oprava prekrytia natívnych nastavovacích posuvníkov
 
 - Oprava nahlásená českým používateľom: v „Nastavení korekce obrazu“ a „Nastavení displeje“ prekrýval posuvník dlhý názov nastavenia. Príčinou bol krátky predvolený oddeľovací stĺpec v natívnom Enigma2 ConfigList pri veľkom písme FullHDGlass.

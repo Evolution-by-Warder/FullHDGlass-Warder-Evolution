@@ -36,7 +36,7 @@ jobs:
           mod=importlib.util.module_from_spec(spec)
           sys.modules[spec.name]=mod
           spec.loader.exec_module(mod)
-          assert mod.RUNTIME_VERSION in ('1.0.82','1.0.83','1.0.84','1.0.85','1.0.86','1.0.87','1.0.88')
+          assert mod.RUNTIME_VERSION in ('1.0.82','1.0.83','1.0.84','1.0.85','1.0.86','1.0.87','1.0.88','1.0.89')
           suite=unittest.TestSuite([
              mod.SetupStyleTests('test_styling_is_reproducible_from_the_original_layouts')
           ])

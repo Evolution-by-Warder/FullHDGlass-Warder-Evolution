@@ -1,6 +1,6 @@
 # DTT ITALIA a talianske feedy – kontrolná dávka 23. novembra 2026
 
-**Stav pred vydaním.** Zostavených a overených je 27 archívov. Zo 48 zdrojových súborov vzniklo 45 graficky odlišných sád. Tri výstupy boli vo všetkých deviatich rozmerových a farebných kombináciách bajtovo totožné s inými sadami (Rai 5 a RTV San Marino). Ich originály zostávajú evidované, hotové varianty zdieľajú jednu kópiu. Z 90 kontrol White/Black pri jedinečných sadách má 80 výsledok REVIEW a 10 PASS. Pri kolízii farieb s pozadím náhľad zachováva farebnosť značky. Konkrétne pri Italia Fishing TV slabne biely text na bielom podklade, pri Radio Classica na čiernom podklade tmavne časť logotypu. Balíky na tejto pracovnej vetve sú určené na kontrolu pred vydaním.
+**Grafika schválená vlastníkom 23. novembra 2026.** Vlastník po prezretí troch náhľadových hárkov prijal všetkých 45 výsledných sád, vrátane 80 označených kombinácií na bielom a čiernom podklade. [Záznam schválenia a odtlačky 405 výsledných PNG, troch náhľadov a 27 ZIP](owner-approval.json). Pôvodné hodnotenie MASTER V9 v matici zachytáva stav pred rozhodnutím vlastníka.
 
 | Výber | Referencie v bouquetoch | Nové PNG naprieč 9 variantmi | Nahradené PNG | Zachované PNG zo starých balíkov |
 | --- | ---: | ---: | ---: | ---: |
@@ -17,7 +17,7 @@ Rozmery sú 50×30, 220×132 a 400×240, pozadia Transparent, White a Black. Po�
 - Pre 885 z 984 väzieb sa použila existujúca deväťvariantová grafika Warder. Ďalších 99 väzieb používa 48 odlišných zdrojových grafík. [Matica referencií, dôkazov, zdrojov a kontrol MASTER V9](recipe.json). Pri Radio Classica TV sa použil originál od vysielateľa. [Radio Classica](https://www.radioclassica.fm/img/logo-radioclassica-mifi.png)
 - [Výsledok zostavenia vrátane SHA-256 každého ZIP](build.json) a [skúšky oboch klientov](clients.json). FullHDGlass použil skutočný inštalátor pri 27 archívoch. PiconHub vykonal 54 inštalácií do dočasného adresára. Kontrola overila výber balíka, zhodu nainštalovaných PNG a ochranu cudzej pozemnej referencie. Aktualizovaný manifest prijali aj oba doterajšie validátory. Fyzický prijímač nebol súčasťou testu.
 
-## Náhľady na kontrolu
+## Schválené náhľady
 
 Každá skupina zobrazuje Transparent, White a Black na rozmere 220×132. Originál je v ZIP-e pod SHA zdroja v priečinku `artwork/`. Pole `variants_from` pri troch duplicitách odkazuje na spoločnú sadu všetkých rozmerov.
 
