@@ -49,7 +49,7 @@ for legacy in (False, True):
         scope['startSelect'](screen)
         if name == 'warderPositionSelectorScr':
             actual_ids = [entry[1]['package_selector'] for entry in rendered]
-            assert actual_ids[:3] == ['IPTV-SK-CZ', 'DAB', 'DVB-T-SK-CZ']
+            assert actual_ids[:3] == ['DAB', 'DVB-T-SK-CZ', 'DTT_ITALIA']
             assert actual_ids.index('450W') < actual_ids.index('345W') < actual_ids.index('300W')
             assert actual_ids.index('460E') < actual_ids.index('500E') < actual_ids.index('515E')
             for selector in ('345W', '500E'):

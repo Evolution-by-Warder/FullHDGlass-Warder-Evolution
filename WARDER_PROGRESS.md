@@ -1,3 +1,9 @@
+## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W
+
+Samostatná položka DTT ITALIA a 27 schválených balíkov pokrývajú Vhannibal Motor DTT Italia z 22. novembra. Na 9°E pribudla Radio Classica TV. Obe aplikácie rozpoznajú aj pozemný namespace EEEE0272. V existujúcom dvojtýždňovom SAT cykle PiconHub sleduje vlákno Azzurra 157954. Všetky kontrolované diely a archívy majú overené SHA-256. Prebehlo 27 skúšobných inštalácií FullHDGlass a 54 PiconHubu. Vlastník 23. novembra po vizuálnej kontrole schválil všetkých 45 sád vrátane označených kombinácií White a Black. [Schválenie konkrétnych súborov](reports/dtt-italia-20261123/owner-approval.json). [Výsledky, zdroje a náhľady](reports/dtt-italia-20261123/README.md).
+
+[FullHDGlass #158](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/158) a [PiconHub #87](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/87): spätné stiahnutie 181 dielov a spojenie na 27 archívov potvrdilo všetky hashe. Opakované zostavenie bolo bajtovo zhodné. Katalógy oboch klientov majú SHA-256 `40db67977de066be65fa8f37f5a73041aa1b337b7a5c9cdf40233edaf537094a`.
+
 ## 23. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.88
 
 - **Schválenie vlastníka:** „zapracuj to do ostrej, zapis co treba a vydaj“ po kontrole nahlásenia od **českého používateľa** a kontrolného 1.0.88-test1. Schválenie zahŕňalo opravu natívneho `Components.ConfigList` prekrývajúceho posuvníky a veľké české popisky v obrazovkách Nastavení korekce obrazu / Nastavení displeje, bez rozšírenia funkčného rozsahu.

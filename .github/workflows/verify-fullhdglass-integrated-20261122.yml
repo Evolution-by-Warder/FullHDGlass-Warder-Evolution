@@ -34,15 +34,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Ensure current-main satellite manifest preserved
+      - name: Verify the exact Italian candidate catalogue and checksums
         run: |
           set -euo pipefail
-          test "$(git hash-object assets/warder/downloads/picons/channels/manifest.json)" = "7a7c6b4b96d9b8dc2da60a29c85ae1bd2069b715"
-          test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = "e94b5342b8d3d82371ccfbc5898e397d7819a3bb"
+          test "$(git hash-object assets/warder/downloads/picons/channels/manifest.json)" = "4663357339c7a59ea19f8ced89309749d340e1d2"
+          test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = "dcedf2615908a07626a5741fb6ab4efcb3eb228e"
           VERSION="$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
-          case "$VERSION" in 1.0.80|1.0.82|1.0.83|1.0.84|1.0.85|1.0.86|1.0.87|1.0.88) ;; *) echo "Unexpected integration/release version: $VERSION"; exit 1 ;; esac
+          case "$VERSION" in 1.0.80|1.0.82|1.0.83|1.0.84|1.0.85|1.0.86|1.0.87|1.0.88|1.0.89) ;; *) echo "Unexpected integration/release version: $VERSION"; exit 1 ;; esac
           grep -qx "Version: $VERSION-1" source/control/control
-          echo "Existing main SAT assets unchanged; release version unchanged"
+          echo "Catalogue and checksum index match their verified fingerprints"
       - name: Diagnose historical layout checksum drift without modifying graphics
         run: |
           python3 - <<'PY'

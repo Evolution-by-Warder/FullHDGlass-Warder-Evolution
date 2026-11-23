@@ -159,6 +159,8 @@ def namespace_to_orbital_position(namespace):
     except (TypeError, ValueError):
         return None
     orbital = (value >> 16) & 0xFFFF
+    if orbital == 0xEEEE:
+        return "dtt"
     if orbital == 0 or orbital == 0xFFFF:
         return None
     if orbital > 1800:
@@ -744,6 +746,7 @@ _SELECTOR_LABEL_BINDINGS = {
         "CANALPLUS_CZ",
         "23.5e"
     ),
+    "DTT ITALIA": ("DTT_ITALIA", "dtt"),
     "DVB-T sk/cz": (
         "DVB-T-SK-CZ",
         "dtt"
@@ -949,6 +952,7 @@ _SELECTOR_ID_TO_POSITION = {
     "CANALPLUS_SK": "23.5e",
     "CANALPLUS_CZ": "23.5e",
     "DVB-T-SK-CZ": "dtt",
+    "DTT_ITALIA": "dtt",
     "450W": "45.0w",
     "300W": "30.0w",
     "275W": "27.5w",
@@ -1039,7 +1043,7 @@ def task_satlist_display_order(rows):
     def key(index):
         row = rows[index]
         binding = task_binding_for_display_label(row[0]) or {}
-        if binding.get("package_selector") == "DVB-T-SK-CZ":
+        if binding.get("package_selector") in ("DVB-T-SK-CZ", "DTT_ITALIA"):
             return (0, 0, index)
         if not row[1]:
             return (1, 0, index)
@@ -1426,6 +1430,8 @@ def plan_stale_position_picons(existing_names, selected_positions, package_names
     selected = set(position_token(x) for x in (selected_positions or []) if x)
     if not selected:
         return []
+    # Terrestrial countries share one namespace. It cannot establish file ownership.
+    selected.discard("dtt")
     packages = set(package_names or [])
     stale = []
     for name in sorted(set(existing_names or [])):
