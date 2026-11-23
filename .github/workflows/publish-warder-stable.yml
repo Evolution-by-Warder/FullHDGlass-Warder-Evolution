@@ -48,6 +48,8 @@ jobs:
             /update.json
             /packages/enigma2-plugin-skins-fullhdglass_*.ipk
             /packages/enigma2-plugin-skins-fullhdglass_*.ipk.sha256
+            /packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk
+            /packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk.sha256
             /.github/workflows/publish-warder-stable.yml
           persist-credentials: true
       - uses: actions/setup-python@v5
