@@ -1,24 +1,25 @@
-# FullHDGlass – Warder Evolution 1.0.86 (aktuálna ostrá verzia)
+# FullHDGlass – Warder Evolution 1.0.87 (aktuálna ostrá verzia)
 
-**Opravné vydanie schválené vlastníkom 23. novembra 2026.** Predchádzajúca verzia 1.0.85 zostáva dostupná na návrat. Vydanie 1.0.86 rieši zlyhania SAT picon balíkov spôsobené malým dočasným úložiskom `/tmp`.
+**Ostré vydanie: 23. november 2026.** Vlastník potvrdil opravy na prijímači **Octagon SF8008** a prikázal vydať stabilnú verziu.
 
-## Hlavná oprava
+## Opravené sťahovanie SAT piconov
 
-- Pri sťahovaní piconov pre **13°E** a **19,2°E** sa objavovalo hlásenie `insufficient temporary space for Warder channel package`, hoci pracovný HDD/SSD mohol mať dostatok miesta.
-- Overovaný ZIP sa teraz dočasne uloží **na zvolené médium s piconmi**, nie do malého `/tmp`. PNG sa zapisujú bezpečne a priebežne do cieľového adresára; ZIP sa po operácii odstráni.
-- Zachovaná kontrola **SHA-256**, bezpečnosť ciest a ZIP/PNG, atómová inštalácia a rezerva **64 MiB** voľného miesta pre systém. Ak na vybranom médiu skutočne chýba miesto, operácia sa bezpečne odmietne.
-- Zlepšenia 1.0.85 pre výber kanálov, picony, EPG, GLES a konfiguračný diagnostický riadok ostávajú bez zmeny. Zachované sú grafické balíky, Warder Radio Live aj používateľské nastavenia.
+- Predtým program nesprávne hlásil chýbajúce rozlíšenie/farbu/režim alebo „Neplatné umístění pikonů“ aj pri správnom výbere. Rozlišuje teraz kontrolu nastavení a bezpečnosť cieľového adresára.
+- Rozpoznáva presne existujúcu cestu `/usr/share/enigma2/hdg17_files/picon → /usr/share/enigma2/picon`; ostatné nebezpečné alebo nepripojené symbolické odkazy zostávajú blokované.
+- Ak je na internom úložisku aspoň **512 MiB pracovného priestoru nad 64 MiB systémovou rezervou**, sťahovanie sa spustí bez zbytočného upozornenia. Pri menšom priestore sa upozornenie zobrazí; pri kritickom nedostatku pokračovanie nie je možné.
+- Zachovaná je kontrola skutočnej veľkosti každého archívu, SHA-256, bezpečné PNG zápisy, čistenie dočasných súborov a všetky existujúce picony/nastavenia.
 
-## Aktuálna inštalácia a bezpečný návrat
+**Test SF8008:** 19,2°E – 145 aktualizovaných piconov, 0 chýb; 23,5°E – 184 piconov; následné odstránenie zbytočného upozornenia potvrdené používateľom.
 
-[Oficiálny Release 1.0.86](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.86) · [IPK 1.0.86](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.86/enigma2-plugin-skins-fullhdglass_1.0.86_all.ipk) · [Úplné poznámky](warder-1.0.86-release-notes.md)
+## Oficiálny Release a aktualizácia
 
-- **IPK:** `enigma2-plugin-skins-fullhdglass_1.0.86_all.ipk`.
-- **Veľkosť IPK:** **18 393 684 B**.
-- **SHA-256:** `40ff2a80fbe32b7c7b69c2b61335fca64d6e00bbc37489e4e5efe2972561f6c2`. Overené na oficiálnom Release assete, v `main/packages/*.sha256` aj v `update-production.json` a `update-test.json`.
-- **Oficiálne publikovanie:** [GitHub Actions #45184862599](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45184862599) dokončené **SUCCESS** vrátane `verify-production-release-state.py`. Vydávací commit `6f66f7e744987e6ad968b4df2c84c0c6a24acad6`.
-- **Aktualizácia:** publisher `publish-warder-stable.yml` najprv vytvorí nemenný Release, potom aktualizuje `update-production.json` a `update-test.json`.
-- **Predchádzajúce ostré verzie:** 1.0.85 / 1.0.84 / 1.0.83. Chránený migračný bootstrap 1.0.18 a historický TEST 1.0.72 sa nezapočítavajú do štyroch ostrých verzií.
-- **Kompatibilita:** automatické testy OpenATV a OpenPLi sú povinnou podmienkou. Fyzické otestovanie nového ZIP pracovného adresára na konkrétnom prijímači ešte nie je doložené.
+[Release v1.0.87](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.87) · [Stiahnuť IPK 1.0.87](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.87/enigma2-plugin-skins-fullhdglass_1.0.87_all.ipk) · [Úplné poznámky](warder-1.0.87-release-notes.md)
 
-Po aktualizácii **reštartujte Enigma2**. Vydanie je **skutočne publikované a koncová kontrola SHA/IPK/feed/Release úspešne prešla**.
+- **Balík:** `enigma2-plugin-skins-fullhdglass_1.0.87_all.ipk`
+- **Veľkosť:** 18 394 364 B
+- **SHA-256:** `099925944074f9d1e7678d4d6e0ac3ca4b85a90a95940a9850b7d6cd2ce6a04c`
+- **Vydávací workflow:** [#45245269154](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45245269154), **COMPLETED / SUCCESS** vrátane koncového `verify-production-release-state.py`.
+- **Aktualizačné kanály:** `update-production.json` aj `update-test.json` obsahujú 1.0.87 s rovnakým overeným SHA-256 a lokalizovanými poznámkami v desiatich jazykoch.
+- **Zachované ostré verzie na návrat:** 1.0.86, 1.0.85, 1.0.84. Migračná 1.0.18 zostáva samostatne chránená.
+
+Po aktualizácii **reštartujte Enigma2**.
