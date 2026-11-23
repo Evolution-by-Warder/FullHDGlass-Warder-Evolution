@@ -71,6 +71,13 @@ def fingerprint_source(source):
         if source.count(reviewed) != 1:
             raise AssertionError("Unreviewed channel summary/controller drift")
         source = source.replace(reviewed, original, 1)
+    # Preserve controller fingerprint by undoing ONLY the reviewed one-line
+    # support-header geometry; other modified widget attributes remain barred.
+    old_header = "<widget name=\"description\" position=\"60,174\" size=\"1800,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;24\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+    new_header = "<widget name=\"description\" position=\"15,174\" size=\"1890,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;23\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+    if source.count(new_header) != 1:
+        raise AssertionError("Unexpected support-header geometry drift")
+    source = source.replace(new_header, old_header, 1)
     return style.normalized(ast.parse(source))
 
 
@@ -534,6 +541,13 @@ class SetupStyleTests(unittest.TestCase):
                     if verified_skin.count(label) != 1:
                         raise AssertionError('Expected one version label in ' + name)
                     verified_skin = verified_skin.replace(label, 'text="1.0.80"', 1)
+                if name == 'setupGlass17ScreenSetup':
+                    # Revert the exact approved one-line support label change,
+                    # retaining the stable, immutable historical whole-skin hash.
+                    old_header = "<widget name=\"description\" position=\"60,174\" size=\"1800,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;24\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+                    new_header = "<widget name=\"description\" position=\"15,174\" size=\"1890,46\" noWrap=\"1\" backgroundColor=\"#00071627\" zPosition=\"1\" valign=\"center\" halign=\"left\" font=\"Regular;23\" transparent=\"0\" foregroundColor=\"#00b5d4ec\" />"
+                    self.assertEqual(verified_skin.count(new_header), 1)
+                    verified_skin = verified_skin.replace(new_header, old_header, 1)
                 self.assertEqual(hashlib.sha256(verified_skin.encode()).hexdigest(),
                                  CURRENT_MAIN_1080_LAYOUTS[name],name)
             else:
