@@ -1,10 +1,13 @@
-name: Review native row Multi EPG yellow/blue navigation (TEST only)
+name: Review row Multi EPG and UserInfo scrolling (TEST only)
 on:
   pull_request:
     paths:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSimpleMultiEpg.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py'
       - 'tools/test_warder_simple_multiepg_navigation.py'
+      - 'tools/test_warder_user_info_scroll.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py'
+      - 'source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py'
       - '.github/workflows/review-simple-multiepg-color-navigation.yml'
   workflow_dispatch:
 permissions:
@@ -24,6 +27,7 @@ jobs:
             tools/build-release-ipk.py
             tools/sync_header_version.py
             tools/test_warder_simple_multiepg_navigation.py
+            tools/test_warder_user_info_scroll.py
             tools/test-openatv-epg-compat.py
       - uses: actions/setup-python@v5
         with:
@@ -32,6 +36,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 tools/test_warder_simple_multiepg_navigation.py -v
+          python3 tools/test_warder_user_info_scroll.py -v
           python3 tools/test-openatv-epg-compat.py -v
           python3 - <<'PY'
           from pathlib import Path
@@ -52,8 +57,8 @@ jobs:
           c=Path('source/control/control')
           assert v.read_text().strip()=='1.0.91', 'Baseline moved, investigate'
           assert c.read_text().count('Version: 1.0.91-1') == 1
-          v.write_text('1.0.92-test1\n')
-          c.write_text(c.read_text().replace('Version: 1.0.91-1', 'Version: 1.0.92-test1-1'))
+          v.write_text('1.0.92-test2\n')
+          c.write_text(c.read_text().replace('Version: 1.0.91-1', 'Version: 1.0.92-test2-1'))
           PY
           python3 tools/sync_header_version.py
           python3 tools/sync_header_version.py --check
@@ -70,7 +75,7 @@ jobs:
           spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
           builder=importlib.util.module_from_spec(spec)
           spec.loader.exec_module(builder)
-          name='enigma2-plugin-skins-fullhdglass_1.0.92-test1_all.ipk'
+          name='enigma2-plugin-skins-fullhdglass_1.0.92-test2_all.ipk'
           out=root/'review-ipk'/name
           out.parent.mkdir(exist_ok=True)
           with tempfile.TemporaryDirectory() as tmp:
@@ -85,12 +90,14 @@ jobs:
           cd review-ipk
           sha256sum -c *.sha256
           test "$(ar t *.ipk | paste -sd ' ' -)" = "debian-binary control.tar.gz data.tar.gz"
-          ar p *.ipk control.tar.gz | tar -xzOf - ./control | grep -Fx 'Version: 1.0.92-test1-1'
+          ar p *.ipk control.tar.gz | tar -xzOf - ./control | grep -Fx 'Version: 1.0.92-test2-1'
           ar p *.ipk data.tar.gz | tar -tzf - | grep -Fx './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSimpleMultiEpg.py'
-          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | grep -Fx '1.0.92-test1'
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py | cmp - ../source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Screens/G17_UserInfo.py | cmp - ../source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | grep -Fx '1.0.92-test2'
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.92-test1-Row-MultiEPG-Review-IPK
+          name: FullHDGlass-1.0.92-test2-MultiEPG-UserInfo-Review-IPK
           path: |
             review-ipk/*.ipk
             review-ipk/*.ipk.sha256

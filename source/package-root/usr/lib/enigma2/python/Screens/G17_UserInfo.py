@@ -79,12 +79,12 @@ class UserInfo17(Screen):
                         </screen>"""
 
 	skin_event = """<screen name="User screen" position="753,105" size="1074,502" zPosition="2" title="Extended description" backgroundColor="background" >	
-               <widget name="description" font="Prive4;30" position="15,0" zPosition="0" size="1044,487" valign="top" halign="left" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />      
+               <widget name="description" font="Prive4;30" position="15,0" zPosition="0" size="1044,487" valign="top" halign="left" backgroundColor="background" transparent="1" scrollbarMode="showNever" />      
               </screen>"""                        
 
 	skin_event2 = """<screen name="User screen" position="0,0" size="1920,1080" zPosition="9" title="Extended description" backgroundColor="black" >	
 		<widget source="Title" render="Label" position="60,100" size="1800,50" foregroundColor="un6cbcf0" backgroundColor="black" zPosition="1" valign="center" halign="center" font="Prive4;35" transparent="1"/>
-               <widget name="description" font="Prive4;32" position="60,160" size="1800,820" valign="top" halign="left" backgroundColor="black" transparent="1" scrollbarMode="showOnDemand" />      
+               <widget name="description" font="Prive4;32" position="60,160" size="1800,820" valign="top" halign="left" backgroundColor="black" transparent="1" scrollbarMode="showNever" />      
               </screen>"""
 
 	side_infobar = """<screen name="User screen" position="0,0" size="540,667" zPosition="1" backgroundColor="#ffffffff" flags="wfNoBorder" >	
@@ -110,7 +110,7 @@ class UserInfo17(Screen):
 
     <ePixmap position="730,42" size="1119,622" pixmap="hd_glass17/menu/back_event.png" alphatest="off" zPosition="0"/>
 		<widget source="Title" render="Label" position="775,76" size="1026,60" foregroundColor="un6cbcf0" zPosition="1" backgroundColor="background" valign="center" halign="left" font="Prive3;31" transparent="1"/>
-    <widget name="description" font="Prive4;30" position="775,144" zPosition="1" size="1036,480" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />      
+    <widget name="description" font="Prive4;30" position="775,144" zPosition="1" size="1036,480" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showNever" />      
 
     </screen>"""                        
 
@@ -126,10 +126,10 @@ class UserInfo17(Screen):
 
     <ePixmap position="730,42" size="1119,622" pixmap="hd_glass17/menu/back_event.png" alphatest="off" zPosition="0"/>
     <widget name="titleNow" font="Prive4;28" position="775,142" zPosition="1" size="1036,31" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />      
-    <widget name="description" font="Prive4;28" position="775,187" zPosition="1" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" /> 
+    <widget name="description" font="Prive4;28" position="775,187" zPosition="1" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showNever" /> 
                     
     <widget name="titleNext" font="Prive4;28" position="775,382" zPosition="2" size="1036,31" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />      
-    <widget name="description2" font="Prive4;28" position="775,427" zPosition="3" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />      
+    <widget name="description2" font="Prive4;28" position="775,427" zPosition="3" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showNever" />      
 
     </screen>"""
                             	
@@ -172,9 +172,9 @@ class UserInfo17(Screen):
 		elif config.plugins.setupGlass17.par31.value == "en":
 			self.skin_event_nowNext = """<screen name="User screen" position="75,105" size="1770,513" zPosition="2" title="Event now and next" backgroundColor="background" >"""		
 			self.skin_event_nowNext += '<widget name="titleNow" font="Prive4;31" position="15,0" zPosition="0" size="1740,40" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />\n'      
-			self.skin_event_nowNext += '<widget name="description" font="Prive4;31" position="15,42" zPosition="1" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />\n'                     
+			self.skin_event_nowNext += '<widget name="description" font="Prive4;31" position="15,42" zPosition="1" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showNever" />\n'                     
 			self.skin_event_nowNext += '<widget name="titleNext" font="Prive4;31" position="15,256" zPosition="2" size="1740,40" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />\n'      
-			self.skin_event_nowNext += '<widget name="description2" font="Prive4;31" position="15,298" zPosition="3" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />\n'      
+			self.skin_event_nowNext += '<widget name="description2" font="Prive4;31" position="15,298" zPosition="3" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showNever" />\n'      
 			self.skin_event_nowNext += """</screen>""" 
 			self.skin = self.skin_event_nowNext
 			self.session = session

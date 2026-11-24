@@ -79,20 +79,65 @@ class Tests(unittest.TestCase):
             self.assertEqual(a.pos, 0)
             self.assertEqual(b.scroll_updates, 0 if modern else 2)
 
-    def test_clamped_endpoints_reverse_without_jumping(self):
-        a, t = NativeLabel(), Timer()
-        s = mod.DescriptionScroller(a, t)
-        s.set("x" * 11)
-        s.show()
-        for _ in range(5):
-            s.tick()
-        self.assertEqual(a.moves, [2, 4, 6, 8, 10])
-        self.assertEqual(t.delay, mod.END_DELAY)
-        for _ in range(5):
-            s.tick()
-        self.assertEqual(a.moves[-5:], [8, 6, 4, 2, 0])
-        self.assertEqual(t.delay, mod.START_DELAY)
-        self.assertEqual(a.calls, 1)
+    def test_single_round_trip_stops_until_new_event_or_show(self):
+        for modern in (False, True):
+            a, t = NativeLabel(modern), Timer()
+            s = mod.DescriptionScroller(a, t)
+            s.set("x" * 11, "event1")
+            s.show()
+            for _ in range(5):
+                s.tick()
+            self.assertEqual(a.moves, [2, 4, 6, 8, 10])
+            self.assertEqual(t.delay, mod.END_DELAY)
+            for _ in range(5):
+                s.tick()
+            self.assertEqual(a.moves[-5:], [8, 6, 4, 2, 0])
+            self.assertFalse(t.active)
+            self.assertTrue(s.finished)
+            s.tick()  # Late callback must not restart motion.
+            s.schedule()
+            s.set("x" * 11, "event1")
+            self.assertFalse(t.active)
+            self.assertEqual(a.calls, 1)
+            self.assertEqual(len(a.moves), 10)
+            s.set("x" * 11, "event2")
+            self.assertTrue(t.active)
+            self.assertFalse(s.finished)
+            self.assertEqual(t.delay, mod.START_DELAY)
+            for _ in range(10):
+                s.tick()
+            self.assertFalse(t.active)
+            s.hide()
+            s.show()
+            self.assertTrue(t.active)
+            self.assertFalse(s.finished)
+            self.assertEqual(a.pos, 0)
+
+    def test_two_long_fields_finish_independently_without_scrollbar(self):
+        for modern in (False, True):
+            a, b = NativeLabel(modern), NativeLabel(modern)
+            ta, tb = Timer(), Timer()
+            a.showscrollbar = b.showscrollbar = False
+            sa, sb = mod.DescriptionScroller(a, ta), mod.DescriptionScroller(b, tb)
+            sa.set("x" * 11, "now")
+            sb.set("y" * 12, "next")
+            sa.show()
+            sb.show()
+            for _ in range(10):
+                sa.tick()
+                sb.tick()
+            self.assertFalse(ta.active)
+            self.assertTrue(tb.active)
+            self.assertEqual(a.pos, 0)
+            self.assertEqual(b.pos, 20)
+            self.assertEqual((a.scroll_updates, b.scroll_updates), (0, 0))
+            for _ in range(10):
+                sb.tick()
+            self.assertFalse(tb.active)
+            self.assertEqual(b.pos, 0)
+            sb.set("y" * 12, "next2")
+            self.assertTrue(tb.active)
+            self.assertFalse(ta.active)
 
     def test_refresh_keeps_position_until_event_changes(self):
         a, t = NativeLabel(), Timer()
@@ -175,7 +220,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(len(widgets), 7)
         for raw in widgets:
             node = ET.fromstring(raw)
-            self.assertEqual(node.get("scrollbarMode"), "showOnDemand")
+            self.assertEqual(node.get("scrollbarMode"), "showNever")
         self.assertEqual(source.count('self._initDescription("description")'), 4)
         self.assertEqual(source.count('self._initDescription("description2")'), 2)
         self.assertEqual(source.count('self._setDescription("description'), 4)
