@@ -5,6 +5,7 @@ This is deliberately an exact whole-file comparison, not an exclusion of Setup:
 all other skin lines must remain byte-for-byte identical to the approved main.
 """
 import sys
+import json
 from pathlib import Path
 
 ORIGINAL_CONFIG = '<widget name="config" position="45,60" size="1560,615" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />'
@@ -45,9 +46,22 @@ def main():
     if len(sys.argv) != 3:
         raise SystemExit('usage: verify-solo4k-setup-geometry.py approved-main.xml candidate.xml')
     old, new = (Path(path).read_bytes() for path in sys.argv[1:])
-    if new != expected_from_main(old):
-        raise AssertionError('Unreviewed skin.xml diff: only the exact two Setup widget edits are allowed')
-    print('PASS: exact native Setup help-only geometry against approved main; all other skin bytes identical')
+    expected = expected_from_main(old)
+    ledger = Path(__file__).resolve().parents[1] / "design/openatv81-optional-menu-keys-20261124/skin-edits.json"
+    if ledger.exists():
+        edits = json.loads(ledger.read_text())["edits"]
+        assert {edit["name"] for edit in edits} == {"QuickMenu", "InformationNetwork"}
+        for edit in edits:
+            before, after = edit["original_screen"].encode(), edit["updated_screen"].encode()
+            # Permit only the exact reviewed optional source guards, including
+            # future runs where the verified changes are already in main.
+            if expected.count(before) == 1 and expected.count(after) == 0:
+                expected = expected.replace(before, after, 1)
+            elif expected.count(after) != 1 or expected.count(before) != 0:
+                raise AssertionError("Optional menu key guard baseline drift: " + edit["name"])
+    if new != expected:
+        raise AssertionError("Unreviewed skin.xml diff: only exact approved Setup and optional key edits are allowed")
+    print("PASS: exact approved Setup and optional source guards; all other skin bytes identical")
 
 
 if __name__ == '__main__':
