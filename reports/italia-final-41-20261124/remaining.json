@@ -1,0 +1,529 @@
+{
+  "base": "32d253f7329329e31c3b9d4f56221597ef680e8a",
+  "scope": "All 41 unresolved source entries; no production change. New graphic candidates are REVIEW only until visual identity comparison and safe publication.",
+  "dtt": [
+    {
+      "name": "1_0_19_1392_50E1_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45459598260"
+      ],
+      "note": "Previous exact audit found only satellite namespace; no terrestrial SDT."
+    },
+    {
+      "name": "1_0_1_1_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002."
+    },
+    {
+      "name": "1_0_1_2_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002."
+    },
+    {
+      "name": "1_0_1_4_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002."
+    },
+    {
+      "name": "1_0_1_5_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002."
+    }
+  ],
+  "providers": [
+    {
+      "kind": "PROVIDER",
+      "name": "1 CENT.png",
+      "sha": "4c3ece64b907b73825eee77e1f17ed221c964652889f5dcb7d654e9877e6317c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ACISPORT TV.png",
+      "sha": "ef0901004e2d14b251f9d78d33c38e47934e03ce1798594375ee194c62075f16",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://www.aci.it/motorsport/aci-sport-tv/"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ACISPORT_TV.png",
+      "sha": "62b9acbc68e9099b6c30987597195cad0f2a622c43bb34ac149a015870fdffde",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://www.aci.it/motorsport/aci-sport-tv/"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AL JAZEERA CHILDREN.png",
+      "sha": "e2650eb59ab2061d2908bdd5a83a73a948a8734846ad888a369507fcb9d4e799",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AN.png",
+      "sha": "b675ff1d2fdf09bc55f5956f91da8515bc232e77b3467407c6d4e4d6a7ddc653",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ASSOCIAZIONE DREAMER.png",
+      "sha": "b915aeb4939fb85ca6d457e6e48062068f165e817680c19ba878caacbbc2ddf2",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ASSOCIAZIONE_DREAMER.png",
+      "sha": "184f3a436bf16bd31635250396ddf9e3566528c25d33eed094be9193d606d8ba",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AUSTRIASAT MAGYARORSZAG.png",
+      "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AUSTRIASAT MAGYARORSZG.png",
+      "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AUSTRIASAT.png",
+      "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "BBC WORLD.png",
+      "sha": "c0c1a26ae147a3e78a054b1c2e9cf574b1c5f64dbd78c56338045e3081e337ce",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://commons.wikimedia.org/wiki/File:BBC_World_logo.svg"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DGB3.png",
+      "sha": "8d80e01c8d3c773c71e8e243edf63a2f16e5f482216d0544a0461827188a4747",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DIGITAL FREE.png",
+      "sha": "282ec8a5ceec5fea5cca2369222d4457cf9ef81b57b3c8644f6fd6f78567ed4c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DORIA.png",
+      "sha": "dc436841bd4ec5385c2f179fd61c5ecbdd87b3ac8d86bb8a2f67959c8a9acdd6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ECLUTCH.png",
+      "sha": "4fa36711251bb2f81e6b81a24bd57f7ccd542970b6df1141e2135111a63b057b",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "EUROPA7.png",
+      "sha": "74dacc33fcafc632a08ae51802e3bbdf66f3fa145143aae6c9eabf9c838681db",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "FREE TV.png",
+      "sha": "569f2156d9fe9b8a201406b1be003c62079945867b924755b8e1eef5bf2214f0",
+      "state": "IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "GTSS.png",
+      "sha": "6e62c8d7b38b8b233c3c8aff5469fd038ad274fc0f0f93b901489a62021b68a6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "MULTIPROGRAM.png",
+      "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "NT.png",
+      "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "RADIO MATER DAB%2A.png",
+      "sha": "c934b0270bb9e28584ec140046b7390ad75bfb9032a6541ff3c2c23a247253de",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "RETECAPRI TRTN.png",
+      "sha": "5a099e8eeb32646446322bfb9158b58c2f8df2ad6eac57f79cd45c1aba4de016",
+      "state": "IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SERVICE N.png",
+      "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SESTARETE & RETE 8.png",
+      "sha": "2eee4e90b6fed860af5017aec2919b6f1f5fa6083d2f89b66962a3df97d9dd2f",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SHARAVOZ.png",
+      "sha": "c3d87623d984bbb31c52c728ad905b02baae669c1616667cc87e49db747e20b3",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELERADIOPACE.png",
+      "sha": "e07cbe2dfd9f0639cf7509e2ec50e9e7bda93124b795ed451aaf5e244e321e36",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://www.teleradiopace.tv/trasmissioni/"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELESETTELAGHI.png",
+      "sha": "d67a82bb63bba537afbdab6c4e4ceddcdf784ae947adc06ca781698bc8e0308f",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TIVIBU.png",
+      "sha": "8907fe7764f7dec1a78a4ef996e8195b1a2ade1c8e92b4b5c897479bdac3c08d",
+      "state": "IDENTITY_CONFLICT",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT",
+      "review": "https://commons.wikimedia.org/wiki/File:Tivibu_logo.svg"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TV CABO.png",
+      "sha": "438c91ab613964e7cd9b7f766bfb721247847b310c315203f8498b8e16cda2ce",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TV SYSTEM.png",
+      "sha": "4db6c13fac1fba46cfb094cf2a5953c760e97a0136e584cb41618602fa994073",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVCM.png",
+      "sha": "15ec3341114ef1b51a4434395c934128862a9be1e7633645c7568b17585ad4f4",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVN WBD.png",
+      "sha": "9c0f16655d1681e5c890cf201d4b1c19e8999dfc9a14df945b0288f298ee1635",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://commons.wikimedia.org/wiki/File:TVNWBD.png"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVN_WBD.png",
+      "sha": "38d551f1d1cf6f7b52117365f1224119e403864d9fd575d0d3346430e896458c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://commons.wikimedia.org/wiki/File:TVNWBD.png"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "UKRAINE.png",
+      "sha": "71b38ca3cd9258ed7a5f932b8bfe0e851398782d10fc54da020096b9f052923b",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "VIDEO REGIONE.png",
+      "sha": "5ec44e298c05c767a7478268170936a1dc83c8f6a93825571feaa359390424ef",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://www.litaliaindigitale.it/news-regionali/sicilia-news/220729-mux-locale-1-sicilia-passaggio-in-hd-per-antenna-sicilia-telecolor-e-sicilia-channel-nuovo-logo-per-trm-e-video-regione-tva-telenormanna-in-4-3/"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "W1 WL DTH.png",
+      "sha": "cb32c445792e377d2b219c03a51df996bda127ba954c36973bb0f806924cdfc3",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null
+    }
+  ],
+  "candidates": [
+    {
+      "names": [
+        "TVN WBD.png",
+        "TVN_WBD.png"
+      ],
+      "file": "TVNWBD.png",
+      "sha1": "a343268389c41d156659e3b75156753ac70f57c5",
+      "source": "https://commons.wikimedia.org/wiki/File:TVNWBD.png",
+      "identity": "https://prasa.wbdpoland.pl/post/nowa-oprawa-anteny-tvn-na-wiosne",
+      "note": "Combined corporate brand 2022; compare against the supplied provider logo, not the TVN channel alone."
+    },
+    {
+      "names": [
+        "TIVIBU.png"
+      ],
+      "file": "Tivibu_logo.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tivibu_logo.svg",
+      "identity": "https://www.tivibu.com.tr/",
+      "note": "Turkish Türk Telekom brand, NOT Italian Tivusat; verify actual provider alias and visual consistency."
+    },
+    {
+      "names": [
+        "BBC WORLD.png"
+      ],
+      "file": "BBC_World_logo.svg",
+      "sha1": "723ca0db70c33a44f77e5fce3c4a7b211f3c961f",
+      "source": "https://commons.wikimedia.org/wiki/File:BBC_World_logo.svg",
+      "note": "Historical 1997–2008 logo; compare existing white/black variants, do not use as current BBC News brand."
+    }
+  ]
+}

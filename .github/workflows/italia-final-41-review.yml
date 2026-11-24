@@ -1,0 +1,23 @@
+name: Italia final remaining source review
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow numpy cairosvg
+      - run: python reports/italia-final-41-20261124/review.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italia-final-41-review
+          path: reports/italia-final-41-20261124/review-output
+          if-no-files-found: warn
