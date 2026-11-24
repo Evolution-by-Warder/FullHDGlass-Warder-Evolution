@@ -1,3 +1,12 @@
+## 24. 11. 2026 — Uzavretie otvorených úloh na pokyn vlastníka
+
+- Azzurra: dokumentácia plánovaného Cloud Browsera je zlúčená cez FullHDGlass #160 (1bfba154b10ce2b4fd62c889c34a1c0eba7e0889) a PiconHub #89 (e35393abc407ae33b6fe48996c58b2734ef221da). Nahradené #159 a #88 uzavreté bez merge; historické vetvy zachované. SAT manažér aktívny, ďalší beh 3.12.2026 08:00 Europe/Bratislava. Úspešná akvizícia kontrolného PNG nie je potvrdením celého produkčného cyklu; pri nedostupnosti bez posunu checkpointu.
+- FullHDGlass #141: jednorazový read-only audit provider ZIP ukončený (4/4 zaznamenané CI úspešné na bda1a425338a455adbbdf7fa3b2855f5d0900a2d), PR uzavretý bez merge konfliktného historického workflow; dôkazy a vetva zachované.
+- Radio #52 uzavretý ako nahradený vydaním 0.2.2 a produkčným dátovým vydaním 224 krajín cez #53–55. Zachované historické review vetvy; 48 219 staníc a 40 837 PNG, prvý úplný plánovaný cyklus 1.12.2026 ešte neoverený.
+- PiconHub/opkg OpenBH: Vado potvrdil funkčné zobrazenie, 3038 pridaných, 37898 zmenených, 0 odstránených. Aktuálny build_ipk.py výslovne vynecháva koreňovú položku '.', maintainer skripty neobsahujú príkaz na odstránenie /. Hlásenie unlinking / failed: Is a directory je neúspešný pokus opkg, nie preukázaná strata dát. Presná príčina na pôvodnom zariadení neoverená. Uzavreté na pokyn vlastníka ako neblokujúce, bez nového IPK; znovu otvoriť iba pri reprodukovateľnej chybe.
+- Multi EPG: produkčný plugin.py registruje FullHDGlass Multi EPG na OpenPLi, warderOpenPliEpg.py integruje openMultiServiceEPG a warderEpgCompat.py integruje natívny grafický EPG OpenATV. Test zdrojov potvrdzuje vstup do vlastného rozloženia; fyzické mapovanie konkrétneho tlačidla EPG na všetkých image nebolo nezávisle potvrdené. Vlastník uzatvára aktuálnu úlohu ako OK, bez vynúteného zásahu do nastavení tlačidiel či nového IPK. Opätovne riešiť iba konkrétnu reprodukovateľnú požiadavku.
+- Vlastník uzatvára uvedené úlohy; aktuálne verzie FullHDGlass 1.0.89, PiconHub 0.1.45, Warder Radio 0.2.2 ponechané. Neopakovať dokončené dávky. Čakajúce budúce pravidelné cykly nie sú vydávané za už úspešne vykonané.
+
 ## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W sú overené a publikované
 
 ## 24. 11. 2026 — Azzurra: plánovaný Cloud Browser, nie GitHub Actions
