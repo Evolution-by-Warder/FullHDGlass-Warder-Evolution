@@ -1,0 +1,1275 @@
+{
+  "baseline": "286291aaac56f78015c7d147bcafc4ade8604a6c",
+  "names": [
+    {
+      "name": "12 TV PARMA.png",
+      "source_sha": "20a4b59ed6089d71a101bbb5bccd0ccf6225873a7ae013d325e1bfbeba2d880b",
+      "foreground_sha": "a84b5476372255628f609d0cd3d5c98c5f46784e3b04ee9576c9ba488bd7b4bf",
+      "donor_source_name": "12 TV PARMA.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 1,
+      "variants": {
+        "transparent": "1f88b7888278ded84730126954a42f53186ba6948fb9bceb713553357c944b78",
+        "white": "2638d1d139fd80630ac8996a84e36848b1eb01d41907003a3b69efe20df18d67",
+        "black": "980c2dafb52a96308f4ecaa3c38022b3b004a5a7caed39c085e3e9a98e5ab17a"
+      }
+    },
+    {
+      "name": "1USD.png",
+      "source_sha": "f96b755da887ad32dd005355a226e859788b0d04bbfd59ba53621a75311e2d5f",
+      "foreground_sha": "5cf0e6c18ea015be7f636081277f96dec4426a3b965bf4d2b589e0c4f1b903e8",
+      "donor_source_name": "1USD.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 2,
+      "variants": {
+        "transparent": "48da173ec18740588c6680a0bacb2feb4b41825d8e6d14994acc2938c1fcf9ff",
+        "white": "4ff46210833fcac5179a8b89a4548dac7a6b0ef4cf06ce7c7c3754f0d6de3b0a"
+      }
+    },
+    {
+      "name": "AB.png",
+      "source_sha": "53e10520420f34df36ca8aa034bcebd76888a3979fa3bf2935f0d52ea14c79fd",
+      "foreground_sha": "8beaa72572082d4831176ea7d9a06d392c5cd46adb52ce4cc0f7dd0fd7eb29e2",
+      "donor_source_name": "AB.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 3,
+      "variants": {
+        "transparent": "d9bdd9f41c18f01b2997b24dc32d82cf14de41a4b963b860db80c2caf065c173"
+      }
+    },
+    {
+      "name": "ABSAT.png",
+      "source_sha": "53e10520420f34df36ca8aa034bcebd76888a3979fa3bf2935f0d52ea14c79fd",
+      "foreground_sha": "8beaa72572082d4831176ea7d9a06d392c5cd46adb52ce4cc0f7dd0fd7eb29e2",
+      "donor_source_name": "ABSAT.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 4,
+      "variants": {
+        "transparent": "d9bdd9f41c18f01b2997b24dc32d82cf14de41a4b963b860db80c2caf065c173"
+      }
+    },
+    {
+      "name": "ALLENTE DENMARK.png",
+      "source_sha": "9bee42353910ba3b0a352685184b3f500a7ec3417500d2eb83f85be10ff5a6bf",
+      "foreground_sha": "ffbb162a79eda92b46283d781182f1d857711c2693453992ecb78269207f7704",
+      "donor_source_name": "ALLENTE DENMARK.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 9,
+      "variants": {
+        "transparent": "184b70b2948b8ba6ced00e31c431d981b1e1e49bf3163598a0d41d28b95732b0",
+        "white": "b6ed94e6b9d462ad44a3d574ce7e640ae7c5b85cba4e6f75928a1461d6b61b77"
+      }
+    },
+    {
+      "name": "ALLENTE FINLAND.png",
+      "source_sha": "9bee42353910ba3b0a352685184b3f500a7ec3417500d2eb83f85be10ff5a6bf",
+      "foreground_sha": "ffbb162a79eda92b46283d781182f1d857711c2693453992ecb78269207f7704",
+      "donor_source_name": "ALLENTE DENMARK.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 10,
+      "variants": {
+        "transparent": "184b70b2948b8ba6ced00e31c431d981b1e1e49bf3163598a0d41d28b95732b0",
+        "white": "b6ed94e6b9d462ad44a3d574ce7e640ae7c5b85cba4e6f75928a1461d6b61b77"
+      }
+    },
+    {
+      "name": "ALLENTE NORWAY.png",
+      "source_sha": "9bee42353910ba3b0a352685184b3f500a7ec3417500d2eb83f85be10ff5a6bf",
+      "foreground_sha": "ffbb162a79eda92b46283d781182f1d857711c2693453992ecb78269207f7704",
+      "donor_source_name": "ALLENTE DENMARK.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 11,
+      "variants": {
+        "transparent": "184b70b2948b8ba6ced00e31c431d981b1e1e49bf3163598a0d41d28b95732b0",
+        "white": "b6ed94e6b9d462ad44a3d574ce7e640ae7c5b85cba4e6f75928a1461d6b61b77"
+      }
+    },
+    {
+      "name": "ALLENTE SWEDEN.png",
+      "source_sha": "9bee42353910ba3b0a352685184b3f500a7ec3417500d2eb83f85be10ff5a6bf",
+      "foreground_sha": "ffbb162a79eda92b46283d781182f1d857711c2693453992ecb78269207f7704",
+      "donor_source_name": "ALLENTE DENMARK.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 12,
+      "variants": {
+        "transparent": "184b70b2948b8ba6ced00e31c431d981b1e1e49bf3163598a0d41d28b95732b0",
+        "white": "b6ed94e6b9d462ad44a3d574ce7e640ae7c5b85cba4e6f75928a1461d6b61b77"
+      }
+    },
+    {
+      "name": "ANTENNA SICILIA.png",
+      "source_sha": "5d9ab86853fb7131a12d4d1796e3d5293e86a7478c714a4306e7ea8829fa666c",
+      "foreground_sha": "d9bd9b635b968757e318902cf45c7ad1af6be23f1e9f5a27c3eb09f29e65abe0",
+      "donor_source_name": "ANTENNA SICILIA.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 17,
+      "variants": {
+        "transparent": "df4778e3c10e4705c4362d902366a8ccebd6d5fffcb230c7edb89eb0b8849e69",
+        "white": "e2b1bfd0aa0b81e1233120ca207372e3e0940551d53adedd57b2ce153f6bdf02",
+        "black": "402d1894afef34519f7312edb00c7f30d252f8ef0f91da91d8018259c369fd92"
+      }
+    },
+    {
+      "name": "ANTENNE SICILIA.png",
+      "source_sha": "5d9ab86853fb7131a12d4d1796e3d5293e86a7478c714a4306e7ea8829fa666c",
+      "foreground_sha": "d9bd9b635b968757e318902cf45c7ad1af6be23f1e9f5a27c3eb09f29e65abe0",
+      "donor_source_name": "ANTENNA SICILIA.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 18,
+      "variants": {
+        "transparent": "df4778e3c10e4705c4362d902366a8ccebd6d5fffcb230c7edb89eb0b8849e69",
+        "white": "e2b1bfd0aa0b81e1233120ca207372e3e0940551d53adedd57b2ce153f6bdf02",
+        "black": "402d1894afef34519f7312edb00c7f30d252f8ef0f91da91d8018259c369fd92"
+      }
+    },
+    {
+      "name": "ARABSAT LEBANON.png",
+      "source_sha": "9d0a812a7cd3f2746b295e59442c72021615a3eb82e216b9f7bb1a47ffb2596c",
+      "foreground_sha": "df2ec5a148c567f3b976cdb824a29cee25a5060df25768a098435cd051c21bc0",
+      "donor_source_name": "ARABSAT LEBANON.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 19,
+      "variants": {
+        "transparent": "973d682c04e74fab55ef9558907e9d9f8b7b095f013eaebdb839bc0dd08f587a"
+      }
+    },
+    {
+      "name": "ARTMOTION.png",
+      "source_sha": "bb2df6d21bd5334f72f9f52d36260d1f07157fde49272e184d443ebe8ed1b351",
+      "foreground_sha": "e58396579ed26f7706e65983d68a19c00c579685644c5c44669efd581627047d",
+      "donor_source_name": "ARTMOTION.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 20,
+      "variants": {
+        "transparent": "b581b3ff3ca19208c641eed2b546f841c7959f4cc294d7cd6f9526ec219f3a79",
+        "white": "5a0e5227b4ae7b2aa0ee0bbe30e80049ba39c5bdf36cc898cc1c520352e7e5f1",
+        "black": "cf5f39cb60cf2acf99bca5e64aa1280702198edd5de4cb0b8e2b4692c8cd4195"
+      }
+    },
+    {
+      "name": "ASIA BROADCAST SATELLITE.png",
+      "source_sha": "5c254046bc346493c684412fd6d11b81150ec2431c81e43ea06688d1edbd778e",
+      "foreground_sha": "3a159cd696a7609620193ea104cb125e464902734c05779a7232e47b04c08936",
+      "donor_source_name": "ASIA BROADCAST SATELLITE.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 22,
+      "variants": {
+        "transparent": "9c777982ab23131fcee02bb74075cc5ed82b433eef1caae67d46c467e759a7a0"
+      }
+    },
+    {
+      "name": "BIS-AFRICA.png",
+      "source_sha": "785ad35e92a8222acb6f055a6f725649bf50689aa55bdc669749259c13b08155",
+      "foreground_sha": "e56a2c6efcf25b9ed9d50bccef0cbcf34cc17446628f08b36628c2ec5c811355",
+      "donor_source_name": "BIS-AFRICA.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 31,
+      "variants": {
+        "transparent": "b6b6b8744c9ac7eb359ff922c4d3b477c47facf2b877a044a9d911aef14e3872",
+        "white": "9698c16597724ac4c6979996d81d97b712ca77282eb3f679078a58152056b136",
+        "black": "532c1646098469168a22386a1382b2c55191ed2b545ace42d6f9ba36acfd5a66"
+      }
+    },
+    {
+      "name": "CALABRIA TV HD.png",
+      "source_sha": "3400f1483253aaa6065ab632df295757149512b2106220938e09e4d21db89e9d",
+      "foreground_sha": "190eee7b0b97af7339200f4ac6dd166de0d2775bb74e54568202e3f46ac821d0",
+      "donor_source_name": "CALABRIA TV HD.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 36,
+      "variants": {
+        "transparent": "1c5eee2f8b6b47545fc3657aa7d2d275cc65fb9a276b703a8c1998f5ca73807e",
+        "white": "9d834e07ea4bc9b937adde6c0c7ba1d0632b13174d0faa8c292bff587cbabcc0",
+        "black": "90c9a52ac93bd3c421cc37fc142f2d03e817b3c0aa46e55d29b61327caa287c3"
+      }
+    },
+    {
+      "name": "CANAL DIGITAL DENMARK.png",
+      "source_sha": "2e28b7eeac21ac0dd6e2b1397837de8cd7e437b2f42d53653b0bd560d26992ee",
+      "foreground_sha": "0fdd6eea3d2554d3deee4d935651a2a88648bb541f7508ea6c2993297514d3ef",
+      "donor_source_name": "CANAL DIGITAL DENMARK.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 37,
+      "variants": {
+        "transparent": "d76a3abb4dc3b0683294a8c9ebc96340320c0af4fd59e3cc38220a6380f0883f"
+      }
+    },
+    {
+      "name": "CANAL DIGITAL FINLAND.png",
+      "source_sha": "2e28b7eeac21ac0dd6e2b1397837de8cd7e437b2f42d53653b0bd560d26992ee",
+      "foreground_sha": "0fdd6eea3d2554d3deee4d935651a2a88648bb541f7508ea6c2993297514d3ef",
+      "donor_source_name": "CANAL DIGITAL DENMARK.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 38,
+      "variants": {
+        "transparent": "d76a3abb4dc3b0683294a8c9ebc96340320c0af4fd59e3cc38220a6380f0883f"
+      }
+    },
+    {
+      "name": "CANAL DIGITAL NORWAY.png",
+      "source_sha": "2e28b7eeac21ac0dd6e2b1397837de8cd7e437b2f42d53653b0bd560d26992ee",
+      "foreground_sha": "0fdd6eea3d2554d3deee4d935651a2a88648bb541f7508ea6c2993297514d3ef",
+      "donor_source_name": "CANAL DIGITAL DENMARK.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 39,
+      "variants": {
+        "transparent": "d76a3abb4dc3b0683294a8c9ebc96340320c0af4fd59e3cc38220a6380f0883f"
+      }
+    },
+    {
+      "name": "CANAL DIGITAL SWEDEN.png",
+      "source_sha": "2e28b7eeac21ac0dd6e2b1397837de8cd7e437b2f42d53653b0bd560d26992ee",
+      "foreground_sha": "0fdd6eea3d2554d3deee4d935651a2a88648bb541f7508ea6c2993297514d3ef",
+      "donor_source_name": "CANAL DIGITAL DENMARK.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 40,
+      "variants": {
+        "transparent": "d76a3abb4dc3b0683294a8c9ebc96340320c0af4fd59e3cc38220a6380f0883f"
+      }
+    },
+    {
+      "name": "CYFROVY POLSAT S.A..png",
+      "source_sha": "cdf1f3d6a48fb1eaa83f3437cc48cf0902422cf8723aaea0a366e5200abce4f4",
+      "foreground_sha": "693f8bc6aea1dc6eb25c20ea30ccccb32145f1a7af08417be52ceea8263b23ec",
+      "donor_source_name": "CYFROVY POLSAT S.A..png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 44,
+      "variants": {
+        "transparent": "028d46288108f0e2aeac85f1779eb5728508d6868c13cd14a972776cdfefbaa9",
+        "white": "81361684ee9187a8fa2328c1f96f6875e61e8692cd974880d41ecca9b0481cf3",
+        "black": "8649620cfc31947902f545bcf6cee6280f33df158502db45cc5eab6a86b6d81d"
+      }
+    },
+    {
+      "name": "CYFROVY POLSAT S.A.png",
+      "source_sha": "cdf1f3d6a48fb1eaa83f3437cc48cf0902422cf8723aaea0a366e5200abce4f4",
+      "foreground_sha": "693f8bc6aea1dc6eb25c20ea30ccccb32145f1a7af08417be52ceea8263b23ec",
+      "donor_source_name": "CYFROVY POLSAT S.A..png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 45,
+      "variants": {
+        "transparent": "028d46288108f0e2aeac85f1779eb5728508d6868c13cd14a972776cdfefbaa9",
+        "white": "81361684ee9187a8fa2328c1f96f6875e61e8692cd974880d41ecca9b0481cf3",
+        "black": "8649620cfc31947902f545bcf6cee6280f33df158502db45cc5eab6a86b6d81d"
+      }
+    },
+    {
+      "name": "CYFROVY POLSAT SA.png",
+      "source_sha": "cdf1f3d6a48fb1eaa83f3437cc48cf0902422cf8723aaea0a366e5200abce4f4",
+      "foreground_sha": "693f8bc6aea1dc6eb25c20ea30ccccb32145f1a7af08417be52ceea8263b23ec",
+      "donor_source_name": "CYFROVY POLSAT S.A..png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 46,
+      "variants": {
+        "transparent": "028d46288108f0e2aeac85f1779eb5728508d6868c13cd14a972776cdfefbaa9",
+        "white": "81361684ee9187a8fa2328c1f96f6875e61e8692cd974880d41ecca9b0481cf3",
+        "black": "8649620cfc31947902f545bcf6cee6280f33df158502db45cc5eab6a86b6d81d"
+      }
+    },
+    {
+      "name": "CYFROVY POLSAT.png",
+      "source_sha": "cdf1f3d6a48fb1eaa83f3437cc48cf0902422cf8723aaea0a366e5200abce4f4",
+      "foreground_sha": "693f8bc6aea1dc6eb25c20ea30ccccb32145f1a7af08417be52ceea8263b23ec",
+      "donor_source_name": "CYFROVY POLSAT S.A..png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 47,
+      "variants": {
+        "transparent": "028d46288108f0e2aeac85f1779eb5728508d6868c13cd14a972776cdfefbaa9",
+        "white": "81361684ee9187a8fa2328c1f96f6875e61e8692cd974880d41ecca9b0481cf3",
+        "black": "8649620cfc31947902f545bcf6cee6280f33df158502db45cc5eab6a86b6d81d"
+      }
+    },
+    {
+      "name": "DIGIT ALB.png",
+      "source_sha": "dbb38aa30506bffb1a530dd97b5602ed8425305869e74329c42d331d84aaf1fb",
+      "foreground_sha": "6f6522e8d8f2f86ebda4681d68d31fff37a8bbc68333b37252ac9be5cc81daae",
+      "donor_source_name": "DIGIT ALB.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 50,
+      "variants": {
+        "transparent": "6ea7610a1b0142217022daafa2b0c9b35d72f7ea4e2161ac41e25c6d3cc2da73"
+      }
+    },
+    {
+      "name": "EMITEL.png",
+      "source_sha": "367c78c1f807598cc6ad9e7728e90c0de4e422c60317d9735381be71fdb891a8",
+      "foreground_sha": "27c43cda6defa83059e8beb733e85f4ac511bb092c8b1ac7b3399b295ae07d58",
+      "donor_source_name": "EMITEL.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 58,
+      "variants": {
+        "transparent": "ebc8d49036795b5c9d5cdbb9c78b0dd9639a347b96112c748597f867b979692f",
+        "white": "2edfc077abd3d59d8292b53e989dc134c2ec7e4254b583b4c911adb66b1e8f6e",
+        "black": "b4e90d7e8ae6f057c32bffde42560bf9f4df2ac9d21f8246bfaa840d1a50c02f"
+      }
+    },
+    {
+      "name": "EXTRA.png",
+      "source_sha": "356823f58bff2951fd08aa7f5d6e47ccd92d0caee1f158ac0c27d703e86e0ffa",
+      "foreground_sha": "61a3ad86252c88bcdd56e0e91e33d5b8127132d2e5f54b911a15c407ef9c0ae5",
+      "donor_source_name": "EXTRA.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 64,
+      "variants": {
+        "transparent": "239a0518c7d7acf850bc768cef6f8b84ec47dffae61c91219c7231ecbe251574",
+        "white": "e48fbc93afdecc7a735876b2cf6fe7915a8dbd1e4bf98c8d6e7bf7522ad2ce56"
+      }
+    },
+    {
+      "name": "FANO TV.png",
+      "source_sha": "b73731675eda7bb6d9f90445c0d0c5f4afc020755cb03cb095c3323f054f5960",
+      "foreground_sha": "c5705677e84e457c89074c6117a14d0065816c3a739869c12dee714dde9dde0a",
+      "donor_source_name": "FANO TV.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 65,
+      "variants": {
+        "transparent": "ae022ee84b36d3e76933a71503d97ade9c1791f5706182db0ba4ef715bd95a96",
+        "white": "d10940e5048a6fdbda337a826f9ec4f3e0a6af84f3324b6334e863d7cb44124f",
+        "black": "5bba7ce2125b8cd0cca8a5c98e48cbfe429cd1e055f6a840b5c67a31ce604492"
+      }
+    },
+    {
+      "name": "FOCUS SAT.png",
+      "source_sha": "989496fe1d683136be2fa45016f40ab021ee8a1e7cc617249b48fe1f0e9ccb01",
+      "foreground_sha": "1f826605647a50993bf9c95c24e99147184845882dcde25bde7c1ca72c99aeab",
+      "donor_source_name": "FOCUS SAT.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 66,
+      "variants": {
+        "transparent": "2020e88566d4db801d8f536b72628030cd61ef496364be59a54c510cb06ed244"
+      }
+    },
+    {
+      "name": "FREESAT UPC.png",
+      "source_sha": "7bc53572ce445d2af89db43b0063471046bcb6d79e78a89e35e721918c00a992",
+      "foreground_sha": "4f35ee547ecd927bbb5a9e3543022c776e930f6e8d28617787e9703abef46aad",
+      "donor_source_name": "FREESAT UPC.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 69,
+      "variants": {
+        "transparent": "0183563a4daa42dd4b5e2358379f63d5f09bcdac291a2f6329cfa7c7c84da92e"
+      }
+    },
+    {
+      "name": "GAZPROM_SS.png",
+      "source_sha": "f6105a0f7b9ec5288955c49a9ca6d5793e5f9d79914cb487287603154f445ad6",
+      "foreground_sha": "333124cd0de1354c5d72270363f7201ae002e119c73e4d6eb41f19e000d63e37",
+      "donor_source_name": "GAZPROM_SS.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 72,
+      "variants": {
+        "transparent": "435125110aeb96e5f26c42cb0a032e33621acbc7144c69398d0576ccc3230f57"
+      }
+    },
+    {
+      "name": "GLANZ.png",
+      "source_sha": "3d46d921f30b7879e9c8212c7bc66162049a9b79122b3f8a504ae0a4c3490626",
+      "foreground_sha": "c62c0ab5a1d8a6d5dad10f26f2c63650ff5a4d0fdb10142ebd40af83da701485",
+      "donor_source_name": "GLANZ.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 74,
+      "variants": {
+        "transparent": "999a94e889c23fd6e4c8c09c56feb3f58d996b3cc307ae2b136d352f131581d1",
+        "white": "3f92ea6f8a9272661521fe6c7e65a380b6d52fe4f78c743ed23e0efeb9199010"
+      }
+    },
+    {
+      "name": "GLOBO TV.png",
+      "source_sha": "da96b95ba514d5bffbca8ddb08f7a23e1babc0e3a47fde0ae951ce47dee1aa49",
+      "foreground_sha": "ecb5e17fea37662d1a18357de6d66b3d3874c5694c60a1e7c5685134ac9e8f31",
+      "donor_source_name": "GLOBO TV.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 75,
+      "variants": {
+        "transparent": "0defb58dcee55c7d43cc1d5c1357995a0040dc4b030b7716f83d684719ec244c",
+        "white": "3ceb53732fa50d3332d5f783f6019e076b56c0e7b5c798f3e55593bdaec46ed0",
+        "black": "2040a6f6894a7f0074400c31581ba9efeec8f1d4bd5e76271cc5bd0087a83546"
+      }
+    },
+    {
+      "name": "GOLD TV.png",
+      "source_sha": "1afb0145d2869aa89db241f0cde856100748ddf69171ec3b27de33f06d0138ef",
+      "foreground_sha": "b5b87838032f9701e10c200c4482dacf64e5ecf15120da97867b72ea4e1939e4",
+      "donor_source_name": "GOLD TV.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 77,
+      "variants": {
+        "transparent": "4b19c5ce6da902e426151e089480d865f0f0d8edf847940d0dd0ba2372b08457",
+        "white": "ddb1f67b6b178b2036e24d45f1974ae48a12cd08b928a60d2de8b61abe51eda4",
+        "black": "8ea631c5b5c2776fdbc2d7bed25bb446d8053d578ef36b151fab8fd97c7a25b5"
+      }
+    },
+    {
+      "name": "GOLDTV.png",
+      "source_sha": "1afb0145d2869aa89db241f0cde856100748ddf69171ec3b27de33f06d0138ef",
+      "foreground_sha": "b5b87838032f9701e10c200c4482dacf64e5ecf15120da97867b72ea4e1939e4",
+      "donor_source_name": "GOLDTV.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 78,
+      "variants": {
+        "transparent": "4b19c5ce6da902e426151e089480d865f0f0d8edf847940d0dd0ba2372b08457",
+        "white": "ddb1f67b6b178b2036e24d45f1974ae48a12cd08b928a60d2de8b61abe51eda4",
+        "black": "8ea631c5b5c2776fdbc2d7bed25bb446d8053d578ef36b151fab8fd97c7a25b5"
+      }
+    },
+    {
+      "name": "GRP TV.png",
+      "source_sha": "3ec7731997226645ddab4065194d3d34ca67527a2a66a5ea9060553fb304cb29",
+      "foreground_sha": "6c8cf9e44d841895835abcaba0fd40d2ade34c832c818dc227e039c5124598e2",
+      "donor_source_name": "GRP TV.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 79,
+      "variants": {
+        "transparent": "12429d12aa002510f699cf372764f9f8bbe33c0a072c22170a2f1604b5cfd04a",
+        "white": "8d2c49e3b620c7e6082176d28a0c6507054f8a2efc7b85979aa48db364761d52",
+        "black": "10bb88dd1aaa8870afbae0221a3534bb5e187b3ab064cc39dfac2bdf3d61b8f8"
+      }
+    },
+    {
+      "name": "HD AUSTRIA.png",
+      "source_sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "foreground_sha": "8098468aa54341d0a4055dd37df231b1970ba3f98f0d217cf1f1d467c21f0b40",
+      "donor_source_name": "HD AUSTRIA.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 81,
+      "variants": {
+        "transparent": "aa62e81dc14549d6f9c61c26c8074e663bc3c875c60a5711f1f1ef053a061fcd"
+      }
+    },
+    {
+      "name": "IPTV.png",
+      "source_sha": "058ca21d170f5babb16619537ca95e36f8ec1e1b4ab19e468fc7f970f966032d",
+      "foreground_sha": "aab99aae4b68bf79bad47992bf2d9ebafa8919b4dfac429b2151afe8fdd89f68",
+      "donor_source_name": "IPTV.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 85,
+      "variants": {
+        "transparent": "090c72680cafb1e9cc5d808261839e195438f394cbb6af928e6a90ed7f900b61",
+        "white": "818b29a9b219399e75b689d63915d62ab58f29ddd42f58575d4f9be641fc209d"
+      }
+    },
+    {
+      "name": "ITALIA 7.png",
+      "source_sha": "d075e759d6a3be113ab57d10adf2613297a61d4c13d530e9be07e4123c2007f2",
+      "foreground_sha": "d86eab3bce4a23c5aec78d5813c3c3cf3fa4c28c5c2228801e2b75bf0d1c70c9",
+      "donor_source_name": "ITALIA 7.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 86,
+      "variants": {
+        "transparent": "c3fce0298cb5d7e944777b9eb3cc7a91a2250fc3a83af777631ce4314ad02868",
+        "white": "db1f0c71a399bcb14c2e18f82fb606e8d0602f6c1084d71ad2865ccfa1cc9903",
+        "black": "8ba609c8070526cc49561f3f2015d4d5959fe0d77fb8942ed79a10f3eed7888b"
+      }
+    },
+    {
+      "name": "KABEL DEUTSCHLAND.png",
+      "source_sha": "282ec8a5ceec5fea5cca2369222d4457cf9ef81b57b3c8644f6fd6f78567ed4c",
+      "foreground_sha": "c412331fbdf727ec843a5dba9f62648dac57de255450612be7c5f79d6327f072",
+      "donor_source_name": "KABEL DEUTSCHLAND.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 88,
+      "variants": {
+        "transparent": "de7875b27db0eb802cbed060b2f2f49eb3d94b4d49c7659a2a382e00f39b8bf2"
+      }
+    },
+    {
+      "name": "KD HOME.png",
+      "source_sha": "282ec8a5ceec5fea5cca2369222d4457cf9ef81b57b3c8644f6fd6f78567ed4c",
+      "foreground_sha": "c412331fbdf727ec843a5dba9f62648dac57de255450612be7c5f79d6327f072",
+      "donor_source_name": "KABEL DEUTSCHLAND.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 89,
+      "variants": {
+        "transparent": "de7875b27db0eb802cbed060b2f2f49eb3d94b4d49c7659a2a382e00f39b8bf2"
+      }
+    },
+    {
+      "name": "MARKIZA.png",
+      "source_sha": "4a20753180603e7c58e45563373e691d78162861c89c89c2e530ed3fdc225628",
+      "foreground_sha": "302c4ed8ed8f39adc4e3e40ff1debbd775cb1c65f0eb2626209ed42ef335673a",
+      "donor_source_name": "MARKIZA.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 94,
+      "variants": {
+        "transparent": "c32423f6bd84f86a370ad6fa4f28b56aafa147d81b91f42b6a2269b524abde45"
+      }
+    },
+    {
+      "name": "MEDIA GROUP SRL.png",
+      "source_sha": "094b320af18e422c9c204c50303f58f99c4d3d7b5f1989482b19a4e8db94d53a",
+      "foreground_sha": "3264b2369f4325fe3352c4619dec7ed1aa37e485251d3eb1cc8d66ab28a5e073",
+      "donor_source_name": "MEDIA GROUP SRL.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 101,
+      "variants": {
+        "transparent": "986573b84d1337fada52a1eaac659d3c03913ea3937247425918c7c1180566e2",
+        "white": "84a4c0a43c6170fbdc43391bf845cfe6659830618328629d0672946271a4b778",
+        "black": "7aa92e2f936ced4bba5ece3afaa427eaac4c9adb41a65f9a0f19dde10a397302"
+      }
+    },
+    {
+      "name": "MEDIA GROUP.png",
+      "source_sha": "094b320af18e422c9c204c50303f58f99c4d3d7b5f1989482b19a4e8db94d53a",
+      "foreground_sha": "3264b2369f4325fe3352c4619dec7ed1aa37e485251d3eb1cc8d66ab28a5e073",
+      "donor_source_name": "MEDIA GROUP SRL.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 102,
+      "variants": {
+        "transparent": "986573b84d1337fada52a1eaac659d3c03913ea3937247425918c7c1180566e2",
+        "white": "84a4c0a43c6170fbdc43391bf845cfe6659830618328629d0672946271a4b778",
+        "black": "7aa92e2f936ced4bba5ece3afaa427eaac4c9adb41a65f9a0f19dde10a397302"
+      }
+    },
+    {
+      "name": "MEO.png",
+      "source_sha": "33bd7a451f0bf41a4a243c6798c71ea92de849aaaed165eebb21032e7391cf5a",
+      "foreground_sha": "8b320bb6fd337c8e032728f9366e9391e0ceb66b8addd322c57ff7bd92207e9a",
+      "donor_source_name": "MEO.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 103,
+      "variants": {
+        "transparent": "ad6d7068e3167405817ac0e15455e331161f6ef15c238eacff5133459482f02d",
+        "white": "c81408e8e290f075f0f0eb3be810788c0da926aa5af77df9f038ea9823637801",
+        "black": "7e30549e2b59f81b17ca51459581013572b8afe60600b35746389c666950f906"
+      }
+    },
+    {
+      "name": "MOTORI TV.png",
+      "source_sha": "f54d1d56e2d5a30b3505f13f64050c78c7eeafce9f0f713126aabcedca89773b",
+      "foreground_sha": "34032e806cad81a24a5ad11e7c40ea067ec5222fc7e7a2f5ce46b81a35959a1a",
+      "donor_source_name": "MOTORI TV.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 104,
+      "variants": {
+        "transparent": "25511fc11632a51044de8c9e4753b1255541a8c7eb6e564447707c6289c5fdcb",
+        "white": "6221619feedbd7c7755912bfa2f767923efb6b2606239a947000a17b8c4d36fd",
+        "black": "923e2a6be5065f25ffa4d0c0f2e89438abe6f3b778b7b1dd3e384584a8175949"
+      }
+    },
+    {
+      "name": "MOTORI_TV.png",
+      "source_sha": "60acfb7c50e1d40af4fb040f15a26335bcf90c6e4492a518358ab6309bc5e567",
+      "foreground_sha": "34032e806cad81a24a5ad11e7c40ea067ec5222fc7e7a2f5ce46b81a35959a1a",
+      "donor_source_name": "MOTORI TV.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 105,
+      "variants": {
+        "transparent": "25511fc11632a51044de8c9e4753b1255541a8c7eb6e564447707c6289c5fdcb",
+        "white": "6221619feedbd7c7755912bfa2f767923efb6b2606239a947000a17b8c4d36fd"
+      }
+    },
+    {
+      "name": "MTEL.png",
+      "source_sha": "0e5d1c299171f01221e54ecfaf590635babfc7e0ce065bb9692d0fd3d7476bf6",
+      "foreground_sha": "e920a66c8b4e6c893ec8b1a0bd4caf30695c7dec605b44693abcbc0f5ea32a7f",
+      "donor_source_name": "MTEL.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 108,
+      "variants": {
+        "transparent": "f2a01169f6cf04e9d481a676b321083f07c651f80235a625045227cdb3a7ab42"
+      }
+    },
+    {
+      "name": "ORANGE-BIS.png",
+      "source_sha": "d8c80986411c8c9830d8d8114f91e0b3f28b8828dd6d5bc12e8246ab4e266acb",
+      "foreground_sha": "6310058f46fab77f651fa84f60de928f6d2ecb46b1ee9ac1f71a6938046b8195",
+      "donor_source_name": "ORANGE-BIS.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 122,
+      "variants": {
+        "transparent": "b1467a37ba61f534e21418f6b4286a6655ed7d41848c205b4e6ba04e4c613220"
+      }
+    },
+    {
+      "name": "ORBIT.png",
+      "source_sha": "340ffc053a4fa54f446407250951e830f1f85ddfbf564cf95dcd62557569655d",
+      "foreground_sha": "ef01292fecc33260a42cc58f31e87d1123bd47788ecf58cec9c4233cf004a48e",
+      "donor_source_name": "ORBIT.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 123,
+      "variants": {
+        "transparent": "4b3b816fe6dcf5042e01192deae1515320804f9b947aff81b5e9ed9f1b1441d5"
+      }
+    },
+    {
+      "name": "ORF DIGITAL.png",
+      "source_sha": "3f8df8cd85d5d67559faafe3232c0ce01e90cc443edc23c1362d9fa61e47f0be",
+      "foreground_sha": "e0d48f53f59251276ec34ca000750aa3bc7fd301d70e521ab64b457149e562b4",
+      "donor_source_name": "ORF DIGITAL.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 124,
+      "variants": {
+        "transparent": "fe2ea164decf12ad6e00240ca2de660e67b611c35fb6bca6f8f1f608fbdae13e"
+      }
+    },
+    {
+      "name": "OSN SHOWTIME.png",
+      "source_sha": "340ffc053a4fa54f446407250951e830f1f85ddfbf564cf95dcd62557569655d",
+      "foreground_sha": "ef01292fecc33260a42cc58f31e87d1123bd47788ecf58cec9c4233cf004a48e",
+      "donor_source_name": "ORBIT.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 125,
+      "variants": {
+        "transparent": "4b3b816fe6dcf5042e01192deae1515320804f9b947aff81b5e9ed9f1b1441d5"
+      }
+    },
+    {
+      "name": "PANTASAT RADIO.png",
+      "source_sha": "9ba8168e5652aae4c00014b73c60565fb59f357b268a83dd4a504dd3fd680385",
+      "foreground_sha": "2b667b24353a1fac82536ac61b88985f498e73e12113477bd7dbd9ac23a1d774",
+      "donor_source_name": "PANTASAT RADIO.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 127,
+      "variants": {
+        "transparent": "2ef7470c3ea6e69827230fb2ddbfc63acbf8caff7d34d64d66356acbf843607a",
+        "white": "ec6fb343aa98df279172247e644920dc9a023add3d408cf459ebcfad29d778fd",
+        "black": "f0d584589e8120aeda83ddc5c168b3c2729c1c35501207cbb1345dd3794842c1"
+      }
+    },
+    {
+      "name": "POVERKHNOST TV.png",
+      "source_sha": "330abcb3930b7efbe7355ccfe9b38e891f1a44a713a4a1c8e17f18d6ab92d6fc",
+      "foreground_sha": "3abe42655658fd157745733cff0725b6994b1ff40a04841401df70367f243429",
+      "donor_source_name": "POVERKHNOST TV.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 130,
+      "variants": {
+        "transparent": "ac33e26ff408f339d1e05b550cdf61a7ced126fd3f1a1800f4df1cad813f61d6"
+      }
+    },
+    {
+      "name": "POVERKHNOST.png",
+      "source_sha": "330abcb3930b7efbe7355ccfe9b38e891f1a44a713a4a1c8e17f18d6ab92d6fc",
+      "foreground_sha": "3abe42655658fd157745733cff0725b6994b1ff40a04841401df70367f243429",
+      "donor_source_name": "POVERKHNOST TV.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 131,
+      "variants": {
+        "transparent": "ac33e26ff408f339d1e05b550cdf61a7ced126fd3f1a1800f4df1cad813f61d6"
+      }
+    },
+    {
+      "name": "QMC.png",
+      "source_sha": "d3b24e0cdf49ad47142b563a900fb65727bbf1007b2fd435cca983ed6375c24d",
+      "foreground_sha": "8deed3979ce5040978bc0855f83abf4c85230599fe1e22a0d5a189da07d9eb1a",
+      "donor_source_name": "QMC.png",
+      "whiteadapt": true,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 140,
+      "variants": {
+        "transparent": "53a9135230ddfc79653f382a0df79cd606708740f5ddc5ad301f780703646ddb",
+        "white": "0ae4e584b2b5c375151958f546a9c7dc73431fbae6465808606c065574a5bd70",
+        "black": "27fc75aa09620c70fb987f670bf4ac53c7e663c361ef777402c2b9540d9b89a8"
+      }
+    },
+    {
+      "name": "RASCOM.png",
+      "source_sha": "9634fe8658ac2875aedda4664dba30bfba7c417d2f732aa34722ce28434fdbe2",
+      "foreground_sha": "17f2070a29b46ebb3f3809d77e868eebe44d6347662a8b3283551b91b465a99e",
+      "donor_source_name": "RASCOM.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 144,
+      "variants": {
+        "transparent": "e7c2ac3de2cd20b3d681376b176ed3a587abebbef9bbc4f6ac5b7deb194642f2",
+        "white": "382a6451048f733f76aac05c366b120b6d271d28779e81900b33540bfa25dd0e",
+        "black": "dba7c114d53ada30c525c3dfe91b1e88fa2136f2363f166aa0535ca31f4b7063"
+      }
+    },
+    {
+      "name": "RETE8.png",
+      "source_sha": "ef8d1aa787162002e23b90e8f49f8da909772e32d13e5cb824a1fdf73649fc5a",
+      "foreground_sha": "a91b9f4c38c47d154c8b57c54779e1ed47203f0f819995a242dd523fc5817abe",
+      "donor_source_name": "RETE8.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 147,
+      "variants": {
+        "transparent": "f333750283116b86aa00d23fe19ea034ba4587d4f81bed57942d44e4f05066c3",
+        "white": "8ec22d137059164f6028cbc4db2764014a8d9e0045dabbd5ae1c95cd0e52528e",
+        "black": "dc844dc3d28474a696a2c174bb878fccd150d45df24596ff11d4c6d6628861d7"
+      }
+    },
+    {
+      "name": "SKY DEUTSCHLAND.png",
+      "source_sha": "f0fc81229f3f14ac86fb6203810b92168a3e696cdf46ad6eea855ee221474b4b",
+      "foreground_sha": "5372f34e624274c161d985a6cf5484e1783b5f94e093205354165f7239401b33",
+      "donor_source_name": "SKY DEUTSCHLAND.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 152,
+      "variants": {
+        "transparent": "868661b37b02cbc4eddfc4c76e3e49e1ca7f9de7d12dd14f298cc77ce6f4b365"
+      }
+    },
+    {
+      "name": "TELE ONE.png",
+      "source_sha": "68d18bbb9a0a7de43275695b7f13f88b239c4624672f0affa3dcb4438632334b",
+      "foreground_sha": "04d42da5339d8cb909b29553b94c9e9e540ce5646514dfc000e73b82ad900a1d",
+      "donor_source_name": "FREE TV.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 162,
+      "variants": {
+        "transparent": "03786fbeaa229ba4d21347b22d372cd5612e0c87fa792f97c5dfa8adcf228638",
+        "white": "b8f9417416d22d33592f14c43d88aba7ec7f16edd26a7677e202f677eb0fe364",
+        "black": "6951c290d9e559bc25daf6c300ccaf7fb24e56337ad473eddc717da6376ccdb4"
+      }
+    },
+    {
+      "name": "TELENORD HD.png",
+      "source_sha": "571bc56d670cb8331934c184c5a712e63010e6e4b0db1fe2b41b01b62bce7591",
+      "foreground_sha": "5ff26dcc267535f6e63911d3e405f2b98fa21d4bebf2b164f245fbbf3b8a1045",
+      "donor_source_name": "TELENORD HD.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 167,
+      "variants": {
+        "transparent": "090649ec263733cd4ccf07f8384bfe8ffec6df586e1936ce7a877dd196ccdc11",
+        "white": "4b6b0aefc130919c04523464d9c7354388513aa6693eee28d1f8872cd296bf98",
+        "black": "bedc66a81e9be6084fe1bad2afdc15876c20f6af99e1bf786e4f3e31d86a77ad"
+      }
+    },
+    {
+      "name": "TELENORD_HD.png",
+      "source_sha": "9cf3cf87f66caa4d6b6d38b8f0b3951b210dbaf6f6a21516707b45dc6522816c",
+      "foreground_sha": "5ff26dcc267535f6e63911d3e405f2b98fa21d4bebf2b164f245fbbf3b8a1045",
+      "donor_source_name": "TELENORD HD.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 168,
+      "variants": {
+        "transparent": "090649ec263733cd4ccf07f8384bfe8ffec6df586e1936ce7a877dd196ccdc11",
+        "white": "4b6b0aefc130919c04523464d9c7354388513aa6693eee28d1f8872cd296bf98"
+      }
+    },
+    {
+      "name": "TELEONE.png",
+      "source_sha": "ac39fe0f4ed345cf4184fc2c074737b2c9a2bc8f71d13bed2521b78a5542ee43",
+      "foreground_sha": "04d42da5339d8cb909b29553b94c9e9e540ce5646514dfc000e73b82ad900a1d",
+      "donor_source_name": "FREE TV.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 169,
+      "variants": {
+        "transparent": "03786fbeaa229ba4d21347b22d372cd5612e0c87fa792f97c5dfa8adcf228638",
+        "white": "b8f9417416d22d33592f14c43d88aba7ec7f16edd26a7677e202f677eb0fe364",
+        "black": "6951c290d9e559bc25daf6c300ccaf7fb24e56337ad473eddc717da6376ccdb4"
+      }
+    },
+    {
+      "name": "TELEVISION SUISSE ROMANDE.png",
+      "source_sha": "ac0c2dc51ee405c60be8840f79ad846c7a68b2f4caab392f26bf1ee7b373a089",
+      "foreground_sha": "cc056438307ad8885b82709508eb965e3e28d9956fbdb4ba1ea522dee5d1db4e",
+      "donor_source_name": "TELEVISION SUISSE ROMANDE.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 173,
+      "variants": {
+        "transparent": "78d9ff3c0d9e4a50ac768df8a7fbdb2fda8947951e01d15f5983b36f3fdce2c8"
+      }
+    },
+    {
+      "name": "TELSTRA.png",
+      "source_sha": "c48aaf8bb6e9609f6c55e142cb0acfbaddd6d2b601d6a2b8d41a4fe7b52101c2",
+      "foreground_sha": "a7645d8a55cf592b7673e5eb85f87ee779683bc2f30345ab33863dea299da76b",
+      "donor_source_name": "TELSTRA.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 175,
+      "variants": {
+        "transparent": "769781192ea1e235519795b03ed4ee75ee38558bdc69fddb234d7da5850e9dc3",
+        "white": "d538e18522fe9421d5cb56cdb8645bcabc288818bd6defefa681fb8934ab714a",
+        "black": "e6d8638d8b44946dd67289864c9ed6bd4a980b75127e1e030198971c9b59025f"
+      }
+    },
+    {
+      "name": "TIVSAT.png",
+      "source_sha": "8907fe7764f7dec1a78a4ef996e8195b1a2ade1c8e92b4b5c897479bdac3c08d",
+      "foreground_sha": "202d08fd166aa0caabcce6083f8236d1d50e5a8f67a83444a3bcc0155c618c94",
+      "donor_source_name": "TIVSAT.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 178,
+      "variants": {
+        "transparent": "08d5b472118be039e1dca5d7143dbad9ef1903fd0c3d767c4c4c716c76b87fa2"
+      }
+    },
+    {
+      "name": "UPCPL.png",
+      "source_sha": "71ce421e042aa6d79eb9ca0bd12a3a28b2d3331f4d9f5653d7e87d4e9a55a4fe",
+      "foreground_sha": "5f6e5f0d5823e2f9a6307234d16b5dbebb7f076058188a0acb59f6a89add763c",
+      "donor_source_name": "UPCPL.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 195,
+      "variants": {
+        "transparent": "2e0a1864de41658dcaaf4cfca32b95bb577b99e305a079092156122f1de7724c"
+      }
+    },
+    {
+      "name": "VIP SAT.png",
+      "source_sha": "cfd1400e6eb06520be6dd1ccbf72b01cd333f56503fe85d3b290d7b359b37285",
+      "foreground_sha": "04559e869e0e1347fba2701c019edbe4f4af98623baa96070297e469ecea945f",
+      "donor_source_name": "VIP SAT.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 200,
+      "variants": {
+        "transparent": "91192590bb8e4df17c4634a7e1e921e6ae16f7be669e127838ae08f253dc59ab"
+      }
+    },
+    {
+      "name": "VIPNET.png",
+      "source_sha": "cfd1400e6eb06520be6dd1ccbf72b01cd333f56503fe85d3b290d7b359b37285",
+      "foreground_sha": "04559e869e0e1347fba2701c019edbe4f4af98623baa96070297e469ecea945f",
+      "donor_source_name": "VIP SAT.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 201,
+      "variants": {
+        "transparent": "91192590bb8e4df17c4634a7e1e921e6ae16f7be669e127838ae08f253dc59ab"
+      }
+    },
+    {
+      "name": "VR.png",
+      "source_sha": "20df4abc4ee154b3a34950dec8591002fa0b5d2cc282aa47e712079bd30ac1de",
+      "foreground_sha": "9267e08b2463adbc59775557d3d8742eb862e4a891bc3699b256bc33b7450503",
+      "donor_source_name": "VR.png",
+      "whiteadapt": false,
+      "plate": false,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 202,
+      "variants": {
+        "transparent": "b9e16e2a89edbdf956f745f2cdff22767ebf660ed5f8318dcdde944aaf2e756f",
+        "white": "53e4215ccd0e7eabfaa20ec9dfffca5339a2b51e80a34e9d073d9561ba738f15",
+        "black": "e167f4a6a73ff70ee08edb451e484c9c1d91df7b752ef4830292b55244b800a1"
+      }
+    },
+    {
+      "name": "WE-UKRAINE.png",
+      "source_sha": "51757b8facda96fe5845f57a966135c52a97ab0cb3d969b2648ec2811088ed6c",
+      "foreground_sha": "9f56ad41dfee1960e3733fbc3f600174ab3955d70ca9efe7b2b829b2408a2c54",
+      "donor_source_name": "WE-UKRAINE.png",
+      "whiteadapt": false,
+      "plate": true,
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "method": "visual_source_raster_recovery",
+      "index": 204,
+      "variants": {
+        "transparent": "3945a6f625ea601f9a2dfbf87fceeeb8cd36829773fddf8b7439d2078e7d58e3",
+        "white": "fde6622d84d496f25142727d44222d57a6f514bb5fec32d56dc361b7dd693819",
+        "black": "db922b0214cd2a30dcff41463e6934014afa66b83f1111cc7043bdaafea9eab8"
+      }
+    }
+  ],
+  "pixel_digest": "519877627b6ba40aad9bd70e7383313f1cb8f2b1d2cb7325d12115bf9ac4f8da",
+  "counts": {
+    "transparent": 70,
+    "white": 41,
+    "black": 31
+  }
+}
