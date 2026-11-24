@@ -1,5 +1,14 @@
 # DTT ITALIA a talianske feedy – kontrolná dávka 23. novembra 2026
 
+## 24. 11. 2026 – prílohy Azzurra v SAT manažéri
+
+**Živé overenie zastavené na prihlasovacej stránke.** GitHub Actions na commite `4206c46` dostal z adresy `/cms/login/` odpoveď HTTP 403 ešte pred odoslaním formulára. Predchádzajúci test štandardným HTTP formulárom nepotvrdil členskú reláciu. Úspešné prihlásenie a stiahnutie kontrolného PNG s ID 151974 zostávajú neoverené. Produkčné balíky a posledný úspešný checkpoint zodpovedajú predchádzajúcemu vydaniu. Vlastník schválil zlúčenie po úspešnom živom teste. [GitHub Actions](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45344778658) · [Implementácia v PiconHube](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/88)
+
+Implementácia a regresné testy sú v [pracovnom commite PiconHubu](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/8e0ef1c4563b6acee1ebc16dec7d154f6e253af4). Prešlo 27 lokálnych testov skenerov a príloh. Prenos checkpointu prešiel pri prvom zápise, následnom prírastku aj opakovanom behu bez zmeny.
+
+Východiskom je 483 príloh z registra FullHDGlass, SHA-256 `2ee27e9cab46eab8467a3de9ce790c17d6dd08f385a904a2378a7a68aabdd456`. Živý oficiálny archív Vhannibal Motor DTT Italia má SHA-256 `b44bc9affcc9f9263f8a77fd9391387fa6865f15645fcef12a08462b8dad20de`. Porovnanie bouquetov a lamedb potvrdilo 285 referencií DTT, 439 na 9°E a 260 na 5°W. Pravidelná úloha Warder SAT Picon Manager bola pri kontrole pozastavená. Po obnovení má ďalší termín 3. 12. 2026 o 08:00 Europe/Bratislava a dvojtýždňový interval.
+
+
 ## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W sú overené a publikované
 
 [FullHDGlass 1.0.89](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.89) a [PiconHub 0.1.45](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.45) sú dostupné cez produkčné aktualizátory. Pre každú aplikáciu boli skontrolované verejný IPK, jeho kontrolný súčet, verzia v metadátach opkg a obsah inštalovaného výberu. FullHDGlass má zhodný produkčný a testovací kanál. PiconHub má zhodné aktualizačné údaje na `main` a na kompatibilnej vetve `plugin/futuristic-rebuild`.
