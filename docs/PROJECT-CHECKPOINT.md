@@ -6,6 +6,8 @@
 
 Implementácia a regresné testy sú v [pracovnom commite PiconHubu](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/8e0ef1c4563b6acee1ebc16dec7d154f6e253af4). Prešlo 27 lokálnych testov skenerov a príloh. Prenos checkpointu prešiel pri prvom zápise, následnom prírastku aj opakovanom behu bez zmeny.
 
+Integračný test pracovného commitu `c89abc0` úspešne načítal oba repozitáre a pripravil checkpoint. Pri otvorení prihlasovacej stránky skončil s `login_page_HTTP_403`. Beh nevytvoril žiadny artefakt ani dátovú vetvu. Samostatná regresia skenerov vykonala 27 testov. Všeobecná sada eviduje 249 testov, z nich jeden preskočený. Obrazový test prešiel v cielenej sade s knižnicou Pillow. Prešli aj kontroly OpenPLi a ochrany log. [Integračný beh](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45346332798) · [Regresia skenerov](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45346343488) · [Všeobecná sada](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45346343448).
+
 Východiskom je 483 príloh z registra FullHDGlass, SHA-256 `2ee27e9cab46eab8467a3de9ce790c17d6dd08f385a904a2378a7a68aabdd456`. Živý oficiálny archív Vhannibal Motor DTT Italia má SHA-256 `b44bc9affcc9f9263f8a77fd9391387fa6865f15645fcef12a08462b8dad20de`. Porovnanie bouquetov a lamedb potvrdilo 285 referencií DTT, 439 na 9°E a 260 na 5°W. Pravidelná úloha Warder SAT Picon Manager bola pri kontrole pozastavená. Po obnovení má ďalší termín 3. 12. 2026 o 08:00 Europe/Bratislava a dvojtýždňový interval.
 
 
