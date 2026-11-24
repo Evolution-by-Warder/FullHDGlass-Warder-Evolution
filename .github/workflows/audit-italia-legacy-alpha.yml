@@ -1,0 +1,37 @@
+name: Verify published 29 transparent providers
+on:
+  push:
+    branches: [audit/italia-legacy-alpha-161-20261124]
+    paths: ['.github/workflows/audit-italia-legacy-alpha.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: |
+          python3 - <<'PY'
+          import hashlib,io,json,struct,urllib.request,zipfile
+          R='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/'
+          F=R+'main/';B=R+'3c38ab56743b9642f6942a4ee1f692c534932ef9/'
+          def get(u):
+              with urllib.request.urlopen(u,timeout=60) as r:return r.read()
+          def sha(b):return hashlib.sha256(b).hexdigest()
+          cat=json.loads(get(F+'assets/warder/downloads.json'));a=cat.get('assets',cat)
+          expected={'piconProv/'+n for n in json.loads(get(F+'reports/italia-legacy-alpha-161-20261124/plan.json'))['names']}
+          assert len(expected)==29
+          for s,k,count,added,h in [('transparent','piconProv-220',1396,29,'cf86080a2ab95fea9992e982bbd7150abaee49d695a1de7f18d25c15fc0304ef'),('white','piconProv-w',1387,0,'491ff2a8d28c3e6fe06f6eb426a83617794b0574c9593b7392bfb4e788fb19c2'),('black','piconProv-b',1402,0,'6bba8b5bf63f5b27e5e506e45b2320f74a2395bdc4c225b8d07bfdcbb97f7a10')]:
+              p='assets/warder/downloads/picons/providers/'+s+'/piconProv.zip';raw=get(F+p);old=get(B+p);assert sha(raw)==h==a[k]['sha256'] and len(raw)==a[k]['size'] and len(raw)<32*1024*1024
+              with zipfile.ZipFile(io.BytesIO(raw)) as z,zipfile.ZipFile(io.BytesIO(old)) as o:
+                  assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))==count
+                  assert all(z.read(n)==o.read(n) for n in o.namelist())
+                  assert len(set(z.namelist())-set(o.namelist()))==added and expected<=set(z.namelist())
+                  for n in z.namelist():
+                      b=z.read(n);assert b[:8]==bytes.fromhex('89504e470d0a1a0a') and struct.unpack('>II',b[16:24])==(220,132)
+              if not added:assert raw==old
+              print(s,count,'PASS')
+          m=get(F+'assets/warder/downloads/picons/channels/manifest.json')
+          assert m==get('https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/main/plugin/src/Plugins/Extensions/WarderPiconHub/data/channel-manifest.json')
+          print('PASS: 29 provider names complete, all old PNG preserved, DTT manifests equal')
+          PY
