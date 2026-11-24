@@ -4621,11 +4621,11 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="80,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#FFCDD2" zPosition="2" transparent="1" />
     <widget source="key_green" render="Label" position="534,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#DDEDC8" zPosition="2" transparent="1" />
     <widget source="key_yellow" render="Label" position="988,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#FFF9C5" zPosition="2" transparent="1" />
-    <widget source="key_blue" render="Label" position="1443,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#B3E5FC" zPosition="2" transparent="1" />
+    <widget source="key_blue" render="Label" conditional="key_blue" position="1443,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#B3E5FC" zPosition="2" transparent="1" />
     <ePixmap position="80,1019" size="397,4" pixmap="hd_glass17/videodb/red.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
     <ePixmap position="534,1019" size="397,4" pixmap="hd_glass17/videodb/green.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
     <ePixmap position="988,1019" size="397,4" pixmap="hd_glass17/videodb/yellow.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
-    <ePixmap position="1443,1019" size="397,4" pixmap="hd_glass17/videodb/blue.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
+    <ePixmap conditional="key_blue" position="1443,1019" size="397,4" pixmap="hd_glass17/videodb/blue.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
 	</screen>
 	<screen name="VirtualKeyboard" position="center,90" size="1500,900" zPosition="99" title="Virtual Keyboard">
     <widget name="prompt" position="45,30" size="1410,110" font="Prive3;32" halign="left" valign="center" transparent="1" />
@@ -7743,9 +7743,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
-    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
-    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
-    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" conditional="key_blue" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" conditional="key_menu" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" conditional="key_info" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="InformationReceiver" position="center,90" size="1650,900" title="Information">

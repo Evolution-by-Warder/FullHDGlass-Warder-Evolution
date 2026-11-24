@@ -1,3 +1,9 @@
+## 1.0.91 — 24. november 2026
+
+Plynulé rolovanie dlhých EPG popisov v druhom infobare a všetkých piatich režimoch informácií o programe. Obe polia sa posúvajú nezávisle po malých pixelových krokoch. Pridané ochrany pri skrytí a zatvorení okna a opravené voliteľné zdroje tlačidiel QuickMenu a InformationNetwork. Po inštalácii reštartujte Enigma2.
+
+[Poznámky k vydaniu](docs/warder-1.0.91-release-notes.md).
+
 ## 1.0.90 — 24. november 2026
 
 Obnovený výpis chýbajúcich ikon menu v /tmp/missing_menu_icons.txt bez duplicít. Opravená grafika FullHDGlass v menu Zoznam a ikony3. Dlhé popisy EPG sa automaticky rolujú vo všetkých piatich režimoch informácií o programe, pri aktuálnej a nasledujúcej udalosti nezávisle. Po inštalácii reštartujte Enigma2.

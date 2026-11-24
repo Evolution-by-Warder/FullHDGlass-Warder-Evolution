@@ -149,6 +149,24 @@ class Tests(unittest.TestCase):
         s.tick()
         self.assertFalse(t.active)
 
+    def test_partially_deleted_native_children_and_initial_render_error(self):
+        a, t = NativeLabel(True), Timer()
+        a.leftText = object()
+        a.rightText = object()
+        s = mod.DescriptionScroller(a, t)
+        s.set("x" * 30)
+        s.show()
+        a.leftText = None
+        s.tick()
+        self.assertFalse(t.active)
+        self.assertEqual(a.moves, [])
+        a.leftText = object()
+        def removed(_text):
+            raise RuntimeError("native widget removed")
+        a.setText = removed
+        s.show()
+        self.assertFalse(t.active)
+
     def test_all_seven_description_widgets_and_lifecycle(self):
         source = (PAYLOAD / "Screens/G17_UserInfo.py").read_text()
         ast.parse(source)

@@ -26,9 +26,17 @@ class DescriptionScroller:
             self.connection = None
 
     def _ready(self):
-        return (not self.closed and self.visible and self.label is not None
-                and getattr(self.label, "instance", None) is not None
-                and getattr(self.label, "pageHeight", 0) > 0)
+        if (self.closed or not self.visible or self.label is None
+                or getattr(self.label, "instance", None) is None
+                or getattr(self.label, "pageHeight", 0) <= 0):
+            return False
+        # A native ScrollLabel can lose its child labels before the outer
+        # widget pointer disappears. Never touch a partially deleted widget.
+        for attr in ("leftText", "rightText", "long_text"):
+            if hasattr(self.label, attr) and getattr(self.label, attr) is None:
+                # OpenPLi uses right_text (not rightText) for split mode.
+                return False
+        return True
 
     def _limits(self):
         if not self._ready() or not callable(getattr(self.label, "setPos", None)):
@@ -58,7 +66,10 @@ class DescriptionScroller:
     def _reset(self):
         self.direction = 1
         if self._ready() and self.text is not None:
-            self.label.setText(self.text)
+            try:
+                self.label.setText(self.text)
+            except (AttributeError, RuntimeError, TypeError, ValueError):
+                self.visible = False
 
     def set(self, text, identity=None):
         if self.closed:
