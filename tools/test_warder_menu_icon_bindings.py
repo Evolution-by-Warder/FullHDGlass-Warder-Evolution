@@ -79,6 +79,9 @@ class MissingMenuReportTests(unittest.TestCase):
         for key in self.module.SKIN_IDS:
             self.assertEqual(self.module.skin_artwork(key, root, "3", {canonical}.__contains__), canonical)
             self.assertEqual(self.module.skin_artwork(key, root, "3", {bundled}.__contains__), bundled)
+        self.assertEqual(self.module.skin_artwork("warder_fullhdglass_settings", root, "3", {canonical, bundled}.__contains__), bundled)
+        custom = root + "/menuIconsBig/warder_fullhdglass_settings.png"
+        self.assertEqual(self.module.skin_artwork("warder_fullhdglass_settings", root, "3", {custom, bundled}.__contains__), custom)
         self.assertIsNone(self.module.skin_artwork("other", root, "3", {bundled}.__contains__))
 
     def test_bundle_is_exact_previously_approved_art(self):

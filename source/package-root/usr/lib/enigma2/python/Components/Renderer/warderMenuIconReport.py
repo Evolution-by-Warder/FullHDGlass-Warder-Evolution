@@ -44,6 +44,11 @@ def skin_artwork(entry_id, root, pict, exists):
         candidate = root + "/menuIconsBig/" + entry_id + ".png"
         if exists(candidate):
             return candidate
+    # The canonical filename in an older downloaded pack may still contain
+    # the wrench. For the new shortcut ID use the approved bundled original
+    # before falling back to the legacy filename.
+    if entry_id == "warder_fullhdglass_settings" and exists(SKIN_ART):
+        return SKIN_ART
     candidate = root + "/menuIconsBig/FHD_Glass17_Setup.png"
     if exists(candidate):
         return candidate
