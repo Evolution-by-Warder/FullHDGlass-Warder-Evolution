@@ -1,0 +1,23 @@
+name: Verify backwards-compatible provider archive extensions
+on:
+  push:
+    branches: [work/provider-archive-v2-20261124]
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderCanonicalPicons.py'
+      - 'tools/test-provider-archive-v2.py'
+      - '.github/workflows/verify-provider-archive-v2.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+      - run: python -m pip install Pillow
+      - run: python tools/test-provider-archive-v2.py
+      - run: python tools/test-canonical-picons.py
