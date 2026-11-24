@@ -116,7 +116,7 @@ def _install_v2(screen, assets, suffix, variant, translate, progress, stage):
                         raise ValueError('Provider archive expansion exceeds declared size')
                     with z.open(entry) as inp:
                         header = inp.read(24)
-                        if len(header) != 24 or header[:8] != b'\\x89PNG\\r\\n\\x1a\\n' or struct.unpack('>II',header[16:24]) != (220,132):
+                        if len(header) != 24 or header[:8] != b'\x89PNG\r\n\x1a\n' or struct.unpack('>II',header[16:24]) != (220,132):
                             raise ValueError('Invalid provider PNG')
                         with open(os.path.join(folder, leaf), 'xb') as out:
                             out.write(header)
