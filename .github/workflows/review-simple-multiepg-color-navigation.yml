@@ -1,0 +1,99 @@
+name: Verify combined EPG and provider candidate (no publication)
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSimpleMultiEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py'
+      - 'tools/test_warder_simple_multiepg_navigation.py'
+      - 'tools/test_warder_user_info_scroll.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py'
+      - 'source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py'
+      - '.github/workflows/review-simple-multiepg-color-navigation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source
+            tools/build-release-ipk.py
+            tools/sync_header_version.py
+            tools/test_warder_simple_multiepg_navigation.py
+            tools/test_warder_user_info_scroll.py
+            tools/test-provider-archive-v2.py
+            tools/test-openatv-epg-compat.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Native action and regression tests
+        run: |
+          set -euo pipefail
+          python3 tools/test_warder_simple_multiepg_navigation.py -v
+          python3 tools/test_warder_user_info_scroll.py -v
+          python3 tools/test-openatv-epg-compat.py -v
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17')
+          for name in ('warderSimpleMultiEpg.py', 'warderEpgCompat.py'):
+              compile((p / name).read_text(), name, 'exec')
+          source=(p / 'warderEpgCompat.py').read_text()
+          assert 'install_simple_multi(epg_module, config, info_bar)' in source
+          assert 'keymap.xml' not in (p / 'warderSimpleMultiEpg.py').read_text()
+          print('Native EPG adapter and keymap isolation: PASS')
+          PY
+      - name: Verify stable candidate version and provider v2 support
+        run: |
+          set -euo pipefail
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = 1.0.92
+          grep -Fx 'Version: 1.0.92-1' source/control/control
+          python3 tools/sync_header_version.py --check
+          python3 tools/test-provider-archive-v2.py -v
+      - name: Build non-publishing review IPK from staged source
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import importlib.util
+          from pathlib import Path
+          import subprocess
+          import tempfile
+          root=Path.cwd()
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(builder)
+          name='enigma2-plugin-skins-fullhdglass_1.0.92_all.ipk'
+          out=root/'review-ipk'/name
+          out.parent.mkdir(exist_ok=True)
+          with tempfile.TemporaryDirectory() as tmp:
+              tmp=Path(tmp)
+              (tmp/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(root/'source/control',tmp/'control.tar.gz')
+              builder.archive(root/'source/package-root',tmp/'data.tar.gz',payload=True)
+              subprocess.run(['ar','rcsD',str(out),'debian-binary','control.tar.gz','data.tar.gz'],cwd=tmp,check=True)
+          (out.parent/(name+'.sha256')).write_text(hashlib.sha256(out.read_bytes()).hexdigest()+'  '+name+'\n')
+          print(name,out.stat().st_size,hashlib.sha256(out.read_bytes()).hexdigest())
+          PY
+          cd review-ipk
+          sha256sum -c *.sha256
+          test "$(ar t *.ipk | paste -sd ' ' -)" = "debian-binary control.tar.gz data.tar.gz"
+          ar p *.ipk control.tar.gz | tar -xzOf - ./control | grep -Fx 'Version: 1.0.92-1'
+          ar p *.ipk data.tar.gz | tar -tzf - | grep -Fx './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSimpleMultiEpg.py'
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py | cmp - ../source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Screens/G17_UserInfo.py | cmp - ../source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | grep -Fx '1.0.92'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.92-Combined-Candidate-IPK
+          path: |
+            review-ipk/*.ipk
+            review-ipk/*.ipk.sha256
+          retention-days: 14
+          if-no-files-found: error

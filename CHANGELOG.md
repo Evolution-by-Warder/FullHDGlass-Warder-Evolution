@@ -1,3 +1,9 @@
+## 1.0.92 — 24. november 2026
+
+V jednoduchom Multi EPG žlté/modré tlačidlo prepína predchádzajúci/nasledujúci program. Popisy EPG bez bočných posuvníkov sa plynulo posunú raz, vrátia na začiatok a zastavia. Podpora rozšírených balíkov provider piconov vrátane 60 bielych doplnkov. Po inštalácii reštartujte Enigma2.
+
+[Poznámky k vydaniu](docs/warder-1.0.92-release-notes.md). Schválené na ostré vydanie; výsledok publikácie a SHA doplniť po úspešnom publisheri.
+
 ## 1.0.91 — 24. november 2026
 
 Plynulé rolovanie dlhých EPG popisov v druhom infobare a všetkých piatich režimoch informácií o programe. Obe polia sa posúvajú nezávisle po malých pixelových krokoch. Pridané ochrany pri skrytí a zatvorení okna a opravené voliteľné zdroje tlačidiel QuickMenu a InformationNetwork. Po inštalácii reštartujte Enigma2.

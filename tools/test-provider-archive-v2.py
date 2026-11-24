@@ -1,13 +1,16 @@
-import hashlib, importlib.util, io, os, shutil, struct, tempfile, unittest, zipfile
+import hashlib, importlib.util, io, os, shutil, struct, tempfile, unittest, zipfile, zlib
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
-from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 p=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderCanonicalPicons.py'
 s=importlib.util.spec_from_file_location('canonical',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
 def png(c):
- b=io.BytesIO();Image.new('RGBA',(220,132),c).save(b,format='PNG');return b.getvalue()
+ # Generate genuine RGBA PNG fixtures without a network-installed Pillow dependency.
+ rgba={'red':b'\xff\x00\x00\xff','blue':b'\x00\x00\xff\xff'}[c]
+ def chunk(kind,data):
+  return struct.pack('>I',len(data))+kind+data+struct.pack('>I',zlib.crc32(kind+data)&0xffffffff)
+ return b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',220,132,8,6,0,0,0))+chunk(b'IDAT',zlib.compress((b'\x00'+rgba*220)*132))+chunk(b'IEND',b'')
 def entry(files, url, delivery='canonical-220x132-v1'):
  b=io.BytesIO()
  with zipfile.ZipFile(b,'w') as z:

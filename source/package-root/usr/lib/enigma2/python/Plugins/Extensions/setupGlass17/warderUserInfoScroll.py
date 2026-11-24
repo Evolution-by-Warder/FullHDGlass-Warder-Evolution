@@ -19,6 +19,7 @@ class DescriptionScroller:
         self.text = None
         self.identity = None
         self.direction = 1
+        self.finished = False
         try:
             self.connection = timer.timeout.connect(self.tick)
         except AttributeError:
@@ -60,11 +61,12 @@ class DescriptionScroller:
         if self.closed:
             return
         self.timer.stop()
-        if self.visible and self.text and self.overflowing():
+        if not self.finished and self.visible and self.text and self.overflowing():
             self.timer.start(delay, True)
 
     def _reset(self):
         self.direction = 1
+        self.finished = False
         if self._ready() and self.text is not None:
             try:
                 self.label.setText(self.text)
@@ -122,6 +124,8 @@ class DescriptionScroller:
         if self.closed:
             return
         self.timer.stop()
+        if self.finished:
+            return
         limits = self._limits()
         if not self.text or limits is None or limits[1] <= 0:
             return
@@ -139,13 +143,14 @@ class DescriptionScroller:
                         and getattr(self.label, "showscrollbar", True)
                         and getattr(self.label, "scrollbar", None) is not None):
                     update()
-            # Pause at either end and reverse without jumping whole pages.
+            # One smooth round trip: pause at the bottom, return to the
+            # beginning, then remain static until a new event or show.
             if target == limit:
                 self.direction = -1
                 delay = END_DELAY
             elif target == 0:
-                self.direction = 1
-                delay = START_DELAY
+                self.finished = True
+                return
         except (AttributeError, RuntimeError, TypeError, ValueError):
             # A torn-down or unsupported native widget must not be retried.
             return
