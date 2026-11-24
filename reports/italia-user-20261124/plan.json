@@ -1,0 +1,523 @@
+{
+  "schema": 1,
+  "source_archives": {
+    "DTT ITALIA.rar": "26b84d8e6fadda650eb8a0eac6cb6b0a99743737f09833543bf4611d302edf60",
+    "piconProv.rar": "cd7007bf92ca14067f15c26b8a2a2277c07e812ec6872425d4e81a36ec0ca17c"
+  },
+  "local_source_delta_sha256": "cd84e0bf014da4288c1de547ec712741726b860f884d62f6ebd2303de45f77bb",
+  "baseline": "40db67977de066be65fa8f37f5a73041aa1b337b7a5c9cdf40233edaf537094a",
+  "dtt": [
+    "1_0_16_A0_200_1D_EEEE0000_0_0_0.png",
+    "1_0_1F_425_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_426_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_427_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_432_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BB9_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBA_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBB_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBC_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBD_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBE_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBF_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C1D_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C1E_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C1F_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C20_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C21_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C22_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C23_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C82_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C83_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C84_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C85_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C87_107_217C_EEEE0000_0_0_0.png"
+  ],
+  "providers": [
+    {
+      "target": "COSMOTE TV.png",
+      "donor": "OTE.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "DIGEA GREECE.png",
+      "donor": "DIGEA.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "KABELIO SUISSE.png",
+      "donor": "KABELIO.CH.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "M7 DEUTSCHLAND.png",
+      "donor": "BASIS 1.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "NOV-DIGI.png",
+      "donor": "DIGI.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "TVR TELEITALIA 7GOLD.png",
+      "donor": "TVR TELEITALIA 7 GOLD.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "TEAMMEDIA.png",
+      "donor": "TEAMSAT.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "RETE_7_HD.png",
+      "donor": "PEOPLETV-RETE7.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "ORANGE POLSKA.png",
+      "donor": "ORANGESAT SK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ORANGE ROMANIA.png",
+      "donor": "ORANGESAT SK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ORANGE-BIS-TELESAT.png",
+      "donor": "ORANGESAT SK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ORANGE.png",
+      "donor": "ORANGESAT SK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ORANGESAT.png",
+      "donor": "ORANGESAT SK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ORANGE BELGIUM.png",
+      "donor": "ORANGE TV.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "ORANGE FRANCE.png",
+      "donor": "ORANGE TV.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "IN ARIA.png",
+      "donor": "IN ARIA!.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "M-THREE.png",
+      "donor": "M-HREE SATCOM.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "TEAM MEDIA.png",
+      "donor": "TEAMSAT.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "EBU EUROVISION.png",
+      "donor": "EBU-UER.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "EBUER.png",
+      "donor": "EBU-UER.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "RETE 7 HD.png",
+      "donor": "PEOPLETV-RETE7.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "PLATFORMA CANAL+.png",
+      "donor": "82xCANAL+.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "D-SMART.png",
+      "donor": "DEMIROREN MEDYA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "RR SAT.png",
+      "donor": "RRSAT.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "LA C.png",
+      "donor": "LAC.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "CANAL+ FRANCE.png",
+      "donor": "CSAT.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "CANALSAT FRANCE.png",
+      "donor": "CSAT.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "CANALSATELLITE.png",
+      "donor": "CSAT.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "DIGI HU.png",
+      "donor": "DIGI.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "TP.png",
+      "donor": "TVP S.A..png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ST.png",
+      "donor": "SLOVAK TELECOM.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "DIGI TV.png",
+      "donor": "DIGI.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "RCS-DIGI TV.png",
+      "donor": "DIGI.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "AJV - OTTCAST.png",
+      "donor": "AJV-OTTCAST.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "SKY DIGITAL.png",
+      "donor": "BSKYB.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ANTIK TV.png",
+      "donor": "ANTIK.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "ANTIKSAT.png",
+      "donor": "ANTIK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "AH-EDP.png",
+      "donor": "ANTENNA HUNGARIA  GLOBECAST.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "RTL WORLD.png",
+      "donor": "RTL.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TOTALTV.png",
+      "donor": "SBB.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "SRG SSR IDEE SUISSE.png",
+      "donor": "SRG SSR.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "SRG SSR SUISSE.png",
+      "donor": "SRG SSR.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TVR-FREESAT ROMANIA.png",
+      "donor": "SRTV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELEWIZJA NA KART.png",
+      "donor": "TVN SA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELEWIZJA NA KARTE.png",
+      "donor": "TVN SA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TVN  GRUPA ITI.png",
+      "donor": "TVN SA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TVN GRUPA ITI.png",
+      "donor": "TVN SA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ALBANICASAT.png",
+      "donor": "GMDS.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "NTV PLUS.png",
+      "donor": "HTB+.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "NTV+ RUSSIA.png",
+      "donor": "HTB+.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "NTV+.png",
+      "donor": "HTB+.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELEKOMSRBIJA.png",
+      "donor": "SAT.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ASC.png",
+      "donor": "TRING TV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TRING  TV.png",
+      "donor": "TRING TV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TRING DIGITAL.png",
+      "donor": "TRING TV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TTV.png",
+      "donor": "TRING TV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELESPAZIO HUNGARY.png",
+      "donor": "TEELSPAZIO.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "OPIM-BK.png",
+      "donor": "RTTR OPIM TRENTO.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "FT GLOBECAST.png",
+      "donor": "GLOBECAST UK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "GLOBECAST FRANCE.png",
+      "donor": "GLOBECAST UK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "GLOBECAST FT.png",
+      "donor": "GLOBECAST UK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "GLOBECAST_ITALIA.png",
+      "donor": "GLOBECAST UK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "MUX TV.png",
+      "donor": "GLOBECAST UK.png",
+      "styles": [
+        "transparent"
+      ]
+    }
+  ],
+  "method": "Explicit user-supplied filenames, matched against verified production archives. DTT exact SID/TSID/ONID plus manual logo comparison; 20 conflicting/variant-specific aliases not included. Provider source and approved donor compared visually, only missing styles added. Do not overwrite any existing PNG; no fresh artwork or background reconstruction. SKYLINK retired remains excluded.",
+  "remaining": {
+    "dtt_existing": 102,
+    "dtt_review": 96,
+    "provider_already_complete": 1119,
+    "provider_new_master_review": 7,
+    "provider_no_approved_donor": 284,
+    "provider_retired": 1
+  }
+}
