@@ -1,0 +1,141 @@
+{
+  "dtt": [
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-50x30-transparent-407828984feed4a1.zip",
+      "parts": 1,
+      "preserved": 285,
+      "sha256": "407828984feed4a12c6ccdfe3e5416ece2c0c8002396d7a7dfad25bb5b00036f",
+      "size": "50x30",
+      "style": "transparent"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-50x30-white-c8a7803dbea99948.zip",
+      "parts": 1,
+      "preserved": 285,
+      "sha256": "c8a7803dbea9994885a78b580dea272c3c61616471e9c2e78042b2f60a10ec1e",
+      "size": "50x30",
+      "style": "white"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-50x30-black-8465eb594cc53515.zip",
+      "parts": 1,
+      "preserved": 285,
+      "sha256": "8465eb594cc53515a59d75f68c9a1382097329aa40c8ce0e034507978a788195",
+      "size": "50x30",
+      "style": "black"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-220x132-transparent-938fb3ee4dd164e6.zip",
+      "parts": 4,
+      "preserved": 285,
+      "sha256": "938fb3ee4dd164e6f9d614de977980a11a729114e6d4b05e6e1f2d2fc2cbfc9b",
+      "size": "220x132",
+      "style": "transparent"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-220x132-white-617abe3088dd3e96.zip",
+      "parts": 10,
+      "preserved": 285,
+      "sha256": "617abe3088dd3e964d7633c3307380e082e62c61dde4bc3d84ce00c0760660b9",
+      "size": "220x132",
+      "style": "white"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-220x132-black-67044a0b0f821fbb.zip",
+      "parts": 10,
+      "preserved": 285,
+      "sha256": "67044a0b0f821fbb2ccb177b1688738e4180984cf932a371dbc1e75f4f91c350",
+      "size": "220x132",
+      "style": "black"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-400x240-transparent-c66866ab536d1c44.zip",
+      "parts": 10,
+      "preserved": 285,
+      "sha256": "c66866ab536d1c44c7c270e67b4fca80bac81b333f76e290e1ae9b2834dc8f85",
+      "size": "400x240",
+      "style": "transparent"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-400x240-white-adaee5c57b11098e.zip",
+      "parts": 14,
+      "preserved": 285,
+      "sha256": "adaee5c57b11098e397a88c9ce3f21abe46105ecf4e607e05d417c041217b5fb",
+      "size": "400x240",
+      "style": "white"
+    },
+    {
+      "added": 24,
+      "filename": "warder-dtt-italia-400x240-black-a866cdbdc203004f.zip",
+      "parts": 13,
+      "preserved": 285,
+      "sha256": "a866cdbdc203004f250d0fa367a1cb11c3735a2eec5fcdbf6269b418c24e4f02",
+      "size": "400x240",
+      "style": "black"
+    }
+  ],
+  "dtt_alias_map": {
+    "1_0_16_A0_200_1D_EEEE0000_0_0_0.png": "1_0_19_A0_200_1D_EEEE0000_0_0_0.png",
+    "1_0_1F_425_2_217C_EEEE0000_0_0_0.png": "1_0_16_425_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_426_2_217C_EEEE0000_0_0_0.png": "1_0_16_426_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_427_2_217C_EEEE0000_0_0_0.png": "1_0_16_427_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_432_2_217C_EEEE0000_0_0_0.png": "1_0_1F_432_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1_BB9_107_217C_EEEE0000_0_0_0.png": "1_0_16_BB9_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBA_107_217C_EEEE0000_0_0_0.png": "1_0_16_BBA_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBB_107_217C_EEEE0000_0_0_0.png": "1_0_16_BBB_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBC_107_217C_EEEE0000_0_0_0.png": "1_0_16_BBC_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBD_107_217C_EEEE0000_0_0_0.png": "1_0_16_BBD_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBE_107_217C_EEEE0000_0_0_0.png": "1_0_16_BBE_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_BBF_107_217C_EEEE0000_0_0_0.png": "1_0_16_BBF_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C1D_107_217C_EEEE0000_0_0_0.png": "1_0_16_C1D_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C1E_107_217C_EEEE0000_0_0_0.png": "1_0_16_C1E_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C1F_107_217C_EEEE0000_0_0_0.png": "1_0_16_C1F_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C20_107_217C_EEEE0000_0_0_0.png": "1_0_16_C20_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C21_107_217C_EEEE0000_0_0_0.png": "1_0_16_C21_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C22_107_217C_EEEE0000_0_0_0.png": "1_0_16_C22_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C23_107_217C_EEEE0000_0_0_0.png": "1_0_16_C23_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C82_107_217C_EEEE0000_0_0_0.png": "1_0_16_C82_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C83_107_217C_EEEE0000_0_0_0.png": "1_0_16_C83_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C84_107_217C_EEEE0000_0_0_0.png": "1_0_16_C84_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C85_107_217C_EEEE0000_0_0_0.png": "1_0_16_C85_107_217C_EEEE0000_0_0_0.png",
+    "1_0_1_C87_107_217C_EEEE0000_0_0_0.png": "1_0_16_C87_107_217C_EEEE0000_0_0_0.png"
+  },
+  "manifest_git_sha": "1c1b8d2ca04fce316ca8104be4228df55c0d61e5",
+  "manifest_sha256": "06ccbed975eb1ac6a669819fa86e27f160388088c7458bf5b90176a906f8083b",
+  "providers": [
+    {
+      "added": 63,
+      "bytes": 12165587,
+      "png_count": 1212,
+      "preserved": 1149,
+      "sha256": "a8df3730b57fb32c48af6626136b3e6da1eb6f4cbd80aa5a0b6dd22c7e619e61",
+      "style": "transparent"
+    },
+    {
+      "added": 24,
+      "bytes": 30107425,
+      "png_count": 1292,
+      "preserved": 1268,
+      "sha256": "432125592f53515e423073320830e0d9aaf8dbd04328678c307295d02cc1f932",
+      "style": "white"
+    },
+    {
+      "added": 12,
+      "bytes": 28621562,
+      "png_count": 1321,
+      "preserved": 1309,
+      "sha256": "86329343548f425052be58e2d36eb02f92439ee1d2761c0ee2c46a40818a222b",
+      "style": "black"
+    }
+  ],
+  "sums_git_sha": "64adc4941304762727589d498787befe122eac4e",
+  "unchanged_catalogue_entries": 498
+}
