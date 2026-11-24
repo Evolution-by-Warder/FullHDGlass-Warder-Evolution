@@ -1,3 +1,15 @@
+## 24. 11. 2026 — FullHDGlass 1.0.90: vlastníkom schválené ostré vydanie, čaká na finálne CI a publikáciu
+
+Vlastník výslovne schválil zlúčenie a ostré vydanie celej dávky #161: obnovený výpis chýbajúcich ikon, oprava schválenej grafiky Li3 a natívne rolovanie EPG v piatich režimoch. Predprodukčné testy na eb7b0c8: OpenATV, integrácia, preflight, radio a channel/Prime Time úspešné; finálny SHA po zmene verzie musí prejsť novými CI. Zdrojová verzia, control, 13 hlavičiek a 10 lokalizovaných poznámok pripravené pre 1.0.90. Produkčný feed neposúvať ručne: kanonický publisher až po merge a overenom IPK. Bez zmeny SAT/radio dát a existujúcich schválených grafík; prijímačové potvrdenie zatiaľ nemáme.
+
+## 24. 11. 2026 — Rolovanie EPG v používateľskom info (pracovná dávka, bez IPK)
+
+Podnet českého používateľa: Event now and next odrezáva dlhý popis. V Screens/G17_UserInfo.py režimy en, ensi, e, e2 a esi používajú natívny ScrollLabel vo všetkých siedmich popisových poliach; aktuálny a nasledujúci program majú nezávislý časovač 5 s, krátky text ostáva statický. Pri nezmenenom EPG neposúvať späť na začiatok; pri zmene programu resetovať. Pri skrytí/uzavretí vypnúť časovače. Bez zásahu do ChannelSelection EPG canvas/GLES, tlačidiel a rozmerov okien. Testy porovnávajú rozhrania OpenATV a OpenPLi; fyzický test zatiaľ nepotvrdený. Vlastník výslovne požaduje nevydávať nový IPK, zmeny sú súčasťou otvoreného #161 spolu s opravou menu.
+
+## 24. 11. 2026 — Obnova reportu chýbajúcich ikon a oprava Li3 (pracovná zmena)
+
+Vlastník schválil obnovenie /tmp/missing_menu_icons.txt a správnu existujúcu ikonu FullHDGlass. Report bol vypnutý v oboch rendereroch. Li3 (Menu-15/16) používa pictType=3; nový menu ID warder_fullhdglass_settings sa nezhoduje so starým kanonickým FHD_Glass17_Setup v stiahnutom ZIP. Pribalený starý FHD_Glass17_Setup.png je montážny kľúč, nie schválené logo. Používa sa presne existujúci schválený blob warder_skin.png d9ed25d28f2ceda795796449d4dc8046a43a5872, bez zmeny grafiky; používateľský presný variant má prednosť. Report zapisuje až po fallbackoch, bez duplicít, s limitom veľkosti a ochranou symlinkov. Pracovná vetva fix/menu-icon-report-20261124, testy/CI a prijímačové overenie zatiaľ nepotvrdené, bez vydania IPK.
+
 ## 24. 11. 2026 — Uzavretie otvorených úloh na pokyn vlastníka
 
 - Azzurra: dokumentácia plánovaného Cloud Browsera je zlúčená cez FullHDGlass #160 (1bfba154b10ce2b4fd62c889c34a1c0eba7e0889) a PiconHub #89 (e35393abc407ae33b6fe48996c58b2734ef221da). Nahradené #159 a #88 uzavreté bez merge; historické vetvy zachované. SAT manažér aktívny, ďalší beh 3.12.2026 08:00 Europe/Bratislava. Úspešná akvizícia kontrolného PNG nie je potvrdením celého produkčného cyklu; pri nedostupnosti bez posunu checkpointu.

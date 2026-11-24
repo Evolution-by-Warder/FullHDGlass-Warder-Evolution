@@ -40,8 +40,14 @@ class SkinIntegrationTests(unittest.TestCase):
         self.assertIn('if not _warderStorageHasSpace(target):',txt)
     def test_artwork_only_uses_stable_menu_ids(self):
         txt=RENDERER.read_text()
-        for ident in ('warder_radio_mainmenu','PiconHub_Warder_Evolution','glass_sys_utils','warder_fullhdglass_settings'):
+        for ident in ('warder_radio_mainmenu','PiconHub_Warder_Evolution','glass_sys_utils'):
             self.assertIn(ident,txt)
+        helper = RENDERER.with_name('warderMenuIconReport.py')
+        spec = importlib.util.spec_from_file_location('menu_report', helper)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        self.assertEqual(set(mod.SKIN_IDS), {'warder_fullhdglass_settings', 'FHD_Glass17_Setup'})
+        self.assertIn('skin_artwork(entry_id,',txt)
         self.assertIn('if pixpath == self.default',txt)
     def test_spinner_order_preserves_existing_themes(self):
         txt=(PLUGIN/'warderSpinnerScreen.py').read_text()

@@ -21,9 +21,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 from enigma import ePixmap, eTimer
 
-def Writelog(txt):
-    """Production runtime does not write diagnostic logs."""
-    return None
+from Components.Renderer.warderMenuIconReport import report_missing, skin_artwork
 
 class g17MenuEntry(Renderer):
 
@@ -54,7 +52,6 @@ class g17MenuEntry(Renderer):
 				pixpath = config.plugins.setupGlass17.par39.value + '/menuIcons/' + str(config.plugins.setupGlass17.par69.value) + "/" + self.source.entryName + '.png'
 				if not fileExists(pixpath):
 					pixpath = config.plugins.setupGlass17.par39.value + '/menuIcons/' + str(config.plugins.setupGlass17.par69.value) + "/undefined.png"
-					Writelog(self.source.entryName + '.png')
 					if not fileExists(pixpath):
 						pixpath = "/usr/share/enigma2/hd_glass17/menu/undefined.png"
 			except Exception:
@@ -62,11 +59,19 @@ class g17MenuEntry(Renderer):
 			# Exact Enigma2 IDs only; no speculative aliases in the downloaded archive.
 			if pixpath.endswith("/undefined.png"):
 				entry_id = str(self.source.entryName)
-				if entry_id in ("glass_sys_utils", "PiconHub_Warder_Evolution", "warder_radio_mainmenu", "warder_youtube_mainmenu", "FHD_Glass17_Setup"):
+				if entry_id in ("glass_sys_utils", "PiconHub_Warder_Evolution", "warder_radio_mainmenu", "warder_youtube_mainmenu", "FHD_Glass17_Setup", "warder_fullhdglass_settings"):
 					candidate_path = config.plugins.setupGlass17.par39.value + '/menuIconsBig/' + entry_id + '.png'
 					if fileExists(candidate_path):
 						pixpath = candidate_path
 			
+			if pixpath.endswith("/undefined.png"):
+				entry_id = str(getattr(self.source, "entryName", "") or "")
+				try:
+					pixpath = skin_artwork(entry_id, config.plugins.setupGlass17.par39.value, "", fileExists) or pixpath
+				except Exception:
+					pass
+				if pixpath.endswith("/undefined.png") and entry_id:
+					report_missing(entry_id + ".png")
 			if self.__last != pixpath:
 				self.__last = pixpath
 				self.instance.setPixmapFromFile(pixpath)					

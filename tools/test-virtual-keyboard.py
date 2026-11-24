@@ -154,7 +154,7 @@ class KeyboardTests(unittest.TestCase):
         # unrelated approved setup/EPG updates. Match the exactly transformed
         # approved current-main 1.0.80 source, never accept arbitrary edits.
         version=(ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()
-        approved='a0db0006e0070ab9aa10254862fa5a27b95bb7892ed8b7e69f119db95399562e' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89') else RECORD['original_skin_sha256']
+        approved='a0db0006e0070ab9aa10254862fa5a27b95bb7892ed8b7e69f119db95399562e' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90') else RECORD['original_skin_sha256']
         self.assertEqual(hashlib.sha256(restored).hexdigest(),approved)
         original=ET.fromstring(restored)
         self.assertEqual(ET.tostring(DOCUMENT.find("screen[@name='VirtualKeyBoard']")),ET.tostring(original.find("screen[@name='VirtualKeyBoard']")))

@@ -1,5 +1,7 @@
 from Plugins.Extensions.setupGlass17.warderResolution import Screen
 from Components.Label import Label
+from Components.ScrollLabel import ScrollLabel
+from Plugins.Extensions.setupGlass17.warderUserInfoScroll import DescriptionScroller
 from Components.ProgressBar import ProgressBar
 try:
 	from Components.Sensors import sensors
@@ -77,12 +79,12 @@ class UserInfo17(Screen):
                         </screen>"""
 
 	skin_event = """<screen name="User screen" position="753,105" size="1074,502" zPosition="2" title="Extended description" backgroundColor="background" >	
-               <widget name="description" font="Prive4;30" position="15,0" zPosition="0" size="1044,487" valign="top" halign="left" backgroundColor="background" transparent="1" />      
+               <widget name="description" font="Prive4;30" position="15,0" zPosition="0" size="1044,487" valign="top" halign="left" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />      
               </screen>"""                        
 
 	skin_event2 = """<screen name="User screen" position="0,0" size="1920,1080" zPosition="9" title="Extended description" backgroundColor="black" >	
 		<widget source="Title" render="Label" position="60,100" size="1800,50" foregroundColor="un6cbcf0" backgroundColor="black" zPosition="1" valign="center" halign="center" font="Prive4;35" transparent="1"/>
-               <widget name="description" font="Prive4;32" position="60,160" size="1800,820" valign="top" halign="left" backgroundColor="black" transparent="1" />      
+               <widget name="description" font="Prive4;32" position="60,160" size="1800,820" valign="top" halign="left" backgroundColor="black" transparent="1" scrollbarMode="showOnDemand" />      
               </screen>"""
 
 	side_infobar = """<screen name="User screen" position="0,0" size="540,667" zPosition="1" backgroundColor="#ffffffff" flags="wfNoBorder" >	
@@ -108,7 +110,7 @@ class UserInfo17(Screen):
 
     <ePixmap position="730,42" size="1119,622" pixmap="hd_glass17/menu/back_event.png" alphatest="off" zPosition="0"/>
 		<widget source="Title" render="Label" position="775,76" size="1026,60" foregroundColor="un6cbcf0" zPosition="1" backgroundColor="background" valign="center" halign="left" font="Prive3;31" transparent="1"/>
-    <widget name="description" font="Prive4;30" position="775,144" zPosition="1" size="1036,480" valign="top" halign="block" backgroundColor="background" transparent="1" />      
+    <widget name="description" font="Prive4;30" position="775,144" zPosition="1" size="1036,480" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />      
 
     </screen>"""                        
 
@@ -124,15 +126,16 @@ class UserInfo17(Screen):
 
     <ePixmap position="730,42" size="1119,622" pixmap="hd_glass17/menu/back_event.png" alphatest="off" zPosition="0"/>
     <widget name="titleNow" font="Prive4;28" position="775,142" zPosition="1" size="1036,31" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />      
-    <widget name="description" font="Prive4;28" position="775,187" zPosition="1" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" /> 
+    <widget name="description" font="Prive4;28" position="775,187" zPosition="1" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" /> 
                     
     <widget name="titleNext" font="Prive4;28" position="775,382" zPosition="2" size="1036,31" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />      
-    <widget name="description2" font="Prive4;28" position="775,427" zPosition="3" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" />      
+    <widget name="description2" font="Prive4;28" position="775,427" zPosition="3" size="1036,177" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />      
 
     </screen>"""
                             	
 	def __init__(self, session):
 		Screen.__init__(self, session)
+		self._description_scrollers = {}
 		if config.plugins.setupGlass17.par31.value == "s":
 			self.skin = UserInfo17.skin_sysInfo
 			self['cpu_value'] = Label("CPU using:\nN/A")
@@ -169,9 +172,9 @@ class UserInfo17(Screen):
 		elif config.plugins.setupGlass17.par31.value == "en":
 			self.skin_event_nowNext = """<screen name="User screen" position="75,105" size="1770,513" zPosition="2" title="Event now and next" backgroundColor="background" >"""		
 			self.skin_event_nowNext += '<widget name="titleNow" font="Prive4;31" position="15,0" zPosition="0" size="1740,40" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />\n'      
-			self.skin_event_nowNext += '<widget name="description" font="Prive4;31" position="15,42" zPosition="1" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" />\n'                     
+			self.skin_event_nowNext += '<widget name="description" font="Prive4;31" position="15,42" zPosition="1" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />\n'                     
 			self.skin_event_nowNext += '<widget name="titleNext" font="Prive4;31" position="15,256" zPosition="2" size="1740,40" valign="top" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />\n'      
-			self.skin_event_nowNext += '<widget name="description2" font="Prive4;31" position="15,298" zPosition="3" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" />\n'      
+			self.skin_event_nowNext += '<widget name="description2" font="Prive4;31" position="15,298" zPosition="3" size="1740,199" valign="top" halign="block" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" />\n'      
 			self.skin_event_nowNext += """</screen>""" 
 			self.skin = self.skin_event_nowNext
 			self.session = session
@@ -179,8 +182,8 @@ class UserInfo17(Screen):
 			self.epgQuery = eEPGCache.getInstance().lookupEventTime
 			self.onShow.append(self.__wakeupNowNext)
 			self.onHide.append(self.__standby)
-			self["description"] = Label("")
-			self["description2"] = Label("")
+			self._initDescription("description")
+			self._initDescription("description2")
 			self["titleNow"] = Label("")
 			self["titleNext"] = Label("")
 			self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evUpdatedEventInfo: self.__actualNextEventDesc,})
@@ -198,7 +201,7 @@ class UserInfo17(Screen):
 			if config.plugins.setupGlass17.par33.value:
 				readKeymap("/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/keymap3.xml")
 				globalActionMap.actions['eventNextPrev'] = self.changeEvent
-			self["description"] = Label("")
+			self._initDescription("description")
 			self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evUpdatedEventInfo: self.__actualEventDesc,})
 		elif config.plugins.setupGlass17.par31.value == "si":
 			self.skin = setSideECM(UserInfo17.side_infobar)
@@ -252,7 +255,7 @@ class UserInfo17(Screen):
 			if config.plugins.setupGlass17.par33.value:
 				readKeymap("/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/keymap3.xml")
 				globalActionMap.actions['eventNextPrev'] = self.changeEvent
-			self["description"] = Label("")
+			self._initDescription("description")
 			self.onLayoutFinish.append(self.setscale)
 		else:
 			self.skin = setSideECM(UserInfo17.skin_eventActualNext_side)
@@ -279,12 +282,36 @@ class UserInfo17(Screen):
 			self.epgQuery = eEPGCache.getInstance().lookupEventTime
 			self.onShow.append(self.__wakeupNowNext)
 			self.onHide.append(self.__standby)
-			self["description"] = Label("")
-			self["description2"] = Label("")
+			self._initDescription("description")
+			self._initDescription("description2")
 			self["titleNow"] = Label("")
 			self["titleNext"] = Label("")
 			self.onLayoutFinish.append(self.setscale)
       
+		if self._description_scrollers:
+			self.onShow.append(self._showDescriptions)
+			self.onHide.append(self._hideDescriptions)
+			self.onClose.append(self._closeDescriptions)
+
+	def _initDescription(self, key):
+		self[key] = ScrollLabel("")
+		self._description_scrollers[key] = DescriptionScroller(self[key], eTimer())
+
+	def _setDescription(self, key, text, title):
+		self._description_scrollers[key].set(text, title)
+
+	def _showDescriptions(self):
+		for scroller in self._description_scrollers.values():
+			scroller.show()
+
+	def _hideDescriptions(self):
+		for scroller in self._description_scrollers.values():
+			scroller.hide()
+
+	def _closeDescriptions(self):
+		for scroller in self._description_scrollers.values():
+			scroller.close()
+
 	def setscale(self):
 			for x in ("picSat","picProv","piconCam","piconEcm"):
 				try:
@@ -377,23 +404,23 @@ class UserInfo17(Screen):
 				self.eventShowed = 0
 			event, desc = self.readEventDesc(self.eventShowed)
 			self.setWindowTitle(event)
-			self["description"].setText(desc)
+			self._setDescription("description", desc, event)
 
 	def __actualNextEventDesc(self):
 		if not self.suspend:
 			event, desc = self.readEventDesc(0)
 			self["titleNow"].setText(event)
-			self["description"].setText(desc)
+			self._setDescription("description", desc, event)
 			event, desc = self.readEventDesc(1)
 			self["titleNext"].setText(event)
-			self["description2"].setText(desc)
+			self._setDescription("description2", desc, event)
 
 	def __actualEventDesc(self):
 		if not self.suspend:
 			self.eventShowed = 0
 			event, desc = self.readEventDesc(0)
 			self.setWindowTitle(event)
-			self["description"].setText(desc)
+			self._setDescription("description", desc, event)
 
 	def readEventDesc(self, what):
 		service = self.session.nav.getCurrentService()
