@@ -1,3 +1,7 @@
+## 1.0.92 — 24.11.2026
+
+V jednoduchom Multi EPG žlté/modré tlačidlo prepína predchádzajúci/nasledujúci program. Popisy EPG bez bočných posuvníkov sa plynulo posunú raz, vrátia na začiatok a zastavia. Podpora rozšírených balíkov provider piconov vrátane 60 bielych doplnkov. Po inštalácii reštartujte Enigma2.
+
 ## 1.0.86 — 23.11.2026
 
 - **SAT picony:** väčšie archívy 13°E a 19,2°E už neblokuje malé `/tmp`; overovaný ZIP sa dočasne ukladá na rovnaké už vybrané a overené médium, kde sú picony.

@@ -1,3 +1,9 @@
+## 24. 11. 2026 — 1.0.92 spoločné ostré vydanie: SCHVÁLENÉ, ČAKÁ NA FINÁLNE CI/PUBLISHER
+
+- Vlastník výslovne nariadil spojiť všetky nevydané opravy, opraviť, vydať nové ostré IPK, aktualizovať evidenciu a uzavrieť skutočne dokončené úlohy. Rozsah: PR #174 (Multi EPG žlté/modré, sedem polí UserInfo bez scrollbarov, jednorazový cyklus 2 px/55 ms) a v main už integrovaný provider v2 (#171/#173; 60 bielych variantov). Test2 HEAD `5888445581503cf36d0f9fcd91d840228540b825`: 7/7 workflowov SUCCESS, vrátane [review IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45490275829). Nový verziový SHA musí prejsť vlastnými CI.
+- Verzia 1.0.92, control 1.0.92-1, 13 headerov, release notes a 10 lokalizácií updatera; historické grafické hash piny zachované. Pridané overenie provider v2 a pôvodných EPG testov na finálnom kandidátovi. Produkčný kanál mení výhradne existujúci kanonický publisher po úspešnom merge. Prijímačový test test2 nie je doložený.
+- Audit otvorených úloh: #87 ochrana flash je vydaná 1.0.87 a fyzicky potvrdená; #97 transparentná CAM a #92 menu grafika už integrované v skorších vydaniach, fyzické overenie sa nesmie zamieňať za implementáciu. #98 historický zastrešujúci checklist, #91 je už uzavretý; #3 historická evidencia. #111 širšie 21 jazykov: päť hlavných domén hotových, warderRadioCore ešte 10 jazykov; nesmie sa vykázať ako dokončené. Po verifikácii publikácie záznamy aktualizovať a uzavrieť skutočne hotové body. Samostatné repozitáre nemeníme.
+
 ## 24. 11. 2026 — 1.0.92-test2: spoločná kontrolná dávka Multi EPG a UserInfo (NEPUBLIKOVANÉ)
 
 - [Draft PR #174](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/174), vetva `test/simple-multiepg-yellow-blue-20261124`; základ main `8e6afb04f229bf5790ecd5b1aa1ef63fdbf2ec34`, predchádzajúci testovací HEAD `00ed307897862912978170e2e8945b5dd05876e7`. PiconHub main `61f6c158143f13d6a4387e1532044f57bc7c9b26` bez zásahu.
