@@ -1,0 +1,22 @@
+name: Check remaining 25 DTT IDs against official Vhannibal settings
+on:
+  push:
+    branches: [work/italia-vhannibal-final-evidence-20261124]
+    paths: ['.github/workflows/italia-vhannibal-final-evidence.yml']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            reports/italia-vhannibal-final-evidence-20261124/
+      - run: python reports/italia-vhannibal-final-evidence-20261124/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dtt-evidence
+          path: dtt-evidence/
