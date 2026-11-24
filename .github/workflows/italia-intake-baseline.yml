@@ -1,0 +1,31 @@
+name: Verify Italian intake production baseline (read only)
+on:
+  push:
+    branches: [work/italia-user-source-reconcile-20261124]
+permissions:
+  contents: read
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/verify-italia-intake-baseline.py
+            /assets/warder/downloads.json
+            /assets/warder/downloads/picons/providers/
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/warder-dtt-italia-*
+            /reports/dtt-italia-20261123/recipe.json
+      - name: Verify exact production binaries and templates
+        run: python3 tools/verify-italia-intake-baseline.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: italian-intake-production-baseline
+          path: italia-production-baseline/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
