@@ -1,0 +1,131 @@
+[
+  {
+    "type": "commons",
+    "name": "Allente.svg",
+    "targets": [
+      "ALLENTE DENMARK.png",
+      "ALLENTE FINLAND.png",
+      "ALLENTE NORWAY.png",
+      "ALLENTE SWEDEN.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Allente.svg"
+  },
+  {
+    "type": "commons",
+    "name": "Canal Digital logo.svg",
+    "targets": [
+      "CANAL DIGITAL DENMARK.png",
+      "CANAL DIGITAL FINLAND.png",
+      "CANAL DIGITAL NORWAY.png",
+      "CANAL DIGITAL SWEDEN.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Canal_Digital_logo.svg"
+  },
+  {
+    "type": "commons",
+    "name": "Tivibu logo.svg",
+    "targets": [
+      "TIVIBU.png",
+      "TIVUBU.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Tivibu_logo.svg"
+  },
+  {
+    "type": "commons",
+    "name": "Logo Telly.svg",
+    "targets": [
+      "TELLY.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Logo_Telly.svg"
+  },
+  {
+    "type": "commons",
+    "name": "Warner Bros. Discovery.svg",
+    "targets": [
+      "WARNER BROS DISCOVERY.png",
+      "WARNER BROS. DISCOVERY.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Warner_Bros._Discovery.svg"
+  },
+  {
+    "type": "commons",
+    "name": "CP Logo Text.svg",
+    "targets": [
+      "CYFROVY POLSAT S.A..png",
+      "CYFROVY POLSAT S.A.png",
+      "CYFROVY POLSAT SA.png",
+      "CYFROVY POLSAT.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:CP_Logo_Text.svg"
+  },
+  {
+    "type": "commons",
+    "name": "Logo MEO.svg",
+    "targets": [
+      "MEO.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Logo_MEO.svg"
+  },
+  {
+    "type": "commons",
+    "name": "Логотип компании «Триколор».svg",
+    "targets": [
+      "TRICOLOR TV.png",
+      "TRICOLOR TV RUSSIA.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B8_%C2%AB%D0%A2%D1%80%D0%B8%D0%BA%D0%BE%D0%BB%D0%BE%D1%80%C2%BB.svg"
+  },
+  {
+    "type": "commons",
+    "name": "RCS & RDS Logo.png",
+    "targets": [
+      "RCS.png",
+      "RCSRDS.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:RCS_%26_RDS_Logo.png"
+  },
+  {
+    "type": "commons",
+    "name": "Viasat old logo.svg",
+    "targets": [
+      "VIASAT UKRAINE.png"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Viasat_old_logo.svg"
+  },
+  {
+    "type": "github",
+    "name": "MarhyCZ-markiza.svg",
+    "source": "https://raw.githubusercontent.com/MarhyCZ/picons/3ee25cf88d6bfb3020326aa3bbc9a9569904370a/source/svg/CZ-SK/markiza.svg",
+    "git_sha": "baccc977292873077b962b63c5eb790ccf2a467a",
+    "targets": [
+      "MARKIZA.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "MarhyCZ-travelxp.svg",
+    "source": "https://raw.githubusercontent.com/MarhyCZ/picons/3ee25cf88d6bfb3020326aa3bbc9a9569904370a/source/svg/International/travelxp.svg",
+    "git_sha": "f0c9c1dd7ef32cd163e464a01d58e4afe2ca7d3d",
+    "targets": [
+      "TRAVELXP.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "mdobes-markiza.svg",
+    "source": "https://raw.githubusercontent.com/mdobes/tvpicons/1fe6b4bcd2e3ec7336d10e605d8dba0d2acc145c/src/markiza.svg",
+    "git_sha": "aa10859021c8b86c312317e02418eb1884ea684c",
+    "targets": [
+      "MARKIZA.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "mdobes-travelxp.svg",
+    "source": "https://raw.githubusercontent.com/mdobes/tvpicons/1fe6b4bcd2e3ec7336d10e605d8dba0d2acc145c/src/travelxp.svg",
+    "git_sha": "33d2f4fd4c574466ca88a334e7a31a12b1527e7b",
+    "targets": [
+      "TRAVELXP.png"
+    ]
+  }
+]
