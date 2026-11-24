@@ -2,7 +2,7 @@
 
 V jednoduchom Multi EPG žlté/modré tlačidlo prepína predchádzajúci/nasledujúci program. Popisy EPG bez bočných posuvníkov sa plynulo posunú raz, vrátia na začiatok a zastavia. Podpora rozšírených balíkov provider piconov vrátane 60 bielych doplnkov. Po inštalácii reštartujte Enigma2.
 
-[Poznámky k vydaniu](docs/warder-1.0.92-release-notes.md). Schválené na ostré vydanie; výsledok publikácie a SHA doplniť po úspešnom publisheri.
+[Poznámky k vydaniu](docs/warder-1.0.92-release-notes.md). **OVERENÉ A PUBLIKOVANÉ:** PR #174, 20/20 workflowov, 25/25 CI kontrol, [publisher #45491518661](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45491518661) SUCCESS. [Ostrý IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.92/enigma2-plugin-skins-fullhdglass_1.0.92_all.ipk), 18 814 880 B, SHA-256 `c3fad7557e1b825e0b39db5e49c1e1eddee50654a0e8c5e0847ad73de945aa61`. Oba aktualizačné kanály 1.0.92. Úlohy #87, #97, #92, #98, #3 uzavreté; #111 zostáva otvorená. Fyzické overenie nového IPK zatiaľ nie je doložené.
 
 ## 1.0.91 — 24. november 2026
 
