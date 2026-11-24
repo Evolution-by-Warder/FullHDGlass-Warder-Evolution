@@ -1,0 +1,56 @@
+name: Independently verify published Italian follow-up
+on:
+  push:
+    branches: [audit/italia-followup-publication-20261124]
+    paths: ['.github/workflows/audit-italia-followup.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch actual live data and verify all twelve ZIPs
+        run: |
+          python3 - <<'PY'
+          import hashlib,io,json,struct,urllib.request,zipfile
+          from concurrent.futures import ThreadPoolExecutor
+          F='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/'
+          P='https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/main/'
+          C='assets/warder/downloads/picons/channels/'
+          def get(u):
+              with urllib.request.urlopen(u,timeout=90) as r:return r.read()
+          def sha(b):return hashlib.sha256(b).hexdigest()
+          m=get(F+C+'manifest.json')
+          assert sha(m)=='4541dea07b011d2cac2981c5b8203ebae7e363c85e481316a4cf6c0b04d9b6a6'
+          assert m==get(P+'plugin/src/Plugins/Extensions/WarderPiconHub/data/channel-manifest.json')
+          d=json.loads(m);parts={x['filename']:x for x in d['parts']}
+          assert len(d['packages'])==507 and len(parts)==2224
+          def check(raw,digest,count,dim):
+              assert sha(raw)==digest
+              with zipfile.ZipFile(io.BytesIO(raw)) as z:
+                  assert z.testzip() is None
+                  names=[n for n in z.namelist() if n.endswith('.png')]
+                  assert len(names)==len(set(names))==count
+                  for n in names:
+                      b=z.read(n);assert b[:8]==bytes.fromhex('89504e470d0a1a0a') and struct.unpack('>II',b[16:24])==dim
+          def pkg(x):
+              chunks=[]
+              for u in x['parts']:
+                  b=get(u);v=parts[u.rsplit('/',1)[-1]]
+                  assert len(b)==v['bytes'] and sha(b)==v['sha256']
+                  chunks.append(b)
+              check(b''.join(chunks),x['sha256'],323,tuple(map(int,x['resolution'].split('x'))))
+              print(x['filename'],'PASS',flush=True)
+          cat=json.loads(get(F+'assets/warder/downloads.json'));assets=cat.get('assets',cat)
+          def provider(t):
+              s,k,n=t;x=assets[k]
+              check(get(F+'assets/warder/downloads/picons/providers/'+s+'/piconProv.zip'),x['sha256'],n,(220,132))
+              print(s,n,'PASS',flush=True)
+          selected=[x for x in d['packages'] if x['selector_id']=='DTT_ITALIA']
+          assert len(selected)==9
+          with ThreadPoolExecutor(max_workers=6) as ex:
+              list(ex.map(pkg,selected))
+              list(ex.map(provider,[('transparent','piconProv-220',1249),('white','piconProv-w',1312),('black','piconProv-b',1339)]))
+          print('PASS: both live manifests equal; 12/12 production ZIPs SHA/CRC/PNG validated')
+          PY
