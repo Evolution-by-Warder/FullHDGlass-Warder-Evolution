@@ -1,0 +1,968 @@
+[
+  {
+    "kind": "DTT",
+    "name": "1_0_16_69_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "5b91cf42c80949fc02f14041b24c1436aa1b808ea464a4fdab2c4765b6dbb4f8",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_1392_50E1_217C_EEEE0000_0_0_0.png",
+    "sha": "27e42d8d024561aa6c46957c59b5d44ebacf7c849d8f633e7517002c91d93f1d",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_5F_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "4d3282623fbf651009991a90a569b6d5c5495aaa07de268633a831252d4d58e6",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_61_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "67fcecdb1934fa5dbe8dd10a2ae476606b4ec3a6cfa785f88c603ce8a109c1de",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_64_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "0633142941e49acee455c96de1311187c288e7ed376023f2f974e55f5967d650",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_65_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "b55c1773f923b345332ff140385a47da0ca08a2a50022c2d1b9d17219e9707a1",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_6C_A001_217C_EEEE0000_0_0_0.png",
+    "sha": "e508ab37c9673c8b295848fe0823ce26f5380d7db3f99f12a3265155f4e82081",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_6F_A001_217C_EEEE0000_0_0_0.png",
+    "sha": "54ec90b93de56db0b9a5c4af846409b91c16ca11389a280ae6563e64ac3c1057",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_77_A001_217C_EEEE0000_0_0_0.png",
+    "sha": "8a0d24268cbcd359182b84c46ef8274e4e47db69f279669583371af842563b91",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_19_90_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "37ab2e44bdb1c46ff4e5ecc16c872f1dd0ab0f99f60ca6942bd0bd117f5ce1b7",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_1AA2_68E1_217C_EEEE0000_0_0_0.png",
+    "sha": "dac9ab0869a9177a60eaa2161dd49c3809ee5ce407561c40324d800aaf9c4d2a",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_1C23_384_110_EEEE0000_0_0_0.png",
+    "sha": "2694349e15d909b00cc62babe6c71afa857234187bc7fff8588977bf12a78bf0",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_1F6F_80E3_217C_EEEE0000_0_0_0.png",
+    "sha": "a496bc62470aedc315c3daa039aecdf3c1fd76175cc071458b165db4fa3d27be",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_1_A002_217C_EEEE0000_0_0_0.png",
+    "sha": "18b724356ce96418f825eaf554511e24750ff133fb32525ec39a5cb72167d301",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_2_A002_217C_EEEE0000_0_0_0.png",
+    "sha": "837d5cc984ee91b169aa6df0c49dbd6b7e652bb2a507de32cf4efbc9b97f0ca0",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_4_A002_217C_EEEE0000_0_0_0.png",
+    "sha": "d215bb5fb5474256d43496ab7e686cc0165bee6858c73f8e31f7cb2a29d2e352",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_59_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "1fce6a639ec226b411b42675073c8c8d34e898eec69dfba7d40537d12494ae4c",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_5A_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "38d46f033897793372b477a897deaab97ae5fd3bafa9f6eecbc9b8ce31c5b22f",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_5B_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "8d243892a9e40f564130d46ae82478bdcddfa2c2e77c79fad2956eaa2dfbfaf0",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_5D_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "d2f2009c33feb83938f02752a6467ed1306f0fbb90e2783cd661ccb612dda20b",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_5E_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "25bac3ca16300e9b9fd670d2a4f27955801a14ca13032bb9926c1e7355ae5357",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_5_A002_217C_EEEE0000_0_0_0.png",
+    "sha": "a280fe924cf1a8a9612f9b17fc8eb10e7350a72e418c5d1893d42bf6b44d6186",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_60_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "7018462a426b78129e105dc42c97c691ef3a9bc94c7bd0bbd7247c7283160c1a",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_67_A000_217C_EEEE0000_0_0_0.png",
+    "sha": "f19dfff07a8d0678d20951bb647b6485c13ad1edd9733571e20169e512b4345b",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "DTT",
+    "name": "1_0_1_7B_A001_217C_EEEE0000_0_0_0.png",
+    "sha": "160a6a0bfdf27eb5be9f8c534853892f4ac76b329b415788ec467149b79e9713",
+    "state": "IDENTITY_UNVERIFIED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "1 CENT.png",
+    "sha": "4c3ece64b907b73825eee77e1f17ed221c964652889f5dcb7d654e9877e6317c",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ACISPORT TV.png",
+    "sha": "ef0901004e2d14b251f9d78d33c38e47934e03ce1798594375ee194c62075f16",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ACISPORT_TV.png",
+    "sha": "62b9acbc68e9099b6c30987597195cad0f2a622c43bb34ac149a015870fdffde",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ADD.png",
+    "sha": "703e76e700b03b6da8be76a91454f02031ab72038073d2727e667e3471245d0f",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AL JAZEERA CHILDREN.png",
+    "sha": "e2650eb59ab2061d2908bdd5a83a73a948a8734846ad888a369507fcb9d4e799",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AMAZING TV.png",
+    "sha": "f8fe47ddd12e2351bb79030191e08f77861e9f591c3b2f049b875380fb19df42",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AMICI NETWORK.png",
+    "sha": "7e6cb3efad7550f860a8d631f037267823e72d288a3235ee12e13342c161222b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AMTECCO.png",
+    "sha": "dff387cb88601a71365155aa829daea946ba4dd870208537e458580f2ed362ea",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AN.png",
+    "sha": "b675ff1d2fdf09bc55f5956f91da8515bc232e77b3467407c6d4e4d6a7ddc653",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ASHARQ BLOOMBERG.png",
+    "sha": "e066a14b2c278451a67ae981fe3fb15e2e9995ab0a98513322ab08037d09df66",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ASRAR.png",
+    "sha": "5504e254c83e05cec4c85b45ccac0ad61ceb363d753f319e4f92077f795ed732",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ASSOCIAZIONE DREAMER.png",
+    "sha": "b915aeb4939fb85ca6d457e6e48062068f165e817680c19ba878caacbbc2ddf2",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ASSOCIAZIONE_DREAMER.png",
+    "sha": "184f3a436bf16bd31635250396ddf9e3566528c25d33eed094be9193d606d8ba",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AURANEX.png",
+    "sha": "940db3961561397b27bc40ed5f55218e96f44f30b4d05d537c2c6cae11f288a9",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AUSTRIASAT MAGYARORSZAG.png",
+    "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AUSTRIASAT MAGYARORSZG.png",
+    "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "AUSTRIASAT.png",
+    "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "BBC WORLD.png",
+    "sha": "c0c1a26ae147a3e78a054b1c2e9cf574b1c5f64dbd78c56338045e3081e337ce",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "BSS.png",
+    "sha": "4defd9aa129292269cebd2466462da7c16e5c22134349c8a7d9cb3b8c62d3ccc",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "BT MEDIA & BROADCAST.png",
+    "sha": "19ac7f0eb43a28f161d6a7a76d005af40e6ab2bf34488ed770303a5b911206c8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "CABOVISAO.png",
+    "sha": "9f06c8701dc99cec38b750db2ece9fcc0507ded2ef8ca29267ce9976006efb5c",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "CAIRO DUE.png",
+    "sha": "812e5a848b6c387e1f7bd2c8eee97a8f0063ecba897484b705892ad3e498f4f3",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "CAPRI TELEVISION.png",
+    "sha": "bffa96fac411560942ec44e15d075e7342e9ffcd5e2963de069799ea1edf13a6",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "COELMEDIA.png",
+    "sha": "47ed5c0128a062ac8554f569807a4611d71438eb9f5c3b5d36f912bdde20706a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "COLEMEDIA.png",
+    "sha": "47ed5c0128a062ac8554f569807a4611d71438eb9f5c3b5d36f912bdde20706a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DCS.png",
+    "sha": "4fc468dd5e85191b0479b3c3760adf8b3e56752dbcf982488862b8160751d2d6",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DGB3.png",
+    "sha": "8d80e01c8d3c773c71e8e243edf63a2f16e5f482216d0544a0461827188a4747",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DIGITAL FREE.png",
+    "sha": "282ec8a5ceec5fea5cca2369222d4457cf9ef81b57b3c8644f6fd6f78567ed4c",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DIGITALE TERRESTRE.png",
+    "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DORIA.png",
+    "sha": "dc436841bd4ec5385c2f179fd61c5ecbdd87b3ac8d86bb8a2f67959c8a9acdd6",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DVB-T EUROPE.png",
+    "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "DVB-T.png",
+    "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "E'TV +.png",
+    "sha": "2b9da7b52d78e1c2efbe17ea2bd415111524419e10d4260818060881f9b99d40",
+    "state": "RECOVERY_REVIEW_ONLY"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ECLUTCH.png",
+    "sha": "4fa36711251bb2f81e6b81a24bd57f7ccd542970b6df1141e2135111a63b057b",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ETV+.png",
+    "sha": "05e5a09ae2c25b8b31fb362ffd15c431b3b7b7ad3d2357dfc9eadb3b38d94357",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "EUROINDIEMUSIC.png",
+    "sha": "57978150d5675dd94cbf1c06f1c43cb5e9490950fcdf8128bb4697515e80ec2c",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "EUROMEDIA MUX.png",
+    "sha": "0a75e3102720934e7b641d2b897c85daed0e7d0dcd62aff168d661a06a37d8df",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "EUROMEDIA.png",
+    "sha": "0a75e3102720934e7b641d2b897c85daed0e7d0dcd62aff168d661a06a37d8df",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "EUROPA7.png",
+    "sha": "74dacc33fcafc632a08ae51802e3bbdf66f3fa145143aae6c9eabf9c838681db",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "FRANCE DTT.png",
+    "sha": "f7808a5accb33d965695e3fb62fa1b6b5a8e049d7bae4e911ca5b4bb48b6782a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "FREE TV.png",
+    "sha": "569f2156d9fe9b8a201406b1be003c62079945867b924755b8e1eef5bf2214f0",
+    "state": "IDENTITY_CONFLICT"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "GASME SRL.png",
+    "sha": "2b132f6462fa4faf0e558208d1461afbd068a000c11f1a43c3d968b8e17e8a56",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "GASME.png",
+    "sha": "5b230408f717baddf0ebbd5c5e17159d1d2a5fa841388622ce20bf25a915b647",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "GENIPTV.png",
+    "sha": "5724054a40e70740679ee8edda42047abbba8215d9651cd90b894ad2a018fa03",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "GMN.png",
+    "sha": "6de20911dfa6a68087aac93e8c82768903f2da9126d7ddd77ba76342dc903039",
+    "state": "RECOVERY_REVIEW_ONLY"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "GTSS.png",
+    "sha": "6e62c8d7b38b8b233c3c8aff5469fd038ad274fc0f0f93b901489a62021b68a6",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "HUDOBNE.png",
+    "sha": "3e1eb527bf6e926776becb44f0cf0ad80fe04b946816f2f033bb4f658ccdf887",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ICARO TV.png",
+    "sha": "9e22f1afbb26635b1c63298511675aff0d897163eba1129d2dbb776a1ca5e90e",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "INTECGROUP.png",
+    "sha": "738380477a68913588e82480af96e039b7aa360f3da4f255e4563a9ed17071f6",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ITALIA DTT.png",
+    "sha": "f7808a5accb33d965695e3fb62fa1b6b5a8e049d7bae4e911ca5b4bb48b6782a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "LEGG MEDIA SRL.png",
+    "sha": "2b132f6462fa4faf0e558208d1461afbd068a000c11f1a43c3d968b8e17e8a56",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "LIGHTSAT TELECOMMUNICATIONS.png",
+    "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "LIGHTSAT TELECOMUNICATIONS.png",
+    "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MAGIO TV.png",
+    "sha": "b27936a5498432ed11935ba1e95c641f7a0c5c49164c3eb8c81091397d41652b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MAX TV.png",
+    "sha": "93ffede19c23009290bf1c4bb744376ad64096887f9a766b2ad35e9ccd3e8030",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MAXTV HRVATSKA.png",
+    "sha": "93ffede19c23009290bf1c4bb744376ad64096887f9a766b2ad35e9ccd3e8030",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MAXTV SAT.png",
+    "sha": "93ffede19c23009290bf1c4bb744376ad64096887f9a766b2ad35e9ccd3e8030",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MBS.png",
+    "sha": "f88e73d1574ef4d9b1e6fd52b9fcc6eb93fed887f413355c1bf7703a3b8c4bdb",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MEDIA BROADCAST SATELLITE.png",
+    "sha": "7385c0d1987c9b562e70f0460f6b838a2743fd89ee51645f9e5e13d1dffd896f",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MEDIA BRODCAST.png",
+    "sha": "7385c0d1987c9b562e70f0460f6b838a2743fd89ee51645f9e5e13d1dffd896f",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MOVIESTAR+ HISPASAT.png",
+    "sha": "cf68fa1666613db92fa163c6319266af3169ff551f7333fed7ff420aebdc1c90",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MOVISTAR+ HISPASAT.png",
+    "sha": "cf68fa1666613db92fa163c6319266af3169ff551f7333fed7ff420aebdc1c90",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MTNTV.png",
+    "sha": "8f6e70e0d0132ac79f9bef722f67315f626ae9ff746361484e261b34e1b68912",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MTV INTERNATIONAL.png",
+    "sha": "666251ee6d844a98cc333f4de3ec4b62023f7aeeea76deaa92cc318eb1d02ab1",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MTV UNLIMITED.png",
+    "sha": "666251ee6d844a98cc333f4de3ec4b62023f7aeeea76deaa92cc318eb1d02ab1",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MULTICHOICE.png",
+    "sha": "1cf80dae46334ad0e3af1d45fbc28d0bbadc7d58894cdf8cbbd72ef32f3d850a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MULTICHOJCE AFRICA.png",
+    "sha": "1cf80dae46334ad0e3af1d45fbc28d0bbadc7d58894cdf8cbbd72ef32f3d850a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MULTIPROGRAM.png",
+    "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "MULTISTREAM.png",
+    "sha": "e2daf3277a3101ffa4fde28ae52e4be62bd8ddf5cfa4bdc95e040c5db2e0cab0",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "NC +.png",
+    "sha": "4b5431d454265c591c2b38ea8cde310bbf8bc94cd7a4b54b5d7ed020efafb7cd",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "NETERRA COMMUNICATIONS.png",
+    "sha": "cb32c445792e377d2b219c03a51df996bda127ba954c36973bb0f806924cdfc3",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "NETERRA.png",
+    "sha": "cb32c445792e377d2b219c03a51df996bda127ba954c36973bb0f806924cdfc3",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "NT.png",
+    "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "OPIM RTTR.png",
+    "sha": "a60481d0809101f37fb176d07efb7b6f06ba16c01bdc97b839c34caea5b28eeb",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "OPIM_RTTR.png",
+    "sha": "6fc073d5f7c70e780ffb3f0355f39ed4268fc9043f74a725d45e9ba9d1204a96",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "OTHERS.png",
+    "sha": "2f31075d4c12ffa1c5ea5826c61cd9e8af6430eeaa0caa253b2eccd911db6543",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "PINK MEDIA GROUP.png",
+    "sha": "a17f67c31161a535ebd3655a15f606c6eaa262612e427b5e25090144c9d36014",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "PLAYBOX NEO.png",
+    "sha": "4eebaf18d6fe24254f3942da51dea3079dba338846287fc31bac901b3b325bd4",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "POWERVU.png",
+    "sha": "e0beb03b258fe8529fa9c8c2b1c14665b6a199fef9e6fd0fc444b8dff1b7ddbe",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "POZEMN - NOV.png",
+    "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "POZEMN - POSKYTOVATEL.png",
+    "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "POZEMN - STANICE.png",
+    "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "PRISATV.png",
+    "sha": "96356c7d58d323c4984a51dabad3f33c9b2c557ed3951186afd6c07ff77daf6b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "PROGRESS DIGITAL S.R.O.png",
+    "sha": "b7963a2d81d1509f0259bb9efadf524df5817455a521315af000916a06eeb797",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "PUBBLIMED.png",
+    "sha": "7a52a3105b6cf027aeebd9c50a7d9138af6878fd50bdd8e758c9663a27945c48",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "PUBLIMED.png",
+    "sha": "7a52a3105b6cf027aeebd9c50a7d9138af6878fd50bdd8e758c9663a27945c48",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "RADIO MATER DAB%2A.png",
+    "sha": "c934b0270bb9e28584ec140046b7390ad75bfb9032a6541ff3c2c23a247253de",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "RADIO ROMA TELEVISION HD.png",
+    "sha": "4d5188f88d5fbaf248beac19bd97be889dfb7b71348dac6d2edd30a9b32a005a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "RADIO ROMA TV.png",
+    "sha": "4d5188f88d5fbaf248beac19bd97be889dfb7b71348dac6d2edd30a9b32a005a",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "RCS.png",
+    "sha": "e631fcf1b828a48e4248684ae27c51853bedb49bd882de20df15e56c597fc435",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "RCSRDS.png",
+    "sha": "e631fcf1b828a48e4248684ae27c51853bedb49bd882de20df15e56c597fc435",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "RETECAPRI TRTN.png",
+    "sha": "5a099e8eeb32646446322bfb9158b58c2f8df2ad6eac57f79cd45c1aba4de016",
+    "state": "IDENTITY_CONFLICT"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "SERVICE N.png",
+    "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "SESTARETE & RETE 8.png",
+    "sha": "2eee4e90b6fed860af5017aec2919b6f1f5fa6083d2f89b66962a3df97d9dd2f",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "SHARAVOZ.png",
+    "sha": "c3d87623d984bbb31c52c728ad905b02baae669c1616667cc87e49db747e20b3",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "SOKO.png",
+    "sha": "e3a18b61f5c38cf903f1d30c1f5c6911f8bf5c2b93b50dd40495fcbbca0023ef",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "SPACECOM.png",
+    "sha": "c28983f1810ce6812dc3d4d9474f026b1d8abd3c74f237f39f5d12da8c20f2bc",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "STUDIO 98 MUX.png",
+    "sha": "50d89a2fcd4ff15f94f23413cea226a5c9a58ce648bb8811e6e7e72df3d51dd9",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "STUDIO 98.png",
+    "sha": "50d89a2fcd4ff15f94f23413cea226a5c9a58ce648bb8811e6e7e72df3d51dd9",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "T-HOME MAGIO TV.png",
+    "sha": "b27936a5498432ed11935ba1e95c641f7a0c5c49164c3eb8c81091397d41652b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "T-HOME MAGIOTV.png",
+    "sha": "b27936a5498432ed11935ba1e95c641f7a0c5c49164c3eb8c81091397d41652b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TEAM SAT.png",
+    "sha": "88571ef56ca00e8a2655425c249e7b503a380a6f5140d019ed4b60f07f6b44e7",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELE DEHON BKP.png",
+    "sha": "ce1f90406055d347a1ed6a376cf5668790140a0a1b71bbdb505c5adddcd2c0d9",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELE DEHON.png",
+    "sha": "ce1f90406055d347a1ed6a376cf5668790140a0a1b71bbdb505c5adddcd2c0d9",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELEACRAS.png",
+    "sha": "4db6c13fac1fba46cfb094cf2a5953c760e97a0136e584cb41618602fa994073",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELECITY.png",
+    "sha": "e2f4fda88c6816829d204a97d3862f9c49b39c4386fb4861cef0d7795a672066",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELEFUTURANISSA.png",
+    "sha": "1c2a8239e4c7e47cf2a19cd62fd6759becb4c69a63204c71daae937e555b05b9",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELEMIA.png",
+    "sha": "cadbe2acadd1641e04f4e46b41e0cf7f43c9e5e7d83aa97cb4a3ee3245dfd578",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELERADIOPACE.png",
+    "sha": "e07cbe2dfd9f0639cf7509e2ec50e9e7bda93124b795ed451aaf5e244e321e36",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELESETTELAGHI.png",
+    "sha": "d67a82bb63bba537afbdab6c4e4ceddcdf784ae947adc06ca781698bc8e0308f",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELEVISA NETWORKS.png",
+    "sha": "b925baba0833f3fc5d25bb84ba8df3547300e79ddb29df83209ccbb077dc36d8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TELEWIZJA POLSKA S.A..png",
+    "sha": "ee59cc154ae0bdd9bc23a4b3f0f10aeb38c54a1265757e70282cc95057f785db",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TGS.png",
+    "sha": "f77061db6e44194a1d1961ccb148484466cca676aa91b72f4819da854778eb3d",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TIVIBU.png",
+    "sha": "8907fe7764f7dec1a78a4ef996e8195b1a2ade1c8e92b4b5c897479bdac3c08d",
+    "state": "IDENTITY_CONFLICT"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TIVUBU.png",
+    "sha": "055b2c3556acdf84d6a997424baedd710b412aacf74479b843b41ba4cd1d7c2f",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TOTOPARTNER.png",
+    "sha": "63fded69737af43799ade639ada4fd61fb507a5c5bf4dab7ef2f1ca6e09ae44f",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TOWERHOME-PLUSTELKA.png",
+    "sha": "e538c327234876a9855334f2913074c67e483df3cf3438d6d55e2de944178625",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TRICOLOR TV RUSSIA.png",
+    "sha": "a8b9d737399184e942e762c9d476a2443a10103e534e58d9120435e3e130f33a",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TRICOLOR TV.png",
+    "sha": "a8b9d737399184e942e762c9d476a2443a10103e534e58d9120435e3e130f33a",
+    "state": "EXTERNAL_BRAND_REVIEW"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TTCOMM.png",
+    "sha": "b27936a5498432ed11935ba1e95c641f7a0c5c49164c3eb8c81091397d41652b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TV CABO.png",
+    "sha": "438c91ab613964e7cd9b7f766bfb721247847b310c315203f8498b8e16cda2ce",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TV SYSTEM.png",
+    "sha": "4db6c13fac1fba46cfb094cf2a5953c760e97a0136e584cb41618602fa994073",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TVA.png",
+    "sha": "ec285850afcf70676ff8559e5f5dd1ec47545a2b2d8e0025a7da1848de279bf8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TVCM.png",
+    "sha": "15ec3341114ef1b51a4434395c934128862a9be1e7633645c7568b17585ad4f4",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TVL.png",
+    "sha": "1089dda110241eb68daa04ab2c5604f1c1c3e2891791bb0ea73dfc642c020c2b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TVN WBD.png",
+    "sha": "9c0f16655d1681e5c890cf201d4b1c19e8999dfc9a14df945b0288f298ee1635",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TVN_WBD.png",
+    "sha": "38d551f1d1cf6f7b52117365f1224119e403864d9fd575d0d3346430e896458c",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "TVR XENON.png",
+    "sha": "6c3ffadbf5d75e29a3e4caf9a52bc005fd84ec3152bf8799c0fe8f6226998339",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "UKRAINE.png",
+    "sha": "71b38ca3cd9258ed7a5f932b8bfe0e851398782d10fc54da020096b9f052923b",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "ULTRA HD.png",
+    "sha": "4bcbfca0ffb7f1d75639526f82368c2ed7abf3089ebadd7b507c1e9edcbf7265",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "VB33.png",
+    "sha": "9c14186a5c4ef41fa084c65ca21b84e70463cf17eaa46683df2ef3337eafa3f4",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "VERA TV.png",
+    "sha": "7b4c0f8a696542370879119587e9bb7296d5281f389ae626fb02b7d2d27646e8",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "VIDEO REGIONE.png",
+    "sha": "5ec44e298c05c767a7478268170936a1dc83c8f6a93825571feaa359390424ef",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "VIDEONOVARA.png",
+    "sha": "c820178be74c84e46b94d7ee487717337730631f6dd1dc59ff3e50d2c57874f1",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "W1 WL DTH.png",
+    "sha": "cb32c445792e377d2b219c03a51df996bda127ba954c36973bb0f806924cdfc3",
+    "state": "CLEAN_LOGO_REQUIRED"
+  },
+  {
+    "kind": "PROVIDER",
+    "name": "XENON.png",
+    "sha": "6c3ffadbf5d75e29a3e4caf9a52bc005fd84ec3152bf8799c0fe8f6226998339",
+    "state": "CLEAN_LOGO_REQUIRED"
+  }
+]

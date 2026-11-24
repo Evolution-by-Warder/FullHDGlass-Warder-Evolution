@@ -1,0 +1,21 @@
+name: Consolidated remaining picons and archive-size analysis
+on:
+  push:
+    branches: [work/italia-remaining-161-20261124]
+    paths: ['.github/workflows/italia-remaining-161.yml']
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            reports/italia-remaining-161-20261124/
+      - run: python reports/italia-remaining-161-20261124/inventory.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: remaining-161-inventory
+          path: remaining-161/
