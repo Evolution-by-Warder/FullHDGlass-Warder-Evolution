@@ -101,6 +101,7 @@ class MissingMenuReportTests(unittest.TestCase):
 class UserInfoScrollRegression(unittest.TestCase):
     def test_user_info_scroll_suite(self):
         subprocess.run([sys.executable, str(ROOT / "tools/test_warder_user_info_scroll.py"), "-q"], check=True)
+        subprocess.run([sys.executable, str(ROOT / "tools/test_warder_optional_menu_keys.py"), "-q"], check=True)
 
 
 if __name__ == "__main__":

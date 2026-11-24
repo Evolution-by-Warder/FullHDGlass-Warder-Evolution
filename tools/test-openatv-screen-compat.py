@@ -86,10 +86,23 @@ class ScreenCompatTests(unittest.TestCase):
   # Keep the original pre-1.0.80 ledger intact; pin later approved runtime
   # separately rather than accepting arbitrary skin edits.
   version=(ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read_text().strip()
-  approved='eb7962fc52015ac018a2c694ffc43763d4082fa54079f80a45ecdca0903eee5a' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90') else record['before_skin_sha256']
+  approved='eb7962fc52015ac018a2c694ffc43763d4082fa54079f80a45ecdca0903eee5a' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91') else record['before_skin_sha256']
   self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),approved)
   block=lambda value:re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>',value).group(0)
   self.assertEqual(block(text),block(SKIN))
+ def test_optional_quickmenu_and_network_keys_match_native_contract(self):
+  for name, missing, required in (
+   ('QuickMenu', {'key_blue'}, {'key_red','key_green','key_yellow'}),
+   ('InformationNetwork', {'key_blue','key_menu','key_info'}, {'key_red','key_green','key_yellow','key_help'})):
+   for key in missing:
+    w=screen(name).find("widget[@source='%s']"%key)
+    self.assertIsNotNone(w)
+    self.assertEqual(w.get('conditional'),key)
+    self.assertFalse(active(w,required))
+    self.assertTrue(active(w,required|{key}))
+  blue=screen('QuickMenu').find("ePixmap[@conditional='key_blue']")
+  self.assertIsNotNone(blue)
+  self.assertFalse(active(blue,{'key_red','key_green','key_yellow'}))
  def test_native_no_pig_graph_colour_sources_are_rendered_as_sources(self):
   for colour in ('red','green','yellow','blue'):
    self.assertIsNotNone(screen('GraphicalEPG').find("widget[@source='key_%s'][@render='Label']"%colour))

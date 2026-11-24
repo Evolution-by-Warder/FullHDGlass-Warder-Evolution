@@ -1,7 +1,16 @@
 """Reverse only recorded OpenATV 8.1 bindings before older graphic checks."""
 import json
 
+def revert_optional_keys(root, text):
+    path = root / 'design/openatv81-optional-menu-keys-20261124/skin-edits.json'
+    if path.exists():
+        for edit in json.loads(path.read_text())['edits']:
+            assert text.count(edit['updated_screen']) == 1, edit['name']
+            text = text.replace(edit['updated_screen'], edit['original_screen'], 1)
+    return text
+
 def revert_skin(root, text):
+    text = revert_optional_keys(root, text)
     # The OpenPLi guide is an exact registered addition. Remove only that block
     # before checking the unchanged historical OpenATV graphic baseline.
     path = root / 'design/openpli-graph-epg/layout.json'
