@@ -1,0 +1,49 @@
+{
+  "names": [
+    "BT MEDIA & BROADCAST.png",
+    "CABOVISAO.png",
+    "GENIPTV.png",
+    "MAGIO TV.png",
+    "MAX TV.png",
+    "MAXTV HRVATSKA.png",
+    "MAXTV SAT.png",
+    "MEDIA BROADCAST SATELLITE.png",
+    "MEDIA BRODCAST.png",
+    "MOVIESTAR+ HISPASAT.png",
+    "MOVISTAR+ HISPASAT.png",
+    "MTV INTERNATIONAL.png",
+    "MTV UNLIMITED.png",
+    "MULTICHOICE.png",
+    "MULTICHOJCE AFRICA.png",
+    "NETERRA COMMUNICATIONS.png",
+    "NETERRA.png",
+    "PINK MEDIA GROUP.png",
+    "POWERVU.png",
+    "PRISATV.png",
+    "RCS.png",
+    "RCSRDS.png",
+    "SPACECOM.png",
+    "T-HOME MAGIO TV.png",
+    "T-HOME MAGIOTV.png",
+    "TELEVISA NETWORKS.png",
+    "TIVUBU.png",
+    "TOWERHOME-PLUSTELKA.png",
+    "TTCOMM.png"
+  ],
+  "pixel_digest": "eb05a38623ba22fa6bda69d70f41dcb49c45c32ee57dd8f3ded2d6cb262545ad",
+  "baseline": {
+    "transparent": {
+      "count": 1367,
+      "sha256": "2488b8b4e1befc7606487d0db7e41cf655f77a19320ec71c49af225fe08fc386"
+    },
+    "white": {
+      "count": 1387,
+      "sha256": "491ff2a8d28c3e6fe06f6eb426a83617794b0574c9593b7392bfb4e788fb19c2"
+    },
+    "black": {
+      "count": 1402,
+      "sha256": "6bba8b5bf63f5b27e5e506e45b2320f74a2395bdc4c225b8d07bfdcbb97f7a10"
+    }
+  },
+  "recovery": "Mode of existing legacy backgrounds; black foreground colors and independent white mask support; approximate recovered alpha, not original vector. All selected marks visually checked against provided source and both production variants."
+}
