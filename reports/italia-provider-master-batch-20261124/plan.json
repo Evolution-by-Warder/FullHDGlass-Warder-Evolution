@@ -1,0 +1,48 @@
+{
+  "user_sources": [
+    "AUTO DEL GIORNO.png",
+    "CANALE 40.png",
+    "CANALE 40REG.png",
+    "ITALIA 7 GOLD STAMPA SUD.png",
+    "JONICA RADIO TV.png",
+    "L'ALTRO CORRIERE.png",
+    "MEDITERRANEO.png",
+    "MUXIP.png",
+    "PRIMASET.png",
+    "RADIO STUDIO DELTA.png",
+    "ROMANTICA RADIO.png",
+    "TELERENT.png",
+    "TELESASSARI.png",
+    "TERRA S.P.A..png",
+    "VIDEOMEDIA-TN.png",
+    "VTS.png"
+  ],
+  "external_sources": [
+    "NOS.png",
+    "PRIMANTENNA.png",
+    "TEGENOVA.png",
+    "TELEPACE_TRENTO.png",
+    "TNT SAT.png",
+    "TVN24.png",
+    "VALENZA TV.png",
+    "VALENZA_TV.png",
+    "VCO AZZURRA TV.png"
+  ],
+  "user_source_commit": "b590fbbcb6b83474b1cb30485ada35f699b1692b",
+  "external_run": 45438569616,
+  "expected_pixels_sha256": "47ca93cb34b84b83b3b1b02af880ad2be9bfba85a72829a13c71150ffb74f16c",
+  "base": {
+    "transparent": {
+      "count": 1257,
+      "sha256": "ad9814369340f5f529dd5bfa137ffb3461b3cf599037993ceede7135c95bb664"
+    },
+    "white": {
+      "count": 1313,
+      "sha256": "4f218b4fc329a001b21ca1095b545ce6c9281be7832a5307f6ca91c04c925e04"
+    },
+    "black": {
+      "count": 1340,
+      "sha256": "7a0e0c1858441a19b1fe13bfb99152b8d942983ddd9708006fa6b52196aa3cc3"
+    }
+  }
+}
