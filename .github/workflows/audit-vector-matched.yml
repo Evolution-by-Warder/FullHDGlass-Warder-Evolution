@@ -1,0 +1,42 @@
+name: Independently verify nine live provider variants
+on:
+  push:
+    branches: [audit/italia-vector-matched-20261124]
+    paths: ['.github/workflows/audit-vector-matched.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: |
+          python3 - <<'PY'
+          import hashlib,io,json,struct,urllib.request,zipfile
+          R='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/'
+          B=R+'a0e41c797c0bf4584898dd33434cc000abbcbc41/';F=R+'main/'
+          def get(u):
+              with urllib.request.urlopen(u,timeout=60) as r:return r.read()
+          def sha(b):return hashlib.sha256(b).hexdigest()
+          cat=json.loads(get(F+'assets/warder/downloads.json'));assets=cat.get('assets',cat)
+          expected={'TELLY.png','WARNER BROS DISCOVERY.png','WARNER BROS. DISCOVERY.png','VIASAT UKRAINE.png'}
+          for style,key,count,add,digest in [
+              ('transparent','piconProv-220',1286,4,'024b1c70ac31e4b68dc69976e97e59dec8285b48ba2055d426a75944374ed4cc'),
+              ('white','piconProv-w',1340,3,'28a5341a7fc4d5cd7ef2d528f9ff2513c808c0844743c88d75b2fba828eb85b4'),
+              ('black','piconProv-b',1365,2,'7a82fd63620f9af04e0d11f34611110d6f42e23a2657469bb71d294882b1d4cd')]:
+              path='assets/warder/downloads/picons/providers/'+style+'/piconProv.zip'
+              raw=get(F+path);old=get(B+path);assert sha(raw)==digest==assets[key]['sha256']
+              assert len(raw)==assets[key]['size'] and assets[key]['png_count']==count
+              with zipfile.ZipFile(io.BytesIO(raw)) as z,zipfile.ZipFile(io.BytesIO(old)) as a:
+                  assert z.testzip() is None and len(z.namelist())==count and len(set(z.namelist()))==count
+                  assert all(z.read(n)==a.read(n) for n in a.namelist())
+                  assert len(set(z.namelist())-set(a.namelist()))==add
+                  assert {'piconProv/'+n for n in expected}<=set(z.namelist())
+                  for n in z.namelist():
+                      b=z.read(n);assert b[:8]==bytes.fromhex('89504e470d0a1a0a') and struct.unpack('>II',b[16:24])==(220,132)
+              print(style,count,'PASS, original PNGs preserved',flush=True)
+          m=get(F+'assets/warder/downloads/picons/channels/manifest.json')
+          assert sha(m)=='4541dea07b011d2cac2981c5b8203ebae7e363c85e481316a4cf6c0b04d9b6a6'
+          assert m==get('https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/main/plugin/src/Plugins/Extensions/WarderPiconHub/data/channel-manifest.json')
+          print('PASS: 3/3 live provider ZIPs, all four names complete, identical DTT manifests')
+          PY
