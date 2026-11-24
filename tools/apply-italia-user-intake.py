@@ -77,9 +77,5 @@ for style,key in [("transparent","piconProv-220"),("white","piconProv-w"),("blac
  report["providers"].append({"style":style,"added":len(add),"preserved":count,"sha256":sha(after),"bytes":len(after),"png_count":count+len(add)})
 CAT.write_text(json.dumps(cat,ensure_ascii=False,indent=2)+"\n")
 req(sum(x["added"] for x in report["dtt"])==216 and sum(x["added"] for x in report["providers"])==99,"counts")
-# Existing hard-coded integration gates remain exact, not weakened.
-for filename in (".github/workflows/verify-fullhdglass-integrated-20261122.yml",".github/workflows/fullhdglass-stable-1.0.82-preflight.yml"):
- path=ROOT/filename;t=path.read_text();req(t.count("4663357339c7a59ea19f8ced89309749d340e1d2")==1 and t.count("dcedf2615908a07626a5741fb6ab4efcb3eb228e")==1,filename)
- path.write_text(t.replace("4663357339c7a59ea19f8ced89309749d340e1d2",gitsha(m)).replace("dcedf2615908a07626a5741fb6ab4efcb3eb228e",gitsha(sums)))
 (R/"build.json").write_bytes(dump(report))
 print(json.dumps(report,ensure_ascii=False))
