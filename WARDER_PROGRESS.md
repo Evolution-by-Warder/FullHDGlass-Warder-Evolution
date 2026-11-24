@@ -1,3 +1,7 @@
+## 24. 11. 2026 — Rolovanie EPG v používateľskom info (pracovná dávka, bez IPK)
+
+Podnet českého používateľa: Event now and next odrezáva dlhý popis. V Screens/G17_UserInfo.py režimy en, ensi, e, e2 a esi používajú natívny ScrollLabel vo všetkých siedmich popisových poliach; aktuálny a nasledujúci program majú nezávislý časovač 5 s, krátky text ostáva statický. Pri nezmenenom EPG neposúvať späť na začiatok; pri zmene programu resetovať. Pri skrytí/uzavretí vypnúť časovače. Bez zásahu do ChannelSelection EPG canvas/GLES, tlačidiel a rozmerov okien. Testy porovnávajú rozhrania OpenATV a OpenPLi; fyzický test zatiaľ nepotvrdený. Vlastník výslovne požaduje nevydávať nový IPK, zmeny sú súčasťou otvoreného #161 spolu s opravou menu.
+
 ## 24. 11. 2026 — Obnova reportu chýbajúcich ikon a oprava Li3 (pracovná zmena)
 
 Vlastník schválil obnovenie /tmp/missing_menu_icons.txt a správnu existujúcu ikonu FullHDGlass. Report bol vypnutý v oboch rendereroch. Li3 (Menu-15/16) používa pictType=3; nový menu ID warder_fullhdglass_settings sa nezhoduje so starým kanonickým FHD_Glass17_Setup v stiahnutom ZIP. Pribalený starý FHD_Glass17_Setup.png je montážny kľúč, nie schválené logo. Používa sa presne existujúci schválený blob warder_skin.png d9ed25d28f2ceda795796449d4dc8046a43a5872, bez zmeny grafiky; používateľský presný variant má prednosť. Report zapisuje až po fallbackoch, bez duplicít, s limitom veľkosti a ochranou symlinkov. Pracovná vetva fix/menu-icon-report-20261124, testy/CI a prijímačové overenie zatiaľ nepotvrdené, bez vydania IPK.

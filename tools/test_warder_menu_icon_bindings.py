@@ -4,6 +4,8 @@ import unittest
 import importlib.util
 import tempfile
 import hashlib
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 RENDERERS = ROOT / "source/package-root/usr/lib/enigma2/python/Components/Renderer"
@@ -94,6 +96,11 @@ class MissingMenuReportTests(unittest.TestCase):
         self.assertEqual(hashlib.sha1(git_blob).hexdigest(), "d9ed25d28f2ceda795796449d4dc8046a43a5872")
         if original.is_file():
             self.assertEqual(hashlib.sha256(data).digest(), hashlib.sha256(original.read_bytes()).digest())
+
+
+class UserInfoScrollRegression(unittest.TestCase):
+    def test_user_info_scroll_suite(self):
+        subprocess.run([sys.executable, str(ROOT / "tools/test_warder_user_info_scroll.py"), "-q"], check=True)
 
 
 if __name__ == "__main__":
