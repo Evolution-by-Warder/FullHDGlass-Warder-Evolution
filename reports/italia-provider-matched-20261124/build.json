@@ -1,0 +1,39 @@
+[
+  {
+    "style": "transparent",
+    "added": 8,
+    "count": 1257,
+    "sha256": "ad9814369340f5f529dd5bfa137ffb3461b3cf599037993ceede7135c95bb664",
+    "preserved": 1249,
+    "names": [
+      "piconProv/AFN.png",
+      "piconProv/AMERICAN FORCE NETWORK.png",
+      "piconProv/CANAL DIGITAAL.png",
+      "piconProv/CANALDIGITAAL.png",
+      "piconProv/FRANSAT.png",
+      "piconProv/HBO.png",
+      "piconProv/NILESAT LIBANON.png",
+      "piconProv/TV VLAANDEREN.png"
+    ]
+  },
+  {
+    "style": "white",
+    "added": 1,
+    "count": 1313,
+    "sha256": "4f218b4fc329a001b21ca1095b545ce6c9281be7832a5307f6ca91c04c925e04",
+    "preserved": 1312,
+    "names": [
+      "piconProv/AFN.png"
+    ]
+  },
+  {
+    "style": "black",
+    "added": 1,
+    "count": 1340,
+    "sha256": "7a0e0c1858441a19b1fe13bfb99152b8d942983ddd9708006fa6b52196aa3cc3",
+    "preserved": 1339,
+    "names": [
+      "piconProv/AFN.png"
+    ]
+  }
+]
