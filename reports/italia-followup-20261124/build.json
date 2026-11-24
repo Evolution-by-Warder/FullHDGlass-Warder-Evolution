@@ -1,0 +1,131 @@
+{
+  "dtt": [
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-50x30-transparent-02a2605ea9915bca.zip",
+      "parts": 1,
+      "preserved": 309,
+      "sha256": "02a2605ea9915bcab0ce255829a86495e7b4d9f8921374c06e529752b8741044",
+      "size": "50x30",
+      "style": "transparent"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-50x30-white-4a33f695e837c6ec.zip",
+      "parts": 1,
+      "preserved": 309,
+      "sha256": "4a33f695e837c6ec18f2992dc67ed7eed874d3ec2b9bc00543aaaf087f0590b9",
+      "size": "50x30",
+      "style": "white"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-50x30-black-a42a57eb92561251.zip",
+      "parts": 1,
+      "preserved": 309,
+      "sha256": "a42a57eb92561251501524a1d66a8fb9522b4888c72e3d8a051cfb019ed14852",
+      "size": "50x30",
+      "style": "black"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-220x132-transparent-e71e532711d3dee3.zip",
+      "parts": 4,
+      "preserved": 309,
+      "sha256": "e71e532711d3dee356196267e689e73f2dafd05d03992e7a39fb3a2418536136",
+      "size": "220x132",
+      "style": "transparent"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-220x132-white-58cc740fc3b2db88.zip",
+      "parts": 10,
+      "preserved": 309,
+      "sha256": "58cc740fc3b2db88da3c3b736d73faa5a11f7dbeca3bf46b52f75afa19bf388b",
+      "size": "220x132",
+      "style": "white"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-220x132-black-886056f049eacb44.zip",
+      "parts": 10,
+      "preserved": 309,
+      "sha256": "886056f049eacb449c34ec9f8947a936d994694b6d4803c1b9fe4f74f3c2d9b9",
+      "size": "220x132",
+      "style": "black"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-400x240-transparent-9e17f2977521b093.zip",
+      "parts": 10,
+      "preserved": 309,
+      "sha256": "9e17f2977521b093e6d4c3eb1e84aa2657741d54eb1f33563605c767735657f2",
+      "size": "400x240",
+      "style": "transparent"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-400x240-white-e6e621b6f156ac48.zip",
+      "parts": 14,
+      "preserved": 309,
+      "sha256": "e6e621b6f156ac486904b90945d80e65c769642ebfdb8dc5f38c1f07ec53d390",
+      "size": "400x240",
+      "style": "white"
+    },
+    {
+      "added": 14,
+      "filename": "warder-dtt-italia-400x240-black-c6030e97725b03b1.zip",
+      "parts": 13,
+      "preserved": 309,
+      "sha256": "c6030e97725b03b1053f9bdaca9d5dad0dbfdc15c8398910fd513ab1163bd3dc",
+      "size": "400x240",
+      "style": "black"
+    }
+  ],
+  "dtt_alias_map": {
+    "1_0_16_426_2_217C_EEEE0000_0_0_0.png": "1_0_16_426_2_217C_EEEE0272_0_0_0.png",
+    "1_0_16_427_2_217C_EEEE0000_0_0_0.png": "1_0_16_427_2_217C_EEEE0272_0_0_0.png",
+    "1_0_16_429_2_217C_EEEE0000_0_0_0.png": "1_0_16_429_2_217C_EEEE0272_0_0_0.png",
+    "1_0_16_42A_2_217C_EEEE0000_0_0_0.png": "1_0_16_42A_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_41B_2_217C_EEEE0000_0_0_0.png": "1_0_1F_41B_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_41C_2_217C_EEEE0000_0_0_0.png": "1_0_1F_41C_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_41D_2_217C_EEEE0000_0_0_0.png": "1_0_1F_41D_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_41E_2_217C_EEEE0000_0_0_0.png": "1_0_1F_41E_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_41F_2_217C_EEEE0000_0_0_0.png": "1_0_1F_41F_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_420_2_217C_EEEE0000_0_0_0.png": "1_0_1F_420_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_421_2_217C_EEEE0000_0_0_0.png": "1_0_1F_421_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_423_2_217C_EEEE0000_0_0_0.png": "1_0_1F_423_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_42F_2_217C_EEEE0000_0_0_0.png": "1_0_1F_42F_2_217C_EEEE0272_0_0_0.png",
+    "1_0_1F_431_2_217C_EEEE0000_0_0_0.png": "1_0_1F_431_2_217C_EEEE0272_0_0_0.png"
+  },
+  "manifest_git_sha": "5f0c3a16ef39210c4e59ead880145df1f7c83b89",
+  "manifest_sha256": "4541dea07b011d2cac2981c5b8203ebae7e363c85e481316a4cf6c0b04d9b6a6",
+  "providers": [
+    {
+      "added": 37,
+      "bytes": 12527882,
+      "png_count": 1249,
+      "preserved": 1212,
+      "sha256": "ce67b9a7ba06bea8ffc5499f2d6c2594c5633e2cd8f94d14087c70c625912daa",
+      "style": "transparent"
+    },
+    {
+      "added": 20,
+      "bytes": 30605464,
+      "png_count": 1312,
+      "preserved": 1292,
+      "sha256": "dbfe59b48408b8982d0b656fc7af3a1497fe1688c7b1d354d7538542f43c42a5",
+      "style": "white"
+    },
+    {
+      "added": 18,
+      "bytes": 29035043,
+      "png_count": 1339,
+      "preserved": 1321,
+      "sha256": "4e71bce1d5007b87a82d0332d7c144c2b9691cfbf588dfca0b30d9a80adfccf5",
+      "style": "black"
+    }
+  ],
+  "sums_git_sha": "47f51cdc77a42490958b81a3413852d51cd9e53a",
+  "unchanged_catalogue_entries": 498
+}
