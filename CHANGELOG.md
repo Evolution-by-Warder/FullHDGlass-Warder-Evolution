@@ -1,3 +1,9 @@
+## 1.0.90 — 24. november 2026
+
+Obnovený výpis chýbajúcich ikon menu v /tmp/missing_menu_icons.txt bez duplicít. Opravená grafika FullHDGlass v menu Zoznam a ikony3. Dlhé popisy EPG sa automaticky rolujú vo všetkých piatich režimoch informácií o programe, pri aktuálnej a nasledujúcej udalosti nezávisle. Po inštalácii reštartujte Enigma2.
+
+Podrobnosti: [poznámky k vydaniu](docs/warder-1.0.90-release-notes.md).
+
 ## 1.0.89 – 23. november 2026
 
 Vo výbere piconov pribudla samostatná položka DTT ITALIA s 285 stanicovými referenciami. Aktualizované sú aj talianske feedy na 9°E a 5°W. Vybrať si môžete zo všetkých troch rozmerov a pozadí. Po inštalácii reštartujte Enigma2.

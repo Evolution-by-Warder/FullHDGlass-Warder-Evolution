@@ -1,3 +1,7 @@
+## 24. 11. 2026 — FullHDGlass 1.0.90: vlastníkom schválené ostré vydanie, čaká na finálne CI a publikáciu
+
+Vlastník výslovne schválil zlúčenie a ostré vydanie celej dávky #161: obnovený výpis chýbajúcich ikon, oprava schválenej grafiky Li3 a natívne rolovanie EPG v piatich režimoch. Predprodukčné testy na eb7b0c8: OpenATV, integrácia, preflight, radio a channel/Prime Time úspešné; finálny SHA po zmene verzie musí prejsť novými CI. Zdrojová verzia, control, 13 hlavičiek a 10 lokalizovaných poznámok pripravené pre 1.0.90. Produkčný feed neposúvať ručne: kanonický publisher až po merge a overenom IPK. Bez zmeny SAT/radio dát a existujúcich schválených grafík; prijímačové potvrdenie zatiaľ nemáme.
+
 ## 24. 11. 2026 — Rolovanie EPG v používateľskom info (pracovná dávka, bez IPK)
 
 Podnet českého používateľa: Event now and next odrezáva dlhý popis. V Screens/G17_UserInfo.py režimy en, ensi, e, e2 a esi používajú natívny ScrollLabel vo všetkých siedmich popisových poliach; aktuálny a nasledujúci program majú nezávislý časovač 5 s, krátky text ostáva statický. Pri nezmenenom EPG neposúvať späť na začiatok; pri zmene programu resetovať. Pri skrytí/uzavretí vypnúť časovače. Bez zásahu do ChannelSelection EPG canvas/GLES, tlačidiel a rozmerov okien. Testy porovnávajú rozhrania OpenATV a OpenPLi; fyzický test zatiaľ nepotvrdený. Vlastník výslovne požaduje nevydávať nový IPK, zmeny sú súčasťou otvoreného #161 spolu s opravou menu.
