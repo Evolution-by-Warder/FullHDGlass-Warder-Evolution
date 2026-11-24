@@ -1,0 +1,21 @@
+name: Consolidated final Italian provider and DTT inventory
+on:
+  push:
+    branches: [work/italia-final-consolidated-20261124]
+    paths: ['.github/workflows/italia-final-consolidated.yml']
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            reports/italia-final-consolidated-20261124/
+      - run: python reports/italia-final-consolidated-20261124/inventory.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: italian-consolidated-inventory
+          path: consolidated/
