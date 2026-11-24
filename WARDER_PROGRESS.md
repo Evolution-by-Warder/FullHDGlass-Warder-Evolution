@@ -1,5 +1,14 @@
 ## 23. 11. 2026 — DTT ITALIA a talianske feedy 9°E a 5°W sú overené a publikované
 
+## 24. 11. 2026 — Azzurra: plánovaný Cloud Browser, nie GitHub Actions
+
+V mimoriadnom plánovanom behu Warder SAT Picon Manager o 08:52 (Europe/Bratislava), ID behu `9a53d81f-f064-8324-95db-6d12a0f542b8`, report zaznamenal PASS pre Chrome/CDP, verejné vlákno bez prihlásenia a stiahnutie PNG 151974 cez Playwright downloadMedia. Súbor mal 21 689 B, PNG magic `89504e470d0a1a0a` a SHA-256 `f2c1d4f903b5e29c39fd86d1c0006f239f5a5a5b0dd0a2237deb329a6d6ee70e`. Celkový systémový stav behu bol failed; celý produkčný cyklus a nový checkpoint neboli potvrdené. Ide o dôkaz akvizície podľa reportu behu, nie o nezávislé opätovné stiahnutie alebo publikáciu.
+
+GitHub-hosted runner v [prihlasovacom teste](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45346332798) aj [verejnom teste](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/45348061001) vrátil HTTP 403. Nové rozhodnutie vlastníka: Azzurra 157954 získavať cez natívny Cloud Browser existujúceho plánovaného SAT manažéra bez prihlásenia a bez Secrets. Starší návrh sťahovania cez GitHub Actions v PR PiconHub #88 a FullHDGlass #159 nie je produkčná závislosť; nezlučovať jeho nefunkčnú akvizičnú cestu. GitHub Actions možno využívať na následné spracovanie a publikovanie bezpečne overených vstupov. Verejný RSS pre ostatné vlákna zostáva nezmenený.
+
+Automatizácia bola opätovne aktivovaná, jednorazový termín odstránený; najbližší pravidelný beh 3.12.2026 08:00 Europe/Bratislava, každý druhý štvrtok. Porovnávať s historickým registrom 483 príloh a najnovším doloženým checkpointom; sťahovať iba nové/zmenené prílohy Azzurra, overiť formát, plný SHA-256, presné Vhannibal referencie, MASTER V9 a 9 variantov. Pri blokácii alebo neúplnom prenose neposúvať checkpoint a pokračovať ostatnými zdrojmi. Žiadne nové IPK, žiadny ďalší časovač. Úplný inkrementálny produkčný beh s novou prílohou zatiaľ neoverený.
+
+
 [FullHDGlass 1.0.89](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.89) a [PiconHub 0.1.45](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.45) sú dostupné cez produkčné aktualizátory. Pre každú aplikáciu boli skontrolované verejný IPK, jeho kontrolný súčet, verzia v metadátach opkg a obsah inštalovaného výberu. FullHDGlass má zhodný produkčný a testovací kanál. PiconHub má zhodné aktualizačné údaje na `main` a na kompatibilnej vetve `plugin/futuristic-rebuild`.
 
 | Vydanie | Veľkosť IPK | SHA-256 verejného IPK | Oficiálne zostavenie |
