@@ -296,9 +296,9 @@
     "piconProv-b": {
       "filename": "piconProv.zip",
       "root": "piconProv",
-      "png_count": 1402,
-      "size": 31232619,
-      "sha256": "6bba8b5bf63f5b27e5e506e45b2320f74a2395bdc4c225b8d07bfdcbb97f7a10",
+      "png_count": 1452,
+      "size": 33184596,
+      "sha256": "c203ef2cebed4e1466c8cff40d6cc82b869fa92b177c1df12f6af3f81c3ebfde",
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/black/piconProv.zip",
       "publication_source_id": "fullhd-production",
       "resolution": [
@@ -310,9 +310,9 @@
     "piconProv-220": {
       "filename": "piconProv.zip",
       "root": "piconProv",
-      "png_count": 1396,
-      "size": 14396069,
-      "sha256": "cf86080a2ab95fea9992e982bbd7150abaee49d695a1de7f18d25c15fc0304ef",
+      "png_count": 1467,
+      "size": 15791950,
+      "sha256": "cba12a408d19a8093cf9fb93f0d218405e5ad0fb7d13373e9cb33f356520cbb1",
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/transparent/piconProv.zip",
       "publication_source_id": "fullhd-production",
       "resolution": [
@@ -390,6 +390,34 @@
       "sha256": "bcdf80cc9ab7ca8eff12b930219e46ffc8d57a0a0674377e95e3bc374fb2a177",
       "root": "piconCam",
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/cam/transparent/piconCam.zip"
+    },
+    "piconProv-w-v2": {
+      "delivery": "canonical-220x132-v2",
+      "root": "piconProv",
+      "resolution": [
+        220,
+        132
+      ],
+      "base_asset_id": "piconProv-w",
+      "base_sha256": "491ff2a8d28c3e6fe06f6eb426a83617794b0574c9593b7392bfb4e788fb19c2",
+      "extensions": [
+        {
+          "filename": "piconProv.zip",
+          "root": "piconProv",
+          "png_count": 60,
+          "size": 2404485,
+          "sha256": "e362e8636b23ec203e954a381ccadffb76420b4bb28bb320f0bd4a8f8e28c6d7",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/white/extension-01/piconProv.zip",
+          "publication_source_id": "fullhd-production",
+          "resolution": [
+            220,
+            132
+          ],
+          "delivery": "canonical-220x132-v2"
+        }
+      ],
+      "png_count": 1447,
+      "unpacked_size": 35510894
     }
   }
 }
