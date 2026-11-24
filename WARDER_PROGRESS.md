@@ -2,7 +2,8 @@
 
 - Používateľ VU+ Solo 4K / OpenATV 8.1 hlási úspešnú aktualizáciu 1.0.91 bez problémov, dva bežné reštarty Enigmy a správne plynulé rolovanie. Ide o potvrdenie konkrétneho prijímača, nie dôkaz odstránenia všetkých natívnych pádov.
 - **Schválená úloha na najbližšiu aktualizáciu (zatiaľ neimplementovaná):** skryť bočné posuvníky popisov EPG vo všetkých piatich režimoch UserInfo (všetkých sedem polí v `Screens/G17_UserInfo.py`), zmeniť `scrollbarMode="showOnDemand"` na `scrollbarMode="showNever"` a prispôsobiť príslušné regresné testy. Overiť aj správanie natívneho ScrollLabel na OpenATV a OpenPLi, vrátane nezmeneného plynulého posunu a ochrany životného cyklu. Nemeniť rýchlosť, časovanie, grafiku ani funkčnosť rolovania.
-- Vlastník schválil evidenciu a zaradenie do najbližšej dávky, **nevydávať samostatný IPK** kvôli tejto drobnosti. Produkcia zostáva 1.0.91.
+- **Druhá schválená úloha pre tú istú dávku (zatiaľ neimplementovaná):** zrušiť nekonečné opakovanie rolovania EPG vo všetkých piatich režimoch UserInfo, nezávisle pre každé z oboch polí. V `warderUserInfoScroll.py` zachovať plynulý pohyb 2 px/55 ms, po dosiahnutí konca ponechať krátku pauzu, vrátiť text na začiatok a zastaviť časovač. Opätovné rolovanie spustiť iba pri zmene programu alebo opätovnom otvorení okna; opakovaná aktualizácia nezmeneného EPG ho nesmie znovu spustiť. Krátke texty ostávajú statické. Zachovať ochrany pri skrytí/uzavretí a overiť regresnými testami jednorazový cyklus, nezávislosť polí, opätovné otvorenie a zmenu programu na OpenATV/OpenPLi. Používateľ potvrdil plynulosť 1.0.91, upozornil však na nekonečnú slučku.
+- Vlastník schválil evidenciu oboch úloh a zaradenie do najbližšej dávky, **nevydávať samostatný IPK** kvôli týmto drobnostiam. Produkcia zostáva 1.0.91.
 
 ## 24. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.91
 
