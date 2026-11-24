@@ -1,0 +1,29 @@
+{
+  "source_run": 45438569616,
+  "source_commit": "6f1df44e1a9ac40db54355afc548135c5dbbe5d8",
+  "targets": {
+    "AFN.png": "9b1acb6533fb7f46c841b291fe91d521488467ddc98b0b4f3924df3b7367881d",
+    "AMERICAN FORCE NETWORK.png": "9b1acb6533fb7f46c841b291fe91d521488467ddc98b0b4f3924df3b7367881d",
+    "CANAL DIGITAAL.png": "f578724e17dc433cdbf38337d74a3efd2f2b0b5e28e0b8b332572d9ac5591364",
+    "CANALDIGITAAL.png": "f578724e17dc433cdbf38337d74a3efd2f2b0b5e28e0b8b332572d9ac5591364",
+    "FRANSAT.png": "44fecb5f1aa8ae49dec0006182890428bd69f51091747f54cd29a2c24a1833b6",
+    "HBO.png": "e18d12b2c64b913dd2213e7ea423c26244c1887933b874dc1501d381d3601376",
+    "NILESAT LIBANON.png": "24cf41c25f1c387356ca831c08fd857109f03386782f99c74dcc1a409a7631e5",
+    "TV VLAANDEREN.png": "313d117eb33a983fa2f4df47adca866d9b210319cd45220766af60f0bf5250b1"
+  },
+  "afn_donor": "AMERICAN FORCE NETWORK.png",
+  "baseline": {
+    "transparent": {
+      "count": 1249,
+      "sha256": "ce67b9a7ba06bea8ffc5499f2d6c2594c5633e2cd8f94d14087c70c625912daa"
+    },
+    "white": {
+      "count": 1312,
+      "sha256": "dbfe59b48408b8982d0b656fc7af3a1497fe1688c7b1d354d7538542f43c42a5"
+    },
+    "black": {
+      "count": 1339,
+      "sha256": "4e71bce1d5007b87a82d0332d7c144c2b9691cfbf588dfca0b30d9a80adfccf5"
+    }
+  }
+}
