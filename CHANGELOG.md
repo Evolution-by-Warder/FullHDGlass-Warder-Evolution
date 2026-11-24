@@ -4,6 +4,8 @@ Plynulé rolovanie dlhých EPG popisov v druhom infobare a všetkých piatich re
 
 [Poznámky k vydaniu](docs/warder-1.0.91-release-notes.md).
 
+**OVERENÉ A PUBLIKOVANÉ:** PR #162, 19/19 CI, [publisher #45419653597](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45419653597) SUCCESS. [Ostrý IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.91/enigma2-plugin-skins-fullhdglass_1.0.91_all.ipk), 18 811 888 B, SHA-256 `009b40b036e753bd559d96b80655d7629503c9c5717d7f346ec4f3344c036f77`. Oba aktualizačné kanály 1.0.91.
+
 ## 1.0.90 — 24. november 2026
 
 Obnovený výpis chýbajúcich ikon menu v /tmp/missing_menu_icons.txt bez duplicít. Opravená grafika FullHDGlass v menu Zoznam a ikony3. Dlhé popisy EPG sa automaticky rolujú vo všetkých piatich režimoch informácií o programe, pri aktuálnej a nasledujúcej udalosti nezávisle. Po inštalácii reštartujte Enigma2.

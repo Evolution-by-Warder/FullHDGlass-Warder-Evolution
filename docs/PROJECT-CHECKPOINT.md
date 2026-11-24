@@ -1,6 +1,6 @@
 # FullHDGlass Warder Evolution — PROJECT CHECKPOINT
 
-**Aktuálny overený baseline 24. 11. 2026:** FullHDGlass 1.0.90, [produkčné vydanie](CURRENT-RELEASE.md), podrobnosti v [WARDER_PROGRESS.md](../WARDER_PROGRESS.md). Historické údaje nižšie ostávajú zachované.
+**Aktuálny overený baseline 24. 11. 2026:** FullHDGlass 1.0.91, [produkčné vydanie](CURRENT-RELEASE.md), podrobnosti v [WARDER_PROGRESS.md](../WARDER_PROGRESS.md). Historické údaje nižšie ostávajú zachované.
 
 > **Recovery status, 2026-10-23:** Current release/publication and backup state are in [PROJECT-CONTINUITY.md](../PROJECT-CONTINUITY.md) and [BACKUP-RESTORE.md](BACKUP-RESTORE.md). Older version numbers, publication states and immediate-next-work instructions below are dated history. This banner does not retire graphics/compatibility rules or claim unresolved receiver findings are fixed.
 

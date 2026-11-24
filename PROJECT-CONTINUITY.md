@@ -1,3 +1,13 @@
+## 24. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.91
+
+Vlastník schválil vydanie celej dávky #162. Plynulé rolovanie dlhých popisov EPG vo všetkých piatich režimoch používateľských informácií vrátane druhého infobaru, preventívne ochrany časovačov a natívnych prvkov, opravené voliteľné zdroje tlačidiel QuickMenu a InformationNetwork. Plynulý posun 2 px/55 ms, nezávislé polia, krátke popisy statické, bezpečné zastavenie a odpojenie časovačov pri skrytí/uzavretí; kontrola dostupnosti natívnych prvkov. Opravené podmienené zdroje key_blue, key_menu, key_info len v dotknutých oknách bez zmeny ich geometrie. Zachované grafiky, SAT/radio dáta, používateľské nastavenia a predchádzajúce opravy.
+
+- Finálny HEAD PR #162 `d735c95b493c755d3ecd87a36df03fabfa824f7e`: 19/19 úspešných CI; presná kontrola historickej geometrie doplnená o schválené podmienené zdroje, bez uvoľnenia kontroly iných zmien. Merge `34be0f3d9cfafd0e0ea4911daab662aeea51c55d`.
+- [Kanonický publisher #45419653597](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45419653597) COMPLETED/SUCCESS vrátane koncového overenia source/Release/IPK/feed/SHA. [Ostrý Release v1.0.91](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.91) nie je draft ani prerelease.
+- [IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.91/enigma2-plugin-skins-fullhdglass_1.0.91_all.ipk): 18 811 888 B, SHA-256 `009b40b036e753bd559d96b80655d7629503c9c5717d7f346ec4f3344c036f77`, control 1.0.91-1. Oba aktualizačné feedy 1.0.91 majú rovnaký hash; 10 lokalizovaných poznámok. Publikačný commit `fb90c6afb75cbf8d23992e6a8e727a5175f190b9`.
+- Retencia main/packages: 1.0.91, 1.0.90, 1.0.89, 1.0.88, plus legacy TEST 1.0.72 a bootstrap 1.0.18.
+- Fyzický test novej verzie na prijímači zatiaľ nepotvrdený. Ochrany sú preventívne; príčina hláseného natívneho C++ pádu nie je jednoznačne doložená a jeho odstránenie nie je potvrdené.
+
 ## 24. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.90
 
 Vlastník schválil vydanie celej dávky #161. Obnovený výpis chýbajúcich ikon menu bez duplicít, opravená schválená grafika FullHDGlass v menu Zoznam a ikony3 a automatické nezávislé rolovanie dlhých popisov EPG vo všetkých piatich režimoch. Vlastné ikony majú prednosť; používa sa pôvodný schválený obrázok. Krátke popisy sú statické, časovače sa zastavia pri skrytí okna. DTT ITALIA, SAT/radio dáta, ostatné predchádzajúce opravy a používateľské nastavenia ostali nedotknuté.
