@@ -7,7 +7,7 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 def image(b):return Image.open(io.BytesIO(b)).convert('RGBA')
 def get(url):
  with urllib.request.urlopen(url,timeout=40) as r:return r.read()
-m=get('https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/05f7e6e92f55c1476b1310287e9918bf7ff/plugin/artwork/templates/picons/black-sablona.png')
+m=get('https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/05f7e6e92f55c1476b1310287e9918f0968bf7ff/plugin/artwork/templates/picons/black-sablona.png')
 assert sha(m)=='61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe';master=image(m)
 delta={}
 with zipfile.ZipFile('vector-review/Warder_Vector_Provider_REVIEW.zip') as src:

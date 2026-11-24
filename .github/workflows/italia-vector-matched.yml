@@ -2,7 +2,7 @@ name: Build nine verified vector and approved alias variants
 on:
   push:
     branches: [work/italia-vector-matched-20261124]
-    paths: ['.github/workflows/italia-vector-matched.yml']
+    paths: ['.github/workflows/italia-vector-matched.yml', 'reports/italia-vector-matched-20261124/build.py']
 permissions:
   contents: write
   actions: read
