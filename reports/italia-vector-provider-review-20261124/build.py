@@ -5,10 +5,10 @@ import cairosvg
 from concurrent.futures import ThreadPoolExecutor
 ROOT=Path(__file__).parent
 plan=json.loads((ROOT/'plan.json').read_text())
-def get(u):
+def get(u,limit=8*1024*1024):
  req=urllib.request.Request(u,headers={'User-Agent':'WarderEvolution-LogoReview/1.0 (https://warder-evolution.eu/)'})
  with urllib.request.urlopen(req,timeout=30) as r:
-  b=r.read(8*1024*1024+1);assert len(b)<=8*1024*1024
+  b=r.read(limit+1);assert len(b)<=limit
   return b
 def sha(b):return hashlib.sha256(b).hexdigest()
 def gitsha(b):return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
@@ -18,7 +18,7 @@ styles=('transparent','white','black');frames={};inventory={}
 for s,h in [('white','c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589'),('black','61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe')]:
  b=get(master+s+'-sablona.png');assert sha(b)==h;frames[s]=Image.open(io.BytesIO(b)).convert('RGBA');assert frames[s].size==(220,132)
 for s,h in [('transparent','d751759b7783cd25de5cbc830ea1eec66c7837f9a7bcebcaa888ccca2528cf33'),('white','97ad98bb12a7efe46f79c36e9d22ca2a0d35a9481f4677cd1964c8aaefd5f308'),('black','6be9ea1c9c68e307a3aa5fc5c25c4a1afa9921ffa61602fad2c3f48baae88477')]:
- b=get(base+s+'/piconProv.zip');assert sha(b)==h
+ b=get(base+s+'/piconProv.zip',32*1024*1024);assert sha(b)==h
  with zipfile.ZipFile(io.BytesIO(b)) as z:inventory[s]=set(z.namelist())
 def load(x):
  try:

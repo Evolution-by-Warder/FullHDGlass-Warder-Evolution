@@ -2,7 +2,7 @@ name: Italian provider original vector source review
 on:
   push:
     branches: [work/italia-vector-provider-review-20261124]
-    paths: ['.github/workflows/italia-vector-provider-review.yml']
+    paths: ['.github/workflows/italia-vector-provider-review.yml', 'reports/italia-vector-provider-review-20261124/build.py']
 permissions:
   contents: read
 jobs:
