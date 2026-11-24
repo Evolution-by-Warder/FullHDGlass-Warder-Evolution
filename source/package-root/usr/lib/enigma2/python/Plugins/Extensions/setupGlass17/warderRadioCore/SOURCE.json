@@ -2,10 +2,10 @@
   "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
   "commit": "2dc74563c629cad562c85def4cb5d16ca77bbdc6",
   "source_path": "plugin/src/Plugins/Extensions/WarderPiconHub",
-  "policy": "Exact canonical Warder engine/parser/model copies. GUI is provided by the host application. One data source and the same installation lock as PiconHub; do not independently fork these files.",
+  "policy": "Shared Warder source with recorded host-specific changes. GUI is provided by the host application. One data source and the same installation lock as PiconHub. Preserve verified host-only changes; keep localization files canonical.",
   "sha256": {
-    "warder_engine.py": "c3810eb73f6d4f2f26622eef9c7edb06f218e829b34dec7809f31a30b19847e0",
-    "warder_model.py": "9f17814c1c97132c4d35ae9ce47ce0d0266e1fa348523665b5ce56aa0dacc5d5",
+    "warder_engine.py": "2cf4bf1a4ee5ab84c9f04ef0c3793ae74aa3bb52d1066b16d9142947184a7268",
+    "warder_model.py": "e8e7e0a83f7509f19c79ce63cefc651283954f2b2b242e6c6b0c78c048ebda0f",
     "warder_i18n.py": "027d7e15cc4ebc48444f9ae40794000174c36aca89228917066a439b88607506",
     "warder_dab.py": "c51b13406200040be77cfb51a8c5de7a9f9c8e3e8717c074da41a7207897b6c7",
     "warder_skin_sync.py": "fdb761014e98cb6f1c1672e6d948d769e55ae7a807a958e37cac2870f2f1afcb",
@@ -16,5 +16,9 @@
   "file_source_commits": {
     "data/translations.json": "b937fbd0c2eda7891dcefff9d02fd8e00cc52982",
     "warder_i18n.py": "b937fbd0c2eda7891dcefff9d02fd8e00cc52982"
+  },
+  "host_source_commits": {
+    "warder_engine.py": "26d3d5aefc234f106b04a205eb628e152c10bf7f",
+    "warder_model.py": "26d3d5aefc234f106b04a205eb628e152c10bf7f"
   }
 }
