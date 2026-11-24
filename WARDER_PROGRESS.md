@@ -1,3 +1,8 @@
+## 24. 11. 2026 — #111: doplnenie chýbajúcich 21-jazykových častí (pracovná dávka)
+
+- Vlastník schválil doplnenie zvyšných jazykov po audite #111. Hlavných päť gettext domén a výber krajiny rádia nemeníme. Spoločný katalóg PiconHub [PR #93](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/93) má 21 × 128 = 2688 položiek, 11 nových jazykov, zachované všetky pôvodné hodnoty. FullHDGlass kopíruje i18n a JSON presne z `b937fbd0c2eda7891dcefff9d02fd8e00cc52982`; SOURCE.json eviduje per-file pôvod aj SHA256.
+- Vlastné dialógy aktualizátora 21 jazykov, Multi EPG 21 dvojíc tlačidiel, poznámky k 1.0.92 v zdroji 21 jazykov, aliasy sq/gr/cz/ua/cn a anglický fallback. Pridané regresné testy. Existujúce ostré IPK 1.0.92 ani produkčný feed sa nemenia; jazyková dávka patrí do najbližšieho riadneho vydania, fyzické overenie a RTL typografia nedoložené. Zostáva overiť CI oboch repozitárov a zlúčiť zdroje.
+
 ## 24. 11. 2026 — FullHDGlass 1.0.92: OVERENÉ A PUBLIKOVANÉ; uzavreté hotové úlohy
 
 - Vlastník schválil spoločné ostré vydanie všetkých pripravených opráv a uzavretie hotových evidencií. [PR #174](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/174) zlúčený `779c0f6d2288bfda278660a05323d443a9741d82`; finálny kandidát `779d7ba82d39b2853ca6ad0cb62274a74704dcf7`: 20/20 workflowov, 25/25 checks SUCCESS. 8 MultiEPG + 8 UserInfo + 11 native EPG + 8 provider v2 cielených testov PASS. Opravená závislosť testu na Pillow (skutočné PNG z stdlib), bez zmeny produkčného kódu.

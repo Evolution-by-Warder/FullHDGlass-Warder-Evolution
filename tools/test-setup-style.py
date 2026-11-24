@@ -91,6 +91,16 @@ def fingerprint_source(source):
     if source.count(reviewed_storage) != 1:
         raise AssertionError("Unreviewed internal-flash threshold/controller drift")
     source = source.replace(reviewed_storage, original_storage, 1)
+    # #111: only the exact language alias resolver import and call are
+    # approved. Normalize this pair to the previous reviewed controller;
+    # reject a partial edit, duplicate occurrence or unrelated change.
+    reviewed_import = 'from .warderUpdateText import update_text, language_code as _warderUpdateLanguage'
+    reviewed_call = 'lang = _warderUpdateLanguage(config.osd.language.value)'
+    if reviewed_import in source or reviewed_call in source:
+        if source.count(reviewed_import) != 1 or source.count(reviewed_call) != 1:
+            raise AssertionError("Unreviewed updater language resolver drift")
+        source = source.replace(reviewed_import, 'from .warderUpdateText import update_text', 1)
+        source = source.replace(reviewed_call, 'lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()', 1)
     return style.normalized(ast.parse(source))
 
 
