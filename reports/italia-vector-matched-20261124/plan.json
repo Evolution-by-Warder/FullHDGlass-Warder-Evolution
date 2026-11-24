@@ -1,0 +1,27 @@
+{
+  "source_run": 45442517444,
+  "names": [
+    "TELLY.png",
+    "WARNER BROS DISCOVERY.png",
+    "WARNER BROS. DISCOVERY.png"
+  ],
+  "pixel_digest": "c47783c3281ea9f509ad0ed6076272493d4fa0c7f1041dc10fc0837e37208449",
+  "alias": {
+    "target": "VIASAT UKRAINE.png",
+    "donor": "VIASAT.UA.png"
+  },
+  "base": {
+    "transparent": {
+      "count": 1282,
+      "sha256": "d751759b7783cd25de5cbc830ea1eec66c7837f9a7bcebcaa888ccca2528cf33"
+    },
+    "white": {
+      "count": 1337,
+      "sha256": "97ad98bb12a7efe46f79c36e9d22ca2a0d35a9481f4677cd1964c8aaefd5f308"
+    },
+    "black": {
+      "count": 1363,
+      "sha256": "6be9ea1c9c68e307a3aa5fc5c25c4a1afa9921ffa61602fad2c3f48baae88477"
+    }
+  }
+}
