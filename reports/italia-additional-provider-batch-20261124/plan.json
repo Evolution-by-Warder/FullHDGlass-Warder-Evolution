@@ -1,0 +1,26 @@
+{
+  "source_run": 45445091057,
+  "names": [
+    "MANA' MANA' SPORT.png",
+    "TELESAT.png",
+    "TRAVELXP.png",
+    "7GOLD MUX77.png",
+    "7GOLD MUX88.png",
+    "PROMO TVCINE HD.png"
+  ],
+  "pixel_digest": "831f0d00de326dc065a97b19aa727acaa66fc9e92af36551e402c81dc255b000",
+  "base": {
+    "transparent": {
+      "count": 1291,
+      "sha256": "2e8ba0293f2ff6d471022f26cee6f81a354d6a3736acac4ac59ba13784331b56"
+    },
+    "white": {
+      "count": 1340,
+      "sha256": "28a5341a7fc4d5cd7ef2d528f9ff2513c808c0844743c88d75b2fba828eb85b4"
+    },
+    "black": {
+      "count": 1365,
+      "sha256": "7a82fd63620f9af04e0d11f34611110d6f42e23a2657469bb71d294882b1d4cd"
+    }
+  }
+}
