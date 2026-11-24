@@ -20,6 +20,14 @@ def configure_graph(config):
 
 
 def install(epg_module, config, StaticText, translate, program_info, report_error=None, info_bar=None):
+    # Native row-based Multi EPG uses its own action controller. Installing
+    # its scoped yellow/blue navigation must not depend on the graphical
+    # EPG compatibility hook, which may be absent on older image versions.
+    try:
+        from .warderSimpleMultiEpg import install as install_simple_multi
+        install_simple_multi(epg_module, config, info_bar)
+    except ImportError:
+        pass
     WarderEPGSelection = getattr(epg_module, "EPGSelectionGrid", None)
     modern = WarderEPGSelection is not None
     if not modern:
