@@ -1,0 +1,121 @@
+{
+  "added": 171,
+  "dtt": [
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-50x30-transparent-20258d395e8576ae.zip",
+      "parts": 1,
+      "preserved": 323,
+      "resolution": "50x30",
+      "sha256": "20258d395e8576ae34e9e8f57e27a704f9452f27c4feab977c339f09c726aaa1",
+      "style": "transparent"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-50x30-white-2545d78c9961666d.zip",
+      "parts": 1,
+      "preserved": 323,
+      "resolution": "50x30",
+      "sha256": "2545d78c9961666dc5ba199f64a788aa3dcc25028e4819720b41adfd74fb07a5",
+      "style": "white"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-50x30-black-b8f7c3864a3cd230.zip",
+      "parts": 1,
+      "preserved": 323,
+      "resolution": "50x30",
+      "sha256": "b8f7c3864a3cd230beb026af10ab4c197735170262075eb7b278c1c5515fa481",
+      "style": "black"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-220x132-transparent-1b116be506c73293.zip",
+      "parts": 4,
+      "preserved": 323,
+      "resolution": "220x132",
+      "sha256": "1b116be506c732935854fb8919a1c32ce96370ca27c97c26d89901fda15edb6d",
+      "style": "transparent"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-220x132-white-e9f77e549a839a45.zip",
+      "parts": 10,
+      "preserved": 323,
+      "resolution": "220x132",
+      "sha256": "e9f77e549a839a45d549010acb6471d4bfcf71b7ef39a354a44812888ed618d2",
+      "style": "white"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-220x132-black-c7c2e7d0ab24a8bf.zip",
+      "parts": 10,
+      "preserved": 323,
+      "resolution": "220x132",
+      "sha256": "c7c2e7d0ab24a8bf329f95044c90f34125165d01e0e9674287b9c24e907b21da",
+      "style": "black"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-400x240-transparent-9140adce45b21032.zip",
+      "parts": 10,
+      "preserved": 323,
+      "resolution": "400x240",
+      "sha256": "9140adce45b21032f5dc273b724ca6a0eabf6680c06077920b1168c37f381996",
+      "style": "transparent"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-400x240-white-4e1a1f4f62b8990b.zip",
+      "parts": 14,
+      "preserved": 323,
+      "resolution": "400x240",
+      "sha256": "4e1a1f4f62b8990b639211a64f250f03a61969a33157de352ca1158d524eefaf",
+      "style": "white"
+    },
+    {
+      "added": 19,
+      "count": 342,
+      "filename": "warder-dtt-italia-400x240-black-8c1554fe2e28b186.zip",
+      "parts": 13,
+      "preserved": 323,
+      "resolution": "400x240",
+      "sha256": "8c1554fe2e28b186918492f31f71932d73eb924bd91ff2238135c8c607fee613",
+      "style": "black"
+    }
+  ],
+  "manifest_git_sha": "fa98965f3d69298e19342b12987b4e63ad1724a1",
+  "manifest_sha256": "f5dc88ab1ae5664823e94849cd5f90596bc9d56b7207782d45f56efcd08f7d0d",
+  "names": {
+    "1_0_16_69_A000_217C_EEEE0000_0_0_0.png": "TVA TELENORMANNA",
+    "1_0_19_5F_A000_217C_EEEE0000_0_0_0.png": "TELE ONE",
+    "1_0_19_61_A000_217C_EEEE0000_0_0_0.png": "TELERENT 7GOLD",
+    "1_0_19_64_A000_217C_EEEE0000_0_0_0.png": "TELESTAR",
+    "1_0_19_65_A000_217C_EEEE0000_0_0_0.png": "6 SESTARETE TV",
+    "1_0_19_6C_A001_217C_EEEE0000_0_0_0.png": "TVM",
+    "1_0_19_6F_A001_217C_EEEE0000_0_0_0.png": "SICILIAUNO",
+    "1_0_19_77_A001_217C_EEEE0000_0_0_0.png": "TELEIBLEA",
+    "1_0_19_90_A000_217C_EEEE0000_0_0_0.png": "ETNA CHANNEL",
+    "1_0_1_1AA2_68E1_217C_EEEE0000_0_0_0.png": "Canale81",
+    "1_0_1_1F6F_80E3_217C_EEEE0000_0_0_0.png": "NOTIX TV",
+    "1_0_1_59_A000_217C_EEEE0000_0_0_0.png": "ANTENNA SICILIA",
+    "1_0_1_5A_A000_217C_EEEE0000_0_0_0.png": "Video Regione",
+    "1_0_1_5B_A000_217C_EEEE0000_0_0_0.png": "TELECOLOR",
+    "1_0_1_5D_A000_217C_EEEE0000_0_0_0.png": "Video Mediterraneo",
+    "1_0_1_5E_A000_217C_EEEE0000_0_0_0.png": "TGS",
+    "1_0_1_60_A000_217C_EEEE0000_0_0_0.png": "TRM",
+    "1_0_1_67_A000_217C_EEEE0000_0_0_0.png": "CANALE ITALIA EXTRA",
+    "1_0_1_7B_A001_217C_EEEE0000_0_0_0.png": "TELE GELA"
+  },
+  "pixel_digest": "ebe7d1fcbad17b25aa086baba1be126bbcd45fba7984fd702c647afb3666ae8c",
+  "sums_git_sha": "2b8053eb0e83601af8ba7fff443596a5fd81d049",
+  "unchanged_catalog_entries": 498
+}
