@@ -1,0 +1,38 @@
+name: Build verified Italian intake additions (branch only)
+on:
+  push:
+    branches: [work/italia-user-source-reconcile-20261124]
+permissions:
+  contents: write
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/
+            /tools/apply-italia-user-intake.py
+            /assets/warder/downloads.json
+            /assets/warder/downloads/picons/providers/
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/warder-dtt-italia-*
+            /reports/dtt-italia-20261123/recipe.json
+            /reports/italia-user-20261124/
+      - name: Generate additive exact-byte candidate
+        run: python3 tools/apply-italia-user-intake.py
+      - name: Commit verified candidate on the working branch only
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = work/italia-user-source-reconcile-20261124
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/italia-intake-baseline.yml .github/workflows/italia-intake-apply.yml
+          git add --sparse assets/warder/downloads.json assets/warder/downloads/picons/providers/ assets/warder/downloads/picons/channels/manifest.json assets/warder/downloads/picons/channels/SHA256SUMS assets/warder/downloads/picons/channels/warder-dtt-italia-* reports/italia-user-20261124/ .github/workflows/verify-fullhdglass-integrated-20261122.yml .github/workflows/fullhdglass-stable-1.0.82-preflight.yml
+          git diff --cached --check
+          git commit -m "Build verified 24 DTT aliases and 99 missing provider variants"
+          git push origin HEAD:work/italia-user-source-reconcile-20261124
