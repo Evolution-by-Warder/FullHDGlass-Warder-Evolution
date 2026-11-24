@@ -1,0 +1,327 @@
+{
+  "baseline": "06ccbed975eb1ac6a669819fa86e27f160388088c7458bf5b90176a906f8083b",
+  "dtt": [
+    "1_0_16_426_2_217C_EEEE0000_0_0_0.png",
+    "1_0_16_427_2_217C_EEEE0000_0_0_0.png",
+    "1_0_16_429_2_217C_EEEE0000_0_0_0.png",
+    "1_0_16_42A_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_41B_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_41C_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_41D_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_41E_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_41F_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_420_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_421_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_423_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_42F_2_217C_EEEE0000_0_0_0.png",
+    "1_0_1F_431_2_217C_EEEE0000_0_0_0.png"
+  ],
+  "providers": [
+    {
+      "target": "ADN GROUP.png",
+      "donor": "ADN ITALIA.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "ADN.png",
+      "donor": "ADN ITALIA.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "ADTV NETWORK.png",
+      "donor": "ADTV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "AL JAZEERA BALKANS.png",
+      "donor": "AJMN.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "AL JAZZERA BALKANS.png",
+      "donor": "AJMN.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "AL JAZZERA.png",
+      "donor": "AJMN.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "ARGIVA.png",
+      "donor": "ARQIVA LTD.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ARQIVA FRANCE.png",
+      "donor": "ARQIVA LTD.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "DIGITAL BROADCASTING S.R.O.png",
+      "donor": "DIGITAL BROADCASTING S.R.O..png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "DIGITRK.png",
+      "donor": "DIGITAL PLATFORM.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "DIGITURK.png",
+      "donor": "DIGITAL PLATFORM.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "E' MARCHE TV.png",
+      "donor": "ETV MARCHE.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "E' TV MARCHE.png",
+      "donor": "ETV MARCHE.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "E'TV MARCHE.png",
+      "donor": "ETV MARCHE.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "EDEM IPTV.png",
+      "donor": "EDEM TV.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "EI-TOWERS.png",
+      "donor": "EITOWERS.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "ITALIANETWORK.png",
+      "donor": "ITALIA NETWORK.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "KABEL KIOSK.png",
+      "donor": "KABELKIOSK.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "MAGYAR TELEVIZIO.png",
+      "donor": "MTVA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "PRIMATIVVÙ.png",
+      "donor": "PRIMATIVV.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "PUBLIROSE.png",
+      "donor": "PUBBLIROSE.png",
+      "styles": [
+        "transparent",
+        "white"
+      ]
+    },
+    {
+      "target": "RAI_WAY.png",
+      "donor": "RAIWAY.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "REGGIO TV HD.png",
+      "donor": "REGGIO TV.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "SCHWEIZER FERNSEHEN.png",
+      "donor": "SCHWEIZER RADIO UND FERNSEHEN.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "SCOPUS NETWORK.png",
+      "donor": "SCOPUS.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TADIRAN SCOPUS.png",
+      "donor": "SCOPUS.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TANDBERG.png",
+      "donor": "TANDBERGTV.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELEFONICA SERVICIOS AUDIOVISUALES .png",
+      "donor": "TSA.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "TELEFONICA SERVICIOS AUDIOVISUALES.png",
+      "donor": "TSA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELEFONICA SPAIN .png",
+      "donor": "TSA.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "TELEFONICA SPAIN.png",
+      "donor": "TSA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELEFONICA.png",
+      "donor": "TSA.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "TELENUOVO.png",
+      "donor": "TELENUOVO-VR.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "TV QUI HD.png",
+      "donor": "TVQUI.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "target": "VIASAT EAST.png",
+      "donor": "VIASAT.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "VIASAT.UA.png",
+      "donor": "VIASAT.png",
+      "styles": [
+        "transparent"
+      ]
+    },
+    {
+      "target": "ΟΤΕ.png",
+      "donor": "OTE.png",
+      "styles": [
+        "transparent",
+        "white",
+        "black"
+      ]
+    }
+  ],
+  "evidence": [
+    "https://digitalbroadcasting.org/?channel=dvb",
+    "https://sites.google.com/view/alessandriadigitale/home-page/info-mux-nit"
+  ],
+  "review_only": 48,
+  "unresolved_dtt": 65,
+  "rejected_dtt": 17,
+  "provider_clean_logo_required": 236,
+  "provider_conflict": 2
+}
