@@ -1,0 +1,36 @@
+name: Build eighteen reviewed missing provider master variants
+on:
+  push:
+    branches: [work/italia-additional-provider-batch-20261124]
+    paths: ['.github/workflows/italia-additional-provider-batch.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /reports/italia-additional-provider-batch-20261124/*
+            /assets/warder/downloads.json
+            /assets/warder/downloads/picons/providers/transparent/piconProv.zip
+            /assets/warder/downloads/picons/providers/white/piconProv.zip
+            /assets/warder/downloads/picons/providers/black/piconProv.zip
+      - uses: actions/download-artifact@v4
+        with:
+          name: italian-additional-logo-review
+          run-id: 45445091057
+          github-token: ${{ github.token }}
+          path: vector-review
+      - run: python -m pip install --quiet Pillow==12.3.0 numpy==2.3.5
+      - run: python reports/italia-additional-provider-batch-20261124/build.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse assets/warder/downloads.json assets/warder/downloads/picons/providers reports/italia-additional-provider-batch-20261124/build.json
+          git commit -m "Build 18 reviewed variants for six provider identities"
+          git push origin HEAD:work/italia-additional-provider-batch-20261124
