@@ -1,0 +1,49 @@
+name: Audit 171 new live DTT Italy PNGs across nine ZIPs
+on:
+  push:
+    branches: [audit/italia-dtt-vhannibal-19-20261124]
+    paths: ['.github/workflows/audit-italia-dtt-vhannibal-19.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - run: |
+          python3 - <<'PY'
+          import hashlib,io,json,struct,urllib.request,zipfile,concurrent.futures
+          R='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/'
+          C='assets/warder/downloads/picons/channels/'
+          def get(u):
+              with urllib.request.urlopen(u,timeout=90) as r:return r.read()
+          def sha(b):return hashlib.sha256(b).hexdigest()
+          F=R+'main/';B=R+'b49196d5ff83d924bc5049f0e904c5ae594acf26/'
+          old=get(B+C+'manifest.json');raw=get(F+C+'manifest.json')
+          assert sha(old)=='4541dea07b011d2cac2981c5b8203ebae7e363c85e481316a4cf6c0b04d9b6a6'
+          assert sha(raw)=='f5dc88ab1ae5664823e94849cd5f90596bc9d56b7207782d45f56efcd08f7d0d'
+          assert raw==get('https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/main/plugin/src/Plugins/Extensions/WarderPiconHub/data/channel-manifest.json')
+          a,b=json.loads(old),json.loads(raw);assert len(a['packages'])==len(b['packages'])==507 and len(a['parts'])==len(b['parts'])==2224
+          assert [x for x in a['packages'] if x['selector_id']!='DTT_ITALIA']==[x for x in b['packages'] if x['selector_id']!='DTT_ITALIA']
+          names=set(json.loads(get(F+'reports/italia-dtt-vhannibal-19-20261124/build.json'))['names']);assert len(names)==19
+          metaA={p['filename']:p for p in a['parts']};metaB={p['filename']:p for p in b['parts']}
+          def archive(p,root,meta):
+              def part(u):
+                  n=u.rsplit('/',1)[-1];v=get(root+C+n);assert len(v)==meta[n]['bytes'] and sha(v)==meta[n]['sha256'];return v
+              with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:raw=b''.join(ex.map(part,p['parts']))
+              assert sha(raw)==p['sha256'] and len(raw)==p['bytes'];return zipfile.ZipFile(io.BytesIO(raw))
+          prev={(p['resolution'],p['family']):p for p in a['packages'] if p['selector_id']=='DTT_ITALIA'}
+          new=[p for p in b['packages'] if p['selector_id']=='DTT_ITALIA'];assert len(new)==9
+          for p in new:
+              k=(p['resolution'],p['family']);dim=tuple(map(int,k[0].split('x')))
+              with archive(prev[k],B,metaA) as x,archive(p,F,metaB) as y:
+                  assert x.testzip() is None and y.testzip() is None
+                  assert len(x.namelist())==323 and len(y.namelist())==len(set(y.namelist()))==342
+                  assert set(y.namelist())-set(x.namelist())==names and all(x.read(n)==y.read(n) for n in x.namelist())
+                  for n in y.namelist():
+                      v=y.read(n);assert v[:8]==bytes.fromhex('89504e470d0a1a0a') and struct.unpack('>II',v[16:24])==dim
+              print(k,'342 PNG; 19 new; 323 old byte-identical PASS',flush=True)
+          sums=get(F+C+'SHA256SUMS')
+          assert sums==(sha(raw)+'  manifest.json\n'+''.join(p['sha256']+'  '+p['filename']+'\n' for p in b['parts'])).encode()
+          print('PASS: 9/9 live DTT archives; 171 additions; shared manifests and checksums identical; 498 other packages unchanged')
+          PY
