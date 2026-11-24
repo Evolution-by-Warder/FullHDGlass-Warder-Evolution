@@ -1,0 +1,21 @@
+name: Build reviewed Italia follow-up
+on:
+  push:
+    branches: [work/italia-followup-20261124]
+    paths:
+      - 'tools/apply-italia-followup.py'
+      - 'reports/italia-followup-20261124/plan.json'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/apply-italia-followup.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/warder/downloads reports/italia-followup-20261124/build.json assets/warder/downloads.json
+          git commit -m "Build 201 verified Italian alias PNGs without overwriting originals"
+          git push origin HEAD:work/italia-followup-20261124
