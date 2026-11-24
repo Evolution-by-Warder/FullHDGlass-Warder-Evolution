@@ -1,0 +1,132 @@
+[
+  {
+    "type": "github",
+    "name": "picons-manamanasport.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/manamanasport.default.svg",
+    "git_sha": "ba42962e78689b25528023e495052b1385ceb06c",
+    "targets": [
+      "MANA' MANA' SPORT.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-telesat.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/telesat.default.svg",
+    "git_sha": "03ef6882d2db1e6be44529c9934fba590964ed34",
+    "targets": [
+      "TELESAT.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-travelxp.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/travelxp.default.svg",
+    "git_sha": "5470fe2ac2d36595450e72041ff855328d0ae31d",
+    "targets": [
+      "TRAVELXP.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-teleone16.default.png",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/teleone16.default.png",
+    "git_sha": "904049f533f5052d37b326dfcde582c8bc5ef3ec",
+    "targets": [
+      "TELE ONE.png",
+      "TELEONE.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-telecityliguria.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/telecityliguria.default.svg",
+    "git_sha": "34232803b9ed3b293fbb2442f1e76ed61d6dbdec",
+    "targets": [
+      "TELECITY.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-italia7gold.default.png",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/italia7gold.default.png",
+    "git_sha": "0ea277aeb7c138e187b34067082926234ff6f378",
+    "targets": [
+      "ITALIA 7.png",
+      "7GOLD MUX77.png",
+      "7GOLD MUX88.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-movistarplus.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/movistarplus.default.svg",
+    "git_sha": "bf5a0fd8eef6b1ae21de96fc67b4dda13949df69",
+    "targets": [
+      "MOVIESTAR+ HISPASAT.png",
+      "MOVISTAR+ HISPASAT.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-bbcworldnews.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/bbcworldnews.default.svg",
+    "git_sha": "8910edb26bf8d5c05278fd00748b4739fac5fc79",
+    "targets": [
+      "BBC WORLD.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-osn.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/osn.default.svg",
+    "git_sha": "37f95a7f0071ef6a59007e85516e9d1c6a707e30",
+    "targets": [
+      "OSN SHOWTIME.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-polsatbox.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/polsatbox.default.svg",
+    "git_sha": "ff49049a633d771e22d992f8f55acbe6dedd5c48",
+    "targets": [
+      "CYFROVY POLSAT.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-radiomater.default.png",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/radiomater.default.png",
+    "git_sha": "9010638714f16c8dcb86cf5e9f9b73e588e6ee5a",
+    "targets": [
+      "RADIO MATER DAB%2A.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "picons-tvcine.default.svg",
+    "source": "https://raw.githubusercontent.com/picons/picons/6f1df44e1a9ac40db54355afc548135c5dbbe5d8/build-source/logos/tvcine.default.svg",
+    "git_sha": "6138e9fd8820f40548399a8b6452e42f14b5f67c",
+    "targets": [
+      "PROMO TVCINE HD.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "redundant-logos-digitalb.default.png",
+    "source": "https://raw.githubusercontent.com/picons/redundant-logos/02fb6e20e1fd57e3e28b04fb4393fedd9bc6b856/digitalb.default.png",
+    "git_sha": "7c25c11d314c5aa29e8fc44e5429ea04732f1c90",
+    "targets": [
+      "DIGIT ALB.png"
+    ]
+  },
+  {
+    "type": "github",
+    "name": "redundant-logos-digitalb.light.png",
+    "source": "https://raw.githubusercontent.com/picons/redundant-logos/02fb6e20e1fd57e3e28b04fb4393fedd9bc6b856/digitalb.light.png",
+    "git_sha": "cc6115685536b00e35b4a9625dbb60e12c3dddca",
+    "targets": [
+      "DIGIT ALB.png"
+    ]
+  }
+]

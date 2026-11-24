@@ -1,0 +1,15 @@
+{
+  "targets": [
+    "VIASAT BALTIC.png",
+    "VIASAT DENMARK.png",
+    "VIASAT FINLAND.png",
+    "VIASAT NORWAY.png",
+    "VIASAT SWEDEN.png"
+  ],
+  "donor": "VIASAT.UA.png",
+  "evidence": [
+    "https://www.viaplaygroup.com/en/newsroom/press-releases/viasat-consumer-and-canal-digital-merger-completed-1807499",
+    "https://tv3group.eu/about/our-story/"
+  ],
+  "scope": "Historical provider names in existing receiver records, not claims of active platforms; original source logos identical, existing white/black variants must byte-match donor. No deletion or replacement."
+}
