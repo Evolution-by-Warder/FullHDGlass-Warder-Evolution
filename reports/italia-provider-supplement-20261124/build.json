@@ -1,0 +1,52 @@
+{
+  "source_sha256": "d90c7a3daafe8a8734bcbe82ee193b9abfb1d78eaf0732edf6b45f3ad271b4d4",
+  "pixel_digest": "672c2499febc1df2226d64a7d8cdc1e850b4f1cf6a6edde641e5410a6c1e85c1",
+  "provider_names": 71,
+  "added": 181,
+  "remaining_provider_names": 36,
+  "archives": [
+    {
+      "style": "transparent",
+      "base_count": 1396,
+      "added": 71,
+      "complete_count": 1467,
+      "size": 15791950,
+      "sha256": "cba12a408d19a8093cf9fb93f0d218405e5ad0fb7d13373e9cb33f356520cbb1",
+      "old_png_bytes_preserved": true
+    },
+    {
+      "style": "white",
+      "base_count": 1387,
+      "base_sha256": "491ff2a8d28c3e6fe06f6eb426a83617794b0574c9593b7392bfb4e788fb19c2",
+      "base_size": 33285862,
+      "extension_count": 60,
+      "extension_sha256": "e362e8636b23ec203e954a381ccadffb76420b4bb28bb320f0bd4a8f8e28c6d7",
+      "extension_size": 2404485,
+      "complete_count": 1447,
+      "unpacked_size": 35510894,
+      "legacy_unchanged": true
+    },
+    {
+      "style": "black",
+      "base_count": 1402,
+      "added": 50,
+      "complete_count": 1452,
+      "size": 33184596,
+      "sha256": "c203ef2cebed4e1466c8cff40d6cc82b869fa92b177c1df12f6af3f81c3ebfde",
+      "old_png_bytes_preserved": true
+    }
+  ],
+  "integration_test": {
+    "actual_white_install": "SUCCESSFUL: Provider logos — 1447/1447 (220×132)",
+    "legacy_base_valid": true,
+    "target_stage_cleanup": true,
+    "stages": [
+      "catalog",
+      "download",
+      "extract",
+      "download",
+      "extract",
+      "copy"
+    ]
+  }
+}

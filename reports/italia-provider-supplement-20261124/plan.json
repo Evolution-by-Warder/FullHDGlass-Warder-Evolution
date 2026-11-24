@@ -1,0 +1,2343 @@
+{
+  "pixel_digest": "672c2499febc1df2226d64a7d8cdc1e850b4f1cf6a6edde641e5410a6c1e85c1",
+  "base": "ed4325b3d135ef02e3997b376c61e2394bdd0977",
+  "records": [
+    {
+      "kind": "PROVIDER",
+      "name": "ADD.png",
+      "sha": "703e76e700b03b6da8be76a91454f02031ab72038073d2727e667e3471245d0f",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 3,
+      "foreground": "7bbde02c33a576bbd1106f92c16b0818f2f1135fece709ef1d3340e036c2b06c",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "7bbde02c33a576bbd1106f92c16b0818f2f1135fece709ef1d3340e036c2b06c",
+          "pixel_sha256": "ae2883941960f2f75cecd88e08494d88a569d9d2c9a060188093969825ea8ced"
+        },
+        "white": {
+          "sha256": "2bc95e1806f97b9fc10c07b221436edaa76a43e333f4d178dd014722b07ed6b7",
+          "pixel_sha256": "ed978f02c2d19bd220791e65df06cc37af701cbe1a2e14615fe8c7fccde149d6"
+        },
+        "black": {
+          "sha256": "4493a3fdb87815d623bf48959cac83717dee201e84d4fa95e3d088d9d7b0a20e",
+          "pixel_sha256": "ece5af7fbb68c1c54b0763facc295de6e8a5f041d686fb02b15fb1858e12edaf"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AMAZING TV.png",
+      "sha": "f8fe47ddd12e2351bb79030191e08f77861e9f591c3b2f049b875380fb19df42",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 5,
+      "foreground": "08f7913ff0c1fcf9fd5b8149380f26cd703342ecd29d5a1f4b209529a3b91ec8",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "08f7913ff0c1fcf9fd5b8149380f26cd703342ecd29d5a1f4b209529a3b91ec8",
+          "pixel_sha256": "605b93c33e46577ce7061b7bb5d784512a17e107d9de2555ae86f9b85a0393a5"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AMICI NETWORK.png",
+      "sha": "7e6cb3efad7550f860a8d631f037267823e72d288a3235ee12e13342c161222b",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 6,
+      "foreground": "36fb2b8e45cef292798336c6aaee2722b30ed0ae812a2baacca8adc2815dce67",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "36fb2b8e45cef292798336c6aaee2722b30ed0ae812a2baacca8adc2815dce67",
+          "pixel_sha256": "6817f513b264fd505032e58a22d7b608c7e84554b8329b25c3232082b0506b57"
+        },
+        "white": {
+          "sha256": "8cde3eb33fa0706badc2d624a0030370d329ff7335c73b32c5e802c4e452611d",
+          "pixel_sha256": "48b1000b1f0f344769aa27de07313adfe62e649b04a5190fbf8fbb94cb799501"
+        },
+        "black": {
+          "sha256": "8c6c6bbc0a4a412407eddbe70e1e977e53cf7b4896c8b23e27780143e15ad16d",
+          "pixel_sha256": "ec27bef8f403bec92f970dbd2617e5bd9ee07d7423c38d2e70cbdef328a7b1d0"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AMTECCO.png",
+      "sha": "dff387cb88601a71365155aa829daea946ba4dd870208537e458580f2ed362ea",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 7,
+      "foreground": "30e5a711d7a54a9fb9efff63f440dbe26b9ec01efe34561be764788bbbd4d7ca",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "30e5a711d7a54a9fb9efff63f440dbe26b9ec01efe34561be764788bbbd4d7ca",
+          "pixel_sha256": "9132ba891e5129ef199e40a0d269ea39b6ed8dd57c56e4265b8a6afff696300b"
+        },
+        "white": {
+          "sha256": "a22083fccaa9db357fe3ffdf1a71104f3b43ef1050bfbe21fb591460d61ffd6a",
+          "pixel_sha256": "460aac89e589462256a2c20cacec7ed5e5bf9cf742df95d28d2dc64b5d8ad37a"
+        },
+        "black": {
+          "sha256": "a71d685d020e11241ea6701373051b556dffe5c8319c473e500c51eb8f7418ab",
+          "pixel_sha256": "b4664b59696ec8b6588c48ee2e082ac0afb17827c0248c5d5dc3436cdf16044f"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ASHARQ BLOOMBERG.png",
+      "sha": "e066a14b2c278451a67ae981fe3fb15e2e9995ab0a98513322ab08037d09df66",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 9,
+      "foreground": "bba6c0adecef93518c0db28f4e26e9d46a3d4050b651795933d4cd0abdd7ddaa",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "bba6c0adecef93518c0db28f4e26e9d46a3d4050b651795933d4cd0abdd7ddaa",
+          "pixel_sha256": "63bf94c533d0852b78867f287fcfeea55146b7bc33da13b5674770e60358dbb9"
+        },
+        "white": {
+          "sha256": "a81a27219ee9831f5a50e32ded0c9e2efc4975442199e6eead1982c0694f5d46",
+          "pixel_sha256": "505e95f452e161c22029fe4ca46960f69b173f4063d00e02c779b2ea8113f713"
+        },
+        "black": {
+          "sha256": "9de1f34e75de2986de00f72973921cde8915a37a7786b06b0ec3fe15b22e1481",
+          "pixel_sha256": "5b55e283f74c84c19877cdf7455b79358acb38e7bd1d450619b4b47638cd9a38"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ASRAR.png",
+      "sha": "5504e254c83e05cec4c85b45ccac0ad61ceb363d753f319e4f92077f795ed732",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 10,
+      "foreground": "6eb7ab4f5b2d6b1211b06d4b065494f42fcb77d70410dec026c2c65f8e12b814",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "6eb7ab4f5b2d6b1211b06d4b065494f42fcb77d70410dec026c2c65f8e12b814",
+          "pixel_sha256": "3c2e7a68ed7c114f7a65993100423ef014718e7bef31539781ff1b3f14dab1a9"
+        },
+        "white": {
+          "sha256": "76a56dde5e09cd5e4aa1069696ee3a3a422742c537163f3ba036bd4ca08c6abd",
+          "pixel_sha256": "e7752b3521fea1e06344213b71a046520705c08f5b546395e40a8105533f3c94"
+        },
+        "black": {
+          "sha256": "5e07309cccd36612693f2a643216e9326fa531fb1d4fb7730c9a87271349654f",
+          "pixel_sha256": "8c709ebf81765b25f78843ee0d4118aeaf28c23b7cfde91149e40011d36ddaf7"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AURANEX.png",
+      "sha": "940db3961561397b27bc40ed5f55218e96f44f30b4d05d537c2c6cae11f288a9",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 13,
+      "foreground": "be0b6f78e9cd7995dbeef86d571f7108cc634a65769bc18447e7d704456a8186",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "be0b6f78e9cd7995dbeef86d571f7108cc634a65769bc18447e7d704456a8186",
+          "pixel_sha256": "ac700d93b8a95c9864dc39f1d551b934a9b53b9544bc80f00ceff0d8b0227926"
+        },
+        "white": {
+          "sha256": "208a80aa51f92c91590954d5a8c603e69c04e1abcd1d88b3b86b8d8a7852627f",
+          "pixel_sha256": "3cba9105e2641b1461ca75f8d32be1ec1fcb0a4a973b26ec06ae75213f667e53"
+        },
+        "black": {
+          "sha256": "249546b31d6592f2fcd7af42d8bff49e8a82d3b6fe1e7cc5589908f9164f024d",
+          "pixel_sha256": "c04ff38adfc693587b2260d9de8cbd2f6715faeed62f563983cbb3a0ca41bf87"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "BSS.png",
+      "sha": "4defd9aa129292269cebd2466462da7c16e5c22134349c8a7d9cb3b8c62d3ccc",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 18,
+      "foreground": "981ad0fc55b7cce43c4c746daac6c1b4711b7cb5b7caaeece43b4feddbb1718f",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "981ad0fc55b7cce43c4c746daac6c1b4711b7cb5b7caaeece43b4feddbb1718f",
+          "pixel_sha256": "2af03f5fc81d8cf47b6acd1f09bc884070dea88f7c689482f88b2fbbd66410b4"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "CAIRO DUE.png",
+      "sha": "812e5a848b6c387e1f7bd2c8eee97a8f0063ecba897484b705892ad3e498f4f3",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 19,
+      "foreground": "7b1361ea01fbd1d5c48ce4ae9bc47626fece3ec69ffa61a190ede798b4e2843d",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "7b1361ea01fbd1d5c48ce4ae9bc47626fece3ec69ffa61a190ede798b4e2843d",
+          "pixel_sha256": "cc48f7819ca56965e85bbbb8860bc03e5e9cab360faa037c5abeecfd574b0ebb"
+        },
+        "white": {
+          "sha256": "5d5cca58d8a31e2ab29f16e92402378258456970ffdcc6d0de79c7ca604ddc6e",
+          "pixel_sha256": "e94f83879813713a9ef24092a821e890be922bdbac50fd5f445fb8ccba9dbcb4"
+        },
+        "black": {
+          "sha256": "82a934818b540db47b1fc9c35f3b2857c34c76dab8dbb249eb21f59b4bb5d801",
+          "pixel_sha256": "240388b0237ac8cb65216269ad3e81c526f27bb3a4a36c56837fd5e4f7c7013c"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "CAPRI TELEVISION.png",
+      "sha": "bffa96fac411560942ec44e15d075e7342e9ffcd5e2963de069799ea1edf13a6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 20,
+      "foreground": "6b6ac17fb596bc8d028e1a476180dfd668c04292b825df653a482e09d2150155",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "6b6ac17fb596bc8d028e1a476180dfd668c04292b825df653a482e09d2150155",
+          "pixel_sha256": "c1be8de12a594a987cb0dd1a298d68028c0d0f392552141b6b07038fa12466d2"
+        },
+        "white": {
+          "sha256": "eb589b1504f87c433d7d43b7f0c3ab7c8daa1d15140074b305128339bfbd7fc6",
+          "pixel_sha256": "72df77f8d8a420760656dd20b623470adc7a123bd72a8cc29fed2aa6538c8fee"
+        },
+        "black": {
+          "sha256": "5e4b5f883234381ca8506e69fc0bb4a0e88f701f3d4c64f1fd14fb5d98983e34",
+          "pixel_sha256": "b373639fd62cee52075e8a54f6e49c17239dbd3e70cf3a2118c1335dc89af475"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "COELMEDIA.png",
+      "sha": "47ed5c0128a062ac8554f569807a4611d71438eb9f5c3b5d36f912bdde20706a",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 21,
+      "foreground": "6f43b6632cf3cd8e54769b724e4217435a94b16a8cea8608cec37e90bf43e5ab",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "6f43b6632cf3cd8e54769b724e4217435a94b16a8cea8608cec37e90bf43e5ab",
+          "pixel_sha256": "6e0bf8f4bedb31351c5332b01c123893edca5bcb7aa9954a38388b66ef934741"
+        },
+        "white": {
+          "sha256": "a598017b5d710408c59049e61488047d7e3363f07cc42d2ba20f84b142359695",
+          "pixel_sha256": "3848dfc454dedf721896c1fa45cd44097ea9d1a8970e63644213cb9354aa16f9"
+        },
+        "black": {
+          "sha256": "4d60456abc17b0e7fec7fac8a1ebd216ddd3dde26818af3b296076f133b61ab9",
+          "pixel_sha256": "d17ae614de64312b0fc7cac27b373fc01d201e47f697af80b9d063c496700bd1"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "COLEMEDIA.png",
+      "sha": "47ed5c0128a062ac8554f569807a4611d71438eb9f5c3b5d36f912bdde20706a",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 22,
+      "foreground": "6f43b6632cf3cd8e54769b724e4217435a94b16a8cea8608cec37e90bf43e5ab",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "6f43b6632cf3cd8e54769b724e4217435a94b16a8cea8608cec37e90bf43e5ab",
+          "pixel_sha256": "6e0bf8f4bedb31351c5332b01c123893edca5bcb7aa9954a38388b66ef934741"
+        },
+        "white": {
+          "sha256": "a598017b5d710408c59049e61488047d7e3363f07cc42d2ba20f84b142359695",
+          "pixel_sha256": "3848dfc454dedf721896c1fa45cd44097ea9d1a8970e63644213cb9354aa16f9"
+        },
+        "black": {
+          "sha256": "4d60456abc17b0e7fec7fac8a1ebd216ddd3dde26818af3b296076f133b61ab9",
+          "pixel_sha256": "d17ae614de64312b0fc7cac27b373fc01d201e47f697af80b9d063c496700bd1"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DCS.png",
+      "sha": "4fc468dd5e85191b0479b3c3760adf8b3e56752dbcf982488862b8160751d2d6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 23,
+      "foreground": "de97662d89aea02928160184d202eaec7565fd17b5af2d903f28e3ba0eff3d9b",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "de97662d89aea02928160184d202eaec7565fd17b5af2d903f28e3ba0eff3d9b",
+          "pixel_sha256": "dc69bd110753279f024e7d43f3965960f1b568aa3ecf3f446732c942a9c45e11"
+        },
+        "white": {
+          "sha256": "d0fdfd712bfc899c1135484c7575a3637417f8c35f050a1e8ef1b923db0f5901",
+          "pixel_sha256": "1a1597657a578a475dd54dea70d7dad67284972a8c790ceb4177997b2f24d1bb"
+        },
+        "black": {
+          "sha256": "eac616cb86c7272c628d757cbad9bbceee71fb5bac9f8961b5c7707665249f26",
+          "pixel_sha256": "387b0f65551ab96ac66df8b2653a2c80e71a5c854831d1d64d102676cf12f9a1"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DIGITALE TERRESTRE.png",
+      "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 26,
+      "foreground": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+          "pixel_sha256": "322cf2b1893bf81beaf44710f347d7bab0cb6bee2e7d3813b62dd42ea98eb837"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DVB-T EUROPE.png",
+      "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 28,
+      "foreground": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+          "pixel_sha256": "322cf2b1893bf81beaf44710f347d7bab0cb6bee2e7d3813b62dd42ea98eb837"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DVB-T.png",
+      "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 29,
+      "foreground": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+          "pixel_sha256": "322cf2b1893bf81beaf44710f347d7bab0cb6bee2e7d3813b62dd42ea98eb837"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "E'TV +.png",
+      "sha": "2b9da7b52d78e1c2efbe17ea2bd415111524419e10d4260818060881f9b99d40",
+      "state": "RECOVERY_REVIEW_ONLY",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 30,
+      "foreground": "ff79fd36db13c14767c17b6d8aaf8c90b789a0bce210dca26d48e25bb35d42d1",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "ff79fd36db13c14767c17b6d8aaf8c90b789a0bce210dca26d48e25bb35d42d1",
+          "pixel_sha256": "089af12b51e0fab50b5a564fc22b7d248e3c2c2f13041267f4bd201e31e301bd"
+        },
+        "white": {
+          "sha256": "36537d9a58d16fb08a38ad7e6b71ad010a0104fe5ab96f75dd526fa6e790c387",
+          "pixel_sha256": "353fd79d0510371f68ba5da75142ad9a4cde91ad2d69ed6e2ba30df4037b2320"
+        },
+        "black": {
+          "sha256": "805ff75a9494a048ff0b6606b5a9d123283f2eaa34638c1d1d4e785920ba5d6c",
+          "pixel_sha256": "31fff36122f39002bf5641aaf9c80a90f007e0dce2e3813e5b65030b96715de4"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ETV+.png",
+      "sha": "05e5a09ae2c25b8b31fb362ffd15c431b3b7b7ad3d2357dfc9eadb3b38d94357",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 32,
+      "foreground": "7c30a0f6e5b250d5b9e8aa0ef1eb1c6780e396ed303c75502c22877a9b288943",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "7c30a0f6e5b250d5b9e8aa0ef1eb1c6780e396ed303c75502c22877a9b288943",
+          "pixel_sha256": "f59d22fba4d3c6bd9c79688f1d09da221ba7c281639787c2398ec0b56b13ceaf"
+        },
+        "white": {
+          "sha256": "267b64ac40a3920911bc501068133056aaf2efdbcd7efec03c4ca2570de75335",
+          "pixel_sha256": "2a19a3092b87e377528865226d37469235f791be111d0b081ccbc845b910b334"
+        },
+        "black": {
+          "sha256": "1673f3be1796b4540489d5ff06a58ad80aa5a59d117cdf942f28a5322374897f",
+          "pixel_sha256": "f621b91db213c11165140b086cecbe606d1c9b1969d3537d56bf08adc16a91d1"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "EUROINDIEMUSIC.png",
+      "sha": "57978150d5675dd94cbf1c06f1c43cb5e9490950fcdf8128bb4697515e80ec2c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 33,
+      "foreground": "395c0babdf42fe1418d4dd089ec312326d1260eb1d6494e3aec3c1ca81ab24c4",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "395c0babdf42fe1418d4dd089ec312326d1260eb1d6494e3aec3c1ca81ab24c4",
+          "pixel_sha256": "7d189158a12c11c60725cb98cfe43184ae876093e6b0860f6e28caacd78f8d49"
+        },
+        "white": {
+          "sha256": "4b90a566ab7cc6108c7e5ac3e2ddd3857029acc2f3f30edd8b5686333f3b28ed",
+          "pixel_sha256": "be1f0c517cb104b0a906825303a18367570401f7131e382f5e52472aeec984df"
+        },
+        "black": {
+          "sha256": "e8e5dbb51ad24fa7c8f0d0819969babfd11aeebf65fa5b1a5f323966d3d612de",
+          "pixel_sha256": "c4343b7a50a4c3cbc0f39c5af17ec5913ce816b57996d90fab441b6ea8a67a60"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "EUROMEDIA MUX.png",
+      "sha": "0a75e3102720934e7b641d2b897c85daed0e7d0dcd62aff168d661a06a37d8df",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 34,
+      "foreground": "dbc49aa4a61e5f8f13de0a5499ed3ee9de1dee0823f221a1d077d28d4584bba8",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "dbc49aa4a61e5f8f13de0a5499ed3ee9de1dee0823f221a1d077d28d4584bba8",
+          "pixel_sha256": "8283d09b0b8c4641ff9e1654f1e6479ff4d4e63eeb2560ed6b8709ced2d2606e"
+        },
+        "white": {
+          "sha256": "98aae80610728cbc236548caf3b264b9f15b0301f13b386ea86e8d3cd572ea9f",
+          "pixel_sha256": "e394b48131b4267be9f220d840e1d94b1e7fc4409157c76cc617d2d3d7706d91"
+        },
+        "black": {
+          "sha256": "448d8ff24bc37cdc805385cb5b114fdb2bb08184c9a4dc03568ede7218e9a628",
+          "pixel_sha256": "9fecb6ed6679383e9d52dd5726d99f7a1fa3086895ed7a7f46c0b57767782b28"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "EUROMEDIA.png",
+      "sha": "0a75e3102720934e7b641d2b897c85daed0e7d0dcd62aff168d661a06a37d8df",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 35,
+      "foreground": "dbc49aa4a61e5f8f13de0a5499ed3ee9de1dee0823f221a1d077d28d4584bba8",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "dbc49aa4a61e5f8f13de0a5499ed3ee9de1dee0823f221a1d077d28d4584bba8",
+          "pixel_sha256": "8283d09b0b8c4641ff9e1654f1e6479ff4d4e63eeb2560ed6b8709ced2d2606e"
+        },
+        "white": {
+          "sha256": "98aae80610728cbc236548caf3b264b9f15b0301f13b386ea86e8d3cd572ea9f",
+          "pixel_sha256": "e394b48131b4267be9f220d840e1d94b1e7fc4409157c76cc617d2d3d7706d91"
+        },
+        "black": {
+          "sha256": "448d8ff24bc37cdc805385cb5b114fdb2bb08184c9a4dc03568ede7218e9a628",
+          "pixel_sha256": "9fecb6ed6679383e9d52dd5726d99f7a1fa3086895ed7a7f46c0b57767782b28"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "FRANCE DTT.png",
+      "sha": "f7808a5accb33d965695e3fb62fa1b6b5a8e049d7bae4e911ca5b4bb48b6782a",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 37,
+      "foreground": "9e417de2edf1fd5cfcdb81ddfe9b62ee7bbf86b849ae9067833df5e9bc51317f",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "9e417de2edf1fd5cfcdb81ddfe9b62ee7bbf86b849ae9067833df5e9bc51317f",
+          "pixel_sha256": "9e42b6d1628f64307dd31bfec1da58a669628899bb06300814d57bf872412911"
+        },
+        "white": {
+          "sha256": "3444652f4d5bef94300f115913f5b8ccbdb3e0d57a9b5b0b62f95ca147dfab8e",
+          "pixel_sha256": "065c5f47a908bb98eb3fb915ea8e6c71400e62cdebb1c8b6d25afa48115b5774"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "GASME SRL.png",
+      "sha": "2b132f6462fa4faf0e558208d1461afbd068a000c11f1a43c3d968b8e17e8a56",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 39,
+      "foreground": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+          "pixel_sha256": "ca2ef4cab36585865db77f081d8e9a2179e6d1e885793c05a0e55f5439ef6d60"
+        },
+        "white": {
+          "sha256": "3d937997032450188171a6f852d83066a7a242ba9209e8d43204ff24d61c9ef6",
+          "pixel_sha256": "0285beee3045321dc42b9c86913c6a19554a2b0752e5caf4ed99704b6a1ba3b1"
+        },
+        "black": {
+          "sha256": "b0411ae8e8d4644b671a5813fcd5092684669b8979033df79fa6815c37029408",
+          "pixel_sha256": "c08fe943321592c7d0c6cbd858f3f3fb606b7873b371fb37d2f5199285e312bf"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "GASME.png",
+      "sha": "5b230408f717baddf0ebbd5c5e17159d1d2a5fa841388622ce20bf25a915b647",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 40,
+      "foreground": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+          "pixel_sha256": "ca2ef4cab36585865db77f081d8e9a2179e6d1e885793c05a0e55f5439ef6d60"
+        },
+        "white": {
+          "sha256": "3d937997032450188171a6f852d83066a7a242ba9209e8d43204ff24d61c9ef6",
+          "pixel_sha256": "0285beee3045321dc42b9c86913c6a19554a2b0752e5caf4ed99704b6a1ba3b1"
+        },
+        "black": {
+          "sha256": "b0411ae8e8d4644b671a5813fcd5092684669b8979033df79fa6815c37029408",
+          "pixel_sha256": "c08fe943321592c7d0c6cbd858f3f3fb606b7873b371fb37d2f5199285e312bf"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "GMN.png",
+      "sha": "6de20911dfa6a68087aac93e8c82768903f2da9126d7ddd77ba76342dc903039",
+      "state": "RECOVERY_REVIEW_ONLY",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 41,
+      "foreground": "1d006fb5bd1299b96a73841c6eb26ccfa3ab995c1b00786a48b3e8eae7338e35",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "1d006fb5bd1299b96a73841c6eb26ccfa3ab995c1b00786a48b3e8eae7338e35",
+          "pixel_sha256": "772e68a03e0e3532c9df2d15bc5c3865fa20ff6cad1200f5cc0761f94dab1277"
+        },
+        "white": {
+          "sha256": "d40cf48ac44583296d737e4c5450f23559beb4cd0f7a59d44dbae55255e568bb",
+          "pixel_sha256": "30db8daaa5fe41b2fe6dd04512b3deb92d81d13fbf665d86013a693bd0ce2cae"
+        },
+        "black": {
+          "sha256": "630154d363eada9f3d169fc4103ebc6e2585e540945d351b1af7ccc35eaa3dd1",
+          "pixel_sha256": "8d057a459adb6f4cce2f99af4123902d4bb08e1ccb73a29b5f7354493976a454"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "HUDOBNE.png",
+      "sha": "3e1eb527bf6e926776becb44f0cf0ad80fe04b946816f2f033bb4f658ccdf887",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 43,
+      "foreground": "cfff0ba7fcace183e83206c4dfa5428f929c4cb59ab784d2ac88b69cbb5ea362",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "cfff0ba7fcace183e83206c4dfa5428f929c4cb59ab784d2ac88b69cbb5ea362",
+          "pixel_sha256": "fd58798575f5d7cfd38124e12536b28ab8b151fd835adba720ad29a454660491"
+        },
+        "white": {
+          "sha256": "ff6213f4d879e677fc075019ea2f5e6ab55bb8071d7d758d0f529fcf1e7dfe68",
+          "pixel_sha256": "c1cc35599a7672d7b180c6a309866db7fd33b9049f396ce1031db34633e95198"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ICARO TV.png",
+      "sha": "9e22f1afbb26635b1c63298511675aff0d897163eba1129d2dbb776a1ca5e90e",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 44,
+      "foreground": "963ea9cd3b90a7da50cd0a92e78d731c9c1ef1883fe38f2527f140b3252e84d5",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "963ea9cd3b90a7da50cd0a92e78d731c9c1ef1883fe38f2527f140b3252e84d5",
+          "pixel_sha256": "654ac22c77b684fbf9bf471a0ec2723f4cb7cd23e124ef5e975590f67f2cd4f9"
+        },
+        "white": {
+          "sha256": "89e8672359a798236007e266a78a4face157cb7924a7ad36837bfc28dafba2cd",
+          "pixel_sha256": "bed04041056633151a49de4928ef6dcaec562c025175146a95eb4f4e18db08ff"
+        },
+        "black": {
+          "sha256": "d1c465042f79257f4c98210eb7b416650c7742b25bca0eb8b97056281f575d08",
+          "pixel_sha256": "60099a5bdca61e64d1c4c87fb0cf4bfae702a12d4f891e70097f8ae17ab68005"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "INTECGROUP.png",
+      "sha": "738380477a68913588e82480af96e039b7aa360f3da4f255e4563a9ed17071f6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 45,
+      "foreground": "5d91d2cc063d3350ef0473436c8b432caa68ff6ca60ed9ae7c97e2db15fb78f2",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "5d91d2cc063d3350ef0473436c8b432caa68ff6ca60ed9ae7c97e2db15fb78f2",
+          "pixel_sha256": "6b631f4a96b52a2b2ad14ab004d0a60c2eea940fd6974f8375ee4649181e82b4"
+        },
+        "white": {
+          "sha256": "6bf7d911fcb4c5f80ca25971ec6cd614ad3d6af0dea64187d5df12a75b0f4117",
+          "pixel_sha256": "4713804ded5aa124fb617dca7ae8c70c80ac3e72f234f3aef13511fbf80f1e6f"
+        },
+        "black": {
+          "sha256": "e9da88e28c2c6ac7d10c534c49d424456aec79e5e44ad72ca49a7781bb8bf6b4",
+          "pixel_sha256": "dd159068d3f7ca0383f5bd558a2493d026e9d1fa245a0cc96288b8b6e0109c26"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ITALIA DTT.png",
+      "sha": "f7808a5accb33d965695e3fb62fa1b6b5a8e049d7bae4e911ca5b4bb48b6782a",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 46,
+      "foreground": "9e417de2edf1fd5cfcdb81ddfe9b62ee7bbf86b849ae9067833df5e9bc51317f",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "9e417de2edf1fd5cfcdb81ddfe9b62ee7bbf86b849ae9067833df5e9bc51317f",
+          "pixel_sha256": "9e42b6d1628f64307dd31bfec1da58a669628899bb06300814d57bf872412911"
+        },
+        "white": {
+          "sha256": "3444652f4d5bef94300f115913f5b8ccbdb3e0d57a9b5b0b62f95ca147dfab8e",
+          "pixel_sha256": "065c5f47a908bb98eb3fb915ea8e6c71400e62cdebb1c8b6d25afa48115b5774"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "LEGG MEDIA SRL.png",
+      "sha": "2b132f6462fa4faf0e558208d1461afbd068a000c11f1a43c3d968b8e17e8a56",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 47,
+      "foreground": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+          "pixel_sha256": "ca2ef4cab36585865db77f081d8e9a2179e6d1e885793c05a0e55f5439ef6d60"
+        },
+        "white": {
+          "sha256": "3d937997032450188171a6f852d83066a7a242ba9209e8d43204ff24d61c9ef6",
+          "pixel_sha256": "0285beee3045321dc42b9c86913c6a19554a2b0752e5caf4ed99704b6a1ba3b1"
+        },
+        "black": {
+          "sha256": "b0411ae8e8d4644b671a5813fcd5092684669b8979033df79fa6815c37029408",
+          "pixel_sha256": "c08fe943321592c7d0c6cbd858f3f3fb606b7873b371fb37d2f5199285e312bf"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "LIGHTSAT TELECOMMUNICATIONS.png",
+      "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 48,
+      "foreground": "0e207a778eb3c773a3425d4f273d6bd6347472e89a7de5da5a60a926360818ff",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "0e207a778eb3c773a3425d4f273d6bd6347472e89a7de5da5a60a926360818ff",
+          "pixel_sha256": "250684e0c61469b795dcbd4975b6edd3b1d71d6c8af3ab43bcb1bf68dc64459c"
+        },
+        "white": {
+          "sha256": "79bd7ae13ca28263632614543415b9017573b976b193988685b74134f6a0b622",
+          "pixel_sha256": "20145af2690d5eac42b2db6ef7f50e20574a940315b7cfa14ca449e7201951f2"
+        },
+        "black": {
+          "sha256": "31355f0021a0abb21d977a1b43a5dfdd1876e332bb1748a4dcaeece885f7dc21",
+          "pixel_sha256": "73483bceb09effd9fb0ccf1276a8cfac34f03f087f14b8a063dad661f3384a9f"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "LIGHTSAT TELECOMUNICATIONS.png",
+      "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 49,
+      "foreground": "0e207a778eb3c773a3425d4f273d6bd6347472e89a7de5da5a60a926360818ff",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "0e207a778eb3c773a3425d4f273d6bd6347472e89a7de5da5a60a926360818ff",
+          "pixel_sha256": "250684e0c61469b795dcbd4975b6edd3b1d71d6c8af3ab43bcb1bf68dc64459c"
+        },
+        "white": {
+          "sha256": "79bd7ae13ca28263632614543415b9017573b976b193988685b74134f6a0b622",
+          "pixel_sha256": "20145af2690d5eac42b2db6ef7f50e20574a940315b7cfa14ca449e7201951f2"
+        },
+        "black": {
+          "sha256": "31355f0021a0abb21d977a1b43a5dfdd1876e332bb1748a4dcaeece885f7dc21",
+          "pixel_sha256": "73483bceb09effd9fb0ccf1276a8cfac34f03f087f14b8a063dad661f3384a9f"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "MBS.png",
+      "sha": "f88e73d1574ef4d9b1e6fd52b9fcc6eb93fed887f413355c1bf7703a3b8c4bdb",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 50,
+      "foreground": "f3fffa0360ace3882a8be6085c1677c6be5462ebb8dea2e5c611af97e272868c",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "f3fffa0360ace3882a8be6085c1677c6be5462ebb8dea2e5c611af97e272868c",
+          "pixel_sha256": "d68db4585df5494c97cbf04a17b7df3805b0f6565548efeeee54134e1e4db36d"
+        },
+        "white": {
+          "sha256": "b7f6719853cb6ca8f567a5038cd942cf7656ac18604459702cf6018430b36244",
+          "pixel_sha256": "f4f1cad5519c5673a76798239d3a4c3b393dd56c83eb83ed9c5d6a1eda5522f4"
+        },
+        "black": {
+          "sha256": "5f26a45a7cb803d78a93b62692db85e6e53edaa310a400196158584622ae4672",
+          "pixel_sha256": "63ce30dd83c5cc8eaf08735c4dcd7d71b86cb7b572d9483e249c500f53e14073"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "MTNTV.png",
+      "sha": "8f6e70e0d0132ac79f9bef722f67315f626ae9ff746361484e261b34e1b68912",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 51,
+      "foreground": "bd5412337424f6cd0cc3ad7d5c57e061d052a54b18d1d709378f71996809799a",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "bd5412337424f6cd0cc3ad7d5c57e061d052a54b18d1d709378f71996809799a",
+          "pixel_sha256": "70039c6606b2b019bb6dda846e82509059f2e25f2c40476e436b77c6c5ff59c0"
+        },
+        "white": {
+          "sha256": "662c5a7991c048105ba86ae93ffa71eb6627d3dbbdf5de71546a61ad97b7d4a5",
+          "pixel_sha256": "89f0edebab0eb183d8bb63f3c6d9c945b88d5b11cb8460ba5b76dffe1a07423e"
+        },
+        "black": {
+          "sha256": "d43e155ac34ee2a5f3e16a32d8110f3eacfab65d78d9a2d555e3b73f0a6e6ddd",
+          "pixel_sha256": "22547dd700dbea02f3b8b0a94dc3c3a4752faf3a2360e9268aedbfc4824882e2"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "MULTISTREAM.png",
+      "sha": "e2daf3277a3101ffa4fde28ae52e4be62bd8ddf5cfa4bdc95e040c5db2e0cab0",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 53,
+      "foreground": "f476b7c22f8dfe41d296aabb588b0a2a85c8177ef4f609aef4169e1ba8f9e18e",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "f476b7c22f8dfe41d296aabb588b0a2a85c8177ef4f609aef4169e1ba8f9e18e",
+          "pixel_sha256": "713c04756068d04a9a705da1b13b2e88d3ded35cba25227860b64a887ec6cb26"
+        },
+        "white": {
+          "sha256": "423142355af328293e03889022fa2e0ca0c85e42782017d9c9f264a9db649bb3",
+          "pixel_sha256": "52186aa049d0399831d3908327fb91d13bdf32731698f68d5106f6656809b66a"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "NC +.png",
+      "sha": "4b5431d454265c591c2b38ea8cde310bbf8bc94cd7a4b54b5d7ed020efafb7cd",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 54,
+      "foreground": "0a5bbfb9a580856bc0075675d38bf71aed2724e7af44d918521794c57243edbb",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "0a5bbfb9a580856bc0075675d38bf71aed2724e7af44d918521794c57243edbb",
+          "pixel_sha256": "2ee189109f2d4a58ae2f2f26aad49ffc9df6502a3dcff7e11e8f878959549b33"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "OPIM RTTR.png",
+      "sha": "a60481d0809101f37fb176d07efb7b6f06ba16c01bdc97b839c34caea5b28eeb",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 56,
+      "foreground": "9f7ca4f9fe4e154adc6d7cf07578bd6d934ad68447d46046166fe743017d1841",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "9f7ca4f9fe4e154adc6d7cf07578bd6d934ad68447d46046166fe743017d1841",
+          "pixel_sha256": "b361fc23e73aa9de38b4db293b29acd8fd2c5143dd3a20ed130f15a3370a97b2"
+        },
+        "white": {
+          "sha256": "cd63c63ea703d4c70b6855a2664116ecc3aaf876031a4534c42de84df5ea1c2b",
+          "pixel_sha256": "9d30169838e612cbaab6fd369accbc47d2d418827f39070a6d5c02ed23746775"
+        },
+        "black": {
+          "sha256": "8fb3e9c4508a270ba5c79d53e2a20a80d6515dfb78be51fb5688e231695c4227",
+          "pixel_sha256": "8841e3e4812172760266e84174bfa71981ac27b9b745028fab50e5cf44517f9c"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "OPIM_RTTR.png",
+      "sha": "6fc073d5f7c70e780ffb3f0355f39ed4268fc9043f74a725d45e9ba9d1204a96",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 57,
+      "foreground": "9f7ca4f9fe4e154adc6d7cf07578bd6d934ad68447d46046166fe743017d1841",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "9f7ca4f9fe4e154adc6d7cf07578bd6d934ad68447d46046166fe743017d1841",
+          "pixel_sha256": "b361fc23e73aa9de38b4db293b29acd8fd2c5143dd3a20ed130f15a3370a97b2"
+        },
+        "white": {
+          "sha256": "cd63c63ea703d4c70b6855a2664116ecc3aaf876031a4534c42de84df5ea1c2b",
+          "pixel_sha256": "9d30169838e612cbaab6fd369accbc47d2d418827f39070a6d5c02ed23746775"
+        },
+        "black": {
+          "sha256": "8fb3e9c4508a270ba5c79d53e2a20a80d6515dfb78be51fb5688e231695c4227",
+          "pixel_sha256": "8841e3e4812172760266e84174bfa71981ac27b9b745028fab50e5cf44517f9c"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "OTHERS.png",
+      "sha": "2f31075d4c12ffa1c5ea5826c61cd9e8af6430eeaa0caa253b2eccd911db6543",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 58,
+      "foreground": "f5cc156c2d246726e51b9d80c2b26100fb2aef17b42e6366244ba3492c76bedb",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "f5cc156c2d246726e51b9d80c2b26100fb2aef17b42e6366244ba3492c76bedb",
+          "pixel_sha256": "ba8c00f746099df27c4c4baddeef7237e3f86212561920cadb1019df387b54cc"
+        },
+        "white": {
+          "sha256": "4beac79bd55a335018599052c1e6435bc302dd85445313655c8219fe7d1c4bc8",
+          "pixel_sha256": "563aa61a5808cd364e666bcbe8639a29d07782d9256679f2b82a989c02113dbc"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "PLAYBOX NEO.png",
+      "sha": "4eebaf18d6fe24254f3942da51dea3079dba338846287fc31bac901b3b325bd4",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 59,
+      "foreground": "888a5483694fb7a4613205f52824e47b4d2588e964a4cddb636bdc484e694dea",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "888a5483694fb7a4613205f52824e47b4d2588e964a4cddb636bdc484e694dea",
+          "pixel_sha256": "dcb3b3fbbcf430952edba4d40ac5d564d6ddaa705a1b40a3895da765a7952a44"
+        },
+        "white": {
+          "sha256": "f29d55f55c8a83de50629a8b23773ccd3eb50eb3d18e0ada9d6fe2609b610646",
+          "pixel_sha256": "83cf49deb985ee509fc35be9725a446ea8a6128f07e79221d9f4f1c3ae525930"
+        },
+        "black": {
+          "sha256": "8ba534fcc423261b94a9eb7ba0e6f56aec8e1a9867f3fdbaf8088f4fbfb3866a",
+          "pixel_sha256": "6c4435ddab51c37ac9d7a3ab9974936760c3a1f635eedc26abd477daa1935890"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "POZEMN - NOV.png",
+      "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 60,
+      "foreground": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+          "pixel_sha256": "322cf2b1893bf81beaf44710f347d7bab0cb6bee2e7d3813b62dd42ea98eb837"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "POZEMN - POSKYTOVATEL.png",
+      "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 61,
+      "foreground": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+          "pixel_sha256": "322cf2b1893bf81beaf44710f347d7bab0cb6bee2e7d3813b62dd42ea98eb837"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "POZEMN - STANICE.png",
+      "sha": "03ded902fe1dcd30d27ae388c52c2bfa20873a9e3f0f3bad4a3331f75322a614",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "index": 62,
+      "foreground": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "8ff32dad319e230afd5b7c33f435fe6e60bf650d7dd5eca46441405abef298a7",
+          "pixel_sha256": "322cf2b1893bf81beaf44710f347d7bab0cb6bee2e7d3813b62dd42ea98eb837"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "PROGRESS DIGITAL S.R.O.png",
+      "sha": "b7963a2d81d1509f0259bb9efadf524df5817455a521315af000916a06eeb797",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 63,
+      "foreground": "5e49e0a13fa2591fc3b2c58ca5e966b499e96caafdea555e9f18a03799983e30",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "5e49e0a13fa2591fc3b2c58ca5e966b499e96caafdea555e9f18a03799983e30",
+          "pixel_sha256": "221408e37cead9709b63ba9f176eb79607168c7612098367c578146445dbc103"
+        },
+        "white": {
+          "sha256": "27d01e9056c963cb7923d23631cc48eb05f724302b1a9ae2594200d4a153e906",
+          "pixel_sha256": "a8d792173262a076c6d26743043c6397b1d12398de30ba2d59c26589798f2cf9"
+        },
+        "black": {
+          "sha256": "e130326c6884d8ef67e6639563b0be044d41ea8de81f72d47014079591440768",
+          "pixel_sha256": "0ff1e89ab9bdb411ea48ce13d6c2e6455c971151baeeea04024a761854ae0aaf"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "PUBBLIMED.png",
+      "sha": "7a52a3105b6cf027aeebd9c50a7d9138af6878fd50bdd8e758c9663a27945c48",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 64,
+      "foreground": "c5545ae84e328edcf582af77b1000cc580a9d494252259722e9ffed15f0431df",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "c5545ae84e328edcf582af77b1000cc580a9d494252259722e9ffed15f0431df",
+          "pixel_sha256": "7096586cdfa43cc8e92529ab8403f7c11c3c61b9d370cd92fe37f7fb09538746"
+        },
+        "white": {
+          "sha256": "f8201745da6fe47243f1b2274c54b6a1c15b2a87d8603d7bdbdb867880795bf4",
+          "pixel_sha256": "1bf07176c1333f2c0df4abcabd51b2401512fd1dda291a50bdf8c35cef5c7d11"
+        },
+        "black": {
+          "sha256": "d7b142eb0a486a60069caf8cf88b12ab723f3e9f110962ba922def64d92dbe3d",
+          "pixel_sha256": "2346cbad16a062cdbd247a913601868956edd1af606c46b85f382476d3f211e9"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "PUBLIMED.png",
+      "sha": "7a52a3105b6cf027aeebd9c50a7d9138af6878fd50bdd8e758c9663a27945c48",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 65,
+      "foreground": "c5545ae84e328edcf582af77b1000cc580a9d494252259722e9ffed15f0431df",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "c5545ae84e328edcf582af77b1000cc580a9d494252259722e9ffed15f0431df",
+          "pixel_sha256": "7096586cdfa43cc8e92529ab8403f7c11c3c61b9d370cd92fe37f7fb09538746"
+        },
+        "white": {
+          "sha256": "f8201745da6fe47243f1b2274c54b6a1c15b2a87d8603d7bdbdb867880795bf4",
+          "pixel_sha256": "1bf07176c1333f2c0df4abcabd51b2401512fd1dda291a50bdf8c35cef5c7d11"
+        },
+        "black": {
+          "sha256": "d7b142eb0a486a60069caf8cf88b12ab723f3e9f110962ba922def64d92dbe3d",
+          "pixel_sha256": "2346cbad16a062cdbd247a913601868956edd1af606c46b85f382476d3f211e9"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "RADIO ROMA TELEVISION HD.png",
+      "sha": "4d5188f88d5fbaf248beac19bd97be889dfb7b71348dac6d2edd30a9b32a005a",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 67,
+      "foreground": "213bbe8630a8ab8fba91ff73259392b5f32ebbf30291aa78a8d9c350ab380788",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "213bbe8630a8ab8fba91ff73259392b5f32ebbf30291aa78a8d9c350ab380788",
+          "pixel_sha256": "aa494f47fb341191c3f2c40a8b3671569fae176a17b75be8f6577e6599d35684"
+        },
+        "white": {
+          "sha256": "28c483ae97b7b6bad1c826685fc22bac108d2c47260d915305ae08f6b4802675",
+          "pixel_sha256": "467b8bd15b06968f346cbb0476cd2f59f8f971726fdf6b554680b43f8363e674"
+        },
+        "black": {
+          "sha256": "8aad9a6faddf3c5d84df3c413fafd05ba41dfaf2d727f09333121f426e2132f9",
+          "pixel_sha256": "4c8dccb73f3783b42150c75acbaceb2ecf91bfb1b91c9ef5ea62e7bcd0d05df2"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "RADIO ROMA TV.png",
+      "sha": "4d5188f88d5fbaf248beac19bd97be889dfb7b71348dac6d2edd30a9b32a005a",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 68,
+      "foreground": "213bbe8630a8ab8fba91ff73259392b5f32ebbf30291aa78a8d9c350ab380788",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "213bbe8630a8ab8fba91ff73259392b5f32ebbf30291aa78a8d9c350ab380788",
+          "pixel_sha256": "aa494f47fb341191c3f2c40a8b3671569fae176a17b75be8f6577e6599d35684"
+        },
+        "white": {
+          "sha256": "28c483ae97b7b6bad1c826685fc22bac108d2c47260d915305ae08f6b4802675",
+          "pixel_sha256": "467b8bd15b06968f346cbb0476cd2f59f8f971726fdf6b554680b43f8363e674"
+        },
+        "black": {
+          "sha256": "8aad9a6faddf3c5d84df3c413fafd05ba41dfaf2d727f09333121f426e2132f9",
+          "pixel_sha256": "4c8dccb73f3783b42150c75acbaceb2ecf91bfb1b91c9ef5ea62e7bcd0d05df2"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SOKO.png",
+      "sha": "e3a18b61f5c38cf903f1d30c1f5c6911f8bf5c2b93b50dd40495fcbbca0023ef",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 73,
+      "foreground": "0eb457dae41c69a47512345ad655379f8fefe8e59f1719b77c2d607b781e6deb",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "0eb457dae41c69a47512345ad655379f8fefe8e59f1719b77c2d607b781e6deb",
+          "pixel_sha256": "6eaa7398852bf7ac22ce29a4a9281663c4d8fc1e0a9fd318fd36bba3a909594f"
+        },
+        "white": {
+          "sha256": "efde5518a48b117dbbf0820bb964320334e04fc6c8eb33d7e41b765062bd8011",
+          "pixel_sha256": "69c4df883f4bfe399d7d01dcfe7bab23ad8664180c1461230c3da653d1011095"
+        },
+        "black": {
+          "sha256": "d898287803d7b9f700ef3b2196e5050eeac8fee48297367ab65edd73c5f7ff15",
+          "pixel_sha256": "f3665ce9aad4803fe16701def39cc6d77232163d7483fae680c4c62dc2304398"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "STUDIO 98 MUX.png",
+      "sha": "50d89a2fcd4ff15f94f23413cea226a5c9a58ce648bb8811e6e7e72df3d51dd9",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 74,
+      "foreground": "719e052a86ec433e2bc545ccceba60b299f90311913ba89af3f22e89215c4e19",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "719e052a86ec433e2bc545ccceba60b299f90311913ba89af3f22e89215c4e19",
+          "pixel_sha256": "ca4dfee1e5957dc2a5dfa6a7bf70979a178917cf2470fb1f1d9267c9a52b0076"
+        },
+        "white": {
+          "sha256": "06fa3c9af1fb28f242997add8ac3a285aa49c9edabbf361f7933fe2154ae6e6d",
+          "pixel_sha256": "b46d8c8f02044f0faba37c78061d49456420491464ebf18d4b216981d0acbeaa"
+        },
+        "black": {
+          "sha256": "77eec87a94bd59bfba76d950e352303f0b32d5b19b09edf9f0358669af7918d4",
+          "pixel_sha256": "1c8069e0bf3487a6a5c12f736c2218655bd9db630206b267a1051af55af100ae"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "STUDIO 98.png",
+      "sha": "50d89a2fcd4ff15f94f23413cea226a5c9a58ce648bb8811e6e7e72df3d51dd9",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 75,
+      "foreground": "719e052a86ec433e2bc545ccceba60b299f90311913ba89af3f22e89215c4e19",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "719e052a86ec433e2bc545ccceba60b299f90311913ba89af3f22e89215c4e19",
+          "pixel_sha256": "ca4dfee1e5957dc2a5dfa6a7bf70979a178917cf2470fb1f1d9267c9a52b0076"
+        },
+        "white": {
+          "sha256": "06fa3c9af1fb28f242997add8ac3a285aa49c9edabbf361f7933fe2154ae6e6d",
+          "pixel_sha256": "b46d8c8f02044f0faba37c78061d49456420491464ebf18d4b216981d0acbeaa"
+        },
+        "black": {
+          "sha256": "77eec87a94bd59bfba76d950e352303f0b32d5b19b09edf9f0358669af7918d4",
+          "pixel_sha256": "1c8069e0bf3487a6a5c12f736c2218655bd9db630206b267a1051af55af100ae"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TEAM SAT.png",
+      "sha": "88571ef56ca00e8a2655425c249e7b503a380a6f5140d019ed4b60f07f6b44e7",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 76,
+      "foreground": "e563e739d60539f1a38bfbcfe55dda5bce594997d617394a64300ff20a966aea",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "e563e739d60539f1a38bfbcfe55dda5bce594997d617394a64300ff20a966aea",
+          "pixel_sha256": "d3defb9581645fcab58208253d0e9d96dc965e653981a691402c783ae7470560"
+        },
+        "white": {
+          "sha256": "d79532f8168c7ecee3f96c521f56b758a88f7aca994ba6367f8114a26c4bcead",
+          "pixel_sha256": "917351dbf727d29b403d528285e9332e2de3ce304a4f717d0bad8a099c94e192"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELE DEHON BKP.png",
+      "sha": "ce1f90406055d347a1ed6a376cf5668790140a0a1b71bbdb505c5adddcd2c0d9",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 77,
+      "foreground": "36398cd5fc351375c7b33e836da36caad4aef6c7a0e3cca22acec4057d454a98",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "36398cd5fc351375c7b33e836da36caad4aef6c7a0e3cca22acec4057d454a98",
+          "pixel_sha256": "ef61a27106e3629d69757c34c4ffdb84c544b3d70d42ba4e8cc5b905d3b4924a"
+        },
+        "white": {
+          "sha256": "559dd76b3eba7d07144edaf78db6120333e2e73d98d0ef5eb8d7e94cb016309b",
+          "pixel_sha256": "f2565171d818d35c02d74c079cad3085e713614c78b094f22c40f0ebad915551"
+        },
+        "black": {
+          "sha256": "9a285db51a2cef078c689a64e8d0fd5933aab4000de3147f3ccb4d0c3704a06e",
+          "pixel_sha256": "1ce9cbc2172fb7e4f2fc75e3c30b25c914e9ea0670f3f82626c0618465bf2da8"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELE DEHON.png",
+      "sha": "ce1f90406055d347a1ed6a376cf5668790140a0a1b71bbdb505c5adddcd2c0d9",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 78,
+      "foreground": "36398cd5fc351375c7b33e836da36caad4aef6c7a0e3cca22acec4057d454a98",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "36398cd5fc351375c7b33e836da36caad4aef6c7a0e3cca22acec4057d454a98",
+          "pixel_sha256": "ef61a27106e3629d69757c34c4ffdb84c544b3d70d42ba4e8cc5b905d3b4924a"
+        },
+        "white": {
+          "sha256": "559dd76b3eba7d07144edaf78db6120333e2e73d98d0ef5eb8d7e94cb016309b",
+          "pixel_sha256": "f2565171d818d35c02d74c079cad3085e713614c78b094f22c40f0ebad915551"
+        },
+        "black": {
+          "sha256": "9a285db51a2cef078c689a64e8d0fd5933aab4000de3147f3ccb4d0c3704a06e",
+          "pixel_sha256": "1ce9cbc2172fb7e4f2fc75e3c30b25c914e9ea0670f3f82626c0618465bf2da8"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELEACRAS.png",
+      "sha": "4db6c13fac1fba46cfb094cf2a5953c760e97a0136e584cb41618602fa994073",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 79,
+      "foreground": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "acc447752aef3a394cc40d7a04fc7d227df1d9322fea5c379fe29fca31edbb29",
+          "pixel_sha256": "ca2ef4cab36585865db77f081d8e9a2179e6d1e885793c05a0e55f5439ef6d60"
+        },
+        "white": {
+          "sha256": "3d937997032450188171a6f852d83066a7a242ba9209e8d43204ff24d61c9ef6",
+          "pixel_sha256": "0285beee3045321dc42b9c86913c6a19554a2b0752e5caf4ed99704b6a1ba3b1"
+        },
+        "black": {
+          "sha256": "b0411ae8e8d4644b671a5813fcd5092684669b8979033df79fa6815c37029408",
+          "pixel_sha256": "c08fe943321592c7d0c6cbd858f3f3fb606b7873b371fb37d2f5199285e312bf"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELECITY.png",
+      "sha": "e2f4fda88c6816829d204a97d3862f9c49b39c4386fb4861cef0d7795a672066",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 80,
+      "foreground": "b7ff95c29f64a688be9d17bd5eb49ccfea84e3d89156f916bed07d7f4629f13c",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "b7ff95c29f64a688be9d17bd5eb49ccfea84e3d89156f916bed07d7f4629f13c",
+          "pixel_sha256": "2025045d9d30f20233426609668fe8769e86f4a9193d269c83c31ecbebe522f1"
+        },
+        "white": {
+          "sha256": "08056b7fb049805c91e53f5878ea7ac6b4b96cdd7dae186255ee8ddd8d88c3c8",
+          "pixel_sha256": "e4232171bcb13f9ea8c72ea5c502708098147389fdc761b6f615f86f05862041"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELEFUTURANISSA.png",
+      "sha": "1c2a8239e4c7e47cf2a19cd62fd6759becb4c69a63204c71daae937e555b05b9",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 81,
+      "foreground": "d8fb5ac06e642ec110014d81024e0e4aebf3e0693abf9e0c025546363cd190eb",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "d8fb5ac06e642ec110014d81024e0e4aebf3e0693abf9e0c025546363cd190eb",
+          "pixel_sha256": "2c5e416c1cf58b63bfcf30dc2e99b7083fa7f082cf507b0bd960d5a8aef346e0"
+        },
+        "white": {
+          "sha256": "5e3833f4278924a97b696e8838ee0d0a8c87fd4489fdfc26888ff353e510ecb5",
+          "pixel_sha256": "6e72e161e7b70df8c54e0ed85eb97cca183decb9236e933c39477ee4a92fcc9a"
+        },
+        "black": {
+          "sha256": "98d6cfb37964e85d636fc89f18a877b73f73129a5c15c672cb0c411d73b470a8",
+          "pixel_sha256": "e219cbab8824ec93953575d12fb338debf02315520cd7bff758e48e5bbaab68d"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELEMIA.png",
+      "sha": "cadbe2acadd1641e04f4e46b41e0cf7f43c9e5e7d83aa97cb4a3ee3245dfd578",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 82,
+      "foreground": "284f48bb92b05a37b712b7dae6fed2673e2961f84c6af249d65d8f0119188ce5",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "284f48bb92b05a37b712b7dae6fed2673e2961f84c6af249d65d8f0119188ce5",
+          "pixel_sha256": "6c8a12d7dae36ea7748cf5b862019a1b57dc00d7aa8e93d39034a6d39ed46a00"
+        },
+        "white": {
+          "sha256": "dae903cdc08b89815bb6d53dc1ab78edf08d3d6592fb04168e59036e4838bb12",
+          "pixel_sha256": "ea665c6fa79aacd209375e0f9c0c9c68e561cd9df04a7b788c0b7fe28e3498e4"
+        },
+        "black": {
+          "sha256": "f280b5d72bdf8e02f5bf94dccc4259675f637bc0236bfeccc8d2389959775b4c",
+          "pixel_sha256": "6df90bec688ea291342f9abfd3955d19d8fa6881c1a7a42d6cfcb79046ea038c"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELEWIZJA POLSKA S.A..png",
+      "sha": "ee59cc154ae0bdd9bc23a4b3f0f10aeb38c54a1265757e70282cc95057f785db",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 85,
+      "foreground": "e6dba9251bb60220d734b8b88a949e7bea53a90e6c5410b0e15d21418d9c0916",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "e6dba9251bb60220d734b8b88a949e7bea53a90e6c5410b0e15d21418d9c0916",
+          "pixel_sha256": "47cc04d5a6ddf5c53dd57c54a3633ba78f4874dcfc7398fce9c6c5b1de3f56b9"
+        },
+        "white": {
+          "sha256": "81fc08f1f573d96fd6e6775e9b6ad7597d8a834f941209fc4f2410348e882a3f",
+          "pixel_sha256": "ea6f9730bf8d24865be45fde0ebab2f03e14d33e88ca6337eacf67b9cc873fbb"
+        },
+        "black": {
+          "sha256": "b373105abc072db3aaed1fabf51fc13642bdbb3a67d504458d61bcfa80269b96",
+          "pixel_sha256": "aeee161e631c26a3dfc30a1740c2037634b559bcc124019d2dd4e1c5e78d929b"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TGS.png",
+      "sha": "f77061db6e44194a1d1961ccb148484466cca676aa91b72f4819da854778eb3d",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 86,
+      "foreground": "f8f714b0821af143563da6c2efec4556f8905d64e3102772661f7afe86458da4",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "f8f714b0821af143563da6c2efec4556f8905d64e3102772661f7afe86458da4",
+          "pixel_sha256": "b26d79821001e78c068f68fef84d851365653f1bf9f3dff9e418d78f58bb6ecb"
+        },
+        "white": {
+          "sha256": "582622b407bb751ff64bd27349826937090d1e158db958ebb013bdd79426c80e",
+          "pixel_sha256": "bee1cd366ba35094f6dc1d83993fa2410a0a7f32fade4b30f574e5042c491582"
+        },
+        "black": {
+          "sha256": "4eff591b2f36f742434faf2d8dcb55f17aaaa7dccef7f4bc0b70fee7157cafea",
+          "pixel_sha256": "9bf9b46cc112225d9e41fc59ee3751f56db147b6c3eb85e01fb6e1d96c80af5f"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TOTOPARTNER.png",
+      "sha": "63fded69737af43799ade639ada4fd61fb507a5c5bf4dab7ef2f1ca6e09ae44f",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 88,
+      "foreground": "5890a5e04b8cd10c859644c9dc1363da6bb11f8bfe1fbfdfe3ec3821c2e92f33",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "5890a5e04b8cd10c859644c9dc1363da6bb11f8bfe1fbfdfe3ec3821c2e92f33",
+          "pixel_sha256": "2a510aaf5fb9c755ffbf0b6a0078b20fc24d54b7d3d880d3dbbfff4f67dfe13d"
+        },
+        "white": {
+          "sha256": "144cf8dd9767e7099a005aed12ba0f0b195b53ec5d40d34a984c64c635bee8d4",
+          "pixel_sha256": "e7f49908af03ff9da78cfe768bc21f132a2493e69df8a78c74b2baf767ef90c7"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TRICOLOR TV RUSSIA.png",
+      "sha": "a8b9d737399184e942e762c9d476a2443a10103e534e58d9120435e3e130f33a",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent"
+      ],
+      "index": 89,
+      "foreground": "f7ad9764a517f3a355c7c1610817679216b61d471acd121873183e4de237ef1c",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "f7ad9764a517f3a355c7c1610817679216b61d471acd121873183e4de237ef1c",
+          "pixel_sha256": "c27ef99b2a90d2f461913e8df9d4364bf7d036458fe632abc3e61852114a02ae"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TRICOLOR TV.png",
+      "sha": "a8b9d737399184e942e762c9d476a2443a10103e534e58d9120435e3e130f33a",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent"
+      ],
+      "index": 90,
+      "foreground": "f7ad9764a517f3a355c7c1610817679216b61d471acd121873183e4de237ef1c",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "f7ad9764a517f3a355c7c1610817679216b61d471acd121873183e4de237ef1c",
+          "pixel_sha256": "c27ef99b2a90d2f461913e8df9d4364bf7d036458fe632abc3e61852114a02ae"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVA.png",
+      "sha": "ec285850afcf70676ff8559e5f5dd1ec47545a2b2d8e0025a7da1848de279bf8",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 93,
+      "foreground": "d71ca15dba6135256ce132d5d20092e53f395bfbcf737bb788ef2c50f8806e53",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "d71ca15dba6135256ce132d5d20092e53f395bfbcf737bb788ef2c50f8806e53",
+          "pixel_sha256": "582b12da7c365bdda02eaa04f0ddcc9b1a3f08c892791f6c5d4b419cce539588"
+        },
+        "white": {
+          "sha256": "cae1d3e15daa4aa8a776637e49be22c7f19da0332d27e6dd1c776ef93d227fe8",
+          "pixel_sha256": "0d779a575f9217f196acc7b7a3b2227277ed25b716ce93321129e4af7c6effac"
+        },
+        "black": {
+          "sha256": "52204d88741aa7673cbc07c2ec003964ad47acb9d7f533396aa4d233da5adfde",
+          "pixel_sha256": "570e408989292d9f063c1ba3bb9b94b562345f0e68e1d75a6a8aefc2e3b637cb"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVL.png",
+      "sha": "1089dda110241eb68daa04ab2c5604f1c1c3e2891791bb0ea73dfc642c020c2b",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 95,
+      "foreground": "913b1d965e4df5421ce86991b01bd8bce8bcda7ed7926ba3daa202fc2548bfa3",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "913b1d965e4df5421ce86991b01bd8bce8bcda7ed7926ba3daa202fc2548bfa3",
+          "pixel_sha256": "49816275a3d9f1ccd3f6a8daff52ae84082cb541a8929cbd2ddf72215625524c"
+        },
+        "white": {
+          "sha256": "1999401aaca18b4a9432ebbe971d45f4e9e70cf8f7517ccb496e8b5daaf2d69d",
+          "pixel_sha256": "dad569337ba6065cb8250fddb8c12644a7e6b8d056546d958181a0409200e8ab"
+        },
+        "black": {
+          "sha256": "7c1e781db5be775c671a983d70006cb30b8b0df28f986578b26a57eb7ae13b22",
+          "pixel_sha256": "f3057dbf1d45c1c0beea2118a9bf3d4979a9bb256d1974babab6b7d1fee0c72c"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVR XENON.png",
+      "sha": "6c3ffadbf5d75e29a3e4caf9a52bc005fd84ec3152bf8799c0fe8f6226998339",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 98,
+      "foreground": "2c261df87fcb5542ae39248c597cec9d559ee8ea089d87056199e8c64cee902a",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "2c261df87fcb5542ae39248c597cec9d559ee8ea089d87056199e8c64cee902a",
+          "pixel_sha256": "6d5cb0843439842ab813417f214201bd3cdf94963dab0b46c51ddce8198425ed"
+        },
+        "white": {
+          "sha256": "1cb9a48d73c05e87ee2d4ca0c2fc8111bbf05c75b90cad19a5ea8f709a958e6f",
+          "pixel_sha256": "61dfc7eb7ad2ed561686b30fac9c3a29779d870c6aee0e2bb648b5b16ca2703e"
+        },
+        "black": {
+          "sha256": "4d5518d77c49a2ec3ce03eadbe56aadcfdaec23a03e18dd086d0c3625afd439c",
+          "pixel_sha256": "ddba7f609a64d34328ab81845e2a76d3b9585c581611e3ea316bc02354929b19"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ULTRA HD.png",
+      "sha": "4bcbfca0ffb7f1d75639526f82368c2ed7abf3089ebadd7b507c1e9edcbf7265",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 100,
+      "foreground": "2e1f6937a9d85c1f6fb70d4d2d58a8b8e2b704745cc36ccff561d85a8a59b01a",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "2e1f6937a9d85c1f6fb70d4d2d58a8b8e2b704745cc36ccff561d85a8a59b01a",
+          "pixel_sha256": "c7bf53ffa8c442443835ee1149cb7d3b8dc297c2d053bd57c14563f2ea2b23b5"
+        },
+        "white": {
+          "sha256": "6e00ca36881f8fd8ac00d24d89955015e0999048da654d2759008f0de3d272ec",
+          "pixel_sha256": "c643a77fa865f9721cf8b6c96f957200d8547d764bd354304c231eba253c3946"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "VB33.png",
+      "sha": "9c14186a5c4ef41fa084c65ca21b84e70463cf17eaa46683df2ef3337eafa3f4",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "index": 101,
+      "foreground": "1b795712409cbea2243ee7b9fd225e2b3494669ce87906d1242eedbd14297dd0",
+      "plate": true,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "1b795712409cbea2243ee7b9fd225e2b3494669ce87906d1242eedbd14297dd0",
+          "pixel_sha256": "007616518fece8b7ecd9a39ace22433b6afcfc43086df44c803dc8c990628f17"
+        },
+        "white": {
+          "sha256": "afb4ebd86ff393d84a2654977d6aef6f735adbffd4e48dfccd6dc18ca039ec4d",
+          "pixel_sha256": "0fc29c5fa8846fd1876ce989c84f439f7635ceb711156ede567ea976c37be196"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "VERA TV.png",
+      "sha": "7b4c0f8a696542370879119587e9bb7296d5281f389ae626fb02b7d2d27646e8",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 102,
+      "foreground": "abe1ba6df81529f85b64c77da5bad56d5ca309bf3ce4a6bc742ec85d6c9e3070",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "abe1ba6df81529f85b64c77da5bad56d5ca309bf3ce4a6bc742ec85d6c9e3070",
+          "pixel_sha256": "f597caaa63de731fcba8248a7c8315f4f688850c258732b86baf3bc283085b9f"
+        },
+        "white": {
+          "sha256": "ded9923c63a30271c83ad11b06f0a89c2676b375e9fe32faa3fad2e47f3904f0",
+          "pixel_sha256": "a4f8340b6e68318ab56d604c00d409b668feb40bf646ea54b4fa0aa38bf17874"
+        },
+        "black": {
+          "sha256": "99c73551aa4e7f311a6f3a4845ce1db027858e185a162b3149215667f23cf724",
+          "pixel_sha256": "e08d18f235798acb2e4b0bc6409d7a3bbbfca1bdc201f3d0b06483a3d6cc49d7"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "VIDEONOVARA.png",
+      "sha": "c820178be74c84e46b94d7ee487717337730631f6dd1dc59ff3e50d2c57874f1",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 104,
+      "foreground": "21c17214ee22b2efac33bb85108f0503d59ecd65cf77efe36872a544a57262e5",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "21c17214ee22b2efac33bb85108f0503d59ecd65cf77efe36872a544a57262e5",
+          "pixel_sha256": "72285120d1311ee35fc20d037a5bc2ec8f7b1e4ddb7985d04104ffa28c64cb1f"
+        },
+        "white": {
+          "sha256": "77be4f164f0c75679c49221a209373d78a1ffe16579cee9a61b86bcffbd37177",
+          "pixel_sha256": "91acfdc6ac803e1168c9f84d21c88b10cf618c2ac41edbaca7ae206d4f3df999"
+        },
+        "black": {
+          "sha256": "ddc9362b747e8f8c74c1ee18d08bf4caf37098ff02131b2aff0fad07071ce3d5",
+          "pixel_sha256": "2cbc05cde1942d82036683dd53845e91e16a3e86548613b2062696bf24f9011e"
+        }
+      }
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "XENON.png",
+      "sha": "6c3ffadbf5d75e29a3e4caf9a52bc005fd84ec3152bf8799c0fe8f6226998339",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "index": 106,
+      "foreground": "2c261df87fcb5542ae39248c597cec9d559ee8ea089d87056199e8c64cee902a",
+      "plate": false,
+      "method": "source_raster_recovery",
+      "variants": {
+        "transparent": {
+          "sha256": "2c261df87fcb5542ae39248c597cec9d559ee8ea089d87056199e8c64cee902a",
+          "pixel_sha256": "6d5cb0843439842ab813417f214201bd3cdf94963dab0b46c51ddce8198425ed"
+        },
+        "white": {
+          "sha256": "1cb9a48d73c05e87ee2d4ca0c2fc8111bbf05c75b90cad19a5ea8f709a958e6f",
+          "pixel_sha256": "61dfc7eb7ad2ed561686b30fac9c3a29779d870c6aee0e2bb648b5b16ca2703e"
+        },
+        "black": {
+          "sha256": "4d5518d77c49a2ec3ce03eadbe56aadcfdaec23a03e18dd086d0c3625afd439c",
+          "pixel_sha256": "ddba7f609a64d34328ab81845e2a76d3b9585c581611e3ea316bc02354929b19"
+        }
+      }
+    }
+  ],
+  "statistics": {
+    "transparent": {
+      "size": 1395903,
+      "sha256": "aa2aeaeb97ffeebd3ff521a1af30206a9d6b8969b29d2465b463902cfbe83050",
+      "png_count": 71,
+      "unpacked_size": 1401623
+    },
+    "white": {
+      "size": 2404485,
+      "sha256": "e362e8636b23ec203e954a381ccadffb76420b4bb28bb320f0bd4a8f8e28c6d7",
+      "png_count": 60,
+      "unpacked_size": 2396693
+    },
+    "black": {
+      "size": 1951999,
+      "sha256": "eba15174e1f757f348334912b283177bbbae318de2df6752f72bebf5e566ac2f",
+      "png_count": 50,
+      "unpacked_size": 1945280
+    }
+  },
+  "remaining": [
+    {
+      "kind": "PROVIDER",
+      "name": "1 CENT.png",
+      "sha": "4c3ece64b907b73825eee77e1f17ed221c964652889f5dcb7d654e9877e6317c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ACISPORT TV.png",
+      "sha": "ef0901004e2d14b251f9d78d33c38e47934e03ce1798594375ee194c62075f16",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ACISPORT_TV.png",
+      "sha": "62b9acbc68e9099b6c30987597195cad0f2a622c43bb34ac149a015870fdffde",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AL JAZEERA CHILDREN.png",
+      "sha": "e2650eb59ab2061d2908bdd5a83a73a948a8734846ad888a369507fcb9d4e799",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AN.png",
+      "sha": "b675ff1d2fdf09bc55f5956f91da8515bc232e77b3467407c6d4e4d6a7ddc653",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ASSOCIAZIONE DREAMER.png",
+      "sha": "b915aeb4939fb85ca6d457e6e48062068f165e817680c19ba878caacbbc2ddf2",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ASSOCIAZIONE_DREAMER.png",
+      "sha": "184f3a436bf16bd31635250396ddf9e3566528c25d33eed094be9193d606d8ba",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AUSTRIASAT MAGYARORSZAG.png",
+      "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AUSTRIASAT MAGYARORSZG.png",
+      "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "AUSTRIASAT.png",
+      "sha": "dfeebfc89445239eb6eb0871938aa95a7074db69197e9d2e28c78225ec756d59",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "BBC WORLD.png",
+      "sha": "c0c1a26ae147a3e78a054b1c2e9cf574b1c5f64dbd78c56338045e3081e337ce",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DGB3.png",
+      "sha": "8d80e01c8d3c773c71e8e243edf63a2f16e5f482216d0544a0461827188a4747",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DIGITAL FREE.png",
+      "sha": "282ec8a5ceec5fea5cca2369222d4457cf9ef81b57b3c8644f6fd6f78567ed4c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DORIA.png",
+      "sha": "dc436841bd4ec5385c2f179fd61c5ecbdd87b3ac8d86bb8a2f67959c8a9acdd6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "ECLUTCH.png",
+      "sha": "4fa36711251bb2f81e6b81a24bd57f7ccd542970b6df1141e2135111a63b057b",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "EUROPA7.png",
+      "sha": "74dacc33fcafc632a08ae51802e3bbdf66f3fa145143aae6c9eabf9c838681db",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "FREE TV.png",
+      "sha": "569f2156d9fe9b8a201406b1be003c62079945867b924755b8e1eef5bf2214f0",
+      "state": "IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "GTSS.png",
+      "sha": "6e62c8d7b38b8b233c3c8aff5469fd038ad274fc0f0f93b901489a62021b68a6",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "MULTIPROGRAM.png",
+      "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "NT.png",
+      "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "RADIO MATER DAB%2A.png",
+      "sha": "c934b0270bb9e28584ec140046b7390ad75bfb9032a6541ff3c2c23a247253de",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "RETECAPRI TRTN.png",
+      "sha": "5a099e8eeb32646446322bfb9158b58c2f8df2ad6eac57f79cd45c1aba4de016",
+      "state": "IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SERVICE N.png",
+      "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SESTARETE & RETE 8.png",
+      "sha": "2eee4e90b6fed860af5017aec2919b6f1f5fa6083d2f89b66962a3df97d9dd2f",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SHARAVOZ.png",
+      "sha": "c3d87623d984bbb31c52c728ad905b02baae669c1616667cc87e49db747e20b3",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELERADIOPACE.png",
+      "sha": "e07cbe2dfd9f0639cf7509e2ec50e9e7bda93124b795ed451aaf5e244e321e36",
+      "state": "EXTERNAL_BRAND_REVIEW",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TELESETTELAGHI.png",
+      "sha": "d67a82bb63bba537afbdab6c4e4ceddcdf784ae947adc06ca781698bc8e0308f",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TIVIBU.png",
+      "sha": "8907fe7764f7dec1a78a4ef996e8195b1a2ade1c8e92b4b5c897479bdac3c08d",
+      "state": "IDENTITY_CONFLICT",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TV CABO.png",
+      "sha": "438c91ab613964e7cd9b7f766bfb721247847b310c315203f8498b8e16cda2ce",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TV SYSTEM.png",
+      "sha": "4db6c13fac1fba46cfb094cf2a5953c760e97a0136e584cb41618602fa994073",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVCM.png",
+      "sha": "15ec3341114ef1b51a4434395c934128862a9be1e7633645c7568b17585ad4f4",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVN WBD.png",
+      "sha": "9c0f16655d1681e5c890cf201d4b1c19e8999dfc9a14df945b0288f298ee1635",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TVN_WBD.png",
+      "sha": "38d551f1d1cf6f7b52117365f1224119e403864d9fd575d0d3346430e896458c",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "UKRAINE.png",
+      "sha": "71b38ca3cd9258ed7a5f932b8bfe0e851398782d10fc54da020096b9f052923b",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "VIDEO REGIONE.png",
+      "sha": "5ec44e298c05c767a7478268170936a1dc83c8f6a93825571feaa359390424ef",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "W1 WL DTH.png",
+      "sha": "cb32c445792e377d2b219c03a51df996bda127ba954c36973bb0f806924cdfc3",
+      "state": "CLEAN_LOGO_REQUIRED",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY"
+    }
+  ],
+  "dtt": {
+    "already_present_corrected": "1_0_16_1C23_384_110_EEEE0000_0_0_0.png",
+    "source_alias_incorrect": "1_0_1_1C23_384_110_EEEE0000_0_0_0.png",
+    "remaining": 5
+  },
+  "note": "Missing provider variants only; all previously approved base PNGs are untouched. Source raster restoration, not original vector graphics. V2 activation requires receiver/client release and verification."
+}
