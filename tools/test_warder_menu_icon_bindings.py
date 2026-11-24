@@ -87,7 +87,13 @@ class MissingMenuReportTests(unittest.TestCase):
     def test_bundle_is_exact_previously_approved_art(self):
         bundled = ROOT / "source/package-root/usr/share/enigma2/hd_glass17/menu/warder_skin.png"
         original = ROOT / "assets/warder/menu-icon-overrides/warder_skin.png"
-        self.assertEqual(hashlib.sha256(bundled.read_bytes()).digest(), hashlib.sha256(original.read_bytes()).digest())
+        data = bundled.read_bytes()
+        # Sparse CI checkouts intentionally omit the original asset directory.
+        # Pin the approved immutable Git blob rather than weakening the check.
+        git_blob = b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+        self.assertEqual(hashlib.sha1(git_blob).hexdigest(), "d9ed25d28f2ceda795796449d4dc8046a43a5872")
+        if original.is_file():
+            self.assertEqual(hashlib.sha256(data).digest(), hashlib.sha256(original.read_bytes()).digest())
 
 
 if __name__ == "__main__":
