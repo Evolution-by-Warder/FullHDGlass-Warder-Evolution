@@ -1,0 +1,53 @@
+{
+  "pixel_sha256": "47ca93cb34b84b83b3b1b02af880ad2be9bfba85a72829a13c71150ffb74f16c",
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1282,
+      "added": 25,
+      "sha256": "d751759b7783cd25de5cbc830ea1eec66c7837f9a7bcebcaa888ccca2528cf33",
+      "preserved": 1257
+    },
+    {
+      "style": "white",
+      "count": 1337,
+      "added": 24,
+      "sha256": "97ad98bb12a7efe46f79c36e9d22ca2a0d35a9481f4677cd1964c8aaefd5f308",
+      "preserved": 1313
+    },
+    {
+      "style": "black",
+      "count": 1363,
+      "added": 23,
+      "sha256": "6be9ea1c9c68e307a3aa5fc5c25c4a1afa9921ffa61602fad2c3f48baae88477",
+      "preserved": 1340
+    }
+  ],
+  "names": [
+    "AUTO DEL GIORNO.png",
+    "CANALE 40.png",
+    "CANALE 40REG.png",
+    "ITALIA 7 GOLD STAMPA SUD.png",
+    "JONICA RADIO TV.png",
+    "L'ALTRO CORRIERE.png",
+    "MEDITERRANEO.png",
+    "MUXIP.png",
+    "PRIMASET.png",
+    "RADIO STUDIO DELTA.png",
+    "ROMANTICA RADIO.png",
+    "TELERENT.png",
+    "TELESASSARI.png",
+    "TERRA S.P.A..png",
+    "VIDEOMEDIA-TN.png",
+    "VTS.png",
+    "NOS.png",
+    "PRIMANTENNA.png",
+    "TEGENOVA.png",
+    "TELEPACE_TRENTO.png",
+    "TNT SAT.png",
+    "TVN24.png",
+    "VALENZA TV.png",
+    "VALENZA_TV.png",
+    "VCO AZZURRA TV.png"
+  ]
+}
