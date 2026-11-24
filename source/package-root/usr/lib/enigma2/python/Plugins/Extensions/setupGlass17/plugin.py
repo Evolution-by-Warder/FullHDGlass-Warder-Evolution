@@ -139,7 +139,7 @@ except (ImportError, AttributeError):
 from Tools.Directories import fileExists
 from ServiceReference import ServiceReference
 from .warderDialogs import MessageBox
-from .warderUpdateText import update_text
+from .warderUpdateText import update_text, language_code as _warderUpdateLanguage
 from .warderDialogs import ChoiceBox
 from . import warderPiconSync
 from .warderTools import find_sevenzip
@@ -8290,7 +8290,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			# Prefer release notes in the Enigma2 system language.
 			translations = manifest.get("changelog_i18n", {})
 			if isinstance(translations, dict):
-				lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()
+				lang = _warderUpdateLanguage(config.osd.language.value)
 				changelog = translations.get(lang) or translations.get("en") or changelog
 			changelog = str(changelog).strip()
 			if not new_version:

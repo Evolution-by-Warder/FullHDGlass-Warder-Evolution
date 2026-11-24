@@ -4,6 +4,9 @@
 No OpenATV import, GUI device, network request or system keymap modification.
 """
 import importlib.util
+import json
+import re
+import hashlib
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
@@ -93,6 +96,53 @@ def legacy_screen():
             self.actions.append("right-event")
 
     return Legacy
+
+
+class AuxiliaryLanguageTests(unittest.TestCase):
+    LANGUAGES = set("al cs de el en es et fa fr hu it lt nl pl pt ro ru sk tr uk zh".split())
+
+    def test_all_21_localized_buttons_and_aliases(self):
+        self.assertEqual(set(module.LABELS), self.LANGUAGES)
+        for lang in self.LANGUAGES:
+            klass = modern_screen()
+            module.install(SimpleNamespace(EPG_TYPE_MULTI=7, EPGSelectionMulti=klass), config(language=lang))
+            screen = klass()
+            self.assertEqual((screen["key_yellow"].text, screen["key_blue"].text), module.LABELS[lang])
+        for alias, lang in (("sq_AL","al"),("gr_GR","el"),("ua_UA","uk"),("cn_CN","zh"),("cz_CZ","cs")):
+            self.assertEqual(module._language(config(language=alias)),lang)
+
+    def test_shared_catalog_integrity_and_placeholders(self):
+        core = SOURCE.parent / "warderRadioCore"
+        catalog = json.loads((core / "data/translations.json").read_text(encoding="utf-8"))
+        self.assertEqual(set(catalog), self.LANGUAGES)
+        self.assertEqual(len(catalog["en"]),128)
+        for lang, values in catalog.items():
+            self.assertEqual(set(values), set(catalog["en"]))
+            for key, value in values.items():
+                self.assertTrue(value.strip(), (lang, key))
+                self.assertEqual(re.findall(r"%[sd%]",key),re.findall(r"%[sd%]",value),(lang,key))
+        record = json.loads((core / "SOURCE.json").read_text())
+        for name, digest in record["sha256"].items():
+            self.assertEqual(hashlib.sha256((core / name).read_bytes()).hexdigest(),digest)
+
+    def test_updater_and_shared_core_fallback(self):
+        def load(name, path):
+            spec = importlib.util.spec_from_file_location(name,path)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            return mod
+        updater = load("warder_update_text", SOURCE.parent / "warderUpdateText.py")
+        i18n = load("warder_shared_i18n", SOURCE.parent / "warderRadioCore/warder_i18n.py")
+        self.assertEqual(set(updater.TEXT),self.LANGUAGES)
+        self.assertEqual(set(i18n.SUPPORTED),self.LANGUAGES)
+        for lang in self.LANGUAGES:
+            for kind in updater.TEXT["en"]:
+                self.assertTrue(updater.update_text(kind,"PRODUCT",current="OLD",new="NEW",notes="NOTES",error="ERROR",language=lang))
+        self.assertEqual(i18n.translate("Stiahnuť","sq_AL"),"Shkarko")
+        self.assertEqual(i18n.translate("Stiahnuť","gr_GR"),"Λήψη")
+        self.assertEqual(i18n.translate("Stiahnuť","unknown"),"Download")
+        self.assertEqual(updater.update_text("confirm","x",language="sq_AL"),"Konfirmo")
+        self.assertEqual(updater.update_text("confirm","x",language="unknown"),"Confirm")
 
 
 class MultiEpgNavigationTests(unittest.TestCase):

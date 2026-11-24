@@ -18,6 +18,18 @@ LABELS = {
     "fr": ("Précédent", "Suivant"),
     "it": ("Precedente", "Successivo"),
     "es": ("Anterior", "Siguiente"),
+    "al": ("I mëparshmi", "Pasuesi"),
+    "el": ("Προηγούμενο", "Επόμενο"),
+    "et": ("Eelmine", "Järgmine"),
+    "fa": ("قبلی", "بعدی"),
+    "lt": ("Ankstesnis", "Kitas"),
+    "nl": ("Vorige", "Volgende"),
+    "pt": ("Anterior", "Seguinte"),
+    "ro": ("Anterior", "Următor"),
+    "ru": ("Предыдущая", "Следующая"),
+    "tr": ("Önceki", "Sonraki"),
+    "uk": ("Попередня", "Наступна"),
+    "zh": ("上一节目", "下一节目"),
 }
 SKIN = "hd_glass17/skin.xml"
 SCREEN = "EPGSelectionMulti"
@@ -28,7 +40,8 @@ def _language(config):
     try:
         value = config.osd.language.value
         if isinstance(value, str):
-            return value.replace("-", "_").split("_", 1)[0].lower()
+            code = value.split(".")[0].replace("-", "_").split("_", 1)[0].lower()
+            return {"sq": "al", "gr": "el", "cz": "cs", "ua": "uk", "cn": "zh"}.get(code, code)
     except (AttributeError, TypeError, ValueError):
         pass
     return "en"
