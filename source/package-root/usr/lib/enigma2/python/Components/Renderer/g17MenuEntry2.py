@@ -21,9 +21,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 from enigma import ePixmap, eTimer
 
-def Writelog(txt):
-    """Production runtime does not write diagnostic logs."""
-    return None
+from Components.Renderer.warderMenuIconReport import report_missing, skin_artwork
 
 class g17MenuEntry2(Renderer):
 
@@ -69,8 +67,13 @@ class g17MenuEntry2(Renderer):
 				pixpath = config.plugins.setupGlass17.par39.value + '/menuIconsBig/' + self.source.entryName + self.pict + '.png'
 				if not fileExists(pixpath):
 					pixpath = self.default
-					Writelog(self.source.entryName + self.pict + '.png')
 			except: pass
+			if pixpath == self.default:
+				try:
+					entry_id = str(getattr(self.source, "entryName", "") or "")
+					pixpath = skin_artwork(entry_id, config.plugins.setupGlass17.par39.value, self.pict, fileExists) or pixpath
+				except Exception:
+					pass
 			# Use theme-specific artwork only when this actual menu entry exists;
 			# downloaded user artwork always takes precedence.
 			if pixpath == self.default:
@@ -78,13 +81,15 @@ class g17MenuEntry2(Renderer):
 					"warder_radio_mainmenu": "warder_radio.png",
 					"PiconHub_Warder_Evolution": "warder_piconhub.png",
 					"glass_sys_utils": "warder_gsu.png",
-					"warder_fullhdglass_settings": "FHD_Glass17_Setup.png",
-					"FHD_Glass17_Setup": "FHD_Glass17_Setup.png",
 				}.get(str(getattr(self.source, "entryName", "")))
 				if art:
 					candidate = "/usr/share/enigma2/hd_glass17/menu/" + art
 					if fileExists(candidate):
 						pixpath = candidate
+			if pixpath == self.default:
+				entry_id = str(getattr(self.source, "entryName", "") or "")
+				if entry_id:
+					report_missing(entry_id + self.pict + ".png")
 			if self.__last != pixpath:
 				self.__last = pixpath
 				self.instance.setPixmapFromFile(pixpath)					

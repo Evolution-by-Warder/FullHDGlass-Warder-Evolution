@@ -1,3 +1,7 @@
+## 24. 11. 2026 — Obnova reportu chýbajúcich ikon a oprava Li3 (pracovná zmena)
+
+Vlastník schválil obnovenie /tmp/missing_menu_icons.txt a správnu existujúcu ikonu FullHDGlass. Report bol vypnutý v oboch rendereroch. Li3 (Menu-15/16) používa pictType=3; nový menu ID warder_fullhdglass_settings sa nezhoduje so starým kanonickým FHD_Glass17_Setup v stiahnutom ZIP. Pribalený starý FHD_Glass17_Setup.png je montážny kľúč, nie schválené logo. Používa sa presne existujúci schválený blob warder_skin.png d9ed25d28f2ceda795796449d4dc8046a43a5872, bez zmeny grafiky; používateľský presný variant má prednosť. Report zapisuje až po fallbackoch, bez duplicít, s limitom veľkosti a ochranou symlinkov. Pracovná vetva fix/menu-icon-report-20261124, testy/CI a prijímačové overenie zatiaľ nepotvrdené, bez vydania IPK.
+
 ## 24. 11. 2026 — Uzavretie otvorených úloh na pokyn vlastníka
 
 - Azzurra: dokumentácia plánovaného Cloud Browsera je zlúčená cez FullHDGlass #160 (1bfba154b10ce2b4fd62c889c34a1c0eba7e0889) a PiconHub #89 (e35393abc407ae33b6fe48996c58b2734ef221da). Nahradené #159 a #88 uzavreté bez merge; historické vetvy zachované. SAT manažér aktívny, ďalší beh 3.12.2026 08:00 Europe/Bratislava. Úspešná akvizícia kontrolného PNG nie je potvrdením celého produkčného cyklu; pri nedostupnosti bez posunu checkpointu.
