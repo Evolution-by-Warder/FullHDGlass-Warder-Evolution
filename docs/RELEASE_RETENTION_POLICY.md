@@ -2,7 +2,7 @@
 
 **Nové pravidlo vlastníka: 23. 11. 2026 (nadradené staršej politike piatich vydaní).** V distribúcii a v aktuálnych zdrojových balíkoch ponechať **najnovšie ostré vydanie a najviac tri predchádzajúce ostré vydania** každého programu. TEST/RC nie sú ostré verzie. Nemaže sa Git história, tagy, zdrojové testy, schválené grafiky, manifesty dát, používateľské súbory ani Trezor.
 
-V produkčnom priečinku FullHDGlass `main/packages/` sú po vydaní DTT ITALIA štyri stabilné verzie **v1.0.89 / v1.0.88 / v1.0.87 / v1.0.86**. Historická chýbajúca 1.0.81 nie je ostrým vydaním v tejto štvorici.
+V produkčnom priečinku FullHDGlass `main/packages/` sú po vydaní 1.0.90 štyri stabilné verzie **v1.0.90 / v1.0.89 / v1.0.88 / v1.0.87**. Historická chýbajúca 1.0.81 nie je ostrým vydaním v tejto štvorici.
 
 ## Povinné migrácie a výnimky
 

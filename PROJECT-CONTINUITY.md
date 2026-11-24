@@ -1,3 +1,12 @@
+## 24. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.90
+
+Vlastník schválil vydanie celej dávky #161. Obnovený výpis chýbajúcich ikon menu bez duplicít, opravená schválená grafika FullHDGlass v menu Zoznam a ikony3 a automatické nezávislé rolovanie dlhých popisov EPG vo všetkých piatich režimoch. Vlastné ikony majú prednosť; používa sa pôvodný schválený obrázok. Krátke popisy sú statické, časovače sa zastavia pri skrytí okna. DTT ITALIA, SAT/radio dáta, ostatné predchádzajúce opravy a používateľské nastavenia ostali nedotknuté.
+
+- Finálny HEAD PR #161 `5375aba13b9e408c5708e6f8639e3f20c6744d75`: 18/18 úspešných CI. Merge `85bd6d6e90a35a19daa50a5b2be0c3aafeae5504`.
+- [Kanonický publisher #45365758190](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45365758190) COMPLETED/SUCCESS vrátane koncového overenia source/Release/IPK/feed/SHA. [Ostrý Release v1.0.90](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.90) nie je draft ani prerelease.
+- [IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.90/enigma2-plugin-skins-fullhdglass_1.0.90_all.ipk): 18 811 074 B, SHA-256 `4c898a89e8d49f386bb62f75bc259e0a859d80e4fcb7c6d44c66766f4e7f0102`, control 1.0.90-1. Oba aktualizačné feedy 1.0.90 majú rovnaký hash a 10 lokalizovaných poznámok. Publikačný commit `f1e1a3144d899acd3cbd08fc5ce7fb7c9f656d2a`.
+- Retencia main/packages: 1.0.90, 1.0.89, 1.0.88, 1.0.87, plus legacy TEST 1.0.72 a bootstrap 1.0.18. Fyzický test novej verzie na prijímači zatiaľ nepotvrdený; automatické CI nie je jeho náhradou.
+
 ## 23. 11. 2026 — OVERENÉ A PUBLIKOVANÉ: FullHDGlass 1.0.86
 
 - **Výslovné schválenie vlastníka:** po hlásení chyby `insufficient temporary space for Warder channel package` pri 13°E/19,2°E prikázal opravu `vydať v ostrej verzii`, pripraviť SK/EN texty pre web a `zapísať všetko kam treba`. Schválený rozsah neobsahuje grafické zmeny ani náhradu existujúcich piconov.

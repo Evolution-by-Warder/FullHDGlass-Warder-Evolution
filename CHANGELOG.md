@@ -4,6 +4,8 @@ Obnovený výpis chýbajúcich ikon menu v /tmp/missing_menu_icons.txt bez dupli
 
 Podrobnosti: [poznámky k vydaniu](docs/warder-1.0.90-release-notes.md).
 
+**OVERENÉ A PUBLIKOVANÉ:** PR #161, 18/18 CI, [publisher #45365758190](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45365758190) SUCCESS. [Ostrý IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.90/enigma2-plugin-skins-fullhdglass_1.0.90_all.ipk), 18 811 074 B, SHA-256 `4c898a89e8d49f386bb62f75bc259e0a859d80e4fcb7c6d44c66766f4e7f0102`. Oba aktualizačné kanály 1.0.90.
+
 ## 1.0.89 – 23. november 2026
 
 Vo výbere piconov pribudla samostatná položka DTT ITALIA s 285 stanicovými referenciami. Aktualizované sú aj talianske feedy na 9°E a 5°W. Vybrať si môžete zo všetkých troch rozmerov a pozadí. Po inštalácii reštartujte Enigma2.

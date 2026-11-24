@@ -1,9 +1,9 @@
-# FullHDGlass – Warder Evolution 1.0.89
+# FullHDGlass – Warder Evolution 1.0.90
 
-Vo výbere piconov pribudla **DTT ITALIA**. Obsahuje všetkých 285 pozemných referencií z nastavení Vhannibal Motor DTT Italia z 22. novembra 2026. Aktualizované talianske feedy pokrývajú 439 referencií na 9°E a 260 na 5°W. Na 9°E pribudla Radio Classica TV.
+Obnovený výpis chýbajúcich ikon menu bez duplicít, opravená schválená grafika FullHDGlass v menu Zoznam a ikony3 a automatické nezávislé rolovanie dlhých popisov EPG vo všetkých piatich režimoch. Po inštalácii reštartujte Enigma2.
 
-Každá sada ponúka rozmery 50×30, 220×132 a 400×240 s pozadiami Transparent, White a Black. Synchronizácia rozpozná aj pozemné referencie s mennými priestormi EEEE0000 a EEEE0272. Po inštalácii reštartujte Enigma2.
+[Poznámky k vydaniu](warder-1.0.90-release-notes.md) · [Stiahnuť oficiálny IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.90/enigma2-plugin-skins-fullhdglass_1.0.90_all.ipk).
 
-[Zoznam archívov, zdroje a schválené náhľady](../reports/dtt-italia-20261123/README.md).
+SHA-256 `4c898a89e8d49f386bb62f75bc259e0a859d80e4fcb7c6d44c66766f4e7f0102`, 18 811 074 B. PR #161: 18/18 CI úspešných. [Publikačný workflow](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45365758190) úspešný; oba aktualizačné kanály 1.0.90. Prijímačový test zatiaľ nepotvrdený.
 
-[Stiahnuť oficiálny IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.89/enigma2-plugin-skins-fullhdglass_1.0.89_all.ipk). SHA-256 `50dd57e5e525688d7327c7915f6dfe1a9a5609f773ce017e87546b138cf53425`.
+Predchádzajúce vydanie DTT ITALIA 1.0.89: [poznámky](warder-1.0.89-release-notes.md).
