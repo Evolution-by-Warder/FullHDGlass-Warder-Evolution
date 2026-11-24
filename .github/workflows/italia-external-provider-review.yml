@@ -1,0 +1,22 @@
+name: Italian independent clean-provider artwork candidates
+on:
+  push:
+    branches: [work/italia-external-provider-review-20261124]
+    paths: ['.github/workflows/italia-external-provider-review.yml']
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            reports/italia-external-provider-review-20261124/
+      - run: python -m pip install --quiet Pillow cairosvg
+      - run: python reports/italia-external-provider-review-20261124/build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: italian-external-provider-review
+          path: external-review/

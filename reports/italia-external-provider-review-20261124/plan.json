@@ -1,0 +1,258 @@
+[
+  {
+    "path": "acisporttv.default.svg",
+    "git_sha": "5fc0236606377f8c634cfae5a8f030d763c7aaad",
+    "targets": [
+      "ACISPORT TV.png",
+      "ACISPORT_TV.png"
+    ]
+  },
+  {
+    "path": "afn.default.png",
+    "git_sha": "cfd003f96c4e6416c9a2e5e7fe6b111a1f568508",
+    "targets": [
+      "AFN.png",
+      "AMERICAN FORCE NETWORK.png"
+    ]
+  },
+  {
+    "path": "aljazeerachildren.default.png",
+    "git_sha": "388cefe0873872597825a1e089b49b2e9728d9c5",
+    "targets": [
+      "AL JAZEERA CHILDREN.png"
+    ]
+  },
+  {
+    "path": "antennasicilia.default.png",
+    "git_sha": "5056d09a10caa1e71eb673cce7a083af4a71587a",
+    "targets": [
+      "ANTENNA SICILIA.png",
+      "ANTENNE SICILIA.png"
+    ]
+  },
+  {
+    "path": "canaldigitaal.default.svg",
+    "git_sha": "7d73ebb0d0f7179ea3a3c13a90cd8b049a622972",
+    "targets": [
+      "CANAL DIGITAAL.png",
+      "CANALDIGITAAL.png"
+    ]
+  },
+  {
+    "path": "digitalb.default.png",
+    "git_sha": "39ac141d38537a80943b169d29ab8da813e340d6",
+    "targets": [
+      "DIGIT ALB.png"
+    ]
+  },
+  {
+    "path": "eclutch.default.png",
+    "git_sha": "3a3052c34aaa70d4cd1fd21cc189b01078856f0b",
+    "targets": [
+      "ECLUTCH.png"
+    ]
+  },
+  {
+    "path": "etv.default.svg",
+    "git_sha": "94e4e0f9d3e341a5a002f23ce4456b79fccee1e9",
+    "targets": [
+      "ETV+.png"
+    ]
+  },
+  {
+    "path": "focussat.default.png",
+    "git_sha": "0e881b3036e5a2d9f5ef07ac9c0224a32dfe1fdf",
+    "targets": [
+      "FOCUS SAT.png"
+    ]
+  },
+  {
+    "path": "fransat.default.svg",
+    "git_sha": "6a06ee9dc51b00561baf7a4d008838aa4c314617",
+    "targets": [
+      "FRANSAT.png"
+    ]
+  },
+  {
+    "path": "goldtv.default.png",
+    "git_sha": "91ccc9d0bf22934e1d3da2750b9ba7db1e918267",
+    "targets": [
+      "GOLD TV.png",
+      "GOLDTV.png"
+    ]
+  },
+  {
+    "path": "hbo.default.svg",
+    "git_sha": "eefac082b94354d8f20bb931a472f9a0bad31c95",
+    "targets": [
+      "HBO.png"
+    ]
+  },
+  {
+    "path": "markiza.default.svg",
+    "git_sha": "59e8b5aa9b943ad652e42a58d895e7683ce7536d",
+    "targets": [
+      "MARKIZA.png"
+    ]
+  },
+  {
+    "path": "maxtv.default.svg",
+    "git_sha": "a084e08f38724aeb2d1296ccfa702f54d3e13aab",
+    "targets": [
+      "MAX TV.png",
+      "MAXTV HRVATSKA.png",
+      "MAXTV SAT.png"
+    ]
+  },
+  {
+    "path": "mediabroadcastsatellite.default.png",
+    "git_sha": "6df125d043d7028be21a8ee2a89a25b226e75102",
+    "targets": [
+      "MEDIA BROADCAST SATELLITE.png",
+      "MEDIA BRODCAST.png"
+    ]
+  },
+  {
+    "path": "meo.default.svg",
+    "git_sha": "0f21b959621a94187588f6e6a5de2355a850911a",
+    "targets": [
+      "MEO.png"
+    ]
+  },
+  {
+    "path": "motoritv.default.png",
+    "git_sha": "89fff38a7d89b40fdf08a7595b3045467e4a9d4e",
+    "targets": [
+      "MOTORI_TV.png"
+    ]
+  },
+  {
+    "path": "mtel.default.png",
+    "git_sha": "3b4fd5eaaadc2081ab1660fa4a0eb9ee67a8dbdc",
+    "targets": [
+      "MTEL.png"
+    ]
+  },
+  {
+    "path": "nilesat.default.png",
+    "git_sha": "86980d88546978d916997d9aafbe5e4b85d07881",
+    "targets": [
+      "NILESAT LIBANON.png"
+    ]
+  },
+  {
+    "path": "nos.default.svg",
+    "git_sha": "6c4fed99237e55403a289f6915c878fd01509707",
+    "targets": [
+      "NOS.png"
+    ]
+  },
+  {
+    "path": "primantenna.default.png",
+    "git_sha": "15bb6eb174e204766726f060964db9b7b1089166",
+    "targets": [
+      "PRIMANTENNA.png"
+    ]
+  },
+  {
+    "path": "studio98.default.png",
+    "git_sha": "42b1f121e3b9db449f19d568e9c65fc8cd519d24",
+    "targets": [
+      "STUDIO 98.png",
+      "STUDIO 98 MUX.png"
+    ]
+  },
+  {
+    "path": "teledehon.default.png",
+    "git_sha": "3a41127aa90180cf0ca4eaf1f4018629deb66821",
+    "targets": [
+      "TELE DEHON.png",
+      "TELE DEHON BKP.png"
+    ]
+  },
+  {
+    "path": "telegenova.default.png",
+    "git_sha": "4b48fa6c5e8f1854916af5fd2fc1a6bc79ccdd70",
+    "targets": [
+      "TEGENOVA.png"
+    ]
+  },
+  {
+    "path": "telenord.default.png",
+    "git_sha": "ed22c645cd255565847874c2a68e51eefe27b7d8",
+    "targets": [
+      "TELENORD_HD.png"
+    ]
+  },
+  {
+    "path": "telepacetrento.default.svg",
+    "git_sha": "7583e2b83b211bd8c98c9f1ad13f445cf244da0c",
+    "targets": [
+      "TELEPACE_TRENTO.png"
+    ]
+  },
+  {
+    "path": "teleradiopace.default.png",
+    "git_sha": "f6c9284397f65a89d821cecc8813bf6e1b299c20",
+    "targets": [
+      "TELERADIOPACE.png"
+    ]
+  },
+  {
+    "path": "tgs.default.svg",
+    "git_sha": "5d86dbeeaa5cf9177eef0c562f41fa85a2f99471",
+    "targets": [
+      "TGS.png"
+    ]
+  },
+  {
+    "path": "tntsat.default.svg",
+    "git_sha": "d29a4bc36dfbaf2509c26c6f3d15e749b0fb4a9c",
+    "targets": [
+      "TNT SAT.png"
+    ]
+  },
+  {
+    "path": "tva.default.svg",
+    "git_sha": "75c800fcb557ead8a06d12970436a84b0a53907a",
+    "targets": [
+      "TVA.png"
+    ]
+  },
+  {
+    "path": "tvn24.default.png",
+    "git_sha": "ff6a0ad1482a0a50ceb0fe9eb10dba938106afa1",
+    "targets": [
+      "TVN24.png"
+    ]
+  },
+  {
+    "path": "tvvlaanderen.default.svg",
+    "git_sha": "8dbe159eb3d630c3f6079d75bda438fc4148c33b",
+    "targets": [
+      "TV VLAANDEREN.png"
+    ]
+  },
+  {
+    "path": "ultrahd.default.svg",
+    "git_sha": "2f3998d04f816c8e0112eb10b63580566a0ed65e",
+    "targets": [
+      "ULTRA HD.png"
+    ]
+  },
+  {
+    "path": "valenzatv.default.png",
+    "git_sha": "27548e06cc48c958bd6dc3ae82d572aea0dd4b0e",
+    "targets": [
+      "VALENZA TV.png",
+      "VALENZA_TV.png"
+    ]
+  },
+  {
+    "path": "vcoazzurratv.default.png",
+    "git_sha": "790ae5ea24ea2afffdd0c333116ba47fa53f948b",
+    "targets": [
+      "VCO AZZURRA TV.png"
+    ]
+  }
+]
