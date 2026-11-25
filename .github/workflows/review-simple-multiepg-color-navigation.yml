@@ -52,8 +52,8 @@ jobs:
       - name: Verify stable candidate version and provider v2 support
         run: |
           set -euo pipefail
-          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = 1.0.92
-          grep -Fx 'Version: 1.0.92-1' source/control/control
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = 1.0.94
+          grep -Fx 'Version: 1.0.94-1' source/control/control
           python3 tools/sync_header_version.py --check
           python3 tools/test-provider-archive-v2.py -v
       - name: Build non-publishing review IPK from staged source
@@ -69,7 +69,7 @@ jobs:
           spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
           builder=importlib.util.module_from_spec(spec)
           spec.loader.exec_module(builder)
-          name='enigma2-plugin-skins-fullhdglass_1.0.92_all.ipk'
+          name='enigma2-plugin-skins-fullhdglass_1.0.94_all.ipk'
           out=root/'review-ipk'/name
           out.parent.mkdir(exist_ok=True)
           with tempfile.TemporaryDirectory() as tmp:
@@ -84,14 +84,14 @@ jobs:
           cd review-ipk
           sha256sum -c *.sha256
           test "$(ar t *.ipk | paste -sd ' ' -)" = "debian-binary control.tar.gz data.tar.gz"
-          ar p *.ipk control.tar.gz | tar -xzOf - ./control | grep -Fx 'Version: 1.0.92-1'
+          ar p *.ipk control.tar.gz | tar -xzOf - ./control | grep -Fx 'Version: 1.0.94-1'
           ar p *.ipk data.tar.gz | tar -tzf - | grep -Fx './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSimpleMultiEpg.py'
           ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py | cmp - ../source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUserInfoScroll.py
           ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Screens/G17_UserInfo.py | cmp - ../source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py
-          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | grep -Fx '1.0.92'
+          ar p *.ipk data.tar.gz | tar -xzOf - ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | grep -Fx '1.0.94'
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.92-Combined-Candidate-IPK
+          name: FullHDGlass-1.0.94-Combined-Candidate-IPK
           path: |
             review-ipk/*.ipk
             review-ipk/*.ipk.sha256
