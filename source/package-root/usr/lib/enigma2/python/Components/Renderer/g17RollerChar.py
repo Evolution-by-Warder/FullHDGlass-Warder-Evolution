@@ -15,6 +15,7 @@
 #    
 #######################################################################
 from Components.Renderer.Renderer import Renderer
+from Plugins.Extensions.setupGlass17.warderMipsRuntime import MIPS_RUNTIME, RendererTimerGuard
 from enigma import eLabel
 from enigma import eTimer
 from Components.VariableText import VariableText
@@ -25,12 +26,36 @@ class g17RollerChar(VariableText, Renderer):
 		Renderer.__init__(self)
 		VariableText.__init__(self)
 		self.rollTimerText = eTimer()
-		try:
-			self.rollTimerText_conn = self.rollTimerText.timeout.connect(self.rollText)
-		except AttributeError:
-			self.rollTimerText.timeout.get().append(self.rollText)    
+		if MIPS_RUNTIME:
+			self._warder_timer_guard = RendererTimerGuard(self.rollTimerText, self.rollText)
+		else:
+			try:
+				self.rollTimerText_conn = self.rollTimerText.timeout.connect(self.rollText)
+			except AttributeError:
+				self.rollTimerText.timeout.get().append(self.rollText)    
     		
 	GUI_WIDGET = eLabel
+
+	if MIPS_RUNTIME:
+		def postWidgetCreate(self, instance):
+			Renderer.postWidgetCreate(self, instance)
+			self._warder_timer_guard.attach()
+
+		def preWidgetRemove(self, instance):
+			self._warder_timer_guard.detach()
+			Renderer.preWidgetRemove(self, instance)
+
+		def doSuspend(self, suspended):
+			self._warder_timer_guard.suspend(suspended)
+			if not suspended and self._warder_timer_guard.ready(self.instance) and self.source is not None:
+				self.changed((self.CHANGED_DEFAULT,))
+
+		def destroy(self):
+			guard = getattr(self, '_warder_timer_guard', None)
+			if guard is not None:
+				guard.detach()
+			Renderer.destroy(self)
+
 
 	def connect(self, source):
 		Renderer.connect(self, source)
@@ -43,13 +68,15 @@ class g17RollerChar(VariableText, Renderer):
 			self.text = ""
 		else:
 			self.text = self.source.text
-		if self.instance:
+		if self.instance and (not MIPS_RUNTIME or (self._warder_timer_guard.ready(self.instance) and what[0] != self.CHANGED_CLEAR)):
 			self.idx = 0
 			self.backtext = "               " + self.text + "               "
 			self.x = len(self.backtext)
 			self.rollTimerText.start(8500)
             				
 	def rollText(self):
+		if MIPS_RUNTIME and (not getattr(self, '_warder_timer_guard', None) or not self._warder_timer_guard.ready(getattr(self, 'instance', None))):
+			return
 		self.rollTimerText.stop()
 		if self.x > 0:
 			txttmp = self.backtext[self.idx:]
