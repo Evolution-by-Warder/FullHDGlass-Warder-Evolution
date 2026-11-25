@@ -1,0 +1,41 @@
+name: Build approved CGTN Russian 9E replacement candidate
+on:
+  push:
+    branches: [work/azzurra-9e-5w-20261125]
+    paths: ['reports/azzurra-9e-5w-20261125/Warder_Azzurra_CGTN_Russian_verified_9.zip']
+permissions:
+  contents: write
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: work
+          persist-credentials: false
+          sparse-checkout: reports/azzurra-9e-5w-20261125
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/warder-90e-*
+            /reports/azzurra-cgtn-russian-20261125/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pillow
+      - run: python work/reports/azzurra-9e-5w-20261125/build-cgtn-russian.py production work/reports/azzurra-9e-5w-20261125/Warder_Azzurra_CGTN_Russian_verified_9.zip
+      - working-directory: production
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c publish/azzurra-cgtn-russian-20261125
+          git add assets/warder/downloads/picons/channels reports/azzurra-cgtn-russian-20261125
+          git commit -m "Prepare verified CGTN Russian correction; preserve all unrelated PNG"
+          git push origin HEAD:refs/heads/publish/azzurra-cgtn-russian-20261125
