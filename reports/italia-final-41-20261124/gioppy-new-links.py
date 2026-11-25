@@ -54,7 +54,8 @@ def run(item):
 
 # Static public catalog audit, no plugin execution.
 import tarfile, html, urllib.parse, subprocess, tempfile, ast
-report={'sources':[],'discovery':[],'static':[],'errors':[]}
+report={'sources':[],'discovery':[],'static':[],'errors':[],'catalogues':[]}
+urls=set()
 def retrieve(url):
  try:
   b=get(url);report['discovery'].append({'url':url,'bytes':len(b),'sha256':sha(b)});return b
@@ -84,19 +85,6 @@ def read_archive(url,raw):
    count,rows=parse(b);files.append({'name':k,'sha256':sha(b),'services':count,'matches':rows})
   report['sources'].append({'url':url,'files':files})
  except Exception as e:report['errors'].append({'url':url,'error':repr(e)})
-base='https://morpheus883.altervista.org/'
-raw=retrieve(base+'index.html')
-links=set()
-if raw:
- t=html.unescape(raw.decode('utf8','replace'))
- for match in re.findall(r"""(?:href|src|url|location)\s*[=:]\s*['"]([^'"]+)['"]|['"]([^'"]+\.(?:zip|tgz|tar\.gz|ipk))['"]""",t,re.I):
-  v=next((s for s in match if s),'')
-  u=urllib.parse.urljoin(base,v)
-  if re.search(r'\.(zip|tgz|tar\.gz|ipk)(?:\?|$)',u,re.I) and urllib.parse.urlparse(u).hostname in ('morpheus883.altervista.org','www.morpheus883.altervista.org'):links.add(u)
- report['morpheus_links']=sorted(links)
- for u in sorted(links,key=lambda u:(not bool(re.search('motor|full',u,re.I)),u))[:5]:
-  b=retrieve(u)
-  if b:read_archive(u,b)
 # Actual GioppyGio plugin source strings and assignment context, rather than local file paths.
 u='https://gioppygio.it/update_new/enigma2-plugin-extensions-gioppygio_2.6_all.ipk'
 raw=retrieve(u)
@@ -106,7 +94,7 @@ if raw:
   with tarfile.open(fileobj=io.BytesIO(data),mode='r:*') as t:
    for m in t.getmembers():
     if not m.isfile() or not m.name.endswith('.py') or m.size>2000000:continue
-    if not re.search(r'/(?:Setting|plugin|update|config|download|constants|catalog|network|utils)\.py$',m.name,re.I):continue
+    if not re.search(r'/(?:Setting|plugin|update|config|download|constants|catalog|network|utils|settings_store)\.py$',m.name,re.I):continue
     txt=t.extractfile(m).read().decode('utf8','replace')
     try:tree=ast.parse(txt)
     except SyntaxError:continue
@@ -114,7 +102,44 @@ if raw:
     for n in ast.walk(tree):
      if isinstance(n,ast.Constant) and isinstance(n.value,str) and re.search(r'https?://|\.json$|\.txt$|\.xml$|\.csv$|\.zip$|\.php$|listaE2|setting|catalog',n.value,re.I) and len(n.value)<450:constants.append(n.value)
     lines=[l.strip()[:1500] for l in txt.splitlines() if re.search(r'link_dtt|url.*setting|setting.*url|pathsite|catalog|requests\.get|urlopen|_ALLOWED_LINK_PREFIXES',l,re.I)]
-    report['static'].append({'file':m.name,'constants':sorted(set(constants))[:100],'lines':lines[:35]})
+    if m.name.endswith('/settings_store.py'):
+     report['static'].append({'file':m.name,'source':txt[:24000]})
+     for n in ast.walk(tree):
+      if isinstance(n,ast.Constant) and isinstance(n.value,str) and re.match(r'^https?://(?:picons\.)?(?:www\.)?gioppygio\.it/',n.value,re.I) and len(n.value)<400:urls.add(n.value)
+     for n in ast.walk(tree):
+      if isinstance(n,ast.Assign) and any(isinstance(v,ast.Name) and v.id=='XML_URL' for v in n.targets):
+       report['xml_url_expression']=ast.unparse(n.value)
+    else:
+     report['static'].append({'file':m.name,'constants':sorted(set(constants))[:100],'lines':lines[:35]})
  except Exception as e:report['errors'].append({'stage':'IPK static inspection','error':repr(e)})
+
+import xml.etree.ElementTree as ET
+def approved(u):
+ try:return urllib.parse.urlparse(u).scheme in ('http','https') and urllib.parse.urlparse(u).hostname in ('gioppygio.it','www.gioppygio.it','picons.gioppygio.it')
+ except:return False
+def catalog(u):
+ raw=retrieve(u)
+ if not raw:return []
+ txt=html.unescape(raw.decode('utf8','replace'))
+ report['catalogues'].append({'url':u,'excerpt':txt[:16000]})
+ found=set()
+ for v in re.findall(r'https?://[^\s"\'<>]+',txt):
+  if approved(v) and re.search(r'\.zip(?:\?|$)',v,re.I):found.add(v)
+ try:
+  root=ET.fromstring(raw)
+  for e in root.iter():
+   for v in list(e.attrib.values())+[e.text or '']:
+    v=v.strip()
+    if re.search(r'\.zip(?:\?|$)',v,re.I):
+     a=urllib.parse.urljoin(u,v)
+     if approved(a):found.add(a)
+ except ET.ParseError:pass
+ return sorted(found)
+found=set()
+for u in sorted(urls):
+ if re.search(r'xml|json|manifest|setting|catalog',u,re.I) and not u.endswith('/'):found.update(catalog(u))
+report['archives']=sorted(found)
+selected=sorted(v for v in found if re.search(r'palermo|sicilia|toscana|firenze|dtt',v,re.I))[:35]
+with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:report['sources']=list(ex.map(run,[(u,u) for u in selected]))
 (P/'result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps(report,ensure_ascii=False)[:100000])
