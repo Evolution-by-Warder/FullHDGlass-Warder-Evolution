@@ -1,0 +1,37 @@
+{
+  "base": "0449f449bd0ebcb8086dde953943e3f79c4f0473",
+  "new_png": 3,
+  "complete_provider_names": 1,
+  "reference": "1_0_19_1771_60E1_217C_5A0000_0_0_0.png",
+  "source": "https://www.lyngsat.com/Eutelsat-9B-and-Ka-Sat-9A.html",
+  "identity_history": "https://www.litaliaindigitale.it/sites.google.com/site/litaliaindigitale/marcheindigitale/muxtvcentromarche/muxtvcentromarchearchivionewsdal2012al2015.html",
+  "donor_run": 45565820791,
+  "donors": {
+    "transparent": "d58b51be87e3d579218661de19934743254638eb70e01e45b5d2184ed9a3e7e3",
+    "white": "fc5fe9c0ec80176cb12013072f93a196f28e43473a164cb8bab9331b3963bc95",
+    "black": "c1527d85200737662eeb25287b0deaaa546eada49949eb5a66263ce46851d17f"
+  },
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1483,
+      "sha256": "d24985eb4bfda876bb96f3a63c16b73642593b09d320103c73991861fff0dd19",
+      "bytes": 16024658,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1459,
+      "extension04_sha256": "47f7888a501c7beed640c906dd5923e329a396898b52f0a9d44d4e031c36d99e",
+      "extension04_bytes": 285157,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1461,
+      "sha256": "6ba557c2b4a4a96defc9b4bbe4787c5367f854e24ce3ac7f93d86c3019fe1ba8",
+      "bytes": 33475959,
+      "all_existing_png_bytes_unchanged": true
+    }
+  ]
+}
