@@ -1,0 +1,51 @@
+{
+  "base": "8afd39c48c16366290a3af4da796fbad111721ba",
+  "new_png": 6,
+  "complete_provider_names": 2,
+  "records": [
+    {
+      "name": "SESTARETE & RETE 8",
+      "source_url": "https://www.litaliaindigitale.it/wp-content/uploads/2024/01/7-GOLD-2024.png",
+      "source_sha256": "c47528ea11412944f8e78111cd3f5491427379ad9e24f5d2287e86f9a00d6802",
+      "identity_evidence": "https://www.agcom.it/sites/default/files/documenti/audizioni_parlamentari/Lista%20SIG%202026_0.pdf",
+      "source_dimensions": [
+        133,
+        99
+      ]
+    },
+    {
+      "name": "TELERADIOPACE",
+      "source_url": "https://www.litaliaindigitale.it/wp-content/uploads/2023/06/TELERADIOPACE1-HD-n.png",
+      "source_sha256": "f2a94019e021dcdcad7bc83ad191209161a798e9e55cff061eacbe1d9bc6bdcc",
+      "identity_evidence": "https://www.diocesichiavari.it/enti/teleradiopace/",
+      "source_dimensions": [
+        133,
+        99
+      ]
+    }
+  ],
+  "held": [],
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1482,
+      "sha256": "b713864f13d519c427814b3666109a8f98ee0bdda29b84aa3b3256299573e34a",
+      "bytes": 16007824,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1458,
+      "extension04_sha256": "d73273b2e60613832b62f3dd06621b231dee106dfb3e74c6adc758cffc458d95",
+      "extension04_bytes": 270277,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1460,
+      "sha256": "87a33f09fd88db1fe26d3fa88dc28d17d5a7f173da290046f9c18f35bae4b1a0",
+      "bytes": 33456993,
+      "all_existing_png_bytes_unchanged": true
+    }
+  ]
+}
