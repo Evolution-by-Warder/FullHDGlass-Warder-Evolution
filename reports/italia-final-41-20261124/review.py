@@ -1,77 +1,47 @@
-import hashlib, io, json, urllib.request, urllib.parse, zipfile
+# Read-only production preflight; do not regenerate approved graphics.
+import hashlib, io, json, urllib.request, zipfile, concurrent.futures
 from pathlib import Path
-from PIL import Image, ImageDraw
-import cairosvg
-import numpy as np
+from PIL import Image
 P=Path(__file__).parent
-data=json.loads((P/'remaining.json').read_text())
 out=P/'review-output';out.mkdir(exist_ok=True)
+BASE='a568467cc3fc05dae0c3c00bca9c3a6c56e0dd64'
+root='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/'+BASE+'/assets/warder/downloads/picons/channels/'
 def sha(b):return hashlib.sha256(b).hexdigest()
-def get(u):
- req=urllib.request.Request(u,headers={'User-Agent':'WarderEvolution/1.0 (public logo review; https://warder-evolution.eu)'})
- with urllib.request.urlopen(req,timeout=25) as r:
-  b=r.read(2_000_001);assert len(b)<=2_000_000
-  return b
+def get(u,limit=32*1024*1024):
+ req=urllib.request.Request(u,headers={'User-Agent':'WarderEvolution/1.0'})
+ with urllib.request.urlopen(req,timeout=90) as r:b=r.read(limit+1)
+ assert len(b)<=limit,u
+ return b
 templates={}
-for style,h in [('white','c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589'),('black','61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe')]:
+for style,expected,pixel in [('white','c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589','68e9f6e532ec60ba81157ca63e8445cbac8986aeaa1c7111891bca46bffdb732'),('black','61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe','0ac6fb363683cb4cb1493e39a841c2a6d158cd0a643fcf423c282f77a637f8b2')]:
  b=(P/(style+'-sablona.png')).read_bytes()
- assert sha(b)==h
- templates[style]=Image.open(io.BytesIO(b)).convert('RGBA')
- assert templates[style].size==(220,132)
-records=[];errors=[];images=[]
-for c in data['candidates']:
- if 'BBC WORLD.png' in c['names']:continue # source is World Service, not BBC World TV; identity unresolved
- try:
-  file=c['file'];h=hashlib.md5(file.encode()).hexdigest()
-  url='https://upload.wikimedia.org/wikipedia/commons/'+h[0]+'/'+h[:2]+'/'+urllib.parse.quote(file)
-  b=get(url)
-  if c.get('sha1'):assert hashlib.sha1(b).hexdigest()==c['sha1']
-  if file.endswith('.svg'):
-   assert b'<svg' in b[:4000]
-   # SVG rendering is sandboxed by CairoSVG (unsafe=False).
-   raw=cairosvg.svg2png(bytestring=b,output_width=1000,unsafe=False)
-  else:raw=b
-  im=Image.open(io.BytesIO(raw)).convert('RGBA')
-  assert im.getextrema()[3][0]<255 and im.getextrema()[3][1]>0
-  im=im.crop(im.getbbox())
-  im.thumbnail((196,108),Image.Resampling.LANCZOS)
-  canvas=Image.new('RGBA',(220,132));canvas.alpha_composite(im,((220-im.width)//2,(132-im.height)//2))
-  (out/'originals').mkdir(exist_ok=True);(out/'originals'/file).write_bytes(b)
-  for name in c['names']:
-   p=next(x for x in data['providers'] if x['name']==name)
-   for style in p['missing']:
-    if style=='transparent':final=canvas.copy()
-    else:
-     a=np.array(canvas);rgb=a[:,:,:3].astype(float);lo=rgb.min(2);hi=rgb.max(2);ch=hi-lo
-     if style=='white':
-      f=np.clip((lo-135)/90,0,1)*np.clip((40-ch)/30,0,1);rgb=rgb*(1-f[:,:,None])+np.array([28,32,38])*f[:,:,None]
-     else:
-      f=np.clip((105-hi)/80,0,1)*np.clip(ch/40,0,1);rgb=rgb*(1-f[:,:,None])+np.clip(rgb*1.7+22,0,255)*f[:,:,None]
-     a[:,:,:3]=rgb.round().astype(np.uint8);final=Image.alpha_composite(templates[style],Image.fromarray(a))
-    pth=out/style/name;pth.parent.mkdir(exist_ok=True);final.save(pth,optimize=True)
-    assert Image.open(pth).size==(220,132)
-    records.append(dict(name=name,style=style,sha256=sha(pth.read_bytes()),source_sha256=sha(b),source_url=url,state='REVIEW_NOT_PUBLISHED'))
-    images.append((name,style,final))
- except Exception as e:
-  errors.append(dict(names=c['names'],error=str(e)))
-# Recovered monochrome ACI graphic from owner-provided 220x132 ACISPORT_TV.png.
-# 2-bit alpha for review; final artwork should use full-resolution original.
-import zlib,base64
-q=np.unpackbits(np.frombuffer(zlib.decompress(base64.b64decode((P/'aci-alpha.b64').read_text())),dtype=np.uint8)).reshape(-1,2)
-alpha=((q[:,0]*2+q[:,1])*85).astype(np.uint8).reshape(132,220)
-for name in ['ACISPORT TV.png','ACISPORT_TV.png']:
- p=next(x for x in data['providers'] if x['name']==name)
- for style in p['missing']:
-  im=Image.new('RGBA',(220,132),(28,32,38,255) if style=='white' else (255,255,255,255));im.putalpha(Image.fromarray(alpha))
-  final=im if style=='transparent' else Image.alpha_composite(templates[style],im)
-  pth=out/style/name;pth.parent.mkdir(exist_ok=True);final.save(pth,optimize=True)
-  records.append(dict(name=name,style=style,sha256=sha(pth.read_bytes()),source_sha256='62b9acbc68e9099b6c30987597195cad0f2a622c43bb34ac149a015870fdffde',source_url='owner-supplied piconProv.rar; 220x132 original',state='REVIEW_NOT_PUBLISHED'))
-  images.append((name,style,final))
-sheet=Image.new('RGB',(720,max(160,160*((len(images)+2)//3))),'#dddddd');d=ImageDraw.Draw(sheet)
-for i,(name,style,im) in enumerate(images):
- x=i%3*240+10;y=i//3*160
- d.text((x,y+2),name+' / '+style,fill='black');sheet.paste(im,(x,y+20),im)
-sheet.save(out/'contact-sheet.png')
-(out/'result.json').write_text(json.dumps({'records':records,'errors':errors,'scope':data['scope']},indent=2)+'\n')
-print(json.dumps({'rendered':len(records),'errors':errors}))
-assert records,'No review PNG could be rendered'
+ assert sha(b)==expected
+ im=Image.open(io.BytesIO(b)).convert('RGBA')
+ assert im.size==(220,132)
+ templates[style]={'file_sha256':sha(b),'pixel_sha256':sha(im.tobytes()),'local_reconstruction_matches':sha(im.tobytes())==pixel}
+refs={'1_0_19_1392_50E1_217C_EEEE0000_0_0_0.png','1_0_16_1392_50E1_217C_EEEE0000_0_0_0.png',*('1_0_1_'+str(i)+'_A002_217C_EEEE0000_0_0_0.png' for i in (1,2,4,5))}
+m=get(root+'manifest.json');d=json.loads(m);meta={p['filename']:p for p in d['parts']}
+packages=[p for p in d['packages'] if p['selector_id']=='DTT_ITALIA']
+assert len(packages)==9
+def inspect(p):
+ dim=tuple(map(int,p['resolution'].split('x')))
+ chunks=[]
+ for u in p['parts']:
+  n=u.rsplit('/',1)[-1];b=get(root+n)
+  assert sha(b)==meta[n]['sha256'] and len(b)==meta[n]['bytes'],n
+  chunks.append(b)
+ raw=b''.join(chunks);assert len(raw)==p['bytes'] and sha(raw)==p['sha256']
+ with zipfile.ZipFile(io.BytesIO(raw)) as z:
+  assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))==p['png_count']
+  names={n.casefold():n for n in z.namelist()}
+  assert len(names)==len(z.namelist())
+  coll={n:sha(z.read(names[n.casefold()])) for n in sorted(refs) if n.casefold() in names}
+  for n in z.namelist():
+   if n.endswith('.png'):
+    im=Image.open(io.BytesIO(z.read(n)));assert im.size==dim,(n,im.size,dim);im.verify()
+ return {'resolution':p['resolution'],'family':p['family'],'sha256':p['sha256'],'count':p['png_count'],'parts':len(chunks),'bytes':len(raw),'collisions':coll,'missing':sorted(refs-set(coll))}
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex: rows=list(ex.map(inspect,packages))
+report={'baseline':BASE,'manifest_sha256':sha(m),'manifest_git_sha':hashlib.sha1(b'blob '+str(len(m)).encode()+b'\0'+m).hexdigest(),'templates':templates,'approved_delta_sha256':'5fb0217df0d7e73c931092e858faa2f37c73aeb01632ece28f3c99e805822846','packages':rows,'untouched_other_packages':len(d['packages'])-9,'new_entries_if_no_other_changes':sum(len(p['missing']) for p in rows),'publication':'NOT_PUBLISHED; exact approved delta must be imported before build'}
+(out/'dtt-publication-preflight.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report))
+assert all(t['local_reconstruction_matches'] for t in templates.values()),'Reconstructed MASTER background differs; block publication'
