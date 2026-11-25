@@ -51,64 +51,70 @@ def run(item):
   return {'source':name,'url':url,'sha256':h,'files':files}
  except Exception as e:return {'source':name,'url':url,'error':repr(e)}
 
-# 2026-11-25: static inspection of the author's official plugin; never execute it.
-import tarfile,html,urllib.parse,subprocess,tempfile
-from html.parser import HTMLParser
-base='https://gioppygio.it/'
-plugin=base+'update_new/enigma2-plugin-extensions-gioppygio_2.6_all.ipk'
-report={'sources':[],'discovery':[],'static_candidates':[],'errors':[]}
-links=set()
-def collect(text,origin):
- text=html.unescape(text).replace('\\/','/')
- for v in re.findall(r'https?://[^\s"\'<>\\]+',text):
-  v=v.rstrip(');,]')
-  if urllib.parse.urlparse(v).hostname in ('gioppygio.it','www.gioppygio.it'):links.add(v)
- for v in re.findall(r"""(?:href|src)\s*=\s*["']([^"']+)["']""",text,re.I):
-  u=urllib.parse.urljoin(origin,v)
-  if urllib.parse.urlparse(u).hostname in ('gioppygio.it','www.gioppygio.it'):links.add(u)
- for v in re.findall(r"""["']([^"'\n]{3,180}\.(?:zip|json|xml|txt|csv|php|js))["']""",text,re.I):
-  if not v.startswith(('http','//')) and not any(c in v for c in ('{','}','%',' ')):
-   u=urllib.parse.urljoin(origin,v)
-   if urllib.parse.urlparse(u).hostname in ('gioppygio.it','www.gioppygio.it'):links.add(u)
-def record(url):
+
+# Static public catalog audit, no plugin execution.
+import tarfile, html, urllib.parse, subprocess, tempfile, ast
+report={'sources':[],'discovery':[],'static':[],'errors':[]}
+def retrieve(url):
  try:
-  b=get(url);report['discovery'].append({'url':url,'bytes':len(b),'sha256':sha(b)})
-  return b
+  b=get(url);report['discovery'].append({'url':url,'bytes':len(b),'sha256':sha(b)});return b
  except Exception as e:report['errors'].append({'url':url,'error':repr(e)});return None
-for path in ('enigma2-1.html','picons-dtt.html','plugin.html'):
- u=base+path;b=record(u)
- if b:collect(b.decode('utf8','replace'),u)
-raw=record(plugin)
+def unpack_ipk(raw):
+ with tempfile.TemporaryDirectory() as td:
+  f=Path(td)/'a.ipk';f.write_bytes(raw)
+  if raw.startswith(b'!<arch>\n'):
+   names=subprocess.check_output(['ar','t',str(f)],text=True).splitlines();data=subprocess.check_output(['ar','p',str(f),next(n for n in names if n.startswith('data.tar'))])
+  else:
+   with tarfile.open(fileobj=io.BytesIO(raw),mode='r:*') as t:data=t.extractfile(next(m for m in t.getmembers() if m.name.rsplit('/',1)[-1].startswith('data.tar'))).read()
+  return data
+def read_archive(url,raw):
+ inputs=[]
+ try:
+  if zipfile.is_zipfile(io.BytesIO(raw)):
+   with zipfile.ZipFile(io.BytesIO(raw)) as z:
+    for k in z.namelist():
+     if k.rsplit('/',1)[-1] in ('lamedb','lamedb5'):inputs.append((k,z.read(k)))
+  else:
+   if raw.startswith(b'!<arch>\n'):raw=unpack_ipk(raw)
+   with tarfile.open(fileobj=io.BytesIO(raw),mode='r:*') as t:
+    for m in t.getmembers():
+     if m.isfile() and m.name.rsplit('/',1)[-1] in ('lamedb','lamedb5') and m.size<4000000:inputs.append((m.name,t.extractfile(m).read()))
+  files=[]
+  for k,b in inputs:
+   count,rows=parse(b);files.append({'name':k,'sha256':sha(b),'services':count,'matches':rows})
+  report['sources'].append({'url':url,'files':files})
+ except Exception as e:report['errors'].append({'url':url,'error':repr(e)})
+base='https://morpheus883.altervista.org/'
+raw=retrieve(base+'index.html')
+links=set()
+if raw:
+ t=html.unescape(raw.decode('utf8','replace'))
+ for match in re.findall(r"""(?:href|src|url|location)\s*[=:]\s*['"]([^'"]+)['"]|['"]([^'"]+\.(?:zip|tgz|tar\.gz|ipk))['"]""",t,re.I):
+  v=next((s for s in match if s),'')
+  u=urllib.parse.urljoin(base,v)
+  if re.search(r'\.(zip|tgz|tar\.gz|ipk)(?:\?|$)',u,re.I) and urllib.parse.urlparse(u).hostname in ('morpheus883.altervista.org','www.morpheus883.altervista.org'):links.add(u)
+ report['morpheus_links']=sorted(links)
+ for u in sorted(links,key=lambda u:(not bool(re.search('motor|full',u,re.I)),u))[:5]:
+  b=retrieve(u)
+  if b:read_archive(u,b)
+# Actual GioppyGio plugin source strings and assignment context, rather than local file paths.
+u='https://gioppygio.it/update_new/enigma2-plugin-extensions-gioppygio_2.6_all.ipk'
+raw=retrieve(u)
 if raw:
  try:
-  with tempfile.TemporaryDirectory() as td:
-   f=Path(td)/'plugin.ipk';f.write_bytes(raw)
-   if raw.startswith(b'!<arch>\n'):
-    names=subprocess.check_output(['ar','t',str(f)],text=True).splitlines()
-    name=next(n for n in names if n.startswith('data.tar'))
-    data=subprocess.check_output(['ar','p',str(f),name])
-   else:
-    with tarfile.open(fileobj=io.BytesIO(raw),mode='r:*') as t:
-     m=next(m for m in t.getmembers() if m.name.rsplit('/',1)[-1].startswith('data.tar'))
-     data=t.extractfile(m).read()
-   with tarfile.open(fileobj=io.BytesIO(data),mode='r:*') as t:
-    for m in t.getmembers():
-     if not m.isfile() or m.size>2*1024*1024 or not re.search(r'\.(py|xml|json|txt|cfg|conf|list|ini)$',m.name,re.I):continue
-     txt=t.extractfile(m).read().decode('utf8','replace')
-     collect(txt,base)
-     relevant=[line.strip()[:450] for line in txt.splitlines() if re.search(r'gioppygio\.it|palermo|firenze|toscana|dtt.*(?:zip|xml|json|url)|(?:zip|xml|json|url).*dtt',line,re.I)]
-     if relevant:report['static_candidates'].append({'file':m.name,'lines':relevant[:60]})
- except Exception as e:report['errors'].append({'stage':'static IPK unpack','error':repr(e)})
-# Inspect only explicit public same-origin catalogue/script URLs, not guessed endpoints.
-seen=set()
-for _ in range(2):
- candidates=sorted(u for u in links if u not in seen and re.search(r'\.(?:json|xml|txt|csv|js)(?:\?|$)|(?:settings|setting|dtt).*\.php',u,re.I) and not re.search(r'jquery|bootstrap|analytics|cookie|x5engine|search|login',u,re.I))[:12]
- if not candidates:break
- for u in candidates:
-  seen.add(u);b=record(u)
-  if b:collect(b.decode('utf8','replace'),u)
-zips=sorted(u for u in links if re.search(r'\.zip(?:\?|$)',u,re.I) and re.search(r'palermo|firenze|toscana|sicilia|dtt',u,re.I) and not re.search(r'picon',u,re.I))
-report['discovered_links']=sorted(links)[:200]
-with concurrent.futures.ThreadPoolExecutor(max_workers=5) as ex:report['sources']=list(ex.map(run,[(u,u) for u in zips[:15]]))
+  data=unpack_ipk(raw)
+  with tarfile.open(fileobj=io.BytesIO(data),mode='r:*') as t:
+   for m in t.getmembers():
+    if not m.isfile() or not m.name.endswith('.py') or m.size>2000000:continue
+    if not re.search(r'/(?:Setting|plugin|update|config|download|constants|catalog|network|utils)\.py$',m.name,re.I):continue
+    txt=t.extractfile(m).read().decode('utf8','replace')
+    try:tree=ast.parse(txt)
+    except SyntaxError:continue
+    constants=[]
+    for n in ast.walk(tree):
+     if isinstance(n,ast.Constant) and isinstance(n.value,str) and re.search(r'https?://|\.json$|\.txt$|\.xml$|\.csv$|\.zip$|\.php$|listaE2|setting|catalog',n.value,re.I) and len(n.value)<450:constants.append(n.value)
+    lines=[l.strip()[:1500] for l in txt.splitlines() if re.search(r'link_dtt|url.*setting|setting.*url|pathsite|catalog|requests\.get|urlopen|_ALLOWED_LINK_PREFIXES',l,re.I)]
+    report['static'].append({'file':m.name,'constants':sorted(set(constants))[:100],'lines':lines[:35]})
+ except Exception as e:report['errors'].append({'stage':'IPK static inspection','error':repr(e)})
 (P/'result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-print(json.dumps(report,ensure_ascii=False)[:60000])
+print(json.dumps(report,ensure_ascii=False)[:100000])
