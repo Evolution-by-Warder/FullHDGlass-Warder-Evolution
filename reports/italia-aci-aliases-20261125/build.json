@@ -1,0 +1,52 @@
+{
+  "base": "22e4ba3e6240db91b2dc50816c7f902c4dbb565e",
+  "new_png": 8,
+  "complete_provider_names": 5,
+  "aci_reference": "1_0_16_64D_2454_13E_820000_0_0_0.png",
+  "aci_source": "https://www.lyngsat.com/muxes/Hotbird-13G_Wide_12577-H.html",
+  "aci_donor_run": 45559469078,
+  "aliases": [
+    {
+      "target": "AUSTRIASAT",
+      "donor": "HD AUSTRIA",
+      "source": "https://www.prosiebensat1.com/en/newsroom/prosiebensat1-group-signs-contract-with-m7-group-to-start-four-austrian-hd-broadcasters-en-336230",
+      "sha256": "8098468aa54341d0a4055dd37df231b1970ba3f98f0d217cf1f1d467c21f0b40"
+    },
+    {
+      "target": "DIGITAL FREE",
+      "donor": "KABEL DEUTSCHLAND",
+      "source": "https://www.dwdl.de/nachrichten/3078/kabel_deutschland_startet_am_2009_kabel_digital_free/",
+      "sha256": "c412331fbdf727ec843a5dba9f62648dac57de255450612be7c5f79d6327f072"
+    },
+    {
+      "target": "W1 WL DTH",
+      "donor": "NETERRA COMMUNICATIONS",
+      "source": "https://satkurier.pl/news/84505/0-8w-tiankov-tv-fta-w-nowej-platformie-w1.html",
+      "sha256": "ccb8d5b9f1482fb7ad0b443615f9ac928ccec8ffbb9f25f619a2fe8a2c5f6ebe"
+    }
+  ],
+  "held": [],
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1475,
+      "sha256": "18f5460f72285791b45a18402a6f832bd2d3d9aebd31ab722c1d366251f7590d",
+      "bytes": 15901141,
+      "old_png_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1451,
+      "new_extension_sha256": "106ff6ae99d8044ba3ad93600b218e480d46fc7d6272e563ea6ec9ae0d096537",
+      "new_extension_bytes": 29820,
+      "previous_archives_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1454,
+      "sha256": "aff04ce00aef14cb2974ad87004fb9595d4bf39032712832d8bf91abea536058",
+      "bytes": 33233021,
+      "old_png_unchanged": true
+    }
+  ]
+}
