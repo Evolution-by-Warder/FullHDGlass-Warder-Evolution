@@ -1,0 +1,1 @@
+AN provider: Antenna 3 Radio Televisione Toscana, actual DVB measurement explicitly lists Provider: An, current broadcaster confirmed by official website. Exact green/pink artwork matches supplied original, 483x518 transparent source pinned by SHA1. Uses original MASTER V9 templates pinned by SHA256; no previous PNG changed, no DTT/IPK changes. Review before merge.

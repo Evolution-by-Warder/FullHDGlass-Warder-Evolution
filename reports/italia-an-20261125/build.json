@@ -1,0 +1,35 @@
+{
+  "base": "8e65c33210beeec19178a17cce1040c99f03d515",
+  "new_png": 3,
+  "complete_provider_names": 1,
+  "identity": "Antenna 3 Radio Televisione Toscana",
+  "provider": "An",
+  "provider_evidence": "https://www.digital-forum.it/threads/segnali-tv-in-toscana-riassegnazioni-tv-nazionali-e-locali-2022.212576/page-48",
+  "official_station": "https://www.antenna3.tv/",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Antenna_3_Toscana_-_logo.png",
+  "source_sha256": "912d823fbc955120a4cd5c5ba127270651059db2a039cae5120b6353796adb84",
+  "source_sha1": "d63912f81bdde834b641f1e14a8051cc805575b9",
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1484,
+      "sha256": "0a9d0be0d5dbd641a991f58b444552c65cc2b972cad8a7ad3b69bbd305fe0e8b",
+      "bytes": 16039763,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1460,
+      "extension04_sha256": "69811227a904fbcc541f19a211a43276a99e18925fe947f66ce1ae36c70a2d76",
+      "extension04_bytes": 322393,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1462,
+      "sha256": "1a49db09ed584b96936b7bfb4d1942ce5bda2d095fe8aa423fcb7c69a1e762c0",
+      "bytes": 33513196,
+      "all_existing_png_bytes_unchanged": true
+    }
+  ]
+}
