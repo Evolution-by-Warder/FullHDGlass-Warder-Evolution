@@ -614,5 +614,50 @@
       "https://en.kingofsat.net/pos-30.0W"
     ],
     "decision": "Historical BBC WORLD identity is television, not World Service radio. Exact 30W SID766 was removed 2007-01-27. Do not create historical-reference picon or infer any currently active alias. Hold exact current provider evidence. Other five holds unchanged."
+  },
+  "ciefp_motor_followup_20261125": {
+    "repo": "ciefp/ciefpsettings-enigma2",
+    "path": "ciefp-E2-motor-75E-34W/lamedb",
+    "blob": "0e20540e628f372bc6f1c8272b62780f1f089202",
+    "bytes_from_tree": 1243201,
+    "decoded_characters": 1237380,
+    "read_method": "Git blob by exact SHA; complete eDVB v4 header and end marker; previously empty contents API resolved",
+    "settings_date": "2026-11-13",
+    "service_records": 13950,
+    "terrestrial": 279,
+    "exact_provider_hits": 0,
+    "near_matches": [
+      {
+        "ref": "289b:00300000:00ca:0055:1:0",
+        "service": "BBC World",
+        "provider": "TV3 Group"
+      },
+      {
+        "ref": "1c02:005a0000:0384:0110:22:0",
+        "service": "PRIMA FREE",
+        "provider": ""
+      },
+      {
+        "ref": "0017:01040000:01fd:02be:1:0",
+        "service": "BBC Arabic",
+        "provider": "BBC World Service"
+      },
+      {
+        "ref": "002e:01040000:01fd:02be:2:0",
+        "service": "BBC World Service English Middle East",
+        "provider": "BBC World Service"
+      }
+    ],
+    "additional_free_tv_evidence": [
+      {
+        "url": "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250816-le-nuove-numerazioni-lcn-dei-canali-nazionali-il-punto-di-mauro-roffi/",
+        "finding": "2025 LCN allocation FREE TV ITALIA at 170, under review; distinct from historic Sicilian Free TV."
+      },
+      {
+        "url": "https://www.digital-forum.it/threads/riconfigurazione-dei-mux-digitali-dal-2003-ad-oggi.128834/page-29",
+        "finding": "2026-05-19 service PRIMA FREE renamed PRIMAFREE170 on DFree; not exact FREE TV provider."
+      }
+    ],
+    "decision": "No new exact provider matches or validated artwork. 33/41 closed, six DVB holds and two deferred. Do not repeat this blob. Earlier unreadable status superseded."
   }
 }
