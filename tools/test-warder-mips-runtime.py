@@ -114,4 +114,43 @@ class Mips(unittest.TestCase):
                 timer.callbacks[0]()
                 self.assertEqual(timer.starts[-1],nxt)
 
+    def test_actual_infobar_animation_callbacks(self):
+        tree=ast.parse((ROOT/'Plugins/Extensions/setupGlass17/plugin.py').read_text())
+        cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='ExtraInfo17')
+        methods=[n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name in ('animTimerEvent','setOn','stopEcmCaidInfo')]
+        self.assertEqual(len(methods),3)
+        for mips in (True,False):
+            scope=dict(MIPS_RUNTIME=mips,weather_delay=lambda delay:P['weather_delay'](delay,True,128*1024),
+                       config=NS(plugins=NS(setupGlass17=NS(par170=NS(value=50),par57=NS(value='2')))))
+            node=ast.ClassDef(name='ExtraInfo17',bases=[ast.Name(id='dict',ctx=ast.Load())],keywords=[],body=methods,decorator_list=[])
+            exec(compile(ast.fix_missing_locations(ast.Module(body=[node],type_ignores=[])),'weather','exec'),scope)
+            obj=scope['ExtraInfo17']()
+            obj.timerpics=Timer(True)
+            for name in ('iptvInfoRetryTimer','ecmCaidTimer','provRPMTimer','hddTimer'):
+                setattr(obj,name,Timer(True))
+            obj.chckWeaInafAnim=lambda:True
+            obj._ExtraInfo17__warderScheduleIptvRetry=lambda:None
+            obj.pics=['one','two']
+            obj.slideXX=0
+            frames=[]
+            obj['picProvSat']=NS(instance=NS(setPixmap=frames.append))
+            obj._ExtraInfo17__isOn=False
+            obj.animTimerEvent()
+            self.assertEqual(frames,[] if mips else ['one'])
+            self.assertFalse(obj.timerpics.active)
+            obj.setOn()
+            self.assertEqual(obj.timerpics.starts[-1],150 if mips else 50)
+            obj.animTimerEvent()
+            self.assertEqual(obj.timerpics.starts[-1],150 if mips else 50)
+            obj.stopEcmCaidInfo()
+            self.assertEqual(obj.timerpics.active,not mips)
+            if mips:
+                obj['picProvSat'].instance=None
+                obj.animTimerEvent()
+                self.assertFalse(obj.timerpics.active)
+                obj.pics=[]
+                obj.setOn()
+                self.assertFalse(obj.timerpics.active)
+
+
 if __name__=='__main__':unittest.main()
