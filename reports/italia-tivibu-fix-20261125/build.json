@@ -1,0 +1,38 @@
+{
+  "base": "1c9e1bfc3e669e2e3a8ecb1e780172e68e210d3a",
+  "new_png": 1,
+  "corrected_png": 2,
+  "identity_sources": [
+    "https://www.lyngsat.com/providers/tr/Tivibu.html",
+    "https://bireysel.turktelekom.com.tr/tivibu"
+  ],
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1470,
+      "sha256": "d82907279fcb5c5b8318d04381ff72caf330d53db3d0b7905223fee848c2141f",
+      "bytes": 15831259,
+      "donor_sha256": "9766de9a2671c26c8fdd7118b096e85a11a60996a350100d73604ddf85ef68a2",
+      "old_wrong_sha256": null,
+      "all_other_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1449,
+      "sha256": "33c652c0b00221a39c8a1344b13021d15dd6833275c149ef4ef0f240615a82b2",
+      "bytes": 33281798,
+      "donor_sha256": "10a164bef1be280bc6f0f5fc1ef5e4683e2c0a53a30d2b8d355ac851dec9d485",
+      "old_wrong_sha256": "02bc6c295cb4650921e6b4f7c968e152ba1ff86cea9c12ff4a6cacc5c42d0b7d",
+      "all_other_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1453,
+      "sha256": "a799ec5b44d3aebe1c0da9d2f13b5ea4107269a0a8c4f9490f13b7269e654400",
+      "bytes": 33216230,
+      "donor_sha256": "055b2c3556acdf84d6a997424baedd710b412aacf74479b843b41ba4cd1d7c2f",
+      "old_wrong_sha256": "8907fe7764f7dec1a78a4ef996e8195b1a2ade1c8e92b4b5c897479bdac3c08d",
+      "all_other_png_bytes_unchanged": true
+    }
+  ]
+}
