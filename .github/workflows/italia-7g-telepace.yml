@@ -47,10 +47,10 @@ jobs:
           git add --sparse assets/warder/downloads.json assets/warder/downloads/picons/providers/{black,transparent}/piconProv.zip assets/warder/downloads/picons/providers/white/extension-04/piconProv.zip reports/italia-7g-telepace-20261125
           git diff --cached --stat
           git commit -m "Prepare 7G and Teleradiopace provider artwork"
-          git push origin HEAD:refs/heads/publish/italia-7g-telepace-20261125
+          git push origin HEAD:refs/heads/publish/italia-7g-telepace-generic-20261125
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: italia-7g-telepace-proof
+          name: italia-7g-telepace-generic-proof
           path: |
             production/reports/italia-7g-telepace-20261125/

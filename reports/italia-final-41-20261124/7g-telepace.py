@@ -49,6 +49,11 @@ for name,url,evidence in sources:
    exterior=np.isin(lab,list(edge));assert exterior.sum()>a.shape[0]*a.shape[1]*.1
    a[exterior,3]=0
   assert a[:,:,3].min()==0 and a[:,:,3].max()==255
+  if name=='TELERADIOPACE':
+   assert tuple(im.size)==(133,99) and sha(b)=='f2a94019e021dcdcad7bc83ad191209161a798e9e55cff061eacbe1d9bc6bdcc'
+   # Remove separately located channel-specific HD and 1; preserve shared station mark.
+   a[8:22,59:79,3]=0
+   a[7:62,84:106,3]=0
   im=Image.fromarray(a);im=im.crop(im.getchannel('A').getbbox())
   factor=min(194/im.width,108/im.height)
   im=im.resize((max(1,round(im.width*factor)),max(1,round(im.height*factor))),Image.Resampling.LANCZOS)
@@ -96,5 +101,5 @@ for s,key in keys.items():
   report['archives'].append(dict(style=s,count=a['png_count'],sha256=sha(b),bytes=len(b),all_existing_png_bytes_unchanged=True))
 C.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
 (out/'build.json').write_text(json.dumps(report,indent=2)+'\n')
-(out/'README.md').write_text('Current 7G identity confirmed by AGCOM 2026 list page 6. Teleradiopace Chiavari logo per June 2023 monitoring and official diocese identity. All original PNG retained, four white extensions, no IPK or DTT change. Visual review required before merge.\n')
+(out/'README.md').write_text('Current 7G identity confirmed by AGCOM 2026 list page 6. Teleradiopace Chiavari logo per June 2023 monitoring and official diocese identity. All original PNG retained, four white extensions, no IPK or DTT change. Channel-specific HD and 1 isolated and removed from Radio Telepace; generic provider mark preserved. Visual review required before merge.\n')
 print(json.dumps(report))
