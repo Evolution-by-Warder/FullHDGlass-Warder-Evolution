@@ -24,6 +24,7 @@ import re, os
 import threading
 from .warderUserPicons import selected_source as _warderSelectedPiconSource, find_png as _warderUserFindPng, normalized_directory as _warderUserNormalize
 from .warderProgressLog import ProgressLog
+from .warderMipsRuntime import MIPS_RUNTIME, weather_frame_indices, weather_delay
 from .warderChannelWorker import ChannelWorker, ManifestWorker, AssetWorker, LegacyArchiveWorker, LegacyCopyWorker, CanonicalWorker
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
@@ -4233,8 +4234,8 @@ class ExtraInfo17(Screen):
 		self.__isOn = True
 		self.__warderScheduleIptvRetry()
 		if self.timerpics and self.chckWeaInafAnim():
-			if not self.timerpics.isActive():
-				self.timerpics.start(config.plugins.setupGlass17.par170.value)
+			if not self.timerpics.isActive() and (not MIPS_RUNTIME or self.pics):
+				self.timerpics.start(weather_delay(config.plugins.setupGlass17.par170.value) if MIPS_RUNTIME else config.plugins.setupGlass17.par170.value)
     		
 	def startloadpixmap(self):
 		if self.iscalcstart:
@@ -4463,6 +4464,8 @@ class ExtraInfo17(Screen):
 
 	def stopEcmCaidInfo(self):
 		self.__isOn = False
+		if MIPS_RUNTIME and self.timerpics and self.chckWeaInafAnim():
+			self.timerpics.stop()
 		self.iptvInfoRetryTimer.stop()
 		if self.ecmCaidTimer.isActive():
 			self.ecmCaidTimer.stop()
@@ -5130,16 +5133,19 @@ class ExtraInfo17(Screen):
 				self.pics = []
 				self.slideXX = 0
 				if f:
-					for i in range(0,f):
-						self.pics.append(LoadPixmap(path+"/"+str(i)+".png"))					
-				else:
+					for i in (weather_frame_indices(f) if MIPS_RUNTIME else range(0,f)):
+						frame = LoadPixmap(path+"/"+str(i)+".png")
+						if not MIPS_RUNTIME or frame is not None:
+							self.pics.append(frame)
+				if not f or (MIPS_RUNTIME and not self.pics):
 					self['picProvSat'].instance.resize(eSize(150,90))
 					self['picProvSat'].instance.move(ePoint(self.posX_PSW,self.posY_PSW))
 					self.updpicProvSat(self.pngnameWea)
 				if len(self.pics) != 0:
 					self['picProvSat'].instance.resize(eSize(90,90))
 					self['picProvSat'].instance.move(ePoint(self.posX_PSW+30,self.posY_PSW))
-					self.timerpics.start(config.plugins.setupGlass17.par170.value)
+					if not MIPS_RUNTIME or self.__isOn:
+						self.timerpics.start(weather_delay(config.plugins.setupGlass17.par170.value) if MIPS_RUNTIME else config.plugins.setupGlass17.par170.value)
 			else:
 				if png != "":
 					self.path = "picWeaInf"
@@ -5159,6 +5165,8 @@ class ExtraInfo17(Screen):
 		
 	def animTimerEvent(self):
 		self.timerpics.stop()
+		if MIPS_RUNTIME and (not self.__isOn or self["picProvSat"].instance is None):
+			return
 		a = len(self.pics)
 		if a != 0:
 			if self.slideXX == a:
@@ -5166,7 +5174,7 @@ class ExtraInfo17(Screen):
 			self['picProvSat'].instance.setPixmap(self.pics[self.slideXX])	
 			self.slideXX += 1
 			if self.__isOn:
-				self.timerpics.start(config.plugins.setupGlass17.par170.value)
+				self.timerpics.start(weather_delay(config.plugins.setupGlass17.par170.value) if MIPS_RUNTIME else config.plugins.setupGlass17.par170.value)
 
 	def stopBitrateNow(self, tmp=_("Bitrate stopped")):
 		self.isBit = False
