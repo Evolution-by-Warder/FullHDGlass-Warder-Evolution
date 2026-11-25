@@ -338,5 +338,126 @@
     "findings": "DORIA exact provider alias confirmed and published. MULTIPROGRAM additionally confirmed on Program2 3E, but LightSat association not demonstrated. All five requested terrestrial references still absent. No new exact provider matches for remaining items. Raw settings not redistributed.",
     "black_zip_bytes": 33551876,
     "black_zip_remaining_bytes": 2556
+  },
+  "historical_source_audit": {
+    "repository": "oe-alliance/oe-alliance-settings",
+    "snapshots": [
+      {
+        "region": "sicilia",
+        "date": "2026-11-15",
+        "commit": "33c03b8bd36d63bf6d7483608f5f04771c7aa20e",
+        "blob": "fbeabe2192bb73bfc48ccc31b60c4e88405f4c9d",
+        "services": 13038,
+        "terrestrial": 299,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "sicilia",
+        "date": "2026-11-08",
+        "commit": "10bfde513407f0ea9b79a3f61186f51423afba9e",
+        "blob": "a32ebece0f38d42eb039062e971ccef6f2468c49",
+        "services": 13054,
+        "terrestrial": 314,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "sicilia",
+        "date": "2026-11-01",
+        "commit": "7e768a01c1735ec8664342c307b98d8d16eb9f50",
+        "blob": "02b25221cc6600714f0ab3a152e2ee77277e31fe",
+        "services": 12993,
+        "terrestrial": 314,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "sicilia",
+        "date": "2026-10-25",
+        "commit": "4dc721a4fb2397b8c4970b5844774fd5ec96193a",
+        "blob": "9e523f90fe861fc3ab74015dffb773f26e8082c3",
+        "services": 13003,
+        "terrestrial": 314,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "italia",
+        "date": "2026-11-15",
+        "commit": "df1f5b14f35c7b50447e1d6019e7035701818008",
+        "blob": "ca752f1bd1818dfdf222fdf5939ab7ee4b996a92",
+        "services": 13026,
+        "terrestrial": 286,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "italia",
+        "date": "2026-11-08",
+        "commit": "504621683e010d369a3a4262e88f8ec10dde1e88",
+        "blob": "9c84590e547942929f28f368df7ff40b0f58588c",
+        "services": 13026,
+        "terrestrial": 286,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "italia",
+        "date": "2026-11-01",
+        "commit": "0584a918bddc4328f78bea56121bd7212141199d",
+        "blob": "9524674ca87343af3824a596d752cda96d1008f6",
+        "services": 12965,
+        "terrestrial": 286,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      },
+      {
+        "region": "italia",
+        "date": "2026-10-25",
+        "commit": "e30c581021b2545ecce5312a53126f4d7e824207",
+        "blob": "c715dbbade28f79add2ea44a6d48b07a3e044b0f",
+        "services": 12975,
+        "terrestrial": 286,
+        "matching_pending_refs": 0,
+        "matching_pending_provider_names": 0
+      }
+    ],
+    "total_service_records": 104080,
+    "total_terrestrial_records": 2385,
+    "note": "Historical overlapping records, not unique current services. Provider p: tags parsed anywhere in metadata. No exact outstanding matches."
+  },
+  "gioppy_link_audit": {
+    "run": 45572640473,
+    "status": "complete_no_readable_archives",
+    "sources": [
+      {
+        "url": "https://gioppygio.it/settings/e2/GioppyGio_E2_Motor_75E-45W_08-11-2026.zip",
+        "http_status": 404
+      },
+      {
+        "url": "https://gioppygio.it/settings/e2/GioppyGio_E2_Motor_75E-45W_01-11-2026.zip",
+        "http_status": 404
+      },
+      {
+        "url": "https://gioppygio.it/settings/e2+dtt/Palermo/GioppyGio_E2_Dual_13E+19E+DTT-Palermo_01-12-2025.zip",
+        "http_status": 404
+      },
+      {
+        "url": "https://gioppygio.it/settings/e2+dtt/Palermo/GioppyGio_E2_Motor_45W+75E+DTT-Palermo_01-10-2025.zip",
+        "http_status": 404
+      }
+    ]
+  },
+  "provider_capacity": {
+    "pr": 195,
+    "merge": "4dc84100e1f23a07056458462d7d504c8c0af89f",
+    "ci_checks_passed": 9,
+    "black_base_bytes": 33551876,
+    "black_headroom_bytes": 2556,
+    "existing_v2_support": "All styles; black extension descriptor piconProv-b-v2 can be added when verified new PNG exist.",
+    "max_extensions": 4,
+    "max_archive_bytes": 33554432,
+    "publication": "Regression tests merged only; no empty extension, no production catalogue change, no IPK."
   }
 }
