@@ -14,12 +14,13 @@ def get(u):
   return b
 templates={}
 for style,h in [('white','c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589'),('black','61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe')]:
- b=get('https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/27df64cf3884d1190c9016a0fcdac2866c5b5f7e/plugin/artwork/templates/picons/'+style+'-sablona.png')
+ b=(P/(style+'-sablona.png')).read_bytes()
  assert sha(b)==h
  templates[style]=Image.open(io.BytesIO(b)).convert('RGBA')
  assert templates[style].size==(220,132)
 records=[];errors=[];images=[]
 for c in data['candidates']:
+ if 'BBC WORLD.png' in c['names']:continue # source is World Service, not BBC World TV; identity unresolved
  try:
   file=c['file'];h=hashlib.md5(file.encode()).hexdigest()
   url='https://upload.wikimedia.org/wikipedia/commons/'+h[0]+'/'+h[:2]+'/'+urllib.parse.quote(file)
@@ -53,6 +54,19 @@ for c in data['candidates']:
     images.append((name,style,final))
  except Exception as e:
   errors.append(dict(names=c['names'],error=str(e)))
+# Recovered monochrome ACI graphic from owner-provided 220x132 ACISPORT_TV.png.
+# 2-bit alpha for review; final artwork should use full-resolution original.
+import zlib,base64
+q=np.unpackbits(np.frombuffer(zlib.decompress(base64.b64decode((P/'aci-alpha.b64').read_text())),dtype=np.uint8)).reshape(-1,2)
+alpha=((q[:,0]*2+q[:,1])*85).astype(np.uint8).reshape(132,220)
+for name in ['ACISPORT TV.png','ACISPORT_TV.png']:
+ p=next(x for x in data['providers'] if x['name']==name)
+ for style in p['missing']:
+  im=Image.new('RGBA',(220,132),(28,32,38,255) if style=='white' else (255,255,255,255));im.putalpha(Image.fromarray(alpha))
+  final=im if style=='transparent' else Image.alpha_composite(templates[style],im)
+  pth=out/style/name;pth.parent.mkdir(exist_ok=True);final.save(pth,optimize=True)
+  records.append(dict(name=name,style=style,sha256=sha(pth.read_bytes()),source_sha256='62b9acbc68e9099b6c30987597195cad0f2a622c43bb34ac149a015870fdffde',source_url='owner-supplied piconProv.rar; 220x132 original',state='REVIEW_NOT_PUBLISHED'))
+  images.append((name,style,final))
 sheet=Image.new('RGB',(720,max(160,160*((len(images)+2)//3))),'#dddddd');d=ImageDraw.Draw(sheet)
 for i,(name,style,im) in enumerate(images):
  x=i%3*240+10;y=i//3*160
