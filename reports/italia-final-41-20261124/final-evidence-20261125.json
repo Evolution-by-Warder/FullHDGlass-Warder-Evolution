@@ -4,18 +4,18 @@
   "production": {
     "DTT_references": 342,
     "DTT_variants": 9,
-    "transparent": 1484,
-    "white": 1460,
-    "black": 1462
+    "transparent": 1485,
+    "white": 1461,
+    "black": 1463
   },
   "scope": {
     "original": 41,
-    "closed": 27,
-    "unresolved": 14,
-    "dvb_provider_holds": 7,
+    "closed": 28,
+    "unresolved": 13,
+    "dvb_provider_holds": 6,
     "dtt_holds": 5,
     "outside_dvb_deferred": 2,
-    "new_png": 0
+    "new_png": 3
   },
   "providers": [
     {
@@ -59,21 +59,20 @@
       "kind": "PROVIDER",
       "name": "DORIA.png",
       "sha": "dc436841bd4ec5385c2f179fd61c5ecbdd87b3ac8d86bb8a2f67959c8a9acdd6",
-      "state": "HOLD_EXACT_PROVIDER",
-      "missing": [
-        "transparent",
-        "white",
-        "black"
-      ],
-      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "state": "PUBLISHED_VERIFIED_LEGACY_ALIAS",
+      "missing": [],
+      "decision": "PUBLISHED",
       "review": null,
       "graphic": "Amici Network",
-      "reason": "Approved Amici Network donor exists in all three styles, but Vhannibal provider field empty; Mavise identifies Social Network S.R.L. as owner and provider. Doria alias not established.",
+      "reason": "Morpheus motor lamedb explicitly contains p:doria for RadioRomaTelevision and Radio Roma (SID 6805/6806 TSID 26849 ONID 8572, 9E). AGCOM decision 66/23/CONS confirms transfer of RTV Srl from Doria to Andrea Amici; current two Radio Roma TV services belong to Amici Network. Exact supplied group graphic reused from approved MASTER V9 donor in all three backgrounds, not a claim that every current provider field is DORIA.",
       "sources": [
-        "https://mavise.obs.coe.int/f/ondemand/advanced?countryofestablishment=9&typeofservice=0",
-        "https://morpheus883.altervista.org/cat_srv.php/?chart=70"
+        "https://github.com/morpheus883/enigma2-settings/blob/master/morph883_motor/lamedb",
+        "https://www.agcom.it/sites/default/files/migration/delibera/Delibera%2066-23-CONS.pdf",
+        "https://www.litaliaindigitale.it/news-regionali/lazio-news/lazio-news-anno-2024/240918-mux-locale-1-lazio-passaggio-in-alta-definizione-per-t9/"
       ],
-      "needed": "Current provider DORIA from the actual receiver plus programme name and reference."
+      "needed": null,
+      "publication": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/193",
+      "audit": 45571814294
     },
     {
       "kind": "PROVIDER",
@@ -281,5 +280,63 @@
       ]
     }
   ],
-  "policy": "Do not rescan unchanged sources or publish unconfirmed identity/namespace; existing production PNG unchanged. Resume only when new relevant evidence is supplied."
+  "policy": "Do not rescan unchanged sources or publish unconfirmed identity/namespace; existing production PNG unchanged. Resume only when new relevant evidence is supplied.",
+  "cross_source_audit": {
+    "run": 45571393250,
+    "latest_vhannibal_motor": {
+      "date": "2026-11-24",
+      "services": 12760,
+      "sha256": "2807df43cf813c3d6a300a80aee042443dc661253b4f738c86afa9d8ab8abacc"
+    },
+    "unchanged": [
+      "Motor Italia",
+      "Motor Sicilia",
+      "Motor Romagna"
+    ],
+    "unavailable": [
+      "GioppyGio Palermo 2025-12-01 HTTP 404",
+      "GioppyGio Palermo 2025-11-18 HTTP 404",
+      "GioppyGio Motor 2026-10-16 HTTP 404"
+    ],
+    "additional_lamedb": [
+      {
+        "repo": "morpheus883/enigma2-settings",
+        "path": "morph883_motor/lamedb",
+        "blob": "1604eb1f78ddf5ac6feee5739b7e9d54acc35fb3",
+        "services": 16718,
+        "terrestrial": 356
+      },
+      {
+        "repo": "oe-alliance/oe-alliance-settings",
+        "path": "vhannibal.motor.and.dtt.sicilia/lamedb",
+        "blob": "e8b576fde9d864272271af07b10439e1d153f3b7",
+        "services": 13021,
+        "terrestrial": 298
+      },
+      {
+        "repo": "oe-alliance/oe-alliance-settings",
+        "path": "vhannibal.motor.and.dtt.italia/lamedb",
+        "blob": "d306017710e9e795a8428dd0298ac0496a3b491c",
+        "services": 13011,
+        "terrestrial": 285
+      },
+      {
+        "repo": "oe-alliance/oe-alliance-settings",
+        "path": "malimali.motor.42e.to.30w/lamedb",
+        "blob": "c955be78ccb31090e2f5a7966c8206da420c2af8",
+        "services": 10491,
+        "terrestrial": 0
+      },
+      {
+        "repo": "oe-alliance/oe-alliance-settings",
+        "path": "liktra.rotor/lamedb",
+        "blob": "e26c15df93fc666e46afdc5c8d99a72961d9a426",
+        "services": 9566,
+        "terrestrial": 0
+      }
+    ],
+    "findings": "DORIA exact provider alias confirmed and published. MULTIPROGRAM additionally confirmed on Program2 3E, but LightSat association not demonstrated. All five requested terrestrial references still absent. No new exact provider matches for remaining items. Raw settings not redistributed.",
+    "black_zip_bytes": 33551876,
+    "black_zip_remaining_bytes": 2556
+  }
 }
