@@ -8,6 +8,26 @@ def limits(height):
     return {'entry': max(1, height * 88 // 100 - 2),
             'value': max(1, height * 80 // 100 - 2)}
 
+def fit_video_preview(config_list, parent):
+    """Reserve a separate value/slider column only in the native picture preview."""
+    cls = type(parent)
+    if (cls.__name__ != 'VideoEnhancementPreview'
+            or cls.__module__ != 'Plugins.SystemPlugins.VideoEnhancement.plugin'):
+        return False
+    try:
+        if parent['config'] is not config_list:
+            return False
+        width = int(config_list.instance.size().width())
+        if width < 300:
+            return False
+        # Native VideoEnhancement sets an unscaled separator before layout.
+        # Leave 32% of the actual widget for the slider and numeric value.
+        config_list.l.setSeperation(width * 68 // 100)
+        return True
+    except (AttributeError, KeyError, TypeError, ValueError, RuntimeError):
+        return False
+
+
 def install(config_list, is_active, make_font, parse_font):
     make_font = getattr(make_font, '_warder_native_font', make_font)
     original = config_list.applySkin
@@ -28,6 +48,9 @@ def install(config_list, is_active, make_font, parse_font):
             maximum = limits(height)
         except (AttributeError, TypeError, ValueError):
             return result
+        preview = is_active() and fit_video_preview(self, parent)
+        if preview:
+            maximum['entry'] = min(maximum['entry'], max(1, height * 65 // 100))
         requested = dict(DEFAULTS)
         for name, value in attributes:
             if name in ('font', 'entryFont'):
