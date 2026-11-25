@@ -37,8 +37,8 @@ jobs:
       - name: Verify the exact Italian candidate catalogue and checksums
         run: |
           set -euo pipefail
-          test "$(git hash-object assets/warder/downloads/picons/channels/manifest.json)" = "fa98965f3d69298e19342b12987b4e63ad1724a1"
-          test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = "2b8053eb0e83601af8ba7fff443596a5fd81d049"
+          test "$(git hash-object assets/warder/downloads/picons/channels/manifest.json)" = "46d6d6124b7e74e96f146eaa014b4aca4d753593"
+          test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = "a3c93e8c712d4600e02ab3ae4ee43bc8bd85e612"
           VERSION="$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
           case "$VERSION" in 1.0.80|1.0.82|1.0.83|1.0.84|1.0.85|1.0.86|1.0.87|1.0.88|1.0.89|1.0.90|1.0.91|1.0.92) ;; *) echo "Unexpected integration/release version: $VERSION"; exit 1 ;; esac
           grep -qx "Version: $VERSION-1" source/control/control
