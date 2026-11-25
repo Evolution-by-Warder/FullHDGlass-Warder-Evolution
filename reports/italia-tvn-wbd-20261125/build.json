@@ -1,0 +1,30 @@
+{
+  "base": "32d253f7329329e31c3b9d4f56221597ef680e8a",
+  "review_run": 45558356776,
+  "source_sha256": "e69e8d48075ae9cfad036fe633dc56ba1e295e8bf59cfae68c10437eeb9fe6e1",
+  "new_png": 5,
+  "names": 2,
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1469,
+      "sha256": "802268c5b346bd28ed41daab9b1160bdd0d3db5e85ab6684ef552a82ba8ae751",
+      "bytes": 15814014,
+      "old_png_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1449,
+      "new_extension_sha256": "10e84859367d9b5d95e3094b681eb80de4c2e6004b8322e90cf79b8868a1d4ec",
+      "new_extension_bytes": 70926,
+      "old_archives_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1453,
+      "sha256": "04cbae751f5f7755058375e4cb9490a7c7770bb97aa45c40cb1a2204a26ff2f9",
+      "bytes": 33218758,
+      "old_png_unchanged": true
+    }
+  ]
+}
