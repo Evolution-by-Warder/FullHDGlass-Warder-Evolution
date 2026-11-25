@@ -1,0 +1,57 @@
+name: Italia ACI and verified historical aliases
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/aci-aliases.py', '.github/workflows/italia-aci-aliases.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - uses: actions/checkout@v4
+        with:
+          ref: 22e4ba3e6240db91b2dc50816c7f902c4dbb565e
+          path: production
+          fetch-depth: 1
+          sparse-checkout: |
+            assets/warder/downloads/picons/providers
+            assets/warder/downloads.json
+            assets/warder/downloads/picons/channels/manifest.json
+            reports/dtt-italia-20261123/recipe.json
+            reports/italia-dtt-vhannibal-19-20261124/plan.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: italia-tivibu-and-donor-review
+          run-id: 45559469078
+          github-token: ${{ github.token }}
+          path: reviewed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: python reports/italia-final-41-20261124/aci-aliases.py production reviewed
+      - name: Commit verified variants to separate branch
+        run: |
+          cd production
+          test "$(git rev-parse HEAD)" = "22e4ba3e6240db91b2dc50816c7f902c4dbb565e"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads.json assets/warder/downloads/picons/providers/{black,transparent}/piconProv.zip assets/warder/downloads/picons/providers/white/extension-03/piconProv.zip reports/italia-aci-aliases-20261125
+          git diff --cached --stat
+          git commit -m "Complete ACI Sport and evidence-backed legacy provider aliases"
+          git push origin HEAD:refs/heads/publish/italia-aci-aliases-20261125
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italia-aci-aliases-proof
+          path: |
+            dtt-donor-review/
+            production/reports/italia-aci-aliases-20261125/
