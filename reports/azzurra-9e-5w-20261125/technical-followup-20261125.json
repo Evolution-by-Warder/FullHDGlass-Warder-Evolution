@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-25",
+  "prior_publication": {
+    "fullhdglass_pr": 199,
+    "piconhub_pr": 105,
+    "fullhdglass_register_pr": 200,
+    "piconhub_register_pr": 106,
+    "manifest_sha256": "6d0e7268cc3b2cdb30b705a2f89b5ba6310dc4ffa81a84103a007a714016c9ed"
+  },
+  "approved_review_sha256": "e62832ce710f9b98ced8466ed7905b2d8bf968497d38df445e854fc49abd2d73",
+  "findings": [
+    {
+      "ids": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "status": "HOLD_NONCANONICAL_TRANSPORT_IDS",
+      "sources": [
+        "https://www.lyngsat.com/Eutelsat-9B.html",
+        "https://en.kingofsat.net/tv.php?aff=list&b=323&filtre=Clear&lim=580&ordre=freq&pos=9E&standard=All"
+      ],
+      "evidence": "11996 V, ONID156 TSID6400, SID619–623 confirmed; current Vhannibal Motor and Italia exact type 1. All 5 canonical service refs already present in all 9 variants. Supplied TSID33 ONID11/22 also in Ciefp, but not current transport confirmation. Do not add these aliases without actual SDT proof."
+    },
+    {
+      "ids": [
+        43,
+        44,
+        "E44"
+      ],
+      "status": "HOLD_HISTORICAL_EURONEWS",
+      "sources": [
+        "https://www.lyngsat.com/tvchannels/fr/EuroNews-Russkiy.html",
+        "https://www.lyngsat.com/Eutelsat-9B.html"
+      ],
+      "evidence": "11996 V service left 2026-06-02; 11823 H service launched 2026-04-18, SID1860 ONID100 TSID1; new canonical reference 1_0_1_744_1_64_5A0000_0_0_0.png already present in all 9 variants and 220 transparent displays Euronews. Preserve old production files; do not add obsolete alias."
+    },
+    {
+      "ids": [
+        24,
+        25
+      ],
+      "status": "HOLD_HISTORICAL_TRANSPORT",
+      "sources": [
+        "https://www.frocus.net/main.php?lng=ru&pag=tp&rzd=tvkanal&sp=9&tp_id=1188",
+        "https://en.kingofsat.net/tp.php?aff=zap&filtre=no&standard=All&tp=2230",
+        "https://satkurier.pl/news/189148/9e-museum-hd-od-1702-w-conax.html"
+      ],
+      "evidence": "A1 old SIDs867/869 marked removed by Frocus. Current M7 SIDs518/517 ONID156 TSID8500 already present in all 9 variants, 220 transparent visually matches Museum/MyZen."
+    },
+    {
+      "ids": [
+        4
+      ],
+      "status": "HOLD_CONFLICTING_RECENCY",
+      "sources": [
+        "https://fr.kingofsat.net/detail-m6-4k",
+        "https://en.kingofsat.net/channels_M"
+      ],
+      "evidence": "May 26 2026 listing confirms SID314 TSID20300 ONID1375. Current directory says no European satellite transmission. Do not add 6 or replace 3 legacy variants until new proof."
+    },
+    {
+      "ids": [
+        16
+      ],
+      "status": "HOLD_NO_CURRENT_TRANSMISSION",
+      "sources": [
+        "https://sq.kingofsat.net/detail-centroserena"
+      ],
+      "evidence": "Current channel directory places Centro Serena among ceased services; no current exact SDT."
+    },
+    {
+      "ids": [
+        46
+      ],
+      "status": "HOLD_HISTORICAL_SERVICE",
+      "sources": [
+        "https://se.kingofsat.net/channelhistory.php?ch=22609"
+      ],
+      "evidence": "Videostar SID2002 on 12226 V left 2025-09-13. Existing production 220 assets remain untouched."
+    },
+    {
+      "ids": [
+        49
+      ],
+      "status": "HOLD_DIFFERENT_CURRENT_TRANSPORT",
+      "sources": [
+        "https://de.kingofsat.net/channelhistory.php?ch=1099"
+      ],
+      "evidence": "Current history lists 9E 12341 V SID26; SID4004 historical on 12111 V; 5W SID4004 left 2025-08-14. No new exact 9E SID4004 verification."
+    },
+    {
+      "ids": [
+        9,
+        12,
+        13
+      ],
+      "status": "HOLD_OLDER_SCAN_EVIDENCE",
+      "sources": [
+        "https://satbase.hdsatelit.com/sateliti/5w/",
+        "https://kingofsat.net/pos-5W"
+      ],
+      "evidence": "SatBase dated 2026-07-02 identifies Welcome In SID4012, Canale163 SID4015, Canale268 SID4017 on 12585 H TSID263 ONID8572; source independence from settings not established, later KingOfSat scan 2026-10-17 does not list those SIDs. Do not infer removal from absence alone; require recent SDT."
+    },
+    {
+      "ids": [
+        28,
+        29
+      ],
+      "status": "HOLD_NO_EXACT_CURRENT_SERVICE",
+      "sources": [
+        "https://kingofsat.net/pos-9E"
+      ],
+      "evidence": "Regional multiplex 12379.70 V stream24 ONID8572 TSID28897 listed; named SIDs7011/7014 not confirmed in observed table."
+    }
+  ],
+  "canonical_corrections": [
+    {
+      "service": "CGTN Russian",
+      "ref": "1_0_1_26D_1900_9C_5A0000_0_0_0.png",
+      "status": "APPROVED_ARTWORK_REMAPPED_CANDIDATE_NOT_PUBLISHED",
+      "source_ref": "1_0_1_26D_21_16_5A0000_0_0_0.png",
+      "variants": 9,
+      "delta_sha256": "a79a2a48138d9e4f5780a56abcf732f7c9c87c764b34a3ea175121ed9f810c6a",
+      "delta_bytes": 377864,
+      "original_hashes": "from verified production audit 45633495916; target not affected by PR199",
+      "note": "Existing transparent artwork is generic CGTN; reuse approved Russian variant under correct service ref; no change to approved image bytes."
+    },
+    {
+      "service": "CGTN Arabic",
+      "ref": "1_0_1_26E_1900_9C_5A0000_0_0_0.png",
+      "status": "DONOR_AUDIT_PENDING",
+      "note": "Existing transparent artwork says CGTN America; approved alias image has visible gray rectangle. Check exact 13E donor 1_0_1_36D_3C28_13E_820000_0_0_0.png before selecting. No production change."
+    }
+  ],
+  "decision": "Original 36 remaining reviewed references not automatically published; new evidence and canonical correction are distinct. No new production changes this pass. Combine confirmed candidates before requesting next binary upload."
+}
