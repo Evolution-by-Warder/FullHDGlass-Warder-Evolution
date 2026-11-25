@@ -1,0 +1,61 @@
+name: Verify project register
+on:
+  pull_request:
+    paths:
+      - 'WARDER_PROGRESS.md'
+      - 'reports/italia-final-41-20261124/final-evidence-20261125.json'
+      - '.github/workflows/verify-project-register.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  register-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /WARDER_PROGRESS.md
+            /reports/italia-final-41-20261124/final-evidence-20261125.json
+            /.github/workflows/verify-project-register.yml
+      - name: Check dated Italian closure and preserved evidence
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+          text = Path('WARDER_PROGRESS.md').read_text(encoding='utf-8')
+          heading = '## 25. 11. 2026 — Talianska dávka administratívne uzavretá s evidovanými výnimkami'
+          assert text.count(heading) == 1, 'Missing or duplicate dated closure'
+          section = text.split(heading, 1)[1].split('\n## ', 1)[0]
+          dvb = {'BBC WORLD', 'FREE TV', 'MULTIPROGRAM', 'NT', 'SERVICE N', 'TV SYSTEM'}
+          outside = {'1 CENT', 'SHARAVOZ'}
+          assert '33/41 uzavretých, 6 DVB výnimiek, 2 odložené mimo DVB, 0 otvorených DTT položiek' in section
+          assert all(name in section for name in dvb | outside)
+          assert '348 referencií v každom z 9 archívov' in section
+          assert '54 nových schválených PNG' in section
+          assert '45584386040' in section
+          assert '/pull/198' in section and '/pull/104' in section
+          assert '46d6d6124b7e74e96f146eaa014b4aca4d753593' in section
+          assert 'cfc08ab0120731b052cc4849992785e3395e70b2bf20506ad276cb9acf5e7e7f' in section
+          d = json.loads(Path('reports/italia-final-41-20261124/final-evidence-20261125.json').read_text(encoding='utf-8'))
+          c = d['administrative_closure']
+          s = c['scope']
+          assert c['status'] == 'CLOSED_WITH_EVIDENCED_EXCEPTIONS'
+          assert s['original'] == s['closed'] + s['dvb_holds'] + s['outside_dvb_deferred'] + s['dtt_holds'] == 41
+          assert (s['closed'], s['dvb_holds'], s['outside_dvb_deferred'], s['dtt_holds']) == (33, 6, 2, 0)
+          assert set(c['dvb_exceptions']) == dvb
+          assert set(c['outside_dvb_exceptions']) == outside
+          assert {p['name'].removesuffix('.png') for p in d['providers'] if p['state'].startswith('HOLD')} == dvb
+          assert {p['name'].removesuffix('.png') for p in d['providers'] if p['state'] == 'DEFERRED_OUTSIDE_DVB_SCOPE'} == outside
+          assert len(d['dtt']) == 5 and all(p['state'] == 'PUBLISHED_VERIFIED' for p in d['dtt'])
+          p = d['gioppygio_verified_publication']
+          assert d['production']['DTT_references'] == 348
+          assert (p['parts_verified'], p['packages_verified'], p['approved_png_verified']) == (73, 9, 54)
+          assert p['manifest_sha256'] == c['production_manifest_sha256']
+          assert c['no_new_ipk'] is True and c['production_changes'] is False
+          print('Dated project-register closure: PASS')
+          PY

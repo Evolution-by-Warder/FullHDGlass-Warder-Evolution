@@ -2,7 +2,7 @@
   "date": "2026-11-25",
   "base": "511e375a38e8f0d02933724777e67170abe7a8e4",
   "production": {
-    "DTT_references": 342,
+    "DTT_references": 348,
     "DTT_variants": 9,
     "transparent": 1485,
     "white": 1461,
@@ -10,12 +10,13 @@
   },
   "scope": {
     "original": 41,
-    "closed": 28,
-    "unresolved": 13,
+    "closed": 33,
+    "unresolved": 8,
     "dvb_provider_holds": 6,
-    "dtt_holds": 5,
+    "dtt_holds": 0,
     "outside_dvb_deferred": 2,
-    "new_png": 3
+    "new_png": 3,
+    "dtt_published_png": 54
   },
   "providers": [
     {
@@ -48,10 +49,14 @@
       "decision": "HOLD_SOURCE_OR_IDENTITY",
       "review": "https://commons.wikimedia.org/wiki/File:BBC_World_logo.svg",
       "graphic": "BBC World Service",
-      "reason": "Current radio provider BBC World Service is confirmed, not exact alias BBC WORLD. Existing W/B retained; European partner distribution moved to IP in March 2025, but other satellite feeds remain active. Do not confuse television BBC World News with radio.",
+      "reason": "Current radio provider BBC World Service is confirmed, not exact alias BBC WORLD. Existing W/B retained; European partner distribution moved to IP in March 2025, but other satellite feeds remain active. Do not confuse television BBC World News with radio. Exact historical BBC World television provider found on Hispasat 30W 11891 H SID766, source last modified 2005-12-21; confirmed removed 2007-01-27. This is not evidence of a currently active exact alias.",
       "sources": [
         "https://en.kingofsat.net/find.php?lim=0&ordre=date_maj&question=BBC&standard=All",
-        "https://encompass.tv/encompass-and-zixi-partner-to-transform-bbc-world-service-to-ip-distribution/"
+        "https://encompass.tv/encompass-and-zixi-partner-to-transform-bbc-world-service-to-ip-distribution/",
+        "https://en.kingofsat.net/channelhistory.php?ch=134",
+        "https://satkurier.pl/news/35379/bbc-world-fta-z-hispasata-30w.html",
+        "https://en.kingofsat.net/pos-30.0W",
+        "https://github.com/OpenPLi/enigma2/blob/scarthgap/lamedb"
       ],
       "needed": "Current SDT or lamedb with exact provider BBC WORLD and programme name."
     },
@@ -216,68 +221,99 @@
   "dtt": [
     {
       "name": "1_0_19_1392_50E1_217C_EEEE0000_0_0_0.png",
-      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "state": "PUBLISHED_VERIFIED",
       "evidence": [
-        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45459598260"
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45459598260",
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45581127835",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20FiglineValdarno.zip",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Lucca.zip"
       ],
-      "note": "Previous exact audit found only satellite namespace; no terrestrial SDT.",
-      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Toscana RL1: SID 5010, TSID 20705, ONID 8572, actual service type and terrestrial namespace; satellite-only match is insufficient.",
+      "note": "Exact terrestrial service confirmed by official GioppyGio regional lamedb. 9 approved variants published; downloaded live and compared byte-for-byte to owner-approved delta.",
+      "needed": null,
       "new_evidence": [
         "https://www.sattvinfo.net/satlist.php?lang=en&sat=90e",
         "https://www.litaliaindigitale.it/toscana-in-digitale/mux-locale-1-toscana/"
-      ]
+      ],
+      "service": "ITALIA 7",
+      "publication": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/198",
+      "audit": 45584386040,
+      "published_alias": "1_0_16_1392_50E1_217C_EEEE0000_0_0_0.png"
     },
     {
       "name": "1_0_1_1_A002_217C_EEEE0000_0_0_0.png",
-      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "state": "PUBLISHED_VERIFIED",
       "evidence": [
         "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
-        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/",
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45581127835",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Palermo.zip",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Gibellina%20(TP).zip"
       ],
-      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
-      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "note": "Exact terrestrial service confirmed by official GioppyGio regional lamedb. 9 approved variants published; downloaded live and compared byte-for-byte to owner-approved delta.",
+      "needed": null,
       "new_evidence": [
         "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
-      ]
+      ],
+      "service": "TELENOVA",
+      "publication": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/198",
+      "audit": 45584386040
     },
     {
       "name": "1_0_1_2_A002_217C_EEEE0000_0_0_0.png",
-      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "state": "PUBLISHED_VERIFIED",
       "evidence": [
         "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
-        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/",
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45581127835",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Palermo.zip",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Gibellina%20(TP).zip"
       ],
-      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
-      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "note": "Exact terrestrial service confirmed by official GioppyGio regional lamedb. 9 approved variants published; downloaded live and compared byte-for-byte to owner-approved delta.",
+      "needed": null,
       "new_evidence": [
         "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
-      ]
+      ],
+      "service": "MED 1",
+      "publication": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/198",
+      "audit": 45584386040
     },
     {
       "name": "1_0_1_4_A002_217C_EEEE0000_0_0_0.png",
-      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "state": "PUBLISHED_VERIFIED",
       "evidence": [
         "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
-        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/",
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45581127835",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Palermo.zip",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Gibellina%20(TP).zip"
       ],
-      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
-      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "note": "Exact terrestrial service confirmed by official GioppyGio regional lamedb. 9 approved variants published; downloaded live and compared byte-for-byte to owner-approved delta.",
+      "needed": null,
       "new_evidence": [
         "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
-      ]
+      ],
+      "service": "Telejato",
+      "publication": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/198",
+      "audit": 45584386040
     },
     {
       "name": "1_0_1_5_A002_217C_EEEE0000_0_0_0.png",
-      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "state": "PUBLISHED_VERIFIED",
       "evidence": [
         "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
-        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/",
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45581127835",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Palermo.zip",
+        "https://gioppygio.it/liste-dtt/Digitale%20Terrestre%20Gibellina%20(TP).zip"
       ],
-      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
-      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "note": "Exact terrestrial service confirmed by official GioppyGio regional lamedb. 9 approved variants published; downloaded live and compared byte-for-byte to owner-approved delta.",
+      "needed": null,
       "new_evidence": [
         "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
-      ]
+      ],
+      "service": "VIDEO CALABRIA",
+      "publication": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/198",
+      "audit": 45584386040
     }
   ],
   "policy": "Do not rescan unchanged sources or publish unconfirmed identity/namespace; existing production PNG unchanged. Resume only when new relevant evidence is supplied.",
@@ -459,5 +495,289 @@
     "max_extensions": 4,
     "max_archive_bytes": 33554432,
     "publication": "Regression tests merged only; no empty extension, no production catalogue change, no IPK."
+  },
+  "gioppygio_verified_publication": {
+    "source_audit": 45581127835,
+    "catalog": "https://github.com/GioppyGio/settings/blob/main/new_set.xml",
+    "unique_downloads": 108,
+    "readable_archives": 108,
+    "service_records": 43461,
+    "approved_delta_sha256": "5fb0217df0d7e73c931092e858faa2f37c73aeb01632ece28f3c99e805822846",
+    "build": 45583365131,
+    "pr": 198,
+    "merge": "31b0525a48fa6ea0408a4e5ea2a64455c5448d83",
+    "ci_passed": 10,
+    "live_audit": 45584386040,
+    "parts_verified": 73,
+    "packages_verified": 9,
+    "approved_png_verified": 54,
+    "manifest_sha256": "cfc08ab0120731b052cc4849992785e3395e70b2bf20506ad276cb9acf5e7e7f",
+    "piconhub_pr": 104
+  },
+  "provider_followup_20261125": {
+    "findings": [
+      {
+        "name": "BBC WORLD",
+        "sources": [
+          "https://channelsat.com/channels/bbc-english-mid-east",
+          "https://www.lyngsat.com/providers/uk/BBC-World-Service.html"
+        ],
+        "finding": "ChannelSat 2026-11-07: 4.8E 4000 R SID13908 provider BBC World Service, not BBC WORLD. LyngSat also uses full name. Exact alias not established."
+      },
+      {
+        "name": "FREE TV",
+        "sources": [
+          "https://sicilia.onderadio.net/TV/RG/TVRG_FreeTV.html",
+          "https://www.litaliaindigitale.it/sites.google.com/site/litaliaindigitale/archivionewssettimana/news2016/news07-13mar2016.html"
+        ],
+        "finding": "2016/2017 independent historical records identify Tele Comiso / Free TV, LCN297, Comiso UHF35, operator Soc. Coop. Aletheia; mux carried only FREE TV. Supplied Teleone artwork not supported. Current exact SDT and authentic artwork still needed."
+      },
+      {
+        "name": "MULTIPROGRAM",
+        "sources": [
+          "https://channelsat.com/satellites/pos-3E",
+          "https://fr.kingofsat.net/find.php?aff=list&filtre=Clear&lim=80&ordre=freq&question=CANAL&standard=All",
+          "https://howtowatch.france24.com/en/country/cameroon/"
+        ],
+        "finding": "Additional 3E listing 2026-11-07 and KingOfSat 3987 R transport update 2026-11-22: MultiProgram also labels Canal Futur Congo, not a unique corporate identity. France 24 lists LIGHTSAT as IPTV/mobile operator in Cameroon, not proof of a DVB association."
+      },
+      {
+        "name": "NT / SERVICE N",
+        "sources": [],
+        "finding": "Targeted search returned no new exact DVB provider evidence; existing identity holds retained."
+      },
+      {
+        "name": "TV SYSTEM",
+        "sources": [
+          "https://www.tvsystem.eu/corporate/",
+          "https://www.tvsystem.eu/en/dsng/"
+        ],
+        "finding": "Italian TV System itself documents satellite broadcast/DSNG services including two mobile uplinks. Plausible alternative to supplied Teleacras graphic, but no exact SDT association; do not substitute logo."
+      }
+    ],
+    "closed": 0,
+    "new_png": 0,
+    "remaining_dvb": 6,
+    "deferred_outside_dvb": 2,
+    "decision": "No production changes; no exact new provider-to-artwork match. Recheck only genuinely new SDT or identity evidence."
+  },
+  "provider_lamedb_followup_20261125": {
+    "sources": [
+      {
+        "repo": "OpenPLi/enigma2",
+        "ref": "scarthgap",
+        "path": "lamedb",
+        "blob": "3ace6ba01c12b294596bf25e7f91335625fa4c4a",
+        "service_records": 5650,
+        "terrestrial": 0,
+        "exact_hits": [
+          {
+            "provider": "BBC World",
+            "service": "BBC World",
+            "ref": "02fe:0ce40000:0027:0038:1:0",
+            "transponder": "11891 H 27500 3/4",
+            "last_file_commit": "35ae469a718067d1c71e6c5f99b48e4d3702a1c3",
+            "last_file_commit_date": "2005-12-21",
+            "status": "HISTORICAL_SERVICE_REMOVED_2007-01-27"
+          }
+        ]
+      },
+      {
+        "repo": "ciefp/ciefpsettings-enigma2",
+        "ref": "master",
+        "path": "ciefp-E2-16sat-42E-39E-28E-26E-23E-19E-16E-13E-10E-9E-7E-4.8E-1.9E-0.8w-4W-5w/lamedb",
+        "blob": "7199784c784915941ff75c3b693a50c1318fdcd1",
+        "service_records": 11119,
+        "terrestrial": 279,
+        "exact_hits": []
+      },
+      {
+        "repo": "oe-alliance/oe-alliance-settings",
+        "ref": "master",
+        "path": "malimali.3e.7e.9e.13e.16e.19e/lamedb",
+        "blob": "61953e96dad1e99df76bb8773811b4b93c814098",
+        "service_records": 3882,
+        "terrestrial": 0,
+        "exact_hits": [],
+        "note": "Edited 2017-01-24; historical, not current."
+      }
+    ],
+    "service_records": 20651,
+    "terrestrial": 279,
+    "exact_hits": 1,
+    "current_verified_hits": 0,
+    "duplicate": "OpenViX/enigma2 lamedb identical to OpenPLi blob; not counted twice.",
+    "unreadable": "Ciefp motor blob 0e20540e628f372bc6f1c8272b62780f1f089202, 1243201 bytes: contents API returned empty text, excluded from counts.",
+    "bbc_evidence": [
+      "https://en.kingofsat.net/channelhistory.php?ch=134",
+      "https://satkurier.pl/news/35379/bbc-world-fta-z-hispasata-30w.html",
+      "https://en.kingofsat.net/pos-30.0W"
+    ],
+    "decision": "Historical BBC WORLD identity is television, not World Service radio. Exact 30W SID766 was removed 2007-01-27. Do not create historical-reference picon or infer any currently active alias. Hold exact current provider evidence. Other five holds unchanged."
+  },
+  "ciefp_motor_followup_20261125": {
+    "repo": "ciefp/ciefpsettings-enigma2",
+    "path": "ciefp-E2-motor-75E-34W/lamedb",
+    "blob": "0e20540e628f372bc6f1c8272b62780f1f089202",
+    "bytes_from_tree": 1243201,
+    "decoded_characters": 1237380,
+    "read_method": "Git blob by exact SHA; complete eDVB v4 header and end marker; previously empty contents API resolved",
+    "settings_date": "2026-11-13",
+    "service_records": 13950,
+    "terrestrial": 279,
+    "exact_provider_hits": 0,
+    "near_matches": [
+      {
+        "ref": "289b:00300000:00ca:0055:1:0",
+        "service": "BBC World",
+        "provider": "TV3 Group"
+      },
+      {
+        "ref": "1c02:005a0000:0384:0110:22:0",
+        "service": "PRIMA FREE",
+        "provider": ""
+      },
+      {
+        "ref": "0017:01040000:01fd:02be:1:0",
+        "service": "BBC Arabic",
+        "provider": "BBC World Service"
+      },
+      {
+        "ref": "002e:01040000:01fd:02be:2:0",
+        "service": "BBC World Service English Middle East",
+        "provider": "BBC World Service"
+      }
+    ],
+    "additional_free_tv_evidence": [
+      {
+        "url": "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250816-le-nuove-numerazioni-lcn-dei-canali-nazionali-il-punto-di-mauro-roffi/",
+        "finding": "2025 LCN allocation FREE TV ITALIA at 170, under review; distinct from historic Sicilian Free TV."
+      },
+      {
+        "url": "https://www.digital-forum.it/threads/riconfigurazione-dei-mux-digitali-dal-2003-ad-oggi.128834/page-29",
+        "finding": "2026-05-19 service PRIMA FREE renamed PRIMAFREE170 on DFree; not exact FREE TV provider."
+      }
+    ],
+    "decision": "No new exact provider matches or validated artwork. 33/41 closed, six DVB holds and two deferred. Do not repeat this blob. Earlier unreadable status superseded."
+  },
+  "vhannibal_regional_followup_20261125": {
+    "repo": "oe-alliance/oe-alliance-settings",
+    "ref": "master",
+    "sources": [
+      {
+        "region": "campania",
+        "blob": "c86b6628c7c7817fbfa1f6fa39dd7bc5f2f97f3e",
+        "records": 13002,
+        "dtt": 323,
+        "path": "vhannibal.motor.and.dtt.campania/lamedb"
+      },
+      {
+        "region": "forli",
+        "blob": "53b5909a3b73e3fc625e14eca4634e79980b004f",
+        "records": 15108,
+        "dtt": 483,
+        "path": "vhannibal.motor.and.dtt.forli/lamedb"
+      },
+      {
+        "region": "lazio",
+        "blob": "884230fc8c9c651c9595d214e462ecb0034b299f",
+        "records": 13000,
+        "dtt": 321,
+        "path": "vhannibal.motor.and.dtt.lazio/lamedb"
+      },
+      {
+        "region": "lombardia",
+        "blob": "fd667d03863a473cfeba141bc18f64fb529e0d07",
+        "records": 13055,
+        "dtt": 332,
+        "path": "vhannibal.motor.and.dtt.lombardia/lamedb"
+      },
+      {
+        "region": "milano",
+        "blob": "28bf6a9f760b514c2a20dc1427a614540f9cd5a1",
+        "records": 14821,
+        "dtt": 445,
+        "path": "vhannibal.motor.and.dtt.milano/lamedb"
+      },
+      {
+        "region": "napoli",
+        "blob": "7992535fa7a37dd806c9f60dd1127baf87030e0b",
+        "records": 14885,
+        "dtt": 451,
+        "path": "vhannibal.motor.and.dtt.napoli/lamedb"
+      },
+      {
+        "region": "piemonte",
+        "blob": "4d3b95a9b2a51c3f57a38790d88d9f73762dc156",
+        "records": 12991,
+        "dtt": 312,
+        "path": "vhannibal.motor.and.dtt.piemonte/lamedb"
+      },
+      {
+        "region": "roma",
+        "blob": "fc3333c1163ba04bc31066ef51eab97a5ee3d8a1",
+        "records": 14828,
+        "dtt": 409,
+        "path": "vhannibal.motor.and.dtt.roma/lamedb"
+      },
+      {
+        "region": "torino",
+        "blob": "b4cd4d5e6338e3b9899d8ab77d7bf79184f1590f",
+        "records": 14846,
+        "dtt": 424,
+        "path": "vhannibal.motor.and.dtt.torino/lamedb"
+      }
+    ],
+    "total_records": 126536,
+    "total_dtt_records": 3500,
+    "unique_records_within_batch": 28403,
+    "unique_dtt_records_within_batch": 2399,
+    "deduplication": "Full lamedb service reference + service name + exact p: provider string; not deduplicated against earlier audits.",
+    "exact_provider_hits": 0,
+    "near_match": {
+      "reference": "0638:0dca0000:0010:0800:1:0",
+      "service": "Free TV",
+      "provider": "NILESAT",
+      "regions": [
+        "forli",
+        "milano",
+        "napoli",
+        "roma",
+        "torino"
+      ]
+    },
+    "teleacras_evidence": "https://www.litaliaindigitale.it/sites.google.com/site/litaliaindigitale/siciliaindigitale/muxteleacras.html",
+    "decision": "No confirmed association of TV SYSTEM, NT or SERVICE N with the submitted artwork. Historical Teleacras mux TID41543 ONID8572 documents station names, not exact SDT provider TV SYSTEM. Further broad overlapping scans have low value; retain six holds until new relevant SDT or authoritative identity evidence. No production change."
+  },
+  "administrative_closure": {
+    "date": "2026-11-25",
+    "status": "CLOSED_WITH_EVIDENCED_EXCEPTIONS",
+    "owner_approval": "25.11.2026: dokonci co treba a sprav co treba",
+    "scope": {
+      "original": 41,
+      "closed": 33,
+      "dvb_holds": 6,
+      "outside_dvb_deferred": 2,
+      "dtt_holds": 0
+    },
+    "dvb_exceptions": [
+      "BBC WORLD",
+      "FREE TV",
+      "MULTIPROGRAM",
+      "NT",
+      "SERVICE N",
+      "TV SYSTEM"
+    ],
+    "outside_dvb_exceptions": [
+      "1 CENT",
+      "SHARAVOZ"
+    ],
+    "production_manifest_git_blob": "46d6d6124b7e74e96f146eaa014b4aca4d753593",
+    "production_manifest_sha256": "cfc08ab0120731b052cc4849992785e3395e70b2bf20506ad276cb9acf5e7e7f",
+    "fullhdglass_merge": "31b0525a48fa6ea0408a4e5ea2a64455c5448d83",
+    "piconhub_merge": "f2c53a3658c969ae99a6d335a1582076d271dc46",
+    "resume_only_on": "New exact current DVB SDT/lamedb provider identity and supported artwork; outside DVB requires separately established scope. No repeated scans of unchanged blobs.",
+    "no_new_ipk": true,
+    "production_changes": false
   }
 }
