@@ -1,3 +1,9 @@
+## 1.0.93 — 25. november 2026
+
+Preventívne ochrany časovačov rendererov a obmedzenie animácie počasia výhradne na MIPS/MIPSEL; oddelený priestor pre posuvník a text v náhľade korekcie obrazu. Po inštalácii reštartujte Enigma2.
+
+[Poznámky k vydaniu](docs/warder-1.0.93-release-notes.md). **OVERENÉ A PUBLIKOVANÉ:** [PR #203](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/203), 24/24 CI SUCCESS na HEAD `3a38af2d4db09a0ab0f2f2cfaa33ae2bdc223177`, merge `5a10d4705c59427b56766f6ff35271e48626b34b`. [Publisher #45667865241](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45667865241) SUCCESS, produkčný commit `71c0bccad6f12f9124204b525d5b7babba7d5b04`. [Ostrý IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.93/enigma2-plugin-skins-fullhdglass_1.0.93_all.ipk), 18 844 132 B, SHA-256 `f41fce41cd6ffe12cac2d2c499a0fbcd443f5e2978cb1b5390bec89b567321da`. Stabilný a TEST feed 1.0.93 s totožným SHA-256; legacy update.json bez zmeny. Reálne dlhodobé MIPS a vizuálne overenie zatiaľ nedoložené.
+
 ## 1.0.92 — 24. november 2026
 
 V jednoduchom Multi EPG žlté/modré tlačidlo prepína predchádzajúci/nasledujúci program. Popisy EPG bez bočných posuvníkov sa plynulo posunú raz, vrátia na začiatok a zastavia. Podpora rozšírených balíkov provider piconov vrátane 60 bielych doplnkov. Po inštalácii reštartujte Enigma2.

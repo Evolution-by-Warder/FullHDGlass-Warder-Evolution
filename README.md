@@ -2,15 +2,15 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Aktuálne ostré vydanie — 24. november 2026
+## Aktuálne ostré vydanie — 25. november 2026
 
-**FullHDGlass 1.0.91** — Plynulé rolovanie dlhých popisov EPG vo všetkých piatich režimoch používateľských informácií vrátane druhého infobaru, preventívne ochrany časovačov a natívnych prvkov, opravené voliteľné zdroje tlačidiel QuickMenu a InformationNetwork. [Poznámky k vydaniu](docs/warder-1.0.91-release-notes.md) · [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.91/enigma2-plugin-skins-fullhdglass_1.0.91_all.ipk).
+**FullHDGlass 1.0.93** — Preventívne ochrany časovačov rendererov a obmedzenie animácie počasia výhradne na MIPS/MIPSEL; oddelený priestor pre posuvník a text v náhľade korekcie obrazu. Po inštalácii reštartujte Enigma2. [Poznámky k vydaniu](docs/warder-1.0.93-release-notes.md) · [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.93/enigma2-plugin-skins-fullhdglass_1.0.93_all.ipk).
 
 34,5°W a 50°E: všetky tri rozmery a pozadia Transparent, White a Black. Úplnosť troch pozadí sa kontroluje pre všetky satelity aj providery. [Pravidlo pozadí](docs/WARDER-BACKGROUND-POLICY.txt).
 
 ## Installation
 
-[Download verified stable IPK 1.0.91](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.91/enigma2-plugin-skins-fullhdglass_1.0.91_all.ipk).
+[Download verified stable IPK 1.0.93](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.93/enigma2-plugin-skins-fullhdglass_1.0.93_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 
