@@ -748,5 +748,36 @@
     },
     "teleacras_evidence": "https://www.litaliaindigitale.it/sites.google.com/site/litaliaindigitale/siciliaindigitale/muxteleacras.html",
     "decision": "No confirmed association of TV SYSTEM, NT or SERVICE N with the submitted artwork. Historical Teleacras mux TID41543 ONID8572 documents station names, not exact SDT provider TV SYSTEM. Further broad overlapping scans have low value; retain six holds until new relevant SDT or authoritative identity evidence. No production change."
+  },
+  "administrative_closure": {
+    "date": "2026-11-25",
+    "status": "CLOSED_WITH_EVIDENCED_EXCEPTIONS",
+    "owner_approval": "25.11.2026: dokonci co treba a sprav co treba",
+    "scope": {
+      "original": 41,
+      "closed": 33,
+      "dvb_holds": 6,
+      "outside_dvb_deferred": 2,
+      "dtt_holds": 0
+    },
+    "dvb_exceptions": [
+      "BBC WORLD",
+      "FREE TV",
+      "MULTIPROGRAM",
+      "NT",
+      "SERVICE N",
+      "TV SYSTEM"
+    ],
+    "outside_dvb_exceptions": [
+      "1 CENT",
+      "SHARAVOZ"
+    ],
+    "production_manifest_git_blob": "46d6d6124b7e74e96f146eaa014b4aca4d753593",
+    "production_manifest_sha256": "cfc08ab0120731b052cc4849992785e3395e70b2bf20506ad276cb9acf5e7e7f",
+    "fullhdglass_merge": "31b0525a48fa6ea0408a4e5ea2a64455c5448d83",
+    "piconhub_merge": "f2c53a3658c969ae99a6d335a1582076d271dc46",
+    "resume_only_on": "New exact current DVB SDT/lamedb provider identity and supported artwork; outside DVB requires separately established scope. No repeated scans of unchanged blobs.",
+    "no_new_ipk": true,
+    "production_changes": false
   }
 }
