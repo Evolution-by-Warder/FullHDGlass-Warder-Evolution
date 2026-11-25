@@ -755,6 +755,12 @@ config.plugins.warderUserPicons.path = ConfigText(default="", fixed_size=False)
 config.plugins.warderUserPicons.path_display = ConfigSelection(
     default="none", choices=[("none", "-")])
 
+def _warderDescriptionScrollSpeedLabel():
+    from .warderLocale import language_code
+    labels = {"en":"Text rolling speed","sk":"Rýchlosť rolovania textu","cs":"Rychlost posouvání textu","de":"Textrollgeschwindigkeit","pl":"Szybkość przewijania tekstu","hu":"Szöveggörgetés sebessége","fr":"Vitesse de défilement du texte","it":"Velocità scorrimento testo","es":"Velocidad de desplazamiento","ru":"Скорость прокрутки текста","nl":"Tekstscrollsnelheid","pt":"Velocidade de deslocamento","ro":"Viteza derulării textului","uk":"Швидкість прокручування тексту","tr":"Metin kaydırma hızı","zh":"文本滚动速度","el":"Ταχύτητα κύλισης κειμένου","et":"Teksti kerimise kiirus","lt":"Teksto slinkimo greitis","al":"Shpejtësia e lëvizjes së tekstit","fa":"سرعت پیمایش متن"}
+    return labels.get(language_code(config.osd.language.value), labels["en"])
+
+
 def _warderEpgListScrollLabel():
     # Short labels fit the existing settings column. English is fallback.
     labels = {
@@ -835,6 +841,7 @@ config.plugins.setupGlass17.par74 = ConfigSelection(default="6", choices = [("2"
 config.plugins.setupGlass17.par75 = ConfigYesNo(default = True) # enable update
 config.plugins.setupGlass17.par76 = ConfigSelection(default = "Autostop", choices = [("None",_("None")),("Autostop",_("Autostop")),("Roll back",_("Roll back"))]) # enable desc. rolling
 config.plugins.setupGlass17.par77 = ConfigSelection(default="8", choices = [("default",_("Default")),("6","6"),("8","8"),("10","10"),("12","12"),("14","14"),("16","16"),("20","20")]) # start delay desc. rolling
+config.plugins.setupGlass17.descriptionScrollSpeed = ConfigSelection(default="36", choices=[(value, value + " px/s") for value in ("10", "20", "36", "50", "67")])
 config.plugins.setupGlass17.par78 = ConfigSelection(default="n", choices = [("g",_("Glass17")),("i",_("InfoECM by Duri")),("n",_("None")),("w",_("Weather")),("e",_("Enhanced Weather")),("a","Netatmo")]) # special info in extensions
 config.plugins.setupGlass17.par79 = ConfigSelection(default="1", choices = [("2",_("Satellite")+", "+_("Name")),("3",_("Number")+", "+_("Satellite")+", "+_("Name")),("1",_("Number")+", "+_("Name")),("0",_("Name"))]) # enable channel num
 config.plugins.setupGlass17.par80 = ConfigText("204.79.197.203", False) # internet address
@@ -7296,7 +7303,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _warderEpgListScrollLabel(), config.plugins.warderEpgListScroll.enabled))
 				self.list.append(getConfigListEntry(S0 % _("Text rolling type"), config.plugins.setupGlass17.par76))      
 				if config.plugins.setupGlass17.par76.value != "None":
-					self.list.append(getConfigListEntry(S0 % _("Text rolling start delay"), config.plugins.setupGlass17.par77))      		
+					self.list.append(getConfigListEntry(S0 % _("Text rolling start delay"), config.plugins.setupGlass17.par77))
+					self.list.append(getConfigListEntry(S0 % _warderDescriptionScrollSpeedLabel(), config.plugins.setupGlass17.descriptionScrollSpeed))      		
 				self.list.append(getConfigListEntry(S0 % _("Service name font size"), config.plugins.setupGlass17.par145))
 				self.list.append(getConfigListEntry(S0 % _("Service info font size"), config.plugins.setupGlass17.par146))
 				self.list.append(getConfigListEntry(S0 % _("Line height"), config.plugins.setupGlass17.par147))
@@ -8923,6 +8931,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		config.plugins.warderUserPicons.path.save()
 		# TEST149: commit the new non-numbered radio setting before configfile.save.
 		config.plugins.setupGlass17.radioSaverDelay.save()
+		config.plugins.setupGlass17.descriptionScrollSpeed.save()
 		# Prime Time lives outside the legacy par1..par231 settings registry.
 		# Saving it separately must not disturb their backup/save pass.
 		try:
@@ -9067,6 +9076,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		except: pass
 		config.plugins.warderSkinMainMenu.enabled.cancel()
 		config.plugins.setupGlass17.radioSaverDelay.cancel()
+		config.plugins.setupGlass17.descriptionScrollSpeed.cancel()
 		try:
 			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
 			config.plugins.warderEvolutionPrimeTime.clock.cancel()

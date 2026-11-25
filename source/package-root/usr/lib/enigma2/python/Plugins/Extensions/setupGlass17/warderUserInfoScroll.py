@@ -1,6 +1,6 @@
 """Smooth native ScrollLabel motion for passive user-info overlays.
 
-Use the channel description's 2px/55ms cadence without a custom canvas.
+Use configurable pixel motion without a custom canvas.
 One single-shot timer per overflowing field; no drawing while hidden/closed.
 """
 
@@ -8,12 +8,27 @@ START_DELAY = 5000
 END_DELAY = 5000
 STEP_PIXELS = 2
 STEP_DELAY = 55
+SPEED_DELAYS = {'10': 200, '20': 100, '36': 55, '50': 40, '67': 30}
+
+
+def settings(config):
+    """Read live HDG options, retaining the old default cadence."""
+    try:
+        hdg = config.plugins.setupGlass17
+        mode = hdg.par76.value
+        raw = hdg.par77.value
+        delay = START_DELAY if raw == 'default' else max(0, int(raw) * 1000)
+        speed = getattr(getattr(hdg, 'descriptionScrollSpeed', None), 'value', '36')
+        return mode, delay, SPEED_DELAYS.get(speed, STEP_DELAY)
+    except (AttributeError, TypeError, ValueError):
+        return 'Roll back', START_DELAY, STEP_DELAY
 
 
 class DescriptionScroller:
-    def __init__(self, label, timer):
+    def __init__(self, label, timer, options=None):
         self.label = label
         self.timer = timer
+        self.options = options or (lambda: ('Roll back', START_DELAY, STEP_DELAY))
         self.visible = False
         self.closed = False
         self.text = None
@@ -57,12 +72,13 @@ class DescriptionScroller:
         limits = self._limits()
         return limits is not None and limits[1] > 0
 
-    def schedule(self, delay=START_DELAY):
+    def schedule(self, delay=None):
         if self.closed:
             return
         self.timer.stop()
-        if not self.finished and self.visible and self.text and self.overflowing():
-            self.timer.start(delay, True)
+        mode, start_delay, _ = self.options()
+        if mode != 'None' and not self.finished and self.visible and self.text and self.overflowing():
+            self.timer.start(start_delay if delay is None else delay, True)
 
     def _reset(self):
         self.direction = 1
@@ -124,14 +140,15 @@ class DescriptionScroller:
         if self.closed:
             return
         self.timer.stop()
-        if self.finished:
+        mode, _, step_delay = self.options()
+        if self.finished or mode == 'None':
             return
         limits = self._limits()
         if not self.text or limits is None or limits[1] <= 0:
             return
         pos, limit = limits
         target = max(0, min(limit, pos + self.direction * STEP_PIXELS))
-        delay = STEP_DELAY
+        delay = step_delay
         try:
             if target != pos:
                 self.label.setPos(target)
@@ -146,6 +163,9 @@ class DescriptionScroller:
             # One smooth round trip: pause at the bottom, return to the
             # beginning, then remain static until a new event or show.
             if target == limit:
+                if mode == 'Autostop':
+                    self.finished = True
+                    return
                 self.direction = -1
                 delay = END_DELAY
             elif target == 0:
