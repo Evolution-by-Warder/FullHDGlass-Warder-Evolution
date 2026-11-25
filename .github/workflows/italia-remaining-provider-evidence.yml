@@ -1,0 +1,22 @@
+name: Italy final current Vhannibal provider evidence
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/remaining-provider-evidence.py', '.github/workflows/italia-remaining-provider-evidence.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - run: python3 reports/italia-final-41-20261124/remaining-provider-evidence.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italy-remaining-provider-evidence
+          path: remaining-provider-audit/result.json
