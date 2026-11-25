@@ -39,8 +39,8 @@ jobs:
           [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
           echo "WARDER_VERSION=$VERSION" >> "$GITHUB_ENV"
           grep -qx "Version: $VERSION-1" source/control/control
-          test "$(git hash-object assets/warder/downloads/picons/channels/manifest.json)" = 19c992819479297ce35139451f4a91e617fac996
-          test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = 3891037222cab9d6120d0412a004d7113354b665
+          test "$(git hash-object assets/warder/downloads/picons/channels/manifest.json)" = be45e0ce0b4bb442ae0699afbe299af3f67ee150
+          test "$(git hash-object assets/warder/downloads/picons/channels/SHA256SUMS)" = 0b742fce1529fb4609dfd5242a1ff95284875282
           test -s "docs/warder-$VERSION-release-notes.md"
           test -s "docs/warder-$VERSION-update-text.json"
           python3 tools/sync_header_version.py --check
