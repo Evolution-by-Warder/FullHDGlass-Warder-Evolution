@@ -1,0 +1,285 @@
+{
+  "date": "2026-11-25",
+  "base": "511e375a38e8f0d02933724777e67170abe7a8e4",
+  "production": {
+    "DTT_references": 342,
+    "DTT_variants": 9,
+    "transparent": 1484,
+    "white": 1460,
+    "black": 1462
+  },
+  "scope": {
+    "original": 41,
+    "closed": 27,
+    "unresolved": 14,
+    "dvb_provider_holds": 7,
+    "dtt_holds": 5,
+    "outside_dvb_deferred": 2,
+    "new_png": 0
+  },
+  "providers": [
+    {
+      "kind": "PROVIDER",
+      "name": "1 CENT.png",
+      "sha": "4c3ece64b907b73825eee77e1f17ed221c964652889f5dcb7d654e9877e6317c",
+      "state": "DEFERRED_OUTSIDE_DVB_SCOPE",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "US one-cent coin",
+      "reason": "Historical cardsharing label, no demonstrated broadcast provider; source graphic is a coin, not broadcaster identification.",
+      "sources": [
+        "https://alensat.com/app.php/Sharing"
+      ],
+      "needed": "Exact currently used provider/service reference and explanation of intended scope."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "BBC WORLD.png",
+      "sha": "c0c1a26ae147a3e78a054b1c2e9cf574b1c5f64dbd78c56338045e3081e337ce",
+      "state": "HOLD_EXACT_PROVIDER",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": "https://commons.wikimedia.org/wiki/File:BBC_World_logo.svg",
+      "graphic": "BBC World Service",
+      "reason": "Current radio provider BBC World Service is confirmed, not exact alias BBC WORLD. Existing W/B retained; European partner distribution moved to IP in March 2025, but other satellite feeds remain active. Do not confuse television BBC World News with radio.",
+      "sources": [
+        "https://en.kingofsat.net/find.php?lim=0&ordre=date_maj&question=BBC&standard=All",
+        "https://encompass.tv/encompass-and-zixi-partner-to-transform-bbc-world-service-to-ip-distribution/"
+      ],
+      "needed": "Current SDT or lamedb with exact provider BBC WORLD and programme name."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "DORIA.png",
+      "sha": "dc436841bd4ec5385c2f179fd61c5ecbdd87b3ac8d86bb8a2f67959c8a9acdd6",
+      "state": "HOLD_EXACT_PROVIDER",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "Amici Network",
+      "reason": "Approved Amici Network donor exists in all three styles, but Vhannibal provider field empty; Mavise identifies Social Network S.R.L. as owner and provider. Doria alias not established.",
+      "sources": [
+        "https://mavise.obs.coe.int/f/ondemand/advanced?countryofestablishment=9&typeofservice=0",
+        "https://morpheus883.altervista.org/cat_srv.php/?chart=70"
+      ],
+      "needed": "Current provider DORIA from the actual receiver plus programme name and reference."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "FREE TV.png",
+      "sha": "569f2156d9fe9b8a201406b1be003c62079945867b924755b8e1eef5bf2214f0",
+      "state": "HOLD_IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "BLOCKED_IDENTITY_CONFLICT",
+      "review": null,
+      "graphic": "Teleone",
+      "reason": "Historical Sicily survey lists Free TV and Teleone as separate services on different multiplexes. A generic current name cannot be matched to Teleone merely from supplied art.",
+      "sources": [
+        "https://www.teleradioe.eu/censimento-tv-locali-sicilia/"
+      ],
+      "needed": "Exact SDT or lamedb plus proof that FREE TV is the provider for Teleone rather than the separate station."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "GTSS.png",
+      "sha": "6e62c8d7b38b8b233c3c8aff5469fd038ad274fc0f0f93b901489a62021b68a6",
+      "state": "CLOSED_HISTORICAL_BRAND",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "GT Telecom / GeoTelecommunications",
+      "reason": "Historical logo and provider GTSS confirmed. Exact 75E historical GTSS services removed or changed; Raduga TV ended on 5 Dec 2014; trademark international registration cancelled 2021. GeoTelecommunications still has active RIPE registration, so do not claim company ceased. Close historical expansion only, reopen if a current DVB service using GTSS is demonstrated.",
+      "sources": [
+        "https://www.azimuthsoft.ru/archiveprojects/114-geotelecom.html",
+        "https://www.azimuthsoft.ru/images/stories/Projects/Geo_telecom_logo.jpg",
+        "https://trademarks.justia.com/790/95/gt-telecom-79095608.html",
+        "https://www.frocus.net/main.php?id=20304&lng=en&pag=tp&rzd=tvkanal&sp=75&tp_id=1834",
+        "https://news.cision.com/mtg/r/raduga-tv-to-close-down--viasat-russia-to-launch-5-new-hd-channels%2Cc9689568",
+        "https://www.ripe.net/membership/member-support/list-of-members/ru/gtss/"
+      ],
+      "needed": "New active DVB provider evidence if reopened."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "MULTIPROGRAM.png",
+      "sha": "79d9f571e339db222fa2806bf630e58cbca80433bac9b3dcc8ac801302e8b5c8",
+      "state": "HOLD_IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "LightSat Telecommunications",
+      "reason": "MultiProgram is confirmed as a provider at 3E, 4007 R, NID/TID 1/1, on LIFE HD TV and Amani FM. No evidence links supplied LightSat mark to this provider; name also historically used elsewhere.",
+      "sources": [
+        "https://en.kingofsat.net/freqs.php?filtre=no&ordre=freq&pos=3E&standard=All",
+        "https://www.alexmusic.net/tele/0512.htm"
+      ],
+      "needed": "Provider/transport identity and authentic associated logo, not a generic multiplex label."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "NT.png",
+      "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+      "state": "HOLD_IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "Satellite Service Italy S.r.l.",
+      "reason": "Supplied PNG is byte-identical to SERVICE N. Italian company register identifies an electrical installation company, not a proven DVB provider NT.",
+      "sources": [
+        "https://www.ufficiocamerale.it/6221/satellite-service-italy-srl"
+      ],
+      "needed": "Exact SDT and confirmed relationship between the provider name and the company."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SERVICE N.png",
+      "sha": "859fb2a23a6ae49c6e98bdbdb6bbaf3e97a039393ca98a690c7460c277b3ed04",
+      "state": "HOLD_IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "Satellite Service Italy S.r.l.",
+      "reason": "Same supplied bytes as NT. Company is documented as electrical installation/Sky assistance; no explicit DVB provider identification.",
+      "sources": [
+        "https://www.ufficiocamerale.it/6221/satellite-service-italy-srl",
+        "https://www.centri-assistenza.net/assistenza-sky.htm"
+      ],
+      "needed": "Exact SDT and associated broadcaster/provider logo."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "SHARAVOZ.png",
+      "sha": "c3d87623d984bbb31c52c728ad905b02baae669c1616667cc87e49db747e20b3",
+      "state": "DEFERRED_OUTSIDE_DVB_SCOPE",
+      "missing": [
+        "transparent"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "Sharavoz.tv",
+      "reason": "Historical cardsharing/IPTV name. Existing W/B retained; no DVB provider demonstrated. Defer outside the DTT/SAT task without marking the requested transparent variant complete.",
+      "sources": [
+        "https://alensat.com/app.php/Sharing"
+      ],
+      "needed": "Confirm intentional inclusion of IPTV provider and authentic current artwork."
+    },
+    {
+      "kind": "PROVIDER",
+      "name": "TV SYSTEM.png",
+      "sha": "4db6c13fac1fba46cfb094cf2a5953c760e97a0136e584cb41618602fa994073",
+      "state": "HOLD_IDENTITY_CONFLICT",
+      "missing": [
+        "transparent",
+        "white",
+        "black"
+      ],
+      "decision": "HOLD_SOURCE_OR_IDENTITY",
+      "review": null,
+      "graphic": "Teleacras",
+      "reason": "Teleacras is a documented Sicilian station, but relationship of its graphic to this exact provider name remains unproven.",
+      "sources": [
+        "https://www.teleradioe.eu/censimento-tv-locali-sicilia/"
+      ],
+      "needed": "Exact provider TV SYSTEM from receiver and corresponding station name."
+    }
+  ],
+  "dtt": [
+    {
+      "name": "1_0_19_1392_50E1_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/45459598260"
+      ],
+      "note": "Previous exact audit found only satellite namespace; no terrestrial SDT.",
+      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Toscana RL1: SID 5010, TSID 20705, ONID 8572, actual service type and terrestrial namespace; satellite-only match is insufficient.",
+      "new_evidence": [
+        "https://www.sattvinfo.net/satlist.php?lang=en&sat=90e",
+        "https://www.litaliaindigitale.it/toscana-in-digitale/mux-locale-1-toscana/"
+      ]
+    },
+    {
+      "name": "1_0_1_1_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
+      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "new_evidence": [
+        "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
+      ]
+    },
+    {
+      "name": "1_0_1_2_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
+      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "new_evidence": [
+        "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
+      ]
+    },
+    {
+      "name": "1_0_1_4_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
+      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "new_evidence": [
+        "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
+      ]
+    },
+    {
+      "name": "1_0_1_5_A002_217C_EEEE0000_0_0_0.png",
+      "state": "HOLD_EXACT_SDT_REQUIRED",
+      "evidence": [
+        "https://www.otgtv.it/lista.php?code=PAZB&posto=Mondello+%28Palermo%29",
+        "https://www.litaliaindigitale.it/news-nazionali/news-anno-2025/2025-08-news-agosto-2025/250811-le-nuove-assegnazioni-lcn-delle-tv-locali-la-sicilia-3a-parte-il-punto-di-mauro-roffi/"
+      ],
+      "note": "Current Publimed mux active; listing gives LCN/name, not individual SID/type. Historical TSID 1 must not be confused with A002.",
+      "needed": "Fresh DVB-T/T2 SDT or receiver lamedb/lamedb5 for Palermo/Alcamo UHF45: exact SID, TSID 40962, ONID 8572, service type and programme name.",
+      "new_evidence": [
+        "https://www.litaliaindigitale.it/news-regionali/sicilia-news/sicilia-news-anno-2026/260906-mux-locale-3-sicilia-realizzato-lo-zapping-tv/"
+      ]
+    }
+  ],
+  "policy": "Do not rescan unchanged sources or publish unconfirmed identity/namespace; existing production PNG unchanged. Resume only when new relevant evidence is supplied."
+}
