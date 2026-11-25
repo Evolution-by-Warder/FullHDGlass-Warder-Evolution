@@ -1,0 +1,36 @@
+{
+  "base": "5bcd4ac8f39e681265f0c5de6b99af90d5e3eb37",
+  "new_png": 6,
+  "complete_provider_names": 2,
+  "video_regione_reference": "1_0_1_5A_A000_217C_EEEE0000_0_0_0.png",
+  "video_regione_source": "https://www.vrsicilia.it/chi-siamo/",
+  "video_regione_rebrand": "https://www.litaliaindigitale.it/news-regionali/sicilia-news/220729-mux-locale-1-sicilia-passaggio-in-hd-per-antenna-sicilia-telecolor-e-sicilia-channel-nuovo-logo-per-trm-e-video-regione-tva-telenormanna-in-4-3/",
+  "eclutch": {
+    "status": "BUILT_REVIEW_REQUIRED",
+    "source": "https://eclutch.tv/wp-content/uploads/2023/08/ESports-Logo-1000-x-500-px.png",
+    "source_sha256": "6a47c6a12764433256a2086b2e6357cff1873e03937f9c7b3c4b3ea03ec196de"
+  },
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1477,
+      "sha256": "fec84946799e57b286b4db4b5d541a51fe74816965e9bcca241907fcf8985495",
+      "bytes": 15923401,
+      "old_png_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1453,
+      "new_extension_sha256": "5f57f3d5f701b5e077679374b380655fafa4b5dae9e7a44159cb6014646b27c4",
+      "new_extension_bytes": 71652,
+      "previous_archives_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1456,
+      "sha256": "a759cc100c0f1237d90377420c382ac01db6a1c3eabcd7b744571c87e982b6b1",
+      "bytes": 33303040,
+      "old_png_unchanged": true
+    }
+  ]
+}
