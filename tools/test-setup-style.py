@@ -48,7 +48,7 @@ RADIO_SAVER_PERSISTENCE_1080_SHA256='47b938394493e4d409672fef9bc9c8d7d2a66517e87
 # OpenPLi 9.2. Keep the previous controller fingerprint for older versions;
 # the full AST guard remains active for every unrelated settings/save change.
 LEGACY_RADIO_TV_GUARD_1083_SHA256='1248749fab1b3d98fb1a4e80e7268535a6245cbf8f613830f0417573f53b41fb'
-EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92') else
+EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93') else
               RADIO_SAVER_PERSISTENCE_1080_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82') else
               REVIEWED_PR99_SHA256 if RUNTIME_VERSION in ('1.0.78', '1.0.79') else
               REVIEWED_1076_SHA256 if RUNTIME_VERSION in ('1.0.76', '1.0.77') else BASELINE['logic_sha256'])
@@ -56,10 +56,10 @@ EXPECTED_SHA=(LEGACY_RADIO_TV_GUARD_1083_SHA256 if RUNTIME_VERSION in ('1.0.83',
 def fingerprint_source(source):
     # Stable releases change only the visible header version labels.
     # Restore those labels for the frozen 1.0.76 controller AST check.
-    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92'):
+    if RUNTIME_VERSION in ('1.0.77', '1.0.78', '1.0.79', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93'):
         source, count = re.subn(
             r'(<eLabel\b(?=[^>]*\bposition="1680,70")[^>]*\btext=")' + re.escape(RUNTIME_VERSION) + r'(")',
-            r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92') else '1.0.76') + r'\2', source)
+            r'\g<1>' + ('1.0.80' if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93') else '1.0.76') + r'\2', source)
         if count != 10:
             raise AssertionError('Expected 10 reviewed version header labels')
     # Exactly reverse the reviewed additions to the existing support-info row
@@ -101,11 +101,39 @@ def fingerprint_source(source):
             raise AssertionError("Unreviewed updater language resolver drift")
         source = source.replace(reviewed_import, 'from .warderUpdateText import update_text', 1)
         source = source.replace(reviewed_call, 'lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()', 1)
+    # PR203: normalize only exact owner-approved MIPS runtime changes.
+    # Reversing these five complete blocks reproduces the prior plugin bytes.
+    # A changed or missing block is never normalized into an approved one.
+    ledger = json.loads((ROOT / 'design/mips-runtime/logic-edits.json').read_text())
+    for record in ledger:
+        if source.count(record['after']) == 1:
+            source = source.replace(record['after'], record['before'], 1)
     return style.normalized(ast.parse(source))
 
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_mips_exception_is_exact_and_scope_bound(self):
+        ledger = json.loads((ROOT / 'design/mips-runtime/logic-edits.json').read_text())
+        self.assertEqual([r['scope'] for r in ledger], [
+            'module import', 'ExtraInfo17.setOn', 'ExtraInfo17.stopEcmCaidInfo',
+            'ExtraInfo17.clearMem', 'ExtraInfo17.animTimerEvent'])
+        self.assertEqual(fingerprint_source(CURRENT), EXPECTED_SHA)
+        for record in ledger:
+            self.assertEqual(CURRENT.count(record['after']), 1, record['scope'])
+        for old, new in (
+            ('and (not MIPS_RUNTIME or self.pics)', 'and self.pics'),
+            ('if MIPS_RUNTIME and self.timerpics and self.chckWeaInafAnim():',
+             'if self.timerpics and self.chckWeaInafAnim():'),
+            ('weather_frame_indices(f) if MIPS_RUNTIME else range(0,f)',
+             'weather_frame_indices(f)'),
+            ('if MIPS_RUNTIME and (not self.__isOn or self["picProvSat"].instance is None):',
+             'if not self.__isOn:'),
+        ):
+            changed = CURRENT.replace(old, new, 1)
+            self.assertNotEqual(changed, CURRENT)
+            self.assertNotEqual(fingerprint_source(changed), EXPECTED_SHA)
+
     def test_pr156_flash_threshold_exception_is_scope_bound(self):
         self.assertEqual(fingerprint_source(CURRENT), EXPECTED_SHA)
         changed = CURRENT.replace('512 * 1024 * 1024', '0', 1)
@@ -282,7 +310,7 @@ class SetupStyleTests(unittest.TestCase):
                 original.remove(original.find("widget[@name='selected_item']"))
             # The modern SAT selector has no Yellow action. Its historical
             # unused key_yellow widget was removed from the visible dialog.
-            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92') and name=='satSelectorScr':
+            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93') and name=='satSelectorScr':
                 legacy=original.find("widget[@name='key_yellow']")
                 self.assertIsNotNone(legacy)
                 original.remove(legacy)
@@ -516,7 +544,7 @@ class SetupStyleTests(unittest.TestCase):
         import struct
         record=json.loads((ROOT/'design/settings-header-asset.json').read_text())
         path=ROOT/'source/package-root'/record['path'];raw=path.read_bytes()
-        expected=(CURRENT_MAIN_1080_HEADER_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92')
+        expected=(CURRENT_MAIN_1080_HEADER_SHA256 if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93')
                   else record['sha256'])
         self.assertEqual(hashlib.sha256(raw).hexdigest(),expected)
         self.assertEqual(raw[:8],b'\x89PNG\r\n\x1a\n')
@@ -565,13 +593,13 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():
-            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92') and name in CURRENT_MAIN_1080_LAYOUTS:
+            if RUNTIME_VERSION in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93') and name in CURRENT_MAIN_1080_LAYOUTS:
                 # Pin only reviewed current-main exceptions. No blanket skip.
                 # Normalize ONLY the single generated version label to the
                 # unchanged, SHA-pinned main 1.0.80 layout. All other graphics,
                 # geometry and widget source must remain byte-identical.
                 verified_skin = skin
-                if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92'):
+                if RUNTIME_VERSION in ('1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93'):
                     label = 'text="' + RUNTIME_VERSION + '"'
                     if verified_skin.count(label) != 1:
                         raise AssertionError('Expected one version label in ' + name)

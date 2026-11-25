@@ -15,6 +15,7 @@
 #    
 #######################################################################
 from Components.Renderer.Renderer import Renderer
+from Plugins.Extensions.setupGlass17.warderMipsRuntime import MIPS_RUNTIME, RendererTimerGuard
 from enigma import eLabel
 from enigma import ePoint, eTimer
 from Components.VariableText import VariableText
@@ -31,10 +32,13 @@ class g17RollName(VariableText, Renderer):
 		if HardwareInfo().get_device_name() == 'dm800se':
 			self.OLED_size = 96
 		self.__moveLCD1Text = eTimer()
-		try:
-			self.__moveLCD1Text_conn = self.__moveLCD1Text.timeout.connect(self.__moveLCD1TextRun)
-		except AttributeError:
-			self.__moveLCD1Text.timeout.get().append(self.__moveLCD1TextRun)
+		if MIPS_RUNTIME:
+			self._warder_timer_guard = RendererTimerGuard(self.__moveLCD1Text, self.__moveLCD1TextRun)
+		else:
+			try:
+				self.__moveLCD1Text_conn = self.__moveLCD1Text.timeout.connect(self.__moveLCD1TextRun)
+			except AttributeError:
+				self.__moveLCD1Text.timeout.get().append(self.__moveLCD1TextRun)
 
 	def applySkin(self, desktop, parent):
 		attribs = [ ]
@@ -48,18 +52,41 @@ class g17RollName(VariableText, Renderer):
                      		
 	GUI_WIDGET = eLabel
 
+	if MIPS_RUNTIME:
+		def postWidgetCreate(self, instance):
+			Renderer.postWidgetCreate(self, instance)
+			self._warder_timer_guard.attach()
+
+		def preWidgetRemove(self, instance):
+			self._warder_timer_guard.detach()
+			Renderer.preWidgetRemove(self, instance)
+
+		def doSuspend(self, suspended):
+			self._warder_timer_guard.suspend(suspended)
+			if not suspended and self._warder_timer_guard.ready(self.instance) and self.source is not None and hasattr(self, 'posX'):
+				self.changed((self.CHANGED_DEFAULT,))
+
+		def destroy(self):
+			guard = getattr(self, '_warder_timer_guard', None)
+			if guard is not None:
+				guard.detach()
+			Renderer.destroy(self)
+
+
 	def connect(self, source):
 		Renderer.connect(self, source)
 		self.changed((self.CHANGED_DEFAULT,))
 		
 	def changed(self, what):
+		if MIPS_RUNTIME:
+			self.__moveLCD1Text.stop()
 		if what[0] == self.CHANGED_CLEAR:
 			self.text = ""
 		else:
 			self.text = self.source.text
 			if HardwareInfo().get_device_name() != 'dm7020hd':
 				self.text = (self.text).upper()
-		if self.instance:
+		if self.instance and (not MIPS_RUNTIME or (self._warder_timer_guard.ready(self.instance) and what[0] != self.CHANGED_CLEAR and hasattr(self, 'posX'))):
 			text_width = self.instance.calculateSize().width()
 			if self.__moveLCD1Text.isActive():
 				self.__moveLCD1Text.stop()
@@ -77,6 +104,8 @@ class g17RollName(VariableText, Renderer):
 			self.instance.move(ePoint(self.x,self.posY))
          
 	def __moveLCD1TextRun(self):
+		if MIPS_RUNTIME and (not getattr(self, '_warder_timer_guard', None) or not self._warder_timer_guard.ready(getattr(self, 'instance', None))):
+			return
 		self.__moveLCD1Text.stop()
 		if self.x != self.end and self.direct == "R":
 			self.x = self.x-1       
