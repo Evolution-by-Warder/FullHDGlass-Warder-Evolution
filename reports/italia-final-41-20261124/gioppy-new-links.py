@@ -52,94 +52,23 @@ def run(item):
  except Exception as e:return {'source':name,'url':url,'error':repr(e)}
 
 
-# Static public catalog audit, no plugin execution.
-import tarfile, html, urllib.parse, subprocess, tempfile, ast
-report={'sources':[],'discovery':[],'static':[],'errors':[],'catalogues':[]}
-urls=set()
-def retrieve(url):
- try:
-  b=get(url);report['discovery'].append({'url':url,'bytes':len(b),'sha256':sha(b)});return b
- except Exception as e:report['errors'].append({'url':url,'error':repr(e)});return None
-def unpack_ipk(raw):
- with tempfile.TemporaryDirectory() as td:
-  f=Path(td)/'a.ipk';f.write_bytes(raw)
-  if raw.startswith(b'!<arch>\n'):
-   names=subprocess.check_output(['ar','t',str(f)],text=True).splitlines();data=subprocess.check_output(['ar','p',str(f),next(n for n in names if n.startswith('data.tar'))])
-  else:
-   with tarfile.open(fileobj=io.BytesIO(raw),mode='r:*') as t:data=t.extractfile(next(m for m in t.getmembers() if m.name.rsplit('/',1)[-1].startswith('data.tar'))).read()
-  return data
-def read_archive(url,raw):
- inputs=[]
- try:
-  if zipfile.is_zipfile(io.BytesIO(raw)):
-   with zipfile.ZipFile(io.BytesIO(raw)) as z:
-    for k in z.namelist():
-     if k.rsplit('/',1)[-1] in ('lamedb','lamedb5'):inputs.append((k,z.read(k)))
-  else:
-   if raw.startswith(b'!<arch>\n'):raw=unpack_ipk(raw)
-   with tarfile.open(fileobj=io.BytesIO(raw),mode='r:*') as t:
-    for m in t.getmembers():
-     if m.isfile() and m.name.rsplit('/',1)[-1] in ('lamedb','lamedb5') and m.size<4000000:inputs.append((m.name,t.extractfile(m).read()))
-  files=[]
-  for k,b in inputs:
-   count,rows=parse(b);files.append({'name':k,'sha256':sha(b),'services':count,'matches':rows})
-  report['sources'].append({'url':url,'files':files})
- except Exception as e:report['errors'].append({'url':url,'error':repr(e)})
-# Actual GioppyGio plugin source strings and assignment context, rather than local file paths.
-u='https://gioppygio.it/update_new/enigma2-plugin-extensions-gioppygio_2.6_all.ipk'
-raw=retrieve(u)
-if raw:
- try:
-  data=unpack_ipk(raw)
-  with tarfile.open(fileobj=io.BytesIO(data),mode='r:*') as t:
-   for m in t.getmembers():
-    if not m.isfile() or not m.name.endswith('.py') or m.size>2000000:continue
-    if not re.search(r'/(?:Setting|plugin|update|config|download|constants|catalog|network|utils|settings_store)\.py$',m.name,re.I):continue
-    txt=t.extractfile(m).read().decode('utf8','replace')
-    try:tree=ast.parse(txt)
-    except SyntaxError:continue
-    constants=[]
-    for n in ast.walk(tree):
-     if isinstance(n,ast.Constant) and isinstance(n.value,str) and re.search(r'https?://|\.json$|\.txt$|\.xml$|\.csv$|\.zip$|\.php$|listaE2|setting|catalog',n.value,re.I) and len(n.value)<450:constants.append(n.value)
-    lines=[l.strip()[:1500] for l in txt.splitlines() if re.search(r'link_dtt|url.*setting|setting.*url|pathsite|catalog|requests\.get|urlopen|_ALLOWED_LINK_PREFIXES',l,re.I)]
-    if m.name.endswith('/settings_store.py'):
-     report['static'].append({'file':m.name,'source':txt[:24000]})
-     for n in ast.walk(tree):
-      if isinstance(n,ast.Constant) and isinstance(n.value,str) and re.match(r'^https?://(?:picons\.)?(?:www\.)?gioppygio\.it/',n.value,re.I) and len(n.value)<400:urls.add(n.value)
-     for n in ast.walk(tree):
-      if isinstance(n,ast.Assign) and any(isinstance(v,ast.Name) and v.id=='XML_URL' for v in n.targets):
-       report['xml_url_expression']=ast.unparse(n.value)
-    else:
-     report['static'].append({'file':m.name,'constants':sorted(set(constants))[:100],'lines':lines[:35]})
- except Exception as e:report['errors'].append({'stage':'IPK static inspection','error':repr(e)})
 
+# Official public catalogue URL confirmed in GioppyGio 2.6 settings_store.py.
 import xml.etree.ElementTree as ET
-def approved(u):
- try:return urllib.parse.urlparse(u).scheme in ('http','https') and urllib.parse.urlparse(u).hostname in ('gioppygio.it','www.gioppygio.it','picons.gioppygio.it')
- except:return False
-def catalog(u):
- raw=retrieve(u)
- if not raw:return []
- txt=html.unescape(raw.decode('utf8','replace'))
- report['catalogues'].append({'url':u,'excerpt':txt[:16000]})
- found=set()
- for v in re.findall(r'https?://[^\s"\'<>]+',txt):
-  if approved(v) and re.search(r'\.zip(?:\?|$)',v,re.I):found.add(v)
- try:
-  root=ET.fromstring(raw)
-  for e in root.iter():
-   for v in list(e.attrib.values())+[e.text or '']:
-    v=v.strip()
-    if re.search(r'\.zip(?:\?|$)',v,re.I):
-     a=urllib.parse.urljoin(u,v)
-     if approved(a):found.add(a)
- except ET.ParseError:pass
- return sorted(found)
-found=set()
-for u in sorted(urls):
- if re.search(r'xml|json|manifest|setting|catalog',u,re.I) and not u.endswith('/'):found.update(catalog(u))
-report['archives']=sorted(found)
-selected=sorted(v for v in found if re.search(r'palermo|sicilia|toscana|firenze|dtt',v,re.I))[:35]
-with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:report['sources']=list(ex.map(run,[(u,u) for u in selected]))
+u='https://raw.githubusercontent.com/GioppyGio/settings/main/new_set.xml'
+raw=get(u);root=ET.fromstring(raw)
+rules=[dict(e.attrib) for rs in root if rs.get('name') in ('dtt','Satmotor') for e in rs if e.get('type')=='Marker']
+byurl={}
+for e in rules:
+ v=e['Link']
+ if v.startswith(('https://gioppygio.it/liste-dtt/','https://gioppygio.it/settings/e2/')):byurl.setdefault(v,[]).append(e)
+def audit(item):
+ url,entries=item
+ out=run((entries[0]['Name'],url));out['catalog_entries']=entries
+ for f in out.get('files',[]):
+  f['matches']=[v for v in f['matches'] if (v['sid'],v['tsid'],v['onid']) in wanted or (v['tsid'],v['onid'])==(0xa002,0x217c) or v['provider'].strip().upper() in pending]
+ return out
+with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:results=list(ex.map(audit,byurl.items()))
+report={'catalog_url':u,'catalog_sha256':sha(raw),'catalog_entries':len(rules),'unique_urls':len(byurl),'sources':results}
 (P/'result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-print(json.dumps(report,ensure_ascii=False)[:100000])
+print(json.dumps({'catalog_sha256':report['catalog_sha256'],'catalog_entries':len(rules),'unique_urls':len(byurl),'readable_archives':sum(bool(r.get('files')) for r in results),'service_records':sum(f['services'] for r in results for f in r.get('files',[])),'matches':[{'source':r['source'],'url':r['url'],'sha256':r['sha256'],'files':[f for f in r.get('files',[]) if f['matches']]} for r in results if any(f['matches'] for f in r.get('files',[]))],'errors':[{'source':r['source'],'url':r['url'],'error':r.get('error','No lamedb')} for r in results if not r.get('files')]},ensure_ascii=False))
