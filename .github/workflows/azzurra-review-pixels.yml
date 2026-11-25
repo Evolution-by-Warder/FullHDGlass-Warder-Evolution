@@ -1,0 +1,22 @@
+name: Collect Azzurra review pixels (read only)
+on:
+  push:
+    branches: [work/azzurra-9e-5w-20261125]
+    paths: ['.github/workflows/azzurra-review-pixels.yml']
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: reports/azzurra-9e-5w-20261125
+      - run: python3 reports/azzurra-9e-5w-20261125/review-pixels.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: azzurra-review-pixels
+          path: review-output/
+          if-no-files-found: error
