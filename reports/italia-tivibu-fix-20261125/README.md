@@ -1,0 +1,1 @@
+TIVIBU was incorrectly assigned Italian Tivusat artwork in W/B. Correct Turkish Tivibu brand confirmed by LyngSat and Türk Telekom; reused the previously approved existing TIVUBU donor exactly for all 3 styles. Only 2 confirmed erroneous images replaced; 1 new transparent PNG; all other PNG bytes preserved. No DTT/IPK changes.
