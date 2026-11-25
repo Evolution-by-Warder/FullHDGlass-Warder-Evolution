@@ -509,5 +509,52 @@
     "approved_png_verified": 54,
     "manifest_sha256": "cfc08ab0120731b052cc4849992785e3395e70b2bf20506ad276cb9acf5e7e7f",
     "piconhub_pr": 104
+  },
+  "provider_followup_20261125": {
+    "findings": [
+      {
+        "name": "BBC WORLD",
+        "sources": [
+          "https://channelsat.com/channels/bbc-english-mid-east",
+          "https://www.lyngsat.com/providers/uk/BBC-World-Service.html"
+        ],
+        "finding": "ChannelSat 2026-11-07: 4.8E 4000 R SID13908 provider BBC World Service, not BBC WORLD. LyngSat also uses full name. Exact alias not established."
+      },
+      {
+        "name": "FREE TV",
+        "sources": [
+          "https://sicilia.onderadio.net/TV/RG/TVRG_FreeTV.html",
+          "https://www.litaliaindigitale.it/sites.google.com/site/litaliaindigitale/archivionewssettimana/news2016/news07-13mar2016.html"
+        ],
+        "finding": "2016/2017 independent historical records identify Tele Comiso / Free TV, LCN297, Comiso UHF35, operator Soc. Coop. Aletheia; mux carried only FREE TV. Supplied Teleone artwork not supported. Current exact SDT and authentic artwork still needed."
+      },
+      {
+        "name": "MULTIPROGRAM",
+        "sources": [
+          "https://channelsat.com/satellites/pos-3E",
+          "https://fr.kingofsat.net/find.php?aff=list&filtre=Clear&lim=80&ordre=freq&question=CANAL&standard=All",
+          "https://howtowatch.france24.com/en/country/cameroon/"
+        ],
+        "finding": "Additional 3E listing 2026-11-07 and KingOfSat 3987 R transport update 2026-11-22: MultiProgram also labels Canal Futur Congo, not a unique corporate identity. France 24 lists LIGHTSAT as IPTV/mobile operator in Cameroon, not proof of a DVB association."
+      },
+      {
+        "name": "NT / SERVICE N",
+        "sources": [],
+        "finding": "Targeted search returned no new exact DVB provider evidence; existing identity holds retained."
+      },
+      {
+        "name": "TV SYSTEM",
+        "sources": [
+          "https://www.tvsystem.eu/corporate/",
+          "https://www.tvsystem.eu/en/dsng/"
+        ],
+        "finding": "Italian TV System itself documents satellite broadcast/DSNG services including two mobile uplinks. Plausible alternative to supplied Teleacras graphic, but no exact SDT association; do not substitute logo."
+      }
+    ],
+    "closed": 0,
+    "new_png": 0,
+    "remaining_dvb": 6,
+    "deferred_outside_dvb": 2,
+    "decision": "No production changes; no exact new provider-to-artwork match. Recheck only genuinely new SDT or identity evidence."
   }
 }
