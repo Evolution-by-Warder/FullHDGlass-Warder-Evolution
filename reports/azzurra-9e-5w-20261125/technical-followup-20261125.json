@@ -136,9 +136,18 @@
     {
       "service": "CGTN Arabic",
       "ref": "1_0_1_26E_1900_9C_5A0000_0_0_0.png",
-      "status": "DONOR_AUDIT_PENDING",
-      "note": "Existing transparent artwork says CGTN America; approved alias image has visible gray rectangle. Check exact 13E donor 1_0_1_36D_3C28_13E_820000_0_0_0.png before selecting. No production change."
+      "status": "HOLD_CLEAN_ARTWORK",
+      "note": "Existing transparent artwork says CGTN America; approved alias image has visible gray rectangle. Check exact 13E donor 1_0_1_36D_3C28_13E_820000_0_0_0.png before selecting. No production change. Donor audit 45640569744 confirmed same gray rectangle in 13E production graphic; no substitution."
     }
   ],
-  "decision": "Original 36 remaining reviewed references not automatically published; new evidence and canonical correction are distinct. No new production changes this pass. Combine confirmed candidates before requesting next binary upload."
+  "decision": "Original 36 remaining reviewed references not automatically published; new evidence and canonical correction are distinct. No new production changes this pass. Combine confirmed candidates before requesting next binary upload.",
+  "donor_audit": {
+    "run": 45640569744,
+    "conclusion": "success",
+    "archives": 18,
+    "donor_variants": 36,
+    "artifact": 15034184453,
+    "visual_findings": "Both 13E CGTN Russian and Arabic identities match names; 13E Arabic also contains gray rectangle, not a clean donor. Russian 13E donor differs in pixel bytes from approved Azzurra variant at all 9 combinations; retain approved candidate bytes instead of substituting.",
+    "decision": "Arabic held pending clean verified artwork. Russian 9 replacement PNG candidate remains ready, not published. No additional binary upload requested until a larger verified batch."
+  }
 }
