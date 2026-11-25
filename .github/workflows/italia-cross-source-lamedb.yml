@@ -1,0 +1,22 @@
+name: Italian cross-source lamedb audit
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/cross-source-lamedb.py', '.github/workflows/italia-cross-source-lamedb.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - run: python3 reports/italia-final-41-20261124/cross-source-lamedb.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italian-cross-source-lamedb-results
+          path: cross-source-audit/result.json
