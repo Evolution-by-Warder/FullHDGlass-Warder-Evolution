@@ -49,10 +49,14 @@
       "decision": "HOLD_SOURCE_OR_IDENTITY",
       "review": "https://commons.wikimedia.org/wiki/File:BBC_World_logo.svg",
       "graphic": "BBC World Service",
-      "reason": "Current radio provider BBC World Service is confirmed, not exact alias BBC WORLD. Existing W/B retained; European partner distribution moved to IP in March 2025, but other satellite feeds remain active. Do not confuse television BBC World News with radio.",
+      "reason": "Current radio provider BBC World Service is confirmed, not exact alias BBC WORLD. Existing W/B retained; European partner distribution moved to IP in March 2025, but other satellite feeds remain active. Do not confuse television BBC World News with radio. Exact historical BBC World television provider found on Hispasat 30W 11891 H SID766, source last modified 2005-12-21; confirmed removed 2007-01-27. This is not evidence of a currently active exact alias.",
       "sources": [
         "https://en.kingofsat.net/find.php?lim=0&ordre=date_maj&question=BBC&standard=All",
-        "https://encompass.tv/encompass-and-zixi-partner-to-transform-bbc-world-service-to-ip-distribution/"
+        "https://encompass.tv/encompass-and-zixi-partner-to-transform-bbc-world-service-to-ip-distribution/",
+        "https://en.kingofsat.net/channelhistory.php?ch=134",
+        "https://satkurier.pl/news/35379/bbc-world-fta-z-hispasata-30w.html",
+        "https://en.kingofsat.net/pos-30.0W",
+        "https://github.com/OpenPLi/enigma2/blob/scarthgap/lamedb"
       ],
       "needed": "Current SDT or lamedb with exact provider BBC WORLD and programme name."
     },
@@ -556,5 +560,59 @@
     "remaining_dvb": 6,
     "deferred_outside_dvb": 2,
     "decision": "No production changes; no exact new provider-to-artwork match. Recheck only genuinely new SDT or identity evidence."
+  },
+  "provider_lamedb_followup_20261125": {
+    "sources": [
+      {
+        "repo": "OpenPLi/enigma2",
+        "ref": "scarthgap",
+        "path": "lamedb",
+        "blob": "3ace6ba01c12b294596bf25e7f91335625fa4c4a",
+        "service_records": 5650,
+        "terrestrial": 0,
+        "exact_hits": [
+          {
+            "provider": "BBC World",
+            "service": "BBC World",
+            "ref": "02fe:0ce40000:0027:0038:1:0",
+            "transponder": "11891 H 27500 3/4",
+            "last_file_commit": "35ae469a718067d1c71e6c5f99b48e4d3702a1c3",
+            "last_file_commit_date": "2005-12-21",
+            "status": "HISTORICAL_SERVICE_REMOVED_2007-01-27"
+          }
+        ]
+      },
+      {
+        "repo": "ciefp/ciefpsettings-enigma2",
+        "ref": "master",
+        "path": "ciefp-E2-16sat-42E-39E-28E-26E-23E-19E-16E-13E-10E-9E-7E-4.8E-1.9E-0.8w-4W-5w/lamedb",
+        "blob": "7199784c784915941ff75c3b693a50c1318fdcd1",
+        "service_records": 11119,
+        "terrestrial": 279,
+        "exact_hits": []
+      },
+      {
+        "repo": "oe-alliance/oe-alliance-settings",
+        "ref": "master",
+        "path": "malimali.3e.7e.9e.13e.16e.19e/lamedb",
+        "blob": "61953e96dad1e99df76bb8773811b4b93c814098",
+        "service_records": 3882,
+        "terrestrial": 0,
+        "exact_hits": [],
+        "note": "Edited 2017-01-24; historical, not current."
+      }
+    ],
+    "service_records": 20651,
+    "terrestrial": 279,
+    "exact_hits": 1,
+    "current_verified_hits": 0,
+    "duplicate": "OpenViX/enigma2 lamedb identical to OpenPLi blob; not counted twice.",
+    "unreadable": "Ciefp motor blob 0e20540e628f372bc6f1c8272b62780f1f089202, 1243201 bytes: contents API returned empty text, excluded from counts.",
+    "bbc_evidence": [
+      "https://en.kingofsat.net/channelhistory.php?ch=134",
+      "https://satkurier.pl/news/35379/bbc-world-fta-z-hispasata-30w.html",
+      "https://en.kingofsat.net/pos-30.0W"
+    ],
+    "decision": "Historical BBC WORLD identity is television, not World Service radio. Exact 30W SID766 was removed 2007-01-27. Do not create historical-reference picon or infer any currently active alias. Hold exact current provider evidence. Other five holds unchanged."
   }
 }
