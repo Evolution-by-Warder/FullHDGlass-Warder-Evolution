@@ -85,6 +85,40 @@ class FontTests(unittest.TestCase):
         class PluginSpecificConfigList(cls): pass
         derived=PluginSpecificConfigList();self.apply(derived,parent)
         self.assertEqual(derived.instance.fonts['entry'].pointSize,20)
+    def test_video_preview_uses_separate_slider_column(self):
+        for width,height in ((550,27),(825,40),(1100,53)):
+            obj,base,_=self.create(height=height,attributes=[('font','Prive3;33')])
+            preview=type('VideoEnhancementPreview',(),{
+                '__module__':'Plugins.SystemPlugins.VideoEnhancement.plugin',
+                '__getitem__':lambda self,key:obj if key=='config' else None})()
+            preview.scale=base.scale
+            obj.instance.size=lambda:SimpleNamespace(width=lambda:width)
+            calls=[]
+            obj.l=SimpleNamespace(setSeperation=calls.append)
+            self.assertEqual(self.apply(obj,preview),'original-result')
+            self.assertEqual(calls,[width*68//100])
+            self.assertLessEqual(obj.instance.fonts['entry'].pointSize,height*65//100)
+            self.assertEqual(obj.values,['unchanged',32,True])
+    def test_video_preview_never_changes_other_skin_or_other_list(self):
+        for active,match_module,match_list in ((False,True,True),(True,False,True),(True,True,False)):
+            obj,base,_=self.create(height=40,active=active)
+            preview=type('VideoEnhancementPreview',(),{
+                '__module__':'Plugins.SystemPlugins.VideoEnhancement.plugin' if match_module else 'Other.plugin',
+                '__getitem__':lambda self,key:obj if match_list else None})()
+            preview.scale=base.scale
+            obj.instance.size=lambda:SimpleNamespace(width=lambda:825)
+            calls=[]
+            obj.l=SimpleNamespace(setSeperation=calls.append)
+            self.assertEqual(self.apply(obj,preview),'original-result')
+            self.assertEqual(calls,[])
+    def test_video_preview_missing_native_api_falls_back(self):
+        obj,base,_=self.create(height=40)
+        preview=type('VideoEnhancementPreview',(),{
+            '__module__':'Plugins.SystemPlugins.VideoEnhancement.plugin',
+            '__getitem__':lambda self,key:obj})()
+        preview.scale=base.scale
+        self.assertEqual(self.apply(obj,preview),'original-result')
+
     def test_skin_default_fonts_match_the_shared_policy(self):
         import xml.etree.ElementTree as ET
         skin=ET.parse(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml')
