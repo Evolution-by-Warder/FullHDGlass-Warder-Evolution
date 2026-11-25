@@ -1,0 +1,34 @@
+{
+  "base": "884e555486e32764129ba442ba7ec50f4b6336bb",
+  "new_png": 3,
+  "complete_provider_names": 1,
+  "identity_source": "https://it.kingofsat.info/radio-9.0E",
+  "official_source": "https://www.radiomater.org/P/Content?name=Frequenze",
+  "donor_run": 45563401111,
+  "donor_reference": "1_0_16_7D1_20E1_217C_5A0000_0_0_0.png",
+  "donor_sha256": "e4f38fdb1a9e2c671e5ea5d19cbd38de0cf4830b5e892476a8e83ace04182b37",
+  "dab_mask_sha256": "380b4fd711837d3d5242020aeacb400af3fcd52f4d70b026f18e09adc0971dd9",
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1480,
+      "sha256": "f8bfd80d9656ccc43d834d61b54758d0a34ef42f4a0e16b54189f9327166c990",
+      "bytes": 15980802,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1456,
+      "extension04_sha256": "2b37d943d54375427bde31147968a58304ae8438a615b1ac25a8784eb7087465",
+      "extension04_bytes": 194781,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1458,
+      "sha256": "fb9a1db76e9270845579ad13aba2d9f525fdef8d1ea7d6d40a009be16fcfdd92",
+      "bytes": 33384475,
+      "all_existing_png_bytes_unchanged": true
+    }
+  ]
+}
