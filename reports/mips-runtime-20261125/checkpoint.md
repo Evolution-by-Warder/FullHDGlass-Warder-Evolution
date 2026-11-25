@@ -1,0 +1,7 @@
+# MIPS runtime candidate — 25.11.2026
+
+Owner approved MIPS-only preventive safeguards, explicitly without affecting other architectures. Base main a1dff53607448bb025526d115ef638f98d831fed; production 1.0.92 unchanged. Draft [PR #203](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/203).
+
+First HEAD 75ca81e403852b48e7cd1e2fae2ceae20875e657: 18/21 CI successful, including integration job 139332367284 with four new MIPS tests and 400 simulated timer lifecycle cycles. Three failed jobs 139332367610, 139332368763, 139332368655 all reported the historical whole-plugin AST fingerprint mismatch, not a MIPS regression. New exact edit ledger in design/mips-runtime/logic-edits.json (ea4b36bab593a65aa481c5883899fa7d69870f98) was derived from original and candidate complete source: reversing its five blocks reproduced original plugin.py byte-for-byte. Test update e04c348575053620de56541642daa255233ed902 retains historical expected fingerprint and adds negative tests for broadened architecture scope. Second CI running; not claimed successful. Root WARDER_PROGRESS.md write failed internally twice; this checkpoint records the work without overwriting main.
+
+Next: verify all checks on actual final HEAD and inspect test logs. Real MIPS hardware and actual crashlog still missing; no stable release until validated. Do not change production IPK, settings, skin graphics, picons, radio catalogue or SAT schedule.
