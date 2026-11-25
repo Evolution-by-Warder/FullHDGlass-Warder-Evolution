@@ -1,0 +1,54 @@
+{
+  "morpheus_lamedb_blob": "1604eb1f78ddf5ac6feee5739b7e9d54acc35fb3",
+  "observed_provider": "doria",
+  "observed_services": [
+    {
+      "sid": 6805,
+      "tsid": 26849,
+      "onid": 8572,
+      "name": "RadioRomaTelevision"
+    },
+    {
+      "sid": 6806,
+      "tsid": 26849,
+      "onid": 8572,
+      "name": "Radio Roma"
+    }
+  ],
+  "group_evidence": "https://www.litaliaindigitale.it/news-regionali/lazio-news/lazio-news-anno-2024/240918-mux-locale-1-lazio-passaggio-in-alta-definizione-per-t9/",
+  "base": "bca222b85cd872ed1a9099364a8ed2e0bc227e80",
+  "new_png": 3,
+  "complete_provider_names": 1,
+  "reference": "1_0_16_1C2E_384_110_5A0000_0_0_0.png",
+  "source": "https://en.kingofsat.net/freqs.php?aff=zap&b=325&filtre=no&lim=80&ordre=freq&pos=9E&standard=Digital",
+  "identity_history": "https://www.agcom.it/sites/default/files/migration/delibera/Delibera%2066-23-CONS.pdf",
+  "donor_run": 45563401111,
+  "donors": {
+    "transparent": "8a51042c2e8c7c79d524a5a6df19e1e9f196152757d267c2274111b0dfa5f1d2",
+    "white": "39471fa8bc19a2be5c67c64967f112b1fce8ab43e9fe95972a7dc173a439d0ae",
+    "black": "1f7fceeed3ec89253c42164f06e1f3b4ad157f685f408ef1048a1bf0c2ccd92e"
+  },
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1485,
+      "sha256": "1d19713fa1d393349364c01dece8795e9113c0b1a6174212175a83e9b6986cbb",
+      "bytes": 16056135,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1461,
+      "extension04_sha256": "f0eae94478b89061237563cf02cf1c326403d309975bc4caa88a24c76f149750",
+      "extension04_bytes": 362477,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1463,
+      "sha256": "78a371f6dff75674b5b4141bec9e7b41b72a78ed90758e995e42cdc6df52743d",
+      "bytes": 33551876,
+      "all_existing_png_bytes_unchanged": true
+    }
+  ]
+}
