@@ -1,0 +1,1 @@
+Owner-approved continuation. Digital Dreamers official horizontal logo, white-matte extraction preserving internal lettering; two aliases. Radio Mater DAB exact 9E donor if available; visual review required. Existing PNGs preserved, 4 white extensions retained; no DTT/IPK change.

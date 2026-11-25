@@ -1,0 +1,34 @@
+{
+  "base": "deb96b7808b5abbca87b02897e4537938219e5d8",
+  "new_png": 5,
+  "complete_provider_names": 2,
+  "dreamers_source": "https://www.associazionedigitaldreamers.it/wp-content/uploads/2019/09/logoDD_colore_esteso-1.jpg",
+  "dreamers_source_sha256": "fdbcf237d500a581cce6895952ca69fb3970032a5ee105f38a05702150c64adc",
+  "mater": {
+    "status": "HOLD",
+    "error": ""
+  },
+  "archives": [
+    {
+      "style": "transparent",
+      "count": 1479,
+      "sha256": "04bfd97db1c4b9f7653204cae07ea66e7f7092acce825433a6fccc9c90c3aa75",
+      "bytes": 15960815,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "white",
+      "count": 1455,
+      "extension04_sha256": "d691bc13c44b8d4c0cd883d9efe75b81c7f8956b247f41ff452e25dbfbb6437e",
+      "extension04_bytes": 154060,
+      "all_existing_png_bytes_unchanged": true
+    },
+    {
+      "style": "black",
+      "count": 1457,
+      "sha256": "083d97f79096b14a039290d3031d4edb1e4d9f0e9e8fea940bc6d4f529a06f45",
+      "bytes": 33342629,
+      "all_existing_png_bytes_unchanged": true
+    }
+  ]
+}
