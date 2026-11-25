@@ -1,0 +1,1 @@
+TVCM: TV Centro Marche, exact approved 9E donor in all three backgrounds. Current satellite SID 6001 TSID 24801 ONID 8572 independently verified; historical TVCM alias verified. Same woodpecker and HD brand as supplied original. All prior PNG bytes preserved, no IPK or DTT change.

@@ -296,9 +296,9 @@
     "piconProv-b": {
       "filename": "piconProv.zip",
       "root": "piconProv",
-      "png_count": 1460,
-      "size": 33456993,
-      "sha256": "87a33f09fd88db1fe26d3fa88dc28d17d5a7f173da290046f9c18f35bae4b1a0",
+      "png_count": 1461,
+      "size": 33475959,
+      "sha256": "6ba557c2b4a4a96defc9b4bbe4787c5367f854e24ce3ac7f93d86c3019fe1ba8",
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/black/piconProv.zip",
       "publication_source_id": "fullhd-production",
       "resolution": [
@@ -310,9 +310,9 @@
     "piconProv-220": {
       "filename": "piconProv.zip",
       "root": "piconProv",
-      "png_count": 1482,
-      "size": 16007824,
-      "sha256": "b713864f13d519c427814b3666109a8f98ee0bdda29b84aa3b3256299573e34a",
+      "png_count": 1483,
+      "size": 16024658,
+      "sha256": "d24985eb4bfda876bb96f3a63c16b73642593b09d320103c73991861fff0dd19",
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/transparent/piconProv.zip",
       "publication_source_id": "fullhd-production",
       "resolution": [
@@ -446,9 +446,9 @@
         {
           "filename": "piconProv.zip",
           "root": "piconProv",
-          "png_count": 7,
-          "size": 270277,
-          "sha256": "d73273b2e60613832b62f3dd06621b231dee106dfb3e74c6adc758cffc458d95",
+          "png_count": 8,
+          "size": 285157,
+          "sha256": "47f7888a501c7beed640c906dd5923e329a396898b52f0a9d44d4e031c36d99e",
           "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/white/extension-04/piconProv.zip",
           "publication_source_id": "fullhd-production",
           "resolution": [
@@ -458,8 +458,8 @@
           "delivery": "canonical-220x132-v2"
         }
       ],
-      "png_count": 1458,
-      "unpacked_size": 35876276
+      "png_count": 1459,
+      "unpacked_size": 35891044
     }
   }
 }
