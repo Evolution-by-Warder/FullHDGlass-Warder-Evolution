@@ -1,0 +1,22 @@
+name: Italian GioppyGio exact published link audit
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/gioppy-new-links.py', '.github/workflows/italia-gioppy-new-links.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - run: python3 reports/italia-final-41-20261124/gioppy-new-links.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italian-gioppy-new-links-results
+          path: cross-source-audit/result.json
