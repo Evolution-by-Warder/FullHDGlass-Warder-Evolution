@@ -1,0 +1,25 @@
+name: Independent live audit of TVCM
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/live-audit-5.py', '.github/workflows/italia-live-provider-audit-5.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: python reports/italia-final-41-20261124/live-audit-5.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-provider-audit
+          path: live-provider-audit.json
