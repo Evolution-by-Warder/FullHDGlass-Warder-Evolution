@@ -1,0 +1,54 @@
+name: Italia TVN WBD additive provider package
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/publish-tvn.py', '.github/workflows/italia-tvn-publish-branch.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - uses: actions/checkout@v4
+        with:
+          ref: 32d253f7329329e31c3b9d4f56221597ef680e8a
+          path: production
+          fetch-depth: 1
+          sparse-checkout: |
+            assets/warder/downloads/picons/providers
+            assets/warder/downloads.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: italia-final-41-review
+          run-id: 45558356776
+          github-token: ${{ github.token }}
+          path: reviewed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: python reports/italia-final-41-20261124/publish-tvn.py production reviewed
+      - name: Commit only reviewed assets to separate publication branch
+        run: |
+          cd production
+          test "$(git rev-parse HEAD)" = "32d253f7329329e31c3b9d4f56221597ef680e8a"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads.json assets/warder/downloads/picons/providers/black/piconProv.zip assets/warder/downloads/picons/providers/transparent/piconProv.zip assets/warder/downloads/picons/providers/white/extension-02/piconProv.zip reports/italia-tvn-wbd-20261125
+          git diff --cached --stat
+          git commit -m "Add 5 verified TVN WBD provider variants without overwriting legacy PNGs"
+          git push origin HEAD:refs/heads/publish/italia-tvn-wbd-20261125
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italia-tvn-wbd-proof
+          path: |
+            production/reports/italia-tvn-wbd-20261125/build.json
+            evidence/
