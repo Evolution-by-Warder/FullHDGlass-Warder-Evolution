@@ -1,0 +1,36 @@
+name: Italia TVCM exact donor review
+on:
+  push:
+    branches: [work/italia-final-41-20261124]
+    paths: ['reports/italia-final-41-20261124/tvcm-donor.py', '.github/workflows/italia-tvcm-donor.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: reports/italia-final-41-20261124
+      - uses: actions/checkout@v4
+        with:
+          ref: 0449f449bd0ebcb8086dde953943e3f79c4f0473
+          path: production
+          fetch-depth: 1
+          sparse-checkout: |
+            assets/warder/downloads.json
+            assets/warder/downloads/picons/channels/manifest.json
+            reports/dtt-italia-20261123/recipe.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: python reports/italia-final-41-20261124/tvcm-donor.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: italia-tvcm-donor
+          path: remaining-donors/
