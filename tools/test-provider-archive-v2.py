@@ -67,4 +67,47 @@ class Tests(unittest.TestCase):
   self.assets['piconProv-w-v2']['unpacked_size']=1
   with self.assertRaises(ValueError):self.run_install()
   self.assertEqual(self.copies,0)
+ def test_all_styles_v2_install(self):
+  # V2 catalogue keys are optional and style-specific. In particular, a full
+  # black base must continue to work with its own extension, not white assets.
+  for variant,suffix in [('black','b'),('transparent','220')]:
+   with self.subTest(variant=variant):
+    key='piconProv-'+suffix
+    root=m._PROVIDER_ROOT+variant+'/'
+    base,raw=entry({'a.png':self.a},root+'piconProv.zip')
+    ext,eraw=entry({'b.png':self.b},root+'extension-01/piconProv.zip','canonical-220x132-v2')
+    self.raw[base['url']]=raw;self.raw[ext['url']]=eraw
+    assets=dict(self.assets)
+    assets[key]=base
+    assets[key+'-v2']=dict(delivery='canonical-220x132-v2',resolution=[220,132],root='piconProv',base_asset_id=key,base_sha256=base['sha256'],extensions=[ext],png_count=2,unpacked_size=len(self.a)+len(self.b))
+    before=self.copies
+    self.assertIn('2/2',m.install(self.screen,'aux-prov',variant,lambda:('',assets),lambda x:x))
+    self.assertEqual(self.copies,before+1)
+    self.assertEqual((self.dest/'a.png').read_bytes(),self.a)
+    self.assertEqual((self.dest/'b.png').read_bytes(),self.b)
+    self.assertEqual(self.screen.zzz,'original')
+    self.assertEqual(list(self.base.glob('.warder-provider-*')),[])
+    self.assertEqual(assets[key],base)
+ def test_black_rejects_white_extension(self):
+  base,raw=entry({'a.png':self.a},m._PROVIDER_ROOT+'black/piconProv.zip')
+  ext=self.assets['piconProv-w-v2']['extensions'][0]
+  assets=dict(self.assets)
+  assets['piconProv-b']=base
+  assets['piconProv-b-v2']=dict(delivery='canonical-220x132-v2',resolution=[220,132],root='piconProv',base_asset_id='piconProv-b',base_sha256=base['sha256'],extensions=[ext],png_count=2,unpacked_size=len(self.a)+len(self.b))
+  with self.assertRaises(ValueError):m.install(self.screen,'aux-prov','black',lambda:('',assets),lambda x:x)
+  self.assertEqual(self.copies,0)
+  self.assertEqual(list(self.dest.iterdir()),[])
+ def test_black_four_extensions(self):
+  root=m._PROVIDER_ROOT+'black/'
+  base,raw=entry({'base.png':self.a},root+'piconProv.zip');self.raw[base['url']]=raw
+  extensions=[]
+  for i in range(1,5):
+   e,r=entry({'ext%d.png'%i:self.b},root+'extension-%02d/piconProv.zip'%i,'canonical-220x132-v2')
+   extensions.append(e);self.raw[e['url']]=r
+  assets={'piconProv-b':base,'piconProv-b-v2':dict(delivery='canonical-220x132-v2',resolution=[220,132],root='piconProv',base_asset_id='piconProv-b',base_sha256=base['sha256'],extensions=extensions,png_count=5,unpacked_size=len(self.a)+4*len(self.b))}
+  self.assertIn('5/5',m.install(self.screen,'aux-prov','black',lambda:('',assets),lambda x:x))
+  self.assertEqual((self.dest/'base.png').read_bytes(),self.a)
+  for i in range(1,5):self.assertEqual((self.dest/('ext%d.png'%i)).read_bytes(),self.b)
+  self.assertEqual(self.copies,1)
+  self.assertEqual(list(self.base.glob('.warder-provider-*')),[])
 if __name__=='__main__':unittest.main()
