@@ -86,6 +86,7 @@ jobs:
         run: |
           set -euo pipefail
           for t in \
+            test-warder-mips-runtime.py \
             test-channel-picon-settings.py \
             test-warder-channel-worker.py \
             test_warder_storage_safety.py \
