@@ -1,5 +1,7 @@
 ## 26. 11. 2026 — FullHDGlass 1.0.94: schválený ostrý rozsah, rozpracovaný kandidát
 
+- CI na `2789c6f035660f46baa6052401c5ec7262f61b92`: nové EPG/scroll testy a preflight `test-and-build` SUCCESS; osem kontrol zlyhalo na chýbajúcej novej konfigurácii v simuláciách a presnom controller fingerprint. Zachované staré hash očakávania; doplnená len reverzibilná normalizácia piatich explicitných vložených blokov a reálne save/cancel regresie. Vyžaduje nové CI na novom HEAD. Žiadna publikácia.
+
 - Vlastník schválil ostré vydanie (nie TEST) a kontrolu 21 jazykov všetkých piatich projektov. [PR #206](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/206), základ main `83793932914887e4c54724ff55b4c5d4f5002722`. Rolovanie 2× OK: `86c01168070ad0b5ce3fca9ac8ff39475b2e16e6`; navigácia MultiEPG a dátum: `206bda392d0c80a0c88ed6df005da9642bc17b0c`. Pridané regresné testy, päť rýchlostí, 21 jazykov nových popiskov. OpenATV 7.6/8.0/master a OpenPLi 9.2 API porovnané so zdrojmi; fyzické overenie ani výsledok CI zatiaľ nedoložené.
 - **NEPUBLIKOVANÉ.** Pripravené metadata 1.0.94; všetky relevantné testy, preflight, merge, publisher, verifikácia IPK/feedov a webu ešte musia prejsť. Staré schválené digest-y bez zmeny, nové číslo v existujúcich verziových podmienkach. Žiadna zmena SAT, piconov, používateľských dát, produkčného feedu alebo webu.
 

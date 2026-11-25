@@ -108,6 +108,18 @@ def fingerprint_source(source):
     for record in ledger:
         if source.count(record['after']) == 1:
             source = source.replace(record['after'], record['before'], 1)
+    # 1.0.94: normalize only the five exact, reviewed description-scroll UI insertions.
+    # Every prior controller and frozen-layout fingerprint remains in force.
+    description_scroll_edits = ["def _warderDescriptionScrollSpeedLabel():\n    from .warderLocale import language_code\n    labels = {\"en\":\"Text rolling speed\",\"sk\":\"Rýchlosť rolovania textu\",\"cs\":\"Rychlost posouvání textu\",\"de\":\"Textrollgeschwindigkeit\",\"pl\":\"Szybkość przewijania tekstu\",\"hu\":\"Szöveggörgetés sebessége\",\"fr\":\"Vitesse de défilement du texte\",\"it\":\"Velocità scorrimento testo\",\"es\":\"Velocidad de desplazamiento\",\"ru\":\"Скорость прокрутки текста\",\"nl\":\"Tekstscrollsnelheid\",\"pt\":\"Velocidade de deslocamento\",\"ro\":\"Viteza derulării textului\",\"uk\":\"Швидкість прокручування тексту\",\"tr\":\"Metin kaydırma hızı\",\"zh\":\"文本滚动速度\",\"el\":\"Ταχύτητα κύλισης κειμένου\",\"et\":\"Teksti kerimise kiirus\",\"lt\":\"Teksto slinkimo greitis\",\"al\":\"Shpejtësia e lëvizjes së tekstit\",\"fa\":\"سرعت پیمایش متن\"}\n    return labels.get(language_code(config.osd.language.value), labels[\"en\"])\n\n\n",
+        "config.plugins.setupGlass17.descriptionScrollSpeed = ConfigSelection(default=\"36\", choices=[(value, value + \" px/s\") for value in (\"10\", \"20\", \"36\", \"50\", \"67\")])\n",
+        "\t\t\t\t\tself.list.append(getConfigListEntry(S0 % _warderDescriptionScrollSpeedLabel(), config.plugins.setupGlass17.descriptionScrollSpeed))      \t\t\n",
+        "\t\tconfig.plugins.setupGlass17.descriptionScrollSpeed.save()\n",
+        "\t\tconfig.plugins.setupGlass17.descriptionScrollSpeed.cancel()\n"]
+    if RUNTIME_VERSION == '1.0.94':
+        for edit in description_scroll_edits:
+            if source.count(edit) != 1:
+                raise AssertionError("Unreviewed description scroll settings/controller drift")
+            source = source.replace(edit, '', 1)
     return style.normalized(ast.parse(source))
 
 
