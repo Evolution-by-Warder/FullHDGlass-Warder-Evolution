@@ -659,5 +659,94 @@
       }
     ],
     "decision": "No new exact provider matches or validated artwork. 33/41 closed, six DVB holds and two deferred. Do not repeat this blob. Earlier unreadable status superseded."
+  },
+  "vhannibal_regional_followup_20261125": {
+    "repo": "oe-alliance/oe-alliance-settings",
+    "ref": "master",
+    "sources": [
+      {
+        "region": "campania",
+        "blob": "c86b6628c7c7817fbfa1f6fa39dd7bc5f2f97f3e",
+        "records": 13002,
+        "dtt": 323,
+        "path": "vhannibal.motor.and.dtt.campania/lamedb"
+      },
+      {
+        "region": "forli",
+        "blob": "53b5909a3b73e3fc625e14eca4634e79980b004f",
+        "records": 15108,
+        "dtt": 483,
+        "path": "vhannibal.motor.and.dtt.forli/lamedb"
+      },
+      {
+        "region": "lazio",
+        "blob": "884230fc8c9c651c9595d214e462ecb0034b299f",
+        "records": 13000,
+        "dtt": 321,
+        "path": "vhannibal.motor.and.dtt.lazio/lamedb"
+      },
+      {
+        "region": "lombardia",
+        "blob": "fd667d03863a473cfeba141bc18f64fb529e0d07",
+        "records": 13055,
+        "dtt": 332,
+        "path": "vhannibal.motor.and.dtt.lombardia/lamedb"
+      },
+      {
+        "region": "milano",
+        "blob": "28bf6a9f760b514c2a20dc1427a614540f9cd5a1",
+        "records": 14821,
+        "dtt": 445,
+        "path": "vhannibal.motor.and.dtt.milano/lamedb"
+      },
+      {
+        "region": "napoli",
+        "blob": "7992535fa7a37dd806c9f60dd1127baf87030e0b",
+        "records": 14885,
+        "dtt": 451,
+        "path": "vhannibal.motor.and.dtt.napoli/lamedb"
+      },
+      {
+        "region": "piemonte",
+        "blob": "4d3b95a9b2a51c3f57a38790d88d9f73762dc156",
+        "records": 12991,
+        "dtt": 312,
+        "path": "vhannibal.motor.and.dtt.piemonte/lamedb"
+      },
+      {
+        "region": "roma",
+        "blob": "fc3333c1163ba04bc31066ef51eab97a5ee3d8a1",
+        "records": 14828,
+        "dtt": 409,
+        "path": "vhannibal.motor.and.dtt.roma/lamedb"
+      },
+      {
+        "region": "torino",
+        "blob": "b4cd4d5e6338e3b9899d8ab77d7bf79184f1590f",
+        "records": 14846,
+        "dtt": 424,
+        "path": "vhannibal.motor.and.dtt.torino/lamedb"
+      }
+    ],
+    "total_records": 126536,
+    "total_dtt_records": 3500,
+    "unique_records_within_batch": 28403,
+    "unique_dtt_records_within_batch": 2399,
+    "deduplication": "Full lamedb service reference + service name + exact p: provider string; not deduplicated against earlier audits.",
+    "exact_provider_hits": 0,
+    "near_match": {
+      "reference": "0638:0dca0000:0010:0800:1:0",
+      "service": "Free TV",
+      "provider": "NILESAT",
+      "regions": [
+        "forli",
+        "milano",
+        "napoli",
+        "roma",
+        "torino"
+      ]
+    },
+    "teleacras_evidence": "https://www.litaliaindigitale.it/sites.google.com/site/litaliaindigitale/siciliaindigitale/muxteleacras.html",
+    "decision": "No confirmed association of TV SYSTEM, NT or SERVICE N with the submitted artwork. Historical Teleacras mux TID41543 ONID8572 documents station names, not exact SDT provider TV SYSTEM. Further broad overlapping scans have low value; retain six holds until new relevant SDT or authoritative identity evidence. No production change."
   }
 }
