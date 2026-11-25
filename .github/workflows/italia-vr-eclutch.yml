@@ -29,7 +29,7 @@ jobs:
           sparse-checkout-cone-mode: false
       - uses: actions/download-artifact@v4
         with:
-          name: italia-vr-eclutch-proof
+          name: italia-aci-aliases-proof
           run-id: 45559743306
           github-token: ${{ github.token }}
           path: reviewed
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: italia-aci-aliases-proof
+          name: italia-vr-eclutch-proof
           path: |
             next-logo-review/
             production/reports/italia-vr-eclutch-20261125/
