@@ -37,7 +37,7 @@ class CanonicalManifest(unittest.TestCase):
         self.assertEqual(d["delivery"], "raw-github-parts")
         self.assertEqual(len(d["parts"]), len(self.meta))
         self.assertEqual(len(d["packages"]), 507)
-        self.assertEqual(len(self.meta), 2224)
+        self.assertEqual(len(self.meta), 2233)
         used = set()
         for p in d["packages"]:
             self.assertTrue(re.fullmatch(r"[0-9a-f]{64}", p["sha256"]))
