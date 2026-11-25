@@ -1,0 +1,1 @@
+Current 7G identity confirmed by AGCOM 2026 list page 6. Teleradiopace Chiavari logo per June 2023 monitoring and official diocese identity. All original PNG retained, four white extensions, no IPK or DTT change. Visual review required before merge.
