@@ -1,0 +1,26 @@
+name: Verify live Azzurra 9E archives (read only)
+on:
+  push:
+    branches: [work/azzurra-9e-5w-20261125]
+    paths: ['.github/workflows/azzurra-9e-live-audit.yml']
+permissions:
+  contents: read
+jobs:
+  live-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: reports/azzurra-9e-5w-20261125
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pillow
+      - run: python reports/azzurra-9e-5w-20261125/live-audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: azzurra-9e-live-audit
+          path: live-audit.json
+          if-no-files-found: error
