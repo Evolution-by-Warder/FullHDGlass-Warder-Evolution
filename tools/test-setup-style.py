@@ -101,11 +101,39 @@ def fingerprint_source(source):
             raise AssertionError("Unreviewed updater language resolver drift")
         source = source.replace(reviewed_import, 'from .warderUpdateText import update_text', 1)
         source = source.replace(reviewed_call, 'lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()', 1)
+    # PR203: normalize only exact owner-approved MIPS runtime changes.
+    # Reversing these five complete blocks reproduces the prior plugin bytes.
+    # A changed or missing block is never normalized into an approved one.
+    ledger = json.loads((ROOT / 'design/mips-runtime/logic-edits.json').read_text())
+    for record in ledger:
+        if source.count(record['after']) == 1:
+            source = source.replace(record['after'], record['before'], 1)
     return style.normalized(ast.parse(source))
 
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_mips_exception_is_exact_and_scope_bound(self):
+        ledger = json.loads((ROOT / 'design/mips-runtime/logic-edits.json').read_text())
+        self.assertEqual([r['scope'] for r in ledger], [
+            'module import', 'ExtraInfo17.setOn', 'ExtraInfo17.stopEcmCaidInfo',
+            'ExtraInfo17.clearMem', 'ExtraInfo17.animTimerEvent'])
+        self.assertEqual(fingerprint_source(CURRENT), EXPECTED_SHA)
+        for record in ledger:
+            self.assertEqual(CURRENT.count(record['after']), 1, record['scope'])
+        for old, new in (
+            ('and (not MIPS_RUNTIME or self.pics)', 'and self.pics'),
+            ('if MIPS_RUNTIME and self.timerpics and self.chckWeaInafAnim():',
+             'if self.timerpics and self.chckWeaInafAnim():'),
+            ('weather_frame_indices(f) if MIPS_RUNTIME else range(0,f)',
+             'weather_frame_indices(f)'),
+            ('if MIPS_RUNTIME and (not self.__isOn or self["picProvSat"].instance is None):',
+             'if not self.__isOn:'),
+        ):
+            changed = CURRENT.replace(old, new, 1)
+            self.assertNotEqual(changed, CURRENT)
+            self.assertNotEqual(fingerprint_source(changed), EXPECTED_SHA)
+
     def test_pr156_flash_threshold_exception_is_scope_bound(self):
         self.assertEqual(fingerprint_source(CURRENT), EXPECTED_SHA)
         changed = CURRENT.replace('512 * 1024 * 1024', '0', 1)
