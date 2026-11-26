@@ -219,7 +219,7 @@ class Tests(unittest.TestCase):
   # beyond the historical OpenPLi candidate. Pin the transformed *current
   # main* snapshot separately, without changing the immutable old ledger.
   version=(RUNTIME/'version').read_text().strip()
-  approved='e50ef0a4bd33bfaa631d8cd4e1d39e9e5ec733dc50d657744d357bea07d22cdb' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93') else record['stable_skin_sha256']
+  approved='e50ef0a4bd33bfaa631d8cd4e1d39e9e5ec733dc50d657744d357bea07d22cdb' if version in ('1.0.80', '1.0.82', '1.0.83', '1.0.84', '1.0.85', '1.0.86', '1.0.87', '1.0.88','1.0.89','1.0.90','1.0.91','1.0.92','1.0.93','1.0.94') else record['stable_skin_sha256']
   self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),approved)
   changed=text.replace('FullHDGlass Graphical Guide','unexpected OpenATV change',1)
   self.assertNotEqual(hashlib.sha256(changed.encode()).hexdigest(),approved)

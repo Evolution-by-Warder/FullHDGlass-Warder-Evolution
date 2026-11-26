@@ -236,6 +236,38 @@ class MultiEpgNavigationTests(unittest.TestCase):
         screen._btn_yellow()
         self.assertEqual(screen.actions, ["native-yellow"])
 
+    def test_dates_use_event_day_across_month_boundaries_and_21_languages(self):
+        from datetime import date, datetime
+        today = date(2026, 11, 30)
+        self.assertEqual(set(module.DATE_LABELS), AuxiliaryLanguageTests.LANGUAGES)
+        for day, expected in ((30, 'Dnes 30.11.'),):
+            self.assertEqual(module.event_date(datetime(2026, 11, day, 12).timestamp(), 'sk', today), expected)
+        self.assertEqual(module.event_date(datetime(2026, 12, 1, 12).timestamp(), 'sk', today), 'Zajtra 1.12.')
+        self.assertEqual(module.event_date(datetime(2026, 12, 2, 12).timestamp(), 'sk', today), 'Streda 2.12.')
+        self.assertEqual(module.event_date(datetime(2026, 12, 30, 12).timestamp(), 'sk', today), 'Streda 30.12.')
+
+    def test_native_page_and_boundary_wrap_do_not_move_events(self):
+        cls = modern_screen()
+        cls.prevPage = lambda self: self.actions.append('page-up')
+        cls.nextPage = lambda self: self.actions.append('page-down')
+        cls.moveUp = lambda self: self.actions.append('native-up')
+        cls.moveDown = lambda self: self.actions.append('native-down')
+        module.install(SimpleNamespace(EPG_TYPE_MULTI=7, EPGSelectionMulti=cls), config())
+        screen = cls()
+        position = [0]
+        listing = SimpleNamespace(list=[1, 2, 3],
+            instance=SimpleNamespace(getCurrentIndex=lambda: position[0],
+                moveSelectionTo=lambda i: position.__setitem__(0, i)))
+        screen.widgets['list'] = listing
+        screen.leftPressed()
+        screen.rightPressed()
+        screen.moveUp()
+        self.assertEqual(position[0], 2)
+        screen.moveDown()
+        self.assertEqual(position[0], 0)
+        screen._btn_yellow()
+        self.assertEqual(screen.actions, ['page-up', 'page-down', 'close-event', 'left-event'])
+
     def test_real_multiepg_skin_has_label_sources_without_geometry_change(self):
         path = ROOT / "source/package-root/usr/share/enigma2/hd_glass17/skin.xml"
         xml = path.read_text(encoding="utf-8")

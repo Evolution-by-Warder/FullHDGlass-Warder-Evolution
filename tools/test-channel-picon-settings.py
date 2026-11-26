@@ -35,6 +35,7 @@ class SettingsTests(unittest.TestCase):
         # Named radio screensaver delay is separate from the par1..par231 registry.
         # It must exist in the real setup config and survive save/cancel.
         self.section.radioSaverDelay = Setting('0')
+        self.section.descriptionScrollSpeed = Setting('36')
         self.section.dict=lambda:self.values
         self.config=NS(plugins=NS(setupGlass17=self.section,
                                   warderSkinMainMenu=NS(enabled=Setting(False)),
@@ -46,7 +47,8 @@ class SettingsTests(unittest.TestCase):
             configfile=NS(save=Mock()),_atomicWriteText=Mock(),setPathFiles=Mock(),
             allow_channel_epg_overlay=lambda:True,
             _warderUserNormalize=lambda path:path, os=os,
-            _warderEpgListScrollLabel=lambda:"Scroll EPG titles")
+            _warderEpgListScrollLabel=lambda:"Scroll EPG titles",
+            _warderDescriptionScrollSpeedLabel=lambda:"Text rolling speed")
 
     def method(self,name):
         node=next(n for n in OWNER.body if isinstance(n,ast.FunctionDef) and n.name==name)
@@ -214,9 +216,12 @@ class SettingsTests(unittest.TestCase):
         self.assertIs(screen.list[0][1],self.section.par19)
         self.assertIs(screen.list[1][1],self.section.par231)
         self.assertIs(screen.list[2][1],self.section.par132)
+        speed_rows = [row for row in screen.list if len(row) > 1 and row[1] is self.section.descriptionScrollSpeed]
+        self.assertEqual(len(speed_rows), 1)
 
     def test_real_save_callback_persists_choice_and_includes_backup(self):
         self.section.par231.value='mini'
+        self.section.descriptionScrollSpeed.value='10'
         screen=self.screen()
         self.method('saving')(screen)
         self.assertEqual(self.section.par231.saved,'mini')
@@ -230,12 +235,15 @@ class SettingsTests(unittest.TestCase):
         self.assertIn('Icons type: old-1\n',backup[1])
         self.assertEqual(self.section.par1.saved,'old-1')
         self.assertEqual(self.section.radioSaverDelay.saved, '0')
+        self.assertEqual(self.section.descriptionScrollSpeed.saved, '10')
         self.scope['configfile'].save.assert_called_once()
         screen.close.assert_called_once()
 
     def test_real_cancel_callback_discards_unsaved_change(self):
         self.section.par231.value='mini'
+        self.section.descriptionScrollSpeed.value='67'
         self.method('exitNow')(self.screen())
+        self.assertEqual(self.section.descriptionScrollSpeed.value,'36')
         self.assertEqual(self.section.par231.value,'system')
 
     def test_real_cancel_callback_keeps_previously_saved_mini_choice(self):

@@ -1,7 +1,7 @@
 from Plugins.Extensions.setupGlass17.warderResolution import Screen
 from Components.Label import Label
 from Components.ScrollLabel import ScrollLabel
-from Plugins.Extensions.setupGlass17.warderUserInfoScroll import DescriptionScroller
+from Plugins.Extensions.setupGlass17.warderUserInfoScroll import DescriptionScroller, settings as description_scroll_settings
 from Components.ProgressBar import ProgressBar
 try:
 	from Components.Sensors import sensors
@@ -295,7 +295,7 @@ class UserInfo17(Screen):
 
 	def _initDescription(self, key):
 		self[key] = ScrollLabel("")
-		self._description_scrollers[key] = DescriptionScroller(self[key], eTimer())
+		self._description_scrollers[key] = DescriptionScroller(self[key], eTimer(), lambda: description_scroll_settings(config))
 
 	def _setDescription(self, key, text, title):
 		self._description_scrollers[key].set(text, title)

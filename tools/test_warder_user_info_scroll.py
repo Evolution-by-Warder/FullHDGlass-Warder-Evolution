@@ -212,6 +212,38 @@ class Tests(unittest.TestCase):
         s.show()
         self.assertFalse(t.active)
 
+    def test_configured_modes_delays_and_speeds(self):
+        from types import SimpleNamespace as NS
+        hdg = NS(par76=NS(value='Autostop'), par77=NS(value='10'),
+                 descriptionScrollSpeed=NS(value='10'))
+        cfg = NS(plugins=NS(setupGlass17=hdg))
+        self.assertEqual(mod.settings(cfg), ('Autostop', 10000, 200))
+        for modern in (False, True):
+            a, t = NativeLabel(modern), Timer()
+            s = mod.DescriptionScroller(a, t, lambda: mod.settings(cfg))
+            hdg.par76.value = 'None'
+            s.set('x' * 11)
+            s.show()
+            self.assertFalse(t.active)
+            s.tick()
+            self.assertEqual(a.pos, 0)
+            hdg.par76.value = 'Autostop'
+            s.show()
+            self.assertEqual(t.delay, 10000)
+            s.tick()
+            self.assertEqual(t.delay, 200)
+            for _ in range(4):
+                s.tick()
+            self.assertEqual(a.pos, 10)
+            self.assertFalse(t.active)
+            hdg.par76.value = 'Roll back'
+            s.show()
+            for _ in range(10):
+                s.tick()
+            self.assertEqual(a.pos, 0)
+            self.assertFalse(t.active)
+        self.assertEqual(set(mod.SPEED_DELAYS), {'10', '20', '36', '50', '67'})
+
     def test_all_seven_description_widgets_and_lifecycle(self):
         source = (PAYLOAD / "Screens/G17_UserInfo.py").read_text()
         ast.parse(source)
