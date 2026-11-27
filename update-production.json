@@ -2,6 +2,10 @@
   "version": "1.0.94",
   "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.94_all.ipk",
   "sha256": "9dd3300cafffcdaa522b308c22dda863b6bc47ee190ba3f6c24ba235bbcd6028",
+  "warder_signature": {
+    "manifest_b64": "eyJiYWxpayI6ImVuaWdtYTItcGx1Z2luLXNraW5zLWZ1bGxoZGdsYXNzLXdhcmRlci1ldm9sdXRpb24iLCJjb21taXQiOiIzZTJiNzEwN2YxYjJhZjU4NGYyMTMzNTgxNWExYmU1NTk0ZDBmNWJmIiwia2FuYWwiOiJzdGFibGUiLCJwcm9qZWt0IjoiRXZvbHV0aW9uLWJ5LVdhcmRlci9GdWxsSERHbGFzcy1XYXJkZXItRXZvbHV0aW9uIiwic2NoZW1hIjoxLCJzaGEyNTYiOiI5ZGQzMzAwY2FmZmZjZGFhNTIyYjMwOGMyMmRkYTg2M2I2YmM0N2VlMTkwYmEzZjZjMjRiYTIzNWJiY2Q2MDI4IiwidmVyemlhIjoiMS4wLjk0IiwidmVyemlhX2JhbGlrYSI6IjEuMC45NC0xIn0K",
+    "podpis_b64": "68v+Ft446QzIYo94RxGtp59KmM7L8G8goCtHUd4lQEZcgu1gO7WjUM77K/lAu9tvh+jZ3HDTC523I9q5i1hlAg=="
+  },
   "changelog": "MultiEPG: selected event date, left/right channel paging and cyclic channel navigation. Yellow and blue move between events. The double-OK description scroll respects the mode, delay and five speeds. Restart Enigma2 after installation.",
   "changelog_i18n": {
     "sk": "MultiEPG: dátum vybraného programu, stránkovanie šípkami vľavo/vpravo a cyklický prechod kanálov. Žlté a modré tlačidlo menia program. Rolovanie popisu pri 2× OK rešpektuje režim, oneskorenie a päť rýchlostí. Po inštalácii reštartujte Enigma2.",
